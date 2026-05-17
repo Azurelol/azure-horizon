@@ -1,4 +1,4 @@
-import Player from "../data/combatant/player.mjs";
+import {Player} from "../data/combatant/player.mjs";
 import { systemPath } from "../constants.mjs";
 
 /**
