@@ -6,13 +6,13 @@ const { api, sheets } = foundry.applications;
 /**
  * Extend the basic ItemSheet with some very simple modifications.
  */
-export class UTSItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet) {
+export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     position: {
       width: 600,
     },
-    classes: ["uts", "item", "standard-form"],
+    classes: ["ah", "item", "standard-form"],
     actions: {
       viewDoc: this.#viewEffect,
       createDoc: this.#createEffect,
@@ -39,7 +39,7 @@ export class UTSItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemShee
         },
       ],
       initial: "properties",
-      labelPrefix: "UTS.Sheets.Tabs",
+      labelPrefix: "AH.Sheets.Tabs",
     },
   };
 
@@ -173,7 +173,7 @@ export class UTSItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemShee
   /**
    * Renders an embedded document's sheet.
    *
-   * @this UTSItemSheet
+   * @this AHItemSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
@@ -188,7 +188,7 @@ export class UTSItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemShee
   /**
    * Handles item deletion.
    *
-   * @this UTSItemSheet
+   * @this AHItemSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
@@ -203,7 +203,7 @@ export class UTSItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemShee
   /**
    * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset.
    *
-   * @this UTSItemSheet
+   * @this AHItemSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
@@ -229,7 +229,7 @@ export class UTSItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemShee
   /**
    * Determines effect parent to pass to helper.
    *
-   * @this UTSItemSheet
+   * @this AHItemSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private

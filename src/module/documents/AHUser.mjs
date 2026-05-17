@@ -1,15 +1,15 @@
 /**
  * A simple extension that adds a hook at the end of data prep.
  */
-export default class UTSItem extends foundry.documents.Item {
+export class AHUser extends foundry.documents.User {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
     /**
      * Flexible hook for modules to alter derived document data.
-     * @param {UTSItem} item      The item preparing derived data.
+     * @param {AHUser} user      The user preparing derived data.
      */
-    Hooks.callAll("UTS.prepareItemData", this);
+    Hooks.callAll("AH.prepareUserData", this);
   }
 }

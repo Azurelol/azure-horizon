@@ -1,9 +1,9 @@
 /**
  * A "turns belong to users rather than tokens" variant of combatant.
  */
-export default class Player extends foundry.abstract.TypeDataModel {
+export class Player extends foundry.abstract.TypeDataModel {
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = ["UTS.Combat.player"];
+  static LOCALIZATION_PREFIXES = ["AH.Combat.player"];
 
   /* -------------------------------------------------- */
 

@@ -1,7 +1,7 @@
 export default {
-  input: "./uts.mjs",
+  input: "./system.mjs",
   output: {
-    file: "./public/uts.mjs",
+    file: "./public/system.mjs",
     format: "esm"
   }
 };

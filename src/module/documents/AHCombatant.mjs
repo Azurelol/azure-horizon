@@ -1,15 +1,15 @@
 /**
  * A simple extension that adds a hook at the end of data prep.
  */
-export default class UTSChatMessage extends foundry.documents.ChatMessage {
+export class AHCombatant extends foundry.documents.Combatant {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
     /**
      * Flexible hook for modules to alter derived document data.
-     * @param {UTSChatMessage} message      The chat message preparing derived data.
+     * @param {AHCombatant} combatant      The combatant preparing derived data.
      */
-    Hooks.callAll("UTS.prepareChatMessageData", this);
+    Hooks.callAll("AH.prepareCombatantData", this);
   }
 }

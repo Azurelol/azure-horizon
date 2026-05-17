@@ -1,5 +1,5 @@
 {
-  "UTS": {
+  "AH": {
     "Chess": {
       "Pieces": {
         "P": "Pawn",
@@ -33,8 +33,8 @@
     },
     "Sheets": {
       "Labels": {
-        "ActorSheet": "Default UTS Actor Sheet",
-        "ItemSheet": "Default UTS Item Sheet"
+        "ActorSheet": "Default AH Actor Sheet",
+        "ItemSheet": "Default AH Item Sheet"
       },
       "Tabs": {
         "properties": "Properties",

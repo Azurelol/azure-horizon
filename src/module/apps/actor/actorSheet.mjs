@@ -6,10 +6,10 @@ const { api, sheets } = foundry.applications;
 /**
  * Extend the basic ActorSheet with some very simple modifications.
  */
-export class UTSActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
+export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["uts", "actor", "standard-form"],
+    classes: ["ah", "actor", "standard-form"],
     position: {
       width: 600,
       height: 600,
@@ -41,7 +41,7 @@ export class UTSActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
         },
       ],
       initial: "properties",
-      labelPrefix: "UTS.Sheets.Tabs",
+      labelPrefix: "AH.Sheets.Tabs",
     },
   };
 
@@ -200,7 +200,7 @@ export class UTSActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
   /**
    * Renders an embedded document's sheet.
    *
-   * @this UTSActorSheet
+   * @this AHActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
@@ -215,7 +215,7 @@ export class UTSActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
   /**
    * Handles item deletion.
    *
-   * @this UTSActorSheet
+   * @this AHActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
@@ -230,7 +230,7 @@ export class UTSActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
   /**
    * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset.
    *
-   * @this UTSActorSheet
+   * @this AHActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
@@ -255,7 +255,7 @@ export class UTSActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
   /**
    * Determines effect parent to pass to helper.
    *
-   * @this UTSActorSheet
+   * @this AHActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private

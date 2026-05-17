@@ -4,7 +4,7 @@ import { systemPath } from "../constants.mjs";
 /**
  * A simple extension that adds a hook at the end of data prep.
  */
-export default class UTSCombat extends foundry.documents.Combat {
+export class AHCombat extends foundry.documents.Combat {
   /** @inheritdoc */
   prepareDerivedData() {
 
@@ -12,16 +12,16 @@ export default class UTSCombat extends foundry.documents.Combat {
 
     /**
      * Flexible hook for modules to alter derived document data.
-     * @param {UTSCombat} combat      The combat preparing derived data.
+     * @param {AHCombat} combat      The combat preparing derived data.
      */
-    Hooks.callAll("UTS.prepareCombatData", this);
+    Hooks.callAll("AH.prepareCombatData", this);
   }
 
   /* -------------------------------------------------- */
 
   /**
    * Adds a player combatant to the current combat.
-   * @returns {Promise<import("./UTSCombatant.mjs").default>} The created Combatant.
+   * @returns {Promise<import("./AHCombatant.mjs").default>} The created Combatant.
    */
   async addPlayer() {
     const data = {
@@ -29,7 +29,7 @@ export default class UTSCombat extends foundry.documents.Combat {
       system: {},
     };
     const fdObject = await foundry.applications.api.DialogV2.input({
-      window: { title: "UTS.Combat.AddPlayerCombatTracker" },
+      window: { title: "AH.Combat.AddPlayerCombatTracker" },
       content: Player.schema.getField("user").toFormGroup().outerHTML,
     });
     foundry.utils.mergeObject(data, fdObject);
@@ -51,7 +51,7 @@ export default class UTSCombat extends foundry.documents.Combat {
    * @param {context} context Options forwarded to DialogV2.prompt.
    * @param {string[]} [context.types]   A restriction of the selectable sub-types of the Dialog.
    * @param {string} [context.template]  A template to use for the dialog contents instead of the default.
-   * @returns {Promise<UTSCombat|null>}   A Promise which resolves to the created Document, or null if the dialog was
+   * @returns {Promise<AHCombat|null>}   A Promise which resolves to the created Document, or null if the dialog was
     *                                     closed.
    */
   static async createDialog(data = {}, createOptions = {}, { types, template, ...dialogOptions } = {}) {

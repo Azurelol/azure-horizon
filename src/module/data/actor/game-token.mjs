@@ -3,7 +3,7 @@
  */
 export default class GameTokenModel extends foundry.abstract.TypeDataModel {
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = ["UTS.GameToken"];
+  static LOCALIZATION_PREFIXES = ["AH.GameToken"];
 
   /* -------------------------------------------------- */
 

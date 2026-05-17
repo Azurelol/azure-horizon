@@ -21,7 +21,7 @@
           data-img="icons/svg/aura.svg"
           >
           <i class="fas fa-plus"></i>
-          {{localize "DOCUMENT.New" type=(localize "UTS.Effect.Label")}}
+          {{localize "DOCUMENT.New" type=(localize "AH.Effect.Label")}}
         </a>
       </div>
     </li>
@@ -38,7 +38,7 @@
         <div class="effect-duration">{{effect.duration.label}}</div>
         <div class="document-controls flexrow">
           {{#if @root.editable}}
-          <a class="effect-control" data-action="toggleEffect" title="{{localize 'UTS.Effect.Toggle'}}">
+          <a class="effect-control" data-action="toggleEffect" title="{{localize 'AH.Effect.Toggle'}}">
             <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
           </a>
           {{/if}}

@@ -1,15 +1,15 @@
 /**
  * A simple extension that adds a hook at the end of data prep.
  */
-export default class UTSCombatant extends foundry.documents.Combatant {
+export class AHCard extends foundry.documents.Card {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
     /**
      * Flexible hook for modules to alter derived document data.
-     * @param {UTSCombatant} combatant      The combatant preparing derived data.
+     * @param {AHCard} card      The card preparing derived data.
      */
-    Hooks.callAll("UTS.prepareCombatantData", this);
+    Hooks.callAll("AH.prepareCardData", this);
   }
 }

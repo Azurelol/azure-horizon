@@ -1,11 +1,11 @@
 import * as apps from "./src/module/apps/_module.mjs";
 import * as dataModels from "./src/module/data/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
-import UTS from "./src/module/config.mjs";
+import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/helpers/utils.mjs";
 
 Hooks.once("init", () => {
-  CONFIG.UTS = UTS;
+  CONFIG.AH = AH;
 
   // Assign document classes
   for (const docCls of Object.values(documents)) {
@@ -18,20 +18,20 @@ Hooks.once("init", () => {
   CONFIG.Actor.defaultType = "token";
 
   // Document Sheets
-  foundry.documents.collections.Actors.registerSheet("uts", apps.Actor.UTSActorSheet, {
-    makeDefault: true, label: "UTS.Sheets.Labels.ActorSheet",
+  foundry.documents.collections.Actors.registerSheet("ah", apps.Actor.AHActorSheet, {
+    makeDefault: true, label: "AH.Sheets.Labels.ActorSheet",
   });
-  foundry.documents.collections.Items.registerSheet("uts", apps.Item.UTSItemSheet, {
-    makeDefault: true, label: "UTS.Sheets.Labels.ActorSheet",
+  foundry.documents.collections.Items.registerSheet("ah", apps.Item.AHItemSheet, {
+    makeDefault: true, label: "AH.Sheets.Labels.ActorSheet",
   });
 
   // Sidebar tabs
-  CONFIG.ui.combat = apps.Combat.UTSCombatTracker;
+  CONFIG.ui.combat = apps.Combat.AHCombatTracker;
 });
 
 Hooks.once("i18nInit", () => {
   // Localizing the system's CONFIG object
-  localizeHelper(CONFIG.UTS);
+  localizeHelper(CONFIG.AH);
 });
 
 Hooks.on("renderCombatantConfig", apps.Combatant.hooks.renderCombatantConfig);

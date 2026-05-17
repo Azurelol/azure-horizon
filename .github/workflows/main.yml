@@ -42,11 +42,11 @@ jobs:
       - name: Build All
         run: |
           npm run build
-          mv --force public/uts.mjs uts.mjs
+          mv --force public/system.mjs system.mjs
 
       # Create zip file.
       - name: Create ZIP archive
-        run: zip -r ./system.zip system.json uts.mjs uts.css assets/ lang/ templates/
+        run: zip -r ./system.zip system.json system.mjs system.css assets/ lang/ templates/
 
       # Create a release for this specific version.
       - name: Update Release with Files

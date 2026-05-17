@@ -1,15 +1,15 @@
 /**
  * A simple extension that adds a hook at the end of data prep.
  */
-export default class UTSCard extends foundry.documents.Card {
+export class AHCards extends foundry.documents.Cards {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
     /**
      * Flexible hook for modules to alter derived document data.
-     * @param {UTSCard} card      The card preparing derived data.
+     * @param {AHCards} cards      The cards preparing derived data.
      */
-    Hooks.callAll("UTS.prepareCardData", this);
+    Hooks.callAll("AH.prepareCardsData", this);
   }
 }
