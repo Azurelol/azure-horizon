@@ -1,0 +1,64 @@
+{
+  "id": "azure-horizon",
+  "title": "Azure Horizon",
+  "description": "The Azure Horizon System for FoundryVTT.",
+  "authors": [
+    {
+      "name": "Christian Sagel",
+      "discord": "azurelol"
+    }
+  ],
+  "url": "https://github.com/Azurelol/azure-horizon",
+  "license": "LICENSE.txt",
+  "readme": "README.md",
+  "bugs": "https://github.com/Azurelol/azure-horizon/issues",
+  "changelog": "CHANGELOG.md",
+  "media": [
+    {
+      "type": "setup",
+      "url": "",
+      "thumbnail": ""
+    }
+  ],
+  "version": "AUTOMATIC",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "esmodules": ["system.mjs"],
+  "styles": ["system.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch (German)",
+      "path": "lang/de.json"
+    }
+  ],
+  "packs": [],
+  "packFolders": [],
+  "manifest": "https://github.com/Azurelol/azure-horizon/releases/latest/download/system.json",
+  "download": "AUTOMATIC",
+  "background": "",
+  "primaryTokenAttribute": "value",
+  "secondaryTokenAttribute": "",
+  "documentTypes": {
+    "Actor": {
+      "token": {},
+      "chess": {}
+    },
+    "Combatant": {
+      "player": {}
+    }
+  },
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["uts.css", "templates", "lang"]
+    }
+  }
+}
