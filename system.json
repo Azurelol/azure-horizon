@@ -48,11 +48,13 @@
   "secondaryTokenAttribute": "",
   "documentTypes": {
     "Actor": {
-      "token": {},
-      "chess": {}
+      "character": {},
+      "party": {},
+      "npc": {}
     },
-    "Combatant": {
-      "player": {}
+    "Item": {
+      "weapon": {},
+      "skill": {}
     }
   },
   "flags": {

@@ -1,29 +1,44 @@
 import * as apps from "./src/module/apps/_module.mjs";
-import * as dataModels from "./src/module/data/_module.mjs";
+import * as data from "./src/module/data/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
 import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/helpers/utils.mjs";
 
-Hooks.once("init", () => {
-  CONFIG.AH = AH;
+globalThis.ah = {
+  documents,
+};
 
-  // Assign document classes
+function bindDocuments() {
   for (const docCls of Object.values(documents)) {
+    if (!foundry.utils.isSubclass(docCls, foundry.abstract.Document)) continue;
     CONFIG[docCls.documentName].documentClass = docCls;
   }
+}
 
-  Object.assign(CONFIG.Actor.dataModels, dataModels.Actor.config);
-  Object.assign(CONFIG.Combatant.dataModels, dataModels.Combatant.config);
+function bindDataModels() {
+  Object.assign(CONFIG.Actor.dataModels, data.Actor.dataModels);
+  Object.assign(CONFIG.Combatant.dataModels, data.Combatant.dataModels);
+  Object.assign(CONFIG.Item.dataModels, data.Item.dataModels);
+  Object.assign(CONFIG.ActiveEffect.dataModels, data.ActiveEffect.dataModels);
+  CONFIG.Actor.defaultType = "basic";
+}
 
-  CONFIG.Actor.defaultType = "token";
-
+function bindSheets() {
   // Document Sheets
   foundry.documents.collections.Actors.registerSheet("ah", apps.Actor.AHActorSheet, {
     makeDefault: true, label: "AH.Sheets.Labels.ActorSheet",
   });
   foundry.documents.collections.Items.registerSheet("ah", apps.Item.AHItemSheet, {
-    makeDefault: true, label: "AH.Sheets.Labels.ActorSheet",
+    makeDefault: true, label: "AH.Sheets.Labels.ItemSheet",
   });
+}
+
+Hooks.once("init", () => {
+  CONFIG.AH = AH;
+
+  bindDocuments();
+  bindDataModels();
+  bindSheets();
 
   // Sidebar tabs
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;

@@ -1,36 +1,5 @@
 {
   "AH": {
-    "Chess": {
-      "Pieces": {
-        "P": "Pawn",
-        "N": "Knight",
-        "B": "Bishop",
-        "R": "Rook",
-        "Q": "Queen",
-        "K": "King"
-      },
-      "FIELDS": {
-        "piece": {
-          "label": "Piece"
-        }
-      }
-    },
-    "GameToken": {
-      "FIELDS": {
-        "count": {
-          "label": "Count"
-        },
-        "resource": {
-          "label": "Resource",
-          "value": {
-            "label": "Value"
-          },
-          "max": {
-            "label": "Max"
-          }
-        }
-      }
-    },
     "Sheets": {
       "Labels": {
         "ActorSheet": "Default AH Actor Sheet",
@@ -63,8 +32,14 @@
   },
   "TYPES": {
     "Actor": {
-      "chess": "Chess Piece",
-      "token": "Game Token"
+      "basic": "Basic Actor",
+      "character": "Character",
+      "party": "Party",
+      "npc": "NPC"
+    },
+    "Item": {
+      "weapon": "Weapon",
+      "skill": "Skill"
     },
     "Combatant": {
       "player": "Player"

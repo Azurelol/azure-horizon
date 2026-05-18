@@ -1,7 +1,7 @@
 import {Player} from "./player.mjs";
 
-const config = {
+const dataModels = {
   player: Player,
 };
 
-export { Player, config };
+export { Player, dataModels };

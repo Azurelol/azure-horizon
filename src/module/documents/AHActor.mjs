@@ -12,4 +12,12 @@ export class AHActor extends foundry.documents.Actor {
      */
     Hooks.callAll("AH.prepareActorData", this);
   }
+
+  static migrateData(source) {
+    source = super.migrateData(source);
+    if (source.type === 'basic') {
+      source.type = 'base';
+    }
+    return source;
+  }
 }

@@ -1,9 +1,13 @@
-import ChessModel from "./chess.mjs";
-import GameTokenModel from "./game-token.mjs";
+import BaseActorModel from "./base-actor-model.mjs";
+import CharacterModel from "./character-model.mjs";
+import NPCModel from "./npc-model.mjs";
+import PartyModel from "./party-model.mjs";
 
-const config = {
-  chess: ChessModel,
-  token: GameTokenModel,
-};
+const dataModels = Object.freeze({
+  base: BaseActorModel,
+  character: CharacterModel,
+  party: PartyModel,
+  npc: NPCModel,
+});
 
-export { ChessModel, GameTokenModel, config };
+export { BaseActorModel, dataModels };

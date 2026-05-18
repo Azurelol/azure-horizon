@@ -6,3 +6,10 @@ export const systemID = "azure-horizon";
  * @returns {string} The path relative to the Foundry data folder.
  */
 export const systemPath = (path) => `systems/${systemID}/${path}`;
+
+/**
+ * Translates asset paths to Foundry Data asset paths.
+ * @param {string} path - A path relative to the asset directory of this repository.
+ * @returns {string} The asset directory to path relative to the Foundry data folder.
+ */
+export const systemAssetPath = (path) => `systems/${systemID}/assets/${path}`;
