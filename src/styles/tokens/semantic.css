@@ -1,0 +1,89 @@
+/* ============================================================
+   TIER 2 — Semantic tokens
+   What a value is *for*. References Tier 1 only.
+   - Never used in components directly.
+   - The convention is TYPE-CATEGORY-ROLE. (Where type are essentially CSS property families)
+   ============================================================ */
+:root {
+  /* backgrounds */
+  --ah-color-bg: var(--ah-primitive-color-parchment);
+  --ah-color-bg-content: var(--ah-primitive-color-parchment-light);
+  --ah-color-bg-title: var(--ah-primitive-color-parchment-pale);
+
+  /* cards */
+  --ah-color-bg-card: rgb(107, 107, 107);
+  --ah-color-card: #e4e3e3;
+
+  /* controls */
+  --ah-color-control: var(--ah-primitive-color-white);
+  --ah-color-control-hover: color-mix(in srgb, var(--ah-primitive-color-white), white 25%);
+  --ah-color-bg-control: var(--ah-primitive-color-grey-light);
+  --ah-color-bg-control-hover: var(--ah-primitive-color-azure);
+  --ah-color-shadow-control: var(--ah-primitive-color-warm-brown);
+  --ah-color-border-control: var(--ah-primitive-color-grey-mid);
+  --ah-color-shadow: var(--ah-primitive-color-warm-brown);
+  --ah-color-shadow-secondary: var(--ah-primitive-color-white);
+  --ah-color-bg-input: var(--ah-primitive-color-parchment-light);
+  --ah-color-bg-control-header: #404040;
+  --ah-color-control-header: #E5DBD0;
+
+  /* applications: sheets, dialogs */
+  --ah-color-bg-application: red;
+  --ah-color-application: white;
+
+  /* panels */
+  --ah-color-bg-panel: var(--ah-primitive-color-parchment-light);
+  --ah-color-bg-panel-head: var(--ah-primitive-color-taupe);
+  --ah-color-text-panel: var(--ah-primitive-color-text);
+  --ah-color-text-panel-head: var(--ah-primitive-color-dim);
+
+  --ah-color-bg-panel-secondary: #212121;
+  --ah-color-bg-panel-tertiary: #252526;
+  --ah-color-border-panel-secondary: #454545;
+  --ah-color-bg-input-panel-secondary: #2d2d2d;
+  --ah-color-text-panel-secondary: #d4d4d4;
+
+  /* boards */
+  --ah-border-width-board: 3px;
+
+  /* tables */
+  --ah-color-bg-table-row: var(--ah-primitive-color-grey-850);
+  --ah-color-bg-table-row-alt: var(--ah-primitive-color-grey-800);
+
+  /* icons */
+  --ah-color-icon: var(--ah-primitive-color-burgundy-dark);
+  --ah-color-icon-active: var(--ah-primitive-color-burgundy);
+  --ah-color-icon-hover: color-mix(in srgb, var(--ah-primitive-color-burgundy), white 40%);
+  --ah-color-bg-badge: var(--ah-primitive-color-burgundy);
+  --ah-color-badge: var(--ah-primitive-color-grey-light);
+
+  /* text */
+  --ah-color-text: var(--ah-primitive-color-text);
+  --ah-color-text-title: var(--ah-primitive-color-brown-dark);
+  --ah-color-text-muted: var(--ah-primitive-color-dim);
+  --ah-color-text-inverted: var(--ah-primitive-color-white);
+  --ah-color-text-bullet: var(--ah-primitive-color-black);
+
+  /* borders */
+  --ah-border-radius: 4px;
+  --ah-color-border: var(--ah-primitive-color-burgundy);
+  --ah-color-border-card: #665151;
+  --ah-color-border-kit: var(--ah-primitive-color-border-kit);
+  --ah-color-border-title: var(--ah-primitive-color-border-title);
+  --ah-color-border-panel: var(--ah-primitive-color-border-panel);
+
+
+  /* typography */
+  --ah-font-title: var(--ah-primitive-font-title);
+  --ah-font-heading: var(--ah-primitive-font-heading);
+  --ah-font-body: var(--ah-primitive-font-body);
+
+  /* text sizes */
+  --ah-text-size-header: 18px;
+  --ah-text-size-xs: var(--ah-primitive-size-text-xs);
+  --ah-text-size-sm: var(--ah-primitive-size-text-sm);
+  --ah-text-size-m: var(--ah-primitive-size-text-m);
+  --ah-text-size-base: var(--ah-primitive-size-text-base);
+  --ah-text-size-lg: var(--ah-primitive-size-text-lg);
+  --ah-text-size-xl: var(--ah-primitive-size-text-xl);
+}

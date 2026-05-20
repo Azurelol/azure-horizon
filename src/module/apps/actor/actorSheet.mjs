@@ -9,7 +9,7 @@ const { api, sheets } = foundry.applications;
 export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["ah", "actor", "standard-form"],
+    classes: ["ah-application"],
     position: {
       width: 600,
       height: 600,

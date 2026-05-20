@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+/* ============================================================
+   TIER 1 — Primitives
+   Raw values only. No semantic meaning. Never used in
+   components directly.
+   ============================================================ */
+:root {
+  /* color */
+  --ah-primitive-color-parchment: #f5f2e8;
+  --ah-primitive-color-parchment-light: #e8e4d8;
+  --ah-primitive-color-parchment-pale: #dedad0;
+  --ah-primitive-color-stone: #b0aca2;
+  --ah-primitive-color-taupe: #8c8478;
+  --ah-primitive-color-border-panel: #7a7268;
+  --ah-primitive-color-border-kit: #a09890;
+  --ah-primitive-color-border-title: #aaaaaa;
+  --ah-primitive-color-text: #1a1a1a;
+  --ah-primitive-color-white: #ffffff;
+  --ah-primitive-color-black: #000000;
+  --ah-primitive-color-dim: #262424;
+  --ah-primitive-color-azure: #1C63AA;
+  --ah-primitive-color-brown: #712C1C;
+  --ah-primitive-color-grey-mid: #8C8680;
+  --ah-primitive-color-grey-light: #B5B0AA;
+  --ah-primitive-color-warm-brown: #3D3830;
+  --ah-primitive-color-warning: yellow;
+  --ah-primitive-color-brown-saddle: #5C3317;
+  --ah-primitive-color-brown-medium: #6B4226;
+  --ah-primitive-color-brown-dark: #4A2C0A;
+  --ah-primitive-color-sepia: #704214;
+  --ah-primitive-color-sepia-light: #8B5E3C;
+  --ah-primitive-color-burgundy: #7B2D2D;
+  --ah-primitive-color-burgundy-dark: #6B1E1E;
+  --ah-primitive-color-ink-blue: #2C3E6B;
+  --ah-primitive-color-grey-850: #00000050;
+  --ah-primitive-color-grey-800: #00000080;
+
+
+  /* font family */
+  --ah-primitive-font-title: 'Alfa Slab One', sans-serif;
+  --ah-primitive-font-heading: 'Cinzel', serif;
+  --ah-primitive-font-body: 'EB Garamond', serif;
+
+  /* font size */
+  --ah-primitive-size-text-xs: 0.7rem;
+  --ah-primitive-size-text-sm: 0.8rem;
+  --ah-primitive-size-text-m: 0.9rem;
+  --ah-primitive-size-text-md: 0.85rem;
+  --ah-primitive-size-text-base: 13px;
+  --ah-primitive-size-text-lg: 1rem;
+  --ah-primitive-size-text-xl: 2rem;
+
+  /* spacing */
+  --ah-primitive-size-space-60: 60px;
+
+  /* borders */
+  --ah-primitive-border-radius-md: 8px;
+  --ah-primitive-border-radius-lg: 12px;
+}
