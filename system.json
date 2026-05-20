@@ -60,7 +60,7 @@
   "flags": {
     "hotReload": {
       "extensions": ["css", "html", "hbs", "json"],
-      "paths": ["system.css", "templates", "lang"]
+      "paths": ["src/styles", "templates", "lang"]
     }
   }
 }

@@ -1,4 +1,7 @@
 node_modules
 universal-tabletop-system.lock
+packs
+public
+!src/packs
 foundry-config.yaml
 foundry
