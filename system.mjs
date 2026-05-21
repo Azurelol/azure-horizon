@@ -1,10 +1,13 @@
 import * as apps from "./src/module/apps/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
+import * as helpers from "./src/module/helpers/_module.mjs";
 import AH from "./src/module/config.mjs";
-import { localizeHelper } from "./src/module/helpers/utils.mjs";
+import { localizeHelper } from "./src/module/utils/utils.mjs";
 
 globalThis.ah = {
+  data,
+  helpers,
   documents,
 };
 
@@ -33,12 +36,18 @@ function bindSheets() {
   });
 }
 
+function initializeSystems() {
+  helpers.SettingsHandler.initialize();
+  helpers.Themes.initialize();
+}
+
 Hooks.once("init", () => {
   CONFIG.AH = AH;
 
   bindDocuments();
   bindDataModels();
   bindSheets();
+  initializeSystems();
 
   // Sidebar tabs
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;

@@ -1,4 +1,8 @@
 .ah-application {
-  background: var(--ah-color-bg-application);
+  background: var(--ah-background-application);
   color: var(--ah-color-application);
+
+  .tabs {
+    background: var(--ah-background-application);
+  }
 }

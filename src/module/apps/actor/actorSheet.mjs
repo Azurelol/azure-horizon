@@ -1,4 +1,4 @@
-import { prepareActiveEffectCategories } from "../../helpers/utils.mjs";
+import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { systemPath } from "../../constants.mjs";
 
 const { api, sheets } = foundry.applications;

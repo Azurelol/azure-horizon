@@ -1,0 +1,142 @@
+
+export default class StringUtils {
+  /**
+   * @param {String} str
+   * @returns {string}
+   */
+  static kebabToPascal(str) {
+    return str
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join("");
+  }
+
+  /**
+   * Converts a camelCase string to kebab-case.
+   * @param {string} str
+   * @returns {string}
+   * @remarks Adds a hyphen before numbers.
+   */
+  static camelToKebab(str) {
+    return str.replace(/([A-Z])/g, (_, char) => `-${char.toLowerCase()}`).replace(/([a-z])(\d)/g, (_, letter, digit) => `${letter}-${digit}`);
+  }
+
+  /**
+   * Converts a kebab-case, camelCase, snake_case, or PascalCase string into a
+   * human-readable label with capitalized words.
+   * @param {string} value
+   * @returns {string}
+   */
+  static humanize(value) {
+    return (
+      value
+        // Insert space before uppercase letters in camelCase/PascalCase
+        .replace(/([a-z])([A-Z])/g, "$1 $2")
+        // Replace kebab and snake separators with spaces
+        .replace(/[-_]+/g, " ")
+        // Capitalize the first letter of each word
+        .replace(/\b\w/g, (c) => c.toUpperCase())
+        .trim()
+    );
+  }
+
+  /**
+   * @param {String} str
+   * @returns {string}
+   */
+  static titleToKebab(str) {
+    return str
+      .replace(/([a-z])([A-Z])/g, "$1-$2")
+      .replace(/\s+/g, "-")
+      .toLowerCase();
+  }
+
+  /**
+   * Localizes a given key using the game's i18n system.
+   * @param {string} key - The localization key to look up.
+   * @param {Object} [data] - Optional interpolation data for formatted strings.
+   * @returns {string} The localized string, or an empty string if key is absent.
+   */
+  static localize(key, data) {
+    if (!key) return "";
+    if (data) return game.i18n.format(key, data);
+    return typeof key === "string" ? game.i18n.localize(key) : key.toString();
+  }
+
+  /**
+   * @param {String[]} keys
+   * @param {String} separator
+   * @returns {String}
+   */
+  static localizeMultiple(keys, separator = " ") {
+    return keys.map((k) => StringUtils.localize(k)).join(separator);
+  }
+
+  /**
+   * @param {String} key
+   * @returns {Boolean}
+   */
+  static hasLocalization(key) {
+    return foundry.utils.hasProperty(game.i18n.translations, key) || foundry.utils.hasProperty(game.i18n._fallback, key);
+  }
+
+  /**
+   * @param {String|*} input
+   * @returns {String}
+   */
+  static capitalize(input) {
+    return typeof input === "string" ? input.charAt(0).toUpperCase() + input.slice(1).toLowerCase() : input;
+  }
+
+  /**
+   * @description Truncate text at the last whole word and add an ellipsis if needed.
+   * @param {String} text - The input text.
+   * @param {Number} maxLength - Maximum allowed length before truncation.
+   * @returns {String} - The truncated string with "…" if needed.
+   */
+  static truncate(text, maxLength) {
+    if (typeof text !== "string") return "";
+    if (text.length <= maxLength) return text;
+
+    // Cut down to maxLength
+    let truncated = text.slice(0, maxLength);
+
+    // Find last space before maxLength
+    const lastSpace = truncated.lastIndexOf(" ");
+    if (lastSpace > 0) {
+      truncated = truncated.slice(0, lastSpace);
+    }
+
+    return truncated + "…";
+  }
+
+  /**
+   * @param {Object} value
+   * @returns {null|string}
+   */
+  static toBase64(value) {
+    try {
+      const string = JSON.stringify(value);
+      const bytes = new TextEncoder().encode(string);
+      const binString = Array.from(bytes, (byte) => String.fromCodePoint(byte)).join("");
+      return btoa(binString);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /**
+   * @param {String} base64
+   * @returns {Object|null}
+   */
+  static fromBase64(base64) {
+    try {
+      const binString = atob(base64);
+      const uint8Array = Uint8Array.from(binString, (m) => m.codePointAt(0));
+      const decodedValue = new TextDecoder().decode(uint8Array);
+      return JSON.parse(decodedValue);
+    } catch (e) {
+      return null;
+    }
+  }
+}

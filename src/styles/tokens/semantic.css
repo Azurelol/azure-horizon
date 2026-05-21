@@ -27,8 +27,12 @@
   --ah-color-bg-control-header: #404040;
   --ah-color-control-header: #E5DBD0;
 
+  /* gradients */
+  --ah-gradient-from: blue;
+  --ah-gradient-to: yellow;
+
   /* applications: sheets, dialogs */
-  --ah-color-bg-application: red;
+  --ah-background-application: linear-gradient(to bottom, var(--ah-gradient-from) 0%, var(--ah-gradient-to) 100%);
   --ah-color-application: white;
 
   /* panels */
