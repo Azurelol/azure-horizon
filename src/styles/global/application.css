@@ -1,6 +1,13 @@
 .ah-application {
-  background: var(--ah-background-application);
-  color: var(--ah-color-application);
+
+  .window-header {
+    background-color: var(--ah-background-application-header);
+  }
+
+  .window-content {
+    background: var(--ah-background-application);
+    color: var(--ah-color-application);
+  }
 
   .tabs {
     background: var(--ah-background-application);

@@ -15,7 +15,8 @@
       "BackgroundImage": "Background Image",
       "BackgroundBlendMode": "Background Blend Mode",
       "BackgroundSize": "Background Size",
-      "SidebarBackgroundImage": "Sidebar Background Image"
+      "SidebarBackgroundImage": "Sidebar Background Image",
+      "Custom": "Custom CSS"
     },
     "THEMES": {
       "Default": "Default"

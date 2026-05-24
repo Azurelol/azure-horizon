@@ -50,9 +50,8 @@ export const ThemeOptionFields = ObjectUtils.deepFreeze({
   sidebarBgImage: { label: "AH.THEME.SidebarBackgroundImage", type: "image" },
 
   /* Advanced */
-  advanced: {
-    label: "FU.AdvancedLabel",
-    hint: "FU.AdvancedHint",
+  custom: {
+    label: "AH.THEME.Custom",
     type: "multiline-text",
   },
 });
@@ -97,7 +96,7 @@ export default class Theme {
       head.insertBefore(document.createComment(` ${systemID} themes`), style);
     }
 
-    const properties = Object.keys(this).filter((key) => key !== "advanced");
+    const properties = Object.keys(this).filter((key) => key !== "custom");
     const styleData = properties
       .map((themeKey) => {
         const themeField = ThemeOptionFields[themeKey];
@@ -130,8 +129,8 @@ export default class Theme {
       .join("\n\t");
 
     let styleContent = `:root {\n\t${styleData}\n}`;
-    if (this.advanced) {
-      styleContent += `\n\n${this.advanced}`;
+    if (this.custom) {
+      styleContent += `\n\n${this.custom}`;
     }
 
     style.textContent = styleContent;

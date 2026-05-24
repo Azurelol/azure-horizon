@@ -32,6 +32,7 @@
   --ah-gradient-to: yellow;
 
   /* applications: sheets, dialogs */
+  --ah-background-application-header: var(--ah-color-bg-control-header);
   --ah-background-application: linear-gradient(to bottom, var(--ah-gradient-from) 0%, var(--ah-gradient-to) 100%);
   --ah-color-application: white;
 

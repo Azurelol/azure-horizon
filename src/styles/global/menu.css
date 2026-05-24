@@ -1,0 +1,27 @@
+.ah-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  gap: 1rem;
+
+  --property-label-width: 160px;
+
+  header {
+    flex-shrink: 0;
+  }
+
+  main {
+    overflow: auto;
+    flex-grow: 1;
+    padding: 15px 5px 10px 5px;
+  }
+
+  footer {
+    flex-shrink: 0;
+  }
+
+  span {
+    min-width: 160px;
+  }
+}

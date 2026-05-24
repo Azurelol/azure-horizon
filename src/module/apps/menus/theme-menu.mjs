@@ -12,7 +12,7 @@ export default class ThemeMenu extends AHApplication {
    */
   static DEFAULT_OPTIONS = {
     window: {
-      title: "AH.MENUS.ThemeMenu",
+      title: "AH.MENUS.ThemeName",
       icon: "fas fa-palette",
     },
     form: { closeOnSubmit: false },
