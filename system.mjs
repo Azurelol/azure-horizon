@@ -37,7 +37,7 @@ function bindSheets() {
 }
 
 function initializeSystems() {
-  helpers.SettingsHandler.initialize();
+  helpers.Settings.initialize();
   helpers.Themes.initialize();
 }
 

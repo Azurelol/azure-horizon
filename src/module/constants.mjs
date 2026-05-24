@@ -15,6 +15,13 @@ export const systemPath = (path) => `systems/${systemID}/${path}`;
 export const systemAssetPath = (path) => `systems/${systemID}/assets/${path}`;
 
 /**
+ * Translates template paths to Foundry Data asset paths.
+ * @param {string} path - A path relative to the template directory of this repository.
+ * @returns {string} The template directory to path relative to the Foundry data folder.
+ */
+export const systemTemplatePath = (path) => `systems/${systemID}/templates/${path}.hbs`;
+
+/**
  * Gets a system setting.
  * @param {String} key
  * @param defaultValue
@@ -32,4 +39,13 @@ export function getSystemSetting(key, defaultValue = undefined) {
  */
 export function setSystemSetting(key, value) {
   return game.settings.set(systemID, key, value);
+}
+
+/**
+ * @param {String} templatePath The path relative to the system's templates directory.
+ * @param {Object} context Used by the template.
+ * @returns {Promise<*>}
+ */
+export async function renderTemplate(templatePath, context) {
+  return await foundry.applications.handlebars.renderTemplate(systemTemplatePath(templatePath), context);
 }

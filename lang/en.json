@@ -11,6 +11,15 @@
         "effects": "Effects"
       }
     },
+    "THEME": {
+      "BackgroundImage": "Background Image",
+      "BackgroundBlendMode": "Background Blend Mode",
+      "BackgroundSize": "Background Size",
+      "SidebarBackgroundImage": "Sidebar Background Image"
+    },
+    "THEMES": {
+      "Default": "Default"
+    },
     "Combat": {
       "AddPlayer": "Add Player",
       "AddPlayerCombatTracker": "Add Player to Combat Tracker",
@@ -28,6 +37,20 @@
       "Passive": "Passive",
       "Temporary": "Temporary",
       "Toggle": "Toggle Effect"
+    },
+    "COMMON": {
+      "Theme": "Theme",
+      "Preview": "Preview",
+      "Custom": "Custom",
+      "Import": "Import",
+      "Export": "Export",
+      "Save": "Save",
+      "Reset": "Reset"
+    },
+    "MENUS": {
+      "ThemeName": "Theme",
+      "ThemeLabel": "Configure Theme",
+      "ThemeHint": "Change or customize the current theme."
     }
   },
   "TYPES": {

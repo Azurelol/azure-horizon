@@ -44,13 +44,10 @@ import { systemID } from "../constants.mjs";
 export const ThemeOptionFields = ObjectUtils.deepFreeze({
 
   /* Images */
-  uiAccentImage: { label: "FU.UiAccentImageLabel", type: "image" },
-  appAccentImage: { label: "FU.AppAccentImageLabel", type: "image" },
-  appBgImage: { label: "FU.AppBgImageLabel", type: "image" },
-  appBgBlendMode: { label: "FU.AppBgBlendModeLabel", type: "text", default: "overlay;" },
-  appBgSize: { label: "FU.AppBgSizeLabel", type: "text", default: "100% auto;" },
-  appSectionBgImage: { label: "FU.AppSectionBgImageLabel", type: "image" },
-  sidebarBgImage: { label: "FU.SidebarBgImageLabel", type: "image" },
+  appBgImage: { label: "AH.THEME.BackgroundImage", type: "image" },
+  appBgBlendMode: { label: "AH.THEME.BackgroundBlendMode", type: "text", default: "overlay;" },
+  appBgSize: { label: "AH.THEME.BackgroundSize", type: "text", default: "100% auto;" },
+  sidebarBgImage: { label: "AH.THEME.SidebarBackgroundImage", type: "image" },
 
   /* Advanced */
   advanced: {
@@ -84,16 +81,7 @@ export default class Theme {
     return Object.fromEntries(Object.entries(options).map(([key, value]) => [StringUtils.camelToKebab(key), value]));
   }
 
-  /**
-   * @desc Convenient factory method for getting a Theme instance from passed in data.
-   * @param {*} themeData
-   * @returns {Theme} The passed in themeData if it was already an instance of Theme, or a Theme generated from the themeData.
-   */
-  static from(themeData) {
-    return themeData instanceof Theme ? themeData : new Theme(themeData);
-  }
-
-  // TODO: Iterate over te option field keys instead?
+  // TODO: Iterate over the option field keys instead?
   /**
    * @desc Applies this theme to the game world.
    * @return {Promise}
@@ -106,7 +94,7 @@ export default class Theme {
       style = document.createElement("style");
       style.id = id;
       head.appendChild(style);
-      head.insertBefore(document.createComment(" ProjectFU Themes "), style);
+      head.insertBefore(document.createComment(` ${systemID} themes`), style);
     }
 
     const properties = Object.keys(this).filter((key) => key !== "advanced");
