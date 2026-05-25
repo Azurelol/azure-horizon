@@ -42,6 +42,10 @@ import { systemID } from "../constants.mjs";
  * @type {Readonly<Record<String, ThemeOptionField>>}
  */
 export const ThemeOptionFields = ObjectUtils.deepFreeze({
+  /* Gradients */
+  gradientPrimary: { label: "AH.THEME.GradientPrimary", type: "color" },
+  gradientSurface: { label: "AH.THEME.GradientSurface", type: "color" },
+  gradientOverlay: { label: "AH.THEME.GradientOverlay", type: "color" },
 
   /* Application */
   appBg: { label: "AH.THEME.Background", type: "text" },
@@ -64,11 +68,10 @@ export const ThemeOptionFields = ObjectUtils.deepFreeze({
  * @implements ThemeOptions
  */
 export default class Theme {
-
   /**
-   * Creates a Theme instance.
-   * @param {ThemeOptions} data The data to construct the Theme from.
-   */
+	 * Creates a Theme instance.
+	 * @param {ThemeOptions} data The data to construct the Theme from.
+	 */
   constructor(data = {}) {
     Object.keys(data).forEach((key) => {
       this[key] = data[key];
@@ -76,18 +79,18 @@ export default class Theme {
   }
 
   /**
-   * @param {Partial<ThemeOptions>} options
-   * @returns {Record<string, string>}
-   */
+	 * @param {Partial<ThemeOptions>} options
+	 * @returns {Record<string, string>}
+	 */
   static themeOptionsToCSSVars(options) {
     return Object.fromEntries(Object.entries(options).map(([key, value]) => [StringUtils.camelToKebab(key), value]));
   }
 
   // TODO: Iterate over the option field keys instead?
   /**
-   * @desc Applies this theme to the game world.
-   * @return {Promise}
-   */
+	 * @desc Applies this theme to the game world.
+	 * @return {Promise}
+	 */
   async apply() {
     const head = document.head;
     const id = `${systemID}-themes`;
@@ -105,7 +108,7 @@ export default class Theme {
         const themeField = ThemeOptionFields[themeKey];
         const themeType = themeField?.type;
         let themeValue = this[themeKey];
-        if ((themeValue === undefined) && themeField.default) {
+        if (themeValue === undefined && themeField.default) {
           themeValue = themeField.default;
         }
 
@@ -122,7 +125,7 @@ export default class Theme {
               themeValue = "url(\"\")";
             }
           }
-        } else if (!themeValue || (typeof themeValue !== "string")) {
+        } else if (!themeValue || typeof themeValue !== "string") {
           return;
         }
         const cssKey = StringUtils.camelToKebab(themeKey);
@@ -146,9 +149,9 @@ export default class Theme {
   }
 
   /**
-   * @desc Downloads a json file of containing this theme's data.
-   */
-  exportToJson = function() {
+	 * @desc Downloads a json file of containing this theme's data.
+	 */
+  exportToJson = function () {
     const data = JSON.stringify(foundry.utils.duplicate(this), null, 2);
     const filename = `${systemID}-theme.json`;
     const blob = new Blob([data], { type: "text/json" });
@@ -164,10 +167,10 @@ export default class Theme {
   };
 
   /**
-   * @desc Generates a Theme from a passed in json string.
-   * @param {string} json A json string containing the Theme data.
-   * @returns {Theme} The generated Theme.
-   */
+	 * @desc Generates a Theme from a passed in json string.
+	 * @param {string} json A json string containing the Theme data.
+	 * @returns {Theme} The generated Theme.
+	 */
   static async fromJSON(json) {
     const data = JSON.parse(json);
     return new Theme(data);

@@ -58,8 +58,8 @@
   --ah-primitive-border-radius-md: 8px;
   --ah-primitive-border-radius-lg: 12px;
 
-  --ah-color-navy-900: #1a2a4a;
-  --ah-color-navy-800: #2d3f6b;
-  --ah-color-navy-950: #1e2535;
-  --ah-color-navy-900b: #252e44;
+  --ah-primitive-color-navy-900: #1a2a4a;
+  --ah-primitive-color-navy-800: #2d3f6b;
+  --ah-primitive-color-navy-950: #1e2535;
+  --ah-primitive-color-navy-900b: #252e44;
 }

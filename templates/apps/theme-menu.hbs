@@ -21,15 +21,15 @@
     </div>
   </header>
   <main>
-    <div class="desc">
+    <div class="ah-field-group">
       {{#each fields}}
         {{#if (eq this.type "multiline-text")}}
-          <label class="fu-form__property" data-tooltip="{{localize hint}}">
+          <label class="ah-field" data-tooltip="{{localize hint}}">
             <span>{{localize label}}</span>
             <textarea name="{{@key}}" rows="5">{{lookup ../current @key}}</textarea>
           </label>
         {{else}}
-          <label class="fu-form__property" data-tooltip="{{localize hint}}">
+          <label class="ah-field" data-tooltip="{{localize hint}}">
             <span>{{localize label}}</span>
             {{#if (eq this.type "color")}}
               <input type="color" name="{{@key}}" value="{{lookup ../current @key}}">
