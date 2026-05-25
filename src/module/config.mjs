@@ -42,4 +42,31 @@ AH.settings = Object.freeze({
   },
 });
 
+/**
+ * All registered icons classes.
+ * @type {Record<String, String>}
+ */
+AH.icons = {
+  compendium: "fas fa-book",
+  documents: "fa fa-book-bookmark",
+
+  popout: "fa fa-external-link",
+  pin: "fa fa-thumb-tack",
+  bookmark: "fa fa-bookmark-o",
+  add: "fa fa-plus",
+  remove: "fa fa-minus",
+  edit: "fa fa-pencil",
+  undo: "fa fa-undo",
+  redo: "fa fa-redo",
+  inspect: "fa fa-eye",
+  link: "fa fa-link",
+  reset: "fa fa-reset",
+  refresh: "fa fa-refresh",
+  check: "fa fa-check",
+
+  info: "fas fa-circle-info",
+  warning: "fas fa-triangle-exclamation",
+  help: "fas fa-circle-question",
+};
+
 export default AH;

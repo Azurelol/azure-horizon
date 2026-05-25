@@ -1,3 +1,6 @@
+@import "components/skeleton.css";
+@import "components/tags.css";
+
 @import "global/foundry.css";
 @import "global/application.css";
 @import "global/fields.css";

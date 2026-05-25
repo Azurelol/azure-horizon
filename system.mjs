@@ -36,18 +36,20 @@ function bindSheets() {
   });
 }
 
-function initializeSystems() {
+async function initializeSystems() {
   helpers.Settings.initialize();
   helpers.Themes.initialize();
+  await helpers.AHHandlebars.loadTemplates();
+  await helpers.AHHandlebars.registerHelpers();
 }
 
-Hooks.once("init", () => {
+Hooks.once("init", async () => {
   CONFIG.AH = AH;
 
   bindDocuments();
   bindDataModels();
   bindSheets();
-  initializeSystems();
+  await initializeSystems();
 
   // Sidebar tabs
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;

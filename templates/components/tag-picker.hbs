@@ -1,0 +1,16 @@
+<div id="{{label}}" class="ah-tag__picker">
+    <button type="button" class="ah-tag__picker__toggle">
+        <i class="fas fa-tag"></i>
+        {{label}}
+        <span class="ah-tag__picker__count">{{count}}</span>
+        <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="ah-tag__picker__popup">
+        {{#each tags as |tag|}}
+            <div class="ah-tag__filter {{#if (ahContains ../selected tag)}}active{{/if}}"
+                 data-tag="{{tag}}">
+                {{ahHumanize tag}}
+            </div>
+        {{/each}}
+    </div>
+</div>
