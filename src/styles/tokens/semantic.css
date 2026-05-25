@@ -44,6 +44,8 @@
   /* applications: sheets, dialogs */
   --ah-background-application-header: var(--ah-primitive-color-navy-950);
   --ah-background-application: var(--ah-color-gradient-primary);
+  --ah-background-image-application: var(--ah-primitive-image-placeholder);
+  --ah-background-blend-mode-application: overlay, normal;
   --ah-color-application: white;
   --ah-background-input: #111827;
 

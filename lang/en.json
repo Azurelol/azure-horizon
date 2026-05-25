@@ -17,10 +17,10 @@
       "GradientOverlay": "Gradient Overlay",
       "BackgroundInput": "Input",
       "BackgroundApplicationHeader": "Application Header",
-      "BackgroundImage": "Background Image",
-      "BackgroundBlendMode": "Background Blend Mode",
-      "BackgroundSize": "Background Size",
-      "SidebarBackgroundImage": "Sidebar Background Image",
+      "BackgroundImageApplication": "Application Background Image",
+      "BackgroundBlendModeApplication": "Application Background Blend Mode",
+      "BackgroundSizeApplication": "Application Background Size",
+      "BackgroundImageSidebar": "Sidebar Background Image",
       "Custom": "Custom CSS"
     },
     "THEMES": {

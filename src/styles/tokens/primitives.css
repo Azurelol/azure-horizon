@@ -62,4 +62,6 @@
   --ah-primitive-color-navy-800: #2d3f6b;
   --ah-primitive-color-navy-950: #1e2535;
   --ah-primitive-color-navy-900b: #252e44;
+
+  --ah-primitive-image-placeholder: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }

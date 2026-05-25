@@ -13,7 +13,8 @@
   }
 
   .window-content {
-    background: var(--ah-background-application);
+    background:  var(--ah-background-image-application), var(--ah-background-application);
+    background-blend-mode: var(--ah-background-blend-mode-application);
     color: var(--ah-color-application);
   }
 

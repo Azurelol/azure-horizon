@@ -49,14 +49,14 @@ export const ThemeOptionFields = ObjectUtils.deepFreeze({
   colorGradientOverlay: { label: "AH.THEME.GradientOverlay", type: "color" },
 
   /* Application */
-  backgroundApplicationHeader: { label: "AH.THEME.BackgroundApplicationHeader", type: "color" },
   backgroundInput: { label: "AH.THEME.BackgroundInput", type: "color" },
-  appBgImage: { label: "AH.THEME.BackgroundImage", type: "image" },
-  appBgBlendMode: { label: "AH.THEME.BackgroundBlendMode", type: "text", default: "overlay;" },
-  appBgSize: { label: "AH.THEME.BackgroundSize", type: "text", default: "100% auto;" },
+  backgroundApplicationHeader: { label: "AH.THEME.BackgroundApplicationHeader", type: "color" },
+  backgroundImageApplication: { label: "AH.THEME.BackgroundImageApplication", type: "image" },
+  backgroundBlendModeApplication: { label: "AH.THEME.BackgroundBlendModeApplication", type: "text", default: "overlay;" },
+  backgroundSizeApplication: { label: "AH.THEME.BackgroundSizeApplication", type: "text", default: "100% auto;" },
 
   /* Sidebar */
-  sidebarBgImage: { label: "AH.THEME.SidebarBackgroundImage", type: "image" },
+  backgroundImageSidebar: { label: "AH.THEME.BackgroundImageSidebar", type: "image" },
 
   /* Custom */
   custom: {
