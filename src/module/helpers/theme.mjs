@@ -120,30 +120,33 @@ export default class Theme {
       .map((themeKey) => {
         /** @type ThemeOptionField **/
         const themeField = ThemeOptionFields[themeKey];
-        const themeType = themeField?.type;
-        let themeFieldValue = this[themeKey];
-        if ((themeFieldValue === undefined) && themeField.default) {
-          themeFieldValue = themeField.default;
+        const fieldType = themeField?.type;
+        let fieldValue = this[themeKey];
+
+        if ((fieldValue === undefined) && themeField.default) {
+          fieldValue = themeField.default;
         }
 
-        if (themeType === "image") {
-          if (!themeFieldValue) {
-            themeFieldValue = "url(\"\")";
+        if (fieldType === "image") {
+          if (!fieldValue) {
+            fieldValue = "url(\"\")";
           } else {
             try {
-              const isRelativeUrl = new URL(document.baseURI).origin === new URL(themeFieldValue, document.baseURI).origin;
+              const isRelativeUrl = new URL(document.baseURI).origin === new URL(fieldValue, document.baseURI).origin;
               const prefix = isRelativeUrl ? "/" : "";
-              themeFieldValue = `url("${prefix}${themeFieldValue}")`;
+              fieldValue = `url("${prefix}${fieldValue}")`;
             } catch (e) {
               console.error(e);
-              themeFieldValue = "url(\"\")";
+              fieldValue = "url(\"\")";
             }
           }
-        } else if (!themeFieldValue || (typeof themeFieldValue !== "string")) {
+        }
+
+        if (!fieldValue || (typeof fieldValue !== "string")) {
           return;
         }
         const cssVar = Theme.fromOptionToCSSVariable(themeKey, themeField);
-        return `${cssVar}: ${themeFieldValue};`;
+        return `${cssVar}: ${fieldValue};`;
       })
       .filter(Boolean)
       .join("\n\t");
@@ -152,12 +155,7 @@ export default class Theme {
     if (this.custom) {
       styleContent += `\n\n${this.custom}`;
     }
-
     style.textContent = styleContent;
-
-    if (!document.querySelector("#ui-left #ui-accent")) {
-      document.querySelector("#ui-left")?.insertAdjacentHTML("afterbegin", "<div id=\"ui-accent\"></div>");
-    }
 
     console.info("The selected theme has been applied.");
   }

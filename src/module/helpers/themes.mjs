@@ -63,8 +63,15 @@ export default class Themes {
   /**
    * Initializes the system theme, if one has been set.
    */
-  static initialize() {
-    const themeData = getSystemSetting("theme");
+  static async initialize() {
+    let themeData = getSystemSetting("theme");
+
+    // Fall back to default theme if none is set
+    if (!themeData) {
+      const themes = await this.getSystemThemes();
+      themeData = themes.default.theme;
+    }
+
     if (themeData) {
       const theme = Themes.from(themeData);
       if (theme) {

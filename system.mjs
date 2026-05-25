@@ -38,7 +38,7 @@ function bindSheets() {
 
 async function initializeSystems() {
   helpers.Settings.initialize();
-  helpers.Themes.initialize();
+  await helpers.Themes.initialize();
   await helpers.AHHandlebars.loadTemplates();
   await helpers.AHHandlebars.registerHelpers();
 }
