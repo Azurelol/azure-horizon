@@ -1,7 +1,7 @@
 <section class="ah-menu">
   <header>
-    <div class="form-group">
-      <label for="theme" class="fu-form__property">
+    <div class="ah-menu__toolbar">
+      <label for="theme" class="ah-flex2">
         {{localize "AH.COMMON.Theme"}}
         <select name="theme" data-action="changeTheme">
           <option value="">{{localize "AH.COMMON.Custom"}}</option>
@@ -10,14 +10,14 @@
           {{/each}}
         </select>
       </label>
-    </div>
-    <div class="form-group buttons">
-      <button type="button" data-action="importTheme" name="import">
-        <i class="fas fa-file-import"></i>{{localize "AH.COMMON.Import"}}
-      </button>
-      <button type="button" data-action="exportTheme" name="export">
-        <i class="fas fa-file-export"></i>{{localize "AH.COMMON.Export"}}
-      </button>
+      <div class="ah-menu__buttons">
+        <button type="button" data-action="importTheme" name="import">
+          <i class="fas fa-file-import"></i>{{localize "AH.COMMON.Import"}}
+        </button>
+        <button type="button" data-action="exportTheme" name="export">
+          <i class="fas fa-file-export"></i>{{localize "AH.COMMON.Export"}}
+        </button>
+      </div>
     </div>
   </header>
   <main>

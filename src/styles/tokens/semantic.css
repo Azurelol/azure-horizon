@@ -34,10 +34,18 @@
   /* utility overlay/scrim */
   --ah-color-gradient-overlay: linear-gradient(to bottom, rgba(10, 15, 30, 0.85) 0%, transparent 100%);
 
+  /* app frame, header, navigation — lighter edge of navy-800 */
+  --ah-color-border-primary: #3d5080;
+  /* panels, dialogs, sheets — lighter edge of navy-900b */
+  --ah-color-border-surface: #2f3a54;
+  /* overlay — semi-transparent white, matches the scrim nature */
+  --ah-color-border-overlay: rgba(255, 255, 255, 0.08);
+
   /* applications: sheets, dialogs */
   --ah-background-application-header: var(--ah-primitive-color-navy-950);
   --ah-background-application: var(--ah-color-gradient-primary);
   --ah-color-application: white;
+  --ah-background-input: #111827;
 
   /* panels */
   --ah-color-bg-panel: var(--ah-primitive-color-parchment-light);
@@ -50,9 +58,6 @@
   --ah-color-border-panel-secondary: #454545;
   --ah-color-bg-input-panel-secondary: #2d2d2d;
   --ah-color-text-panel-secondary: #d4d4d4;
-
-  /* boards */
-  --ah-border-width-board: 3px;
 
   /* tables */
   --ah-color-bg-table-row: var(--ah-primitive-color-grey-850);
@@ -73,13 +78,12 @@
   --ah-color-text-bullet: var(--ah-primitive-color-black);
 
   /* borders */
+  --ah-border-width: 2px;
   --ah-border-radius: 4px;
   --ah-color-border: var(--ah-primitive-color-burgundy);
   --ah-color-border-card: #665151;
-  --ah-color-border-kit: var(--ah-primitive-color-border-kit);
   --ah-color-border-title: var(--ah-primitive-color-border-title);
   --ah-color-border-panel: var(--ah-primitive-color-border-panel);
-
 
   /* typography */
   --ah-font-title: var(--ah-primitive-font-title);

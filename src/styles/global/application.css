@@ -1,5 +1,13 @@
 .ah-application {
 
+  input {
+    background: var(--ah-background-input);
+  }
+
+  textarea {
+    background: var(--ah-background-input);
+  }
+
   .window-header {
     background-color: var(--ah-background-application-header);
   }

@@ -2,6 +2,8 @@
 @import "global/application.css";
 @import "global/fields.css";
 @import "global/menu.css";
+@import "global/flex.css";
 
 @import "tokens/primitives.css";
 @import "tokens/semantic.css";
+

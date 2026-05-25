@@ -25,3 +25,27 @@
     min-width: 160px;
   }
 }
+
+.ah-menu__toolbar {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  background: var(--ah-color-gradient-surface);
+  padding: 8px;
+  border: var(--ah-border-width) solid var(--ah-color-border-surface);
+
+  label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.ah-menu__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}

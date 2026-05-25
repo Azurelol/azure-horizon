@@ -36,6 +36,7 @@ import { systemID } from "../constants.mjs";
  * @property {String} label
  * @property {'color'|'image'|'text'} type
  * @property {String} default
+ * @property {String} variable If set, will override the default key -> variable mapping.
  */
 
 /**
@@ -43,12 +44,13 @@ import { systemID } from "../constants.mjs";
  */
 export const ThemeOptionFields = ObjectUtils.deepFreeze({
   /* Gradients */
-  gradientPrimary: { label: "AH.THEME.GradientPrimary", type: "color" },
-  gradientSurface: { label: "AH.THEME.GradientSurface", type: "color" },
-  gradientOverlay: { label: "AH.THEME.GradientOverlay", type: "color" },
+  colorGradientPrimary: { label: "AH.THEME.GradientPrimary", type: "color" },
+  colorGradientSurface: { label: "AH.THEME.GradientSurface", type: "color" },
+  colorGradientOverlay: { label: "AH.THEME.GradientOverlay", type: "color" },
 
   /* Application */
-  appBg: { label: "AH.THEME.Background", type: "text" },
+  backgroundApplicationHeader: { label: "AH.THEME.BackgroundApplicationHeader", type: "color" },
+  backgroundInput: { label: "AH.THEME.BackgroundInput", type: "color" },
   appBgImage: { label: "AH.THEME.BackgroundImage", type: "image" },
   appBgBlendMode: { label: "AH.THEME.BackgroundBlendMode", type: "text", default: "overlay;" },
   appBgSize: { label: "AH.THEME.BackgroundSize", type: "text", default: "100% auto;" },
@@ -86,6 +88,17 @@ export default class Theme {
     return Object.fromEntries(Object.entries(options).map(([key, value]) => [StringUtils.camelToKebab(key), value]));
   }
 
+  /**
+   * @param {String} key
+   * @param {ThemeOptionField} field
+   */
+  static fromOptionToCSSVariable(key, field) {
+    if (field?.variable) {
+      return field.variable;
+    }
+    return `--ah-${StringUtils.camelToKebab(key)}`;
+  }
+
   // TODO: Iterate over the option field keys instead?
   /**
 	 * @desc Applies this theme to the game world.
@@ -105,31 +118,32 @@ export default class Theme {
     const properties = Object.keys(this).filter((key) => key !== "custom");
     const styleData = properties
       .map((themeKey) => {
+        /** @type ThemeOptionField **/
         const themeField = ThemeOptionFields[themeKey];
         const themeType = themeField?.type;
-        let themeValue = this[themeKey];
-        if (themeValue === undefined && themeField.default) {
-          themeValue = themeField.default;
+        let themeFieldValue = this[themeKey];
+        if ((themeFieldValue === undefined) && themeField.default) {
+          themeFieldValue = themeField.default;
         }
 
         if (themeType === "image") {
-          if (!themeValue) {
-            themeValue = "url(\"\")";
+          if (!themeFieldValue) {
+            themeFieldValue = "url(\"\")";
           } else {
             try {
-              const isRelativeUrl = new URL(document.baseURI).origin === new URL(themeValue, document.baseURI).origin;
+              const isRelativeUrl = new URL(document.baseURI).origin === new URL(themeFieldValue, document.baseURI).origin;
               const prefix = isRelativeUrl ? "/" : "";
-              themeValue = `url("${prefix}${themeValue}")`;
+              themeFieldValue = `url("${prefix}${themeFieldValue}")`;
             } catch (e) {
               console.error(e);
-              themeValue = "url(\"\")";
+              themeFieldValue = "url(\"\")";
             }
           }
-        } else if (!themeValue || typeof themeValue !== "string") {
+        } else if (!themeFieldValue || (typeof themeFieldValue !== "string")) {
           return;
         }
-        const cssKey = StringUtils.camelToKebab(themeKey);
-        return `--pfu-${cssKey}: ${themeValue};`;
+        const cssVar = Theme.fromOptionToCSSVariable(themeKey, themeField);
+        return `${cssVar}: ${themeFieldValue};`;
       })
       .filter(Boolean)
       .join("\n\t");
