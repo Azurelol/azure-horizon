@@ -27,13 +27,16 @@
   --ah-color-bg-control-header: #404040;
   --ah-color-control-header: #E5DBD0;
 
-  /* gradients */
-  --ah-gradient-from: blue;
-  --ah-gradient-to: yellow;
+  /* app frame, header, navigation */
+  --ah-color-gradient-primary: linear-gradient(to bottom, var(--ah-color-navy-900) 0%, var(--ah-color-navy-800) 100%);
+  /* panels, dialogs, sheets */
+  --ah-color-gradient-surface:  linear-gradient(to bottom, var(--ah-color-navy-950) 0%, var(--ah-color-navy-900b) 100%);
+  /* utility overlay/scrim */
+  --ah-color-gradient-overlay: linear-gradient(to bottom, rgba(10, 15, 30, 0.85) 0%, transparent 100%);
 
   /* applications: sheets, dialogs */
   --ah-background-application-header: var(--ah-color-bg-control-header);
-  --ah-background-application: linear-gradient(to bottom, var(--ah-gradient-from) 0%, var(--ah-gradient-to) 100%);
+  --ah-background-application: var(--ah-color-gradient-primary);
   --ah-color-application: white;
 
   /* panels */

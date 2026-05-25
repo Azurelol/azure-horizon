@@ -43,13 +43,16 @@ import { systemID } from "../constants.mjs";
  */
 export const ThemeOptionFields = ObjectUtils.deepFreeze({
 
-  /* Images */
+  /* Application */
+  appBg: { label: "AH.THEME.Background", type: "text" },
   appBgImage: { label: "AH.THEME.BackgroundImage", type: "image" },
   appBgBlendMode: { label: "AH.THEME.BackgroundBlendMode", type: "text", default: "overlay;" },
   appBgSize: { label: "AH.THEME.BackgroundSize", type: "text", default: "100% auto;" },
+
+  /* Sidebar */
   sidebarBgImage: { label: "AH.THEME.SidebarBackgroundImage", type: "image" },
 
-  /* Advanced */
+  /* Custom */
   custom: {
     label: "AH.THEME.Custom",
     type: "multiline-text",

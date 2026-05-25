@@ -12,6 +12,7 @@
       }
     },
     "THEME": {
+      "Background": "Background",
       "BackgroundImage": "Background Image",
       "BackgroundBlendMode": "Background Blend Mode",
       "BackgroundSize": "Background Size",
