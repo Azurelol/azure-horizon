@@ -3,10 +3,20 @@ import Theme from "./theme.mjs";
 import AH from "../config.mjs";
 
 /**
- * @type {Record<String, Object>} Instantiated themes.
+ * @typedef ThemeEntry
+ * @property {String} label
+ * @property {Theme} theme
+ */
+
+/**
+ * @type {Record<String, ThemeEntry>} Instantiated themes.
  */
 let systemThemes;
 
+/**
+ * @param filePath
+ * @returns {Promise<any>}
+ */
 async function readJsonFromSystemFile(filePath) {
   const response = await fetch(filePath);
   if (!response.ok) {
@@ -19,13 +29,22 @@ async function readJsonFromSystemFile(filePath) {
  * Manages setting the system's theme.
  */
 export default class Themes {
+
+  /**
+   * @param {Boolean} reload
+   * @returns {Promise<Record<String, ThemeEntry>>}
+   */
   static async getSystemThemes(reload = false) {
     if (!systemThemes || reload) {
       systemThemes = {};
-      for (const [label, filePath] of Object.entries(AH.themeFiles)) {
+      for (const [key, filePath] of Object.entries(AH.themeFiles)) {
         const json = await readJsonFromSystemFile(filePath);
         if (json) {
-          systemThemes[label] = json;
+          const label = AH.themes[key];
+          systemThemes[key] = {
+            label: label,
+            theme: json,
+          };
         }
       }
     }

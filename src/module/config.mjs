@@ -11,6 +11,7 @@ const fields = foundry.data.fields;
  */
 AH.themes = {
   default: "AH.THEMES.Default",
+  crimsonSky: "AH.THEMES.CrimsonSky",
 };
 
 /**
@@ -18,6 +19,7 @@ AH.themes = {
  */
 AH.themeFiles = {
   default: systemAssetPath("themes/default.json"),
+  crimsonSky: systemAssetPath("themes/crimson-sky.json"),
 };
 
 /**

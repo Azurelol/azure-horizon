@@ -53,6 +53,10 @@ export default class ThemeMenu extends AHApplication {
     console.info("Set theme data");
   }
 
+  /**
+   * @param form
+   * @param themeData
+   */
   setThemeFields(form, themeData) {
     for (const element of form.elements) {
       if (!element.name) continue;
@@ -188,9 +192,9 @@ export default class ThemeMenu extends AHApplication {
     // Set color fields and their associated color pickers when a theme is selected
     const form = target.closest("form");
     const themes = await Themes.getSystemThemes();
-    const theme = themes[value];
-    if (theme) {
-      this.setThemeFields(form, theme);
+    const entry = themes[value];
+    if (entry) {
+      this.setThemeFields(form, entry.theme);
     }
   }
 

@@ -5,8 +5,8 @@
         {{localize "AH.COMMON.Theme"}}
         <select name="theme" data-action="changeTheme">
           <option value="">{{localize "AH.COMMON.Custom"}}</option>
-          {{#each themes}}
-            <option value="{{@key}}">{{localize (concat "AH.THEMES." @key)}}</option>
+          {{#each themes as |theme|}}
+            <option value="{{@key}}">{{localize theme.label }}</option>
           {{/each}}
         </select>
       </label>

@@ -45,6 +45,9 @@ export default Object.freeze({
       }
       return str;
     });
+    Handlebars.registerHelper("ahCapitalize", value => {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    });
     Handlebars.registerHelper("ahContains", function (collection, item) {
       if (Array.isArray(collection)) {
         return collection.includes(item);
