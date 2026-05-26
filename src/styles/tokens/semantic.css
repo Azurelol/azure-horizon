@@ -41,10 +41,13 @@
   /* applications: sheets, dialogs */
   --ah-background-application-header: var(--ah-primitive-color-navy-950);
   --ah-background-application: var(--ah-color-background-primary);
+  --ah-background-application-tabs: var(--ah-color-background-overlay);
   --ah-background-image-application: var(--ah-primitive-image-placeholder);
   --ah-background-blend-mode-application: overlay, normal;
   --ah-color-application: white;
   --ah-background-input: #111827;
+  --ah-background-tab: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
+  --ah-background-tab-active: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
 
   /* panels */
   --ah-color-bg-panel: var(--ah-primitive-color-parchment-light);

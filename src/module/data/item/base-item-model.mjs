@@ -17,14 +17,14 @@ export default class BaseItemModel extends VersionedDataModel {
         required: true,
         nullable: false,
         initial: 1,
-        label: "AH.Item.Revision",
+        label: "AH.ITEM.Revision",
         integer: true,
       }),
       slug: new fields.StringField({
         required: false,
         blank: true,
         initial: "",
-        label: "AH.Item.Slug",
+        label: "AH.ITEM.Slug",
         validate: (value) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value),
       }),
     });

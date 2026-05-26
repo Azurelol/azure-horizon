@@ -1,5 +1,7 @@
 .ah-application {
 
+  background: transparent;
+
   input {
     background: var(--ah-background-input);
   }
@@ -16,9 +18,21 @@
     background:  var(--ah-background-image-application), var(--ah-background-application);
     background-blend-mode: var(--ah-background-blend-mode-application);
     color: var(--ah-color-application);
+
+    opacity: 0.95;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Electron sometimes needs this */
   }
 
   .tabs {
-    background: var(--ah-background-application);
+    background: var(--ah-background-application-tabs);
+    margin: 1rem;
+
+    a {
+      opacity: 0.5;
+      &.active {
+        opacity: 1;
+      }
+    }
   }
 }

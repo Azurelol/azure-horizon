@@ -12,7 +12,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     position: {
       width: 600,
     },
-    classes: ["ah", "item", "standard-form"],
+    classes: ["ah-application"],
     actions: {
       viewDoc: this.#viewEffect,
       createDoc: this.#createEffect,
@@ -125,6 +125,9 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     const fieldSets = [];
     // TODO: Find a clever way to handle enrichment
     for (const field of Object.values(systemFields ?? {})) {
+      if (field.options?.config === false) {
+        continue;
+      }
       const path = `system.${field.name}`;
       if (field instanceof foundry.data.fields.SchemaField) {
         const fieldset = { fieldset: true, legend: field.label, fields: [] };

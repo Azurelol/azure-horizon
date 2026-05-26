@@ -13,7 +13,8 @@
     },
     "ITEM": {
       "Revision": "Revision",
-      "Slug": "Slug"
+      "Slug": "Slug",
+      "SchemaVersion": "SchemaVersion"
     },
     "THEME": {
       "BackgroundPrimary": "Background Primary",

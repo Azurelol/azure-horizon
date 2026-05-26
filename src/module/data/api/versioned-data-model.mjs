@@ -19,6 +19,8 @@ export default class VersionedDataModel extends foundry.abstract.DataModel {
         nullable: false,
         initial: this.CURRENT_VERSION,
         integer: true,
+        label: "AH.ITEM.SchemaVersion",
+        config: false,
       }),
     };
   }
