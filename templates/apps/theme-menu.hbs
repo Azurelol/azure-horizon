@@ -4,7 +4,7 @@
       <label for="theme" class="ah-flex2">
         {{localize "AH.COMMON.Theme"}}
         <select name="theme" data-action="changeTheme">
-          <option value="">{{localize "AH.COMMON.Custom"}}</option>
+          <option value=""></option>
           {{#each themes as |theme|}}
             <option value="{{@key}}">{{localize theme.label }}</option>
           {{/each}}
@@ -21,7 +21,7 @@
     </div>
   </header>
   <main>
-    <div class="ah-field-group">
+    <div id="theme-fields" class="ah-field-group">
       {{#each fields}}
         {{#if (eq this.type "multiline-text")}}
           <label class="ah-field" data-tooltip="{{localize hint}}">

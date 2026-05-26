@@ -7,19 +7,17 @@ const AH = {};
 const fields = foundry.data.fields;
 
 /**
- * @type {Record<String, String>}
+ * @type {Record<String, {label, path}>}
  */
 AH.themes = {
-  default: "AH.THEMES.Default",
-  crimsonSky: "AH.THEMES.CrimsonSky",
-};
-
-/**
- * @type {Record<String, String>}
- */
-AH.themeFiles = {
-  default: systemAssetPath("themes/default.json"),
-  crimsonSky: systemAssetPath("themes/crimson-sky.json"),
+  horizon: {
+    label: "AH.THEMES.Horizon",
+    path: systemAssetPath("themes/horizon.json"),
+  },
+  crimsonSky: {
+    label: "AH.THEMES.CrimsonSky",
+    path: systemAssetPath("themes/crimson-sky.json"),
+  },
 };
 
 /**

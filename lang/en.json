@@ -12,9 +12,11 @@
       }
     },
     "THEME": {
-      "GradientPrimary": "Gradient Primary",
-      "GradientSurface": "Gradient Surface",
-      "GradientOverlay": "Gradient Overlay",
+      "BackgroundPrimary": "Background Primary",
+      "ForegroundPrimary": "Foreground Primary",
+      "BackgroundSurface": "Background Surface",
+      "ForegroundSurface": "Foreground Surface",
+      "BackgroundOverlay": "Background Overlay",
       "BackgroundInput": "Input",
       "BackgroundApplicationHeader": "Application Header",
       "BackgroundImageApplication": "Application Background Image",
@@ -24,7 +26,8 @@
       "Custom": "Custom CSS"
     },
     "THEMES": {
-      "Default": "Default"
+      "Horizon": "Horizon",
+      "CrimsonSky": "Crimson Sky"
     },
     "Combat": {
       "AddPlayer": "Add Player",

@@ -28,22 +28,19 @@
   --ah-color-control-header: #E5DBD0;
 
   /* app frame, header, navigation */
-  --ah-color-gradient-primary: linear-gradient(to bottom, var(--ah-primitive-color-navy-900) 0%, var(--ah-primitive-color-navy-800) 100%);
-  /* panels, dialogs, sheets */
-  --ah-color-gradient-surface:  linear-gradient(to bottom, var(--ah-primitive-color-navy-950) 0%, var(--ah-primitive-color-navy-900b) 100%);
-  /* utility overlay/scrim */
-  --ah-color-gradient-overlay: linear-gradient(to bottom, rgba(10, 15, 30, 0.85) 0%, transparent 100%);
-
-  /* app frame, header, navigation — lighter edge of navy-800 */
+  --ah-color-background-primary: linear-gradient(to bottom, var(--ah-primitive-color-navy-900) 0%, var(--ah-primitive-color-navy-800) 100%);
   --ah-color-border-primary: #3d5080;
-  /* panels, dialogs, sheets — lighter edge of navy-900b */
+  --ah-color-primary: #ffffff;
+  /* panels, dialogs, sheets */
+  --ah-color-background-surface:  linear-gradient(to bottom, var(--ah-primitive-color-navy-950) 0%, var(--ah-primitive-color-navy-900b) 100%);
   --ah-color-border-surface: #2f3a54;
-  /* overlay — semi-transparent white, matches the scrim nature */
+  /* utility overlay/scrim */
+  --ah-color-background-overlay: linear-gradient(to bottom, rgba(10, 15, 30, 0.85) 0%, transparent 100%);
   --ah-color-border-overlay: rgba(255, 255, 255, 0.08);
 
   /* applications: sheets, dialogs */
   --ah-background-application-header: var(--ah-primitive-color-navy-950);
-  --ah-background-application: var(--ah-color-gradient-primary);
+  --ah-background-application: var(--ah-color-background-primary);
   --ah-background-image-application: var(--ah-primitive-image-placeholder);
   --ah-background-blend-mode-application: overlay, normal;
   --ah-color-application: white;

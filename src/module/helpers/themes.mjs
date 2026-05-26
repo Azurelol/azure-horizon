@@ -14,6 +14,11 @@ import AH from "../config.mjs";
 let systemThemes;
 
 /**
+ * @type {string}
+ */
+const DEFAULT_THEME = "horizon";
+
+/**
  * @param filePath
  * @returns {Promise<any>}
  */
@@ -37,12 +42,11 @@ export default class Themes {
   static async getSystemThemes(reload = false) {
     if (!systemThemes || reload) {
       systemThemes = {};
-      for (const [key, filePath] of Object.entries(AH.themeFiles)) {
-        const json = await readJsonFromSystemFile(filePath);
+      for (const [key, data] of Object.entries(AH.themes)) {
+        const json = await readJsonFromSystemFile(data.path);
         if (json) {
-          const label = AH.themes[key];
           systemThemes[key] = {
-            label: label,
+            label: data.label,
             theme: json,
           };
         }
@@ -69,7 +73,7 @@ export default class Themes {
     // Fall back to default theme if none is set
     if (!themeData) {
       const themes = await this.getSystemThemes();
-      themeData = themes.default.theme;
+      themeData = themes[DEFAULT_THEME].theme;
     }
 
     if (themeData) {

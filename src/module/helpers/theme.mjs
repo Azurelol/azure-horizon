@@ -44,13 +44,15 @@ import { systemID } from "../constants.mjs";
  */
 export const ThemeOptionFields = ObjectUtils.deepFreeze({
   /* Gradients */
-  colorGradientPrimary: { label: "AH.THEME.GradientPrimary", type: "color" },
-  colorGradientSurface: { label: "AH.THEME.GradientSurface", type: "color" },
-  colorGradientOverlay: { label: "AH.THEME.GradientOverlay", type: "color" },
+  colorBackgroundPrimary: { label: "AH.THEME.BackgroundPrimary", type: "text" },
+  colorPrimary: { label: "AH.THEME.ForegroundPrimary", type: "color" },
+  colorBackgroundSurface: { label: "AH.THEME.BackgroundSurface", type: "text" },
+  colorSurface: { label: "AH.THEME.ForegroundSurface", type: "color" },
+  colorBackgroundOverlay: { label: "AH.THEME.BackgroundOverlay", type: "text" },
 
   /* Application */
   backgroundInput: { label: "AH.THEME.BackgroundInput", type: "color" },
-  backgroundApplicationHeader: { label: "AH.THEME.BackgroundApplicationHeader", type: "color" },
+  backgroundApplicationHeader: { label: "AH.THEME.BackgroundApplicationHeader", type: "text" },
   backgroundImageApplication: { label: "AH.THEME.BackgroundImageApplication", type: "image" },
   backgroundBlendModeApplication: { label: "AH.THEME.BackgroundBlendModeApplication", type: "text", default: "overlay;" },
   backgroundSizeApplication: { label: "AH.THEME.BackgroundSizeApplication", type: "text", default: "100% auto;" },

@@ -32,7 +32,7 @@
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  background: var(--ah-color-gradient-surface);
+  background: var(--ah-color-background-surface);
   padding: 8px;
   border: var(--ah-border-width) solid var(--ah-color-border-surface);
 

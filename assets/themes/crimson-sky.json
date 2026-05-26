@@ -1,4 +1,9 @@
 {
   "theme": "Crimson Sky",
-  "colorGradientPrimary": "red"
+  "colorBackgroundPrimary": "linear-gradient(to bottom, var(--ah-primitive-color-crimson-900) 0%, var(--ah-primitive-color-crimson-800) 100%)",
+  "colorPrimary": "#ffffff",
+  "colorBackgroundSurface": "linear-gradient(to bottom, var(--ah-primitive-color-crimson-950) 0%, var(--ah-primitive-color-crimson-900b) 100%)",
+  "colorBorderSurface": "#4a2020",
+  "backgroundApplicationHeader": "var(--ah-primitive-color-crimson-950)",
+  "backgroundInput": "#120808"
 }

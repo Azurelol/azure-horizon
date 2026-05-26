@@ -1,0 +1,9 @@
+{
+  "theme": "Horizon",
+  "colorBackgroundPrimary": "linear-gradient(to bottom, var(--ah-primitive-color-navy-900) 0%, var(--ah-primitive-color-navy-800) 100%)",
+  "colorPrimary": "#ffffff",
+  "colorBackgroundSurface": "linear-gradient(to bottom, var(--ah-primitive-color-navy-950) 0%, var(--ah-primitive-color-navy-900b) 100%)",
+  "colorBorderSurface": "#2f3a54",
+  "backgroundApplicationHeader": "var(--ah-primitive-color-navy-950)",
+  "backgroundInput": "#111827"
+}

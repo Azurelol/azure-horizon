@@ -36,6 +36,11 @@
   --ah-primitive-color-grey-850: #00000050;
   --ah-primitive-color-grey-800: #00000080;
 
+  --ah-primitive-color-crimson-950: #1a0a0a;
+  --ah-primitive-color-crimson-900: #2d1010;
+  --ah-primitive-color-crimson-900b: #3a1818;
+  --ah-primitive-color-crimson-800: #5c2020;
+  --ah-primitive-color-amber-900: #2d1a08;
 
   /* font family */
   --ah-primitive-font-title: 'Alfa Slab One', sans-serif;
