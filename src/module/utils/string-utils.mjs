@@ -41,6 +41,14 @@ export default class StringUtils {
   }
 
   /**
+   * @param {String} name
+   * @returns {string}
+   */
+  static slugify(name) {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  }
+
+  /**
    * @param {String} str
    * @returns {string}
    */

@@ -11,6 +11,10 @@
         "effects": "Effects"
       }
     },
+    "ITEM": {
+      "Revision": "Revision",
+      "Slug": "Slug"
+    },
     "THEME": {
       "BackgroundPrimary": "Background Primary",
       "ForegroundPrimary": "Foreground Primary",
