@@ -1,0 +1,6 @@
+.ah-message__centered {
+  align-self: center;
+  text-align: center;
+  font-size: x-large;
+  flex-grow: 1;
+}

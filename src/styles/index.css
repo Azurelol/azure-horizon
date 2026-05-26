@@ -6,6 +6,11 @@
 @import "global/fields.css";
 @import "global/menu.css";
 @import "global/flex.css";
+@import "global/messages.css";
+
+@import "sheets/party.css";
+@import "sheets/party/party-modern.css";
+@import "sheets/character.css";
 
 @import "tokens/primitives.css";
 @import "tokens/semantic.css";

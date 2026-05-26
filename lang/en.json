@@ -8,9 +8,13 @@
         "PartySheet": "Party Sheet"
       },
       "Tabs": {
+        "Overview": "Overview",
         "properties": "Properties",
         "items": "Items",
         "effects": "Effects"
+      },
+      "Messages": {
+        "NoDataAvailable": "No data is available."
       }
     },
     "ITEM": {

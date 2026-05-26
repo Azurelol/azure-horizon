@@ -1,5 +1,5 @@
 
-export default class BaseActorModel extends foundry.abstract.TypeDataModel {
+export default class ActorDataModel extends foundry.abstract.TypeDataModel {
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["AH.Base"];
 

@@ -1,0 +1,89 @@
+.ah-party-sheet {
+  display: grid;
+  height: 100%;
+  padding: 0;
+
+  section {
+    height: 100%;
+  }
+
+  .tab {
+    .content {
+    }
+  }
+
+  .tab,
+  .active {
+    grid-area: active-tab;
+  }
+
+  .overview {
+    .party {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  .widgets {
+    grid-area: widgets;
+    display: flex;
+    gap: 3rem;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      i {
+        font-size: 20px;
+      }
+    }
+
+    .resources {
+      display: flex;
+    }
+  }
+
+  .nav {
+    grid-area: nav;
+    padding: 8px;
+  }
+
+  .widgets {
+    gap: 2rem;
+
+    .tracks {
+      color: var(--ah-color-primary);
+    }
+
+    .resources {
+      display: flex;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      color: var(--ah-color-primary);
+      gap: 4px;
+
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+
+  @keyframes levelglow {
+    0%,
+    100% {
+      box-shadow: 0px 0px 5px 1px rgb(241, 255, 46);
+    }
+    50% {
+      box-shadow: 0px 0px 10px 2px rgba(241, 255, 46, 0.5);
+    }
+  }
+}

@@ -11,6 +11,9 @@ globalThis.ah = {
   documents,
 };
 
+/**
+ * Binds the documents by the system.
+ */
 function bindDocuments() {
   for (const docCls of Object.values(documents)) {
     if (!foundry.utils.isSubclass(docCls, foundry.abstract.Document)) continue;
@@ -18,6 +21,9 @@ function bindDocuments() {
   }
 }
 
+/**
+ * Binds the custom data models used by the system.
+ */
 function bindDataModels() {
   Object.assign(CONFIG.Actor.dataModels, data.Actor.dataModels);
   Object.assign(CONFIG.Combatant.dataModels, data.Combatant.dataModels);
@@ -26,12 +32,13 @@ function bindDataModels() {
   CONFIG.Actor.defaultType = "basic";
 }
 
+/**
+ * Binds document sheets to be used.
+ */
 function bindSheets() {
-
   // Destructuring some pieces for simplification
   const { Actors, Items, Journal } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
-
   // Document Sheets
   Actors.registerSheet("ah", apps.Actor.AHActorSheet, {
     makeDefault: true, label: "AH.SHEET.Labels.ActorSheet",
@@ -49,9 +56,12 @@ function bindSheets() {
   Items.registerSheet("ah", apps.Item.AHItemSheet, {
     makeDefault: true, label: "AH.SHEET.Labels.ItemSheet",
   });
-
 }
 
+/**
+ * Initializes the system's subsystems.
+ * @returns {Promise<void>}
+ */
 async function initializeSystems() {
   helpers.Settings.initialize();
   await helpers.Themes.initialize();

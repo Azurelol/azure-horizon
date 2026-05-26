@@ -15,8 +15,8 @@ export class AHActor extends foundry.documents.Actor {
 
   static migrateData(source) {
     source = super.migrateData(source);
-    if (source.type === 'basic') {
-      source.type = 'base';
+    if (source.type === "basic") {
+      source.type = "base";
     }
     return source;
   }

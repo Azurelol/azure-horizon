@@ -28,7 +28,9 @@
   --ah-color-control-header: #E5DBD0;
 
   /* app frame, header, navigation */
-  --ah-color-background-primary: linear-gradient(to bottom, var(--ah-primitive-color-navy-900) 0%, var(--ah-primitive-color-navy-800) 100%);
+  --ah-color-primary-fill-1: var(--ah-primitive-color-navy-900);
+  --ah-color-primary-fill-2: var(--ah-primitive-color-navy-800);
+  --ah-color-background-primary: linear-gradient(to bottom, var(--ah-color-primary-fill-1) 0%, var(--ah-color-primary-fill-2) 100%);
   --ah-color-border-primary: #3d5080;
   --ah-color-primary: #ffffff;
   /* panels, dialogs, sheets */

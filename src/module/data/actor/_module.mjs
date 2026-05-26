@@ -1,13 +1,13 @@
-import BaseActorModel from "./base-actor-model.mjs";
-import CharacterModel from "./character-model.mjs";
+import ActorDataModel from "./actor-data-model.mjs";
+import CharacterData from "./character-data.mjs";
 import NPCModel from "./npc-model.mjs";
-import PartyModel from "./party-model.mjs";
+import PartyData from "./party-data.mjs";
 
 const dataModels = Object.freeze({
-  base: BaseActorModel,
-  character: CharacterModel,
-  party: PartyModel,
+  base: ActorDataModel,
+  character: CharacterData,
+  party: PartyData,
   npc: NPCModel,
 });
 
-export { BaseActorModel, dataModels };
+export { ActorDataModel, dataModels };

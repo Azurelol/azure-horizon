@@ -4,7 +4,23 @@ import { systemPath } from "../../constants.mjs";
 const { api, sheets } = foundry.applications;
 
 /**
+ * @typedef ApplicationTab
+ * @property {string} id         The ID of the tab. Unique per group.
+ * @property {string} group      The group this tab belongs to.
+ * @property {string} icon       An icon to prepend to the tab.
+ * @property {string} label      Display text, will be run through `game.i18n.localize`.
+ * @property {boolean} active    If this is the active tab, set with `this.tabGroups[group] === id`.
+ * @property {string} cssClass   "active" or "" based on the above boolean.
+ */
+
+/**
+ * @typedef HandlebarsRenderOptions
+ * @property {string[]} parts                       An array of named template parts to render.
+ */
+
+/**
  * Extend the basic ActorSheet with some very simple modifications.
+ * @property {AHActor} actor
  */
 export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
   /** @inheritdoc */
@@ -133,6 +149,9 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
     const fieldSets = [];
     // TODO: Find a clever way to handle enrichment
     for (const field of Object.values(systemFields ?? {})) {
+      if (field.options?.config === false) {
+        continue;
+      }
       const path = `system.${field.name}`;
       if (field instanceof foundry.data.fields.SchemaField) {
         const fieldset = { fieldset: true, legend: field.label, fields: [] };
