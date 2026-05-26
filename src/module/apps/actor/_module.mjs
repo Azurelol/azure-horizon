@@ -1,1 +1,3 @@
-export { AHActorSheet } from "./actorSheet.mjs";
+export { AHActorSheet } from "./actor-sheet.mjs";
+export { AHCharacterSheet } from "./character-sheet.mjs";
+export { AHPartySheet } from "./party-sheet.mjs";

@@ -1,9 +1,11 @@
 {
   "AH": {
-    "Sheets": {
+    "SHEET": {
       "Labels": {
         "ActorSheet": "Default AH Actor Sheet",
-        "ItemSheet": "Default AH Item Sheet"
+        "ItemSheet": "Default AH Item Sheet",
+        "CharacterSheet": "Character Sheet",
+        "PartySheet": "Party Sheet"
       },
       "Tabs": {
         "properties": "Properties",

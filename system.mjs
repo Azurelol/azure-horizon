@@ -27,13 +27,29 @@ function bindDataModels() {
 }
 
 function bindSheets() {
+
+  // Destructuring some pieces for simplification
+  const { Actors, Items, Journal } = foundry.documents.collections;
+  const { DocumentSheetConfig } = foundry.applications.apps;
+
   // Document Sheets
-  foundry.documents.collections.Actors.registerSheet("ah", apps.Actor.AHActorSheet, {
-    makeDefault: true, label: "AH.Sheets.Labels.ActorSheet",
+  Actors.registerSheet("ah", apps.Actor.AHActorSheet, {
+    makeDefault: true, label: "AH.SHEET.Labels.ActorSheet",
   });
-  foundry.documents.collections.Items.registerSheet("ah", apps.Item.AHItemSheet, {
-    makeDefault: true, label: "AH.Sheets.Labels.ItemSheet",
+  Actors.registerSheet("ah", apps.Actor.AHCharacterSheet, {
+    types: ["character"],
+    makeDefault: true,
+    label: "AH.SHEET.Labels.CharacterSheet",
   });
+  Actors.registerSheet("ah", apps.Actor.AHPartySheet, {
+    types: ["party"],
+    makeDefault: true,
+    label: "AH.SHEET.Labels.PartySheet",
+  });
+  Items.registerSheet("ah", apps.Item.AHItemSheet, {
+    makeDefault: true, label: "AH.SHEET.Labels.ItemSheet",
+  });
+
 }
 
 async function initializeSystems() {

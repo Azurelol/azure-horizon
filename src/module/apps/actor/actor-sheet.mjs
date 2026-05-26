@@ -41,7 +41,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
         },
       ],
       initial: "properties",
-      labelPrefix: "AH.Sheets.Tabs",
+      labelPrefix: "AH.SHEET.Tabs",
     },
   };
 
