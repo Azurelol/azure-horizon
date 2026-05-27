@@ -139,6 +139,48 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   /* -------------------------------------------------- */
 
   /**
+   * Handle a dropped Actor on the Actor Sheet.
+   * @param {DragEvent} event     The initiating drop event.
+   * @param {AHActor} actor         The dropped Actor document.
+   * @returns {Promise<Actor|null|undefined>} A Promise resolving to an Actor identical or related to the dropped Actor
+   *                                          to indicate success, or a nullish value to indicate failure or no action
+   *                                          being taken.
+   * @protected
+   */
+  async _onDropActor(event, actor) {
+    return null;
+  }
+
+  /**
+   * Handle a dropped Item on the Actor Sheet.
+   * @param {DragEvent} event     The initiating drop event.
+   * @param {Item} item           The dropped Item document.
+   * @returns {Promise<Item|null|undefined>} A Promise resolving to the dropped Item (if sorting), a newly created Item,
+   *                                         or a nullish value in case of failure or no action being taken.
+   * @protected
+   * @remarks This is copied from the V14 source.
+   */
+  async _onDropItem(event, item) {
+    return super._onDropItem(event, item);
+  }
+
+  /**
+   * Handle a dropped Active Effect on the Actor Sheet.
+   * The default implementation creates an Active Effect embedded document on the Actor.
+   * @param {DragEvent} event       The initiating drop event.
+   * @param {ActiveEffect} effect   The dropped ActiveEffect document.
+   * @returns {Promise<ActiveEffect|null|undefined>} A Promise resolving to a newly created ActiveEffect, if one was
+   *                                                 created, or otherwise a nullish value.
+   * @protected
+   * @remarks This is copied from the V14 source.
+   */
+  async _onDropActiveEffect(event, effect) {
+    return await super._onDropActiveEffect(event, effect);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Handles the system fields for the form-fields generic.
    * @returns {object[]}
    */

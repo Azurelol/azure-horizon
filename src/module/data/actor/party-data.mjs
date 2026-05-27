@@ -86,7 +86,7 @@ export default class PartyData extends ActorDataModel {
     const characters = this.characters;
     characters.add(actor.uuid);
     await this.parent.update({ ["system.characters"]: characters });
-    console.debug(`${actor.name} was added to the party`);
+    ui.notifications.info(`${actor.name} was added to the party`);
   }
 
   /**

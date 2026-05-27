@@ -63,6 +63,14 @@ export default Object.freeze({
       }
       return false;
     });
+    Handlebars.registerHelper("ahImage", (src, classes, label) => {
+      // eslint-disable-next-line no-undef
+      if (VideoHelper.hasVideoExtension(src)) {
+        return new Handlebars.SafeString(`<video class="${classes}" autoplay loop muted playsinline src="${src}" data-tooltip="${label}"></video>`);
+      } else {
+        return new Handlebars.SafeString(`<img class="${classes}" src="${src}" data-tooltip="${label}" alt="${label}">`);
+      }
+    });
   },
 });
 

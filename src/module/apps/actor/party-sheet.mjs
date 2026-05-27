@@ -86,14 +86,13 @@ export class AHPartySheet extends AHActorSheet {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     context.isGM = game.user.isGM;
-    const data = this.system;
-    context.characters = await data.getCharacters();
     return context;
   }
 
   /** @inheritdoc */
   async _preparePartContext(partId, ctx, options) {
     const context = await super._preparePartContext(partId, ctx, options);
+    const data = this.system;
     // IMPORTANT: Set the active tab
     if (partId in context.tabs) context.tab = context.tabs[partId];
     switch (partId) {
@@ -101,6 +100,7 @@ export class AHPartySheet extends AHActorSheet {
         context.tabs = this._prepareTabs("primary");
         break;
       case "overview":
+        context.characters = await this.system.getCharacters();
         context.overview = await renderTemplate(`sheets/actor/party/party-section-overview-${this.theme}`, context);
         break;
       case "character":
@@ -131,5 +131,25 @@ export class AHPartySheet extends AHActorSheet {
   /** @inheritDoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
+  }
+
+  /**
+   * @override
+   */
+  async _onDropActor(event, actor) {
+    if (actor.type === "character") {
+      ui.notifications.info(`Dropped ${actor.name}`);
+      await this.system.addCharacter(actor);
+    }
+    return null;
+  }
+
+  async _onDropItem(event, item) {
+    return super._onDropItem(event, item);
+  }
+
+  async _onDropActiveEffect(event, effect) {
+    ui.notifications.warn("Active effects are not supported in the party sheet.");
+    return null;
   }
 }
