@@ -9,9 +9,10 @@
       },
       "Tabs": {
         "Overview": "Overview",
-        "properties": "Properties",
-        "items": "Items",
-        "effects": "Effects"
+        "Inventory": "Inventory",
+        "Properties": "Properties",
+        "Items": "Items",
+        "Effects": "Effects"
       },
       "Messages": {
         "NoDataAvailable": "No data is available."

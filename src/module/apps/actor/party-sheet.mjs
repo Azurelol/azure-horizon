@@ -26,6 +26,7 @@ export class AHPartySheet extends AHActorSheet {
     primary: {
       tabs: [
         { id: "overview", label: "AH.SHEET.Tabs.Overview", icon: "ra ra-double-team" },
+        { id: "inventory", label: "AH.SHEET.Tabs.Inventory", icon: "ra ra-double-team" },
       ],
       initial: "overview",
     },
@@ -46,6 +47,9 @@ export class AHPartySheet extends AHActorSheet {
     // Tabs
     overview: {
       template: systemTemplatePath("sheets/actor/party/party-section-overview"),
+    },
+    inventory: {
+      template: systemTemplatePath("sheets/actor/actor-section-inventory"),
     },
   };
 

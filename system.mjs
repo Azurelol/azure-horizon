@@ -4,6 +4,7 @@ import * as documents from "./src/module/documents/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
 import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/utils/utils.mjs";
+import { systemAssetPath } from "./src/module/constants.mjs";
 
 globalThis.ah = {
   data,
