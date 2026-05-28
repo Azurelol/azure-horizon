@@ -71,6 +71,7 @@ export default Object.freeze({
         return new Handlebars.SafeString(`<img class="${classes}" src="${src}" data-tooltip="${label}" alt="${label}">`);
       }
     });
+    Handlebars.registerHelper("ahArrayField", arrayField);
   },
 });
 
@@ -215,6 +216,35 @@ function documentAnchor(document, options) {
         type: type,
         size: size,
         classes: options?.classes,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
+
+/**
+ * @typedef AHArrayFieldOptions
+ * @property {*[]} array
+ * @property {String} label
+ * @property {String} path
+ * @property {'string'} type
+ * @property {String[]|undefined} options
+ */
+
+/**
+ * @param {AHArrayFieldOptions} options
+ * @returns {Handlebars.SafeString}
+ */
+function arrayField(options) {
+  options = options.hash;
+  const template = Handlebars.partials[systemTemplatePath("components/array-field")];
+  const html =
+    typeof template === "function"
+      ? template({
+        array: options.array,
+        label: options.label,
+        path: options.path,
+        type: options.type,
+        options: options.options,
       })
       : "";
   return new Handlebars.SafeString(html);

@@ -1,4 +1,5 @@
 import { ActorDataModel } from "./_module.mjs";
+import { CodexDataModel } from "../ui/_module.mjs";
 
 /**
  * @typedef PartyCharacterData
@@ -10,12 +11,14 @@ import { ActorDataModel } from "./_module.mjs";
 /**
  * Represents a group of player characters.
  * @property {Set<String>} characters The uuids of the characters in the party.
+ * @property {CodexDataModel} codex
  */
 export default class PartyData extends ActorDataModel {
   static defineSchema() {
     const { HTMLField, StringField, SetField, DocumentUUIDField, ObjectField, NumberField, SchemaField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       characters: new SetField(new DocumentUUIDField({ nullable: true, fieldType: "Actor", config: false })),
+      codex: new EmbeddedDataField(CodexDataModel, {}),
     });
   }
 
@@ -84,6 +87,9 @@ export default class PartyData extends ActorDataModel {
     }
 
     const characters = this.characters;
+    if (characters.has(actor.uuid)) {
+      return;
+    }
     characters.add(actor.uuid);
     await this.parent.update({ ["system.characters"]: characters });
     ui.notifications.info(`${actor.name} was added to the party`);

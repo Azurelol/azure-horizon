@@ -1,6 +1,7 @@
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {AHActorType} type
+ * @property {String} uuid
  */
 export class AHActor extends foundry.documents.Actor {
   /** @inheritdoc */

@@ -28,6 +28,15 @@ export default class ObjectUtils {
   }
 
   /**
+   * @param {*} data
+   * @returns {Object}
+   */
+  static safeClone(data) {
+    if (data?.toObject instanceof Function) return data.toObject();
+    return foundry.utils.deepClone(data);
+  }
+
+  /**
    * @param {Object} obj The object to resolve the property from.
    * @param {String} path The path to the property, in dot notation.
    * @returns {undefined|*} The value of the property.

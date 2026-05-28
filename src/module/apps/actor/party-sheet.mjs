@@ -1,5 +1,6 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { renderTemplate, systemTemplatePath } from "../../constants.mjs";
+import { CodexBrowser } from "../ui/_module.mjs";
 
 export class AHPartySheet extends AHActorSheet {
 
@@ -9,12 +10,19 @@ export class AHPartySheet extends AHActorSheet {
    * @override
    */
   static DEFAULT_OPTIONS = {
-    actions: {},
     position: { width: 920, height: 1000 },
     window: {
       contentClasses: ["ah-party-sheet"],
       resizable: true,
       icon: "fas fa-people-group",
+    },
+    actions: {
+      revealActor: this.#revealActor,
+      addCodexEntry: this.#addCodexEntry,
+      onCodexEntry: this.#onCodexEntry,
+      importCodexActorEntry: this.#onImportCodexActorEntry,
+      importCodexJournalEntry: this.#onImportCodexJournalEntry,
+      resetCodexTags: this.#onResetCodexTags,
     },
   };
 
@@ -27,6 +35,7 @@ export class AHPartySheet extends AHActorSheet {
       tabs: [
         { id: "overview", label: "AH.SHEET.Tabs.Overview", icon: "ra ra-double-team" },
         { id: "inventory", label: "AH.SHEET.Tabs.Inventory", icon: "ra ra-double-team" },
+        { id: "codex", label: "AH.SHEET.Tabs.Codex", icon: "ra ra-book" },
       ],
       initial: "overview",
     },
@@ -51,7 +60,23 @@ export class AHPartySheet extends AHActorSheet {
     inventory: {
       template: systemTemplatePath("sheets/actor/actor-section-inventory"),
     },
+    codex: {
+      template: systemTemplatePath("sheets/actor/party/party-section-codex"),
+    },
   };
+
+  #codexBrowser;
+  #codexDrop;
+
+  /**
+   * @return {CodexBrowser}
+   */
+  get codexBrowser() {
+    if (!this.#codexBrowser) {
+      this.#codexBrowser = new CodexBrowser(this);
+    }
+    return this.#codexBrowser;
+  }
 
   /**
    * @returns {PartyData}
@@ -109,6 +134,11 @@ export class AHPartySheet extends AHActorSheet {
         break;
       case "character":
         break;
+      case "codex": {
+        await this.codexBrowser.prepareContext(context);
+        await this.codexBrowser.enrichDescriptions();
+        break;
+      }
     }
     return context;
   }
@@ -135,6 +165,7 @@ export class AHPartySheet extends AHActorSheet {
   /** @inheritDoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
+    this.codexBrowser.refresh(this.actor, this.element);
   }
 
   /**
@@ -155,5 +186,76 @@ export class AHPartySheet extends AHActorSheet {
   async _onDropActiveEffect(event, effect) {
     ui.notifications.warn("Active effects are not supported in the party sheet.");
     return null;
+  }
+
+  /*-----------------------------------------------------------------*/
+
+  /**
+   * @this AHPartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #addCodexEntry(event, target) {
+    return this.codexBrowser.addCodexEntry();
+  }
+
+  /**
+   * @this AHPartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #onCodexEntry(event, target) {
+    return this.codexBrowser.handleContextAction(event, target);
+  }
+
+  /**
+   * @this AHPartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #onImportCodexActorEntry(event, target) {
+  }
+
+  /**
+   * @this AHPartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #onImportCodexJournalEntry(event, target) {
+  }
+
+  /**
+   * @this AHPartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #onResetCodexTags(event, target) {
+    return this.codexBrowser.resetTags();
+  }
+
+  /**
+   * @this AHPartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #revealActor(event, target) {
+    const uuid = target.dataset.actor;
+    const actor = fromUuidSync(uuid);
+    if (actor) {
+      actor.sheet.render(true);
+    } else {
+      const type = target.dataset.type;
+      switch (type) {
+        case "character":
+          this.system.removeCharacter(uuid);
+          break;
+      }
+    }
   }
 }

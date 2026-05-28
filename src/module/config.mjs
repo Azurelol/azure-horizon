@@ -20,6 +20,14 @@ AH.themes = {
   },
 };
 
+AH.codex = {
+  tags: {
+    character: "AH.CODEX.Tags.Character",
+    location: "AH.CODEX.Tags.Location",
+    event: "AH.CODEX.Tags.Event",
+  },
+};
+
 /**
  * All settings associated with the system.
  * @type {Record<string, SettingConfig>}
@@ -33,12 +41,20 @@ AH.settings = Object.freeze({
     scope: "world",
   },
   theme: {
-    name: "AH.Setting.Theme.Label",
-    hint: "AH.Setting.Theme.Hint",
+    name: "AH.SETTING.ThemeLabel",
+    hint: "AH.SETTING.ThemeHint",
     type: Object,
     requiresReload: false,
     default: null,
     scope: "world",
+  },
+  codexUploadDirectory: {
+    name: "AH.SETTING.UploadDirectory",
+    hint: "AH.SETTING.UploadDirectoryHint",
+    scope: "world",
+    config: true,
+    type: String,
+    filePicker: "folder",
   },
 });
 

@@ -16,8 +16,8 @@ import { ThemeMenu } from "../apps/menus/_module.mjs";
  * @property {Object} [range]         For numeric Types, defines the allowable range.
  * @property {any} [default]          The default value.
  * @property {Function} [onChange]    Executes when the value of this Setting changes.
- * @property {CustomFormInput} [input] A custom form field input used in conjunction with a DataField type
- * @property {string} [id]            The combination of `{namespace}.{key}`
+ * @property {CustomFormInput} [input] A custom form field input used in conjunction with a DataField type.
+ * @property {string} [id]            The combination of `{namespace}.{key}`.
  */
 
 const fields = foundry.data.fields;
@@ -42,9 +42,9 @@ export default class Settings {
   static get menus() {
     return {
       themeOptions: {
-        name: "AH.MENUS.ThemeName",
-        label: "AH.MENUS.ThemeLabel",
-        hint: "AH.MENUS.ThemeHint",
+        name: "AH.SETTING.ThemeName",
+        label: "AH.SETTING.ThemeLabel",
+        hint: "AH.SETTING.ThemeHint",
         icon: "fas fa-bars",
         type: ThemeMenu,
         restricted: true,

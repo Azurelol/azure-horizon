@@ -12,7 +12,8 @@
         "Inventory": "Inventory",
         "Properties": "Properties",
         "Items": "Items",
-        "Effects": "Effects"
+        "Effects": "Effects",
+        "Codex": "Codex"
       },
       "Messages": {
         "NoDataAvailable": "No data is available."
@@ -37,9 +38,26 @@
       "BackgroundImageSidebar": "Sidebar Background Image",
       "Custom": "Custom CSS"
     },
+    "CODEX": {
+      "Tags": {
+        "Character": "Character",
+        "Location": "Location",
+        "Event": "Event",
+        "Lore": "Lore"
+      },
+      "UploadDirectory": "Codex Upload Directory",
+      "UploadDirectoryMissing": "The Codex upload directory has not been set."
+    },
     "THEMES": {
       "Horizon": "Horizon",
       "CrimsonSky": "Crimson Sky"
+    },
+    "SETTING": {
+      "ThemeName": "Theme",
+      "ThemeLabel": "Configure Theme",
+      "ThemeHint": "Change or customize the current theme.",
+      "UploadDirectory": "Codex Upload Directory",
+      "UploadDirectoryHint": "Where uploads used in codex entries are uploaded to."
     },
     "Combat": {
       "AddPlayer": "Add Player",
@@ -59,19 +77,21 @@
       "Temporary": "Temporary",
       "Toggle": "Toggle Effect"
     },
+    "DIALOG": {
+      "UploadClipboardImage": "Upload Clipboard Image"
+    },
     "COMMON": {
+      "Actor": "Actor",
+      "Add": "Add",
+      "Remove": "Remove",
       "Theme": "Theme",
       "Preview": "Preview",
       "Custom": "Custom",
       "Import": "Import",
       "Export": "Export",
       "Save": "Save",
-      "Reset": "Reset"
-    },
-    "MENUS": {
-      "ThemeName": "Theme",
-      "ThemeLabel": "Configure Theme",
-      "ThemeHint": "Change or customize the current theme."
+      "Reset": "Reset",
+      "Share": "Share"
     }
   },
   "TYPES": {

@@ -1,0 +1,19 @@
+.ah-browser {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+
+  .acc-browser__controls {
+    flex-shrink: 0;
+    display: flex;
+    gap: 4px;
+  }
+
+  .acc-browser__content {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    padding: 8px;
+  }
+}
