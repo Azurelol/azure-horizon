@@ -2,6 +2,7 @@ import { getSystemSetting, renderTemplate, systemAssetPath } from "../../constan
 import { FileUtils, FoundryUtils, HTMLUtils, ObjectUtils, StringUtils } from "../../utils/_module.mjs";
 import { CodexDataModel, CodexEntryDataModel } from "../../data/ui/_module.mjs";
 import AH from "../../config.mjs";
+import { Dialogs } from "../../helpers/_module.mjs";
 
 export default class CodexBrowser {
   /** @type AHPartySheet **/
@@ -424,7 +425,7 @@ export default class CodexBrowser {
     };
     const content = await renderTemplate("dialogs/codex-entry-edit", context);
 
-    const result = await FoundryUtils.prompt({
+    const result = await Dialogs.input({
       window: { title: `Edit — ${entry.name}` },
       position: {
         width: 750,

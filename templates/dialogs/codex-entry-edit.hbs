@@ -1,109 +1,110 @@
-<fieldset>
-	<div class="flexrow">
-		<label class="ah-dialog__input">
-			<span>{{localize "AH.COMMON.Name"}}</span>
-			<input type="text" name="name" value="{{entry.name}}" />
-		</label>
+<fieldset class="ah-fieldset">
+  <div class="ah-field-group --row">
+    <label class="ah-field">
+      <span>{{localize "AH.COMMON.Name"}}</span>
+      <input type="text" name="name" value="{{entry.name}}" />
+    </label>
 
-		<label class="ah-dialog__input">
-			<span>{{localize "AH.COMMON.Hidden"}}</span>
-			<input type="checkbox" name="hidden" {{checked entry.hidden}} />
-		</label>
-	</div>
+    <label class="ah-field">
+      <span>{{localize "AH.COMMON.Hidden"}}</span>
+      <input type="checkbox" name="hidden" {{checked entry.hidden}} />
+    </label>
+  </div>
 
-	<div class="ah-dialog__input">
-		<span>{{localize "AH.COMMON.Tags"}}</span>
-		<div class="ah-tag__filter">
-			{{#each tags as |tag|}}
-				<div class="ah-tag {{#if (ahContains tag ../entry.tags)}}active{{/if}}"
-					 data-action="toggleTag"
-					 data-path="entry.tags"
-					 data-tag="{{tag}}">
-					{{ahHumanize tag}}
-				</div>
-			{{/each}}
-		</div>
-	</div>
+  <div class="ah-field">
+    <span>{{localize "AH.COMMON.Tags"}}</span>
+    <div class="ah-field__input ah-tag__group">
+      {{#each tags as |tag|}}
+        <div class="ah-tag {{#if (ahContains tag ../entry.tags)}}active{{/if}}"
+             data-action="toggleTag"
+             data-path="entry.tags"
+             data-tag="{{tag}}">
+          {{ahHumanize tag}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
 
-	<div class="flexrow flex-group-center gap-16">
-		<div class="ah-dialog__input">
-			<span>{{localize "Image"}}</span>
-			<div class="image-picker">
-				<img class="" src="{{lookup entry 'img'}}"
-					 title="{{entry.name}}" alt=""/>
-				<div class="inputs">
-					<label>
-						<input type="text" name="img" value="{{entry.img}}" />
-					</label>
-					<button type="button" data-action="browseImage"
-							data-tooltip="AH.DIALOG.BrowseImage"
-							data-name="img">
-						<i class="fas fa-file-image"></i>
-					</button>
-					<button type="button" data-action="clipboardImage"
-							data-tooltip="AH.DIALOG.UploadClipboardImage"
-							data-name="img">
-						<i class="fas fa-file-clipboard"></i>
-					</button>
-				</div>
-			</div>
-		</div>
+  <div class="ah-field-grid">
+    <!-- Image -->
+    <div class="ah-field-group">
+      <span class="ah-field-group__header">{{localize "Image"}}</span>
+      <div class="ah-field-group__main">
+        <div class="ah-field__image-picker">
+          <img src="{{lookup entry 'img'}}"
+               title="{{entry.name}}" alt="" />
+          <div class="inputs">
+            <label>
+              <input type="text" name="img" value="{{entry.img}}" />
+            </label>
+            <button type="button" data-action="browseImage"
+                    data-tooltip="AH.DIALOG.BrowseImage"
+                    data-name="img">
+              <i class="fas fa-file-image"></i>
+            </button>
+            <button type="button" data-action="clipboardImage"
+                    data-tooltip="AH.DIALOG.UploadClipboardImage"
+                    data-name="img">
+              <i class="fas fa-file-clipboard"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Audio -->
+    <div class="ah-field-group">
+      <span class="ah-field-group__header">{{localize "Audio"}}</span>
+      <div class="ah-field-group__main">
+        <div class="ah-field">
+          <span>{{localize 'PLAYLIST_SOUND.FIELDS.path.label'}}</span>
+          <div class="ah-field__input --flex">
+            <input type="text" name="audio.path" value="{{entry.audio.path}}">
+            <button type="button" data-action="browse"
+                    data-type="audio"
+                    data-tooltip="AH.COMMON.Browse"
+                    data-name="audio.path">
+              <i class="fas fa-file-audio"></i>
+            </button>
+          </div>
+        </div>
 
-		<div class="ah-dialog__input" style="height: 100%">
-			<span>{{localize "Sound"}}</span>
-			<div class="flexcol flex-group-center group">
-				<div class="fu-form__property-row">
-					<label class="fu-form__property">
-						<span>{{localize 'PLAYLIST_SOUND.FIELDS.path.label'}}</span>
-						<input type="text" name="audio.path" value="{{entry.audio.path}}">
-						<button type="button" data-action="browse"
-								data-type="audio"
-								data-tooltip="AH.COMMON.Browse"
-								data-name="audio.path">
-							<i class="fas fa-file-audio"></i>
-						</button>
-					</label>
-					<label class="fu-form__property">
-						<span>{{localize 'PLAYLIST_SOUND.FIELDS.channel.label'}}</span>
-						<select name="audio.channel" class="">
-							{{selectOptions audioChannels selected=entry.audio.channel localize=true}}
-						</select>
-					</label>
-				</div>
+        <label class="ah-field">
+          <span>{{localize 'PLAYLIST_SOUND.FIELDS.channel.label'}}</span>
+          <select name="audio.channel" class="">
+            {{selectOptions audioChannels selected=entry.audio.channel localize=true}}
+          </select>
+        </label>
 
-				<div class="fu-form__property-row">
-					<label class="fu-form__property">
-						<span>{{localize 'PLAYLIST_SOUND.FIELDS.repeat.label'}}</span>
-						<input type="checkbox" name="audio.repeat" {{checked entry.audio.repeat}} />
-					</label>
-					<label class="fu-form__property">
-						<span>{{localize 'PLAYLIST_SOUND.FIELDS.volume.label'}}</span>
-						<div class="form-fields">
-							<input type="range"
-								   name="audio.volume"
-								   value="{{entry.audio.volume}}"
-								   min="0" max="1" step="0.05" />
-						</div>
-					</label>
-				</div>
-			</div>
-		</div>
-	</div>
+        <label class="ah-field">
+          <span>{{localize 'PLAYLIST_SOUND.FIELDS.repeat.label'}}</span>
+          <input type="checkbox" name="audio.repeat" {{checked entry.audio.repeat}} />
+        </label>
 
-	<div class="ah-dialog__input">
-		<span>{{localize "AH.COMMON.Description"}}</span>
-		<div class="form-fields">
-			<prose-mirror name="description"
-						  compact="true"
-						  value="{{entry.description}}">
-			</prose-mirror>
-		</div>
-	</div>
+        <label class="ah-field">
+          <span>{{localize 'PLAYLIST_SOUND.FIELDS.volume.label'}}</span>
+          <input type="range"
+                 name="audio.volume"
+                 value="{{entry.audio.volume}}"
+                 min="0" max="1" step="0.05" />
+        </label>
+      </div>
+    </div>
+  </div>
 
-	<div class="ah-dialog__input">
-		<span>{{localize "AH.COMMON.Notes"}}</span>
-		<div class="form-fields">
-			<textarea name="notes">{{entry.notes}}</textarea>
-		</div>
-	</div>
+  <label class="ah-field">
+    <span>{{localize "AH.COMMON.Description"}}</span>
+    <div class="ah-field__input">
+      <prose-mirror name="description"
+                    compact="true"
+                    value="{{entry.description}}">
+      </prose-mirror>
+    </div>
+  </label>
+
+  <div class="ah-field">
+    <span>{{localize "AH.COMMON.Notes"}}</span>
+    <div class="ah-field__input">
+      <textarea name="notes">{{entry.notes}}</textarea>
+    </div>
+  </div>
 </fieldset>

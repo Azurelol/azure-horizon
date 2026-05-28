@@ -47,7 +47,12 @@
   --ah-background-image-application: var(--ah-primitive-image-placeholder);
   --ah-background-blend-mode-application: overlay, normal;
   --ah-color-application: white;
+
   --ah-background-input: #111827;
+  --ah-background-fieldset: var(--ah-primitive-color-navy-800);
+  --ah-color-border-fieldset: var(--ah-primitive-color-grey-800);
+  --ah-background-fieldgroup: color-mix(in srgb, var(--ah-primitive-color-navy-800) 50%, grey 40%);
+
   --ah-background-tab: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
   --ah-background-tab-active: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
 

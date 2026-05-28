@@ -1,3 +1,17 @@
+.ah-tag__group {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  gap: 4px;
+  padding: 0.125rem 0;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  &.--reverse {
+    flex-direction: row-reverse;
+  }
+}
+
 .ah-tag {
   color: var(--acc-color-control);
   background: var(--acc-color-bg-control);
@@ -19,6 +33,7 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
   margin: 0.0625rem 0;
+  line-height: 20px;
 
   & i {
     color: var(--acc-color-control);
@@ -56,16 +71,6 @@
     background: color-mix(in srgb, var(--acc-color-shadow-control) 70%, white);
     color: color-mix(in srgb, var(--acc-color-control) 70%, white);
   }
-}
-
-.ah-tag__group {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  gap: 4px;
-  padding: 0.125rem 0;
-  flex-wrap: wrap;
-  flex-direction: row-reverse;
 }
 
 .ah-tag__picker {

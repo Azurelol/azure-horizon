@@ -2,7 +2,7 @@
 
   background: transparent;
 
-  input {
+  input[type='text'] {
     background: var(--ah-background-input);
   }
 
@@ -34,5 +34,10 @@
         opacity: 1;
       }
     }
+  }
+
+  .editor-container .editor-content {
+    background: var(--ah-background-input);
+    border: 1px solid var(--ah-color-border-surface);
   }
 }
