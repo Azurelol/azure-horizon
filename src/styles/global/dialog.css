@@ -1,0 +1,20 @@
+.ah-dialog__input {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: var(--ah-color-primary);
+
+  span:first-child {
+    font-weight: bold;
+    min-width: 60px;
+    font-size: 16px;
+    text-align: justify;
+  }
+
+  .group {
+    border: 2px solid var(--pfu-color-app-control-border);
+    background: var(--pfu-color-control-content);
+    border-radius: var(--pfu-border-radius-small);
+    padding: 4px;
+  }
+}

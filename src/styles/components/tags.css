@@ -36,16 +36,17 @@
 
 .ah-tag__filter {
   cursor: pointer;
-  border: 1px solid grey;
   font-size: 14px;
   padding: 4px;
   border-radius: 0;
-  color: var(--acc-color-control);
-  background: var(--acc-color-bg-control);
   user-select: none;
   transition: background 0.1s,
   color 0.1s,
   border-color 0.1s;
+
+  color: var(--acc-color-control);
+  background: var(--acc-color-bg-control);
+  border: 1px solid grey;
 
   &:hover {
     filter: brightness(1.2);

@@ -1,7 +1,7 @@
 .ah-party-sheet {
   &.theme-modern {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 100px 100px;
+    grid-template-rows: 1fr 100px 50px;
     grid-template-areas:
 			'active-tab'
 			'nav'
@@ -110,7 +110,7 @@
             border-bottom: none;
           }
 
-          .header {
+          .ah-list__entry__header {
             display: flex;
             align-items: center;
             gap: 0.4rem;
@@ -132,7 +132,7 @@
               }
             }
 
-            .name {
+            .ah-list__entry__name {
               flex-grow: 1;
               font-weight: 600;
               font-size: var(--font-size-base);

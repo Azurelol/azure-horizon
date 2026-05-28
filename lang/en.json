@@ -78,11 +78,15 @@
       "Toggle": "Toggle Effect"
     },
     "DIALOG": {
-      "UploadClipboardImage": "Upload Clipboard Image"
+      "UploadClipboardImage": "Upload Clipboard Image",
+      "BrowseImage": "Browse Image"
     },
     "COMMON": {
       "Actor": "Actor",
+      "Name": "Name",
       "Add": "Add",
+      "Hidden": "Hidden",
+      "Tags": "Tags",
       "Remove": "Remove",
       "Theme": "Theme",
       "Preview": "Preview",
@@ -91,7 +95,10 @@
       "Export": "Export",
       "Save": "Save",
       "Reset": "Reset",
-      "Share": "Share"
+      "Share": "Share",
+      "Browse": "Browse",
+      "Description": "Description",
+      "Notes": "Notes"
     }
   },
   "TYPES": {

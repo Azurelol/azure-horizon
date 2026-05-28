@@ -1,106 +1,107 @@
 <section class="tab codex {{tab.cssClass}}" data-tab="codex" data-group="primary">
-	<div class="ah-browser">
+  <div class="ah-browser">
 
-		<div class="controls">
-			<div class="ah-tag__filter" style="margin: 8px;">
-				{{#each system.codex.tags as |tag|}}
-					<div class="tag {{#if (ahContains tag ../browser.selected)}}active{{/if}}"
-						 data-action="toggleCodexTagFilter"
-						 data-tag="{{tag}}">
-						{{ahHumanize tag}}
-					</div>
-				{{/each}}
-			</div>
+    <div class="controls">
+      <div class="ah-tag__group" style="margin: 8px;">
+        {{#each system.codex.tags as |tag|}}
+          <div class="ah-tag__filter {{#if (ahContains tag ../browser.selected)}}active{{/if}}"
+               data-action="toggleCodexTagFilter"
+               data-tag="{{tag}}">
+            {{ahHumanize tag}}
+          </div>
+        {{/each}}
+      </div>
 
-			<div class="toolbar">
-				<label class="search">
-					<input type="text"
-						   placeholder="..." />
-				</label>
-				<button data-action="addCodexEntry">
-					<span>{{localize 'AH.COMMON.Add'}}</span>
-				</button>
+      <div class="toolbar">
+        <label class="search">
+          <input type="text"
+                 placeholder="..." />
+        </label>
+        <button data-action="addCodexEntry">
+          <span>{{localize 'AH.COMMON.Add'}}</span>
+        </button>
 
-				<button class="import-codex-entry" data-action="importCodexActorEntry">
-					<span>{{localize 'AH.COMMON.Import'}} {{localize 'AH.COMMON.Actor'}}</span>
-				</button>
+        <button class="import-codex-entry" data-action="importCodexActorEntry">
+          <span>{{localize 'AH.COMMON.Import'}} {{localize 'AH.COMMON.Actor'}}</span>
+        </button>
 
-				<button class="import-codex-entry" data-action="importCodexJournalEntry">
-					<span>{{localize 'AH.COMMON.Import'}} {{localize 'DOCUMENT.JournalEntry'}}</span>
-				</button>
-			</div>
-		</div>
+        <button class="import-codex-entry" data-action="importCodexJournalEntry">
+          <span>{{localize 'AH.COMMON.Import'}} {{localize 'DOCUMENT.JournalEntry'}}</span>
+        </button>
+      </div>
+    </div>
 
-		<ul class="entries content" data-codex-drop-root data-codex-dropzone="entry">
-			{{#each system.codex.entries as |entry index|}}
-				<li class="section-container entry {{#if (and entry.hidden (not @root.user.isGM))}}hidden{{/if}} " data-index="{{index}}" data-name="{{entry.name}}">
-					<div class="left">
-						<a data-action="onCodexEntry"
-							data-type="view"
-							data-index="{{index}}"
-							title="View">
-							<img class="flexcol" src="{{lookup entry 'img'}}"
-									alt="Artwork"/>
-						</a>
-						{{#if @root.isOwner}}
-							<div class="controls">
-								<button data-action="onCodexEntry"
-										data-type="edit"
-										data-index="{{index}}"
-										title="Edit">
-									<i class="ah-icon--xs fa-solid fa-edit"></i>
-								</button>
-								<button data-context-menu="shareCodexEntry"
-										data-index="{{index}}"
-										title="{{localize 'AH.COMMON.Share'}}">
-									<i class="ah-icon--xs fa-solid fa-share"></i>
-								</button>
-								{{#if (and entry.audio.path @root.isGM)}}
-									{{#if (ahContains entry.name ../playingSounds)}}
-										<button data-action="onCodexEntry"
-												data-type="stopSound"
-												data-index="{{index}}">
-											<i class="ah-icon--xs fas fa-stop"></i>
-										</button>
-									{{else}}
-										<button data-action="onCodexEntry"
-												data-type="playSound"
-												data-index="{{index}}">
-											<i class="ah-icon--xs fas fa-play"></i>
-										</button>
-									{{/if}}
-								{{/if}}
-								<button data-action="removeArrayElement"
-										data-prompt="true"
-										data-label="{{entry.name}}"
-										data-path="system.codex.entries"
-										data-index="{{index}}"
-										title="Delete">✕
-								</button>
-							</div>
-						{{/if}}
-					</div>
+    <ul class="entries ah-list" data-codex-drop-root data-codex-dropzone="entry">
+      {{#each system.codex.entries as |entry index|}}
+        <li class="ah-list__entry --full {{#if (and entry.hidden (not @root.user.isGM))}}hidden{{/if}} "
+            data-index="{{index}}" data-name="{{entry.name}}">
+          <div class="ah-list__entry__left">
+            <a data-action="onCodexEntry"
+               data-type="view"
+               data-index="{{index}}"
+               title="View">
+              <img class="flexcol" src="{{lookup entry 'img'}}"
+                   alt="Artwork" />
+            </a>
+            {{#if @root.isOwner}}
+              <div class="ah-list__entry__controls">
+                <button data-action="onCodexEntry"
+                        data-type="edit"
+                        data-index="{{index}}"
+                        title="Edit">
+                  <i class="ah-icon--xs fa-solid fa-edit"></i>
+                </button>
+                <button data-context-menu="shareCodexEntry"
+                        data-index="{{index}}"
+                        title="{{localize 'AH.COMMON.Share'}}">
+                  <i class="ah-icon--xs fa-solid fa-share"></i>
+                </button>
+                {{#if (and entry.audio.path @root.isGM)}}
+                  {{#if (ahContains entry.name ../playingSounds)}}
+                    <button data-action="onCodexEntry"
+                            data-type="stopSound"
+                            data-index="{{index}}">
+                      <i class="ah-icon--xs fas fa-stop"></i>
+                    </button>
+                  {{else}}
+                    <button data-action="onCodexEntry"
+                            data-type="playSound"
+                            data-index="{{index}}">
+                      <i class="ah-icon--xs fas fa-play"></i>
+                    </button>
+                  {{/if}}
+                {{/if}}
+                <button data-action="removeArrayElement"
+                        data-prompt="true"
+                        data-label="{{entry.name}}"
+                        data-path="system.codex.entries"
+                        data-index="{{index}}"
+                        title="Delete">✕
+                </button>
+              </div>
+            {{/if}}
+          </div>
 
-					<div class="right">
-						<div class="header">
-						<span class="name">
-							{{entry.name}}
-						</span>
-							<div class="ah-tags">
-								{{#each entry.tags as |tag|}}
-									<div class="ah-tag">{{ahHumanize tag}}</div>
-								{{/each}}
-								{{#if entry.hidden}}
-									<div class="ah-tag"><i class="fa fa-eye-slash "></i></div>
-								{{/if}}
-							</div>
-						</div>
-						<span class="description">
-							{{{lookup ../browser.enrichedDescriptions @index }}}
-						</span>
-					</div>
-				</li>
-			{{/each}}
-		</ul>
-	</div>
+          <div class="ah-list__entry__right">
+            <div class="ah-list__entry__header">
+              <span class="ah-list__entry__name">
+                {{entry.name}}
+              </span>
+              <div class="ah-tags">
+                {{#each entry.tags as |tag|}}
+                  <div class="ah-tag">{{ahHumanize tag}}</div>
+                {{/each}}
+                {{#if entry.hidden}}
+                  <div class="ah-tag"><i class="fa fa-eye-slash "></i></div>
+                {{/if}}
+              </div>
+            </div>
+            <span class="description">
+              {{{lookup ../browser.enrichedDescriptions @index }}}
+            </span>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 </section>

@@ -72,8 +72,32 @@ export default Object.freeze({
       }
     });
     Handlebars.registerHelper("ahArrayField", arrayField);
+    Handlebars.registerHelper("ahAutoComplete", autoComplete);
   },
 });
+
+/**
+ * @param context
+ * @returns {Handlebars.SafeString}
+ */
+function autoComplete(context) {
+  const dataset = context.hash;
+  let options = dataset.options;
+  if ((options !== null) && (typeof options === "object") && !Array.isArray(options)) {
+    options = Object.keys(options);
+  }
+  const template = Handlebars.partials[systemTemplatePath("components/auto-complete")];
+  const html =
+    typeof template === "function"
+      ? template({
+        name: dataset.name,
+        value: dataset.value,
+        placeholder: dataset.placeholder,
+        options: options,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
 
 /**
  * @param {String} label

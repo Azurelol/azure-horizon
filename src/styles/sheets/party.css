@@ -77,6 +77,21 @@
     }
   }
 
+  .codex {
+    max-width: 100%;
+    overflow-x: hidden;
+
+    .toolbar {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      .search {
+        flex: 2;
+      }
+    }
+  }
+
   @keyframes levelglow {
     0%,
     100% {

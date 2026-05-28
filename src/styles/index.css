@@ -11,6 +11,8 @@
 @import "global/flex.css";
 @import "global/messages.css";
 @import "global/icons.css";
+@import "global/dialog.css";
+@import "global/list.css";
 
 @import "elements/browser.css";
 

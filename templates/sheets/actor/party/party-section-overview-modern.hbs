@@ -1,13 +1,13 @@
 <div class="character-list">
   {{#each characters}}
     <div class="entry">
-      <div class="header">
+      <div class="ah-list__entry__header">
         <div class="portrait-badge">
           <a data-action="revealActor" data-actor="{{this.actor.uuid}}" data-type="character">
             <img src="{{this.actor.img}}" alt="{{this.name}}"/>
           </a>
         </div>
-        <div class="name">{{ this.name }}</div>
+        <div class="ah-list__entry__name">{{ this.name }}</div>
       </div>
       <div class="bars">
         {{#each this.resources}}
