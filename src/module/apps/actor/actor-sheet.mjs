@@ -32,6 +32,9 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       width: 600,
       height: 600,
     },
+    window: {
+      resizable: true,
+    },
     actions: {
       viewDoc: this.#viewDoc,
       createDoc: this.#createDoc,

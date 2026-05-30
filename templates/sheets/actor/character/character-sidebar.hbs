@@ -1,0 +1,17 @@
+<aside class="sheet-sidebar ah-character__sidebar">
+  <div class="ah-character__sidebar__portrait">
+    <img
+      class="profile-img"
+      src="{{actor.img}}"
+      alt="{{actor.name}}"
+      {{#if editable}}
+      data-action="editImage"
+      data-edit="img"
+      {{/if}}
+      data-tooltip="{{actor.name}}"
+      height="100" width="100">
+  </div>
+  <div class="ah-character__sidebar__info">
+
+  </div>
+</aside>

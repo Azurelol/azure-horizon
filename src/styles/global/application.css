@@ -26,7 +26,8 @@
 
   .tabs {
     background: var(--ah-background-application-tabs);
-    margin: 1rem;
+    padding: 4px;
+    text-transform: uppercase;
 
     a {
       opacity: 0.5;

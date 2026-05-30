@@ -15,8 +15,9 @@
 
 @import "elements/browser.css";
 
+@import "sheets/item.css";
+@import "sheets/character.css";
 @import "sheets/party.css";
 @import "sheets/party/party-modern.css";
-@import "sheets/character.css";
 
 @import "typography/rpg-awesome.min.css";

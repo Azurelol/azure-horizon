@@ -1,1 +1,1 @@
-export { AHItemSheet } from "./itemSheet.mjs";
+export { AHItemSheet } from "./item-sheet.mjs";

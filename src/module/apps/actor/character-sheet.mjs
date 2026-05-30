@@ -4,10 +4,10 @@ import { systemPath, systemTemplatePath } from "../../constants.mjs";
 export class AHCharacterSheet extends AHActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["ah-character-sheet"],
+    classes: ["ah-character"],
     position: {
-      width: 600,
-      height: 600,
+      width: 850,
+      height: 800,
     },
     actions: {
     },
@@ -29,6 +29,9 @@ export class AHCharacterSheet extends AHActorSheet {
   static PARTS = {
     header: {
       template: systemTemplatePath("sheets/actor/character/character-header"),
+    },
+    sidebar: {
+      template: systemTemplatePath("sheets/actor/character/character-sidebar"),
     },
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),

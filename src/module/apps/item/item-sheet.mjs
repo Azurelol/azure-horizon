@@ -13,7 +13,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     position: {
       width: 600,
     },
-    classes: ["ah-application"],
+    classes: ["ah-application", "ah-item"],
     actions: {
       viewDoc: this.#viewEffect,
       createDoc: this.#createEffect,
