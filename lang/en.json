@@ -11,6 +11,7 @@
         "Overview": "Overview",
         "Inventory": "Inventory",
         "Properties": "Properties",
+        "Equipment": "Equipment",
         "Items": "Items",
         "Effects": "Effects",
         "Codex": "Codex"
@@ -79,10 +80,12 @@
     },
     "DIALOG": {
       "UploadClipboardImage": "Upload Clipboard Image",
-      "BrowseImage": "Browse Image"
+      "BrowseImage": "Browse Image",
+      "EntriesMissing": "Entries are missing."
     },
     "COMMON": {
       "Actor": "Actor",
+      "Entry": "Entry",
       "Name": "Name",
       "Add": "Add",
       "Hidden": "Hidden",

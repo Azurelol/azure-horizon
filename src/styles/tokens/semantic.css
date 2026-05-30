@@ -79,6 +79,12 @@
   --ah-color-bg-badge: var(--ah-primitive-color-burgundy);
   --ah-color-badge: var(--ah-primitive-color-grey-light);
 
+  /* tags */
+  --ah-color-tag: red;
+  --ah-color-background-tag: red;
+  --ah-color-border-tag: grey;
+  --ah-color-shadow-tag: darkgrey;
+
   /* text */
   --ah-color-text: var(--ah-primitive-color-text);
   --ah-color-text-title: var(--ah-primitive-color-brown-dark);

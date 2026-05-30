@@ -1,5 +1,7 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
-import { systemPath } from "../../constants.mjs";
+import { systemPath, systemTemplatePath } from "../../constants.mjs";
+import { ObjectUtils, StringUtils } from "../../utils/_module.mjs";
+import { Dialogs } from "../../helpers/_module.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -35,6 +37,9 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       createDoc: this.#createDoc,
       deleteDoc: this.#deleteDoc,
       toggleEffect: this.#toggleEffect,
+
+      addArrayElement: this.#addArrayElement,
+      removeArrayElement: this.#removeArrayElement,
     },
     form: {
       submitOnChange: true,
@@ -48,16 +53,18 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       tabs: [
         {
           id: "properties",
+          label: "AH.SHEET.Tabs.Properties",
         },
         {
           id: "items",
+          label: "AH.SHEET.Tabs.Properties",
         },
         {
           id: "effects",
+          label: "AH.SHEET.Tabs.Effects",
         },
       ],
       initial: "properties",
-      labelPrefix: "AH.SHEET.Tabs",
     },
   };
 
@@ -66,21 +73,21 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/actor/header.hbs"),
+      template: systemTemplatePath("sheets/actor/actor-header"),
     },
     tabs: {
-      template: "templates/generic/tab-navigation.hbs",
+      template: systemTemplatePath("sheets/document-tabs"),
     },
     properties: {
-      template: systemPath("templates/shared/properties.hbs"),
+      template: systemTemplatePath("sheets/document-properties"),
       scrollable: [""],
     },
     items: {
-      template: systemPath("templates/actor/items.hbs"),
+      template: systemTemplatePath("sheets/actor/actor-items"),
       scrollable: [""],
     },
     effects: {
-      template: systemPath("templates/shared/effects.hbs"),
+      template: systemTemplatePath("sheets/document-effects"),
       scrollable: [""],
     },
   };
@@ -324,6 +331,56 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   static async #toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
     effect.update({ disabled: !effect.disabled });
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #addArrayElement(event, target) {
+    const path = target.dataset.path;
+    if (path) {
+      const array = ObjectUtils.getProperty(this.actor, path);
+      if (array) {
+        array.push(null);
+        await this.actor.update({
+          [`${path}`]: array,
+        });
+      }
+    }
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #removeArrayElement(event, target) {
+    const { path, prompt, label } = target.dataset;
+    const index = Number.parseInt(target.dataset.index);
+    if (path) {
+      if (prompt) {
+        const options = {
+          title: StringUtils.localize("AH.COMMON.Remove"),
+          message: StringUtils.localize("AH.DIALOG.RemoveMessage", { label: label ?? "AH.COMMON.Entry" }),
+        };
+        const confirm = await Dialogs.confirm (options);
+        if (!confirm) {
+          return;
+        }
+      }
+      /** @type [] **/
+      const array = ObjectUtils.getProperty(this.actor, path);
+      if (array && (index !== undefined)) {
+        array.splice(index, 1);
+        await this.actor.update({
+          [`${path}`]: array,
+        });
+      }
+    }
   }
 
   /* -------------------------------------------------- */

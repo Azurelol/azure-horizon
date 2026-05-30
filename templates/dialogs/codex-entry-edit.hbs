@@ -15,7 +15,7 @@
     <span>{{localize "AH.COMMON.Tags"}}</span>
     <div class="ah-field__input ah-tag__group">
       {{#each tags as |tag|}}
-        <div class="ah-tag {{#if (ahContains tag ../entry.tags)}}active{{/if}}"
+        <div class="ah-tag__filter {{#if (ahContains tag ../entry.tags)}}active{{/if}}"
              data-action="toggleTag"
              data-path="entry.tags"
              data-tag="{{tag}}">

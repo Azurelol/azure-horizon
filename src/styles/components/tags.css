@@ -13,11 +13,11 @@
 }
 
 .ah-tag {
-  color: var(--acc-color-control);
-  background: var(--acc-color-bg-control);
-  box-shadow: 0.063rem 0.1rem var(--acc-color-shadow-control);
-  border: 0.063rem solid var(--acc-color-border-control);
-  text-shadow: 1px 1px var(--acc-color-shadow-control);
+  color: var(--ah-color-control);
+  background: var(--ah-color-bg-control);
+  box-shadow: 0.063rem 0.1rem var(--ah-color-shadow-control);
+  border: 0.063rem solid var(--ah-color-border-control);
+  text-shadow: 1px 1px var(--ah-color-shadow-control);
 
   font-family: 'PT Sans Narrow', sans-serif;
   font-variant: small-caps;
@@ -36,15 +36,15 @@
   line-height: 20px;
 
   & i {
-    color: var(--acc-color-control);
+    color: var(--ah-color-control);
   }
 
   &:hover {
-    color: var(--acc-color-control-hover);
-    background: var(--acc-color-bg-control-hover);
+    color: var(--ah-color-control-hover);
+    background: var(--ah-color-bg-control-hover);
 
     & i {
-      color: var(--acc-color-control-hover);
+      color: var(--ah-color-control-hover);
     }
   }
 }
@@ -59,8 +59,8 @@
   color 0.1s,
   border-color 0.1s;
 
-  color: var(--acc-color-control);
-  background: var(--acc-color-bg-control);
+  color: var(--ah-color-control);
+  background: var(--ah-color-bg-control);
   border: 1px solid grey;
 
   &:hover {
@@ -68,8 +68,8 @@
   }
 
   &.active {
-    background: color-mix(in srgb, var(--acc-color-shadow-control) 70%, white);
-    color: color-mix(in srgb, var(--acc-color-control) 70%, white);
+    background: color-mix(in srgb, var(--ah-color-shadow-control) 70%, white);
+    color: color-mix(in srgb, var(--ah-color-control) 70%, white);
   }
 }
 
@@ -88,8 +88,8 @@
   height: 18px;
   padding: 0 4px;
   border-radius: 9px;
-  background: var(--acc-color-bg-badge);
-  color: var(--acc-color-badge);
+  background: var(--ah-color-bg-badge);
+  color: var(--ah-color-badge);
   font-size: 11px;
   font-weight: bold;
 }
@@ -104,8 +104,8 @@
   top: 100%;
   left: 0;
   z-index: 100;
-  background: var(--acc-color-bg-panel);
-  border: 1px solid var(--acc-color-border);
+  background: var(--ah-color-bg-panel);
+  border: 1px solid var(--ah-color-border);
   border-radius: 4px;
   padding: 4px;
   flex-wrap: wrap;

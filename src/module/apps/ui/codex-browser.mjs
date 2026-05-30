@@ -36,8 +36,8 @@ export default class CodexBrowser {
    * @param {HTMLElement} html
    */
   attachListeners(html) {
-    const toolbar = html.querySelector(".toolbar");
-    const searchInput = toolbar.querySelector(".search").querySelector("input");
+    const toolbar = html.querySelector(".ah-toolbar");
+    const searchInput = toolbar.querySelector(".ah-toolbar__search").querySelector("input");
     if (searchInput) {
       requestAnimationFrame(() => searchInput.removeAttribute("disabled"));
       searchInput.addEventListener(
@@ -50,7 +50,7 @@ export default class CodexBrowser {
       );
     }
 
-    html.querySelectorAll(".pfu-tag-selector .tag").forEach((tag) => {
+    html.querySelectorAll(".ah-tag__group .ah-tag__filter").forEach((tag) => {
       tag.addEventListener("click", () => {
         const value = tag.dataset.tag;
 
@@ -299,6 +299,10 @@ export default class CodexBrowser {
     }
   }
 
+  /**
+   * @param {String} name
+   * @returns {Promise<void>}
+   */
   async revealCodexEntry(name) {
     const entry = this.party.codex.resolveEntry(name);
     if (entry) {
@@ -317,15 +321,15 @@ export default class CodexBrowser {
     let layout = HTMLUtils.getViewerLayout(width, height, enrichedDescription.length);
     const layoutClass = layout ? `--${layout}` : null;
 
-    const content = await FoundryUtils.renderTemplate("dialogs/codex-entry-view", {
+    const content = await renderTemplate("dialogs/codex-entry-view", {
       entry: entry,
       enrichedDescription,
       layoutClass,
     });
 
-    await FoundryUtils.popout(entry.name, content, {
+    await Dialogs.popout(entry.name, content, {
       position: {},
-      classes: ["projectfu", "pfu-codex__entry__frame"],
+      classes: ["ah-codex__entry__frame"],
     });
   }
 

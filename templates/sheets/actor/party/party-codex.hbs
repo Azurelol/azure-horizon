@@ -1,37 +1,42 @@
 <section class="tab codex {{tab.cssClass}}" data-tab="codex" data-group="primary">
   <div class="ah-browser">
+    <div class="ah-browser__controls">
+      <div class="ah-toolbar">
 
-    <div class="controls">
-      <div class="ah-tag__group" style="margin: 8px;">
-        {{#each system.codex.tags as |tag|}}
-          <div class="ah-tag__filter {{#if (ahContains tag ../browser.selected)}}active{{/if}}"
-               data-action="toggleCodexTagFilter"
-               data-tag="{{tag}}">
-            {{ahHumanize tag}}
+        <div class="ah-toolbar__row">
+          <div class="ah-tag__group" style="margin: 8px;">
+            {{#each system.codex.tags as |tag|}}
+              <div class="ah-tag__filter {{#if (ahContains tag ../browser.selected)}}active{{/if}}"
+                   data-action="toggleCodexTagFilter"
+                   data-tag="{{tag}}">
+                {{ahHumanize tag}}
+              </div>
+            {{/each}}
           </div>
-        {{/each}}
-      </div>
+        </div>
 
-      <div class="toolbar">
-        <label class="search">
-          <input type="text"
-                 placeholder="..." />
-        </label>
-        <button data-action="addCodexEntry">
-          <span>{{localize 'AH.COMMON.Add'}}</span>
-        </button>
+        <div class="ah-toolbar__row">
+          <label class="ah-toolbar__search">
+            <input type="text" placeholder="..." />
+          </label>
 
-        <button class="import-codex-entry" data-action="importCodexActorEntry">
-          <span>{{localize 'AH.COMMON.Import'}} {{localize 'AH.COMMON.Actor'}}</span>
-        </button>
+          <button data-action="addCodexEntry">
+            <span>{{localize 'AH.COMMON.Add'}}</span>
+          </button>
 
-        <button class="import-codex-entry" data-action="importCodexJournalEntry">
-          <span>{{localize 'AH.COMMON.Import'}} {{localize 'DOCUMENT.JournalEntry'}}</span>
-        </button>
+          <button class="import-codex-entry" data-action="importCodexActorEntry">
+            <span>{{localize 'AH.COMMON.Import'}} {{localize 'AH.COMMON.Actor'}}</span>
+          </button>
+
+          <button class="import-codex-entry" data-action="importCodexJournalEntry">
+            <span>{{localize 'AH.COMMON.Import'}} {{localize 'DOCUMENT.JournalEntry'}}</span>
+          </button>
+        </div>
+
       </div>
     </div>
 
-    <ul class="entries ah-list" data-codex-drop-root data-codex-dropzone="entry">
+    <ul class="ah-browser__content ah-list" data-codex-drop-root data-codex-dropzone="entry">
       {{#each system.codex.entries as |entry index|}}
         <li class="ah-list__entry --full {{#if (and entry.hidden (not @root.user.isGM))}}hidden{{/if}} "
             data-index="{{index}}" data-name="{{entry.name}}">

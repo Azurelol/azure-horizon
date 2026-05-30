@@ -205,17 +205,13 @@
 
       .tabs {
         flex-direction: row;
-      }
-
-      .menu {
         display: flex;
-        flex-direction: row;
         gap: 1rem;
         justify-content: normal;
         border-top: none;
         border-bottom: none;
 
-        .menu__button {
+        .tabs__button {
           display: flex;
           flex-direction: column;
           align-items: center;

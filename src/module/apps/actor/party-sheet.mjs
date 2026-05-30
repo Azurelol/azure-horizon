@@ -47,21 +47,20 @@ export class AHPartySheet extends AHActorSheet {
    */
   static PARTS = {
     widgets: {
-      template: systemTemplatePath("sheets/actor/party/party-section-widgets"),
+      template: systemTemplatePath("sheets/actor/party/party-widgets"),
     },
-    // Custom
     tabs: {
-      template: systemTemplatePath("sheets/actor/party/party-section-nav"),
+      template: systemTemplatePath("sheets/document-tabs"),
     },
     // Tabs
     overview: {
-      template: systemTemplatePath("sheets/actor/party/party-section-overview"),
+      template: systemTemplatePath("sheets/actor/party/party-overview"),
     },
     inventory: {
-      template: systemTemplatePath("sheets/actor/actor-section-inventory"),
+      template: systemTemplatePath("sheets/actor/actor-inventory"),
     },
     codex: {
-      template: systemTemplatePath("sheets/actor/party/party-section-codex"),
+      template: systemTemplatePath("sheets/actor/party/party-codex"),
     },
   };
 
@@ -130,7 +129,7 @@ export class AHPartySheet extends AHActorSheet {
         break;
       case "overview":
         context.characters = await this.system.getCharacters();
-        context.overview = await renderTemplate(`sheets/actor/party/party-section-overview-${this.theme}`, context);
+        context.overview = await renderTemplate(`sheets/actor/party/party-overview-${this.theme}`, context);
         break;
       case "character":
         break;
@@ -141,6 +140,24 @@ export class AHPartySheet extends AHActorSheet {
       }
     }
     return context;
+  }
+
+  /**
+   * Attach event listeners to rendered template parts.
+   * @param {string} partId The id of the part being rendered.
+   * @param {HTMLElement} html The rendered HTML element for the part.
+   * @param {ApplicationRenderOptions} options Rendering options passed to the render method.
+   * @protected
+   */
+  _attachPartListeners(partId, html, options) {
+    super._attachPartListeners(partId, html, options);
+    switch (partId) {
+      case "codex":
+      {
+        this.codexBrowser.attachListeners(html);
+        break;
+      }
+    }
   }
 
   // TODO: Provide setting

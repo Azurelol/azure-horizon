@@ -1,5 +1,5 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
-import { systemPath } from "../../constants.mjs";
+import { systemPath, systemTemplatePath } from "../../constants.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -7,6 +7,7 @@ const { api, sheets } = foundry.applications;
  * Extend the basic ItemSheet with some very simple modifications.
  */
 export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet) {
+
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     position: {
@@ -26,40 +27,36 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
   };
 
-  /* -------------------------------------------------- */
-
   static TABS = {
     primary: {
       tabs: [
         {
           id: "properties",
+          label: "AH.SHEET.Tabs.Properties",
         },
         {
           id: "effects",
+          label: "AH.SHEET.Tabs.Effects",
         },
       ],
       initial: "properties",
-      labelPrefix: "AH.Sheets.Tabs",
     },
   };
-
-  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/item/header.hbs"),
+      template: systemTemplatePath("sheets/item/item-header"),
     },
     tabs: {
-      // Foundry-provided generic template
-      template: "templates/generic/tab-navigation.hbs",
+      template: systemTemplatePath("sheets/document-tabs"),
     },
     properties: {
-      template: systemPath("templates/shared/properties.hbs"),
+      template: systemTemplatePath("sheets/document-properties"),
       scrollable: [""],
     },
     effects: {
-      template: systemPath("templates/shared/effects.hbs"),
+      template: systemTemplatePath("sheets/document-effects"),
       scrollable: [""],
     },
   };

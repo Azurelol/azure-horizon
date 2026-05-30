@@ -162,4 +162,22 @@ export default class Dialogs {
     ObjectUtils.mergeRecursive(defaultOptions, options);
     return await foundry.applications.api.DialogV2.input(defaultOptions);
   }
+
+  /**
+   * @param {String} title
+   * @param {String} content
+   * @param {Object} options
+   * @returns {Promise}
+   */
+  static async popout(title, content, options = {}) {
+    const defaultOptions = {
+      window: { title, icon: "fas fa-eye", resizable: true },
+      classes: DIALOG_CLASSES,
+      rejectClose: false,
+      content,
+      buttons: [{ label: "Close", action: "close" }],
+    };
+    ObjectUtils.mergeRecursive(defaultOptions, options);
+    await foundry.applications.api.DialogV2.wait(defaultOptions);
+  }
 }
