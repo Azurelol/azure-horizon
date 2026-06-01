@@ -12,7 +12,7 @@ export class AHPartySheet extends AHActorSheet {
   static DEFAULT_OPTIONS = {
     position: { width: 920, height: 1000 },
     window: {
-      contentClasses: ["ah-party-sheet"],
+      contentClasses: ["ah-party"],
       resizable: true,
       icon: "fas fa-people-group",
     },

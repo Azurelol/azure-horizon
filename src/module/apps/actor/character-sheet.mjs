@@ -17,7 +17,7 @@ export class AHCharacterSheet extends AHActorSheet {
   static TABS = {
     primary: {
       tabs: [
-        { id: "overview", label: "AH.SHEET.Tabs.Overview", icon: "ra ra-double-team" },
+        { id: "features", label: "AH.SHEET.Tabs.Features", icon: "ra ra-fluffy-swirl" },
         { id: "equipment", label: "AH.SHEET.Tabs.Inventory", icon: "ra ra-double-team" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
       ],
@@ -36,11 +36,12 @@ export class AHCharacterSheet extends AHActorSheet {
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),
     },
-    properties: {
-      template: systemTemplatePath("sheets/document-properties"),
+
+    features: {
+      template: systemTemplatePath("sheets/actor/character/character-features"),
     },
-    items: {
-      template: systemTemplatePath("sheets/actor/actor-items"),
+    equipment: {
+      template: systemTemplatePath("sheets/actor/character/character-equipment"),
     },
     effects: {
       template: systemTemplatePath("sheets/document-effects"),

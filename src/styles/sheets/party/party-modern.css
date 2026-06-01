@@ -1,4 +1,4 @@
-.ah-party-sheet {
+.ah-party {
   &.theme-modern {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 100px 50px;
