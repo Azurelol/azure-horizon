@@ -13,7 +13,7 @@ import { CodexDataModel } from "../ui/_module.mjs";
  * @property {Set<String>} characters The uuids of the characters in the party.
  * @property {CodexDataModel} codex
  */
-export default class PartyData extends ActorDataModel {
+export default class PartyDataModel extends ActorDataModel {
   static defineSchema() {
     const { HTMLField, StringField, SetField, DocumentUUIDField, ObjectField, NumberField, SchemaField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {

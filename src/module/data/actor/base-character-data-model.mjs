@@ -1,6 +1,6 @@
 import { ActorDataModel } from "./_module.mjs";
 
-export default class CharacterData extends ActorDataModel {
+export default class BaseCharacterDataModel extends ActorDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {});
   }

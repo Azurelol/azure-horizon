@@ -60,7 +60,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
         },
         {
           id: "items",
-          label: "AH.SHEET.Tabs.Properties",
+          label: "AH.SHEET.Tabs.Items",
         },
         {
           id: "effects",

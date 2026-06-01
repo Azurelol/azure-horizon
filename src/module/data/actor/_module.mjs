@@ -1,17 +1,19 @@
 import ActorDataModel from "./actor-data-model.mjs";
-import CharacterData from "./character-data.mjs";
-import NPCModel from "./npc-model.mjs";
-import PartyData from "./party-data.mjs";
+import CharacterDataModel from "./character-data-model.mjs";
+import AdversaryDataModel from "./adversary-data-model.mjs";
+import PartyDataModel from "./party-data-model.mjs";
+import UnitDataModel from "./unit-data-model.mjs";
 
 /**
- * @typedef {"character"|"party"|"npc"} AHActorType
+ * @typedef {"character"|"party"|"adversary"|"unit"} AHActorType
  */
 
 const dataModels = Object.freeze({
   base: ActorDataModel,
-  character: CharacterData,
-  party: PartyData,
-  npc: NPCModel,
+  character: CharacterDataModel,
+  party: PartyDataModel,
+  adversary: AdversaryDataModel,
+  unit: UnitDataModel,
 });
 
 export { ActorDataModel, dataModels };

@@ -1,6 +1,6 @@
 import { ActorDataModel } from "./_module.mjs";
 
-export default class NPCModel extends ActorDataModel {
+export default class UnitDataModel extends ActorDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {});
   }

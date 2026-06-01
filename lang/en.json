@@ -40,6 +40,14 @@
       "BackgroundImageSidebar": "Sidebar Background Image",
       "Custom": "Custom CSS"
     },
+    "CHARACTER": {
+      "Dexterity": "Dexterity",
+      "Might": "Might",
+      "Perception": "Perception",
+      "Resolve": "Resolve",
+      "HitPoints": "Hit Points",
+      "MindPoints": "Mind Points"
+    },
     "CODEX": {
       "Tags": {
         "Character": "Character",
@@ -110,7 +118,8 @@
       "basic": "Basic Actor",
       "character": "Character",
       "party": "Party",
-      "npc": "NPC"
+      "adversary": "Adversary",
+      "unit": "Unit"
     },
     "Item": {
       "weapon": "Weapon",

@@ -7,6 +7,7 @@ const AH = {};
 const fields = foundry.data.fields;
 
 /**
+ * System themes.
  * @type {Record<String, {label, path}>}
  */
 AH.themes = {
@@ -20,6 +21,25 @@ AH.themes = {
   },
 };
 
+/**
+ * @desc The set of ability scores used for characters in the system.
+ * @typedef {"dex", "str", "res", "per"} AH_Attribute
+ */
+
+/**
+ * @type {Object<Attribute, string>}
+ */
+AH.attributes = {
+  str: "AH.CHARACTER.Strength",
+  dex: "AH.CHARACTER.Dexterity",
+  res: "AH.CHARACTER.Resolve",
+  per: "FU.CHARACTER.Perception",
+};
+
+/**
+ * Provided defaults for the party codex.
+ * @type {{tags: {character: string, location: string, event: string}}}
+ */
 AH.codex = {
   tags: {
     character: "AH.CODEX.Tags.Character",

@@ -50,7 +50,8 @@
     "Actor": {
       "character": {},
       "party": {},
-      "npc": {}
+      "adversary": {},
+      "unit": {}
     },
     "Item": {
       "weapon": {},
