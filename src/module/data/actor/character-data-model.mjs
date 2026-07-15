@@ -7,6 +7,7 @@ const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } =
  * @typedef CharacterResources
  * @property {ResourceDataModel} hp
  * @property {ResourceDataModel} mp
+ * @property {ResourceDataModel} ip
  */
 
 /**

@@ -1,3 +1,4 @@
+// NOTE: This file should have no other dependencies
 import { systemAssetPath } from "./constants.mjs";
 
 const AH = {};
@@ -22,6 +23,16 @@ AH.themes = {
 };
 
 /**
+ * Character progression constants.
+ */
+AH.progression = Object.freeze({
+  level: {
+    minimum: 5,
+    maximum: 99,
+  },
+});
+
+/**
  * @desc The set of ability scores used for characters in the system.
  * @typedef {"dex", "str", "res", "per"} AH_Attribute
  */
@@ -30,10 +41,22 @@ AH.themes = {
  * @type {Object<Attribute, string>}
  */
 AH.attributes = {
-  str: "AH.CHARACTER.Strength",
+  mig: "AH.CHARACTER.Might",
   dex: "AH.CHARACTER.Dexterity",
-  res: "AH.CHARACTER.Resolve",
-  per: "FU.CHARACTER.Perception",
+  ins: "AH.CHARACTER.Insight",
+  wlp: "AH.CHARACTER.Willpower",
+};
+
+/**
+ * @desc The set of ability scores used for characters in the system.
+ * @typedef {"hp", "mp", "tp", "ip"} AH_Parameter
+ */
+
+AH.parameters = {
+  hp: {
+    long: "AH.CHARACTER.Long",
+  },
+
 };
 
 /**

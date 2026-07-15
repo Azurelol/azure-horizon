@@ -12,6 +12,8 @@
       height="100" width="100">
   </div>
   <div class="ah-character__sidebar__info">
-
+    {{#each system.attributes as |attribute key|}}
+      {{ahLocalize "attributes" key "short"}}
+    {{/each}}
   </div>
 </aside>

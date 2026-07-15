@@ -26,6 +26,7 @@ export default Object.freeze({
       }
       return AH.icons[icon];
     });
+    Handlebars.registerHelper("ahLocalize", systemLocalize);
     Handlebars.registerHelper("ahConcat", (...args) => {
       args.pop();
       return args.join("");
@@ -77,6 +78,39 @@ export default Object.freeze({
 });
 
 /**
+ * @typedef LocalizationEntry
+ * @property {String} long
+ * @property {String} short
+ * @property {String} plural
+ */
+
+/**
+ * @typedef {"long", "short", "plural"} LocalizationOption
+ */
+
+/**
+ * Localizes text in a handlebars template.
+ * @param {String} record
+ * @param {String} key
+ * @param {LocalizationOption} option
+ * @returns {*|string}
+ */
+function systemLocalize(record, key, option = "long") {
+  if (AH[record] === undefined) {
+    return "";
+  }
+  /** @type LocalizationEntry **/
+  let entry = AH[record][key];
+  if (entry === undefined) {
+    return "";
+  }
+
+  let fullKey = `${entry}.${option}`;
+  return StringUtils.localize(fullKey);
+}
+
+/**
+ * Writes autocomplete template.
  * @param context
  * @returns {Handlebars.SafeString}
  */

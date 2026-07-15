@@ -1,20 +1,20 @@
-import { AttributeDataModel } from "./attribute-data-model.mjs";
+import { AttributeDataModel } from "./_module.mjs";
 
 /**
  * The set of attributes for a character.
- * @property {AttributeDataModel} str
+ * @property {AttributeDataModel} mig
  * @property {AttributeDataModel} dex
- * @property {AttributeDataModel} per
- * @property {AttributeDataModel} res
+ * @property {AttributeDataModel} ins
+ * @property {AttributeDataModel} wlp
  */
 export default class AttributesDataModel extends foundry.abstract.DataModel {
   static defineSchema() {
     const { EmbeddedDataField } = foundry.data.fields;
     return {
-      str: new EmbeddedDataField(AttributeDataModel, {}),
+      mig: new EmbeddedDataField(AttributeDataModel, {}),
       dex: new EmbeddedDataField(AttributeDataModel, {}),
-      per: new EmbeddedDataField(AttributeDataModel, {}),
-      res: new EmbeddedDataField(AttributeDataModel, {}),
+      ins: new EmbeddedDataField(AttributeDataModel, {}),
+      wlp: new EmbeddedDataField(AttributeDataModel, {}),
     };
   }
 }

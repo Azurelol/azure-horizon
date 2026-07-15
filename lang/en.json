@@ -41,12 +41,36 @@
       "Custom": "Custom CSS"
     },
     "CHARACTER": {
-      "Dexterity": "Dexterity",
-      "Might": "Might",
-      "Perception": "Perception",
-      "Resolve": "Resolve",
-      "HitPoints": "Hit Points",
-      "MindPoints": "Mind Points"
+      "Dexterity": {
+        "long": "Dexterity",
+        "short": "DEX"
+      },
+      "Might":  {
+        "long": "Might",
+        "short": "MIG"
+      },
+      "Insight": {
+        "long": "Insight",
+        "short": "INS"
+      },
+      "Willpower": {
+        "long": "Willpower",
+        "short": "WLP"
+      },
+      "HitPoint": {
+        "long": "Hit Point",
+        "plural": "Hit Points",
+        "short": "HP"
+      },
+      "MindPoint": {
+        "long": "Mind Point",
+        "plural": "Mind Points",
+        "short": "MP"
+      },
+      "TensionPoint": {
+        "long": "Tension Point",
+        "short": "TP"
+      }
     },
     "CODEX": {
       "Tags": {
