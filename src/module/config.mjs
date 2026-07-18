@@ -47,16 +47,24 @@ AH.attributes = {
   wlp: "AH.CHARACTER.Willpower",
 };
 
+AH.attributeDice = {
+  4: "AH.DICE.D4",
+  6: "AH.DICE.D6",
+  8: "AH.DICE.D8",
+  10: "AH.DICE.D10",
+  12: "AH.DICE.D12",
+};
+
 /**
  * @desc The set of ability scores used for characters in the system.
- * @typedef {"hp", "mp", "tp", "ip"} AH_Parameter
+ * @typedef {"hp", "mp", "tp", "ip"} AH_Resource
  */
 
-AH.parameters = {
-  hp: {
-    long: "AH.CHARACTER.Long",
-  },
-
+AH.resources = {
+  hp: "AH.CHARACTER.HitPoint",
+  mp: "AH.CHARACTER.MindPoint",
+  ip: "AH.CHARACTER.InventoryPoint",
+  tp: "AH.CHARACTER.TensionPoint",
 };
 
 /**
@@ -108,6 +116,11 @@ AH.settings = Object.freeze({
 AH.icons = {
   compendium: "fas fa-book",
   documents: "fa fa-book-bookmark",
+
+  mig: "ra ra-muscle-up",
+  dex: "ra ra-boot-stomp",
+  ins: "ra ra-aware",
+  wlp: "ra ra-hearts",
 
   popout: "fa fa-external-link",
   pin: "fa fa-thumb-tack",

@@ -12,8 +12,10 @@
       height="100" width="100">
   </div>
   <div class="ah-character__sidebar__info">
-    {{#each system.attributes as |attribute key|}}
-      {{ahLocalize "attributes" key "short"}}
-    {{/each}}
+    <div class="ah-flexrow">
+      {{#each system.attributes as |attribute key|}}
+        {{ahSelector icon=(ahIconClass key) label=(ahLocaleKey 'attributes' key format='short') values=@root.AH.attributeDice value=attribute.base path=(ahConcat 'system.attributes.' key '.base') }}
+      {{/each}}
+    </div>
   </div>
 </aside>

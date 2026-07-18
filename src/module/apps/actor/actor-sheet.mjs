@@ -2,6 +2,7 @@ import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import { ObjectUtils, StringUtils } from "../../utils/_module.mjs";
 import { Dialogs } from "../../helpers/_module.mjs";
+import AH from "../../config.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -120,6 +121,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       flags: this.actor.flags,
       actorFields: this.actor.schema.fields,
       config: CONFIG,
+      AH: AH,
     });
 
     return context;

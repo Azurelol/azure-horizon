@@ -1,16 +1,21 @@
 import { ActorDataModel } from "./_module.mjs";
 import AH from "../../config.mjs";
-import { AttributesDataModel } from "./system/_module.mjs";
+import { AffinitiesDataModel, AttributesDataModel, ParametersDataModel } from "./system/_module.mjs";
 
 /**
  * Base model for characters.
  * @property {Number} level
+ * @property {AttributesDataModel} attributes
+ * @property {AffinitiesDataModel} affinities
+ * @property {ParametersDataModel} parameters
  */
 export default class BaseCharacterDataModel extends ActorDataModel {
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       attributes: new EmbeddedDataField(AttributesDataModel, {}),
+      affinities: new EmbeddedDataField(AffinitiesDataModel, {}),
+      parameters: new EmbeddedDataField(ParametersDataModel, {}),
       level: new NumberField({
         initial: AH.progression.level.minimum,
         min: AH.progression.level.minimum,
@@ -19,5 +24,15 @@ export default class BaseCharacterDataModel extends ActorDataModel {
         nullable: false,
       }),
     });
+  }
+
+  /**
+   * @override
+   */
+  prepareBaseData() {
+    this.#prepareParameters();
+  }
+
+  #prepareParameters() {
   }
 }

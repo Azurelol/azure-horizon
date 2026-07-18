@@ -8,6 +8,7 @@ export default Object.freeze({
       systemTemplatePath("components/document-anchor"),
       systemTemplatePath("components/tag-picker"),
       systemTemplatePath("components/skeleton"),
+      systemTemplatePath("components/selector"),
     ]);
   },
   setupComponent: {
@@ -26,7 +27,7 @@ export default Object.freeze({
       }
       return AH.icons[icon];
     });
-    Handlebars.registerHelper("ahLocalize", systemLocalize);
+    Handlebars.registerHelper("ahLocaleKey", getLocaleKey);
     Handlebars.registerHelper("ahConcat", (...args) => {
       args.pop();
       return args.join("");
@@ -74,6 +75,8 @@ export default Object.freeze({
     });
     Handlebars.registerHelper("ahArrayField", arrayField);
     Handlebars.registerHelper("ahAutoComplete", autoComplete);
+    Handlebars.registerHelper("ahBadge", badge);
+    Handlebars.registerHelper("ahSelector", selector);
   },
 });
 
@@ -85,17 +88,18 @@ export default Object.freeze({
  */
 
 /**
- * @typedef {"long", "short", "plural"} LocalizationOption
+ * @typedef {"long", "short", "plural"} LocalizationFormat
  */
 
 /**
- * Localizes text in a handlebars template.
+ * Resolves a full localization key, given a record and a key in it.
  * @param {String} record
  * @param {String} key
- * @param {LocalizationOption} option
+ * @param {*} options
+ * @param {LocalizationFormat} options.format
  * @returns {*|string}
  */
-function systemLocalize(record, key, option = "long") {
+function getLocaleKey(record, key, options) {
   if (AH[record] === undefined) {
     return "";
   }
@@ -105,8 +109,9 @@ function systemLocalize(record, key, option = "long") {
     return "";
   }
 
-  let fullKey = `${entry}.${option}`;
-  return StringUtils.localize(fullKey);
+  const format = options.hash?.format ?? "long";
+  let fullKey = `${entry}.${format}`;
+  return fullKey;
 }
 
 /**
@@ -303,6 +308,38 @@ function arrayField(options) {
         path: options.path,
         type: options.type,
         options: options.options,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
+
+/**
+ * @typedef AH_BadgeOptions
+ */
+
+/**
+ * @param {AH_BadgeOptions} options
+ * @returns {Handlebars.SafeString}
+ */
+function badge(options) {
+  options = options.hash;
+  const template = Handlebars.partials[systemTemplatePath("components/badge")];
+  const html =
+    typeof template === "function"
+      ? template({
+        options: options.options,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
+
+function selector(options) {
+  options = options.hash;
+  const template = Handlebars.partials[systemTemplatePath("components/selector")];
+  const html =
+    typeof template === "function"
+      ? template({
+        ...options,
       })
       : "";
   return new Handlebars.SafeString(html);
