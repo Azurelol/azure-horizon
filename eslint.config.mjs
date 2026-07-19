@@ -122,8 +122,6 @@ export default defineConfig([
         checkSetters: "no-getter",
         checkConstructors: false,
       }],
-      "@jsdoc/require-description": ["warn", { checkConstructors: false, contexts: ["FunctionDeclaration", "ClassDeclaration"] }],
-      "@jsdoc/require-description-complete-sentence": "warn",
     },
   }, {
     files: ["**/*.hbs", "**/*.html"],

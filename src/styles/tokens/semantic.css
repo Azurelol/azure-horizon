@@ -113,4 +113,11 @@
   --ah-text-size-base: var(--ah-primitive-size-text-base);
   --ah-text-size-lg: var(--ah-primitive-size-text-lg);
   --ah-text-size-xl: var(--ah-primitive-size-text-xl);
+
+  /* sheet */
+  --ah-padding-input: 2px;
+  --ah-font-size-label: 1.2em;
+  --ah-font-size-input: 1em;
+  --ah-font-weight-input: 600;
+  --ah-height-resource-bar: 1.5em;
 }

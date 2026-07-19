@@ -30,9 +30,28 @@ export default class BaseCharacterDataModel extends ActorDataModel {
    * @override
    */
   prepareBaseData() {
+  }
+
+  /**
+   * @override
+   */
+  prepareDerivedData() {
     this.#prepareParameters();
   }
 
   #prepareParameters() {
+    const data = this;
+
+    Object.defineProperty(this.parameters.hp, "max", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        return ParametersDataModel.calculateHitPoints(data.level, data.attributes.mig.base, data.attributes.wlp.base) + this.bonus;
+      },
+      set(newValue) {
+        delete this.max;
+        this.max = newValue;
+      },
+    });
   }
 }

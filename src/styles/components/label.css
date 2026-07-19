@@ -1,3 +1,12 @@
+.ah-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ah-padding-input);
+  font-size: var(--ah-font-size-input);
+}
+
 .ah-selector {
   display: flex;
   flex-direction: column;
@@ -5,7 +14,7 @@
   justify-content: center;
   flex: 1 1 0;
   min-width: 0;
-  padding: 2px;
+  padding: var(--ah-padding-input);
 
   &.--border {
     background: rgba(0, 0, 0, 0.05);
@@ -24,7 +33,7 @@
 
 .ah-selector__label {
   order: 2;
-  font-size: 0.8em;
+  font-size: var(--ah-font-size-input);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.01em;

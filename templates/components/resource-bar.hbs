@@ -1,0 +1,18 @@
+<div class="ah-resource-bar">
+  <!--Label-->
+  <div class="ah-resource-bar__label" data-tooltip="{{localize tooltip}}">
+    <i class="{{icon}}"></i>
+    <span>{{localize label}}</span>
+  </div>
+  <!--Bar-->
+  <div class="ah-resource-bar__bar">
+    <div class="ah-resource-bar__bar__fill" style="width: {{ahPercentage value max}}; --ah-resource-bar-color: {{color}};"></div>
+    <span class="ah-resource-bar__bar__value">{{value}} / {{max}}</span>
+  </div>
+  <!--Input-->
+  <div class="ah-resource-bar__input">
+    <label>
+      <input class="ah-resource-bar__input__value" value="{{value}}" name="{{path}}" type="number" />
+    </label>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+.ah-resource-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+/* Label */
+.ah-resource-bar__label {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex: 0 0 auto;
+  font-size: var(--ah-font-size-label);
+  font-weight: var(--ah-font-weight-input);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ah-resource-bar__label i {
+  font-size: 1.1em;
+  opacity: 0.85;
+}
+
+/* Bar */
+.ah-resource-bar__bar {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 40px;
+  height: var(--ah-height-resource-bar);
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--color-border-light-tertiary, #999);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ah-resource-bar__bar__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--ah-resource-bar-color, #7a1f1f);
+  transition: width 0.2s ease;
+}
+
+.ah-resource-bar__bar__value {
+  position: relative;
+  z-index: 1;
+  display: block;
+  text-align: center;
+  font-size: calc(var(--ah-height-resource-bar) * 0.75);
+  color: var(--color-text-light-primary, #fff);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+
+/* Input */
+.ah-resource-bar__input {
+  flex: 0 0 auto;
+}
+
+.ah-resource-bar__input label {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.ah-resource-bar__input__value {
+  width: 2.2em;
+  height: 1.4em;
+  padding: 0 2px;
+  text-align: center;
+  border: 1px solid var(--color-border-light-tertiary, #999);
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.05);
+  font-size: var(--ah-font-size-input);
+}
+
+.ah-resource-bar__input__max {
+  opacity: 0.7;
+  border-style: dashed;
+}
+
+.ah-resource-bar__input__sep {
+  font-size: 0.8em;
+  opacity: 0.6;
+}

@@ -3,7 +3,8 @@
 
 @import "components/skeleton.css";
 @import "components/tags.css";
-@import "components/selector.css";
+@import "components/label.css";
+@import "components/bars.css";
 
 @import "global/foundry.css";
 @import "global/application.css";

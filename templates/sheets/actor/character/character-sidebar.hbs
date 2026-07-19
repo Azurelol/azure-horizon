@@ -17,5 +17,7 @@
         {{ahSelector icon=(ahIconClass key) label=(ahLocaleKey 'attributes' key format='short') values=@root.AH.attributeDice value=attribute.base path=(ahConcat 'system.attributes.' key '.base') }}
       {{/each}}
     </div>
+    {{ahInput 'system.level' system.level type='number' icon=(ahIconClass 'level') label='AH.CHARACTER.Level.short' tooltip='AH.CHARACTER.Level.long' }}
+    {{ahResourceBar 'system.parameters.hp.value' system.parameters.hp.value system.parameters.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') color="green" }}
   </div>
 </aside>

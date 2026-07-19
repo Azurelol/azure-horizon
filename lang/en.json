@@ -41,6 +41,10 @@
       "Custom": "Custom CSS"
     },
     "CHARACTER": {
+      "Level": {
+        "long": "Level",
+        "short": "LV"
+      },
       "Dexterity": {
         "long": "Dexterity",
         "short": "DEX"

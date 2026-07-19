@@ -9,6 +9,8 @@ export default Object.freeze({
       systemTemplatePath("components/tag-picker"),
       systemTemplatePath("components/skeleton"),
       systemTemplatePath("components/selector"),
+      systemTemplatePath("components/input"),
+      systemTemplatePath("components/resource-bar"),
     ]);
   },
   setupComponent: {
@@ -65,6 +67,12 @@ export default Object.freeze({
       }
       return false;
     });
+    Handlebars.registerHelper("ahPercentage", function (value, max) {
+      value = parseFloat(value);
+      max = parseFloat(max);
+      const percentage = (value / max) * 100;
+      return percentage.toFixed(2) + "%";
+    });
     Handlebars.registerHelper("ahImage", (src, classes, label) => {
       // eslint-disable-next-line no-undef
       if (VideoHelper.hasVideoExtension(src)) {
@@ -77,6 +85,8 @@ export default Object.freeze({
     Handlebars.registerHelper("ahAutoComplete", autoComplete);
     Handlebars.registerHelper("ahBadge", badge);
     Handlebars.registerHelper("ahSelector", selector);
+    Handlebars.registerHelper("ahInput", input);
+    Handlebars.registerHelper("ahResourceBar", resourceBar);
   },
 });
 
@@ -333,6 +343,10 @@ function badge(options) {
   return new Handlebars.SafeString(html);
 }
 
+/**
+ * @param options
+ * @returns {Handlebars.SafeString}
+ */
 function selector(options) {
   options = options.hash;
   const template = Handlebars.partials[systemTemplatePath("components/selector")];
@@ -340,6 +354,67 @@ function selector(options) {
     typeof template === "function"
       ? template({
         ...options,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
+
+/**
+ * @typedef InputOptions
+ * @property icon
+ * @property label
+ * @property type
+ */
+
+/**
+ * @param {String} path
+ * @param {String} value
+ * @param options
+ * @param {InputOptions} options.hash
+ * @returns {Handlebars.SafeString}
+ */
+function input(path, value, options) {
+  const template = Handlebars.partials[systemTemplatePath("components/input")];
+  const html =
+    typeof template === "function"
+      ? template({
+        path: path,
+        value: value,
+        ...options.hash,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
+
+/**
+ * @typedef AH_ResourceBarOptions
+ * @property icon
+ * @property label
+ * @property tooltip
+ * @property path
+ * @property color
+ * @property {Number} value
+ * @property {Number} max
+ *
+ */
+
+/**
+ * @param {String} path
+ * @param {Number} value
+ * @param {Number} max
+ * @param options
+ * @param {AH_ResourceBarOptions} options.hash
+ * @returns {Handlebars.SafeString}
+ */
+function resourceBar(path, value, max, options) {
+  const template = Handlebars.partials[systemTemplatePath("components/resource-bar")];
+  const html =
+    typeof template === "function"
+      ? template({
+        path: path,
+        value: value,
+        max: max,
+        ...options.hash,
       })
       : "";
   return new Handlebars.SafeString(html);

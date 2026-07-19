@@ -117,6 +117,10 @@ AH.icons = {
   compendium: "fas fa-book",
   documents: "fa fa-book-bookmark",
 
+  level: "fas fa-chart-simple",
+  hp: "ra ra-heart",
+  mp: "ra ra-crystal-ball",
+
   mig: "ra ra-muscle-up",
   dex: "ra ra-boot-stomp",
   ins: "ra ra-aware",
