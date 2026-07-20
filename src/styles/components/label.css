@@ -69,3 +69,31 @@
     margin-top: 1px;
   }
 }
+
+
+
+.ah-badge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  --badge-size: 40px;
+
+  i {
+    font-size: var(--ah-font-size-label-icon);
+  }
+
+  span {
+    font-size: var(--ah-font-size-label);
+  }
+
+  input {
+    font-size: var(--ah-font-size-input);
+    background: transparent;
+    color: unset;
+    border: none;
+    text-align: center;
+    width: 40px;
+  }
+}

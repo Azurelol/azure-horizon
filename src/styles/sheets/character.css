@@ -67,5 +67,12 @@
   }
 
   .ah-character__sidebar__info {
+    padding: var(--ah-padding-fields);
+    gap: var(--ah-gap-fields);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
   }
 }

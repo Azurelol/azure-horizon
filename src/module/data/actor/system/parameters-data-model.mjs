@@ -1,15 +1,12 @@
 import { VersionedDataModel } from "../../api/_module.mjs";
 
-const HP_MIGHT_FACTOR = 5;
-const MP_WILLPOWER_FACTOR = 5;
-const IP_BASE = 6;
-
 /**
  * @property {Number} value The current value of this parameter.
+ * @property {Number} max Computed during initialization.
  * @property {Number} bonus Added to the maximum.
  * @property {Number} temporary Used as a buffer for some resources.
  */
-export class ParameterDataModel extends VersionedDataModel {
+export class ResourceDataModel extends VersionedDataModel {
   static defineSchema() {
     const { NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
@@ -18,32 +15,13 @@ export class ParameterDataModel extends VersionedDataModel {
       temporary: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
     });
   }
-}
-
-/**
- * @property {ParameterDataModel} hp
- * @property {Number} hp.max
- * @property {ParameterDataModel} mp
- * @property {Number} mp.max
- * @property {ParameterDataModel} ip
- * @property {Number} ip.max
- */
-export default class ParametersDataModel extends VersionedDataModel {
-  static defineSchema() {
-    const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
-    return Object.assign(super.defineSchema(), {
-      hp: new EmbeddedDataField(ParameterDataModel, {}),
-      mp: new EmbeddedDataField(ParameterDataModel, {}),
-      ip: new EmbeddedDataField(ParameterDataModel, {}),
-    });
-  }
 
   /**
-   * @param {ParameterDataModel} property
    * @param {Function} computeMaximum
-   * @returns {*}
+   * @returns {void}
    */
-  static defineMaximumProperty(property, computeMaximum) {
+  defineMaximumProperty(computeMaximum) {
+    const property = this;
     Object.defineProperty(property, "max", {
       configurable: true,
       enumerable: true,
@@ -58,30 +36,74 @@ export default class ParametersDataModel extends VersionedDataModel {
       },
     });
   }
+}
 
-  /**
-   * @param {Number} level
-   * @param {Number} might
-   * @returns {*}
-   */
-  static calculateHitPoints(level, might) {
-    return (might * HP_MIGHT_FACTOR) + level;
+/**
+ * @property {Number} bonus
+ * @property {Number} current
+ */
+export class ParameterDataModel extends VersionedDataModel {
+  static defineSchema() {
+    const { NumberField } = foundry.data.fields;
+    return Object.assign(super.defineSchema(), {
+      bonus: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
+    });
   }
 
   /**
-   * @param {Number} level
-   * @param {Number} willpower
-   * @returns {*}
+   * @param {Function} computeValue
+   * @returns {void}
    */
-  static calculateMindPoints(level, willpower) {
-    return (willpower * MP_WILLPOWER_FACTOR) + level;
+  defineCurrentProperty(computeValue) {
+    const property = this;
+    Object.defineProperty(property, "current", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        const computed = computeValue();
+        const bonus = property.bonus;
+        return computed + bonus;
+      },
+      set(newValue) {
+        delete this.max;
+        this.max = newValue;
+      },
+    });
   }
+}
 
-  /**
-   * @returns {*}
-   */
-  static calculateInventoryPoints() {
-    return IP_BASE;
+/**
+ * @property {ResourceDataModel} hp
+ * @property {ResourceDataModel} mp
+ * @property {ParameterDataModel} def
+ * @property {ParameterDataModel} mdef
+ */
+export class BaseParametersDataModel extends VersionedDataModel {
+  static defineSchema() {
+    const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
+    return Object.assign(super.defineSchema(), {
+      hp: new EmbeddedDataField(ResourceDataModel, {}),
+      mp: new EmbeddedDataField(ResourceDataModel, {}),
+      def: new EmbeddedDataField(ParameterDataModel, {}),
+      mdef: new EmbeddedDataField(ParameterDataModel, {}),
+    });
   }
+}
 
+/**
+ * @property {ResourceDataModel} hp
+ * @property {ResourceDataModel} mp
+ * @property {ResourceDataModel} ip
+ * @property {ResourceDataModel} tp
+ * @property {ParameterDataModel} def
+ * @property {ParameterDataModel} mdef
+ */
+export class CharacterParametersDataModel extends BaseParametersDataModel {
+  static defineSchema() {
+    const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
+    return Object.assign(super.defineSchema(), {
+      ip: new EmbeddedDataField(ResourceDataModel, {}),
+      tp: new EmbeddedDataField(ResourceDataModel, {}),
+    });
+  }
 }

@@ -123,10 +123,15 @@
   --ah-font-size-input-selector: 1em;
   --ah-font-weight-input: 600;
   --ah-height-resource-bar: 1.5em;
+  --ah-gap-fields: 8px;
   --ah-gap-input: 4px;
+  --ah-padding: 8px;
+  --ah-padding-sheet-part: 8px;
+  --ah-padding-fields: 4px;
 
   /* resources */
   --ah-color-hp: linear-gradient(90deg, #315936 0%, #63b05f 100%);
   --ah-color-mp: linear-gradient(90deg, #232d50 0%, #587fab 100%);
   --ah-color-ip: linear-gradient(90deg, #8f8352 0%, #d8cf78 100%);
+  --ah-color-tp: linear-gradient(90deg, darkgoldenrod 0%, orange 100%);
 }

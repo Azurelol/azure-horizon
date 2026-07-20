@@ -1,5 +1,7 @@
 import BaseCharacterDataModel from "./base-character-data-model.mjs";
 import { ResourceDataModel } from "../api/resource-data-model.mjs";
+import { CharacterParametersDataModel } from "./system/_module.mjs";
+import { Formulas } from "../../pipelines/_module.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -15,20 +17,23 @@ const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } =
  */
 
 /**
- * Represents a PC in the tactical layer.
- * @property {CharacterResources} resources
+ * Represents the data of PC in combat.
  */
 export default class CharacterDataModel extends BaseCharacterDataModel {
   static defineSchema() {
+    const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      resources: new SchemaField({
-        hp: new EmbeddedDataField(ResourceDataModel, {}),
-        mp: new EmbeddedDataField(ResourceDataModel, {}),
-      }),
+      parameters: new EmbeddedDataField(CharacterParametersDataModel, {}),
     });
   }
 
   /** @inheritdoc */
   prepareBaseData() {
+  }
+
+  _prepareParameters() {
+    super._prepareParameters();
+    this.parameters.ip.defineMaximumProperty(() => Formulas.calculateInventoryPoints());
+    this.parameters.tp.defineMaximumProperty(() => Formulas.calculateTensionPoints());
   }
 }

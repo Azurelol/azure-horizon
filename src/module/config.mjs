@@ -121,6 +121,11 @@ AH.icons = {
   hp: "ra ra-hearts",
   mp: "ra ra-crystal-ball",
   ip: "ra ra-ammo-bag",
+  tp: "ra ra-player-pyromaniac",
+
+  def: "ra ra-heavy-shield",
+  mdef: "ra ra-bolt-shield",
+  init: "ra ra-clockwork",
 
   mig: "ra ra-muscle-up",
   dex: "ra ra-boot-stomp",

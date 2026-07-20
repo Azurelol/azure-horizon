@@ -1,13 +1,14 @@
 import { ActorDataModel } from "./_module.mjs";
 import AH from "../../config.mjs";
-import { AffinitiesDataModel, AttributesDataModel, ParametersDataModel } from "./system/_module.mjs";
+import { AffinitiesDataModel, AttributesDataModel, CharacterParametersDataModel } from "./system/_module.mjs";
+import { Formulas } from "../../pipelines/_module.mjs";
 
 /**
  * Base model for characters.
  * @property {Number} level
  * @property {AttributesDataModel} attributes
  * @property {AffinitiesDataModel} affinities
- * @property {ParametersDataModel} parameters
+ * @property {CharacterParametersDataModel} parameters
  */
 export default class BaseCharacterDataModel extends ActorDataModel {
   static defineSchema() {
@@ -15,7 +16,6 @@ export default class BaseCharacterDataModel extends ActorDataModel {
     return Object.assign(super.defineSchema(), {
       attributes: new EmbeddedDataField(AttributesDataModel, {}),
       affinities: new EmbeddedDataField(AffinitiesDataModel, {}),
-      parameters: new EmbeddedDataField(ParametersDataModel, {}),
       level: new NumberField({
         initial: AH.progression.level.minimum,
         min: AH.progression.level.minimum,
@@ -29,20 +29,19 @@ export default class BaseCharacterDataModel extends ActorDataModel {
   /**
    * @override
    */
-  prepareBaseData() {
+  prepareDerivedData() {
+    this._prepareParameters();
   }
 
   /**
-   * @override
+   * @protected Prepares the character's parameters.
    */
-  prepareDerivedData() {
-    this.#prepareParameters();
-  }
-
-  #prepareParameters() {
+  _prepareParameters() {
     const data = this;
-    ParametersDataModel.defineMaximumProperty(this.parameters.hp, () => ParametersDataModel.calculateHitPoints(data.level, data.attributes.mig.base));
-    ParametersDataModel.defineMaximumProperty(this.parameters.mp, () => ParametersDataModel.calculateMindPoints(data.level, data.attributes.wlp.base));
-    ParametersDataModel.defineMaximumProperty(this.parameters.ip, () => ParametersDataModel.calculateInventoryPoints());
+    this.parameters.hp.defineMaximumProperty(() => Formulas.calculateHitPoints(data.level, data.attributes.mig.base));
+    this.parameters.mp.defineMaximumProperty(() => Formulas.calculateMindPoints(data.level, data.attributes.wlp.base));
+    this.parameters.def.defineCurrentProperty(() => Formulas.calculateDefense(data.attributes));
+    this.parameters.mdef.defineCurrentProperty(() => Formulas.calculateMagicDefense(data.attributes));
+
   }
 }

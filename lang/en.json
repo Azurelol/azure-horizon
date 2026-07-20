@@ -80,6 +80,14 @@
         "long": "Inventory Point",
         "plural": "Inventory Points",
         "short": "IP"
+      },
+      "Defense": {
+        "long": "Defense",
+        "short": "DEF"
+      },
+      "MagicDefense": {
+        "long": "Magic Defense",
+        "short": "MDEF"
       }
     },
     "DICE": {

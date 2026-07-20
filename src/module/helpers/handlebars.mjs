@@ -10,6 +10,7 @@ export default Object.freeze({
       systemTemplatePath("components/skeleton"),
       systemTemplatePath("components/selector"),
       systemTemplatePath("components/input"),
+      systemTemplatePath("components/badge"),
       systemTemplatePath("components/resource-bar"),
     ]);
   },
@@ -326,19 +327,21 @@ function arrayField(options) {
 
 /**
  * @typedef AH_BadgeOptions
+ * @property icon
+ * @property label
+ * @property value
  */
 
 /**
- * @param {AH_BadgeOptions} options
+ * @param {AH_BadgeOptions} options.hash
  * @returns {Handlebars.SafeString}
  */
 function badge(options) {
-  options = options.hash;
   const template = Handlebars.partials[systemTemplatePath("components/badge")];
   const html =
     typeof template === "function"
       ? template({
-        options: options.options,
+        ...options.hash,
       })
       : "";
   return new Handlebars.SafeString(html);
