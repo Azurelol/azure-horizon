@@ -1,5 +1,6 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
+import Handlebars from "../../helpers/handlebars.mjs";
 
 export class AHCharacterSheet extends AHActorSheet {
   /** @inheritdoc */
@@ -49,5 +50,23 @@ export class AHCharacterSheet extends AHActorSheet {
   };
 
   /* -------------------------------------------------- */
+
+  /**
+   * Attach event listeners to rendered template parts.
+   * @param {string} partId The id of the part being rendered.
+   * @param {HTMLElement} html The rendered HTML element for the part.
+   * @param {ApplicationRenderOptions} options Rendering options passed to the render method.
+   * @protected
+   */
+  _attachPartListeners(partId, html, options) {
+    super._attachPartListeners(partId, html, options);
+    switch (partId) {
+      case "sidebar":
+      {
+        Handlebars.setupComponent.resourceBar(html);
+        break;
+      }
+    }
+  }
 
 }

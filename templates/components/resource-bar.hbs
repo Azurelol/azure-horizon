@@ -5,14 +5,9 @@
     <span>{{localize label}}</span>
   </div>
   <!--Bar-->
-  <div class="ah-resource-bar__bar">
-    <div class="ah-resource-bar__bar__fill" style="width: {{ahPercentage value max}}; --ah-resource-bar-color: {{color}};"></div>
-    <span class="ah-resource-bar__bar__value">{{value}} / {{max}}</span>
-  </div>
-  <!--Input-->
-  <div class="ah-resource-bar__input">
-    <label>
-      <input class="ah-resource-bar__input__value" value="{{value}}" name="{{path}}" type="number" />
-    </label>
+  <div class="ah-resource-bar__control" data-path="{{path}}" data-current="{{value}}" data-max="{{max}}">
+    <div class="ah-resource-bar__control__fill" style="width: {{ahPercentage value max}}; --ah-resource-bar-color: {{color}};"></div>
+    <span class="ah-resource-bar__control__value">{{value}} / {{max}}</span>
+    <input class="ah-resource-bar__control__input" type="text" inputmode="numeric" name="{{path}}" value="{{value}}" />
   </div>
 </div>

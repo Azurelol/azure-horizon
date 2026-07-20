@@ -15,6 +15,7 @@ export default Object.freeze({
   },
   setupComponent: {
     tagPicker: setupTagPicker,
+    resourceBar: setupResourceBar,
   },
   registerHelpers: () => {
     Handlebars.registerHelper("ahFormOptions", function (constant) {
@@ -418,4 +419,48 @@ function resourceBar(path, value, max, options) {
       })
       : "";
   return new Handlebars.SafeString(html);
+}
+
+/**
+ * @param {HTMLElement} html
+ */
+function setupResourceBar(html) {
+  const bars = html.querySelectorAll(".ah-resource-bar__control");
+  for (const bar of bars) {
+    const input = bar.querySelector(".ah-resource-bar__control__input");
+    bar.addEventListener("click", (event) => {
+      if (bar.classList.contains("editing")) return;
+      bar.classList.add("editing");
+      input.focus();
+      input.select();
+    });
+
+    input.addEventListener("click", (event) => { event.stopPropagation(); });
+
+    const commit = () => {
+      bar.classList.remove("editing");
+
+      const rawValue = input.value.trim();
+      const isDelta = /^[+-]\d+$/.test(rawValue);
+
+      if (isDelta) {
+        const currentValue = Number(bar.dataset.current ?? 0);
+        const delta = parseInt(rawValue, 10);
+        input.value = currentValue + delta;
+      }
+
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    };
+    input.addEventListener("blur", commit);
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        input.blur();
+      } else if (event.key === "Escape") {
+        input.value = bar.dataset.value ?? input.defaultValue;
+        bar.classList.remove("editing");
+      }
+    });
+  }
 }

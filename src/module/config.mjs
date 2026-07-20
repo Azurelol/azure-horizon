@@ -118,7 +118,7 @@ AH.icons = {
   documents: "fa fa-book-bookmark",
 
   level: "fas fa-chart-simple",
-  hp: "ra ra-heart",
+  hp: "ra ra-hearts",
   mp: "ra ra-crystal-ball",
 
   mig: "ra ra-muscle-up",
