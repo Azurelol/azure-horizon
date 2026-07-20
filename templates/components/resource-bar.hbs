@@ -6,7 +6,7 @@
   </div>
   <!--Bar-->
   <div class="ah-resource-bar__control" data-path="{{path}}" data-current="{{value}}" data-max="{{max}}">
-    <div class="ah-resource-bar__control__fill" style="width: {{ahPercentage value max}}; --ah-resource-bar-color: {{color}};"></div>
+    <div class="ah-resource-bar__control__fill" style="width: {{ahPercentage value max}}; --ah-resource-bar-color: {{color}} {{#if colorClass}}var({{colorClass}}) {{/if}};"></div>
     <span class="ah-resource-bar__control__value">{{value}} / {{max}}</span>
     <input class="ah-resource-bar__control__input" type="text" inputmode="numeric" name="{{path}}" value="{{value}}" />
   </div>

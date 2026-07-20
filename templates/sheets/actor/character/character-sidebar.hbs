@@ -18,6 +18,7 @@
       {{/each}}
     </div>
     {{ahInput 'system.level' system.level type='number' icon=(ahIconClass 'level') label='AH.CHARACTER.Level.short' tooltip='AH.CHARACTER.Level.long' }}
-    {{ahResourceBar 'system.parameters.hp.value' system.parameters.hp.value system.parameters.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') color="green" }}
+    {{ahResourceBar 'system.parameters.hp.value' system.parameters.hp.value system.parameters.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+    {{ahResourceBar 'system.parameters.mp.value' system.parameters.mp.value system.parameters.mp.max label='AH.CHARACTER.MindPoint.short' icon=(ahIconClass 'mp') colorClass="--ah-color-mp" }}
   </div>
 </aside>
