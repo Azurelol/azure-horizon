@@ -140,6 +140,11 @@ AH.icons = {
   refresh: "fa fa-refresh",
   check: "fa fa-check",
 
+  full: "fa fa-hourglass",
+  half: "fa fa-hourglass-half",
+  start: "fa fa-hourglass-start",
+  end: "fa fa-hourglass-end",
+
   info: "fas fa-circle-info",
   warning: "fas fa-triangle-exclamation",
   help: "fas fa-circle-question",

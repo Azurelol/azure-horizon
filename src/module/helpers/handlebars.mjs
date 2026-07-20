@@ -462,5 +462,22 @@ function setupResourceBar(html) {
         bar.classList.remove("editing");
       }
     });
+
+    FoundryUtils.contextMenu(html, ".ah-resource-bar__control", [
+      {
+        name: "AH.COMMON.Reset",
+        icon: AH.icons.refresh,
+        condition: (target) => !target.classList.contains("editing"),
+        callback: (target) => {
+          const bar = target instanceof HTMLElement ? target : target[0];
+          const input = bar.querySelector(".ah-resource-bar__control__input");
+          const maxValue = Number(bar.dataset.max ?? 0);
+
+          input.value = maxValue;
+          bar.dataset.value = maxValue;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        },
+      },
+    ]);
   }
 }
