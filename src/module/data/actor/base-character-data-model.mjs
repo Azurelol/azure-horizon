@@ -43,18 +43,6 @@ export default class BaseCharacterDataModel extends ActorDataModel {
     const data = this;
     ParametersDataModel.defineMaximumProperty(this.parameters.hp, () => ParametersDataModel.calculateHitPoints(data.level, data.attributes.mig.base));
     ParametersDataModel.defineMaximumProperty(this.parameters.mp, () => ParametersDataModel.calculateMindPoints(data.level, data.attributes.wlp.base));
-
-    // Object.defineProperty(this.parameters.hp, "max", {
-    //   configurable: true,
-    //   enumerable: true,
-    //   get() {
-    //     return ParametersDataModel.calculateHitPoints(data.level, data.attributes.mig.base) + this.bonus;
-    //   },
-    //   set(newValue) {
-    //     delete this.max;
-    //     this.max = newValue;
-    //   },
-    // });
-
+    ParametersDataModel.defineMaximumProperty(this.parameters.ip, () => ParametersDataModel.calculateInventoryPoints());
   }
 }

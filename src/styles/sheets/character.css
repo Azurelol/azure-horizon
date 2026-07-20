@@ -40,6 +40,17 @@
     flex-direction: column;
   }
 
+  .ah-character__level {
+    span, i {
+    }
+    input {
+      font-size: 28px;
+      background: transparent;
+      width: 50px;
+      text-align: center;
+    }
+  }
+
   .ah-character__sidebar {
     border-right: 1px solid var(--ah-color-border-primary);
   }

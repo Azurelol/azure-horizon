@@ -4,7 +4,19 @@
   align-items: center;
   justify-content: center;
   padding: var(--ah-padding-input);
-  font-size: var(--ah-font-size-input);
+  gap: var(--ah-gap-input);
+
+  i {
+    font-size: var(--ah-font-size-label);
+  }
+
+  span {
+    font-size: var(--ah-font-size-label);
+  }
+
+  input {
+    font-size: var(--ah-font-size-input);
+  }
 }
 
 .ah-selector {
@@ -21,39 +33,39 @@
     border: 1px solid var(--color-border-light-tertiary, #999);
     border-radius: 3px;
   }
-}
 
-.ah-selector__icon {
-  order: 1;
-  font-size: 1.1em;
-  line-height: 1;
-  margin-top: 1px;
-  opacity: 0.85;
-}
+  i {
+    order: 1;
+    font-size: var(--ah-font-size-label-icon);
+    line-height: 1;
+    margin-top: 1px;
+    opacity: 0.85;
+  }
 
-.ah-selector__label {
-  order: 2;
-  font-size: var(--ah-font-size-input);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  line-height: 1.1;
-}
+  span {
+    order: 2;
+    font-size: var(--ah-font-size-input);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    line-height: 1.1;
+  }
 
-.ah-selector__input {
-  order: 3;
-  width: 100%;
-  height: 1.4em;
-  line-height: 1.4em;
-  font-size: 0.85em;
-  text-align: center;
-  text-align-last: center;
-  border: none;
-  background: transparent;
-  padding: 0;
-  margin-top: 1px;
+  select {
+    order: 3;
+    width: 100%;
+    height: 1.4em;
+    line-height: 1.4em;
+    font-size: var(--ah-font-size-input-selector);
+    text-align: center;
+    text-align-last: center;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin-top: 1px;
+  }
 }

@@ -120,6 +120,7 @@ AH.icons = {
   level: "fas fa-chart-simple",
   hp: "ra ra-hearts",
   mp: "ra ra-crystal-ball",
+  ip: "ra ra-ammo-bag",
 
   mig: "ra ra-muscle-up",
   dex: "ra ra-boot-stomp",

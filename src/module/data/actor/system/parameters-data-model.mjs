@@ -2,6 +2,7 @@ import { VersionedDataModel } from "../../api/_module.mjs";
 
 const HP_MIGHT_FACTOR = 5;
 const MP_WILLPOWER_FACTOR = 5;
+const IP_BASE = 6;
 
 /**
  * @property {Number} value The current value of this parameter.
@@ -24,6 +25,8 @@ export class ParameterDataModel extends VersionedDataModel {
  * @property {Number} hp.max
  * @property {ParameterDataModel} mp
  * @property {Number} mp.max
+ * @property {ParameterDataModel} ip
+ * @property {Number} ip.max
  */
 export default class ParametersDataModel extends VersionedDataModel {
   static defineSchema() {
@@ -31,6 +34,7 @@ export default class ParametersDataModel extends VersionedDataModel {
     return Object.assign(super.defineSchema(), {
       hp: new EmbeddedDataField(ParameterDataModel, {}),
       mp: new EmbeddedDataField(ParameterDataModel, {}),
+      ip: new EmbeddedDataField(ParameterDataModel, {}),
     });
   }
 
@@ -71,6 +75,13 @@ export default class ParametersDataModel extends VersionedDataModel {
    */
   static calculateMindPoints(level, willpower) {
     return (willpower * MP_WILLPOWER_FACTOR) + level;
+  }
+
+  /**
+   * @returns {*}
+   */
+  static calculateInventoryPoints() {
+    return IP_BASE;
   }
 
 }
