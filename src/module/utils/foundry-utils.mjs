@@ -85,6 +85,20 @@ export default class FoundryUtils {
   }
 
   /**
+   * @param {Actor} actor
+   * @returns {*}
+   */
+  static resolveSpeaker(actor) {
+    let speaker = ChatMessage.getSpeaker({ actor });
+    if (speaker.scene && speaker.token) {
+      const token = game.scenes.get(speaker.scene)?.tokens?.get(speaker.token);
+      if (token) {
+        speaker = ChatMessage.getSpeaker({ token });
+      }
+    }
+    return speaker;
+  }
+  /**
    * @param {HTMLElement} html
    * @param {String} className
    * @param {AHItem[]} items

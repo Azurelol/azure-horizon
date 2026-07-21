@@ -1,0 +1,12 @@
+<header class="ah-chat__flavor">
+  {{ahDocumentAnchor item}}
+  <h2>{{item.name}}</h2>
+  {{#each linked as |li|}}
+    {{ahDocumentAnchor li classes="fu-image__link"}}
+  {{/each}}
+</header>
+{{#if subtitle}}
+  <div class="chat-header" style="padding: 0;">
+    <h3>{{localize subtitle}}</h3>
+  </div>
+{{/if}}

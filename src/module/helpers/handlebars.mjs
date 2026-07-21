@@ -1,10 +1,11 @@
 import { systemTemplatePath } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
+import { ChatMessageSectionTemplate } from "./_module.mjs";
 
 export default Object.freeze({
   loadTemplates: async () => {
-    return foundry.applications.handlebars.loadTemplates([
+    let templates = [
       systemTemplatePath("components/document-anchor"),
       systemTemplatePath("components/tag-picker"),
       systemTemplatePath("components/skeleton"),
@@ -12,7 +13,9 @@ export default Object.freeze({
       systemTemplatePath("components/input"),
       systemTemplatePath("components/badge"),
       systemTemplatePath("components/resource-bar"),
-    ]);
+    ];
+    templates.push(...Object.values(ChatMessageSectionTemplate));
+    return foundry.applications.handlebars.loadTemplates(templates);
   },
   setupComponent: {
     tagPicker: setupTagPicker,

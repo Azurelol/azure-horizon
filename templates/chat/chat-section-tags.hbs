@@ -1,0 +1,11 @@
+{{#if tags}}
+  <div class="ah-tags">
+    {{#each tags}}
+      {{#if flip}}
+        <div class="ah-tag" data-tooltip="{{localize tooltip}}">{{value}}{{separator}} {{localize tag}}</div>
+      {{else}}
+        <div class="ah-tag" data-tooltip="{{localize tooltip}}">{{localize tag}}{{separator}} {{value}}</div>
+      {{/if}}
+    {{/each}}
+  </div>
+{{/if}}

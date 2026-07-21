@@ -1,0 +1,69 @@
+import { systemTemplatePath } from "../constants.mjs";
+
+/**
+ * @desc Used for ordering the standardized chat message sections.
+ * @type {Readonly<{tags: number}>}
+ */
+export const ChatSectionOrder = Object.freeze({
+  flavor: Number.NaN,
+  tags: -3000,
+  tracker: -2500,
+  details: -2000,
+  reroll: -1100,
+  roll: -1000,
+  push: -1200,
+  addendum: -900,
+  result: 1000,
+  actions: 2000,
+  expenses: 2500,
+});
+
+/**
+ * @typedef ChatMessageSection
+ * @property {string} [content] the HTML markup to insert into the message, takes precedence over 'partial'
+ * @property {string} [partial] the partial to render
+ * @property {Object} [data] data to be passed to the partial
+ * @property {number} [order] sections will be rendered in order, from lowest to highest
+ */
+
+/**
+ * @typedef {(ChatMessageSection | Promise<ChatMessageSection> | (() => ChatMessageSection) | (() => Promise<ChatMessageSection>))[]} ChatMessageSectionCollection
+ */
+
+/**
+ * @typedef Tag
+ * @property {string} [tag] gets localized
+ * @property {any} [value] doesn't get localized
+ * @property {string} [tooltip] tooltip to attach to the tag, gets localized
+ * @property {boolean} [flip] switches the position of tag and value
+ * @property {string} [separator] placed between tag and
+ * @property {any} [show] can be omitted, if defined and falsy doesn't render tag
+ */
+
+export const ChatMessageSectionTemplate = Object.freeze({
+  tag: systemTemplatePath("chat/chat-section-tags"),
+});
+
+/**
+ * @desc Contains functions for chat message sections
+ */
+export const ChatMessageSections = Object.freeze({
+
+  /**
+   * @param {ChatMessageSectionCollection} sections
+   * @param {Tag[]} tags
+   * @param {number} [order]
+   */
+  tags: (sections, tags = [], order = ChatSectionOrder.details) => {
+    tags = tags.filter((tag) => !("show" in tag) || tag.show);
+    if (tags.length > 0) {
+      sections.push(async () => ({
+        partial: ChatMessageSectionTemplate.tag,
+        data: {
+          tags: tags,
+        },
+        order: order,
+      }));
+    }
+  },
+});
