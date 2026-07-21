@@ -1,7 +1,7 @@
 import BaseCharacterDataModel from "./base-character-data-model.mjs";
 import { ResourceDataModel } from "../api/resource-data-model.mjs";
 import { CharacterParametersDataModel } from "./system/_module.mjs";
-import { Formulas } from "../../pipelines/_module.mjs";
+import { Formulas } from "../../ruleset/_module.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
