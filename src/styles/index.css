@@ -1,5 +1,6 @@
 @import "tokens/primitives.css";
 @import "tokens/semantic.css";
+@import "tokens/semantic/colors.css";
 
 @import "components/skeleton.css";
 @import "components/tags.css";
@@ -8,6 +9,7 @@
 
 @import "global/foundry.css";
 @import "global/application.css";
+@import "global/dialog.css";
 @import "global/fields.css";
 @import "global/menu.css";
 @import "global/flex.css";

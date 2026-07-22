@@ -1,0 +1,109 @@
+{{#if attributeValues}}
+  <section>
+    <fieldset class="">
+      <legend class="">{{localize 'AH.COMMON.Actor'}}</legend>
+      <img class="profile-img flexcol" src="{{actor.img}}"
+           data-edit="img" title="{{actor.name}}"
+           style="height: 96px; width: auto; object-fit: contain;" />
+      {{#each attributes}}
+        {{pfuIconAttribute @key value=(lookup @root/attributeValues @key)}}
+      {{/each}}
+    </fieldset>
+  </section>
+{{/if}}
+
+<section>
+  {{#if actors}}
+    <fieldset>
+      <legend>{{localize 'AH.DOCUMENT.Actor.plural'}}</legend>
+      {{ahDocumentCarousel actors}}
+    </fieldset>
+  {{/if}}
+
+  <div>
+    {{#if label}}
+      <fieldset>
+        <legend>{{localize 'AH.COMMON.Label'}}</legend>
+        <label>
+          <input name="label" type="text" value="{{label}}">
+        </label>
+      </fieldset>
+    {{/if}}
+
+    {{#if increment}}
+      <fieldset>
+        <legend>{{localize 'Increment'}}</legend>
+        <label>
+          <input name="increment" type="checkbox" {{checked increment}}>
+        </label>
+      </fieldset>
+    {{/if}}
+  </div>
+
+  <div>
+    <fieldset>
+      <legend>{{localize 'AH.CHARACTER.Attribute.plural'}}</legend>
+      <div class="ah-field-group --row">
+
+        <div class="">
+          {{localize 'AH.COMMON.Primary'}}
+          <div class="ah-icon__radio-group">
+            {{#each attributeOptions as |attr| }}
+              <label class="{{icon}}" data-tooltip="{{localize label}}" for="{{label}}">
+                <input checked="checked" id="{{label}}" type="radio" name="primary" value="{{value}}">
+              </label>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="">
+          {{localize 'AH.COMMON.Secondary'}}
+          <div class="ah-icon__radio-group">
+            {{#each attributeOptions as |attr| }}
+              <label class="{{icon}}"
+                     data-tooltip="{{localize label}}"
+                     for="{{label}}">
+                <input checked="checked"
+                       id="{{label}}"
+                       type="radio"
+                       name="secondary"
+                       value="{{value}}">
+              </label>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="flexrow">
+    <fieldset>
+      <legend>{{localize 'AH.CHARACTER.Modifier.long'}}</legend>
+      <div>
+        {{ahBadge 'mod' label='AH.CHARACTER.Modifier.short' value=bonus }}
+        <label>
+          {{localize 'AH.CHARACTER.Modifier.long'}}
+          <input name="modifier" type="number" value="{{modifier}}">
+        </label>
+      </div>
+    </fieldset>
+    {{#if (and (ne type 'open') (ne type 'opposed'))}}
+      <fieldset>
+        <legend>{{localize 'AH.CHECK.Difficulty'}}</legend>
+        {{#if (eq type 'group')}}
+        {{else}}
+          <label>
+            {{localize 'AH.CHECK.Difficulty'}}
+            <input name="difficulty" type="number" value="{{difficulty}}" min="0">
+          </label>
+        {{/if}}
+        <div>
+          <button type="button" style="background: var(--ah-color-difficulty-easy)" data-action="setDifficulty" data-value="7" data-tooltip="{{localize 'FU.Easy'}}"><i class="icon ra ra-sheep"></i></button>
+          <button type="button" style="background: var(--ah-color-difficulty-normal)" data-action="setDifficulty" data-value="10" data-tooltip="{{localize 'FU.Normal'}}"><i class="icon ra ra-aware"></i></button>
+          <button type="button" style="background: var(--ah-color-difficulty-hard)" data-action="setDifficulty" data-value="13" data-tooltip="{{localize 'FU.Hard'}}"><i class="icon ra ra-monster-skull"></i></button>
+          <button type="button" style="background: var(--ah-color-difficulty-veryHard)" data-action="setDifficulty" data-value="16" data-tooltip="{{localize 'FU.VeryHard'}}"><i class="icon ra ra-player-despair"></i></button>
+        </div>
+      </fieldset>
+    {{/if}}
+  </div>
+</section>

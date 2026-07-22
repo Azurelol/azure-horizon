@@ -1,0 +1,9 @@
+.ah-dialog {
+
+  section {
+    fieldset {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}

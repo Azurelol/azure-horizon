@@ -84,3 +84,52 @@
     }
   }
 }
+
+.ah-icon__radio-group input {
+  margin: 0;
+  content: none;
+  padding: 0;
+  height: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.ah-icon__radio-group label {
+  pointer-events: auto;
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-flex;
+  transition: all 100ms ease-in;
+  filter: grayscale(1) opacity(0.7);
+
+  &:hover {
+    filter: brightness(1.2) grayscale(0.5) opacity(0.9);
+  }
+
+  &.selected {
+    filter: unset;
+  }
+}
+
+.ah-icon__radio-group label input {
+  margin: 0;
+  content: none;
+  padding: 0;
+  appearance: none;
+  opacity: 0;
+}
+
+.ah-icon__radio-group label input:checked + .ah-icon__radio-group label {
+  border: 2px solid blue;
+  box-shadow: 0 0 4px blue;
+  background-color: red;
+}
+
+.ah-icon__radio-group input:active + label {
+  opacity: 0.9;
+}
+.ah-icon__radio-group input:checked + label {
+  filter: none;
+}

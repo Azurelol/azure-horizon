@@ -3,23 +3,27 @@ import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
 import { ChatMessageSectionTemplate } from "./_module.mjs";
 
+const COMPONENT_TEMPLATES = Object.freeze({
+  tagPicker: systemTemplatePath("components/tag-picker"),
+  documentAnchor: systemTemplatePath("components/document-anchor"),
+  documentCarousel: systemTemplatePath("components/document-carousel"),
+  selector: systemTemplatePath("components/selector"),
+  input: systemTemplatePath("components/input"),
+  badge: systemTemplatePath("components/badge"),
+  resourceBar: systemTemplatePath("components/resource-bar"),
+  skeleton: systemTemplatePath("components/skeleton"),
+});
+
 export default Object.freeze({
   loadTemplates: async () => {
-    let templates = [
-      systemTemplatePath("components/document-anchor"),
-      systemTemplatePath("components/tag-picker"),
-      systemTemplatePath("components/skeleton"),
-      systemTemplatePath("components/selector"),
-      systemTemplatePath("components/input"),
-      systemTemplatePath("components/badge"),
-      systemTemplatePath("components/resource-bar"),
-    ];
+    let templates = Object.values(COMPONENT_TEMPLATES);
     templates.push(...Object.values(ChatMessageSectionTemplate));
     return foundry.applications.handlebars.loadTemplates(templates);
   },
   setupComponent: {
     tagPicker: setupTagPicker,
     resourceBar: setupResourceBar,
+    iconRadioGroups,
   },
   registerHelpers: () => {
     Handlebars.registerHelper("ahFormOptions", function (constant) {
@@ -92,6 +96,7 @@ export default Object.freeze({
     Handlebars.registerHelper("ahSelector", selector);
     Handlebars.registerHelper("ahInput", input);
     Handlebars.registerHelper("ahResourceBar", resourceBar);
+    Handlebars.registerHelper("ahDocumentCarousel", documentCarousel);
   },
 });
 
@@ -486,4 +491,59 @@ function setupResourceBar(html) {
       },
     ]);
   }
+}
+
+/**
+ * @param documents
+ * @param options
+ * @returns {Handlebars.SafeString}
+ */
+function documentCarousel(documents, options) {
+  const template = Handlebars.partials[COMPONENT_TEMPLATES.documentCarousel];
+  const html =
+    typeof template === "function"
+      ? template({
+        documents: documents,
+        ...options.hash,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
+
+/**
+ * @param {HTMLElement} element
+ * @param {Record} context
+ */
+function iconRadioGroups(element, context) {
+  // Get all radio inputs in the dialog
+  const allRadios = element.querySelectorAll(".ah-icon__radio__label input[type='radio']");
+  // Group radios by their "name"
+  const radiosByGroup = Array.from(allRadios).reduce((groups, radio) => {
+    const name = radio.name;
+    if (!groups[name]) groups[name] = [];
+    groups[name].push(radio);
+    return groups;
+  }, {});
+
+  // Iterate over each group
+  Object.entries(radiosByGroup).forEach(([groupName, radios]) => {
+    // Set initial selection from the map
+    const selectedValue = context[groupName];
+    radios.forEach((radio) => {
+      const label = radio.parentElement;
+      if (radio.value === selectedValue) {
+        radio.checked = true;
+        label.classList.add("selected");
+      } else {
+        radio.checked = false;
+        label.classList.remove("selected");
+      }
+
+      // Attach change listener
+      radio.addEventListener("change", () => {
+        radios.forEach((r) => r.parentElement.classList.remove("selected"));
+        if (radio.checked) radio.parentElement.classList.add("selected");
+      });
+    });
+  });
 }

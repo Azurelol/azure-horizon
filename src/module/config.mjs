@@ -34,7 +34,7 @@ AH.progression = Object.freeze({
 
 /**
  * @desc The set of ability scores used for characters in the system.
- * @typedef {"dex", "str", "res", "per"} AH_Attribute
+ * @typedef {"dex", "str", "res", "per"} Attribute
  */
 
 /**
@@ -53,6 +53,18 @@ AH.attributeDice = {
   8: "AH.DICE.D8",
   10: "AH.DICE.D10",
   12: "AH.DICE.D12",
+};
+
+/**
+ * @typedef {"attribute", "open"} CheckType
+ */
+
+/**
+ * @type {Object<CheckType, string>}
+ */
+AH.checkTypes = {
+  attribute: "AH.CHECK.Attribute",
+  open: "AH.CHECK.Open",
 };
 
 /**
@@ -77,6 +89,45 @@ AH.codex = {
     location: "AH.CODEX.Tags.Location",
     event: "AH.CODEX.Tags.Event",
   },
+};
+
+/**
+ * @typedef {"def", "mdef", "dex", "ins", "mig", "wlp"} Defense
+ */
+
+AH.defenses = Object.freeze({
+  def: "AH.CHARACTER.Defense",
+  mdef: "AH.CHARACTER.MagicDefense",
+  dex: "AH.CHARACTER.Dexterity",
+  ins: "AH.CHARACTER.Insight",
+  wlp: "AH.CHARACTER.Willpower",
+  mig: "AH.CHARACTER.Might",
+});
+
+/**
+ * @typedef {'none' | 'startOfTurn' | 'endOfTurn' | 'endOfRound' | 'endOfScene' | 'rest'} Interval
+ */
+
+/**
+ * @description Scene intervals, used for things like skill activations, expiry of active effects
+ */
+AH.intervals = Object.freeze({
+  none: "AH.COMMON.None",
+  startOfTurn: "AH.INTERVAL.StartOfTurn",
+  endOfTurn: "AH.INTERVAL.EndOfTurn",
+  endOfRound: "AH.INTERVAL.EndOfRound",
+  endOfScene: "AH.INTERVAL.EndOfScene",
+  shortRest: "AH.INTERVAL.ShortRest",
+  longRest: "AH.INTERVAL.LongRest",
+});
+
+/**
+ * @description How the active effect's duration is tracked
+ * @type {{self: string, source: string}}
+ */
+AH.effectTracking = {
+  self: "AH.COMMON.Self",
+  source: "AH.COMMON.Source",
 };
 
 /**
@@ -145,6 +196,8 @@ AH.icons = {
   reset: "fa fa-reset",
   refresh: "fa fa-refresh",
   check: "fa fa-check",
+
+  roll: "ra ra-perspective-dice-six",
 
   full: "fa fa-hourglass",
   half: "fa fa-hourglass-half",

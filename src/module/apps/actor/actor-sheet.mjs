@@ -1,8 +1,9 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import { ObjectUtils, StringUtils } from "../../utils/_module.mjs";
+import { HTMLUtils, ObjectUtils, StringUtils } from "../../utils/_module.mjs";
 import { Dialogs } from "../../helpers/_module.mjs";
 import AH from "../../config.mjs";
+import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -44,6 +45,8 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
 
       addArrayElement: this.#addArrayElement,
       removeArrayElement: this.#removeArrayElement,
+
+      performAction: this.#performAction,
     },
     form: {
       submitOnChange: true,
@@ -385,6 +388,47 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
           [`${path}`]: array,
         });
       }
+    }
+  }
+
+  /**
+   * @typedef {'item', 'attribute-check', 'open-check'} AH_SheetAction
+   */
+
+  /**
+   * @typedef AH_SheetActionData
+   * @extends DOMStringMap
+   * @property {AH_SheetAction} type
+   */
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #performAction(event, target) {
+    event.preventDefault();
+    /** @type AH_SheetActionData **/
+    const dataset = target.dataset;
+    const modifiers = HTMLUtils.getKeyboardModifiers(event);
+
+    switch (dataset.type) {
+
+      case "open-check": {
+        await CheckPrompt.openCheck(this.actor);
+      }
+        break;
+
+      case "attribute-check": {
+
+      }
+        break;
+
+      case "item": {
+
+      }
+        break;
     }
   }
 

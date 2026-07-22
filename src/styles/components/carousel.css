@@ -1,0 +1,48 @@
+.ah-document-carousel {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 2px 0;
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.ah-document-carousel .carousel-track {
+  display: block;
+  gap: 4px;
+  flex-wrap: nowrap;
+}
+
+.ah-document-carousel .carousel-item {
+  flex: 0 0 auto;
+  width: 50px;
+  text-align: center;
+  scroll-snap-align: start;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4px;
+}
+
+.ah-document-carousel .carousel-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  display: block;
+  background: white;
+  border-radius: 4px;
+}
+
+.ah-document-carousel .carousel-item figcaption {
+  margin-top: 2px;
+  font-size: 0.7em;
+  text-align: center;
+  color: var(--ah-color-background-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

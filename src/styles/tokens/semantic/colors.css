@@ -1,0 +1,13 @@
+:root {
+  /* resources */
+  --ah-color-hp: linear-gradient(90deg, #315936 0%, #63b05f 100%);
+  --ah-color-mp: linear-gradient(90deg, #232d50 0%, #587fab 100%);
+  --ah-color-ip: linear-gradient(90deg, #8f8352 0%, #d8cf78 100%);
+  --ah-color-tp: linear-gradient(90deg, darkgoldenrod 0%, orange 100%);
+
+  /* Difficulty */
+  --ah-color-difficulty-easy: #3d6b3d;
+  --ah-color-difficulty-normal: #b59f3b;
+  --ah-color-difficulty-hard: #b87432;
+  --ah-color-difficulty-veryHard: #8c2e2e;
+}

@@ -98,6 +98,22 @@ export default class FoundryUtils {
     }
     return speaker;
   }
+
+  /**
+   * @remarks This follows the 'key:value' format used in the system's CONFIG file
+   * @param {string[]} keys
+   * @param {Record<string, string>} labelRecord
+   * @param {Record<string, string>} iconRecord
+   * @returns {FormSelectOption[]}
+   */
+  static generateConfigIconOptions(keys, labelRecord, iconRecord) {
+    return Array.from(keys).map((key) => ({
+      label: StringUtils.localize(labelRecord[key]),
+      icon: iconRecord[key],
+      value: key,
+    }));
+  }
+
   /**
    * @param {HTMLElement} html
    * @param {String} className

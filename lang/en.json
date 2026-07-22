@@ -45,6 +45,11 @@
         "long": "Level",
         "short": "LV"
       },
+      "Attribute": {
+        "long": "Attribute",
+        "plural": "Attributes",
+        "short": "ATTR"
+      },
       "Dexterity": {
         "long": "Dexterity",
         "short": "DEX"
@@ -88,6 +93,62 @@
       "MagicDefense": {
         "long": "Magic Defense",
         "short": "MDEF"
+      },
+      "Modifier": {
+        "long": "Modifier",
+        "plural": "Modifiers",
+        "short": "MOD"
+      },
+      "Bonus": {
+        "long": "Bonus",
+        "plural": "Bonuses"
+      }
+    },
+    "CHECK": {
+      "Attribute": "Attribute Check",
+      "Open": "Open Check",
+      "Difficulty": "Difficulty",
+      "Threshold": "Threshold",
+      "SituationalModifier": "Situational Modifier"
+    },
+    "INTERVAL": {
+      "StartOfCombat": {
+        "long": "Start of Combat",
+        "short": "SOC"
+      },
+      "EndOfCombat": {
+        "long": "End of Combat",
+        "short": "EOC"
+      },
+      "StartOfTurn": {
+        "long": "Start of Turn",
+        "short": "SOT"
+      },
+      "EndOfTurn": {
+        "long": "End Of Turn",
+        "short": "EOT"
+      },
+      "StartOfRound": {
+        "long": "Start of Round",
+        "short": "SOR"
+      },
+      "EndOfRound": {
+        "long": "End of Round",
+        "short": "EOR"
+      },
+      "StartOfScene": {
+        "long": "Start of Scene",
+        "short": "SOS"
+      },
+      "EndOfScene": {
+        "long": "End of Scene",
+        "short": "EOS"
+      },
+      "ShortRest": {
+        "long": "Short Rest"
+      },
+      "LongRest": {
+        "long": "Long Rest"
       }
     },
     "DICE": {
@@ -139,10 +200,23 @@
     "DIALOG": {
       "UploadClipboardImage": "Upload Clipboard Image",
       "BrowseImage": "Browse Image",
-      "EntriesMissing": "Entries are missing."
+      "EntriesMissing": "Entries are missing.",
+      "InvalidTarget": "Invalid Targets"
+    },
+    "DOCUMENT": {
+      "Actor": {
+        "long": "Actor",
+        "plural": "Actors"
+      },
+      "Item": {
+        "long": "Item",
+        "plural": "Items"
+      }
     },
     "COMMON": {
+      "Document": "Document",
       "Actor": "Actor",
+      "Item": "Item",
       "Entry": "Entry",
       "Name": "Name",
       "Add": "Add",
@@ -161,7 +235,12 @@
       "Description": "Description",
       "Notes": "Notes",
       "Half": "Half",
-      "Full": "Full"
+      "Full": "Full",
+      "Label": "Label",
+      "Primary": "Primary",
+      "Secondary": "Secondary",
+      "Self": "Self",
+      "Source": "Source"
     }
   },
   "TYPES": {
