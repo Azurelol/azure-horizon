@@ -4,10 +4,6 @@ import AdversaryDataModel from "./adversary-data-model.mjs";
 import PartyDataModel from "./party-data-model.mjs";
 import UnitDataModel from "./unit-data-model.mjs";
 
-/**
- * @typedef {"character"|"party"|"adversary"|"unit"} AHActorType
- */
-
 const dataModels = Object.freeze({
   base: ActorDataModel,
   character: CharacterDataModel,

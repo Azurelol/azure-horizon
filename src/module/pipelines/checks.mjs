@@ -1,3 +1,10 @@
+import { Events } from "./_module.mjs";
+import { CheckConfigurer } from "../helpers/_module.mjs";
+import { Hooks } from "../data/common/_module.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
+
+const { DiceTerm, NumericTerm } = foundry.dice.terms;
+
 /**
  * @typedef {string} CheckId
  */
@@ -21,10 +28,11 @@
  * @property {CheckModifier[]} modifiers array of modifiers
  * @property {Object} data additional data attached to the check
  * @property {Boolean} generateOpportunity Whether this check can generate an opportunity.
+ * @property {number} critThreshold The critical threshold for this check.
  */
 
 /**
- * @typedef {Check} CheckData the basic configuration of the check. This object is sealed
+ * @typedef {Check} CheckOptions the basic configuration of the check. This object is sealed
  * @property {Attribute} primary the first attribute
  * @property {Attribute} secondary the second attribute
  */
@@ -43,7 +51,6 @@
  * @property {number} secondary.dice the dice corresponding to the second attribute
  * @property {number} secondary.result the result of the secondary die
  * @property {number} modifierTotal the sum of all modifier
- * @property {number} critThreshold the crit threshold for this check, default 6s
  * @property {number} result the total result of the check
  * @property {boolean} fumble
  * @property {boolean} critical
@@ -51,7 +58,7 @@
 
 /**
  * @callback CheckCallback
- * @param {CheckData} check
+ * @param {CheckOptions} check
  * @param {AHActor} actor
  * @param {AHItem} item
  * @return {Promise | void}
@@ -63,6 +70,206 @@
  * @return {Promise | void}
  */
 
+/**
+ * @param {String} hook The name of the hook
+ * @param {Partial<CheckOptions|CheckResult>} check
+ * @param {AHActor} actor
+ * @param {AHItem} item
+ * @returns {Promise<void>}
+ */
+async function invokeWithCallbacks(hook, check, actor, item) {
+  /**
+   * @type {{callback: Promise | (() => Promise | void), priority: number}[]}
+   */
+  const callbacks = [];
+  const registerCallbacks = (callback, priority = 0) => {
+    callbacks.push({ callback, priority });
+  };
+
+  Hooks.callAll(hook, check, actor, item, registerCallbacks);
+
+  callbacks.sort((a, b) => a.priority - b.priority);
+  for (let callbackObj of callbacks) {
+    await callbackObj.callback(check, actor, item);
+  }
+}
+
+/**
+ * @param {Partial<CheckOptions>} check
+ * @param {AHActor} actor
+ * @param {AHItem} item
+ * @param {CheckCallback} initialConfigCallback
+ * @return {Promise<CheckOptions>}
+ */
+async function prepareCheck(check, actor, item, initialConfigCallback) {
+  // Define the check structure
+  check.primary ??= "";
+  check.secondary ??= "";
+  check.id ??= foundry.utils.randomID();
+  check.modifiers ??= [];
+  check.data ??= {};
+  check.critThreshold = Formulas.CRITICAL_THRESHOLD;
+  check.generateOpportunity = true;
+  Object.seal(check);
+
+  // Set initial targets (actions without rolls can have targeting)
+  const config = new CheckConfigurer(check);
+  config.setDefaultTargets();
+
+  // Initial callback
+  await (initialConfigCallback ? initialConfigCallback(check, actor, item) : undefined);
+  Object.defineProperty(check, "type", {
+    value: check.type,
+    writable: false,
+    enumerable: true,
+  });
+  if (!check.type) {
+    throw new Error("check type missing");
+  }
+  Object.defineProperty(check, "id", {
+    value: check.id,
+    writable: false,
+    configurable: false,
+    enumerable: true,
+  });
+  if (!check.id) {
+    throw new Error("check id missing");
+  }
+
+  await invokeWithCallbacks(Hooks.PREPARE_CHECK, check, actor, item);
+  await Events.initializeAction(config, actor, item);
+
+  if (!check.primary || !check.secondary) {
+    throw new Error("check attribute missing");
+  }
+
+  return check;
+}
+
+/**
+ * @param {CheckOptions} check
+ * @param {AHActor} actor
+ * @return {Promise<Roll>}
+ */
+async function rollCheck(check, actor) {
+  const { primary, secondary, modifiers } = check;
+
+  /** @type AttributesDataModel */
+  const attributes = actor.system.attributes;
+  let primaryDice = attributes[primary].current;
+  let secondaryDice = attributes[secondary].current;
+
+  const modifierTotal = modifiers.reduce((agg, curr) => (agg += curr.value), 0);
+  let modPart = "";
+  if (modifierTotal > 0) {
+    modPart = ` + ${modifierTotal}`;
+  } else if (modifierTotal < 0) {
+    modPart = ` - ${Math.abs(modifierTotal)}`;
+  }
+  const formula = `d${primaryDice}[${primary}] + d${secondaryDice}[${secondary}]${modPart}`;
+
+  return new Roll(formula).roll();
+}
+
+/**
+ * @param {RollTerm} term
+ * @param {AHActor} actor
+ * @return {{result: number, dice: number}}
+ */
+const extractDieResults = (term, actor) => {
+  if (term instanceof DiceTerm) {
+    return {
+      dice: term.faces,
+      result: term.total,
+    };
+  } else if (term instanceof NumericTerm) {
+    return {
+      dice: term.options.faces ?? actor.system.attributes[term.flavor].current,
+      result: term.total,
+    };
+  } else {
+    throw new Error(`Unexpected formula term for primary attribute: ${term}`);
+  }
+};
+
+/**
+ * @param {CheckOptions} check
+ * @param {Roll} roll
+ * @param {AHActor} actor
+ * @param {AHItem} item
+ * @param {Boolean} callHook
+ * @return {Promise<Readonly<CheckResult>>}
+ */
+const processResult = async (check, roll, actor, item, callHook = true) => {
+  if (!roll._evaluated) {
+    await roll.roll();
+  }
+
+  const primary = extractDieResults(roll.terms[0], actor);
+  const secondary = extractDieResults(roll.terms[2], actor);
+
+  const critThreshold = check.critThreshold ?? Formulas.CRITICAL_THRESHOLD;
+
+  /**
+   * @type {Readonly<CheckResult>}
+   */
+  const result = Object.freeze({
+    type: check.type,
+    id: check.id,
+    actorUuid: actor.uuid,
+    itemUuid: item?.uuid,
+    itemName: item?.name,
+    roll: roll.toJSON(),
+    additionalRolls: [],
+    primary: Object.freeze({
+      attribute: check.primary,
+      dice: primary.dice,
+      result: primary.result,
+    }),
+    secondary: Object.freeze({
+      attribute: check.secondary,
+      dice: secondary.dice,
+      result: secondary.result,
+    }),
+    generateOpportunity: check.generateOpportunity ?? true,
+    modifiers: Object.freeze(check.modifiers.map(Object.freeze)),
+    modifierTotal: check.modifiers.reduce((agg, curr) => agg + curr.value, 0),
+    critThreshold: critThreshold,
+    result: roll.total,
+    fumble: (primary.result === 1) && (secondary.result === 1),
+    critical: (primary.result === secondary.result) && (primary.result >= Math.max(2, critThreshold)),
+    data: check.data,
+  });
+
+  if (callHook) {
+    await invokeWithCallbacks(Hooks.PROCESS_CHECK, result, actor, item);
+  }
+
+  return result;
+};
+
+/**
+ * @param {Partial<CheckOptions>} check
+ * @param {AHActor} actor
+ * @param {AHItem} item
+ * @param {CheckCallback} [prepareCheckCallback]
+ * @param {CheckResultCallback} renderCheckCallback
+ */
+async function performCheck(check, actor, item, prepareCheckCallback = undefined, renderCheckCallback = undefined) {
+  const preparedCheck = await prepareCheck(check, actor, item, prepareCheckCallback);
+  await Events.performAction(check, actor, item);
+  const roll = await rollCheck(preparedCheck, actor);
+  const result = await processResult(preparedCheck, roll, actor, item);
+  await renderCheck(result, actor, item);
+  if (renderCheckCallback) {
+    await renderCheckCallback(result);
+  }
+  Events.resolveAction(result, actor, item);
+}
+
+/**
+ * A pipeline for executing checks during play.
+ */
 export default class Checks {
 
   /**
@@ -72,8 +279,8 @@ export default class Checks {
    * @param {CheckCallback} [configCallback]
    * @param {CheckResultCallback} onPerform
    */
-  async attributeCheck(actor, attributes, item, configCallback, onPerform) {
-    /** @type Partial<CheckData> */
+  static async attributeCheck(actor, attributes, item, configCallback, onPerform) {
+    /** @type Partial<CheckOptions> */
     const check = {
       type: "attribute",
       primary: attributes.primary,
@@ -88,8 +295,8 @@ export default class Checks {
    * @param {CheckAttributes} attributes
    * @param {CheckCallback} [configCallback]
    */
-  async openCheck(actor, attributes, configCallback) {
-    /** @type Partial<CheckData> */
+  static async openCheck(actor, attributes, configCallback) {
+    /** @type Partial<CheckOptions> */
     const check = {
       type: "open",
       primary: attributes.primary,

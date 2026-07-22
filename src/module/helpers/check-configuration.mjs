@@ -1,10 +1,9 @@
-
-// Data keys
 import { systemID } from "../constants.mjs";
-import { Flags } from "./_module.mjs";
 import { FoundryUtils, StringUtils } from "../utils/_module.mjs";
 import { Targeting } from "./targeting.mjs";
+import { Flags } from "../data/common/_module.mjs";
 
+// Data keys
 const TARGETS = "targets";
 const TARGETED_DEFENSE = "targetedDefense";
 const DIFFICULTY = "difficulty";
@@ -36,7 +35,7 @@ const initHrZero = (hrZero) => (check) => {
 export class CheckInspector {
 
   /**
-   * @type {CheckResult|CheckData}
+   * @type {CheckResult|CheckOptions}
    */
   #check;
 
@@ -62,7 +61,7 @@ export class CheckInspector {
   }
 
   /**
-   * @return {CheckData|CheckResult}
+   * @return {CheckOptions|CheckResult}
    */
   getCheck() {
     return this.#check;

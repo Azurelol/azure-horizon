@@ -13,7 +13,7 @@ import { ChatMessageSections, ChatSectionOrder } from "./chat-message-sections.m
 /**
  * @desc Builder of actionable chat messages for the system.
  */
-export class ChatMessageBuilder {
+export default class ChatMessageBuilder {
   /**
    * @type {ChatMessageBuilderData}
    */

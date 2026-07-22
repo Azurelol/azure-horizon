@@ -1,4 +1,14 @@
+/**
+ * The system string identifier, used by Foundry.
+ * @type {string}
+ */
 export const systemID = "azure-horizon";
+
+/**
+ * The system namespace, used as a prefix for hooks and the like.
+ * @type {string}
+ */
+export const systemNS = "ah";
 
 /**
  * Translates repository paths to Foundry Data paths.

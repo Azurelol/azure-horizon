@@ -24,7 +24,12 @@
     "ITEM": {
       "Revision": "Revision",
       "Slug": "Slug",
-      "SchemaVersion": "SchemaVersion"
+      "SchemaVersion": "SchemaVersion",
+      "Attack": "Attack",
+      "Skill": "Skill",
+      "Weapon": "Weapon",
+      "Spell": "Spell",
+      "Item": "Item"
     },
     "THEME": {
       "BackgroundPrimary": "Background Primary",
@@ -240,7 +245,8 @@
       "Primary": "Primary",
       "Secondary": "Secondary",
       "Self": "Self",
-      "Source": "Source"
+      "Source": "Source",
+      "Scene": "Scene"
     }
   },
   "TYPES": {

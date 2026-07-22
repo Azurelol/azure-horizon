@@ -122,6 +122,30 @@ AH.intervals = Object.freeze({
 });
 
 /**
+ * @typedef {"character"|"party"|"adversary"|"unit"} AH_ActorType
+ */
+
+/**
+ * @typedef {'weapon'|'skill'|'spell'|'consumable'} AH_ItemType
+ */
+
+AH.itemType = {
+  weapon: "AH.ITEM.Weapon",
+  skill: "AH.ITEM.Skill",
+};
+
+/**
+ * @typedef {"attack" | "skill" | "spell" | "item"} AH_ItemGroup
+ */
+
+AH.itemGroup = {
+  attack: "AH.ITEM.Attack",
+  skill: "AH.ITEM.Skill",
+  spell: "AH.ITEM.Spell",
+  item: "AH.ITEM.Item",
+};
+
+/**
  * @description How the active effect's duration is tracked
  * @type {{self: string, source: string}}
  */
