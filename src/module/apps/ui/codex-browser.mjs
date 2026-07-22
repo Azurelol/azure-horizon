@@ -22,7 +22,7 @@ export default class CodexBrowser {
   enrichedDescriptions;
 
   static PROXY_ACTOR_NAME = "AH: Codex Entry Placeholder";
-  static PROXY_ACTOR_IMG = systemAssetPath("ui/pfu-logo.png");
+  static PROXY_ACTOR_IMG = systemAssetPath("ui/ah-logo.png");
   static UPLOAD_FILE_PREFIX = "codex-entry";
 
   constructor(sheet) {

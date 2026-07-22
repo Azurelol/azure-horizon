@@ -120,11 +120,34 @@ async function renderAction(renderData, config, actor, item) {
   return AsyncHooks.callSequential(Hooks.RENDER_ACTION_EVENT, event);
 }
 
+/**
+ * @typedef OpportunityEvent
+ * @description Dispatched when a character gets an opportunity
+ * @property {ChatMessageSectionCollection} renderData
+ * @property {AHActor} actor
+ * @property {String} type The type of check that led to the opportunity
+ * @property {AHItem} item The item that prompted the check
+ * @property {Boolean} fumble If the opportunity came from a fumble, which goes to the opposition of the actor.
+ */
+
+function opportunity(renderData, actor, type, item, fumble) {
+  /** @type OpportunityEvent  **/
+  const event = {
+    renderData: renderData,
+    actor: actor,
+    type: type,
+    item: item,
+    fumble: fumble,
+  };
+  Hooks.call(Hooks.OPPORTUNITY_EVENT, event);
+}
+
 const Events = Object.freeze({
   initializeAction,
   performAction,
   resolveAction,
   renderAction,
+  opportunity,
 });
 
 export default Events;

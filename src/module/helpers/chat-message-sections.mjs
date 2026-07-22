@@ -41,7 +41,10 @@ export const ChatSectionOrder = Object.freeze({
  */
 
 export const ChatMessageSectionTemplate = Object.freeze({
-  tag: systemTemplatePath("chat/chat-section-tags"),
+  tags: systemTemplatePath("chat/chat-section-tags"),
+  flavor: systemTemplatePath("chat/chat-section-flavor"),
+  flavorItem: systemTemplatePath("chat/chat-section-flavor-item"),
+  check: systemTemplatePath("chat/chat-section-check"),
 });
 
 /**
@@ -58,7 +61,7 @@ export const ChatMessageSections = Object.freeze({
     tags = tags.filter((tag) => !("show" in tag) || tag.show);
     if (tags.length > 0) {
       sections.push(async () => ({
-        partial: ChatMessageSectionTemplate.tag,
+        partial: ChatMessageSectionTemplate.tags,
         data: {
           tags: tags,
         },

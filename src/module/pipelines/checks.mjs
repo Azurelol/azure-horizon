@@ -1,7 +1,10 @@
 import { Events } from "./_module.mjs";
-import { CheckConfigurer } from "../helpers/_module.mjs";
+import { ChatMessageBuilder, ChatSectionOrder, CheckConfigurer } from "../helpers/_module.mjs";
 import { Hooks } from "../data/common/_module.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
+import { renderTemplate, systemTemplatePath } from "../constants.mjs";
+import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
+import AH from "../config.mjs";
 
 const { DiceTerm, NumericTerm } = foundry.dice.terms;
 
@@ -11,14 +14,21 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
 
 /**
  * @typedef CheckAttributes
- * @property {Attribute} primary
- * @property {Attribute} secondary
+ * @property {AH_Attribute} primary
+ * @property {AH_Attribute} secondary
  */
 
 /**
  * @typedef CheckModifier
  * @property {string} label the label or localization key for this modifier
  * @property {number} value the value of this modifier
+ */
+
+/**
+ * @typedef AttributeDieRoll
+ * @property {AH_Attribute} attribute
+ * @property {number} dice
+ * @property {Number} result
  */
 
 /**
@@ -33,8 +43,8 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
 
 /**
  * @typedef {Check} CheckOptions the basic configuration of the check. This object is sealed
- * @property {Attribute} primary the first attribute
- * @property {Attribute} secondary the second attribute
+ * @property {AH_Attribute} primary the first attribute
+ * @property {AH_Attribute} secondary the second attribute
  */
 
 /**
@@ -44,12 +54,8 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @property {string} itemName
  * @property {Roll | Object} roll the Roll instance or serialized form of the primary check
  * @property {(Roll | Object)[]} additionalRolls any secondary rolls, either as Roll instances or serialized
- * @property {Attribute} primary.attribute the first attribute
- * @property {number} primary.dice the dice corresponding to the first attribute
- * @property {number} primary.result the result of the primary die
- * @property {Attribute} secondary.attribute the second attribute
- * @property {number} secondary.dice the dice corresponding to the second attribute
- * @property {number} secondary.result the result of the secondary die
+ * @property {AttributeDieRoll} primary
+ * @property {AttributeDieRoll} secondary
  * @property {number} modifierTotal the sum of all modifier
  * @property {number} result the total result of the check
  * @property {boolean} fumble
@@ -96,13 +102,9 @@ async function invokeWithCallbacks(hook, check, actor, item) {
 
 /**
  * @param {Partial<CheckOptions>} check
- * @param {AHActor} actor
- * @param {AHItem} item
- * @param {CheckCallback} initialConfigCallback
- * @return {Promise<CheckOptions>}
+ * @return {Partial<CheckOptions>}
  */
-async function prepareCheck(check, actor, item, initialConfigCallback) {
-  // Define the check structure
+function initializeCheckDefaults(check) {
   check.primary ??= "";
   check.secondary ??= "";
   check.id ??= foundry.utils.randomID();
@@ -111,6 +113,28 @@ async function prepareCheck(check, actor, item, initialConfigCallback) {
   check.critThreshold = Formulas.CRITICAL_THRESHOLD;
   check.generateOpportunity = true;
   Object.seal(check);
+  return check;
+}
+
+/**
+ * @param {Partial<CheckOptions>} check
+ */
+function validateCheckAttributes(check) {
+  if (!check.primary || !check.secondary) {
+    throw new Error("check attribute missing");
+  }
+}
+
+/**
+ * @param {Partial<CheckOptions>} check
+ * @param {AHActor} actor
+ * @param {AHItem} item
+ * @param {CheckCallback} initialConfigCallback
+ * @return {Promise<CheckOptions>}
+ */
+async function prepareCheck(check, actor, item, initialConfigCallback) {
+  // Define the check structure
+  initializeCheckDefaults(check);
 
   // Set initial targets (actions without rolls can have targeting)
   const config = new CheckConfigurer(check);
@@ -118,30 +142,14 @@ async function prepareCheck(check, actor, item, initialConfigCallback) {
 
   // Initial callback
   await (initialConfigCallback ? initialConfigCallback(check, actor, item) : undefined);
-  Object.defineProperty(check, "type", {
-    value: check.type,
-    writable: false,
-    enumerable: true,
-  });
-  if (!check.type) {
-    throw new Error("check type missing");
-  }
-  Object.defineProperty(check, "id", {
-    value: check.id,
-    writable: false,
-    configurable: false,
-    enumerable: true,
-  });
-  if (!check.id) {
-    throw new Error("check id missing");
-  }
+
+  ObjectUtils.lockAndValidateProperty(check, "type");
+  ObjectUtils.lockAndValidateProperty(check, "id", false);
 
   await invokeWithCallbacks(Hooks.PREPARE_CHECK, check, actor, item);
   await Events.initializeAction(config, actor, item);
 
-  if (!check.primary || !check.secondary) {
-    throw new Error("check attribute missing");
-  }
+  validateCheckAttributes(check);
 
   return check;
 }
@@ -249,28 +257,107 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
 };
 
 /**
- * @param {Partial<CheckOptions>} check
+ * @param {CheckResult} result
  * @param {AHActor} actor
  * @param {AHItem} item
- * @param {CheckCallback} [prepareCheckCallback]
- * @param {CheckResultCallback} renderCheckCallback
+ * @param {Record<string, any>} [flags]
+ * @return {Promise<void>}
  */
-async function performCheck(check, actor, item, prepareCheckCallback = undefined, renderCheckCallback = undefined) {
-  const preparedCheck = await prepareCheck(check, actor, item, prepareCheckCallback);
-  await Events.performAction(check, actor, item);
-  const roll = await rollCheck(preparedCheck, actor);
-  const result = await processResult(preparedCheck, roll, actor, item);
-  await renderCheck(result, actor, item);
-  if (renderCheckCallback) {
-    await renderCheckCallback(result);
+async function renderCheck(result, actor, item, flags = {}) {
+  /**
+   * @type ChatMessageBuilderData
+   */
+  const builderData = {
+    sections: [],
+    postRenderActions: [],
+    tags: [],
+    flags: {},
+  };
+  const config = new CheckConfigurer(result);
+
+  Hooks.callAll(Hooks.RENDER_CHECK, builderData, result, actor, item);
+  await Events.renderAction(builderData, config, actor, item);
+
+  if (result.generateOpportunity) {
+    if (result.critical) {
+      Events.opportunity(builderData, actor, result.type, item, false);
+    } else if (result.fumble) {
+      Events.opportunity(builderData, actor, result.type, item, true);
+    }
   }
-  Events.resolveAction(result, actor, item);
+
+  // Roll Section
+  builderData.sections.push({
+    order: ChatSectionOrder.roll,
+    partial: systemTemplatePath("chat/chat-section-check"),
+    data: {
+      result: result,
+      difficulty: config.getDifficulty(),
+    },
+  });
+
+  // Create the chat builder
+  const chatBuilder = new ChatMessageBuilder(actor, item).withData(builderData).withFlags(flags);
+
+  // Add flavor
+  let flavor;
+  if (item) {
+    let linked = [];
+    const weaponReference = config.getWeaponReference();
+    if (weaponReference) {
+      linked.push(await fromUuid(weaponReference));
+    }
+    flavor = await renderTemplate("chat/chat-section-flavor-item", {
+      item: item,
+      linked: linked,
+    });
+  } else {
+    let flavorTitle = StringUtils.localize(AH.checkTypes[result.type] || "AH.CHECK.Check");
+    const itemRef = config.getItemReference();
+    let referencedItem;
+    if (itemRef) {
+      referencedItem = await fromUuid(itemRef);
+      flavorTitle += ` - ${referencedItem.name}`;
+    }
+    flavor = await renderTemplate("chat/chat-section-flavor", {
+      title: flavorTitle,
+      type: result.type,
+      item: referencedItem,
+      label: config.getLabel(),
+    });
+  }
+  chatBuilder.withFlavor(flavor);
+
+  // Roll data
+  const rolls = [result.roll, ...result.additionalRolls].filter(Boolean);
+  chatBuilder.withRolls(rolls);
+
+  // Create the chat message
+  return chatBuilder.create();
 }
 
 /**
  * A pipeline for executing checks during play.
  */
 export default class Checks {
+  /**
+   * @param {Partial<CheckOptions>} check
+   * @param {AHActor} actor
+   * @param {AHItem} item
+   * @param {CheckCallback} [prepareCheckCallback]
+   * @param {CheckResultCallback} renderCheckCallback
+   */
+  static async performCheck(check, actor, item, prepareCheckCallback = undefined, renderCheckCallback = undefined) {
+    const preparedCheck = await prepareCheck(check, actor, item, prepareCheckCallback);
+    await Events.performAction(check, actor, item);
+    const roll = await rollCheck(preparedCheck, actor);
+    const result = await processResult(preparedCheck, roll, actor, item);
+    await renderCheck(result, actor, item);
+    if (renderCheckCallback) {
+      await renderCheckCallback(result);
+    }
+    Events.resolveAction(result, actor, item);
+  }
 
   /**
    * @param {AHActor} actor
@@ -287,7 +374,7 @@ export default class Checks {
       secondary: attributes.secondary,
     };
 
-    return performCheck(check, actor, item, configCallback, onPerform);
+    return Checks.performCheck(check, actor, item, configCallback, onPerform);
   }
 
   /**
@@ -303,7 +390,7 @@ export default class Checks {
       secondary: attributes.secondary,
     };
 
-    return performCheck(check, actor, undefined, configCallback);
+    return Checks.performCheck(check, actor, undefined, configCallback);
   }
 
 }

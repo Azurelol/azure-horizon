@@ -97,7 +97,9 @@ export default class ChatMessageBuilder {
    * @returns {ChatMessageBuilder}
    */
   withFlags(flags) {
-    this.#flags.push(flags);
+    if (flags) {
+      this.#flags.push(flags);
+    }
     return this;
   }
 
@@ -118,6 +120,7 @@ export default class ChatMessageBuilder {
     if (!this.#renderData.postRenderActions) {
       this.#renderData.postRenderActions = [];
     }
+    this.withFlags(data.flags);
     return this;
   }
 

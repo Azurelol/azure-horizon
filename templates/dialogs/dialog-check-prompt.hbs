@@ -6,7 +6,7 @@
            data-edit="img" title="{{actor.name}}"
            style="height: 96px; width: auto; object-fit: contain;" />
       {{#each attributes}}
-        {{pfuIconAttribute @key value=(lookup @root/attributeValues @key)}}
+        {{ahIconBadge iconClass=@key value=(lookup @root/attributeValues @key)}}
       {{/each}}
     </fieldset>
   </section>
@@ -80,7 +80,7 @@
     <fieldset>
       <legend>{{localize 'AH.CHARACTER.Modifier.long'}}</legend>
       <div>
-        {{ahBadge 'mod' label='AH.CHARACTER.Modifier.short' value=bonus }}
+        {{ahBadge iconClass='modifier' label='AH.CHARACTER.Modifier.short' value=bonus }}
         <label>
           {{localize 'AH.CHARACTER.Modifier.long'}}
           <input name="modifier" type="number" value="{{modifier}}">
@@ -89,11 +89,11 @@
     </fieldset>
     {{#if (and (ne type 'open') (ne type 'opposed'))}}
       <fieldset>
-        <legend>{{localize 'AH.CHECK.Difficulty'}}</legend>
+        <legend>{{localize 'AH.CHECK.DifficultyLevel.long'}}</legend>
         {{#if (eq type 'group')}}
         {{else}}
           <label>
-            {{localize 'AH.CHECK.Difficulty'}}
+            {{localize 'AH.CHECK.DifficultyLevel.long'}}
             <input name="difficulty" type="number" value="{{difficulty}}" min="0">
           </label>
         {{/if}}

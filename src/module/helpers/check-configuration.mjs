@@ -196,8 +196,8 @@ export class CheckInspector {
  */
 export class CheckConfigurer extends CheckInspector {
   /**
-   * @param {Attribute} primary
-   * @param {Attribute} secondary
+   * @param {AH_Attribute} primary
+   * @param {AH_Attribute} secondary
    */
   setAttributes(primary, secondary) {
     this.check.primary = primary;

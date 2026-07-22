@@ -85,6 +85,29 @@
   }
 }
 
+.ah-roll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    animation: hover-up-down 1s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes hover-up-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
 .ah-icon__radio-group input {
   margin: 0;
   content: none;

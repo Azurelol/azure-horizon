@@ -1,14 +1,21 @@
 <header class="sheet-header ah-character__header">
-  <div class="ah-flexrow">
+  <div class="ah-sheet__group">
     {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
   </div>
 
-  <div class="ah-flexrow">
+  <div class="ah-sheet__group">
     {{ahInput 'system.level' system.level type='number' icon=(ahIconClass 'level') label='AH.CHARACTER.Level.short' tooltip='AH.CHARACTER.Level.long' classes="ah-character__level" }}
     {{#each system.attributes as |attribute key|}}
       {{ahSelector icon=(ahIconClass key) label=(ahLocaleKey 'attributes' key format='short') values=@root.AH.attributeDice value=attribute.base path=(ahConcat 'system.attributes.' key '.base') }}
     {{/each}}
   </div>
 
+  <div class="ah-sheet__group">
+    <div class="ah-roll" data-action="performAction" data-type="attribute-check"
+         data-tooltip="{{localize 'AH.CHECK.Attribute'}}">
+      <i class="ah-icon --m {{ahIconClass 'attributeCheck' }} spin2win"></i>
+      <label>{{localize 'AH.CHECK.Attribute'}}</label>
+    </div>
+  </div>
 
 </header>

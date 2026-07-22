@@ -421,12 +421,11 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
         break;
 
       case "attribute-check": {
-
+        await CheckPrompt.attributeCheck(this.actor);
       }
         break;
 
       case "item": {
-
       }
         break;
     }

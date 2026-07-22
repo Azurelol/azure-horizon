@@ -110,11 +110,25 @@
       }
     },
     "CHECK": {
+      "Check": "Check",
       "Attribute": "Attribute Check",
       "Open": "Open Check",
       "Difficulty": "Difficulty",
       "Threshold": "Threshold",
-      "SituationalModifier": "Situational Modifier"
+      "SituationalModifier": "Situational Modifier",
+      "Modifier": {
+        "long": "Modifier",
+        "plural": "Modifiers",
+        "short": "MOD"
+      },
+      "DifficultyLevel": {
+        "long": "Difficulty",
+        "short": "DL"
+      },
+      "Success": "Success",
+      "Failure": "Failure",
+      "Critical": "Critical",
+      "Fumble": "Fumble"
     },
     "INTERVAL": {
       "StartOfCombat": {

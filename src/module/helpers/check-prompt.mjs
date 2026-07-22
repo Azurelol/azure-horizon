@@ -2,8 +2,8 @@
 /**
  * @typedef CheckConfig
  * @property {String} title
- * @property {Attribute} primary
- * @property {Attribute} secondary
+ * @property {AH_Attribute} primary
+ * @property {AH_Attribute} secondary
  * @property {number} modifier
  */
 
@@ -27,7 +27,7 @@
 
 import { FoundryUtils, HTMLUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
-import { renderTemplate } from "../constants.mjs";
+import { renderTemplate, systemNS } from "../constants.mjs";
 import Handlebars from "./handlebars.mjs";
 import Checks from "../pipelines/checks.mjs";
 import { CheckConfigurer } from "./check-configuration.mjs";
@@ -51,7 +51,7 @@ async function onSetDifficulty(event, target) {
  * @property {OpenCheckConfig} open
  */
 
-const RECENT_CHECKS_KEY = "azurehorizon.recentChecks";
+const RECENT_CHECKS_KEY = `${systemNS}.recentChecks`;
 
 /**
  * @param {'attribute', 'open', 'group'} type
@@ -156,7 +156,7 @@ async function prompt(actor, type, initialConfig = {}) {
     actions: {
       setDifficulty: onSetDifficulty,
     },
-    content: await renderTemplate("dialog/dialog-check-prompt-unified", context),
+    content: await renderTemplate("dialogs/dialog-check-prompt", context),
     rejectClose: false,
     ok: {
       icon: AH.icons.roll,

@@ -97,6 +97,29 @@ export default Object.freeze({
     Handlebars.registerHelper("ahInput", input);
     Handlebars.registerHelper("ahResourceBar", resourceBar);
     Handlebars.registerHelper("ahDocumentCarousel", documentCarousel);
+    Handlebars.registerHelper("ahCheckOutcome",
+      /**
+       * @param result
+       * @param difficulty
+       */
+      function (result, difficulty) {
+        if (result.critical) {
+          return "critical";
+        } else if (result.fumble) {
+          return "fumble";
+        }
+
+        if (Number.isInteger(difficulty)) {
+          if (result.total >= difficulty) {
+            return "success";
+          } else {
+            return "failure";
+          }
+        }
+
+        return "default";
+      },
+    );
   },
 });
 
@@ -334,17 +357,27 @@ function arrayField(options) {
 }
 
 /**
+ * @typedef {'l'|'m'|'s'}  AH_IconSize
+ */
+
+/**
  * @typedef AH_BadgeOptions
  * @property icon
  * @property label
  * @property value
+ * @property iconClass
+ * @property {AH_IconSize} size
  */
 
 /**
+ * @param options
  * @param {AH_BadgeOptions} options.hash
  * @returns {Handlebars.SafeString}
  */
 function badge(options) {
+  if (options.hash?.iconClass) {
+    options.hash.icon = AH.icons[options.hash.iconClass];
+  }
   const template = Handlebars.partials[systemTemplatePath("components/badge")];
   const html =
     typeof template === "function"

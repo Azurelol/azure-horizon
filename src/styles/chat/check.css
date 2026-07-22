@@ -1,0 +1,45 @@
+.ah-chat-section__flavor {
+  h2 {
+    flex-grow: 8;
+    margin-left: 4px;
+  }
+}
+
+.ah-chat-section__check {
+}
+
+.ah-chat-section__check__inputs {
+}
+
+.ah-chat-section__check__outcome {
+
+  background: var(--ah-background-default);
+
+  &.critical {
+    background: var(--ah-background-critical);
+  }
+
+  &.success {
+    background: var(--ah-background-success);
+  }
+
+  &.failure {
+    background: var(--ah-background-failure);
+  }
+
+  &.fumble {
+    background: var(--ah-background-fumble);
+  }
+
+}
+
+.ah-chat-section__check__outcome__number {
+}
+
+.ah-chat-section__check__outcome__text {
+}
+
+.ah-chat-section__check__result {
+  span {
+  }
+}

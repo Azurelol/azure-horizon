@@ -3,7 +3,9 @@ import { systemNS } from "../../constants.mjs";
 const Hooks = Object.freeze({
 
   PREPARE_CHECK: `${systemNS}.check.prepare`,
+
   PROCESS_CHECK: `${systemNS}.check.process`,
+
   RENDER_CHECK: `${systemNS}.check.render`,
 
   /**
@@ -30,6 +32,14 @@ const Hooks = Object.freeze({
    * @remarks Uses {@link RenderActionEvent}
    */
   RENDER_ACTION_EVENT: `${systemNS}.events.actions.render`,
+
+  /**
+   * @description Dispatched after a character gains an opportunity
+   * @example callback(event)
+   * @remarks Uses {@link OpportunityEvent}
+   */
+  OPPORTUNITY_EVENT: `${systemNS}.events.opportunity`,
+
 });
 
 export default Hooks;

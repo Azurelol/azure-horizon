@@ -64,6 +64,24 @@ export default class ObjectUtils {
   }
 
   /**
+   * Freezes a property on the object so it can no longer be reassigned, then validates that it was actually set.
+   * @param {Object} obj
+   * @param {string} key
+   * @param {boolean} [configurable=true]
+   */
+  static lockAndValidateProperty(obj, key, configurable = true) {
+    Object.defineProperty(obj, key, {
+      value: obj[key],
+      writable: false,
+      configurable,
+      enumerable: true,
+    });
+    if (!obj[key]) {
+      throw new Error(`Object property ${key} missing`);
+    }
+  }
+
+  /**
    * @description Given a record, will return an object with a subset of its key-value pairs.
    * @param {Record} record
    * @param {String[]} keys

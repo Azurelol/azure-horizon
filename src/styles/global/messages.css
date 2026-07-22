@@ -5,9 +5,3 @@
   flex-grow: 1;
 }
 
-.ah-chat__flavor {
-  h2 {
-    flex-grow: 8;
-    margin-left: 4px;
-  }
-}

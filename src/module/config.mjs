@@ -34,11 +34,11 @@ AH.progression = Object.freeze({
 
 /**
  * @desc The set of ability scores used for characters in the system.
- * @typedef {"dex", "str", "res", "per"} Attribute
+ * @typedef {"dex", "str", "res", "per"} AH_Attribute
  */
 
 /**
- * @type {Object<Attribute, string>}
+ * @type {Object<AH_Attribute, string>}
  */
 AH.attributes = {
   mig: "AH.CHARACTER.Might",
@@ -222,6 +222,11 @@ AH.icons = {
   check: "fa fa-check",
 
   roll: "ra ra-perspective-dice-six",
+  modifier: "",
+  difficulty: "",
+
+  openCheck: "fa-solid fa-lock-open",
+  attributeCheck: "fa-solid fa-lock",
 
   full: "fa fa-hourglass",
   half: "fa fa-hourglass-half",
