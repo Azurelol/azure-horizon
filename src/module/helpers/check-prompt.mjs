@@ -1,3 +1,9 @@
+import { FoundryUtils, StringUtils } from "../utils/_module.mjs";
+import AH from "../config.mjs";
+import { renderTemplate, systemNS } from "../constants.mjs";
+import Handlebars from "./handlebars.mjs";
+import Checks from "../pipelines/checks.mjs";
+import { CheckConfigurer } from "./check-configuration.mjs";
 
 /**
  * @typedef CheckConfig
@@ -24,13 +30,6 @@
  * @property {CheckResultCallback} resultCallback
  * @property
  */
-
-import { FoundryUtils, HTMLUtils, StringUtils } from "../utils/_module.mjs";
-import AH from "../config.mjs";
-import { renderTemplate, systemNS } from "../constants.mjs";
-import Handlebars from "./handlebars.mjs";
-import Checks from "../pipelines/checks.mjs";
-import { CheckConfigurer } from "./check-configuration.mjs";
 
 /**
  * @param {PointerEvent} event   The originating click event

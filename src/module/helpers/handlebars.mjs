@@ -549,7 +549,7 @@ function documentCarousel(documents, options) {
  */
 function iconRadioGroups(element, context) {
   // Get all radio inputs in the dialog
-  const allRadios = element.querySelectorAll(".ah-icon__radio__label input[type='radio']");
+  const allRadios = element.querySelectorAll(".ah-icon__radio-group label input[type='radio']");
   // Group radios by their "name"
   const radiosByGroup = Array.from(allRadios).reduce((groups, radio) => {
     const name = radio.name;

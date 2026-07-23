@@ -32,7 +32,7 @@
 
     {{#if increment}}
       <fieldset>
-        <legend>{{localize 'Increment'}}</legend>
+        <legend>{{localize 'AH.COMMON.Increment'}}</legend>
         <label>
           <input name="increment" type="checkbox" {{checked increment}}>
         </label>
@@ -44,13 +44,13 @@
     <fieldset>
       <legend>{{localize 'AH.CHARACTER.Attribute.plural'}}</legend>
       <div class="ah-field-group --row">
-
         <div class="">
           {{localize 'AH.COMMON.Primary'}}
           <div class="ah-icon__radio-group">
             {{#each attributeOptions as |attr| }}
-              <label class="{{icon}}" data-tooltip="{{localize label}}" for="{{label}}">
-                <input checked="checked" id="{{label}}" type="radio" name="primary" value="{{value}}">
+              <label class="ah-icon --s {{icon}}"
+                     data-tooltip="{{localize label}}">
+                <input checked="checked" type="radio" name="primary" value="{{value}}">
               </label>
             {{/each}}
           </div>
@@ -60,11 +60,9 @@
           {{localize 'AH.COMMON.Secondary'}}
           <div class="ah-icon__radio-group">
             {{#each attributeOptions as |attr| }}
-              <label class="{{icon}}"
-                     data-tooltip="{{localize label}}"
-                     for="{{label}}">
+              <label class="ah-icon --s {{icon}}"
+                     data-tooltip="{{localize label}}">
                 <input checked="checked"
-                       id="{{label}}"
                        type="radio"
                        name="secondary"
                        value="{{value}}">
@@ -77,15 +75,17 @@
   </div>
 
   <div class="flexrow">
+
     <fieldset>
       <legend>{{localize 'AH.CHARACTER.Modifier.long'}}</legend>
-      <div>
+      <div class="ah-field-group --row">
         {{ahBadge iconClass='modifier' label='AH.CHARACTER.Modifier.short' value=bonus }}
         <label>
           {{localize 'AH.CHARACTER.Modifier.long'}}
           <input name="modifier" type="number" value="{{modifier}}">
         </label>
       </div>
+
     </fieldset>
     {{#if (and (ne type 'open') (ne type 'opposed'))}}
       <fieldset>
@@ -97,11 +97,11 @@
             <input name="difficulty" type="number" value="{{difficulty}}" min="0">
           </label>
         {{/if}}
-        <div>
-          <button type="button" style="background: var(--ah-color-difficulty-easy)" data-action="setDifficulty" data-value="7" data-tooltip="{{localize 'FU.Easy'}}"><i class="icon ra ra-sheep"></i></button>
-          <button type="button" style="background: var(--ah-color-difficulty-normal)" data-action="setDifficulty" data-value="10" data-tooltip="{{localize 'FU.Normal'}}"><i class="icon ra ra-aware"></i></button>
-          <button type="button" style="background: var(--ah-color-difficulty-hard)" data-action="setDifficulty" data-value="13" data-tooltip="{{localize 'FU.Hard'}}"><i class="icon ra ra-monster-skull"></i></button>
-          <button type="button" style="background: var(--ah-color-difficulty-veryHard)" data-action="setDifficulty" data-value="16" data-tooltip="{{localize 'FU.VeryHard'}}"><i class="icon ra ra-player-despair"></i></button>
+        <div class="ah-flexrow">
+          <button type="button" style="background: var(--ah-color-difficulty-easy)" data-action="setDifficulty" data-value="7" data-tooltip="{{localize 'AH.CHECK.Easy'}}"><i class="icon ra ra-sheep"></i></button>
+          <button type="button" style="background: var(--ah-color-difficulty-normal)" data-action="setDifficulty" data-value="10" data-tooltip="{{localize 'AH.CHECK.Normal'}}"><i class="icon ra ra-aware"></i></button>
+          <button type="button" style="background: var(--ah-color-difficulty-hard)" data-action="setDifficulty" data-value="13" data-tooltip="{{localize 'AH.CHECK.Hard'}}"><i class="icon ra ra-monster-skull"></i></button>
+          <button type="button" style="background: var(--ah-color-difficulty-veryHard)" data-action="setDifficulty" data-value="16" data-tooltip="{{localize 'AH.CHECK.VeryHard'}}"><i class="icon ra ra-player-despair"></i></button>
         </div>
       </fieldset>
     {{/if}}

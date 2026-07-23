@@ -34,12 +34,6 @@
     }
   }
 
-  .ah-character__header {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-
   .ah-character__level {
     span, i {
     }
