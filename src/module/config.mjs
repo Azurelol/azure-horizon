@@ -189,12 +189,18 @@ AH.settings = Object.freeze({
  */
 AH.hooks = Object.freeze({
 
+  /**
+   * @desc Invoked when a check is being prepared.
+   */
   PREPARE_CHECK: `${systemNS}.check.prepare`,
-
+  /**
+   * @desc Invoked when a check is being processed.
+   */
   PROCESS_CHECK: `${systemNS}.check.process`,
-
+  /**
+   * @desc Invoked when a check is being rendered.
+   */
   RENDER_CHECK: `${systemNS}.check.render`,
-
   /**
    * @description Dispatched when a check is being initialized.
    * @example callback(event)
@@ -226,6 +232,7 @@ AH.hooks = Object.freeze({
    * @remarks Uses {@link OpportunityEvent}
    */
   OPPORTUNITY_EVENT: `${systemNS}.events.opportunity`,
+
 });
 
 /**
@@ -266,8 +273,8 @@ AH.icons = {
   check: "fa fa-check",
 
   roll: "ra ra-perspective-dice-six",
-  modifier: "",
-  difficulty: "",
+  modifier: "ra ra-lever",
+  difficulty: "ra ra-mountains",
 
   openCheck: "fa-solid fa-lock-open",
   attributeCheck: "fa-solid fa-lock",

@@ -2,7 +2,7 @@
 @import "tokens/semantic.css";
 @import "tokens/semantic/colors.css";
 
-@import "chat/check.css";
+@import "chat/chat-section.css";
 
 @import "components/skeleton.css";
 @import "components/tags.css";

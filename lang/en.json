@@ -260,7 +260,9 @@
       "Secondary": "Secondary",
       "Self": "Self",
       "Source": "Source",
-      "Scene": "Scene"
+      "Scene": "Scene",
+      "Submit": "Submit",
+      "Cancel": "Cancel"
     }
   },
   "TYPES": {

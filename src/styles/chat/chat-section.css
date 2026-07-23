@@ -9,9 +9,21 @@
 }
 
 .ah-chat-section__check__inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-variant: small-caps;
 }
 
 .ah-chat-section__check__outcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 
   background: var(--ah-background-default);
 
@@ -34,9 +46,20 @@
 }
 
 .ah-chat-section__check__outcome__number {
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 .ah-chat-section__check__outcome__text {
+  font-size: 16px;
+  color: white;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .ah-chat-section__check__result {

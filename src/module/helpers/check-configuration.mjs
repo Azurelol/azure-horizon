@@ -331,7 +331,7 @@ export class CheckConfigurer extends CheckInspector {
   updateTargetResults() {
     const targets = this.getTargets();
     if (targets?.length) {
-      if (!this.check.result) {
+      if (!this.check.total) {
         return;
       }
       const targetedDefense = this.getTargetedDefense();
@@ -344,10 +344,10 @@ export class CheckConfigurer extends CheckInspector {
         } else if (this.check.fumble) {
           targetResult = "miss";
         } else {
-          targetResult = this.check.result >= difficulty ? "hit" : "miss";
+          targetResult = this.check.total >= difficulty ? "hit" : "miss";
         }
         // Update the original
-        this.check.data[TARGETS][t].result = targetResult;
+        this.check.data[TARGETS][t].total = targetResult;
       }
     }
   }

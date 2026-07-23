@@ -2,31 +2,27 @@
 
   <dl class='ah-chat-section__check__inputs'>
     <div>
-      <dt>{{result.primary.attribute}}</dt>
       <dd>{{ahBadge icon=(ahIconClass result.primary.attribute) label=(ahLocaleKey 'attributes' result.primary.attribute format='short') value=result.primary.result}}</dd>
     </div>
     <div>
-      <dt>{{result.secondary.attribute}}</dt>
       <dd>{{ahBadge icon=(ahIconClass result.secondary.attribute) label=(ahLocaleKey 'attributes' result.secondary.attribute format='short') value=result.secondary.result}}</dd>
     </div>
     <div {{#if modifiers}}data-tooltip="{{#each modifiers}}{{localize label}}: {{value}}{{#unless @last}}<br>{{/unless}}{{/each}}"{{/if}}>
-      <dt>{{localize 'AH.CHARACTER.Modifier.short'}}</dt>
-      <dd>{{ahBadge iconClass='modifier' label='AH.CHARACTER.Modifier.short'}} <span>{{#unless (lt result.modifier 0)}}+{{/unless}}{{result.modifier}}</span></dd>
+      <dd>{{ahBadge iconClass='modifier' label='AH.CHARACTER.Modifier.short' value=result.modifierTotal }}</dd>
     </div>
-  </dl>
-  {{#if (gt difficulty 0)}}
-    <div class="ah-chat-section__roll__difficulty">
+
+    {{#if (gt difficulty 0)}}
       <div>
-        {{ahBadge iconClass='difficulty' label='AH.CHECK.DifficultyLevel.short' size='l' tooltip='AH.CHECK.DifficultyLevel.long' }}
-        <label>{{difficulty}}</label>
+        <dd>{{ahBadge iconClass='difficulty' label='AH.CHECK.DifficultyLevel.short' size='l' tooltip='AH.CHECK.DifficultyLevel.long' value=difficulty }}</dd>
       </div>
-    </div>
-  {{/if}}
+    {{/if}}
+  </dl>
+
 
   {{#if (or (gt difficulty 0) result.crit result.fumble)}}
-    <div class='ah-chat-section__check__outcome {{ahCheckOutcome result difficulty}}'>
+    <div class='ah-chat-section__check__outcome {{ahCheckOutcome result.total difficulty}}'>
       <div class="ah-chat-section__check__outcome__number">
-        <img class="{{ahIconClass check.type}}" alt="dice"/>
+        <i class="{{ahIconClass (ahConcat check.type 'Check')}}"></i>
         <span>{{result.total}}</span>
       </div>
       {{#if difficulty}}

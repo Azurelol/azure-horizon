@@ -56,7 +56,7 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @property {AttributeDieRoll} primary
  * @property {AttributeDieRoll} secondary
  * @property {number} modifierTotal the sum of all modifier
- * @property {number} result the total result of the check
+ * @property {number} total the total result of the check
  * @property {boolean} fumble
  * @property {boolean} critical
  */
@@ -242,7 +242,7 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
     modifiers: Object.freeze(check.modifiers.map(Object.freeze)),
     modifierTotal: check.modifiers.reduce((agg, curr) => agg + curr.value, 0),
     critThreshold: critThreshold,
-    result: roll.total,
+    total: roll.total,
     fumble: (primary.result === 1) && (secondary.result === 1),
     critical: (primary.result === secondary.result) && (primary.result >= Math.max(2, critThreshold)),
     data: check.data,
