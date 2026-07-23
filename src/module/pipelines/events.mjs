@@ -1,5 +1,6 @@
-import { CharacterInfo, Hooks, ItemInfo, SourceInfo } from "../data/common/_module.mjs";
+import { CharacterInfo, ItemInfo, SourceInfo } from "../data/common/_module.mjs";
 import { AsyncHooks, CheckConfigurer, CheckInspector } from "../helpers/_module.mjs";
+import AH from "../config.mjs";
 
 /**
  * @typedef InitializeActionEvent
@@ -23,7 +24,7 @@ async function initializeAction(configuration, actor, item) {
     sourceInfo: sourceInfo,
     itemGroup: ItemInfo.resolveItemGroup(item),
   };
-  return AsyncHooks.callSequential(Hooks.INITIALIZE_ACTION_EVENT, event);
+  return AsyncHooks.callSequential(AH.hooks.INITIALIZE_ACTION_EVENT, event);
 }
 
 /**
@@ -56,7 +57,7 @@ async function performAction(check, actor, item) {
     sourceInfo: sourceInfo,
     targets: targets,
   };
-  return AsyncHooks.callSequential(Hooks.PERFORM_ACTION_EVENT, event);
+  return AsyncHooks.callSequential(AH.hooks.PERFORM_ACTION_EVENT, event);
 }
 
 /**
@@ -85,7 +86,7 @@ function resolveAction(check, actor, item) {
     sourceInfo: sourceInfo,
     targets: CharacterInfo.fromTargetData(targets),
   };
-  Hooks.call(Hooks.RESOLVE_ACTION_EVENT, event);
+  Hooks.call(AH.hooks.RESOLVE_ACTION_EVENT, event);
 }
 
 /**
@@ -117,7 +118,7 @@ async function renderAction(renderData, config, actor, item) {
     item: item,
     itemGroup: ItemInfo.resolveItemGroup(item),
   };
-  return AsyncHooks.callSequential(Hooks.RENDER_ACTION_EVENT, event);
+  return AsyncHooks.callSequential(AH.hooks.RENDER_ACTION_EVENT, event);
 }
 
 /**
@@ -139,7 +140,7 @@ function opportunity(renderData, actor, type, item, fumble) {
     item: item,
     fumble: fumble,
   };
-  Hooks.call(Hooks.OPPORTUNITY_EVENT, event);
+  Hooks.call(AH.hooks.OPPORTUNITY_EVENT, event);
 }
 
 const Events = Object.freeze({

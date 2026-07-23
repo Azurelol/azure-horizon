@@ -1,6 +1,5 @@
 import { Events } from "./_module.mjs";
 import { ChatMessageBuilder, ChatSectionOrder, CheckConfigurer } from "../helpers/_module.mjs";
-import { Hooks } from "../data/common/_module.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 import { renderTemplate, systemTemplatePath } from "../constants.mjs";
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
@@ -143,10 +142,10 @@ async function prepareCheck(check, actor, item, initialConfigCallback) {
   // Initial callback
   await (initialConfigCallback ? initialConfigCallback(check, actor, item) : undefined);
 
-  ObjectUtils.lockAndValidateProperty(check, "type");
-  ObjectUtils.lockAndValidateProperty(check, "id", false);
+  // ObjectUtils.lockAndValidateProperty(check, "type");
+  // ObjectUtils.lockAndValidateProperty(check, "id", false);
 
-  await invokeWithCallbacks(Hooks.PREPARE_CHECK, check, actor, item);
+  await invokeWithCallbacks(AH.hooks.PREPARE_CHECK, check, actor, item);
   await Events.initializeAction(config, actor, item);
 
   validateCheckAttributes(check);
@@ -250,7 +249,7 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
   });
 
   if (callHook) {
-    await invokeWithCallbacks(Hooks.PROCESS_CHECK, result, actor, item);
+    await invokeWithCallbacks(AH.hooks.PROCESS_CHECK, result, actor, item);
   }
 
   return result;
@@ -275,7 +274,7 @@ async function renderCheck(result, actor, item, flags = {}) {
   };
   const config = new CheckConfigurer(result);
 
-  Hooks.callAll(Hooks.RENDER_CHECK, builderData, result, actor, item);
+  Hooks.callAll(AH.hooks.RENDER_CHECK, builderData, result, actor, item);
   await Events.renderAction(builderData, config, actor, item);
 
   if (result.generateOpportunity) {
