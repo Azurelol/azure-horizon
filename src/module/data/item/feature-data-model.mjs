@@ -1,10 +1,15 @@
-import BaseItemModel from "./base-item-model.mjs";
+import BaseItemDataModel from "./base-item-data-model.mjs";
+import { CheckDataModel } from "../fields/_module.mjs";
 
-export default class FeatureDataModel extends BaseItemModel {
+/**
+ * @property {CheckDataModel} check
+ */
+export default class FeatureDataModel extends BaseItemDataModel {
   /** @inheritdoc */
   static defineSchema() {
-    const { SchemaField, StringField, NumberField } = foundry.data.fields;
+    const { SchemaField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      check: new EmbeddedDataField(CheckDataModel, { initial: { primary: { value: "ins" }, secondary: { value: "mig" } } }),
     });
   }
 }

@@ -97,7 +97,7 @@ export class CheckInspector {
   }
 
   /**
-   * @return {Defense|null}
+   * @return {AH_Defense|null}
    */
   getTargetedDefense() {
     return this.#check.data[TARGETED_DEFENSE] ?? null;
@@ -297,7 +297,7 @@ export class CheckConfigurer extends CheckInspector {
   }
 
   /**
-   * @param {Defense} targetedDefense
+   * @param {AH_Defense} targetedDefense
    * @return {CheckConfigurer}
    */
   setTargetedDefense(targetedDefense) {
@@ -307,7 +307,7 @@ export class CheckConfigurer extends CheckInspector {
   }
 
   /**
-   * @param {(targetedDefense: Defense | null) => Defense | null} callback
+   * @param {(targetedDefense: AH_Defense | null) => AH_Defense | null} callback
    * @return {CheckConfigurer}
    */
   modifyTargetedDefense(callback) {

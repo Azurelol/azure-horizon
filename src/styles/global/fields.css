@@ -1,6 +1,20 @@
 .ah-fieldset {
   background: var(--ah-background-fieldset);
   border: var(--ah-border-width) solid var(--ah-color-border-fieldset);
+
+  legend .enabled {
+    background: #3a6b5d;
+    color: #ffffff;
+    transition: background 0.2s;
+  }
+
+  legend .disabled {
+
+  }
+
+  div .disabled {
+
+  }
 }
 
 .ah-field-grid {

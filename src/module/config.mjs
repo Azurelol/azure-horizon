@@ -92,7 +92,7 @@ AH.codex = {
 };
 
 /**
- * @typedef {"def", "mdef", "dex", "ins", "mig", "wlp"} Defense
+ * @typedef {"def", "mdef", "dex", "ins", "mig", "wlp"} AH_Defense
  */
 
 AH.defenses = Object.freeze({

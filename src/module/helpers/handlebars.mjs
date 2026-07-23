@@ -97,6 +97,7 @@ export default Object.freeze({
     Handlebars.registerHelper("ahInput", input);
     Handlebars.registerHelper("ahResourceBar", resourceBar);
     Handlebars.registerHelper("ahDocumentCarousel", documentCarousel);
+    Handlebars.registerPartial("ahOptionalFieldset", optionalFieldset);
     Handlebars.registerHelper("ahCheckOutcome",
       /**
        * @param result
@@ -425,6 +426,29 @@ function input(path, value, options) {
       ? template({
         path: path,
         value: value,
+        ...options.hash,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
+
+/**
+ * @typedef OptionalFieldsetOptions
+ * @property icon
+ * @property label
+ * @property {Boolean} enabled The value of the property that toggles the fieldset
+ * @property {String} name The path to the property that toggles the fieldset
+ */
+
+/**
+ * @param options
+ * @returns {Handlebars.SafeString}
+ */
+function optionalFieldset(options) {
+  const template = Handlebars.partials[systemTemplatePath("components/optional-fieldset")];
+  const html =
+    typeof template === "function"
+      ? template({
         ...options.hash,
       })
       : "";
