@@ -6,6 +6,7 @@ import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
  * @property {AH_Attribute} primary
  * @property {AH_Attribute} secondary
  * @property {AH_Defense} defense
+ * @property {String} bonus
  */
 export default class CheckDataModel extends FieldsetDataModel {
   static defineSchema() {
@@ -14,6 +15,7 @@ export default class CheckDataModel extends FieldsetDataModel {
       primary: new StringField({ initial: "dex", blank: true, choices: Object.keys(AH.attributes) }),
       secondary: new StringField({ initial: "mig", blank: true, choices: Object.keys(AH.attributes) }),
       defense: new StringField({ initial: "def", choices: Object.keys(AH.defenses), blank: true }),
+      bonus: new StringField(),
     });
   }
 

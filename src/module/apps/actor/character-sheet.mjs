@@ -19,7 +19,7 @@ export class AHCharacterSheet extends AHActorSheet {
     primary: {
       tabs: [
         { id: "features", label: "AH.SHEET.Tabs.Features", icon: "ra ra-fluffy-swirl" },
-        { id: "equipment", label: "AH.SHEET.Tabs.Inventory", icon: "ra ra-double-team" },
+        { id: "equipment", label: "AH.SHEET.Tabs.Equipment", icon: "ra ra-double-team" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
       ],
       initial: "overview",

@@ -1,8 +1,8 @@
 :root {
 
   /* UI States */
-  --ah-color-active: green;
-  --ah-color-inactive: red;
+  --ah-color-active: #5c7a5c;
+  --ah-color-inactive: #7a4f4f;
 
   /* Character Resources */
   --ah-color-hp: linear-gradient(90deg, #315936 0%, #63b05f 100%);

@@ -1,8 +1,5 @@
 <header class="sheet-header ah-sheet__header">
-
-
   <div class="ah-sheet__group">
-
     <img
       class="profile-img"
       src="{{item.img}}"
@@ -19,7 +16,7 @@
       {{formInput fields.name value=item.name}}
     </div>
 
-    <div class="ah-sheet-header__row">
+    <div class="ah-field-group">
       {{formGroup systemFields.slug value=system.slug localize=true}}
       {{formGroup systemFields.revision value=system.revision localize=true}}
     </div>

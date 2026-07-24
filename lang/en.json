@@ -121,6 +121,10 @@
         "plural": "Modifiers",
         "short": "MOD"
       },
+      "Bonus": {
+        "long": "Bonus",
+        "plural": "Bonuses"
+      },
       "DifficultyLevel": {
         "long": "Difficulty",
         "short": "DL"
