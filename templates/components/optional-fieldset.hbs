@@ -1,16 +1,15 @@
-<fieldset class="ah-fieldset {{class}}">
-  <legend class="{{#if enabled}}enabled{{else}}disabled{{/if}}">
-    <label style="cursor:pointer;">
+{{log 'rendering fieldset' this}}
+<fieldset class="ah-fieldset --optional {{class}}">
+  <legend class="{{#if enabled}}active{{else}}inactive{{/if}}">
+    <label>
       {{#if icon}}<i class="ah-icon --s {{icon}}"></i>{{/if}}
       {{localize label}}
       <input type="checkbox"
              name="{{name}}"
-             hidden
              {{#if enabled}}checked{{/if}}>
     </label>
   </legend>
-
-  <div class="{{#unless enabled}}disabled{{/unless}}">
+  <div class="{{#unless enabled}}inactive{{/unless}}">
     {{> @partial-block}}
   </div>
 </fieldset>

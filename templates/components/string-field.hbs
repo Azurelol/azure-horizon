@@ -1,0 +1,15 @@
+<label class="ah-field">
+  <span>{{localize label}}</span>
+  {{#if options}}
+    <select name="{{path}}">
+      {{selectOptions options selected=value sort=true localize=true}}
+    </select>
+  {{else}}
+    <input
+      type="text"
+      name="{{path}}"
+      value="{{value}}"
+      placeholder="{{placeholder}}"
+    />
+  {{/if}}
+</label>

@@ -1,4 +1,3 @@
-import { OptionalDataModel } from "../../api/_module.mjs";
 import AH from "../../../config.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
 import FieldsetDataModel from "../../api/fieldset-data-model.mjs";

@@ -13,7 +13,25 @@ const COMPONENT_TEMPLATES = Object.freeze({
   resourceBar: systemTemplatePath("components/resource-bar"),
   skeleton: systemTemplatePath("components/skeleton"),
   optionalFieldset: systemTemplatePath("components/optional-fieldset"),
+  arrayField: systemTemplatePath("components/array-field"),
+  stringField: systemTemplatePath("components/string-field"),
 });
+
+/**
+ * @param {String} path
+ * @param {Object} data
+ * @returns {Handlebars.SafeString}
+ */
+function getTemplateString(path, data) {
+  const template = Handlebars.partials[path];
+  const html =
+    typeof template === "function"
+      ? template({
+        ...data,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
 
 export default Object.freeze({
   loadTemplates: async () => {
@@ -33,7 +51,7 @@ export default Object.freeze({
   registerHelpers: () => {
     Handlebars.registerHelper("ahFormOptions", function (constant) {
       const record = ObjectUtils.getProperty(AH, constant);
-      const options = FoundryUtils.getFormSelectOptions(record);
+      const options = FoundryUtils.getFormSelectOptions(record, "long");
       return options;
     });
     Handlebars.registerHelper("ahDocumentAnchor", documentAnchor);
@@ -96,6 +114,18 @@ export default Object.freeze({
       }
     });
     Handlebars.registerHelper("ahArrayField", arrayField);
+    /**
+     * @typedef AH_StringFieldOptions
+     * @property label
+     * @property path
+     * @property value
+     * @property options
+     */
+    Handlebars.registerHelper("ahStringField", function (options) {
+      return getTemplateString(COMPONENT_TEMPLATES.stringField, {
+        ...options.hash,
+      });
+    });
     Handlebars.registerHelper("ahAutoComplete", autoComplete);
     Handlebars.registerHelper("ahBadge", badge);
     Handlebars.registerHelper("ahSelector", selector);
@@ -347,7 +377,7 @@ function documentAnchor(document, options) {
  */
 function arrayField(options) {
   options = options.hash;
-  const template = Handlebars.partials[systemTemplatePath("components/array-field")];
+  const template = Handlebars.partials[COMPONENT_TEMPLATES.arrayField];
   const html =
     typeof template === "function"
       ? template({

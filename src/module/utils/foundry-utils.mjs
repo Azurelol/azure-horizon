@@ -26,13 +26,14 @@ export default class FoundryUtils {
    */
 
   /**
-   * @param {Record<String, String>} record
+   * @param {Record<String, String>} record   *
+   * @param {'short'|'long'} variant
    * @returns {FormSelectOption[]}
    * @remarks To be used with specific records.
    */
-  static getFormSelectOptions(record) {
+  static getFormSelectOptions(record, variant) {
     return Object.entries(record).map(([key, value]) => ({
-      label: StringUtils.localize(value),
+      label: StringUtils.localize(variant ? `${value}.${variant}` : value),
       value: key,
     }));
   }
