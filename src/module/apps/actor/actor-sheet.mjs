@@ -29,7 +29,7 @@ const { api, sheets } = foundry.applications;
 export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["ah-application"],
+    classes: ["ah-application", "ah-sheet"],
     position: {
       width: 600,
       height: 600,
@@ -140,7 +140,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
         context.tab = context.tabs[partId];
         break;
       case "properties":
-        context.fields = await this._getFields();
+        context.fields = this._getFields();
         context.tab = context.tabs[partId];
         break;
       case "items":
@@ -196,14 +196,24 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   /* -------------------------------------------------- */
 
   /**
+   * @typedef FieldSetV1
+   * @property {Boolean} fieldset
+   * @property {String} legend
+   * @property {FieldSetV1} outer The parent field.
+   * @property {Object} value
+   * @property {FieldSetV1[]} fields
+   */
+
+  /**
    * Handles the system fields for the form-fields generic.
-   * @returns {object[]}
+   * @returns {FieldSetV1[]}
    */
   async _getFields() {
     const doc = this.actor;
     const source = doc._source;
     const systemFields = CONFIG.Actor.dataModels[doc.type]?.schema.fields;
     const fieldSets = [];
+
     // TODO: Find a clever way to handle enrichment
     for (const field of Object.values(systemFields ?? {})) {
       if (field.options?.config === false) {

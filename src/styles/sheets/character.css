@@ -47,6 +47,9 @@
 
   .ah-character__sidebar {
     border-right: 1px solid var(--ah-color-border-primary);
+    padding: 1rem;
+    background: var(--ah-color-background-surface);
+    background-blend-mode: color-burn;
   }
 
   .ah-character__sidebar__portrait {

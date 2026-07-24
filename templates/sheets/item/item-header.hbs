@@ -1,14 +1,28 @@
-<header class="sheet-header flexrow">
-  <img
-    class="profile-img"
-    src="{{item.img}}"
-    alt="{{item.name}}"
-    {{#if editable}}
-    data-action="editImage"
-    data-edit="img"
-    {{/if}}
-    data-tooltip="{{item.name}}"
-    height="100" width="100"
-  >
-  {{formInput itemFields.name value=item.name}}
+<header class="sheet-header ah-sheet__header">
+
+
+  <div class="ah-sheet__group">
+
+    <img
+      class="profile-img"
+      src="{{item.img}}"
+      alt="{{item.name}}"
+      {{#if editable}}
+      data-action="editImage"
+      data-edit="img"
+      {{/if}}
+      data-tooltip="{{item.name}}"
+      height="100" width="100"
+    >
+
+    <div class="ah-sheet-header__row">
+      {{formInput fields.name value=item.name}}
+    </div>
+
+    <div class="ah-sheet-header__row">
+      {{formGroup systemFields.slug value=system.slug localize=true}}
+      {{formGroup systemFields.revision value=system.revision localize=true}}
+    </div>
+  </div>
+
 </header>

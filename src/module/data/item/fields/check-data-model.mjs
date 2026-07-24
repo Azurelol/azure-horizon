@@ -1,12 +1,14 @@
-import { OptionalDataModel } from "../api/_module.mjs";
-import AH from "../../config.mjs";
+import { OptionalDataModel } from "../../api/_module.mjs";
+import AH from "../../../config.mjs";
+import { systemTemplatePath } from "../../../constants.mjs";
+import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 
 /**
  * @property {AH_Attribute} primary
  * @property {AH_Attribute} secondary
  * @property {AH_Defense} defense
  */
-export default class CheckDataModel extends OptionalDataModel {
+export default class CheckDataModel extends FieldsetDataModel {
   static defineSchema() {
     const { SchemaField, StringField } = foundry.data.fields;
     return {
@@ -14,5 +16,9 @@ export default class CheckDataModel extends OptionalDataModel {
       secondary: new StringField({ initial: "mig", blank: true, choices: Object.keys(AH.attributes) }),
       defense: new StringField({ initial: "def", choices: Object.keys(AH.defenses), blank: true }),
     };
+  }
+
+  static get template() {
+    return systemTemplatePath("sheets/item/fields/check-data-model");
   }
 }

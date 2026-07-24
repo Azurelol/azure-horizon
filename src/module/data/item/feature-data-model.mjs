@@ -1,5 +1,5 @@
 import BaseItemDataModel from "./base-item-data-model.mjs";
-import { CheckDataModel } from "../fields/_module.mjs";
+import { CheckDataModel } from "./fields/_module.mjs";
 
 /**
  * @property {CheckDataModel} check

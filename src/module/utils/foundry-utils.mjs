@@ -160,4 +160,53 @@ export default class FoundryUtils {
 
     return true;
   }
+
+  /**
+   * Recursively add system model fields to the fieldset.
+   */
+  static async #addSystemFields(fieldset, schema, source, _path = "system") {
+    for (const field of Object.values(schema)) {
+      const path = `${_path}.${field.name}`;
+      if (field instanceof foundry.data.fields.SchemaField) {
+        this.#addSystemFields(fieldset, field.fields, source, path);
+      } else if (field.constructor.hasFormSupport) {
+        fieldset.fields.push({ field, value: foundry.utils.getProperty(source, path) });
+      }
+    }
+  }
+
+  /**
+   * @typedef AH_DataFieldInfo
+   * @property path
+   * @property field
+   * @property value
+   * @property template
+   */
+
+  /**
+   * Gets a document's fields of a type
+   * @returns {Promise<AH_DataFieldInfo[]>}
+   */
+  static async getFieldsOfType(doc, documentClass, fieldClass, path) {
+    const source = doc._source;
+    const systemFields = CONFIG[documentClass].dataModels[doc.type]?.schema.fields;
+    /** @type AH_DataFieldInfo[] **/
+    const fields = [];
+    for (const field of Object.values(systemFields ?? {})) {
+      if (field.options?.config === false) {
+        continue;
+      }
+      const fieldPath = `${path}.${field.name}`;
+      if (field instanceof foundry.data.fields[fieldClass]) {
+        const value = foundry.utils.getProperty(source, fieldPath);
+        fields.push({
+          field: field,
+          path: fieldPath,
+          value: value,
+          template: field.model.template,
+        });
+      }
+    }
+    return fields;
+  }
 }

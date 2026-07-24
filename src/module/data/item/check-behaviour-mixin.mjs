@@ -1,4 +1,4 @@
-import { CheckDataModel } from "../fields/_module.mjs";
+import { CheckDataModel } from "./fields/_module.mjs";
 
 /**
  * @category Mixins

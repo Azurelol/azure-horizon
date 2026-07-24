@@ -1,5 +1,7 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
+import * as fields from "../../data/item/fields/_module.mjs";
+import { FoundryUtils } from "../../utils/_module.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -13,7 +15,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     position: {
       width: 600,
     },
-    classes: ["ah-application", "ah-item"],
+    classes: ["ah-application", "ah-sheet", "ah-item"],
     actions: {
       viewDoc: this.#viewEffect,
       createDoc: this.#createEffect,
@@ -52,7 +54,8 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       template: systemTemplatePath("sheets/document-tabs"),
     },
     properties: {
-      template: systemTemplatePath("sheets/document-properties"),
+      template: systemTemplatePath("sheets/document-fields"),
+      templates: Object.values(fields.templates),
       scrollable: [""],
     },
     effects: {
@@ -82,10 +85,11 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       owner: this.document.isOwner,
       limited: this.document.limited,
       item: this.item,
+      fields: this.item.schema.fields,
       actor: this.actor,
       system: this.item.system,
+      systemFields: this.document.system.schema.fields,
       flags: this.item.flags,
-      itemFields: this.item.schema.fields,
       config: CONFIG,
     });
 
@@ -104,6 +108,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         break;
       case "properties":
         context.fields = await this._getFields();
+        context.fieldsets = await this._getFieldsets();
         context.tab = context.tabs[partId];
         break;
     }
@@ -111,6 +116,15 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   }
 
   /* -------------------------------------------------- */
+
+  /**
+   * @typedef FieldSetV1
+   * @property {Boolean} fieldset
+   * @property {String} legend
+   * @property {FieldSetV1} outer The parent field.
+   * @property {Object} value
+   * @property {FieldSetV1[]} fields
+   */
 
   /**
    * Handles the system fields for the form-fields generic.
@@ -135,6 +149,15 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       }
     }
     return fieldSets;
+  }
+
+  /**
+   * @returns {Promise<AH_DataFieldInfo[]>}
+   * @private
+   */
+  async _getFieldsets() {
+    const fieldsets = await FoundryUtils.getFieldsOfType(this.item, "Item", "EmbeddedDataField", "system");
+    return fieldsets;
   }
 
   /* -------------------------------------------------- */
