@@ -11,11 +11,11 @@ import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 export default class CheckDataModel extends FieldsetDataModel {
   static defineSchema() {
     const { SchemaField, StringField } = foundry.data.fields;
-    return {
+    return Object.assign(super.defineSchema(), {
       primary: new StringField({ initial: "dex", blank: true, choices: Object.keys(AH.attributes) }),
       secondary: new StringField({ initial: "mig", blank: true, choices: Object.keys(AH.attributes) }),
       defense: new StringField({ initial: "def", choices: Object.keys(AH.defenses), blank: true }),
-    };
+    });
   }
 
   static get template() {

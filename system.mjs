@@ -68,6 +68,7 @@ async function initializeSystems() {
   await helpers.Themes.initialize();
   await helpers.AHHandlebars.loadTemplates();
   await helpers.AHHandlebars.registerHelpers();
+  await helpers.AHHandlebars.registerPartials();
 }
 
 Hooks.once("init", async () => {

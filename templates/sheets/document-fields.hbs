@@ -1,8 +1,6 @@
 <section class="standard-form tab scrollable {{tab.cssClass}}" data-group="primary" data-tab="properties">
 
-  {{log 'fieldsets' fieldsets}}
-
   {{#each fieldsets as |field|}}
-    {{> (field.template) field.value path=field.path}}
+    {{> (lookup field 'template') }}
   {{/each}}
-  </section>
+</section>

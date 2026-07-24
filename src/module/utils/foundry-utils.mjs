@@ -177,10 +177,10 @@ export default class FoundryUtils {
 
   /**
    * @typedef AH_DataFieldInfo
-   * @property path
-   * @property field
-   * @property value
-   * @property template
+   * @property {String} path The path to the field.
+   * @property field The foundry data field.
+   * @property {Object} value
+   * @property {String} template The partial template path.
    */
 
   /**

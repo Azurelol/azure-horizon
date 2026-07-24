@@ -12,6 +12,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   badge: systemTemplatePath("components/badge"),
   resourceBar: systemTemplatePath("components/resource-bar"),
   skeleton: systemTemplatePath("components/skeleton"),
+  optionalFieldset: systemTemplatePath("components/optional-fieldset"),
 });
 
 export default Object.freeze({
@@ -24,6 +25,10 @@ export default Object.freeze({
     tagPicker: setupTagPicker,
     resourceBar: setupResourceBar,
     iconRadioGroups,
+  },
+  registerPartials: async () => {
+    // eslint-disable-next-line no-undef
+    Handlebars.registerPartial("ahOptionalFieldset", await getTemplate(COMPONENT_TEMPLATES.optionalFieldset));
   },
   registerHelpers: () => {
     Handlebars.registerHelper("ahFormOptions", function (constant) {
@@ -97,7 +102,6 @@ export default Object.freeze({
     Handlebars.registerHelper("ahInput", input);
     Handlebars.registerHelper("ahResourceBar", resourceBar);
     Handlebars.registerHelper("ahDocumentCarousel", documentCarousel);
-    Handlebars.registerPartial("ahOptionalFieldset", optionalFieldset);
     Handlebars.registerHelper("ahCheckOutcome",
       /**
        * @param result
@@ -444,8 +448,8 @@ function input(path, value, options) {
  * @param options
  * @returns {Handlebars.SafeString}
  */
-function optionalFieldset(options) {
-  const template = Handlebars.partials[systemTemplatePath("components/optional-fieldset")];
+function optionalFieldset(partial, options) {
+  const template = Handlebars.partials[COMPONENT_TEMPLATES.optionalFieldset];
   const html =
     typeof template === "function"
       ? template({

@@ -1,3 +1,5 @@
-{{#> ahOptionalFieldset label='AH.CHECK.Check' value=field.enabled name=(concat path ".enabled")}}
-
+{{log 'rendering check data' this}}
+{{#> ahOptionalFieldset label='AH.CHECK.Check' value=value.enabled name=(ahConcat path ".enabled")}}
+  {{log 'rendering fieldset' this}}
+  Boop!
 {{/ahOptionalFieldset}}

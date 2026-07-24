@@ -55,7 +55,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     },
     properties: {
       template: systemTemplatePath("sheets/document-fields"),
-      templates: Object.values(fields.templates),
+      templates: fields.templates,
       scrollable: [""],
     },
     effects: {
