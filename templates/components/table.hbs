@@ -1,0 +1,21 @@
+<table id="{{config.id}}" class="ah-table {{config.cssClass}}" data-table-id="{{config.id}}">
+  <thead>
+    <tr>
+      {{#each headers as |header|}}
+        <th>
+          {{header.text}}
+        </th>
+      {{/each}}
+    </tr>
+  </thead>
+
+  <tbody>
+  {{#each rows as |row|}}
+    <tr>
+      {{#each row.cells as |cell|}}
+        {{{cell.template}}}
+      {{/each}}
+    </tr>
+  {{/each}}
+  </tbody>
+</table>

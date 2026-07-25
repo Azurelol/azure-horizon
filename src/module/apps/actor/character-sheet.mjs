@@ -1,7 +1,15 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
+import { EquipmentTableRenderer } from "../item/_module.mjs";
+import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
 
+/**
+ * @extends AHActorSheet
+ * @property {AHActor} actor
+ * @property {CharacterDataModel} system
+ * @inheritDoc
+ */
 export class AHCharacterSheet extends AHActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
@@ -67,6 +75,27 @@ export class AHCharacterSheet extends AHActorSheet {
         break;
       }
     }
+  }
+
+  #equipmentTableRenderer = new EquipmentTableRenderer();
+
+  /**
+   * @returns {AHItem[]}
+   */
+  getEquipmentEntries() {
+    const entries = this.actor.getItemsByType(...EquipmentDataModel.EQUIPMENT_TYPES);
+    return entries;
+  }
+
+  /** @inheritdoc */
+  async _preparePartContext(partId, context) {
+    await super._preparePartContext(partId, context);
+    switch (partId) {
+      case "equipment":
+        context.equipmentTable = await this.#equipmentTableRenderer.render(this.getEquipmentEntries());
+        break;
+    }
+    return context;
   }
 
 }

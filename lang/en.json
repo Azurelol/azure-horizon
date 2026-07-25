@@ -25,6 +25,7 @@
       "Revision": "Revision",
       "Slug": "Slug",
       "SchemaVersion": "SchemaVersion",
+      "Description": "Description",
       "Attack": "Attack",
       "Skill": "Skill",
       "Weapon": "Weapon",

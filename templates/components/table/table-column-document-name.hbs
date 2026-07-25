@@ -1,0 +1,20 @@
+<td class="ah-table__column__primary">
+  {{#if perform}}
+    <a data-action="performAction">
+      <img class="ah-table-column__primary__image" src="{{img}}" alt="{{name}}" data-tooltip="{{localize 'FU.RollIconToolTip' name=name}}" />
+    </a>
+  {{else}}
+    <a data-link draggable="true"
+       class="{{classes}}"
+       data-uuid="{{uuid}}"
+       data-pack="{{pack}}"
+       data-item-id="{{id}}"
+       data-type="{{type}}" data-tooltip="{{name}}">
+      <img class="ah-table-column__primary__image" src="{{img}}" alt="{{name}}">
+    </a>
+  {{/if}}
+  <div class="ah-table-column__primary__name">
+    <span class="{{cssClass}}">{{name}}</span>
+  </div>
+
+</td>

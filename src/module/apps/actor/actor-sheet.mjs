@@ -120,9 +120,10 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       owner: this.document.isOwner,
       limited: this.document.limited,
       actor: this.actor,
-      system: this.actor.system,
-      flags: this.actor.flags,
       actorFields: this.actor.schema.fields,
+      system: this.actor.system,
+      systemFields: this.actor.system.schema.fields,
+      flags: this.actor.flags,
       config: CONFIG,
       AH: AH,
     });
@@ -265,6 +266,15 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   }
 
   /* -------------------------------------------------- */
+  /**
+   * @param {ApplicationRenderContext} context      Prepared context data.
+   * @param {RenderOptions} options
+   * @protected
+   * @inheritdoc
+   */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+  }
 
   /**
    * Actions performed after any render of the Application.

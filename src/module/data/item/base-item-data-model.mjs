@@ -11,21 +11,24 @@ const fields = foundry.data.fields;
 export default class BaseItemDataModel extends VersionedDataModel {
   /** @inheritdoc */
   static defineSchema() {
-    const { SchemaField, NumberField } = foundry.data.fields;
+    const { SchemaField, StringField, NumberField, HTMLField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      revision: new fields.NumberField({
+      revision: new NumberField({
         required: true,
         nullable: false,
         initial: 1,
         label: "AH.ITEM.Revision",
         integer: true,
       }),
-      slug: new fields.StringField({
+      slug: new StringField({
         required: false,
         blank: true,
         initial: "",
         label: "AH.ITEM.Slug",
         validate: (value) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value),
+      }),
+      description: new HTMLField({
+        label: "AH.ITEM.Description",
       }),
     });
   }

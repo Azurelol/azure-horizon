@@ -1,5 +1,17 @@
-import { AH_TableRenderer } from "../api/_module.mjs";
+import ItemTableRenderer from "./item-table-renderer.mjs";
+import TableColumns from "../api/table-columns.mjs";
 
-export default class EquipmentTableRenderer extends AH_TableRenderer {
+export default class EquipmentTableRenderer extends ItemTableRenderer {
 
+  /**
+   * @override
+   */
+  getColumns() {
+    let columns = super.getColumns();
+    columns.push(TableColumns.textColumn({
+      header: "AH.COMMON.Description",
+      getText: (item) => item.system.description,
+    }));
+    return columns;
+  }
 }

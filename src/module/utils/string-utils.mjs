@@ -41,6 +41,14 @@ export default class StringUtils {
   }
 
   /**
+   * @param {Number} value
+   * @returns {string} A '+' or "-' sign.
+   */
+  static signum = (value) => {
+    return value < 0 ? "-" : "+";
+  };
+
+  /**
    * @param {String} name
    * @returns {string}
    */

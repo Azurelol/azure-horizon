@@ -1,0 +1,66 @@
+.ah-table {
+
+  thead{
+
+    tr{
+
+      th{
+
+      }
+    }
+  }
+
+  tbody{
+
+    tr{
+
+      td {
+        display: flex;
+        flex-direction: row;
+      }
+
+    }
+  }
+
+}
+
+.ah-table__row__icon {
+}
+
+.ah-table__column__primary {
+
+  .ah-table-column__primary__name {
+    font-size: var(--ah-font-size-label);
+    font-family: var(--ah-font-primary) sans-serif;
+    color: var(--ah-color-primary);
+    font-weight: var(--ah-font-weight-bold);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+  }
+
+  .ah-table-column__primary__image {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    background: linear-gradient(to right, var(--ah-color-primary), var(--ah-color-secondary));
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      transform-origin: center;
+      opacity: 0.75;
+    }
+  }
+}
+
+.ah-table__row__reference {
+}
+
+.ah-table__row__description {
+}
+
+.ah-table__row__actions{
+}

@@ -4,6 +4,10 @@ import AH from "../config.mjs";
 import { ChatMessageSectionTemplate } from "./_module.mjs";
 
 const COMPONENT_TEMPLATES = Object.freeze({
+  table: systemTemplatePath("components/table"),
+  tableColumnDocumentName: systemTemplatePath("components/table/table-column-document-name"),
+  tableColumnText: systemTemplatePath("components/table/table-column-text"),
+
   tagPicker: systemTemplatePath("components/tag-picker"),
   documentAnchor: systemTemplatePath("components/document-anchor"),
   documentCarousel: systemTemplatePath("components/document-carousel"),
@@ -13,6 +17,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   resourceBar: systemTemplatePath("components/resource-bar"),
   skeleton: systemTemplatePath("components/skeleton"),
   optionalFieldset: systemTemplatePath("components/optional-fieldset"),
+  
   arrayField: systemTemplatePath("components/array-field"),
   stringField: systemTemplatePath("components/string-field"),
 });

@@ -8,6 +8,7 @@
 @import "components/tags.css";
 @import "components/label.css";
 @import "components/bars.css";
+@import "components/table.css";
 
 @import "global/foundry.css";
 @import "global/application.css";
