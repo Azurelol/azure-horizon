@@ -92,6 +92,48 @@ AH.codex = {
 };
 
 /**
+ * @typedef {'physical'|'elemental'|'spiritual'} AH_DamageGroup
+ */
+
+AH.damageGroups = Object.freeze({
+  physical: "AH.DAMAGE.Physical",
+  elemental: "AH.DAMAGE.Elemental",
+  spiritual: "AH.DAMAGE.Spiritual",
+});
+
+/**
+ * @typedef {'slashing'|'piercing'|'blunt'|'fire'|'cold'|'electric'|'acid'|'light'|'dark'|'mental'|'poison'} AH_DamageType
+ */
+
+/**
+ * @typedef AH_DamageTypeMetadata
+ * @property {String} label
+ * @property {AH_DamageGroup} group
+ */
+
+/**
+ * @type {Record<String, AH_DamageTypeMetadata>}
+ */
+AH.damageTypes = Object.freeze({
+  untyped: { label: "AH.DAMAGE.Untyped", group: null },
+
+  slashing: { label: "AH.DAMAGE.Slashing", group: "physical" },
+  piercing: { label: "AH.DAMAGE.Piercing", group: "physical" },
+  blunt: { label: "AH.DAMAGE.Blunt", group: "physical" },
+
+  fire: { label: "AH.DAMAGE.Fire", group: "elemental" },
+  cold: { label: "AH.DAMAGE.Cold", group: "elemental" },
+  electric: { label: "AH.DAMAGE.Electric", group: "elemental" },
+  acid: { label: "AH.DAMAGE.Acid", group: "elemental" },
+
+  light: { label: "AH.DAMAGE.Light", group: "spiritual" },
+  dark: { label: "AH.DAMAGE.Dark", group: "spiritual" },
+
+  mental: { label: "AH.DAMAGE.Mental", group: null },
+  poison: { label: "AH.DAMAGE.Poison", group: null },
+});
+
+/**
  * @typedef {"def", "mdef", "dex", "ins", "mig", "wlp"} AH_Defense
  */
 

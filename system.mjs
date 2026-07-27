@@ -2,10 +2,11 @@ import * as apps from "./src/module/apps/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
+import * as pipelines from "./src/module/pipelines/_module.mjs";
 import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/utils/utils.mjs";
 
-globalThis.AH = {
+globalThis.azureHorizon = {
   data,
   helpers,
   documents,
@@ -70,6 +71,7 @@ async function initializeSystems() {
   await helpers.AHHandlebars.registerHelpers();
   await helpers.AHHandlebars.registerPartials();
   await data.Compendium.CompendiumIndex.initialize();
+  await pipelines.Enrichers.initialize();
 }
 
 Hooks.once("init", async () => {

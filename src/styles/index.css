@@ -19,8 +19,9 @@
 @import "global/messages.css";
 @import "global/icons.css";
 @import "global/list.css";
+@import "global/inline.css";
 
-@import "elements/browser.css";
+@import "applications/browser.css";
 
 @import "sheets/sheet.css";
 @import "sheets/item.css";

@@ -7,3 +7,5 @@ export { default as ChatMessageBuilder } from "./chat-message-builder.mjs";
 export { default as ChatAction } from "./chat-action.mjs";
 export { default as AsyncHooks } from "./async-hooks.mjs";
 export { CheckInspector, CheckConfigurer } from "./check-configuration.mjs";
+export { default as FlagBuilder } from "./flag-builder.mjs";
+export { default as TextEditorHelper } from "./text-editor-helper.mjs";

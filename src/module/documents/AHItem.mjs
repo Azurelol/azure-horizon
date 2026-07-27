@@ -22,7 +22,6 @@ export class AHItem extends foundry.documents.Item {
    */
   async render() {
     const builder = new ChatMessageBuilder(this.parent, this);
-
     return builder.create();
   }
 }
