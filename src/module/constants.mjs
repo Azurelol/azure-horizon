@@ -59,3 +59,34 @@ export function setSystemSetting(key, value) {
 export async function renderTemplate(templatePath, context) {
   return await foundry.applications.handlebars.renderTemplate(systemTemplatePath(templatePath), context);
 }
+
+/**
+ * @typedef EnrichmentOptions
+ * @property {boolean} [secrets=false]      Include unrevealed secret tags in the final HTML? If false, unrevealed
+ *                                          secret blocks will be removed.
+ * @property {boolean} [documents=true]     Replace dynamic document links?
+ * @property {boolean} [links=true]         Replace hyperlink content?
+ * @property {boolean} [rolls=true]         Replace inline dice rolls?
+ * @property {boolean} [embeds=true]        Replace embedded content?
+ * @property {boolean} [custom=true]        Apply custom enrichers?
+ * @property {object|Function} [rollData]   The data object providing context for inline rolls, or a function that
+ *                                          produces it.
+ * @property {ClientDocument} [relativeTo]  A document to resolve relative UUIDs against.
+ */
+
+/**
+ * Helper function that reduces path length for enrichment calls and improves default handling.
+ * Enrich HTML content by replacing or augmenting components of it.
+ * @param {string} content                  The original HTML content (as a string).
+ * @param {EnrichmentOptions} [options={}]  Additional options which configure how HTML is enriched.
+ * @returns {Promise<string>}               The enriched HTML content.
+ */
+export async function enrichHTML(content, options = {}) {
+  // Override document-related options with the relative document's info
+  if (options.relativeTo) {
+    // Don't reveal secrets of unowned documents, but allow explicit false to prevent sharing secrets of owned documents
+    if (options.secrets !== false) options.secrets = options.relativeTo.isOwner;
+    if (typeof options.relativeTo.getRollData === "function") options.rollData = options.relativeTo.getRollData();
+  }
+  return foundry.applications.ux.TextEditor.implementation.enrichHTML(content, options);
+}

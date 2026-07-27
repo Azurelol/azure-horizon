@@ -1,0 +1,7 @@
+<section class="standard-form tab scrollable {{tab.cssClass}}" data-group="primary" data-tab="description">
+  {{#if system.schema.fields.description}}
+    <prose-mirror name="system.description" value="{{system.description}}" toggled>
+      {{{lookup enriched 'system.description'}}}
+    </prose-mirror>
+  {{/if}}
+</section>

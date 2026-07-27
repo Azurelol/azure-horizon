@@ -13,7 +13,8 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     position: {
-      width: 600,
+      width: 700,
+      height: "auto",
     },
     classes: ["ah-application", "ah-sheet", "ah-item"],
     actions: {
@@ -33,6 +34,10 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     primary: {
       tabs: [
         {
+          id: "description",
+          label: "AH.SHEET.Tabs.Description",
+        },
+        {
           id: "properties",
           label: "AH.SHEET.Tabs.Properties",
         },
@@ -41,7 +46,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
           label: "AH.SHEET.Tabs.Effects",
         },
       ],
-      initial: "properties",
+      initial: "description",
     },
   };
 
@@ -52,6 +57,11 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     },
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),
+    },
+
+    description: {
+      template: systemTemplatePath("sheets/item/item-description"),
+      scrollable: [""],
     },
     properties: {
       template: systemTemplatePath("sheets/document-fields"),
@@ -69,9 +79,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   /** @inheritdoc */
   _initializeApplicationOptions(options) {
     const initialized = super._initializeApplicationOptions(options);
-
     initialized.classes.push(initialized.document.type);
-
     return initialized;
   }
 
@@ -80,6 +88,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    const rollData = this.actor ? this.actor.getRollData() : {};
 
     Object.assign(context, {
       owner: this.document.isOwner,
@@ -87,6 +96,12 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       item: this.item,
       fields: this.item.schema.fields,
       actor: this.actor,
+      enriched: await FoundryUtils.getEnriched(this.item, "Item", {
+        rollData: rollData,
+        relativeTo: this.item.parent,
+        secrets: this.isEditable,
+      }),
+      rollData: rollData,
       system: this.item.system,
       systemFields: this.document.system.schema.fields,
       flags: this.item.flags,
@@ -100,7 +115,10 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
-    // TODO: Come up with clever way to automatically handle enriching HTML fields
+    // Set the active tab
+    if (context.tabs && (partId in context.tabs)) {
+      context.tab = context.tabs[partId];
+    }
     switch (partId) {
       case "effects":
         context.effects = prepareActiveEffectCategories(this.item.effects);
@@ -109,7 +127,6 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       case "properties":
         context.fields = await this._getFields();
         context.fieldsets = await this._getFieldsets();
-        context.tab = context.tabs[partId];
         break;
     }
     return context;

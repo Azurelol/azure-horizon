@@ -1,6 +1,8 @@
-import { StringUtils } from "./_module.mjs";
+import { ObjectUtils, StringUtils } from "./_module.mjs";
+import { enrichHTML } from "../constants.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
 export default class FoundryUtils {
   /**
@@ -186,11 +188,15 @@ export default class FoundryUtils {
 
   /**
    * Gets a document's fields of a type
+   * @param {Document} document
+   * @param {string|number} documentClass
+   * @param {string|number} fieldClass
+   * @param {string} path
    * @returns {Promise<AH_DataFieldInfo[]>}
    */
-  static async getFieldsOfType(doc, documentClass, fieldClass, path) {
-    const source = doc._source;
-    const systemFields = CONFIG[documentClass].dataModels[doc.type]?.schema.fields;
+  static async getFieldsOfType(document, documentClass, fieldClass, path) {
+    const source = document._source;
+    const systemFields = CONFIG[documentClass].dataModels[document.type]?.schema.fields;
     /** @type AH_DataFieldInfo[] **/
     const fields = [];
     for (const field of Object.values(systemFields ?? {})) {
@@ -200,14 +206,70 @@ export default class FoundryUtils {
       const fieldPath = `${path}.${field.name}`;
       if (field instanceof foundry.data.fields[fieldClass]) {
         const value = foundry.utils.getProperty(source, fieldPath);
-        fields.push({
+        let data = {
           field: field,
           path: fieldPath,
           value: value,
-          template: field.model.template,
-        });
+        };
+        if (field.model?.template) {
+          data.template = field.model.template;
+        }
+        fields.push(data);
       }
     }
     return fields;
   }
+
+  /**
+   * @typedef AH_EnrichedTextField
+   * @property field
+   * @property {String} path
+   * @property {String} text
+   */
+
+  /**
+   * @param document
+   * @param documentClass
+   * @param {EnrichmentOptions} options
+   * @returns {Promise<Record<String, AH_EnrichedTextField>>}
+   */
+  static async getEnriched(document, documentClass, options) {
+    const htmlFields = await FoundryUtils.getFieldsOfType(document, documentClass, "HTMLField", "system");
+
+    let map = {};
+
+    for (const field of htmlFields) {
+      const enrichedText = await enrichHTML(field.value, options);
+      map[field.path] = enrichedText;
+    }
+
+    return map;
+  }
+
+  /**
+   * @param {Sheet} sheet
+   * @param {String} path
+   * @returns {Promise<{description: *}>}
+   */
+  static async prepareEnrichedTextEditor(sheet, path) {
+    const _options = {
+      secrets: sheet.isEditable,
+      documents: true,
+      links: true,
+      embeds: true,
+      rolls: true,
+      rollData: sheet.document.getRollData(),
+    };
+    const field = ObjectUtils.getProperty(sheet.document, path);
+    let description = field;
+    try {
+      description = await TextEditor.enrichHTML(field, _options);
+    } catch (err) {
+      ui.notifications.error(`Failed to enrich the text: ${StringUtils.truncate(description, 15)}. Please check it.`, { localize: true });
+    }
+    return {
+      description: description,
+    };
+  }
+
 }

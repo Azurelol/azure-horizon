@@ -30,7 +30,7 @@ export class AHCharacterSheet extends AHActorSheet {
         { id: "equipment", label: "AH.SHEET.Tabs.Equipment", icon: "ra ra-double-team" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
       ],
-      initial: "overview",
+      initial: "features",
     },
   };
 

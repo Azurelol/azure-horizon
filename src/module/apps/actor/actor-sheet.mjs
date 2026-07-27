@@ -135,18 +135,23 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
+    // Set the active tab
+    if (context.tabs && (partId in context.tabs)) {
+      context.tab = context.tabs[partId];
+    }
+
     switch (partId) {
       case "effects":
         context.effects = prepareActiveEffectCategories(this.actor.allApplicableEffects());
-        context.tab = context.tabs[partId];
+
         break;
       case "properties":
         context.fields = this._getFields();
-        context.tab = context.tabs[partId];
+
         break;
       case "items":
         context.itemTypes = this._getItems();
-        context.tab = context.tabs[partId];
+
         break;
     }
     return context;
