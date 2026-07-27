@@ -298,7 +298,8 @@
       "Submit": "Submit",
       "Cancel": "Cancel",
       "Actions": "Actions",
-      "Send": "Send to Chat"
+      "Send": "Send",
+      "Variable": "Variable"
     }
   },
   "TYPES": {
