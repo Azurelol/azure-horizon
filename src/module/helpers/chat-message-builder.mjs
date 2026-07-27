@@ -203,7 +203,7 @@ export default class ChatMessageBuilder {
         flavor = this.#flavor;
       } else {
         flavor = item
-          ? await renderTemplate("chat/chat-item-flavor", {
+          ? await renderTemplate("chat/chat-section-flavor-item", {
             item: item,
           })
           : "";

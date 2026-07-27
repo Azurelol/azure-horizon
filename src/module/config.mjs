@@ -287,6 +287,8 @@ AH.icons = {
   info: "fas fa-circle-info",
   warning: "fas fa-triangle-exclamation",
   help: "fas fa-circle-question",
+
+  send: "fas fa-comment",
 };
 
 export default AH;

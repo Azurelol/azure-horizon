@@ -88,7 +88,7 @@ export default class FoundryUtils {
   }
 
   /**
-   * @param {Actor} actor
+   * @param {AHActor} actor
    * @returns {*}
    */
   static resolveSpeaker(actor) {
@@ -244,32 +244,6 @@ export default class FoundryUtils {
     }
 
     return map;
-  }
-
-  /**
-   * @param {Sheet} sheet
-   * @param {String} path
-   * @returns {Promise<{description: *}>}
-   */
-  static async prepareEnrichedTextEditor(sheet, path) {
-    const _options = {
-      secrets: sheet.isEditable,
-      documents: true,
-      links: true,
-      embeds: true,
-      rolls: true,
-      rollData: sheet.document.getRollData(),
-    };
-    const field = ObjectUtils.getProperty(sheet.document, path);
-    let description = field;
-    try {
-      description = await TextEditor.enrichHTML(field, _options);
-    } catch (err) {
-      ui.notifications.error(`Failed to enrich the text: ${StringUtils.truncate(description, 15)}. Please check it.`, { localize: true });
-    }
-    return {
-      description: description,
-    };
   }
 
 }

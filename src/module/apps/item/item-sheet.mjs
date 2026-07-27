@@ -7,6 +7,7 @@ const { api, sheets } = foundry.applications;
 
 /**
  * Extend the basic ItemSheet with some very simple modifications.
+ * @property {AHItem} item
  */
 export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet) {
 

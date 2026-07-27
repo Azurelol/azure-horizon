@@ -22,6 +22,7 @@ import { renderTemplate } from "../../constants.mjs";
  * @template {Object} T
  * @property {AH_Render<T>} renderHeader
  * @property {AH_Render<T>} renderCell
+ * @property {String} cssClass
  */
 
 /**

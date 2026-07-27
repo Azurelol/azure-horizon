@@ -1,9 +1,9 @@
 <table id="{{config.id}}" class="ah-table {{config.cssClass}}" data-table-id="{{config.id}}">
   <thead>
     <tr>
-      {{#each headers as |header|}}
-        <th>
-          {{header.text}}
+      {{#each columns as |column|}}
+        <th class="{{column.cssClass}}">
+          {{lookup (lookup @root.headers @index) "text"}}
         </th>
       {{/each}}
     </tr>

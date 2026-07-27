@@ -7,6 +7,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   table: systemTemplatePath("components/table"),
   tableColumnDocumentName: systemTemplatePath("components/table/table-column-document-name"),
   tableColumnText: systemTemplatePath("components/table/table-column-text"),
+  tableColumnActions: systemTemplatePath("components/table/table-column-actions"),
 
   tagPicker: systemTemplatePath("components/tag-picker"),
   documentAnchor: systemTemplatePath("components/document-anchor"),
@@ -17,7 +18,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   resourceBar: systemTemplatePath("components/resource-bar"),
   skeleton: systemTemplatePath("components/skeleton"),
   optionalFieldset: systemTemplatePath("components/optional-fieldset"),
-  
+
   arrayField: systemTemplatePath("components/array-field"),
   stringField: systemTemplatePath("components/string-field"),
 });

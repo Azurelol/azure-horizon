@@ -47,6 +47,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       removeArrayElement: this.#removeArrayElement,
 
       performAction: this.#performAction,
+      sendItem: this.#sendItem,
     },
     form: {
       submitOnChange: true,
@@ -453,6 +454,22 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       case "item": {
       }
         break;
+    }
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #sendItem(event, target) {
+    event.preventDefault();
+    const { id } = target.dataset;
+    const modifiers = HTMLUtils.getKeyboardModifiers(event);
+    const item = this.actor.items.get(id);
+    if (item) {
+      await item.render();
     }
   }
 

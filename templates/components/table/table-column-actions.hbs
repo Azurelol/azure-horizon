@@ -1,0 +1,12 @@
+<td class="ah-table__column__actions">
+  {{#each actions}}
+    <a aria-describedby="tooltip"
+       data-tooltip="{{localize tooltip}}"
+      {{#each keys as |key|}}
+       data-{{key}}="{{lookup @root.dataset key}}"
+      {{/each}}
+       data-action="{{action}}">
+      <i class="ah-icon --xs {{icon}}"></i>
+    </a>
+  {{/each}}
+</td>

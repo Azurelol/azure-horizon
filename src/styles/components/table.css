@@ -1,7 +1,8 @@
 .ah-table {
 
-  thead{
+  display: grid;
 
+  thead{
     tr{
 
       th{
@@ -12,7 +13,12 @@
 
   tbody{
 
+    display: flex;
+    flex-direction: column;
+
     tr{
+      display: flex;
+      flex-direction: row;
 
       td {
         display: flex;
@@ -21,13 +27,14 @@
 
     }
   }
-
 }
 
 .ah-table__row__icon {
 }
 
 .ah-table__column__primary {
+
+  width: 120px;
 
   .ah-table-column__primary__name {
     font-size: var(--ah-font-size-label);
@@ -62,5 +69,12 @@
 .ah-table__row__description {
 }
 
-.ah-table__row__actions{
+.ah-table__column__actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > * {
+    flex: 0 0 auto;
+  }
 }

@@ -8,10 +8,7 @@ export default class EquipmentTableRenderer extends ItemTableRenderer {
    */
   getColumns() {
     let columns = super.getColumns();
-    columns.push(TableColumns.textColumn({
-      header: "AH.COMMON.Description",
-      getText: (item) => item.system.description,
-    }));
+
     return columns;
   }
 }
