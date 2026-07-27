@@ -1,5 +1,5 @@
-import AH from "../../config.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
+import AH from "../../config.mjs";
 import { TextEditorHelper } from "../../helpers/_module.mjs";
 
 /**
@@ -9,7 +9,7 @@ import { TextEditorHelper } from "../../helpers/_module.mjs";
  */
 function enricher(match, options) {
   const amount = match[1];
-  const type = match[2].toLowerCase();
+  const type = match[2]?.toLowerCase();
   const label = match.groups.label;
   const traits = match.groups.traits;
 
@@ -52,9 +52,9 @@ async function onRender(element) {
  */
 const config = {
   id: "DamageTextEditorEnricher",
-  pattern: "", // TextEditorHelper.pattern("DMG", "\\s*(?<amount>\\(?.*?\\)*?)\\s(?<type>\\w+?)"),
-  enricher: enricher,
-  onRender: onRender,
+  pattern: TextEditorHelper.pattern("DMG", "\\s*(?<amount>\\(?.*?\\)*?)\\s(?<type>\\w+?)"),
+  enricher,
+  onRender,
 };
 
 /**

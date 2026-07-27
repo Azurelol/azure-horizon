@@ -1,4 +1,3 @@
-
 export default class StringUtils {
   /**
    * @param {String} str

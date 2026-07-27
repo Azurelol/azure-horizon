@@ -300,6 +300,23 @@ AH.icons = {
   ins: "ra ra-aware",
   wlp: "ra ra-hearts",
 
+  untyped: "ra ra-perspective-dice-random",
+
+  slashing: "ra ra-sword",
+  piercing: "ra ra-spear-head",
+  blunt: "ra ra-hammer",
+
+  fire: "ra ra-fire",
+  cold: "ra ra-snowflake-1",
+  electric: "ra ra-lightning-bolt",
+  acid: "ra ra-acid",
+
+  light: "ra ra-sun",
+  dark: "ra ra-crescent-moon",
+
+  mental: "ra ra-brain",
+  poison: "ra ra-poison-bottle",
+
   popout: "fa fa-external-link",
   pin: "fa fa-thumb-tack",
   bookmark: "fa fa-bookmark-o",

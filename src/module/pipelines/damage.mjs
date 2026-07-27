@@ -1,4 +1,5 @@
 import { Pipeline, PipelineContext, PipelineRequest } from "./_module.mjs";
+import AH from "../config.mjs";
 
 export class DamageRequest extends PipelineRequest {
   constructor(sourceInfo, targets) {
@@ -14,6 +15,13 @@ class DamageContext extends PipelineContext {
 }
 
 export default class Damage extends Pipeline {
+
+  /**
+   * @param {String} type
+   */
+  static isDamageType(type) {
+    return type in AH.damageTypes;
+  }
 
   /**
    * @param {DamageRequest} request

@@ -1,18 +1,18 @@
 import AH from "../config.mjs";
-import { Expressions } from "../pipelines/_module.mjs";
+import Expressions from "../pipelines/expressions.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 
-/**
- * @type {string} The pattern used for optional labeling
- */
-const labelPattern = "(\\{(?<label>.*?)\\})?";
+export default class TextEditorHelper {
 
-/**
- * @type {string} The pattern used for optional traits
- */
-const traitsPattern = "(\\|(?<traits>[a-zA-Z-,]+)\\|)?";
+  /**
+   * @type {string} The pattern used for optional labeling
+   */
+  static labelPattern = "(\\{(?<label>.*?)\\})?";
 
-export default class TextEditorEnricher {
+  /**
+   * @type {string} The pattern used for optional traits
+   */
+  static traitsPattern = "(\\|(?<traits>[a-zA-Z-,]+)\\|)?";
 
   // TODO: Use a JSON map to then convert to a pattern?
 
@@ -26,7 +26,7 @@ export default class TextEditorEnricher {
    */
   static pattern(name, required, optional = undefined) {
     const joinedOptional = optional ? optional.join("") : "";
-    const pattern = `@${name}\\[${required}${joinedOptional}${traitsPattern}\\]${labelPattern}`;
+    const pattern = `@${name}\\[${required}${joinedOptional}${TextEditorHelper.traitsPattern}\\]${TextEditorHelper.labelPattern}`;
     return new RegExp(pattern, "g");
   }
 
@@ -48,7 +48,7 @@ export default class TextEditorEnricher {
     const className = AH.icons[name];
     if (className) {
       const icon = document.createElement("i");
-      icon.classList.add("ah-icon- -xs", className);
+      icon.classList.add("ah-icon --xs", className);
       anchor.append(icon);
       return icon;
     }

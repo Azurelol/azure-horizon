@@ -1,7 +1,7 @@
-import * as helpers from "./src/module/helpers/_module.mjs";
 import * as apps from "./src/module/apps/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
+import * as helpers from "./src/module/helpers/_module.mjs";
 import * as pipelines from "./src/module/pipelines/_module.mjs";
 import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/utils/utils.mjs";
@@ -76,8 +76,6 @@ async function initializeSystems() {
 }
 
 Hooks.once("init", async () => {
-  CONFIG.AH = AH;
-
   bindDocuments();
   bindDataModels();
   bindSheets();
@@ -85,6 +83,7 @@ Hooks.once("init", async () => {
 
   // Sidebar tabs
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;
+  CONFIG.AH = AH;
 });
 
 Hooks.once("i18nInit", () => {
