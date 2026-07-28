@@ -3,9 +3,9 @@
   --ah-icon-hp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/heart.png");
   --ah-icon-mp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/star.png");
   --ah-icon-ip: url("../../../../assets/icons/Pixel_RPG_Items_Pack/blue_crystal.png");
-  --ah-icon-tp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/vortex_swirl.png");
+  --ah-icon-tp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/torch.png");
 
-  --ah-icon-elemental: url("assets/icons/Pixel_RPG_Items_Pack/crystal_cluster.png");
+  --ah-icon-elemental: url("assets/icons/Pixel_RPG_Items_Pack/purple_feather.png");
   --ah-icon-fire: url("../../../../assets/icons/Pixel_RPG_Items_Pack/explosion.png");
   --ah-icon-cold: url("../../../../assets/icons/Pixel_RPG_Items_Pack/water_splash.png");
   --ah-icon-electric: url("../../../../assets/icons/Pixel_RPG_Items_Pack/lightning_bolt.png");
@@ -21,6 +21,8 @@
   --ah-icon-dark: url("../../../../assets/icons/Pixel_RPG_Items_Pack/dark_potion.png");
 
   --ah-icon-poison: url("../../../../assets/icons/Pixel_RPG_Items_Pack/poison_bubble.png");
+
+  /*Damage Types*/
 
   .ah-icon-hp {
     background-image: var(--ah-icon-hp);
@@ -88,6 +90,40 @@
 
   .ah-icon-poison {
     background-image: var(--ah-icon-poison);
+  }
+
+  /*Checks*/
+  --ah-icon-check-attribute: url("../../../../assets/icons/Game-icons/perspective-dice-six-faces-random.svg");
+  --ah-icon-check-open: url("../../../../assets/icons/Game-icons/perspective-dice-six-faces-random.svg");
+  --ah-icon-check-difficulty: url("../../../../assets/icons/Game-icons/dice-target.svg");
+  --ah-icon-check-modifier: url("../../../../assets/icons/Game-icons/dice-target.svg");
+  --ah-icon-check-roll: url("../../../../assets/icons/Game-icons/dice-target.svg");
+  --ah-icon-check-result: url("../../../../assets/icons/Game-icons/rule-book.svg");
+
+  .ah-icon-check-attribute {
+    background-image: var(--ah-icon-check-attribute);
+  }
+  .ah-icon-check-difficulty {
+    background-image: var(--ah-icon-check-difficulty);
+  }
+  .ah-icon-check-modifier {
+    background-image: var(--ah-icon-check-modifier);
+  }
+  .ah-icon-check-result {
+    background-image: var(--ah-icon-check-result);
+  }
+  .ah-icon-check-potency {
+  }
+
+  /*Actions*/
+  --ah-icon-rest-short: url("../../../../assets/icons/Game-icons/sofa.svg");
+  --ah-icon-rest-long: url("../../../../assets/icons/Game-icons/pillow.svg");
+
+  .ah-icon-rest-short {
+    background-image: var(--ah-icon-rest-short);
+  }
+  .ah-icon-rest-long {
+    background-image: var(--ah-icon-rest-long);
   }
 
 }

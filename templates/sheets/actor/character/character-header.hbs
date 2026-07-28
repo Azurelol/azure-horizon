@@ -15,13 +15,9 @@
       {{ahBadge icon=(ahIconClass 'def') label='AH.CHARACTER.Defense.short' value=system.parameters.def.current }}
       {{ahBadge icon=(ahIconClass 'mdef') label='AH.CHARACTER.MagicDefense.short' value=system.parameters.mdef.current }}
     </div>
-  </div>
 
-  <div class="ah-sheet-header__row">
-    <div class="ah-roll" data-action="performAction" data-type="attribute-check"
-         data-tooltip="{{localize 'AH.CHECK.Attribute'}}">
-      <i class="ah-icon --m {{ahIconClass 'attributeCheck' }} spin2win"></i>
-      <label>{{localize 'AH.CHECK.Attribute'}}</label>
+    <div class="ah-sheet__group">
+      {{ahButton action='performAction' size='m' data='type=attribute-check;size=large' icon=(ahIconClass 'attributeCheck') iconClasses="--roll spin2win" tooltip='AH.CHECK.Attribute'}}
     </div>
   </div>
 </header>

@@ -12,12 +12,15 @@ const COMPONENT_TEMPLATES = Object.freeze({
   tagPicker: systemTemplatePath("components/tag-picker"),
   documentAnchor: systemTemplatePath("components/document-anchor"),
   documentCarousel: systemTemplatePath("components/document-carousel"),
+
+  button: systemTemplatePath("components/button"),
   selector: systemTemplatePath("components/selector"),
   input: systemTemplatePath("components/input"),
   badge: systemTemplatePath("components/badge"),
-  resourceBar: systemTemplatePath("components/resource-bar"),
   skeleton: systemTemplatePath("components/skeleton"),
   optionalFieldset: systemTemplatePath("components/optional-fieldset"),
+
+  resourceBar: systemTemplatePath("components/resource-bar"),
 
   arrayField: systemTemplatePath("components/array-field"),
   stringField: systemTemplatePath("components/string-field"),
@@ -134,6 +137,7 @@ export default Object.freeze({
     });
     Handlebars.registerHelper("ahAutoComplete", autoComplete);
     Handlebars.registerHelper("ahBadge", badge);
+    Handlebars.registerHelper("ahButton", button);
     Handlebars.registerHelper("ahSelector", selector);
     Handlebars.registerHelper("ahInput", input);
     Handlebars.registerHelper("ahResourceBar", resourceBar);
@@ -430,12 +434,50 @@ function badge(options) {
 }
 
 /**
+ * @typedef AH_ButtonOptions
+ * @property {String} label
+ * @property {String} action
+ * @property {String} tooltip
+ * @property {String} buttonClass
+ * @property {String} iconClass
+ * @property {AH_IconSize} size
+ */
+
+/**
+ * @param options
+ * @param {AH_ButtonOptions} options.hash
+ * @returns {Handlebars.SafeString}
+ */
+function button(options) {
+  const dataAttributes = (options.hash.data ?? "")
+    .split(";")
+    .filter(Boolean)
+    .map(pair => {
+      const [key, value] = pair.split("=");
+      return `data-${key.trim()}="${value.trim()}"`;
+    })
+    .join(" ");
+
+  options.hash.size ??= "s";
+
+  const template = Handlebars.partials[COMPONENT_TEMPLATES.button];
+  const html =
+    typeof template === "function"
+      ? template({
+        ...options.hash,
+        dataAttributes,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
+
+/**
  * @param options
  * @returns {Handlebars.SafeString}
  */
 function selector(options) {
   options = options.hash;
-  const template = Handlebars.partials[systemTemplatePath("components/selector")];
+  const template = Handlebars.partials[COMPONENT_TEMPLATES.selector];
   const html =
     typeof template === "function"
       ? template({
@@ -460,7 +502,7 @@ function selector(options) {
  * @returns {Handlebars.SafeString}
  */
 function input(path, value, options) {
-  const template = Handlebars.partials[systemTemplatePath("components/input")];
+  const template = Handlebars.partials[COMPONENT_TEMPLATES.input];
   const html =
     typeof template === "function"
       ? template({

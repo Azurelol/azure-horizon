@@ -42,6 +42,5 @@ export default class BaseCharacterDataModel extends ActorDataModel {
     this.parameters.mp.defineMaximumProperty(() => Formulas.calculateMindPoints(data.level, data.attributes.wlp.base));
     this.parameters.def.defineCurrentProperty(() => Formulas.calculateDefense(data.attributes));
     this.parameters.mdef.defineCurrentProperty(() => Formulas.calculateMagicDefense(data.attributes));
-
   }
 }

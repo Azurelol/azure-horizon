@@ -286,10 +286,10 @@ AH.icons = {
   documents: "fa fa-book-bookmark",
 
   level: "fas fa-chart-simple",
-  hp: "ra ra-hearts",
-  mp: "ra ra-crystal-ball",
-  ip: "ra ra-ammo-bag",
-  tp: "ra ra-player-pyromaniac",
+  hp: "ah-icon-hp",
+  mp: "ah-icon-mp",
+  ip: "ah-icon-ip",
+  tp: "ah-icon-tp",
 
   def: "ra ra-heavy-shield",
   mdef: "ra ra-bolt-shield",
@@ -301,21 +301,20 @@ AH.icons = {
   wlp: "ra ra-hearts",
 
   untyped: "ra ra-perspective-dice-random",
-
   slashing: "ah-icon-slashing",
   piercing: "ah-icon-piercing",
   blunt: "ah-icon-blunt",
-
   fire: "ah-icon-fire",
   cold: "ah-icon-cold",
   electric: "ah-icon-electric",
   acid: "ah-icon-acid",
-
   light: "ah-icon-light",
   dark: "ah-icon-dark",
-
   mental: "ah-icon-mental",
   poison: "ah-icon-poison",
+
+  shortRest: "ah-icon-rest-short",
+  longRest: "ah-icon-rest-long",
 
   popout: "fa fa-external-link",
   pin: "fa fa-thumb-tack",
@@ -331,12 +330,12 @@ AH.icons = {
   refresh: "fa fa-refresh",
   check: "fa fa-check",
 
-  roll: "ra ra-perspective-dice-six",
-  modifier: "ra ra-lever",
-  difficulty: "ra ra-mountains",
-
-  openCheck: "fa-solid fa-lock-open",
-  attributeCheck: "fa-solid fa-lock",
+  roll: "ah-icon-check-roll",
+  modifier: "ah-icon-check-modifier",
+  difficulty: "ah-icon-check-difficulty",
+  result: "ah-icon-check-result",
+  openCheck: "ah-icon-check-open",
+  attributeCheck: "ah-icon-check-attribute",
 
   full: "fa fa-hourglass",
   half: "fa fa-hourglass-half",

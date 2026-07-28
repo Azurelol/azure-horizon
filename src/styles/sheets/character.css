@@ -50,6 +50,7 @@
     padding: 1rem;
     background: var(--ah-color-background-surface);
     background-blend-mode: color-burn;
+    gap: 1rem;
   }
 
   .ah-character__sidebar__portrait {
@@ -63,13 +64,12 @@
     }
   }
 
-  .ah-character__sidebar__info {
+  .ah-character__sidebar__section {
     padding: var(--ah-padding-fields);
     gap: var(--ah-gap-fields);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
   }
 }

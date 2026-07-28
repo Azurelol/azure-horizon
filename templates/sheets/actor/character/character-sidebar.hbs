@@ -11,10 +11,17 @@
       data-tooltip="{{actor.name}}"
       height="100" width="100">
   </div>
-  <div class="ah-character__sidebar__info">
+  <div class="ah-character__sidebar__section">
     {{ahResourceBar 'system.parameters.hp.value' system.parameters.hp.value system.parameters.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
     {{ahResourceBar 'system.parameters.mp.value' system.parameters.mp.value system.parameters.mp.max label='AH.CHARACTER.MindPoint.short' icon=(ahIconClass 'mp') colorClass="--ah-color-mp" }}
     {{ahResourceBar 'system.parameters.ip.value' system.parameters.ip.value system.parameters.ip.max label='AH.CHARACTER.InventoryPoint.short' icon=(ahIconClass 'ip') colorClass="--ah-color-ip" }}
     {{ahResourceBar 'system.parameters.tp.value' system.parameters.tp.value system.parameters.tp.max label='AH.CHARACTER.TensionPoint.short' icon=(ahIconClass 'tp') colorClass="--ah-color-tp" }}
+  </div>
+
+  <div class="ah-character__sidebar__section">
+    <div class="ah-flexrow">
+      {{ahButton action='rest' type='short' size='m' icon=(ahIconClass 'shortRest') tooltip='AH.INTERVAL.ShortRest.long'}}
+      {{ahButton action='rest' type='long' size='m' icon=(ahIconClass 'longRest') tooltip='AH.INTERVAL.LongRest.long'}}
+    </div>
   </div>
 </aside>
