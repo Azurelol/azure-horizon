@@ -302,20 +302,20 @@ AH.icons = {
 
   untyped: "ra ra-perspective-dice-random",
 
-  slashing: "ra ra-sword",
-  piercing: "ra ra-spear-head",
-  blunt: "ra ra-hammer",
+  slashing: "ah-icon-slashing",
+  piercing: "ah-icon-piercing",
+  blunt: "ah-icon-blunt",
 
-  fire: "ra ra-fire",
-  cold: "ra ra-snowflake-1",
-  electric: "ra ra-lightning-bolt",
-  acid: "ra ra-acid",
+  fire: "ah-icon-fire",
+  cold: "ah-icon-cold",
+  electric: "ah-icon-electric",
+  acid: "ah-icon-acid",
 
-  light: "ra ra-sun",
-  dark: "ra ra-crescent-moon",
+  light: "ah-icon-light",
+  dark: "ah-icon-dark",
 
-  mental: "ra ra-brain",
-  poison: "ra ra-poison-bottle",
+  mental: "ah-icon-mental",
+  poison: "ah-icon-poison",
 
   popout: "fa fa-external-link",
   pin: "fa fa-thumb-tack",

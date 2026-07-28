@@ -1,3 +1,93 @@
 :root {
 
+  --ah-icon-hp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/heart.png");
+  --ah-icon-mp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/star.png");
+  --ah-icon-ip: url("../../../../assets/icons/Pixel_RPG_Items_Pack/blue_crystal.png");
+  --ah-icon-tp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/vortex_swirl.png");
+
+  --ah-icon-elemental: url("assets/icons/Pixel_RPG_Items_Pack/crystal_cluster.png");
+  --ah-icon-fire: url("../../../../assets/icons/Pixel_RPG_Items_Pack/explosion.png");
+  --ah-icon-cold: url("../../../../assets/icons/Pixel_RPG_Items_Pack/water_splash.png");
+  --ah-icon-electric: url("../../../../assets/icons/Pixel_RPG_Items_Pack/lightning_bolt.png");
+  --ah-icon-acid: url("../../../../assets/icons/Pixel_RPG_Items_Pack/poison_bubble.png");
+
+  --ah-icon-physical: url("../../../../assets/icons/Pixel_RPG_Items_Pack/sword.png");
+  --ah-icon-slashing: url("../../../../assets/icons/Pixel_RPG_Items_Pack/axe.png");
+  --ah-icon-piercing: url("../../../../assets/icons/Pixel_RPG_Items_Pack/javelin.png");
+  --ah-icon-blunt: url("../../../../assets/icons/Pixel_RPG_Items_Pack/mace.png");
+
+  --ah-icon-spiritual: url("../../../../assets/icons/Pixel_RPG_Items_Pack/spellbook.png");
+  --ah-icon-light: url("../../../../assets/icons/Pixel_RPG_Items_Pack/torch.png");
+  --ah-icon-dark: url("../../../../assets/icons/Pixel_RPG_Items_Pack/dark_potion.png");
+
+  --ah-icon-poison: url("../../../../assets/icons/Pixel_RPG_Items_Pack/poison_bubble.png");
+
+  .ah-icon-hp {
+    background-image: var(--ah-icon-hp);
+  }
+
+  .ah-icon-mp {
+    background-image: var(--ah-icon-mp);
+  }
+
+  .ah-icon-ip {
+    background-image: var(--ah-icon-ip);
+  }
+
+  .ah-icon-tp {
+    background-image: var(--ah-icon-tp);
+  }
+
+  .ah-icon-elemental {
+    background-image: var(--ah-icon-elemental);
+  }
+
+  .ah-icon-fire {
+    background-image: var(--ah-icon-fire);
+  }
+
+  .ah-icon-cold {
+    background-image: var(--ah-icon-cold);
+  }
+
+  .ah-icon-electric {
+    background-image: var(--ah-icon-electric);
+  }
+
+  .ah-icon-acid {
+    background-image: var(--ah-icon-acid);
+  }
+
+  .ah-icon-physical {
+    background-image: var(--ah-icon-physical);
+  }
+
+  .ah-icon-slashing {
+    background-image: var(--ah-icon-slashing);
+  }
+
+  .ah-icon-piercing {
+    background-image: var(--ah-icon-piercing);
+  }
+
+  .ah-icon-blunt {
+    background-image: var(--ah-icon-blunt);
+  }
+
+  .ah-icon-spiritual {
+    background-image: var(--ah-icon-spiritual);
+  }
+
+  .ah-icon-light {
+    background-image: var(--ah-icon-light);
+  }
+
+  .ah-asset-dark {
+    background-image: var(--ah-icon-dark);
+  }
+
+  .ah-icon-poison {
+    background-image: var(--ah-icon-poison);
+  }
+
 }
