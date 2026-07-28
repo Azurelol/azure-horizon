@@ -17,6 +17,8 @@ const Flags = Object.freeze({
     Damage: "Damage",
     ResourceGain: "ResourceGain",
     ResourceLoss: "ResourceLoss",
+    
+    RevertedAction: "RevertedAction",
   }),
 });
 

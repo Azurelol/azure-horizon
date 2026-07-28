@@ -73,6 +73,7 @@ async function initializeSystems() {
   await helpers.AHHandlebars.registerPartials();
   await data.Compendium.CompendiumIndex.initialize();
   await pipelines.Enrichers.initialize();
+  await pipelines.Damage.initialize();
 }
 
 Hooks.once("init", async () => {

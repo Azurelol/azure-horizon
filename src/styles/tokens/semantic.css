@@ -14,6 +14,9 @@
   --ah-color-bg-card: rgb(107, 107, 107);
   --ah-color-card: #e4e3e3;
 
+  --ah-color-dark: white;
+  --ah-color-light: black;
+
   /* controls */
   --ah-color-control: var(--ah-primitive-color-white);
   --ah-color-control-hover: color-mix(in srgb, var(--ah-primitive-color-white), white 25%);

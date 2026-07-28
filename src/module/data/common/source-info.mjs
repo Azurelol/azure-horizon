@@ -1,6 +1,6 @@
 import { systemID } from "../../constants.mjs";
 import Flags from "./flags.mjs";
-import { FoundryUtils } from "../../utils/_module.mjs";
+import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 
 /**
  * @description Lookup information for the source of an action.
@@ -55,7 +55,7 @@ export default class SourceInfo {
    * @returns {SourceInfo}
    */
   static resolve(document, element) {
-    let name = game.i18n.localize("AH.COMMON.Unknown");
+    let name = StringUtils.localize("AH.COMMON.Unknown");
     let itemUuid = null;
     let actorUuid = null;
     let effectUuid = null;

@@ -2,8 +2,15 @@ import { Pipeline, PipelineContext, PipelineRequest } from "./_module.mjs";
 import AH from "../config.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 import TokenUtils from "../utils/token-utils.mjs";
-import { ChatMessageBuilder, ChatMessageSections, ChatSectionOrder, FlagBuilder } from "../helpers/_module.mjs";
+import {
+  ChatMessageBuilder,
+  ChatMessageHelper,
+  ChatMessageSections,
+  ChatSectionOrder,
+  FlagBuilder,
+} from "../helpers/_module.mjs";
 import Flags from "../data/common/flags.mjs";
+import { systemID } from "../constants.mjs";
 
 /**
  * @extends PipelineRequest
@@ -190,7 +197,7 @@ export default class Damage extends Pipeline {
               amount: damageTaken,
               content: content,
               result: context.result,
-              from: request.sourceInfo.name,
+              from: StringUtils.localize(request.sourceInfo.name),
               sourceActorUuid: request.sourceInfo.actorUuid,
               resource: resource.toUpperCase(),
               sourceItemUuid: request.sourceInfo.itemUuid,
@@ -209,7 +216,29 @@ export default class Damage extends Pipeline {
     return Promise.all(updates);
   }
 
-  static initialize() {
+  /**
+   * @param {ChatMessage} message
+   * @param {HTMLElement} html
+   */
+  static onRenderChatMessage(message, html) {
+    if (!message.getFlag(systemID, Flags.ChatMessage.Damage)) {
+      return;
+    }
 
+    ChatMessageHelper.handleClickRevert(message, html, "revertDamage", async (dataset) => {
+      const uuid = dataset.uuid;
+      const actor = fromUuidSync(uuid);
+      const updates = [];
+      const amountRecovered = Number(dataset.amount);
+      const resource = dataset.resource.toLowerCase();
+      updates.push(actor.modifyTokenAttribute(`parameters.${resource}`, amountRecovered, true));
+      TokenUtils.showFloatyText(actor, `${amountRecovered} ${resource}`, "lightgreen");
+      return Promise.all(updates);
+    });
+
+  }
+
+  static initialize() {
+    Hooks.on("renderChatMessageHTML", Damage.onRenderChatMessage);
   }
 }

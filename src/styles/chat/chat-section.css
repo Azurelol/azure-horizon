@@ -1,3 +1,9 @@
+.ah-chat-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .ah-chat-section__flavor {
   h2 {
     flex-grow: 8;

@@ -308,7 +308,8 @@
       "Cancel": "Cancel",
       "Actions": "Actions",
       "Send": "Send",
-      "Variable": "Variable"
+      "Variable": "Variable",
+      "Unknown": "Unknown"
     },
     "PIPELINE": {
       "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>"

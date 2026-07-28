@@ -9,3 +9,4 @@ export { default as AsyncHooks } from "./async-hooks.mjs";
 export { CheckInspector, CheckConfigurer } from "./check-configuration.mjs";
 export { default as FlagBuilder } from "./flag-builder.mjs";
 export { default as TextEditorHelper } from "./text-editor-helper.mjs";
+export { default as ChatMessageHelper } from "./chat-message-helper.mjs";

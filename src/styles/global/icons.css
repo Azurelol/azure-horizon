@@ -60,6 +60,14 @@
     color: var(--ah-primitive-color-warning);
   }
 
+  &.--dark {
+    color: var(--ah-color-dark);
+  }
+
+  &.--light {
+    color: var(--ah-color-light);
+  }
+
   &.center {
     align-self: center;
     justify-self: center;
