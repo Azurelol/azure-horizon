@@ -1,6 +1,7 @@
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {AH_ActorType} type
+ * @property {String} name
  * @property {String} uuid
  * @property {String} id The canonical identifier for this Document.
  * @property {Map<String, AHItem>} items <Uuid, *>

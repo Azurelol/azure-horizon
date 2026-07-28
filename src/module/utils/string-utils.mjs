@@ -21,6 +21,22 @@ export default class StringUtils {
   }
 
   /**
+   * @param {String} str
+   * @param {RegExp} regExp
+   * @param {Promise<string, string, string>} replacerFunction
+   * @returns {Promise<*>}
+   */
+  static async replaceAsync(str, regExp, replacerFunction) {
+    const matches = str.matchAll(regExp);
+    let replacements = [];
+    for (const match of matches) {
+      replacements.push(await replacerFunction(...match));
+    }
+    let i = 0;
+    return str.replace(regExp, () => replacements[i++]);
+  }
+
+  /**
    * Converts a kebab-case, camelCase, snake_case, or PascalCase string into a
    * human-readable label with capitalized words.
    * @param {string} value

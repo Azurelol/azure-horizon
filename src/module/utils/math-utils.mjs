@@ -10,6 +10,21 @@ export default class MathUtils {
   }
 
   /**
+   * @description A sandbox-safe evaluation function to execute user-input code with access to scoped Math methods.
+   * @param {String} expression A simple arithmetic expression
+   * @returns {Number} The evaluated value
+   * @author Uses Foundry's API
+   * @remarks Uses {@link https://foundryvtt.com/api/classes/foundry.dice.Roll.html#roll}
+   */
+  static evaluate(expression) {
+    try {
+      return Roll.safeEval(expression);
+    } catch (e) {
+      return expression;
+    }
+  }
+
+  /**
    * @param {number} number
    * @return {boolean}
    */

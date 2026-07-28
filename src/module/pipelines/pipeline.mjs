@@ -1,10 +1,10 @@
-import { SourceInfo } from "../data/common/_module.mjs";
+import { EvaluationContext, SourceInfo } from "../data/common/_module.mjs";
 
 /**
  * @property {SourceInfo} sourceInfo
  * @property {AHItem} item The item that triggered the pipeline
  * @property {AHActor[]} targets
- * @property {AHActor} sourceActor
+ * @property {AHActor} actor
  * @property {Set<String>} traits
  * @property {Event | null} event
  * @property {String} origin An unique identifier, provided to prevent cascading of a request.
@@ -21,7 +21,7 @@ export class PipelineRequest {
     this.targets = targets;
     this.traits = new Set();
     this.item = sourceInfo.resolveItem();
-    this.sourceActor = sourceInfo.resolveActor();
+    this.actor = sourceInfo.resolveActor();
   }
 
   /**
@@ -65,29 +65,30 @@ export class PipelineRequest {
 
 /**
  * @property {SourceInfo} sourceInfo
- * @property {AHActor} sourceActor The actor whose action triggered the pipeline
+ * @property {AHActor} actor The actor whose action triggered the pipeline
  * @property {AHItem} item The item of the actor that triggered the pipeline
- * @property {AHActor} actor The actor the pipeline is modifying
+ * @property {AHActor} subject The actor the pipeline is modifying
  * @property {Set<String>} traits
  * @property {Event | null} event
  * @property {?} result The result output
  */
-export class PipelineContext {
+export class PipelineContext extends EvaluationContext {
   /**
    * @param {PipelineRequest} request
-   * @param {AHActor} actor
+   * @param {AHActor} subject
    */
-  constructor(request, actor) {
+  constructor(request, subject) {
+    super(request.actor, request.item, request.targets);
     Object.assign(this, request);
-    this.actor = actor;
-    this.sourceActor = request.sourceActor;
-    this.item = request.item;
+    this.subject = subject;
   }
+
   addTraits(traits) {
     for (const t of traits) {
       this.traits.add(t);
     }
   }
+
   removeTraits(traits) {
     for (const t of traits) {
       this.traits.remove(t);

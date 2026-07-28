@@ -2,6 +2,10 @@ import { HTMLUtils, StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 import { TextEditorHelper } from "../../helpers/_module.mjs";
 import { Targeting } from "../../helpers/targeting.mjs";
+import { EvaluationContext } from "../../data/common/_module.mjs";
+import { systemID } from "../../constants.mjs";
+import Flags from "../../data/common/flags.mjs";
+import { Damage, DamageData, DamageRequest, Expressions } from "../_module.mjs";
 
 /**
  * @param {RegExpMatchArray} match The text within a chat message that matches the given pattern
@@ -49,8 +53,26 @@ async function onRender(element) {
   const renderContext = await TextEditorHelper.getRenderContext(element);
   element.addEventListener("click", async function (event) {
     const keyboardModifiers = HTMLUtils.getKeyboardModifiers(event);
-    let targets = await Targeting.getTargeted();
+    let targets = await Targeting.getSelected();
     if (targets.length > 0) {
+      let context = EvaluationContext.fromSourceInfo(renderContext.sourceInfo, targets);
+      let check = renderContext.document.getFlag(systemID, Flags.ChatMessage.Check);
+      if (check) {
+        context = context.withCheck(check);
+      }
+      const type = renderContext.dataset.type;
+      let amount = await Expressions.evaluateAsync(renderContext.dataset.amount, context);
+      let traits = [];
+      let damageData = new DamageData();
+      damageData.add(type, amount);
+
+      const request = new DamageRequest(renderContext.sourceInfo, targets, damageData);
+      request.addTraits(traits);
+      if (renderContext.dataset.traits) {
+        request.addTraits(...renderContext.dataset.traits.split(","));
+      }
+
+      await Damage.process(request);
     }
   });
 }

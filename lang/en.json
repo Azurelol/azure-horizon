@@ -250,9 +250,16 @@
     "DIALOG": {
       "UploadClipboardImage": "Upload Clipboard Image",
       "BrowseImage": "Browse Image",
-      "EntriesMissing": "Entries are missing.",
-      "InvalidTarget": "Invalid Targets",
-      "Warnings": {
+      "WARNING": {
+        "MissingEffect": "Missing Effect",
+        "MissingActor": "Missing Actor",
+        "MissingItem": "Missing Item",
+        "SingleTarget": "A single target is required.",
+        "MissingSource": "Missing Source",
+        "EntriesMissing": "Entries are missing.",
+        "InvalidTarget": "Invalid Targets",
+        "MissingTargeting": "No tokens have been targeted.",
+        "MissingSelection": "No tokens have been selected.",
         "DocumentOwnership": "You do not own the target document and thus cannot modify it."
       }
     },
