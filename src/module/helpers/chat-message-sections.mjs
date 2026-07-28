@@ -1,4 +1,4 @@
-import { systemTemplatePath } from "../constants.mjs";
+import { enrichHTML, renderTemplate, systemTemplatePath } from "../constants.mjs";
 
 /**
  * @desc Used for ordering the standardized chat message sections.
@@ -45,6 +45,7 @@ export const ChatMessageSectionTemplate = Object.freeze({
   flavor: systemTemplatePath("chat/chat-section-flavor"),
   flavorItem: systemTemplatePath("chat/chat-section-flavor-item"),
   check: systemTemplatePath("chat/chat-section-check"),
+  damage: systemTemplatePath("chat/chat-section-apply-damage"),
 });
 
 /**
@@ -69,4 +70,48 @@ export const ChatMessageSections = Object.freeze({
       }));
     }
   },
+
+  /**
+   * @param {ChatMessageSectionCollection} sections
+   * @param {string} template
+   * @param {Object} context
+   * @param {number} [order]
+   */
+  template: (sections, template, context, order) => {
+    sections.push(async () => {
+      const content = await renderTemplate(template, context);
+      return {
+        content: content,
+        order,
+      };
+    });
+  },
+
+  /**
+   * @param {ChatMessageSectionCollection} sections
+   * @param {string} content
+   * @param {number} [order]
+   */
+  content: (sections, content, order) => {
+    sections.push(async () => ({
+      content: content,
+      order,
+    }));
+  },
+
+  /**
+   * @param {ChatMessageSectionCollection} sections
+   * @param {string, Promise<string>} text
+   * @param {number} [order]
+   */
+  text: (sections, text, order) => {
+    sections.push(async () => ({
+      partial: systemTemplatePath("chat/chat-section-text"),
+      data: {
+        text: await enrichHTML(await text),
+      },
+      order,
+    }));
+  },
+
 });

@@ -8,9 +8,15 @@
 const Flags = Object.freeze({
   ChatMessage: Object.freeze({
     Check: "Check",
+    /** @remarks Refers to {@linkcode SourceInfo} **/
     Source: "Source",
     Item: "Item",
     Effect: "Effect",
+
+    /** @remarks Refers to {@linkcode DamageData} **/
+    Damage: "Damage",
+    ResourceGain: "ResourceGain",
+    ResourceLoss: "ResourceLoss",
   }),
 });
 

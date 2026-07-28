@@ -28,4 +28,32 @@
   --ah-fumble-end: #15031e;
   --ah-background-fumble: linear-gradient(to right, var(--ah-fumble-start), var(--ah-fumble-end));
 
+  /* Result Colors */
+  --ah-background-result: #bdb195;
+  --ah-border-result: #373434;
+  --ah-background-hit: linear-gradient(to right, #228c22, #91c469);
+  --ah-border-hit: #91c469;
+  --ah-background-miss: linear-gradient(to right, #880012, #edb7aa);
+  --ah-border-miss: #edb7aa;
+
+  /* Damage Types */
+  --ah-background-physical: linear-gradient(to right, #a1a1a1, #8c8c8c);
+  --ah-border-physical: #a1a1a1;
+  --ah-background-electric: linear-gradient(to right, #fdda76, #fbc847);
+  --ah-border-electric: #fdda76;
+  --ah-background-dark: linear-gradient(to right, #543987, #2b0d6b);
+  --ah-border-dark: #543987;
+  --ah-background-acid: linear-gradient(to right, #d28d3e, #9f5b1f);
+  --ah-border-acid: #d28d3e;
+  --ah-background-fire: linear-gradient(to right, #f58a00, #c05b00);
+  --ah-border-fire: #f58a00;
+  --ah-background-cold: linear-gradient(to right, #bce4fa, #4f7b9a);
+  --ah-border-cold: #bce4fa;
+  --ah-background-light: linear-gradient(to right, #fff7b2, #e1c29f);
+  --ah-border-light: #fff7b2;
+  --ah-background-poison: linear-gradient(to right, #d678a2, #a65a83);
+  --ah-border-poison: #d678a2;
+  --ah-background-untyped: linear-gradient(to right, #c0c0c0, #a8a8a8);
+  --ah-border-untyped: #a8a8a8;
+
 }

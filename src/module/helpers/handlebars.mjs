@@ -26,6 +26,9 @@ const COMPONENT_TEMPLATES = Object.freeze({
   stringField: systemTemplatePath("components/string-field"),
 });
 
+const MESSAGE_TEMPLATES = Object.freeze({
+});
+
 /**
  * @param {String} path
  * @param {Object} data
@@ -44,7 +47,9 @@ function getTemplateString(path, data) {
 
 export default Object.freeze({
   loadTemplates: async () => {
-    let templates = Object.values(COMPONENT_TEMPLATES);
+    let templates = [];
+    templates.push(...Object.values(COMPONENT_TEMPLATES));
+    templates.push(...Object.values(MESSAGE_TEMPLATES));
     templates.push(...Object.values(ChatMessageSectionTemplate));
     return foundry.applications.handlebars.loadTemplates(templates);
   },
@@ -173,6 +178,7 @@ export default Object.freeze({
  * @property {String} long
  * @property {String} short
  * @property {String} plural
+ * @property {undefined|String} label
  */
 
 /**
@@ -195,6 +201,10 @@ function getLocaleKey(record, key, options) {
   let entry = AH[record][key];
   if (entry === undefined) {
     return "";
+  }
+
+  if (entry.label) {
+    return entry.label;
   }
 
   const format = options.hash?.format ?? "long";

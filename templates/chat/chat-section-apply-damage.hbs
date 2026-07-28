@@ -1,0 +1,30 @@
+<section>
+  <span>
+    {{{localize message actor=actor damage=damage amount=amount from=from resource=resource}}}.
+  </span>
+
+  <div class="ah-chat-section__damage__box">
+    {{#each result.instances}}
+      <label data-tooltip="{{localize (ahLocaleKey 'damageTypes' type)}}">
+        <i class="ah-icon --xs {{ahIconClass type}}"></i>
+        <span>{{amount}}</span>
+      </label>
+    {{/each}}
+  </div>
+
+  {{#each content as |section|}}
+    <article>
+      {{{section}}}
+    </article>
+  {{/each}}
+
+  <section>
+    <div>
+      <a data-action="revertDamage" data-uuid="{{uuid}}" data-amount="{{damage}}" data-resource="{{resource}}"
+         data-tooltip="{{localize 'FU.ChatRevertDamage'}}">
+        <span class='fu-tag button flex-group-center' style="font-size: 1rem;"><i class="icon fas fa-undo"></i></span>
+      </a>
+    </div>
+  </section>
+
+</section>

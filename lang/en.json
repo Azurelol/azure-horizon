@@ -251,6 +251,7 @@
       "UploadClipboardImage": "Upload Clipboard Image",
       "BrowseImage": "Browse Image",
       "WARNING": {
+        "ApplyNoDamage": "No damage was applied onto {actor} by {source}.",
         "MissingEffect": "Missing Effect",
         "MissingActor": "Missing Actor",
         "MissingItem": "Missing Item",
@@ -308,6 +309,9 @@
       "Actions": "Actions",
       "Send": "Send",
       "Variable": "Variable"
+    },
+    "PIPELINE": {
+      "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>"
     }
   },
   "TYPES": {

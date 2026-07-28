@@ -66,3 +66,24 @@
   span {
   }
 }
+
+.ah-chat-section__damage__box {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  font-size: var(--ah-font-size-label);
+  width: 100%;
+
+  background: var(--ah-background-result);
+  border: 1px solid var(--ah-border-result);
+  border-radius: 4px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  label {
+    display: inline-flex;
+    gap: 0.15rem;
+    padding: 0.1rem 0.35rem;
+  }
+}

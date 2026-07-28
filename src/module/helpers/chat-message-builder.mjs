@@ -1,6 +1,7 @@
 import { renderTemplate, systemTemplatePath } from "../constants.mjs";
 import { FoundryUtils } from "../utils/_module.mjs";
 import { ChatMessageSections, ChatSectionOrder } from "./chat-message-sections.mjs";
+import { FlagBuilder } from "./_module.mjs";
 
 /**
  * @typedef ChatMessageBuilderData
@@ -93,11 +94,14 @@ export default class ChatMessageBuilder {
   }
 
   /**
-   * @param {Object} flags Adds a flags object to the chat message. It will be merged with others.
+   * @param {Record|FlagBuilder} flags Adds a flags object to the chat message. It will be merged with others.
    * @returns {ChatMessageBuilder}
    */
   withFlags(flags) {
     if (flags) {
+      if (flags instanceof FlagBuilder) {
+        flags = flags.toObject();
+      }
       this.#flags.push(flags);
     }
     return this;
