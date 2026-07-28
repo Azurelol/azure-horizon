@@ -9,6 +9,8 @@ const Flags = Object.freeze({
   ChatMessage: Object.freeze({
     Check: "Check",
     Source: "Source",
+    Item: "Item",
+    Effect: "Effect",
   }),
 });
 

@@ -1,6 +1,7 @@
-import { StringUtils } from "../../utils/_module.mjs";
+import { HTMLUtils, StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 import { TextEditorHelper } from "../../helpers/_module.mjs";
+import { Targeting } from "../../helpers/targeting.mjs";
 
 /**
  * @param {RegExpMatchArray} match The text within a chat message that matches the given pattern
@@ -45,6 +46,13 @@ function enricher(match, options) {
  * @returns {Promise<void>}
  */
 async function onRender(element) {
+  const renderContext = await TextEditorHelper.getRenderContext(element);
+  element.addEventListener("click", async function (event) {
+    const keyboardModifiers = HTMLUtils.getKeyboardModifiers(event);
+    let targets = await Targeting.getTargeted();
+    if (targets.length > 0) {
+    }
+  });
 }
 
 /**

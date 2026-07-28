@@ -1,6 +1,16 @@
 import AH from "../config.mjs";
 import Expressions from "../pipelines/expressions.mjs";
 import { StringUtils } from "../utils/_module.mjs";
+import { SourceInfo } from "../data/common/_module.mjs";
+
+/**
+ * @typedef TextEditorRenderContext
+ * @property {Document} document
+ * @property {HTMLElement} target
+ * @property {SourceInfo} sourceInfo
+ * @property {DOMStringMap} dataset
+ * @property {Boolean} valid
+ */
 
 export default class TextEditorHelper {
 
@@ -66,5 +76,63 @@ export default class TextEditorHelper {
     } else {
       anchor.append(amount);
     }
+  }
+
+  static getChatMessageFromId(messageId) {
+    return game.messages.get(messageId);
+  }
+
+  /**
+   * @description Resolves the parent document from where an enriched html element came from
+   * @param {HTMLEnrichedContentElement} element
+   * @returns {Document|ChatMessage}
+   */
+  static resolveDocument(element) {
+    const chatMessage = element.closest("li.chat-message");
+    if (chatMessage) {
+      const messageId = chatMessage.dataset.messageId;
+      return TextEditorHelper.getChatMessageFromId(messageId);
+    } else {
+      let sheet;
+      const framev2 = element.closest(".application");
+      if (framev2) {
+        sheet = foundry.applications.instances.get(framev2.id);
+      } else {
+        const framev1 = element.closest(".app");
+        if (framev1) {
+          sheet = ui.windows[framev1.dataset.appid];
+        }
+      }
+      if (sheet) {
+        return sheet.document ?? sheet.element;
+      }
+    }
+    console.debug(`Failed to resolve the document from ${element.toString()}`);
+  }
+
+  /**
+   * @param {HTMLEnrichedContentElement} element
+   * @returns TextEditorRenderContext
+   */
+  static getRenderContext(element) {
+    const document = TextEditorHelper.resolveDocument(element);
+    const target = element.firstElementChild;
+
+    let sourceInfo;
+    if (document instanceof ChatMessage) {
+      sourceInfo = SourceInfo.fromChatMessage(document);
+    }
+    if (!sourceInfo) {
+      sourceInfo = SourceInfo.resolve(document, target);
+    }
+
+    const dataset = target?.dataset ?? {};
+    return {
+      document,
+      target,
+      sourceInfo,
+      dataset,
+      valid: target !== undefined,
+    };
   }
 }

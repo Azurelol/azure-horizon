@@ -1,10 +1,21 @@
-import { ObjectUtils, StringUtils } from "./_module.mjs";
+import { StringUtils } from "./_module.mjs";
 import { enrichHTML } from "../constants.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
 export default class FoundryUtils {
+
+  /**
+   * @param {String} str
+   * @return {Boolean}
+   */
+  static isUUID(str) {
+    if (typeof str !== "string") return false;
+
+    return /^(?:Compendium\.[^.\s]+\.[^.\s]+\.)?(?:[A-Za-z]+\.)?[A-Za-z0-9]{16}(?:\.[A-Za-z]+\.[A-Za-z0-9]{16})*$/.test(str);
+  }
+
   /**
    * @param {HTMLElement} target
    * @returns {Object}

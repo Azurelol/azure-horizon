@@ -1,4 +1,4 @@
-import { renderTemplate } from "../../constants.mjs";
+import { enrichHTML, renderTemplate } from "../../constants.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
 
 /**
@@ -60,8 +60,10 @@ function textColumn(options = {}) {
     headerAlignment: options.alignment,
 
     renderCell: async (entry) => {
+      let text = "" + (await options.getText(entry));
+      text = await enrichHTML(text);
       return renderTemplate("components/table/table-column-text", {
-        text: "" + (await options.getText(entry)),
+        text: text,
         cssClass: options.cssClass,
       });
     },
