@@ -615,8 +615,8 @@ function setupResourceBar(html) {
 
     FoundryUtils.contextMenu(html, ".ah-resource-bar__control", [
       {
-        name: "AH.COMMON.Reset",
-        icon: AH.icons.refresh,
+        name: "AH.COMMON.Full",
+        icon: AH.icons.full,
         condition: (target) => !target.classList.contains("editing"),
         callback: (target) => {
           const bar = target instanceof HTMLElement ? target : target[0];
@@ -625,6 +625,35 @@ function setupResourceBar(html) {
 
           input.value = maxValue;
           bar.dataset.value = maxValue;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        },
+      },
+      {
+        name: "AH.COMMON.Half",
+        icon: AH.icons.half,
+        condition: (target) => !target.classList.contains("editing"),
+        callback: (target) => {
+          const bar = target instanceof HTMLElement ? target : target[0];
+          const input = bar.querySelector(".ah-resource-bar__control__input");
+          const maxValue = Number(bar.dataset.max ?? 0);
+
+          const halfValue = Math.round(maxValue * 0.5);
+          input.value = halfValue;
+          bar.dataset.value = halfValue;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        },
+      },
+      {
+        name: "AH.COMMON.Empty",
+        icon: AH.icons.half,
+        condition: (target) => !target.classList.contains("editing"),
+        callback: (target) => {
+          const bar = target instanceof HTMLElement ? target : target[0];
+          const input = bar.querySelector(".ah-resource-bar__control__input");
+          const maxValue = Number(bar.dataset.max ?? 0);
+
+          input.value = 0;
+          bar.dataset.value = 0;
           input.dispatchEvent(new Event("change", { bubbles: true }));
         },
       },

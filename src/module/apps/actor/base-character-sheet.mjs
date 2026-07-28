@@ -1,0 +1,70 @@
+import { AHActorSheet } from "./actor-sheet.mjs";
+import { systemPath, systemTemplatePath } from "../../constants.mjs";
+import Handlebars from "../../helpers/handlebars.mjs";
+import { EquipmentTableRenderer } from "../item/_module.mjs";
+import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
+
+/**
+ * @extends AHActorSheet
+ * @property {AHActor} actor
+ * @property {CharacterDataModel} system
+ * @inheritDoc
+ */
+export class AHBaseCharacterSheet extends AHActorSheet {
+  /** @inheritdoc */
+  static DEFAULT_OPTIONS = {
+    classes: ["ah-character"],
+    position: {
+      width: 850,
+      height: 800,
+    },
+    actions: {
+      rest: this.#rest,
+    },
+  };
+
+  /** @inheritdoc */
+  static PARTS = {
+    header: {
+      template: systemTemplatePath("sheets/actor/character/character-header"),
+    },
+    sidebar: {
+      template: systemTemplatePath("sheets/actor/character/character-sidebar"),
+    },
+    tabs: {
+      template: systemTemplatePath("sheets/document-tabs"),
+    },
+  };
+
+  /* -------------------------------------------------- */
+  /**
+   * Attach event listeners to rendered template parts.
+   * @param {string} partId The id of the part being rendered.
+   * @param {HTMLElement} html The rendered HTML element for the part.
+   * @param {ApplicationRenderOptions} options Rendering options passed to the render method.
+   * @protected
+   */
+  _attachPartListeners(partId, html, options) {
+    super._attachPartListeners(partId, html, options);
+    switch (partId) {
+      case "sidebar":
+      {
+        Handlebars.setupComponent.resourceBar(html);
+        break;
+      }
+    }
+  }
+
+  /* -------------------------------------------------- */
+  /**
+   * @this AHBaseCharacterSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #rest(event, target) {
+    const { type } = target.dataset;
+    return this.actor.rest(type);
+  }
+
+}

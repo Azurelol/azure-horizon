@@ -151,6 +151,10 @@ AH.defenses = Object.freeze({
  */
 
 /**
+ * @typedef {'short'|'long'} AH_RestType
+ */
+
+/**
  * @description Scene intervals, used for things like skill activations, expiry of active effects
  */
 AH.intervals = Object.freeze({
@@ -339,6 +343,8 @@ AH.icons = {
 
   full: "fa fa-hourglass",
   half: "fa fa-hourglass-half",
+  empty: "fa fa-hourglass-start",
+  
   start: "fa fa-hourglass-start",
   end: "fa fa-hourglass-end",
 

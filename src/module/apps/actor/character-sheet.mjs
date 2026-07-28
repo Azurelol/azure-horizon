@@ -3,6 +3,7 @@ import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
 import { EquipmentTableRenderer } from "../item/_module.mjs";
 import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
+import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
 
 /**
  * @extends AHActorSheet
@@ -10,17 +11,7 @@ import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
  * @property {CharacterDataModel} system
  * @inheritDoc
  */
-export class AHCharacterSheet extends AHActorSheet {
-  /** @inheritdoc */
-  static DEFAULT_OPTIONS = {
-    classes: ["ah-character"],
-    position: {
-      width: 850,
-      height: 800,
-    },
-    actions: {
-    },
-  };
+export class AHCharacterSheet extends AHBaseCharacterSheet {
 
   /** @inheritdoc */
   static TABS = {
@@ -36,15 +27,7 @@ export class AHCharacterSheet extends AHActorSheet {
 
   /** @inheritdoc */
   static PARTS = {
-    header: {
-      template: systemTemplatePath("sheets/actor/character/character-header"),
-    },
-    sidebar: {
-      template: systemTemplatePath("sheets/actor/character/character-sidebar"),
-    },
-    tabs: {
-      template: systemTemplatePath("sheets/document-tabs"),
-    },
+    ...super.PARTS,
 
     features: {
       template: systemTemplatePath("sheets/actor/character/character-features"),
@@ -58,24 +41,6 @@ export class AHCharacterSheet extends AHActorSheet {
   };
 
   /* -------------------------------------------------- */
-
-  /**
-   * Attach event listeners to rendered template parts.
-   * @param {string} partId The id of the part being rendered.
-   * @param {HTMLElement} html The rendered HTML element for the part.
-   * @param {ApplicationRenderOptions} options Rendering options passed to the render method.
-   * @protected
-   */
-  _attachPartListeners(partId, html, options) {
-    super._attachPartListeners(partId, html, options);
-    switch (partId) {
-      case "sidebar":
-      {
-        Handlebars.setupComponent.resourceBar(html);
-        break;
-      }
-    }
-  }
 
   #equipmentTableRenderer = new EquipmentTableRenderer();
 

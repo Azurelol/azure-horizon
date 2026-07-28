@@ -69,4 +69,36 @@ export class AHActor extends foundry.documents.Actor {
     return result;
   }
 
+  /**
+   * @param {AH_RestType} type
+   * @return Promise
+   */
+  async rest(type = "long") {
+    const mhp = this.system.parameters.hp?.max;
+    const mmp = this.system.parameters.mp?.max;
+    const mtp = this.system.parameters.ip?.max;
+
+    let hp, mp, tp;
+    switch (type) {
+      case "long":
+        hp = mhp;
+        mp = mmp;
+        tp = 0;
+        break;
+
+      case "short":
+        hp = Math.min(hp + (mhp * 2), mhp);
+        mp = Math.min(mp + (mmp * 2), mhp);
+        tp = Math.max(tp - 5, mtp);
+        break;
+    }
+
+    const updateData = {
+      "system.parameters.hp.value": hp,
+      "system.parameters.mp.value": mp,
+      "system.parameters.tp.value": tp,
+    };
+    await this.update(updateData);
+  }
+
 }
