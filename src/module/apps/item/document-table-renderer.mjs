@@ -11,9 +11,6 @@ export default class DocumentTableRenderer extends AH_TableRenderer {
 
   getColumns() {
     return [
-      TableColumns.documentName({
-        header: "AH.COMMON.Name",
-      }),
     ];
   }
 }

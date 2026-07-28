@@ -3,6 +3,7 @@ import { ChatMessageBuilder } from "../helpers/_module.mjs";
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {AH_ItemType} type
+ * @property {DataModel} system
  */
 export class AHItem extends foundry.documents.Item {
   /** @inheritdoc */
@@ -17,8 +18,19 @@ export class AHItem extends foundry.documents.Item {
   }
 
   /**
+   * @param {KeyboardModifiers} modifiers
+   * @returns {Promise<void>}
+   */
+  async perform(modifiers) {
+    if (this.system.perform instanceof Function) {
+    }
+    else {
+      return this.render();
+    }
+  }
+
+  /**
    * Renders the item's description to HTML.
-   *
    */
   async render() {
     const builder = new ChatMessageBuilder(this.parent, this);

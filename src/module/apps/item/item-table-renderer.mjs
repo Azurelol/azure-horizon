@@ -10,6 +10,12 @@ const itemFields = Object.freeze({
 export default class ItemTableRenderer extends DocumentTableRenderer {
   getColumns() {
     let columns = super.getColumns();
+    columns.push(
+      TableColumns.documentName({
+        header: "AH.COMMON.Name",
+        perform: true,
+        type: "item",
+      }));
     columns.push(TableColumns.textColumn({
       header: "AH.COMMON.Description",
       getText: (item) => item.system.description,
@@ -21,6 +27,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
         dataset: (entry) => {
           return {
             id: entry.id,
+            type: "Item",
           };
         },
         actions: [
@@ -29,6 +36,12 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
             tooltip: "AH.COMMON.Send",
             icon: AH.icons.send,
             keys: ["id"],
+          },
+          {
+            action: "editDocument",
+            tooltip: "AH.COMMON.Edit",
+            icon: AH.icons.edit,
+            keys: ["id", "type"],
           },
         ],
       },

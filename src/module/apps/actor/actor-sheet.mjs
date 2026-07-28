@@ -48,6 +48,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
 
       performAction: this.#performAction,
       sendItem: this.#sendItem,
+      editDocument: this.#editDocument,
     },
     form: {
       submitOnChange: true,
@@ -436,10 +437,10 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   static async #performAction(event, target) {
     event.preventDefault();
     /** @type AH_SheetActionData **/
-    const dataset = target.dataset;
+    const { type, id } = target.dataset;
     const modifiers = HTMLUtils.getKeyboardModifiers(event);
 
-    switch (dataset.type) {
+    switch (type) {
 
       case "open-check": {
         await CheckPrompt.openCheck(this.actor);
@@ -452,6 +453,8 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
         break;
 
       case "item": {
+        const item = await this.actor.items.get(id);
+        await item.perform(modifiers);
       }
         break;
     }
@@ -470,6 +473,26 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
     const item = this.actor.items.get(id);
     if (item) {
       await item.render();
+    }
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #editDocument(event, target) {
+    event.preventDefault();
+    const { id, type } = target.dataset;
+    switch (type) {
+      case "Item": {
+        const item = this.actor.items.get(id);
+        if (item) {
+          await item.sheet.render({ force: true });
+        }
+        break;
+      }
     }
   }
 

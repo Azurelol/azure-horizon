@@ -8,7 +8,6 @@ export default class EquipmentTableRenderer extends ItemTableRenderer {
    */
   getColumns() {
     let columns = super.getColumns();
-
     return columns;
   }
 }
