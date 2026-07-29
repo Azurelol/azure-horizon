@@ -41,10 +41,10 @@ AH.progression = Object.freeze({
  * @type {Object<AH_Attribute, string>}
  */
 AH.attributes = {
-  mig: "AH.CHARACTER.Might",
-  dex: "AH.CHARACTER.Dexterity",
-  ins: "AH.CHARACTER.Insight",
-  wlp: "AH.CHARACTER.Willpower",
+  mig: { label: "AH.CHARACTER.Might.long", short: "AH.CHARACTER.Might.short" },
+  dex: { label: "AH.CHARACTER.Dexterity.long", short: "AH.CHARACTER.Dexterity.short" },
+  ins: { label: "AH.CHARACTER.Insight.long", short: "AH.CHARACTER.Insight.short" },
+  wlp: { label: "AH.CHARACTER.Willpower.long", short: "AH.CHARACTER.Willpower.short" },
 };
 
 AH.attributeDice = {
@@ -73,10 +73,10 @@ AH.checkTypes = {
  */
 
 AH.resources = {
-  hp: "AH.CHARACTER.HitPoint",
-  mp: "AH.CHARACTER.MindPoint",
-  ip: "AH.CHARACTER.InventoryPoint",
-  tp: "AH.CHARACTER.TensionPoint",
+  hp: { label: "AH.CHARACTER.HitPoint.short" },
+  mp: { label: "AH.CHARACTER.MindPoint.short" },
+  ip: { label: "AH.CHARACTER.InventoryPoint.short" },
+  tp: { label: "AH.CHARACTER.TensionPoint.short" },
 };
 
 /**

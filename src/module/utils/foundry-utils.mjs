@@ -1,4 +1,4 @@
-import { StringUtils } from "./_module.mjs";
+import { ObjectUtils, StringUtils } from "./_module.mjs";
 import { enrichHTML } from "../constants.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
@@ -46,7 +46,7 @@ export default class FoundryUtils {
    */
   static getFormSelectOptions(record, variant) {
     return Object.entries(record).map(([key, value]) => ({
-      label: StringUtils.localize(variant ? `${value}.${variant}` : value),
+      label: StringUtils.localize(variant ? ObjectUtils.getProperty(value, variant) : value),
       value: key,
     }));
   }

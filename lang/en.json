@@ -276,8 +276,10 @@
     },
     "COMMON": {
       "Document": "Document",
+      "Damage": "Damage",
       "Actor": "Actor",
       "Item": "Item",
+      "Amount": "Amount",
       "Entry": "Entry",
       "Name": "Name",
       "Add": "Add",
@@ -312,7 +314,8 @@
       "Send": "Send",
       "Variable": "Variable",
       "Revert": "Revert",
-      "Unknown": "Unknown"
+      "Unknown": "Unknown",
+      "Type": "Type"
     },
     "PIPELINE": {
       "ResourceGain": "Gain",

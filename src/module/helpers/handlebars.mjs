@@ -63,11 +63,7 @@ export default Object.freeze({
     Handlebars.registerPartial("ahOptionalFieldset", await getTemplate(COMPONENT_TEMPLATES.optionalFieldset));
   },
   registerHelpers: () => {
-    Handlebars.registerHelper("ahFormOptions", function (constant) {
-      const record = ObjectUtils.getProperty(AH, constant);
-      const options = FoundryUtils.getFormSelectOptions(record, "long");
-      return options;
-    });
+    Handlebars.registerHelper("ahFormOptions", formOptions);
     Handlebars.registerHelper("ahDocumentAnchor", documentAnchor);
     Handlebars.registerHelper("ahIconClass", function (icon) {
       if (!icon) {
@@ -209,13 +205,21 @@ function getLocaleKey(record, key, options) {
     return "";
   }
 
-  if (entry.label) {
-    return entry.label;
+  const format = options.hash?.format ?? "long";
+
+  if (entry instanceof Object) {
+    if (entry[format]) {
+      return entry[format];
+    }
+    else if (entry.label) {
+      return entry.label;
+    }
+  }
+  else {
+    return entry;
   }
 
-  const format = options.hash?.format ?? "long";
-  let fullKey = `${entry}.${format}`;
-  return fullKey;
+  return entry;
 }
 
 /**
@@ -730,4 +734,16 @@ function iconRadioGroups(element, context) {
       });
     });
   });
+}
+
+/**
+ * @param {String} key
+ * @param options
+ * @returns {FormSelectOption[]}
+ */
+function formOptions(key, options) {
+  const record = ObjectUtils.getProperty(AH, key);
+  const labelProperty = options.hash?.property ?? "label";
+  const formOptions = FoundryUtils.getFormSelectOptions(record, labelProperty);
+  return formOptions;
 }

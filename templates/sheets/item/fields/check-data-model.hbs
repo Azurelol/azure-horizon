@@ -1,4 +1,4 @@
-{{#> ahOptionalFieldset label='AH.CHECK.Check' enabled=value.enabled name=(ahConcat path ".enabled")}}
+{{#> ahOptionalFieldset label='AH.CHECK.Check' icon=(ahIconClass 'check') enabled=value.enabled name=(ahConcat path ".enabled")}}
   {{ahStringField path=(ahConcat path '.primary') options=(ahFormOptions 'attributes') label="AH.COMMON.Primary" value=value.primary }}
   {{ahStringField path=(ahConcat path '.secondary') options=(ahFormOptions 'attributes') label="AH.COMMON.Secondary" value=value.secondary }}
   {{ahStringField path=(ahConcat path '.bonus') label="AH.CHECK.Bonus.long" value=value.bonus }}
