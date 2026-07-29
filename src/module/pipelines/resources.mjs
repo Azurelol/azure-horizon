@@ -69,7 +69,8 @@ async function process(request) {
       const incomingRecoveryBonus = 0; //subject.system.bonuses.incomingRecovery[request.resourceType] || 0;
       const incomingRecoveryMultiplier = 1; //subject.system.multipliers.incomingRecovery[request.resourceType] ?? 1;
       amount = Math.max(0, Math.floor((request.amount + incomingRecoveryBonus + outgoingRecoveryBonus) * (incomingRecoveryMultiplier * outgoingRecoveryMultiplier)));
-
+      // Cap the amount gained up to the maximum
+      amount = Math.min(amount, resource.max - resource.value);
       if (amount === 0) {
         const message = incomingRecoveryMultiplier > 0 ? "AH.PIPELINE.ChatRecoveryNotNeeded" : "AH.PIPELINE.ChatRecoveryNotPossible";
         chatMessage.text(StringUtils.localize(message, {
@@ -79,22 +80,19 @@ async function process(request) {
         await chatMessage.create();
         continue;
       }
-
-      // Cap the amount gained up to the maximum
-      amount = Math.min(amount, resource.max - resource.value);
     }
     // LOSS
     else {
       const incomingLossBonus = 0; // actor.system.bonuses.incomingLoss[request.resourceType] || 0;
       const incomingLossMultiplier = 1; // actor.system.multipliers.incomingLoss[request.resourceType] || 1;
-      amount = -Math.max(0, Math.floor((amount + incomingLossBonus) * incomingLossMultiplier));
+      amount = -Math.max(0, Math.floor((Math.abs(request.amount) + incomingLossBonus) * incomingLossMultiplier));
     }
 
     // Create the resource update
     updates.push(
       subject.modifyTokenAttribute(fieldPath, amount, true).then(async (result) => {
         chatMessage.template(
-          "chat/chat-message-section-update-resource",
+          "chat/chat-section-update-resource",
           {
             message: message,
             actor: subject.name,
@@ -107,6 +105,7 @@ async function process(request) {
           },
           ChatSectionOrder.details,
         );
+        await chatMessage.create();
         TokenUtils.showFloatyText(subject, `${amount} ${request.resource.toUpperCase()}`, "lightgreen");
         return result;
       }),

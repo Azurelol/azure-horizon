@@ -58,7 +58,7 @@ export default class TextEditorHelper {
     const className = AH.icons[name];
     if (className) {
       const icon = document.createElement("i");
-      icon.classList.add("ah-icon", "--xs", className);
+      icon.classList.add("ah-icon", "--xs", ...className.split(" "));
       anchor.append(icon);
       return icon;
     }

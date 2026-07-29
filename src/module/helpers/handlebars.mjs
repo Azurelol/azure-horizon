@@ -98,6 +98,12 @@ export default Object.freeze({
     Handlebars.registerHelper("ahCapitalize", value => {
       return value.charAt(0).toUpperCase() + value.slice(1);
     });
+    Handlebars.registerHelper("ahUpperCase", value => {
+      return value.toUpperCase();
+    });
+    Handlebars.registerHelper("ahMathAbs", value => {
+      return Math.abs(value);
+    });
     Handlebars.registerHelper("ahContains", function (collection, item) {
       if (Array.isArray(collection)) {
         return collection.includes(item);

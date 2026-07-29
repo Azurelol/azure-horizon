@@ -46,6 +46,8 @@ export const ChatMessageSectionTemplate = Object.freeze({
   flavorItem: systemTemplatePath("chat/chat-section-flavor-item"),
   check: systemTemplatePath("chat/chat-section-check"),
   damage: systemTemplatePath("chat/chat-section-apply-damage"),
+  resource: systemTemplatePath("chat/chat-section-update-resource"),
+  text: systemTemplatePath("chat/chat-section-text"),
 });
 
 /**

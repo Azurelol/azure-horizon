@@ -10,7 +10,7 @@ import { ResourceRequest } from "../resources.mjs";
 const RESOURCE_GAIN_IDENTIFIER = "ResourceGain";
 const RESOURCE_LOSS_IDENTIFIER = "ResourceGain";
 
-function createReplacementElement(amount, type, tooltip, label) {
+function createReplacementElement(amount, type, tooltip, label, change) {
   if (type in AH.resources) {
     const anchor = TextEditorHelper.anchor();
     anchor.dataset.type = type;
@@ -18,14 +18,15 @@ function createReplacementElement(amount, type, tooltip, label) {
     let typeName = StringUtils.localize(`${AH.resources[type]}.short`);
     anchor.setAttribute("data-tooltip", `${StringUtils.localize(tooltip)} (${amount} ${typeName})`);
     anchor.draggable = true;
+    anchor.dataset.change = change;
 
+    // ICON
+    TextEditorHelper.icon(anchor, type);
     // INDICATOR
-    const indicator = document.createElement("i");
-    indicator.classList.add("indicator");
-    anchor.append(indicator);
+    TextEditorHelper.icon(anchor, change);
 
     if (label) {
-      anchor.append(label);
+      anchor.append(StringUtils.localize(label));
       anchor.dataset.label = label;
       anchor.dataset.amount = amount;
     } else {
@@ -34,8 +35,6 @@ function createReplacementElement(amount, type, tooltip, label) {
       // TYPE
       anchor.append(` ${typeName}`);
     }
-    // ICON
-    TextEditorHelper.icon(anchor, type);
 
     return anchor;
   } else {
@@ -72,6 +71,9 @@ async function onRender(element) {
         amount = updateData.total;
       }
 
+      if (renderContext.dataset.change === "loss") {
+        amount = -amount;
+      }
       const request = new ResourceRequest(renderContext.sourceInfo, targets, type, amount);
       await Resources.process(request);
     }
@@ -101,7 +103,7 @@ const gainEnricher = {
     const amount = text[1];
     const type = text[2];
     const label = text.groups.label;
-    return createReplacementElement(amount, type.toLowerCase(), "ResourceGain", "AH.PIPELINE.ResourceGain", label);
+    return createReplacementElement(amount, type.toLowerCase(), "AH.PIPELINE.ResourceGain", label, "gain");
   },
   onRender: onRender,
 };
@@ -116,7 +118,7 @@ const lossEnricher = {
     const amount = text[1];
     const type = text[2];
     const label = text.groups.label;
-    return createReplacementElement(amount, type.toLowerCase(), "ResourceLoss", "AH.PIPELINE.ResourceLoss", label);
+    return createReplacementElement(amount, type.toLowerCase(), "AH.PIPELINE.ResourceLoss", label, "loss");
   },
   onRender: onRender,
 };

@@ -1,6 +1,6 @@
 .ah-inline {
   display: inline-flex;
-  gap: 0.025em;
+  gap: 4px;
   justify-content: center;
   align-items: center;
   text-align: center;

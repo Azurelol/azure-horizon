@@ -329,6 +329,9 @@ AH.icons = {
   shortRest: "ah-icon-rest-short",
   longRest: "ah-icon-rest-long",
 
+  gain: "fa fa-chevron-circle-up",
+  loss: "fa fa-chevron-circle-down",
+
   popout: "fa fa-external-link",
   pin: "fa fa-thumb-tack",
   bookmark: "fa fa-bookmark-o",

@@ -317,9 +317,9 @@
     "PIPELINE": {
       "ResourceGain": "Gain",
       "ResourceLoss": "Loss",
-      "ChatApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>",
-      "ChatResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>",
-      "ChatResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>",
+      "ChatApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+      "ChatResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+      "ChatResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "ChatRecoveryNotNeeded": "<strong>{actor}</strong> already has full {resource}.",
       "ChatRecoveryNotPossible": "<strong>{actor}</strong> was not able to recover {resource}."
     }
