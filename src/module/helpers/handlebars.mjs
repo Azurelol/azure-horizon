@@ -176,7 +176,7 @@ export default Object.freeze({
 });
 
 /**
- * @typedef LocalizationEntry
+ * @typedef AH_LocalizationEntry
  * @property {String} long
  * @property {String} short
  * @property {String} plural
@@ -184,7 +184,7 @@ export default Object.freeze({
  */
 
 /**
- * @typedef {"long", "short", "plural"} LocalizationFormat
+ * @typedef {"long", "short", "plural"} AH_LocalizationFormat
  */
 
 /**
@@ -192,14 +192,14 @@ export default Object.freeze({
  * @param {String} record
  * @param {String} key
  * @param {*} options
- * @param {LocalizationFormat} options.format
+ * @param {AH_LocalizationFormat} options.format
  * @returns {*|string}
  */
 function getLocaleKey(record, key, options) {
   if (AH[record] === undefined) {
     return "";
   }
-  /** @type LocalizationEntry **/
+  /** @type AH_LocalizationEntry **/
   let entry = AH[record][key];
   if (entry === undefined) {
     return "";
@@ -739,11 +739,12 @@ function iconRadioGroups(element, context) {
 /**
  * @param {String} key
  * @param options
+ * @param {AH_LocalizationFormat} options.format
  * @returns {FormSelectOption[]}
  */
 function formOptions(key, options) {
   const record = ObjectUtils.getProperty(AH, key);
-  const labelProperty = options.hash?.property ?? "label";
-  const formOptions = FoundryUtils.getFormSelectOptions(record, labelProperty);
+  const format = options.hash?.format ?? "long";
+  const formOptions = FoundryUtils.getFormSelectOptions(record, format);
   return formOptions;
 }

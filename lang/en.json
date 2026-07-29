@@ -315,6 +315,8 @@
       "Variable": "Variable",
       "Revert": "Revert",
       "Unknown": "Unknown",
+      "Defense": "Defense",
+      "Traits": "Traits",
       "Type": "Type"
     },
     "PIPELINE": {

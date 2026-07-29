@@ -39,14 +39,42 @@ export default class FoundryUtils {
    */
 
   /**
+   * @param {Record} record
+   * @param {AH_LocalizationFormat} format
+   * @returns {{[p: string]: undefined}}
+   */
+  static flattenOptions(record, format = "long") {
+    return Object.fromEntries(
+      Object.entries(record).map(([key, entry]) => [key, entry[format]]),
+    );
+  }
+
+  /**
+   * @param {Object} value
+   * @param {AH_LocalizationFormat} format
+   * @returns {*}
+   */
+  static #resolveConfigRecordLabel(value, format) {
+    if (format) {
+      if (value[format]) {
+        return value[format];
+      }
+      if (value.label) {
+        return value.label;
+      }
+    }
+    return value;
+  }
+
+  /**
    * @param {Record<String, String>} record   *
-   * @param {'short'|'long'} variant
+   * @param {AH_LocalizationFormat} format
    * @returns {FormSelectOption[]}
    * @remarks To be used with specific records.
    */
-  static getFormSelectOptions(record, variant) {
+  static getFormSelectOptions(record, format) {
     return Object.entries(record).map(([key, value]) => ({
-      label: StringUtils.localize(variant ? ObjectUtils.getProperty(value, variant) : value),
+      label: StringUtils.localize(FoundryUtils.#resolveConfigRecordLabel(value, format)),
       value: key,
     }));
   }

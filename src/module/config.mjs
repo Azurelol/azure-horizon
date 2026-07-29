@@ -8,6 +8,14 @@ const AH = {};
 const fields = foundry.data.fields;
 
 /**
+ * @typedef AH_Constant
+ * @property {String|undefined} label
+ * @property {String|undefined} long
+ * @property {String|undefined} short
+ * @property {String} icon
+ */
+
+/**
  * System themes.
  * @type {Record<String, {label, path}>}
  */
@@ -38,13 +46,13 @@ AH.progression = Object.freeze({
  */
 
 /**
- * @type {Object<AH_Attribute, string>}
+ * @type {Object<AH_Attribute, AH_Constant>}
  */
 AH.attributes = {
-  mig: { label: "AH.CHARACTER.Might.long", short: "AH.CHARACTER.Might.short" },
-  dex: { label: "AH.CHARACTER.Dexterity.long", short: "AH.CHARACTER.Dexterity.short" },
-  ins: { label: "AH.CHARACTER.Insight.long", short: "AH.CHARACTER.Insight.short" },
-  wlp: { label: "AH.CHARACTER.Willpower.long", short: "AH.CHARACTER.Willpower.short" },
+  mig: { long: "AH.CHARACTER.Might.long", short: "AH.CHARACTER.Might.short" },
+  dex: { long: "AH.CHARACTER.Dexterity.long", short: "AH.CHARACTER.Dexterity.short" },
+  ins: { long: "AH.CHARACTER.Insight.long", short: "AH.CHARACTER.Insight.short" },
+  wlp: { long: "AH.CHARACTER.Willpower.long", short: "AH.CHARACTER.Willpower.short" },
 };
 
 AH.attributeDice = {
@@ -134,16 +142,16 @@ AH.damageTypes = Object.freeze({
 });
 
 /**
- * @typedef {"def", "mdef", "dex", "ins", "mig", "wlp"} AH_Defense
+ * @typedef {"def"|"mdef"|"dex"|"ins"|"mig"|"wlp"} AH_Defense
  */
 
 AH.defenses = Object.freeze({
-  def: "AH.CHARACTER.Defense",
-  mdef: "AH.CHARACTER.MagicDefense",
-  dex: "AH.CHARACTER.Dexterity",
-  ins: "AH.CHARACTER.Insight",
-  wlp: "AH.CHARACTER.Willpower",
-  mig: "AH.CHARACTER.Might",
+  def: { long: "AH.CHARACTER.Defense.long", short: "AH.CHARACTER.Defense.short" },
+  mdef: { long: "AH.CHARACTER.MagicDefense.long", short: "AH.CHARACTER.MagicDefense.short" },
+  dex: { long: "AH.CHARACTER.Dexterity.long", short: "AH.CHARACTER.Dexterity.short" },
+  ins: { long: "AH.CHARACTER.Insight.long", short: "AH.CHARACTER.Insight.short" },
+  wlp: { long: "AH.CHARACTER.Willpower.long", short: "AH.CHARACTER.Willpower.short" },
+  mig: { long: "AH.CHARACTER.Might.long", short: "AH.CHARACTER.Might.short" },
 });
 
 /**

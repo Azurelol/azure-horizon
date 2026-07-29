@@ -1,4 +1,4 @@
-export { AHActiveEffect } from "./AHActiveEffect.mjs";
+export { AHActiveEffect } from "./active-effect.mjs";
 export { AHActor } from "./actor.mjs";
 export { AHCard } from "./AHCard.mjs";
 export { AHCards } from "./AHCards.mjs";
