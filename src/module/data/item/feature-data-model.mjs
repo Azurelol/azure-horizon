@@ -9,7 +9,6 @@ export default class FeatureDataModel extends BaseItemDataModel {
   static defineSchema() {
     const { SchemaField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      check: new EmbeddedDataField(CheckDataModel, { initial: { primary: { value: "ins" }, secondary: { value: "mig" } } }),
     });
   }
 }

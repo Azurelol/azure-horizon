@@ -25,14 +25,14 @@ export class AHItem extends foundry.documents.Item {
     if (this.system.perform instanceof Function) {
     }
     else {
-      return this.render();
+      return this.sendToChat();
     }
   }
 
   /**
    * Renders the item's description to HTML.
    */
-  async render() {
+  async sendToChat() {
     const builder = new ChatMessageBuilder(this.parent, this);
     return builder.create();
   }

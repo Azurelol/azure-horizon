@@ -472,7 +472,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
     const modifiers = HTMLUtils.getKeyboardModifiers(event);
     const item = this.actor.items.get(id);
     if (item) {
-      await item.render();
+      await item.sendToChat();
     }
   }
 

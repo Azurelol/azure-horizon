@@ -60,7 +60,6 @@ async function process(request) {
     const chatMessage = new ChatMessageBuilder(subject, request.item).withFlags(flags);
 
     let amount;
-    let adjusted;
 
     // GAIN
     if (request.gain) {

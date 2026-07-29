@@ -9,7 +9,7 @@ export function CheckFieldsetMixin(ContainerClass) {
     static defineSchema() {
       const { SchemaField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
       return Object.assign(super.defineSchema(), {
-        check: new EmbeddedDataField(CheckDataModel, {}),
+        check: new EmbeddedDataField(CheckDataModel, { }),
       });
     }
   };
