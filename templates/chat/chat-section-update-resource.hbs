@@ -1,0 +1,17 @@
+<section class="ah-chat-section">
+  <span>
+    {{{localize message actor=actor amount=amount resource=resource from=from type=type}}}
+  </span>
+
+  <div class="ah-chat-section__actions">
+    <a data-action="revertResourceUpdate" data-uuid="{{uuid}}" data-resource="{{resource}}"
+       data-change="{{change}}"
+       data-amount="{{amount}}" data-key="{{key}}"
+       data-tooltip="{{localize 'AH.COMMON.Revert'}}">
+      <span>
+        <i class="ah-icon --xs --light {{ahIconClass 'undo'}}"></i>
+      </span>
+    </a>
+  </div>
+
+</section>

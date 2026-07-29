@@ -234,7 +234,6 @@ AH.settings = Object.freeze({
  * Hooks used by the system.
  */
 AH.hooks = Object.freeze({
-
   /**
    * @desc Invoked when a check is being prepared.
    */
@@ -271,14 +270,24 @@ AH.hooks = Object.freeze({
    * @remarks Uses {@link RenderActionEvent}
    */
   RENDER_ACTION_EVENT: `${systemNS}.events.actions.render`,
-
   /**
    * @description Dispatched after a character gains an opportunity
    * @example callback(event)
    * @remarks Uses {@link OpportunityEvent}
    */
   OPPORTUNITY_EVENT: `${systemNS}.events.opportunity`,
-
+  /**
+   * @description Dispatched when a request to apply damage is being processed.
+   * @example callback(event)
+   * @remarks Uses {@link CalculateDamageEvent}
+   */
+  CALCULATE_DAMAGE_EVENT: `${systemNS}.events.damage.calculate`,
+  /**
+   * @description Dispatched when a request to apply a resource change is being processed.
+   * @example callback(event)
+   * @remarks Uses {@link CalculateResourceEvent}
+   */
+  CALCULATE_RESOURCE_EVENT: "projectfu.events.resource.calculate",
 });
 
 /**
@@ -344,7 +353,7 @@ AH.icons = {
   full: "fa fa-hourglass",
   half: "fa fa-hourglass-half",
   empty: "fa fa-hourglass-start",
-  
+
   start: "fa fa-hourglass-start",
   end: "fa fa-hourglass-end",
 

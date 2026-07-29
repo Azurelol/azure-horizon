@@ -3,6 +3,54 @@ import { AsyncHooks, CheckConfigurer, CheckInspector } from "../helpers/_module.
 import AH from "../config.mjs";
 
 /**
+ * @typedef CalculateDamageEvent
+ * @property {CharacterInfo} source
+ * @property {AHItem} item
+ * @property {AH_DamageType} type
+ * @property {AH_ItemGroup} itemGroup
+ * @property {CharacterInfo[]} targets
+ * @property {CheckConfigurer} config
+ */
+
+function calculateDamage(actor, item, config) {
+  const itemGroup = ItemInfo.resolveItemGroup(item);
+  const targets = config.getTargets();
+  const event = {
+    source: CharacterInfo.fromActor(actor),
+    targets: CharacterInfo.fromTargetData(targets),
+    item: item,
+    itemGroup: itemGroup,
+    config: config,
+    type: config.getDamage()?.type,
+  };
+  Hooks.call(AH.hooks.CALCULATE_DAMAGE_EVENT, event);
+}
+
+/**
+ * @typedef CalculateResourceEvent
+ * @property {CharacterInfo} source
+ * @property {ResourceData} data
+ * @property {AHItem} item
+ * @property {AH_ItemGroup} itemGroup
+ * @property {CharacterInfo[]} targets
+ * @property {CheckConfigurer} config
+ */
+
+async function calculateResource(actor, item, config, data) {
+  const itemGroup = ItemInfo.resolveItemGroup(item);
+  const targets = config.getTargets();
+  const event = {
+    source: CharacterInfo.fromActor(actor),
+    targets: CharacterInfo.fromTargetData(targets),
+    item: item,
+    itemGroup: itemGroup,
+    data: data,
+    config: config,
+  };
+  await AsyncHooks.callSequential(AH.hooks.CALCULATE_RESOURCE_EVENT, event);
+}
+
+/**
  * @typedef InitializeActionEvent
  * @property {CheckConfigurer} config
  * @property {CharacterInfo} source
@@ -149,6 +197,9 @@ const Events = Object.freeze({
   resolveAction,
   renderAction,
   opportunity,
+
+  calculateDamage,
+  calculateResource,
 });
 
 export default Events;

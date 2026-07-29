@@ -4,6 +4,7 @@
  * @property {String} name
  * @property {String} uuid
  * @property {String} id The canonical identifier for this Document.
+ * @property {DataModel} system
  * @property {Map<String, AHItem>} items <Uuid, *>
  * @property {Map<String, FUActiveEffect>} effects <Uuid, *>
  * @property {Boolean} isOwner True if the user has ownership of the actor.

@@ -240,4 +240,22 @@ export default class ChatMessageBuilder {
       await promise();
     }
   }
+
+  /**
+   * @param {string} template
+   * @param {Object} context
+   * @param {number} [order]
+   */
+  template(template, context, order) {
+    ChatMessageSections.template(this.sections, template, context, order);
+  }
+
+  /**
+   * @param {string, Promise<string>} text
+   * @param {number} [order]
+   */
+  text(text, order) {
+    ChatMessageSections.text(this.sections, text, order);
+  }
+
 }

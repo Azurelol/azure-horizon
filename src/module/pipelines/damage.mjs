@@ -48,197 +48,203 @@ class DamageContext extends PipelineContext {
     super(request, actor);
     this.bonuses = {};
   }
+}
 
+/**
+ * @param {String} type
+ */
+function isDamageType(type) {
+  return type in AH.damageTypes;
+}
+
+/**
+ * @param {DamageContext} context
+ * @return {Promise<Boolean>}
+ */
+async function collectIncrements(context) {
+
+}
+
+/**
+ * @param {DamageContext} context
+ * @return {Boolean}
+ */
+function collectMultipliers(context) {
+
+}
+
+/**
+ * @param {DamageContext} context
+ * @return {Boolean}
+ */
+function calculateResult(context) {
+
+  /** @type DamageInstance[] **/
+  let instances = [];
+  for (const component of context.damageData.components) {
+    let amount = component.amount;
+    const bonus = context.bonuses[component.type];
+    if (bonus) {
+      amount += bonus.increment;
+      amount *= bonus.multiplier;
+    }
+    instances.push({
+      type: component.type,
+      amount: amount,
+    });
+  }
+
+  const total = instances.reduce((total, instance) => total + instance.amount, 0);
+
+  context.result = {
+    instances: instances,
+    total: total,
+  };
+
+  context.message = "AH.PIPELINE.ChatApplyDamage";
+}
+
+/**
+ * @param {DamageRequest} request
+ * @return {Promise<Awaited<unknown>[]>}
+ */
+async function process(request) {
+  if (!request.validate()) {
+    return Promise.reject("Request was not valid");
+  }
+
+  const updates = [];
+  for (const subject of request.targets) {
+    if (!subject.isOwner) {
+      ui.notifications.warn("AH.DIALOG.WARNINGS.DocumentOwnership", { localize: true });
+      continue;
+    }
+
+    let context = new DamageContext(request, subject);
+    ui.notifications.info(`Applying damage to ${context.subject.name}`, { localize: true });
+    await collectIncrements(context);
+    collectMultipliers(context);
+    calculateResult(context);
+    if (context.result === undefined) {
+      throw new Error("Failed to generate result during pipeline");
+    }
+    // TODO: Apply damage, etc...
+
+    let resource = "hp";
+    let color = "red";
+    let damageTaken = context.result.total;
+    const difference = subject.system.parameters[resource].value - damageTaken;
+    if (difference < 0) {
+      damageTaken -= Math.abs(difference);
+    }
+
+    // If no damage was dealt or absorbed, exit early
+    if (damageTaken === 0) {
+      ui.notifications.warn(`The damage to ${subject.name} was reduced to 0.`);
+      ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ subject }),
+        content: StringUtils.localize("AH.DIALOG.WARNING.ApplyNoDamage", {
+          actor: subject.name,
+          from: request.sourceInfo.name,
+        }),
+      });
+      continue;
+    }
+
+    let content = [];
+    // If the target was pressured (elites/solos)
+    if (context.pressured) {
+    }
+
+    // Create the update
+    updates.push(
+      subject.modifyTokenAttribute(`parameters.${resource}`, -damageTaken, true).then(async (result) => {
+
+        /** @type ChatMessageBuilderData **/
+        let renderData = {
+          tags: [],
+          sections: [],
+          postRenderActions: [],
+          flags: [],
+        };
+
+        TokenUtils.showFloatyText(subject, `${-damageTaken} ${resource.toUpperCase()}`, color);
+
+        // Chat message
+        damageTaken = Math.abs(damageTaken);
+        // Set flags
+        const flags = new FlagBuilder();
+        flags.set(Flags.ChatMessage.Damage, damageTaken);
+        flags.set(Flags.ChatMessage.Source, context.sourceInfo);
+
+        const chat = new ChatMessageBuilder(subject, request.item).withData(renderData);
+        chat.withFlags(flags.toObject());
+
+        ChatMessageSections.template(
+          chat.sections,
+          "chat/chat-section-apply-damage",
+          {
+            message: context.message,
+            actor: subject.name,
+            uuid: subject.uuid,
+            rootUuid: subject.resolveUuid(),
+            amount: damageTaken,
+            content: content,
+            result: context.result,
+            from: StringUtils.localize(request.sourceInfo.name),
+            sourceActorUuid: request.sourceInfo.actorUuid,
+            resource: resource.toUpperCase(),
+            sourceItemUuid: request.sourceInfo.itemUuid,
+            breakdown: context.breakdown,
+          },
+          ChatSectionOrder.details,
+        );
+        await chat.create();
+
+        return result; // keep the result from modifyTokenAttribute if needed
+      }),
+    );
+
+  }
+
+  return Promise.all(updates);
+}
+
+/**
+ * @param {ChatMessage} message
+ * @param {HTMLElement} html
+ */
+function onRenderChatMessage(message, html) {
+  if (!message.getFlag(systemID, Flags.ChatMessage.Damage)) {
+    return;
+  }
+
+  // TODO: Update
+  ChatMessageHelper.handleClickRevert(message, html, "revertDamage", async (dataset) => {
+    const uuid = dataset.uuid;
+    const actor = fromUuidSync(uuid);
+    const updates = [];
+    const amountRecovered = Number(dataset.amount);
+    const resource = dataset.resource.toLowerCase();
+    updates.push(actor.modifyTokenAttribute(`parameters.${resource}`, amountRecovered, true));
+    TokenUtils.showFloatyText(actor, `${amountRecovered} ${resource}`, "lightgreen");
+    return Promise.all(updates);
+  });
+}
+
+/**
+ * Initializes the callback handlers for this pipeline.
+ */
+function initialize() {
+  Hooks.on("renderChatMessageHTML", onRenderChatMessage);
 }
 
 /**
  * Handles damage application onto characters.
  */
-export default class Damage extends Pipeline {
+const Damage = Object.freeze({
+  initialize,
+  process,
+});
 
-  /**
-   * @param {String} type
-   */
-  static isDamageType(type) {
-    return type in AH.damageTypes;
-  }
-
-  /**
-   * @param {DamageContext} context
-   * @return {Promise<Boolean>}
-   */
-  static async collectIncrements(context) {
-
-  }
-
-  /**
-   * @param {DamageContext} context
-   * @return {Boolean}
-   */
-  static collectMultipliers(context) {
-
-  }
-
-  /**
-   * @param {DamageContext} context
-   * @return {Boolean}
-   */
-  static calculateResult(context) {
-
-    /** @type DamageInstance[] **/
-    let instances = [];
-    for (const component of context.damageData.components) {
-      let amount = component.amount;
-      const bonus = context.bonuses[component.type];
-      if (bonus) {
-        amount += bonus.increment;
-        amount *= bonus.multiplier;
-      }
-      instances.push({
-        type: component.type,
-        amount: amount,
-      });
-    }
-
-    const total = instances.reduce((total, instance) => total + instance.amount, 0);
-
-    context.result = {
-      instances: instances,
-      total: total,
-    };
-
-    context.message = "AH.PIPELINE.ApplyDamage";
-  }
-
-  /**
-   * @param {DamageRequest} request
-   * @return {Promise<Awaited<unknown>[]>}
-   */
-  static async process(request) {
-    if (!request.validate()) {
-      return Promise.reject("Request was not valid");
-    }
-
-    const updates = [];
-    for (const subject of request.targets) {
-      if (!subject.isOwner) {
-        ui.notifications.warn("AH.DIALOG.Warnings.DocumentOwnership", { localize: true });
-        continue;
-      }
-
-      let context = new DamageContext(request, subject);
-      ui.notifications.info(`Applying damage to ${context.subject.name}`, { localize: true });
-      await Damage.collectIncrements(context);
-      Damage.collectMultipliers(context);
-      Damage.calculateResult(context);
-      if (context.result === undefined) {
-        throw new Error("Failed to generate result during pipeline");
-      }
-      // TODO: Apply damage, etc...
-
-      let resource = "hp";
-      let color = "red";
-      let damageTaken = context.result.total;
-      const difference = subject.system.parameters[resource].value - damageTaken;
-      if (difference < 0) {
-        damageTaken -= Math.abs(difference);
-      }
-
-      // If no damage was dealt or absorbed, exit early
-      if (damageTaken === 0) {
-        ui.notifications.warn(`The damage to ${subject.name} was reduced to 0.`);
-        ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ subject }),
-          content: StringUtils.localize("AH.DIALOG.WARNING.ApplyNoDamage", {
-            actor: subject.name,
-            from: request.sourceInfo.name,
-          }),
-        });
-        continue;
-      }
-
-      let content = [];
-      // If the target was pressured (elites/solos)
-      if (context.pressured) {
-      }
-
-      // Create the update
-      updates.push(
-        subject.modifyTokenAttribute(`parameters.${resource}`, -damageTaken, true).then(async (result) => {
-
-          /** @type ChatMessageBuilderData **/
-          let renderData = {
-            tags: [],
-            sections: [],
-            postRenderActions: [],
-            flags: [],
-          };
-
-          TokenUtils.showFloatyText(subject, `${-damageTaken} ${resource.toUpperCase()}`, color);
-
-          // Chat message
-          damageTaken = Math.abs(damageTaken);
-          // Set flags
-          const flags = new FlagBuilder();
-          flags.set(Flags.ChatMessage.Damage, damageTaken);
-          flags.set(Flags.ChatMessage.Source, context.sourceInfo);
-
-          const chat = new ChatMessageBuilder(subject, request.item).withData(renderData);
-          chat.withFlags(flags.toObject());
-
-          ChatMessageSections.template(
-            chat.sections,
-            "chat/chat-section-apply-damage",
-            {
-              message: context.message,
-              actor: subject.name,
-              uuid: subject.uuid,
-              rootUuid: subject.resolveUuid(),
-              amount: damageTaken,
-              content: content,
-              result: context.result,
-              from: StringUtils.localize(request.sourceInfo.name),
-              sourceActorUuid: request.sourceInfo.actorUuid,
-              resource: resource.toUpperCase(),
-              sourceItemUuid: request.sourceInfo.itemUuid,
-              breakdown: context.breakdown,
-            },
-            ChatSectionOrder.details,
-          );
-          await chat.create();
-
-          return result; // keep the result from modifyTokenAttribute if needed
-        }),
-      );
-
-    }
-
-    return Promise.all(updates);
-  }
-
-  /**
-   * @param {ChatMessage} message
-   * @param {HTMLElement} html
-   */
-  static onRenderChatMessage(message, html) {
-    if (!message.getFlag(systemID, Flags.ChatMessage.Damage)) {
-      return;
-    }
-
-    ChatMessageHelper.handleClickRevert(message, html, "revertDamage", async (dataset) => {
-      const uuid = dataset.uuid;
-      const actor = fromUuidSync(uuid);
-      const updates = [];
-      const amountRecovered = Number(dataset.amount);
-      const resource = dataset.resource.toLowerCase();
-      updates.push(actor.modifyTokenAttribute(`parameters.${resource}`, amountRecovered, true));
-      TokenUtils.showFloatyText(actor, `${amountRecovered} ${resource}`, "lightgreen");
-      return Promise.all(updates);
-    });
-
-  }
-
-  static initialize() {
-    Hooks.on("renderChatMessageHTML", Damage.onRenderChatMessage);
-  }
-}
+export default Damage;

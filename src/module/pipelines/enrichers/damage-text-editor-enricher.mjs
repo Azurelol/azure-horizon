@@ -51,7 +51,7 @@ function enricher(match, options) {
  */
 async function onRender(element) {
   const renderContext = await TextEditorHelper.getRenderContext(element);
-  element.addEventListener("click", async function (event) {
+  element.addEventListener("click", async function(event) {
     const keyboardModifiers = HTMLUtils.getKeyboardModifiers(event);
     let targets = await Targeting.getSelected();
     if (targets.length > 0) {
