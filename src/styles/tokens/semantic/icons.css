@@ -159,9 +159,10 @@
   .ah-icon-check-potency {
   }
 
-  /*Actions*/
-  --ah-icon-rest-short: url("../../../../assets/icons/Game-icons/sofa.svg");
-  --ah-icon-rest-long: url("../../../../assets/icons/Game-icons/pillow.svg");
+  /* Actions */
+  --ah-icon-rest-short: url("../../../../assets/icons/actions/rest-short.png");
+  --ah-icon-rest-long: url("../../../../assets/icons/actions/rest-long.png");
+  --ah-icon-resupply: url("../../../../assets/icons/actions/restock.png");
 
   .ah-icon-rest-short {
     background-image: var(--ah-icon-rest-short);
@@ -169,6 +170,10 @@
 
   .ah-icon-rest-long {
     background-image: var(--ah-icon-rest-long);
+  }
+
+  .ah-icon-resupply {
+    background-image: var(--ah-icon-resupply);
   }
 
 }

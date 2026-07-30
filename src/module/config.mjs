@@ -166,7 +166,7 @@ AH.defenses = Object.freeze({
  */
 
 /**
- * @typedef {'short'|'long'} AH_RestType
+ * @typedef {'short'|'long'|'resupply'} AH_RestType
  */
 
 /**
@@ -343,6 +343,7 @@ AH.icons = {
 
   shortRest: "ah-icon-rest-short",
   longRest: "ah-icon-rest-long",
+  resupply: "ah-icon-resupply",
 
   gain: "fa fa-chevron-circle-up",
   loss: "fa fa-chevron-circle-down",

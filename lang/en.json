@@ -179,6 +179,9 @@
       },
       "LongRest": {
         "long": "Long Rest"
+      },
+      "Resupply": {
+        "long": "Resupply"
       }
     },
     "DAMAGE": {
@@ -321,7 +324,7 @@
       "Unknown": "Unknown",
       "Defense": "Defense",
       "Traits": "Traits",
-      "Type": "Type",
+      "Type": "Type"
     },
     "PIPELINE": {
       "ResourceGain": "Gain",

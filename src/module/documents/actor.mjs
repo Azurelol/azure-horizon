@@ -76,30 +76,55 @@ export class AHActor extends foundry.documents.Actor {
    * @return Promise
    */
   async rest(type = "long") {
+
+    let hp, mp, tp, ip;
+
     const mhp = this.system.parameters.hp?.max;
     const mmp = this.system.parameters.mp?.max;
-    const mtp = this.system.parameters.ip?.max;
+    const mtp = this.system.parameters.tp?.max;
+    const mip = this.system.parameters.ip?.max;
 
-    let hp, mp, tp;
     switch (type) {
+      case "resupply":
+        ip = mip;
+        break;
+
       case "long":
         hp = mhp;
         mp = mmp;
-        tp = 0;
+        if (this.type === "character") {
+          tp = 0;
+        }
         break;
 
       case "short":
-        hp = Math.min(hp + (mhp * 2), mhp);
-        mp = Math.min(mp + (mmp * 2), mhp);
-        tp = Math.max(tp - 5, mtp);
+        hp = this.system.parameters.hp.value;
+        hp = Math.min(hp + (mhp / 2), mhp);
+
+        mp = this.system.parameters.mp.value;
+        mp = Math.min(mp + (mmp / 2), mmp);
+
+        if (this.type === "character") {
+          tp = this.system.parameters.tp.value;
+          tp = Math.min(tp - 5, 0);
+        }
         break;
     }
 
-    const updateData = {
-      "system.parameters.hp.value": hp,
-      "system.parameters.mp.value": mp,
-      "system.parameters.tp.value": tp,
-    };
+    let updateData = {};
+    if (hp !== undefined) {
+      updateData["system.parameters.hp.value"] = hp;
+    }
+    if (mp !== undefined) {
+      updateData["system.parameters.mp.value"] = mp;
+    }
+    if (tp !== undefined) {
+      updateData["system.parameters.tp.value"] = tp;
+    }
+    if (ip !== undefined) {
+      updateData["system.parameters.ip.value"] = ip;
+    }
+
     await this.update(updateData);
   }
 
