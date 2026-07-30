@@ -58,7 +58,7 @@ class DamageContext extends PipelineContext {
  * @param {DamageContext} context
  * @return {Promise<Boolean>}
  */
-function consolidateComponents(context) {
+function joinComponents(context) {
   const _components = new Map();
 
   for (const component of context.damageData.components) {
@@ -154,7 +154,7 @@ async function process(request) {
 
     let context = new DamageContext(request, subject);
     ui.notifications.info(`Applying damage to ${context.subject.name}`, { localize: true });
-    consolidateComponents(context);
+    joinComponents(context);
     await collectIncrements(context);
     collectMultipliers(context);
     calculateResult(context);

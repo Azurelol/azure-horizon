@@ -192,9 +192,10 @@
     },
     "DAMAGE": {
       "Physical": "Physical",
+
       "Slashing": "Slashing",
       "Piercing": "Piercing",
-      "Strike": "Strike",
+      "Bludgeoning": "Bludgeoning",
 
       "Energy": "Energy",
       "Fire": "Fire",

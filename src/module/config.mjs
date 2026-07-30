@@ -134,7 +134,7 @@ AH.damageTypes = Object.freeze({
 
   slashing: { label: "AH.DAMAGE.Slashing", group: "physical" },
   piercing: { label: "AH.DAMAGE.Piercing", group: "physical" },
-  blunt: { label: "AH.DAMAGE.Blunt", group: "physical" },
+  bludgeoning: { label: "AH.DAMAGE.Bludgeoning", group: "physical" },
 
   fire: { label: "AH.DAMAGE.Fire", group: "elemental" },
   cold: { label: "AH.DAMAGE.Cold", group: "elemental" },
@@ -334,7 +334,8 @@ AH.icons = {
   untyped: "ah-icon-untyped",
   slashing: "ah-icon-slashing",
   piercing: "ah-icon-piercing",
-  blunt: "ah-icon-blunt",
+  bludgeoning: "ah-icon-bludgeoning",
+
   fire: "ah-icon-fire",
   cold: "ah-icon-cold",
   electric: "ah-icon-electric",
