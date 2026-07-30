@@ -48,6 +48,7 @@
   --ah-icon-def: url("../../../../assets/icons/parameters/def.png");
   --ah-icon-mdef: url("../../../../assets/icons/parameters/mdef.png");
   --ah-icon-init: url("../../../../assets/icons/parameters/init.png");
+  --ah-icon-level: url("../../../../assets/icons/parameters/level.png");
 
   .ah-icon-def {
     background-image: var(--ah-icon-def);
@@ -59,6 +60,10 @@
 
   .ah-icon-init {
     background-image: var(--ah-icon-init);
+  }
+
+  .ah-icon-level {
+    background-image: var(--ah-icon-level);
   }
 
   /*Damage Types*/
@@ -133,12 +138,13 @@
   }
 
   /*Checks*/
-  --ah-icon-check-attribute: url("../../../../assets/icons/Game-icons/perspective-dice-six-faces-random.svg");
+  --ah-icon-check-attribute: url("../../../../assets/icons/checks/check.png");
   --ah-icon-check-open: url("../../../../assets/icons/Game-icons/perspective-dice-six-faces-random.svg");
-  --ah-icon-check-difficulty: url("../../../../assets/icons/Game-icons/dice-target.svg");
-  --ah-icon-check-modifier: url("../../../../assets/icons/Game-icons/dice-target.svg");
+  --ah-icon-check-difficulty: url("../../../../assets/icons/checks/difficulty.png");
+  --ah-icon-check-modifier: url("../../../../assets/icons/checks/modifier.png");
   --ah-icon-check-roll: url("../../../../assets/icons/Game-icons/dice-target.svg");
   --ah-icon-check-result: url("../../../../assets/icons/Game-icons/rule-book.svg");
+  --ah-icon-check-hr: url("../../../../assets/icons/checks/hr.png");
 
   .ah-icon-check-attribute {
     background-image: var(--ah-icon-check-attribute);
@@ -156,6 +162,10 @@
     background-image: var(--ah-icon-check-result);
   }
 
+  .ah-icon-check-hr {
+    background-image: var(--ah-icon-check-hr);
+  }
+
   .ah-icon-check-potency {
   }
 
@@ -164,6 +174,7 @@
   --ah-icon-rest-long: url("../../../../assets/icons/actions/rest-long.png");
   --ah-icon-resupply: url("../../../../assets/icons/actions/restock.png");
   --ah-icon-damage: url("../../../../assets/icons/common/damage.png");
+  --ah-icon-target: url("../../../../assets/icons/common/target.png");
 
   .ah-icon-rest-short {
     background-image: var(--ah-icon-rest-short);
@@ -179,6 +190,10 @@
 
   .ah-icon-damage {
     background-image: var(--ah-icon-damage);
+  }
+
+  .ah-icon-target {
+    background-image: var(--ah-icon-target);
   }
 
 }

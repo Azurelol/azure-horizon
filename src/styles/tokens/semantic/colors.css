@@ -29,7 +29,7 @@
   --ah-background-fumble: linear-gradient(to right, var(--ah-fumble-start), var(--ah-fumble-end));
 
   /* Result Colors */
-  --ah-background-result: #bdb195;
+  --ah-background-result: linear-gradient(to right, #7da0ca, #004f89);
   --ah-border-result: #373434;
   --ah-background-hit: linear-gradient(to right, #228c22, #91c469);
   --ah-border-hit: #91c469;
@@ -57,6 +57,6 @@
   --ah-border-untyped: #a8a8a8;
 
   /* Action Types */
-  --ah-background-damage: linear-gradient(to right, red, #8c8c8c);
+  --ah-background-damage: linear-gradient(to right, #a1a1a1, #8c8c8c);
 
 }

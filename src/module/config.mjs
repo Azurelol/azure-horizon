@@ -316,7 +316,7 @@ AH.icons = {
   compendium: "fas fa-book",
   documents: "fa fa-book-bookmark",
 
-  level: "fas fa-chart-simple",
+  level: "ah-icon-level",
   hp: "ah-icon-hp",
   mp: "ah-icon-mp",
   ip: "ah-icon-ip",
@@ -366,9 +366,11 @@ AH.icons = {
   check: "fa fa-check",
 
   roll: "ah-icon-check-roll",
+  hr: "ah-icon-check-hr",
   modifier: "ah-icon-check-modifier",
   difficulty: "ah-icon-check-difficulty",
   result: "ah-icon-check-result",
+  target: "ah-icon-target",
   damage: "ah-icon-damage",
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",

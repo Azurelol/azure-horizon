@@ -24,7 +24,7 @@
  * Contains damage data used in pipelines.
  * @property {DamageComponent[]} components
  * @property {AH_DamageType} type The base damage type
- * @property {Boolean} base Whether to return the total damage without any modifiers.
+ * @property {Boolean} useBase Whether to return the total damage without any modifiers.
  */
 export default class DamageData {
 
@@ -43,6 +43,13 @@ export default class DamageData {
     data.add("AH.DAMAGE.Base", type, amount);
     data.type = type;
     return data;
+  }
+
+  /**
+   * @returns {DamageComponent}
+   */
+  get base() {
+    return this.components[0];
   }
 
   /**
@@ -70,7 +77,7 @@ export default class DamageData {
    * @returns {Number} The sum of all bonus damage modifiers ({@linkcode modifiers})
    */
   get modifierTotal() {
-    if (this.base) {
+    if (this.useBase) {
       return 0;
     }
     return this.components.reduce((agg, curr) => agg + curr.amount, 0);

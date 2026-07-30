@@ -522,9 +522,11 @@ function selector(options) {
  */
 function input(path, value, options) {
   const template = Handlebars.partials[COMPONENT_TEMPLATES.input];
+  const size = options.hash.size ?? "s";
   const html =
     typeof template === "function"
       ? template({
+        size,
         path: path,
         value: value,
         ...options.hash,
