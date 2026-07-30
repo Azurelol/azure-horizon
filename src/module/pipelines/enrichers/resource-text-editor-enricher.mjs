@@ -1,7 +1,7 @@
-import { ActionConfig, TextEditorHelper } from "../../helpers/_module.mjs";
+import { ActionConfig } from "../../helpers/_module.mjs";
 import { Targeting } from "../../helpers/targeting.mjs";
 import AH from "../../config.mjs";
-import { StringUtils } from "../../utils/_module.mjs";
+import { StringUtils, TextEditorUtils } from "../../utils/_module.mjs";
 import { EvaluationContext, Flags } from "../../data/common/_module.mjs";
 import { systemID } from "../../constants.mjs";
 import { Events, Expressions, Resources } from "../_module.mjs";
@@ -12,7 +12,7 @@ const RESOURCE_LOSS_IDENTIFIER = "ResourceGain";
 
 function createReplacementElement(amount, type, tooltip, label, change) {
   if (type in AH.resources) {
-    const anchor = TextEditorHelper.anchor();
+    const anchor = TextEditorUtils.anchor();
     anchor.dataset.type = type;
 
     let typeName = StringUtils.localize(`${AH.resources[type]}.short`);
@@ -21,9 +21,9 @@ function createReplacementElement(amount, type, tooltip, label, change) {
     anchor.dataset.change = change;
 
     // ICON
-    TextEditorHelper.icon(anchor, type);
+    TextEditorUtils.icon(anchor, type);
     // INDICATOR
-    TextEditorHelper.icon(anchor, change);
+    TextEditorUtils.icon(anchor, change);
 
     if (label) {
       anchor.append(StringUtils.localize(label));
@@ -31,7 +31,7 @@ function createReplacementElement(amount, type, tooltip, label, change) {
       anchor.dataset.amount = amount;
     } else {
       // AMOUNT
-      TextEditorHelper.amount(anchor, amount);
+      TextEditorUtils.amount(anchor, amount);
       // TYPE
       anchor.append(` ${typeName}`);
     }
@@ -47,7 +47,7 @@ function createReplacementElement(amount, type, tooltip, label, change) {
  * @returns {Promise<void>}
  */
 async function onRender(element) {
-  const renderContext = await TextEditorHelper.getRenderContext(element);
+  const renderContext = await TextEditorUtils.getRenderContext(element);
   const target = element.firstElementChild;
   const type = renderContext.dataset.type;
 
@@ -98,7 +98,7 @@ async function onRender(element) {
  */
 const gainEnricher = {
   id: "InlineRecovery",
-  pattern: TextEditorHelper.pattern("GAIN", "\\s*(?<amount>\\(?.*?\\)*?)\\s(?<type>\\w+?)"),
+  pattern: TextEditorUtils.pattern("GAIN", "\\s*(?<amount>\\(?.*?\\)*?)\\s(?<type>\\w+?)"),
   enricher: function(text, options) {
     const amount = text[1];
     const type = text[2];
@@ -113,7 +113,7 @@ const gainEnricher = {
  */
 const lossEnricher = {
   id: "InlineLoss",
-  pattern: TextEditorHelper.pattern("LOSS", "\\s*(?<amount>\\(?.*?\\)*?)\\s(?<type>\\w+?)"),
+  pattern: TextEditorUtils.pattern("LOSS", "\\s*(?<amount>\\(?.*?\\)*?)\\s(?<type>\\w+?)"),
   enricher: function(text, options) {
     const amount = text[1];
     const type = text[2];

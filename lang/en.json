@@ -199,7 +199,10 @@
 
       "Mental": "Mental",
       "Poison": "Poison",
-      "Untyped": "Untyped"
+      "Untyped": "Untyped",
+
+      "Base": "Base Damage",
+      "Bonus": "Bonus Damage"
     },
     "DICE": {
       "D4": "D4",

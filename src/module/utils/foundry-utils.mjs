@@ -1,4 +1,4 @@
-import { ObjectUtils, StringUtils } from "./_module.mjs";
+import { StringUtils } from "./_module.mjs";
 import { enrichHTML } from "../constants.mjs";
 
 const { api, fields, handlebars } = foundry.applications;

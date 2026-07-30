@@ -1,10 +1,9 @@
 <header class="ah-chat-section__flavor">
   {{ahDocumentAnchor item}}
-  <h2>{{item.name}}</h2>
+  <span class="ah-chat-section__flavor__name">{{item.name}}</span>
   {{#each linked as |li|}}
     {{ahDocumentAnchor li classes="fu-image__link"}}
   {{/each}}
-
   {{#if subtitle}}
     <h3>{{localize subtitle}}</h3>
   {{/if}}

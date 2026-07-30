@@ -360,7 +360,7 @@ async function setupTagPicker(html, options) {
 
 /**
  * @param {Object} document
- * @param {DocumentImageOptions} options
+ * @param {Object} options
  * @returns {Handlebars.SafeString}
  */
 function documentAnchor(document, options) {
@@ -369,13 +369,9 @@ function documentAnchor(document, options) {
     return "";
   }
 
-  if (options.hash) {
-    options = options.hash;
-  }
-
-  const size = options.size ?? "s";
-  const type = options.type ?? "Item";
-  const template = Handlebars.partials[systemTemplatePath("partials/document-anchor")];
+  const size = options.hash?.size ?? "s";
+  const type = options.hash.type ?? "Item";
+  const template = Handlebars.partials[COMPONENT_TEMPLATES.documentAnchor];
   const html =
     typeof template === "function"
       ? template({
@@ -386,7 +382,7 @@ function documentAnchor(document, options) {
         pack: document.pack,
         type: type,
         size: size,
-        classes: options?.classes,
+        classes: options.hash?.classes,
       })
       : "";
   return new Handlebars.SafeString(html);
@@ -443,10 +439,12 @@ function badge(options) {
   if (options.hash?.iconClass) {
     options.hash.icon = AH.icons[options.hash.iconClass];
   }
+  const size = options.hash?.size ?? "s";
   const template = Handlebars.partials[systemTemplatePath("components/badge")];
   const html =
     typeof template === "function"
       ? template({
+        size,
         ...options.hash,
       })
       : "";
@@ -496,12 +494,13 @@ function button(options) {
  * @returns {Handlebars.SafeString}
  */
 function selector(options) {
-  options = options.hash;
   const template = Handlebars.partials[COMPONENT_TEMPLATES.selector];
+  const size = options.hash.size ?? "s";
   const html =
     typeof template === "function"
       ? template({
-        ...options,
+        size,
+        ...options.hash,
       })
       : "";
   return new Handlebars.SafeString(html);

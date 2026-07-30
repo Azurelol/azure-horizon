@@ -1,6 +1,6 @@
 import AH from "../config.mjs";
+import { StringUtils } from "./_module.mjs";
 import Expressions from "../pipelines/expressions.mjs";
-import { StringUtils } from "../utils/_module.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 
 /**
@@ -12,7 +12,7 @@ import { SourceInfo } from "../data/common/_module.mjs";
  * @property {Boolean} valid
  */
 
-export default class TextEditorHelper {
+export default class TextEditorUtils {
 
   /**
    * @type {string} The pattern used for optional labeling
@@ -36,7 +36,7 @@ export default class TextEditorHelper {
    */
   static pattern(name, required, optional = undefined) {
     const joinedOptional = optional ? optional.join("") : "";
-    const pattern = `@${name}\\[${required}${joinedOptional}${TextEditorHelper.traitsPattern}\\]${TextEditorHelper.labelPattern}`;
+    const pattern = `@${name}\\[${required}${joinedOptional}${TextEditorUtils.traitsPattern}\\]${TextEditorUtils.labelPattern}`;
     return new RegExp(pattern, "g");
   }
 
@@ -91,7 +91,7 @@ export default class TextEditorHelper {
     const chatMessage = element.closest("li.chat-message");
     if (chatMessage) {
       const messageId = chatMessage.dataset.messageId;
-      return TextEditorHelper.getChatMessageFromId(messageId);
+      return TextEditorUtils.getChatMessageFromId(messageId);
     } else {
       let sheet;
       const framev2 = element.closest(".application");
@@ -115,7 +115,7 @@ export default class TextEditorHelper {
    * @returns TextEditorRenderContext
    */
   static getRenderContext(element) {
-    const document = TextEditorHelper.resolveDocument(element);
+    const document = TextEditorUtils.resolveDocument(element);
     const target = element.firstElementChild;
 
     let sourceInfo;

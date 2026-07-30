@@ -319,14 +319,14 @@ AH.icons = {
   ip: "ah-icon-ip",
   tp: "ah-icon-tp",
 
-  def: "ra ra-heavy-shield",
-  mdef: "ra ra-bolt-shield",
+  def: "ah-icon-def",
+  mdef: "ah-icon-mdef",
   init: "ra ra-clockwork",
 
-  mig: "ra ra-muscle-up",
-  dex: "ra ra-boot-stomp",
-  ins: "ra ra-aware",
-  wlp: "ra ra-hearts",
+  mig: "ah-icon-might",
+  dex: "ah-icon-dexterity",
+  ins: "ah-icon-insight",
+  wlp: "ah-icon-willpower",
 
   untyped: "ra ra-perspective-dice-random",
   slashing: "ah-icon-slashing",

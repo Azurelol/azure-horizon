@@ -1,9 +1,8 @@
-import { HTMLUtils, StringUtils } from "../../utils/_module.mjs";
+import { systemID } from "../../constants.mjs";
+import { HTMLUtils, StringUtils, TextEditorUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
-import { TextEditorHelper } from "../../helpers/_module.mjs";
 import { Targeting } from "../../helpers/targeting.mjs";
 import { EvaluationContext } from "../../data/common/_module.mjs";
-import { systemID } from "../../constants.mjs";
 import Flags from "../../data/common/flags.mjs";
 import { Damage, DamageData, DamageRequest, Expressions } from "../_module.mjs";
 
@@ -19,7 +18,7 @@ function enricher(match, options) {
   const traits = match.groups.traits;
 
   if (type in AH.damageTypes) {
-    const anchor = TextEditorHelper.anchor();
+    const anchor = TextEditorUtils.anchor();
     anchor.dataset.type = type;
     anchor.dataset.traits = traits;
     if (label) {
@@ -28,17 +27,17 @@ function enricher(match, options) {
     anchor.draggable = true;
 
     // 1. DAMAGE ICON
-    TextEditorHelper.icon(anchor, "damage");
+    TextEditorUtils.icon(anchor, "damage");
     // 2. LABEL
     if (label) {
       anchor.append(label);
       anchor.dataset.amount = amount;
     } else {
-      TextEditorHelper.amount(anchor, amount);
+      TextEditorUtils.amount(anchor, amount);
       anchor.append(` ${StringUtils.localize(AH.damageTypes[type].label)}`);
     }
     // 3. DAMAGE TYPE ICON
-    TextEditorHelper.icon(anchor, type);
+    TextEditorUtils.icon(anchor, type);
     return anchor;
   }
 
@@ -50,7 +49,7 @@ function enricher(match, options) {
  * @returns {Promise<void>}
  */
 async function onRender(element) {
-  const renderContext = await TextEditorHelper.getRenderContext(element);
+  const renderContext = await TextEditorUtils.getRenderContext(element);
   element.addEventListener("click", async function(event) {
     const keyboardModifiers = HTMLUtils.getKeyboardModifiers(event);
     let targets = await Targeting.getSelected();
@@ -82,7 +81,7 @@ async function onRender(element) {
  */
 const config = {
   id: "DamageTextEditorEnricher",
-  pattern: TextEditorHelper.pattern("DMG", "\\s*(?<amount>\\(?.*?\\)*?)\\s(?<type>\\w+?)"),
+  pattern: TextEditorUtils.pattern("DMG", "\\s*(?<amount>\\(?.*?\\)*?)\\s(?<type>\\w+?)"),
   enricher,
   onRender,
 };

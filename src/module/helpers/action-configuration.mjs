@@ -2,6 +2,7 @@ import { systemID } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { Targeting } from "./targeting.mjs";
 import { Flags } from "../data/common/_module.mjs";
+import { DamageData } from "../pipelines/_module.mjs";
 
 // Data keys
 const TARGETS = "targets";
@@ -80,6 +81,13 @@ export class ActionInspector {
    */
   get initialCheck() {
     return this.data[INITIAL_CHECK];
+  }
+
+  /**
+   * @returns {DamageData}
+   */
+  get damage() {
+    return this.data[DAMAGE];
   }
 
   /**
@@ -217,6 +225,28 @@ export class ActionConfig extends ActionInspector {
   setAttributes(primary, secondary) {
     this.check.primary = primary;
     this.check.secondary = secondary;
+  }
+
+  /**
+   * @param {AH_DamageType} type
+   * @param {Number} baseDamage
+   * @return {ActionConfig}
+   */
+  setDamage(type, baseDamage) {
+    this.setData(DAMAGE, DamageData.construct(type, baseDamage));
+    return this;
+  }
+
+  /**
+   * @param {(damage: DamageData) => DamageData} callback
+   * @return {ActionConfig}
+   */
+  modifyDamage(callback) {
+    const damage = this.damage;
+    if (damage) {
+      this.setData(DAMAGE, callback(damage));
+    }
+    return this;
   }
 
   /**

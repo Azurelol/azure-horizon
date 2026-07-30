@@ -222,6 +222,7 @@ export default class ChatMessageBuilder {
       flavor: flavor,
       content: await renderTemplate("chat/chat-sections", { sections: bodySections }),
       speaker: speaker,
+      classes: ["ah-chat-message"],
       flags: flags,
     };
     const options = {};

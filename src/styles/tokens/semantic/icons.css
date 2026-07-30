@@ -1,10 +1,63 @@
 :root {
 
-  --ah-icon-hp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/heart.png");
-  --ah-icon-mp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/star.png");
-  --ah-icon-ip: url("../../../../assets/icons/Pixel_RPG_Items_Pack/blue_crystal.png");
-  --ah-icon-tp: url("../../../../assets/icons/Pixel_RPG_Items_Pack/torch.png");
+  /*Attributes*/
+  --ah-icon-might: url("../../../../assets/icons/Clockwork_Raven/might.png");
+  --ah-icon-dexterity: url("../../../../assets/icons/Clockwork_Raven/dexterity.png");
+  --ah-icon-insight: url("../../../../assets/icons/Clockwork_Raven/insight.png");
+  --ah-icon-willpower: url("../../../../assets/icons/Clockwork_Raven/willpower.png");
 
+  .ah-icon-might {
+    background-image: var(--ah-icon-might);
+  }
+
+  .ah-icon-dexterity {
+    background-image: var(--ah-icon-dexterity);
+  }
+
+  .ah-icon-insight {
+    background-image: var(--ah-icon-insight);
+  }
+
+  .ah-icon-willpower {
+    background-image: var(--ah-icon-willpower);
+  }
+
+  /* Resources */
+  --ah-icon-hp: url("../../../../assets/icons/Clockwork_Raven/hp.png");
+  --ah-icon-mp: url("../../../../assets/icons/Clockwork_Raven/mp.png");
+  --ah-icon-ip: url("../../../../assets/icons/Clockwork_Raven/ip.png");
+  --ah-icon-tp: url("../../../../assets/icons/Clockwork_Raven/tp.png");
+
+  .ah-icon-hp {
+    background-image: var(--ah-icon-hp);
+  }
+
+  .ah-icon-mp {
+    background-image: var(--ah-icon-mp);
+  }
+
+  .ah-icon-ip {
+    background-image: var(--ah-icon-ip);
+  }
+
+  .ah-icon-tp {
+    background-image: var(--ah-icon-tp);
+  }
+
+  /* Parameters */
+  --ah-icon-def: url("../../../../assets/icons/Clockwork_Raven/def.png");
+  --ah-icon-mdef: url("../../../../assets/icons/Clockwork_Raven/mdef.png");
+
+  .ah-icon-def {
+    background-image: var(--ah-icon-def);
+  }
+
+  .ah-icon-mdef {
+    background-image: var(--ah-icon-mdef);
+  }
+
+
+  /*Damage Types*/
   --ah-icon-elemental: url("assets/icons/Pixel_RPG_Items_Pack/purple_feather.png");
   --ah-icon-fire: url("../../../../assets/icons/Pixel_RPG_Items_Pack/explosion.png");
   --ah-icon-cold: url("../../../../assets/icons/Pixel_RPG_Items_Pack/water_splash.png");
@@ -22,23 +75,6 @@
 
   --ah-icon-poison: url("../../../../assets/icons/Pixel_RPG_Items_Pack/poison_bubble.png");
 
-  /*Damage Types*/
-
-  .ah-icon-hp {
-    background-image: var(--ah-icon-hp);
-  }
-
-  .ah-icon-mp {
-    background-image: var(--ah-icon-mp);
-  }
-
-  .ah-icon-ip {
-    background-image: var(--ah-icon-ip);
-  }
-
-  .ah-icon-tp {
-    background-image: var(--ah-icon-tp);
-  }
 
   .ah-icon-elemental {
     background-image: var(--ah-icon-elemental);
@@ -103,15 +139,19 @@
   .ah-icon-check-attribute {
     background-image: var(--ah-icon-check-attribute);
   }
+
   .ah-icon-check-difficulty {
     background-image: var(--ah-icon-check-difficulty);
   }
+
   .ah-icon-check-modifier {
     background-image: var(--ah-icon-check-modifier);
   }
+
   .ah-icon-check-result {
     background-image: var(--ah-icon-check-result);
   }
+
   .ah-icon-check-potency {
   }
 
@@ -122,6 +162,7 @@
   .ah-icon-rest-short {
     background-image: var(--ah-icon-rest-short);
   }
+
   .ah-icon-rest-long {
     background-image: var(--ah-icon-rest-long);
   }

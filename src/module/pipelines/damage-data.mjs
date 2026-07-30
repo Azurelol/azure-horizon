@@ -34,6 +34,19 @@ export default class DamageData {
   }
 
   /**
+   * @param {AH_DamageType} type
+   * @param {String|Number} amount
+   * @returns {DamageData}
+   */
+  static construct(type, amount) {
+    const data = new DamageData();
+    type = Array.isArray(type) ? type : [type];
+    data.add("AH.DAMAGE.Base", amount, type);
+    data.type = type[0];
+    return data;
+  }
+
+  /**
    * @param {DamageComponent} data
    */
   custom(data = {}) {
@@ -41,11 +54,13 @@ export default class DamageData {
   }
 
   /**
+   * @param {String} label
    * @param {AH_DamageType} type
    * @param {String|Number} amount
    */
-  add(type, amount) {
+  add(label, type, amount) {
     this.custom({
+      label: label,
       type: type,
       amount: amount,
       enabled: true,

@@ -5,10 +5,22 @@
 }
 
 .ah-chat-section__flavor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.125rem;
+  gap: 4px;
+  margin-bottom: 0.125rem;
+  margin-top: 0.5rem;
+
   h2 {
     flex-grow: 8;
-    margin-left: 4px;
   }
+}
+
+.ah-chat-section__flavor__name {
+  margin-left: 4px;
+  font-size: var(--ah-font-size-message-header);
 }
 
 .ah-chat-section__check {

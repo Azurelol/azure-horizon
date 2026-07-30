@@ -127,10 +127,10 @@ function validateCheckAttributes(check) {
  * @param {Partial<CheckOptions>} check
  * @param {AHActor} actor
  * @param {AHItem} item
- * @param {CheckPrepareCallback} initialConfigCallback
+ * @param {CheckPrepareCallback} onPrepare
  * @return {Promise<CheckOptions>}
  */
-async function prepareCheck(check, actor, item, initialConfigCallback) {
+async function prepareCheck(check, actor, item, onPrepare) {
   // Define the check structure
   initializeCheckDefaults(check);
 
@@ -139,7 +139,7 @@ async function prepareCheck(check, actor, item, initialConfigCallback) {
   config.setDefaultTargets();
 
   // Initial callback
-  await (initialConfigCallback ? initialConfigCallback(check, actor, item) : undefined);
+  await (onPrepare ? onPrepare(check, actor, item) : undefined);
 
   // ObjectUtils.lockAndValidateProperty(check, "type");
   // ObjectUtils.lockAndValidateProperty(check, "id", false);

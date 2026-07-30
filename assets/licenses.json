@@ -1,14 +1,18 @@
 {
-  "chess": {
-    "author": "Skoll",
-    "license": "CC BY 3.0"
-  },
   "pixel-rpg-items-pack": {
     "author": "Kettoman",
-    "license": "CC0"
+    "license": "CC0",
+    "url": "https://kettoman.itch.io/pixel-art-icons-rpg-essentials-16x16"
   },
   "game-icons": {
     "author": "Game-icons.net",
-    "license": "CC0"
+    "license": "CC0",
+    "url": "https://game-icons.net/"
+  },
+  "clockwork-raven": {
+    "author": "Clockwork Raven",
+    "license": "Paid",
+    "url": "https://www.patreon.com/clockworkravenstudios",
+    "remark": "The icons have been labeled from the original indexed names."
   }
 }
