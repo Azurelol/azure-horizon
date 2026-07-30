@@ -78,10 +78,9 @@ export default class DamageData {
    */
   get modifierTotal() {
     if (this.useBase) {
-      return 0;
+      return this.base.amount;
     }
-    return this.components.reduce((agg, curr) => agg + curr.amount, 0);
-  }
+    return this.base.amount + this.components.slice(1).reduce((agg, curr) => agg + curr.amount, 0); }
 
   /**
    * @returns {Number}

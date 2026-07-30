@@ -9,6 +9,7 @@ import { FlagBuilder } from "./_module.mjs";
  * @property {Promise[]} postRenderActions
  * @property {Tag[]} tags
  * @property {Object} flags
+ * @property {ChatAction[]} actions
  */
 
 /**
@@ -138,8 +139,14 @@ export default class ChatMessageBuilder {
    * @returns {Promise<void>}
    */
   async create() {
+
     const actor = this.#actor;
     const item = this.#item;
+
+    // ACTIONS:
+    if (this.renderData.actions?.length > 0) {
+      ChatMessageSections.actions(this.sections, this.renderData.actions);
+    }
 
     /**
      * @type {ChatMessageSection[]}
@@ -152,7 +159,7 @@ export default class ChatMessageBuilder {
       }
     }
 
-    // Tag Support: We need to run the functions above first which could end up adding tags
+    // TAGS: We need to run the functions above first which could end up adding tags
     if (this.#renderData.tags.length > 0) {
       let secondPassSections = [];
       ChatMessageSections.tags(secondPassSections, this.#renderData.tags, ChatSectionOrder.tags);

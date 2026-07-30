@@ -1,0 +1,75 @@
+{{#if targets}}
+  <section class="ah-chat-section__targets">
+    {{#each targets as |target|}}
+      <div class="ah-chat-section__target {{#if (eq target.result "hit")}}hit{{else if (eq target.result "miss")}}miss{{else}}default{{/if}}">
+
+        <!-- Info -->
+        <div>
+          <span>
+            {{target.name}}
+          </span>
+          {{#if (or (eq target.result "hit") (eq target.result "miss"))}}
+            <div>
+							<span class="{{target.result}}">
+                {{#if (eq target.result "hit")}}
+                  {{localize 'AH.CHECK.Hit'}}
+                {{else}}
+                  {{localize 'AH.CHECK.Miss'}}
+                {{/if}}
+              </span>
+					  </div>
+          {{/if}}
+        </div>
+
+        <!-- Actions -->
+        {{#each ../actions as |action|}}
+          {{#if targeted}}
+            <span class="ah-tag">
+							<a data-action="{{name}}"
+                 data-id="{{target.uuid}}"
+                 data-fields="{{fields}}"
+                {{#each dataset}}
+                 data-{{@key}}="{{this}}"
+                {{/each}}
+                 data-tooltip="{{localize tooltip}}">
+                {{#if img}}
+                  <img class="ah-icon --xs {{classes}}" alt="{{localize tooltip}}"
+                       style="{{style}} {{#if color}}color: {{color}};{{/if}}"
+                       src="{{img}}" />
+                {{else}}
+                  <i class="ah-icon --xs {{icon}} {{classes}}"
+                     style="{{style}} {{#if color}}color: {{color}};{{/if}}"></i>
+                {{/if}}
+							</a>
+					</span>
+          {{/if}}
+        {{/each}}
+      </div>
+    {{/each}}
+  </section>
+{{/if}}
+
+{{#each actions as |action|}}
+  {{#if selected}}
+    <div class="ah-chat-section__actions">
+      <a class="ah-chat-action"
+        data-action="{{name}}" data-fields="{{fields}}" data-tooltip="{{localize tooltip}}">
+        {{#each dataset}}
+         data-{{@key}}="{{this}}"
+        {{/each}}
+        {{#if dataset.actor-img}}
+          <img class="ah-icon --xs {{classes}}" alt="{{localize tooltip}}" src="{{dataset.actor-img}}" />
+        {{/if}}
+        <span>{{~localize action.label}}</span>
+        {{#if img}}
+          <img class="ah-icon --xs {{classes}}" alt="{{localize tooltip}}"
+               style="{{style}} {{#if color}}color: {{color}};{{/if}}"
+               src="{{img}}" />
+        {{else}}
+          <i class="ah-icon --xs {{icon}} {{classes}}"
+             style="{{style}} {{#if color}}color: {{color}};{{/if}}"></i>
+        {{/if}}
+      </a>
+    </div>
+  {{/if}}
+{{/each}}

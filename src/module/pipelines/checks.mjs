@@ -1,9 +1,10 @@
 import { Events } from "./_module.mjs";
-import { ActionConfig, ChatMessageBuilder, ChatSectionOrder } from "../helpers/_module.mjs";
+import { ActionConfig, ChatAction, ChatMessageBuilder, ChatSectionOrder } from "../helpers/_module.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 import { renderTemplate, systemTemplatePath } from "../constants.mjs";
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
+import { SourceInfo } from "../data/common/_module.mjs";
 
 const { DiceTerm, NumericTerm } = foundry.dice.terms;
 
@@ -50,6 +51,7 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @property {string} actorUuid
  * @property {string} itemUuid
  * @property {string} itemName
+ * @property {SourceInfo} sourceInfo
  * @property {Roll | Object} roll the Roll instance or serialized form of the primary check
  * @property {(Roll | Object)[]} additionalRolls any secondary rolls, either as Roll instances or serialized
  * @property {AttributeDieRoll} primary
@@ -238,6 +240,7 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
     actorUuid: actor.uuid,
     itemUuid: item?.uuid,
     itemName: item?.name,
+    sourceInfo: SourceInfo.fromInstance(actor, item),
     roll: roll.toJSON(),
     additionalRolls: [],
     primary: Object.freeze({
@@ -284,6 +287,7 @@ async function renderCheck(result, actor, item, flags = {}) {
     postRenderActions: [],
     tags: [],
     flags: {},
+    actions: [],
   };
   const config = new ActionConfig(result);
 
@@ -296,6 +300,11 @@ async function renderCheck(result, actor, item, flags = {}) {
     } else if (result.fumble) {
       Events.opportunity(builderData, actor, result.type, item, true);
     }
+  }
+
+  const isTargeted = config.getTargets() > 0;
+  if (isTargeted) {
+    config.addAction(ChatAction.TARGET_ACTION);
   }
 
   // Roll Section

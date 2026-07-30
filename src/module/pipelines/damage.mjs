@@ -3,7 +3,7 @@ import AH from "../config.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 import TokenUtils from "../utils/token-utils.mjs";
 import {
-  ActionConfig,
+  ActionConfig, ChatAction,
   ChatMessageBuilder,
   ChatMessageHelper,
   ChatMessageSections,
@@ -209,6 +209,30 @@ async function process(request) {
 }
 
 /**
+ * @param {DamageData} damageData *
+ * @param {SourceInfo} sourceInfo
+ * @param {String[]} traits
+ * @returns {ChatAction}
+ */
+function getChatAction(damageData, sourceInfo, traits) {
+  const icon = AH.icons[damageData.type];
+  const tooltip = StringUtils.localize("AH.ACTION.ApplyDamageTooltip", {
+    amount: damageData.total,
+    type: StringUtils.localize(AH.damageTypes[damageData.type]),
+  });
+  return new ChatAction("applyDamage", icon, tooltip, {
+    damageData: damageData,
+    sourceInfo: sourceInfo,
+    traits: traits,
+  })
+    .setFlag(Flags.ChatMessage.Damage, damageData.total)
+    .withSelected()
+    .withLabel("AH.ACTION.ApplyDamage")
+    .withTraits(traits)
+    .requiresOwner();
+}
+
+/**
  * @param {ChatMessage} message
  * @param {HTMLElement} html
  */
@@ -243,7 +267,9 @@ const onProcessCheck = (check, actor, item, registerCallback) => {
 /** @type CheckRenderCallback **/
 const onRenderCheck = (data, result, actor, item, registerCallback) => {
   if (result.data.damage) {
+    const config = new ActionConfig(result);
     result.data.damage = new DamageData(result.data.damage);
+    data.actions.push(getChatAction(result.data.damage, config.sourceInfo, config.getTraits()));
   }
 
 };

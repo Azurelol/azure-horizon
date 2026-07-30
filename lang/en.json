@@ -143,7 +143,9 @@
       "Normal": "Normal",
       "Hard": "Hard",
       "VeryHard": "Very Hard",
-      "TargetDefense": "{result} VS {defense}"
+      "TargetDefense": "{result} VS {defense}",
+      "Hit": "Hit",
+      "Miss": "Miss"
     },
     "INTERVAL": {
       "StartOfCombat": {
@@ -329,6 +331,10 @@
       "Defense": "Defense",
       "Traits": "Traits",
       "Type": "Type"
+    },
+    "ACTION": {
+      "ApplyDamage": "Apply Damage",
+      "ApplyDamageTooltip": "Apply damage to selected tokens."
     },
     "PIPELINE": {
       "ResourceGain": "Gain",

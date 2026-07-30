@@ -71,6 +71,15 @@ export class AHActor extends foundry.documents.Actor {
     return result;
   }
 
+  static CHARACTER_TYPES = new Set(["character", "adversary"]);
+
+  /**
+   * @returns {boolean}
+   */
+  isCharacterType() {
+    return AHActor.CHARACTER_TYPES.has(this.type);
+  }
+
   /**
    * @param {AH_RestType} type
    * @return Promise

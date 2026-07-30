@@ -20,6 +20,7 @@ const WEAPON_USED = "weaponUsedBySkill";
 const ITEM_REFERENCE = "itemReference";
 const INITIAL_CHECK = "initialCheck";
 const HR_ZERO = "hrZero";
+const ACTIONS = "actions";
 
 /**
  * @param {boolean} hrZero
@@ -84,10 +85,24 @@ export class ActionInspector {
   }
 
   /**
+   * @returns {SourceInfo}
+   */
+  get sourceInfo() {
+    return this.#check.sourceInfo;
+  }
+
+  /**
    * @returns {DamageData}
    */
   get damage() {
     return this.data[DAMAGE];
+  }
+
+  /**
+   * @returns {ChatAction[]}
+   */
+  get actions() {
+    return this.data[ACTIONS];
   }
 
   /**
@@ -226,6 +241,7 @@ export class ActionInspector {
  * @inheritDoc
  */
 export class ActionConfig extends ActionInspector {
+
   /**
    * @param {AH_Attribute} primary
    * @param {AH_Attribute} secondary
@@ -256,6 +272,15 @@ export class ActionConfig extends ActionInspector {
       this.setData(DAMAGE, damage);
     }
     return this;
+  }
+
+  /**
+   * @param {ChatAction} action
+   */
+  addAction(action) {
+    const actions = this.actions;
+    actions.push(action);
+    this.setData(ACTIONS, actions);
   }
 
   /**

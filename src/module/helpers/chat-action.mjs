@@ -168,4 +168,10 @@ export default class ChatAction {
     });
     return new Handlebars.SafeString(html);
   }
+
+  /**
+   * @type {ChatAction}
+   * @description Target the token
+   */
+  static TARGET_ACTION = new ChatAction("targetSingle", "fas fa-bullseye", "AH.ACTION.Target");
 }

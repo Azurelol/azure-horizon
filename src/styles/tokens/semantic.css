@@ -5,43 +5,38 @@
    - The convention is TYPE-CATEGORY-ROLE. (Where type are essentially CSS property families)
    ============================================================ */
 :root {
-  /* backgrounds */
-  --ah-color-bg: var(--ah-primitive-color-parchment);
-  --ah-color-bg-content: var(--ah-primitive-color-parchment-light);
-  --ah-color-bg-title: var(--ah-primitive-color-parchment-pale);
 
-  /* cards */
-  --ah-color-bg-card: rgb(107, 107, 107);
-  --ah-color-card: #e4e3e3;
-
+  /* CONSTANT */
   --ah-color-dark: white;
   --ah-color-light: black;
 
-  /* controls */
-  --ah-color-control: var(--ah-primitive-color-white);
-  --ah-color-control-hover: color-mix(in srgb, var(--ah-primitive-color-white), white 25%);
-  --ah-color-bg-control: var(--ah-primitive-color-grey-light);
-  --ah-color-bg-control-hover: var(--ah-primitive-color-azure);
-  --ah-color-shadow-control: var(--ah-primitive-color-warm-brown);
-  --ah-color-border-control: var(--ah-primitive-color-grey-mid);
-  --ah-color-shadow: var(--ah-primitive-color-warm-brown);
-  --ah-color-shadow-secondary: var(--ah-primitive-color-white);
-  --ah-color-bg-input: var(--ah-primitive-color-parchment-light);
-  --ah-color-bg-control-header: #404040;
-  --ah-color-control-header: #E5DBD0;
-
-  /* app frame, header, navigation */
+  /* THEME */
   --ah-color-primary-fill-1: var(--ah-primitive-color-navy-900);
   --ah-color-primary-fill-2: var(--ah-primitive-color-navy-800);
   --ah-color-background-primary: linear-gradient(to bottom, var(--ah-color-primary-fill-1) 0%, var(--ah-color-primary-fill-2) 100%);
   --ah-color-border-primary: #3d5080;
   --ah-color-primary: #ffffff;
-  /* panels, dialogs, sheets */
   --ah-color-background-surface:  linear-gradient(to bottom, var(--ah-primitive-color-navy-950) 0%, var(--ah-primitive-color-navy-900b) 100%);
   --ah-color-border-surface: #2f3a54;
-  /* utility overlay/scrim */
   --ah-color-background-overlay: linear-gradient(to bottom, rgba(10, 15, 30, 0.85) 0%, transparent 100%);
   --ah-color-border-overlay: rgba(255, 255, 255, 0.08);
+
+
+  --ah-color-shadow: var(--ah-primitive-color-warm-brown);
+  --ah-color-shadow-secondary: var(--ah-primitive-color-white);
+  --ah-color-bg-input: var(--ah-primitive-color-parchment-light);
+
+  /* Controls (Buttons, Tags) */
+  --ah-color-control: var(--ah-primitive-color-white);
+  --ah-color-control-hover: color-mix(in srgb, var(--ah-primitive-color-white), white 25%);
+  --ah-background-control: var(--ah-color-background-primary);
+  --ah-background-control-hover: var(--ah-primitive-color-azure);
+  --ah-color-shadow-control: var(--ah-primitive-color-warm-brown);
+  --ah-color-border-control: var(--ah-primitive-color-grey-mid);
+  --ah-color-background-control-header: #404040;
+  --ah-border-control: #148782ff;;
+  --ah-text-shadow-control: #2b4a42ff;
+  --ah-color-control-header: #E5DBD0;
 
   /* applications: sheets, dialogs */
   --ah-background-application-header: var(--ah-primitive-color-navy-950);
