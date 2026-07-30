@@ -51,13 +51,6 @@ class DamageContext extends PipelineContext {
 }
 
 /**
- * @param {String} type
- */
-function isDamageType(type) {
-  return type in AH.damageTypes;
-}
-
-/**
  * @param {DamageContext} context
  * @return {Promise<Boolean>}
  */
@@ -95,6 +88,9 @@ function calculateResult(context) {
   }
 
   const total = instances.reduce((total, instance) => total + instance.amount, 0);
+  if (total === undefined) {
+    throw Error("Failed to calculate the damage result.");
+  }
 
   context.result = {
     instances: instances,

@@ -36,6 +36,11 @@
   font-variant: small-caps;
 }
 
+.ah-chat-section__check__defense {
+  display: flex;
+  flex-direction: row;
+}
+
 .ah-chat-section__check__outcome {
   display: flex;
   flex-direction: row;

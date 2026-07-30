@@ -1,11 +1,11 @@
 <section class="ah-chat-section__check">
 
   {{#if result.data.targetedDefense}}
-
+    <div class="ah-chat-section__check__defense">
+      <i class="ah-icon --s {{ahIconClass 'target'}}"></i>
+      <span>{{localize 'AH.CHECK.TargetDefense' result=result.total defense=(ahUpperCase result.data.targetedDefense)}}</span>
+    </div>
   {{/if}}
-  <div class="ah-chat-section__check__defenses">
-
-  </div>
 
   <dl class='ah-chat-section__check__inputs'>
     <div>
@@ -20,7 +20,7 @@
 
     {{#if (gt difficulty 0)}}
       <div>
-        <dd>{{ahBadge iconClass='difficulty' label='AH.CHECK.DifficultyLevel.short' size='l' tooltip='AH.CHECK.DifficultyLevel.long' value=difficulty }}</dd>
+        <dd>{{ahBadge iconClass='difficulty' label='AH.CHECK.DifficultyLevel.short' size='m' tooltip='AH.CHECK.DifficultyLevel.long' value=difficulty }}</dd>
       </div>
     {{/if}}
   </dl>

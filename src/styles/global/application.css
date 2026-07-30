@@ -1,6 +1,7 @@
 .ah-application {
 
   background: transparent;
+  font-family: var(--ah-font-family-application), serif;
 
   input[type='text'] {
     background: var(--ah-background-input);

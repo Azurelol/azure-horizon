@@ -138,7 +138,8 @@
       "Easy": "Easy",
       "Normal": "Normal",
       "Hard": "Hard",
-      "VeryHard": "Very Hard"
+      "VeryHard": "Very Hard",
+      "TargetDefense": "{result} VS {defense}"
     },
     "INTERVAL": {
       "StartOfCombat": {
@@ -320,7 +321,7 @@
       "Unknown": "Unknown",
       "Defense": "Defense",
       "Traits": "Traits",
-      "Type": "Type"
+      "Type": "Type",
     },
     "PIPELINE": {
       "ResourceGain": "Gain",
