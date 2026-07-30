@@ -24,6 +24,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 4px;
+
   flex: 1 1 0;
   min-width: 0;
   padding: var(--ah-padding-input);
@@ -45,7 +47,6 @@
   span {
     order: 2;
     font-size: var(--ah-font-size-input);
-    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.01em;
     white-space: nowrap;

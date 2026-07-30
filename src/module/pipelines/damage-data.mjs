@@ -23,14 +23,14 @@
 /**
  * Contains damage data used in pipelines.
  * @property {DamageComponent[]} components
- * @property {Number} hr The high roll
+ * @property {AH_DamageType} type The base damage type
+ * @property {Boolean} base Whether to return the total damage without any modifiers.
  */
 export default class DamageData {
 
   constructor(data = {}) {
     Object.assign(this, data);
     this.components ??= [];
-    this.hr ??= 0;
   }
 
   /**
@@ -40,9 +40,8 @@ export default class DamageData {
    */
   static construct(type, amount) {
     const data = new DamageData();
-    type = Array.isArray(type) ? type : [type];
-    data.add("AH.DAMAGE.Base", amount, type);
-    data.type = type[0];
+    data.add("AH.DAMAGE.Base", type, amount);
+    data.type = type;
     return data;
   }
 
@@ -65,5 +64,22 @@ export default class DamageData {
       amount: amount,
       enabled: true,
     });
+  }
+
+  /**
+   * @returns {Number} The sum of all bonus damage modifiers ({@linkcode modifiers})
+   */
+  get modifierTotal() {
+    if (this.base) {
+      return 0;
+    }
+    return this.components.reduce((agg, curr) => agg + curr.amount, 0);
+  }
+
+  /**
+   * @returns {Number}
+   */
+  get total() {
+    return this.modifierTotal;
   }
 }

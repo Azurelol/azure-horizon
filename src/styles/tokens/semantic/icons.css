@@ -163,6 +163,7 @@
   --ah-icon-rest-short: url("../../../../assets/icons/actions/rest-short.png");
   --ah-icon-rest-long: url("../../../../assets/icons/actions/rest-long.png");
   --ah-icon-resupply: url("../../../../assets/icons/actions/restock.png");
+  --ah-icon-damage: url("../../../../assets/icons/common/damage.png");
 
   .ah-icon-rest-short {
     background-image: var(--ah-icon-rest-short);
@@ -174,6 +175,10 @@
 
   .ah-icon-resupply {
     background-image: var(--ah-icon-resupply);
+  }
+
+  .ah-icon-damage {
+    background-image: var(--ah-icon-damage);
   }
 
 }

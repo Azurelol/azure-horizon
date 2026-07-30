@@ -56,4 +56,7 @@
   --ah-background-untyped: linear-gradient(to right, #c0c0c0, #a8a8a8);
   --ah-border-untyped: #a8a8a8;
 
+  /* Action Types */
+  --ah-background-damage: linear-gradient(to right, red, #8c8c8c);
+
 }

@@ -24,9 +24,17 @@
 }
 
 .ah-chat-section__check {
+
 }
 
-.ah-chat-section__check__inputs {
+.ah-chat-section__check__components {
+  display: grid;
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0;
+}
+
+.ah-chat-section__check__roll {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -34,11 +42,32 @@
   font-weight: 700;
   font-size: 1.1rem;
   font-variant: small-caps;
+
+  div {
+    display: flex;
+    box-shadow: 1px 2px var(--ah-color-shadow-control);
+    border-radius: 10px;
+    margin: 2px auto 5px;
+  }
 }
 
 .ah-chat-section__check__defense {
   display: flex;
   flex-direction: row;
+  background: var(--ah-background-result);
+  box-shadow: 1px 2px var(--ah-color-shadow-control);
+  border-radius: 10px;
+}
+
+.ah-chat-section__damage__total {
+  display: flex;
+  flex-direction: row;
+  background: var(--ah-background-damage);
+  box-shadow: 1px 2px var(--ah-color-shadow-control);
+  border-radius: 10px;
+}
+
+.ah-chat-section__damage__components {
 }
 
 .ah-chat-section__check__outcome {

@@ -3,6 +3,7 @@ import AH from "../config.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 import TokenUtils from "../utils/token-utils.mjs";
 import {
+  ActionConfig,
   ChatMessageBuilder,
   ChatMessageHelper,
   ChatMessageSections,
@@ -11,6 +12,7 @@ import {
 } from "../helpers/_module.mjs";
 import Flags from "../data/common/flags.mjs";
 import { systemID } from "../constants.mjs";
+import DamageData from "./damage-data.mjs";
 
 /**
  * @extends PipelineRequest
@@ -228,11 +230,31 @@ function onRenderChatMessage(message, html) {
   });
 }
 
+/** @type CheckResultCallback **/
+const onProcessCheck = (check, actor, item, registerCallback) => {
+  const config = new ActionConfig(check);
+  if (config.hasDamage) {
+    config.modifyDamage((dmg) => {
+      dmg.add("AH.CHECK.HighRoll.short", dmg.type, check.hr.result);
+    });
+  }
+};
+
+/** @type CheckRenderCallback **/
+const onRenderCheck = (data, result, actor, item, registerCallback) => {
+  if (result.data.damage) {
+    result.data.damage = new DamageData(result.data.damage);
+  }
+
+};
+
 /**
  * Initializes the callback handlers for this pipeline.
  */
 function initialize() {
   Hooks.on("renderChatMessageHTML", onRenderChatMessage);
+  Hooks.on(AH.hooks.PROCESS_CHECK, onProcessCheck);
+  Hooks.on(AH.hooks.RENDER_CHECK, onRenderCheck);
 }
 
 /**

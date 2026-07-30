@@ -251,14 +251,17 @@ AH.settings = Object.freeze({
 AH.hooks = Object.freeze({
   /**
    * @desc Invoked when a check is being prepared.
+   * @remarks Expected function signature is {@link CheckPrepareCallback}
    */
   PREPARE_CHECK: `${systemNS}.check.prepare`,
   /**
    * @desc Invoked when a check is being processed.
+   * @remarks Expected function signature is {@link CheckResultCallback}
    */
   PROCESS_CHECK: `${systemNS}.check.process`,
   /**
    * @desc Invoked when a check is being rendered.
+   * @remarks Expected function signature is {@link CheckRenderCallback}
    */
   RENDER_CHECK: `${systemNS}.check.render`,
   /**
@@ -366,6 +369,7 @@ AH.icons = {
   modifier: "ah-icon-check-modifier",
   difficulty: "ah-icon-check-difficulty",
   result: "ah-icon-check-result",
+  damage: "ah-icon-damage",
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",
 

@@ -54,6 +54,7 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @property {(Roll | Object)[]} additionalRolls any secondary rolls, either as Roll instances or serialized
  * @property {AttributeDieRoll} primary
  * @property {AttributeDieRoll} secondary
+ * @property {AttributeDieRoll} hr
  * @property {number} modifierTotal the sum of all modifier
  * @property {number} total the total result of the check
  * @property {boolean} fumble
@@ -71,9 +72,19 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
 /**
  * @callback CheckResultCallback
  * @param {CheckResult} result
+ * @param {AHActor} actor
+ * @param {AHItem} item
  * @return {Promise | void}
  */
 
+/**
+ * @callback CheckRenderCallback
+ * @param {ChatMessageBuilderData} data
+ * @param {CheckResult} result
+ * @param {AHActor} actor
+ * @param {AHItem} item
+ * @return {Promise | void}
+ */
 /**
  * @param {String} hook The name of the hook
  * @param {Partial<CheckOptions|CheckResult>} check
@@ -180,7 +191,7 @@ async function rollCheck(check, actor) {
 /**
  * @param {RollTerm} term
  * @param {AHActor} actor
- * @return {{result: number, dice: number}}
+ * @return {AttributeDieRoll}
  */
 const extractDieResults = (term, actor) => {
   if (term instanceof DiceTerm) {
@@ -190,6 +201,7 @@ const extractDieResults = (term, actor) => {
     };
   } else if (term instanceof NumericTerm) {
     return {
+      attribute: term.flavor,
       dice: term.options.faces ?? actor.system.attributes[term.flavor].current,
       result: term.total,
     };
@@ -213,6 +225,7 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
 
   const primary = extractDieResults(roll.terms[0], actor);
   const secondary = extractDieResults(roll.terms[2], actor);
+  const highRoll = primary.result > secondary.result ? primary : secondary;
 
   const critThreshold = check.critThreshold ?? Formulas.CRITICAL_THRESHOLD;
 
@@ -237,6 +250,7 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
       dice: secondary.dice,
       result: secondary.result,
     }),
+    hr: highRoll,
     generateOpportunity: check.generateOpportunity ?? true,
     modifiers: Object.freeze(check.modifiers.map(Object.freeze)),
     modifierTotal: check.modifiers.reduce((agg, curr) => agg + curr.value, 0),

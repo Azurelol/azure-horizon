@@ -31,7 +31,9 @@ export default class WeaponDataModel extends BaseItemDataModel {
       const config = new ActionConfig(check);
       config.setAttributes(this.check.primary, this.check.secondary);
       config.setTargetedDefense(this.check.defense);
-      config.setDamage(this.damage.type, this.damage.amount);
+      if (this.damage.enabled) {
+        config.setDamage(this.damage.type, this.damage.amount);
+      }
     };
   }
 }

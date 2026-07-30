@@ -118,6 +118,10 @@
       "Difficulty": "Difficulty",
       "Threshold": "Threshold",
       "SituationalModifier": "Situational Modifier",
+      "HighRoll": {
+        "long": "High Roll",
+        "short": "HR"
+      },
       "Modifier": {
         "long": "Modifier",
         "plural": "Modifiers",

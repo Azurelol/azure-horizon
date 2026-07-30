@@ -91,6 +91,14 @@ export class ActionInspector {
   }
 
   /**
+   *
+   * @returns {boolean}
+   */
+  get hasDamage() {
+    return this.damage !== undefined;
+  }
+
+  /**
    * @returns {ApplyEffectData|null}
    */
   getEffects() {
@@ -244,7 +252,8 @@ export class ActionConfig extends ActionInspector {
   modifyDamage(callback) {
     const damage = this.damage;
     if (damage) {
-      this.setData(DAMAGE, callback(damage));
+      callback(damage);
+      this.setData(DAMAGE, damage);
     }
     return this;
   }
