@@ -34,13 +34,14 @@ export class DamageRequest extends PipelineRequest {
 
 /**
  * @typedef DamageResult
- * @property {DamageInstance} instances The distinct damage instances, with incremental/multiplicative bonuses already applied.
+ * @property {DamageInstance[]} instances The distinct damage instances, with incremental/multiplicative bonuses already applied.
  * @property {Number} total The total damage, combining that of the distinct instances.
  */
 
 /**
  * @property {DamageData} damageData
  * @property {String} message
+ * @property {DamageInstance[]} instances Combined from the input damage data.
  * @property {DamageResult} result Calculated during processing.
  * @property {Record<AH_DamageType, DamageBonus>} bonuses Gathered during processing.
  * @property {Boolean} pressured Whether the actor was pressured by the damage they took.
@@ -57,8 +58,39 @@ class DamageContext extends PipelineContext {
  * @param {DamageContext} context
  * @return {Promise<Boolean>}
  */
-async function collectIncrements(context) {
+function consolidateComponents(context) {
+  const _components = new Map();
 
+  for (const component of context.damageData.components) {
+    if (!component.enabled) continue;
+
+    const amount = Number(component.amount) || 0;
+    const traits = component.traits || [];
+
+    if (!_components.has(component.type)) {
+      _components.set(component.type, {
+        label: component.label,
+        enabled: true,
+        amount,
+        type: component.type,
+        traits: [...traits],
+      });
+      continue;
+    }
+
+    const existing = _components.get(component.type);
+    existing.amount += amount;
+    existing.traits.push(...traits);
+  }
+
+  context.instances = [..._components.values()];
+}
+
+/**
+ * @param {DamageContext} context
+ * @return {Promise<Boolean>}
+ */
+async function collectIncrements(context) {
 }
 
 /**
@@ -77,15 +109,16 @@ function calculateResult(context) {
 
   /** @type DamageInstance[] **/
   let instances = [];
-  for (const component of context.damageData.components) {
-    let amount = component.amount;
-    const bonus = context.bonuses[component.type];
+  for (const inst of context.instances) {
+    let amount = inst.amount;
+    // TODO: Perhaps do above?
+    const bonus = context.bonuses[inst.type];
     if (bonus) {
       amount += bonus.increment;
       amount *= bonus.multiplier;
     }
     instances.push({
-      type: component.type,
+      type: inst.type,
       amount: amount,
     });
   }
@@ -121,6 +154,7 @@ async function process(request) {
 
     let context = new DamageContext(request, subject);
     ui.notifications.info(`Applying damage to ${context.subject.name}`, { localize: true });
+    consolidateComponents(context);
     await collectIncrements(context);
     collectMultipliers(context);
     calculateResult(context);

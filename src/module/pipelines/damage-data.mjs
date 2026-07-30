@@ -11,7 +11,7 @@
  * @property {Boolean} enabled
  * @property {String|Number} amount
  * @property {AH_DamageType} type
- * @property {String[]} traits
+ * @property {String[]} traits These get concatenated.
  */
 
 /**
