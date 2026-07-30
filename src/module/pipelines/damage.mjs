@@ -1,4 +1,4 @@
-import { PipelineContext, PipelineRequest } from "./_module.mjs";
+import { Pipeline, PipelineContext, PipelineRequest } from "./_module.mjs";
 import AH from "../config.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 import TokenUtils from "../utils/token-utils.mjs";
@@ -13,14 +13,15 @@ import {
 import Flags from "../data/common/flags.mjs";
 import { systemID } from "../constants.mjs";
 import DamageData from "./damage-data.mjs";
+import { SourceInfo } from "../data/common/_module.mjs";
 
 /**
  * @extends PipelineRequest
  * @property {DamageData} damageData
  */
 export class DamageRequest extends PipelineRequest {
-  constructor(sourceInfo, targets, damageData) {
-    super(sourceInfo, targets);
+  constructor(sourceInfo, targets, damageData, traits) {
+    super(sourceInfo, targets, traits);
     this.damageData = damageData;
   }
 }
@@ -240,6 +241,19 @@ function onRenderChatMessage(message, html) {
   if (!message.getFlag(systemID, Flags.ChatMessage.Damage)) {
     return;
   }
+
+  ChatMessageHelper.handleClick(message, html, "applyDamage", async (dataset) => {
+    const fields = StringUtils.fromBase64(dataset.fields);
+    const sourceInfo = SourceInfo.fromObject(fields.sourceInfo);
+    const damageData = new DamageData(fields.damageData);
+    const targets = await ChatAction.getTargetsFromAction(dataset);
+    const traits = fields.traits ?? [];
+    const request = new DamageRequest(sourceInfo, targets, damageData, traits);
+    if (traits) {
+      request.addTraits(traits);
+    }
+    return process(request);
+  });
 
   // TODO: Update
   ChatMessageHelper.handleClickRevert(message, html, "revertDamage", async (dataset) => {

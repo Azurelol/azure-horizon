@@ -67,11 +67,13 @@
   }
 
   /*Damage Types*/
+  --ah-icon-untyped: url("../../../../assets/icons/affinities/untyped.png");
   --ah-icon-elemental: url("assets/icons/Pixel_RPG_Items_Pack/purple_feather.png");
-  --ah-icon-fire: url("../../../../assets/icons/affinities/explosion.png");
-  --ah-icon-cold: url("../../../../assets/icons/Pixel_RPG_Items_Pack/water_splash.png");
-  --ah-icon-electric: url("../../../../assets/icons/affinities/lightning_bolt.png");
-  --ah-icon-acid: url("../../../../assets/icons/affinities/poison_bubble.png");
+
+  --ah-icon-fire: url("../../../../assets/icons/affinities/fire.png");
+  --ah-icon-cold: url("../../../../assets/icons/affinities/cold.png");
+  --ah-icon-electric: url("../../../../assets/icons/affinities/electric.png");
+  --ah-icon-acid: url("../../../../assets/icons/affinities/acid.png");
 
   --ah-icon-physical: url("../../../../assets/icons/Pixel_RPG_Items_Pack/sword.png");
   --ah-icon-slashing: url("../../../../assets/icons/Pixel_RPG_Items_Pack/axe.png");
@@ -80,7 +82,7 @@
 
   --ah-icon-spiritual: url("../../../../assets/icons/Pixel_RPG_Items_Pack/spellbook.png");
   --ah-icon-light: url("../../../../assets/icons/Pixel_RPG_Items_Pack/torch.png");
-  --ah-icon-dark: url("../../../../assets/icons/Pixel_RPG_Items_Pack/dark_potion.png");
+  --ah-icon-dark: url("../../../../assets/icons/affinities/dark.png");
 
   --ah-icon-poison: url("../../../../assets/icons/affinities/poison_bubble.png");
 
@@ -135,6 +137,10 @@
 
   .ah-icon-poison {
     background-image: var(--ah-icon-poison);
+  }
+
+  .ah-icon-untyped {
+    background-image: var(--ah-icon-untyped);
   }
 
   /*Checks*/

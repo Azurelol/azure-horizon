@@ -14,12 +14,13 @@ export class PipelineRequest {
   /**
    * @param {SourceInfo} sourceInfo
    * @param {AHActor[]} targets
+   * @param {String[]} traits
    */
-  constructor(sourceInfo, targets) {
+  constructor(sourceInfo, targets, traits = []) {
     sourceInfo = sourceInfo instanceof SourceInfo ? sourceInfo : SourceInfo.fromObject(sourceInfo);
     this.sourceInfo = sourceInfo;
     this.targets = targets;
-    this.traits = new Set();
+    this.traits = new Set(traits);
     this.item = sourceInfo.resolveItem();
     this.actor = sourceInfo.resolveActor();
   }

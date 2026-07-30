@@ -1,5 +1,6 @@
 import { StringUtils } from "../utils/_module.mjs";
 import { renderTemplate } from "../constants.mjs";
+import { Targeting } from "./targeting.mjs";
 
 /**
  * @description Actions that can be executed from chat messages.
@@ -167,6 +168,22 @@ export default class ChatAction {
       selectedActions: actions.filter((a) => a.selected),
     });
     return new Handlebars.SafeString(html);
+  }
+
+  /**
+   * @param {DOMStringMap} dataset
+   * @return {Promise<AHActor[]>}
+   */
+  static async getTargetsFromAction(dataset) {
+    let targets = [];
+    let actorId = dataset ? (dataset.actorId ?? dataset.id) : undefined;
+    if (actorId) {
+      const actor = await fromUuid(actorId);
+      targets.push(actor);
+    } else {
+      targets = await Targeting.getSelected();
+    }
+    return targets;
   }
 
   /**

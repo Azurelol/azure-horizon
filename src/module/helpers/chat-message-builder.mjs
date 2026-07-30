@@ -143,9 +143,17 @@ export default class ChatMessageBuilder {
     const actor = this.#actor;
     const item = this.#item;
 
-    // ACTIONS:
+    // ACTIONS
     if (this.renderData.actions?.length > 0) {
-      ChatMessageSections.actions(this.sections, this.renderData.actions);
+      const actions = this.renderData.actions;
+      const actionFlags = new FlagBuilder();
+      for (const action of actions) {
+        if (action.flag) {
+          actionFlags.set(action.flag.key, action.flag.value);
+        }
+      }
+      this.withFlags(actionFlags.toObject());
+      ChatMessageSections.actions(this.sections, actions);
     }
 
     /**
@@ -184,7 +192,7 @@ export default class ChatMessageBuilder {
     );
 
     // Get the merged flags now
-    const flags = this.getMergedFlags();
+    let flags = this.getMergedFlags();
 
     /**
      * @type {ChatMessageSection[]}

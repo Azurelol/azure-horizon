@@ -1,10 +1,11 @@
 import { Events } from "./_module.mjs";
-import { ActionConfig, ChatAction, ChatMessageBuilder, ChatSectionOrder } from "../helpers/_module.mjs";
+import { ActionConfig, ChatAction, ChatMessageBuilder, ChatSectionOrder, FlagBuilder } from "../helpers/_module.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 import { renderTemplate, systemTemplatePath } from "../constants.mjs";
-import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
+import { StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
+import Flags from "../data/common/flags.mjs";
 
 const { DiceTerm, NumericTerm } = foundry.dice.terms;
 
@@ -318,6 +319,7 @@ async function renderCheck(result, actor, item, flags = {}) {
   });
 
   // Create the chat builder
+  flags = new FlagBuilder(flags).set(Flags.ChatMessage.Source, result.sourceInfo).toObject();
   const chatBuilder = new ChatMessageBuilder(actor, item).withData(builderData).withFlags(flags);
 
   // Add flavor

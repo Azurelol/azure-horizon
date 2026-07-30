@@ -66,7 +66,7 @@ function handleClick(message, html, actionName, onClick) {
  * @param {String} actionName
  * @param {(data: Object) => Promise<void>} action
  */
-async function handleClickRevert(message, html, actionName, action) {
+function handleClickRevert(message, html, actionName, action) {
   html.querySelectorAll(`a[data-action="${actionName}"]`).forEach((element) => {
     const messageContent = html.querySelector(".message-content");
     const reverted = message.getFlag(systemID, Flags.ChatMessage.RevertedAction)?.includes(actionName);

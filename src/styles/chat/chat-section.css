@@ -143,8 +143,8 @@
   font-size: var(--ah-font-size-label);
   width: 100%;
 
-  background: var(--ah-background-result);
-  border: 1px solid var(--ah-border-result);
+  background: var(--ah-background-damage);
+  border: 1px solid var(--ah-border-damage);
   border-radius: 4px;
 
   align-items: center;
@@ -155,6 +155,12 @@
     gap: 0.15rem;
     padding: 0.1rem 0.35rem;
   }
+}
+
+.ah-chat-section__damage__actions {
+  margin-top: 0.125rem;
+  display: flex;
+  flex-direction: row;
 }
 
 
@@ -174,13 +180,20 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 0;
-  padding: 0.125rem 0;
+  padding: 0.125rem;
+  margin-top: 0.25rem;
   gap: 5px;
 }
 
 .ah-chat-action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 2px;
   width: 100%;
+
   color: var(--ah-color-control);
   background: var(--ah-background-control);
   box-shadow: 0.063rem 0.1rem var(--ah-color-shadow-control);
@@ -192,11 +205,6 @@
   letter-spacing: 0.063rem;
   text-rendering: optimizeLegibility;
   -webkit-box-align: center;
-  align-items: center;
   border-radius: 0.5rem;
-  padding: 0 0.375rem;
-  white-space: wrap;
-  word-break: break-all;
-  display: inline-flex;
   margin: 0.0625rem 0;
 }

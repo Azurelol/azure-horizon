@@ -10,7 +10,7 @@
   --ah-color-dark: white;
   --ah-color-light: black;
 
-  /* THEME */
+  /* THEME: (Others are derived from) */
   --ah-color-primary-fill-1: var(--ah-primitive-color-navy-900);
   --ah-color-primary-fill-2: var(--ah-primitive-color-navy-800);
   --ah-color-background-primary: linear-gradient(to bottom, var(--ah-color-primary-fill-1) 0%, var(--ah-color-primary-fill-2) 100%);
@@ -38,7 +38,14 @@
   --ah-text-shadow-control: #2b4a42ff;
   --ah-color-control-header: #E5DBD0;
 
-  /* applications: sheets, dialogs */
+  /* Icons */
+  --ah-color-icon: var(--ah-primitive-color-burgundy-dark);
+  --ah-color-icon-active: var(--ah-primitive-color-burgundy);
+  --ah-color-icon-hover: color-mix(in srgb, var(--ah-primitive-color-burgundy), white 40%);
+  --ah-color-bg-badge: var(--ah-primitive-color-burgundy);
+  --ah-color-badge: var(--ah-primitive-color-grey-light);
+
+  /* APPLICATIONS : sheets, dialogs */
   --ah-background-application-header: var(--ah-primitive-color-navy-950);
   --ah-background-application: var(--ah-color-background-primary);
   --ah-background-application-tabs: var(--ah-color-background-overlay);
@@ -70,12 +77,7 @@
   --ah-color-bg-table-row: var(--ah-primitive-color-grey-850);
   --ah-color-bg-table-row-alt: var(--ah-primitive-color-grey-800);
 
-  /* icons */
-  --ah-color-icon: var(--ah-primitive-color-burgundy-dark);
-  --ah-color-icon-active: var(--ah-primitive-color-burgundy);
-  --ah-color-icon-hover: color-mix(in srgb, var(--ah-primitive-color-burgundy), white 40%);
-  --ah-color-bg-badge: var(--ah-primitive-color-burgundy);
-  --ah-color-badge: var(--ah-primitive-color-grey-light);
+
 
   /* tags */
   --ah-color-tag: red;

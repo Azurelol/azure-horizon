@@ -331,7 +331,7 @@ AH.icons = {
   ins: "ah-icon-insight",
   wlp: "ah-icon-willpower",
 
-  untyped: "ra ra-perspective-dice-random",
+  untyped: "ah-icon-untyped",
   slashing: "ah-icon-slashing",
   piercing: "ah-icon-piercing",
   blunt: "ah-icon-blunt",

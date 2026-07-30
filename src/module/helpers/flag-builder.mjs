@@ -14,6 +14,7 @@ export default class FlagBuilder {
   /**
    * @param {String} key
    * @param {*} value
+   * @return {FlagBuilder}
    */
   set(key, value) {
     (this.#flags[systemID] ??= {})[key] ??= value;
@@ -22,6 +23,7 @@ export default class FlagBuilder {
 
   /**
    * @param {String} key
+   * @return {FlagBuilder}
    */
   toggle(key) {
     this.set(key, true);
@@ -29,6 +31,7 @@ export default class FlagBuilder {
 
   /**
    * @returns {Record}
+   * @return {Object}
    */
   toObject() {
     return this.#flags;

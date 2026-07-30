@@ -58,5 +58,6 @@
 
   /* Action Types */
   --ah-background-damage: linear-gradient(to right, #a1a1a1, #8c8c8c);
+  --ah-border-damage: darkgrey;
 
 }
