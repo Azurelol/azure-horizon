@@ -15,12 +15,11 @@
 
 .ah-table__cell {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 0.25rem;
 }
 
 .ah-table__column__primary {
-  width: 120px;
+  width: 200px;
 
   .ah-table-column__primary__name {
     font-size: var(--ah-font-size-label);
@@ -49,18 +48,10 @@
   }
 }
 
-.ah-table__column__description {
-}
-
 .ah-table__column__properties {
 }
 
 .ah-table__column__actions{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-
   > * {
     flex: 0 0 auto;
   }

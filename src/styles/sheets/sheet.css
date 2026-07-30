@@ -12,6 +12,7 @@
   font-size: var(--ah-font-size-sheet-name);
   background-color: transparent;
   border-color: transparent;
+  height: 48px;
 
   input {
     background-color: transparent;

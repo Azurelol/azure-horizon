@@ -1,5 +1,12 @@
 <section class="ah-chat-section__check">
 
+  {{#if result.data.targetedDefense}}
+
+  {{/if}}
+  <div class="ah-chat-section__check__defenses">
+
+  </div>
+
   <dl class='ah-chat-section__check__inputs'>
     <div>
       <dd>{{ahBadge icon=(ahIconClass result.primary.attribute) label=(ahLocaleKey 'attributes' result.primary.attribute format='short') value=result.primary.result}}</dd>

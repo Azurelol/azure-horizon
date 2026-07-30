@@ -5,7 +5,6 @@
   gap: var(--ah-gap-input);
 }
 
-/* Label */
 .ah-resource-bar__label {
   display: flex;
   align-items: center;
@@ -14,6 +13,8 @@
   font-weight: var(--ah-font-weight-input);
   text-transform: uppercase;
   white-space: nowrap;
+  min-width: 60px;
+  gap: 4px;
 }
 
 .ah-resource-bar__label i {

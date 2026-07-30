@@ -1,10 +1,10 @@
 :root {
 
   /*Attributes*/
-  --ah-icon-might: url("../../../../assets/icons/Clockwork_Raven/might.png");
-  --ah-icon-dexterity: url("../../../../assets/icons/Clockwork_Raven/dexterity.png");
-  --ah-icon-insight: url("../../../../assets/icons/Clockwork_Raven/insight.png");
-  --ah-icon-willpower: url("../../../../assets/icons/Clockwork_Raven/willpower.png");
+  --ah-icon-might: url("../../../../assets/icons/attributes/might.png");
+  --ah-icon-dexterity: url("../../../../assets/icons/attributes/dexterity.png");
+  --ah-icon-insight: url("../../../../assets/icons/attributes/insight.png");
+  --ah-icon-willpower: url("../../../../assets/icons/attributes/willpower.png");
 
   .ah-icon-might {
     background-image: var(--ah-icon-might);
@@ -23,10 +23,10 @@
   }
 
   /* Resources */
-  --ah-icon-hp: url("../../../../assets/icons/Clockwork_Raven/hp.png");
-  --ah-icon-mp: url("../../../../assets/icons/Clockwork_Raven/mp.png");
-  --ah-icon-ip: url("../../../../assets/icons/Clockwork_Raven/ip.png");
-  --ah-icon-tp: url("../../../../assets/icons/Clockwork_Raven/tp.png");
+  --ah-icon-hp: url("../../../../assets/icons/parameters/hp.png");
+  --ah-icon-mp: url("../../../../assets/icons/parameters/mp.png");
+  --ah-icon-ip: url("../../../../assets/icons/parameters/ip.png");
+  --ah-icon-tp: url("../../../../assets/icons/parameters/tp.png");
 
   .ah-icon-hp {
     background-image: var(--ah-icon-hp);
@@ -45,8 +45,9 @@
   }
 
   /* Parameters */
-  --ah-icon-def: url("../../../../assets/icons/Clockwork_Raven/def.png");
-  --ah-icon-mdef: url("../../../../assets/icons/Clockwork_Raven/mdef.png");
+  --ah-icon-def: url("../../../../assets/icons/parameters/def.png");
+  --ah-icon-mdef: url("../../../../assets/icons/parameters/mdef.png");
+  --ah-icon-init: url("../../../../assets/icons/parameters/init.png");
 
   .ah-icon-def {
     background-image: var(--ah-icon-def);
@@ -56,13 +57,16 @@
     background-image: var(--ah-icon-mdef);
   }
 
+  .ah-icon-init {
+    background-image: var(--ah-icon-init);
+  }
 
   /*Damage Types*/
   --ah-icon-elemental: url("assets/icons/Pixel_RPG_Items_Pack/purple_feather.png");
-  --ah-icon-fire: url("../../../../assets/icons/Pixel_RPG_Items_Pack/explosion.png");
+  --ah-icon-fire: url("../../../../assets/icons/affinities/explosion.png");
   --ah-icon-cold: url("../../../../assets/icons/Pixel_RPG_Items_Pack/water_splash.png");
-  --ah-icon-electric: url("../../../../assets/icons/Pixel_RPG_Items_Pack/lightning_bolt.png");
-  --ah-icon-acid: url("../../../../assets/icons/Pixel_RPG_Items_Pack/poison_bubble.png");
+  --ah-icon-electric: url("../../../../assets/icons/affinities/lightning_bolt.png");
+  --ah-icon-acid: url("../../../../assets/icons/affinities/poison_bubble.png");
 
   --ah-icon-physical: url("../../../../assets/icons/Pixel_RPG_Items_Pack/sword.png");
   --ah-icon-slashing: url("../../../../assets/icons/Pixel_RPG_Items_Pack/axe.png");
@@ -73,7 +77,7 @@
   --ah-icon-light: url("../../../../assets/icons/Pixel_RPG_Items_Pack/torch.png");
   --ah-icon-dark: url("../../../../assets/icons/Pixel_RPG_Items_Pack/dark_potion.png");
 
-  --ah-icon-poison: url("../../../../assets/icons/Pixel_RPG_Items_Pack/poison_bubble.png");
+  --ah-icon-poison: url("../../../../assets/icons/affinities/poison_bubble.png");
 
 
   .ah-icon-elemental {
