@@ -64,6 +64,14 @@ export default class ObjectUtils {
   }
 
   /**
+   * @param obj
+   * @returns {*}
+   */
+  static duplicate(obj) {
+    return foundry.utils.duplicate(obj);
+  }
+
+  /**
    * Freezes a property on the object so it can no longer be reassigned, then validates that it was actually set.
    * @param {Object} obj
    * @param {string} key

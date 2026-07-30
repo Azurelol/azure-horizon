@@ -1,5 +1,5 @@
 import { Events } from "./_module.mjs";
-import { ChatMessageBuilder, ChatSectionOrder, CheckConfigurer } from "../helpers/_module.mjs";
+import { ActionConfig, ChatMessageBuilder, ChatSectionOrder } from "../helpers/_module.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 import { renderTemplate, systemTemplatePath } from "../constants.mjs";
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
@@ -31,11 +31,10 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  */
 
 /**
- * @typedef Check
- * @property {CheckType} type the type of the check
- * @property {CheckId} id a unique identifier for this check
+ * @typedef {Action} Check
+ * @property {CheckType} type The type of the check.
+ * @property {CheckId} id A unique identifier for this check.
  * @property {CheckModifier[]} modifiers array of modifiers
- * @property {Object} data additional data attached to the check
  * @property {Boolean} generateOpportunity Whether this check can generate an opportunity.
  * @property {number} critThreshold The critical threshold for this check.
  */
@@ -62,7 +61,7 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  */
 
 /**
- * @callback CheckCallback
+ * @callback CheckPrepareCallback
  * @param {CheckOptions} check
  * @param {AHActor} actor
  * @param {AHItem} item
@@ -128,7 +127,7 @@ function validateCheckAttributes(check) {
  * @param {Partial<CheckOptions>} check
  * @param {AHActor} actor
  * @param {AHItem} item
- * @param {CheckCallback} initialConfigCallback
+ * @param {CheckPrepareCallback} initialConfigCallback
  * @return {Promise<CheckOptions>}
  */
 async function prepareCheck(check, actor, item, initialConfigCallback) {
@@ -136,7 +135,7 @@ async function prepareCheck(check, actor, item, initialConfigCallback) {
   initializeCheckDefaults(check);
 
   // Set initial targets (actions without rolls can have targeting)
-  const config = new CheckConfigurer(check);
+  const config = new ActionConfig(check);
   config.setDefaultTargets();
 
   // Initial callback
@@ -272,7 +271,7 @@ async function renderCheck(result, actor, item, flags = {}) {
     tags: [],
     flags: {},
   };
-  const config = new CheckConfigurer(result);
+  const config = new ActionConfig(result);
 
   Hooks.callAll(AH.hooks.RENDER_CHECK, builderData, result, actor, item);
   await Events.renderAction(builderData, config, actor, item);
@@ -343,17 +342,17 @@ export default class Checks {
    * @param {Partial<CheckOptions>} check
    * @param {AHActor} actor
    * @param {AHItem} item
-   * @param {CheckCallback} [prepareCheckCallback]
-   * @param {CheckResultCallback} renderCheckCallback
+   * @param {CheckPrepareCallback} onPrepare
+   * @param {CheckResultCallback} onRender
    */
-  static async performCheck(check, actor, item, prepareCheckCallback = undefined, renderCheckCallback = undefined) {
-    const preparedCheck = await prepareCheck(check, actor, item, prepareCheckCallback);
+  static async performCheck(check, actor, item, onPrepare = undefined, onRender = undefined) {
+    const preparedCheck = await prepareCheck(check, actor, item, onPrepare);
     await Events.performAction(check, actor, item);
     const roll = await rollCheck(preparedCheck, actor);
     const result = await processResult(preparedCheck, roll, actor, item);
     await renderCheck(result, actor, item);
-    if (renderCheckCallback) {
-      await renderCheckCallback(result);
+    if (onRender) {
+      await onRender(result);
     }
     Events.resolveAction(result, actor, item);
   }
@@ -362,7 +361,7 @@ export default class Checks {
    * @param {AHActor} actor
    * @param {CheckAttributes} attributes
    * @param {AHItem} item
-   * @param {CheckCallback} [configCallback]
+   * @param {CheckPrepareCallback} [configCallback]
    * @param {CheckResultCallback} onPerform
    */
   static async attributeCheck(actor, attributes, item, configCallback, onPerform) {
@@ -379,7 +378,7 @@ export default class Checks {
   /**
    * @param {AHActor} actor
    * @param {CheckAttributes} attributes
-   * @param {CheckCallback} [configCallback]
+   * @param {CheckPrepareCallback} [configCallback]
    */
   static async openCheck(actor, attributes, configCallback) {
     /** @type Partial<CheckOptions> */
@@ -392,4 +391,17 @@ export default class Checks {
     return Checks.performCheck(check, actor, undefined, configCallback);
   }
 
+  /**
+   * @param {AHActor} actor
+   * @param {AHItem} item
+   * @param {CheckPrepareCallback} onPrepare
+   */
+  static async actionCheck(actor, item, onPrepare) {
+    /** @type Partial<CheckOptions> */
+    const check = {
+      type: "action",
+    };
+
+    return Checks.performCheck(check, actor, item, onPrepare);
+  }
 }

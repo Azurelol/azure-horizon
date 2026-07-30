@@ -64,7 +64,13 @@ AH.attributeDice = {
 };
 
 /**
- * @typedef {"attribute", "open"} CheckType
+ * @typedef AH_ActionCheck
+ * @property {String} difficulty
+ * @property {Number} threshold
+ */
+
+/**
+ * @typedef {"attribute"|"open"|'action'} CheckType
  */
 
 /**
@@ -73,11 +79,12 @@ AH.attributeDice = {
 AH.checkTypes = {
   attribute: "AH.CHECK.Attribute",
   open: "AH.CHECK.Open",
+  action: "AH.CHECK.Action",
 };
 
 /**
  * @desc The set of ability scores used for characters in the system.
- * @typedef {"hp", "mp", "tp", "ip"} AH_Resource
+ * @typedef {"hp"|"mp"|"tp"| "ip"} AH_Resource
  */
 
 AH.resources = {

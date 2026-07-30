@@ -1,5 +1,5 @@
 import { CharacterInfo, ItemInfo, SourceInfo } from "../data/common/_module.mjs";
-import { AsyncHooks, CheckConfigurer, CheckInspector } from "../helpers/_module.mjs";
+import { ActionConfig, ActionInspector, AsyncHooks } from "../helpers/_module.mjs";
 import AH from "../config.mjs";
 
 /**
@@ -9,7 +9,7 @@ import AH from "../config.mjs";
  * @property {AH_DamageType} type
  * @property {AH_ItemGroup} itemGroup
  * @property {CharacterInfo[]} targets
- * @property {CheckConfigurer} config
+ * @property {ActionConfig} config
  */
 
 function calculateDamage(actor, item, config) {
@@ -33,7 +33,7 @@ function calculateDamage(actor, item, config) {
  * @property {AHItem} item
  * @property {AH_ItemGroup} itemGroup
  * @property {CharacterInfo[]} targets
- * @property {CheckConfigurer} config
+ * @property {ActionConfig} config
  */
 
 async function calculateResource(actor, item, config, data) {
@@ -52,7 +52,7 @@ async function calculateResource(actor, item, config, data) {
 
 /**
  * @typedef InitializeActionEvent
- * @property {CheckConfigurer} config
+ * @property {ActionConfig} config
  * @property {CharacterInfo} source
  * @property {SourceInfo} sourceInfo
  * @property {CharacterInfo[]} targets
@@ -83,13 +83,13 @@ async function initializeAction(configuration, actor, item) {
  * @property {CharacterInfo[]} targets
  * @property {AHItem} item
  * @property {AH_ItemGroup} itemGroup
- * @property {CheckConfigurer} config
+ * @property {ActionConfig} config
  * @remarks Emitted when a check is about to be performed
  */
 async function performAction(check, actor, item) {
   const sourceInfo = SourceInfo.fromInstance(actor, item);
   const source = CharacterInfo.fromActor(actor);
-  const config = new CheckConfigurer(check);
+  const config = new ActionConfig(check);
   const targetData = config.getTargets();
   let targets = [];
   if (targetData) {
@@ -122,7 +122,7 @@ async function performAction(check, actor, item) {
 function resolveAction(check, actor, item) {
   const sourceInfo = SourceInfo.fromInstance(actor, item);
   const source = CharacterInfo.fromActor(actor);
-  const inspector = new CheckInspector(check);
+  const inspector = new ActionInspector(check);
   const targets = inspector.getTargets();
 
   /** @type ResolveActionEvent  **/
@@ -140,7 +140,7 @@ function resolveAction(check, actor, item) {
 /**
  * @typedef RenderActionEvent
  * @property {ChatMessageSectionCollection} renderData
- * @property {CheckConfigurer} config
+ * @property {ActionConfig} config
  * @property {CheckResult} check
  * @property {CharacterInfo} source
  * @property {CharacterInfo[]} targets

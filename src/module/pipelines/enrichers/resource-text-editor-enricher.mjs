@@ -1,4 +1,4 @@
-import { CheckConfigurer, TextEditorHelper } from "../../helpers/_module.mjs";
+import { ActionConfig, TextEditorHelper } from "../../helpers/_module.mjs";
 import { Targeting } from "../../helpers/targeting.mjs";
 import AH from "../../config.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
@@ -64,7 +64,7 @@ async function onRender(element) {
       let amount = await Expressions.evaluateAsync(renderContext.dataset.amount, context);
 
       if (context.actor && check) {
-        const config = new CheckConfigurer(check);
+        const config = new ActionConfig(check);
         config.setResource(type, amount);
         const updateData = config.getResource();
         await Events.calculateResource(context.actor, context.item, config, updateData);

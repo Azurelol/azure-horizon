@@ -3,7 +3,7 @@ import AH from "../config.mjs";
 import { renderTemplate, systemNS } from "../constants.mjs";
 import Handlebars from "./handlebars.mjs";
 import Checks from "../pipelines/checks.mjs";
-import { CheckConfigurer } from "./check-configuration.mjs";
+import { ActionConfig } from "./action-configuration.mjs";
 
 /**
  * @typedef CheckConfig
@@ -26,7 +26,7 @@ import { CheckConfigurer } from "./check-configuration.mjs";
  * @typedef CheckPromptOptions
  * @template T
  * @property {T} [initialConfig] The configuration for the specific check.
- * @property {CheckCallback} [checkCallback]
+ * @property {CheckPrepareCallback} checkCallback
  * @property {CheckResultCallback} resultCallback
  * @property
  */
@@ -183,7 +183,7 @@ async function prompt(actor, type, initialConfig = {}) {
  * @param {AHActor} actor
  * @param {"open"|"attribute"} type
  * @param {CheckPromptOptions<T>} options
- * @param {(config: CheckConfigurer, promptResult: object) => void} applyPromptConfig
+ * @param {(config: ActionConfig, promptResult: object) => void} applyPromptConfig
  *        Applies values from the prompt result onto the CheckConfigurer.
  * @param {...any} extraArgs
  *        Extra positional args required by the specific Checks.*Check method,
@@ -201,7 +201,7 @@ async function runCheckPrompt(actor, type, options, applyPromptConfig, ...extraA
       },
       ...extraArgs,
       (check, callbackActor, item) => {
-        const config = new CheckConfigurer(check);
+        const config = new ActionConfig(check);
         applyPromptConfig(config, promptResult);
 
         if (options.checkCallback) {

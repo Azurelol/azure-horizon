@@ -1,5 +1,5 @@
 import { systemID } from "../constants.mjs";
-import { FoundryUtils, StringUtils } from "../utils/_module.mjs";
+import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { Targeting } from "./targeting.mjs";
 import { Flags } from "../data/common/_module.mjs";
 
@@ -22,17 +22,22 @@ const HR_ZERO = "hrZero";
 
 /**
  * @param {boolean} hrZero
- * @return {CheckCallback}
+ * @return {CheckPrepareCallback}
  */
 const initHrZero = (hrZero) => (check) => {
   hrZero && (check.data[HR_ZERO] = true);
 };
 
 /**
- * @description Given a {@link CheckResult} object, provides additional information from it
- * @remarks Provides read-only access, to be used after {@linkcode CheckConfigurer}
+ * @typedef Action
+ * @property {Object} data
  */
-export class CheckInspector {
+
+/**
+ * @description Given a {@link CheckResult} object, provides additional information from it
+ * @remarks Provides read-only access, to be used after {@linkcode ActionConfig}
+ */
+export class ActionInspector {
 
   /**
    * @type {CheckResult|CheckOptions}
@@ -46,32 +51,42 @@ export class CheckInspector {
     this.#check = check;
   }
 
+  //----------------------------------------------------------/
   /**
-   * @return {Check|CheckResult}
+   * @return {CheckOptions}
    */
   get check() {
     return this.#check;
   }
 
   /**
-   * @returns {CheckResult} Present for some scenarios.
+   * @returns {Object}
    */
-  getInitialCheck() {
-    return this.#check.data[INITIAL_CHECK];
+  get data() {
+    return this.#check.data;
   }
 
   /**
-   * @return {CheckOptions|CheckResult}
+   * @param key
+   * @param value
    */
-  getCheck() {
-    return this.#check;
+  setData(key, value) {
+    ObjectUtils.setProperty(this.#check.data, key, value);
+  }
+  //----------------------------------------------------------/
+
+  /**
+   * @returns {CheckResult} Present for some scenarios.
+   */
+  get initialCheck() {
+    return this.data[INITIAL_CHECK];
   }
 
   /**
    * @returns {ApplyEffectData|null}
    */
   getEffects() {
-    const data = this.#check.data[EFFECTS];
+    const data = this.data[EFFECTS];
     if (data) {
       return data;
     }
@@ -82,7 +97,7 @@ export class CheckInspector {
    * @return {boolean|null}
    */
   getHrZero() {
-    return this.#check.data[HR_ZERO] ?? null;
+    return this.data[HR_ZERO] ?? null;
   }
 
   /**
@@ -90,31 +105,31 @@ export class CheckInspector {
    */
   getHighRoll() {
     // Not always checks involved
-    if ((this.#check.primary == null) || (this.#check.secondary == null)) {
+    if ((this.check.primary == null) || (this.check.secondary == null)) {
       return 0;
     }
-    return Math.max(this.#check.primary.result, this.#check.secondary.result);
+    return Math.max(this.check.primary.result, this.check.secondary.result);
   }
 
   /**
    * @return {AH_Defense|null}
    */
   getTargetedDefense() {
-    return this.#check.data[TARGETED_DEFENSE] ?? null;
+    return this.data[TARGETED_DEFENSE] ?? null;
   }
 
   /**
    * @return {number|null}
    */
   getDifficulty() {
-    return this.#check.data[DIFFICULTY] ?? null;
+    return this.data[DIFFICULTY] ?? null;
   }
 
   /**
    * @return {String[]}
    */
   getTraits() {
-    return this.#check.data[TRAITS] ?? [];
+    return this.data[TRAITS] ?? [];
   }
 
   /**
@@ -129,28 +144,28 @@ export class CheckInspector {
    * @returns {String} The uuid of the item that this check is associated with.
    */
   getItemReference() {
-    return this.#check.data[ITEM_REFERENCE] ?? null;
+    return this.data[ITEM_REFERENCE] ?? null;
   }
 
   /**
    * @returns {String} The uuid of the weapon used.
    */
   getWeaponReference() {
-    return this.#check.data[WEAPON_USED];
+    return this.data[WEAPON_USED];
   }
 
   /**
    * @return WeaponTraits
    */
   getWeaponTraits() {
-    return this.#check.data[WEAPON_TRAITS] ?? {};
+    return this.data[WEAPON_TRAITS] ?? {};
   }
 
   /**
    * @return {TargetData[]}
    */
   getTargets() {
-    return this.#check.data[TARGETS] ? foundry.utils.duplicate(this.#check.data[TARGETS]) : null;
+    return this.data[TARGETS] ? ObjectUtils.duplicate(this.data[TARGETS]) : null;
   }
 
   /**
@@ -164,37 +179,37 @@ export class CheckInspector {
    * @returns {Boolean}
    */
   isCritical() {
-    return this.getCheck().critical;
+    return this.check.critical;
   }
 
   /**
    * @returns {Boolean}
    */
   isFumble() {
-    return this.getCheck().fumble;
+    return this.check.fumble;
   }
 
   /**
    * @returns {String|undefined} Optional label for this check
    */
   getLabel() {
-    return this.#check.data[LABEL_KEY];
+    return this.data[LABEL_KEY];
   }
 
   /**
    *@returns {ChatAction[]}
    */
   getTargetedActions() {
-    return this.#check.data[TARGETED_ACTIONS] ?? [];
+    return this.data[TARGETED_ACTIONS] ?? [];
   }
 }
 
 /**
  * @desc Provides an interface for configuring a check as it is processed
- * @extends CheckInspector
+ * @extends ActionInspector
  * @inheritDoc
  */
-export class CheckConfigurer extends CheckInspector {
+export class ActionConfig extends ActionInspector {
   /**
    * @param {AH_Attribute} primary
    * @param {AH_Attribute} secondary
@@ -215,7 +230,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {...(string|Iterable<string>)} effects
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   addEffects(...effects) {
     if (this.getEffects() === null) {
@@ -239,7 +254,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {String[]|String} traits
-   * @returns {CheckConfigurer}
+   * @returns {ActionConfig}
    */
   addTraits(...traits) {
     if (!this.check.data[TRAITS]) {
@@ -256,7 +271,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {Set<String>} traits
-   * @returns {CheckConfigurer}
+   * @returns {ActionConfig}
    * @remarks In the item's data model they are serialized in title case
    */
   addTraitsFromItemModel(traits) {
@@ -267,7 +282,7 @@ export class CheckConfigurer extends CheckInspector {
    * @description A modifier to the check (accuracy)
    * @param {String} label
    * @param {Number} value
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   addModifier(label, value) {
     this.check.modifiers.push({
@@ -279,7 +294,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {boolean} hrZero
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   setHrZero(hrZero) {
     this.check.data[HR_ZERO] = hrZero;
@@ -288,7 +303,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {(hrZero: boolean | null) => boolean | null} callback
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   modifyHrZero(callback) {
     const hrZero = this.check.data[HR_ZERO] ?? null;
@@ -298,7 +313,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {AH_Defense} targetedDefense
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   setTargetedDefense(targetedDefense) {
     this.check.data[TARGETED_DEFENSE] = targetedDefense;
@@ -308,7 +323,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {(targetedDefense: AH_Defense | null) => AH_Defense | null} callback
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   modifyTargetedDefense(callback) {
     const targetedDefense = this.check.data[TARGETED_DEFENSE] ?? null;
@@ -317,7 +332,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {TargetData[]} targets
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   setTargets(targets) {
     this.check.data[TARGETS] = [...targets];
@@ -354,7 +369,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @description Assign actors currently targeted by the users
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   setDefaultTargets() {
     return this.setTargets(
@@ -372,7 +387,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {(targets: TargetData[] | null) => TargetData[] | null} callback
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   modifyTargets(callback) {
     const targets = this.check.data[TARGETS] ?? null;
@@ -381,7 +396,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {number} difficulty
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   setDifficulty(difficulty) {
     this.check.data[DIFFICULTY] = difficulty;
@@ -390,7 +405,7 @@ export class CheckConfigurer extends CheckInspector {
 
   /**
    * @param {(difficulty: number | null) => number | null} callback
-   * @return {CheckConfigurer}
+   * @return {ActionConfig}
    */
   modifyDifficulty(callback) {
     const difficulty = this.check.data[DIFFICULTY] ?? null;

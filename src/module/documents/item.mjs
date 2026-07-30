@@ -3,7 +3,7 @@ import { ChatMessageBuilder } from "../helpers/_module.mjs";
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {AH_ItemType} type
- * @property {DataModel} system
+ * @property {BaseItemDataModel} system
  */
 export class AHItem extends foundry.documents.Item {
   /** @inheritdoc */
@@ -22,10 +22,9 @@ export class AHItem extends foundry.documents.Item {
    * @returns {Promise<void>}
    */
   async perform(modifiers) {
-    if (this.system.perform instanceof Function) {
-    }
-    else {
-      return this.sendToChat();
+    const performed = await this.system.perform();
+    if (!performed) {
+      await this.sendToChat();
     }
   }
 

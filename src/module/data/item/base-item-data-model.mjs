@@ -32,4 +32,13 @@ export default class BaseItemDataModel extends VersionedDataModel {
       }),
     });
   }
+
+  /**
+   * Entry point for item-specific actions.
+   * @param {KeyboardModifiers} modifiers
+   * @returns {Promise<boolean>} True if an action was performed.
+   */
+  async perform(modifiers) {
+    return false;
+  }
 }
