@@ -5,12 +5,17 @@
  * @property {String} tracking Whom is the duration tracked on
  */
 
+import { SubDocumentCollectionField } from "../api/_module.mjs";
+import { RuleElementDataModel } from "./_module.mjs";
+
 /**
  * A data model used by default effects with properties to control the expiration behavior.
  */
-export default class EffectModel extends foundry.data.ActiveEffectTypeDataModel {
+export default class ActiveEffectModel extends foundry.data.ActiveEffectTypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
-    return Object.assign(super.defineSchema(), {});
+    return Object.assign(super.defineSchema(), {
+      rules: new SubDocumentCollectionField(RuleElementDataModel),
+    });
   }
 }

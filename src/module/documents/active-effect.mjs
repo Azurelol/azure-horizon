@@ -1,4 +1,37 @@
 /**
+ * @typedef EffectChangeData
+ * @property {string} [key]    The attribute path in the Actor or Item data which the change modifies
+ * @property {string} value    The value of the change effect
+ * @property {string} type     The modification type of this change
+ * @property {string} phase    The application phase under which this change is applied. Each phase is its own priority
+ *                             group; that is, application of a change in an earlier phase will occur before a change in
+ *                             a later phase, regardless of priority. A pair of phases are preconfigured, but a package
+ *                             can add more phases to be called at different points during data preparation or on
+ *                             certain events.
+ * @property {number|null} priority The order in which this change is applied among other changes in a common phase: a
+ *                                  null value is initialized to its default priority.
+ */
+
+/**
+ * @typedef {Object} ActiveEffectData
+ * @property {string} _id The unique identifier of the active effect.
+ * @property {string} name - The name of the which describes the name of the ActiveEffect
+ * @property {string} img - An image path used to 3depict the ActiveEffect as an icon
+ * @property {EffectChangeData[]} changes - The array of EffectChangeData objects which the ActiveEffect applies
+ * @property {boolean} disabled - Whether the active effect is disabled.
+ * @property {EffectDurationData} duration - The duration data of the active effect.
+ * @property {string} description - The description of the active effect.
+ * @property {string} origin - A UUID reference to the document from which this ActiveEffect originated
+ * @property {string} tint - A color string which applies a tint to the ActiveEffect icon
+ * @property {Boolean} transfer - Does this ActiveEffect automatically transfer from an Item to an Actor?
+ * @property {Set<string>} statuses - Special status IDs that pertain to this effect
+ * @property {Object} flags - An object of optional key/value flags
+ * @remarks https://foundryvtt.com/api/interfaces/foundry.types.ActiveEffectData.html
+ */
+
+import { isActorType } from "../constants.mjs";
+
+/**
  * A simple extension that adds a hook at the end of data prep.
  */
 export class AHActiveEffect extends foundry.documents.ActiveEffect {
@@ -13,3 +46,32 @@ export class AHActiveEffect extends foundry.documents.ActiveEffect {
     Hooks.callAll("AH.prepareActiveEffectData", this);
   }
 }
+
+// /**
+//  * @param {AHActor} actor
+//  * @param {EffectChangeData} change
+//  * @param current
+//  */
+// function onApplyActiveEffect(actor, change, current) {
+//   if (change.key.startsWith("system.") && (current instanceof foundry.abstract.DataModel && Object.hasOwn(current, change.value) && current[change.value] instanceof Function) {
+//     console.debug(`Applying change ${change.value} to ${change.key}`);
+//     current[change.value]();
+//     return false;
+//   }
+// }
+// Hooks.on("applyActiveEffect", onApplyActiveEffect);
+
+Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
+
+  if (isActorType(effect.parent)) {
+    /** @type AHActor **/
+    const actor = effect.parent;
+    // Prevent creation on non-character actor types
+    if (!actor.isCharacterType) {
+      ui.notifications.error("DIALOG.WARNING.EffectsNotSupported", { localize: true });
+      return false;
+    }
+  }
+
+  return true; // Allow the effect to be created
+});

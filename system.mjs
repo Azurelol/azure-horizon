@@ -5,14 +5,20 @@ import * as helpers from "./src/module/helpers/_module.mjs";
 import * as pipelines from "./src/module/pipelines/_module.mjs";
 import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/utils/utils.mjs";
+import { systemID } from "./src/module/constants.mjs";
 
-// This exposes the system's API to the Foundry runtime for users and modules alike.
-globalThis.azureHorizon = {
-  data,
-  helpers,
-  documents,
-  index: data.Compendium.CompendiumIndex.instance,
-};
+/**
+ * Exports the API so that it can be used at runtime
+ */
+function exportAPI() {
+  globalThis.azureHorizon = {
+    data,
+    helpers,
+    documents,
+    index: data.Compendium.CompendiumIndex.instance,
+    registries: AH.dataModelRegistries,
+  };
+}
 
 /**
  * Binds the documents by the system.
@@ -40,6 +46,7 @@ function bindDataModels() {
  */
 function bindSheets() {
   // Destructuring some pieces for simplification
+  const { ActiveEffect } = foundry.documents;
   const { Actors, Items, Journal } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
   // Document Sheets
@@ -59,6 +66,10 @@ function bindSheets() {
   Items.registerSheet("ah", apps.Item.AHItemSheet, {
     makeDefault: true, label: "AH.SHEET.Labels.ItemSheet",
   });
+  DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
+  DocumentSheetConfig.registerSheet(ActiveEffect, systemID, apps.ActiveEffect.AHActiveEffectConfig, {
+    makeDefault: true,
+  });
 }
 
 /**
@@ -76,15 +87,33 @@ async function initializeSystems() {
   await pipelines.Damage.initialize();
 }
 
+/**
+ * Sets the data model registries.
+ */
+function registerDataModels() {
+  /**
+   * @type {Record<string, DataModelRegistry>}
+   */
+  AH.dataModelRegistries = {
+    ruleElement: data.ActiveEffect.RuleElementRegistry.instance,
+    ruleAction: data.ActiveEffect.RuleActionRegistry.instance,
+    ruleTrigger: data.ActiveEffect.RuleTriggerRegistry.instance,
+    rulePredicate: data.ActiveEffect.RulePredicateRegistry.instance,
+  };
+}
+
 Hooks.once("init", async () => {
   bindDocuments();
   bindDataModels();
   bindSheets();
   await initializeSystems();
+  registerDataModels();
 
   // Sidebar tabs
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;
   CONFIG.AH = AH;
+
+  exportAPI();
 });
 
 Hooks.once("i18nInit", () => {

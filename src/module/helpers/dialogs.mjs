@@ -180,4 +180,34 @@ export default class Dialogs {
     ObjectUtils.mergeRecursive(defaultOptions, options);
     await foundry.applications.api.DialogV2.wait(defaultOptions);
   }
+
+  /**
+   * @param {String} title
+   * @param {FormSelectOption[]} options
+   * @param {string} [selected] the default selected value
+   * @returns {Promise<String|null>} The single selected option
+   */
+  static async select(title, options, selected) {
+    const selectInput = fields.createSelectInput({
+      options: options,
+      name: "option",
+      type: "checkboxes",
+      value: selected,
+    });
+
+    const selectGroup = fields.createFormGroup({
+      input: selectInput,
+      label: "Option",
+    });
+
+    const content = `${selectGroup.outerHTML}`;
+
+    const data = await api.DialogV2.input({
+      window: { title: title, icon: "fas fa-comment" },
+      classes: ["ah-application"],
+      content: content,
+    });
+    return data?.option ?? null;
+  }
+
 }

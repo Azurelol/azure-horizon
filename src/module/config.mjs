@@ -186,6 +186,12 @@ AH.intervals = Object.freeze({
  * @typedef {"character"|"party"|"adversary"|"unit"} AH_ActorType
  */
 
+AH.actorTypes = Object.freeze({
+  character: "TYPES.Actor.Character",
+  adversary: "TYPES.Actor.Adversary",
+  party: "TYPES.Actor.Party",
+});
+
 /**
  * @typedef {'weapon'|'skill'|'spell'|'consumable'} AH_ItemType
  */
@@ -214,6 +220,47 @@ AH.effectTracking = {
   self: "AH.COMMON.Self",
   source: "AH.COMMON.Source",
 };
+
+/**
+ * @typedef {"odd" | "even"} AH_Parity
+ */
+
+/**
+ * @description Property of an integer of whether it is even or odd.
+ */
+AH.parity = Object.freeze({
+  even: "AH.COMMON.Even",
+  odd: "AH.COMMON.Odd",
+});
+
+/**
+ * @typedef {"source" | "initial" | "self" | "allies" | "enemies" | "scene" | "none"} AH_TargetSelectorKey
+ */
+
+/**
+ * @description Used to determine how to select the targets from a given event.
+ */
+AH.targetSelector = Object.freeze({
+  source: "AH.COMMON.Source",
+  initial: "AH.COMMON.Initial",
+  self: "AH.COMMON.Self",
+  allies: "AH.COMMON.Allies",
+  enemies: "AH.COMMON.Enemies",
+  scene: "AH.COMMON.Scene",
+  none: "AH.COMMON.None",
+});
+
+/**
+ * @typedef {"source" | "target"} AH_EventRelationKey
+ */
+
+/**
+ * @description Used to determine the actor's relation to am event
+ */
+AH.eventRelation = Object.freeze({
+  source: "AH.COMMON.Source",
+  target: "AH.COMMON.Target",
+});
 
 /**
  * All settings associated with the system.

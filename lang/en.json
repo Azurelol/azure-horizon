@@ -265,6 +265,7 @@
       "UploadClipboardImage": "Upload Clipboard Image",
       "BrowseImage": "Browse Image",
       "WARNING": {
+        "EffectsNotSupported": "Active effects are only supported for character types.",
         "ApplyNoDamage": "No damage was applied onto {actor} by {source}.",
         "MissingEffect": "Missing Effect",
         "MissingActor": "Missing Actor",
@@ -286,6 +287,16 @@
       "Item": {
         "long": "Item",
         "plural": "Items"
+      }
+    },
+    "RULE": {
+      "Action": {
+        "long": "Action",
+        "plural": "Actions"
+      },
+      "Predicate": {
+        "long": "Predicate",
+        "plural": "Predicates"
       }
     },
     "COMMON": {

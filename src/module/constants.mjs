@@ -76,3 +76,11 @@ export async function enrichHTML(content, options = {}) {
   }
   return foundry.applications.ux.TextEditor.implementation.enrichHTML(content, options);
 }
+
+/**
+ * @param {DataModel} document
+ * @return {Boolean}
+ */
+export function isActorType(document) {
+  return document.documentName === "ActorType";
+}

@@ -1,5 +1,24 @@
 /**
+ * @typedef ActorData
+ * @property {string|null} _id            The _id which uniquely identifies this Actor document
+ * @property {string} name                The name of this Actor
+ * @property {string} type                An Actor subtype which configures the system data model applied
+ * @property {string} [img]               An image file path which provides the artwork for this Actor
+ * @property {object} system              Data for an Actor subtype, defined by a System or Module
+ * @property {PrototypeTokenData} prototypeToken Default Token settings which are used for Tokens created from
+ *                                               this Actor
+ * @property {ItemData[]} items           A Collection of Item embedded Documents
+ * @property {ActiveEffectData[]} effects A Collection of ActiveEffect embedded Documents
+ * @property {string|null} folder         The _id of a Folder which contains this Actor
+ * @property {number} sort                The numeric sort value which orders this Actor relative to its siblings
+ * @property {object} ownership           An object which configures ownership of this Actor
+ * @property {DocumentFlags} flags        An object of optional key/value flags
+ * @property {DocumentStats} _stats       An object of creation and access information
+ */
+
+/**
  * A simple extension that adds a hook at the end of data prep.
+ * @extends ActorData
  * @property {AH_ActorType} type
  * @property {String} name
  * @property {String} uuid
