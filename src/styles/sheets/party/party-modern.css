@@ -8,9 +8,9 @@
 			'widgets';
 
     background:
-      radial-gradient(ellipse at 40% 50%, color-mix(in srgb, var(--ah-color-primary-fill-1) 25%, transparent) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 30%, color-mix(in srgb, var(--ah-color-primary-fill-2) 15%, transparent) 0%, transparent 50%),
-      linear-gradient(135deg, color-mix(in srgb, var(--ah-color-primary-fill-1) 20%, #050a0f) 0%, #080d12 40%, color-mix(in srgb, var(--ah-color-primary-fill-2) 15%, #050a0f) 100%);
+      radial-gradient(ellipse at 40% 50%, color-mix(in srgb, var(--ah-surface-base) 25%, transparent) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, color-mix(in srgb, var(--ah-surface-panel) 15%, transparent) 0%, transparent 50%),
+      linear-gradient(135deg, color-mix(in srgb, var(--ah-surface-base) 20%, var(--ah-primitive-color-navy-975)) 0%, var(--ah-primitive-color-navy-970) 40%, color-mix(in srgb, var(--ah-surface-panel) 15%, var(--ah-primitive-color-navy-975)) 100%);
 
     .bars {
       display: flex;
@@ -210,6 +210,7 @@
         justify-content: normal;
         border-top: none;
         border-bottom: none;
+        background: none;
 
         .tabs__button {
           display: flex;

@@ -11,6 +11,11 @@
   --ah-background-application-header: var(--ah-surface-application);
   --ah-background-application-sidebar: var(--ah-surface-application);
   --ah-border-application-sidebar: rgba(255, 255, 255, 0.08);
+  --ah-background-application-blend: linear-gradient(
+    to bottom,
+    var(--ah-surface-application) 0%,
+    var(--ah-surface-base) 100%
+  );
   --ah-background-image-application: var(--ah-primitive-image-placeholder);
   --ah-background-blend-mode-application: overlay, normal;
   --ah-border-color-application: var(--ah-border-surface);

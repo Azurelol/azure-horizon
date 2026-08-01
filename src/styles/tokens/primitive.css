@@ -67,6 +67,8 @@
 
   /* Navy scale — surfaces derive from here, dark end = base UI, light end = elevated/hover */
   --ah-primitive-color-navy-950: #0a0f1e;  /* deepest — app background */
+  --ah-primitive-color-navy-975: #050a0f;
+  --ah-primitive-color-navy-970: #080d12;
   --ah-primitive-color-navy-900: #0f1730;  /* base surface */
   --ah-primitive-color-navy-800: #16213f;  /* elevation +1 — panel */
   --ah-primitive-color-navy-700: #1e3a5f;  /* elevation +2 — nested panel */
