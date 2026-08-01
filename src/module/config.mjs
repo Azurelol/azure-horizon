@@ -222,6 +222,15 @@ AH.effectTracking = {
 };
 
 /**
+ * @typedef {'minion'|'standard'|'elite'|'champion'} AH_Rank
+ */
+
+AH.rank = Object.freeze({
+  minion: "AH.",
+
+});
+
+/**
  * @typedef {"odd" | "even"} AH_Parity
  */
 

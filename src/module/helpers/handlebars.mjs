@@ -2,8 +2,11 @@ import { systemTemplatePath } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
 import { ChatMessageSectionTemplate } from "./_module.mjs";
+import { templates as RULE_TEMPLATES } from "../data/effect/_module.mjs";
 
 const COMPONENT_TEMPLATES = Object.freeze({
+  empty: systemTemplatePath("components/empty"),
+
   table: systemTemplatePath("components/table"),
   tableColumnDocumentName: systemTemplatePath("components/table/table-column-document-name"),
   tableColumnText: systemTemplatePath("components/table/table-column-text"),
@@ -18,6 +21,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   input: systemTemplatePath("components/input"),
   badge: systemTemplatePath("components/badge"),
   skeleton: systemTemplatePath("components/skeleton"),
+  tooltip: systemTemplatePath("components/tooltip"),
   optionalFieldset: systemTemplatePath("components/optional-fieldset"),
 
   resourceBar: systemTemplatePath("components/resource-bar"),
@@ -51,6 +55,7 @@ export default Object.freeze({
     templates.push(...Object.values(COMPONENT_TEMPLATES));
     templates.push(...Object.values(MESSAGE_TEMPLATES));
     templates.push(...Object.values(ChatMessageSectionTemplate));
+    //templates.push(RULE_TEMPLATES);
     return foundry.applications.handlebars.loadTemplates(templates);
   },
   setupComponent: {
@@ -147,6 +152,7 @@ export default Object.freeze({
     Handlebars.registerHelper("ahButton", button);
     Handlebars.registerHelper("ahSelector", selector);
     Handlebars.registerHelper("ahInput", input);
+    Handlebars.registerHelper("ahTooltip", tooltip);
     Handlebars.registerHelper("ahResourceBar", resourceBar);
     Handlebars.registerHelper("ahDocumentCarousel", documentCarousel);
     Handlebars.registerHelper("ahCheckOutcome",
@@ -748,4 +754,33 @@ function formOptions(key, options) {
   const format = options.hash?.format ?? "long";
   const formOptions = FoundryUtils.getFormSelectOptions(record, format);
   return formOptions;
+}
+
+/**
+ * @typedef AH_TooltipOptions
+ * @property {'help'|'info'|'warning'} type
+ * @property
+ */
+
+/**
+ * @param {String} text
+ * @param {AH_TooltipOptions} options
+ * @returns {Handlebars.SafeString}
+ */
+function tooltip(text, options) {
+  if (options.hash) {
+    options = options.hash;
+  }
+
+  const type = options.type ?? "help";
+  const template = Handlebars.partials[COMPONENT_TEMPLATES.tooltip];
+  const html =
+    typeof template === "function"
+      ? template({
+        text: text,
+        type,
+        ...options,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
 }

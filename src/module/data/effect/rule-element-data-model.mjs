@@ -1,5 +1,5 @@
-import { SubDocumentCollectionField, SubDocumentDataModel } from "../api/_module.mjs";
-import { systemTemplatePath } from "../../constants.mjs";
+import { DataModelRegistry, SubDocumentCollectionField, SubDocumentDataModel } from "../api/_module.mjs";
+import { systemID, systemTemplatePath } from "../../constants.mjs";
 import { EmptyRuleTrigger } from "./triggers/_module.mjs";
 import { RuleActionDataModel } from "./rule-action-data-model.mjs";
 import { RulePredicateDataModel } from "./rule-predicate-data-model.mjs";
@@ -209,4 +209,19 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
   get templateHeader() {
     return StringUtils.localize(this.trigger.schema.model.localization);
   }
+}
+
+/**
+ * @description Registry of all {@linkcode RuleElementDataModel}
+ */
+export class RuleElementRegistry extends DataModelRegistry {
+  constructor() {
+    super({
+      kind: "Rule Element",
+      baseClass: RuleElementDataModel,
+    });
+    this.register(systemID, RuleElementDataModel.TYPE, RuleElementDataModel);
+  }
+
+  static instance = new RuleElementRegistry();
 }

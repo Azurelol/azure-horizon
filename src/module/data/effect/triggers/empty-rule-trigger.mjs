@@ -20,6 +20,6 @@ export default class EmptyRuleTrigger extends RuleTriggerDataModel {
 	 * @return {String}
 	 */
   static get template() {
-    return systemTemplatePath("common/empty");
+    return systemTemplatePath("components/empty");
   }
 }

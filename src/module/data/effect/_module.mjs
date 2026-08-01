@@ -3,19 +3,24 @@ import * as Triggers from "./triggers/_module.mjs";
 import * as Predicates from "./predicates/_module.mjs";
 
 import ActiveEffectModel from "./active-effect-model.mjs";
-import { default as RuleElementDataModel } from "./rule-element-data-model.mjs";
+import { default as RuleElementDataModel, RuleElementRegistry } from "./rule-element-data-model.mjs";
 
 import { DataModelRegistry } from "../api/_module.mjs";
+
 import { RuleTriggerDataModel } from "./rule-trigger-data-model.mjs";
 import { RuleActionDataModel } from "./rule-action-data-model.mjs";
 import { RulePredicateDataModel } from "./rule-predicate-data-model.mjs";
-import { systemID } from "../../constants.mjs";
 
 const dataModels = Object.freeze({
   base: ActiveEffectModel,
 });
 
-const templates = [...Object.values(Actions), ...Object.values(Triggers), ...Object.values(Predicates)].map(field => {
+const ruleDataModels = [...Object.values(Actions), ...Object.values(Triggers), ...Object.values(Predicates)];
+
+/**
+ * @type {any[]} All the handlebar template partials used by rule elements.
+ */
+const templates = ruleDataModels.map(field => {
   return field.template;
 });
 
@@ -61,27 +66,13 @@ class RulePredicateRegistry extends DataModelRegistry {
   static instance = new RulePredicateRegistry();
 }
 
-/**
- * @description Registry of all {@linkcode RuleElementDataModel}
- */
-export class RuleElementRegistry extends DataModelRegistry {
-  constructor() {
-    super({
-      kind: "Rule Element",
-      baseClass: RuleElementDataModel,
-    });
-    this.register(systemID, RuleElementDataModel.TYPE, RuleElementDataModel);
-  }
-
-  static instance = new RuleElementRegistry();
-}
-
 export
 {
   ActiveEffectModel,
   dataModels,
   templates,
   RuleElementDataModel,
+  RuleElementRegistry,
   RuleTriggerRegistry,
   RulePredicateRegistry,
   RuleActionRegistry,

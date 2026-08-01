@@ -72,7 +72,7 @@ export default class FoundryUtils {
    * @returns {FormSelectOption[]}
    * @remarks To be used with specific records.
    */
-  static getFormSelectOptions(record, format) {
+  static getFormSelectOptions(record, format = "long") {
     return Object.entries(record).map(([key, value]) => ({
       label: StringUtils.localize(FoundryUtils.#resolveConfigRecordLabel(value, format)),
       value: key,

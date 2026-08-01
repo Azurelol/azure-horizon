@@ -111,6 +111,23 @@
         "plural": "Bonuses"
       }
     },
+    "ADVERSARY": {
+      "Rank": {
+        "long": "Rank"
+      },
+      "Minion": {
+        "long": "Minion"
+      },
+      "Standard": {
+        "long": "Standard"
+      },
+      "Elite": {
+        "long": "Elite"
+      },
+      "Champion": {
+        "long": "Champion"
+      }
+    },
     "CHECK": {
       "Check": "Check",
       "Attribute": "Attribute Check",
@@ -290,6 +307,11 @@
       }
     },
     "RULE": {
+      "Rule": {
+        "long": "Rule",
+        "plural": "Rules"
+
+      },
       "Action": {
         "long": "Action",
         "plural": "Actions"
@@ -342,7 +364,8 @@
       "Unknown": "Unknown",
       "Defense": "Defense",
       "Traits": "Traits",
-      "Type": "Type"
+      "Type": "Type",
+      "Options": "Options"
     },
     "ACTION": {
       "ApplyDamage": "Apply Damage",

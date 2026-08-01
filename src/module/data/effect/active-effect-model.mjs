@@ -10,6 +10,7 @@ import { RuleElementDataModel } from "./_module.mjs";
 
 /**
  * A data model used by default effects with properties to control the expiration behavior.
+ * @property {RuleElementDataModel[]} rules
  */
 export default class ActiveEffectModel extends foundry.data.ActiveEffectTypeDataModel {
   static defineSchema() {
