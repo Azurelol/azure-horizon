@@ -9,6 +9,8 @@
   /* 1.1 Application  */
   --ah-background-application: var(--ah-surface-base);
   --ah-background-application-header: var(--ah-surface-application);
+  --ah-background-application-sidebar: var(--ah-surface-application);
+  --ah-border-application-sidebar: rgba(255, 255, 255, 0.08);
   --ah-background-image-application: var(--ah-primitive-image-placeholder);
   --ah-background-blend-mode-application: overlay, normal;
   --ah-border-color-application: var(--ah-border-surface);

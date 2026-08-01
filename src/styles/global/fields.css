@@ -1,6 +1,14 @@
+.ah-field-grid {
+  display: grid;
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0;
+  gap:1rem;
+}
+
 .ah-fieldset {
   background: var(--ah-background-fieldset);
-  border: var(--ah-border-width) solid var(--ah-color-border-fieldset);
+  border: var(--ah-border-width) solid var(--ah-border-color-fieldset);
 }
 
 .ah-fieldset.--optional {
@@ -8,7 +16,7 @@
     cursor: pointer;
 
     &.active {
-      background: var(--ah-color-active);
+      background: var(--ah-action-surface-active);
       transition: background 0.2s;
     }
   }
@@ -18,16 +26,6 @@
     pointer-events: none;
   }
 }
-
-
-.ah-field-grid {
-  display: grid;
-  grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  padding: 0;
-  gap:1rem;
-}
-
 .ah-field-group {
   display: flex;
   flex-direction: column;
@@ -61,7 +59,7 @@
     justify-content: center;
     flex:2;
     gap:1rem;
-    border: 1px solid var(--ah-color-border-fieldset);
+    border: 1px solid var(--ah-border-color-fieldset);
     background: var(--ah-background-fieldgroup);
     padding: 1rem;
   }
@@ -122,8 +120,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: var(--pfu-color-app-control-content);
-  border: 1px solid var(--pfu-color-app-control-border);
+  background: var(--ah-background-input);
+  border: 1px solid var(--ah-color-border-input);
   overflow: auto;
   max-height: 150px;
   min-height: 150px;
@@ -159,7 +157,6 @@
     }
 
     i {
-      color: var(--pfu-color-app-control-fill-1);
     }
   }
 }
@@ -173,7 +170,7 @@
     min-width: 0;
     padding: 3px 4px;
     outline: none;
-    color: inherit; /* respect Foundry's text color */
+    color: inherit;
   }
 }
 

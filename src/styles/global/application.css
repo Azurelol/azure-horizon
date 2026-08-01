@@ -40,25 +40,25 @@
 
   .editor-container .editor-content {
     background: var(--ah-background-input);
-    border: 1px solid var(--ah-color-border-surface);
+    border: 1px solid var(--ah-border-surface);
   }
 
   fieldset {
-    background: var(--ah-background-surface);
+    background: var(--ah-background-fieldset);
     border-radius: 8px;
-    border: 1px solid var(--ah-color-border-surface);
+    border: 1px solid var(--ah-border-surface);
 
     legend {
       display: flex;
       border-radius: 10px;
       margin: 0 auto;
       padding: 2px 10px;
-      background: var(--ah-background-surface);
+      background: var(--ah-background-fieldset-header);
       color: var(--ah-primitive-color-white);
       position: relative;
       text-align: center;
       width: auto;
-      border: 0.02em solid var(--ah-color-border-surface);
+      border: 0.02em solid var(--ah-border-color-fieldset);
     }
   }
 }

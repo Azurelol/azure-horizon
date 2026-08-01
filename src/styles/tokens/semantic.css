@@ -22,21 +22,21 @@
   --ah-border-surface: var(--ah-primitive-color-navy-500);
   --ah-border-panel: var(--ah-primitive-color-navy-600);
 
-  /* Tier 2 additions */
-  --ah-surface-tab: var(--ah-surface-panel-nested);      /* inactive — recedes */
-  --ah-surface-tab-active: var(--ah-surface-base);        /* active — reads as "lifted" */
-  --ah-content-tab: var(--ah-content-muted);              /* inactive label, de-emphasized */
-  --ah-content-tab-active: var(--ah-content-primary);     /* active label, full emphasis */
+  --ah-surface-tab: var(--ah-surface-panel-nested);
+  --ah-surface-tab-active: var(--ah-surface-base);
 
   --ah-surface-accent: var(--ah-primitive-color-brown-500);
   --ah-border-accent: var(--ah-primitive-color-brown-600);
-  --ah-content-on-accent: var(--ah-content-primary);   /* confirm white holds contrast against brown-500 */
 
   /* ---------- CONTENT ---------- */
   --ah-content-primary: var(--ah-primitive-color-white-100);
   --ah-content-secondary: var(--ah-primitive-color-white-90);
   --ah-content-muted: var(--ah-primitive-color-white-70);
   --ah-content-disabled: var(--ah-primitive-color-white-50);
+  --ah-content-on-accent: var(--ah-content-primary);
+
+  --ah-content-tab: var(--ah-content-muted);
+  --ah-content-tab-active: var(--ah-content-primary);
 
   --ah-content-icon: var(--ah-primitive-color-white-90);
   --ah-content-icon-hover: var(--ah-primitive-color-white-100);
@@ -47,19 +47,7 @@
   --ah-action-surface-active: var(--ah-primitive-color-azure-600);
   --ah-action-content: var(--ah-primitive-color-white-100);
 
-
-  --ah-color-border: var(--ah-primitive-color-burgundy);
-
   /*--------------------- TYPOGRAPHY ---------------------*/
-  /* Color */
-  --ah-color-text: var(--ah-primitive-color-text);
-  --ah-color-text-title: var(--ah-primitive-color-brown-dark);
-  --ah-color-text-muted: var(--ah-primitive-color-dim);
-  --ah-color-text-inverted: var(--ah-primitive-color-white);
-  --ah-color-text-bullet: var(--ah-primitive-color-black);
-  --ah-color-text-shadow: var(--ah-primitive-color-warm-brown);
-  --ah-color-box-shadow: #000000ff;
-  --ah-color-text-shadow-secondary: var(--ah-primitive-color-white);
   /* Font weights */
   --ah-font-weight-normal: 400;
   --ah-font-weight-medium: 500;
@@ -76,7 +64,4 @@
   --ah-font-title: var(--ah-primitive-font-title);
   --ah-font-heading: var(--ah-primitive-font-heading);
   --ah-font-body: var(--ah-primitive-font-body);
-
-
-
 }
