@@ -1,0 +1,7 @@
+{{ahTraitsField trigger.schema.fields.itemGroups value=trigger.itemGroups options=options.itemGroupOptions path=(ahConcat path ".itemGroups") }}
+{{ahTraitsField trigger.schema.fields.damageTypes value=trigger.damageTypes options=options.damageTypeOptions path=(ahConcat path ".damageTypes") }}
+
+<div class="ah-field-group --row">
+  {{ahField schema=trigger.schema.fields.local path=(ahConcat path ".local") value=trigger.local label='AH.FIELD.Local'}}
+  {{ahStringField path=(ahConcat path ".identifier") value=trigger.identifier label='AH.FIELD.Identifier'}}
+</div>

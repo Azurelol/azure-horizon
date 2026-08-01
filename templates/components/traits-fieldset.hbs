@@ -1,0 +1,30 @@
+{{#if model.quantifier}}
+	<div>
+		{{#if showLabel}}
+			<label>
+				<i class="ra ra-aries"></i>{{localize 'AH.COMMON.Traits'}}
+			</label>
+		{{/if}}
+
+		<div class="ah-traits">
+			{{#if showLabel}}
+				<span>{{localize 'AH.COMMON.Traits'}}</span>
+			{{/if}}
+			{{formGroup model.schema.fields.entries value=model.entries name=(ahConcat path ".entries") options=traitOptions}}
+		</div>
+
+		<label class="fu-form__property">
+			<span>{{localize 'FU.Quantifier'}}</span>
+			<select name="{{ahConcat path ".quantifier"}}">
+				{{selectOptions quantifierOptions selected=model.quantifier localize=true}}
+			</select>
+		</label>
+	</div>
+{{else}}
+	<div class="ah-traits">
+		{{#if showLabel}}
+      <span>{{localize 'AH.COMMON.Traits'}}</span>
+		{{/if}}
+		{{formGroup model.schema.fields.entries value=model.entries name=(ahConcat path ".entries") options=traitOptions classes=""}}
+	</div>
+{{/if}}

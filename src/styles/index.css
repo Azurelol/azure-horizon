@@ -11,6 +11,7 @@
 @import "components/label.css";
 @import "components/bars.css";
 @import "components/table.css";
+@import "components/foldout.css";
 
 @import "global/foundry.css";
 @import "global/application.css";
@@ -30,6 +31,7 @@
 @import "sheets/character.css";
 @import "sheets/party.css";
 @import "sheets/party/party-modern.css";
+@import "sheets/rules.css";
 
 @import "typography/rpg-awesome.min.css";
 @import "typography/typography.css";

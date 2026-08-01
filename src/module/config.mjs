@@ -16,6 +16,15 @@ const fields = foundry.data.fields;
  */
 
 /**
+ * @typedef {'crisis'} AH_StatusEffect
+ * System-specific status effects.
+ */
+
+AH.statusEffects = Object.freeze({
+  crisis: "AH.STATUS.Crisis",
+});
+
+/**
  * System themes.
  * @type {Record<String, {label, path}>}
  */
@@ -243,21 +252,31 @@ AH.parity = Object.freeze({
 });
 
 /**
- * @typedef {"source" | "initial" | "self" | "allies" | "enemies" | "scene" | "none"} AH_TargetSelectorKey
+ * @typedef {"source" | "initial" | "self" | "allies" | "enemies" | "scene" | "none"} AH_TargetSelector
  */
 
 /**
  * @description Used to determine how to select the targets from a given event.
  */
 AH.targetSelector = Object.freeze({
-  source: "AH.COMMON.Source",
-  initial: "AH.COMMON.Initial",
-  self: "AH.COMMON.Self",
-  allies: "AH.COMMON.Allies",
-  enemies: "AH.COMMON.Enemies",
-  scene: "AH.COMMON.Scene",
-  none: "AH.COMMON.None",
+  source: "AH.FIELD.Source",
+  initial: "AH.FIELD.Initial",
+  self: "AH.FIELD.Self",
+  allies: "AH.FIELD.Allies",
+  enemies: "AH.FIELD.Enemies",
+  scene: "AH.FIELD.Scene",
+  none: "AH.FIELD.None",
 });
+
+/**
+ * @typedef {"any" | "all" | "none"} AH_PredicateQuantifier
+ */
+
+AH.predicateQuantifier = {
+  any: "AH.COMMON.Any",
+  all: "AH.COMMON.All",
+  none: "AH.COMMON.None",
+};
 
 /**
  * @typedef {"source" | "target"} AH_EventRelationKey
@@ -362,6 +381,25 @@ AH.hooks = Object.freeze({
    * @remarks Uses {@link CalculateResourceEvent}
    */
   CALCULATE_RESOURCE_EVENT: "projectfu.events.resource.calculate",
+});
+
+/**
+ * Traits are tags with mechanical implications in the system.
+ * @property {Record<String, AH_Constant>} action
+ * @property {Record<String, AH_Constant>} damage
+ */
+AH.traits = Object.freeze({
+  action: {
+    attack: "AH.TRAIT.Attack",
+    damage: "AH.TRAIT.Damage",
+    restore: "AH.TRAIT.Restore",
+    gain: "AH.TRAIT.Gain",
+    loss: "AH.TRAIT.Loss",
+  },
+  damage: {
+    base: "AH.TRAIT.Base",
+    nonLethal: "AH.TRAIT.NonLethal",
+  },
 });
 
 /**

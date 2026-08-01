@@ -91,6 +91,9 @@ async function initializeSystems() {
  * Sets the data model registries.
  */
 function registerDataModels() {
+
+  data.ActiveEffect.registerDataModels();
+
   /**
    * @type {Record<string, DataModelRegistry>}
    */
@@ -105,9 +108,9 @@ function registerDataModels() {
 Hooks.once("init", async () => {
   bindDocuments();
   bindDataModels();
+  registerDataModels();
   bindSheets();
   await initializeSystems();
-  registerDataModels();
 
   // Sidebar tabs
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;

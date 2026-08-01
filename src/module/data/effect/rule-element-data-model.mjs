@@ -15,7 +15,7 @@ const fields = foundry.data.fields;
  * @property {RuleTriggerDataModel} trigger
  * @property {SubDocumentCollectionField, RuleActionDataModel[]} actions
  * @property {RulePredicateDataModel[]} predicates
- * @property {AH_TargetSelectorKey} selector
+ * @property {AH_TargetSelector} selector
  * @property {Boolean} enabled
  */
 export default class RuleElementDataModel extends SubDocumentDataModel {

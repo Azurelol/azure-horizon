@@ -6,7 +6,9 @@ import {
   RuleTriggerRegistry,
 } from "../../data/effect/_module.mjs";
 import AH from "../../config.mjs";
-import { FoundryUtils } from "../../utils/_module.mjs";
+import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
+import { Dialogs } from "../../helpers/_module.mjs";
+import { SubDocumentCollectionField } from "../../data/api/_module.mjs";
 
 export default class AHActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
 
@@ -16,6 +18,9 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
   static DEFAULT_OPTIONS = {
     classes: ["ah-application"],
     actions: {
+      addRuleElement: this.#addRuleElement,
+      deleteRuleElement: this.#deleteRuleElement,
+      clearRuleElements: this.#clearRuleElements,
     },
     form: {
       closeOnSubmit: false,
@@ -127,6 +132,69 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
         break;
     }
     return partContext;
+  }
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #addRuleElement(event, target) {
+    const triggerTypes = RuleTriggerRegistry.instance.localizedEntries;
+    const options = FoundryUtils.getFormSelectOptions(triggerTypes);
+    const type = await Dialogs.select(
+      StringUtils.localize("AH.COMMON.Add", {
+        element: StringUtils.localize("AH.RULE.Element"),
+      }),
+      options,
+    );
+
+    const triggerModel = RuleTriggerRegistry.instance.types[type];
+    const trigger = new triggerModel();
+    const data = {
+      trigger: trigger,
+    };
+    await SubDocumentCollectionField.addModel(this.document.system.rules, RuleElementDataModel.TYPE, this.document, data);
+    console.debug(`Added rule element with trigger ${type}`);
+  }
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #deleteRuleElement(event, target) {
+    const { id } = target.dataset;
+    console.debug(`Deleting rule element ${id}`);
+    /** @type RuleElementDataModel **/
+    const re = this.document.system.rules.get(id);
+    if (re) {
+      const confirm = await Dialogs.confirm(
+        {
+          title: "AH.COMMON.Remove",
+          message: StringUtils.localize("AH.DIALOG.RemoveObject", { label: re.localization }),
+        });
+      if (confirm) {
+        await re.delete();
+      }
+    }
+  }
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #clearRuleElements(event, target) {
+    const confirm = await Dialogs.confirm({
+      title: "AH.COMMON.Clear",
+      message: StringUtils.localize("AH.DIALOG.ClearObjects"),
+    });
+    if (confirm) {
+      await this.document.update({
+        "system.==rules": {},
+      });
+    }
   }
 
 }

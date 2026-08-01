@@ -26,10 +26,17 @@
   --ah-color-shadow-secondary: var(--ah-primitive-color-white);
   --ah-color-bg-input: var(--ah-primitive-color-parchment-light);
 
+  /* Forms (Fieldset) */
+  --ah-background-fieldset: var(--ah-primitive-color-navy-800);
+  --ah-color-border-fieldset: var(--ah-primitive-color-grey-800);
+  --ah-background-fieldgroup: color-mix(in srgb, var(--ah-primitive-color-navy-800) 50%, grey 40%);
+  --ah-background-fieldset-header: var(--ah-primitive-color-warm-brown);
+
   /* Controls (Buttons, Tags) */
+  --ah-background-input: #111827;
   --ah-color-control: var(--ah-primitive-color-white);
   --ah-color-control-hover: color-mix(in srgb, var(--ah-primitive-color-white), white 25%);
-  --ah-background-control: var(--ah-color-background-primary);
+  --ah-background-control: var(--ah-color-background-surface);
   --ah-background-control-hover: var(--ah-primitive-color-azure);
   --ah-color-shadow-control: var(--ah-primitive-color-warm-brown);
   --ah-color-border-control: var(--ah-primitive-color-grey-mid);
@@ -53,10 +60,8 @@
   --ah-background-blend-mode-application: overlay, normal;
   --ah-color-application: white;
 
-  --ah-background-input: #111827;
-  --ah-background-fieldset: var(--ah-primitive-color-navy-800);
-  --ah-color-border-fieldset: var(--ah-primitive-color-grey-800);
-  --ah-background-fieldgroup: color-mix(in srgb, var(--ah-primitive-color-navy-800) 50%, grey 40%);
+
+
 
   --ah-background-tab: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
   --ah-background-tab-active: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
@@ -76,8 +81,6 @@
   /* tables */
   --ah-color-bg-table-row: var(--ah-primitive-color-grey-850);
   --ah-color-bg-table-row-alt: var(--ah-primitive-color-grey-800);
-
-
 
   /* tags */
   --ah-color-tag: red;

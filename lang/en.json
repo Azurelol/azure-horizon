@@ -278,9 +278,19 @@
       "Temporary": "Temporary",
       "Toggle": "Toggle Effect"
     },
+    "TRAIT": {
+      "Attack": "Attack",
+      "Damage": "Damage",
+      "Restore": "Restore",
+      "Gain": "Gain",
+      "Loss": "Loss",
+      "Base": "Base"
+    },
     "DIALOG": {
       "UploadClipboardImage": "Upload Clipboard Image",
       "BrowseImage": "Browse Image",
+      "RemoveObject": "Are you sure you would like to remove {label}?",
+      "ClearObjects": "Are you sure you would ike to clear all items?",
       "WARNING": {
         "EffectsNotSupported": "Active effects are only supported for character types.",
         "ApplyNoDamage": "No damage was applied onto {actor} by {source}.",
@@ -306,11 +316,33 @@
         "plural": "Items"
       }
     },
+    "FIELD": {
+      "Initial": "Initial",
+      "Allies": "Allies",
+      "Enemies": "Enemies",
+      "None": "None",
+      "Self": "Self",
+      "Scene": "Scene",
+      "Identifier": "Identifier",
+      "Local": "Local",
+      "DamageType": "Damage Type",
+      "PredicateEffect": "Effect",
+      "Quantifier": "Quantifier",
+      "Effect": "Effect",
+      "Amount": "Amount",
+      "EventRelation": "Event Relation",
+      "EventRelationHint": "The context in which the the character fits in the event",
+      "Selector": "Selector",
+      "SelectorHint": "Determines which characters is the rule element executed on."
+    },
     "RULE": {
+      "Element": {
+        "long": "Element",
+        "plural": "Elements"
+      },
       "Rule": {
         "long": "Rule",
         "plural": "Rules"
-
       },
       "Action": {
         "long": "Action",
@@ -319,7 +351,17 @@
       "Predicate": {
         "long": "Predicate",
         "plural": "Predicates"
-      }
+      },
+      "Trigger": {
+        "long": "Trigger"
+      },
+      "CalculateDamage": "Calculate Damage",
+      "ApplyDamage": "Apply Damage",
+      "TriggerHint": "The event that initiates execution of this element.",
+      "Predicates": "Predicates",
+      "PredicatesHint": "Optional conditions that determine whether this element should execute.",
+      "Actions": "Actions",
+      "ActionsHint": "Actions to execute when this element's conditions are met."
     },
     "COMMON": {
       "Document": "Document",
@@ -365,6 +407,7 @@
       "Defense": "Defense",
       "Traits": "Traits",
       "Type": "Type",
+      "Target": "Target",
       "Options": "Options"
     },
     "ACTION": {

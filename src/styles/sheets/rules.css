@@ -1,0 +1,42 @@
+.ah-rule-element__section {
+  header {
+    padding: 0 0.5rem;
+    background: var(--ah-color-background-surface);
+    box-shadow: 1px 2px var(--color-primary);
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    span,
+    label,
+    i {
+      color: var(--ah-color-app-item-header-content) !important;
+      text-shadow: 1px 1px var(--ah-color-app-item-header-shadow);
+      font-weight: var(--font-weight-bold);
+      border-radius: 4px;
+    }
+  }
+}
+
+.ah-rule-element__section__content {
+  padding: 0.5rem;
+  background: none;
+}
+
+.ah-rule-element__item {
+  border-radius: 5px;
+  border: 1px solid var(--border-primary);
+  background: none;
+}
+
+.ah-rule-element__item__content {
+  background: none;
+  padding: 0.5rem;
+  backdrop-filter: saturate(200%); /* Vivid colors */
+}

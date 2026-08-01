@@ -5,7 +5,7 @@ const fields = foundry.data.fields;
 
 /**
  * @description Defines the trigger for a rule element.
- * @property {AH_TargetSelectorKey} selector
+ * @property {AH_TargetSelector} selector
  * @property {AH_EventRelationKey} eventRelation
  * @property {RulePredicateDataModel[] | TypedCollectionField} predicates
  */

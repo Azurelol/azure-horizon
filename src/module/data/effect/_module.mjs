@@ -10,6 +10,7 @@ import { DataModelRegistry } from "../api/_module.mjs";
 import { RuleTriggerDataModel } from "./rule-trigger-data-model.mjs";
 import { RuleActionDataModel } from "./rule-action-data-model.mjs";
 import { RulePredicateDataModel } from "./rule-predicate-data-model.mjs";
+import { systemID } from "../../constants.mjs";
 
 const dataModels = Object.freeze({
   base: ActiveEffectModel,
@@ -33,6 +34,10 @@ class RuleTriggerRegistry extends DataModelRegistry {
       kind: "Rule Trigger",
       baseClass: RuleTriggerDataModel,
     });
+
+    for (const trigger of Object.values(Triggers)) {
+      this.register(systemID, trigger.TYPE, trigger);
+    }
   }
 
   static instance = new RuleTriggerRegistry();
@@ -47,6 +52,10 @@ class RuleActionRegistry extends DataModelRegistry {
       kind: "Rule Action",
       baseClass: RuleActionDataModel,
     });
+
+    for (const action of Object.values(Actions)) {
+      this.register(systemID, action.TYPE, action);
+    }
   }
 
   static instance = new RuleActionRegistry();
@@ -61,9 +70,26 @@ class RulePredicateRegistry extends DataModelRegistry {
       kind: "Rule Predicate",
       baseClass: RulePredicateDataModel,
     });
+
+    for (const predicate of Object.values(Predicates)) {
+      this.register(systemID, predicate.TYPE, predicate);
+    }
   }
 
   static instance = new RulePredicateRegistry();
+}
+
+/**
+ *
+ */
+function registerDataModels() {
+
+  // for (const predicate of Object.values(Predicates)) {
+  //   RulePredicateRegistry.instance.register(systemID, predicate.TYPE, predicate);
+  // }
+  // for (const action of Object.values(Actions)) {
+  //   RuleActionRegistry.instance.register(systemID, action.TYPE, action);
+  // }
 }
 
 export
@@ -71,6 +97,8 @@ export
   ActiveEffectModel,
   dataModels,
   templates,
+  registerDataModels,
+
   RuleElementDataModel,
   RuleElementRegistry,
   RuleTriggerRegistry,

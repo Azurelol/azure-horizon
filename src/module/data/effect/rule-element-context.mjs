@@ -98,7 +98,7 @@ export default class RuleElementContext {
   }
 
   /**
-	 * @param {AH_TargetSelectorKey} selector
+	 * @param {AH_TargetSelector} selector
 	 * @returns {CharacterInfo[]}
 	 */
   selectTargets(selector) {

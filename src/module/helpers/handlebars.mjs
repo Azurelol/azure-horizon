@@ -16,6 +16,8 @@ const COMPONENT_TEMPLATES = Object.freeze({
   documentAnchor: systemTemplatePath("components/document-anchor"),
   documentCarousel: systemTemplatePath("components/document-carousel"),
 
+  traitsFieldSet: systemTemplatePath("components/traits-fieldset"),
+
   button: systemTemplatePath("components/button"),
   selector: systemTemplatePath("components/selector"),
   input: systemTemplatePath("components/input"),
@@ -26,8 +28,11 @@ const COMPONENT_TEMPLATES = Object.freeze({
 
   resourceBar: systemTemplatePath("components/resource-bar"),
 
+  field: systemTemplatePath("components/field"),
   arrayField: systemTemplatePath("components/array-field"),
   stringField: systemTemplatePath("components/string-field"),
+  traitsField: systemTemplatePath("components/traits-field"),
+
 });
 
 const MESSAGE_TEMPLATES = Object.freeze({
@@ -147,10 +152,36 @@ export default Object.freeze({
         ...options.hash,
       });
     });
+    /**
+     * @typedef AH_TraitsFieldOptions
+     * @property schema
+     * @property label
+     * @property path
+     * @property value
+     * @property options
+     */
+    Handlebars.registerHelper("ahTraitsField", function (options) {
+      return getTemplateString(COMPONENT_TEMPLATES.traitsField, {
+        ...options.hash,
+      });
+    });
+    /**
+     * @typedef AH_TraitsFieldOptions
+     * @property schema
+     * @property label
+     * @property path
+     * @property value
+     */
+    Handlebars.registerHelper("ahField", function (options) {
+      return getTemplateString(COMPONENT_TEMPLATES.field, {
+        ...options.hash,
+      });
+    });
     Handlebars.registerHelper("ahAutoComplete", autoComplete);
     Handlebars.registerHelper("ahBadge", badge);
     Handlebars.registerHelper("ahButton", button);
     Handlebars.registerHelper("ahSelector", selector);
+    Handlebars.registerHelper("ahTraitsFieldset", traitsFieldset);
     Handlebars.registerHelper("ahInput", input);
     Handlebars.registerHelper("ahTooltip", tooltip);
     Handlebars.registerHelper("ahResourceBar", resourceBar);
@@ -780,6 +811,28 @@ function tooltip(text, options) {
         text: text,
         type,
         ...options,
+      })
+      : "";
+  return new Handlebars.SafeString(html);
+}
+
+/**
+ * @param {TraitsDataModel|TraitsPredicateDataModel} model
+ * @param {String} path The path to the property.
+ * @param options
+ * @returns {Handlebars.SafeString}
+ */
+function traitsFieldset(model, path, options) {
+  options = options.hash;
+  const template = Handlebars.partials[systemTemplatePath("components/traits")];
+  const html =
+    typeof template === "function"
+      ? template({
+        model: model,
+        path: path,
+        traitOptions: model.schema.options?.options ?? {},
+        quantifierOptions: AH.predicateQuantifier,
+        showLabel: options.showLabel ?? false,
       })
       : "";
   return new Handlebars.SafeString(html);
