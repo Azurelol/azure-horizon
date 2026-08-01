@@ -1,8 +1,9 @@
-@import "tokens/primitives.css";
+@import "tokens/primitive.css";
 @import "tokens/semantic.css";
 @import "tokens/semantic/colors.css";
 @import "tokens/semantic/text.css";
 @import "tokens/semantic/icons.css";
+@import "tokens/component.css";
 
 @import "chat/chat-section.css";
 

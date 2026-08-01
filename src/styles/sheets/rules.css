@@ -1,8 +1,8 @@
 .ah-rule-element__section {
   header {
     padding: 0 0.5rem;
-    background: var(--ah-background-surface);
-    box-shadow: 1px 2px var(--color-primary);
+    background: var(--ah-background-list-header);
+    box-shadow: 1px 2px var(--ah-color-box-shadow-list-header);
     display: flex;
     justify-content: space-between;
 
@@ -16,9 +16,9 @@
     span,
     label,
     i {
-      color: var(--ah-color-app-item-header-content) !important;
-      text-shadow: 1px 1px var(--ah-color-app-item-header-shadow);
-      font-weight: var(--font-weight-bold);
+      color: var(--ah-color-list) !important;
+      text-shadow: 1px 1px var(--ah-color-text-shadow-list);
+      font-weight: var(--ah-font-weight-bold);
       border-radius: 4px;
     }
   }
@@ -31,12 +31,12 @@
 
 .ah-rule-element__item {
   border-radius: 5px;
-  border: 1px solid var(--border-primary);
+  border: var(--ah-border-list-item);
   background: none;
 }
 
 .ah-rule-element__item__content {
   background: none;
   padding: 0.5rem;
-  backdrop-filter: saturate(200%); /* Vivid colors */
+  backdrop-filter: saturate(200%);
 }

@@ -72,7 +72,7 @@
     text-align: center;
     padding: 1rem;
     border-radius: 0 !important;
-    border: 4px inset var(--ah-color-border) !important;
+    border: 4px inset var(--ah-border-panel) !important;
 
     box-shadow:
       inset 0 2px 4px rgba(255, 220, 150, 0.4),

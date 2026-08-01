@@ -10,31 +10,45 @@
   --ah-color-dark: white;
   --ah-color-light: black;
 
-  /* THEME: (Others are derived from) */
-  --ah-color-background-primary: linear-gradient(to bottom, var(--ah-color-primary-fill-1) 0%, var(--ah-color-primary-fill-2) 100%);
-  --ah-background-surface:  linear-gradient(to bottom, var(--ah-primitive-color-navy-950) 0%, var(--ah-primitive-color-navy-900b) 100%);
-  --ah-color-background-overlay: linear-gradient(to bottom, rgba(10, 15, 30, 0.85) 0%, transparent 100%);
-  --ah-color-primary: #ffffff;
-  --ah-color-background-surface: red;
-  --ah-background-application-header: var(--ah-primitive-color-navy-950);
+  /* ---------- SURFACE ---------- */
+  --ah-surface-application: var(--ah-primitive-color-navy-950);
+  --ah-surface-base: var(--ah-primitive-color-navy-900);
+  --ah-surface-panel: var(--ah-primitive-color-navy-800);
+  --ah-surface-panel-nested: var(--ah-primitive-color-navy-700);
+  --ah-surface-hover: var(--ah-primitive-color-navy-400);
 
-  /*TEMP*/
-  --ah-color-primary-fill-1: var(--ah-primitive-color-navy-900);
-  --ah-color-primary-fill-2: var(--ah-primitive-color-navy-800);
-
-  --ah-color-border-primary: #3d5080;
-
-  /*Surface*/
-
-  --ah-color-border-surface: #2f3a54;
-
-  --ah-color-border-overlay: rgba(255, 255, 255, 0.08);
-  --ah-border-width: 2px;
   --ah-border-radius: 4px;
+  --ah-border-width: 2px;
+  --ah-border-surface: var(--ah-primitive-color-navy-500);
+  --ah-border-panel: var(--ah-primitive-color-navy-600);
+
+  /* Tier 2 additions */
+  --ah-surface-tab: var(--ah-surface-panel-nested);      /* inactive — recedes */
+  --ah-surface-tab-active: var(--ah-surface-base);        /* active — reads as "lifted" */
+  --ah-content-tab: var(--ah-content-muted);              /* inactive label, de-emphasized */
+  --ah-content-tab-active: var(--ah-content-primary);     /* active label, full emphasis */
+
+  --ah-surface-accent: var(--ah-primitive-color-brown-500);
+  --ah-border-accent: var(--ah-primitive-color-brown-600);
+  --ah-content-on-accent: var(--ah-content-primary);   /* confirm white holds contrast against brown-500 */
+
+  /* ---------- CONTENT ---------- */
+  --ah-content-primary: var(--ah-primitive-color-white-100);
+  --ah-content-secondary: var(--ah-primitive-color-white-90);
+  --ah-content-muted: var(--ah-primitive-color-white-70);
+  --ah-content-disabled: var(--ah-primitive-color-white-50);
+
+  --ah-content-icon: var(--ah-primitive-color-white-90);
+  --ah-content-icon-hover: var(--ah-primitive-color-white-100);
+
+  /* ---------- ACTION ---------- */
+  --ah-action-surface: var(--ah-primitive-color-azure-500);
+  --ah-action-surface-hover: var(--ah-primitive-color-azure-400);
+  --ah-action-surface-active: var(--ah-primitive-color-azure-600);
+  --ah-action-content: var(--ah-primitive-color-white-100);
+
+
   --ah-color-border: var(--ah-primitive-color-burgundy);
-  --ah-color-border-card: #665151;
-  --ah-color-border-title: var(--ah-primitive-color-border-title);
-  --ah-color-border-panel: var(--ah-primitive-color-border-panel);
 
   /*--------------------- TYPOGRAPHY ---------------------*/
   /* Color */
@@ -46,6 +60,10 @@
   --ah-color-text-shadow: var(--ah-primitive-color-warm-brown);
   --ah-color-box-shadow: #000000ff;
   --ah-color-text-shadow-secondary: var(--ah-primitive-color-white);
+  /* Font weights */
+  --ah-font-weight-normal: 400;
+  --ah-font-weight-medium: 500;
+  --ah-font-weight-bold: 700;
   /* Font Sizes */
   --ah-text-size-header: 18px;
   --ah-text-size-xs: var(--ah-primitive-size-text-xs);
@@ -59,85 +77,6 @@
   --ah-font-heading: var(--ah-primitive-font-heading);
   --ah-font-body: var(--ah-primitive-font-body);
 
-  /*--------------------- ROLES ---------------------*/
-  /* 1.1 Application Backgrounds */
-    --ah-background-application: var(--ah-color-background-primary);
-  --ah-background-application-tabs: var(--ah-color-background-overlay);
-  --ah-background-image-application: var(--ah-primitive-image-placeholder);
-  --ah-background-blend-mode-application: overlay, normal;
-  --ah-color-application: white;
-  --ah-font-size-application-name: 2rem;
-  --ah-padding-application-part: 8px;
-  --ah-padding-application-fields: 4px;
-  /* Lists */
-  --ah-background-list: var(--ah-primitive-color-parchment-light);
-  --ah-background-list-header: var(--ah-primitive-color-taupe);
-  --ah-color-list: var(--ah-primitive-color-text);
-  --ah-color-list-header: var(--ah-primitive-color-text);
-  --ah-color-border-list: var(--ah-color-border-panel);
-  /* Tables */
-  --ah-background-table: var(--ah-primitive-color-table);
-  --ah-background-table-header: var(--ah-primitive-color-table);
-  --ah-background-table-body: var(--ah-primitive-color-table);
-  --ah-background-table-row: var(--ah-primitive-color-grey-850);
-  --ah-background-table-row-alt: var(--ah-primitive-color-grey-800);
-  /* Tabs */
-  --ah-background-tab: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
-  --ah-background-tab-active: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
-  /* Field Sets */
-  --ah-background-fieldset: var(--ah-primitive-color-navy-800);
-  --ah-color-border-fieldset: var(--ah-primitive-color-grey-800);
-  --ah-background-fieldgroup: color-mix(in srgb, var(--ah-primitive-color-navy-800) 50%, grey 40%);
-  --ah-background-fieldset-header: var(--ah-primitive-color-warm-brown);
-  --ah-gap-fields: 8px;
-  /* Labels */
-  --ah-font-size-label: 1.2em;
-  --ah-font-size-label-icon: 1.5em;
-  /* Inputs */
-  --ah-background-input: #111827;
-  --ah-padding-input: 2px;
-  --ah-font-size-input: 1.1em;
-  --ah-font-size-input-selector: 1em;
-  --ah-gap-input: 4px;
-  --ah-font-weight-input: 600;
-  --ah-height-resource-bar: 1.5em;
-  /* Icons */
-  --ah-color-icon: var(--ah-primitive-color-burgundy-dark);
-  --ah-color-icon-active: var(--ah-primitive-color-burgundy);
-  --ah-color-icon-hover: color-mix(in srgb, var(--ah-primitive-color-burgundy), white 40%);
-  --ah-color-bg-badge: var(--ah-primitive-color-burgundy);
-  --ah-color-badge: var(--ah-primitive-color-grey-light);
-  /*  Tags */
-  /*  Inline */
-  --ah-line-height-inline: 18px;
-  --ah-color-inline: var(--ah-color-primary);
-  --ah-color-box-shadow-inline: var(--ah-color-box-shadow);
-  --ah-color-text-shadow-inline: var(--ah-color-text-shadow);
-  --ah-background-inline:  var(--ah-color-background-primary);
-  --ah-font-size-inline: var(--ah-primitive-size-text-sm);
-  --ah-font-size-message-header: 20px;
-
-  /*--------------------- CONTROLS ---------------------*/
-  /* 2.1 Controls (Buttons, Tags) */
-  --ah-color-control: var(--ah-primitive-color-white);
-  --ah-color-control-hover: color-mix(in srgb, var(--ah-primitive-color-white), white 25%);
-  --ah-background-control: var(--ah-background-surface);
-  --ah-background-control-hover: var(--ah-primitive-color-azure);
-  --ah-color-shadow-control: var(--ah-primitive-color-warm-brown);
-  --ah-color-border-control: var(--ah-primitive-color-grey-mid);
-  --ah-color-background-control-header: #404040;
-  --ah-border-control: #148782ff;;
-  --ah-text-shadow-control: #2b4a42ff;
-  --ah-color-control-header: #E5DBD0;
-
-
-
-
-
-
-
-
-  --ah-color-bg-input: var(--ah-primitive-color-parchment-light);
 
 
 }

@@ -1,0 +1,103 @@
+/* ============================================================
+   TIER 2 — Component tokens
+   What a value is *for*. References Tier 1 only.
+   - Never used in components directly.
+   - The convention is TYPE-CATEGORY-ROLE.
+   ============================================================ */
+:root {
+  /*--------------------- ROLES ---------------------*/
+  /* 1.1 Application  */
+  --ah-background-application: var(--ah-surface-base);
+  --ah-background-application-header: var(--ah-surface-application);
+  --ah-background-image-application: var(--ah-primitive-image-placeholder);
+  --ah-background-blend-mode-application: overlay, normal;
+  --ah-border-color-application: var(--ah-border-surface);
+  --ah-color-application: var(--ah-content-primary);
+  --ah-font-size-application-name: 2rem;
+  --ah-background-application-tabs: var(--ah-surface-panel);
+  --ah-padding-application-part: 8px;
+  --ah-padding-application-fields: 4px;
+
+  /* Tabs */
+  --ah-background-tab: var(--ah-surface-tab);
+  --ah-background-tab-active: var(--ah-surface-tab-active);
+  --ah-color-tab: var(--ah-content-tab);
+  --ah-color-tab-active: var(--ah-content-tab-active);
+
+  /* Lists */
+  --ah-background-list: var(--ah-surface-panel);
+  --ah-background-list-header: var(--ah-surface-panel-nested);
+  --ah-color-list: var(--ah-content-primary);
+  --ah-color-list-header: var(--ah-content-secondary);
+  --ah-border-color-list: var(--ah-border-panel);
+  --ah-border-list-item: 1px solid var(--ah-border-surface);
+  --ah-box-shadow-list-header: 0 1px 2px var(--ah-border-panel);
+
+  /* Tables */
+  --ah-background-table: var(--ah-surface-base);
+  --ah-background-table-header: var(--ah-surface-panel-nested);
+  --ah-background-table-row: var(--ah-surface-panel);
+  --ah-background-table-row-alt: var(--ah-surface-panel-nested);
+  --ah-background-table-row-hover: var(--ah-surface-hover);
+  --ah-background-table-row-selected: var(--ah-action-surface);
+
+  --ah-color-table-header: var(--ah-content-secondary);
+  --ah-color-table-row: var(--ah-content-primary);
+  --ah-color-table-row-selected: var(--ah-action-content);
+
+  --ah-border-color-table: var(--ah-border-surface);
+  --ah-border-table-cell: 1px solid var(--ah-border-panel);
+
+  /* Field Sets */
+  --ah-background-fieldgroup: var(--ah-surface-base);
+  --ah-background-fieldset: var(--ah-surface-panel);
+  --ah-background-fieldset-header: var(--ah-surface-accent);
+  --ah-color-fieldset: var(--ah-content-primary);
+  --ah-color-fieldset-header: var(--ah-content-primary);
+  --ah-border-color-fieldset: var(--ah-border-panel);
+  --ah-box-shadow-fieldset-header: 0 1px 2px var(--ah-surface-accent);
+  --ah-gap-fieldset-fields: 8px;
+
+  /* Labels — sizing only, no color family involved, unchanged */
+  --ah-font-size-label: 1.2em;
+  --ah-font-size-label-icon: 1.5em;
+
+  /* Inputs */
+  --ah-background-input: var(--ah-surface-base);
+  --ah-padding-input: 2px;
+  --ah-font-size-input: 1.1em;
+  --ah-color-border-input: var(--ah-border-surface);
+  --ah-font-size-input-selector: 1em;
+  --ah-gap-input: 4px;
+  --ah-font-weight-input: 600;
+  --ah-height-resource-bar: 1.5em;
+
+  /* Icons */
+  --ah-color-icon: var(--ah-content-icon);
+  --ah-color-icon-hover: var(--ah-content-icon-hover);
+  --ah-color-bg-badge: var(--ah-surface-panel-nested);
+  --ah-color-badge: var(--ah-content-primary);
+
+  /* Inline */
+  --ah-line-height-inline: 18px;
+  --ah-color-inline: var(--ah-content-primary);
+  --ah-color-box-shadow-inline: var(--ah-border-accent);
+  --ah-color-text-shadow-inline: var(--ah-border-accent);
+  --ah-background-inline: var(--ah-surface-panel);
+  --ah-font-size-inline: var(--ah-primitive-size-text-sm);
+  --ah-font-size-message-header: 20px;
+
+  /* 2.1 Controls */
+  --ah-color-control: var(--ah-content-primary);
+  --ah-color-control-hover: var(--ah-content-primary);
+  --ah-background-control: var(--ah-surface-panel);
+  --ah-background-control-hover: var(--ah-action-surface);
+  --ah-color-shadow-control: var(--ah-border-accent);
+  --ah-color-border-control: var(--ah-border-surface);
+  --ah-color-background-control-header: var(--ah-surface-panel-nested);
+  --ah-border-control: var(--ah-border-surface);
+  --ah-text-shadow-control: var(--ah-border-panel);
+  --ah-color-control-header: var(--ah-content-primary);
+  --ah-color-bg-input: var(--ah-surface-base);
+
+}

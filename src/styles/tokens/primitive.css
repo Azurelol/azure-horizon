@@ -33,6 +33,11 @@
   --ah-primitive-color-grey-850: #00000050;
   --ah-primitive-color-grey-800: #00000080;
 
+  --ah-primitive-color-brown-500: #9c6b47;
+  --ah-primitive-color-brown-600: #7d5236;
+  --ah-primitive-color-brown-300: #c9a37f;
+
+
   --ah-primitive-color-crimson-950: #1a0a0a;
   --ah-primitive-color-crimson-900: #2d1010;
   --ah-primitive-color-crimson-900b: #3a1818;
@@ -60,10 +65,26 @@
   --ah-primitive-border-radius-md: 8px;
   --ah-primitive-border-radius-lg: 12px;
 
-  --ah-primitive-color-navy-900: #1a2a4a;
-  --ah-primitive-color-navy-800: #2d3f6b;
-  --ah-primitive-color-navy-950: #1e2535;
-  --ah-primitive-color-navy-900b: #252e44;
+  /* Navy scale — surfaces derive from here, dark end = base UI, light end = elevated/hover */
+  --ah-primitive-color-navy-950: #0a0f1e;  /* deepest — app background */
+  --ah-primitive-color-navy-900: #0f1730;  /* base surface */
+  --ah-primitive-color-navy-800: #16213f;  /* elevation +1 — panel */
+  --ah-primitive-color-navy-700: #1e3a5f;  /* elevation +2 — nested panel */
+  --ah-primitive-color-navy-600: #2a4a75;  /* elevation +3 — rare, deep nesting */
+  --ah-primitive-color-navy-500: #3d5f8f;  /* border / divider range */
+  --ah-primitive-color-navy-400: #5578ab;  /* hover surface, still neutral */
+
+  /* White/grey scale — content derives from here, full white = highest emphasis */
+  --ah-primitive-color-white-100: #ffffff; /* primary content */
+  --ah-primitive-color-white-90:  #e6e9f0; /* secondary content */
+  --ah-primitive-color-white-70:  #b0b8cc; /* muted content */
+  --ah-primitive-color-white-50:  #7a839c; /* disabled content */
+  --ah-primitive-color-white-30:  #4a5268; /* faintest — decorative dividers only */
+
+  /* Accent — the one saturated hue, reserved for action */
+  --ah-primitive-color-azure-500: #3b8ee0;
+  --ah-primitive-color-azure-600: #2c74bd;
+  --ah-primitive-color-azure-400: #5fa5ea;
 
   --ah-primitive-image-placeholder: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }
