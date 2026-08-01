@@ -7,15 +7,15 @@
   line-height: var(--ah-line-height-inline);
 
   border-radius: 0.5rem;
-  font-size: var(--ah-primitive-size-text-sm);
+  font-size: var(--ah-font-size-inline);
   font-weight: bold;
   white-space: nowrap;
   word-break: break-all;
-  color: var(--ah-color-primary);
-  background: var(--ah-color-background-primary);
-  box-shadow: 0.063rem 0.1rem var(--ah-color-shadow);
+  color: var(--ah-color-inline);
+  background: var(--ah-background-inline);
+  box-shadow: 0.063rem 0.1rem var(--ah-color-box-shadow-inline);
   border: 0.063rem solid var(--ah-color-border-primary);
-  text-shadow: 1px 1px var(--pfu-color-app-control-content-shadow);
+  text-shadow: 1px 1px var(--ah-color-text-shadow-inline);
   margin: 0 0 1px 0;
   padding: 0 0.25rem;
   vertical-align: text-top;

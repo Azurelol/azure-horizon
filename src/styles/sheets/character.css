@@ -48,7 +48,7 @@
   .ah-character__sidebar {
     border-right: 1px solid var(--ah-color-border-primary);
     padding: 1rem;
-    background: var(--ah-color-background-surface);
+    background: var(--ah-background-surface);
     background-blend-mode: color-burn;
     gap: 1rem;
   }
@@ -65,7 +65,7 @@
   }
 
   .ah-character__sidebar__section {
-    padding: var(--ah-padding-fields);
+    padding: var(--ah-padding-application-fields);
     gap: var(--ah-gap-fields);
     display: flex;
     flex-direction: column;

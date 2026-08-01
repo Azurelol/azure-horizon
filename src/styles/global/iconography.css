@@ -53,7 +53,7 @@
   }
 
   &.glow {
-    filter: drop-shadow(0 0 4px var(--ah-color-shadow));
+    filter: drop-shadow(0 0 4px var(--ah-color-text-shadow));
   }
 
   &.warn {
@@ -78,7 +78,7 @@
   }
 
   &.outline {
-    filter: drop-shadow(0 0 0.5px var(--ah-color-shadow)) drop-shadow(0 0 0.5px var(--acc-color-shadow));
+    filter: drop-shadow(0 0 0.5px var(--ah-color-text-shadow)) drop-shadow(0 0 0.5px var(--acc-color-shadow));
   }
 
   &.spin {

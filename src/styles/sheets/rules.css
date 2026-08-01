@@ -1,7 +1,7 @@
 .ah-rule-element__section {
   header {
     padding: 0 0.5rem;
-    background: var(--ah-color-background-surface);
+    background: var(--ah-background-surface);
     box-shadow: 1px 2px var(--color-primary);
     display: flex;
     justify-content: space-between;

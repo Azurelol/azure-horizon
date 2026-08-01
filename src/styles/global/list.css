@@ -3,8 +3,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--ah-color-background-surface);
-  border: 1px solid var(--ah-color-border-surface);
+  background: var(--ah-background-list);
+  border: 1px solid var(--ah-color-border-list);
 
   &.--borderless {
     border: none;
@@ -13,17 +13,17 @@
   .acc-list__container__header {
     display: flex;
     flex-direction: row;
-    background: var(--acc-color-bg-control-header);
-    color: var(--acc-color-control-header);
+    background: var(--ah-background-list-header);
+    color: var(--ah-color-list-header);
     justify-content: space-between;
 
     i {
-      color: var(--acc-color-control-header);
+      color: var(--ah-color-icon);
     }
 
     .acc-list__container__header__title {
       padding: 4px;
-      font-size: var(--acc-text-size-header);
+      font-size: var(--ah-font-size-title);
       font-family: Segoe UI serif;
       font-weight: bold;
     }
@@ -59,9 +59,9 @@ ol.acc-list li {
 }
 
 .ah-list__entry {
-  color: var(--ah-color-text-panel);
-  border: 1px solid var(--ah-color-border-panel);
-  background: var(--ah-color-bg-panel);
+  color: var(--ah-color-list);
+  border: 1px solid var(--ah-color-border-list);
+  background: var(--ah-background-list);
   background-blend-mode: multiply;
   background-position: right top;
 
@@ -121,7 +121,7 @@ ol.acc-list li {
         width: 160px;
         height: 120px;
         padding: 0;
-        border: 2px solid var(--ah-color-border);
+        border: 2px solid var(--ah-color-border-list);
       }
 
       .controls {

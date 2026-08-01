@@ -2,15 +2,24 @@
   table-layout: fixed;
   width: 100%;
   white-space: nowrap;
+  background: var(--ah-background-table);
+
+  thead {
+    background: var(--ah-background-table-header);
+  }
+
+  tbody {
+    background: var(--ah-background-table-body);
+    tr {
+      background: var(--ah-background-table-row);
+    }
+  }
 
   td {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-}
-
-.ah-table__row__icon {
 }
 
 .ah-table__cell {
@@ -23,9 +32,8 @@
 
   .ah-table-column__primary__name {
     font-size: var(--ah-font-size-label);
-    font-family: var(--ah-font-primary) sans-serif;
+    font-family: var(--ah-font-body) sans-serif;
     color: var(--ah-color-primary);
-    font-weight: var(--ah-font-weight-bold);
     overflow: hidden;
     text-overflow: ellipsis;
     flex-shrink: 1;
@@ -35,7 +43,7 @@
     width: 24px;
     height: 24px;
     border-radius: 5px;
-    background: linear-gradient(to right, var(--ah-color-primary), var(--ah-color-secondary));
+    background: none;
     transition:
       transform 0.3s ease,
       opacity 0.3s ease;

@@ -104,7 +104,7 @@
   top: 100%;
   left: 0;
   z-index: 100;
-  background: var(--ah-color-bg-panel);
+  background: var(--ah-background-list);
   border: 1px solid var(--ah-color-border);
   border-radius: 4px;
   padding: 4px;

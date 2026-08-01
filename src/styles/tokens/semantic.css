@@ -11,32 +11,117 @@
   --ah-color-light: black;
 
   /* THEME: (Others are derived from) */
+  --ah-color-background-primary: linear-gradient(to bottom, var(--ah-color-primary-fill-1) 0%, var(--ah-color-primary-fill-2) 100%);
+  --ah-background-surface:  linear-gradient(to bottom, var(--ah-primitive-color-navy-950) 0%, var(--ah-primitive-color-navy-900b) 100%);
+  --ah-color-background-overlay: linear-gradient(to bottom, rgba(10, 15, 30, 0.85) 0%, transparent 100%);
+  --ah-color-primary: #ffffff;
+  --ah-color-background-surface: red;
+  --ah-background-application-header: var(--ah-primitive-color-navy-950);
+
+  /*TEMP*/
   --ah-color-primary-fill-1: var(--ah-primitive-color-navy-900);
   --ah-color-primary-fill-2: var(--ah-primitive-color-navy-800);
-  --ah-color-background-primary: linear-gradient(to bottom, var(--ah-color-primary-fill-1) 0%, var(--ah-color-primary-fill-2) 100%);
+
   --ah-color-border-primary: #3d5080;
-  --ah-color-primary: #ffffff;
-  --ah-color-background-surface:  linear-gradient(to bottom, var(--ah-primitive-color-navy-950) 0%, var(--ah-primitive-color-navy-900b) 100%);
+
+  /*Surface*/
+
   --ah-color-border-surface: #2f3a54;
-  --ah-color-background-overlay: linear-gradient(to bottom, rgba(10, 15, 30, 0.85) 0%, transparent 100%);
+
   --ah-color-border-overlay: rgba(255, 255, 255, 0.08);
+  --ah-border-width: 2px;
+  --ah-border-radius: 4px;
+  --ah-color-border: var(--ah-primitive-color-burgundy);
+  --ah-color-border-card: #665151;
+  --ah-color-border-title: var(--ah-primitive-color-border-title);
+  --ah-color-border-panel: var(--ah-primitive-color-border-panel);
 
+  /*--------------------- TYPOGRAPHY ---------------------*/
+  /* Color */
+  --ah-color-text: var(--ah-primitive-color-text);
+  --ah-color-text-title: var(--ah-primitive-color-brown-dark);
+  --ah-color-text-muted: var(--ah-primitive-color-dim);
+  --ah-color-text-inverted: var(--ah-primitive-color-white);
+  --ah-color-text-bullet: var(--ah-primitive-color-black);
+  --ah-color-text-shadow: var(--ah-primitive-color-warm-brown);
+  --ah-color-box-shadow: #000000ff;
+  --ah-color-text-shadow-secondary: var(--ah-primitive-color-white);
+  /* Font Sizes */
+  --ah-text-size-header: 18px;
+  --ah-text-size-xs: var(--ah-primitive-size-text-xs);
+  --ah-text-size-sm: var(--ah-primitive-size-text-sm);
+  --ah-text-size-m: var(--ah-primitive-size-text-m);
+  --ah-text-size-base: var(--ah-primitive-size-text-base);
+  --ah-text-size-lg: var(--ah-primitive-size-text-lg);
+  --ah-text-size-xl: var(--ah-primitive-size-text-xl);
+  /* Fonts */
+  --ah-font-title: var(--ah-primitive-font-title);
+  --ah-font-heading: var(--ah-primitive-font-heading);
+  --ah-font-body: var(--ah-primitive-font-body);
 
-  --ah-color-shadow: var(--ah-primitive-color-warm-brown);
-  --ah-color-shadow-secondary: var(--ah-primitive-color-white);
-  --ah-color-bg-input: var(--ah-primitive-color-parchment-light);
-
-  /* Forms (Fieldset) */
+  /*--------------------- ROLES ---------------------*/
+  /* 1.1 Application Backgrounds */
+    --ah-background-application: var(--ah-color-background-primary);
+  --ah-background-application-tabs: var(--ah-color-background-overlay);
+  --ah-background-image-application: var(--ah-primitive-image-placeholder);
+  --ah-background-blend-mode-application: overlay, normal;
+  --ah-color-application: white;
+  --ah-font-size-application-name: 2rem;
+  --ah-padding-application-part: 8px;
+  --ah-padding-application-fields: 4px;
+  /* Lists */
+  --ah-background-list: var(--ah-primitive-color-parchment-light);
+  --ah-background-list-header: var(--ah-primitive-color-taupe);
+  --ah-color-list: var(--ah-primitive-color-text);
+  --ah-color-list-header: var(--ah-primitive-color-text);
+  --ah-color-border-list: var(--ah-color-border-panel);
+  /* Tables */
+  --ah-background-table: var(--ah-primitive-color-table);
+  --ah-background-table-header: var(--ah-primitive-color-table);
+  --ah-background-table-body: var(--ah-primitive-color-table);
+  --ah-background-table-row: var(--ah-primitive-color-grey-850);
+  --ah-background-table-row-alt: var(--ah-primitive-color-grey-800);
+  /* Tabs */
+  --ah-background-tab: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
+  --ah-background-tab-active: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
+  /* Field Sets */
   --ah-background-fieldset: var(--ah-primitive-color-navy-800);
   --ah-color-border-fieldset: var(--ah-primitive-color-grey-800);
   --ah-background-fieldgroup: color-mix(in srgb, var(--ah-primitive-color-navy-800) 50%, grey 40%);
   --ah-background-fieldset-header: var(--ah-primitive-color-warm-brown);
-
-  /* Controls (Buttons, Tags) */
+  --ah-gap-fields: 8px;
+  /* Labels */
+  --ah-font-size-label: 1.2em;
+  --ah-font-size-label-icon: 1.5em;
+  /* Inputs */
   --ah-background-input: #111827;
+  --ah-padding-input: 2px;
+  --ah-font-size-input: 1.1em;
+  --ah-font-size-input-selector: 1em;
+  --ah-gap-input: 4px;
+  --ah-font-weight-input: 600;
+  --ah-height-resource-bar: 1.5em;
+  /* Icons */
+  --ah-color-icon: var(--ah-primitive-color-burgundy-dark);
+  --ah-color-icon-active: var(--ah-primitive-color-burgundy);
+  --ah-color-icon-hover: color-mix(in srgb, var(--ah-primitive-color-burgundy), white 40%);
+  --ah-color-bg-badge: var(--ah-primitive-color-burgundy);
+  --ah-color-badge: var(--ah-primitive-color-grey-light);
+  /*  Tags */
+  /*  Inline */
+  --ah-line-height-inline: 18px;
+  --ah-color-inline: var(--ah-color-primary);
+  --ah-color-box-shadow-inline: var(--ah-color-box-shadow);
+  --ah-color-text-shadow-inline: var(--ah-color-text-shadow);
+  --ah-background-inline:  var(--ah-color-background-primary);
+  --ah-font-size-inline: var(--ah-primitive-size-text-sm);
+  --ah-font-size-message-header: 20px;
+
+  /*--------------------- CONTROLS ---------------------*/
+  /* 2.1 Controls (Buttons, Tags) */
   --ah-color-control: var(--ah-primitive-color-white);
   --ah-color-control-hover: color-mix(in srgb, var(--ah-primitive-color-white), white 25%);
-  --ah-background-control: var(--ah-color-background-surface);
+  --ah-background-control: var(--ah-background-surface);
   --ah-background-control-hover: var(--ah-primitive-color-azure);
   --ah-color-shadow-control: var(--ah-primitive-color-warm-brown);
   --ah-color-border-control: var(--ah-primitive-color-grey-mid);
@@ -45,93 +130,14 @@
   --ah-text-shadow-control: #2b4a42ff;
   --ah-color-control-header: #E5DBD0;
 
-  /* Icons */
-  --ah-color-icon: var(--ah-primitive-color-burgundy-dark);
-  --ah-color-icon-active: var(--ah-primitive-color-burgundy);
-  --ah-color-icon-hover: color-mix(in srgb, var(--ah-primitive-color-burgundy), white 40%);
-  --ah-color-bg-badge: var(--ah-primitive-color-burgundy);
-  --ah-color-badge: var(--ah-primitive-color-grey-light);
-
-  /* APPLICATIONS : sheets, dialogs */
-  --ah-background-application-header: var(--ah-primitive-color-navy-950);
-  --ah-background-application: var(--ah-color-background-primary);
-  --ah-background-application-tabs: var(--ah-color-background-overlay);
-  --ah-background-image-application: var(--ah-primitive-image-placeholder);
-  --ah-background-blend-mode-application: overlay, normal;
-  --ah-color-application: white;
 
 
 
 
-  --ah-background-tab: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
-  --ah-background-tab-active: color-mix(in srgb, var(--ah-color-background-primary) 60%, black 40%);
 
-  /* panels */
-  --ah-color-bg-panel: var(--ah-primitive-color-parchment-light);
-  --ah-color-bg-panel-head: var(--ah-primitive-color-taupe);
-  --ah-color-text-panel: var(--ah-primitive-color-text);
-  --ah-color-text-panel-head: var(--ah-primitive-color-dim);
 
-  --ah-color-bg-panel-secondary: #212121;
-  --ah-color-bg-panel-tertiary: #252526;
-  --ah-color-border-panel-secondary: #454545;
-  --ah-color-bg-input-panel-secondary: #2d2d2d;
-  --ah-color-text-panel-secondary: #d4d4d4;
 
-  /* tables */
-  --ah-color-bg-table-row: var(--ah-primitive-color-grey-850);
-  --ah-color-bg-table-row-alt: var(--ah-primitive-color-grey-800);
-
-  /* tags */
-  --ah-color-tag: red;
-  --ah-color-background-tag: red;
-  --ah-color-border-tag: grey;
-  --ah-color-shadow-tag: darkgrey;
-
-  /* text */
-  --ah-color-text: var(--ah-primitive-color-text);
-  --ah-color-text-title: var(--ah-primitive-color-brown-dark);
-  --ah-color-text-muted: var(--ah-primitive-color-dim);
-  --ah-color-text-inverted: var(--ah-primitive-color-white);
-  --ah-color-text-bullet: var(--ah-primitive-color-black);
-
-  /* borders */
-  --ah-border-width: 2px;
-  --ah-border-radius: 4px;
-  --ah-color-border: var(--ah-primitive-color-burgundy);
-  --ah-color-border-card: #665151;
-  --ah-color-border-title: var(--ah-primitive-color-border-title);
-  --ah-color-border-panel: var(--ah-primitive-color-border-panel);
-
-  /* typography */
-  --ah-font-title: var(--ah-primitive-font-title);
-  --ah-font-heading: var(--ah-primitive-font-heading);
-  --ah-font-body: var(--ah-primitive-font-body);
-
-  /* text sizes */
-  --ah-text-size-header: 18px;
-  --ah-text-size-xs: var(--ah-primitive-size-text-xs);
-  --ah-text-size-sm: var(--ah-primitive-size-text-sm);
-  --ah-text-size-m: var(--ah-primitive-size-text-m);
-  --ah-text-size-base: var(--ah-primitive-size-text-base);
-  --ah-text-size-lg: var(--ah-primitive-size-text-lg);
-  --ah-text-size-xl: var(--ah-primitive-size-text-xl);
-
-  /* sheet */
-  --ah-font-size-sheet-name: 2rem;
-  --ah-padding-input: 2px;
-  --ah-font-size-label: 1.2em;
-  --ah-font-size-label-icon: 1.5em;
-  --ah-font-size-input: 1.1em;
-  --ah-font-size-input-selector: 1em;
-  --ah-font-weight-input: 600;
-  --ah-height-resource-bar: 1.5em;
-  --ah-gap-fields: 8px;
-  --ah-gap-input: 4px;
-  --ah-padding: 8px;
-  --ah-padding-sheet-part: 8px;
-  --ah-padding-fields: 4px;
-
+  --ah-color-bg-input: var(--ah-primitive-color-parchment-light);
 
 
 }
