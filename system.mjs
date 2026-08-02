@@ -1,3 +1,4 @@
+import * as common from "./src/module/data/common/_module.mjs";
 import * as apps from "./src/module/apps/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
@@ -85,6 +86,7 @@ async function initializeSystems() {
   await data.Compendium.CompendiumIndex.initialize();
   await pipelines.Enrichers.initialize();
   await pipelines.Damage.initialize();
+  await pipelines.Rules.initialize();
 }
 
 /**

@@ -3,6 +3,7 @@ import { systemPath } from "../constants.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
+ * @property {Collection<AHCombatant>} combatants
  */
 export class AHCombat extends foundry.documents.Combat {
   /** @inheritdoc */
@@ -15,6 +16,20 @@ export class AHCombat extends foundry.documents.Combat {
      * @param {AHCombat} combat      The combat preparing derived data.
      */
     Hooks.callAll("AH.prepareCombatData", this);
+  }
+
+  /**
+   * @returns {Boolean}
+   */
+  static get hasActiveEncounter() {
+    return !!game.combat;
+  }
+
+  /**
+   * @returns {AHCombat}
+   */
+  static get activeEncounter() {
+    return game.combat;
   }
 
   /* -------------------------------------------------- */

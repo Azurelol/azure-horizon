@@ -376,11 +376,23 @@ AH.hooks = Object.freeze({
    */
   CALCULATE_DAMAGE_EVENT: `${systemNS}.events.damage.calculate`,
   /**
+   * @description Invoked after damage has been applied to an actor
+   * @example callback(event)
+   * @remarks Uses {@link DamageEvent}
+   */
+  APPLY_DAMAGE_EVENT: `${systemNS}.events.damage.apply`,
+  /**
    * @description Dispatched when a request to apply a resource change is being processed.
    * @example callback(event)
    * @remarks Uses {@link CalculateResourceEvent}
    */
   CALCULATE_RESOURCE_EVENT: "projectfu.events.resource.calculate",
+  /**
+   * @description Invoked when there's a change in the combat state
+   * @example callback(event)
+   * @remarks Uses {@link CombatEvent}
+   */
+  COMBAT_EVENT: "projectfu.events.combat",
 });
 
 /**

@@ -10,6 +10,7 @@ import { DataModelRegistry } from "../api/_module.mjs";
 import { RuleTriggerDataModel } from "./rule-trigger-data-model.mjs";
 import { RuleActionDataModel } from "./rule-action-data-model.mjs";
 import { RulePredicateDataModel } from "./rule-predicate-data-model.mjs";
+
 import { systemID } from "../../constants.mjs";
 
 const dataModels = Object.freeze({

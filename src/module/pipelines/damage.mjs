@@ -1,9 +1,10 @@
-import { Pipeline, PipelineContext, PipelineRequest } from "./_module.mjs";
+import { SourceInfo } from "../data/common/_module.mjs";
+
+import { PipelineContext } from "../data/common/_module.mjs";
 import AH from "../config.mjs";
-import { StringUtils } from "../utils/_module.mjs";
-import TokenUtils from "../utils/token-utils.mjs";
 import {
-  ActionConfig, ChatAction,
+  ActionConfig,
+  ChatAction,
   ChatMessageBuilder,
   ChatMessageHelper,
   ChatMessageSections,
@@ -13,29 +14,14 @@ import {
 import Flags from "../data/common/flags.mjs";
 import { systemID } from "../constants.mjs";
 import DamageData from "./damage-data.mjs";
-import { SourceInfo } from "../data/common/_module.mjs";
-
-/**
- * @extends PipelineRequest
- * @property {DamageData} damageData
- */
-export class DamageRequest extends PipelineRequest {
-  constructor(sourceInfo, targets, damageData, traits) {
-    super(sourceInfo, targets, traits);
-    this.damageData = damageData;
-  }
-}
+import Events from "./events.mjs";
+import { StringUtils, TokenUtils } from "../utils/_module.mjs";
+import { DamageRequest } from "./_module.mjs";
 
 /**
  * @typedef DamageInstance
  * @property {AH_DamageType} type
  * @property {Number} amount
- */
-
-/**
- * @typedef DamageResult
- * @property {DamageInstance[]} instances The distinct damage instances, with incremental/multiplicative bonuses already applied.
- * @property {Number} total The total damage, combining that of the distinct instances.
  */
 
 /**
@@ -53,6 +39,13 @@ class DamageContext extends PipelineContext {
     this.bonuses = {};
   }
 }
+
+/**
+ * @typedef DamageResult
+ * @property {DamageInstance[]} instances The distinct damage instances, with incremental/multiplicative bonuses already applied.
+ * @property {Number} total The total damage, combining that of the distinct instances.
+ * @property {String[]} traits
+ */
 
 /**
  * @param {DamageContext} context
@@ -201,6 +194,7 @@ async function process(request) {
           flags: [],
         };
 
+        await Events.applyDamage(request.sourceInfo, context.result, request.item, request.actor, subject, request.origin, renderData);
         TokenUtils.showFloatyText(subject, `${-damageTaken} ${resource.toUpperCase()}`, color);
 
         // Chat message
@@ -305,6 +299,7 @@ function onRenderChatMessage(message, html) {
 /** @type CheckResultCallback **/
 const onProcessCheck = (check, actor, item, registerCallback) => {
   const config = new ActionConfig(check);
+  Events.calculateDamage(actor, item, config);
   if (config.hasDamage) {
     config.modifyDamage((dmg) => {
       dmg.add("AH.CHECK.HighRoll.short", dmg.type, check.hr.result);

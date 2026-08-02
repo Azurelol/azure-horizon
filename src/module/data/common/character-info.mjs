@@ -1,3 +1,5 @@
+import { AHCombat } from "../../documents/_module.mjs";
+
 const dispositions = {
   [-1]: "hostile",
   [0]: "neutral",
@@ -99,5 +101,24 @@ export default class CharacterInfo {
         disposition: disposition,
       });
     });
+  }
+
+  /**
+   * @param {CharacterInfo[]} targets
+   * @returns {CharacterInfo[]}
+   */
+  static getSceneCharacters(targets) {
+    /** @type CharacterInfo[] **/
+    let sceneCharacters = [];
+    sceneCharacters.push(...targets);
+
+    if (AHCombat.hasActiveEncounter) {
+      /** @type AHCombatant[] **/
+      const combatants = Array.from(AHCombat.activeEncounter.combatants.values());
+      const combatCharacters = CharacterInfo.fromCombatants(combatants);
+      sceneCharacters.push(...combatCharacters);
+    }
+
+    return [...new Map(sceneCharacters.filter((ci) => ci.actor?.uuid).map((ci) => [ci.actor.uuid, ci])).values()];
   }
 }

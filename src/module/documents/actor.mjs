@@ -25,7 +25,9 @@
  * @property {String} id The canonical identifier for this Document.
  * @property {DataModel} system
  * @property {Map<String, AHItem>} items <Uuid, *>
- * @property {Map<String, FUActiveEffect>} effects <Uuid, *>
+ * @property {Map<String, AHActiveEffect>} effects <Uuid, *>
+ * @property {AHActiveEffect[]} appliedEffects
+ * @property {AHActiveEffect[]} temporaryEffects
  * @property {Boolean} isOwner True if the user has ownership of the actor.
  */
 export class AHActor extends foundry.documents.Actor {

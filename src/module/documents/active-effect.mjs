@@ -33,6 +33,7 @@ import { isActorType } from "../constants.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
+ * @property {ActiveEffectModel} system
  */
 export class AHActiveEffect extends foundry.documents.ActiveEffect {
   /** @inheritdoc */

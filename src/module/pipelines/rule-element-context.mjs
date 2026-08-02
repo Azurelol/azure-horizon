@@ -1,4 +1,4 @@
-import { EvaluationContext, SourceInfo } from "../common/_module.mjs";
+import { EvaluationContext, SourceInfo } from "../data/common/_module.mjs";
 
 /**
  * @template T

@@ -1,12 +1,44 @@
+import AH from "../config.mjs";
 import { CharacterInfo, ItemInfo, SourceInfo } from "../data/common/_module.mjs";
 import { ActionConfig, ActionInspector, AsyncHooks } from "../helpers/_module.mjs";
-import AH from "../config.mjs";
+
+/**
+ * @description Dispatched when an actor suffers damage
+ * @typedef DamageEvent
+ * @property {CharacterInfo|null} source
+ * @property {CharacterInfo} target
+ * @property {DamageResult} damage
+ * @property {SourceInfo} sourceInfo
+ * @property {AHItem} item
+ * @property {AH_ItemGroup} itemGroup
+ * @property {ChatMessageBuilderData} renderData
+ * @property {String} origin An id used to prevent cascading.
+ */
+
+async function applyDamage(damage, item, sourceInfo, sourceActor, targetActor, origin, renderData) {
+  const source = CharacterInfo.fromActor(sourceActor);
+  const target = CharacterInfo.fromActor(targetActor);
+  const itemGroup = ItemInfo.resolveItemGroup(item);
+
+  /** @type DamageEvent  **/
+  const damageEvent = {
+    damage: damage,
+    item: item,
+    source: source,
+    sourceActor: sourceInfo,
+    itemGroup: itemGroup,
+    target: target,
+    origin: origin,
+    renderData: renderData,
+  };
+  return AsyncHooks.callSequential(AH.hooks.APPLY_DAMAGE_EVENT, damageEvent);
+}
 
 /**
  * @typedef CalculateDamageEvent
  * @property {CharacterInfo} source
  * @property {AHItem} item
- * @property {AH_DamageType} type
+ * @property {AH_DamageType[]} types
  * @property {AH_ItemGroup} itemGroup
  * @property {CharacterInfo[]} targets
  * @property {ActionConfig} config
@@ -21,7 +53,7 @@ function calculateDamage(actor, item, config) {
     item: item,
     itemGroup: itemGroup,
     config: config,
-    type: config.getDamage()?.type,
+    types: config.damage.type,
   };
   Hooks.call(AH.hooks.CALCULATE_DAMAGE_EVENT, event);
 }
@@ -199,6 +231,7 @@ const Events = Object.freeze({
   opportunity,
 
   calculateDamage,
+  applyDamage,
   calculateResource,
 });
 

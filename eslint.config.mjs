@@ -65,6 +65,7 @@ export default defineConfig([
     rules: {
       // "no-undef": "off",
       "no-unused-vars": 0,
+      "no-case-declarations": "error",
       "sort-imports": ["warn"],
 
       "@stylistic/indent": ["error", 2, {

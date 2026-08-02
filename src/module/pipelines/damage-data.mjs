@@ -88,4 +88,12 @@ export default class DamageData {
   get total() {
     return this.modifierTotal;
   }
+
+  /**
+   * The damage types across components.
+   * @returns {AH_DamageType[]}
+   */
+  get types() {
+    return Array.from(new Set(this.components.map(c => c.type)));
+  }
 }
