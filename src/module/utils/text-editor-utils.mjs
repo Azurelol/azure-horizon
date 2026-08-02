@@ -1,7 +1,7 @@
 import AH from "../config.mjs";
-import { StringUtils } from "./_module.mjs";
 import Expressions from "../pipelines/expressions.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
+import StringUtils from "./string-utils.mjs";
 
 /**
  * @typedef TextEditorRenderContext

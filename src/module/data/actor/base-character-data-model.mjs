@@ -1,7 +1,7 @@
-import { ActorDataModel } from "./_module.mjs";
 import AH from "../../config.mjs";
 import { AffinitiesDataModel, AttributesDataModel, CharacterParametersDataModel } from "./system/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
+import ActorDataModel from "./actor-data-model.mjs";
 
 /**
  * Base model for characters.

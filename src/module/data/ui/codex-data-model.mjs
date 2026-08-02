@@ -1,7 +1,7 @@
 import { StringUtils } from "../../utils/_module.mjs";
 import { VersionedDataModel } from "../api/_module.mjs";
 import AH from "../../config.mjs";
-import { CodexEntryDataModel } from "./_module.mjs";
+import CodexEntryDataModel from "./codex-entry-data-model.mjs";
 
 const fields = foundry.data.fields;
 

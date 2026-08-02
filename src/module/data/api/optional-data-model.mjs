@@ -1,5 +1,4 @@
-import { VersionedDataModel } from "./_module.mjs";
-import { systemTemplatePath } from "../../constants.mjs";
+import VersionedDataModel from "./versioned-data-model.mjs";
 
 /**
  * @property {Boolean} enabled

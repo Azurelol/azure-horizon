@@ -1,4 +1,4 @@
-import { PipelineRequest } from "../data/common/_module.mjs";
+import PipelineRequest from "./pipeline-request.mjs";
 
 /**
  * @extends PipelineRequest

@@ -1,6 +1,6 @@
-import { RulePredicateDataModel } from "../rule-predicate-data-model.mjs";
 import AH from "../../../config.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
+import RulePredicateDataModel from "../rule-predicate-data-model.mjs";
 
 const fields = foundry.data.fields;
 

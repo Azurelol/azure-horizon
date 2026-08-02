@@ -1,5 +1,5 @@
-import { ActorDataModel } from "./_module.mjs";
 import { CodexDataModel } from "../ui/_module.mjs";
+import ActorDataModel from "./actor-data-model.mjs";
 
 /**
  * @typedef PartyCharacterData

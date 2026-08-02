@@ -1,6 +1,5 @@
 import { SourceInfo } from "../data/common/_module.mjs";
 
-import { PipelineContext } from "../data/common/_module.mjs";
 import AH from "../config.mjs";
 import {
   ActionConfig,
@@ -17,6 +16,7 @@ import DamageData from "./damage-data.mjs";
 import Events from "./events.mjs";
 import { StringUtils, TokenUtils } from "../utils/_module.mjs";
 import { DamageRequest } from "./_module.mjs";
+import PipelineContext from "./pipeline-context.mjs";
 
 /**
  * @typedef DamageInstance

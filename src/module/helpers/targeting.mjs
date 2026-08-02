@@ -96,7 +96,7 @@ function getSerializedTargetData() {
   return serializeTargetData(targets);
 }
 
-export const Targeting = Object.freeze({
+const Targeting = Object.freeze({
   rule: {
     self: "self",
     single: "single",
@@ -112,3 +112,5 @@ export const Targeting = Object.freeze({
   getSelected,
   getTargeted,
 });
+
+export default Targeting;

@@ -1,9 +1,6 @@
 import { systemTemplatePath } from "../../constants.mjs";
 import {
-  RuleActionRegistry,
   RuleElementDataModel,
-  RulePredicateRegistry,
-  RuleTriggerRegistry,
 } from "../../data/effect/_module.mjs";
 import AH from "../../config.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
@@ -39,21 +36,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     duration: { template: "templates/sheets/active-effect/duration.hbs" },
     rules: {
       template: systemTemplatePath("sheets/effect/active-effect-rules"),
-      templates: Object.values(RuleActionRegistry.instance.qualifiedTypes)
-        .map((pt) => {
-          return pt.template;
-        })
-        .concat(
-          Object.values(RuleTriggerRegistry.instance.qualifiedTypes).map((pt) => {
-            return pt.template;
-          }),
-        )
-        .concat(
-          Object.values(RulePredicateRegistry.instance.qualifiedTypes).map((pt) => {
-            return pt.template;
-          }),
-        )
-        .concat([RuleElementDataModel.template]),
+      templates: AH.dataModelTemplates,
     },
     changes: {
       template: "templates/sheets/active-effect/changes.hbs",
@@ -122,8 +105,8 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
         {
           context.options = {
             ...AH,
-            ruleActions: RuleActionRegistry.instance.localizedEntries,
-            ruleTriggers: RuleTriggerRegistry.instance.localizedEntries,
+            ruleActions: AH.dataModelRegistries.ruleAction.localizedEntries,
+            ruleTriggers: AH.dataModelRegistries.ruleTrigger.localizedEntries,
             itemGroupOptions: FoundryUtils.getFormSelectOptions(AH.itemGroup),
             checkTypeOptions: FoundryUtils.getFormSelectOptions(AH.checkTypes),
             rankOptions: FoundryUtils.getFormSelectOptions(AH.rank),
@@ -140,7 +123,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
    * @returns {Promise<void>}
    */
   static async #addRuleElement(event, target) {
-    const triggerTypes = RuleTriggerRegistry.instance.localizedEntries;
+    const triggerTypes = AH.dataModelRegistries.ruleTrigger.localizedEntries;
     const options = FoundryUtils.getFormSelectOptions(triggerTypes);
     const type = await Dialogs.select(
       StringUtils.localize("AH.COMMON.Add", {
@@ -149,7 +132,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
       options,
     );
 
-    const triggerModel = RuleTriggerRegistry.instance.types[type];
+    const triggerModel = AH.dataModelRegistries.ruleTrigger.instance.types[type];
     const trigger = new triggerModel();
     const data = {
       trigger: trigger,

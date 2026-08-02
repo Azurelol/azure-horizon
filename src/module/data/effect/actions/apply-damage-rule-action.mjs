@@ -1,10 +1,10 @@
-import { RuleActionDataModel } from "../rule-action-data-model.mjs";
 import AH from "../../../config.mjs";
 import { TraitsDataModel } from "../../item/fields/_module.mjs";
 import { EvaluationContext } from "../../common/_module.mjs";
 import { Damage, DamageData, DamageRequest, Expressions } from "../../../pipelines/_module.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
 import { FoundryUtils } from "../../../utils/_module.mjs";
+import RuleActionDataModel from "../rule-action-data-model.mjs";
 
 const fields = foundry.data.fields;
 

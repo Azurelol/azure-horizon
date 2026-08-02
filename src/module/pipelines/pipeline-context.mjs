@@ -1,4 +1,4 @@
-import { EvaluationContext } from "./_module.mjs";
+import EvaluationContext from "../data/common/evaluation-context.mjs";
 
 /**
  * @property {SourceInfo} sourceInfo

@@ -1,12 +1,11 @@
-import { DataModelRegistry, SubDocumentCollectionField, SubDocumentDataModel } from "../api/_module.mjs";
-import { systemID, systemTemplatePath } from "../../constants.mjs";
+import { SubDocumentCollectionField, SubDocumentDataModel } from "../api/_module.mjs";
+import { systemTemplatePath } from "../../constants.mjs";
 import { EmptyRuleTrigger } from "./triggers/_module.mjs";
-import { RuleActionDataModel } from "./rule-action-data-model.mjs";
-import { RulePredicateDataModel } from "./rule-predicate-data-model.mjs";
 import AH from "../../config.mjs";
-import { RuleActionRegistry, RulePredicateRegistry, RuleTriggerRegistry } from "./_module.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import { Dialogs } from "../../helpers/_module.mjs";
+import RuleActionDataModel from "./rule-action-data-model.mjs";
+import RulePredicateDataModel from "./rule-predicate-data-model.mjs";
 
 const fields = foundry.data.fields;
 
@@ -43,7 +42,7 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
 
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      trigger: new fields.TypedSchemaField(RuleTriggerRegistry.instance.types, {
+      trigger: new fields.TypedSchemaField(AH.dataModelRegistries.ruleTrigger.types, {
         initial: new EmptyRuleTrigger(),
       }),
       actions: new SubDocumentCollectionField(RuleActionDataModel),
@@ -60,7 +59,7 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
     if (type === this.trigger.type) {
       return;
     }
-    const model = RuleTriggerRegistry.instance.types[type];
+    const model = AH.dataModelRegistries.ruleTrigger.types[type];
     const newTrigger = new model();
     await this.update({ "==trigger": newTrigger });
   }
@@ -69,7 +68,7 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
 	 * @returns {Promise<void>}
 	 */
   async addRuleAction() {
-    let subTypes = this.getMatchingSubTypes(RuleActionRegistry.instance);
+    let subTypes = this.getMatchingSubTypes(AH.dataModelRegistries.ruleAction);
     const options = FoundryUtils.getFormSelectOptions(subTypes, "long");
     const type = await Dialogs.select(
       StringUtils.localize("AH.COMMON.Add", {
@@ -113,7 +112,7 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
 	 * @returns {Promise<void>}
 	 */
   async addRulePredicate() {
-    let subTypes = this.getMatchingSubTypes(RulePredicateRegistry.instance);
+    let subTypes = this.getMatchingSubTypes(AH.dataModelRegistries.rulePredicate.instance);
     const options = FoundryUtils.getFormSelectOptions(subTypes);
     const type = await Dialogs.select(
       StringUtils.localize("AH.COMMON.Add", {
@@ -209,19 +208,4 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
   get templateHeader() {
     return StringUtils.localize(this.trigger.schema.model.localization);
   }
-}
-
-/**
- * @description Registry of all {@linkcode RuleElementDataModel}
- */
-export class RuleElementRegistry extends DataModelRegistry {
-  constructor() {
-    super({
-      kind: "Rule Element",
-      baseClass: RuleElementDataModel,
-    });
-    this.register(systemID, RuleElementDataModel.TYPE, RuleElementDataModel);
-  }
-
-  static instance = new RuleElementRegistry();
 }

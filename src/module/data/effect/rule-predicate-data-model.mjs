@@ -3,7 +3,7 @@ import { SubDocumentDataModel } from "../api/_module.mjs";
 /**
  * @description Defines the trigger for a rule element.
  */
-export class RulePredicateDataModel extends SubDocumentDataModel {
+export default class RulePredicateDataModel extends SubDocumentDataModel {
   /** @inheritdoc */
   static get metadata() {
     return {

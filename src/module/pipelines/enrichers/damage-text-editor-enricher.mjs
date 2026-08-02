@@ -1,7 +1,7 @@
 import { systemID } from "../../constants.mjs";
 import { HTMLUtils, StringUtils, TextEditorUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
-import { Targeting } from "../../helpers/targeting.mjs";
+import Targeting from "../../helpers/targeting.mjs";
 import { EvaluationContext } from "../../data/common/_module.mjs";
 import Flags from "../../data/common/flags.mjs";
 import { Damage, DamageData, DamageRequest, Expressions } from "../_module.mjs";

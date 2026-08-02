@@ -7,7 +7,7 @@ import {
   FlagBuilder,
 } from "../helpers/_module.mjs";
 import { ObjectUtils, StringUtils, TokenUtils } from "../utils/_module.mjs";
-import PipelineRequest from "../data/common/pipeline-request.mjs";
+import PipelineRequest from "./pipeline-request.mjs";
 
 /**
  * @property {AH_Resource} resource

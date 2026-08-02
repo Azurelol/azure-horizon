@@ -1,4 +1,4 @@
-import { StringUtils } from "./_module.mjs";
+import StringUtils from "./string-utils.mjs";
 
 export default class FileUtils {
   /**

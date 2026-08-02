@@ -1,5 +1,5 @@
-import { SourceInfo } from "./_module.mjs";
-import { Targeting } from "../../helpers/targeting.mjs";
+import SourceInfo from "./source-info.mjs";
+import Targeting from "../../helpers/targeting.mjs";
 
 /**
  * @description Contains contextual objects used for evaluating expressions

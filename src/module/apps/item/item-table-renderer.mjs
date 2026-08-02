@@ -1,6 +1,7 @@
-import { DocumentTableRenderer } from "./_module.mjs";
+
 import TableColumns from "../api/table-columns.mjs";
 import AH from "../../config.mjs";
+import { DocumentTableRenderer } from "./_module.mjs";
 
 const itemFields = Object.freeze({
   slug: "AH.ITEM.Slug",

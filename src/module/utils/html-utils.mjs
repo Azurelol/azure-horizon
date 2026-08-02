@@ -10,8 +10,6 @@
  * @typedef {'medium'|'large'|'portrait'|'wide'} ViewerLayout
  */
 
-import { StringUtils } from "./_module.mjs";
-
 /**
  * Utility functions for working with {@link HTMLElement}.
  * @type {Readonly<{findWithDataset: ((function(HTMLElement): ({dataset}|HTMLElement|null))|*)}>}

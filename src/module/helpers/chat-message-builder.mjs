@@ -1,7 +1,7 @@
 import { renderTemplate, systemTemplatePath } from "../constants.mjs";
 import { FoundryUtils } from "../utils/_module.mjs";
 import { ChatMessageSections, ChatSectionOrder } from "./chat-message-sections.mjs";
-import { FlagBuilder } from "./_module.mjs";
+import FlagBuilder from "./flag-builder.mjs";
 
 /**
  * @typedef ChatMessageBuilderData

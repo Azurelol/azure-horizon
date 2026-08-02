@@ -104,7 +104,7 @@ async function evaluate(type, event, source, targets, data = undefined) {
  * @description Initialize the pipeline's hooks
  */
 function initialize() {
-  Hooks.on(AH.Hooks.CALCULATE_DAMAGE_EVENT, onCalculateDamageEvent);
+  Hooks.on(AH.hooks.CALCULATE_DAMAGE_EVENT, onCalculateDamageEvent);
 }
 
 const Rules = Object.freeze({

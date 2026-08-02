@@ -1,5 +1,5 @@
-import { StringUtils } from "./_module.mjs";
 import { enrichHTML } from "../constants.mjs";
+import StringUtils from "./string-utils.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;

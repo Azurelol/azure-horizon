@@ -1,5 +1,5 @@
-import { RuleTriggerDataModel } from "../rule-trigger-data-model.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
+import RuleTriggerDataModel from "../rule-trigger-data-model.mjs";
 
 /**
  * @desc Initial rule trigger.

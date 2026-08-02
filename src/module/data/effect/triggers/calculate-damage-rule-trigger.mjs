@@ -1,6 +1,6 @@
-import { RuleTriggerDataModel } from "../rule-trigger-data-model.mjs";
 import AH from "../../../config.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
+import RuleTriggerDataModel from "../rule-trigger-data-model.mjs";
 
 const fields = foundry.data.fields;
 

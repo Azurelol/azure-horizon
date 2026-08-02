@@ -1,6 +1,6 @@
 import { StringUtils } from "../utils/_module.mjs";
 import { renderTemplate } from "../constants.mjs";
-import { Targeting } from "./targeting.mjs";
+import Targeting from "./targeting.mjs";
 
 /**
  * @description Actions that can be executed from chat messages.

@@ -9,7 +9,7 @@ const fields = foundry.data.fields;
  * @property {AH_EventRelationKey} eventRelation
  * @property {RulePredicateDataModel[] | TypedCollectionField} predicates
  */
-export class RuleTriggerDataModel extends SubDocumentDataModel {
+export default class RuleTriggerDataModel extends SubDocumentDataModel {
   /** @inheritdoc */
   static get metadata() {
     return {

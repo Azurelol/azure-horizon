@@ -1,8 +1,7 @@
 import { systemTemplatePath } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
-import { ChatMessageSectionTemplate } from "./_module.mjs";
-import { templates as RULE_TEMPLATES } from "../data/effect/_module.mjs";
+import { ChatMessageSectionTemplate } from "./chat-message-sections.mjs";
 
 const COMPONENT_TEMPLATES = Object.freeze({
   empty: systemTemplatePath("components/empty"),

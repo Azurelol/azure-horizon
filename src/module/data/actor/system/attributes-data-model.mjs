@@ -1,4 +1,4 @@
-import { AttributeDataModel } from "./_module.mjs";
+import AttributeDataModel from "./attribute-data-model.mjs";
 
 /**
  * The set of attributes for a character.

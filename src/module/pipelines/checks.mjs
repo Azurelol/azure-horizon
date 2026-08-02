@@ -1,4 +1,3 @@
-import { Events } from "./_module.mjs";
 import { ActionConfig, ChatAction, ChatMessageBuilder, ChatSectionOrder, FlagBuilder } from "../helpers/_module.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 import { renderTemplate, systemTemplatePath } from "../constants.mjs";
@@ -6,6 +5,7 @@ import { StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import Flags from "../data/common/flags.mjs";
+import Events from "./events.mjs";
 
 const { DiceTerm, NumericTerm } = foundry.dice.terms;
 

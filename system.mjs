@@ -7,6 +7,7 @@ import * as pipelines from "./src/module/pipelines/_module.mjs";
 import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/utils/utils.mjs";
 import { systemID } from "./src/module/constants.mjs";
+import { RuleElementDataModel } from "./src/module/data/effect/_module.mjs";
 
 /**
  * Exports the API so that it can be used at runtime
@@ -93,18 +94,19 @@ async function initializeSystems() {
  * Sets the data model registries.
  */
 function registerDataModels() {
-
-  data.ActiveEffect.registerDataModels();
-
   /**
    * @type {Record<string, DataModelRegistry>}
    */
   AH.dataModelRegistries = {
-    ruleElement: data.ActiveEffect.RuleElementRegistry.instance,
-    ruleAction: data.ActiveEffect.RuleActionRegistry.instance,
-    ruleTrigger: data.ActiveEffect.RuleTriggerRegistry.instance,
-    rulePredicate: data.ActiveEffect.RulePredicateRegistry.instance,
+    ruleElement: data.ActiveEffect.Registries.RuleElementRegistry.instance,
+    ruleAction: data.ActiveEffect.Registries.RuleActionRegistry.instance,
+    ruleTrigger: data.ActiveEffect.Registries.RuleTriggerRegistry.instance,
+    rulePredicate: data.ActiveEffect.Registries.RulePredicateRegistry.instance,
   };
+  /**
+   * @type {String[]}
+   */
+  AH.dataModelTemplates = data.ActiveEffect.templates;
 }
 
 Hooks.once("init", async () => {

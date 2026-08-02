@@ -1,4 +1,4 @@
-import { SourceInfo } from "./_module.mjs";
+import SourceInfo from "../data/common/source-info.mjs";
 
 /**
  * @property {SourceInfo} sourceInfo

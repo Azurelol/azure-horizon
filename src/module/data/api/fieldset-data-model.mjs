@@ -1,4 +1,4 @@
-import { OptionalDataModel } from "./_module.mjs";
+import OptionalDataModel from "./optional-data-model.mjs";
 
 /**
  * @inheritDoc OptionalDataModel

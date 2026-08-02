@@ -10,7 +10,7 @@ import { DataModelRegistry, SubDocumentDataModel } from "../api/_module.mjs";
  * @description Executes an action given context information and selected targets.
  * @static metadata
  */
-export class RuleActionDataModel extends SubDocumentDataModel {
+export default class RuleActionDataModel extends SubDocumentDataModel {
   /**
 	 * @inheritdoc
 	 * @returns RuleActionMetaData

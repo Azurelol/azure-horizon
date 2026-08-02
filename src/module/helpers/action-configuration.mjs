@@ -1,8 +1,8 @@
 import { systemID } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
-import { Targeting } from "./targeting.mjs";
 import { Flags } from "../data/common/_module.mjs";
 import { DamageData } from "../pipelines/_module.mjs";
+import Targeting from "./targeting.mjs";
 
 // Data keys
 const TARGETS = "targets";

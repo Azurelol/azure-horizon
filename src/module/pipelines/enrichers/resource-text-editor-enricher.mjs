@@ -1,11 +1,12 @@
 import { ActionConfig } from "../../helpers/_module.mjs";
-import { Targeting } from "../../helpers/targeting.mjs";
 import AH from "../../config.mjs";
 import { StringUtils, TextEditorUtils } from "../../utils/_module.mjs";
 import { EvaluationContext, Flags } from "../../data/common/_module.mjs";
 import { systemID } from "../../constants.mjs";
-import { Events, Expressions, Resources } from "../_module.mjs";
-import { ResourceRequest } from "../resources.mjs";
+import Resources, { ResourceRequest } from "../resources.mjs";
+import Expressions from "../expressions.mjs";
+import Events from "../events.mjs";
+import Targeting from "../../helpers/targeting.mjs";
 
 const RESOURCE_GAIN_IDENTIFIER = "ResourceGain";
 const RESOURCE_LOSS_IDENTIFIER = "ResourceGain";
