@@ -6,6 +6,7 @@ import AH from "../../config.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import { Dialogs } from "../../helpers/_module.mjs";
 import { SubDocumentCollectionField } from "../../data/api/_module.mjs";
+import { templates as ruleTemplates } from "../../data/effect/_module.mjs";
 
 export default class AHActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
 
@@ -36,7 +37,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     duration: { template: "templates/sheets/active-effect/duration.hbs" },
     rules: {
       template: systemTemplatePath("sheets/effect/active-effect-rules"),
-      templates: AH.dataModelTemplates,
+      templates: ruleTemplates,
     },
     changes: {
       template: "templates/sheets/active-effect/changes.hbs",
@@ -132,7 +133,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
       options,
     );
 
-    const triggerModel = AH.dataModelRegistries.ruleTrigger.instance.types[type];
+    const triggerModel = AH.dataModelRegistries.ruleTrigger.types[type];
     const trigger = new triggerModel();
     const data = {
       trigger: trigger,

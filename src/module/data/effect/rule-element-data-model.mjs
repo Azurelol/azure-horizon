@@ -112,7 +112,7 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
 	 * @returns {Promise<void>}
 	 */
   async addRulePredicate() {
-    let subTypes = this.getMatchingSubTypes(AH.dataModelRegistries.rulePredicate.instance);
+    let subTypes = this.getMatchingSubTypes(AH.dataModelRegistries.rulePredicate);
     const options = FoundryUtils.getFormSelectOptions(subTypes);
     const type = await Dialogs.select(
       StringUtils.localize("AH.COMMON.Add", {

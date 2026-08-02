@@ -13,7 +13,7 @@ import { RuleElementDataModel } from "./src/module/data/effect/_module.mjs";
  * Exports the API so that it can be used at runtime
  */
 function exportAPI() {
-  globalThis.azureHorizon = {
+  globalThis.AH = {
     data,
     helpers,
     documents,
@@ -96,6 +96,10 @@ async function initializeSystems() {
 function registerDataModels() {
   /**
    * @type {Record<string, DataModelRegistry>}
+   * @property {RuleActionRegistry} ruleAction
+   * @property {RulePredicateRegistry} rulePredicate
+   * @property {RuleTriggerRegistry} ruleTrigger
+   * @property {RuleElementDataModel} ruleElement
    */
   AH.dataModelRegistries = {
     ruleElement: data.ActiveEffect.Registries.RuleElementRegistry.instance,
@@ -110,9 +114,9 @@ function registerDataModels() {
 }
 
 Hooks.once("init", async () => {
+  registerDataModels();
   bindDocuments();
   bindDataModels();
-  registerDataModels();
   bindSheets();
   await initializeSystems();
 

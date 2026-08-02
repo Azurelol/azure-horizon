@@ -15,7 +15,7 @@ const dataModels = Object.freeze({
   base: ActiveEffectModel,
 });
 
-const ruleDataModels = [...Object.values(Actions), ...Object.values(Triggers), ...Object.values(Predicates)];
+const ruleDataModels = [RuleElementDataModel, ...Object.values(Actions), ...Object.values(Triggers), ...Object.values(Predicates)];
 
 /**
  * @type {any[]} All the handlebar template partials used by rule elements.
