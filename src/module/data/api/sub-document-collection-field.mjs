@@ -10,8 +10,9 @@ const { TypedObjectField, EmbeddedDataField } = foundry.data.fields;
  * @remarks Uses a custom internal field for its elements.
  */
 export default class SubDocumentCollectionField extends TypedObjectField {
+
   /**
-	 * The pseudo-document class.
+	 * The sub document class.
 	 * @type {typeof SubDocumentDataModel}
 	 */
   #documentClass;
@@ -50,12 +51,11 @@ export default class SubDocumentCollectionField extends TypedObjectField {
   }
 
   /**
+   * @param {Document} document
 	 * @param {SubDocumentCollectionField} field
-	 * @param {String} type
-	 * @param {Object} data
-	 * @param document
+	 * @param {CreateSubDocumentData} data
 	 */
-  static async addModel(field, type, document, data = {}) {
-    return field.documentClass.create({ type, ...data }, { parent: document });
+  static async addDocumentModel(document, field, data) {
+    return field.documentClass.create(data, { parent: document });
   }
 }

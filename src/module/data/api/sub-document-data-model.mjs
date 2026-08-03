@@ -142,14 +142,18 @@ export default class SubDocumentDataModel extends foundry.abstract.DataModel {
 	 * @type {string}
 	 */
   get fieldPath() {
-    // TODO: Needs to handle nested better
-    const fp = this.schema.fieldPath;
-    let path = fp.slice(0, fp.lastIndexOf("element") - 1);
+    // // TODO: Needs to handle nested better
+    // const fp = this.schema.fieldPath;
+    // let path = fp.slice(0, fp.lastIndexOf("element") - 1);
+    //
+    // if (this.parent instanceof SubDocumentDataModel) {
+    //   path = [this.parent.fieldPath, this.parent.id, path].join(".");
+    // }
+    //
+    // return path;
 
-    if (this.parent instanceof SubDocumentDataModel) {
-      path = [this.parent.fieldPath, this.parent.id, path].join(".");
-    }
-
+    let path = this.parent.constructor.metadata.embedded[this.documentName];
+    if (this.parent instanceof SubDocumentDataModel) path = [this.parent.fieldPath, this.parent.id, path].join(".");
     return path;
   }
 
@@ -181,27 +185,29 @@ export default class SubDocumentDataModel extends foundry.abstract.DataModel {
   }
 
   /**
-	 * Allow for subclasses to configure the CRUD workflow.
-	 * @param {"create"|"update"|"delete"} action     The operation.
-	 * @param {foundry.abstract.Document} document    The parent document.
-	 * @param {object} update                         The data used for the update.
-	 * @param {object} operation                      The context of the operation.
-	 */
-  static _configureUpdates(action, document, update, operation) {}
+   * @typedef CreateSubDocumentData
+   * @property {String} type
+   * @property {String} _id
+   */
 
   /**
-	 * @param {object} [data]                                 The data used for the creation.
-	 * @param {object} operation                              The context of the operation.
-	 * @param {foundry.abstract.DataModel} operation.parent   The parent of this document.
-	 * @returns {Promise<foundry.abstract.Document>}          A promise that resolves to the updated document.
-	 */
-  static async create(data = {}, { parent, ...operation } = {}) {
-    if (!parent) {
+   * @typedef CreateSubDocumentOperation The context of the operation.
+   * @property {foundry.abstract.Document} parent The parent of this document.
+   * @property {Boolean} keepId
+   */
+  /**
+   * @param {CreateSubDocumentData} data                                 The data used for the creation.
+   * @param {CreateSubDocumentOperation} operation
+   * @returns {Promise<foundry.abstract.Document>}          A promise that resolves to the updated document.
+   */
+  static async create(data = {}, operation = {}) {
+    if (!operation.parent) {
       throw new Error("A parent document must be specified for the creation of a sub-document!");
     }
     const id = operation.keepId && foundry.data.validators.isValidId(data._id) ? data._id : foundry.utils.randomID();
 
     // Resolve the field path based on metadata
+    const parent = operation.parent;
     let fieldPath;
     if (parent instanceof foundry.abstract.Document) {
       fieldPath = parent.system.constructor.metadata?.embedded?.[this.metadata.documentName];
@@ -225,4 +231,13 @@ export default class SubDocumentDataModel extends foundry.abstract.DataModel {
     }
     return result;
   }
+
+  /**
+   * Allow for subclasses to configure the CRUD workflow.
+   * @param {"create"|"update"|"delete"} action     The operation.
+   * @param {foundry.abstract.Document} document    The parent document.
+   * @param {object} update                         The data used for the update.
+   * @param {object} operation                      The context of the operation.
+   */
+  static _configureUpdates(action, document, update, operation) {}
 }

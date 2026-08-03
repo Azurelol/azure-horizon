@@ -7,13 +7,13 @@
  * @extends {foundry.utils.Collection<string, Model>}
  */
 export default class ModelCollection extends foundry.utils.Collection {
+
   /* -------------------------------------------------- */
   /*  Properties                                        */
   /* -------------------------------------------------- */
-
   /**
-	 * Pseudo-document base model.
-	 * @type {typeof ds.data.pseudoDocuments.PseudoDocument}
+	 * Sub-document base model.
+	 * @type {typeof SubDocumentDataModel}
 	 */
   documentClass;
 

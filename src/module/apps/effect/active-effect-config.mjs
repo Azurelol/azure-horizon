@@ -142,8 +142,9 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     const trigger = new triggerModel();
     const data = {
       trigger: trigger,
+      type: RuleElementDataModel.TYPE,
     };
-    await SubDocumentCollectionField.addModel(this.document.system.rules, RuleElementDataModel.TYPE, this.document, data);
+    await SubDocumentCollectionField.addDocumentModel(this.document, this.document.system.rules, data);
     console.debug(`Added rule element with trigger ${type}`);
   }
 

@@ -31,10 +31,13 @@ const COMPONENT_TEMPLATES = Object.freeze({
   arrayField: systemTemplatePath("components/array-field"),
   stringField: systemTemplatePath("components/string-field"),
   traitsField: systemTemplatePath("components/traits-field"),
-
 });
 
 const MESSAGE_TEMPLATES = Object.freeze({
+});
+
+const DIALOG_TEMPLATES = Object.freeze({
+  common: systemTemplatePath("dialogs/common"),
 });
 
 /**
@@ -59,7 +62,7 @@ export default Object.freeze({
     templates.push(...Object.values(COMPONENT_TEMPLATES));
     templates.push(...Object.values(MESSAGE_TEMPLATES));
     templates.push(...Object.values(ChatMessageSectionTemplate));
-    //templates.push(RULE_TEMPLATES);
+    templates.push(...Object.values(DIALOG_TEMPLATES));
     return foundry.applications.handlebars.loadTemplates(templates);
   },
   setupComponent: {

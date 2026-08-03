@@ -77,7 +77,12 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
       options,
     );
     if (type) {
-      await SubDocumentCollectionField.addModel(this.actions, type, this);
+      await this.actions.documentClass.create({
+        type: type,
+      }, {
+        parent: this,
+      });
+      //await SubDocumentCollectionField.addDocumentModel(this, this.actions, type, {});
     }
   }
 
@@ -121,8 +126,9 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
       options,
     );
     if (type) {
-
-      await SubDocumentCollectionField.addModel(this.predicates, type, this);
+      await SubDocumentCollectionField.addDocumentModel(this, this.predicates, {
+        type: type,
+      });
     }
   }
 
