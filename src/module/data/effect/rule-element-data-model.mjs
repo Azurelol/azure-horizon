@@ -82,7 +82,6 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
       }, {
         parent: this,
       });
-      //await SubDocumentCollectionField.addDocumentModel(this, this.actions, type, {});
     }
   }
 

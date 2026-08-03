@@ -4,9 +4,9 @@
 			<!-- Toggle Enabled -->
 			{{formGroup element.schema.fields.enabled value=element.enabled name=(ahConcat path ".enabled")}}
 			<!-- Delete Action -->
-			<a class="" data-id="{{element.id}}" data-action="deleteRuleElement">
+			<button class="" data-id="{{element.id}}" data-action="deleteRuleElement">
 				<i class="ah-icon --xs fas fa-circle-trash"></i>
-			</a>
+			</button>
 		</span>
 		<span>{{element.templateHeader}}</span>
 	</summary>
