@@ -82,5 +82,13 @@ export async function enrichHTML(content, options = {}) {
  * @return {Boolean}
  */
 export function isActorType(document) {
-  return document.documentName === "ActorType";
+  return document.documentName === "Actor";
+}
+
+/**
+ * @param {DataModel} document
+ * @return {Boolean}
+ */
+export function isItemType(document) {
+  return document.documentName === "Item";
 }

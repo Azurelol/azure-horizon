@@ -325,7 +325,14 @@
       "Scene": "Scene",
       "Identifier": "Identifier",
       "Local": "Local",
-      "DamageType": "Damage Type",
+      "DamageType": {
+        "long": "Damage Type",
+        "plural": "Damage Types"
+      },
+      "ItemGroup": {
+        "long": "Item Group",
+        "plural": "Item Groups"
+      },
       "PredicateEffect": "Effect",
       "Quantifier": "Quantifier",
       "Effect": "Effect",

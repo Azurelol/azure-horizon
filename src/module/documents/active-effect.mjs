@@ -29,13 +29,19 @@
  * @remarks https://foundryvtt.com/api/interfaces/foundry.types.ActiveEffectData.html
  */
 
-import { isActorType } from "../constants.mjs";
+import { isActorType, isItemType } from "../constants.mjs";
+import { SourceInfo } from "../data/common/_module.mjs";
+import { FlagBuilder } from "../helpers/_module.mjs";
+import Flags from "../data/common/flags.mjs";
+
+const defaultImage = "icons/svg/aura.svg";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {ActiveEffectModel} system
  */
 export class AHActiveEffect extends foundry.documents.ActiveEffect {
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
@@ -45,6 +51,37 @@ export class AHActiveEffect extends foundry.documents.ActiveEffect {
      * @param {AHActiveEffect} effect      The effect preparing derived data.
      */
     Hooks.callAll("AH.prepareActiveEffectData", this);
+  }
+
+  /**
+   * @private
+   * @override
+   * @remarks Unlike `_onCreate`, is managed by the GM.
+   */
+  async _preCreate(data, options, user) {
+    console.debug(`Created active effect ${this.name} on ${this.parent.name ?? "unknown"} with origin: ${this.origin}, source: ${this.sourceInfo ? this.sourceInfo.name : ""}, identifier: ${this.identifier}`);
+
+    // TODO: Set up duration
+    const changes = {
+      name: game.i18n.localize(data.name),
+      //["system.duration.remaining"]: this.system.duration.interval,
+    };
+
+    // Use default item image
+    if (isItemType(this.parent) && (this.img === defaultImage)) {
+      changes.img = this.parent.img;
+    }
+
+    // If no source info is provided, it could have been created directly
+    // if (!data.flags?.ah?.source && data.origin) {
+    //   /** @type AHItem **/
+    //   const compendiumItem = await fromUuid(data.origin);
+    //   const sourceInfo = new SourceInfo(compendiumItem.name, null, compendiumItem.uuid, null, compendiumItem.system.slug);
+    //   changes.flags = new FlagBuilder().set(Flags.ActiveEffect.Source, sourceInfo);
+    // }
+
+    this.updateSource(changes);
+    return super._preCreate(data, options, user);
   }
 }
 

@@ -19,6 +19,10 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
       addRuleElement: this.#addRuleElement,
       deleteRuleElement: this.#deleteRuleElement,
       clearRuleElements: this.#clearRuleElements,
+      addRuleAction: this.#addRuleAction,
+      removeRuleAction: this.#removeRuleAction,
+      addRulePredicate: this.#addRulePredicate,
+      removeRulePredicate: this.#removeRulePredicate,
     },
     form: {
       closeOnSubmit: false,
@@ -108,6 +112,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
             ...AH,
             ruleActions: AH.dataModelRegistries.ruleAction.localizedEntries,
             ruleTriggers: AH.dataModelRegistries.ruleTrigger.localizedEntries,
+            damageTypeOptions: FoundryUtils.getFormSelectOptions(AH.damageTypes),
             itemGroupOptions: FoundryUtils.getFormSelectOptions(AH.itemGroup),
             checkTypeOptions: FoundryUtils.getFormSelectOptions(AH.checkTypes),
             rankOptions: FoundryUtils.getFormSelectOptions(AH.rank),
@@ -178,6 +183,72 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
       await this.document.update({
         "system.==rules": {},
       });
+    }
+  }
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #addRuleAction(event, target) {
+    const { id } = target.dataset;
+    console.debug(`Adding rule action to ${id}`);
+    const re = this.document.system.rules.get(id);
+    await re.addRuleAction();
+  }
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #removeRuleAction(event, target) {
+    const { id, actionId } = target.dataset;
+    console.debug(`Removing rule action ${actionId} from ${id}`);
+    const re = this.document.system.rules.get(id);
+    const action = re.getAction(actionId);
+    const confirm = await Dialogs.confirm({
+      title: "AH.COMMON.Remove",
+      message: StringUtils.localize("AH.DIALOG.RemoveObject", {
+        label: action.localization,
+      }),
+    });
+    if (confirm) {
+      await re.removeRuleAction(actionId);
+    }
+  }
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #addRulePredicate(event, target) {
+    const { id } = target.dataset;
+    console.debug(`Adding rule predicate to ${id}`);
+    const re = this.document.system.rules.get(id);
+    await re.addRulePredicate();
+  }
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #removeRulePredicate(event, target) {
+    const { id, predicateId } = target.dataset;
+    console.debug(`Removing rule predicate ${predicateId} from ${id}`);
+    const re = this.document.system.rules.get(id);
+    const predicate = re.getPredicate(predicateId);
+    const confirm = await Dialogs.confirm({
+      title: "AH.COMMON.Remove",
+      message: StringUtils.localize("AH.DIALOG.RemoveObject", {
+        label: predicate.localization,
+      }),
+    });
+    if (confirm) {
+      await re.removeRulePredicate(predicateId);
     }
   }
 

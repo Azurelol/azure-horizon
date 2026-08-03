@@ -219,7 +219,10 @@ export default class SubDocumentDataModel extends foundry.abstract.DataModel {
 
     const update = { [`${fieldPath}.${id}`]: { ...data, _id: id } };
     this._configureUpdates("create", parent, update, operation);
-    await parent.update(update, operation);
-    return parent;
+    const result = await parent.update(update, operation);
+    if (result === undefined) {
+      ui.notifications.warn(`Failed to create sub document item at ${fieldPath}`);
+    }
+    return result;
   }
 }

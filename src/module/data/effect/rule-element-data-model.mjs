@@ -121,6 +121,7 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
       options,
     );
     if (type) {
+
       await SubDocumentCollectionField.addModel(this.predicates, type, this);
     }
   }

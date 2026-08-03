@@ -1,5 +1,5 @@
-{{ahTraitsField trigger.schema.fields.itemGroups value=trigger.itemGroups options=options.itemGroupOptions path=(ahConcat path ".itemGroups") }}
-{{ahTraitsField trigger.schema.fields.damageTypes value=trigger.damageTypes options=options.damageTypeOptions path=(ahConcat path ".damageTypes") }}
+{{ahTraitsField schema=trigger.schema.fields.itemGroups label="AH.FIELD.ItemGroup.plural" value=trigger.itemGroups options=options.itemGroupOptions path=(ahConcat path ".itemGroups") }}
+{{ahTraitsField schema=trigger.schema.fields.damageTypes label="AH.FIELD.DamageType.plural" value=trigger.damageTypes options=options.damageTypeOptions path=(ahConcat path ".damageTypes") }}
 
 <div class="ah-field-group --row">
   {{ahField schema=trigger.schema.fields.local path=(ahConcat path ".local") value=trigger.local label='AH.FIELD.Local'}}

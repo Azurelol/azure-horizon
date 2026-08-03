@@ -20,7 +20,7 @@
 
 		<div class="flexcol">
 			{{#each system.rules as |element|}}
-				{{> (lookup (lookup (lookup element "schema") "model") "template") path=(concat "system.rules.elements." element.id) element=element options=../options expanded=(lookup ../expandedRules id)}}
+				{{> (lookup (lookup (lookup element "schema") "model") "template") path=(concat "system.rules." element.id) element=element options=../options expanded=(lookup ../expandedRules id)}}
 			{{/each}}
 		</div>
 	</fieldset>
