@@ -1,10 +1,10 @@
 export { AHActiveEffect } from "./active-effect.mjs";
 export { AHActor } from "./actor.mjs";
-export { AHCard } from "./AHCard.mjs";
-export { AHCards } from "./AHCards.mjs";
-export { AHChatMessage } from "./AHChatMessage.mjs";
-export { AHCombat } from "./AHCombat.mjs";
-export { AHCombatant } from "./AHCombatant.mjs";
+export { AHCard } from "./card.mjs";
+export { AHCards } from "./cards.mjs";
+export { AHChatMessage } from "./chat-message.mjs";
+export { AHCombat } from "./combat.mjs";
+export { AHCombatant } from "./combatant.mjs";
 export { AHItem } from "./item.mjs";
-export { AHScene } from "./AHScene.mjs";
-export { AHUser } from "./AHUser.mjs";
+export { AHScene } from "./scene.mjs";
+export { AHUser } from "./user.mjs";

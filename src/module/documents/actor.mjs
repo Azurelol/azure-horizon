@@ -16,6 +16,8 @@
  * @property {DocumentStats} _stats       An object of creation and access information
  */
 
+import DocumentMixin from "./document-mixin.mjs";
+
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @extends ActorData
@@ -30,7 +32,7 @@
  * @property {AHActiveEffect[]} temporaryEffects
  * @property {Boolean} isOwner True if the user has ownership of the actor.
  */
-export class AHActor extends foundry.documents.Actor {
+export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
   /** @inheritdoc */
   prepareDerivedData() {

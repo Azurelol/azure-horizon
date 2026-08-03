@@ -1,11 +1,12 @@
 import { ChatMessageBuilder } from "../helpers/_module.mjs";
+import DocumentMixin from "./document-mixin.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {AH_ItemType} type
  * @property {BaseItemDataModel} system
  */
-export class AHItem extends foundry.documents.Item {
+export class AHItem extends DocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();

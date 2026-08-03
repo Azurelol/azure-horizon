@@ -36,7 +36,7 @@ export class AHCombat extends foundry.documents.Combat {
 
   /**
    * Adds a player combatant to the current combat.
-   * @returns {Promise<import("./AHCombatant.mjs").default>} The created Combatant.
+   * @returns {Promise<import("./combatant.mjs").default>} The created Combatant.
    */
   async addPlayer() {
     const data = {

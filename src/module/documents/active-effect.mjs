@@ -30,9 +30,7 @@
  */
 
 import { isActorType, isItemType } from "../constants.mjs";
-import { SourceInfo } from "../data/common/_module.mjs";
-import { FlagBuilder } from "../helpers/_module.mjs";
-import Flags from "../data/common/flags.mjs";
+import DocumentMixin from "./document-mixin.mjs";
 
 const defaultImage = "icons/svg/aura.svg";
 
@@ -40,7 +38,7 @@ const defaultImage = "icons/svg/aura.svg";
  * A simple extension that adds a hook at the end of data prep.
  * @property {ActiveEffectModel} system
  */
-export class AHActiveEffect extends foundry.documents.ActiveEffect {
+export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect) {
 
   /** @inheritdoc */
   prepareDerivedData() {
