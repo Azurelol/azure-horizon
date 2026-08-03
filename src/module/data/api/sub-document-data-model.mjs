@@ -154,12 +154,12 @@ export default class SubDocumentDataModel extends foundry.abstract.DataModel {
   }
 
   /**
-	 * Delete this pseudo-document.
+	 * Delete this sub-document.
 	 * @param {object} [operation]                      The context of the operation.
 	 * @returns {Promise<foundry.abstract.Document>}    A promise that resolves to the updated document.
 	 */
   async delete(operation = {}) {
-    if (!this.isSource) throw new Error("You cannot delete a non-source pseudo-document!");
+    if (!this.isSource) throw new Error("You cannot delete a non-source sub-document!");
     Object.assign(operation, { pseudo: { operation: "delete", type: this.constructor.documentName, uuid: this.guid } });
     const update = { [`${this.fieldPath}.-=${this.id}`]: null };
     this.constructor._configureUpdates("delete", this.document, update, operation);
@@ -167,13 +167,13 @@ export default class SubDocumentDataModel extends foundry.abstract.DataModel {
   }
 
   /**
-	 * Update this pseudo-document.
+	 * Update this sub-document.
 	 * @param {object} [change]                         The change to perform.
 	 * @param {object} [operation]                      The context of the operation.
 	 * @returns {Promise<foundry.abstract.Document>}    A promise that resolves to the updated document.
 	 */
   async update(change = {}, operation = {}) {
-    if (!this.isSource) throw new Error("You cannot update a non-source pseudo-document!");
+    if (!this.isSource) throw new Error("You cannot update a non-source sub-document!");
     const path = [this.fieldPath, this.id].join(".");
     const update = { [path]: change };
     this.constructor._configureUpdates("update", this.document, update, operation);
@@ -197,7 +197,7 @@ export default class SubDocumentDataModel extends foundry.abstract.DataModel {
 	 */
   static async create(data = {}, { parent, ...operation } = {}) {
     if (!parent) {
-      throw new Error("A parent document must be specified for the creation of a pseudo-document!");
+      throw new Error("A parent document must be specified for the creation of a sub-document!");
     }
     const id = operation.keepId && foundry.data.validators.isValidId(data._id) ? data._id : foundry.utils.randomID();
 

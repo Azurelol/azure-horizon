@@ -80,17 +80,12 @@ function evaluateVariables(expression, context) {
       // Resource: Current
       case "hp":
       case "mp": {
-        return context.resolveActorOrHighestLevelTarget().system.resources[symbol].value;
+        return context.resolveActorOrHighestLevelTarget().system.parameters[symbol].value;
       }
       // Resource: Max
       case "mhp":
       case "mmp": {
-        return context.resolveActorOrHighestLevelTarget().system.resources[symbol].max;
-      }
-      // Progress (From effect)
-      case "pg": {
-        context.assertEffect(match);
-        return context.effect.system.rules.progress.current;
+        return context.resolveActorOrHighestLevelTarget().system.parameters[symbol].max;
       }
       // Target Count
       case "tc": {
