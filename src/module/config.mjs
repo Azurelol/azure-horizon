@@ -235,7 +235,10 @@ AH.effectTracking = {
  */
 
 AH.rank = Object.freeze({
-  minion: "AH.",
+  minion: "AH.ADVERSARY.Minion",
+  standard: "AH.ADVERSARY.Standard",
+  elite: "AH.ADVERSARY.Elite",
+  champion: "AH.ADVERSARY.Champion",
 
 });
 

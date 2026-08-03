@@ -178,8 +178,11 @@ export default class SubDocumentDataModel extends foundry.abstract.DataModel {
 	 */
   async update(change = {}, operation = {}) {
     if (!this.isSource) throw new Error("You cannot update a non-source sub-document!");
-    const path = [this.fieldPath, this.id].join(".");
-    const update = { [path]: change };
+    const basePath = [this.fieldPath, this.id].join(".");
+    const update = Object.entries(change).reduce((acc, [key, value]) => {
+      acc[`${basePath}.${key}`] = value;
+      return acc;
+    }, {});
     this.constructor._configureUpdates("update", this.document, update, operation);
     return this.document.update(update, operation);
   }

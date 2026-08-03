@@ -25,11 +25,11 @@ export default base => {
       super.prepareBaseData();
     }
 
-    /* -------------------------------------------------- */
-
     /** @inheritdoc */
     prepareDerivedData() {
       super.prepareDerivedData();
     }
+    /* -------------------------------------------------- */
+
   };
 };

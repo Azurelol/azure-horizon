@@ -6,8 +6,7 @@ const { TypedObjectField, EmbeddedDataField } = foundry.data.fields;
 
 /**
  * @desc A collection that houses {@linkcode SubDocumentDataModel}, which can have different types.
- * @inheritDoc ModelCollection
- * @remarks Uses a custom internal field for its elements.
+ * @remarks Uses a custom internal field for its elements. Initialized to {@linkcode ModelCollection}
  */
 export default class SubDocumentCollectionField extends TypedObjectField {
 
@@ -36,18 +35,50 @@ export default class SubDocumentCollectionField extends TypedObjectField {
 
   /** @inheritdoc */
   initialize(value, model, options = {}) {
-    const collection = new ModelCollection();
-    options.collection = collection;
-    const init = super.initialize(value, model, options);
-    for (const [id, model] of Object.entries(init)) {
-      if (model instanceof SubDocumentDataModel) {
-        collection.set(id, model);
-      } else {
-        collection.setInvalid(model);
-      }
-    }
-    collection.documentClass = this.documentClass;
+    const documentName = this.documentClass.metadata.documentName;
+    const collection = new ModelCollection(documentName, this.documentClass, model, value);
+    collection.initialize(model, options);
+
+    // options.collection = collection;
+    // const init = super.initialize(value, model, options);
+    // for (const [id, model] of Object.entries(init)) {
+    //   if (model instanceof SubDocumentDataModel) {
+    //     collection.set(id, model);
+    //   } else {
+    //     collection.setInvalid(model);
+    //   }
+    // }
+    // collection.documentClass = this.documentClass;
+
     return collection;
+  }
+
+  /** @override */
+  _updateCommit(source, key, value, diff, options) {
+    let src = source[key];
+
+    // Special Cases: * -> undefined, * -> null, undefined -> *, null -> *
+    if (!src || !value) {
+      source[key] = value;
+      return;
+    }
+
+    // Reconstruct the source array, retaining object references
+    for (let [id, d] of Object.entries(diff)) {
+      if (foundry.utils.isDeletionKey(id)) {
+        if (id.startsWith("-")) {
+          delete source[key][id.slice(2)];
+          continue;
+        }
+        id = id.slice(2);
+      }
+      const prior = src[id];
+      if (prior) {
+        this.element._updateCommit(src, id, value[id], d, options);
+        src[id] = prior;
+      }
+      else src[id] = d;
+    }
   }
 
   /**

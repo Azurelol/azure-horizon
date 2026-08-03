@@ -22,7 +22,7 @@ export default class ApplyDamageRuleAction extends RuleActionDataModel {
     return Object.assign(super.defineSchema(), {
       amount: new fields.StringField({ blank: true }),
       damageType: new fields.StringField({
-        initial: "physical",
+        initial: "untyped",
         choices: Object.keys(AH.damageTypes),
         blank: true,
         nullable: false,
