@@ -5,6 +5,35 @@
       /*padding: 1rem;*/
     }
   }
+  .effects-list {
+    background: var(--ah-background-table);
+
+    .effect-list {
+
+    }
+
+    .effects-header {
+      background: var(--ah-background-table-header);
+    }
+
+    .effect {
+      height: 24px;
+    }
+
+    .effect-label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+
+      .effect-image {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+  }
+
 
 }
 
