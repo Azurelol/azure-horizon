@@ -1,5 +1,5 @@
 <header class="sheet-header ah-sheet__header">
-  <div class="ah-sheet__group">
+  <div class="ah-flex-row --center">
     <img
       class="profile-img"
       src="{{item.img}}"
@@ -9,16 +9,14 @@
       data-edit="img"
       {{/if}}
       data-tooltip="{{item.name}}"
-      height="100" width="100"
-    >
+      height="100" width="100">
 
-    <div class="ah-sheet-header__row">
+    <div class="ah-flex-col">
       {{formInput fields.name value=item.name}}
-    </div>
-
-    <div class="ah-field-group">
-      {{formGroup systemFields.slug value=system.slug localize=true}}
-      {{formGroup systemFields.revision value=system.revision localize=true}}
+        <div class="ah-flex-row">
+          {{formGroup systemFields.revision value=system.revision localize=true}}
+          {{formGroup systemFields.slug value=system.slug localize=true}}
+        </div>
     </div>
   </div>
 

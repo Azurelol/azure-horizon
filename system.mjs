@@ -60,6 +60,11 @@ function bindSheets() {
     makeDefault: true,
     label: "AH.SHEET.Labels.CharacterSheet",
   });
+  Actors.registerSheet("ah", apps.Actor.AHAdversarySheet, {
+    types: ["adversary"],
+    makeDefault: true,
+    label: "AH.SHEET.Labels.AdversarySheet",
+  });
   Actors.registerSheet("ah", apps.Actor.AHPartySheet, {
     types: ["party"],
     makeDefault: true,

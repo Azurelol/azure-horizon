@@ -2,9 +2,23 @@
   flex: 2;
 }
 
-.ah-flexrow {
+.ah-flex-row {
   display: flex;
   flex-direction: row;
+
+  &.--center {
+    justify-content: center;
+    align-items: center;
+  }
+}
+.ah-flex-col {
+  display: flex;
+  flex-direction: column;
+
+  &.--center {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .ah-flex-center {

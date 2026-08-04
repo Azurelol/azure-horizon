@@ -3,6 +3,7 @@ import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
 import { EquipmentTableRenderer } from "../item/_module.mjs";
 import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
+import AH from '../../config.mjs';
 
 /**
  * @extends AHActorSheet
@@ -40,6 +41,16 @@ export class AHBaseCharacterSheet extends AHActorSheet {
   };
 
   /* -------------------------------------------------- */
+  /** @inheritdoc */
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+
+    Object.assign(context, {
+    });
+
+    return context;
+  }
+
   /**
    * Attach event listeners to rendered template parts.
    * @param {string} partId The id of the part being rendered.
