@@ -1,7 +1,7 @@
-import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
-import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import * as fields from "../../data/item/fields/_module.mjs";
-import { FoundryUtils } from "../../utils/_module.mjs";
+import { prepareActiveEffectCategories } from '../../utils/utils.mjs';
+import { systemTemplatePath } from '../../constants.mjs';
+import * as fields from '../../data/item/fields/_module.mjs';
+import { FoundryUtils } from '../../utils/_module.mjs';
 
 const { api, sheets } = foundry.applications;
 
@@ -126,7 +126,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         context.tab = context.tabs[partId];
         break;
       case "properties":
-        context.fields = await this._getFields();
+        context.fields = await this._getPrimitiveFields();
         context.fieldsets = await this._getFieldsets();
         break;
     }
@@ -147,11 +147,11 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   /**
    * Handles the system fields for the form-fields generic.
    */
-  async _getFields() {
+  async _getFieldsV1() {
     const doc = this.item;
     const source = doc._source;
     const systemFields = CONFIG.Item.dataModels[doc.type]?.schema.fields;
-    const fieldSets = [];
+    const fields = [];
     // TODO: Find a clever way to handle enrichment
     for (const field of Object.values(systemFields ?? {})) {
       if (field.options?.config === false) {
@@ -161,12 +161,12 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       if (field instanceof foundry.data.fields.SchemaField) {
         const fieldset = { fieldset: true, legend: field.label, fields: [] };
         await this.#addSystemFields(fieldset, field.fields, source, path);
-        fieldSets.push(fieldset);
+        fields.push(fieldset);
       } else {
-        fieldSets.push({ outer: { field, value: foundry.utils.getProperty(source, path) } });
+        fields.push({ outer: { field, value: foundry.utils.getProperty(source, path) } });
       }
     }
-    return fieldSets;
+    return fields;
   }
 
   /**
@@ -176,6 +176,14 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   async _getFieldsets() {
     const fieldsets = await FoundryUtils.getFieldsOfType(this.item, "Item", "EmbeddedDataField", "system");
     return fieldsets;
+  }
+
+  /**
+   * @returns {Promise<AH_DataFieldInfo[]>}
+   * @private
+   */
+  async _getPrimitiveFields() {
+    return await FoundryUtils.getPrimitiveFields(this.item, "Item", "system");
   }
 
   /* -------------------------------------------------- */

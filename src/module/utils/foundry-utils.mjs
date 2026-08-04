@@ -3,6 +3,7 @@ import StringUtils from "./string-utils.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
+const PRIMITIVE_FIELD_NAMES = new Set(["StringField", "NumberField", "BooleanField", "ObjectField"]);
 
 export default class FoundryUtils {
 
@@ -255,6 +256,36 @@ export default class FoundryUtils {
         }
         fields.push(data);
       }
+    }
+    return fields;
+  }
+
+  /**
+   * @param {Document} document
+   * @param {string|number} documentClass
+   * @param {String} path
+   * @returns {AH_DataFieldInfo[]}
+   */
+  static getPrimitiveFields(document, documentClass, path) {
+    const source = document._source;
+    const systemFields = CONFIG[documentClass].dataModels[document.type]?.schema.fields;
+    /** @type AH_DataFieldInfo[] **/
+    const fields = [];
+    for (const field of Object.values(systemFields ?? {})) {
+      if (field.options?.config === false) {
+        continue;
+      }
+      const fieldPath = `${path}.${field.name}`
+      if (!field.recursive && PRIMITIVE_FIELD_NAMES.has(field.constructor.name)) {
+        const value = foundry.utils.getProperty(source, fieldPath);
+        let data = {
+          field: field,
+          path: fieldPath,
+          value: value,
+        };
+        fields.push(data);
+      }
+
     }
     return fields;
   }

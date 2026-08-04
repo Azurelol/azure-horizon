@@ -3,5 +3,14 @@
     {{#each fieldsets as |field|}}
       {{> (lookup field 'template') }}
     {{/each}}
+
+    {{#if fields}}
+      <fieldset>
+        <legend>{{localize 'AH.FIELD.General'}}</legend>
+        {{#each fields as |field|}}
+          {{formGroup field.field value=field.value name=field.path localize=true}}
+        {{/each}}
+      </fieldset>
+    {{/if}}
   </div>
 </section>

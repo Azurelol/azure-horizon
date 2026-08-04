@@ -320,9 +320,12 @@
       "Initial": "Initial",
       "Allies": "Allies",
       "Enemies": "Enemies",
+      "Properties": "Properties",
+      "General": "General",
       "None": "None",
       "Self": "Self",
       "Scene": "Scene",
+      "Cost": "Cost",
       "Identifier": "Identifier",
       "Local": "Local",
       "DamageType": {

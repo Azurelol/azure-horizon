@@ -8,6 +8,6 @@ export default class ConsumableDataModel extends ItemDataModel {
   static defineSchema() {
     const { SchemaField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      cost: new NumberField({ initial: 3, min: 0, integer: true })
+      cost: new NumberField({ initial: 3, min: 0, label: "AH.FIELD.Cost", integer: true })
     });
   }}

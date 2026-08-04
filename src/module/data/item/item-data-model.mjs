@@ -19,11 +19,13 @@ export default class ItemDataModel extends VersionedDataModel {
         initial: 1,
         label: "AH.ITEM.Revision",
         integer: true,
+        config: false,
       }),
       slug: new StringField({
         required: false,
         blank: true,
         initial: "",
+        config: false,
         label: "AH.ITEM.Slug",
         validate: (value) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value),
       }),
