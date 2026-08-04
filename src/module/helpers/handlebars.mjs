@@ -72,7 +72,7 @@ export default Object.freeze({
   },
   registerPartials: async () => {
     // eslint-disable-next-line no-undef
-    Handlebars.registerPartial("ahOptionalFieldset", await getTemplate(COMPONENT_TEMPLATES.optionalFieldset));
+    Handlebars.registerPartial("ahOptionalFieldset", await foundry.applications.handlebars.getTemplate(COMPONENT_TEMPLATES.optionalFieldset));
   },
   registerHelpers: () => {
     Handlebars.registerHelper("ahFormOptions", formOptions);

@@ -1,4 +1,4 @@
-import BaseItemDataModel from "./base-item-data-model.mjs";
+import ItemDataModel from "./item-data-model.mjs";
 import { CheckDataModel, DamageDataModel } from "./fields/_module.mjs";
 import Checks from "../../pipelines/checks.mjs";
 import { ActionConfig } from "../../helpers/_module.mjs";
@@ -7,7 +7,7 @@ import { ActionConfig } from "../../helpers/_module.mjs";
  * @property {DamageDataModel} damage
  * @property {CheckDataModel} check
  */
-export default class WeaponDataModel extends BaseItemDataModel {
+export default class WeaponDataModel extends ItemDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, StringField, HTMLField, NumberField, EmbeddedDataField } = foundry.data.fields;

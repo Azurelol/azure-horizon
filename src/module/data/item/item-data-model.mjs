@@ -8,7 +8,7 @@ const fields = foundry.data.fields;
  * @property {String} revision The published revision of this item. Used to detect and prompt updates when newer errata versions are available.
  * @property {String} slug An unique human-readable identifier, used to reference the item programmatically.
  */
-export default class BaseItemDataModel extends VersionedDataModel {
+export default class ItemDataModel extends VersionedDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, StringField, NumberField, HTMLField } = foundry.data.fields;

@@ -170,6 +170,18 @@ AH.defenses = Object.freeze({
   mig: { long: "AH.CHARACTER.Might.long", short: "AH.CHARACTER.Might.short" },
 });
 
+
+/**
+ * @typedef {'light'|'dark'} AH_Domain
+ */
+
+AH.domains = Object.freeze({
+  light: { label: "AH.DOMAIN.Light" },
+  dark: { label: "AH.DOMAIN.Dark" },
+  nature: { label: "AH.DOMAIN.Nature" },
+  elemental: { label: "AH.DOMAIN.Elemental" },
+})
+
 /**
  * @typedef {'none' | 'startOfTurn' | 'endOfTurn' | 'endOfRound' | 'endOfScene' | 'rest'} Interval
  */

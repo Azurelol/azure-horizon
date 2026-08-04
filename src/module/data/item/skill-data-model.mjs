@@ -1,8 +1,11 @@
 import FeatureDataModel from "./feature-data-model.mjs";
-import { CheckDataModel } from "./fields/_module.mjs";
-import { CheckFieldsetMixin } from "./check-behaviour-mixin.mjs";
 
-export default class SkillDataModel extends CheckFieldsetMixin(FeatureDataModel) {
+/**
+ * Skills belong to character classes and are selected and upgraded during a character's advancement
+ * @inheritDoc
+ * @extends FeatureDataModel
+ */
+export default class SkillDataModel extends FeatureDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;

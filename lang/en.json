@@ -448,7 +448,10 @@
     },
     "Item": {
       "weapon": "Weapon",
-      "skill": "Skill"
+      "skill": "Skill",
+      "spell": "Spell",
+      "class": "Class",
+      "consumable": "Consumable"
     },
     "Combatant": {
       "player": "Player"

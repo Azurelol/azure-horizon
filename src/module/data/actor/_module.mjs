@@ -6,9 +6,11 @@ import UnitDataModel from "./unit-data-model.mjs";
 
 const dataModels = Object.freeze({
   base: ActorDataModel,
+
   character: CharacterDataModel,
   party: PartyDataModel,
   adversary: AdversaryDataModel,
+
   unit: UnitDataModel,
 });
 

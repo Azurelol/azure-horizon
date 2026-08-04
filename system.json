@@ -55,7 +55,10 @@
     },
     "Item": {
       "weapon": {},
-      "skill": {}
+      "skill": {},
+      "spell": {},
+      "class": {},
+      "consumable": {}
     }
   },
   "flags": {
