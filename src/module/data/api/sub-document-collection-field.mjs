@@ -31,6 +31,17 @@ export default class SubDocumentCollectionField extends TypedObjectField {
     this.#documentClass = model;
   }
 
+  /** @inheritdoc */
+  static hierarchical = true;
+
+  /**
+   * The Collection implementation to use when initializing the collection.
+   * @type {typeof ModelCollection}
+   */
+  static get implementation() {
+    return ModelCollection;
+  }
+
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
@@ -38,17 +49,6 @@ export default class SubDocumentCollectionField extends TypedObjectField {
     const documentName = this.documentClass.metadata.documentName;
     const collection = new ModelCollection(documentName, this.documentClass, model, value);
     collection.initialize(model, options);
-
-    // options.collection = collection;
-    // const init = super.initialize(value, model, options);
-    // for (const [id, model] of Object.entries(init)) {
-    //   if (model instanceof SubDocumentDataModel) {
-    //     collection.set(id, model);
-    //   } else {
-    //     collection.setInvalid(model);
-    //   }
-    // }
-    // collection.documentClass = this.documentClass;
 
     return collection;
   }
@@ -71,6 +71,9 @@ export default class SubDocumentCollectionField extends TypedObjectField {
           continue;
         }
         id = id.slice(2);
+      } else if (d instanceof foundry.data.operators.ForcedDeletion) {
+        delete source[key][id];
+        continue;
       }
       const prior = src[id];
       if (prior) {
