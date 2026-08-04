@@ -28,6 +28,7 @@
 @import "applications/browser.css";
 
 @import "sheets/sheet.css";
+@import "sheets/actor.css";
 @import "sheets/item.css";
 @import "sheets/character.css";
 @import "sheets/party.css";

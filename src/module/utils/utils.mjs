@@ -3,6 +3,9 @@
  * @param {Record<string, unknown>} object
  */
 export function localizeHelper(object) {
+  if (!object) {
+    return;
+  }
   for (const [key, value] of Object.entries(object)) {
     // const type = foundry.utils.getType(value)
     switch (typeof value) {

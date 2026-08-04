@@ -1,5 +1,5 @@
-import { AH_TableRenderer } from "../api/_module.mjs";
-import TableColumns from "../api/table-columns.mjs";
+import { AH_TableRenderer } from "./_module.mjs";
+import TableColumns from "./table-columns.mjs";
 
 /**
  * @template {Document} T

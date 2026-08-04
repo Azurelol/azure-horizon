@@ -58,6 +58,11 @@ ol.acc-list li {
   }
 }
 
+.ah-list__header {
+  display: flex;
+  flex-direction: row;
+}
+
 .ah-list__entry {
   color: var(--ah-color-list);
   border: 1px solid var(--ah-color-border-list);

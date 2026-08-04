@@ -30,6 +30,9 @@ export class AHBaseCharacterSheet extends AHActorSheet {
     },
     sidebar: {
       template: systemTemplatePath("sheets/actor/character/character-sidebar"),
+      templates: [
+        systemTemplatePath("sheets/actor/character/character-partial-actions"),
+      ]
     },
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),

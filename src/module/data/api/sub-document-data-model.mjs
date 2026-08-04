@@ -165,7 +165,7 @@ export default class SubDocumentDataModel extends foundry.abstract.DataModel {
   async delete(operation = {}) {
     if (!this.isSource) throw new Error("You cannot delete a non-source sub-document!");
     const update = { [`${this.fieldPath}.${this.id}`]: _del };
-    
+
     this.constructor._configureUpdates("delete", this.document, update, operation);
     const updated = await this.document.update(update, operation);
     if (!updated) {

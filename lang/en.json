@@ -419,6 +419,12 @@
       "Options": "Options"
     },
     "ACTION": {
+      "Attack": "Attack",
+      "Skill": "Skill",
+      "Spell": "Spell",
+      "Defend": "Defend",
+      "Equipment": "Equipment",
+      "Objective": "Objective",
       "ApplyDamage": "Apply Damage",
       "ApplyDamageTooltip": "Apply damage to selected tokens."
     },

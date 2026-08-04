@@ -174,8 +174,8 @@ export default class FoundryUtils {
             if (action) {
               return action(item);
             }
-            if (item.roll) {
-              return item.roll();
+            if (item.perform) {
+              return item.perform();
             }
           },
         };

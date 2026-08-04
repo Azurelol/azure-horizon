@@ -1,4 +1,4 @@
 export { AHItemSheet } from "./item-sheet.mjs";
-export { default as DocumentTableRenderer } from "./document-table-renderer.mjs";
+export { default as DocumentTableRenderer } from "../api/document-table-renderer.mjs";
 export { default as ItemTableRenderer } from "./item-table-renderer.mjs";
 export { default as EquipmentTableRenderer } from "./equipment-table-renderer.mjs";

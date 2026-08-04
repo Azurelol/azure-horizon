@@ -95,6 +95,16 @@ export default Object.freeze({
       return true;
     },
     );
+    // Creates array from arguments
+    Handlebars.registerHelper('ahArray', function (...args) {
+      return args.slice(0, -1);
+    });
+    // Render a fallback if the value is falsy for handlebars
+    Handlebars.registerHelper('ahDefault', (value, fallback) => value ?? fallback);
+    // Creates a plain object from the handlebars named parameters
+    Handlebars.registerHelper('ahHash', function (options) {
+      return options.hash;
+    });
     Handlebars.registerHelper("ahSkeleton", skeleton);
     Handlebars.registerHelper("ahTagPicker", tagPicker);
     Handlebars.registerHelper("ahHumanize", function (str) {

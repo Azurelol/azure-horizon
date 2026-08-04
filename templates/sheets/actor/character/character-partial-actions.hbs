@@ -1,0 +1,27 @@
+{{!-- Actions Template --}}
+<fieldset>
+  <legend data-tooltip="[Left Click] Perform Action <br>[Shift+Click] Send Description">
+    {{localize 'AH.COMMON.Actions'}}
+  </legend>
+
+  <div class="ah-actor__actions">
+  {{!-- Shared actions --}}
+  {{#each (ahArray
+            (ahHash id="attack"    label="AH.ACTION.Attack"    tooltip="AH.ACTION.AttackHint"    ctx="attack")
+            (ahHash id="skill"     label="AH.ACTION.Skill"     tooltip="AH.ACTION.SkillHint"     ctx="skill")
+            (ahHash id="spell"     label="AH.ACTION.Spell"     tooltip="AH.ACTION.SpellHint"     ctx="spell")
+            (ahHash id="defend"     label="AH.ACTION.Defend"     tooltip="AH.ACTION.DefendHint"     ctx="")
+            (ahHash id="equipment" label="AH.ACTION.Equipment" tooltip="AH.ACTION.EquipmentHint"     ctx="")
+            (ahHash id="objective" label="AH.ACTION.Objective" tooltip="AH.ACTION.ObjectiveHint" ctx="")
+          )}}
+
+    <button id="{{this.id}}Action"
+          {{#unless this.ctx}}data-action="performAction"{{/unless}}
+          data-type="{{this.id}}" {{#if this.ctx}}data-context-menu="{{this.ctx}}"{{/if}}
+          data-tooltip="{{localize this.tooltip}}">
+			<i class="ah-icon --xs {{ahIconClass id}}"></i>
+      {{localize this.label}}
+		</button>
+  {{/each}}
+</div>
+</fieldset>
