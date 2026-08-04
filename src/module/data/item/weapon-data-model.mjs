@@ -12,7 +12,13 @@ export default class WeaponDataModel extends ItemDataModel {
   static defineSchema() {
     const { SchemaField, StringField, HTMLField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      damage: new EmbeddedDataField(DamageDataModel, {}),
+      damage: new EmbeddedDataField(DamageDataModel, {
+        initial: () => foundry.utils.mergeObject(
+          DamageDataModel.cleanData(),   // pulls full defaults from DamageDataModel's own schema
+          { enabled: true },             // only the fields you want to override
+          { inplace: false }
+        )
+      }),
       check: new EmbeddedDataField(CheckDataModel, { }),
     });
   }

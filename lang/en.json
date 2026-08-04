@@ -322,6 +322,8 @@
       "Enemies": "Enemies",
       "Properties": "Properties",
       "General": "General",
+      "Class": "Class",
+      "Domain": "Domain",
       "None": "None",
       "Self": "Self",
       "Scene": "Scene",

@@ -2,12 +2,14 @@ import CheckDataModel from "./check-data-model.mjs";
 import DamageDataModel from "./damage-data-model.mjs";
 import ResourceDataModel from "./resource-data-model.mjs";
 import TraitsDataModel from "./traits-data-model.mjs";
+import ClassBenefitsDataModel from './class-benefits-data-model.mjs';
 
 const dataModels = Object.freeze({
   check: CheckDataModel,
   damage: DamageDataModel,
   resource: ResourceDataModel,
   traits: TraitsDataModel,
+  benefits: ClassBenefitsDataModel,
 });
 
 /**
