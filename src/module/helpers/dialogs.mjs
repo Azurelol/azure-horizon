@@ -11,7 +11,7 @@ const { api, fields, handlebars } = foundry.applications;
  * @property {boolean} [disabled]
  * @property {boolean} [selected]
  * @property {boolean} [rule]
- * @property {String} img (Custom for PFU dialogs).
+ * @property {String} img (Custom for system dialogs).
  * @property {Record<string, string>} [dataset]
  */
 

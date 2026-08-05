@@ -42,7 +42,15 @@ export default class ItemDataModel extends VersionedDataModel {
    */
   async perform(modifiers) {
     return false;
+
+  }
+  // TODO: Used?
+  /**
+   * @protected
+   * @returns {string} The system template path to the partial used by this item.
+   */
+  static get template() {
+    return undefined;
   }
 
-  
 }

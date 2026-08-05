@@ -106,6 +106,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       system: this.item.system,
       systemFields: this.document.system.schema.fields,
       flags: this.item.flags,
+      propertiesTemplate: this.item.system.constructor.template,
       config: CONFIG,
     });
 

@@ -3,6 +3,7 @@ import DamageDataModel from "./damage-data-model.mjs";
 import ResourceDataModel from "./resource-data-model.mjs";
 import TraitsDataModel from "./traits-data-model.mjs";
 import ClassBenefitsDataModel from './class-benefits-data-model.mjs';
+import SkillAdvancementDataModel from './skill-advancement-data-model.mjs';
 
 const dataModels = Object.freeze({
   check: CheckDataModel,
@@ -10,6 +11,7 @@ const dataModels = Object.freeze({
   resource: ResourceDataModel,
   traits: TraitsDataModel,
   benefits: ClassBenefitsDataModel,
+  advancement: SkillAdvancementDataModel,
 });
 
 /**

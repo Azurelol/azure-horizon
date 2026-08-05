@@ -1,8 +1,8 @@
 .ah-codex__entry__frame {
   --codex-text-color: #1a0f00;
 
-  background-image: url('../../static/ui/backgrounds/codex-entry.png') !important;
-  background-color: var(--ah-color-background-primary);
+  background-image: url('../../../assets/backgrounds/codex-entry.png') !important;
+  background-color: var(--ah-surface-panel);
   background-blend-mode: color-burn;
   background-size: cover;
   background-repeat: no-repeat;
@@ -61,8 +61,8 @@
     text-align: center;
     font-family: 'CreditValleybold', serif;
     margin: 1rem;
-    --shadow-color: var(--pfu-color-app-item-header-shadow);
-    text-shadow: 0 0 2px var(--pfu-color-app-item-header-shadow);
+    --shadow-color: var(--ah-box-shadow-fieldset-header);
+    text-shadow: 0 0 2px var(--ah-color-text-shadow-inline);
   }
 
   .description {
