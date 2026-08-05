@@ -29,7 +29,9 @@ export const systemAssetPath = (path) => `systems/${systemID}/assets/${path}`;
  * @param {string} path - A path relative to the template directory of this repository.
  * @returns {string} The template directory to path relative to the Foundry data folder.
  */
-export const systemTemplatePath = (path) => `systems/${systemID}/templates/${path}.hbs`;
+export const systemTemplatePath = (path) => {
+  return `systems/${systemID}/templates/${path}.hbs`;
+};
 
 /**
  * Gets a system setting.
@@ -54,10 +56,12 @@ export function setSystemSetting(key, value) {
 /**
  * @param {String} templatePath The path relative to the system's templates directory.
  * @param {Object} context Used by the template.
+ * @param {Boolean} relative If the path is relative to the templates directory. If not, the translation will be applied.
  * @returns {Promise<*>}
  */
-export async function renderTemplate(templatePath, context) {
-  return await foundry.applications.handlebars.renderTemplate(systemTemplatePath(templatePath), context);
+export async function renderTemplate(templatePath, context, relative = true) {
+  const path = relative ? systemTemplatePath(templatePath) : templatePath;
+  return await foundry.applications.handlebars.renderTemplate(path, context);
 }
 
 /**

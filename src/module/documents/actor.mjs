@@ -82,6 +82,13 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
   }
 
   /**
+   * @param {AH_ItemType} type
+   */
+  supportsItemType(type) {
+    return this.system.supportsItemType(type);
+  }
+
+  /**
    * @param {...AH_ItemType} types
    * @returns {AHItem[]}
    */

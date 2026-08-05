@@ -43,4 +43,12 @@ export default class ItemDataModel extends VersionedDataModel {
   async perform(modifiers) {
     return false;
   }
+
+
+  /**
+   * @return {String} A decorated string
+   */
+  getSummaryHTML() {
+    return "";
+  }
 }

@@ -427,7 +427,8 @@
       "Traits": "Traits",
       "Type": "Type",
       "Target": "Target",
-      "Options": "Options"
+      "Options": "Options",
+      "Check": "Check"
     },
     "ACTION": {
       "Attack": "Attack",

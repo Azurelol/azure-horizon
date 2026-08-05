@@ -20,6 +20,12 @@ const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } =
  * Represents the data of PC in combat.
  */
 export default class CharacterDataModel extends BaseCharacterDataModel {
+
+  /**
+   * @type {Set<AH_ItemType>}
+   */
+  static ITEM_TYPES = new Set(["class", "skill", "weapon", "consumable", "spell"]);
+
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
@@ -35,5 +41,9 @@ export default class CharacterDataModel extends BaseCharacterDataModel {
     super._prepareParameters();
     this.parameters.ip.defineMaximumProperty(() => Formulas.calculateInventoryPoints());
     this.parameters.tp.defineMaximumProperty(() => Formulas.calculateTensionPoints());
+  }
+
+  supportsItemType(type) {
+    return CharacterDataModel.ITEM_TYPES.has(type);
   }
 }

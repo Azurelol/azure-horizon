@@ -21,6 +21,7 @@ const ITEM_REFERENCE = "itemReference";
 const INITIAL_CHECK = "initialCheck";
 const HR_ZERO = "hrZero";
 const ACTIONS = "actions";
+const KEYBOARD_MODIFIERS = "keyboardModifiers";
 
 /**
  * @param {boolean} hrZero

@@ -9,19 +9,12 @@ const itemFields = Object.freeze({
 });
 
 export default class ItemTableRenderer extends DocumentTableRenderer {
-  getColumns() {
-    let columns = super.getColumns();
-    columns.push(
-      TableColumns.documentName({
-        header: "AH.COMMON.Name",
-        perform: true,
-        type: "item",
-      }));
-    columns.push(TableColumns.textColumn({
-      header: "AH.COMMON.Description",
-      getText: (item) => item.system.description,
-    }));
-    columns.push(TableColumns.actions(
+
+  /**
+   * @returns {AH_TableColumnConfig<Item>}
+   */
+  getItemActions() {
+    return TableColumns.actions(
       {
         header: "AH.COMMON.Actions",
         cssClass: "ah-table__column__actions",
@@ -46,7 +39,18 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
           },
         ],
       },
-    ));
+    );
+  }
+
+  getColumns() {
+    let columns = super.getColumns();
+    columns.push(
+      TableColumns.documentName({
+        header: "AH.COMMON.Name",
+        perform: true,
+        type: "item",
+      }));
+    columns.push(this.getItemActions());
     return columns;
   }
 }

@@ -23,22 +23,25 @@ export default class AttackDataModel extends ItemDataModel {
   }
 
   async perform(modifiers) {
-    await Checks.actionCheck(this.parent.actor, this.parent, this._initializeAction(modifiers));
+    await Checks.actionCheck(this.parent.actor, this.parent, async (check, actor, item) => {
+      const config = new ActionConfig(check);
+      await this._initializeAction(config);
+    });
     return true;
   }
 
   /**
-   * @param {KeyboardModifiers} modifiers
-   * @return {CheckPrepareCallback}
+   * @param {ActionConfig} config
+   * @protected
+   * @return {Promise}
    */
-  _initializeAction(modifiers) {
-    return async (check, actor, item) => {
-      const config = new ActionConfig(check);
-      config.setAttributes(this.check.primary, this.check.secondary);
-      config.setTargetedDefense(this.check.defense);
-      if (this.damage.enabled) {
-        config.setDamage(this.damage.type, this.damage.amount);
-      }
-    };
+  async _initializeAction(config) {
+    config.setAttributes(this.check.primary, this.check.secondary);
+    config.setTargetedDefense(this.check.defense);
+    if (this.damage.enabled) {
+      config.setDamage(this.damage.type, this.damage.amount);
+    }
   }
+
+
 }

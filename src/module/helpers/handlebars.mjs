@@ -2,14 +2,12 @@ import { systemTemplatePath } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
 import { ChatMessageSectionTemplate } from "./chat-message-sections.mjs";
+import TableColumns from '../apps/api/table-columns.mjs';
 
 const COMPONENT_TEMPLATES = Object.freeze({
   empty: systemTemplatePath("components/empty"),
 
   table: systemTemplatePath("components/table"),
-  tableColumnDocumentName: systemTemplatePath("components/table/table-column-document-name"),
-  tableColumnText: systemTemplatePath("components/table/table-column-text"),
-  tableColumnActions: systemTemplatePath("components/table/table-column-actions"),
 
   tagPicker: systemTemplatePath("components/tag-picker"),
   documentAnchor: systemTemplatePath("components/document-anchor"),
@@ -63,6 +61,7 @@ export default Object.freeze({
     templates.push(...Object.values(MESSAGE_TEMPLATES));
     templates.push(...Object.values(ChatMessageSectionTemplate));
     templates.push(...Object.values(DIALOG_TEMPLATES));
+    templates.push(...Object.values(TableColumns.TEMPLATES));
     return foundry.applications.handlebars.loadTemplates(templates);
   },
   setupComponent: {

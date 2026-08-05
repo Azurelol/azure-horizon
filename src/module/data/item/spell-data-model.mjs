@@ -1,6 +1,7 @@
 import FeatureDataModel from './feature-data-model.mjs';
 import AH from '../../config.mjs';
 import AttackDataModel from './attack-data-model.mjs';
+import config from '../../config.mjs';
 
 /**
  * A spell is a feature tied to a magical domain.
@@ -18,7 +19,8 @@ export default class SpellDataModel extends AttackDataModel {
     });
   }
 
-  _initializeAction(modifiers) {
-    return super._initializeAction(modifiers);
+  async _initializeAction(config) {
+    await super._initializeAction(config);
+    config.addTraits(this.domain);
   }
 }

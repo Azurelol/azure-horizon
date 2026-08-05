@@ -1,7 +1,7 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
-import { EquipmentTableRenderer } from "../item/_module.mjs";
+import { AttackTableRenderer, EquipmentTableRenderer } from '../item/_module.mjs';
 import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
 import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
 
@@ -43,6 +43,8 @@ export class AHCharacterSheet extends AHBaseCharacterSheet {
   /* -------------------------------------------------- */
 
   #equipmentTableRenderer = new EquipmentTableRenderer();
+  #attackTableRenderer = new AttackTableRenderer();
+
 
   /**
    * @returns {AHItem[]}
@@ -57,7 +59,9 @@ export class AHCharacterSheet extends AHBaseCharacterSheet {
     await super._preparePartContext(partId, context);
     switch (partId) {
       case "equipment":
-        context.equipmentTable = await this.#equipmentTableRenderer.render(this.getEquipmentEntries());
+        context.tables = [
+          await this.#attackTableRenderer.render(this.actor.getItemsByType('weapon'))
+        ]
         break;
     }
     return context;
