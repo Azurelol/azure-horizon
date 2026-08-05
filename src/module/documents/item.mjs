@@ -46,18 +46,9 @@ Hooks.on('preCreateItem', (item, options, userId) => {
   if (isActorType(item.parent)) {
     /** @type {AHActor} **/
     const actor = item.parent;
-    // If the actor is NOT character type
-    if (!actor.isCharacterType) {
-      // Do not support effect creation on non-characters
-      if (item.type === 'effect') {
-        ui.notifications.error(`AH.WARNING.EffectsNotSupported`, { localize: true });
-        return false;
-      }
-      // Only support white-listed item types
-      if (!item.canStash) {
-        ui.notifications.error(`FU.ActorSheetItemNotSupported`, { localize: true });
-        return false;
-      }
+    if (!actor.supportsItemType(item.type)) {
+      ui.notifications.error(`FU.ActorSheetItemNotSupported`, { localize: true });
+      return false;
     }
   }
 

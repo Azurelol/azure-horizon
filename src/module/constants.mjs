@@ -86,7 +86,7 @@ export async function enrichHTML(content, options = {}) {
  * @return {Boolean}
  */
 export function isActorType(document) {
-  return document.documentName === "Actor";
+  return document?.documentName === "Actor";
 }
 
 /**
@@ -94,5 +94,5 @@ export function isActorType(document) {
  * @return {Boolean}
  */
 export function isItemType(document) {
-  return document.documentName === "Item";
+  return document?.documentName === "Item";
 }
