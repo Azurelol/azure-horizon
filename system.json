@@ -58,7 +58,8 @@
       "skill": {},
       "spell": {},
       "class": {},
-      "consumable": {}
+      "consumable": {},
+      "attack": {}
     }
   },
   "flags": {

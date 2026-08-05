@@ -1,45 +1,15 @@
-import ItemDataModel from "./item-data-model.mjs";
-import { CheckDataModel, DamageDataModel } from "./fields/_module.mjs";
-import Checks from "../../pipelines/checks.mjs";
-import { ActionConfig } from "../../helpers/_module.mjs";
+import AttackDataModel from './attack-data-model.mjs';
 
 /**
+ * Represents a hero's weapon, used for performing basic attacks and with some skills.
  * @property {DamageDataModel} damage
  * @property {CheckDataModel} check
  */
-export default class WeaponDataModel extends ItemDataModel {
+export default class WeaponDataModel extends AttackDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, StringField, HTMLField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      damage: new EmbeddedDataField(DamageDataModel, {
-        initial: () => foundry.utils.mergeObject(
-          DamageDataModel.cleanData(),   // pulls full defaults from DamageDataModel's own schema
-          { enabled: true },             // only the fields you want to override
-          { inplace: false }
-        )
-      }),
-      check: new EmbeddedDataField(CheckDataModel, { }),
     });
-  }
-
-  async perform(modifiers) {
-    await Checks.actionCheck(this.parent.actor, this.parent, this.#initializeWeaponAttack(modifiers));
-    return true;
-  }
-
-  /**
-   * @param {KeyboardModifiers} modifiers
-   * @return {CheckPrepareCallback}
-   */
-  #initializeWeaponAttack(modifiers) {
-    return async (check, actor, item) => {
-      const config = new ActionConfig(check);
-      config.setAttributes(this.check.primary, this.check.secondary);
-      config.setTargetedDefense(this.check.defense);
-      if (this.damage.enabled) {
-        config.setDamage(this.damage.type, this.damage.amount);
-      }
-    };
   }
 }

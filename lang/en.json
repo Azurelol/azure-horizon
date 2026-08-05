@@ -286,6 +286,12 @@
       "Loss": "Loss",
       "Base": "Base"
     },
+    "DOMAIN": {
+      "Light": "Light",
+      "Dark": "Dark",
+      "Nature": "Nature",
+      "Elemental": "Elemental"
+    },
     "DIALOG": {
       "UploadClipboardImage": "Upload Clipboard Image",
       "BrowseImage": "Browse Image",
@@ -452,6 +458,7 @@
       "unit": "Unit"
     },
     "Item": {
+      "attack": "Attack",
       "weapon": "Weapon",
       "skill": "Skill",
       "spell": "Spell",

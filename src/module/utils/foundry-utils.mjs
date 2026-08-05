@@ -1,5 +1,6 @@
 import { enrichHTML } from "../constants.mjs";
 import StringUtils from "./string-utils.mjs";
+import { DamageDataModel } from '../data/item/fields/_module.mjs';
 
 const { api, fields, handlebars } = foundry.applications;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
@@ -15,6 +16,30 @@ export default class FoundryUtils {
     if (typeof str !== "string") return false;
 
     return /^(?:Compendium\.[^.\s]+\.[^.\s]+\.)?(?:[A-Za-z]+\.)?[A-Za-z0-9]{16}(?:\.[A-Za-z]+\.[A-Za-z0-9]{16})*$/.test(str);
+  }
+
+  /**
+   * @param {DataModel} model
+   * @param {Object} overrides
+   * @returns {function(): *}
+   */
+  static initializeFields(model, overrides) {
+    return () => foundry.utils.mergeObject(
+      model.cleanData(),   // pulls full defaults from DamageDataModel's own schema
+      overrides,             // only the fields you want to override
+      { inplace: false }
+    );
+  }
+
+  /**
+   * @param {DataModel} model
+   * @param {Object} overrides
+   * @returns {{initial: function(): *}}
+   */
+  static configureInitial(model, overrides) {
+    return {
+      initial: FoundryUtils.initializeFields(model, overrides),
+    }
   }
 
   /**
