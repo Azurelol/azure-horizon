@@ -16,6 +16,11 @@ const fields = foundry.data.fields;
  */
 
 /**
+ * @typedef {String} AH_Slug
+ * An identifier for items in the system's compendium.
+ */
+
+/**
  * @typedef {'crisis'} AH_StatusEffect
  * System-specific status effects.
  */

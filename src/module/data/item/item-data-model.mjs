@@ -44,11 +44,5 @@ export default class ItemDataModel extends VersionedDataModel {
     return false;
   }
 
-
-  /**
-   * @return {String} A decorated string
-   */
-  getSummaryHTML() {
-    return "";
-  }
+  
 }
