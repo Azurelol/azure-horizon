@@ -2,7 +2,7 @@ import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
 import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
-import { AttackTableRenderer, WeaponTableRenderer } from "../item/_module.mjs";
+import { ArmorTableRenderer, AttackTableRenderer, WeaponTableRenderer } from "../item/_module.mjs";
 
 /**
  * @extends AHActorSheet
@@ -49,6 +49,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
   /* -------------------------------------------------- */
 
   #weaponTableRenderer = new WeaponTableRenderer();
+  #armorTableRenderer = new ArmorTableRenderer();
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
@@ -57,6 +58,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
       case "equipment":
         context.tables = [
           await this.#weaponTableRenderer.render(this.actor.getItemsByType("weapon")),
+          await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
         ];
         break;
     }

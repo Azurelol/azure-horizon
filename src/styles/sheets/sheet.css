@@ -6,6 +6,7 @@
     }
   }
   .effects-list {
+    padding: 0;
     background: var(--ah-background-table);
 
     .effect-list {

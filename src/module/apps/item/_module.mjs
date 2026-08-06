@@ -4,3 +4,4 @@ export { default as ItemTableRenderer } from "./item-table-renderer.mjs";
 export { default as EquipmentTableRenderer } from "./equipment-table-renderer.mjs";
 export { default as AttackTableRenderer } from "./attack-table-renderer.mjs";
 export { default as WeaponTableRenderer } from "./weapon-table-renderer.mjs";
+export { default as ArmorTableRenderer } from "./armor-table-renderer.mjs";
