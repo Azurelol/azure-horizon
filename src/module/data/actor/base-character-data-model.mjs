@@ -1,5 +1,5 @@
 import AH from "../../config.mjs";
-import { AffinitiesDataModel, AttributesDataModel, CharacterParametersDataModel } from "./system/_module.mjs";
+import { AffinitiesDataModel, AttributesDataModel, HeroParametersDataModel } from "./system/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import ActorDataModel from "./actor-data-model.mjs";
 
@@ -8,7 +8,7 @@ import ActorDataModel from "./actor-data-model.mjs";
  * @property {Number} level
  * @property {AttributesDataModel} attributes
  * @property {AffinitiesDataModel} affinities
- * @property {CharacterParametersDataModel} parameters
+ * @property {HeroParametersDataModel} parameters
  */
 export default class BaseCharacterDataModel extends ActorDataModel {
   static defineSchema() {

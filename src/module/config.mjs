@@ -251,6 +251,11 @@ AH.itemGroup = {
   item: "AH.ITEM.Item",
 };
 
+AH.attackTypes = Object.freeze({
+  attack: "AH.ITEM.Attack",
+  weapon: "AH.ITEM.Weapon",
+});
+
 /**
  * @description How the active effect's duration is tracked
  * @type {{self: string, source: string}}

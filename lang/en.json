@@ -32,7 +32,8 @@
       "Skill": "Skill",
       "Weapon": "Weapon",
       "Spell": "Spell",
-      "Item": "Item"
+      "Item": "Item",
+      "Class": "Class"
     },
     "THEME": {
       "BackgroundPrimary": "Background Primary",
@@ -299,6 +300,7 @@
       "RemoveObject": "Are you sure you would like to remove {label}?",
       "ClearObjects": "Are you sure you would ike to clear all items?",
       "ImportThemeTitle": "Import Theme",
+      "SelectAttackTitle": "Select Attack",
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",

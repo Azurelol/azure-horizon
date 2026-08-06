@@ -4,6 +4,7 @@ import { HTMLUtils, ObjectUtils, StringUtils } from "../../utils/_module.mjs";
 import { Dialogs } from "../../helpers/_module.mjs";
 import AH from "../../config.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
+import { ActionHandler } from "../ui/_module.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -106,9 +107,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   /** @inheritdoc */
   _initializeApplicationOptions(options) {
     const initialized = super._initializeApplicationOptions(options);
-
     initialized.classes.push(initialized.document.type);
-
     return initialized;
   }
 
@@ -144,6 +143,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
     }
 
     switch (partId) {
+
       case "effects":
         context.effects = prepareActiveEffectCategories(this.actor.allApplicableEffects());
 

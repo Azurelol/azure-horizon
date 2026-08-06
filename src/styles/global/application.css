@@ -27,13 +27,20 @@
 
   .tabs {
     background: var(--ah-background-application-tabs);
-    padding: 4px;
     text-transform: uppercase;
+    gap: 0;
+    border: none;
+    line-height: 2;
 
     a {
       opacity: 0.5;
+      border: 1px solid var(--color-tabs-border);
+      background: var(--ah-surface-tab);
+      flex: 1;
+
       &.active {
         opacity: 1;
+        background: var(--ah-surface-tab-active);
       }
     }
   }

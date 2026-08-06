@@ -98,7 +98,7 @@ export class BaseParametersDataModel extends VersionedDataModel {
  * @property {ParameterDataModel} def
  * @property {ParameterDataModel} mdef
  */
-export class CharacterParametersDataModel extends BaseParametersDataModel {
+export class HeroParametersDataModel extends BaseParametersDataModel {
   static defineSchema() {
     const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {

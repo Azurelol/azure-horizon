@@ -3,7 +3,8 @@ import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
 import { EquipmentTableRenderer } from "../item/_module.mjs";
 import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
-import AH from '../../config.mjs';
+import AH from "../../config.mjs";
+import { ActionHandler } from "../ui/_module.mjs";
 
 /**
  * @extends AHActorSheet
@@ -33,7 +34,7 @@ export class AHBaseCharacterSheet extends AHActorSheet {
       template: systemTemplatePath("sheets/actor/character/character-sidebar"),
       templates: [
         systemTemplatePath("sheets/actor/character/character-partial-actions"),
-      ]
+      ],
     },
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),
@@ -44,12 +45,19 @@ export class AHBaseCharacterSheet extends AHActorSheet {
   /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-
     Object.assign(context, {
     });
 
     return context;
   }
+
+  _initializeApplicationOptions(options) {
+    super._initializeApplicationOptions(options);
+    this.#actionHandler = new ActionHandler(this);
+  }
+
+  /** @type ActionHandler **/
+  #actionHandler;
 
   /**
    * Attach event listeners to rendered template parts.
@@ -63,6 +71,7 @@ export class AHBaseCharacterSheet extends AHActorSheet {
     switch (partId) {
       case "sidebar":
       {
+        this.#actionHandler.setupMenu(html);
         Handlebars.setupComponent.resourceBar(html);
         break;
       }

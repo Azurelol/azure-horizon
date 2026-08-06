@@ -1,7 +1,8 @@
 import BaseCharacterDataModel from "./base-character-data-model.mjs";
 import { ResourceDataModel } from "../api/resource-data-model.mjs";
-import { CharacterParametersDataModel } from "./system/_module.mjs";
+import { HeroParametersDataModel } from "./system/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
+import EquipmentDataModel from "./system/equipment-data-model.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -18,6 +19,8 @@ const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } =
 
 /**
  * Represents the data of PC in combat.
+ * @property {HeroParametersDataModel} parameters
+ * @property {EquipmentDataModel} equipment
  */
 export default class HeroDataModel extends BaseCharacterDataModel {
 
@@ -29,7 +32,8 @@ export default class HeroDataModel extends BaseCharacterDataModel {
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      parameters: new EmbeddedDataField(CharacterParametersDataModel, {}),
+      equipment: new EmbeddedDataField(EquipmentDataModel, {}),
+      parameters: new EmbeddedDataField(HeroParametersDataModel, {}),
     });
   }
 

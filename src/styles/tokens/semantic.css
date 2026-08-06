@@ -23,7 +23,7 @@
   --ah-border-panel: var(--ah-primitive-color-navy-600);
 
   --ah-surface-tab: var(--ah-surface-panel-nested);
-  --ah-surface-tab-active: var(--ah-surface-base);
+  --ah-surface-tab-active: var(--ah-surface-hover);
 
   --ah-surface-accent: var(--ah-primitive-color-brown-500);
   --ah-border-accent: var(--ah-primitive-color-brown-600);
