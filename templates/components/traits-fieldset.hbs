@@ -13,8 +13,8 @@
 			{{formGroup model.schema.fields.entries value=model.entries name=(ahConcat path ".entries") options=traitOptions}}
 		</div>
 
-		<label class="fu-form__property">
-			<span>{{localize 'FU.Quantifier'}}</span>
+		<label class="ah-field">
+			<span>{{localize 'AH.FIELD.Quantifier'}}</span>
 			<select name="{{ahConcat path ".quantifier"}}">
 				{{selectOptions quantifierOptions selected=model.quantifier localize=true}}
 			</select>

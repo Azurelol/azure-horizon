@@ -28,7 +28,7 @@ export default class ChatAction {
     this.tooltip = tooltip;
     this.withFields(fields);
     this.dataset = {};
-    this.label = "FU.ChatApplySelected";
+    this.label = "AH.PIPELINE.ChatApplySelected";
     this.owner = false;
     this.targeted = true;
     this.selected = false;

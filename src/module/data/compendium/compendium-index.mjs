@@ -5,7 +5,7 @@
  * @property {string} name           Document name
  * @property {string|null} img       Image path
  * @property {string} type           Document subtype
- * @property {string} pack           Compendium collection key (e.g. "fu.items")
+ * @property {string} pack           Compendium collection key (e.g. "ah.items")
  * @property {Object} [system]       Partial system data (indexed fields only)
  * @property {Object} metadata       Additional metadata patched by the compendium index.
  */

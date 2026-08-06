@@ -1,10 +1,10 @@
 <div class="ah-field --stack" style="gap: 0;">
   <div class="ah-field__header">
     <span>{{localize label}}</span>
-    <a data-tooltip="{{localize 'FU.Add'}}"
+    <a data-tooltip="{{localize 'AH.COMMON.Add'}}"
        data-path="{{path}}"
        data-action="addArrayElement">
-      <i class="fu-icon--xs fas fa-plus-circle">
+      <i class="ah-icon--xs {{ahIconClass 'add'}}">
       </i>
     </a>
   </div>
@@ -22,7 +22,7 @@
           {{/if}}
         </label>
         <a data-path="{{../path}}" data-index="{{ index }}" data-action="removeArrayElement">
-          <i class="ah-icon--xs fas fa-minus-circle"></i>
+          <i class="ah-icon--xs {{ahIconClass 'remove'}}"></i>
         </a>
       </div>
     {{/each}}

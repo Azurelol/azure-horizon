@@ -1,7 +1,7 @@
 import { ChatMessageBuilder } from "../helpers/_module.mjs";
 import DocumentMixin from "./document-mixin.mjs";
-import { StringUtils } from '../utils/_module.mjs';
-import { isActorType } from '../constants.mjs';
+import { StringUtils } from "../utils/_module.mjs";
+import { isActorType } from "../constants.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
@@ -41,13 +41,13 @@ export class AHItem extends DocumentMixin(foundry.documents.Item) {
   }
 }
 
-Hooks.on('preCreateItem', (item, options, userId) => {
+Hooks.on("preCreateItem", (item, options, userId) => {
   // If the parent is an actor
   if (isActorType(item.parent)) {
     /** @type {AHActor} **/
     const actor = item.parent;
     if (!actor.supportsItemType(item.type)) {
-      ui.notifications.error(`FU.ActorSheetItemNotSupported`, { localize: true });
+      ui.notifications.error("AH.DIALOG.WARNING.ItemNotSupported", { localize: true });
       return false;
     }
   }
@@ -57,9 +57,9 @@ Hooks.on('preCreateItem', (item, options, userId) => {
     // Generate FUID using the slugify utility
     const slug = StringUtils.slugify(item.name);
     if (slug) {
-      item.updateSource({ 'system.slug': slug });
+      item.updateSource({ "system.slug": slug });
     } else {
-      console.error('Slug generation failed for the item:', item.name, 'using slugify.');
+      console.error("Slug generation failed for the item:", item.name, "using slugify.");
     }
   }
 });

@@ -2,9 +2,10 @@
   "AH": {
     "SHEET": {
       "Labels": {
-        "ActorSheet": "Default AH Actor Sheet",
-        "ItemSheet": "Default AH Item Sheet",
-        "CharacterSheet": "Character Sheet",
+        "ActorSheet": "Default Actor Sheet",
+        "ItemSheet": "Default Item Sheet",
+        "HeroSheet": "Hero Sheet",
+        "AdversarySheet": "Adversary Sheet",
         "PartySheet": "Party Sheet"
       },
       "Tabs": {
@@ -297,7 +298,9 @@
       "BrowseImage": "Browse Image",
       "RemoveObject": "Are you sure you would like to remove {label}?",
       "ClearObjects": "Are you sure you would ike to clear all items?",
+      "ImportThemeTitle": "Import Theme",
       "WARNING": {
+        "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",
         "ApplyNoDamage": "No damage was applied onto {actor} by {source}.",
         "MissingEffect": "Missing Effect",
@@ -307,6 +310,7 @@
         "MissingSource": "Missing Source",
         "EntriesMissing": "Entries are missing.",
         "InvalidTarget": "Invalid Targets",
+        "ErrorNoFileUploaded": "No file was uploaded.",
         "MissingTargeting": "No tokens have been targeted.",
         "MissingSelection": "No tokens have been selected.",
         "DocumentOwnership": "You do not own the target document and thus cannot modify it."
@@ -334,7 +338,12 @@
       "Self": "Self",
       "Scene": "Scene",
       "Cost": "Cost",
+      "Tags": "Tags",
       "Identifier": "Identifier",
+      "ComparisonOperator": "Comparison Operator",
+      "GreaterThan": "Greater Than",
+      "Equals": "Equals",
+      "LessThan": "Less Than",
       "Local": "Local",
       "DamageType": {
         "long": "Damage Type",
@@ -428,7 +437,8 @@
       "Type": "Type",
       "Target": "Target",
       "Options": "Options",
-      "Check": "Check"
+      "Check": "Check",
+      "Settings": "Settings"
     },
     "ACTION": {
       "Attack": "Attack",
@@ -443,6 +453,7 @@
     "PIPELINE": {
       "ResourceGain": "Gain",
       "ResourceLoss": "Loss",
+      "ChatApplySelected": "Apply to selected token.",
       "ChatApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "ChatResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "ChatResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
@@ -452,10 +463,10 @@
   },
   "TYPES": {
     "Actor": {
-      "basic": "Basic Actor",
-      "character": "Character",
-      "party": "Party",
+      "basic": "Character",
+      "hero": "Hero",
       "adversary": "Adversary",
+      "party": "Party",
       "unit": "Unit"
     },
     "Item": {

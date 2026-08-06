@@ -1,35 +1,35 @@
 <section class="tab settings {{tab.cssClass}}" data-tab="settings" data-group="primary">
-	<!-- Header  -->
+
+  <!-- Header  -->
 	<header class="sheet-header">
-		<div class="flexrow flex-group-center">
-			<img class="profile-img flexcol" src="{{actor.img}}" data-edit="img" data-action="editImage" title="{{actor.name}}"
+		<div>
+			<img class="profile-img" src="{{actor.img}}" data-edit="img" data-action="editImage" title="{{actor.name}}"
 				 style="height: 52px; width: auto; object-fit: contain;" />
-			<div style="flex-grow:1;">
-				<div class="charname-container flexrow grid-span-4" style="width: 100%;">
+			<div>
+				<div class="ah-sheet__name">
 					<h2 class="charname" style="flex: 3;">
-						<input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
-					</h2>
+            <label>
+              <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
+            </label>
+          </h2>
 				</div>
 			</div>
 		</div>
 	</header>
 
 	<!-- Settings -->
-	<main class="grid-span-4">
-		<fieldset class="section-container title-fieldset desc resource-content">
-			<legend class="resource-label-m" aria-describedby="tooltip">
-				<a class="resource-inputs resource-label-m">
-					{{localize 'Settings'}}
-				</a>
+	<main>
+		<fieldset>
+			<legend>
+        {{localize 'AH.COMMON.Settings'}}
 			</legend>
-
-			<div class="grid-2col gap-4">
-				<div class="flexcol">
+			<div>
+				<div>
 					<button data-action="activate"><i class="fas fa-pen-to-square icon"></i>Set Active</button>
 					<button data-action="resetCodexTags"><i class="fas fa-list icon"></i>Reset Tags</button>
 					<button data-action="browseUploadDirectory"><i class="fas fa-clipboard"></i>Browse Upload Directory</button>
 				</div>
-				{{ahArrayField array=system.codex.tags label="FU.Tags" path="system.codex.tags" type="string" }}
+				{{ahArrayField array=system.codex.tags label="AH.FIELD.Tags" path="system.codex.tags" type="string" }}
 			</div>
 		</fieldset>
 	</main>

@@ -55,10 +55,10 @@ function bindSheets() {
   Actors.registerSheet("ah", apps.Actor.AHActorSheet, {
     makeDefault: true, label: "AH.SHEET.Labels.ActorSheet",
   });
-  Actors.registerSheet("ah", apps.Actor.AHCharacterSheet, {
-    types: ["character"],
+  Actors.registerSheet("ah", apps.Actor.HeroSheet, {
+    types: ["hero"],
     makeDefault: true,
-    label: "AH.SHEET.Labels.CharacterSheet",
+    label: "AH.SHEET.Labels.HeroSheet",
   });
   Actors.registerSheet("ah", apps.Actor.AHAdversarySheet, {
     types: ["adversary"],

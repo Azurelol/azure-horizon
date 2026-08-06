@@ -2,7 +2,7 @@ import AHApplication from "../api/application.mjs";
 import { getSystemSetting, renderTemplate, setSystemSetting, systemTemplatePath } from "../../constants.mjs";
 import Theme, { ThemeOptionFields } from "../../helpers/theme.mjs";
 import Themes from "../../helpers/themes.mjs";
-import { FileUtils, FoundryUtils } from "../../utils/_module.mjs";
+import { FileUtils, FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 
 export default class ThemeMenu extends AHApplication {
   /**
@@ -111,19 +111,19 @@ export default class ThemeMenu extends AHApplication {
   static async importFromJSONDialog() {
     return foundry.applications.api.DialogV2.wait(
       {
-        window: { title: game.i18n.localize("FU.DialogImportThemeTitle") },
-        classes: ["projectfu", "backgroundstyle", "fu-dialog"],
+        window: { title: game.i18n.localize("AH.DIALOG.ImportThemeTitle") },
+        classes: ["ah-application"],
         content: await renderTemplate("ui/themes/import-theme-dialog"),
         buttons: [
           {
             action: "import",
             icon: "fas fa-file-import",
-            label: game.i18n.localize("FU.Import"),
+            label: game.i18n.localize("AH.COMMON.Import"),
             callback: async (event, button, dialog) => {
               const fileInput = dialog.element.querySelector("input[type=\"file\"]");
 
               if (!fileInput?.files?.length) {
-                ui.notifications.error(game.i18n.localize("FU.ErrorNoFileUploaded"));
+                ui.notifications.error(game.i18n.localize("AH.DIALOG.WARNING.ErrorNoFileUploaded"));
                 return false; // Keeps dialog open
               }
 
@@ -135,7 +135,7 @@ export default class ThemeMenu extends AHApplication {
           {
             action: "cancel",
             icon: "fas fa-times",
-            label: game.i18n.localize("FU.Cancel"),
+            label: StringUtils.localize("AH.COMMON.Cancel"),
           },
         ],
         default: "cancel",

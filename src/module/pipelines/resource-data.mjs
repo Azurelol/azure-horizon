@@ -5,7 +5,7 @@
  */
 export default class ResourceData {
   static get baseModifier() {
-    return "FU.Base";
+    return "AH.COMMON.Base";
   }
 
   constructor(data = {}) {

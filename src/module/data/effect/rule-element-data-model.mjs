@@ -120,7 +120,7 @@ export default class RuleElementDataModel extends SubDocumentDataModel {
     const options = FoundryUtils.getFormSelectOptions(subTypes);
     const type = await Dialogs.select(
       StringUtils.localize("AH.COMMON.Add", {
-        element: StringUtils.localize("FU.RULE.Predicate.plural"),
+        element: StringUtils.localize("AH.RULE.Predicate.plural"),
       }),
       options,
     );

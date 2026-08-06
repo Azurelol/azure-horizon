@@ -175,7 +175,6 @@ AH.defenses = Object.freeze({
   mig: { long: "AH.CHARACTER.Might.long", short: "AH.CHARACTER.Might.short" },
 });
 
-
 /**
  * @typedef {'light'|'dark'} AH_Domain
  */
@@ -185,7 +184,7 @@ AH.domains = Object.freeze({
   dark: { label: "AH.DOMAIN.Dark" },
   nature: { label: "AH.DOMAIN.Nature" },
   elemental: { label: "AH.DOMAIN.Elemental" },
-})
+});
 
 /**
  * @typedef {'none' | 'startOfTurn' | 'endOfTurn' | 'endOfRound' | 'endOfScene' | 'rest'} Interval
@@ -296,6 +295,22 @@ AH.predicateQuantifier = {
   any: "AH.COMMON.Any",
   all: "AH.COMMON.All",
   none: "AH.COMMON.None",
+};
+
+/**
+ * @typedef {"greaterThan" | "lessThan"} AH_ComparisonOperator
+ */
+
+/**
+ * @typedef AH_Threshold
+ * @property {AH_ComparisonOperator} operator
+ * @property {Number} amount
+ */
+
+AH.comparisonOperator = {
+  greaterThan: "AH.FIELD.GreaterThan",
+  equals: "AH.FIELD.Equals",
+  lessThan: "AH.FIELD.LessThan",
 };
 
 /**

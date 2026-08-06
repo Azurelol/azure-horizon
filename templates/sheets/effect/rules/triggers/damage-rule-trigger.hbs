@@ -1,37 +1,27 @@
-
-
-<label class="fu-form__property">
-	<span>{{localize 'FU.DamageType'}}</span>
+<label class="ah-field">
+	<span>{{localize 'AH.DamageType.long'}}</span>
 	<select name="{{ahConcat path ".damageType"}}">
 		<option value="">-</option>
 		{{selectOptions options.damageTypes selected=trigger.damageType sort=true localize=true}}
 	</select>
 </label>
 
-<div class="fu-form__property">
-	<span>{{localize 'FU.ItemGroup'}}</span>
-	{{formGroup trigger.schema.fields.itemGroups value=trigger.itemGroups options=options.itemGroupOptions name=(ahConcat path ".itemGroups") classes="fu-form__set stacked"}}
+<div class="ah-field">
+	<span>{{localize 'AH.ItemGroup.long'}}</span>
+	{{formGroup trigger.schema.fields.itemGroups value=trigger.itemGroups options=options.itemGroupOptions name=(ahConcat path ".itemGroups") }}
 </div>
 
-<label class="fu-form__property">
-	<span>{{localize 'FU.Affinity'}}</span>
-	<select name="{{ahConcat path ".affinity"}}">
-		<option value="">-</option>
-		{{selectOptions options.affinities selected=trigger.affinity sort=true localize=true}}
-	</select>
-</label>
-
-<div class="fu-form__property-row">
-	<label class="fu-form__property">
-		<span>{{localize 'FU.ComparisonOperator'}}</span>
+<div class="ah-field-group --row">
+	<label class="ah-field">
+		<span>{{localize 'AH.FIELD.ComparisonOperator'}}</span>
 		<select name="{{ahConcat path ".damageThreshold.operator"}}">
 			<option value="">-</option>
 			{{selectOptions options.comparisonOperator selected=trigger.damageThreshold.operator sort=true localize=true}}
 		</select>
 	</label>
 
-	<label class="fu-form__property">
-		<span>{{localize 'FU.Amount'}}</span>
+	<label class="ah-field">
+		<span>{{localize 'AH.FIELD.Amount'}}</span>
 		<input type="number" name="{{ahConcat path ".damageThreshold.amount"}}" value="{{ trigger.damageThreshold.amount }}" />
 	</label>
 </div>

@@ -34,6 +34,8 @@ import DocumentMixin from "./document-mixin.mjs";
  */
 export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
+  static CHARACTER_TYPES = new Set(["hero", "adversary"]);
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
@@ -47,9 +49,6 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
   static migrateData(source) {
     source = super.migrateData(source);
-    if (source.type === "basic") {
-      source.type = "useBase";
-    }
     return source;
   }
 
@@ -100,8 +99,6 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     }
     return result;
   }
-
-  static CHARACTER_TYPES = new Set(["character", "adversary"]);
 
   /**
    * @returns {boolean}

@@ -19,7 +19,7 @@ const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } =
 /**
  * Represents the data of PC in combat.
  */
-export default class CharacterDataModel extends BaseCharacterDataModel {
+export default class HeroDataModel extends BaseCharacterDataModel {
 
   /**
    * @type {Set<AH_ItemType>}
@@ -44,6 +44,6 @@ export default class CharacterDataModel extends BaseCharacterDataModel {
   }
 
   supportsItemType(type) {
-    return CharacterDataModel.ITEM_TYPES.has(type);
+    return HeroDataModel.ITEM_TYPES.has(type);
   }
 }

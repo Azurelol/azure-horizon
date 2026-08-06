@@ -48,9 +48,9 @@
   "secondaryTokenAttribute": "",
   "documentTypes": {
     "Actor": {
-      "character": {},
-      "party": {},
+      "hero": {},
       "adversary": {},
+      "party": {},
       "unit": {}
     },
     "Item": {
