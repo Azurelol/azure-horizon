@@ -13,7 +13,7 @@ import { RuleElementDataModel } from "./src/module/data/effect/_module.mjs";
  * Exports the API so that it can be used at runtime
  */
 function exportAPI() {
-  globalThis.AH = {
+  globalThis.azureHorizon = {
     data,
     helpers,
     documents,

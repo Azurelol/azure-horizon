@@ -163,5 +163,9 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
     await this.update(updateData);
   }
-
 }
+
+Hooks.on("preCreateActor", (actor, data) => {
+  const shouldLink = actor.type === "hero";
+  actor.updateSource({ "prototypeToken.actorLink": shouldLink });
+});

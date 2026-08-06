@@ -347,6 +347,7 @@
       "Equals": "Equals",
       "LessThan": "Less Than",
       "Local": "Local",
+      "Handedness": "Handedness",
       "DamageType": {
         "long": "Damage Type",
         "plural": "Damage Types"
@@ -362,6 +363,8 @@
       "EventRelation": "Event Relation",
       "EventRelationHint": "The context in which the the character fits in the event",
       "Selector": "Selector",
+      "OneHanded": "One-Handed",
+      "TwoHanded": "Two-Handed",
       "SelectorHint": "Determines which characters is the rule element executed on."
     },
     "RULE": {

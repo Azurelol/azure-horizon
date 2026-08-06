@@ -251,6 +251,17 @@ AH.itemGroup = {
   item: "AH.ITEM.Item",
 };
 
+/**
+ * @typedef {"one-handed", "two-handed"} AH_Handedness
+ */
+/**
+ * @type {Record<AH_Handedness, string>}
+ */
+AH.handedness = {
+  one: "AH.FIELD.OneHanded",
+  two: "AH.FIELD.TwoHanded",
+};
+
 AH.attackTypes = Object.freeze({
   attack: "AH.ITEM.Attack",
   weapon: "AH.ITEM.Weapon",

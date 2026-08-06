@@ -45,13 +45,12 @@ export default class EquipmentDataModel extends VersionedDataModel {
       unequipped.push("offHand");
     }
 
-    // 2-HAND
+    const twoHanded = item.system.handedness === "twoHanded";
     if (!unequipped.includes("mainHand")) {
       data.mainHand = item.id;
-      data.offHand = item.id;
-    }
-    // 1-HAND
-    else {
+      if (twoHanded) {
+        data.offHand = null;
+      }
     }
 
     return data;
