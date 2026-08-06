@@ -182,6 +182,14 @@
   --ah-icon-damage: url("../../../../assets/icons/common/damage.png");
   --ah-icon-target: url("../../../../assets/icons/common/target.png");
 
+  --ah-icon-attack: url("../../../../assets/icons/actions/attack.png");
+  --ah-icon-defend: url("../../../../assets/icons/actions/defend.png");
+  --ah-icon-skill: url("../../../../assets/icons/actions/skill.png");
+  --ah-icon-spell: url("../../../../assets/icons/actions/spell.png");
+  --ah-icon-inventory: url("../../../../assets/icons/actions/inventory.png");
+  --ah-icon-equipment: url("../../../../assets/icons/actions/equipment.png");
+  --ah-icon-objective: url("../../../../assets/icons/actions/objective.png");
+
   .ah-icon-rest-short {
     background-image: var(--ah-icon-rest-short);
   }
@@ -200,6 +208,34 @@
 
   .ah-icon-target {
     background-image: var(--ah-icon-target);
+  }
+
+  .ah-icon-attack {
+    background-image: var(--ah-icon-attack);
+  }
+
+  .ah-icon-defend {
+    background-image: var(--ah-icon-defend);
+  }
+
+  .ah-icon-skill {
+    background-image: var(--ah-icon-skill);
+  }
+
+  .ah-icon-spell {
+    background-image: var(--ah-icon-spell);
+  }
+
+  .ah-icon-inventory {
+    background-image: var(--ah-icon-inventory);
+  }
+
+  .ah-icon-equipment {
+    background-image: var(--ah-icon-equipment);
+  }
+
+  .ah-icon-objective {
+    background-image: var(--ah-icon-objective);
   }
 
 }

@@ -95,9 +95,9 @@
   --ah-font-size-message-header: 14px;
 
   /* 2.1 Controls */
-  --ah-color-control: var(--ah-content-primary);
-  --ah-color-control-hover: var(--ah-content-primary);
-  --ah-background-control: var(--ah-surface-panel);
+  --ah-color-control: var(--ah-action-content);
+  --ah-color-control-hover: var(--ah-action-surface-hover);
+  --ah-background-control: var(--ah-action-surface);
   --ah-background-control-hover: var(--ah-action-surface);
   --ah-color-shadow-control: var(--ah-border-accent);
   --ah-color-border-control: var(--ah-border-surface);

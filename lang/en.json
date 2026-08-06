@@ -447,6 +447,7 @@
       "Defend": "Defend",
       "Equipment": "Equipment",
       "Objective": "Objective",
+      "Inventory": "Inventory",
       "ApplyDamage": "Apply Damage",
       "ApplyDamageTooltip": "Apply damage to selected tokens."
     },

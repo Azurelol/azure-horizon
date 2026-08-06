@@ -43,6 +43,16 @@
     border: 1px solid var(--ah-border-surface);
   }
 
+  button {
+    background: var(--ah-background-control);
+    color: var(--ah-color-control);
+    border-radius: 0;
+
+    &:hover {
+      background: var(--ah-color-control-hover);
+    }
+  }
+
   fieldset {
     background: var(--ah-background-fieldset);
     border-radius: 8px;
@@ -59,6 +69,17 @@
       text-align: center;
       width: auto;
       border: 0.02em solid var(--ah-border-color-fieldset);
+    }
+
+    &.--flush {
+      background: transparent;
+      border-color: transparent;
+
+      legend {
+        display: none;
+        background: transparent;
+        border-color: transparent;
+      }
     }
   }
 }

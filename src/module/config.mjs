@@ -109,6 +109,20 @@ AH.resources = {
 };
 
 /**
+ * @typedef {'attack'|'defend'|'skill'|'spell'|'inventory'|'equipment'|'objective'} AH_ActionType
+ */
+
+AH.actionTypes = Object.freeze({
+  attack: { label: "AH.ACTION.Attack" },
+  defend: { label: "AH.ACTION.Defend" },
+  skill: { label: "AH.ACTION.Skill" },
+  spell: { label: "AH.ACTION.Spell" },
+  inventory: { label: "AH.ACTION.Inventory" },
+  equipment: { label: "AH.ACTION.Equipment" },
+  objective: { label: "AH.ACTION.Objective" },
+});
+
+/**
  * Provided defaults for the party codex.
  * @type {{tags: {character: string, location: string, event: string}}}
  */
@@ -485,6 +499,14 @@ AH.icons = {
   dark: "ah-icon-dark",
   mental: "ah-icon-mental",
   poison: "ah-icon-poison",
+
+  attack: "ah-icon-attack",
+  skill: "ah-icon-skill",
+  spell: "ah-icon-spell",
+  defend: "ah-icon-defend",
+  inventory: "ah-icon-inventory",
+  equipment: "ah-icon-equipment",
+  objective: "ah-icon-objective",
 
   shortRest: "ah-icon-rest-short",
   longRest: "ah-icon-rest-long",

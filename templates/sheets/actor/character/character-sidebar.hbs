@@ -14,7 +14,7 @@
   <div class="ah-character__sidebar__section">
     {{ahResourceBar 'system.parameters.hp.value' system.parameters.hp.value system.parameters.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
     {{ahResourceBar 'system.parameters.mp.value' system.parameters.mp.value system.parameters.mp.max label='AH.CHARACTER.MindPoint.short' icon=(ahIconClass 'mp') colorClass="--ah-color-mp" }}
-      {{#if (eq actorType 'character')}}
+      {{#if (eq actorType 'hero')}}
         {{ahResourceBar 'system.parameters.tp.value' system.parameters.tp.value system.parameters.tp.max label='AH.CHARACTER.TensionPoint.short' icon=(ahIconClass 'tp') colorClass="--ah-color-tp" }}
         {{ahResourceBar 'system.parameters.ip.value' system.parameters.ip.value system.parameters.ip.max label='AH.CHARACTER.InventoryPoint.short' icon=(ahIconClass 'ip') colorClass="--ah-color-ip" }}
       {{/if}}
@@ -25,7 +25,7 @@
     <div class="ah-button-group">
       {{ahButton action='rest' data='type=short' size='sm' icon=(ahIconClass 'shortRest') tooltip='AH.INTERVAL.ShortRest.long'}}
       {{ahButton action='rest' data='type=long' size='sm' icon=(ahIconClass 'longRest') tooltip='AH.INTERVAL.LongRest.long'}}
-        {{#if (eq actorType 'character')}}
+        {{#if (eq actorType 'hero')}}
           {{ahButton action='rest' data='type=resupply' size='sm' icon=(ahIconClass 'resupply') tooltip='AH.INTERVAL.Resupply.long'}}
         {{/if}}
     </div>

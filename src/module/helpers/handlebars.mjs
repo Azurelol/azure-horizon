@@ -2,7 +2,7 @@ import { systemTemplatePath } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
 import { ChatMessageSectionTemplate } from "./chat-message-sections.mjs";
-import TableColumns from '../apps/api/table-columns.mjs';
+import TableColumns from "../apps/api/table-columns.mjs";
 
 const COMPONENT_TEMPLATES = Object.freeze({
   empty: systemTemplatePath("components/empty"),
@@ -70,7 +70,7 @@ export default Object.freeze({
     iconRadioGroups,
   },
   registerPartials: async () => {
-    // eslint-disable-next-line no-undef
+
     Handlebars.registerPartial("ahOptionalFieldset", await foundry.applications.handlebars.getTemplate(COMPONENT_TEMPLATES.optionalFieldset));
   },
   registerHelpers: () => {
@@ -81,6 +81,9 @@ export default Object.freeze({
         return "";
       }
       return AH.icons[icon];
+    });
+    Handlebars.registerHelper("ahNotEquals", function (a, b) {
+      return a !== b;
     });
     Handlebars.registerHelper("ahLocaleKey", getLocaleKey);
     Handlebars.registerHelper("ahConcat", (...args) => {
@@ -95,13 +98,13 @@ export default Object.freeze({
     },
     );
     // Creates array from arguments
-    Handlebars.registerHelper('ahArray', function (...args) {
+    Handlebars.registerHelper("ahArray", function (...args) {
       return args.slice(0, -1);
     });
     // Render a fallback if the value is falsy for handlebars
-    Handlebars.registerHelper('ahDefault', (value, fallback) => value ?? fallback);
+    Handlebars.registerHelper("ahDefault", (value, fallback) => value ?? fallback);
     // Creates a plain object from the handlebars named parameters
-    Handlebars.registerHelper('ahHash', function (options) {
+    Handlebars.registerHelper("ahHash", function (options) {
       return options.hash;
     });
     Handlebars.registerHelper("ahSkeleton", skeleton);
