@@ -556,6 +556,8 @@ AH.icons = {
   help: "fas fa-circle-question",
 
   send: "fas fa-comment",
+  equip: "fa fa-hand-fist",
+  unequip: "fa fa-hand",
 };
 
 export default AH;

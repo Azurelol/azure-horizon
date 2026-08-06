@@ -50,4 +50,5 @@ export default class HeroDataModel extends BaseCharacterDataModel {
   supportsItemType(type) {
     return HeroDataModel.ITEM_TYPES.has(type);
   }
+
 }

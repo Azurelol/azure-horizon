@@ -192,6 +192,9 @@ export default Object.freeze({
         ...options.hash,
       });
     });
+    Handlebars.registerHelper("ahValue", function (value, reference) {
+      return (value instanceof Function ? value(reference) : value);
+    });
     Handlebars.registerHelper("ahAutoComplete", autoComplete);
     Handlebars.registerHelper("ahBadge", badge);
     Handlebars.registerHelper("ahButton", button);

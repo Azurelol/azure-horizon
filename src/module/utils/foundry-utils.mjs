@@ -1,6 +1,6 @@
 import { enrichHTML } from "../constants.mjs";
 import StringUtils from "./string-utils.mjs";
-import { DamageDataModel } from '../data/item/fields/_module.mjs';
+import { DamageDataModel } from "../data/item/fields/_module.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
@@ -25,9 +25,9 @@ export default class FoundryUtils {
    */
   static initializeFields(model, overrides) {
     return () => foundry.utils.mergeObject(
-      model.cleanData(),   // pulls full defaults from DamageDataModel's own schema
-      overrides,             // only the fields you want to override
-      { inplace: false }
+      model.cleanData(), // pulls full defaults from DamageDataModel's own schema
+      //      overrides,             // only the fields you want to override
+      { inplace: false },
     );
   }
 
@@ -39,7 +39,7 @@ export default class FoundryUtils {
   static configureInitial(model, overrides) {
     return {
       initial: FoundryUtils.initializeFields(model, overrides),
-    }
+    };
   }
 
   /**
@@ -212,7 +212,7 @@ export default class FoundryUtils {
         el.addEventListener(
           "click",
           () => {
-            ui.notifications.warn(StringUtils.localize("AH.DIALOG.EntriesMissing"));
+            ui.notifications.warn(StringUtils.localize("AH.DIALOG.WARNING.EntriesMissing"));
           },
           { once: true },
         );
@@ -300,7 +300,7 @@ export default class FoundryUtils {
       if (field.options?.config === false) {
         continue;
       }
-      const fieldPath = `${path}.${field.name}`
+      const fieldPath = `${path}.${field.name}`;
       if (!field.recursive && PRIMITIVE_FIELD_NAMES.has(field.constructor.name)) {
         const value = foundry.utils.getProperty(source, fieldPath);
         let data = {

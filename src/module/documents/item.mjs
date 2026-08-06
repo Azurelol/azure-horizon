@@ -5,6 +5,7 @@ import { isActorType } from "../constants.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
+ * @property {String} id
  * @property {AH_ItemType} type
  * @property {ItemDataModel} system
  */
@@ -54,7 +55,7 @@ Hooks.on("preCreateItem", (item, options, userId) => {
 
   // If no slug has been generated
   if (!item.system.slug && item.name) {
-    // Generate FUID using the slugify utility
+    // Generate slug using the slugify utility
     const slug = StringUtils.slugify(item.name);
     if (slug) {
       item.updateSource({ "system.slug": slug });

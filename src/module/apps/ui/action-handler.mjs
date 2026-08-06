@@ -1,4 +1,5 @@
 import { FoundryUtils } from "../../utils/_module.mjs";
+import { WeaponResolver } from "../../helpers/weapon-resolver.mjs";
 
 /**
  * @desc Encapsulates basic character actions.
@@ -40,7 +41,7 @@ export default class ActionHandler {
    * @returns {Promise<void>}
    */
   async attack() {
-    const resolution = await WeaponResolver.prompt(this.actor, true);
+    const resolution = await WeaponResolver.prompt(this.actor);
     if (resolution?.item) {
       resolution.item.roll();
     }
@@ -51,7 +52,7 @@ export default class ActionHandler {
    */
   setupMenu(element) {
     // ATTACKS
-    const attacks = WeaponResolver.getEquippedWeapons(actor, true);
+    const attacks = WeaponResolver.getEquippedWeapons(this.actor);
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"attack\"]", attacks);
     // // SPELLS
     // const spells = ["spell"].map((t) => actor.getItemsByType(t)).flat();

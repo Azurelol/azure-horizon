@@ -51,11 +51,6 @@ export class AHBaseCharacterSheet extends AHActorSheet {
     return context;
   }
 
-  _initializeApplicationOptions(options) {
-    super._initializeApplicationOptions(options);
-    this.#actionHandler = new ActionHandler(this);
-  }
-
   /** @type ActionHandler **/
   #actionHandler;
 
@@ -71,6 +66,9 @@ export class AHBaseCharacterSheet extends AHActorSheet {
     switch (partId) {
       case "sidebar":
       {
+        if (!this.#actionHandler) {
+          this.#actionHandler = new ActionHandler(this.actor);
+        }
         this.#actionHandler.setupMenu(html);
         Handlebars.setupComponent.resourceBar(html);
         break;

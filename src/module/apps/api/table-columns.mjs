@@ -1,5 +1,5 @@
-import { enrichHTML, renderTemplate, systemTemplatePath } from '../../constants.mjs';
-import { StringUtils } from '../../utils/_module.mjs';
+import { enrichHTML, renderTemplate, systemTemplatePath } from "../../constants.mjs";
+import { StringUtils } from "../../utils/_module.mjs";
 
 const TEMPLATES = Object.freeze({
   documentName: systemTemplatePath("components/table/table-column-document-name"),
@@ -7,7 +7,7 @@ const TEMPLATES = Object.freeze({
   actions: systemTemplatePath("components/table/table-column-actions"),
   check: systemTemplatePath("components/table/table-column-check"),
   damage: systemTemplatePath("components/table/table-column-damage"),
-})
+});
 
 /**
  * @typedef AH_DocumentNameColumnOptions
@@ -112,7 +112,7 @@ function damage(options = {}) {
 /**
  * @template {Object} T
  * @param {AH_TextColumnOptions} [options]
- * @return {AH_TableColumnConfig<T>}
+ * @return {AH_TableColumnConfig}
  */
 function check(options = {}) {
   return {
@@ -140,7 +140,7 @@ function check(options = {}) {
  * @property {String} action
  * @property {String} label
  * @property {String} tooltip
- * @property {String} icon
+ * @property {string, ((T) => string)} icon
  * @property {(T) => Record<string, string>} keys
  */
 
@@ -165,6 +165,7 @@ function actions(options = {}) {
     cssClass: options.cssClass,
     renderCell: async (entry) => {
       return renderTemplate(TEMPLATES.actions, {
+        entry,
         dataset: options.dataset instanceof Function ? options.dataset(entry) : options.dataset,
         actions: options.actions,
       }, false);
@@ -180,7 +181,7 @@ const TableColumns = Object.freeze({
   damage,
   check,
 
-  TEMPLATES
+  TEMPLATES,
 });
 
 export default TableColumns;
