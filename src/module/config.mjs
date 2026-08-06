@@ -490,6 +490,9 @@ AH.traits = Object.freeze({
   armor: {
     magical: "AH.TRAIT.Magical",
   },
+  skill: {
+    cooldown: "AH.TRAIT.Cooldown",
+  },
   damage: {
     base: "AH.TRAIT.Base",
     nonLethal: "AH.TRAIT.NonLethal",

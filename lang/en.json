@@ -289,7 +289,10 @@
       "Base": "Base",
       "Light": "Light",
       "Heavy": "Heavy",
-      "Magical": "Magical"
+      "Magical": "Magical",
+      "Flexible": "Flexible",
+      "Cooldown": "Cooldown",
+      "NonLethal": "Non-Lethal"
     },
     "DOMAIN": {
       "Light": "Light",

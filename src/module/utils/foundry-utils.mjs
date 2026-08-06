@@ -253,6 +253,25 @@ export default class FoundryUtils {
    */
 
   /**
+   * @param source
+   * @param fieldPath
+   * @param field
+   * @returns {AH_DataFieldInfo}
+   */
+  static getDataFieldInfo(source, fieldPath, field) {
+    const value = foundry.utils.getProperty(source, fieldPath);
+    let data = {
+      field: field,
+      path: fieldPath,
+      value: value,
+    };
+    if (field.model?.template) {
+      data.template = field.model.template;
+    }
+    return data;
+  }
+
+  /**
    * Gets a document's fields of a type
    * @param {Document} document
    * @param {string|number} documentClass
@@ -271,15 +290,7 @@ export default class FoundryUtils {
       }
       const fieldPath = `${path}.${field.name}`;
       if (field instanceof foundry.data.fields[fieldClass]) {
-        const value = foundry.utils.getProperty(source, fieldPath);
-        let data = {
-          field: field,
-          path: fieldPath,
-          value: value,
-        };
-        if (field.model?.template) {
-          data.template = field.model.template;
-        }
+        let data = this.getDataFieldInfo(source, fieldPath, field);
         fields.push(data);
       }
     }
@@ -303,15 +314,7 @@ export default class FoundryUtils {
       }
       const fieldPath = `${path}.${field.name}`;
       if (!field.recursive && (PRIMITIVE_FIELD_NAMES.has(field.constructor.name) || SYSTEM_FIELD_NAMES.has(field.constructor.name))) {
-        const value = foundry.utils.getProperty(source, fieldPath);
-        let data = {
-          field: field,
-          path: fieldPath,
-          value: value,
-        };
-        if (field.model?.template) {
-          data.template = field.model.template;
-        }
+        let data = this.getDataFieldInfo(source, fieldPath, field);
         fields.push(data);
       }
 
