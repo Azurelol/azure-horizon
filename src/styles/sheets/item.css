@@ -1,8 +1,26 @@
 .ah-item {
+
   .window-content {
     padding: 8px;
   }
+
   .tab {
     padding: 8px;
+  }
+
+  .ah-item__header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ah-item__header__properties {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
   }
 }

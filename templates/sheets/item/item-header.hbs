@@ -1,5 +1,5 @@
 <header class="sheet-header ah-sheet__header">
-  <div class="ah-flex-row --center">
+  <div class="ah-item__header">
     <img
       class="profile-img"
       src="{{item.img}}"
@@ -11,7 +11,7 @@
       data-tooltip="{{item.name}}"
       height="100" width="100">
 
-    <div class="ah-flex-col">
+    <div class="ah-item__header__properties">
       {{formInput fields.name value=item.name}}
         <div class="ah-flex-row">
           {{formGroup systemFields.revision value=system.revision localize=true}}
@@ -19,5 +19,4 @@
         </div>
     </div>
   </div>
-
 </header>

@@ -6,6 +6,11 @@
 
   thead {
     background: var(--ah-background-table-header);
+    tr {
+      th {
+        text-align: center;
+      }
+    }
   }
 
   tbody {
@@ -63,4 +68,11 @@
   > * {
     flex: 0 0 auto;
   }
+}
+
+.ah-table-column__damage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
 }

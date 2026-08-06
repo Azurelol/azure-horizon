@@ -232,11 +232,12 @@ AH.actorTypes = Object.freeze({
 });
 
 /**
- * @typedef {'weapon'|'skill'|'spell'|'consumable'|'attack'|'class'} AH_ItemType
+ * @typedef {'weapon'|'armor'|'accessory'|'skill'|'spell'|'consumable'|'attack'|'class'} AH_ItemType
  */
 
 AH.itemType = {
   weapon: "AH.ITEM.Weapon",
+  armor: "AH.ITEM.Armor",
   skill: "AH.ITEM.Skill",
 };
 

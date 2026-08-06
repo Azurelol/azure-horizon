@@ -478,6 +478,8 @@
     "Item": {
       "attack": "Attack",
       "weapon": "Weapon",
+      "armor": "Armor",
+      "accessory": "Accessory",
       "skill": "Skill",
       "spell": "Spell",
       "class": "Class",

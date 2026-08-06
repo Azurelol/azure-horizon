@@ -83,6 +83,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
           await this.actor.update({ "system.equipment": data });
         }
       }
+
         break;
     }
   }

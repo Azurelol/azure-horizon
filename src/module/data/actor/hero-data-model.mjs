@@ -27,7 +27,7 @@ export default class HeroDataModel extends BaseCharacterDataModel {
   /**
    * @type {Set<AH_ItemType>}
    */
-  static ITEM_TYPES = new Set(["class", "skill", "weapon", "consumable", "spell"]);
+  static ITEM_TYPES = new Set(["class", "skill", "armor", "weapon", "accessory", "consumable", "spell"]);
 
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
