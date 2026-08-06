@@ -10,8 +10,9 @@ export default class WeaponTableRenderer extends AttackTableRenderer {
         action: "equipItem",
         tooltip: "AH.COMMON.Equip",
         icon: (entry) => {
-          if (isActorType(entry)) {
-            if (entry.system.equipment.has(entry)) {
+          if (isActorType(entry.parent)) {
+            const hero = entry.parent;
+            if (hero.system.equipment.has(entry)) {
               return AH.icons.unequip;
             }
           }

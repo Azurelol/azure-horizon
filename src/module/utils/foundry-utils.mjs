@@ -195,7 +195,7 @@ export default class FoundryUtils {
       .map((item) => {
         return {
           name: item.name,
-          icon: `<img class="ah-icon--xs" src="${item.img}" alt="${item.name}"/>`,
+          icon: `<img class="ah-icon --xs" src="${item.img}" alt="${item.name}"/>`,
           callback: async (html) => {
             if (action) {
               return action(item);

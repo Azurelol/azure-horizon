@@ -50,14 +50,6 @@ export class HeroSheet extends AHBaseCharacterSheet {
 
   #weaponTableRenderer = new WeaponTableRenderer();
 
-  /**
-   * @returns {AHItem[]}
-   */
-  getEquipmentEntries() {
-    const entries = this.actor.getItemsByType(...EquipmentDataModel.EQUIPMENT_TYPES);
-    return entries;
-  }
-
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
     await super._preparePartContext(partId, context);
