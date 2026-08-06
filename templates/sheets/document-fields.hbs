@@ -3,7 +3,7 @@
   <div class="ah-field-group">
     {{#if fields}}
       {{#each fields as |field|}}
-        {{formGroup field.field value=field.value name=field.path localize=true}}
+        {{formGroup field.field value=field.value name=field.path localize=true options=field.field.options.options }}
       {{/each}}
     {{/if}}
   </div>

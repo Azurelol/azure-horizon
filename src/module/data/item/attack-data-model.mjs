@@ -2,7 +2,7 @@ import ItemDataModel from "./item-data-model.mjs";
 import { CheckDataModel, DamageDataModel } from "./fields/_module.mjs";
 import Checks from "../../pipelines/checks.mjs";
 import { ActionConfig } from "../../helpers/_module.mjs";
-import { FoundryUtils } from '../../utils/_module.mjs';
+import { FoundryUtils } from "../../utils/_module.mjs";
 
 /**
  * Represents a damaging action in the system.
@@ -16,7 +16,7 @@ export default class AttackDataModel extends ItemDataModel {
     const { SchemaField, StringField, HTMLField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
-        enabled: true
+        enabled: true,
       })),
       check: new EmbeddedDataField(CheckDataModel, { }),
     });
@@ -42,6 +42,5 @@ export default class AttackDataModel extends ItemDataModel {
       config.setDamage(this.damage.type, this.damage.amount);
     }
   }
-
 
 }

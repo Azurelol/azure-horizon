@@ -286,7 +286,10 @@
       "Restore": "Restore",
       "Gain": "Gain",
       "Loss": "Loss",
-      "Base": "Base"
+      "Base": "Base",
+      "Light": "Light",
+      "Heavy": "Heavy",
+      "Magical": "Magical"
     },
     "DOMAIN": {
       "Light": "Light",
@@ -329,6 +332,8 @@
       }
     },
     "FIELD": {
+      "Type": "Type",
+      "Category": "Category",
       "Initial": "Initial",
       "Allies": "Allies",
       "Enemies": "Enemies",
@@ -365,7 +370,12 @@
       "Selector": "Selector",
       "OneHanded": "One-Handed",
       "TwoHanded": "Two-Handed",
-      "SelectorHint": "Determines which characters is the rule element executed on."
+      "SelectorHint": "Determines which characters is the rule element executed on.",
+      "Current": "Current",
+      "Maximum": "Maximum",
+      "Light": "Light",
+      "Heavy": "Heavy",
+      "Traits": "Traits"
     },
     "RULE": {
       "Element": {

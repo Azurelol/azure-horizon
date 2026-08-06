@@ -1,7 +1,7 @@
-import { prepareActiveEffectCategories } from '../../utils/utils.mjs';
-import { systemTemplatePath } from '../../constants.mjs';
-import * as fields from '../../data/item/fields/_module.mjs';
-import { FoundryUtils } from '../../utils/_module.mjs';
+import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
+import { systemTemplatePath } from "../../constants.mjs";
+import * as fields from "../../data/item/fields/_module.mjs";
+import { FoundryUtils } from "../../utils/_module.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -175,7 +175,8 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
    * @private
    */
   async _getFieldsets() {
-    const fieldsets = await FoundryUtils.getFieldsOfType(this.item, "Item", "EmbeddedDataField", "system");
+    let fieldsets = [];
+    fieldsets.push(...await FoundryUtils.getFieldsOfType(this.item, "Item", "EmbeddedDataField", "system"));
     return fieldsets;
   }
 

@@ -1,5 +1,5 @@
-import FieldsetDataModel from '../../api/fieldset-data-model.mjs';
-import { systemTemplatePath } from '../../../constants.mjs';
+import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
+import { systemTemplatePath } from "../../../constants.mjs";
 
 /**
  * @property {Number} level.current The current skill level
@@ -15,7 +15,7 @@ export default class SkillAdvancementDataModel extends FieldsetDataModel {
         current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false }),
         max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false }),
       }),
-      class: new SchemaField({ value: new StringField() }),
+      class: new StringField(),
     });
   }
 

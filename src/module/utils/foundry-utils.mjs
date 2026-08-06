@@ -5,6 +5,7 @@ import { DamageDataModel } from "../data/item/fields/_module.mjs";
 const { api, fields, handlebars } = foundry.applications;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 const PRIMITIVE_FIELD_NAMES = new Set(["StringField", "NumberField", "BooleanField", "ObjectField"]);
+const SYSTEM_FIELD_NAMES = new Set(["TraitsField"]);
 
 export default class FoundryUtils {
 
@@ -301,13 +302,16 @@ export default class FoundryUtils {
         continue;
       }
       const fieldPath = `${path}.${field.name}`;
-      if (!field.recursive && PRIMITIVE_FIELD_NAMES.has(field.constructor.name)) {
+      if (!field.recursive && (PRIMITIVE_FIELD_NAMES.has(field.constructor.name) || SYSTEM_FIELD_NAMES.has(field.constructor.name))) {
         const value = foundry.utils.getProperty(source, fieldPath);
         let data = {
           field: field,
           path: fieldPath,
           value: value,
         };
+        if (field.model?.template) {
+          data.template = field.model.template;
+        }
         fields.push(data);
       }
 

@@ -1,5 +1,5 @@
 import AH from "../../../config.mjs";
-import { TraitsDataModel } from "../../item/fields/_module.mjs";
+import { TraitsField } from "../../item/fields/_module.mjs";
 import { EvaluationContext } from "../../common/_module.mjs";
 import { Damage, DamageData, DamageRequest, Expressions } from "../../../pipelines/_module.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
@@ -11,7 +11,7 @@ const fields = foundry.data.fields;
 /**
  * @property {String} amount
  * @property {AH_DamageType} damageType
- * @property {TraitsDataModel} traits
+ * @property {TraitsField} traits
  */
 export default class ApplyDamageRuleAction extends RuleActionDataModel {
   static {
@@ -27,8 +27,8 @@ export default class ApplyDamageRuleAction extends RuleActionDataModel {
         blank: true,
         nullable: false,
       }),
-      traits: new fields.EmbeddedDataField(TraitsDataModel, {
-        options: FoundryUtils.getFormSelectOptions(AH.traits.damage),
+      traits: new TraitsField({
+        options: TraitsField.formatOptions(AH.traits.damage),
       }),
     });
   }

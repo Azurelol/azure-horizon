@@ -255,6 +255,7 @@ AH.itemGroup = {
 /**
  * @typedef {"one-handed", "two-handed"} AH_Handedness
  */
+
 /**
  * @type {Record<AH_Handedness, string>}
  */
@@ -267,6 +268,18 @@ AH.attackTypes = Object.freeze({
   attack: "AH.ITEM.Attack",
   weapon: "AH.ITEM.Weapon",
 });
+
+/**
+ * @typedef {'light'|'heavy'} AH_ArmorCategory
+ */
+
+/**
+ * @type {Record<AH_Handedness, string>}
+ */
+AH.armorCategories = {
+  light: "AH.FIELD.Light",
+  heavy: "AH.FIELD.Heavy",
+};
 
 /**
  * @description How the active effect's duration is tracked
@@ -474,6 +487,9 @@ AH.traits = Object.freeze({
     gain: "AH.TRAIT.Gain",
     loss: "AH.TRAIT.Loss",
   },
+  armor: {
+    magical: "AH.TRAIT.Magical",
+  },
   damage: {
     base: "AH.TRAIT.Base",
     nonLethal: "AH.TRAIT.NonLethal",
@@ -488,6 +504,7 @@ AH.icons = {
   compendium: "fas fa-book",
   documents: "fa fa-book-bookmark",
 
+  class: "ah-icon-class",
   level: "ah-icon-level",
   hp: "ah-icon-hp",
   mp: "ah-icon-mp",

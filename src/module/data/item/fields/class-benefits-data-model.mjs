@@ -1,5 +1,5 @@
-import FieldsetDataModel from '../../api/fieldset-data-model.mjs';
-import { systemTemplatePath } from '../../../constants.mjs';
+import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
+import { systemTemplatePath } from "../../../constants.mjs";
 
 export default class ClassBenefitsDataModel extends FieldsetDataModel {
   static defineSchema() {
@@ -8,6 +8,6 @@ export default class ClassBenefitsDataModel extends FieldsetDataModel {
   }
 
   static get template() {
-    return systemTemplatePath("sheets/item/fields/class-benefits-data-model")
+    return systemTemplatePath("sheets/item/fields/class-benefits-data-model");
   }
 }
