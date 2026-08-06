@@ -33,6 +33,10 @@
   --ah-primitive-color-grey-850: #00000050;
   --ah-primitive-color-grey-800: #00000080;
 
+  --ah-primitive-color-orange-400: #f0975a; /* lighter, for hover */
+  --ah-primitive-color-orange-500: #e07b3d; /* base */
+  --ah-primitive-color-orange-600: #c4632a; /* darker, for active/pressed */
+
   --ah-primitive-color-brown-500: #9c6b47;
   --ah-primitive-color-brown-600: #7d5236;
   --ah-primitive-color-brown-300: #c9a37f;

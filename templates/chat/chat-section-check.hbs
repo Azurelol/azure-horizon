@@ -1,6 +1,7 @@
 <section class="ah-chat-section__check">
 
   <div class="ah-chat-section__check__details">
+
     <div class="ah-chat-section__check__details__group">
       {{#if result.data.targetedDefense}}
         <div class="ah-chat-section__check__total">
@@ -10,24 +11,32 @@
       {{/if}}
 
       <div class='ah-chat-section__check__components'>
-        <div>
-          {{ahBadge icon=(ahIconClass result.primary.attribute) label=(ahLocaleKey 'attributes' result.primary.attribute format='short') value=result.primary.result}}
-        </div>
-        <div>
-          {{ahBadge icon=(ahIconClass result.secondary.attribute) label=(ahLocaleKey 'attributes' result.secondary.attribute format='short') value=result.secondary.result}}
-        </div>
-        <div>
-          {{ahBadge iconClass='modifier' label='AH.CHARACTER.Modifier.short' value=result.modifierTotal }}
-        </div>
+
+        <span data-tooltip="{{ahLocaleKey 'attributes' result.primary.attribute}}">
+          <i class="ah-icon --s {{ahIconClass result.primary.attribute}}"></i>
+          {{result.primary.result}}
+        </span>
+        <span data-tooltip="{{ahLocaleKey 'attributes' result.secondary.attribute}}">
+          <i class="ah-icon --s {{ahIconClass result.secondary.attribute}}"></i>
+          {{result.secondary.result}}
+        </span>
+        {{#if result.modifierTotal}}
+          <span data-tooltip="{{localize 'AH.CHARACTER.Modifier.long'}}">
+            <i class="ah-icon --s {{ahIconClass 'modifier'}}"></i>
+            {{result.modifierTotal}}
+          </span>
+        {{/if}}
         {{#if (gt difficulty 0)}}
-          <div>
-            {{ahBadge iconClass='difficulty' label='AH.CHECK.DifficultyLevel.short' size='m' tooltip='AH.CHECK.DifficultyLevel.long' value=difficulty }}
-          </div>
+          <span data-tooltip="{{localize 'AH.CHECK.DifficultyLevel.long'}}">
+            <i class="ah-icon --s {{ahIconClass 'difficulty'}}"></i>
+            {{difficulty}}
+          </span>
         {{/if}}
       </div>
     </div>
 
     {{#if result.data.damage}}
+
       <div class="ah-chat-section__check__details__group">
         <div class="ah-chat-section__check__total --damage">
           <i class="ah-icon --s {{ahIconClass 'damage'}}"></i>
@@ -35,12 +44,19 @@
         </div>
 
         <div class='ah-chat-section__check__components'>
-          <div>
-            {{ahBadge iconClass='hr' label='AH.CHECK.HighRoll.short' size='s' tooltip='AH.CHECK.HighRoll.long' value=result.hr.result }}
-          </div>
-          <div>
-            {{ahBadge iconClass='modifier' label='AH.CHECK.Modifier.short' size='s' tooltip='AH.CHECK.Modifier.long' value=result.data.damage.base.amount }}
-          </div>
+
+          <span data-tooltip="{{localize 'AH.CHECK.HighRoll.short'}}">
+            <i class="ah-icon --s {{ahIconClass 'hr'}}"></i>
+            {{result.hr.result}}
+          </span>
+
+          {{#if result.data.damage.base.amount}}
+            <span data-tooltip="{{localize 'AH.CHARACTER.Modifier.long'}}">
+            <i class="ah-icon --s {{ahIconClass 'modifier'}}"></i>
+              {{result.data.damage.base.amount}}
+          </span>
+          {{/if}}
+
         </div>
       </div>
     {{/if}}
@@ -77,6 +93,7 @@
       {{/if}}
     </div>
   {{/if}}
+
 </section>
 
 

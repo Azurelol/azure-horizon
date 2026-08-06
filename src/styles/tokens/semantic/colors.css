@@ -29,6 +29,8 @@
   --ah-background-fumble: linear-gradient(to right, var(--ah-fumble-start), var(--ah-fumble-end));
 
   /* Result Colors */
+  --ah-background-components: #bdbdbd;
+  --ah-border-component: #656262;
   --ah-background-result: linear-gradient(to right, #7da0ca, #004f89);
   --ah-border-result: #373434;
   --ah-background-hit: linear-gradient(to right, #228c22, #91c469);

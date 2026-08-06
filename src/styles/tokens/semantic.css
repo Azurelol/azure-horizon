@@ -42,9 +42,9 @@
   --ah-content-icon-hover: var(--ah-primitive-color-white-100);
 
   /* ---------- ACTION ---------- */
-  --ah-action-surface: var(--ah-primitive-color-azure-500);
-  --ah-action-surface-hover: var(--ah-primitive-color-azure-400);
-  --ah-action-surface-active: var(--ah-primitive-color-azure-600);
+  --ah-action-surface: var(--ah-primitive-color-orange-500);
+  --ah-action-surface-hover: var(--ah-primitive-color-orange-400);
+  --ah-action-surface-active: var(--ah-primitive-color-orange-600);
   --ah-action-content: var(--ah-primitive-color-white-100);
 
   /*--------------------- TYPOGRAPHY ---------------------*/
