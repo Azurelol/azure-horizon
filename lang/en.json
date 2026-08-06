@@ -462,6 +462,7 @@
       "Attack": "Attack",
       "Skill": "Skill",
       "Spell": "Spell",
+      "Feature": "Feature",
       "Defend": "Defend",
       "Equipment": "Equipment",
       "Objective": "Objective",

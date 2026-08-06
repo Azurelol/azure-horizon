@@ -8,11 +8,10 @@
   {{!-- Shared actions --}}
   {{#each (ahArray
             (ahHash id="attack"    label="AH.ACTION.Attack"    tooltip="AH.ACTION.AttackHint"      ctx="attack" )
-            (ahHash id="skill"     label="AH.ACTION.Skill"     tooltip="AH.ACTION.SkillHint"       ctx="skill")
-            (ahHash id="spell"     label="AH.ACTION.Spell"     tooltip="AH.ACTION.SpellHint"       ctx="spell")
             (ahHash id="defend"     label="AH.ACTION.Defend"   tooltip="AH.ACTION.DefendHint"      ctx="")
-            (ahHash id="equipment" label="AH.ACTION.Equipment" tooltip="AH.ACTION.EquipmentHint"   ctx=""   type='hero')
-            (ahHash id="inventory" label="AH.ACTION.Inventory" tooltip="AH.ACTION.InventoryHint"   ctx=""   type='hero')
+            (ahHash id="feature"    label="AH.ACTION.Feature"    tooltip="AH.ACTION.FeatureHint"      ctx="feature" type='adversary' )
+            (ahHash id="skill"     label="AH.ACTION.Skill"     tooltip="AH.ACTION.SkillHint"       ctx="skill" type='hero')
+            (ahHash id="spell"     label="AH.ACTION.Spell"     tooltip="AH.ACTION.SpellHint"       ctx="spell" type='hero')
             (ahHash id="objective" label="AH.ACTION.Objective" tooltip="AH.ACTION.ObjectiveHint"   ctx=""   type='hero')
           )}}
 
@@ -25,7 +24,6 @@
         {{localize this.label}}
       </button>
     {{/unless}}
-
   {{/each}}
 </div>
 </fieldset>

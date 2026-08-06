@@ -51,4 +51,23 @@ export default class HeroDataModel extends BaseCharacterDataModel {
     return HeroDataModel.ITEM_TYPES.has(type);
   }
 
+  /**
+   * @typedef EquippedItems
+   * @property {AHItem} mainHand
+   * @property {AHItem} offHand
+   * @property {AHItem} armor
+   */
+
+  /**
+   * @returns {EquippedItems}
+   */
+  getEquippedItems() {
+    const actor = this.parent;
+    return {
+      mainHand: actor.items.get(this.equipment.mainHand),
+      offHand: actor.items.get(this.equipment.offHand),
+      armor: actor.items.get(this.equipment.armor),
+    };
+  }
+
 }

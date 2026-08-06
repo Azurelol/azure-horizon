@@ -2,7 +2,7 @@ import AH from "../../config.mjs";
 import { isActorType } from "../../constants.mjs";
 import ItemTableRenderer from "./item-table-renderer.mjs";
 
-export default class ArmorTableRenderer extends ItemTableRenderer {
+export default class AccessoryTableRenderer extends ItemTableRenderer {
 
   _getItemActions() {
     return [

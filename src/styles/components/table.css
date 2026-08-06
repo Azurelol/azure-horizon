@@ -29,7 +29,7 @@
 
 .ah-table__cell {
   display: flex;
-  gap: 0.25rem;
+  gap: 1rem;
 }
 
 .ah-table__column__primary {
@@ -48,7 +48,8 @@
     width: 24px;
     height: 24px;
     border-radius: 5px;
-    background: none;
+    background: var(--ah-action-content);
+    border: 1px solid var(--ah-border-control);
     transition:
       transform 0.3s ease,
       opacity 0.3s ease;

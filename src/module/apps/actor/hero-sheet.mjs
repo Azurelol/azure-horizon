@@ -1,8 +1,11 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
 import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
-import { ArmorTableRenderer, AttackTableRenderer, WeaponTableRenderer } from "../item/_module.mjs";
+import {
+  AccessoryTableRenderer,
+  ArmorTableRenderer,
+  WeaponTableRenderer,
+} from "../item/_module.mjs";
 
 /**
  * @extends AHActorSheet
@@ -50,15 +53,21 @@ export class HeroSheet extends AHBaseCharacterSheet {
 
   #weaponTableRenderer = new WeaponTableRenderer();
   #armorTableRenderer = new ArmorTableRenderer();
+  #accessoryTableRenderer = new AccessoryTableRenderer();
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
     await super._preparePartContext(partId, context);
     switch (partId) {
+      case "sidebar": {
+        context.equipment = this.actor.system.getEquippedItems();
+        break;
+      }
       case "equipment":
         context.tables = [
           await this.#weaponTableRenderer.render(this.actor.getItemsByType("weapon")),
           await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
+          await this.#accessoryTableRenderer.render(this.actor.getItemsByType("accessory")),
         ];
         break;
     }
@@ -84,9 +93,16 @@ export class HeroSheet extends AHBaseCharacterSheet {
         if (data) {
           await this.actor.update({ "system.equipment": data });
         }
+        break;
+      }
+      case "armor": {
+        const data = this.actor.system.equipment.toggleArmor(item);
+        if (data) {
+          await this.actor.update({ "system.equipment": data });
+        }
+        break;
       }
 
-        break;
     }
   }
 

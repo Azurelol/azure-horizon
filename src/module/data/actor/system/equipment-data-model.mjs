@@ -18,6 +18,8 @@ export default class EquipmentDataModel extends VersionedDataModel {
       mainHand: new StringField({ nullable: true }),
       offHand: new StringField({ nullable: true }),
       armor: new StringField({ nullable: true }),
+      accessory1: new StringField({ nullable: true }),
+      accessory2: new StringField({ nullable: true }),
     };
   }
 
@@ -45,14 +47,31 @@ export default class EquipmentDataModel extends VersionedDataModel {
       unequipped.push("offHand");
     }
 
-    const twoHanded = item.system.handedness === "twoHanded";
+    const twoHanded = item.system.handedness === "two";
     if (!unequipped.includes("mainHand")) {
       data.mainHand = item.id;
       if (twoHanded) {
+        data.offHand = item.id;
+      }
+      else {
         data.offHand = null;
       }
     }
 
+    return data;
+  }
+
+  /**
+   * @param {AHItem} item
+   * @return {EquipmentDataModel}
+   */
+  toggleArmor(item) {
+    const data = this.toObject();
+    if (data.armor === item.id) {
+      data.armor = null;
+    } else {
+      data.armor = item.id;
+    }
     return data;
   }
 }

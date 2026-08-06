@@ -21,6 +21,35 @@
       {{/if}}
   </div>
 
+  {{#if (eq actorType 'hero')}}
+    <div class="ah-character__sidebar__section">
+      <div class="ah-character__equipment">
+        <a class="ah-character__equipment__slot" data-tooltip="{{equipment.mainHand.name}}" data-action="swapEquipment" data-slot="mainHand">
+          {{#if equipment.mainHand}}
+            <img src="{{equipment.mainHand.img}}" alt="{{equipment.mainHand.name}}">
+          {{else}}
+          {{/if}}
+        </a>
+
+        {{#unless (eq equipment.mainHand.system.handedness 'two')}}
+          <a class="ah-character__equipment__slot" data-tooltip="{{equipment.offHand.name}}" data-action="swapEquipment" data-slot="offHand">
+            {{#if equipment.offHand}}
+              <img src="{{equipment.offHand.img}}" alt="{{equipment.offHand.name}}">
+            {{else}}
+            {{/if}}
+          </a>
+        {{/unless}}
+
+        <a class="ah-character__equipment__slot" data-tooltip="{{equipment.armor.name}}" data-action="swapEquipment" data-slot="armor">
+          {{#if equipment.armor}}
+            <img src="{{equipment.armor.img}}" alt="{{equipment.armor.name}}">
+          {{else}}
+          {{/if}}
+        </a>
+      </div>
+    </div>
+  {{/if}}
+
   {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
 
   <div class="ah-character__sidebar__section">
