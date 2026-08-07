@@ -1,9 +1,5 @@
 import AH from "../../config.mjs";
-import {
-  AffinitiesDataModel,
-  AttributesDataModel, ParameterDataModel,
-  ResourceDataModel,
-} from "./system/_module.mjs";
+import { AffinitiesDataModel, AttributesDataModel, ResourceDataModel } from "./system/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import ActorDataModel from "./actor-data-model.mjs";
 import { VersionedDataModel } from "../api/_module.mjs";
@@ -23,28 +19,15 @@ export class CharacterResourcesDataModel extends VersionedDataModel {
 }
 
 /**
- * @property {ParameterDataModel} def
- * @property {ParameterDataModel} mdef
- */
-export class CharacterParametersDataModel extends VersionedDataModel {
-  static defineSchema() {
-    const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
-    return Object.assign(super.defineSchema(), {
-      def: new EmbeddedDataField(ParameterDataModel, {}),
-      mdef: new EmbeddedDataField(ParameterDataModel, {}),
-    });
-  }
-}
-
-/**
  * Base model for characters.
+ * @abstract
  * @property {Number} level
  * @property {AttributesDataModel} attributes
  * @property {AffinitiesDataModel} affinities
  * @property {CharacterResourcesDataModel} resources
  * @property {CharacterParametersDataModel} parameters
  */
-export default class BaseCharacterDataModel extends ActorDataModel {
+export default class CharacterDataModel extends ActorDataModel {
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {

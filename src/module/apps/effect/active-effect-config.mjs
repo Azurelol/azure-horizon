@@ -1,4 +1,4 @@
-import { systemTemplatePath } from "../../constants.mjs";
+import { isActorType, systemTemplatePath } from "../../constants.mjs";
 import {
   RuleElementDataModel,
 } from "../../data/effect/_module.mjs";
@@ -122,6 +122,65 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     }
     return partContext;
   }
+
+  #effectKeysRequireUpdate(effectKeyOptions, targetDocument) {
+    if (!effectKeyOptions) {
+      return true;
+    }
+    const targetDocumentName = targetDocument.documentName;
+    const targetDocumentType = targetDocument.type;
+    const { documentName, documentType } = effectKeyOptions.dataset;
+    return documentName !== targetDocumentName || documentType !== targetDocumentType;
+  }
+
+  #expandedRuleElements = {};
+
+  /** @inheritDoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    const html = this.element;
+
+    // CHANGES Tab
+    const effectKeyOptions = html.querySelector("#effect-key-options");
+    const targetDocument = this.document.target ?? this.dummyActor;
+
+    if (this.#effectKeysRequireUpdate(effectKeyOptions, targetDocument)) {
+      effectKeyOptions?.remove();
+      const attributeKeys = getAttributeKeys(targetDocument);
+      const datalist = document.createElement("datalist");
+      datalist.id = "effect-key-options";
+      datalist.dataset.documentName = targetDocument.documentName;
+      datalist.dataset.documentType = targetDocument.type;
+
+      attributeKeys.forEach((opt) => {
+        const option = document.createElement("option");
+        option.value = opt;
+        datalist.appendChild(option);
+      });
+
+      html.appendChild(datalist);
+    }
+
+    html.querySelectorAll(".key input").forEach((el) => {
+      el.setAttribute("list", "effect-key-options");
+    });
+
+    // Remove assigning statuses since we don't do that
+    const statusForm = html.querySelector("div.form-group.statuses");
+    statusForm.remove();
+
+    // Add toggle handler to track expanded/contracted state for RE summaries
+    const reElements = this.element.querySelectorAll(".pfu-foldout[data-rule-element]:not([data-rule-element=\"\"])"); // Selector should grab only items with a *non-empty* data-rule-element
+    for (const elem of reElements) {
+      if (elem instanceof HTMLDetailsElement) {
+        elem.addEventListener("toggle", () => {
+          this.#expandedRuleElements[elem.dataset.ruleElement] = elem.open;
+        });
+      }
+    }
+  }
+
+  /*-------------------------------------------------------------------------*/
 
   /**
    * @param {PointerEvent} event   The originating click event
@@ -253,4 +312,47 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     }
   }
 
+}
+
+/**
+ * @returns {String[]}
+ */
+function getAttributeKeys(document) {
+  const attributeKeys = [];
+
+  function walk(field) {
+    // Plain schema container — recurse into its sub-fields
+    if (field instanceof foundry.data.fields.SchemaField) {
+      for (const sub of Object.values(field.fields)) walk(sub);
+      return;
+    }
+
+    // Embedded DataModel — recurse into its own schema
+    if (field instanceof foundry.data.fields.EmbeddedDataField) {
+      for (const sub of Object.values(field.model.schema.fields)) walk(sub);
+      return;
+    }
+
+    // Array field — the array itself is a valid AE target (for push/ADD).
+    // If its elements are schema-shaped, expose those paths too.
+    if (field instanceof foundry.data.fields.ArrayField) {
+      attributeKeys.push(field.fieldPath);
+      if ((field.element instanceof foundry.data.fields.SchemaField) || (field.element instanceof foundry.data.fields.EmbeddedDataField)) {
+        walk(field.element);
+      }
+      return;
+    }
+
+    // Leaf field (NumberField, StringField, BooleanField, etc.)
+    attributeKeys.push(field.fieldPath);
+  }
+
+  if (document.system) {
+    for (const field of Object.values(document.system.schema.fields)) {
+      walk(field);
+    }
+  }
+
+  attributeKeys.sort((a, b) => a.localeCompare(b));
+  return attributeKeys;
 }

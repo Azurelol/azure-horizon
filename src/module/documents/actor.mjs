@@ -309,7 +309,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
       case "long":
         hp = mhp;
         mp = mmp;
-        if (this.type === "character") {
+        if (this.type === "hero") {
           tp = 0;
         }
         break;
@@ -321,7 +321,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
         mp = this.system.resources.mp.value;
         mp = Math.min(mp + (mmp / 2), mmp);
 
-        if (this.type === "character") {
+        if (this.type === "hero") {
           tp = this.system.resources.tp.value;
           tp = Math.min(tp - 5, 0);
         }

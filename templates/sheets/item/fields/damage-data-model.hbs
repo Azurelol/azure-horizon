@@ -2,6 +2,5 @@
   {{ahStringField path=(ahConcat path '.type') label="AH.COMMON.Type" value=value.type options=(ahFormOptions 'damageTypes')}}
   {{ahStringField path=(ahConcat path '.amount') label="AH.COMMON.Amount" value=value.amount }}
 
-  {{log 'damage data field' field }}
   {{ahTraitsField schema=field.fields.traits path=(ahConcat path '.traits') label="AH.COMMON.Traits" value=value.traits options=(ahFormOptions 'traits.damage')}}
 {{/ahOptionalFieldset}}

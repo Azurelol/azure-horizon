@@ -459,6 +459,11 @@
       "Settings": "Settings"
     },
     "STATUS": {
+      "MODIFIER": {
+        "Status": "Status",
+        "Equipment": "Equipment",
+        "Situation": "Situation"
+      },
       "Crisis": "Crisis",
       "KO": "KO"
     },

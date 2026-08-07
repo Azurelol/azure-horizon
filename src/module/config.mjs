@@ -30,6 +30,16 @@ AH.statusEffects = Object.freeze({
 });
 
 /**
+ * @typedef {'status'|'equipment'|'situation'} AH_Modifier
+ */
+
+AH.modifiers = Object.freeze({
+  status: { label: "AH.STATUS.MODIFIER.Status" },
+  equipment: { label: "AH.STATUS.MODIFIER.Equipment" },
+  situation: { label: "AH.STATUS.MODIFIER.Situation" },
+});
+
+/**
  * @typedef {'reduced'|'standard'|'powerful'} AH_Potency
  */
 

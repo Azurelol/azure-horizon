@@ -1,10 +1,10 @@
-import BaseCharacterDataModel, {
-  CharacterParametersDataModel,
+import CharacterDataModel, {
   CharacterResourcesDataModel,
-} from "./base-character-data-model.mjs";
+} from "./character-data-model.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import EquipmentDataModel from "./system/equipment-data-model.mjs";
 import { ResourceDataModel } from "./system/_module.mjs";
+import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -51,7 +51,7 @@ class HeroResourcesDataModel extends CharacterResourcesDataModel {
  * @property {HeroParametersDataModel} parameters
  * @property {EquipmentDataModel} equipment
  */
-export default class HeroDataModel extends BaseCharacterDataModel {
+export default class HeroDataModel extends CharacterDataModel {
 
   /**
    * @type {Set<AH_ItemType>}
@@ -74,6 +74,24 @@ export default class HeroDataModel extends BaseCharacterDataModel {
 
   _prepareParameters() {
     super._prepareParameters();
+  }
+
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    const updates = foundry.utils.mergeObject({
+      prototypeToken: {
+        actorLink: true,
+        disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+        sight: {
+          enabled: true,
+        },
+      },
+    }, data, { insertKeys: false, insertValues: false, inplace: false });
+
+    this.parent.updateSource(updates);
   }
 
   supportsItemType(type) {

@@ -1,7 +1,7 @@
 import { VersionedDataModel } from "../../api/_module.mjs";
 
 /**
- * @property {Number} bonus
+ * @property {Number} bonus Can be modified by AEs.
  * @property {Number} current
  */
 export default class ParameterDataModel extends VersionedDataModel {

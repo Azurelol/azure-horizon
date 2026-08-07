@@ -1,6 +1,5 @@
 import { enrichHTML } from "../constants.mjs";
 import StringUtils from "./string-utils.mjs";
-import { DamageDataModel } from "../data/item/fields/_module.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;

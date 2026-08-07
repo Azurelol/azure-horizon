@@ -1,8 +1,8 @@
-import BaseCharacterDataModel, {
-  CharacterParametersDataModel,
+import CharacterDataModel, {
   CharacterResourcesDataModel,
-} from "./base-character-data-model.mjs";
+} from "./character-data-model.mjs";
 import { ResourceDataModel } from "./system/_module.mjs";
+import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -22,7 +22,7 @@ class AdversaryResourcesDataModel extends CharacterResourcesDataModel {
 /**
  * Represents the data of an adversary in combat.
  */
-export default class AdversaryDataModel extends BaseCharacterDataModel {
+export default class AdversaryDataModel extends CharacterDataModel {
 
   /**
    * @type {Set<AH_ItemType>}
