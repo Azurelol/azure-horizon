@@ -318,7 +318,7 @@ const onRenderCheck = (data, result, actor, item, registerCallback) => {
     const traits = config.getTraits();
 
     const reduced = getChatAction(damage.duplicate(d => {
-      d.useBase = true;
+      d.removeModifiers();
     }), sourceInfo, traits);
     const standard = getChatAction(damage, sourceInfo, traits);
     const powerful = getChatAction(damage.duplicate(d => {

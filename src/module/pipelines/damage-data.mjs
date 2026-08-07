@@ -20,6 +20,8 @@
  * @property {Number} multiplier Should default to 1.
  */
 
+import { ObjectUtils } from "../utils/_module.mjs";
+
 /**
  * Contains damage data used in pipelines.
  * @property {DamageComponent[]} components
@@ -80,7 +82,15 @@ export default class DamageData {
     if (this.useBase) {
       return this.base.amount;
     }
-    return this.base.amount + this.components.slice(1).reduce((agg, curr) => agg + curr.amount, 0); }
+    return this.base.amount + this.components.slice(1).reduce((agg, curr) => agg + curr.amount, 0);
+  }
+
+  /**
+   * Removes all modifiers from the data.
+   */
+  removeModifiers() {
+    this.components = this.components.slice(1);
+  }
 
   /**
    * @returns {Number}
@@ -102,7 +112,8 @@ export default class DamageData {
    * @return {DamageData}
    */
   duplicate(config) {
-    config(this);
-    return this;
+    const copy = new DamageData(ObjectUtils.duplicate(this));
+    config(copy);
+    return copy;
   }
 }

@@ -5,6 +5,22 @@
   border-radius: 8px;
   overflow: hidden;
 
+  .ah-potency-table__tier {
+    width: 60px;
+  }
+
+  .ah-potency-table__description {
+    padding: 6px 8px;
+  }
+
+  .ah-potency-table__actions {
+    padding: 6px 8px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: end;
+  }
+
   --ah-potency-reduced-surface: var(--ah-primitive-color-amber-600);
   --ah-potency-reduced-icon: var(--ah-primitive-color-amber-400);
 
@@ -44,14 +60,5 @@
   }
 
 
-  &__description {
-    padding: 6px 8px;
-  }
 
-  &__actions {
-    padding: 6px 8px;
-    display: flex;
-    gap: 4px;
-    align-items: center;
-  }
 }

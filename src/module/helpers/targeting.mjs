@@ -31,8 +31,8 @@ function constructData(actor) {
     link: actor.link,
     result: "none",
     defenses: {
-      def: actor.system.derived.def.value,
-      mdef: actor.system.derived.mdef.value,
+      def: actor.system.parameters.def.value,
+      mdef: actor.system.parameters.mdef.value,
       dex: actor.system.attributes.dex.current,
       ins: actor.system.attributes.ins.current,
       mig: actor.system.attributes.mig.current,
