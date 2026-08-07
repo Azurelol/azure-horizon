@@ -1,8 +1,6 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import Handlebars from "../../helpers/handlebars.mjs";
-import { AttackTableRenderer, EquipmentTableRenderer } from '../item/_module.mjs';
-import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
+import { AttackTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
 import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
 
 /**
@@ -11,13 +9,14 @@ import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
  * @property {AdversaryDataModel} system
  * @inheritDoc
  */
-export class AHAdversarySheet extends AHBaseCharacterSheet {
+export class AdversarySheet extends AHBaseCharacterSheet {
 
   /** @inheritdoc */
   static TABS = {
     primary: {
       tabs: [
         { id: "features", label: "AH.SHEET.Tabs.Features", icon: "ra ra-fluffy-swirl" },
+        { id: "parameters", label: "AH.SHEET.Tabs.Parameters", icon: "ra ra-data" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
       ],
       initial: "features",
@@ -29,6 +28,9 @@ export class AHAdversarySheet extends AHBaseCharacterSheet {
     ...super.PARTS,
     features: {
       template: systemTemplatePath("sheets/actor/character/character-features"),
+    },
+    parameters: {
+      template: systemTemplatePath("sheets/actor/character/character-parameters"),
     },
     effects: {
       template: systemTemplatePath("sheets/document-effects"),
@@ -44,8 +46,12 @@ export class AHAdversarySheet extends AHBaseCharacterSheet {
     switch (partId) {
       case "features":
         context.tables = [
-          await this.#attackTableRenderer.render(this.actor.getItemsByType('attack'))
+          await this.#attackTableRenderer.render(this.actor.getItemsByType("attack")),
         ];
+        break;
+
+      case "parameters":
+        context.modifiers = this.actor.system.parameters.resolveModifiers();
         break;
     }
     return context;

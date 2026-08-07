@@ -18,4 +18,8 @@ export default class DamageModifiersDataModel extends VersionedDataModel {
     /** @type DamageModifier[] **/
     let modifiers = [];
   }
+
+  resolveModifiers() {
+
+  }
 }

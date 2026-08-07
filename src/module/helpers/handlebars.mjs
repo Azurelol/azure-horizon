@@ -141,11 +141,20 @@ export default Object.freeze({
       }
       return false;
     });
-    Handlebars.registerHelper("ahPercentage", function (value, max) {
+    Handlebars.registerHelper("ahPercent", function (value, max) {
       value = parseFloat(value);
       max = parseFloat(max);
       const percentage = (value / max) * 100;
       return percentage.toFixed(2) + "%";
+    });
+    Handlebars.registerHelper("ahPercentModifier", function (multiplier, { hash }) {
+      const relative = hash.relative ?? true;
+      const decimals = hash.decimals ?? 0;
+
+      const value = relative ? (multiplier - 1) * 100 : multiplier * 100;
+      const sign = relative && (value > 0) ? "+" : "";
+
+      return `${sign}${value.toFixed(decimals)}%`;
     });
     Handlebars.registerHelper("ahImage", (src, classes, label) => {
       // eslint-disable-next-line no-undef

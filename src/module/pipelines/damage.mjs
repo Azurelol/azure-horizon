@@ -107,8 +107,8 @@ function calculateResult(context) {
     // TODO: Perhaps do above?
     const bonus = context.bonuses[inst.type];
     if (bonus) {
-      amount += bonus.increment;
-      amount *= bonus.multiplier;
+      amount += bonus.additive;
+      amount *= bonus.multiplicative;
     }
     instances.push({
       type: inst.type,

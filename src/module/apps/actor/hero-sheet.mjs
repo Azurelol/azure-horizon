@@ -28,6 +28,8 @@ export class HeroSheet extends AHBaseCharacterSheet {
       tabs: [
         { id: "features", label: "AH.SHEET.Tabs.Features", icon: "ra ra-fluffy-swirl" },
         { id: "equipment", label: "AH.SHEET.Tabs.Equipment", icon: "ra ra-double-team" },
+        { id: "profile", label: "AH.SHEET.Tabs.Profile", icon: "ra ra-campfire" },
+        { id: "parameters", label: "AH.SHEET.Tabs.Parameters", icon: "ra ra-circle-of-circles" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
       ],
       initial: "features",
@@ -43,6 +45,12 @@ export class HeroSheet extends AHBaseCharacterSheet {
     },
     equipment: {
       template: systemTemplatePath("sheets/actor/character/character-equipment"),
+    },
+    profile: {
+      template: systemTemplatePath("sheets/actor/character/character-profile"),
+    },
+    parameters: {
+      template: systemTemplatePath("sheets/actor/character/character-parameters"),
     },
     effects: {
       template: systemTemplatePath("sheets/document-effects"),
@@ -69,6 +77,9 @@ export class HeroSheet extends AHBaseCharacterSheet {
           await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
           await this.#accessoryTableRenderer.render(this.actor.getItemsByType("accessory")),
         ];
+        break;
+      case "parameters":
+        context.modifiers = this.actor.system.parameters.resolveModifiers();
         break;
     }
     return context;
@@ -102,7 +113,6 @@ export class HeroSheet extends AHBaseCharacterSheet {
         }
         break;
       }
-
     }
   }
 

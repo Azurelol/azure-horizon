@@ -36,23 +36,22 @@ export class ModifiersDataModel extends VersionedDataModel {
   }
 
   /**
-   * @param {ModifiersDataModel} model
-   * @returns {{flat: number, multiplier: number}}
+   * @returns {ResolvedModifiers}
    */
-  static resolveModifiers(model) {
-    let flat = 0;
-    let multiplier = 1;
+  resolveModifiers() {
+    let _additive = 0;
+    let _multiplicative = 1;
 
-    for (const type of Object.keys(model)) {
-      const { additive, multiplicative } = model[type];
-      if (additive.length) flat += Math.max(0, ...additive) + Math.min(0, ...additive);
+    for (const type of [this.status, this.equipment]) {
+      const { additive, multiplicative } = type;
+      if (additive.length) _additive += Math.max(0, ...additive) + Math.min(0, ...additive);
       if (multiplicative.length) {
-        multiplier *= multiplicative.reduce((best, m) =>
+        _multiplicative *= multiplicative.reduce((best, m) =>
           Math.abs(m - 1) > Math.abs(best - 1) ? m : best, 1);
       }
     }
 
-    return { flat, multiplier };
+    return { additive: _additive, multiplicative: _multiplicative };
   }
 }
 
@@ -69,3 +68,66 @@ export class ExchangeModifiersDataModel extends foundry.abstract.DataModel {
     };
   }
 }
+
+/**
+ * @typedef ModifierEntry
+ * @property {String} key
+ * @property {Number} additive
+ * @property {Number} multiplicative
+ */
+
+/**
+ * Resolves all modifiers and returns them.
+ * @property {DataModel} model
+ * @returns {ModifierEntry[]}
+ */
+function resolveFromModel(model) {
+  /** @param {ModifiersDataModel} model **/
+  const collectModifiers = (model) => {
+    return model.resolveModifiers();
+  };
+
+  /** @param {ExchangeModifiersDataModel} model **/
+  const collectExchange = (model) => {
+    return {
+      outgoing: model.outgoing.resolveModifiers(),
+      incoming: model.incoming.resolveModifiers(),
+    };
+  };
+
+  const results = [];
+
+  const walk = (node, path) => {
+    if (!node || (typeof node !== "object")) return;
+
+    if (node instanceof ExchangeModifiersDataModel) {
+      const { outgoing, incoming } = collectExchange(node);
+      results.push({ key: `${path}.outgoing`, ...outgoing });
+      results.push({ key: `${path}.incoming`, ...incoming });
+      return;
+    }
+
+    if (node instanceof ModifiersDataModel) {
+      results.push({ key: path, ...collectModifiers(node) });
+      return;
+    }
+
+    if (node instanceof foundry.abstract.DataModel) {
+      const fields = node.schema?.fields ?? {};
+      for (const fieldName of Object.keys(fields)) {
+        walk(node[fieldName], path ? `${path}.${fieldName}` : fieldName);
+      }
+    }
+  };
+
+  const rootFields = model.schema?.fields ?? {};
+  for (const fieldName of Object.keys(rootFields)) {
+    walk(model[fieldName], fieldName);
+  }
+
+  return results;
+}
+
+export const Modifiers = Object.freeze({
+  resolveFromModel,
+});

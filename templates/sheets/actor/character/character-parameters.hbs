@@ -1,0 +1,31 @@
+<section class="tab parameters {{tab.cssClass}}" data-tab="parameters" data-group="primary">
+
+  <div class="ah-grid-col-2">
+    <fieldset>
+      <legend>{{localize 'AH.COMMON.Damage'}}</legend>
+      <table>
+        <thead>
+        <tr>
+          <th>{{localize "AH.STATUS.MODIFIER.Key"}}</th>
+          <th>{{localize "AH.STATUS.MODIFIER.Additive"}}</th>
+          <th>{{localize "AH.STATUS.MODIFIER.Multiplicative"}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each modifiers.damage as |entry|}}
+          <tr>
+            <td>{{entry.key}}</td>
+            <td>{{numberFormat entry.additive decimals=0 sign=true}}</td>
+            <td>{{ahPercentModifier entry.multiplicative}}</td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="3">{{localize "AH.COMMON.None"}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </fieldset>
+  </div>
+
+</section>

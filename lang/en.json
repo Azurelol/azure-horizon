@@ -15,7 +15,9 @@
         "Features": "Features",
         "Equipment": "Equipment",
         "Description": "Description",
+        "Parameters": "Parameters",
         "Items": "Items",
+        "Profile": "Profile",
         "Effects": "Effects",
         "Codex": "Codex"
       },
@@ -462,7 +464,10 @@
       "MODIFIER": {
         "Status": "Status",
         "Equipment": "Equipment",
-        "Situation": "Situation"
+        "Situation": "Situation",
+        "Key": "Key",
+        "Additive": "Additive",
+        "Multiplicative": "Multiplicative"
       },
       "Crisis": "Crisis",
       "KO": "KO"

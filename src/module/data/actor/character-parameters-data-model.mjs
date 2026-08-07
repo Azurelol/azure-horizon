@@ -1,4 +1,4 @@
-import { VersionedDataModel } from "../api/_module.mjs";
+import { Modifiers, VersionedDataModel } from "../api/_module.mjs";
 import { CheckModifiersDataModel, ParameterDataModel } from "./system/_module.mjs";
 import DamageModifiersDataModel from "./system/damage-modifiers-data-model.mjs";
 
@@ -17,4 +17,19 @@ export class CharacterParametersDataModel extends VersionedDataModel {
       check: new EmbeddedDataField(CheckModifiersDataModel, {}),
     });
   }
+
+  /**
+   * @typedef CharacterModifiers
+   * @property {ModifierEntry[]} damage
+   */
+
+  /**
+   * @returns {CharacterModifiers}
+   */
+  resolveModifiers() {
+    let result = {};
+    result.damage = Modifiers.resolveFromModel(this.damage);
+    return result;
+  }
+
 }

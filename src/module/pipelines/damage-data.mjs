@@ -16,8 +16,8 @@
 
 /**
  * @typedef DamageBonus
- * @property {Number} increment Should default to 0.
- * @property {Number} multiplier Should default to 1.
+ * @property {Number} additive Should default to 0.
+ * @property {Number} multiplicative Should default to 1.
  */
 
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";

@@ -126,7 +126,7 @@ async function prompt(actor, type, initialConfig = {}) {
     type: type,
     typeLabel: StringUtils.localize(AH.checkTypes[type]),
     label: initialConfig.label,
-    increment: initialConfig.increment !== undefined,
+    increment: initialConfig.additive !== undefined,
     attributes: AH.attributes,
     attributeValues: attributeValues,
     attributeOptions: FoundryUtils.generateConfigIconOptions(Object.keys(AH.attributes), AH.attributes, AH.icons),
