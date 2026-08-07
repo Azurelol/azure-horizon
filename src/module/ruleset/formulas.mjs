@@ -5,6 +5,17 @@ const TP_BASE = 10;
 const MIN_ATTRIBUTE_DIE = 4;
 const MAX_ATTRIBUTE_DIE = 12;
 
+/**
+ * @typedef Modifier
+ * @property {Number} additive Should default to 0.
+ * @property {Number} multiplicative Should default to 1.
+ */
+
+/**
+ * @typedef {Modifier} ParameterModifier
+ * @property {String} label
+ */
+
 export default class Formulas {
 
   static CRITICAL_THRESHOLD = MIN_ATTRIBUTE_DIE;
@@ -55,5 +66,28 @@ export default class Formulas {
    */
   static calculateMagicDefense(attributes) {
     return attributes.ins.current;
+  }
+
+  /**
+   * @param {ParameterModifier[]} modifiers
+   * @return {Modifier}
+   */
+  static joinModifiers(modifiers) {
+    let _additive = 0;
+    let _multiplicative = 1;
+
+    for (const { additive, multiplicative } of modifiers) {
+      _additive += additive;
+      _multiplicative *= multiplicative;
+    }
+
+    return { additive: _additive, multiplicative: _multiplicative };
+  }
+
+  /**
+   * @param {Number} amount
+   * @param {ParameterModifier} modifier
+   */
+  static modifyDamage(amount, modifier) {
   }
 }

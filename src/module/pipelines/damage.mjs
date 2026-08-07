@@ -17,26 +17,21 @@ import Events from "./events.mjs";
 import { StringUtils, TokenUtils } from "../utils/_module.mjs";
 import { DamageRequest } from "./_module.mjs";
 import PipelineContext from "./pipeline-context.mjs";
-
-/**
- * @typedef DamageInstance
- * @property {AH_DamageType} type
- * @property {Number} amount
- */
+import { Formulas } from "../ruleset/_module.mjs";
 
 /**
  * @property {DamageData} damageData
  * @property {String} message
  * @property {DamageInstance[]} instances Combined from the input damage data.
  * @property {DamageResult} result Calculated during processing.
- * @property {Record<AH_DamageType, DamageBonus>} bonuses Gathered during processing.
+ * @property {Record<AH_DamageType, ParameterModifier>} modifiers Gathered during processing.
  * @property {Boolean} pressured Whether the actor was pressured by the damage they took.
  * @property {String} pressureTrigger The pressure trigger (weapon group, affinity)
  */
 class DamageContext extends PipelineContext {
   constructor(request, actor) {
     super(request, actor);
-    this.bonuses = {};
+    this.modifiers = {};
   }
 }
 
@@ -49,7 +44,7 @@ class DamageContext extends PipelineContext {
 
 /**
  * @param {DamageContext} context
- * @return {Promise<Boolean>}
+ * @return {Boolean}
  */
 function joinComponents(context) {
   const _components = new Map();
@@ -83,14 +78,20 @@ function joinComponents(context) {
  * @param {DamageContext} context
  * @return {Promise<Boolean>}
  */
-async function collectIncrements(context) {
-}
+async function collectModifiers(context) {
+  /** @type CharacterParametersDataModel **/
+  const incoming = context.subject.system.parameters;
 
-/**
- * @param {DamageContext} context
- * @return {Boolean}
- */
-function collectMultipliers(context) {
+  for (const inst of context.instances) {
+    const mods = incoming.damage.resolve(inst.type, "incoming");
+    // TODO: Leave them separate?
+    const modifier = Formulas.joinModifiers(mods);
+    context.modifiers[inst.type] = {
+      [inst.type]: modifier,
+    };
+  }
+
+  // TODO: CALL EVENT
 
 }
 
@@ -104,11 +105,10 @@ function calculateResult(context) {
   let instances = [];
   for (const inst of context.instances) {
     let amount = inst.amount;
-    // TODO: Perhaps do above?
-    const bonus = context.bonuses[inst.type];
-    if (bonus) {
-      amount += bonus.additive;
-      amount *= bonus.multiplicative;
+    const modifier = context.modifiers[inst.type];
+    if (modifier) {
+      amount += modifier.additive;
+      amount *= modifier.multiplicative;
     }
     instances.push({
       type: inst.type,
@@ -148,8 +148,7 @@ async function process(request) {
     let context = new DamageContext(request, subject);
     ui.notifications.info(`Applying damage to ${context.subject.name}`, { localize: true });
     joinComponents(context);
-    await collectIncrements(context);
-    collectMultipliers(context);
+    await collectModifiers(context);
     calculateResult(context);
     if (context.result === undefined) {
       throw new Error("Failed to generate result during pipeline");
@@ -303,6 +302,19 @@ const onProcessCheck = (check, actor, item, registerCallback) => {
   if (config.hasDamage) {
     config.modifyDamage((dmg) => {
       dmg.add("AH.CHECK.HighRoll.short", dmg.type, check.hr.result);
+
+      /** @type CharacterParametersDataModel **/
+      const outgoing = actor?.system?.parameters;
+      if (outgoing) {
+        for (const component of dmg.components) {
+          const mods = outgoing.damage.resolve(component.type, "outgoing");
+          if (mods.length) {
+            for (const mod of mods) {
+              dmg.modify(dmg.type, mod);
+            }
+          }
+        }
+      }
     });
   }
 };

@@ -5,6 +5,8 @@ import DamageModifiersDataModel from "./system/damage-modifiers-data-model.mjs";
 /**
  * @property {ParameterDataModel} def
  * @property {ParameterDataModel} mdef
+ * @property {DamageModifiersDataModel} damage
+ * @property {CheckModifiersDataModel} check
  */
 export class CharacterParametersDataModel extends VersionedDataModel {
   static defineSchema() {
@@ -26,7 +28,7 @@ export class CharacterParametersDataModel extends VersionedDataModel {
   /**
    * @returns {CharacterModifiers}
    */
-  resolveModifiers() {
+  summarizeModifiers() {
     let result = {};
     result.damage = Modifiers.resolveFromModel(this.damage);
     return result;

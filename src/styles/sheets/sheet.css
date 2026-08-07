@@ -2,7 +2,8 @@
 
   .window-content {
     .tab {
-      /*padding: 1rem;*/
+      padding: 1rem;
+      overflow: auto;
     }
   }
   .effects-list {

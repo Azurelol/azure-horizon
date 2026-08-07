@@ -1,14 +1,9 @@
 import AH from "../../config.mjs";
 import { FoundryUtils } from "../../utils/_module.mjs";
 import VersionedDataModel from "./versioned-data-model.mjs";
+import { Formulas } from "../../ruleset/_module.mjs";
 
 const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField } = foundry.data.fields;
-
-/**
- * @typedef ResolvedModifiers
- * @property {Number} additive
- * @property {Number} multiplicative
- */
 
 /**
  * Used for character-level modifiers such as damage dealt, healing received, etc.
@@ -36,22 +31,35 @@ export class ModifiersDataModel extends VersionedDataModel {
   }
 
   /**
-   * @returns {ResolvedModifiers}
+   * @returns {ParameterModifier[]}
    */
   resolveModifiers() {
-    let _additive = 0;
-    let _multiplicative = 1;
+    /** @type ParameterModifier[] **/
+    let modifiers = [];
 
-    for (const type of [this.status, this.equipment]) {
-      const { additive, multiplicative } = type;
-      if (additive.length) _additive += Math.max(0, ...additive) + Math.min(0, ...additive);
-      if (multiplicative.length) {
-        _multiplicative *= multiplicative.reduce((best, m) =>
+    for (const key of Object.keys(AH.modifiers)) {
+      const modifier = this[key];
+      if (!modifier) continue;
+
+      let _additive = 0;
+      let _multiplicative = 1;
+
+      if (modifier.additive.length) {
+        _additive += Math.max(0, ...modifier.additive) + Math.min(0, ...modifier.additive);
+      }
+      if (modifier.multiplicative.length) {
+        _multiplicative *= modifier.multiplicative.reduce((best, m) =>
           Math.abs(m - 1) > Math.abs(best - 1) ? m : best, 1);
       }
+
+      modifiers.push({
+        key,
+        additive: _additive,
+        multiplicative: _multiplicative,
+      });
     }
 
-    return { additive: _additive, multiplicative: _multiplicative };
+    return modifiers;
   }
 }
 
@@ -84,14 +92,14 @@ export class ExchangeModifiersDataModel extends foundry.abstract.DataModel {
 function resolveFromModel(model) {
   /** @param {ModifiersDataModel} model **/
   const collectModifiers = (model) => {
-    return model.resolveModifiers();
+    return Formulas.joinModifiers(model.resolveModifiers());
   };
 
   /** @param {ExchangeModifiersDataModel} model **/
   const collectExchange = (model) => {
     return {
-      outgoing: model.outgoing.resolveModifiers(),
-      incoming: model.incoming.resolveModifiers(),
+      outgoing: Formulas.joinModifiers(model.outgoing.resolveModifiers()),
+      incoming: Formulas.joinModifiers(model.incoming.resolveModifiers()),
     };
   };
 

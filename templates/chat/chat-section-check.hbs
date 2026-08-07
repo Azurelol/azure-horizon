@@ -20,10 +20,10 @@
           <i class="ah-icon --s {{ahIconClass result.secondary.attribute}}"></i>
           {{result.secondary.result}}
         </span>
-        {{#if result.modifierTotal}}
+        {{#if result.componentTotal}}
           <span data-tooltip="{{localize 'AH.CHARACTER.Modifier.long'}}">
             <i class="ah-icon --s {{ahIconClass 'modifier'}}"></i>
-            {{result.modifierTotal}}
+            {{result.componentTotal}}
           </span>
         {{/if}}
         {{#if (gt difficulty 0)}}

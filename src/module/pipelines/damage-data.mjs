@@ -15,9 +15,9 @@
  */
 
 /**
- * @typedef DamageBonus
- * @property {Number} additive Should default to 0.
- * @property {Number} multiplicative Should default to 1.
+ * @typedef DamageInstance
+ * @property {AH_DamageType} type
+ * @property {Number} amount
  */
 
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
@@ -26,6 +26,7 @@ import AH from "../config.mjs";
 /**
  * Contains damage data used in pipelines.
  * @property {DamageComponent[]} components
+ * @property {Record<AH_DamageType, ParameterModifier[]>} modifiers
  * @property {AH_DamageType} type The base damage type
  * @property {Boolean} useBase Whether to return the total damage without any modifiers.
  */
@@ -34,6 +35,7 @@ export default class DamageData {
   constructor(data = {}) {
     Object.assign(this, data);
     this.components ??= [];
+    this.modifiers ??= {};
   }
 
   /**
@@ -74,12 +76,25 @@ export default class DamageData {
       amount: amount,
       enabled: true,
     });
+    return this;
+  }
+
+  /**
+   * @param {AH_DamageType} type
+   * @param {ParameterModifier} modifier
+   */
+  modify(type, modifier) {
+    if (this.modifiers[type] === undefined) {
+      this.modifiers[type] = [];
+    }
+    this.modifiers[type].push(modifier);
+    return this;
   }
 
   /**
    * @returns {Number} The sum of all bonus damage modifiers ({@linkcode modifiers})
    */
-  get modifierTotal() {
+  get componentTotal() {
     if (this.useBase) {
       return this.base.amount;
     }
@@ -97,7 +112,7 @@ export default class DamageData {
    * @returns {Number}
    */
   get total() {
-    return this.modifierTotal;
+    return this.componentTotal;
   }
 
   /**

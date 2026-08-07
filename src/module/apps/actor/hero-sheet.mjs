@@ -79,7 +79,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
         ];
         break;
       case "parameters":
-        context.modifiers = this.actor.system.parameters.resolveModifiers();
+        context.modifiers = this.actor.system.parameters.summarizeModifiers();
         break;
     }
     return context;

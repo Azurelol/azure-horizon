@@ -155,6 +155,10 @@ AH.codex = {
 };
 
 /**
+ * @typedef {'incoming'|'outgoing'} AH_ModifierDirection
+ */
+
+/**
  * @typedef {'physical'|'elemental'|'spiritual'} AH_DamageGroup
  */
 
@@ -165,7 +169,7 @@ AH.damageGroups = Object.freeze({
 });
 
 /**
- * @typedef {'untyped'|'slashing'|'piercing'|'blunt'|'fire'|'cold'|'electric'|'acid'|'light'|'dark'|'mental'|'poison'} AH_DamageType
+ * @typedef {'untyped'|'slashing'|'piercing'|'bludgeoning'|'fire'|'cold'|'electric'|'acid'|'light'|'dark'|'mental'|'poison'} AH_DamageType
  */
 
 /**
