@@ -2,5 +2,6 @@ export { default as AttributeDataModel } from "./attribute-data-model.mjs";
 export { default as AttributesDataModel } from "./attributes-data-model.mjs";
 export { default as AffinityDataModel } from "./affinity-data-model.mjs";
 export { default as AffinitiesDataModel } from "./affinities-data-model.mjs";
-export { BaseParametersDataModel, HeroParametersDataModel } from "./parameters-data-model.mjs";
+export { default as ParameterDataModel } from "./parameter-data-model.mjs";
 export { default as EquipmentDataModel } from "./equipment-data-model.mjs";
+export { default as ResourceDataModel } from "./resource-data-model.mjs";

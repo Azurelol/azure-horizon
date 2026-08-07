@@ -159,7 +159,7 @@ async function process(request) {
     let resource = "hp";
     let color = "red";
     let damageTaken = context.result.total;
-    const difference = subject.system.parameters[resource].value - damageTaken;
+    const difference = subject.system.resources[resource].value - damageTaken;
     if (difference < 0) {
       damageTaken -= Math.abs(difference);
     }

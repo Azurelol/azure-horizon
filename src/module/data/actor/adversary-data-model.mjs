@@ -1,5 +1,23 @@
-import BaseCharacterDataModel from "./base-character-data-model.mjs";
-import { BaseParametersDataModel } from "./system/parameters-data-model.mjs";
+import BaseCharacterDataModel, {
+  CharacterParametersDataModel,
+  CharacterResourcesDataModel,
+} from "./base-character-data-model.mjs";
+import { ResourceDataModel } from "./system/_module.mjs";
+
+const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
+
+/**
+ * @property {ResourceDataModel} hp
+ * @property {ResourceDataModel} mp
+ */
+class AdversaryResourcesDataModel extends CharacterResourcesDataModel {
+  static defineSchema() {
+    return Object.assign(super.defineSchema(), {
+      ip: new EmbeddedDataField(ResourceDataModel, {}),
+      tp: new EmbeddedDataField(ResourceDataModel, {}),
+    });
+  }
+}
 
 /**
  * Represents the data of an adversary in combat.
@@ -14,7 +32,8 @@ export default class AdversaryDataModel extends BaseCharacterDataModel {
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      parameters: new EmbeddedDataField(BaseParametersDataModel, {}),
+      parameters: new EmbeddedDataField(CharacterParametersDataModel, {}),
+      resources: new EmbeddedDataField(AdversaryResourcesDataModel, {}),
     });
   }
 

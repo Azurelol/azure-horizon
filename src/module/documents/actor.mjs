@@ -67,8 +67,8 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
       if ("level" in changed.system) {
       }
 
-      // const changedHP = changed.system?.parameters?.hp;
-      // const currentHP = this.system.parameters.hp;
+      // const changedHP = changed.system?.resources?.hp;
+      // const currentHP = this.system.resources.hp;
       //
       // if ((typeof changedHP?.value === "number") && currentHP) {
       //   const hpChange = changedHP.value - currentHP.value;
@@ -296,10 +296,10 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
     let hp, mp, tp, ip;
 
-    const mhp = this.system.parameters.hp?.max;
-    const mmp = this.system.parameters.mp?.max;
-    const mtp = this.system.parameters.tp?.max;
-    const mip = this.system.parameters.ip?.max;
+    const mhp = this.system.resources.hp?.max;
+    const mmp = this.system.resources.mp?.max;
+    const mtp = this.system.resources.tp?.max;
+    const mip = this.system.resources.ip?.max;
 
     switch (type) {
       case "resupply":
@@ -315,14 +315,14 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
         break;
 
       case "short":
-        hp = this.system.parameters.hp.value;
+        hp = this.system.resources.hp.value;
         hp = Math.min(hp + (mhp / 2), mhp);
 
-        mp = this.system.parameters.mp.value;
+        mp = this.system.resources.mp.value;
         mp = Math.min(mp + (mmp / 2), mmp);
 
         if (this.type === "character") {
-          tp = this.system.parameters.tp.value;
+          tp = this.system.resources.tp.value;
           tp = Math.min(tp - 5, 0);
         }
         break;
@@ -330,16 +330,16 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
     let updateData = {};
     if (hp !== undefined) {
-      updateData["system.parameters.hp.value"] = hp;
+      updateData["system.resources.hp.value"] = hp;
     }
     if (mp !== undefined) {
-      updateData["system.parameters.mp.value"] = mp;
+      updateData["system.resources.mp.value"] = mp;
     }
     if (tp !== undefined) {
-      updateData["system.parameters.tp.value"] = tp;
+      updateData["system.resources.tp.value"] = tp;
     }
     if (ip !== undefined) {
-      updateData["system.parameters.ip.value"] = ip;
+      updateData["system.resources.ip.value"] = ip;
     }
 
     await this.update(updateData);
