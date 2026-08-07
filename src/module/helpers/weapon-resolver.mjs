@@ -43,10 +43,9 @@ function getEquippedWeapons(actor) {
     const mainHand = getEquipment(actor, "mainHand");
     const offHand = getEquipment(actor, "offHand");
     const armor = getEquipment(actor, "armor");
-
     equippedWeapons.push(...new Set([mainHand, offHand, armor]));
   }
-  if (actor.type === "adversary") {
+  else if (actor.type === "adversary") {
     equippedWeapons.push(...actor.getItemsByType("attack"));
   }
 

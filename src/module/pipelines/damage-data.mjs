@@ -96,4 +96,13 @@ export default class DamageData {
   get types() {
     return Array.from(new Set(this.components.map(c => c.type)));
   }
+
+  /**
+   * @param {(data: DamageData) => void} config
+   * @return {DamageData}
+   */
+  duplicate(config) {
+    config(this);
+    return this;
+  }
 }

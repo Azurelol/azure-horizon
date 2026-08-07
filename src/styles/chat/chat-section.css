@@ -202,7 +202,15 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 100%;
+
+  &.--compact {
+    width: 20px;
+    gap: 0;
+    i, img {
+      width: 20px;
+      height: 20px;
+    }
+  }
 
   color: var(--ah-action-content);
   background: var(--ah-action-surface);

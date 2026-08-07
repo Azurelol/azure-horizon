@@ -459,6 +459,12 @@
       "Settings": "Settings"
     },
     "ACTION": {
+      "POTENCY": {
+        "Tier": "Tier",
+        "Standard": "Standard",
+        "Reduced": "Reduced",
+        "Powerful": "Powerful"
+      },
       "Attack": "Attack",
       "Skill": "Skill",
       "Spell": "Spell",
@@ -471,6 +477,7 @@
       "ApplyDamageTooltip": "Apply damage to selected tokens."
     },
     "PIPELINE": {
+      "CriticalBonus": "Critical Bonus",
       "ResourceGain": "Gain",
       "ResourceLoss": "Loss",
       "ChatApplySelected": "Apply to selected token.",

@@ -1,0 +1,20 @@
+<a class="ah-chat-action {{classes}}"
+   data-action="{{name}}" data-fields="{{fields}}" data-tooltip="{{localize tooltip}}">
+  {{#each dataset}}
+    data-{{@key}}="{{this}}"
+  {{/each}}
+  {{#if dataset.actor-img}}
+    <img class="ah-icon {{classes}}" alt="{{localize tooltip}}" src="{{dataset.actor-img}}" />
+  {{/if}}
+  {{#if action.label}}
+    <span>{{~localize action.label}}</span>
+  {{/if}}
+  {{#if img}}
+    <img class="ah-icon {{classes}}" alt="{{localize tooltip}}"
+         style="{{style}} {{#if color}}color: {{color}};{{/if}}"
+         src="{{img}}" />
+  {{else}}
+    <i class="ah-icon {{icon}} {{classes}}"
+       style="{{style}} {{#if color}}color: {{color}};{{/if}}"></i>
+  {{/if}}
+</a>

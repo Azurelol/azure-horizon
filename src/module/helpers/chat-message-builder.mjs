@@ -5,7 +5,7 @@ import FlagBuilder from "./flag-builder.mjs";
 
 /**
  * @typedef ChatMessageBuilderData
- * @property {ChatMessageSection} sections
+ * @property {ChatMessageSectionCollection} sections
  * @property {Promise[]} postRenderActions
  * @property {Tag[]} tags
  * @property {Object} flags

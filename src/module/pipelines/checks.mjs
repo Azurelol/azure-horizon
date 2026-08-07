@@ -1,4 +1,11 @@
-import { ActionConfig, ChatAction, ChatMessageBuilder, ChatSectionOrder, FlagBuilder } from "../helpers/_module.mjs";
+import {
+  ActionConfig,
+  ChatAction,
+  ChatMessageBuilder,
+  ChatMessageSections,
+  ChatSectionOrder,
+  FlagBuilder,
+} from "../helpers/_module.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 import { renderTemplate, systemTemplatePath } from "../constants.mjs";
 import { StringUtils } from "../utils/_module.mjs";
@@ -318,8 +325,21 @@ async function renderCheck(result, actor, item, flags = {}) {
     },
   });
 
+  // Flags
+  const fb = new FlagBuilder(flags);
+  fb.set(Flags.ChatMessage.Source, result.sourceInfo);
+
+  // Potencies Section
+  const potencies = config.potencies;
+  if (potencies) {
+    for (const action of [...potencies.reduced.actions, ...potencies.standard.actions, ...potencies.powerful.actions]) {
+      fb.set(action.flag.key, action.flag.value);
+    }
+    ChatMessageSections.potencies(builderData.sections, potencies);
+  }
+
   // Create the chat builder
-  flags = new FlagBuilder(flags).set(Flags.ChatMessage.Source, result.sourceInfo).toObject();
+  flags = fb.toObject();
   const chatBuilder = new ChatMessageBuilder(actor, item).withData(builderData).withFlags(flags);
 
   // Add flavor

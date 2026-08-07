@@ -30,6 +30,16 @@ AH.statusEffects = Object.freeze({
 });
 
 /**
+ * @typedef {'reduced'|'standard'|'powerful'} AH_Potency
+ */
+
+AH.potencies = Object.freeze({
+  reduced: { label: "AH.ACTION.POTENCY.Reduced", icon: "ah-icon-potency-reduced" },
+  standard: { label: "AH.ACTION.POTENCY.Standard", icon: "ah-icon-potency-standard" },
+  powerful: { label: "AH.ACTION.POTENCY.Powerful", icon: "ah-icon-potency-powerful" },
+});
+
+/**
  * System themes.
  * @type {Record<String, {label, path}>}
  */
@@ -145,7 +155,7 @@ AH.damageGroups = Object.freeze({
 });
 
 /**
- * @typedef {'slashing'|'piercing'|'blunt'|'fire'|'cold'|'electric'|'acid'|'light'|'dark'|'mental'|'poison'} AH_DamageType
+ * @typedef {'untyped'|'slashing'|'piercing'|'blunt'|'fire'|'cold'|'electric'|'acid'|'light'|'dark'|'mental'|'poison'} AH_DamageType
  */
 
 /**
@@ -575,6 +585,10 @@ AH.icons = {
   damage: "ah-icon-damage",
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",
+
+  reduced: "ra ra-level-two",
+  standard: "ra ra-level-three",
+  powerful: "ra ra-level-four",
 
   full: "fa fa-hourglass",
   half: "fa fa-hourglass-half",

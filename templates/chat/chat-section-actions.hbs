@@ -24,24 +24,7 @@
         <!-- Actions -->
         {{#each ../actions as |action|}}
           {{#if targeted}}
-            <span class="ah-tag">
-							<a data-action="{{name}}"
-                 data-id="{{target.uuid}}"
-                 data-fields="{{fields}}"
-                {{#each dataset}}
-                 data-{{@key}}="{{this}}"
-                {{/each}}
-                 data-tooltip="{{localize tooltip}}">
-                {{#if img}}
-                  <img class="ah-icon --xs {{classes}}" alt="{{localize tooltip}}"
-                       style="{{style}} {{#if color}}color: {{color}};{{/if}}"
-                       src="{{img}}" />
-                {{else}}
-                  <i class="ah-icon --xs {{icon}} {{classes}}"
-                     style="{{style}} {{#if color}}color: {{color}};{{/if}}"></i>
-                {{/if}}
-							</a>
-					</span>
+            {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs'}}
           {{/if}}
         {{/each}}
       </div>
@@ -52,24 +35,7 @@
 {{#each actions as |action|}}
   {{#if selected}}
     <div class="ah-chat-section__actions">
-      <a class="ah-chat-action"
-        data-action="{{name}}" data-fields="{{fields}}" data-tooltip="{{localize tooltip}}">
-        {{#each dataset}}
-         data-{{@key}}="{{this}}"
-        {{/each}}
-        {{#if dataset.actor-img}}
-          <img class="ah-icon --xs {{classes}}" alt="{{localize tooltip}}" src="{{dataset.actor-img}}" />
-        {{/if}}
-        <span>{{~localize action.label}}</span>
-        {{#if img}}
-          <img class="ah-icon --xs {{classes}}" alt="{{localize tooltip}}"
-               style="{{style}} {{#if color}}color: {{color}};{{/if}}"
-               src="{{img}}" />
-        {{else}}
-          <i class="ah-icon --xs {{icon}} {{classes}}"
-             style="{{style}} {{#if color}}color: {{color}};{{/if}}"></i>
-        {{/if}}
-      </a>
+      {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs'}}
     </div>
   {{/if}}
 {{/each}}

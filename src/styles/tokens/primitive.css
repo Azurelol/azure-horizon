@@ -92,5 +92,23 @@
   --ah-primitive-color-azure-600: #2c74bd;
   --ah-primitive-color-azure-400: #5fa5ea;
 
+  --ah-primitive-color-clay-400: #c17a5e;
+  --ah-primitive-color-clay-600: #8a4f38;
+
+  --ah-primitive-color-slate-400: #7c8a9c;
+  --ah-primitive-color-slate-600: #4a5568;
+
+  --ah-primitive-color-moss-400: #7f9c6e;
+  --ah-primitive-color-moss-600: #4f6b42;
+
+  --ah-primitive-color-amber-400: #e0b04a;
+  --ah-primitive-color-amber-600: #a8792b;
+
+  --ah-primitive-color-green-400: #7cb872;
+  --ah-primitive-color-green-600: #4a8a3f;
+
+  --ah-primitive-color-violet-400: #b276e0;
+  --ah-primitive-color-violet-600: #7d3fa8;
+
   --ah-primitive-image-placeholder: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }

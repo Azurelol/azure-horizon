@@ -6,6 +6,7 @@
 @import "tokens/component.css";
 
 @import "chat/chat-section.css";
+@import "chat/potency.css";
 
 @import "components/skeleton.css";
 @import "components/tags.css";

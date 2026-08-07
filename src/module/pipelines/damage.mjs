@@ -311,8 +311,26 @@ const onProcessCheck = (check, actor, item, registerCallback) => {
 const onRenderCheck = (data, result, actor, item, registerCallback) => {
   if (result.data.damage) {
     const config = new ActionConfig(result);
-    result.data.damage = new DamageData(result.data.damage);
-    data.actions.push(getChatAction(result.data.damage, config.sourceInfo, config.getTraits()));
+    const damage = new DamageData(result.data.damage);
+    result.data.damage = damage;
+
+    const sourceInfo = config.sourceInfo;
+    const traits = config.getTraits();
+
+    const reduced = getChatAction(damage.duplicate(d => {
+      d.useBase = true;
+    }), sourceInfo, traits);
+    const standard = getChatAction(damage, sourceInfo, traits);
+    const powerful = getChatAction(damage.duplicate(d => {
+      d.add("AH.PIPELINE.CriticalBonus", "untyped", config.check.hr.dice);
+    }), sourceInfo, traits);
+
+    data.actions.push();
+    config.setPotencies((potencies) => {
+      potencies.reduced.actions.push(reduced);
+      potencies.standard.actions.push(standard);
+      potencies.powerful.actions.push(powerful);
+    });
   }
 
 };

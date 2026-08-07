@@ -6,6 +6,8 @@ import TableColumns from "../apps/api/table-columns.mjs";
 
 const COMPONENT_TEMPLATES = Object.freeze({
   empty: systemTemplatePath("components/empty"),
+  chatAction: systemTemplatePath("components/partials/chat-action"),
+  targetedAction: systemTemplatePath("components/partials/chat-action-targeted"),
 
   table: systemTemplatePath("components/table"),
 

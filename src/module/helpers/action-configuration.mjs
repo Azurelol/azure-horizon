@@ -22,6 +22,7 @@ const INITIAL_CHECK = "initialCheck";
 const HR_ZERO = "hrZero";
 const ACTIONS = "actions";
 const KEYBOARD_MODIFIERS = "keyboardModifiers";
+const ACTION_POTENCIES = "actionPotencies";
 
 /**
  * @param {boolean} hrZero
@@ -56,7 +57,7 @@ export class ActionInspector {
 
   //----------------------------------------------------------/
   /**
-   * @return {CheckOptions}
+   * @return {CheckResult}
    */
   get check() {
     return this.#check;
@@ -104,6 +105,13 @@ export class ActionInspector {
    */
   get actions() {
     return this.data[ACTIONS];
+  }
+
+  /**
+   * @returns {ActionPotencyTable}
+   */
+  get potencies() {
+    return this.data[ACTION_POTENCIES];
   }
 
   /**
@@ -263,7 +271,7 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
-   * @param {(damage: DamageData) => DamageData} callback
+   * @param {(damage: DamageData) => void} callback
    * @return {ActionConfig}
    */
   modifyDamage(callback) {
@@ -282,6 +290,29 @@ export class ActionConfig extends ActionInspector {
     const actions = this.actions;
     actions.push(action);
     this.setData(ACTIONS, actions);
+  }
+
+  /**
+   * @param {(potencies: ActionPotencyTable) => void} callback
+   * @return {ActionConfig}
+   */
+  setPotencies(callback) {
+    const potencies = this.potencies ?? {
+      reduced: {
+        actions: [],
+      },
+      standard: {
+        actions: [],
+      },
+      powerful: {
+        actions: [],
+      },
+    };
+    if (potencies) {
+      callback(potencies);
+      this.setData(ACTION_POTENCIES, potencies);
+    }
+    return this;
   }
 
   /**
