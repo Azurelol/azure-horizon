@@ -332,8 +332,12 @@ async function renderCheck(result, actor, item, flags = {}) {
   // Potencies Section
   const potencies = config.potencies;
   if (potencies) {
-    for (const action of [...potencies.reduced.actions, ...potencies.standard.actions, ...potencies.powerful.actions]) {
-      fb.set(action.flag.key, action.flag.value);
+    for (const potency of [potencies.reduced, potencies.standard, potencies.powerful]) {
+      for (const component of potency.components) {
+        for (const action of component.actions) {
+          fb.set(action.flag.key, action.flag.value);
+        }
+      }
     }
     ChatMessageSections.potencies(builderData.sections, potencies);
   }

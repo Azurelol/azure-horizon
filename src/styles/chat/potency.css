@@ -4,21 +4,26 @@
   border: 1px solid var(--ah-border-surface);
   border-radius: 8px;
   overflow: hidden;
+  margin: 8px 0 0;
 
   .ah-potency-table__tier {
     width: 60px;
   }
 
-  .ah-potency-table__description {
-    padding: 6px 8px;
-  }
-
-  .ah-potency-table__actions {
+  .ah-potency-table__components {
     padding: 6px 8px;
     display: flex;
     gap: 4px;
     align-items: center;
-    justify-content: end;
+    justify-content: start;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
   }
 
   --ah-potency-reduced-surface: var(--ah-primitive-color-amber-600);

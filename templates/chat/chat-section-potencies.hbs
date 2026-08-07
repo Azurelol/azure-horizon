@@ -1,15 +1,18 @@
 <table class="ah-potency-table">
   <tbody>
+
   <tr class="ah-potency-table__row --reduced">
     <td class="ah-potency-table__tier">
       <i class="ah-icon --xs {{ahIconClass 'reduced'}}" data-tooltip="{{localize "AH.ACTION.POTENCY.Reduced"}}"></i>
     </td>
-    <td class="ah-potency-table__description">
-      {{#if potencies.reduced.text}}{{potencies.reduced.text}}{{else}}{{potencies.reduced.placeholder}}{{/if}}
-    </td>
-    <td class="ah-potency-table__actions">
-      {{#each potencies.reduced.actions}}
-        {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact"}}
+    <td class="ah-potency-table__components">
+      {{#each potencies.reduced.components as |component|}}
+        <div>
+          {{{component.text}}}
+          {{#each component.actions}}
+            {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact"}}
+          {{/each}}
+        </div>
       {{/each}}
     </td>
   </tr>
@@ -18,12 +21,14 @@
     <td class="ah-potency-table__tier">
       <i class="ah-icon --xs {{ahIconClass 'standard'}}" data-tooltip="{{localize "AH.ACTION.POTENCY.Standard"}}"></i>
     </td>
-    <td class="ah-potency-table__description">
-      {{#if potencies.standard.text}}{{potencies.standard.text}}{{else}}{{potencies.standard.placeholder}}{{/if}}
-    </td>
-    <td class="ah-potency-table__actions">
-      {{#each potencies.standard.actions}}
-        {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact"}}
+    <td class="ah-potency-table__components">
+      {{#each potencies.standard.components as |component|}}
+        <div>
+          {{{component.text}}}
+          {{#each component.actions}}
+            {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact"}}
+          {{/each}}
+        </div>
       {{/each}}
     </td>
   </tr>
@@ -32,12 +37,14 @@
     <td class="ah-potency-table__tier">
       <i class="ah-icon --xs {{ahIconClass 'powerful'}}" data-tooltip="{{localize "AH.ACTION.POTENCY.Powerful"}}"></i>
     </td>
-    <td class="ah-potency-table__description">
-      {{#if potencies.powerful.text}}{{potencies.powerful.text}}{{else}}{{potencies.powerful.placeholder}}{{/if}}
-    </td>
-    <td class="ah-potency-table__actions">
-      {{#each potencies.powerful.actions}}
-        {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact"}}
+    <td class="ah-potency-table__components">
+      {{#each potencies.powerful.components as |component|}}
+        <div>
+          {{{component.text}}}
+          {{#each component.actions}}
+            {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact"}}
+          {{/each}}
+        </div>
       {{/each}}
     </td>
   </tr>

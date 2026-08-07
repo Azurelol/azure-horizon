@@ -299,13 +299,13 @@ export class ActionConfig extends ActionInspector {
   setPotencies(callback) {
     const potencies = this.potencies ?? {
       reduced: {
-        actions: [],
+        components: [],
       },
       standard: {
-        actions: [],
+        components: [],
       },
       powerful: {
-        actions: [],
+        components: [],
       },
     };
     if (potencies) {

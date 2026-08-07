@@ -311,25 +311,39 @@ const onProcessCheck = (check, actor, item, registerCallback) => {
 const onRenderCheck = (data, result, actor, item, registerCallback) => {
   if (result.data.damage) {
     const config = new ActionConfig(result);
-    const damage = new DamageData(result.data.damage);
-    result.data.damage = damage;
-
+    const standardDamage = new DamageData(result.data.damage);
+    result.data.damage = standardDamage;
     const sourceInfo = config.sourceInfo;
     const traits = config.getTraits();
 
-    const reduced = getChatAction(damage.duplicate(d => {
-      d.removeModifiers();
-    }), sourceInfo, traits);
-    const standard = getChatAction(damage, sourceInfo, traits);
-    const powerful = getChatAction(damage.duplicate(d => {
-      d.add("AH.PIPELINE.CriticalBonus", "untyped", config.check.hr.dice);
-    }), sourceInfo, traits);
+    const standard = getChatAction(standardDamage, sourceInfo, traits);
 
-    data.actions.push();
     config.setPotencies((potencies) => {
-      potencies.reduced.actions.push(reduced);
-      potencies.standard.actions.push(standard);
-      potencies.powerful.actions.push(powerful);
+
+      const reducedDamage = standardDamage.duplicate(d => {
+        d.removeModifiers();
+      });
+      const reducedAction = getChatAction(reducedDamage, sourceInfo, traits);
+
+      potencies.reduced.components.push({
+        text: reducedDamage.toString(),
+        actions: [reducedAction],
+      });
+
+      potencies.standard.components.push({
+        text: standardDamage.toString(),
+        actions: [standard],
+      });
+
+      const powerfulDamage = standardDamage.duplicate(d => {
+        d.add("AH.PIPELINE.CriticalBonus", "untyped", config.check.hr.dice);
+      });
+      const powerful = getChatAction(powerfulDamage, sourceInfo, traits);
+
+      potencies.powerful.components.push({
+        text: powerfulDamage.toString(),
+        actions: [powerful],
+      });
     });
   }
 

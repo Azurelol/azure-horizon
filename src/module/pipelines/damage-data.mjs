@@ -20,7 +20,8 @@
  * @property {Number} multiplier Should default to 1.
  */
 
-import { ObjectUtils } from "../utils/_module.mjs";
+import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
+import AH from "../config.mjs";
 
 /**
  * Contains damage data used in pipelines.
@@ -105,6 +106,26 @@ export default class DamageData {
    */
   get types() {
     return Array.from(new Set(this.components.map(c => c.type)));
+  }
+
+  /**
+   * @returns {string}
+   */
+  toString() {
+    const totals = new Map();
+
+    for (const component of this.components) {
+      if (!component.enabled) {
+        continue;
+      }
+      const amount = Number(component.amount) || 0;
+      totals.set(component.type, (totals.get(component.type) ?? 0) + amount);
+    }
+
+    const parts = Array.from(totals.entries())
+      .map(([type, amount]) => `${amount} ${StringUtils.localize(AH.damageTypes[type].label)}`);
+
+    return `[${parts.join(" + ")}]`;
   }
 
   /**
