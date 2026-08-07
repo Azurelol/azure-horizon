@@ -1,3 +1,9 @@
+import DocumentMixin from "./document-mixin.mjs";
+import AH from "../config.mjs";
+import { statusEffects } from "../data/effect/_module.mjs";
+import { FlagBuilder } from "../helpers/_module.mjs";
+import { SourceInfo } from "../data/common/_module.mjs";
+
 /**
  * @typedef ActorData
  * @property {string|null} _id            The _id which uniquely identifies this Actor document
@@ -15,8 +21,6 @@
  * @property {DocumentFlags} flags        An object of optional key/value flags
  * @property {DocumentStats} _stats       An object of creation and access information
  */
-
-import DocumentMixin from "./document-mixin.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
@@ -36,6 +40,8 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
   static CHARACTER_TYPES = new Set(["hero", "adversary"]);
 
+  /*-------------------------------------------------------------------------*/
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
@@ -51,6 +57,179 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     source = super.migrateData(source);
     return source;
   }
+
+  /**
+   * @override
+   */
+  async _preUpdate(changed, options, user) {
+    if (this.isCharacterType) {
+      // If the level was changed, reset...?
+      if ("level" in changed.system) {
+      }
+
+      // const changedHP = changed.system?.parameters?.hp;
+      // const currentHP = this.system.parameters.hp;
+      //
+      // if ((typeof changedHP?.value === "number") && currentHP) {
+      //   const hpChange = changedHP.value - currentHP.value;
+      //   const levelChanged = !!changed.system && ("level" in changed.system);
+      //   if ((hpChange !== 0) && !levelChanged) {
+      //     options.damageTaken = hpChange * -1;
+      //   }
+      // }
+    }
+    await super._preUpdate(changed, options, user);
+  }
+
+  /**
+   * @override
+   */
+  async _onUpdate(changed, options, userId) {
+    if (this.isCharacterType) {
+      const { hp } = this.system?.parameters || {};
+
+      if (hp && (userId === game.userId)) {
+
+        // Apply the crisis effect
+        await this.applyCrisis();
+
+        // Handle KO status
+        const shouldBeKO = hp.value === 0;
+        const isKO = this.statuses.has("ko");
+        if (shouldBeKO !== isKO) {
+          Hooks.call(
+            AH.hooks.DEFEAT_EVENT,
+            /** @type DefeatEvent **/
+            {
+              actor: this,
+              token: this.resolveToken(),
+            },
+          );
+          //await Effects.toggleStatusEffect(this, "ko", InlineSourceInfo.fromInstance(this));
+        }
+      }
+    }
+    super._onUpdate(changed, options, userId);
+  }
+
+  /*-------------------------------------------------------------------------*/
+
+  /**
+   * A helper function to toggle a status effect on an Actor.
+   * Designed based off TokenDocument#toggleActiveEffect to properly interact with token hud.
+   * @param {string} statusEffectId The status effect id based on CONFIG.statusEffects
+   * @param {SourceInfo} sourceInfo
+   * @param {AH_ActiveEffectConfiguration} config
+   * @returns {Promise<boolean>} Whether the ActiveEffect is now on or off
+   */
+  async toggleStatusEffect(statusEffectId, sourceInfo = undefined, config = undefined) {
+    if (!this.isCharacterType) {
+      ui.notifications.error("AH.DIALOG.WARNING.EffectsNotSupported", { localize: true });
+      return false;
+    }
+    const existing = this.effects.filter((effect) => AHActor.isStatusEffect(effect, statusEffectId));
+    if (existing.length > 0) {
+      await Promise.all(
+        existing.map((e) => {
+          //CommonEvents.status(this, statusEffectId, false);
+          //sendToChatEffectRemoved(e, this);
+          return e.delete();
+        }),
+      );
+      return false;
+    } else {
+      await this.createStatusEffect(statusEffectId, sourceInfo, config);
+      return true;
+    }
+  }
+
+  /**
+   * @param {string} statusEffectId The status effect id based on CONFIG.statusEffects
+   * @param {SourceInfo} sourceInfo
+   * @param {AH_ActiveEffectConfiguration} config
+   * @returns {Promise<boolean>}
+   */
+  async createStatusEffect(statusEffectId, sourceInfo, config) {
+    if (!this.isCharacterType) {
+      ui.notifications.error("AH.DIALOG.WARNING.EffectsNotSupported", { localize: true });
+      return false;
+    }
+    const statusEffect = AHActor.resolveStatusEffect(statusEffectId);
+    if (statusEffect) {
+      // eslint-disable-next-line no-undef
+      const instance = await ActiveEffect.create(
+        {
+          ...statusEffect,
+          statuses: [statusEffectId],
+          flags: this.createEffectFlags(statusEffect, sourceInfo, statusEffectId),
+        },
+        { parent: this },
+      );
+      await instance.applyConfiguration(config);
+      //CommonEvents.status(actor, statusEffectId, true);
+    }
+    return true;
+  }
+
+  /**
+   * @param {ActiveEffectData} effect
+   * @param {SourceInfo} sourceInfo
+   * @param {String} identifier An unique identifier for the effect
+   * @returns {Object}
+   */
+  createEffectFlags(effect, sourceInfo, identifier) {
+    const fb = new FlagBuilder();
+    fb.set(AH.flags.ActiveEffect.Temporary, true);
+    fb.set(AH.flags.ActiveEffect.Source, sourceInfo);
+    fb.set(AH.flags.ActiveEffect.Identifier, identifier);
+    return fb.toObject();
+  }
+
+  /**
+   * @param {String} id
+   * @return {ActiveEffectData}
+   */
+  static resolveStatusEffect(id) {
+    return statusEffects.find((value) => value.id === id);
+  }
+
+  /**
+   * @param {AHActiveEffect} effect
+   * @param {String} statusEffectId
+   * @returns {boolean}
+   */
+  static isStatusEffect(effect, statusEffectId) {
+    return effect.statuses.has(statusEffectId);
+  }
+
+  /**
+   * Applies crisis to the character.
+   * @returns {Promise<void>}
+   */
+  async applyCrisis() {
+    if (this.isCharacterType) {
+      const { hp } = this.system?.parameters || {};
+      if (hp) {
+        if (this.system.crisis !== this.statuses.has("crisis")) {
+          Hooks.call(
+            AH.hooks.CRISIS_EVENT,
+            /** @type CrisisEvent **/
+            {
+              actor: this,
+              token: this.resolveToken(),
+            },
+          );
+          try {
+            await this.toggleStatusEffect("crisis", SourceInfo.fromInstance(this));
+          } catch (err) {
+            console.warn(`Failed to apply crisis effect: ${err}`);
+          }
+        }
+      }
+    }
+  }
+
+  /*-------------------------------------------------------------------------*/
 
   /**
    * @returns {Token}
@@ -106,6 +285,8 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
   isCharacterType() {
     return AHActor.CHARACTER_TYPES.has(this.type);
   }
+
+  /*-------------------------------------------------------------------------*/
 
   /**
    * @param {AH_RestType} type

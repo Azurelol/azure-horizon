@@ -1,3 +1,7 @@
+
+import { isActorType, isItemType } from "../constants.mjs";
+import DocumentMixin from "./document-mixin.mjs";
+
 /**
  * @typedef EffectChangeData
  * @property {string} [key]    The attribute path in the Actor or Item data which the change modifies
@@ -29,14 +33,40 @@
  * @remarks https://foundryvtt.com/api/interfaces/foundry.types.ActiveEffectData.html
  */
 
-import { isActorType, isItemType } from "../constants.mjs";
-import DocumentMixin from "./document-mixin.mjs";
+/**
+ * @typedef AH_ActiveEffectConfiguration
+ * @property {String} name
+ * @property {AH_EffectTracking} tracking t:
+ * @property {Record<String, String>} updates Specific updates on initial data.
+ */
+
+/**
+ * @typedef ActiveEffect
+ * @property {DataModel} parent
+ * @property {Boolean} isSuppressed Is there some system logic that makes this active effect ineligible for application?
+ * @property {Document} target Retrieve the Document that this ActiveEffect targets for modification.
+ * @property {Boolean} active Whether the Active Effect currently applying its changes to the target.
+ * @property {Boolean modifiesActor Does this Active Effect currently modify an Actor?
+ * @property {Boolean} isTemporary Describe whether the ActiveEffect has a temporary duration based on combat turns or rounds.
+ * @property {Boolean} isEmbedded Test whether this Document is embedded within a parent Document
+ * @property {String} id Canonical name
+ * @property {String} uuid
+ * @property {String} name
+ * @property {EffectDurationData} duration
+ * @property {EffectChangeData[]} changes - The array of EffectChangeData objects which the ActiveEffect applies
+ * @remarks https://foundryvtt.com/api/classes/client.ActiveEffect.html
+ * @property {Function<Promise<Document>>} delete Delete this Document, removing it from the database.
+ * @property {Function<void>} update Update this Document using incremental data, saving it to the database.
+ * @property {Function<String, String, *, void>} setFlag Assign a "flag" to this document. Flags represent key-value type data which can be used to store flexible or arbitrary data required by either the core software, game systems, or user-created modules.
+ * @property {Function<String, String, *>} getFlag Get the value of a "flag" for this document See the setFlag method for more details on flags
+ */
 
 const defaultImage = "icons/svg/aura.svg";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {ActiveEffectModel} system
+ * @property {Set<String>} statuses
  */
 export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect) {
 
@@ -81,6 +111,34 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
     this.updateSource(changes);
     return super._preCreate(data, options, user);
   }
+
+  /**
+   * @param {AH_ActiveEffectConfiguration} configuration
+   * @returns {Promise<void>}
+   */
+  async applyConfiguration(configuration) {
+    if (!configuration) {
+      return;
+    }
+    const updates = configuration.updates ?? {};
+    if (configuration.name) {
+      updates["name"] = configuration.name;
+    }
+    if (configuration.event) {
+      updates["system.duration.event"] = configuration.event;
+    }
+    if (configuration.interval) {
+      updates["system.duration.interval"] = configuration.interval;
+      updates["system.duration.remaining"] = configuration.interval;
+    }
+    if (configuration.tracking) {
+      updates["system.duration.tracking"] = configuration.tracking;
+    }
+    if (Object.keys(updates).length > 0) {
+      await this.update(updates);
+    }
+  }
+
 }
 
 // /**

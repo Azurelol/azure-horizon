@@ -223,6 +223,20 @@ function opportunity(renderData, actor, type, item, fumble) {
   Hooks.call(AH.hooks.OPPORTUNITY_EVENT, event);
 }
 
+/**
+ * @description Dispatched when an actor enters crisis
+ * @typedef CrisisEvent
+ * @property {AHActor} actor
+ * @property {Token} token
+ */
+
+/**
+ * @description Dispatched when an actor is reduced to 0 HP
+ * @typedef DefeatEvent
+ * @property {AHActor} actor
+ * @property {Token} token
+ */
+
 const Events = Object.freeze({
   initializeAction,
   performAction,

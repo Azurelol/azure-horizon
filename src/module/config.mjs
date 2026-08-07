@@ -410,6 +410,31 @@ AH.settings = Object.freeze({
 });
 
 /**
+ * System-specific flags used.
+ */
+AH.flags = Object.freeze({
+  // ActiveEffect
+  ActiveEffect: Object.freeze({
+    Source: "Source",
+    Suppressed: "Suppressed",
+    Temporary: "Temporary",
+    Identifier: "Identifier",
+  }),
+  // ChatMessage
+  ChatMessage: Object.freeze({
+    Check: "Check",
+    Source: "Source", /** @remarks Refers to {@linkcode SourceInfo} **/
+    Item: "Item",
+    Effect: "Effect",
+    /** @remarks Refers to {@linkcode DamageData} **/
+    Damage: "Damage",
+    ResourceGain: "ResourceGain",
+    ResourceLoss: "ResourceLoss",
+    RevertedAction: "RevertedAction",
+  }),
+});
+
+/**
  * Hooks used by the system.
  */
 AH.hooks = Object.freeze({
@@ -475,13 +500,32 @@ AH.hooks = Object.freeze({
    * @example callback(event)
    * @remarks Uses {@link CalculateResourceEvent}
    */
-  CALCULATE_RESOURCE_EVENT: "projectfu.events.resource.calculate",
+  CALCULATE_RESOURCE_EVENT: `${systemNS}.events.resource.calculate`,
   /**
    * @description Invoked when there's a change in the combat state
    * @example callback(event)
    * @remarks Uses {@link CombatEvent}
    */
-  COMBAT_EVENT: "projectfu.events.combat",
+  COMBAT_EVENT: `${systemNS}.events.combat`,
+
+  /**
+   * @description Invoked after damage has been applied to an actor
+   * @example callback(event)
+   * @remarks Uses {@link DamageEvent}
+   */
+  DAMAGE_EVENT: `${systemNS}.events.damage`,
+  /**
+   * @description Dispatched after an actor enters crisis.
+   * @example callback(event)
+   * @remarks Uses {@link CrisisEvent}. This can happen after a {@link DAMAGE_EVENT}.
+   */
+  CRISIS_EVENT: `${systemNS}.events.crisis`,
+  /**
+   * @description Invoked after an actor is reduced to 0 hit points
+   * @example callback(event)
+   * @remarks Uses {@link DefeatEvent}. This can happen after a {@link DAMAGE_EVENT}.
+   */
+  DEFEAT_EVENT: `${systemNS}.events.defeat`,
 });
 
 /**
@@ -490,6 +534,7 @@ AH.hooks = Object.freeze({
  * @property {Record<String, AH_Constant>} damage
  */
 AH.traits = Object.freeze({
+  // Shared
   action: {
     attack: "AH.TRAIT.Attack",
     damage: "AH.TRAIT.Damage",
@@ -497,15 +542,24 @@ AH.traits = Object.freeze({
     gain: "AH.TRAIT.Gain",
     loss: "AH.TRAIT.Loss",
   },
-  armor: {
-    magical: "AH.TRAIT.Magical",
-  },
-  skill: {
-    cooldown: "AH.TRAIT.Cooldown",
-  },
   damage: {
     base: "AH.TRAIT.Base",
     nonLethal: "AH.TRAIT.NonLethal",
+  },
+  // Used by adversaries
+  attack: {
+    stress: "AH.TRAIT.Stress",
+  },
+  // Used by heroes
+  skill: {
+    cooldown: "AH.TRAIT.Cooldown",
+    stress: "AH.TRAIT.Stress",
+  },
+  weapon: {
+    reach: "AH.TRAIT.Reach",
+  },
+  armor: {
+    magical: "AH.TRAIT.Magical",
   },
 });
 

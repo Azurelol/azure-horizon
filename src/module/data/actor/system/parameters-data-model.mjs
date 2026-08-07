@@ -36,6 +36,13 @@ export class ResourceDataModel extends VersionedDataModel {
       },
     });
   }
+
+  /**
+   * @returns {number}
+   */
+  get half() {
+    return Math.floor(this.max / 2);
+  }
 }
 
 /**

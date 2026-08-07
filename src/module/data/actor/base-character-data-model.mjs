@@ -43,4 +43,18 @@ export default class BaseCharacterDataModel extends ActorDataModel {
     this.parameters.def.defineCurrentProperty(() => Formulas.calculateDefense(data.attributes));
     this.parameters.mdef.defineCurrentProperty(() => Formulas.calculateMagicDefense(data.attributes));
   }
+
+  /**
+   * @returns {boolean} Whether the character is in crisis
+   */
+  get crisis() {
+    return this.parameters.hp.half <= this.parameters.hp.max;
+  }
+
+  /**
+   * @returns {boolean} Whether the character is KO
+   */
+  get ko() {
+    return this.parameters.hp.value <= 0;
+  }
 }

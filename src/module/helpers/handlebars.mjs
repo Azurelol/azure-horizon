@@ -38,7 +38,6 @@ const MESSAGE_TEMPLATES = Object.freeze({
 
 const DIALOG_TEMPLATES = Object.freeze({
   common: systemTemplatePath("dialogs/common"),
-  selectWeapon: systemTemplatePath("dialogs/dialog-select-weapon"),
 });
 
 /**
