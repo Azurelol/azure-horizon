@@ -10,6 +10,7 @@ import RuleActionDataModel from "./rule-action-data-model.mjs";
 import RulePredicateDataModel from "./rule-predicate-data-model.mjs";
 
 import * as Registries from "./rule-data-model-registries.mjs";
+import statusEffects from "./status-effects.mjs";
 
 const dataModels = Object.freeze({
   base: ActiveEffectModel,
@@ -29,6 +30,7 @@ export
   ActiveEffectModel,
   dataModels,
   templates,
+  statusEffects,
 
   Actions,
   Triggers,

@@ -458,6 +458,10 @@
       "Check": "Check",
       "Settings": "Settings"
     },
+    "STATUS": {
+      "Crisis": "Crisis",
+      "KO": "KO"
+    },
     "ACTION": {
       "POTENCY": {
         "Tier": "Tier",

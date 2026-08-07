@@ -41,6 +41,10 @@ function bindDataModels() {
   Object.assign(CONFIG.Item.dataModels, data.Item.dataModels);
   Object.assign(CONFIG.ActiveEffect.dataModels, data.ActiveEffect.dataModels);
   CONFIG.Actor.defaultType = "basic";
+
+  CONFIG.statusEffects = data.ActiveEffect.statusEffects;
+  CONFIG.specialStatusEffects.DEFEATED = "ko";
+
 }
 
 /**
