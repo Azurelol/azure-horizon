@@ -8,10 +8,10 @@
     <td class="ah-potency-table__components">
       {{#each potencies.reduced.components as |component|}}
         <div>
-          {{{component.text}}}
           {{#each component.actions}}
             {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact"}}
           {{/each}}
+          {{{component.text}}}
         </div>
       {{/each}}
     </td>
@@ -24,10 +24,10 @@
     <td class="ah-potency-table__components">
       {{#each potencies.standard.components as |component|}}
         <div>
-          {{{component.text}}}
           {{#each component.actions}}
             {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact"}}
           {{/each}}
+          {{{component.text}}}
         </div>
       {{/each}}
     </td>
@@ -40,10 +40,10 @@
     <td class="ah-potency-table__components">
       {{#each potencies.powerful.components as |component|}}
         <div>
-          {{{component.text}}}
           {{#each component.actions}}
             {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact"}}
           {{/each}}
+          {{{component.text}}}
         </div>
       {{/each}}
     </td>

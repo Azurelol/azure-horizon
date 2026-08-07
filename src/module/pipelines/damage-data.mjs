@@ -123,9 +123,12 @@ export default class DamageData {
     }
 
     const parts = Array.from(totals.entries())
-      .map(([type, amount]) => `${amount} ${StringUtils.localize(AH.damageTypes[type].label)}`);
+      .map(([type, amount]) => {
+        const icon = AH.icons[type];
+        return `${amount} <i class="ah-icon --xs ${icon}"></i>`;
+      });
 
-    return `[${parts.join(" + ")}]`;
+    return `${parts.join(" + ")}`;
   }
 
   /**
