@@ -1,5 +1,5 @@
 import {
-  ActionConfig,
+  ActionConfig, ActionInspector,
   ChatAction,
   ChatMessageBuilder,
   ChatMessageSections,
@@ -13,6 +13,7 @@ import AH from "../config.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import Flags from "../data/common/flags.mjs";
 import Events from "./events.mjs";
+import Actions from "./actions.mjs";
 
 const { DiceTerm, NumericTerm } = foundry.dice.terms;
 
@@ -95,6 +96,7 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @param {AHItem} item
  * @return {Promise | void}
  */
+
 /**
  * @param {String} hook The name of the hook
  * @param {Partial<CheckOptions|CheckResult>} check
@@ -166,7 +168,7 @@ async function prepareCheck(check, actor, item, onPrepare) {
   // ObjectUtils.lockAndValidateProperty(check, "id", false);
 
   await invokeWithCallbacks(AH.hooks.PREPARE_CHECK, check, actor, item);
-  await Events.initializeAction(config, actor, item);
+  await Events.prepareCheck(check, actor, item);
 
   validateCheckAttributes(check);
 
@@ -274,6 +276,8 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
 
   if (callHook) {
     await invokeWithCallbacks(AH.hooks.PROCESS_CHECK, result, actor, item);
+    const config = new ActionConfig(check);
+    await invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
   }
 
   return result;
@@ -299,6 +303,7 @@ async function renderCheck(result, actor, item, flags = {}) {
   };
   const config = new ActionConfig(result);
 
+  Hooks.callAll(AH.hooks.RENDER_ACTION, config, builderData, actor, item);
   Hooks.callAll(AH.hooks.RENDER_CHECK, builderData, result, actor, item);
   await Events.renderAction(builderData, config, actor, item);
 
@@ -310,12 +315,7 @@ async function renderCheck(result, actor, item, flags = {}) {
     }
   }
 
-  const isTargeted = config.getTargets() > 0;
-  if (isTargeted) {
-    config.addAction(ChatAction.TARGET_ACTION);
-  }
-
-  // Roll Section
+  // CHECK Section
   builderData.sections.push({
     order: ChatSectionOrder.roll,
     partial: systemTemplatePath("chat/chat-section-check"),
@@ -326,54 +326,9 @@ async function renderCheck(result, actor, item, flags = {}) {
   });
 
   // Flags
-  const fb = new FlagBuilder(flags);
-  fb.set(Flags.ChatMessage.Source, result.sourceInfo);
+  await Actions.addSections(builderData, config);
 
-  // Potencies Section
-  const potencies = config.potencies;
-  if (potencies) {
-    for (const potency of [potencies.reduced, potencies.standard, potencies.powerful]) {
-      for (const component of potency.components) {
-        for (const action of component.actions) {
-          fb.set(action.flag.key, action.flag.value);
-        }
-      }
-    }
-    ChatMessageSections.potencies(builderData.sections, potencies);
-  }
-
-  // Create the chat builder
-  flags = fb.toObject();
   const chatBuilder = new ChatMessageBuilder(actor, item).withData(builderData).withFlags(flags);
-
-  // Add flavor
-  let flavor;
-  if (item) {
-    let linked = [];
-    const weaponReference = config.getWeaponReference();
-    if (weaponReference) {
-      linked.push(await fromUuid(weaponReference));
-    }
-    flavor = await renderTemplate("chat/chat-section-flavor-item", {
-      item: item,
-      linked: linked,
-    });
-  } else {
-    let flavorTitle = StringUtils.localize(AH.checkTypes[result.type] || "AH.CHECK.Check");
-    const itemRef = config.getItemReference();
-    let referencedItem;
-    if (itemRef) {
-      referencedItem = await fromUuid(itemRef);
-      flavorTitle += ` - ${referencedItem.name}`;
-    }
-    flavor = await renderTemplate("chat/chat-section-flavor", {
-      title: flavorTitle,
-      type: result.type,
-      item: referencedItem,
-      label: config.getLabel(),
-    });
-  }
-  chatBuilder.withFlavor(flavor);
 
   // Roll data
   const rolls = [result.roll, ...result.additionalRolls].filter(Boolean);
@@ -396,14 +351,15 @@ export default class Checks {
    */
   static async performCheck(check, actor, item, onPrepare = undefined, onRender = undefined) {
     const preparedCheck = await prepareCheck(check, actor, item, onPrepare);
-    await Events.performAction(check, actor, item);
+    const config = new ActionConfig(check);
+    await Events.performAction(config, actor, item);
     const roll = await rollCheck(preparedCheck, actor);
     const result = await processResult(preparedCheck, roll, actor, item);
     await renderCheck(result, actor, item);
     if (onRender) {
       await onRender(result);
     }
-    Events.resolveAction(result, actor, item);
+    Events.resolveAction(new ActionInspector(config.check), actor, item);
   }
 
   /**

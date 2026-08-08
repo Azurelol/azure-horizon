@@ -45,8 +45,8 @@ export default class DamageModifiersDataModel extends VersionedDataModel {
 
     for (const key of layers) {
       const resolved = this[key]?.[direction]?.resolveModifiers();
-      if (!resolved) continue;
-      modifiers.push(resolved);
+      if (!resolved || !resolved.length) continue;
+      modifiers.push(...resolved);
     }
 
     return modifiers;

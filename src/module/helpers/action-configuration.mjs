@@ -12,6 +12,7 @@ const DAMAGE = "damage";
 const RESOURCE = "resource";
 const EXPENSE = "expenses";
 const EFFECTS = "effects";
+const FLAGS = "flags";
 const TRAITS = "traits";
 const WEAPON_TRAITS = "weaponTraits";
 const LABEL_KEY = "label";
@@ -35,6 +36,7 @@ const initHrZero = (hrZero) => (check) => {
 /**
  * @typedef Action
  * @property {Object} data
+ * @property {SourceInfo} sourceInfo
  */
 
 /**
@@ -44,7 +46,7 @@ const initHrZero = (hrZero) => (check) => {
 export class ActionInspector {
 
   /**
-   * @type {CheckResult|CheckOptions}
+   * @type {Action|CheckResult|CheckOptions}
    */
   #check;
 
@@ -97,7 +99,12 @@ export class ActionInspector {
    * @returns {DamageData}
    */
   get damage() {
-    return this.data[DAMAGE];
+    let dd = this.data[DAMAGE];
+    // Recreate damage data if needed.
+    if (!(dd instanceof DamageData)) {
+      dd = new DamageData(dd);
+    }
+    return dd;
   }
 
   /**
@@ -141,14 +148,14 @@ export class ActionInspector {
   }
 
   /**
-   * @return {Number}
+   * @return {AttributeDieRoll}
    */
-  getHighRoll() {
+  get hr() {
     // Not always checks involved
     if ((this.check.primary == null) || (this.check.secondary == null)) {
-      return 0;
+      return null;
     }
-    return Math.max(this.check.primary.result, this.check.secondary.result);
+    return this.check.hr;
   }
 
   /**
@@ -205,7 +212,7 @@ export class ActionInspector {
    * @return {TargetData[]}
    */
   getTargets() {
-    return this.data[TARGETS] ? ObjectUtils.duplicate(this.data[TARGETS]) : null;
+    return this.data[TARGETS] ? ObjectUtils.duplicate(this.data[TARGETS]) : [];
   }
 
   /**

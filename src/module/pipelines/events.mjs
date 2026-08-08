@@ -83,45 +83,41 @@ async function calculateResource(actor, item, config, data) {
 }
 
 /**
- * @typedef InitializeActionEvent
- * @property {ActionConfig} config
+ * @typedef PrepareCheckEvent
+ * @property {CheckOptions} check
  * @property {CharacterInfo} source
  * @property {SourceInfo} sourceInfo
- * @property {CharacterInfo[]} targets
  * @property {AH_ItemGroup} itemGroup
  * @property {Object} flags
  * @remarks Emitted when a check is about to be rendered.
  */
 
-async function initializeAction(configuration, actor, item) {
+async function prepareCheck(check, actor, item) {
   const sourceInfo = SourceInfo.fromInstance(actor, item);
   const source = CharacterInfo.fromActor(actor);
-  /** @type InitializeActionEvent  **/
+  /** @type PrepareCheckEvent  **/
   const event = {
-    config: configuration,
+    check: check,
     source: source,
-    targets: CharacterInfo.fromTargetData(configuration.getTargets()),
     sourceInfo: sourceInfo,
     itemGroup: ItemInfo.resolveItemGroup(item),
   };
-  return AsyncHooks.callSequential(AH.hooks.INITIALIZE_ACTION_EVENT, event);
+  return AsyncHooks.callSequential(AH.hooks.PREPARE_CHECK_EVENT, event);
 }
 
 /**
- * @typedef PerformActionEvent
- * @property {Check} check
+ * @typedef PerformActionEvent *
+ * @property {ActionConfig} config
  * @property {CharacterInfo} source
  * @property {SourceInfo} sourceInfo
  * @property {CharacterInfo[]} targets
  * @property {AHItem} item
  * @property {AH_ItemGroup} itemGroup
- * @property {ActionConfig} config
  * @remarks Emitted when a check is about to be performed
  */
-async function performAction(check, actor, item) {
+async function performAction(config, actor, item) {
   const sourceInfo = SourceInfo.fromInstance(actor, item);
   const source = CharacterInfo.fromActor(actor);
-  const config = new ActionConfig(check);
   const targetData = config.getTargets();
   let targets = [];
   if (targetData) {
@@ -130,7 +126,6 @@ async function performAction(check, actor, item) {
   /** @type PerformActionEvent  **/
   const event = {
     config: config,
-    check: check,
     source: source,
     item: item,
     itemGroup: ItemInfo.resolveItemGroup(item),
@@ -142,7 +137,7 @@ async function performAction(check, actor, item) {
 
 /**
  * @typedef ResolveActionEvent
- * @property {CheckResult} check
+ * @property {ActionInspector} action
  * @property {CharacterInfo} source
  * @property {AHItem} item
  * @property {AH_ItemGroup} itemGroup
@@ -151,15 +146,14 @@ async function performAction(check, actor, item) {
  * @remarks Emitted when a check is about to be performed
  */
 
-function resolveAction(check, actor, item) {
+function resolveAction(action, actor, item) {
   const sourceInfo = SourceInfo.fromInstance(actor, item);
   const source = CharacterInfo.fromActor(actor);
-  const inspector = new ActionInspector(check);
-  const targets = inspector.getTargets();
+  const targets = action.getTargets();
 
   /** @type ResolveActionEvent  **/
   const event = {
-    check: check,
+    action: action,
     source: source,
     item: item,
     itemGroup: ItemInfo.resolveItemGroup(item),
@@ -172,7 +166,7 @@ function resolveAction(check, actor, item) {
 /**
  * @typedef RenderActionEvent
  * @property {ChatMessageSectionCollection} renderData
- * @property {ActionConfig} config
+ * @property {ActionInspector} action
  * @property {CheckResult} check
  * @property {CharacterInfo} source
  * @property {CharacterInfo[]} targets
@@ -189,11 +183,10 @@ async function renderAction(renderData, config, actor, item) {
 
   /** @type RenderActionEvent  **/
   const event = {
+    action: config,
     renderData: renderData,
-    check: check,
     source: source,
     sourceInfo: sourceInfo,
-    config: config,
     targets: CharacterInfo.fromTargetData(config.getTargets()),
     item: item,
     itemGroup: ItemInfo.resolveItemGroup(item),
@@ -238,7 +231,8 @@ function opportunity(renderData, actor, type, item, fumble) {
  */
 
 const Events = Object.freeze({
-  initializeAction,
+  prepareCheck,
+
   performAction,
   resolveAction,
   renderAction,

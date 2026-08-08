@@ -22,13 +22,13 @@
 
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
 
 /**
  * Contains damage data used in pipelines.
  * @property {DamageComponent[]} components
  * @property {Record<AH_DamageType, ParameterModifier[]>} modifiers
  * @property {AH_DamageType} type The base damage type
- * @property {Boolean} useBase Whether to return the total damage without any modifiers.
  */
 export default class DamageData {
 
@@ -51,23 +51,34 @@ export default class DamageData {
   }
 
   /**
-   * @returns {DamageComponent}
+   * @returns {DamageComponent} The base component.
    */
   get base() {
     return this.components[0];
   }
 
   /**
+   * The damage types across components.
+   * @returns {AH_DamageType[]}
+   */
+  get types() {
+    return Array.from(new Set(this.components.map(c => c.type)));
+  }
+
+  /**
    * @param {DamageComponent} data
+   * @returns DamageData
    */
   custom(data = {}) {
     this.components.push(data);
+    return this;
   }
 
   /**
    * @param {String} label
    * @param {AH_DamageType} type
    * @param {String|Number} amount
+   * @returns DamageData
    */
   add(label, type, amount) {
     this.custom({
@@ -76,6 +87,15 @@ export default class DamageData {
       amount: amount,
       enabled: true,
     });
+    return this;
+  }
+
+  /**
+   * Clear all components
+   * @returns DamageData
+   */
+  clear() {
+    this.components = [];
     return this;
   }
 
@@ -92,35 +112,22 @@ export default class DamageData {
   }
 
   /**
-   * @returns {Number} The sum of all bonus damage modifiers ({@linkcode modifiers})
+   * @param {DamageComponent} component
+   * @returns {Number} The amount after applying modifiers for this component's type
    */
-  get componentTotal() {
-    if (this.useBase) {
-      return this.base.amount;
-    }
-    return this.base.amount + this.components.slice(1).reduce((agg, curr) => agg + curr.amount, 0);
-  }
-
-  /**
-   * Removes all modifiers from the data.
-   */
-  removeModifiers() {
-    this.components = this.components.slice(1);
+  _resolveComponentAmount(component) {
+    const amount = Number(component.amount) || 0;
+    const entries = this.modifiers[component.type] ?? [];
+    const { additive, multiplicative } = Formulas.joinModifiers(entries);
+    return (amount + additive) * multiplicative;
   }
 
   /**
    * @returns {Number}
    */
   get total() {
-    return this.componentTotal;
-  }
-
-  /**
-   * The damage types across components.
-   * @returns {AH_DamageType[]}
-   */
-  get types() {
-    return Array.from(new Set(this.components.map(c => c.type)));
+    const active = this.components.filter((c) => c.enabled);
+    return active.reduce((sum, component) => sum + this._resolveComponentAmount(component), 0);
   }
 
   /**

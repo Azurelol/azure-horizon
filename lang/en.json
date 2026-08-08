@@ -233,6 +233,7 @@
       "Poison": "Poison",
       "Untyped": "Untyped",
 
+      "Glancing": "Glancing",
       "Base": "Base Damage",
       "Bonus": "Bonus Damage"
     },

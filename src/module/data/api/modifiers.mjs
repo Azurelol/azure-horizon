@@ -41,6 +41,10 @@ export class ModifiersDataModel extends VersionedDataModel {
       const modifier = this[key];
       if (!modifier) continue;
 
+      if (!modifier.additive.length && !modifier.multiplicative.length) {
+        continue;
+      }
+
       let _additive = 0;
       let _multiplicative = 1;
 

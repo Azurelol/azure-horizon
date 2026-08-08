@@ -9,6 +9,7 @@ import FlagBuilder from "./flag-builder.mjs";
  * @property {Promise[]} postRenderActions
  * @property {Tag[]} tags
  * @property {Object} flags
+ * @property {String} flavor
  * @property {ChatAction[]} actions
  */
 
@@ -36,10 +37,6 @@ export default class ChatMessageBuilder {
    * @type {(Roll|Object)[]}
    */
   #rolls;
-  /**
-   * @type {String} Custom flavor text.
-   */
-  #flavor;
 
   constructor(actor, item) {
     this.#actor = actor;
@@ -130,7 +127,7 @@ export default class ChatMessageBuilder {
   }
 
   withFlavor(flavor) {
-    this.#flavor = flavor;
+    this.#renderData.flavor = flavor;
     return this;
   }
 
@@ -218,8 +215,8 @@ export default class ChatMessageBuilder {
     }
     // If no flavor text was provided...
     if (!flavor?.trim()) {
-      if (this.#flavor) {
-        flavor = this.#flavor;
+      if (this.#renderData.flavor) {
+        flavor = this.#renderData.flavor;
       } else {
         flavor = item
           ? await renderTemplate("chat/chat-section-flavor-item", {

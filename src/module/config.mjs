@@ -452,6 +452,13 @@ AH.flags = Object.freeze({
  * Hooks used by the system.
  */
 AH.hooks = Object.freeze({
+
+  /**
+   * @description Dispatched when a check is being initialized.
+   * @example callback(event)
+   * @remarks Uses {@link PrepareCheckEvent}
+   */
+  PREPARE_CHECK_EVENT: `${systemNS}.events.actions.initialize`,
   /**
    * @desc Invoked when a check is being prepared.
    * @remarks Expected function signature is {@link CheckPrepareCallback}
@@ -467,12 +474,19 @@ AH.hooks = Object.freeze({
    * @remarks Expected function signature is {@link CheckRenderCallback}
    */
   RENDER_CHECK: `${systemNS}.check.render`,
+
   /**
-   * @description Dispatched when a check is being initialized.
-   * @example callback(event)
-   * @remarks Uses {@link InitializeActionEvent}
+   * @desc Invoked when an action is being processed.
+   * @remarks Expected function signature is {@link ActionProcessCallback}
    */
-  INITIALIZE_ACTION_EVENT: `${systemNS}.events.actions.initialize`,
+  PROCESS_ACTION: `${systemNS}.actions.process`,
+  /**
+  /**
+   * @desc Invoked when an action is being rendered.
+   * @remarks Expected function signature is {@link ActionRenderCallback}
+   */
+  RENDER_ACTION: `${systemNS}.actions.render`,
+
   /**
    * @description Dispatched when a check is about to be performed.
    * @example callback(event)

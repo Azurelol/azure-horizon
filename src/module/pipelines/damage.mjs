@@ -179,6 +179,7 @@ async function process(request) {
     let content = [];
     // If the target was pressured (elites/solos)
     if (context.pressured) {
+      console.debug("Pressuring");
     }
 
     // Create the update
@@ -295,14 +296,15 @@ function onRenderChatMessage(message, html) {
   });
 }
 
-/** @type CheckResultCallback **/
-const onProcessCheck = (check, actor, item, registerCallback) => {
-  const config = new ActionConfig(check);
+/** @type ActionProcessCallback **/
+const onProcessAction = (config, actor, item, registerCallback) => {
   Events.calculateDamage(actor, item, config);
   if (config.hasDamage) {
     config.modifyDamage((dmg) => {
-      dmg.add("AH.CHECK.HighRoll.short", dmg.type, check.hr.result);
-
+      const hr = config.hr;
+      if (hr) {
+        dmg.add("AH.CHECK.HighRoll.short", dmg.type, hr);
+      }
       /** @type CharacterParametersDataModel **/
       const outgoing = actor?.system?.parameters;
       if (outgoing) {
@@ -319,21 +321,21 @@ const onProcessCheck = (check, actor, item, registerCallback) => {
   }
 };
 
-/** @type CheckRenderCallback **/
-const onRenderCheck = (data, result, actor, item, registerCallback) => {
-  if (result.data.damage) {
-    const config = new ActionConfig(result);
-    const standardDamage = new DamageData(result.data.damage);
-    result.data.damage = standardDamage;
+/** @type ActionRenderCallback **/
+const onRenderAction = (config, data, actor, item, registerCallback) => {
+  if (config.damage) {
     const sourceInfo = config.sourceInfo;
     const traits = config.getTraits();
 
-    const standard = getChatAction(standardDamage, sourceInfo, traits);
-
     config.setPotencies((potencies) => {
 
+      const standardDamage = new DamageData(config.damage);
+      const standard = getChatAction(standardDamage, sourceInfo, traits);
+
       const reducedDamage = standardDamage.duplicate(d => {
-        d.removeModifiers();
+        const base = d.base;
+        d.clear();
+        d.add("AH.DAMAGE.Glancing", base.type, Math.round(base.amount * 0.5));
       });
       const reducedAction = getChatAction(reducedDamage, sourceInfo, traits);
 
@@ -348,7 +350,8 @@ const onRenderCheck = (data, result, actor, item, registerCallback) => {
       });
 
       const powerfulDamage = standardDamage.duplicate(d => {
-        d.add("AH.PIPELINE.CriticalBonus", "untyped", config.check.hr.dice);
+        const criticalBonus = d.base.amount * 2;
+        d.add("AH.PIPELINE.CriticalBonus", "untyped", criticalBonus);
       });
       const powerful = getChatAction(powerfulDamage, sourceInfo, traits);
 
@@ -366,8 +369,8 @@ const onRenderCheck = (data, result, actor, item, registerCallback) => {
  */
 function initialize() {
   Hooks.on("renderChatMessageHTML", onRenderChatMessage);
-  Hooks.on(AH.hooks.PROCESS_CHECK, onProcessCheck);
-  Hooks.on(AH.hooks.RENDER_CHECK, onRenderCheck);
+  Hooks.on(AH.hooks.PROCESS_ACTION, onProcessAction);
+  Hooks.on(AH.hooks.RENDER_ACTION, onRenderAction);
 }
 
 /**
