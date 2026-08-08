@@ -1,37 +1,3 @@
-{{#if targets}}
-  <section class="ah-chat-section__targets">
-    {{#each targets as |target|}}
-      <div class="ah-chat-section__target {{#if (eq target.result "hit")}}hit{{else if (eq target.result "miss")}}miss{{else}}default{{/if}}">
-
-        <!-- Info -->
-        <div>
-          <span>
-            {{target.name}}
-          </span>
-          {{#if (or (eq target.result "hit") (eq target.result "miss"))}}
-            <div>
-							<span class="{{target.result}}">
-                {{#if (eq target.result "hit")}}
-                  {{localize 'AH.CHECK.Hit'}}
-                {{else}}
-                  {{localize 'AH.CHECK.Miss'}}
-                {{/if}}
-              </span>
-					  </div>
-          {{/if}}
-        </div>
-
-        <!-- Actions -->
-        {{#each ../actions as |action|}}
-          {{#if targeted}}
-            {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs'}}
-          {{/if}}
-        {{/each}}
-      </div>
-    {{/each}}
-  </section>
-{{/if}}
-
 {{#each actions as |action|}}
   {{#if selected}}
     <div class="ah-chat-section__actions">

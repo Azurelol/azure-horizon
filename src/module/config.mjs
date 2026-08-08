@@ -675,7 +675,7 @@ AH.icons = {
 
   parameter: "fa-solid fa-sliders",
   additive: "fa-solid fa-plus",
-  multiplier: "fa-solid fa-xmark",
+  multiplicative: "fa-solid fa-xmark",
 
   full: "fa fa-hourglass",
   half: "fa fa-hourglass-half",

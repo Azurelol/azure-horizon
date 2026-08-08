@@ -184,11 +184,61 @@
 .ah-chat-section__targets {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
 }
 
 .ah-chat-section__target {
   display: flex;
   flex-direction: row;
+  box-shadow: 1px 1px #3a3837;
+  padding-left: 8px;
+  color: var(--ah-content-primary);
+
+  &.reduced {
+    background: var(--ah-potency-reduced-surface);
+  }
+
+  &.standard {
+    background: var(--ah-potency-standard-surface);
+  }
+
+  &.powerful {
+    background: var(--ah-potency-powerful-surface);
+  }
+}
+
+.ah-chat-section__target__info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+   a{
+     display: flex;
+   }
+}
+
+.ah-chat-section__target__name {
+  flex: 2;
+  gap: 0.5rem;
+}
+
+.ah-chat-section__target__potency {
+  flex: 2;
+  display: flex;
+  text-transform: uppercase;
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
+}
+
+.ah-chat-section__target__actions {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 .ah-chat-section__actions {
@@ -208,6 +258,13 @@
   justify-content: center;
   gap: 8px;
 
+  &.--transparent {
+    i, img {
+      background: transparent;
+      border: none;
+    }
+  }
+
   &.--compact {
     gap: 0;
     i, img {
@@ -219,7 +276,6 @@
   i, img {
     color: var(--ah-action-content);
     background: var(--ah-action-surface);
-    border: 0.063rem solid var(--ah-border-control);
     text-shadow: 1px 1px var(--ah-text-shadow-control);
     font-variant: small-caps;
     font-size: 14px;

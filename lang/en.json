@@ -21,8 +21,9 @@
         "Effects": "Effects",
         "Codex": "Codex"
       },
-      "Messages": {
-        "NoDataAvailable": "No data is available."
+      "MESSAGE": {
+        "NoDataAvailable": "No data is available.",
+        "NoModifiersSet": "No modifiers are currently affecting this character."
       }
     },
     "ITEM": {

@@ -46,7 +46,6 @@ export default class AttackDataModel extends ItemDataModel {
    * @return {Promise}
    */
   async _initializeAction(config) {
-
     if (this.damage.enabled) {
       config.setDamage(this.damage.type, this.damage.amount);
     }

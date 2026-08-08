@@ -46,6 +46,7 @@ export const ChatMessageSectionTemplate = Object.freeze({
   flavor: systemTemplatePath("chat/chat-section-flavor"),
   flavorItem: systemTemplatePath("chat/chat-section-flavor-item"),
   check: systemTemplatePath("chat/chat-section-check"),
+  targets: systemTemplatePath("chat/chat-section-targets"),
   damage: systemTemplatePath("chat/chat-section-damage"),
   applyDamage: systemTemplatePath("chat/chat-section-apply-damage"),
   resource: systemTemplatePath("chat/chat-section-update-resource"),
@@ -129,6 +130,23 @@ export const ChatMessageSections = Object.freeze({
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.actions,
       data: {
+        actions,
+      },
+      order,
+    }));
+  },
+
+  /**
+   * @param {ChatMessageSectionCollection} sections
+   * @param {TargetData[]} targets
+   * @param {ChatAction[]} actions
+   * @param {number} [order]
+   */
+  targets: (sections, targets, actions, order = ChatSectionOrder.actions) => {
+    sections.push(async () => ({
+      partial: ChatMessageSectionTemplate.targets,
+      data: {
+        targets,
         actions,
       },
       order,

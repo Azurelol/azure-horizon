@@ -108,6 +108,9 @@ export class ActionInspector {
    * @returns {ChatAction[]}
    */
   get actions() {
+    if (this.data[ACTIONS] === undefined) {
+      this.data[ACTIONS] = [];
+    }
     return this.data[ACTIONS];
   }
 
@@ -210,13 +213,6 @@ export class ActionInspector {
    */
   getTargets() {
     return this.data[TARGETS] ? ObjectUtils.duplicate(this.data[TARGETS]) : [];
-  }
-
-  /**
-   * @return {TargetData[]}
-   */
-  getTargetsOrDefault() {
-    return this.getTargets() || [];
   }
 
   /**
@@ -453,16 +449,17 @@ export class ActionConfig extends ActionInspector {
       for (let t = 0; t < targets.length; t++) {
         const target = targets[t];
         const difficulty = target.defenses[targetedDefense];
-        let targetResult;
+        /** @type AH_Potency **/
+        let potency;
         if (this.check.critical) {
-          targetResult = "hit";
+          potency = "powerful";
         } else if (this.check.fumble) {
-          targetResult = "miss";
+          potency = "reduced";
         } else {
-          targetResult = this.check.total >= difficulty ? "hit" : "miss";
+          potency = this.check.total >= difficulty ? "standard" : "reduced";
         }
         // Update the original
-        this.check.data[TARGETS][t].total = targetResult;
+        this.check.data[TARGETS][t].potency = potency;
       }
     }
   }

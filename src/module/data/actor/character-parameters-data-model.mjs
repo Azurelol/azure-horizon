@@ -21,16 +21,11 @@ export class CharacterParametersDataModel extends VersionedDataModel {
   }
 
   /**
-   * @typedef CharacterModifiers
-   * @property {ModifierEntry[]} damage
-   */
-
-  /**
-   * @returns {CharacterModifiers}
+   * @returns {ModifierEntry[]}
    */
   summarizeModifiers() {
-    let result = {};
-    result.damage = Modifiers.resolveFromModel(this.damage);
+    let result = [];
+    result.push(...Modifiers.resolveFromModel(this.damage));
     return result;
   }
 

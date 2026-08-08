@@ -15,7 +15,7 @@
  * @property {string} link An html link to the actor
  * @property {DefenseData} defenses
  * @property {number} difficulty
- * @property {"none", "hit", "miss"} result Updated during evaluation
+ * @property {AH_Potency} potency Updated during evaluation
  * @property {Boolean} isOwner
  */
 
@@ -29,10 +29,12 @@ function constructData(actor) {
     name: actor.name,
     uuid: actor.uuid,
     link: actor.link,
-    result: "none",
+    img: actor.img,
+    type: actor.type,
+    potency: "none",
     defenses: {
-      def: actor.system.parameters.def.value,
-      mdef: actor.system.parameters.mdef.value,
+      def: actor.system.parameters.def.current,
+      mdef: actor.system.parameters.mdef.current,
       dex: actor.system.attributes.dex.current,
       ins: actor.system.attributes.ins.current,
       mig: actor.system.attributes.mig.current,

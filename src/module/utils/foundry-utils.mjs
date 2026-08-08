@@ -187,9 +187,10 @@ export default class FoundryUtils {
    * @param {String} className
    * @param {AHItem[]} items
    * @param {function(AHItem): Promise<void>} [action]
+   * @param {Boolean} quick
    * @remarks {Boolean} True if the context menu was set.
    */
-  static itemContextMenu(html, className, items, action = undefined) {
+  static itemContextMenu(html, className, items, action = undefined, quick = false) {
     const entries = items
       .toSorted((a, b) => a.name.localeCompare(b.name))
       .map((item) => {
@@ -207,7 +208,18 @@ export default class FoundryUtils {
         };
       });
 
-    if (entries.length === 0) {
+    if ((entries.length === 1) && quick) {
+      html.querySelectorAll(className).forEach((el) => {
+        el.addEventListener(
+          "click",
+          () => {
+            return entries[0].callback(el);
+          },
+          { once: true },
+        );
+      });
+    }
+    else if (entries.length === 0) {
       html.querySelectorAll(className).forEach((el) => {
         el.addEventListener(
           "click",
@@ -219,13 +231,14 @@ export default class FoundryUtils {
       });
       return false;
     }
+    else {
+      new foundry.applications.ux.ContextMenu(html, className, entries, {
+        eventName: "click",
+        fixed: true,
+        jQuery: false,
+      });
 
-    new foundry.applications.ux.ContextMenu(html, className, entries, {
-      eventName: "click",
-      fixed: true,
-      jQuery: false,
-    });
-
+    }
     return true;
   }
 

@@ -71,9 +71,10 @@ async function invokeWithCallbacks(hook, action, actor, item) {
 async function addSections(builderData, config, actor, item) {
 
   // TARGET SECTIONS
-  const isTargeted = config.getTargets() > 0;
+  const targets = config.getTargets();
+  const isTargeted = targets.length > 0;
   if (isTargeted) {
-    config.addAction(ChatAction.TARGET_ACTION);
+    ChatMessageSections.targets(builderData.sections, targets, [ChatAction.TARGET_ACTION]);
   }
 
   let fb = new FlagBuilder(builderData.flags);

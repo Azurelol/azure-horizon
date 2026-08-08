@@ -1,33 +1,33 @@
 <section class="tab parameters {{tab.cssClass}}" data-tab="parameters" data-group="primary">
 
-  <div class="ah-grid-col-2">
-    <fieldset>
-      <legend>{{localize 'AH.COMMON.Damage'}}</legend>
-      <table>
-        <thead>
-        <tr>
-          <th>{{localize "AH.STATUS.MODIFIER.Key"}}</th>
-          <th>{{localize "AH.STATUS.MODIFIER.Additive"}}</th>
-          <th>{{localize "AH.STATUS.MODIFIER.Multiplicative"}}</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each modifiers.damage as |entry|}}
-          {{#if (or entry.additive (ne entry.multiplicative 1))}}
-            <tr>
-              <td>{{entry.key}}</td>
-              <td>{{numberFormat entry.additive decimals=0 sign=true}}</td>
-              <td>{{ahPercentModifier entry.multiplicative}}</td>
-            </tr>
-          {{/if}}
-        {{else}}
+  {{#if (ahNotEmpty modifiers)}}
+    <table>
+      <thead>
+      <tr>
+        <th data-tooltip="{{localize "AH.STATUS.MODIFIER.Key"}}"><i class="{{ahIconClass 'parameter'}}"></i></th>
+        <th data-tooltip="{{localize "AH.STATUS.MODIFIER.Additive"}}"><i class="{{ahIconClass 'additive'}}"></i></th>
+        <th data-tooltip="{{localize "AH.STATUS.MODIFIER.Multiplicative"}}"><i class="{{ahIconClass 'multiplicative'}}"></i></th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each modifiers as |entry|}}
+        {{#if (or entry.additive (ne entry.multiplicative 1))}}
           <tr>
-            <td colspan="3">{{localize "AH.COMMON.None"}}</td>
+            <td>{{entry.key}}</td>
+            <td>{{numberFormat entry.additive decimals=0 sign=true}}</td>
+            <td>{{ahPercentModifier entry.multiplicative}}</td>
           </tr>
-        {{/each}}
-        </tbody>
-      </table>
-    </fieldset>
-  </div>
+        {{/if}}
+      {{else}}
+        <tr>
+          <td colspan="3">{{localize "AH.COMMON.None"}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+
+  {{else}}
+    {{ahSkeleton label='AH.SHEET.MESSAGE.NoModifiersSet' }}
+  {{/if}}
 
 </section>

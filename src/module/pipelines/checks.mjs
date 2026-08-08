@@ -273,9 +273,11 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
     data: check.data,
   });
 
+  const config = new ActionConfig(result);
+  config.updateTargetResults();
+
   if (callHook) {
     await invokeWithCallbacks(AH.hooks.PROCESS_CHECK, result, actor, item);
-    const config = new ActionConfig(result);
     await invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
   }
 
