@@ -160,8 +160,7 @@ export default class DamageData {
     let instances = [..._instances.values()];
     for (const inst of instances) {
       inst.modifiers = this.modifiers[inst.type] ?? [];
-      const { additive, multiplicative } = Formulas.joinModifiers(inst.modifiers);
-      inst.amount = Formulas.round((inst.amount + additive) * multiplicative);
+      inst.amount = Formulas.applyDamageModifiers(inst.amount, inst.modifiers);
     }
     return instances;
   }

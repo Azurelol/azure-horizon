@@ -77,7 +77,7 @@ export default class Formulas {
     let _additive = 0;
     let _multiplicative = 1;
 
-    for (const { additive, multiplicative } of modifiers) {
+    for (const { key, additive, multiplicative } of modifiers) {
       _additive += additive;
       _multiplicative *= multiplicative;
     }
@@ -95,8 +95,10 @@ export default class Formulas {
 
   /**
    * @param {Number} amount
-   * @param {ParameterModifier} modifier
+   * @param {ParameterModifier[]} modifiers
    */
-  static modifyDamage(amount, modifier) {
+  static applyDamageModifiers(amount, modifiers) {
+    const { additive, multiplicative } = Formulas.joinModifiers(modifiers);
+    return Formulas.round((amount + additive) * multiplicative);
   }
 }
