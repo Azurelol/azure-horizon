@@ -100,6 +100,9 @@ export class ActionInspector {
    */
   get damage() {
     let dd = this.data[DAMAGE];
+    if (dd === undefined) {
+      return undefined;
+    }
     // Recreate damage data if needed.
     if (!(dd instanceof DamageData)) {
       dd = new DamageData(dd);

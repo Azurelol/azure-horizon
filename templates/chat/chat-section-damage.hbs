@@ -1,0 +1,17 @@
+<section class="ah-chat-section">
+  <div class="ah-chat-section__check__details__group">
+    <div class="ah-chat-section__check__total --damage">
+      <i class="ah-icon --s {{ahIconClass 'damage'}}"></i>
+      <span>{{damage.total}}</span>
+    </div>
+
+    <div class='ah-chat-section__check__components'>
+      {{#each damage.components as |component|}}
+        <span data-tooltip="{{localize component.label}}">
+            <i class="ah-icon --s {{ahIconClass component.type}}"></i>
+          {{component.amount}}
+        </span>
+      {{/each}}
+    </div>
+  </div>
+</section>

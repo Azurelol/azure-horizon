@@ -11,7 +11,7 @@ import {
   FlagBuilder,
 } from "../helpers/_module.mjs";
 import Flags from "../data/common/flags.mjs";
-import { systemID } from "../constants.mjs";
+import { systemID, systemTemplatePath } from "../constants.mjs";
 import DamageData from "./damage-data.mjs";
 import Events from "./events.mjs";
 import { StringUtils, TokenUtils } from "../utils/_module.mjs";
@@ -298,8 +298,11 @@ function onRenderChatMessage(message, html) {
 
 /** @type ActionProcessCallback **/
 const onProcessAction = (config, actor, item, registerCallback) => {
-  Events.calculateDamage(actor, item, config);
   if (config.hasDamage) {
+    Events.calculateDamage(actor, item, config);
+    const sourceInfo = config.sourceInfo;
+    const traits = config.getTraits();
+
     config.modifyDamage((dmg) => {
       const hr = config.hr;
       if (hr) {
@@ -318,14 +321,6 @@ const onProcessAction = (config, actor, item, registerCallback) => {
         }
       }
     });
-  }
-};
-
-/** @type ActionRenderCallback **/
-const onRenderAction = (config, data, actor, item, registerCallback) => {
-  if (config.damage) {
-    const sourceInfo = config.sourceInfo;
-    const traits = config.getTraits();
 
     config.setPotencies((potencies) => {
 
@@ -361,7 +356,19 @@ const onRenderAction = (config, data, actor, item, registerCallback) => {
       });
     });
   }
+};
 
+/** @type ActionRenderCallback **/
+const onRenderAction = (config, data, actor, item, registerCallback) => {
+  if (config.damage) {
+    data.sections.push({
+      order: ChatSectionOrder.damage,
+      partial: systemTemplatePath("chat/chat-section-damage"),
+      data: {
+        damage: config.damage,
+      },
+    });
+  }
 };
 
 /**
