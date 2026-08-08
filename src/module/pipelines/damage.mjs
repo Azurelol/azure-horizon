@@ -44,31 +44,25 @@ class DamageContext extends PipelineContext {
 
 /**
  * @param {DamageContext} context
- * @return {Boolean}
- */
-function joinComponents(context) {
-  context.instances = context.damageData.instances;
-}
-
-/**
- * @param {DamageContext} context
  * @return {Promise<Boolean>}
  */
 async function collectModifiers(context) {
+
   /** @type CharacterParametersDataModel **/
   const incoming = context.subject.system.parameters;
 
-  for (const inst of context.instances) {
-    const mods = incoming.damage.resolve(inst.type, "incoming");
+  for (const type of context.damageData.types) {
+    const mods = incoming.damage.resolve(type, "incoming");
     // TODO: Leave them separate?
-    const modifier = Formulas.joinModifiers(mods);
-    context.modifiers[inst.type] = {
-      [inst.type]: modifier,
-    };
+    // const modifier = Formulas.joinModifiers(mods);
+    // context.modifiers[type] = {
+    //   [type]: modifier,
+    // };
+
+    for (const mod of mods) {
+      context.damageData.modify(type, mod);
+    }
   }
-
-  // TODO: CALL EVENT
-
 }
 
 /**
@@ -77,22 +71,8 @@ async function collectModifiers(context) {
  */
 function calculateResult(context) {
 
-  /** @type DamageInstance[] **/
-  let instances = [];
-  for (const inst of context.instances) {
-    let amount = inst.amount;
-    const modifier = context.modifiers[inst.type];
-    if (modifier) {
-      amount += modifier.additive;
-      amount *= modifier.multiplicative;
-    }
-    instances.push({
-      type: inst.type,
-      amount: amount,
-    });
-  }
-
-  const total = instances.reduce((total, instance) => total + instance.amount, 0);
+  const instances = context.damageData.instances;
+  const total = context.damageData.total;
   if (total === undefined) {
     throw Error("Failed to calculate the damage result.");
   }
@@ -123,7 +103,6 @@ async function process(request) {
 
     let context = new DamageContext(request, subject);
     ui.notifications.info(`Applying damage to ${context.subject.name}`, { localize: true });
-    joinComponents(context);
     await collectModifiers(context);
     calculateResult(context);
     if (context.result === undefined) {
@@ -160,7 +139,7 @@ async function process(request) {
 
     // Create the update
     updates.push(
-      subject.modifyTokenAttribute(`parameters.${resource}`, -damageTaken, true).then(async (result) => {
+      subject.modifyTokenAttribute(`resources.${resource}`, -damageTaken, true).then(async (result) => {
 
         /** @type ChatMessageBuilderData **/
         let renderData = {
@@ -266,7 +245,7 @@ function onRenderChatMessage(message, html) {
     const updates = [];
     const amountRecovered = Number(dataset.amount);
     const resource = dataset.resource.toLowerCase();
-    updates.push(actor.modifyTokenAttribute(`parameters.${resource}`, amountRecovered, true));
+    updates.push(actor.modifyTokenAttribute(`resources.${resource}`, amountRecovered, true));
     TokenUtils.showFloatyText(actor, `${amountRecovered} ${resource}`, "lightgreen");
     return Promise.all(updates);
   });

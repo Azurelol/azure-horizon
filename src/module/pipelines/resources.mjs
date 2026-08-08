@@ -129,7 +129,7 @@ function onRenderChatMessage(message, html) {
     const updates = [];
     const amountRecovered = Number(dataset.amount);
     const resource = dataset.resource.toLowerCase();
-    updates.push(actor.modifyTokenAttribute(`parameters.${resource}`, amountRecovered, true));
+    updates.push(actor.modifyTokenAttribute(`resources.${resource}`, amountRecovered, true));
     TokenUtils.showFloatyText(actor, `${amountRecovered} ${resource}`, "lightgreen");
     return Promise.all(updates);
   });

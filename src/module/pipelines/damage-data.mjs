@@ -170,18 +170,15 @@ export default class DamageData {
   toString() {
     const totals = new Map();
 
-    for (const component of this.components) {
-      if (!component.enabled) {
-        continue;
-      }
-      const amount = Number(component.amount) || 0;
-      totals.set(component.type, (totals.get(component.type) ?? 0) + amount);
+    for (const inst of this.instances) {
+      const amount = Number(inst.amount) || 0;
+      totals.set(inst.type, (totals.get(inst.type) ?? 0) + amount);
     }
 
     const parts = Array.from(totals.entries())
       .map(([type, amount]) => {
         const icon = AH.icons[type];
-        return `${amount} <i class="ah-icon --xs ${icon}"></i>`;
+        return `${amount}`;
       });
 
     return `${parts.join(" + ")}`;
