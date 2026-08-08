@@ -62,4 +62,16 @@
   --ah-background-damage: linear-gradient(to right, #a84c4c, #c6c32d);
   --ah-border-damage: black;
 
+  /* Potencies */
+  --ah-potency-reduced-surface: var(--ah-primitive-color-amber-600);
+  --ah-potency-reduced-icon: var(--ah-primitive-color-amber-400);
+  --ah-potency-standard-surface: var(--ah-primitive-color-green-600);
+  --ah-potency-standard-icon: var(--ah-primitive-color-green-400);
+  --ah-potency-powerful-surface: var(--ah-primitive-color-violet-600);
+  --ah-potency-powerful-icon: var(--ah-primitive-color-violet-400);
+
+  /* Modifiers */
+  --ah-modifier-status-color: #82cb82;
+  --ah-modifier-equipment-color: orange;
+
 }

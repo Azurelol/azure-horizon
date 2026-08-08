@@ -15,6 +15,12 @@
  */
 
 /**
+ * @typedef DamageResolution
+ * @property {Number} total
+ * @property {DamageInstance[]} instances
+ */
+
+/**
  * @typedef DamageInstance The calculated damage instance.
  * @property {AH_DamageType} type
  * @property {Number} amount The sum total of addends and added modifiers.
@@ -110,10 +116,14 @@ export default class DamageData {
     if (this.modifiers[type] === undefined) {
       this.modifiers[type] = [];
     }
-    const found = this.modifiers[type].find(c => c.label === modifier.label);
+
+    const found = this.modifiers[type].find(c => c.key === modifier.key);
     if (!found) {
-      this.modifiers[type].push(modifier);
+
     }
+
+    this.modifiers[type].push(modifier);
+
     return this;
   }
 
@@ -157,11 +167,15 @@ export default class DamageData {
   }
 
   /**
-   * @returns {Number}
+   * @returns {DamageResolution}
    */
-  get total() {
+  get resolved() {
     const active = this.instances;
-    return active.reduce((sum, inst) => sum + inst.amount, 0);
+    const total = active.reduce((sum, inst) => sum + inst.amount, 0);
+    return {
+      total: total,
+      instances: active,
+    };
   }
 
   /**

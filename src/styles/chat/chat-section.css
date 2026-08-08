@@ -140,10 +140,17 @@
   align-items: center;
   gap: 0.25rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .ah-chat-section__damage__modifier {
-}
+  &.--status {
+    color: var(--ah-modifier-status-color);
+  }
+  &.--equipment {
+    color: var(--ah-modifier-equipment-color);
+  }
+ }
 
 .ah-chat-section__damage__box {
   display: flex;

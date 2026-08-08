@@ -14,7 +14,7 @@ const MAX_ATTRIBUTE_DIE = 12;
 
 /**
  * @typedef {Modifier} ParameterModifier
- * @property {AH_Modifier} label
+ * @property {AH_Modifier} key
  */
 
 export default class Formulas {

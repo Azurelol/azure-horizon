@@ -29,15 +29,6 @@
     }
   }
 
-  --ah-potency-reduced-surface: var(--ah-primitive-color-amber-600);
-  --ah-potency-reduced-icon: var(--ah-primitive-color-amber-400);
-
-  --ah-potency-standard-surface: var(--ah-primitive-color-green-600);
-  --ah-potency-standard-icon: var(--ah-primitive-color-green-400);
-
-  --ah-potency-powerful-surface: var(--ah-primitive-color-violet-600);
-  --ah-potency-powerful-icon: var(--ah-primitive-color-violet-400);
-
   .ah-potency-table__row {
     &.--reduced {
       background: color-mix(in srgb, var(--ah-potency-reduced-surface) 15%, transparent);

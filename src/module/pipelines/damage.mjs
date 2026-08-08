@@ -23,7 +23,7 @@ import { Formulas } from "../ruleset/_module.mjs";
  * @property {DamageData} damageData
  * @property {String} message
  * @property {DamageInstance[]} instances Combined from the input damage data.
- * @property {DamageResult} result Calculated during processing.
+ * @property {DamageResolution} result Calculated during processing.
  * @property {Record<AH_DamageType, ParameterModifier>} modifiers Gathered during processing.
  * @property {Boolean} pressured Whether the actor was pressured by the damage they took.
  * @property {String} pressureTrigger The pressure trigger (weapon group, affinity)
@@ -36,13 +36,6 @@ class DamageContext extends PipelineContext {
 }
 
 /**
- * @typedef DamageResult
- * @property {DamageInstance[]} instances The distinct damage instances, with incremental/multiplicative bonuses already applied.
- * @property {Number} total The total damage, combining that of the distinct instances.
- * @property {String[]} traits
- */
-
-/**
  * @param {DamageContext} context
  * @return {Promise<Boolean>}
  */
@@ -50,15 +43,8 @@ async function collectModifiers(context) {
 
   /** @type CharacterParametersDataModel **/
   const incoming = context.subject.system.parameters;
-
   for (const type of context.damageData.types) {
     const mods = incoming.damage.resolve(type, "incoming");
-    // TODO: Leave them separate?
-    // const modifier = Formulas.joinModifiers(mods);
-    // context.modifiers[type] = {
-    //   [type]: modifier,
-    // };
-
     for (const mod of mods) {
       context.damageData.modify(type, mod);
     }
@@ -71,17 +57,12 @@ async function collectModifiers(context) {
  */
 function calculateResult(context) {
 
-  const instances = context.damageData.instances;
-  const total = context.damageData.total;
-  if (total === undefined) {
+  const resolved = context.damageData.resolved;
+  if (resolved.total === undefined) {
     throw Error("Failed to calculate the damage result.");
   }
 
-  context.result = {
-    instances: instances,
-    total: total,
-  };
-
+  context.result = resolved;
   context.message = "AH.PIPELINE.ChatApplyDamage";
 }
 
@@ -200,8 +181,9 @@ async function process(request) {
  */
 function getChatAction(damageData, sourceInfo, traits) {
   const icon = AH.icons[damageData.type];
+  const resolved = damageData.resolved;
   const tooltip = StringUtils.localize("AH.ACTION.ApplyDamageTooltip", {
-    amount: damageData.total,
+    amount: resolved.total,
     type: StringUtils.localize(AH.damageTypes[damageData.type]),
   });
   return new ChatAction("applyDamage", icon, tooltip, {
@@ -209,7 +191,7 @@ function getChatAction(damageData, sourceInfo, traits) {
     sourceInfo: sourceInfo,
     traits: traits,
   })
-    .setFlag(Flags.ChatMessage.Damage, damageData.total)
+    .setFlag(Flags.ChatMessage.Damage, resolved.total)
     .withSelected()
     .withLabel("AH.ACTION.ApplyDamage")
     .withTraits(traits)
@@ -266,8 +248,8 @@ const onProcessAction = (config, actor, item, registerCallback) => {
       /** @type CharacterParametersDataModel **/
       const outgoing = actor?.system?.parameters;
       if (outgoing) {
-        for (const component of dmg.components) {
-          const mods = outgoing.damage.resolve(component.type, "outgoing");
+        for (const type of dmg.types) {
+          const mods = outgoing.damage.resolve(type, "outgoing");
           if (mods.length) {
             for (const mod of mods) {
               dmg.modify(dmg.type, mod);

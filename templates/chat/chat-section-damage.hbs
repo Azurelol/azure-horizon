@@ -2,7 +2,7 @@
   <div class="ah-chat-section__check__details__group">
     <div class="ah-chat-section__check__total --damage">
       <i class="ah-icon --s {{ahIconClass 'damage'}}"></i>
-      <span>{{damage.total}}</span>
+      <span>{{damage.resolved.total}}</span>
     </div>
 
     <div class='ah-chat-section__check__components'>
@@ -16,7 +16,7 @@
             </span>
           {{/each}}
           {{#each component.modifiers as |mod|}}
-            <span class="ah-chat-section__damage__modifier">
+            <span class="ah-chat-section__damage__modifier --{{mod.key}}">
               {{#if mod.additive}}
                 <span class="ah-chat-section__check__components__additive">{{numberFormat mod.additive decimals=0 sign=true}}</span>
               {{/if}}
