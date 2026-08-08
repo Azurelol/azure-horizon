@@ -63,6 +63,7 @@
   --ah-border-damage: black;
 
   /* Potencies */
+  --ah-potency-unknown-surface: var(--ah-primitive-color-grey-850);
   --ah-potency-reduced-surface: var(--ah-primitive-color-amber-600);
   --ah-potency-reduced-icon: var(--ah-primitive-color-amber-400);
   --ah-potency-standard-surface: var(--ah-primitive-color-green-600);

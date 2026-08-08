@@ -1,4 +1,6 @@
 import { enrichHTML, renderTemplate, systemTemplatePath } from "../constants.mjs";
+import { ActionInspector, ChatAction } from "./_module.mjs";
+import AH from "../config.mjs";
 
 /**
  * @desc Used for ordering the standardized chat message sections.
@@ -47,6 +49,7 @@ export const ChatMessageSectionTemplate = Object.freeze({
   flavorItem: systemTemplatePath("chat/chat-section-flavor-item"),
   check: systemTemplatePath("chat/chat-section-check"),
   targets: systemTemplatePath("chat/chat-section-targets"),
+  targetsDefend: systemTemplatePath("chat/chat-section-targets-defend"),
   damage: systemTemplatePath("chat/chat-section-damage"),
   applyDamage: systemTemplatePath("chat/chat-section-apply-damage"),
   resource: systemTemplatePath("chat/chat-section-update-resource"),
@@ -143,6 +146,24 @@ export const ChatMessageSections = Object.freeze({
    * @param {number} [order]
    */
   targets: (sections, targets, actions, order = ChatSectionOrder.actions) => {
+    sections.push(async () => ({
+      partial: ChatMessageSectionTemplate.targets,
+      data: {
+        targets,
+        actions,
+      },
+      order,
+    }));
+  },
+
+  /**
+   * @param {ChatMessageSectionCollection} sections
+   * @param {TargetData[]} targets
+   * @param actions
+   * @param {number} [order]
+   */
+  targetsDefend: (sections, targets, actions, order = ChatSectionOrder.actions) => {
+
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.targets,
       data: {

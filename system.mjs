@@ -97,6 +97,7 @@ async function initializeSystems() {
   await pipelines.Enrichers.initialize();
   await pipelines.Damage.initialize();
   await pipelines.Rules.initialize();
+  await pipelines.Actions.initialize();
 }
 
 /**

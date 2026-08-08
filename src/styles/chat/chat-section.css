@@ -193,6 +193,7 @@
   box-shadow: 1px 1px #3a3837;
   padding-left: 8px;
   color: var(--ah-content-primary);
+  background: var(--ah-potency-unknown-surface);
 
   &.reduced {
     background: var(--ah-potency-reduced-surface);
@@ -258,24 +259,24 @@
   justify-content: center;
   gap: 8px;
 
+  background: var(--ah-action-surface);
+
   &.--transparent {
+    background: transparent;
     i, img {
-      background: transparent;
       border: none;
     }
   }
 
   &.--compact {
     gap: 0;
-    i, img {
-      width: 20px;
-      height: 20px;
-    }
   }
 
   i, img {
+    width: 24px;
+    height: 24px;
+
     color: var(--ah-action-content);
-    background: var(--ah-action-surface);
     text-shadow: 1px 1px var(--ah-text-shadow-control);
     font-variant: small-caps;
     font-size: 14px;

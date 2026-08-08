@@ -29,8 +29,8 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
 
 /**
  * @typedef CheckModifier
- * @property {string} label the label or localization key for this modifier
- * @property {number} value the value of this modifier
+ * @property {string} label The label or localization key for this modifier
+ * @property {number} value The value of this modifier
  */
 
 /**
@@ -49,9 +49,9 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  */
 
 /**
- * @typedef {Check} CheckOptions the basic configuration of the check. This object is sealed
- * @property {AH_Attribute} primary the first attribute
- * @property {AH_Attribute} secondary the second attribute
+ * @typedef {Check} CheckOptions The basic configuration of the check. This object is sealed
+ * @property {AH_Attribute} primary The first attribute
+ * @property {AH_Attribute} secondary The second attribute
  */
 
 /**
@@ -60,13 +60,13 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @property {string} itemUuid
  * @property {string} itemName
  * @property {SourceInfo} sourceInfo
- * @property {Roll | Object} roll the Roll instance or serialized form of the primary check
+ * @property {Roll | Object} roll The Roll instance or serialized form of the primary check
  * @property {(Roll | Object)[]} additionalRolls any secondary rolls, either as Roll instances or serialized
  * @property {AttributeDieRoll} primary
  * @property {AttributeDieRoll} secondary
  * @property {AttributeDieRoll} hr
- * @property {number} modifierTotal the sum of all modifier
- * @property {number} total the total result of the check
+ * @property {number} modifierTotal The sum of all modifier
+ * @property {number} total The total result of the check
  * @property {boolean} fumble
  * @property {boolean} critical
  */
@@ -327,7 +327,7 @@ async function renderCheck(result, actor, item, flags = {}) {
   });
 
   // Flags
-  await Actions.addSections(builderData, config);
+  await Actions.addSections(builderData, config, actor, item);
 
   const chatBuilder = new ChatMessageBuilder(actor, item).withData(builderData).withFlags(flags);
 
@@ -358,7 +358,7 @@ export default class Checks {
     const result = await processResult(preparedCheck, roll, actor, item);
     await renderCheck(result, actor, item);
     if (onRender) {
-      await onRender(result);
+      await onRender(result, actor, item);
     }
     Events.resolveAction(new ActionInspector(config.check), actor, item);
   }
@@ -401,6 +401,7 @@ export default class Checks {
    * @param {AHActor} actor
    * @param {AHItem} item
    * @param {CheckPrepareCallback} onPrepare
+   * @remarks These are usually performed by PCs.
    */
   static async actionCheck(actor, item, onPrepare) {
     /** @type Partial<CheckOptions> */
@@ -410,4 +411,5 @@ export default class Checks {
 
     return Checks.performCheck(check, actor, item, onPrepare);
   }
+
 }

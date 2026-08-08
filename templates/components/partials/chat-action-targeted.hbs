@@ -1,18 +1,17 @@
-<span class="ah-chat-action --transparent {{classes}}">
-  <a data-action="{{name}}"
-     data-id="{{target.uuid}}"
-     data-fields="{{fields}}"
-    {{#each dataset}}
-     data-{{@key}}="{{this}}"
-    {{/each}}
-     data-tooltip="{{localize tooltip}}">
-    {{#if img}}
-      <img class="ah-icon --xs {{classes}}" alt="{{localize tooltip}}"
-           style="{{style}} {{#if color}}color: {{color}};{{/if}}"
-           src="{{img}}" />
-    {{else}}
-      <i class="ah-icon --xs {{icon}} {{classes}}"
-         style="{{style}} {{#if color}}color: {{color}};{{/if}}"></i>
-    {{/if}}
-  </a>
-</span>
+<a class="ah-chat-action --transparent {{classes}}{{name}}"
+   data-action="{{name}}"
+   data-id="{{target.uuid}}"
+   data-fields="{{fields}}"
+  {{#each dataset}}
+   data-{{@key}}="{{this}}"
+  {{/each}}
+   data-tooltip="{{localize tooltip}}">
+  {{#if img}}
+    <img class="ah-icon {{classes}}" alt="{{localize tooltip}}"
+         style="{{style}} {{#if color}}color: {{color}};{{/if}}"
+         src="{{img}}" />
+  {{else}}
+    <i class="ah-icon {{icon}} {{classes}}"
+       style="{{style}} {{#if color}}color: {{color}};{{/if}}"></i>
+  {{/if}}
+</a>

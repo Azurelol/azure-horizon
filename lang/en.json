@@ -136,6 +136,7 @@
     "CHECK": {
       "Check": "Check",
       "Attribute": "Attribute Check",
+      "Defense": "Defense Check",
       "Open": "Open Check",
       "Difficulty": "Difficulty",
       "Threshold": "Threshold",

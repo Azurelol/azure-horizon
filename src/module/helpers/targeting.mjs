@@ -31,7 +31,7 @@ function constructData(actor) {
     link: actor.link,
     img: actor.img,
     type: actor.type,
-    potency: "none",
+    potency: "",
     defenses: {
       def: actor.system.parameters.def.current,
       mdef: actor.system.parameters.mdef.current,

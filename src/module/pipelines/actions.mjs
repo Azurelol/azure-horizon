@@ -1,10 +1,16 @@
 import Events from "./events.mjs";
 import { ActionConfig, ActionInspector } from "../helpers/action-configuration.mjs";
 import AH from "../config.mjs";
-import { ChatAction, ChatMessageBuilder, ChatMessageSections, FlagBuilder } from "../helpers/_module.mjs";
+import {
+  ChatAction,
+  ChatMessageBuilder,
+  ChatMessageHelper,
+  ChatMessageSections,
+  FlagBuilder,
+} from "../helpers/_module.mjs";
 import Flags from "../data/common/flags.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
-import { renderTemplate } from "../constants.mjs";
+import { renderTemplate, systemID } from "../constants.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 
 /**
@@ -63,10 +69,26 @@ async function invokeWithCallbacks(hook, action, actor, item) {
   }
 }
 
+function getDefendAction(config) {
+  const defend = new ChatAction("defenseCheck", AH.icons.defenseCheck, "AH.CHECK.Defense");
+  defend.withDataset({
+    id: config.check.id,
+    difficulty: config.check.total,
+    defense: config.getTargetedDefense(),
+  });
+  defend.withFields({
+    sourceInfo: config.sourceInfo,
+  });
+  defend.setFlag(AH.flags.ChatMessage.DefenseCheck);
+  return defend;
+}
+
 /**
  * Adds common chat sections
  * @param {ChatMessageBuilderData} builderData
  * @param {ActionConfig} config
+ * @param {AHActor} actor
+ * @param {AHItem} item
  */
 async function addSections(builderData, config, actor, item) {
 
@@ -74,7 +96,14 @@ async function addSections(builderData, config, actor, item) {
   const targets = config.getTargets();
   const isTargeted = targets.length > 0;
   if (isTargeted) {
-    ChatMessageSections.targets(builderData.sections, targets, [ChatAction.TARGET_ACTION]);
+    if (config.isDefenseCheck) {
+      const defendAction = getDefendAction(config);
+      config.addAction(defendAction);
+      ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
+    }
+    else {
+      ChatMessageSections.targets(builderData.sections, targets, [ChatAction.TARGET_ACTION]);
+    }
   }
 
   let fb = new FlagBuilder(builderData.flags);
@@ -168,10 +197,35 @@ async function perform(actor, item, prepare) {
   await invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
   await renderAction(config, actor, item);
   Events.resolveAction(new ActionInspector(config.check), actor, item);
+}
+
+/**
+ * @param {ChatMessage} message
+ * @param {HTMLElement} html
+ */
+function onRenderChatMessage(message, html) {
+  if (!message.getFlag(systemID, AH.flags.ChatMessage.DefenseCheck)) {
+    return;
+  }
+
+  ChatMessageHelper.handleClick(message, html, "defenseCheck", async (dataset) => {
+    const fields = StringUtils.fromBase64(dataset.fields);
+    const sourceInfo = SourceInfo.fromObject(fields.sourceInfo);
+
+    ui.notifications.info("Now prompting defense");
+  });
 
 }
 
+/**
+ * Initializes the callback handlers for this pipeline.
+ */
+function initialize() {
+  Hooks.on("renderChatMessageHTML", onRenderChatMessage);
+}
+
 const Actions = Object.freeze({
+  initialize,
   perform,
   renderAction,
 

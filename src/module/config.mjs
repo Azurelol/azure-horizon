@@ -438,6 +438,7 @@ AH.flags = Object.freeze({
   // ChatMessage
   ChatMessage: Object.freeze({
     Check: "Check",
+    DefenseCheck: "DefenseCheck",
     Source: "Source", /** @remarks Refers to {@linkcode SourceInfo} **/
     Item: "Item",
     Effect: "Effect",
@@ -668,6 +669,7 @@ AH.icons = {
   damage: "ah-icon-damage",
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",
+  defenseCheck: "ah-icon-check-defense",
 
   reduced: "ra ra-level-two",
   standard: "ra ra-level-three",

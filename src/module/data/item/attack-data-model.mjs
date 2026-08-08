@@ -27,6 +27,9 @@ export default class AttackDataModel extends ItemDataModel {
       await Checks.actionCheck(this.parent.actor, this.parent, async (check, actor, item) => {
         const config = new ActionConfig(check);
         config.setAttributes(this.check.primary, this.check.secondary);
+        if (item.type === "attack") {
+          config.setDefenseCheck();
+        }
         config.setTargetedDefense(this.check.defense);
         await this._initializeAction(config);
       });

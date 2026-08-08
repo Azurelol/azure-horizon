@@ -7,6 +7,7 @@ import Targeting from "./targeting.mjs";
 // Data keys
 const TARGETS = "targets";
 const TARGETED_DEFENSE = "targetedDefense";
+const DEFENSE_CHECK = "defenseCheck";
 const DIFFICULTY = "difficulty";
 const DAMAGE = "damage";
 const RESOURCE = "resource";
@@ -20,7 +21,6 @@ const TARGETED_ACTIONS = "targetedActions";
 const WEAPON_USED = "weaponUsedBySkill";
 const ITEM_REFERENCE = "itemReference";
 const INITIAL_CHECK = "initialCheck";
-const HR_ZERO = "hrZero";
 const ACTIONS = "actions";
 const KEYBOARD_MODIFIERS = "keyboardModifiers";
 const ACTION_POTENCIES = "actionPotencies";
@@ -141,13 +141,6 @@ export class ActionInspector {
   }
 
   /**
-   * @return {boolean|null}
-   */
-  getHrZero() {
-    return this.data[HR_ZERO] ?? null;
-  }
-
-  /**
    * @return {AttributeDieRoll}
    */
   get hr() {
@@ -237,10 +230,10 @@ export class ActionInspector {
   }
 
   /**
-   *@returns {ChatAction[]}
+   * @returns {Boolean}
    */
-  getTargetedActions() {
-    return this.data[TARGETED_ACTIONS] ?? [];
+  get isDefenseCheck() {
+    return this.data[DEFENSE_CHECK];
   }
 }
 
@@ -389,31 +382,11 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
-   * @param {boolean} hrZero
-   * @return {ActionConfig}
-   */
-  setHrZero(hrZero) {
-    this.check.data[HR_ZERO] = hrZero;
-    return this;
-  }
-
-  /**
-   * @param {(hrZero: boolean | null) => boolean | null} callback
-   * @return {ActionConfig}
-   */
-  modifyHrZero(callback) {
-    const hrZero = this.check.data[HR_ZERO] ?? null;
-    this.check.data[HR_ZERO] = callback(hrZero);
-    return this;
-  }
-
-  /**
    * @param {AH_Defense} targetedDefense
    * @return {ActionConfig}
    */
   setTargetedDefense(targetedDefense) {
     this.check.data[TARGETED_DEFENSE] = targetedDefense;
-    this.updateTargetResults();
     return this;
   }
 
@@ -440,6 +413,11 @@ export class ActionConfig extends ActionInspector {
    * @remarks Invoked whenever targets or targeted defense change
    */
   updateTargetResults() {
+    // A PC-facing defense check is handled differently
+    if (this.isDefenseCheck) {
+      return;
+    }
+
     const targets = this.getTargets();
     if (targets?.length) {
       if (!this.check.total) {
@@ -460,6 +438,18 @@ export class ActionConfig extends ActionInspector {
         }
         // Update the original
         this.check.data[TARGETS][t].potency = potency;
+      }
+    }
+  }
+
+  /**
+   * Clears target results.
+   */
+  clearTargetResults() {
+    const targets = this.getTargets();
+    if (targets?.length) {
+      for (let t = 0; t < targets.length; t++) {
+        this.check.data[TARGETS][t].potency = "";
       }
     }
   }
@@ -508,6 +498,14 @@ export class ActionConfig extends ActionInspector {
     const difficulty = this.check.data[DIFFICULTY] ?? null;
     this.check.data[DIFFICULTY] = callback(difficulty);
     return this;
+  }
+
+  /**
+   * Sets this action to allow the targets to roll a defense check.
+   */
+  setDefenseCheck() {
+    this.setData(DEFENSE_CHECK, true);
+    this.clearTargetResults();
   }
 
   /**
