@@ -17,7 +17,10 @@
 /**
  * @typedef DamageInstance The calculated damage instance.
  * @property {AH_DamageType} type
- * @property {Number} amount
+ * @property {Number} amount The sum total of addends and added modifiers.
+ * @property {Number[]} addends
+ * @property {ParameterModifier[]} modifiers
+ * @property {String[]} traits
  */
 
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
@@ -115,34 +118,50 @@ export default class DamageData {
   }
 
   /**
-   * @param {DamageComponent} component
-   * @returns {Number} The amount after applying modifiers for this component's type
+   * @return {DamageInstance[]}
    */
-  _resolveComponentAmount(component) {
-    const amount = Number(component.amount) || 0;
-    const entries = this.modifiers[component.type] ?? [];
-    const { additive, multiplicative } = Formulas.joinModifiers(entries);
-    return (amount + additive) * multiplicative;
-  }
+  get instances() {
+    /** @type {Map<AH_DamageType, DamageInstance>} **/
+    const _instances = new Map();
 
-  /**
-   * @returns {Record<AH_DamageType, {additive: Number, multiplicative: Number}>}
-   * Per-type joined modifiers, keyed the same way as {@linkcode modifiers}, for display use.
-   */
-  get modifierSummaries() {
-    const summaries = {};
-    for (const type of Object.keys(AH.damageTypes)) {
-      summaries[type] = Formulas.joinModifiers(this.modifiers[type] ?? []);
+    for (const component of this.components) {
+      if (!component.enabled) continue;
+
+      const amount = Number(component.amount) || 0;
+      const traits = component.traits || [];
+
+      if (!_instances.has(component.type)) {
+        _instances.set(component.type, {
+          amount,
+          addends: [amount],
+          type: component.type,
+          traits: [...traits],
+        });
+        continue;
+      }
+
+      const existing = _instances.get(component.type);
+      existing.amount += amount;
+      existing.addends.push(amount);
+      existing.traits.push(...traits);
     }
-    return summaries;
+
+    // Apply modifiers
+    let instances = [..._instances.values()];
+    for (const inst of instances) {
+      inst.modifiers = this.modifiers[inst.type] ?? [];
+      const { additive, multiplicative } = Formulas.joinModifiers(inst.modifiers);
+      inst.amount = Formulas.round((inst.amount + additive) * multiplicative);
+    }
+    return instances;
   }
 
   /**
    * @returns {Number}
    */
   get total() {
-    const active = this.components.filter((c) => c.enabled);
-    return active.reduce((sum, component) => sum + this._resolveComponentAmount(component), 0);
+    const active = this.instances;
+    return active.reduce((sum, inst) => sum + inst.amount, 0);
   }
 
   /**

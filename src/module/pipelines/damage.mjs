@@ -47,31 +47,7 @@ class DamageContext extends PipelineContext {
  * @return {Boolean}
  */
 function joinComponents(context) {
-  const _components = new Map();
-
-  for (const component of context.damageData.components) {
-    if (!component.enabled) continue;
-
-    const amount = Number(component.amount) || 0;
-    const traits = component.traits || [];
-
-    if (!_components.has(component.type)) {
-      _components.set(component.type, {
-        label: component.label,
-        enabled: true,
-        amount,
-        type: component.type,
-        traits: [...traits],
-      });
-      continue;
-    }
-
-    const existing = _components.get(component.type);
-    existing.amount += amount;
-    existing.traits.push(...traits);
-  }
-
-  context.instances = [..._components.values()];
+  context.instances = context.damageData.instances;
 }
 
 /**

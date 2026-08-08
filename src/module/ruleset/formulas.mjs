@@ -87,6 +87,14 @@ export default class Formulas {
 
   /**
    * @param {Number} amount
+   * @return {Number}
+   */
+  static round(amount) {
+    return Math.round(amount);
+  }
+
+  /**
+   * @param {Number} amount
    * @param {ParameterModifier} modifier
    */
   static modifyDamage(amount, modifier) {

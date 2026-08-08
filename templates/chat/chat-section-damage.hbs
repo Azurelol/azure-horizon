@@ -6,24 +6,28 @@
     </div>
 
     <div class='ah-chat-section__check__components'>
-      {{#each damage.components as |component|}}
-        {{#with (lookup ../damage.modifierSummaries component.type) as |mod|}}
-          <span data-tooltip="{{localize component.label}}">
-            <i class="ah-icon --s {{ahIconClass component.type}}"></i>
-            {{component.amount}}
-            {{#if mod.valid}}
-              (
+      {{#each damage.instances as |component|}}
+        <div class="ah-chat-section__damage__component"
+              data-tooltip="{{localize component.label}}">
+          <i class="ah-icon --s {{ahIconClass component.type}}"></i>
+          {{#each component.addends as |addend|}}
+            <span class="ah-chat-section__damage__addend">
+              {{numberFormat addend decimals=0 sign=true}}
+            </span>
+          {{/each}}
+          {{#each component.modifiers as |mod|}}
+            <span class="ah-chat-section__damage__modifier">
               {{#if mod.additive}}
                 <span class="ah-chat-section__check__components__additive">{{numberFormat mod.additive decimals=0 sign=true}}</span>
               {{/if}}
               {{#if (ne mod.multiplicative 1)}}
                 <span class="ah-chat-section__check__components__multiplicative">{{ahPercentModifier mod.multiplicative}}</span>
               {{/if}}
-              )
-            {{/if}}
-          </span>
-        {{/with}}
+            </span>
+          {{/each}}
+        </div>
       {{/each}}
+
     </div>
   </div>
 </section>
