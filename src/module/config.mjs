@@ -159,10 +159,11 @@ AH.codex = {
  */
 
 /**
- * @typedef {'physical'|'elemental'|'spiritual'} AH_DamageGroup
+ * @typedef {'universal'|'physical'|'elemental'|'spiritual'} AH_DamageGroup
  */
 
 AH.damageGroups = Object.freeze({
+  universal: "AH.DAMAGE.Universal",
   physical: "AH.DAMAGE.Physical",
   elemental: "AH.DAMAGE.Elemental",
   spiritual: "AH.DAMAGE.Spiritual",
@@ -671,6 +672,10 @@ AH.icons = {
   reduced: "ra ra-level-two",
   standard: "ra ra-level-three",
   powerful: "ra ra-level-four",
+
+  parameter: "fa-solid fa-sliders",
+  additive: "fa-solid fa-plus",
+  multiplier: "fa-solid fa-xmark",
 
   full: "fa fa-hourglass",
   half: "fa fa-hourglass-half",

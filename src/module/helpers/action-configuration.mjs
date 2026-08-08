@@ -34,12 +34,6 @@ const initHrZero = (hrZero) => (check) => {
 };
 
 /**
- * @typedef Action
- * @property {Object} data
- * @property {SourceInfo} sourceInfo
- */
-
-/**
  * @description Given a {@link CheckResult} object, provides additional information from it
  * @remarks Provides read-only access, to be used after {@linkcode ActionConfig}
  */

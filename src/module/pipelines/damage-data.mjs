@@ -15,7 +15,7 @@
  */
 
 /**
- * @typedef DamageInstance
+ * @typedef DamageInstance The calculated damage instance.
  * @property {AH_DamageType} type
  * @property {Number} amount
  */
@@ -107,7 +107,10 @@ export default class DamageData {
     if (this.modifiers[type] === undefined) {
       this.modifiers[type] = [];
     }
-    this.modifiers[type].push(modifier);
+    const found = this.modifiers[type].find(c => c.label === modifier.label);
+    if (!found) {
+      this.modifiers[type].push(modifier);
+    }
     return this;
   }
 
@@ -120,6 +123,18 @@ export default class DamageData {
     const entries = this.modifiers[component.type] ?? [];
     const { additive, multiplicative } = Formulas.joinModifiers(entries);
     return (amount + additive) * multiplicative;
+  }
+
+  /**
+   * @returns {Record<AH_DamageType, {additive: Number, multiplicative: Number}>}
+   * Per-type joined modifiers, keyed the same way as {@linkcode modifiers}, for display use.
+   */
+  get modifierSummaries() {
+    const summaries = {};
+    for (const type of Object.keys(AH.damageTypes)) {
+      summaries[type] = Formulas.joinModifiers(this.modifiers[type] ?? []);
+    }
+    return summaries;
   }
 
   /**

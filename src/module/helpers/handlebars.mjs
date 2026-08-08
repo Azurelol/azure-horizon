@@ -76,6 +76,14 @@ export default Object.freeze({
     Handlebars.registerPartial("ahOptionalFieldset", await foundry.applications.handlebars.getTemplate(COMPONENT_TEMPLATES.optionalFieldset));
   },
   registerHelpers: () => {
+    Handlebars.registerHelper("let", function (...args) {
+      const options = args.pop();
+      const values = args;
+      const names = options.hash.as ? options.hash.as.split(" ") : [];
+      const context = Object.assign({}, this);
+      names.forEach((name, i) => (context[name] = values[i]));
+      return options.fn(context);
+    });
     Handlebars.registerHelper("ahFormOptions", formOptions);
     Handlebars.registerHelper("ahDocumentAnchor", documentAnchor);
     Handlebars.registerHelper("ahIconClass", function (icon) {

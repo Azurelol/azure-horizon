@@ -8,6 +8,13 @@ import { renderTemplate } from "../constants.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 
 /**
+ * @typedef Action
+ * @property {CheckId} id A unique identifier for this action.
+ * @property {Object} data
+ * @property {SourceInfo} sourceInfo
+ */
+
+/**
  * @callback ActionPrepareCallback
  * @param {ActionConfig} config
  * @param {AHActor} actor
@@ -150,6 +157,7 @@ async function renderAction(config, actor, item) {
 async function perform(actor, item, prepare) {
   /** @type Action **/
   const action = {
+    id: foundry.utils.randomID(),
     data: {},
     sourceInfo: SourceInfo.fromInstance(actor, item),
   };

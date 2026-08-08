@@ -43,7 +43,6 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
 /**
  * @typedef {Action} Check
  * @property {CheckType} type The type of the check.
- * @property {CheckId} id A unique identifier for this check.
  * @property {CheckModifier[]} modifiers array of modifiers
  * @property {Boolean} generateOpportunity Whether this check can generate an opportunity.
  * @property {number} critThreshold The critical threshold for this check.
@@ -276,7 +275,7 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
 
   if (callHook) {
     await invokeWithCallbacks(AH.hooks.PROCESS_CHECK, result, actor, item);
-    const config = new ActionConfig(check);
+    const config = new ActionConfig(result);
     await invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
   }
 

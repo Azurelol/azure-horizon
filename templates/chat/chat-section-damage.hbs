@@ -7,10 +7,22 @@
 
     <div class='ah-chat-section__check__components'>
       {{#each damage.components as |component|}}
-        <span data-tooltip="{{localize component.label}}">
+        {{#with (lookup ../damage.modifierSummaries component.type) as |mod|}}
+          <span data-tooltip="{{localize component.label}}">
             <i class="ah-icon --s {{ahIconClass component.type}}"></i>
-          {{component.amount}}
-        </span>
+            {{component.amount}}
+            {{#if mod.valid}}
+              (
+              {{#if mod.additive}}
+                <span class="ah-chat-section__check__components__additive">{{numberFormat mod.additive decimals=0 sign=true}}</span>
+              {{/if}}
+              {{#if (ne mod.multiplicative 1)}}
+                <span class="ah-chat-section__check__components__multiplicative">{{ahPercentModifier mod.multiplicative}}</span>
+              {{/if}}
+              )
+            {{/if}}
+          </span>
+        {{/with}}
       {{/each}}
     </div>
   </div>

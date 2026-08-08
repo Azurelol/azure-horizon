@@ -56,6 +56,8 @@ export class ModifiersDataModel extends VersionedDataModel {
           Math.abs(m - 1) > Math.abs(best - 1) ? m : best, 1);
       }
 
+      if ((_additive === 0) && (_multiplicative === 1)) continue;
+
       modifiers.push({
         key,
         additive: _additive,

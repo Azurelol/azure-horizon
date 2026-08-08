@@ -9,11 +9,12 @@ const MAX_ATTRIBUTE_DIE = 12;
  * @typedef Modifier
  * @property {Number} additive Should default to 0.
  * @property {Number} multiplicative Should default to 1.
+ * @property {Boolean} valid It's valid if it's not at default values.
  */
 
 /**
  * @typedef {Modifier} ParameterModifier
- * @property {String} label
+ * @property {AH_Modifier} label
  */
 
 export default class Formulas {
@@ -81,7 +82,7 @@ export default class Formulas {
       _multiplicative *= multiplicative;
     }
 
-    return { additive: _additive, multiplicative: _multiplicative };
+    return { additive: _additive, multiplicative: _multiplicative, valid: (_additive !== 0) && (_multiplicative !== 1) };
   }
 
   /**

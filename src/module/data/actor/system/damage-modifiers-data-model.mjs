@@ -5,7 +5,7 @@ import AH from "../../../config.mjs";
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
 /**
- * @property {ExchangeModifiersDataModel} all
+ * @property {ExchangeModifiersDataModel} universal
  * @property {ExchangeModifiersDataModel} physical
  * @property {ExchangeModifiersDataModel} slashing
  * @property {ExchangeModifiersDataModel} bludgeoning
@@ -18,7 +18,7 @@ export default class DamageModifiersDataModel extends VersionedDataModel {
 
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      all: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
+      universal: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
 
       physical: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
       slashing: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
@@ -27,6 +27,7 @@ export default class DamageModifiersDataModel extends VersionedDataModel {
 
       elemental: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
       fire: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
+      cold: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
     });
   }
 
@@ -41,7 +42,7 @@ export default class DamageModifiersDataModel extends VersionedDataModel {
     let modifiers = [];
 
     const group = AH.damageTypes[type]?.group;
-    const layers = ["all", group, type].filter((key) => key && (key in this.schema.fields));
+    const layers = ["universal", group, type].filter((key) => key && (key in this.schema.fields));
 
     for (const key of layers) {
       const resolved = this[key]?.[direction]?.resolveModifiers();

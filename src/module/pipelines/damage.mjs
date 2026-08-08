@@ -238,7 +238,7 @@ async function process(request) {
 }
 
 /**
- * @param {DamageData} damageData *
+ * @param {DamageData} damageData
  * @param {SourceInfo} sourceInfo
  * @param {String[]} traits
  * @returns {ChatAction}
@@ -306,7 +306,7 @@ const onProcessAction = (config, actor, item, registerCallback) => {
     config.modifyDamage((dmg) => {
       const hr = config.hr;
       if (hr) {
-        dmg.add("AH.CHECK.HighRoll.short", dmg.type, hr);
+        dmg.add("AH.CHECK.HighRoll.short", dmg.type, hr.result);
       }
       /** @type CharacterParametersDataModel **/
       const outgoing = actor?.system?.parameters;
@@ -326,6 +326,10 @@ const onProcessAction = (config, actor, item, registerCallback) => {
 
       const standardDamage = new DamageData(config.damage);
       const standard = getChatAction(standardDamage, sourceInfo, traits);
+      potencies.standard.components.push({
+        text: standardDamage.toString(),
+        actions: [standard],
+      });
 
       const reducedDamage = standardDamage.duplicate(d => {
         const base = d.base;
@@ -333,15 +337,9 @@ const onProcessAction = (config, actor, item, registerCallback) => {
         d.add("AH.DAMAGE.Glancing", base.type, Math.round(base.amount * 0.5));
       });
       const reducedAction = getChatAction(reducedDamage, sourceInfo, traits);
-
       potencies.reduced.components.push({
         text: reducedDamage.toString(),
         actions: [reducedAction],
-      });
-
-      potencies.standard.components.push({
-        text: standardDamage.toString(),
-        actions: [standard],
       });
 
       const powerfulDamage = standardDamage.duplicate(d => {
@@ -349,7 +347,6 @@ const onProcessAction = (config, actor, item, registerCallback) => {
         d.add("AH.PIPELINE.CriticalBonus", "untyped", criticalBonus);
       });
       const powerful = getChatAction(powerfulDamage, sourceInfo, traits);
-
       potencies.powerful.components.push({
         text: powerfulDamage.toString(),
         actions: [powerful],
