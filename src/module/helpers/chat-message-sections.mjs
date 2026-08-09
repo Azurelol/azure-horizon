@@ -17,6 +17,8 @@ export const ChatSectionOrder = Object.freeze({
   push: -1200,
   addendum: -900,
   result: 1000,
+  potencies: 1200,
+  targets: 1500,
   actions: 2000,
   expenses: 2500,
 });
@@ -145,7 +147,7 @@ export const ChatMessageSections = Object.freeze({
    * @param {ChatAction[]} actions
    * @param {number} [order]
    */
-  targets: (sections, targets, actions, order = ChatSectionOrder.actions) => {
+  targets: (sections, targets, actions, order = ChatSectionOrder.targets) => {
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.targets,
       data: {
@@ -162,7 +164,7 @@ export const ChatMessageSections = Object.freeze({
    * @param actions
    * @param {number} [order]
    */
-  targetsDefend: (sections, targets, actions, order = ChatSectionOrder.actions) => {
+  targetsDefend: (sections, targets, actions, order = ChatSectionOrder.targets) => {
 
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.targetsDefend,
@@ -179,7 +181,7 @@ export const ChatMessageSections = Object.freeze({
    * @param {ActionPotencyTable} potencies
    * @param {number} [order]
    */
-  potencies: (sections, potencies, order = ChatSectionOrder.actions) => {
+  potencies: (sections, potencies, order = ChatSectionOrder.potencies) => {
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.potencies,
       data: {

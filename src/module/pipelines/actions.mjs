@@ -12,6 +12,7 @@ import Flags from "../data/common/flags.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import { renderTemplate, systemID } from "../constants.mjs";
 import { StringUtils } from "../utils/_module.mjs";
+import { CheckPrompt } from "../helpers/check-prompt.mjs";
 
 /**
  * @typedef Action
@@ -232,6 +233,12 @@ function onRenderChatMessage(message, html) {
       }
 
       ui.notifications.info(`Now prompting ${dataset.defense} defense against ${dataset.difficulty} for ${actor.name} on action ${dataset.id}`);
+      await CheckPrompt.defenseCheck(actor, {
+        initialConfig: {
+          defense: dataset.defense,
+          difficulty: dataset.difficulty,
+        },
+      });
     });
 
 }

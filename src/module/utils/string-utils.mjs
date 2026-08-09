@@ -1,4 +1,12 @@
 export default class StringUtils {
+
+  /**
+   * @returns {String}
+   */
+  static randomID() {
+    return foundry.utils.randomID();
+  }
+
   /**
    * @param {String} str
    * @returns {string}

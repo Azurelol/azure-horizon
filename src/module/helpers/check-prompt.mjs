@@ -23,6 +23,12 @@ import { ActionConfig } from "./action-configuration.mjs";
  */
 
 /**
+ * @typedef {CheckConfig} DefenseCheckConfig
+ * @property {AH_Defense} defense The defense being checked for.
+ * @property {number|undefined} difficulty If set, will be checked against.
+ */
+
+/**
  * @typedef CheckPromptOptions
  * @template T
  * @property {T} [initialConfig] The configuration for the specific check.
@@ -181,7 +187,7 @@ async function prompt(actor, type, initialConfig = {}) {
  *
  * @template T
  * @param {AHActor} actor
- * @param {"open"|"attribute"} type
+ * @param {CheckType} type
  * @param {CheckPromptOptions<T>} options
  * @param {(config: ActionConfig, promptResult: object) => void} applyPromptConfig
  *        Applies values from the prompt result onto the CheckConfigurer.
@@ -241,7 +247,24 @@ async function attributeCheck(actor, options = {}) {
   }, null);
 }
 
+/**
+ * @param {AHActor} actor
+ * @param {CheckPromptOptions<DefenseCheckConfig>} [options]
+ * @returns {Promise<void>}
+ */
+async function defenseCheck(actor, options = {}) {
+  return runCheckPrompt(actor, "defense", options, (config, promptResult) => {
+    if (promptResult.difficulty) {
+      config.setDifficulty(promptResult.difficulty);
+    }
+    if (promptResult.modifier) {
+      config.addModifier("AH.CHECK.SituationalModifier", promptResult.modifier);
+    }
+  }, null);
+}
+
 export const CheckPrompt = Object.freeze({
   attributeCheck,
   openCheck,
+  defenseCheck,
 });

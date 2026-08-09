@@ -4,7 +4,7 @@
   border: 1px solid var(--ah-border-surface);
   border-radius: 8px;
   overflow: hidden;
-  margin: 8px 0 0;
+  margin: 0;
 
   .ah-potency-table__tier {
     width: 30px;

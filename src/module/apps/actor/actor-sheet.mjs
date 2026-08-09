@@ -453,6 +453,17 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       }
         break;
 
+      case "defense-check": {
+        const { defense, difficulty } = target.dataset;
+        await CheckPrompt.defenseCheck(this.actor, {
+          initialConfig: {
+            defense: defense,
+            difficulty: difficulty,
+          },
+        });
+      }
+        break;
+
       case "item": {
         const item = await this.actor.items.get(id);
         await item.perform(modifiers);

@@ -104,7 +104,7 @@ AH.attributeDice = {
  */
 
 /**
- * @typedef {"attribute"|"open"|'action'} CheckType
+ * @typedef {"attribute"|"open"|'action'|'defense'} CheckType
  */
 
 /**

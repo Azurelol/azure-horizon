@@ -296,6 +296,7 @@ async function renderCheck(result, actor, item, flags = {}) {
    * @type ChatMessageBuilderData
    */
   const builderData = {
+    id: result.id,
     sections: [],
     postRenderActions: [],
     tags: [],
@@ -407,6 +408,21 @@ export default class Checks {
     /** @type Partial<CheckOptions> */
     const check = {
       type: "action",
+    };
+
+    return Checks.performCheck(check, actor, item, onPrepare);
+  }
+
+  /**
+   * @param {AHActor} actor
+   * @param {AHItem} item
+   * @param {CheckPrepareCallback} onPrepare
+   * @remarks These are usually performed by PCs.
+   */
+  static async defenseCheck(actor, item, onPrepare) {
+    /** @type Partial<CheckOptions> */
+    const check = {
+      type: "defense",
     };
 
     return Checks.performCheck(check, actor, item, onPrepare);

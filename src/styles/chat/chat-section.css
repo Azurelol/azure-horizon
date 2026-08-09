@@ -1,12 +1,16 @@
+.ah-chat-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .ah-chat-section {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin: 4px;
 }
 
 /*--FLAVOR--*/
-
 .ah-chat-section__flavor {
   display: flex;
   flex-direction: row;
@@ -190,7 +194,7 @@
 .ah-chat-section__target {
   display: flex;
   flex-direction: row;
-  box-shadow: 1px 1px #3a3837;
+  border: 1px solid aliceblue;
   padding-left: 8px;
   color: var(--ah-content-primary);
   background: var(--ah-potency-unknown-surface);
