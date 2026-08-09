@@ -8,13 +8,31 @@
   <div class="ah-sheet-header__row">
     <div class="ah-sheet__group">
       {{#each system.attributes as |attribute key|}}
-        {{ahSelector size='sm' icon=(ahIconClass key) label=(ahLocaleKey 'attributes' key format='short') values=@root.AH.attributeDice value=attribute.base path=(ahConcat 'system.attributes.' key '.base') }}
+        {{ahSelector size='sm' icon=(ahIconClass key)
+                     label=(ahLocaleKey 'attributes' key format='short')
+                     values=@root.AH.attributeDice value=attribute.base
+                     path=(ahConcat 'system.attributes.' key '.base') }}
       {{/each}}
     </div>
 
     <div class="ah-sheet__group">
-      {{ahBadge size='sm' icon=(ahIconClass 'def') label='AH.CHARACTER.Defense.short' value=system.parameters.def.current }}
-      {{ahBadge size='sm' icon=(ahIconClass 'mdef') label='AH.CHARACTER.MagicDefense.short' value=system.parameters.mdef.current }}
+      {{#if (eq actorType 'hero')}}
+        {{ahBadge size='sm' icon=(ahIconClass 'def')
+                  label='AH.CHARACTER.Defense.short'
+                  classes='--wide'
+                  value=def }}
+        {{ahBadge size='sm' icon=(ahIconClass 'mdef')
+                  label='AH.CHARACTER.MagicDefense.short'
+                  classes='--wide'
+                  value=mdef }}
+      {{else}}
+        {{ahBadge size='sm' icon=(ahIconClass 'def')
+                  label='AH.CHARACTER.Defense.short'
+                  value= system.parameters.def.current }}
+        {{ahBadge size='sm' icon=(ahIconClass 'mdef')
+                  label='AH.CHARACTER.MagicDefense.short'
+                  value=system.parameters.mdef.current }}
+      {{/if}}
     </div>
 
     <div class="ah-sheet__group">

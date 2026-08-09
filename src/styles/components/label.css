@@ -97,4 +97,10 @@
     text-align: center;
     width: 40px;
   }
+
+  &.--wide {
+    input {
+      width: 100px;
+    }
+  }
 }

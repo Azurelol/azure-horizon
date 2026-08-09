@@ -581,6 +581,10 @@ AH.traits = Object.freeze({
     stress: "AH.TRAIT.Stress",
   },
   // Used by heroes
+  defense: {
+    deflection: "AH.TRAIT.Deflection", // Heavy
+    avoidance: "AH.TRAIT.Avoidance", // Heavy
+  },
   skill: {
     cooldown: "AH.TRAIT.Cooldown",
     stress: "AH.TRAIT.Stress",

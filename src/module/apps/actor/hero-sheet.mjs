@@ -6,6 +6,8 @@ import {
   ArmorTableRenderer,
   WeaponTableRenderer,
 } from "../item/_module.mjs";
+import { StringUtils } from "../../utils/_module.mjs";
+import AH from "../../config.mjs";
 
 /**
  * @extends AHActorSheet
@@ -67,7 +69,17 @@ export class HeroSheet extends AHBaseCharacterSheet {
   async _preparePartContext(partId, context) {
     await super._preparePartContext(partId, context);
     switch (partId) {
+      case "header":
+      {
+        const defConfig = this.actor.system.getDefense("def");
+        context.def = `${StringUtils.localize(AH.attributes[defConfig.primary].short)} + ${StringUtils.localize(AH.attributes[defConfig.secondary].short)}`;
+        const mdefConfig = this.actor.system.getDefense("mdef");
+        context.mdef = `${StringUtils.localize(AH.attributes[mdefConfig.primary].short)} + ${StringUtils.localize(AH.attributes[mdefConfig.secondary].short)}`;
+        break;
+      }
+
       case "sidebar": {
+
         context.equipment = this.actor.system.getEquippedItems();
         break;
       }

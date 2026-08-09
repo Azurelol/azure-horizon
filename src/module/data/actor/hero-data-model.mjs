@@ -94,6 +94,8 @@ export default class HeroDataModel extends CharacterDataModel {
     this.parent.updateSource(updates);
   }
 
+  /*--------------------------------------------------------------*/
+
   supportsItemType(type) {
     return HeroDataModel.ITEM_TYPES.has(type);
   }
@@ -116,5 +118,67 @@ export default class HeroDataModel extends CharacterDataModel {
       armor: actor.items.get(this.equipment.armor),
     };
   }
+
+  /**
+   * @typedef DefenseCheckConfig
+   * @property {AH_Attribute} primary
+   * @property {AH_Attribute} secondary
+   * @property {ArmorDataModel} armorData
+   */
+
+  /**
+   * @param {AH_Defense} targeted
+   * @return {DefenseCheckConfig}
+   */
+  getDefense(targeted) {
+    let primary, secondary;
+    /** @type ArmorDataModel **/
+    let armorData;
+
+    switch (targeted) {
+      case "def": {
+        const equipped = this.getEquippedItems();
+        if (equipped.armor) {
+          armorData = equipped.armor.system;
+          switch (armorData.category) {
+            case "light":
+              primary = "dex";
+              secondary = "ins";
+              break;
+            case "heavy":
+              primary = "mig";
+              secondary = "wlp";
+              break;
+          }
+        }
+        // Unarmored
+        else {
+          primary = "dex";
+          secondary = "ins";
+        }
+      }
+        break;
+
+      case "mdef":
+        primary = "ins";
+        secondary = "wlp";
+        break;
+
+      case "dex":
+      case "ins":
+      case "wlp":
+      case "mig":
+        primary = secondary = targeted;
+        break;
+    }
+
+    return {
+      primary,
+      secondary,
+      armorData,
+    };
+  }
+
+  /*--------------------------------------------------------------*/
 
 }

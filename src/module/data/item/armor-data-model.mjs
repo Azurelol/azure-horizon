@@ -5,7 +5,8 @@ import { FoundryUtils } from "../../utils/_module.mjs";
 
 /**
  * Represents a hero's armor, which alters how they defend themselves.
- * @property {AH_ArmorCategory} armorType
+ * @property {AH_ArmorCategory} category
+ * @property {Set<String>} traits
  */
 export default class ArmorDataModel extends ItemDataModel {
   /** @inheritdoc */

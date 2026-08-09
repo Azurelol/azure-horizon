@@ -70,7 +70,7 @@ async function invokeWithCallbacks(hook, action, actor, item) {
 }
 
 /**
- * @typedef DefenseCheckData
+ * @typedef DefenseCheckSourceData
  * @property id The id of the source action.
  * @property uuid The actor whose defense is being prompted
  * @property difficulty
@@ -221,7 +221,7 @@ function onRenderChatMessage(message, html) {
   }
 
   ChatMessageHelper.handleClick(message, html, "defenseCheck",
-    /** @param {DefenseCheckData} dataset  **/
+    /** @param {DefenseCheckSourceData} dataset  **/
     async (dataset) => {
 
       const fields = StringUtils.fromBase64(dataset.fields);
