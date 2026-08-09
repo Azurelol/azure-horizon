@@ -147,7 +147,9 @@ async function addSections(builderData, config, actor, item) {
 
   // FLAVOR
   let flavor;
-  if (item) {
+  const defenseResults = config.defenseResults;
+  const useItemFlavor = item && !defenseResults;
+  if (useItemFlavor) {
     let linked = [];
     const weaponReference = config.getWeaponReference();
     if (weaponReference) {
@@ -166,11 +168,14 @@ async function addSections(builderData, config, actor, item) {
       flavorTitle += ` - ${referencedItem.name}`;
     }
     flavor = await renderTemplate("chat/chat-section-flavor", {
+      icon: AH.icons[`${config.check.type}Check`],
       title: flavorTitle,
       item: referencedItem,
       label: config.getLabel(),
     });
   }
+
+  builderData.flavor = flavor;
 }
 
 /**

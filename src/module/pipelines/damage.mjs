@@ -83,7 +83,6 @@ async function process(request) {
     }
 
     let context = new DamageContext(request, subject);
-    ui.notifications.info(`Applying damage to ${context.subject.name}`, { localize: true });
     await collectModifiers(context);
     calculateResult(context);
     if (context.result === undefined) {

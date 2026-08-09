@@ -676,8 +676,10 @@ AH.icons = {
   result: "ah-icon-check-result",
   target: "ah-icon-target",
   damage: "ah-icon-damage",
+
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",
+  actionCheck: "ah-icon-check-action",
   defenseCheck: "ah-icon-check-defense",
 
   reduced: "ra ra-level-two",

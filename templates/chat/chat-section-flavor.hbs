@@ -1,8 +1,11 @@
 <header class="ah-chat-section__flavor">
+  {{#if icon}}
+    <i class="ah-icon --s {{icon}}"></i>
+  {{/if}}
   {{#if item}}
     {{ahDocumentAnchor item}}
   {{/if}}
-  <h2>{{localize title}}</h2>
+  <span class="ah-chat-section__flavor__name">{{title}}</span>
   {{#if label}}
     <span>{{label}}</span>
   {{/if}}
