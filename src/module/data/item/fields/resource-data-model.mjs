@@ -15,6 +15,15 @@ export default class ResourceDataModel extends FieldsetDataModel {
     };
   }
 
+  /**
+   * @param {ActionConfig} config
+   * @return {Promise}
+   */
+  configureAction(config) {
+    if (this.enabled) {
+    }
+  }
+
   static get template() {
     return systemTemplatePath("sheets/item/fields/resource-data-model");
   }

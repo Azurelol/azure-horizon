@@ -22,6 +22,16 @@ export default class DamageDataModel extends FieldsetDataModel {
     });
   }
 
+  /**
+   * @param {ActionConfig} config
+   * @return {Promise}
+   */
+  configureAction(config) {
+    if (this.enabled) {
+      config.setDamage(this.type, this.amount);
+    }
+  }
+
   static get template() {
     return systemTemplatePath("sheets/item/fields/damage-data-model");
   }

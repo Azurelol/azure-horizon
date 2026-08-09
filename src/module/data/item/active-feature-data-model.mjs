@@ -1,15 +1,18 @@
-import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
 import FeatureDataModel from "./feature-data-model.mjs";
 import { DamageDataModel } from "./fields/_module.mjs";
 import { FoundryUtils } from "../../utils/_module.mjs";
+import { EffectsDataModel } from "./fields/effects-data-model.mjs";
+import ResourceDataModel from "./fields/resource-data-model.mjs";
 
 /**
  * Represents a damaging action in the system.
  * @property {CheckDataModel} check
  * @property {DamageDataModel} damage
+ * @property {ResourceDataModel} resource
+ * @property {EffectsDataModel} effects
  * @remarks This simpler model is used for adversaries.
  */
-export default class AttackDataModel extends FeatureDataModel {
+export default class ActiveFeatureDataModel extends FeatureDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, StringField, HTMLField, NumberField, BooleanField, EmbeddedDataField } = foundry.data.fields;
@@ -17,11 +20,16 @@ export default class AttackDataModel extends FeatureDataModel {
       damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
         enabled: true,
       })),
+      resource: new EmbeddedDataField(ResourceDataModel, {}),
+      effects: new EmbeddedDataField(EffectsDataModel, {}),
     });
   }
 
   async _initializeAction(config) {
     await super._initializeAction(config);
     await this.damage.configureAction(config);
+    await this.resource.configureAction(config);
+    await this.effects.configureAction(config);
   }
+
 }

@@ -28,6 +28,15 @@ export class EffectsDataModel extends FieldsetDataModel {
     };
   }
 
+  /**
+   * @param {ActionConfig} config
+   * @return {Promise}
+   */
+  configureAction(config) {
+    if (this.entries.size > 0) {
+    }
+  }
+
   static get template() {
     return systemTemplatePath("sheets/item/fields/effects-data-model");
   }
