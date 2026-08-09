@@ -93,12 +93,14 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     const rollData = this.actor ? this.actor.getRollData() : {};
+    const fieldMap = await this._getPrimitiveFields();
 
     Object.assign(context, {
       owner: this.document.isOwner,
       limited: this.document.limited,
       item: this.item,
       fields: this.item.schema.fields,
+      fieldMap: fieldMap,
       actor: this.actor,
       enriched: await FoundryUtils.getEnriched(this.item, "Item", {
         rollData: rollData,
@@ -129,8 +131,10 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         context.effects = prepareActiveEffectCategories(this.item.effects);
         context.tab = context.tabs[partId];
         break;
+      case "header":{
+        break;
+      }
       case "properties":
-        context.fields = await this._getPrimitiveFields();
         context.fieldsets = await this._getFieldsets();
         break;
     }
@@ -184,11 +188,11 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   }
 
   /**
-   * @returns {Promise<AH_DataFieldInfo[]>}
+   * @returns {Promise<AH_FieldRenderMap>}
    * @private
    */
   async _getPrimitiveFields() {
-    return await FoundryUtils.getPrimitiveFields(this.item, "Item", "system");
+    return FoundryUtils.getPrimitiveFields(this.item, "Item", "system");
   }
 
   /* -------------------------------------------------- */

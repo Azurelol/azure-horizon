@@ -1,11 +1,15 @@
 <section class="standard-form tab scrollable {{tab.cssClass}}" data-group="primary" data-tab="properties">
 
   <div class="ah-field-group">
-    {{#if fields}}
-      {{#each fields as |field|}}
-        {{formGroup field.field value=field.value name=field.path localize=true options=field.field.options.options }}
-      {{/each}}
-    {{/if}}
+    {{#each fieldMap.default as |entry|}}
+      {{formGroup
+        entry.field
+        value=entry.value
+        name=entry.path
+        localize=true
+        options=entry.field.options.options
+      }}
+    {{/each}}
   </div>
 
   {{#if propertiesTemplate}}

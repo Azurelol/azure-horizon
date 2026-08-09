@@ -3,16 +3,16 @@ import { systemTemplatePath } from "../../../constants.mjs";
 import AH from "../../../config.mjs";
 
 /**
- * @property {String} amount An expression or value.
  * @property {AH_Resource} type
+ * @property {String} amount An expression or value.
  */
 export default class ResourceDataModel extends FieldsetDataModel {
   static defineSchema() {
     const { BooleanField, StringField } = foundry.data.fields;
-    return {
-      amount: new StringField({ initial: "", nullable: false }),
+    return Object.assign(super.defineSchema(), {
       type: new StringField({ initial: "hp", choices: Object.keys(AH.resourceTypes), blank: true, nullable: false }),
-    };
+      amount: new StringField({ initial: "", nullable: false }),
+    });
   }
 
   /**

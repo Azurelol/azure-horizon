@@ -4,6 +4,8 @@ import AH from "../../../config.mjs";
 import { TraitsField } from "./_module.mjs";
 import { FoundryUtils } from "../../../utils/_module.mjs";
 
+// TODO: Add secondary damage component support
+
 /**
  * @description Used when rolls are performed.
  * @property {String|Number} amount The base value which is generally added to the high roll

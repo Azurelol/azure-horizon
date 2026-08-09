@@ -310,28 +310,51 @@ export default class FoundryUtils {
   }
 
   /**
+   * @typedef {'header'|'properties'} AH_FieldRenderGroup
+   */
+
+  /**
+   * @typedef AH_FieldRenderMap
+   * @desc Used for figuring out where to render generic fields that need no custom rendering.
+   * @property {AH_DataFieldInfo[]} default
+   * @property {AH_DataFieldInfo[]} header
+   */
+
+  /**
    * @param {Document} document
    * @param {string|number} documentClass
    * @param {String} path
-   * @returns {AH_DataFieldInfo[]}
+   * @returns {AH_FieldRenderMap}
    */
   static getPrimitiveFields(document, documentClass, path) {
     const source = document._source;
     const systemFields = CONFIG[documentClass].dataModels[document.type]?.schema.fields;
+
+    /** @type AH_FieldRenderMap **/
+    const layout = {
+      default: [],
+      header: [],
+    };
+
     /** @type AH_DataFieldInfo[] **/
-    const fields = [];
     for (const field of Object.values(systemFields ?? {})) {
       if (field.options?.config === false) {
         continue;
       }
       const fieldPath = `${path}.${field.name}`;
       if (!field.recursive && (PRIMITIVE_FIELD_NAMES.has(field.constructor.name) || SYSTEM_FIELD_NAMES.has(field.constructor.name))) {
-        let data = this.getDataFieldInfo(source, fieldPath, field);
-        fields.push(data);
+        let fieldInfo = this.getDataFieldInfo(source, fieldPath, field);
+        // Custom rendering targets for the system
+        if (field.options?._part === "header") {
+          layout.header.push(fieldInfo);
+        }
+        else {
+          layout.default.push(fieldInfo);
+        }
       }
 
     }
-    return fields;
+    return layout;
   }
 
   /**

@@ -90,10 +90,6 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),
     },
-    properties: {
-      template: systemTemplatePath("sheets/document-properties"),
-      scrollable: [""],
-    },
     items: {
       template: systemTemplatePath("sheets/actor/actor-items"),
       scrollable: [""],

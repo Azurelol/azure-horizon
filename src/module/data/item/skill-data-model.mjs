@@ -1,9 +1,6 @@
 import SkillAdvancementDataModel from "./fields/skill-advancement-data-model.mjs";
-import { DamageDataModel } from "./fields/_module.mjs";
-import { FoundryUtils } from "../../utils/_module.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
-import ResourceDataModel from "./fields/resource-data-model.mjs";
 
 /**
  * Skills belong to character classes and are selected and upgraded during a character's advancement
@@ -23,6 +20,7 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
     return Object.assign(super.defineSchema(), {
       class: new StringField({
         label: "AH.FIELD.Class",
+        _part: "header",
       }),
       advancement: new EmbeddedDataField(SkillAdvancementDataModel, {}),
     });

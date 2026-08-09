@@ -1,9 +1,16 @@
 .ah-field-grid {
   display: grid;
-  grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   padding: 0;
-  gap:1rem;
+  gap: 1rem;
+
+  --ah-field-grid-columns: 2;
+
+  grid-column: span var(--ah-field-grid-columns) / span var(--ah-field-grid-columns);
+  grid-template-columns: repeat(var(--ah-field-grid-columns), minmax(0, 1fr));
+
+  &.--triple {
+    --ah-field-grid-columns: 3;
+  }
 }
 
 .ah-fieldset {
@@ -16,7 +23,6 @@
     cursor: pointer;
 
     &.active {
-      /*background: var(--ah-action-surface-active);*/
       transition: background 0.2s;
     }
   }
