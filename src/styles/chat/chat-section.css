@@ -317,7 +317,16 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+
+  .attacker {
+    flex: 1;
+    background: var(--ah-adversary-background);
+  }
+
+  .defender {
+    flex: 1;
+    background: var(--ah-hero-background);
+  }
 
   img {
     width: auto;

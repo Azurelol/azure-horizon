@@ -170,7 +170,8 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     statusForm.remove();
 
     // Add toggle handler to track expanded/contracted state for RE summaries
-    const reElements = this.element.querySelectorAll(".pfu-foldout[data-rule-element]:not([data-rule-element=\"\"])"); // Selector should grab only items with a *non-empty* data-rule-element
+    // Selector should grab only items with a *non-empty* data-rule-element
+    const reElements = this.element.querySelectorAll(".ah-foldout[data-rule-element]:not([data-rule-element=\"\"])");
     for (const elem of reElements) {
       if (elem instanceof HTMLDetailsElement) {
         elem.addEventListener("toggle", () => {

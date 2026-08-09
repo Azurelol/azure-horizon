@@ -1,46 +1,6 @@
 <section class="ah-chat-section ah-chat-section__defense">
 
-  <div class="ah-chat-section__defense__display">
-    <div class="ah-flex-row --center">
-      {{#with attacker}}
-        <a data-link data-uuid="{{uuid}}"
-           data-type="Actor" data-tooltip="{{name}}">
-          <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}"
-               class="
-					{{#if (eq @root.winner name)}}
-						 winner
-					 {{else}}
-						 loser
-					 {{/if}}">
-        </a>
-      {{/with}}
-      {{#with item }}
-        <a data-link data-uuid="{{uuid}}"
-           data-type="Item" data-tooltip="{{name}}">
-          <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}"
-               class="item">
-        </a>
-      {{/with}}
-    </div>
-
-    <i class="ah-icon --s {{ahIconClass 'defenseCheck'}}"></i>
-
-    {{#with defender}}
-      <a data-link draggable="true" data-uuid="{{uuid}}"
-         data-type="Actor" data-tooltip="{{name}}">
-        <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}"
-             class="
-					 {{#if (eq @root.winner name)}}
-						 winner
-					 {{else}}
-						 loser
-					 {{/if}}">
-      </a>
-    {{/with}}
-  </div>
-
   <div class="ah-chat-section__check__details">
-
     <div class="ah-chat-section__check__details__group">
       <div class="ah-chat-section__check__total --defense">
         <i class="ah-icon --s {{ahIconClass 'defenseCheck'}}"></i>
@@ -64,6 +24,44 @@
         {{/if}}
       </div>
     </div>
+  </div>
+
+  <div class="ah-chat-section__defense__display">
+    <div class="attacker ah-flex-row --center">
+      {{#with attacker}}
+        <a data-link data-uuid="{{uuid}}"
+           data-type="Actor" data-tooltip="{{name}}">
+          <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}"
+               class="
+					{{#if (eq @root.winner name)}}
+						 winner
+					 {{else}}
+						 loser
+					 {{/if}}">
+        </a>
+      {{/with}}
+      {{#with item }}
+        <a data-link data-uuid="{{uuid}}"
+           data-type="Item" data-tooltip="{{name}}">
+          <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}"
+               class="item">
+        </a>
+      {{/with}}
+    </div>
+    {{#with defender}}
+    <div class="defender ah-flex-row --center">
+      <a data-link draggable="true" data-uuid="{{uuid}}"
+         data-type="Actor" data-tooltip="{{name}}">
+        <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}"
+             class="
+					 {{#if (eq @root.winner name)}}
+						 winner
+					 {{else}}
+						 loser
+					 {{/if}}">
+      </a>
+    </div>
+    {{/with}}
   </div>
 
   <div class="ah-chat-section__defense__message">

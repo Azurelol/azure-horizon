@@ -110,5 +110,26 @@
   --ah-primitive-color-violet-400: #b276e0;
   --ah-primitive-color-violet-600: #7d3fa8;
 
+  --ah-color-navy-100: #d7dee6;
+  --ah-color-navy-300: #8ea3b8;
+  --ah-color-navy-500: #3c5570;
+  --ah-color-navy-700: #22344a;
+  --ah-color-navy-900: #131e2b;
+
+  --ah-color-azure-100: #d3e6f2;
+  --ah-color-azure-300: #7ab6d9;
+  --ah-color-azure-500: #3a8bc2;
+  --ah-color-azure-700: #26648f;
+
+  --ah-color-burgundy-100: #e8d2d6;
+  --ah-color-burgundy-300: #b8677a;
+  --ah-color-burgundy-500: #8a2f42;
+  --ah-color-burgundy-700: #611f2e;
+
+  --ah-color-warm-brown-100: #e8ddd0;
+  --ah-color-warm-brown-300: #b89a78;
+  --ah-color-warm-brown-500: #8a6844;
+  --ah-color-warm-brown-700: #5c4429;
+
   --ah-primitive-image-placeholder: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }

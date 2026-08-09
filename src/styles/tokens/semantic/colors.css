@@ -76,4 +76,8 @@
   --ah-modifier-status-color: #82cb82;
   --ah-modifier-equipment-color: orange;
 
+  /* Tier 3 — component tokens, built on existing Tier 1 primitives */
+  --ah-hero-background: linear-gradient(to left, var(--ah-color-azure-500), var(--ah-color-navy-700));
+  --ah-adversary-background: linear-gradient(to right, var(--ah-color-burgundy-500), var(--ah-color-navy-700));
+
 }
