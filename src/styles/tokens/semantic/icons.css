@@ -144,13 +144,14 @@
   }
 
   /*Checks*/
+
   --ah-icon-check-defense: url("../../../../assets/icons/checks/check-defense.svg");
-  --ah-icon-check-attribute: url("../../../../assets/icons/checks/check.png");
-  --ah-icon-check-open: url("../../../../assets/icons/Game-icons/perspective-dice-six-faces-random.svg");
+  --ah-icon-check-attribute: url("../../../../assets/icons/checks/attribute_check.png");
+  --ah-icon-check-open: url("../../../../assets/icons/checks/perspective-dice-six-faces-random.svg");
   --ah-icon-check-difficulty: url("../../../../assets/icons/checks/difficulty.png");
   --ah-icon-check-modifier: url("../../../../assets/icons/checks/modifier.png");
-  --ah-icon-check-roll: url("../../../../assets/icons/Game-icons/dice-target.svg");
-  --ah-icon-check-result: url("../../../../assets/icons/Game-icons/rule-book.svg");
+  --ah-icon-check-roll: url("../../../../assets/icons/checks/dice-target.svg");
+  --ah-icon-check-result: url("../../../../assets/icons/checks/rule-book.svg");
   --ah-icon-check-hr: url("../../../../assets/icons/checks/hr.png");
 
   .ah-icon-check-attribute {

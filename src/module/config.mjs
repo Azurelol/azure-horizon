@@ -667,7 +667,7 @@ AH.icons = {
   link: "fa fa-link",
   reset: "fa fa-reset",
   refresh: "fa fa-refresh",
-  check: "fa fa-check",
+  check: "ah-icon-check",
 
   roll: "ah-icon-check-roll",
   hr: "ah-icon-check-hr",
