@@ -474,7 +474,9 @@
         "Multiplicative": "Multiplicative"
       },
       "Crisis": "Crisis",
-      "KO": "KO"
+      "KO": "KO",
+      "Bleed": "Bleed",
+      "Poison": "Poison"
     },
     "ACTION": {
       "POTENCY": {
@@ -490,9 +492,12 @@
       "Defend": "Defend",
       "Equipment": "Equipment",
       "Objective": "Objective",
+      "Swap": "Swap",
       "Inventory": "Inventory",
       "ApplyDamage": "Apply Damage",
-      "ApplyDamageTooltip": "Apply damage to selected tokens."
+      "ApplyDamageTooltip": "Apply damage to selected tokens.",
+      "Equip": "Equip",
+      "Unequip": "Unequip"
     },
     "PIPELINE": {
       "CriticalBonus": "Critical Bonus",

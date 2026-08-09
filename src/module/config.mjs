@@ -655,6 +655,8 @@ AH.icons = {
   gain: "fa fa-chevron-circle-up",
   loss: "fa fa-chevron-circle-down",
 
+  applyDamage: "ah-icon-pipeline-apply-damage",
+
   popout: "fa fa-external-link",
   pin: "fa fa-thumb-tack",
   bookmark: "fa fa-bookmark-o",

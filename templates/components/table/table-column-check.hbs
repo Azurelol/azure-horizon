@@ -1,6 +1,6 @@
 <td class="ah-table-column__check">
-  <div>
-    【{{localize (ahLocaleKey 'attributes' check.primary format='short')}} + {{localize (ahLocaleKey 'attributes' check.secondary format='short')}}】
+  <div data-tooltip="{{localize (ahLocaleKey 'attributes' check.primary format='short')}} + {{localize (ahLocaleKey 'attributes' check.secondary format='short')}}">
+    【<i class="ah-icon --s {{ahIconClass check.primary}}"></i><i class="ah-icon --s {{ahIconClass check.secondary}}"></i> 】
     {{~#if (gt check.bonus 0)}} + {{check.bonus}}{{/if~}}
     {{~#if (lt check.bonus 0)}} - {{ahMathAbs check.bonus}}{{/if~}}
   </div>

@@ -244,4 +244,12 @@
     background-image: var(--ah-icon-objective);
   }
 
+  --ah-icon-pipeline-apply-damage: url("../../../../assets/icons/pipelines/apply-damage.svg");
+
+  .ah-icon-pipeline-apply-damage {
+    background-image: var(--ah-icon-pipeline-apply-damage);
+    background-size: 75%;
+  }
+
+
 }

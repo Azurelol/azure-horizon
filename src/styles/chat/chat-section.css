@@ -276,6 +276,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  padding-right: 4px;
 
   background: var(--ah-action-surface);
 
