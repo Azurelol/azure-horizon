@@ -25,6 +25,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   tooltip: systemTemplatePath("components/tooltip"),
   optionalFieldset: systemTemplatePath("components/optional-fieldset"),
 
+  inlineProperty: systemTemplatePath("components/inline-property"),
   resourceBar: systemTemplatePath("components/resource-bar"),
 
   field: systemTemplatePath("components/field"),
@@ -91,6 +92,13 @@ export default Object.freeze({
         return "";
       }
       return AH.icons[icon];
+    });
+    Handlebars.registerHelper("ahInlineProperty", function (record, key, options) {
+      return getTemplateString(COMPONENT_TEMPLATES.inlineProperty, {
+        record: record,
+        key: key,
+        value: options.hash?.value,
+      });
     });
     Handlebars.registerHelper("ahNotEquals", function (a, b) {
       return a !== b;

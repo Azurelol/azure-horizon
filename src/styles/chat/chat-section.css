@@ -42,8 +42,7 @@
 
 .ah-chat-section__check__details__group {
   display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
+  flex-direction: column;
 
   color: var(--ah-primitive-color-white);
   font-size: var(--ah-text-size-m);
@@ -60,6 +59,7 @@
   align-items: center;
   flex: 3;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .ah-chat-section__check__component {

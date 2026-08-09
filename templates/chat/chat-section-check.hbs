@@ -19,14 +19,8 @@
       {{/if}}
 
       <div class='ah-chat-section__check__components'>
-        <span data-tooltip="{{ahLocaleKey 'attributes' result.primary.attribute}}">
-          <i class="ah-icon --s {{ahIconClass result.primary.attribute}}"></i>
-          {{result.primary.result}}
-        </span>
-        <span data-tooltip="{{ahLocaleKey 'attributes' result.secondary.attribute}}">
-          <i class="ah-icon --s {{ahIconClass result.secondary.attribute}}"></i>
-          {{result.secondary.result}}
-        </span>
+        {{ahInlineProperty 'attributes' result.primary.attribute value=result.primary.result }}
+        {{ahInlineProperty 'attributes' result.secondary.attribute value=result.secondary.result }}
         {{#if result.modifierTotal}}
           <span data-tooltip="{{localize 'AH.CHARACTER.Modifier.long'}}">
             <i class="ah-icon --s {{ahIconClass 'modifier'}}"></i>

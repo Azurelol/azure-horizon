@@ -2,14 +2,14 @@
   <div class="ah-chat-section__check__details__group">
     <div class="ah-chat-section__check__total --damage">
       <i class="ah-icon --s {{ahIconClass 'damage'}}"></i>
-      <span>{{damage.resolved.total}}</span>
+      <span>{{localize 'AH.CHECK.TargetResource' result=damage.resolved.total resource='HP'}}</span>
     </div>
 
     <div class='ah-chat-section__check__components'>
       {{#each damage.instances as |component|}}
         <div class="ah-chat-section__damage__component"
               data-tooltip="{{localize component.label}}">
-          <i class="ah-icon --s {{ahIconClass component.type}}"></i>
+          {{ahInlineProperty 'damageTypes' component.type }}
           {{#each component.addends as |addend|}}
             <span class="ah-chat-section__damage__addend">
               {{numberFormat addend decimals=0 sign=true}}

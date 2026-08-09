@@ -167,6 +167,7 @@
       "Hard": "Hard",
       "VeryHard": "Very Hard",
       "TargetDefense": "{result} VS {defense}",
+      "TargetResource": "{result} VS {resource}",
       "CheckDefense": "{result} {defense}",
       "Hit": "Hit",
       "Miss": "Miss"

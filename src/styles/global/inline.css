@@ -31,3 +31,19 @@
     margin-left: 2px;
   }
 }
+
+.ah-inline-property {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--ah-font-size-inline);
+}
+
+.ah-inline-property__name {
+
+}
+
+.ah-inline-property__value {
+  margin-left: 4px;
+}
