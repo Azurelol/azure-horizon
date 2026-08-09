@@ -114,6 +114,7 @@ AH.checkTypes = {
   attribute: "AH.CHECK.Attribute",
   open: "AH.CHECK.Open",
   action: "AH.CHECK.Action",
+  defense: "AH.CHECK.Defense",
 };
 
 /**

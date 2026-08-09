@@ -26,14 +26,15 @@ import { ActionConfig } from "./action-configuration.mjs";
  * @typedef {CheckConfig} DefenseCheckConfig
  * @property {AH_Defense} defense The defense being checked for.
  * @property {number|undefined} difficulty If set, will be checked against.
+ * @property {String} id The id of the action that led to the check.
  */
 
 /**
  * @typedef CheckPromptOptions
  * @template T
  * @property {T} [initialConfig] The configuration for the specific check.
- * @property {CheckPrepareCallback} checkCallback
- * @property {CheckResultCallback} resultCallback
+ * @property {CheckPrepareCallback} onPrepare
+ * @property {CheckResultCallback} onResult
  * @property
  */
 
@@ -181,54 +182,31 @@ async function prompt(actor, type, initialConfig = {}) {
 }
 
 /**
- * Shared logic for prompt-driven checks: runs the prompt, then invokes the
- * matching `Checks.*Check` method with a callback that applies prompt-derived
- * config before delegating to the caller's own checkCallback.
- *
- * @template T
- * @param {AHActor} actor
- * @param {CheckType} type
- * @param {CheckPromptOptions<T>} options
- * @param {(config: ActionConfig, promptResult: object) => void} applyPromptConfig
- *        Applies values from the prompt result onto the CheckConfigurer.
- * @param {...any} extraArgs
- *        Extra positional args required by the specific Checks.*Check method,
- *        inserted between the primary/secondary payload and the callback.
- * @returns {Promise<void>}
- */
-async function runCheckPrompt(actor, type, options, applyPromptConfig, ...extraArgs) {
-  const promptResult = await prompt(actor, type, options.initialConfig);
-  if (promptResult) {
-    return Checks[`${type}Check`](
-      actor,
-      {
-        primary: promptResult.primary,
-        secondary: promptResult.secondary,
-      },
-      ...extraArgs,
-      (check, callbackActor, item) => {
-        const config = new ActionConfig(check);
-        applyPromptConfig(config, promptResult);
-
-        if (options.checkCallback) {
-          options.checkCallback(check, callbackActor, item);
-        }
-      },
-    );
-  }
-}
-
-/**
  * @param {AHActor} actor
  * @param {CheckPromptOptions<OpenCheckConfig>} [options]
  * @returns {Promise<void>}
  */
 async function openCheck(actor, options = {}) {
-  return runCheckPrompt(actor, "open", options, (config, promptResult) => {
-    if (promptResult.modifier) {
-      config.addModifier("AH.CHECK.SituationalModifier", promptResult.modifier);
-    }
-  });
+  const promptResult = await prompt(actor, "open", options.initialConfig);
+  if (!promptResult) return;
+
+  return Checks.openCheck(
+    actor,
+    {
+      primary: promptResult.primary,
+      secondary: promptResult.secondary,
+    },
+    (check, callbackActor, item) => {
+      const config = new ActionConfig(check);
+      if (promptResult.modifier) {
+        config.addModifier("AH.CHECK.SituationalModifier", promptResult.modifier);
+      }
+
+      if (options.onPrepare) {
+        options.onPrepare(check, callbackActor, item);
+      }
+    },
+  );
 }
 
 /**
@@ -237,14 +215,29 @@ async function openCheck(actor, options = {}) {
  * @returns {Promise<void>}
  */
 async function attributeCheck(actor, options = {}) {
-  return runCheckPrompt(actor, "attribute", options, (config, promptResult) => {
-    if (promptResult.difficulty) {
-      config.setDifficulty(promptResult.difficulty);
-    }
-    if (promptResult.modifier) {
-      config.addModifier("AH.CHECK.SituationalModifier", promptResult.modifier);
-    }
-  }, null);
+  const promptResult = await prompt(actor, "attribute", options.initialConfig);
+  if (!promptResult) return;
+
+  return Checks.attributeCheck(
+    actor,
+    {
+      primary: promptResult.primary,
+      secondary: promptResult.secondary,
+    },
+    null,
+    (check, callbackActor, item) => {
+      const config = new ActionConfig(check);
+      if (promptResult.difficulty) {
+        config.setDifficulty(promptResult.difficulty);
+      }
+      if (promptResult.modifier) {
+        config.addModifier("AH.CHECK.SituationalModifier", promptResult.modifier);
+      }
+      if (options.onPrepare) {
+        options.onPrepare(check, callbackActor, item);
+      }
+    },
+  );
 }
 
 /**
@@ -253,14 +246,34 @@ async function attributeCheck(actor, options = {}) {
  * @returns {Promise<void>}
  */
 async function defenseCheck(actor, options = {}) {
-  return runCheckPrompt(actor, "defense", options, (config, promptResult) => {
-    if (promptResult.difficulty) {
-      config.setDifficulty(promptResult.difficulty);
-    }
-    if (promptResult.modifier) {
-      config.addModifier("AH.CHECK.SituationalModifier", promptResult.modifier);
-    }
-  }, null);
+  const defenseConfig = actor.system.getDefense(options.initialConfig.defense);
+  if (!defenseConfig) {
+    throw Error("Only hero characters can roll defense checks.");
+  }
+  options.initialConfig.primary = defenseConfig.primary;
+  options.initialConfig.secondary = defenseConfig.secondary;
+
+  const promptResult = await prompt(actor, "defense", options.initialConfig);
+  if (!promptResult) return;
+
+  return Checks.defenseCheck(
+    actor,
+    defenseConfig,
+    (check, callbackActor, item) => {
+      const config = new ActionConfig(check);
+      config.setDifficulty(options.initialConfig.difficulty);
+      if (promptResult.modifier) {
+        config.addModifier("AH.CHECK.SituationalModifier", promptResult.modifier);
+      }
+      if (options.onPrepare) {
+        options.onPrepare(check, callbackActor, item);
+      }
+    },
+    (result, callbackActor, item) => {
+      // Update other chat message?
+
+    },
+  );
 }
 
 export const CheckPrompt = Object.freeze({

@@ -237,6 +237,8 @@ function onRenderChatMessage(message, html) {
         initialConfig: {
           defense: dataset.defense,
           difficulty: dataset.difficulty,
+          id: dataset.id,
+          sourceInfo: sourceInfo,
         },
       });
     });

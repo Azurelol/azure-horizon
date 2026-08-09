@@ -368,10 +368,10 @@ export default class Checks {
    * @param {AHActor} actor
    * @param {CheckAttributes} attributes
    * @param {AHItem} item
-   * @param {CheckPrepareCallback} [configCallback]
-   * @param {CheckResultCallback} onPerform
+   * @param {CheckPrepareCallback} onPrepare
+   * @param {CheckResultCallback} onResult
    */
-  static async attributeCheck(actor, attributes, item, configCallback, onPerform) {
+  static async attributeCheck(actor, attributes, item, onPrepare, onResult) {
     /** @type Partial<CheckOptions> */
     const check = {
       type: "attribute",
@@ -379,15 +379,15 @@ export default class Checks {
       secondary: attributes.secondary,
     };
 
-    return Checks.performCheck(check, actor, item, configCallback, onPerform);
+    return Checks.performCheck(check, actor, item, onPrepare, onResult);
   }
 
   /**
    * @param {AHActor} actor
    * @param {CheckAttributes} attributes
-   * @param {CheckPrepareCallback} [configCallback]
+   * @param {CheckPrepareCallback} onPrepare
    */
-  static async openCheck(actor, attributes, configCallback) {
+  static async openCheck(actor, attributes, onPrepare) {
     /** @type Partial<CheckOptions> */
     const check = {
       type: "open",
@@ -395,7 +395,7 @@ export default class Checks {
       secondary: attributes.secondary,
     };
 
-    return Checks.performCheck(check, actor, undefined, configCallback);
+    return Checks.performCheck(check, actor, undefined, onPrepare);
   }
 
   /**
@@ -414,18 +414,28 @@ export default class Checks {
   }
 
   /**
+   * @typedef DefenseCheckConfig
+   * @property {AH_Attribute} primary
+   * @property {AH_Attribute} secondary
+   * @property {ArmorDataModel} armorData
+   */
+
+  /**
    * @param {AHActor} actor
-   * @param {AHItem} item
+   * @param {DefenseCheckConfig} config
    * @param {CheckPrepareCallback} onPrepare
+   * @param {CheckResultCallback} onResult
    * @remarks These are usually performed by PCs.
    */
-  static async defenseCheck(actor, item, onPrepare) {
+  static async defenseCheck(actor, config, onPrepare, onResult) {
     /** @type Partial<CheckOptions> */
     const check = {
       type: "defense",
+      primary: config.primary,
+      secondary: config.secondary,
     };
 
-    return Checks.performCheck(check, actor, item, onPrepare);
+    return Checks.performCheck(check, actor, config.armorData.parent, onPrepare, onResult);
   }
 
 }

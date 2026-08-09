@@ -120,13 +120,6 @@ export default class HeroDataModel extends CharacterDataModel {
   }
 
   /**
-   * @typedef DefenseCheckConfig
-   * @property {AH_Attribute} primary
-   * @property {AH_Attribute} secondary
-   * @property {ArmorDataModel} armorData
-   */
-
-  /**
    * @param {AH_Defense} targeted
    * @return {DefenseCheckConfig}
    */
