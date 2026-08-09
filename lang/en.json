@@ -351,6 +351,7 @@
       "Properties": "Properties",
       "General": "General",
       "Class": "Class",
+      "Skill": "Skill",
       "Domain": "Domain",
       "None": "None",
       "Self": "Self",
@@ -531,9 +532,10 @@
       "weapon": "Weapon",
       "armor": "Armor",
       "accessory": "Accessory",
-      "skill": "Skill",
-      "spell": "Spell",
       "class": "Class",
+      "skill": "Skill",
+      "classFeature": "Class Feature",
+      "spell": "Spell",
       "consumable": "Consumable"
     },
     "Combatant": {

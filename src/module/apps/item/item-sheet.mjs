@@ -17,6 +17,9 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       width: 700,
       height: "auto",
     },
+    window: {
+      resizable: true,
+    },
     classes: ["ah-application", "ah-sheet", "ah-item"],
     actions: {
       viewDoc: this.#viewEffect,
