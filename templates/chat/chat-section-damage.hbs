@@ -10,21 +10,23 @@
         <div class="ah-chat-section__damage__component"
               data-tooltip="{{localize component.label}}">
           {{ahInlineProperty 'damageTypes' component.type }}
-          {{#each component.addends as |addend|}}
-            <span class="ah-chat-section__damage__addend">
-              {{numberFormat addend decimals=0 sign=true}}
-            </span>
-          {{/each}}
-          {{#each component.modifiers as |mod|}}
-            <span class="ah-chat-section__damage__modifier --{{mod.key}}">
+          <div class="ah-chat-section__damage__component__value ah-inline-property__value">
+            {{#each component.addends as |addend|}}
+              <span class="ah-chat-section__damage__addend">
+                {{numberFormat addend decimals=0 sign=true}}
+              </span>
+            {{/each}}
+            {{#each component.modifiers as |mod|}}
+              <span class="ah-chat-section__damage__modifier --{{mod.key}}">
               {{#if mod.additive}}
                 <span class="ah-chat-section__check__components__additive">{{numberFormat mod.additive decimals=0 sign=true}}</span>
               {{/if}}
-              {{#if (ne mod.multiplicative 1)}}
-                <span class="ah-chat-section__check__components__multiplicative">{{ahPercentModifier mod.multiplicative}}</span>
-              {{/if}}
+                {{#if (ne mod.multiplicative 1)}}
+                  <span class="ah-chat-section__check__components__multiplicative">{{ahPercentModifier mod.multiplicative}}</span>
+                {{/if}}
             </span>
-          {{/each}}
+            {{/each}}
+          </div>
         </div>
       {{/each}}
 

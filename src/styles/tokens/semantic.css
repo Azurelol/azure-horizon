@@ -16,6 +16,7 @@
   --ah-surface-panel: var(--ah-primitive-color-navy-800);
   --ah-surface-panel-nested: var(--ah-primitive-color-navy-700);
   --ah-surface-hover: var(--ah-primitive-color-navy-400);
+  --ah-surface-value: color-mix(in srgb, var(--ah-color-navy-500) 12%, transparent);
 
   --ah-border-radius: 4px;
   --ah-border-width: 2px;

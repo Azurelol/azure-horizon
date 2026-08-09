@@ -151,6 +151,15 @@
   flex-wrap: wrap;
 }
 
+.ah-chat-section__damage__component__value {
+  background: var(--ah-background-inline-value);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
 .ah-chat-section__damage__modifier {
   &.--status {
     color: var(--ah-modifier-status-color);

@@ -216,26 +216,25 @@
       }
     },
     "DAMAGE": {
-      "Physical": "Physical",
+      "Untyped": { "long": "Untyped", "short": "UNT" },
+      "Physical": { "long": "Physical", "short": "PHY" },
 
-      "Slashing": "Slashing",
-      "Piercing": "Piercing",
-      "Bludgeoning": "Bludgeoning",
+      "Slashing": { "long": "Slashing", "short": "SLA" },
+      "Piercing": { "long": "Piercing", "short": "PRC" },
+      "Bludgeoning": { "long": "Bludgeoning", "short": "BLU" },
 
-      "Energy": "Energy",
-      "Fire": "Fire",
-      "Cold": "Cold",
-      "Electric": "Electric",
-      "Acid": "Acid",
-      "Sonic": "Sonic",
+      "Energy": { "long": "Energy", "short": "ENG" },
+      "Fire": { "long": "Fire", "short": "FIR" },
+      "Cold": { "long": "Cold", "short": "CLD" },
+      "Electric": { "long": "Electric", "short": "ELE" },
+      "Acid": { "long": "Acid", "short": "ACI" },
 
-      "Spirit": "Spirit",
-      "Light": "Light",
-      "Dark": "Dark",
+      "Spiritual": { "long": "Spirit", "short": "SPI" },
+      "Light": { "long": "Light", "short": "LIG" },
+      "Dark": { "long": "Dark", "short": "DAR" },
 
-      "Mental": "Mental",
-      "Poison": "Poison",
-      "Untyped": "Untyped",
+      "Mental": { "long": "Mental", "short": "MEN" },
+      "Poison": { "long": "Poison", "short": "POI" },
 
       "Glancing": "Glancing",
       "Base": "Base Damage",
