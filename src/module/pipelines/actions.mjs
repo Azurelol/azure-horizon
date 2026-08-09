@@ -69,6 +69,18 @@ async function invokeWithCallbacks(hook, action, actor, item) {
   }
 }
 
+/**
+ * @typedef DefenseCheckData
+ * @property id The id of the source action.
+ * @property uuid The actor whose defense is being prompted
+ * @property difficulty
+ * @property defense
+ */
+
+/**
+ * @param {ActionConfig} config
+ * @returns {ChatAction}
+ */
 function getDefendAction(config) {
   const defend = new ChatAction("defenseCheck", AH.icons.defenseCheck, "AH.CHECK.Defense");
   defend.withDataset({
@@ -98,7 +110,7 @@ async function addSections(builderData, config, actor, item) {
   if (isTargeted) {
     if (config.isDefenseCheck) {
       const defendAction = getDefendAction(config);
-      config.addAction(defendAction);
+      builderData.actions.push(defendAction);
       ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
     }
     else {
@@ -208,12 +220,19 @@ function onRenderChatMessage(message, html) {
     return;
   }
 
-  ChatMessageHelper.handleClick(message, html, "defenseCheck", async (dataset) => {
-    const fields = StringUtils.fromBase64(dataset.fields);
-    const sourceInfo = SourceInfo.fromObject(fields.sourceInfo);
+  ChatMessageHelper.handleClick(message, html, "defenseCheck",
+    /** @param {DefenseCheckData} dataset  **/
+    async (dataset) => {
 
-    ui.notifications.info("Now prompting defense");
-  });
+      const fields = StringUtils.fromBase64(dataset.fields);
+      const sourceInfo = SourceInfo.fromObject(fields.sourceInfo);
+      const actor = fromUuidSync(dataset.uuid);
+      if (!actor) {
+        return;
+      }
+
+      ui.notifications.info(`Now prompting ${dataset.defense} defense against ${dataset.difficulty} for ${actor.name} on action ${dataset.id}`);
+    });
 
 }
 

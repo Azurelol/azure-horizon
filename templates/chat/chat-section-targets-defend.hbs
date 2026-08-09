@@ -1,28 +1,23 @@
-{{#if targets}}
-  <section class="ah-chat-section__targets">
-
-    {{#each targets as |target|}}
-      <div class="ah-chat-section__target {{target.potency}}">
-        <!-- Info -->
-        <div class="ah-chat-section__target__info">
-          {{ahDocumentAnchor target}}
-          <span class="ah-chat-section__target__name">
-            {{target.name}}
-          </span>
-        </div>
-        <!-- Potency -->
-        <span class="ah-chat-section__target__potency">
-          {{localize (ahLocaleKey 'potencies' target.potency)}}
+<section class="ah-chat-section__targets">
+  {{#each targets as |target|}}
+    <div class="ah-chat-section__target {{target.potency}}">
+      <!-- Info -->
+      <div class="ah-chat-section__target__info">
+        {{ahDocumentAnchor target}}
+        <span class="ah-chat-section__target__name">
+          {{target.name}}
         </span>
-        <!-- Actions -->
-        <div class="ah-chat-section__target__actions">
-          {{#each ../actions as |action|}}
-            {{#if targeted}}
-              {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs'}}
-            {{/if}}
-          {{/each}}
-        </div>
       </div>
-    {{/each}}
-  </section>
-{{/if}}
+      <!-- Potency -->
+      <span class="ah-chat-section__target__potency">
+        {{localize (ahLocaleKey 'potencies' target.potency)}}
+      </span>
+      <!-- Actions -->
+      <div class="ah-chat-section__target__actions">
+        {{#each ../actions as |action|}}
+          {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs' target=target}}
+        {{/each}}
+      </div>
+    </div>
+  {{/each}}
+</section>
