@@ -16,7 +16,7 @@
     cursor: pointer;
 
     &.active {
-      background: var(--ah-action-surface-active);
+      /*background: var(--ah-action-surface-active);*/
       transition: background 0.2s;
     }
   }

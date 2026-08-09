@@ -12,11 +12,11 @@ const RESOURCE_GAIN_IDENTIFIER = "ResourceGain";
 const RESOURCE_LOSS_IDENTIFIER = "ResourceGain";
 
 function createReplacementElement(amount, type, tooltip, label, change) {
-  if (type in AH.resources) {
+  if (type in AH.resourceTypes) {
     const anchor = TextEditorUtils.anchor();
     anchor.dataset.type = type;
 
-    let typeName = StringUtils.localize(`${AH.resources[type]}.short`);
+    let typeName = StringUtils.localize(`${AH.resourceTypes[type]}.short`);
     anchor.setAttribute("data-tooltip", `${StringUtils.localize(tooltip)} (${amount} ${typeName})`);
     anchor.draggable = true;
     anchor.dataset.change = change;

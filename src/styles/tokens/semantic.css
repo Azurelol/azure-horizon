@@ -44,6 +44,7 @@
 
   /* ---------- ACTION ---------- */
   --ah-action-surface: #c46022;
+  --ah-action-surface-muted: #4e5364;
   --ah-action-surface-hover: var(--ah-primitive-color-orange-400);
   --ah-action-surface-active: var(--ah-primitive-color-orange-600);
   --ah-action-content: var(--ah-primitive-color-white-100);

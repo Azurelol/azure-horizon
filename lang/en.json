@@ -342,6 +342,8 @@
     },
     "FIELD": {
       "Type": "Type",
+      "Entries": "Entries",
+      "Effects": "Effects",
       "Category": "Category",
       "Initial": "Initial",
       "Allies": "Allies",

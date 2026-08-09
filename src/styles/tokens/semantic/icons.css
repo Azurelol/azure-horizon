@@ -144,7 +144,6 @@
   }
 
   /*Checks*/
-
   --ah-icon-check-defense: url("../../../../assets/icons/checks/check-defense.svg");
   --ah-icon-check-attribute: url("../../../../assets/icons/checks/attribute_check.png");
   --ah-icon-check-open: url("../../../../assets/icons/checks/perspective-dice-six-faces-random.svg");
@@ -153,6 +152,10 @@
   --ah-icon-check-roll: url("../../../../assets/icons/checks/dice-target.svg");
   --ah-icon-check-result: url("../../../../assets/icons/checks/rule-book.svg");
   --ah-icon-check-hr: url("../../../../assets/icons/checks/hr.png");
+
+  .ah-icon-check-roll {
+    background-image: var(--ah-icon-check-roll);
+  }
 
   .ah-icon-check-attribute {
     background-image: var(--ah-icon-check-attribute);

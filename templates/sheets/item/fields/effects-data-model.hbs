@@ -1,0 +1,11 @@
+<fieldset>
+  <legend>
+    <label>
+      <i class="ah-icon --s {{ahIconClass 'effect'}}"></i>
+      {{localize 'AH.FIELD.Effects'}}
+    </label>
+  </legend>
+  <div>
+    {{ahArrayField path=(ahConcat path '.entries') label="AH.FIELD.Entries" value=value.entries}}
+  </div>
+</fieldset>

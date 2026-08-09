@@ -67,18 +67,22 @@
 
     legend {
       display: flex;
+      justify-content: center;
+      align-items: center;
       margin: 0 auto;
-      background: var(--ah-background-fieldset-header);
+      padding: 0.2rem;
+      /*background: var(--ah-background-fieldset-header);*/
       color: var(--ah-primitive-color-white);
       position: relative;
       text-align: center;
       width: auto;
-      border: 0.02em solid var(--ah-border-color-fieldset);
+
 
       label {
         justify-content: center;
         display: flex;
         align-items: center;
+        gap: 0.1rem;
       }
     }
 

@@ -278,7 +278,7 @@
   gap: 8px;
   padding-right: 4px;
 
-  background: var(--ah-action-surface);
+  background: var(--ah-action-surface-muted);
 
   &.--transparent {
     background: transparent;

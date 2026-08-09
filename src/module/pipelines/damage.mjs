@@ -180,7 +180,7 @@ async function process(request) {
  */
 function getChatAction(damageData, sourceInfo, traits) {
   //const icon = AH.icons[damageData.type];
-  const icon = AH.icons.applyDamage;
+  const icon = AH.icons.damage;
   const resolved = damageData.resolved;
   const tooltip = StringUtils.localize("AH.ACTION.ApplyDamageTooltip", {
     amount: resolved.total,

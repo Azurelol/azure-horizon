@@ -122,7 +122,7 @@ AH.checkTypes = {
  * @typedef {"hp"|"mp"|"tp"| "ip"} AH_Resource
  */
 
-AH.resources = {
+AH.resourceTypes = {
   hp: { label: "AH.CHARACTER.HitPoint.short" },
   mp: { label: "AH.CHARACTER.MindPoint.short" },
   ip: { label: "AH.CHARACTER.InventoryPoint.short" },
@@ -654,6 +654,7 @@ AH.icons = {
 
   gain: "fa fa-chevron-circle-up",
   loss: "fa fa-chevron-circle-down",
+  effect: "ah-icon-effect",
 
   applyDamage: "ah-icon-pipeline-apply-damage",
 
@@ -669,7 +670,6 @@ AH.icons = {
   link: "fa fa-link",
   reset: "fa fa-reset",
   refresh: "fa fa-refresh",
-  check: "ah-icon-check",
 
   roll: "ah-icon-check-roll",
   hr: "ah-icon-check-hr",
@@ -679,6 +679,7 @@ AH.icons = {
   target: "ah-icon-target",
   damage: "ah-icon-damage",
 
+  check: "ah-icon-check-roll",
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",
   actionCheck: "ah-icon-check-action",

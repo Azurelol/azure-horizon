@@ -9,16 +9,22 @@ import ConsumableDataModel from "./consumable-data-model.mjs";
 import * as fields from "./fields/_module.mjs";
 import ArmorDataModel from "./armor-data-model.mjs";
 import AccessoryDataModel from "./accessory-data-model.mjs";
+import ClassFeatureDataModel from "./class-feature-data-model.mjs";
 
 const dataModels = Object.freeze({
   base: ItemDataModel,
+
   attack: AttackDataModel,
+
+  spell: SpellDataModel,
+
+  class: ClassDataModel,
+  skill: SkillDataModel,
+  classFeature: ClassFeatureDataModel,
+
   weapon: WeaponDataModel,
   armor: ArmorDataModel,
   accessory: AccessoryDataModel,
-  skill: SkillDataModel,
-  spell: SpellDataModel,
-  class: ClassDataModel,
   consumable: ConsumableDataModel,
 
 });

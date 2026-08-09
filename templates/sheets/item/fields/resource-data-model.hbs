@@ -1,0 +1,4 @@
+{{#> ahOptionalFieldset label='AH.FIELD.Resource' icon=(ahIconClass 'damage') enabled=value.enabled name=(ahConcat path ".enabled")}}
+  {{ahStringField path=(ahConcat path '.type') label="AH.FIELD.Type" value=value.type options=(ahFormOptions 'resourceTypes')}}
+  {{ahStringField path=(ahConcat path '.amount') label="AH.FIELD.Amount" value=value.amount }}
+{{/ahOptionalFieldset}}
