@@ -206,6 +206,10 @@ AH.damageTypes = Object.freeze({
  * @typedef {"def"|"mdef"|"dex"|"ins"|"mig"|"wlp"} AH_Defense
  */
 
+/**
+ * @typedef {'deflection'|'avoidance'} AH_DefenseTrait
+ */
+
 AH.defenses = Object.freeze({
   def: { long: "AH.CHARACTER.Defense.long", short: "AH.CHARACTER.Defense.short" },
   mdef: { long: "AH.CHARACTER.MagicDefense.long", short: "AH.CHARACTER.MagicDefense.short" },

@@ -320,7 +320,6 @@ async function renderCheck(result, actor, item, flags = {}) {
   switch (result.type) {
     case "attribute":
     case "open":
-    case "defense":
     case "action":
       // CHECK Section
       builderData.sections.push({
@@ -331,6 +330,18 @@ async function renderCheck(result, actor, item, flags = {}) {
           difficulty: config.getDifficulty(),
         },
       });
+      break;
+
+    case "defense": {
+      const defense = config.defenseResults;
+      builderData.sections.push({
+        order: ChatSectionOrder.roll,
+        partial: systemTemplatePath("chat/chat-section-check-defense"),
+        data: {
+          ...defense,
+        },
+      });
+    }
       break;
   }
 
@@ -363,10 +374,8 @@ export default class Checks {
     await Events.performAction(config, actor, item);
     const roll = await rollCheck(preparedCheck, actor);
     const result = await processResult(preparedCheck, roll, actor, item);
+    await (onResult ? onResult(result, actor, item) : undefined);
     await renderCheck(result, actor, item);
-    if (onResult) {
-      await onResult(result, actor, item);
-    }
     Events.resolveAction(new ActionInspector(config.check), actor, item);
   }
 
@@ -424,6 +433,19 @@ export default class Checks {
    * @property {AH_Attribute} primary
    * @property {AH_Attribute} secondary
    * @property {ArmorDataModel} armorData
+   */
+
+  /**
+   * @typedef DefenseCheckResult
+   * @property {AH_Attribute} primary
+   * @property {AH_Attribute} secondary
+   * @property {Number} difficulty
+   * @property {AH_Defense} defense
+   * @property {AH_Potency} potency
+   * @property {AHActor} attacker
+   * @property {AHActor} defender
+   * @property {String} winner
+   * @property {AH_DefenseTrait[]} traits
    */
 
   /**

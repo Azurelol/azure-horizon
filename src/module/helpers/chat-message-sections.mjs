@@ -50,6 +50,7 @@ export const ChatMessageSectionTemplate = Object.freeze({
   flavor: systemTemplatePath("chat/chat-section-flavor"),
   flavorItem: systemTemplatePath("chat/chat-section-flavor-item"),
   check: systemTemplatePath("chat/chat-section-check"),
+  defenseCheck: systemTemplatePath("chat/chat-section-check-defense"),
   targets: systemTemplatePath("chat/chat-section-targets"),
   targetsDefend: systemTemplatePath("chat/chat-section-targets-defend"),
   damage: systemTemplatePath("chat/chat-section-damage"),

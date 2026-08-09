@@ -1,0 +1,87 @@
+<section class="ah-chat-section ah-chat-section__defense">
+
+  <div class="ah-chat-section__defense__display">
+    <div class="ah-flex-row --center">
+      {{#with attacker}}
+        <a data-link data-uuid="{{uuid}}"
+           data-type="Actor" data-tooltip="{{name}}">
+          <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}"
+               class="
+					{{#if (eq @root.winner name)}}
+						 winner
+					 {{else}}
+						 loser
+					 {{/if}}">
+        </a>
+      {{/with}}
+      {{#with item }}
+        <a data-link data-uuid="{{uuid}}"
+           data-type="Item" data-tooltip="{{name}}">
+          <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}"
+               class="item">
+        </a>
+      {{/with}}
+    </div>
+
+    <i class="ah-icon --s {{ahIconClass 'defenseCheck'}}"></i>
+
+    {{#with defender}}
+      <a data-link draggable="true" data-uuid="{{uuid}}"
+         data-type="Actor" data-tooltip="{{name}}">
+        <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}"
+             class="
+					 {{#if (eq @root.winner name)}}
+						 winner
+					 {{else}}
+						 loser
+					 {{/if}}">
+      </a>
+    {{/with}}
+  </div>
+
+  <div class="ah-chat-section__check__details">
+
+    <div class="ah-chat-section__check__details__group">
+      <div class="ah-chat-section__check__total --defense">
+        <i class="ah-icon --s {{ahIconClass 'defenseCheck'}}"></i>
+        <span>{{localize 'AH.CHECK.CheckDefense' result=result.total attack=difficulty defense=(ahUpperCase defense)}}</span>
+      </div>
+
+      <div class='ah-chat-section__check__components'>
+        <span data-tooltip="{{ahLocaleKey 'attributes' result.primary.attribute}}">
+          <i class="ah-icon --s {{ahIconClass result.primary.attribute}}"></i>
+          {{result.primary.result}}
+        </span>
+        <span data-tooltip="{{ahLocaleKey 'attributes' result.secondary.attribute}}">
+          <i class="ah-icon --s {{ahIconClass result.secondary.attribute}}"></i>
+          {{result.secondary.result}}
+        </span>
+        {{#if result.modifierTotal}}
+          <span data-tooltip="{{localize 'AH.CHARACTER.Modifier.long'}}">
+            <i class="ah-icon --s {{ahIconClass 'modifier'}}"></i>
+            {{result.modifierTotal}}
+          </span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <div class="ah-chat-section__defense__message">
+    {{#if (eq potency 'standard')}}
+      {{localize 'AH.PIPELINE.CHAT.DefenseCheckPotencyStandard' attacker=attacker.name defender=defender.name item=item.name}}
+    {{else}}
+      {{#if (eq potency 'reduced')}}
+        {{localize 'AH.PIPELINE.CHAT.DefenseCheckPotencyReduced' attacker=attacker.name defender=defender.name item=item.name}}
+      {{/if}}
+      {{#if (eq potency 'powerful')}}
+        {{localize 'AH.PIPELINE.CHAT.DefenseCheckPotencyPowerful' attacker=attacker.name defender=defender.name item=item.name}}
+      {{/if}}
+    {{/if}}
+  </div>
+
+  <div class="ah-chat-section__defense__result">
+    <span class="ah-chat-section__potency {{potency}}">
+      {{localize (ahLocaleKey 'potencies' potency)}}
+    </span>
+  </div>
+</section>

@@ -60,6 +60,7 @@
 
   /* Action Types */
   --ah-background-damage: linear-gradient(to right, #a84c4c, #c6c32d);
+  --ah-background-defense: linear-gradient(to right, #2d4c6c, #4c8ca8);
   --ah-border-damage: black;
 
   /* Potencies */

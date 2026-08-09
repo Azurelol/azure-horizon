@@ -58,6 +58,12 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
             icon: AH.icons.edit,
             keys: ["id", "type"],
           },
+          {
+            action: "deleteDocument",
+            tooltip: "AH.COMMON.Delete",
+            icon: AH.icons.remove,
+            keys: ["id", "type"],
+          },
           ...this._getItemActions(),
         ],
       },

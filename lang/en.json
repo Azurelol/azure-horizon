@@ -167,6 +167,7 @@
       "Hard": "Hard",
       "VeryHard": "Very Hard",
       "TargetDefense": "{result} VS {defense}",
+      "CheckDefense": "{result} {defense}",
       "Hit": "Hit",
       "Miss": "Miss"
     },
@@ -497,6 +498,11 @@
       "CriticalBonus": "Critical Bonus",
       "ResourceGain": "Gain",
       "ResourceLoss": "Loss",
+      "CHAT": {
+        "DefenseCheckPotencyReduced": "{defender} successfully defends against {item} from {attacker}.",
+        "DefenseCheckPotencyStandard": "{defender} fails to defend against {item} from {attacker}.",
+        "DefenseCheckPotencyPowerful": "{attacker} strikes {defender} with {item} to devastating effect!"
+      },
       "ChatApplySelected": "Apply to selected token.",
       "ChatApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "ChatResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",

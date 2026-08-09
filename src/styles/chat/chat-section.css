@@ -86,6 +86,10 @@
   &.--damage {
     --background: var(--ah-background-damage);
   }
+
+  &.--defense {
+    --background: var(--ah-background-defense);
+  }
 }
 
 .ah-chat-section__check__outcome {
@@ -229,13 +233,14 @@
   gap: 0.5rem;
 }
 
-.ah-chat-section__target__potency {
+.ah-chat-section__potency {
   flex: 2;
   display: flex;
   text-transform: uppercase;
   font-weight: bolder;
   justify-content: center;
   align-items: center;
+  color: var(--ah-content-primary);
 }
 
 .ah-chat-section__target__actions {
@@ -304,5 +309,54 @@
     padding-right: 4px;
     background: #e8e8e8;
     border: 1px solid black;
+  }
+}
+
+.ah-chat-section__defense__display {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  img {
+    width: auto;
+    height: 60px;
+
+    &.item {
+      height: 20px;
+    }
+
+    &.winner {
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 4px rgba(255, 215, 0, 0.9));
+    }
+
+    &.loser {
+    }
+  }
+}
+
+.ah-chat-section__defense__message{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ah-chat-section__defense__result {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    &.reduced {
+      background: var(--ah-potency-reduced-surface);
+    }
+    &.standard {
+      background: var(--ah-potency-standard-surface);
+    }
+    &.powerful {
+      background: var(--ah-potency-powerful-surface);
+    }
   }
 }

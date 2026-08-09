@@ -73,19 +73,25 @@ async function invokeWithCallbacks(hook, action, actor, item) {
 /**
  * @typedef DefenseCheckSourceData
  * @property id The id of the source action.
- * @property uuid The actor whose defense is being prompted
+ * @property uuid The actor whose defense is being prompted.
+ * @property actor The uuid of the attacker.
+ * @property item The uuid of the item used in the attack.
  * @property difficulty
  * @property defense
  */
 
 /**
  * @param {ActionConfig} config
+ * @param {AHActor} actor
+ * @param {AHItem} item
  * @returns {ChatAction}
  */
-function getDefendAction(config) {
+function getDefendAction(config, actor, item) {
   const defend = new ChatAction("defenseCheck", AH.icons.defenseCheck, "AH.CHECK.Defense");
   defend.withDataset({
     id: config.check.id,
+    actor: actor.uuid,
+    item: item.id,
     difficulty: config.check.total,
     defense: config.getTargetedDefense(),
   });
@@ -111,7 +117,7 @@ async function addSections(builderData, config, actor, item) {
     const isTargeted = targets.length > 0;
     if (isTargeted) {
       if (config.isDefenseCheck) {
-        const defendAction = getDefendAction(config);
+        const defendAction = getDefendAction(config, actor, item);
         builderData.actions.push(defendAction);
         ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
       }
@@ -236,9 +242,7 @@ function onRenderChatMessage(message, html) {
 
       await CheckPrompt.defenseCheck(actor, {
         initialConfig: {
-          defense: dataset.defense,
-          difficulty: dataset.difficulty,
-          id: dataset.id,
+          ...dataset,
           sourceInfo: sourceInfo,
         },
       });

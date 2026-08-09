@@ -9,6 +9,7 @@ import { Formulas } from "../ruleset/_module.mjs";
 const TARGETS = "targets";
 const TARGETED_DEFENSE = "targetedDefense";
 const DEFENSE_CHECK = "defenseCheck";
+const DEFENSE = "defense";
 const DIFFICULTY = "difficulty";
 const DAMAGE = "damage";
 const RESOURCE = "resource";
@@ -25,14 +26,6 @@ const INITIAL_CHECK = "initialCheck";
 const ACTIONS = "actions";
 const KEYBOARD_MODIFIERS = "keyboardModifiers";
 const ACTION_POTENCIES = "actionPotencies";
-
-/**
- * @param {boolean} hrZero
- * @return {CheckPrepareCallback}
- */
-const initHrZero = (hrZero) => (check) => {
-  hrZero && (check.data[HR_ZERO] = true);
-};
 
 /**
  * @description Given a {@link CheckResult} object, provides additional information from it
@@ -211,6 +204,13 @@ export class ActionInspector {
    */
   getTargets() {
     return this.data[TARGETS] ? ObjectUtils.duplicate(this.data[TARGETS]) : [];
+  }
+
+  /**
+   * @returns {DefenseCheckResult}
+   */
+  get defenseResults() {
+    return this.data[DEFENSE];
   }
 
   /**
@@ -499,9 +499,18 @@ export class ActionConfig extends ActionInspector {
   /**
    * Sets this action to allow the targets to roll a defense check.
    */
-  setDefenseCheck() {
+  setDefenseCheck(data = {}) {
     this.setData(DEFENSE_CHECK, true);
     this.clearTargetResults();
+  }
+
+  /**
+   * @param {DefenseCheckResult} defense
+   * @returns {ActionConfig}
+   */
+  updateDefenseResult(defense) {
+    this.setData(DEFENSE, defense);
+    return this;
   }
 
   /**

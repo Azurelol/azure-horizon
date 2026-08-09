@@ -39,6 +39,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       resizable: true,
     },
     actions: {
+      // TODO: Deprecate? Was used in reference implementation.
       viewDoc: this.#viewDoc,
       createDoc: this.#createDoc,
       deleteDoc: this.#deleteDoc,
@@ -50,6 +51,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       performAction: this.#performAction,
       sendItem: this.#sendItem,
       editDocument: this.#editDocument,
+      deleteDocument: this.#deleteDocument,
     },
     form: {
       submitOnChange: true,
@@ -502,6 +504,26 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
         const item = this.actor.items.get(id);
         if (item) {
           await item.sheet.render({ force: true });
+        }
+        break;
+      }
+    }
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #deleteDocument(event, target) {
+    event.preventDefault();
+    const { id, type } = target.dataset;
+    switch (type) {
+      case "Item": {
+        const item = this.actor.items.get(id);
+        if (item) {
+          await item.delete();
         }
         break;
       }

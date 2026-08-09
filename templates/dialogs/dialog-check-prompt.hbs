@@ -40,6 +40,7 @@
     {{/if}}
   </div>
 
+  <!-- ATTRIBUTES -->
   <div>
     <fieldset>
       <legend>{{localize 'AH.CHARACTER.Attribute.plural'}}</legend>
@@ -75,7 +76,7 @@
   </div>
 
   <div class="flexrow">
-
+   <!-- MODIFIER -->
     <fieldset>
       <legend>{{localize 'AH.CHARACTER.Modifier.long'}}</legend>
       <div class="ah-field-group --row">
@@ -85,9 +86,9 @@
           <input name="modifier" type="number" value="{{modifier}}">
         </label>
       </div>
-
     </fieldset>
-    {{#if (and (ne type 'open') (ne type 'opposed'))}}
+    <!-- DIFFICULTY -->
+    {{#if (eq type 'attribute')}}
       <fieldset>
         <legend>{{localize 'AH.CHECK.DifficultyLevel.long'}}</legend>
         {{#if (eq type 'group')}}

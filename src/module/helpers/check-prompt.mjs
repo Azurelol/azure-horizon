@@ -28,6 +28,8 @@ import { Formulas } from "../ruleset/_module.mjs";
  * @property {AH_Defense} defense The defense being checked for.
  * @property {number|undefined} difficulty If set, will be checked against.
  * @property {String} id The id of the action that led to the check.
+ * @property actor The uuid of the attacker.
+ * @property item The uuid of the item used in the attack.
  */
 
 /**
@@ -273,6 +275,32 @@ async function defenseCheck(actor, options = {}) {
     (result, callbackActor, item) => {
       // Update other chat message?
       const potency = Formulas.calculatePotency(result, options.initialConfig.difficulty, true);
+      const defender = actor;
+      const attacker = fromUuidSync(options.initialConfig.actor);
+      const attackItem = attacker.items.get(options.initialConfig.item);
+      let winner;
+      switch (potency) {
+        case "reduced":
+          winner = defender.name;
+          break;
+        case "standard":
+        case "powerful":
+          winner = attacker.name;
+          break;
+      }
+
+      const config = new ActionConfig(result);
+      config.updateDefenseResult({
+        result: result,
+        difficulty: options.initialConfig.difficulty,
+        potency,
+        defense: options.initialConfig.defense,
+        defender: actor,
+        attacker: attacker,
+        item: attackItem,
+        winner,
+        traits: [],
+      });
       ui.notifications.info(`Now updating potency result on message '${options.initialConfig.id}' for ${actor.uuid} to: ${potency}`);
 
     },
