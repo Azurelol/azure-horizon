@@ -62,21 +62,12 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
    * @override
    */
   async _preUpdate(changed, options, user) {
-    if (this.isCharacterType) {
-      // If the level was changed, reset...?
-      if ("level" in changed.system) {
+    if (changed) {
+      if (this.isCharacterType && changed.system) {
+        // If the level was changed, reset resources?
+        if ("level" in changed.system) {
+        }
       }
-
-      // const changedHP = changed.system?.resources?.hp;
-      // const currentHP = this.system.resources.hp;
-      //
-      // if ((typeof changedHP?.value === "number") && currentHP) {
-      //   const hpChange = changedHP.value - currentHP.value;
-      //   const levelChanged = !!changed.system && ("level" in changed.system);
-      //   if ((hpChange !== 0) && !levelChanged) {
-      //     options.damageTaken = hpChange * -1;
-      //   }
-      // }
     }
     await super._preUpdate(changed, options, user);
   }

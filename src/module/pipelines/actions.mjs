@@ -106,16 +106,18 @@ function getDefendAction(config) {
 async function addSections(builderData, config, actor, item) {
 
   // TARGET SECTIONS
-  const targets = config.getTargets();
-  const isTargeted = targets.length > 0;
-  if (isTargeted) {
-    if (config.isDefenseCheck) {
-      const defendAction = getDefendAction(config);
-      builderData.actions.push(defendAction);
-      ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
-    }
-    else {
-      ChatMessageSections.targets(builderData.sections, targets, [ChatAction.TARGET_ACTION]);
+  if (config.check.type === "action") {
+    const targets = config.getTargets();
+    const isTargeted = targets.length > 0;
+    if (isTargeted) {
+      if (config.isDefenseCheck) {
+        const defendAction = getDefendAction(config);
+        builderData.actions.push(defendAction);
+        ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
+      }
+      else {
+        ChatMessageSections.targets(builderData.sections, targets, [ChatAction.TARGET_ACTION]);
+      }
     }
   }
 
@@ -232,7 +234,6 @@ function onRenderChatMessage(message, html) {
         return;
       }
 
-      ui.notifications.info(`Now prompting ${dataset.defense} defense against ${dataset.difficulty} for ${actor.name} on action ${dataset.id}`);
       await CheckPrompt.defenseCheck(actor, {
         initialConfig: {
           defense: dataset.defense,

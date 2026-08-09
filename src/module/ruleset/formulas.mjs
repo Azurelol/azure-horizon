@@ -93,6 +93,32 @@ export default class Formulas {
     return Math.round(amount);
   }
 
+  /** @type {Record<string, {attacker: AH_Potency, defense: AH_Potency}>} */
+  static #POTENCY_BY_OUTCOME = {
+    critical: { attacker: "powerful", defense: "reduced" },
+    fumble: { attacker: "reduced", defense: "powerful" },
+    success: { attacker: "standard", defense: "reduced" },
+    failure: { attacker: "reduced", defense: "standard" },
+  };
+
+  /**
+   * @param {CheckResult} check
+   * @param {Number} difficulty
+   * @param {Boolean} defense
+   * @return {AH_Potency}
+   */
+  static calculatePotency(check, difficulty, defense = false) {
+    const outcome = check.critical
+      ? "critical"
+      : check.fumble
+        ? "fumble"
+        : check.total >= difficulty
+          ? "success"
+          : "failure";
+
+    return this.#POTENCY_BY_OUTCOME[outcome][defense ? "defense" : "attacker"];
+  }
+
   /**
    * @param {Number} amount
    * @param {ParameterModifier[]} modifiers

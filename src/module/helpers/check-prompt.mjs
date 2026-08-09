@@ -4,6 +4,7 @@ import { renderTemplate, systemNS } from "../constants.mjs";
 import Handlebars from "./handlebars.mjs";
 import Checks from "../pipelines/checks.mjs";
 import { ActionConfig } from "./action-configuration.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
 
 /**
  * @typedef CheckConfig
@@ -271,6 +272,8 @@ async function defenseCheck(actor, options = {}) {
     },
     (result, callbackActor, item) => {
       // Update other chat message?
+      const potency = Formulas.calculatePotency(result, options.initialConfig.difficulty, true);
+      ui.notifications.info(`Now updating potency result on message '${options.initialConfig.id}' for ${actor.uuid} to: ${potency}`);
 
     },
   );

@@ -3,6 +3,7 @@ import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { Flags } from "../data/common/_module.mjs";
 import { DamageData } from "../pipelines/_module.mjs";
 import Targeting from "./targeting.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
 
 // Data keys
 const TARGETS = "targets";
@@ -159,10 +160,14 @@ export class ActionInspector {
   }
 
   /**
-   * @return {number|null}
+   * @return {Number|null}
    */
   getDifficulty() {
-    return this.data[DIFFICULTY] ?? null;
+    const difficulty = this.data[DIFFICULTY];
+    if (difficulty) {
+      return Number.parseInt(difficulty);
+    }
+    return null;
   }
 
   /**
@@ -427,17 +432,8 @@ export class ActionConfig extends ActionInspector {
       for (let t = 0; t < targets.length; t++) {
         const target = targets[t];
         const difficulty = target.defenses[targetedDefense];
-        /** @type AH_Potency **/
-        let potency;
-        if (this.check.critical) {
-          potency = "powerful";
-        } else if (this.check.fumble) {
-          potency = "reduced";
-        } else {
-          potency = this.check.total >= difficulty ? "standard" : "reduced";
-        }
         // Update the original
-        this.check.data[TARGETS][t].potency = potency;
+        this.check.data[TARGETS][t].potency = Formulas.calculatePotency(this.check, difficulty);
       }
     }
   }

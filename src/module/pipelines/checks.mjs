@@ -317,19 +317,25 @@ async function renderCheck(result, actor, item, flags = {}) {
     }
   }
 
-  // CHECK Section
-  builderData.sections.push({
-    order: ChatSectionOrder.roll,
-    partial: systemTemplatePath("chat/chat-section-check"),
-    data: {
-      result: result,
-      difficulty: config.getDifficulty(),
-    },
-  });
+  switch (result.type) {
+    case "attribute":
+    case "open":
+    case "defense":
+    case "action":
+      // CHECK Section
+      builderData.sections.push({
+        order: ChatSectionOrder.roll,
+        partial: systemTemplatePath("chat/chat-section-check"),
+        data: {
+          result: result,
+          difficulty: config.getDifficulty(),
+        },
+      });
+      break;
+  }
 
   // Flags
   await Actions.addSections(builderData, config, actor, item);
-
   const chatBuilder = new ChatMessageBuilder(actor, item).withData(builderData).withFlags(flags);
 
   // Roll data
@@ -349,17 +355,17 @@ export default class Checks {
    * @param {AHActor} actor
    * @param {AHItem} item
    * @param {CheckPrepareCallback} onPrepare
-   * @param {CheckResultCallback} onRender
+   * @param {CheckResultCallback} onResult
    */
-  static async performCheck(check, actor, item, onPrepare = undefined, onRender = undefined) {
+  static async performCheck(check, actor, item, onPrepare = undefined, onResult = undefined) {
     const preparedCheck = await prepareCheck(check, actor, item, onPrepare);
     const config = new ActionConfig(check);
     await Events.performAction(config, actor, item);
     const roll = await rollCheck(preparedCheck, actor);
     const result = await processResult(preparedCheck, roll, actor, item);
     await renderCheck(result, actor, item);
-    if (onRender) {
-      await onRender(result, actor, item);
+    if (onResult) {
+      await onResult(result, actor, item);
     }
     Events.resolveAction(new ActionInspector(config.check), actor, item);
   }
@@ -435,7 +441,7 @@ export default class Checks {
       secondary: config.secondary,
     };
 
-    return Checks.performCheck(check, actor, config.armorData.parent, onPrepare, onResult);
+    return Checks.performCheck(check, actor, config.armorData?.parent, onPrepare, onResult);
   }
 
 }
