@@ -19,6 +19,12 @@
   --ah-primitive-color-azure: #1C63AA;
   --ah-primitive-color-brown: #712C1C;
   --ah-primitive-color-grey-mid: #8C8680;
+  --ah-primitive-color-grey-100: #e4e4e7;
+  --ah-primitive-color-grey-300: #a1a1aa;
+  --ah-primitive-color-grey-500: #71717a;
+  --ah-primitive-color-grey-600: #52525b;
+  --ah-primitive-color-grey-700: #3f3f46;
+
   --ah-primitive-color-grey-light: #B5B0AA;
   --ah-primitive-color-warm-brown: #3D3830;
   --ah-primitive-color-warning: yellow;
@@ -33,6 +39,11 @@
   --ah-primitive-color-grey-850: #00000050;
   --ah-primitive-color-grey-800: #00000080;
 
+  --ah-primitive-color-gold-300: #e8c873;
+  --ah-primitive-color-gold-400: #d4af5a;
+  --ah-primitive-color-gold-500: #b8933f;
+  --ah-primitive-color-gold-600: #96742c;
+
   --ah-primitive-color-orange-400: #f0975a; /* lighter, for hover */
   --ah-primitive-color-orange-500: #e07b3d; /* base */
   --ah-primitive-color-orange-600: #c4632a; /* darker, for active/pressed */
@@ -40,6 +51,12 @@
   --ah-primitive-color-brown-500: #9c6b47;
   --ah-primitive-color-brown-600: #7d5236;
   --ah-primitive-color-brown-300: #c9a37f;
+
+  --ah-primitive-color-teal-300: #7dd8cc;
+  --ah-primitive-color-teal-400: #4fc3b0;
+  --ah-primitive-color-teal-500: #2ba795;
+  --ah-primitive-color-teal-600: #1c8577;
+  --ah-primitive-color-teal-700: #14655a;
 
 
   --ah-primitive-color-crimson-950: #1a0a0a;

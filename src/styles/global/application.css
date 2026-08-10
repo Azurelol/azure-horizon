@@ -47,7 +47,7 @@
 
   .editor-container .editor-content {
     background: var(--ah-background-input);
-    border: 1px solid var(--ah-border-surface);
+    border: 1px solid var(--ah-surface-border);
   }
 
   button {
@@ -63,7 +63,7 @@
   fieldset {
     background: var(--ah-background-fieldset);
     border-radius: 0;
-    border: 1px solid var(--ah-border-surface);
+    border: 1px solid var(--ah-surface-border);
 
     legend {
       display: flex;

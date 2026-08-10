@@ -283,6 +283,7 @@
   justify-content: center;
   gap: 4px;
   padding-right: 4px;
+  border: var(--ah-border);
   background: var(--ah-surface-action);
   color: var(--ah-content-action);
 

@@ -17,14 +17,13 @@
   --ah-surface-panel-nested: var(--ah-primitive-color-navy-700);
   --ah-surface-hover: var(--ah-primitive-color-navy-400);
   --ah-surface-value: color-mix(in srgb, var(--ah-color-navy-500) 12%, transparent);
-  --ah-border-surface: var(--ah-primitive-color-navy-500);
+  --ah-surface-tag: var(--ah-primitive-color-grey-600);
+  --ah-surface-border: var(--ah-primitive-color-navy-500);
   --ah-border-panel: var(--ah-primitive-color-navy-600);
+  --ah-surface-accent: var(--ah-primitive-color-brown-500);
 
   --ah-surface-tab: var(--ah-surface-panel-nested);
   --ah-surface-tab-active: var(--ah-surface-hover);
-
-  --ah-surface-accent: var(--ah-primitive-color-brown-500);
-  --ah-border-accent: var(--ah-primitive-color-brown-600);
 
   --ah-surface-action: #c46022;
   --ah-surface-action-muted: #4e5364;
@@ -46,10 +45,12 @@
   --ah-content-icon-hover: var(--ah-primitive-color-white-100);
 
   /*--------------------- TYPOGRAPHY ---------------------*/
-
   /* Borders weights */
   --ah-border-radius: 4px;
   --ah-border-width: 2px;
+  --ah-border: 0.065rem solid var(--ah-surface-border);
+  --ah-box-shadow:  0.065rem 0.1rem var(--ah-primitive-color-warm-brown);
+  --ah-text-shadow: 1px 1px var(--ah-primitive-color-warm-brown);
   /* Font weights */
   --ah-font-weight-normal: 400;
   --ah-font-weight-medium: 500;

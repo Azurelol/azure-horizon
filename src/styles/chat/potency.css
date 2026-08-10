@@ -1,7 +1,7 @@
 .ah-potency-table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid var(--ah-border-surface);
+  border: 1px solid var(--ah-surface-border);
   border-radius: 8px;
   overflow: hidden;
   margin: 0;
