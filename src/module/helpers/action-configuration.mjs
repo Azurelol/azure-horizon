@@ -21,7 +21,7 @@ const TRAITS = "traits";
 const WEAPON_TRAITS = "weaponTraits";
 const LABEL_KEY = "label";
 const CHAT_ACTIONS = "targetedActions";
-const WEAPON_USED = "weaponUsedBySkill";
+const WEAPON_USAGE = "weaponUsage";
 const ITEM_REFERENCE = "itemReference";
 const INITIAL_CHECK = "initialCheck";
 const ACTIONS = "actions";
@@ -216,10 +216,10 @@ export class ActionInspector {
   }
 
   /**
-   * @returns {String} The uuid of the weapon used.
+   * @returns {WeaponUsageData}
    */
-  getWeaponReference() {
-    return this.data[WEAPON_USED];
+  get weaponUsage() {
+    return this.data[WEAPON_USAGE];
   }
 
   /**
@@ -598,6 +598,13 @@ export class ActionConfig extends ActionInspector {
   updateDefenseResult(defense) {
     this.setData(DEFENSE, defense);
     return this;
+  }
+
+  /**
+   * @param {WeaponUsageData} usage
+   */
+  setWeaponUsage(usage) {
+    this.setData(WEAPON_USAGE, usage);
   }
 
   /**

@@ -32,7 +32,6 @@ export default class DamageDataModel extends FieldsetDataModel {
 
   /**
    * @param {ActionConfig} config
-   * @return {Promise}
    */
   configureAction(config) {
     if (this.enabled) {

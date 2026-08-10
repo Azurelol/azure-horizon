@@ -6,7 +6,7 @@
   </div>
 
   <div class="ah-field-group --row">
-    {{ahStringField path=(ahConcat path '.secondary.type') label="AH.COMMON.Type" value=value.secondary.type options=(ahFormOptions 'damageTypes')}}
+    {{ahStringField blank=true path=(ahConcat path '.secondary.type') label="AH.COMMON.Type" value=value.secondary.type options=(ahFormOptions 'damageTypes')}}
     {{ahStringField path=(ahConcat path '.secondary.amount') label="AH.COMMON.Amount" value=value.secondary.amount }}
   </div>
 

@@ -3,7 +3,7 @@ import DamageDataModel from "./damage-data-model.mjs";
 import ResourceDataModel from "./resource-data-model.mjs";
 import TraitsField from "./traits-field.mjs";
 import ClassBenefitsDataModel from "./class-benefits-data-model.mjs";
-import SkillAdvancementDataModel from "./skill-advancement-data-model.mjs";
+import WeaponUsageDataModel from "./weapon-usage-data-model.mjs";
 import { EffectsDataModel } from "./effects-data-model.mjs";
 import { ActionCostDataModel } from "./action-cost-data-model.mjs";
 
@@ -14,7 +14,7 @@ const dataModels = Object.freeze({
   effects: EffectsDataModel,
   traits: TraitsField,
   benefits: ClassBenefitsDataModel,
-  advancement: SkillAdvancementDataModel,
+  advancement: WeaponUsageDataModel,
   actionCost: ActionCostDataModel,
 });
 

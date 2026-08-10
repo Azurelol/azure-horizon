@@ -167,7 +167,7 @@ async function addSections(builderData, config, actor, item) {
   const useItemFlavor = item && !defenseResults;
   if (useItemFlavor) {
     let linked = [];
-    const weaponReference = config.getWeaponReference();
+    const weaponReference = config.weaponUsage?.weapon;
     if (weaponReference) {
       linked.push(await fromUuid(weaponReference));
     }

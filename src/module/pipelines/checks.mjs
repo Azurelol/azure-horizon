@@ -323,7 +323,7 @@ async function renderCheck(result, actor, item, flags = {}) {
     case "action":
       // CHECK Section
       builderData.sections.push({
-        order: ChatSectionOrder.roll,
+        order: ChatSectionOrder.check,
         partial: systemTemplatePath("chat/chat-section-check"),
         data: {
           result: result,
@@ -335,7 +335,7 @@ async function renderCheck(result, actor, item, flags = {}) {
     case "defense": {
       const defense = config.defenseResults;
       builderData.sections.push({
-        order: ChatSectionOrder.roll,
+        order: ChatSectionOrder.check,
         partial: systemTemplatePath("chat/chat-section-check-defense"),
         data: {
           ...defense,

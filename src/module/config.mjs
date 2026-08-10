@@ -743,6 +743,9 @@ AH.icons = {
   additive: "fa-solid fa-plus",
   multiplicative: "fa-solid fa-xmark",
 
+  current: "fa-solid fa-plus",
+  maximum: "fa-solid fa-minus",
+
   full: "fa fa-hourglass",
   half: "fa fa-hourglass-half",
   empty: "fa fa-hourglass-start",

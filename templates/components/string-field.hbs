@@ -2,6 +2,9 @@
   <span>{{localize label}}</span>
   {{#if options}}
     <select name="{{path}}">
+      {{#if blank}}
+        <option value="">-</option>
+      {{/if}}
       {{selectOptions options selected=value sort=true localize=true}}
     </select>
   {{else}}

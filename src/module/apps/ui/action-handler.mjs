@@ -60,20 +60,14 @@ export default class ActionHandler {
     // // INVENTORY
     // const consumables = ["consumable"].map((t) => actor.getItemsByType(t)).flat();
     // FoundryUtils.itemContextMenu(element, "[data-context-menu=\"inventory\"]", consumables);
-    // // SKILLS
-    // /** @type {FUItem[]} **/
-    // let skills = ["skill", "miscAbility"]
-    //   .map((t) => actor.getItemsByType(t))
-    //   .flat()
-    //   .filter((s) => {
-    //     return !s.system.passive;
-    //   });
-    // for (const fuid of ActionHandler.skillsWithApps) {
-    //   const skill = actor.getItemsByFuid(fuid);
-    //   if (skill) {
-    //     skills.push(...skill);
-    //   }
-    // }
-    // FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
+    // SKILLS
+    /** @type {AHItem[]} **/
+    let skills = ["skill"]
+      .map((t) => this.actor.getItemsByType(t))
+      .flat()
+      .filter((s) => {
+        return !s.system.passive;
+      });
+    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
   }
 }

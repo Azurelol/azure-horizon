@@ -1,0 +1,14 @@
+<fieldset>
+  <legend>
+    <label>
+      <i class="ah-icon --s {{ahIconClass 'weapon'}}"></i>
+      {{localize 'AH.COMMON.Usage'}}
+    </label>
+  </legend>
+  <div class="ah-field-group">
+    <div class="ah-field-group --row">
+      {{ahBooleanField path=(ahConcat path '.usage.check') label="AH.COMMON.Check" value=value.usage.check }}
+      {{ahBooleanField path=(ahConcat path '.usage.damage') label="AH.COMMON.Damage" value=value.usage.damage }}
+    </div>
+  </div>
+</fieldset>

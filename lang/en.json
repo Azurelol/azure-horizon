@@ -475,6 +475,7 @@
       "Type": "Type",
       "Target": "Target",
       "Options": "Options",
+      "Usage": "Usage",
       "Check": "Check",
       "Settings": "Settings"
     },
