@@ -257,9 +257,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0.125rem;
-  margin-top: 0.25rem;
-  gap: 5px;
+  gap: 4px;
 
   a {
     width: 100%;

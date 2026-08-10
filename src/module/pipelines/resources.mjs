@@ -179,6 +179,30 @@ function getChatAction(request) {
     .withSelected();
 }
 
+/**
+ * @param {ResourceExpense} expense
+ * @param sourceInfo
+ * @returns {ChatAction}
+ */
+function getExpenseAction(expense, sourceInfo) {
+  const resourceIcon = AH.resourceTypes[expense.resource].icon;
+  const tooltip = StringUtils.localize("AH.PIPELINE.CHAT.SpendResource", {
+    amount: expense.amount,
+    resource: StringUtils.localize(AH.resourceTypes[expense.resource].long),
+  });
+
+  return new ChatAction("updateResource", resourceIcon, tooltip, {
+    amount: -expense.amount,
+    type: expense.resource,
+    sourceInfo: sourceInfo,
+  })
+    .requiresOwner()
+    .setFlag(AH.flags.ChatMessage.Resource)
+    .withLabel(tooltip)
+    .withTraits(["loss"])
+    .withSelected();
+}
+
 /** @type ActionProcessCallback **/
 const onProcessAction = async (config, actor, item, registerCallback) => {
   const targets = Targeting.deserializeTargetData(config.getTargets());
@@ -201,6 +225,7 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
       expense.amount = _amount * (expense.perTarget ? Math.max(1, targets.length) : 1);
       expense.source = itemGroup;
       await Events.calculateExpense(actor, item, targets, expense);
+      config.addAction(getExpenseAction(expense, config.sourceInfo));
     }
   }
 };

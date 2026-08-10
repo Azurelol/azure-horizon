@@ -8,16 +8,22 @@ import { FoundryUtils } from "../../../utils/_module.mjs";
 
 /**
  * @description Used when rolls are performed.
- * @property {String|Number} amount The base value which is generally added to the high roll
- * @property {AH_DamageType} type
+ * @property {DamageUnit} primary
+ * @property {DamageUnit} secondary
  * @property {TraitsField} traits
  */
 export default class DamageDataModel extends FieldsetDataModel {
   static defineSchema() {
-    const { BooleanField, NumberField, StringField } = foundry.data.fields;
+    const { BooleanField, SchemaField, NumberField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      amount: new NumberField({ initial: 0, integer: true, nullable: false }),
-      type: new StringField({ initial: "untyped", choices: Object.keys(AH.damageTypes), blank: true, nullable: false }),
+      primary: new SchemaField({
+        amount: new NumberField({ initial: AH.defaults.damage.bonus, integer: true, nullable: false }),
+        type: new StringField({ initial: "untyped", choices: Object.keys(AH.damageTypes), blank: true, nullable: false }),
+      }),
+      secondary: new SchemaField({
+        amount: new NumberField({ initial: AH.defaults.damage.bonus, integer: true, nullable: true }),
+        type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.damageTypes), nullable: false }),
+      }),
       traits: new TraitsField({
         options: FoundryUtils.getFormSelectOptions(AH.traits.damage),
       }),
@@ -30,10 +36,22 @@ export default class DamageDataModel extends FieldsetDataModel {
    */
   configureAction(config) {
     if (this.enabled) {
-      config.setDamage(this.type, this.amount);
+      config.setDamage(this.primary.type, this.primary.amount);
       config.addTags({
-        tag: AH.damageTypes[this.type].long,
+        tag: AH.damageTypes[this.primary.type].long,
       });
+
+      if (this.secondary.type) {
+        config.modifyDamage(d => {
+          d.add("AH.DAMAGE.Secondary", this.secondary.type, this.secondary.amount);
+        });
+        if (this.secondary.type !== this.primary.type) {
+          config.addTags({
+            tag: AH.damageTypes[this.secondary.type].long,
+          });
+        }
+      }
+
       const traits = this.traits.values();
       config.addTraits(...traits);
 

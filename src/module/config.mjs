@@ -30,6 +30,20 @@ AH.statusEffects = Object.freeze({
 });
 
 /**
+ * Default system values for various important properties.
+ * @type {Record<string, *>}
+ * @property damage.bonus
+ */
+AH.defaults = {
+  damage: {
+    bonus: 5,
+  },
+  check: {
+    criticalThreshold: 6,
+  },
+};
+
+/**
  * @typedef {'status'|'equipment'|'situation'} AH_Modifier
  */
 

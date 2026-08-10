@@ -6,11 +6,15 @@
  */
 
 /**
- * @typedef DamageComponent
- * @property {string} label
- * @property {Boolean} enabled
+ * @typedef DamageUnit
  * @property {String|Number} amount
  * @property {AH_DamageType} type
+ *
+
+/**
+ * @typedef {DamageUnit} DamageComponent
+ * @property {string} label
+ * @property {Boolean} enabled
  * @property {String[]} traits These get concatenated.
  */
 
@@ -54,7 +58,7 @@ export default class DamageData {
    */
   static construct(type, amount) {
     const data = new DamageData();
-    data.add("AH.DAMAGE.Base", type, amount);
+    data.add("AH.DAMAGE.Primary", type, amount);
     data.type = type;
     return data;
   }

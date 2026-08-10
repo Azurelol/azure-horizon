@@ -238,6 +238,8 @@
 
       "Glancing": "Glancing",
       "Base": "Base Damage",
+      "Primary": "Primary Damage",
+      "Secondary": "Secondary Damage",
       "Bonus": "Bonus Damage"
     },
     "DICE": {
@@ -520,6 +522,7 @@
         "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
         "ResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
         "ResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+        "SpendResource": "Spend {amount} {resource}",
         "RecoveryNotNeeded": "<strong>{actor}</strong> already has full {resource}.",
         "RecoveryNotPossible": "<strong>{actor}</strong> was not able to recover {resource}.",
         "ResourceGainTooltip": "Gain {amount} {resource}",

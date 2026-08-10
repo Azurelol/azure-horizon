@@ -9,6 +9,12 @@
     <img class="ah-icon {{classes}}" alt="{{localize tooltip}}" src="{{dataset.actor-img}}" />
   {{/if}}
 
+  {{#if label}}
+    <span class="ah-chat-action__label">
+      {{~localize label}}
+    </span>
+  {{/if}}
+
   {{#if img}}
     <img class="ah-icon {{classes}}" alt="{{localize tooltip}}"
          style="{{style}} {{#if color}}color: {{color}};{{/if}}"
@@ -24,9 +30,5 @@
     </span>
   {{/if}}
 
-  {{#if label}}
-    <span class="ah-chat-action__label">
-      {{~localize label}}
-    </span>
-  {{/if}}
+
 </a>
