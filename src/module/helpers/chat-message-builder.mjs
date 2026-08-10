@@ -142,8 +142,13 @@ export default class ChatMessageBuilder {
     const item = this.#item;
 
     // ACTIONS
+    const actions = [];
     if (this.renderData.actions?.length > 0) {
-      const actions = this.renderData.actions;
+      const renderActions = this.renderData.actions;
+      actions.push(...renderActions);
+    }
+
+    if (actions.length > 0) {
       const actionFlags = new FlagBuilder();
       for (const action of actions) {
         if (action.flag) {

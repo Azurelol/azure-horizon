@@ -20,7 +20,7 @@ const FLAGS = "flags";
 const TRAITS = "traits";
 const WEAPON_TRAITS = "weaponTraits";
 const LABEL_KEY = "label";
-const TARGETED_ACTIONS = "targetedActions";
+const CHAT_ACTIONS = "targetedActions";
 const WEAPON_USED = "weaponUsedBySkill";
 const ITEM_REFERENCE = "itemReference";
 const INITIAL_CHECK = "initialCheck";
@@ -261,6 +261,13 @@ export class ActionInspector {
    */
   get isDefenseCheck() {
     return this.data[DEFENSE_CHECK];
+  }
+
+  /**
+   * @returns {ChatAction[]}
+   */
+  get chatActions() {
+    return this.data[CHAT_ACTIONS] ?? [];
   }
 }
 
@@ -589,11 +596,11 @@ export class ActionConfig extends ActionInspector {
    * @param {ChatAction} action
    * @remarks Will reject adding duplicates.
    */
-  addTargetedAction(action) {
-    if (!this.check.data[TARGETED_ACTIONS]) {
-      this.check.data[TARGETED_ACTIONS] = [];
+  addChatAction(action) {
+    if (!this.check.data[CHAT_ACTIONS]) {
+      this.check.data[CHAT_ACTIONS] = [];
     }
-    this.check.data[TARGETED_ACTIONS].push(action);
+    this.check.data[CHAT_ACTIONS].push(action);
   }
 
   /**

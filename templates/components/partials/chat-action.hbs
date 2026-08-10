@@ -19,12 +19,14 @@
   {{/if}}
 
   {{#if text}}
-    <span>
+    <span class="ah-chat-action__details">
       {{{text}}}
     </span>
   {{/if}}
 
-  {{#if action.label}}
-    <span>{{~localize action.label}}</span>
+  {{#if label}}
+    <span class="ah-chat-action__label">
+      {{~localize label}}
+    </span>
   {{/if}}
 </a>

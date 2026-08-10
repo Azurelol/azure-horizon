@@ -96,6 +96,7 @@ async function initializeSystems() {
   await data.Compendium.CompendiumIndex.initialize();
   await pipelines.Enrichers.initialize();
   await pipelines.Damage.initialize();
+  await pipelines.Resources.initialize();
   await pipelines.Rules.initialize();
   await pipelines.Actions.initialize();
 }

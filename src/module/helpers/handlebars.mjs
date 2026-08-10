@@ -138,6 +138,9 @@ export default Object.freeze({
       return value.charAt(0).toUpperCase() + value.slice(1);
     });
     Handlebars.registerHelper("ahUpperCase", value => {
+      if (value === undefined) {
+        return "";
+      }
       return value.toUpperCase();
     });
     Handlebars.registerHelper("ahMathAbs", value => {

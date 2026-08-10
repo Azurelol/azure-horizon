@@ -15,9 +15,8 @@ const Flags = Object.freeze({
 
     /** @remarks Refers to {@linkcode DamageData} **/
     Damage: "Damage",
-    ResourceGain: "ResourceGain",
-    ResourceLoss: "ResourceLoss",
-    
+    Resource: "Resource",
+
     RevertedAction: "RevertedAction",
   }),
 });

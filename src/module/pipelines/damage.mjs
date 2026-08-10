@@ -176,26 +176,29 @@ async function process(request) {
  * @param {DamageData} damageData
  * @param {SourceInfo} sourceInfo
  * @param {String[]} traits
+ * @param includeLabel
  * @returns {ChatAction}
  */
-function getChatAction(damageData, sourceInfo, traits) {
-  //const icon = AH.icons[damageData.type];
+function getChatAction(damageData, sourceInfo, traits, includeLabel = true) {
   const icon = AH.icons.damage;
   const resolved = damageData.resolved;
   const tooltip = StringUtils.localize("AH.ACTION.ApplyDamageTooltip", {
     amount: resolved.total,
     type: StringUtils.localize(AH.damageTypes[damageData.type]),
   });
-  return new ChatAction("applyDamage", icon, tooltip, {
+  const action = new ChatAction("applyDamage", icon, tooltip, {
     damageData: damageData,
     sourceInfo: sourceInfo,
     traits: traits,
   })
     .setFlag(Flags.ChatMessage.Damage, resolved.total)
     .withSelected()
-    .withLabel("AH.ACTION.ApplyDamage")
     .withTraits(traits)
     .requiresOwner();
+  if (includeLabel) {
+    action.withLabel("AH.ACTION.ApplyDamage");
+  }
+  return action;
 }
 
 /**
@@ -262,7 +265,7 @@ const onProcessAction = (config, actor, item, registerCallback) => {
     config.setPotencies((potencies) => {
 
       const standardDamage = new DamageData(config.damage);
-      const standard = getChatAction(standardDamage, sourceInfo, traits);
+      const standard = getChatAction(standardDamage, sourceInfo, traits, false);
       potencies.standard.components.push({
         text: standardDamage.toString(),
         actions: [standard],
@@ -273,7 +276,7 @@ const onProcessAction = (config, actor, item, registerCallback) => {
         d.clear();
         d.add("AH.DAMAGE.Glancing", base.type, Math.round(base.amount * 0.5));
       });
-      const reducedAction = getChatAction(reducedDamage, sourceInfo, traits);
+      const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, false);
       potencies.reduced.components.push({
         text: reducedDamage.toString(),
         actions: [reducedAction],
@@ -283,7 +286,7 @@ const onProcessAction = (config, actor, item, registerCallback) => {
         const criticalBonus = d.base.amount * 2;
         d.add("AH.PIPELINE.CriticalBonus", "untyped", criticalBonus);
       });
-      const powerful = getChatAction(powerfulDamage, sourceInfo, traits);
+      const powerful = getChatAction(powerfulDamage, sourceInfo, traits, false);
       potencies.powerful.components.push({
         text: powerfulDamage.toString(),
         actions: [powerful],

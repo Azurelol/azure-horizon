@@ -111,6 +111,11 @@ function getDefendAction(config, actor, item) {
  */
 async function addSections(builderData, config, actor, item) {
 
+  // ACTIONS
+  if (config.actions.length > 0) {
+    builderData.actions.push(...config.actions);
+  }
+
   // TARGET SECTIONS
   if (config.check.type === "action") {
     const targets = config.getTargets();

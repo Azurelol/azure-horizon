@@ -122,11 +122,14 @@ AH.checkTypes = {
  * @typedef {"hp"|"mp"|"tp"| "ip"} AH_Resource
  */
 
+/**
+ * @type {Record<string, AH_Constant>}}
+ */
 AH.resourceTypes = {
-  hp: { label: "AH.CHARACTER.HitPoint.short" },
-  mp: { label: "AH.CHARACTER.MindPoint.short" },
-  ip: { label: "AH.CHARACTER.InventoryPoint.short" },
-  tp: { label: "AH.CHARACTER.TensionPoint.short" },
+  hp: { label: "AH.CHARACTER.HitPoint.short", icon: "ah-icon-hp" },
+  mp: { label: "AH.CHARACTER.MindPoint.short", icon: "ah-icon-mp" },
+  ip: { label: "AH.CHARACTER.InventoryPoint.short", icon: "ah-icon-ip" },
+  tp: { label: "AH.CHARACTER.TensionPoint.short", icon: "ah-icon-tp" },
 };
 
 /**
@@ -449,8 +452,7 @@ AH.flags = Object.freeze({
     Effect: "Effect",
     /** @remarks Refers to {@linkcode DamageData} **/
     Damage: "Damage",
-    ResourceGain: "ResourceGain",
-    ResourceLoss: "ResourceLoss",
+    Resource: "Resource",
     RevertedAction: "RevertedAction",
   }),
 });

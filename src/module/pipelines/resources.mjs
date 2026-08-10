@@ -45,8 +45,8 @@ export class ResourceRequest extends PipelineRequest {
 async function process(request) {
 
   // Some constants
-  const message = request.gain ? "AH.PIPELINE.ChatResourceGain" : "AH.PIPELINE.ChatResourceLoss";
-  const fieldPath = `parameters.${request.resource}`;
+  const message = request.gain ? "AH.PIPELINE.CHAT.ResourceGain" : "AH.PIPELINE.CHAT.ResourceLoss";
+  const fieldPath = `resources.${request.resource}`;
   const updates = [];
 
   console.debug(`Applying resource change from request with traits: ${[...request.traits].join(", ")}`);
@@ -62,7 +62,7 @@ async function process(request) {
 
     // The chat message to be generated
     const flags = new FlagBuilder();
-    flags.toggle(request.gain ? Flags.ChatMessage.ResourceGain : Flags.ChatMessage.ResourceLoss);
+    flags.toggle(AH.flags.ChatMessage.Resource);
     const chatMessage = new ChatMessageBuilder(subject, request.item).withFlags(flags);
 
     let amount;
@@ -77,7 +77,7 @@ async function process(request) {
       // Cap the amount gained up to the maximum
       amount = Math.min(amount, resource.max - resource.value);
       if (amount === 0) {
-        const message = incomingRecoveryMultiplier > 0 ? "AH.PIPELINE.ChatRecoveryNotNeeded" : "AH.PIPELINE.ChatRecoveryNotPossible";
+        const message = incomingRecoveryMultiplier > 0 ? "AH.PIPELINE.CHAT.RecoveryNotNeeded" : "AH.PIPELINE.CHAT.RecoveryNotPossible";
         chatMessage.text(StringUtils.localize(message, {
           actor: subject.name,
           resource: request.resource.toUpperCase(),
@@ -124,7 +124,7 @@ async function process(request) {
  * @param {HTMLElement} html
  */
 function onRenderChatMessage(message, html) {
-  if (!message.getFlag(systemID, Flags.ChatMessage.Damage)) {
+  if (!message.getFlag(systemID, AH.flags.ChatMessage.Resource)) {
     return;
   }
 
@@ -159,10 +159,10 @@ function onRenderChatMessage(message, html) {
  * @returns {ChatAction}
  */
 function getChatAction(request) {
-  const resourceIcon = AH.resourceTypes[request.resource];
+  const resourceIcon = AH.resourceTypes[request.resource].icon;
   const tooltip = StringUtils.localize(request.gain ? "AH.PIPELINE.CHAT.ResourceGainTooltip" : "AH.PIPELINE.CHAT.ResourceLossTooltip", {
     amount: request.amount,
-    resource: StringUtils.localize(AH.resourceTypes[request.resource]),
+    resource: StringUtils.localize(AH.resourceTypes[request.resource].long),
   });
 
   return new ChatAction("updateResource", resourceIcon, tooltip, {
@@ -172,7 +172,7 @@ function getChatAction(request) {
     traits: Array.from(request.traits),
   })
     .requiresOwner()
-    .setFlag(request.gain ? AH.flags.ChatMessage.ResourceGain : AH.flags.ChatMessage.ResourceLoss)
+    .setFlag(AH.flags.ChatMessage.Resource)
     .withLabel(tooltip)
     .withColor(request.gain ? "var(--color-hp)" : "var(--color-hp-crisis)")
     .withTraits(Array.from(request.traits))
@@ -208,12 +208,12 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
 /** @type ActionRenderCallback **/
 const onRenderAction = (config, data, actor, item, registerCallback) => {
   if (config.hasResource) {
-    data.sections.push({
-      order: ChatSectionOrder.damage,
-      partial: systemTemplatePath("chat/chat-section-update-resource"),
-      data: {
-      },
-    });
+    // data.sections.push({
+    //   order: ChatSectionOrder.damage,
+    //   partial: systemTemplatePath("chat/chat-section-update-resource"),
+    //   data: {
+    //   },
+    // });
   }
 };
 

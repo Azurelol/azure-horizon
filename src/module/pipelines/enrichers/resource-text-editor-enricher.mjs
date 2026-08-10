@@ -16,7 +16,7 @@ function createReplacementElement(amount, type, tooltip, label, change) {
     const anchor = TextEditorUtils.anchor();
     anchor.dataset.type = type;
 
-    let typeName = StringUtils.localize(`${AH.resourceTypes[type]}.short`);
+    let typeName = StringUtils.localize(`${AH.resourceTypes[type].label}`);
     anchor.setAttribute("data-tooltip", `${StringUtils.localize(tooltip)} (${amount} ${typeName})`);
     anchor.draggable = true;
     anchor.dataset.change = change;
