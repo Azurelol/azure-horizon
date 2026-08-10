@@ -54,9 +54,9 @@ export default class ActionHandler {
     // ATTACKS
     const attacks = WeaponResolver.getEquippedWeapons(this.actor);
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"attack\"]", attacks, undefined, true);
-    // // SPELLS
-    // const spells = ["spell"].map((t) => actor.getItemsByType(t)).flat();
-    // FoundryUtils.itemContextMenu(element, "[data-context-menu=\"spell\"]", spells);
+    // SPELLS
+    const spells = ["spell"].map((t) => this.actor.getItemsByType(t)).flat();
+    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"spell\"]", spells);
     // // INVENTORY
     // const consumables = ["consumable"].map((t) => actor.getItemsByType(t)).flat();
     // FoundryUtils.itemContextMenu(element, "[data-context-menu=\"inventory\"]", consumables);

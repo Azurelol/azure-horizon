@@ -13,9 +13,9 @@
 }
 
 .ah-tag {
-  color: var(--ah-color-control);
-  background: var(--ah-background-control);
-  box-shadow: 0.063rem 0.1rem var(--ah-color-shadow-control);
+  color: var(--ah-icon-color);
+  background: var(--ah-icon-background);
+  box-shadow: 0.063rem 0.1rem var(--ah-icon-color-shadow);
   border: 0.063rem solid var(--ah-color-border-control);
   text-shadow: 1px 1px var(--ah-color-shadow-control);
 
@@ -36,11 +36,11 @@
   line-height: 20px;
 
   & i {
-    color: var(--ah-color-control);
+    color: var(--ah-icon-color);
   }
 
   &:hover {
-    color: var(--ah-color-control-hover);
+    color: var(--ah-icon-color-hover);
     background: var(--ah-background-control-hover);
 
     & i {
@@ -88,8 +88,8 @@
   height: 18px;
   padding: 0 4px;
   border-radius: 9px;
-  background: var(--ah-color-bg-badge);
-  color: var(--ah-color-badge);
+  background: var(--ah-badge-background);
+  color: var(--ah-badge-color);
   font-size: 11px;
   font-weight: bold;
 }

@@ -176,13 +176,13 @@
   }
 
   .name {
-    font-size: var(--ah-text-size-lg);
+    font-size: var(--ah-font-size-lg);
     font-weight: bold;
     line-height: 1.2;
   }
 
   .description {
-    font-size: var(--ah-text-size-m);
+    font-size: var(--ah-font-size-m);
     line-height: 1.4;
   }
 }

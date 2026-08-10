@@ -17,9 +17,6 @@
   --ah-surface-panel-nested: var(--ah-primitive-color-navy-700);
   --ah-surface-hover: var(--ah-primitive-color-navy-400);
   --ah-surface-value: color-mix(in srgb, var(--ah-color-navy-500) 12%, transparent);
-
-  --ah-border-radius: 4px;
-  --ah-border-width: 2px;
   --ah-border-surface: var(--ah-primitive-color-navy-500);
   --ah-border-panel: var(--ah-primitive-color-navy-600);
 
@@ -28,6 +25,11 @@
 
   --ah-surface-accent: var(--ah-primitive-color-brown-500);
   --ah-border-accent: var(--ah-primitive-color-brown-600);
+
+  --ah-surface-action: #c46022;
+  --ah-surface-action-muted: #4e5364;
+  --ah-surface-action-hover: var(--ah-primitive-color-orange-400);
+  --ah-surface-action-active: var(--ah-primitive-color-orange-600);
 
   /* ---------- CONTENT ---------- */
   --ah-content-primary: var(--ah-primitive-color-white-100);
@@ -39,29 +41,27 @@
   --ah-content-tab: var(--ah-content-muted);
   --ah-content-tab-active: var(--ah-content-primary);
 
+  --ah-content-action: var(--ah-primitive-color-white-100);
   --ah-content-icon: var(--ah-primitive-color-white-90);
   --ah-content-icon-hover: var(--ah-primitive-color-white-100);
 
-  /* ---------- ACTION ---------- */
-  --ah-action-surface: #c46022;
-  --ah-action-surface-muted: #4e5364;
-  --ah-action-surface-hover: var(--ah-primitive-color-orange-400);
-  --ah-action-surface-active: var(--ah-primitive-color-orange-600);
-  --ah-action-content: var(--ah-primitive-color-white-100);
-
   /*--------------------- TYPOGRAPHY ---------------------*/
+
+  /* Borders weights */
+  --ah-border-radius: 4px;
+  --ah-border-width: 2px;
   /* Font weights */
   --ah-font-weight-normal: 400;
   --ah-font-weight-medium: 500;
   --ah-font-weight-bold: 700;
   /* Font Sizes */
-  --ah-text-size-header: 18px;
-  --ah-text-size-xs: var(--ah-primitive-size-text-xs);
-  --ah-text-size-sm: var(--ah-primitive-size-text-sm);
-  --ah-text-size-m: var(--ah-primitive-size-text-m);
-  --ah-text-size-base: var(--ah-primitive-size-text-base);
-  --ah-text-size-lg: var(--ah-primitive-size-text-lg);
-  --ah-text-size-xl: var(--ah-primitive-size-text-xl);
+  --ah-font-size-header: 18px;
+  --ah-font-size-xs: var(--ah-primitive-size-text-xs);
+  --ah-font-size-sm: var(--ah-primitive-size-text-sm);
+  --ah-font-size-m: var(--ah-primitive-size-text-m);
+  --ah-font-size-base: var(--ah-primitive-size-text-base);
+  --ah-font-size-lg: var(--ah-primitive-size-text-lg);
+  --ah-font-size-xl: var(--ah-primitive-size-text-xl);
   /* Fonts */
   --ah-font-title: var(--ah-primitive-font-title);
   --ah-font-heading: var(--ah-primitive-font-heading);

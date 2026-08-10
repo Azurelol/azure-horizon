@@ -3,7 +3,7 @@ import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
 
 /**
  * A spell is a feature tied to a magical domain.
- * @property {AH_Domain} domain
+ * @property {AH_Domain} domain Can also be empty for non-domain spells.
  */
 export default class SpellDataModel extends ActiveFeatureDataModel {
   /** @inheritdoc */
@@ -19,6 +19,9 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
 
   async _initializeAction(config) {
     await super._initializeAction(config);
-    config.addTraits(this.domain);
+    config.addTraits("spell");
+    if (this.domain) {
+      config.addTraits(this.domain);
+    }
   }
 }

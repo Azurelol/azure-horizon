@@ -576,11 +576,19 @@ AH.hooks = Object.freeze({
  * Traits are tags with mechanical implications in the system.
  * @property {Record<String, AH_Constant>} action
  * @property {Record<String, AH_Constant>} damage
+ * @property {Record<String, AH_Constant>} attack
+ * @property {Record<String, AH_Constant>} defense
+ * @property {Record<String, AH_Constant>} skill
+ * @property {Record<String, AH_Constant>} weapon
+ * @property {Record<String, AH_Constant>} armor
  */
-AH.traits = Object.freeze({
-  // Shared
+AH.traits = {
   action: {
     attack: "AH.TRAIT.Attack",
+    spell: "AH.TRAIT.Spell",
+    skill: "AH.TRAIT.Skill",
+    action: "AH.TRAIT.Action",
+    maneuver: "AH.TRAIT.Maneuver",
     damage: "AH.TRAIT.Damage",
     restore: "AH.TRAIT.Restore",
     gain: "AH.TRAIT.Gain",
@@ -594,15 +602,15 @@ AH.traits = Object.freeze({
     base: "AH.TRAIT.Base",
     nonLethal: "AH.TRAIT.NonLethal",
   },
-  // Used by adversaries
+
   attack: {
     stress: "AH.TRAIT.Stress",
   },
-  // Used by heroes
   defense: {
     deflection: "AH.TRAIT.Deflection", // Heavy
     avoidance: "AH.TRAIT.Avoidance", // Light
   },
+
   skill: {
     cooldown: "AH.TRAIT.Cooldown",
     stress: "AH.TRAIT.Stress",
@@ -613,7 +621,19 @@ AH.traits = Object.freeze({
   armor: {
     magical: "AH.TRAIT.Magical",
   },
+};
+
+//  Create a catch-all of traits for localization purposes
+AH.traits.all = Object.freeze({
+  ...AH.traits.action,
+  ...AH.traits.damage,
+  ...AH.traits.attack,
+  ...AH.traits.defense,
+  ...AH.traits.skill,
+  ...AH.traits.weapon,
+  ...AH.traits.armor,
 });
+Object.freeze(AH.traits);
 
 /**
  * All registered icons classes.

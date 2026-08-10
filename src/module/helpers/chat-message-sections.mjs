@@ -36,13 +36,13 @@ export const ChatSectionOrder = Object.freeze({
  */
 
 /**
- * @typedef Tag
- * @property {string} [tag] gets localized
- * @property {any} [value] doesn't get localized
- * @property {string} [tooltip] tooltip to attach to the tag, gets localized
- * @property {boolean} [flip] switches the position of tag and value
- * @property {string} [separator] placed between tag and
- * @property {any} [show] can be omitted, if defined and falsy doesn't render tag
+ * @typedef AH_Tag
+ * @property {string} tag Gets localized.
+ * @property {any} value Doesn't get localized.
+ * @property {string} tooltip Tooltip to attach to the tag, gets localized
+ * @property {boolean} flip Switches the position of tag and value
+ * @property {string} separator Placed between tag and value
+ * @property {any} show Can be omitted, if defined and falsy doesn't render tag
  */
 
 export const ChatMessageSectionTemplate = Object.freeze({
@@ -69,7 +69,7 @@ export const ChatMessageSections = Object.freeze({
 
   /**
    * @param {ChatMessageSectionCollection} sections
-   * @param {Tag[]} tags
+   * @param {AH_Tag[]} tags
    * @param {number} [order]
    */
   tags: (sections, tags = [], order = ChatSectionOrder.details) => {

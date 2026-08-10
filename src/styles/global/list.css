@@ -18,7 +18,7 @@
     justify-content: space-between;
 
     i {
-      color: var(--ah-color-icon);
+      color: var(--ah-icon-color);
     }
 
     .acc-list__container__header__title {
@@ -73,7 +73,7 @@ ol.acc-list li {
   .ah-list__entry__action {
     display: flex;
     align-items: center;
-    color: var(--ah-color-icon);
+    color: var(--ah-icon-color);
   }
 
   .ah-list__entry__controls {

@@ -59,7 +59,7 @@
     width: 24px;
     height: 24px;
     border-radius: 5px;
-    background: var(--ah-action-content);
+    background: var(--ah-content-action);
     border: 1px solid var(--ah-border-control);
     transition:
       transform 0.3s ease,

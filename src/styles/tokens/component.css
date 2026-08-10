@@ -46,11 +46,11 @@
   --ah-background-table-row: var(--ah-surface-panel);
   --ah-background-table-row-alt: var(--ah-surface-panel-nested);
   --ah-background-table-row-hover: var(--ah-surface-hover);
-  --ah-background-table-row-selected: var(--ah-action-surface);
+  --ah-background-table-row-selected: var(--ah-surface-action);
 
   --ah-color-table-header: var(--ah-content-secondary);
   --ah-color-table-row: var(--ah-content-primary);
-  --ah-color-table-row-selected: var(--ah-action-content);
+  --ah-color-table-row-selected: var(--ah-content-action);
 
   --ah-border-color-table: var(--ah-border-surface);
   --ah-border-table-cell: 1px solid var(--ah-border-panel);
@@ -80,10 +80,14 @@
   --ah-height-resource-bar: 1.5em;
 
   /* Icons */
-  --ah-color-icon: var(--ah-content-icon);
-  --ah-color-icon-hover: var(--ah-content-icon-hover);
-  --ah-color-bg-badge: var(--ah-surface-panel-nested);
-  --ah-color-badge: var(--ah-content-primary);
+  --ah-icon-color: var(--ah-content-icon);
+  --ah-icon-background: var(--ah-surface-action-muted);
+  --ah-icon-color-shadow: var(--ah-border-accent);
+  --ah-icon-color-hover: var(--ah-content-icon-hover);
+
+  /* Tags/Badges  */
+  --ah-badge-background: var(--ah-surface-panel-nested);
+  --ah-badge-color: var(--ah-content-primary);
 
   /* Inline */
   --ah-line-height-inline: 18px;
@@ -96,10 +100,10 @@
   --ah-background-inline-value: var(--ah-surface-value);
 
   /* 2.1 Controls */
-  --ah-color-control: var(--ah-action-content);
-  --ah-color-control-hover: var(--ah-action-surface-hover);
-  --ah-background-control: var(--ah-action-surface);
-  --ah-background-control-hover: var(--ah-action-surface);
+  --ah-color-control: var(--ah-content-action);
+  --ah-color-control-hover: var(--ah-surface-action-hover);
+  --ah-background-control: var(--ah-surface-action);
+  --ah-background-control-hover: var(--ah-surface-action);
   --ah-color-shadow-control: var(--ah-border-accent);
   --ah-color-border-control: var(--ah-border-surface);
   --ah-color-background-control-header: var(--ah-surface-panel-nested);

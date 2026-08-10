@@ -350,25 +350,18 @@ export class ActionConfig extends ActionInspector {
    */
   setResource(type, amount) {
     this.check.data[RESOURCE] = ResourceData.construct(type, amount);
-    switch (type) {
-      case "hp":
-        this.addTraits(AH.traits.action.hp);
-        break;
-      case "mp":
-        this.addTraits(AH.traits.action.mp);
-        break;
-    }
+    this.addTraits(type);
     if (Number.isInteger(amount)) {
       if (amount >= 0) {
-        this.addTraits(AH.traits.action.gain);
+        this.addTraits("gain");
       } else {
-        this.addTraits(AH.traits.action.loss);
+        this.addTraits("loss");
       }
     } else if (typeof amount === "string") {
       if (amount.startsWith("-")) {
-        this.addTraits(AH.traits.action.loss);
+        this.addTraits("loss");
       } else {
-        this.addTraits(AH.traits.action.gain);
+        this.addTraits("gain");
       }
     }
     return this;
@@ -427,8 +420,10 @@ export class ActionConfig extends ActionInspector {
     }
 
     traits.flat().forEach((t) => {
-      if (t != null) {
-        this.check.data[TRAITS].push(String(t).toLowerCase());
+      if (t == null) return;
+      const trait = String(t).toLowerCase().trim();
+      if (trait !== "") {
+        this.check.data[TRAITS].push(trait);
       }
     });
     return this;
