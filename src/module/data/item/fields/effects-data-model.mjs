@@ -18,14 +18,14 @@ import { systemTemplatePath } from "../../../constants.mjs";
 export class EffectsDataModel extends FieldsetDataModel {
   static defineSchema() {
     const { StringField, SchemaField, ArrayField, BooleanField, NumberField } = foundry.data.fields;
-    return {
+    return Object.assign(super.defineSchema(), {
       entries: new ArrayField(new StringField({ nullable: true })),
       duration: new SchemaField({
         event: new StringField({ initial: "", blank: true, choices: Object.keys(AH.intervals) }),
         interval: new NumberField({ min: 0, blank: true, integer: true }),
         tracking: new StringField({ initial: "", blank: true, choices: Object.keys(AH.effectTracking) }),
       }),
-    };
+    });
   }
 
   /**

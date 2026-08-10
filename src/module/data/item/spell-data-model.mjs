@@ -1,11 +1,11 @@
 import AH from "../../config.mjs";
-import AttackDataModel from "./attack-data-model.mjs";
+import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
 
 /**
  * A spell is a feature tied to a magical domain.
  * @property {AH_Domain} domain
  */
-export default class SpellDataModel extends AttackDataModel {
+export default class SpellDataModel extends ActiveFeatureDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;

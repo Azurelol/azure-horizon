@@ -20,11 +20,11 @@ import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 export class ActionCostDataModel extends FieldsetDataModel {
   static defineSchema() {
     const { StringField, BooleanField } = foundry.data.fields;
-    return {
+    return Object.assign(super.defineSchema(), {
       resource: new StringField({ initial: "mp", blank: true, choices: Object.keys(AH.resourceTypes), required: true }),
       amount: new StringField({ initial: "", blank: true, nullable: true }),
       perTarget: new BooleanField({ initial: false }),
-    };
+    });
   }
 
   get assigned() {

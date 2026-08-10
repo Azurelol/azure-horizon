@@ -388,7 +388,8 @@
       "Maximum": "Maximum",
       "Light": "Light",
       "Heavy": "Heavy",
-      "Traits": "Traits"
+      "Traits": "Traits",
+      "PerTarget": "Per Target"
     },
     "RULE": {
       "Element": {

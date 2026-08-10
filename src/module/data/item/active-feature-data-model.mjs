@@ -23,8 +23,8 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
         enabled: true,
       })),
       resource: new EmbeddedDataField(ResourceDataModel, {}),
-      effects: new EmbeddedDataField(EffectsDataModel, {}),
       cost: new EmbeddedDataField(ActionCostDataModel, {}),
+      effects: new EmbeddedDataField(EffectsDataModel, {}),
     });
   }
 
