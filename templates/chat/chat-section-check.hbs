@@ -1,35 +1,31 @@
 <section class="ah-chat-section">
 
-  <div class="ah-chat-section__check__details">
-
-    <div class="ah-chat-section__check__details__group">
-      {{#if result.data.targetedDefense}}
-        <div class="ah-chat-section__check__total">
-          <i class="ah-icon --s {{ahIconClass 'result'}}"></i>
-          <span>{{localize 'AH.CHECK.TargetDefense' result=result.total defense=(ahUpperCase result.data.targetedDefense)}}</span>
-        </div>
-
-      {{else}}
-        {{#if (gt difficulty 0)}}
-          <div class="ah-chat-section__check__total" data-tooltip="{{localize 'AH.CHECK.DifficultyLevel.long'}}">
-            <i class="ah-icon --s {{ahIconClass 'difficulty'}}"></i>
-            <span>{{difficulty}}</span>
-          </div>
-        {{/if}}
-      {{/if}}
-
-      <div class='ah-chat-section__check__components'>
-        {{ahInlineProperty 'attributes' result.primary.attribute value=result.primary.result }}
-        {{ahInlineProperty 'attributes' result.secondary.attribute value=result.secondary.result }}
-        {{#if result.modifierTotal}}
-          <span data-tooltip="{{localize 'AH.CHARACTER.Modifier.long'}}">
-            <i class="ah-icon --s {{ahIconClass 'modifier'}}"></i>
-            {{result.modifierTotal}}
-          </span>
-        {{/if}}
+  <div class="ah-chat-section__check__details__group">
+    {{#if result.data.targetedDefense}}
+      <div class="ah-chat-section__check__total">
+        <i class="ah-icon --s {{ahIconClass 'result'}}"></i>
+        <span>{{localize 'AH.CHECK.TargetDefense' result=result.total defense=(ahUpperCase result.data.targetedDefense)}}</span>
       </div>
-    </div>
 
+    {{else}}
+      {{#if (gt difficulty 0)}}
+        <div class="ah-chat-section__check__total" data-tooltip="{{localize 'AH.CHECK.DifficultyLevel.long'}}">
+          <i class="ah-icon --s {{ahIconClass 'difficulty'}}"></i>
+          <span>{{difficulty}}</span>
+        </div>
+      {{/if}}
+    {{/if}}
+
+    <div class='ah-chat-section__check__components'>
+      {{ahInlineProperty 'attributes' result.primary.attribute value=result.primary.result }}
+      {{ahInlineProperty 'attributes' result.secondary.attribute value=result.secondary.result }}
+      {{#if result.modifierTotal}}
+        <span data-tooltip="{{localize 'AH.CHARACTER.Modifier.long'}}">
+            <i class="ah-icon --s {{ahIconClass 'modifier'}}"></i>
+          {{result.modifierTotal}}
+          </span>
+      {{/if}}
+    </div>
   </div>
 
   {{#if (or (gt difficulty 0) result.crit result.fumble)}}

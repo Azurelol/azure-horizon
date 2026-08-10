@@ -52,6 +52,8 @@
   --ah-border: 0.065rem solid var(--ah-surface-border);
   --ah-box-shadow:  0.065rem 0.1rem var(--ah-primitive-color-warm-brown);
   --ah-text-shadow: 1px 1px var(--ah-primitive-color-warm-brown);
+  --ah-text-shadow-outline: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  --ah-text-shadow-outline-thin: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
   /* Font weights */
   --ah-font-weight-normal: 400;
   --ah-font-weight-medium: 500;

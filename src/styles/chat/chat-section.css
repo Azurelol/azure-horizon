@@ -33,23 +33,15 @@
 }
 
 /*--CHECK--*/
-
-.ah-chat-section__check__details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
 .ah-chat-section__check__details__group {
   display: flex;
   flex-direction: column;
+  border: var(--ah-border);
 
   color: var(--ah-primitive-color-white);
   font-size: var(--ah-font-size-m);
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: var( --ah-text-shadow-outline);
   background: var(--ah-background-components);
-  box-shadow: 1px 1px #3a3837;
-
 }
 
 .ah-chat-section__check__components {
