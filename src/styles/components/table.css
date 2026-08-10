@@ -29,7 +29,18 @@
 
 .ah-table__cell {
   display: flex;
+  flex-direction: row;
   gap: 1rem;
+
+  &.--center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.--right {
+    justify-content: flex-end;
+    text-align: right;
+  }
 }
 
 .ah-table__column__primary {
@@ -62,7 +73,20 @@
   }
 }
 
-.ah-table__column__properties {
+.ah-table__column__item__properties {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+  }
 }
 
 .ah-table__column__actions{

@@ -3,16 +3,16 @@ import CharacterDataModel, {
 } from "./character-data-model.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import EquipmentDataModel from "./system/equipment-data-model.mjs";
-import { ResourceDataModel } from "./system/_module.mjs";
 import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
+import { CharacterResourceDataModel } from "./system/_module.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
 /**
  * @typedef CharacterResources
- * @property {ResourceDataModel} hp
- * @property {ResourceDataModel} mp
- * @property {ResourceDataModel} ip
+ * @property {CharacterResourceDataModel} hp
+ * @property {CharacterResourceDataModel} mp
+ * @property {CharacterResourceDataModel} ip
  */
 
 /**
@@ -31,16 +31,16 @@ class HeroParametersDataModel extends CharacterParametersDataModel {
 }
 
 /**
- * @property {ResourceDataModel} hp
- * @property {ResourceDataModel} mp
- * @property {ResourceDataModel} ip
- * @property {ResourceDataModel} tp
+ * @property {CharacterResourceDataModel} hp
+ * @property {CharacterResourceDataModel} mp
+ * @property {CharacterResourceDataModel} ip
+ * @property {CharacterResourceDataModel} tp
  */
 class HeroResourcesDataModel extends CharacterResourcesDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      ip: new EmbeddedDataField(ResourceDataModel, {}),
-      tp: new EmbeddedDataField(ResourceDataModel, {}),
+      ip: new EmbeddedDataField(CharacterResourceDataModel, {}),
+      tp: new EmbeddedDataField(CharacterResourceDataModel, {}),
     });
   }
 }

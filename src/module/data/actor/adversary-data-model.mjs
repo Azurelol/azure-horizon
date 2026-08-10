@@ -1,20 +1,20 @@
 import CharacterDataModel, {
   CharacterResourcesDataModel,
 } from "./character-data-model.mjs";
-import { ResourceDataModel } from "./system/_module.mjs";
 import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
+import { CharacterResourceDataModel } from "./system/_module.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
 /**
- * @property {ResourceDataModel} hp
- * @property {ResourceDataModel} mp
+ * @property {CharacterResourceDataModel} hp
+ * @property {CharacterResourceDataModel} mp
  */
 class AdversaryResourcesDataModel extends CharacterResourcesDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      ip: new EmbeddedDataField(ResourceDataModel, {}),
-      tp: new EmbeddedDataField(ResourceDataModel, {}),
+      ip: new EmbeddedDataField(CharacterResourceDataModel, {}),
+      tp: new EmbeddedDataField(CharacterResourceDataModel, {}),
     });
   }
 }

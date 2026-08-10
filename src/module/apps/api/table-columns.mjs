@@ -7,6 +7,8 @@ const TEMPLATES = Object.freeze({
   actions: systemTemplatePath("components/table/table-column-actions"),
   check: systemTemplatePath("components/table/table-column-check"),
   damage: systemTemplatePath("components/table/table-column-damage"),
+  resource: systemTemplatePath("components/table/table-column-resource"),
+  itemProperties: systemTemplatePath("components/table/table-column-item-properties"),
 });
 
 /**
@@ -83,6 +85,54 @@ function textColumn(options = {}) {
  * @template {Object} T
  * @property {string} header
  * @property {string} [cssClass]
+ *
+
+ /**
+ * @template {Object} T
+ * @param {AH_TextColumnOptions} [options]
+ * @return {AH_TableColumnConfig}
+ */
+function check(options = {}) {
+  return {
+    hideHeader: !options.header,
+    renderHeader: () => StringUtils.localize(options.header ?? "AH.COMMON.Check"),
+    headerAlignment: options.alignment,
+
+    renderCell: async (entry) => {
+      /** @type CheckDataModel **/
+      const check = entry.system.check;
+      if (!check || !check.enabled) {
+        return "";
+      }
+      return renderTemplate(TEMPLATES.check, {
+        check,
+        cssClass: options.cssClass,
+      }, false);
+    },
+  };
+}
+
+/**
+ * @template {Object} T
+ * @param {AH_TextColumnOptions} [options]
+ * @return {AH_TableColumnConfig}
+ */
+function itemProperties(options = {}) {
+  return {
+    hideHeader: !options.header,
+    renderHeader: () => StringUtils.localize(options.header ?? "AH.FIELD.Properties"),
+    headerAlignment: options.alignment,
+
+    renderCell: async (entry) => {
+      /** @type ActiveFeatureDataModel **/
+      const system = entry.system;
+      return renderTemplate(TEMPLATES.itemProperties, {
+        system: system,
+        cssClass: options.cssClass,
+      }, false);
+    },
+  };
+}
 
 /**
  * @template {Object} T
@@ -98,7 +148,7 @@ function damage(options = {}) {
     renderCell: async (entry) => {
       /** @type DamageDataModel **/
       const damage = entry.system.damage;
-      if (!damage) {
+      if (!damage || !damage.enabled) {
         return "";
       }
       return renderTemplate(TEMPLATES.damage, {
@@ -112,22 +162,22 @@ function damage(options = {}) {
 /**
  * @template {Object} T
  * @param {AH_TextColumnOptions} [options]
- * @return {AH_TableColumnConfig}
+ * @return {AH_TableColumnConfig<T>}
  */
-function check(options = {}) {
+function resource(options = {}) {
   return {
     hideHeader: !options.header,
-    renderHeader: () => StringUtils.localize(options.header ?? "AH.COMMON.Check"),
+    renderHeader: () => StringUtils.localize(options.header ?? "AH.COMMON.Damage"),
     headerAlignment: options.alignment,
 
     renderCell: async (entry) => {
-      /** @type CheckDataModel **/
-      const check = entry.system.check;
-      if (!check) {
+      /** @type ResourceDataModel **/
+      const resource = entry.system.resource;
+      if (!resource || !resource.enabled) {
         return "";
       }
-      return renderTemplate(TEMPLATES.check, {
-        check,
+      return renderTemplate(TEMPLATES.resource, {
+        resource,
         cssClass: options.cssClass,
       }, false);
     },
@@ -178,7 +228,9 @@ const TableColumns = Object.freeze({
   textColumn,
   actions,
 
+  itemProperties,
   damage,
+  resource,
   check,
 
   TEMPLATES,

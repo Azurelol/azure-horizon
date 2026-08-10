@@ -35,5 +35,4 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     await this.effects.configureAction(config);
     await this.cost.configureAction(config);
   }
-
 }

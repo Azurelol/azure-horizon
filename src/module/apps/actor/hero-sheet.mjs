@@ -2,7 +2,7 @@ import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
 import {
-  AccessoryTableRenderer,
+  AccessoryTableRenderer, ActionTableRenderer,
   ArmorTableRenderer,
   WeaponTableRenderer,
 } from "../item/_module.mjs";
@@ -61,6 +61,8 @@ export class HeroSheet extends AHBaseCharacterSheet {
 
   /* -------------------------------------------------- */
 
+  #skillTableRenderer = new ActionTableRenderer();
+  #spellTableRenderer = new ActionTableRenderer();
   #weaponTableRenderer = new WeaponTableRenderer();
   #armorTableRenderer = new ArmorTableRenderer();
   #accessoryTableRenderer = new AccessoryTableRenderer();
@@ -78,8 +80,15 @@ export class HeroSheet extends AHBaseCharacterSheet {
         break;
       }
 
-      case "sidebar": {
+      case "features": {
+        context.tables = [
+          await this.#skillTableRenderer.render(this.actor.getItemsByType("skill")),
+          await this.#spellTableRenderer.render(this.actor.getItemsByType("spell")),
+        ];
+        break;
+      }
 
+      case "sidebar": {
         context.equipment = this.actor.system.getEquippedItems();
         break;
       }

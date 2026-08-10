@@ -1,19 +1,19 @@
 import AH from "../../config.mjs";
-import { AffinitiesDataModel, AttributesDataModel, ResourceDataModel } from "./system/_module.mjs";
+import { AffinitiesDataModel, AttributesDataModel, CharacterResourceDataModel } from "./system/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import ActorDataModel from "./actor-data-model.mjs";
 import { VersionedDataModel } from "../api/_module.mjs";
 
 /**
- * @property {ResourceDataModel} hp
- * @property {ResourceDataModel} mp
+ * @property {CharacterResourceDataModel} hp
+ * @property {CharacterResourceDataModel} mp
  */
 export class CharacterResourcesDataModel extends VersionedDataModel {
   static defineSchema() {
     const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      hp: new EmbeddedDataField(ResourceDataModel, {}),
-      mp: new EmbeddedDataField(ResourceDataModel, {}),
+      hp: new EmbeddedDataField(CharacterResourceDataModel, {}),
+      mp: new EmbeddedDataField(CharacterResourceDataModel, {}),
     });
   }
 }
