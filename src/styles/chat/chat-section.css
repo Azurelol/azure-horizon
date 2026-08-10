@@ -78,12 +78,10 @@
   align-items: center;
   flex: 2;
 
-  color: var(--ah-primitive-color-white);
   font-size: var(--ah-font-size-m);
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   --background: var(--ah-background-result);
   background: var(--background);
-  border-bottom: 1px solid var(--ah-border-component);
+  border: var(--ah-border);
 
   &.--damage {
     --background: var(--ah-background-damage);

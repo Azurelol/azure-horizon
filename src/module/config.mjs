@@ -178,8 +178,7 @@ AH.damageGroups = Object.freeze({
  */
 
 /**
- * @typedef AH_DamageTypeMetadata
- * @property {String} label
+ * @typedef {AH_Constant} AH_DamageTypeMetadata
  * @property {AH_DamageGroup} group
  */
 
@@ -587,12 +586,16 @@ AH.traits = {
     attack: "AH.TRAIT.Attack",
     spell: "AH.TRAIT.Spell",
     skill: "AH.TRAIT.Skill",
+
     action: "AH.TRAIT.Action",
     maneuver: "AH.TRAIT.Maneuver",
+
     damage: "AH.TRAIT.Damage",
     restore: "AH.TRAIT.Restore",
+
     gain: "AH.TRAIT.Gain",
     loss: "AH.TRAIT.Loss",
+
     hp: "AH.TRAIT.HitPoint",
     mp: "AH.TRAIT.MindPoint",
     tp: "AH.TRAIT.TensionPoint",

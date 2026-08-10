@@ -27,6 +27,7 @@ const INITIAL_CHECK = "initialCheck";
 const ACTIONS = "actions";
 const KEYBOARD_MODIFIERS = "keyboardModifiers";
 const ACTION_POTENCIES = "actionPotencies";
+const TAGS = "tags";
 
 /**
  * @description Given a {@link CheckResult} object, provides additional information from it
@@ -110,7 +111,7 @@ export class ActionInspector {
    * @returns {ResourceExpense[]}
    */
   get expenses() {
-    return this.data[EXPENSE];
+    return this.data[EXPENSE] ?? [];
   }
 
   /**
@@ -165,6 +166,13 @@ export class ActionInspector {
       return null;
     }
     return this.check.hr;
+  }
+
+  /**
+   * @returns {AH_Tag[]}
+   */
+  get tags() {
+    return this.data[TAGS];
   }
 
   /**
@@ -426,6 +434,19 @@ export class ActionConfig extends ActionInspector {
         this.check.data[TRAITS].push(trait);
       }
     });
+    return this;
+  }
+
+  /**
+   * @param {AH_Tag|AH_Tag[]} tags
+   * @returns {ActionConfig}
+   */
+  addTags(...tags) {
+    if (!this.check.data[TAGS]) {
+      this.check.data[TAGS] = [];
+    }
+
+    this.check.data[TAGS].push(...tags.flat());
     return this;
   }
 

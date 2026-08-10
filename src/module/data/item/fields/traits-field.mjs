@@ -15,13 +15,13 @@ export default class TraitsField extends SetField {
     super(new StringField(), options);
   }
 
-  /**
-	 * @returns {String[]}
-	 * @remarks What will actually be used for pipelines that use traits.
-	 */
-  get values() {
-    return Array.from(this);
-  }
+  // /**
+  //  * @returns {String[]}
+  //  * @remarks What will actually be used for pipelines that use traits.
+  //  */
+  // get values() {
+  //   return Array.from(this);
+  // }
 
   static get template() {
     return systemTemplatePath("sheets/item/fields/traits-data-model");

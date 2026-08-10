@@ -215,7 +215,6 @@ export default class FoundryUtils {
           () => {
             return entries[0].callback(el);
           },
-          { once: true },
         );
       });
     }

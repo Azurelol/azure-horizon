@@ -17,7 +17,8 @@
   --ah-surface-panel-nested: var(--ah-primitive-color-navy-700);
   --ah-surface-hover: var(--ah-primitive-color-navy-400);
   --ah-surface-value: color-mix(in srgb, var(--ah-color-navy-500) 12%, transparent);
-  --ah-surface-tag: var(--ah-primitive-color-grey-600);
+  --ah-surface-tag: var(--ah-primitive-color-grey-light);
+  --ah-surface-tag-hover: var(--ah-primitive-color-grey-mid);
   --ah-surface-border: var(--ah-primitive-color-navy-500);
   --ah-border-panel: var(--ah-primitive-color-navy-600);
   --ah-surface-accent: var(--ah-primitive-color-brown-500);
@@ -67,4 +68,5 @@
   --ah-font-title: var(--ah-primitive-font-title);
   --ah-font-heading: var(--ah-primitive-font-heading);
   --ah-font-body: var(--ah-primitive-font-body);
+  --ah-font-tag: 500 0.6875rem/1 "Inter", system-ui, sans-serif;
 }

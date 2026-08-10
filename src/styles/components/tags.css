@@ -15,11 +15,10 @@
 .ah-tag {
   color: var(--ah-tag-color);
   background: var(--ah-tag-background);
-  box-shadow: var(--ah-box-shadow);
   border: 0.063rem solid var(--ah-tag-border);
   text-shadow: var(--ah-text-shadow);
 
-  font-family: 'PT Sans Narrow', sans-serif;
+  font-family: var(--ah-font-tag);
   font-variant: small-caps;
   font-size: var(--ah-tag-font-size);
   font-weight: var(--ah-tag-font-weight);
@@ -39,11 +38,9 @@
   }
 
   &:hover {
-    color: var(--ah-icon-color-hover);
-    background: var(--ah-background-control-hover);
+    background: var(--ah-tag-background-hover);
 
     & i {
-      color: var(--ah-color-control-hover);
     }
   }
 }

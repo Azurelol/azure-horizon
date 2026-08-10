@@ -10,7 +10,7 @@ import { FoundryUtils } from "../../../utils/_module.mjs";
  * @description Used when rolls are performed.
  * @property {String|Number} amount The base value which is generally added to the high roll
  * @property {AH_DamageType} type
- * @property {Set<String>} traits
+ * @property {TraitsField} traits
  */
 export default class DamageDataModel extends FieldsetDataModel {
   static defineSchema() {
@@ -31,6 +31,12 @@ export default class DamageDataModel extends FieldsetDataModel {
   configureAction(config) {
     if (this.enabled) {
       config.setDamage(this.type, this.amount);
+      config.addTags({
+        tag: AH.damageTypes[this.type].long,
+      });
+      const traits = this.traits.values();
+      config.addTraits(...traits);
+
     }
   }
 
