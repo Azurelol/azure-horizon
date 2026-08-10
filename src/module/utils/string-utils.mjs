@@ -178,4 +178,12 @@ export default class StringUtils {
       return null;
     }
   }
+
+  /**
+   * @param {String} value
+   * @returns {boolean}
+   */
+  static isExpression(value) {
+    return (typeof value === "string") && (/[a-zA-Z_$`]|[+\-*/()]/.test(value));
+  }
 }

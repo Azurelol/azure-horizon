@@ -1,6 +1,7 @@
-import { systemID } from "../constants.mjs";
+import { systemID, systemTemplatePath } from "../constants.mjs";
 import Flags from "../data/common/flags.mjs";
 import {
+  ChatAction,
   ChatMessageBuilder,
   ChatMessageHelper,
   ChatSectionOrder,
@@ -8,6 +9,11 @@ import {
 } from "../helpers/_module.mjs";
 import { ObjectUtils, StringUtils, TokenUtils } from "../utils/_module.mjs";
 import PipelineRequest from "./pipeline-request.mjs";
+import { EvaluationContext, ItemInfo, SourceInfo } from "../data/common/_module.mjs";
+import AH from "../config.mjs";
+import Events from "./events.mjs";
+import { Expressions } from "./_module.mjs";
+import Targeting from "../helpers/targeting.mjs";
 
 /**
  * @property {AH_Resource} resource
@@ -122,7 +128,20 @@ function onRenderChatMessage(message, html) {
     return;
   }
 
-  // TODO: Update
+  ChatMessageHelper.handleClick(message, html, "updateResource", async (dataset) => {
+    const fields = StringUtils.fromBase64(dataset.fields);
+    const sourceInfo = SourceInfo.fromObject(fields.sourceInfo);
+    const amount = fields.amount;
+    const type = fields.type;
+    const targets = await ChatAction.getTargetsFromAction(dataset);
+    const traits = fields.traits;
+    const request = new ResourceRequest(sourceInfo, targets, type, amount);
+    if (traits) {
+      request.addTraits(traits);
+    }
+    return process(request);
+  });
+
   ChatMessageHelper.handleClickRevert(message, html, "revertResource", async (dataset) => {
     const uuid = dataset.uuid;
     const actor = fromUuidSync(uuid);
@@ -136,10 +155,75 @@ function onRenderChatMessage(message, html) {
 }
 
 /**
+ * @param {ResourceRequest} request
+ * @returns {ChatAction}
+ */
+function getChatAction(request) {
+  const resourceIcon = AH.resourceTypes[request.resource];
+  const tooltip = StringUtils.localize(request.gain ? "AH.PIPELINE.CHAT.ResourceGainTooltip" : "AH.PIPELINE.CHAT.ResourceLossTooltip", {
+    amount: request.amount,
+    resource: StringUtils.localize(AH.resourceTypes[request.resource]),
+  });
+
+  return new ChatAction("updateResource", resourceIcon, tooltip, {
+    amount: request.amount,
+    type: request.resource,
+    sourceInfo: request.sourceInfo,
+    traits: Array.from(request.traits),
+  })
+    .requiresOwner()
+    .setFlag(request.gain ? AH.flags.ChatMessage.ResourceGain : AH.flags.ChatMessage.ResourceLoss)
+    .withLabel(tooltip)
+    .withColor(request.gain ? "var(--color-hp)" : "var(--color-hp-crisis)")
+    .withTraits(Array.from(request.traits))
+    .withSelected();
+}
+
+/** @type ActionProcessCallback **/
+const onProcessAction = async (config, actor, item, registerCallback) => {
+  const targets = Targeting.deserializeTargetData(config.getTargets());
+
+  // RESOURCE: General chat action
+  if (config.hasResource) {
+    await Events.calculateResource(actor, item, config);
+    const resourceData = config.resource;
+    const request = new ResourceRequest(config.sourceInfo, targets, resourceData.type, resourceData.total);
+    config.addAction(getChatAction(request));
+  }
+
+  // EXPENSES
+  const expenses = config.expenses;
+  if (expenses.length > 0) {
+    for (const expense of expenses) {
+      const itemGroup = ItemInfo.resolveItemGroup(item);
+      const context = EvaluationContext.fromTargetData(actor, item, targets);
+      const _amount = await Expressions.evaluateAsync(expense.amount, context);
+      expense.amount = _amount * (expense.perTarget ? Math.max(1, targets.length) : 1);
+      expense.source = itemGroup;
+      await Events.calculateExpense(actor, item, targets, expense);
+    }
+  }
+};
+
+/** @type ActionRenderCallback **/
+const onRenderAction = (config, data, actor, item, registerCallback) => {
+  if (config.hasResource) {
+    data.sections.push({
+      order: ChatSectionOrder.damage,
+      partial: systemTemplatePath("chat/chat-section-update-resource"),
+      data: {
+      },
+    });
+  }
+};
+
+/**
  * Initializes the callback handlers for this pipeline.
  */
 function initialize() {
   Hooks.on("renderChatMessageHTML", onRenderChatMessage);
+  Hooks.on(AH.hooks.PROCESS_ACTION, onProcessAction);
+  Hooks.on(AH.hooks.RENDER_ACTION, onRenderAction);
 }
 
 const Resources = Object.freeze({

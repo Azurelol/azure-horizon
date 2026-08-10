@@ -21,6 +21,7 @@ export default class ResourceDataModel extends FieldsetDataModel {
    */
   configureAction(config) {
     if (this.enabled) {
+      config.setResource(this.type, this.amount);
     }
   }
 

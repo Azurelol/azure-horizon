@@ -518,6 +518,13 @@ AH.hooks = Object.freeze({
    * @remarks Uses {@link OpportunityEvent}
    */
   OPPORTUNITY_EVENT: `${systemNS}.events.opportunity`,
+
+  /**
+   * @description Dispatched when a resource is to be spent to perform an action.
+   * @example callback(event)
+   * @remarks Uses {@link CalculateExpenseEvent}.
+   */
+  CALCULATE_EXPENSE_EVENT: `${systemNS}.events.expense.calculate`,
   /**
    * @description Dispatched when a request to apply damage is being processed.
    * @example callback(event)
@@ -576,6 +583,10 @@ AH.traits = Object.freeze({
     restore: "AH.TRAIT.Restore",
     gain: "AH.TRAIT.Gain",
     loss: "AH.TRAIT.Loss",
+    hp: "AH.TRAIT.HitPoint",
+    mp: "AH.TRAIT.MindPoint",
+    tp: "AH.TRAIT.TensionPoint",
+    ip: "AH.TRAIT.InventoryPoint",
   },
   damage: {
     base: "AH.TRAIT.Base",
@@ -588,7 +599,7 @@ AH.traits = Object.freeze({
   // Used by heroes
   defense: {
     deflection: "AH.TRAIT.Deflection", // Heavy
-    avoidance: "AH.TRAIT.Avoidance", // Heavy
+    avoidance: "AH.TRAIT.Avoidance", // Light
   },
   skill: {
     cooldown: "AH.TRAIT.Cooldown",

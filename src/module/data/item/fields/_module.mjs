@@ -5,6 +5,7 @@ import TraitsField from "./traits-field.mjs";
 import ClassBenefitsDataModel from "./class-benefits-data-model.mjs";
 import SkillAdvancementDataModel from "./skill-advancement-data-model.mjs";
 import { EffectsDataModel } from "./effects-data-model.mjs";
+import { ActionCostDataModel } from "./action-cost-data-model.mjs";
 
 const dataModels = Object.freeze({
   check: CheckDataModel,
@@ -14,6 +15,7 @@ const dataModels = Object.freeze({
   traits: TraitsField,
   benefits: ClassBenefitsDataModel,
   advancement: SkillAdvancementDataModel,
+  actionCost: ActionCostDataModel,
 });
 
 /**

@@ -1,9 +1,10 @@
 import { systemID } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { Flags } from "../data/common/_module.mjs";
-import { DamageData } from "../pipelines/_module.mjs";
+import { DamageData, ResourceData } from "../pipelines/_module.mjs";
 import Targeting from "./targeting.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
+import AH from "../config.mjs";
 
 // Data keys
 const TARGETS = "targets";
@@ -99,6 +100,20 @@ export class ActionInspector {
   }
 
   /**
+   * @returns {ResourceData}
+   */
+  get resource() {
+    return this.data[RESOURCE];
+  }
+
+  /**
+   * @returns {ResourceExpense[]}
+   */
+  get expenses() {
+    return this.data[EXPENSE];
+  }
+
+  /**
    * @returns {ChatAction[]}
    */
   get actions() {
@@ -121,6 +136,13 @@ export class ActionInspector {
    */
   get hasDamage() {
     return this.damage !== undefined;
+  }
+
+  /**
+   * @returns {Boolean}
+   */
+  get hasResource() {
+    return this.resource !== undefined;
   }
 
   /**
@@ -314,7 +336,49 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
-   * @param {ApplyEffectData|EffectApplicationDataModel} effectData
+   * @desc Sets a resource gain/loss action.
+   * @param {AH_Resource} type
+   * @param {Number|String} amount
+   * @return {ActionConfig}
+   */
+  setResource(type, amount) {
+    this.check.data[RESOURCE] = ResourceData.construct(type, amount);
+    switch (type) {
+      case "hp":
+        this.addTraits(AH.traits.action.hp);
+        break;
+      case "mp":
+        this.addTraits(AH.traits.action.mp);
+        break;
+    }
+    if (Number.isInteger(amount)) {
+      if (amount >= 0) {
+        this.addTraits(AH.traits.action.gain);
+      } else {
+        this.addTraits(AH.traits.action.loss);
+      }
+    } else if (typeof amount === "string") {
+      if (amount.startsWith("-")) {
+        this.addTraits(AH.traits.action.loss);
+      } else {
+        this.addTraits(AH.traits.action.gain);
+      }
+    }
+    return this;
+  }
+
+  /**
+   * @param {ResourceExpense} expense
+   */
+  addExpense(expense) {
+    const expenses = this.check.data[EXPENSE] ?? [];
+    expenses.push(expense);
+    this.check.data[EXPENSE] = expenses;
+    return this;
+  }
+
+  /**
+   * @param {ApplyEffectData|EffectsDataModel} effectData
    */
   setEffects(effectData) {
     // We make a deep copy here since this will be modified during pipelines

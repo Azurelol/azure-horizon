@@ -508,16 +508,18 @@
       "ResourceGain": "Gain",
       "ResourceLoss": "Loss",
       "CHAT": {
+        "ApplySelected": "Apply to selected token.",
+        "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+        "ResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+        "ResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+        "RecoveryNotNeeded": "<strong>{actor}</strong> already has full {resource}.",
+        "RecoveryNotPossible": "<strong>{actor}</strong> was not able to recover {resource}.",
+        "ResourceGainTooltip": "Gain {amount} {resource}",
+        "ResourceLossTooltip": "Lose {amount} {resource}",
         "DefenseCheckPotencyReduced": "{defender} successfully defends against {item} from {attacker}.",
         "DefenseCheckPotencyStandard": "{defender} fails to defend against {item} from {attacker}.",
         "DefenseCheckPotencyPowerful": "{attacker} strikes {defender} with {item} to devastating effect!"
-      },
-      "ChatApplySelected": "Apply to selected token.",
-      "ChatApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
-      "ChatResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
-      "ChatResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
-      "ChatRecoveryNotNeeded": "<strong>{actor}</strong> already has full {resource}.",
-      "ChatRecoveryNotPossible": "<strong>{actor}</strong> was not able to recover {resource}."
+      }
     }
   },
   "TYPES": {

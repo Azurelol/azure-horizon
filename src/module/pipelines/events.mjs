@@ -3,6 +3,35 @@ import { CharacterInfo, ItemInfo, SourceInfo } from "../data/common/_module.mjs"
 import { ActionConfig, ActionInspector, AsyncHooks } from "../helpers/_module.mjs";
 
 /**
+ * @description Dispatched when an actor updates its resources (such as HP, MP)
+ * @typedef CalculateExpenseEvent
+ * @property {ResourceExpense} expense
+ * @property {CharacterInfo} source
+ * @property {AHItem} item
+ * @property {CharacterInfo[]} targets
+ */
+
+/**
+ * @param actor
+ * @param item
+ * @param {TargetData[]} targetData
+ * @param {ResourceExpense} expense
+ * @returns {Promise}
+ */
+async function calculateExpense(actor, item, targetData, expense) {
+  const source = CharacterInfo.fromActor(actor);
+  const targets = CharacterInfo.fromTargetData(targetData);
+  /** @type CalculateExpenseEvent  **/
+  const event = {
+    expense: expense,
+    item: item,
+    source: source,
+    targets: targets,
+  };
+  return AsyncHooks.callSequential(AH.hooks.CALCULATE_EXPENSE_EVENT, event);
+}
+
+/**
  * @description Dispatched when an actor suffers damage
  * @typedef DamageEvent
  * @property {CharacterInfo|null} source
@@ -68,9 +97,16 @@ function calculateDamage(actor, item, config) {
  * @property {ActionConfig} config
  */
 
-async function calculateResource(actor, item, config, data) {
+/**
+ * @param {AHActor} actor
+ * @param {AHItem} item
+ * @param {ActionConfig} config
+ * @returns {Promise<void>}
+ */
+async function calculateResource(actor, item, config) {
   const itemGroup = ItemInfo.resolveItemGroup(item);
   const targets = config.getTargets();
+  const data = config.resource;
   const event = {
     source: CharacterInfo.fromActor(actor),
     targets: CharacterInfo.fromTargetData(targets),
@@ -241,6 +277,7 @@ const Events = Object.freeze({
   calculateDamage,
   applyDamage,
   calculateResource,
+  calculateExpense,
 });
 
 export default Events;

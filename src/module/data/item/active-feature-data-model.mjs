@@ -3,6 +3,7 @@ import { DamageDataModel } from "./fields/_module.mjs";
 import { FoundryUtils } from "../../utils/_module.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ResourceDataModel from "./fields/resource-data-model.mjs";
+import { ActionCostDataModel } from "./fields/action-cost-data-model.mjs";
 
 /**
  * Represents a damaging action in the system.
@@ -10,6 +11,7 @@ import ResourceDataModel from "./fields/resource-data-model.mjs";
  * @property {DamageDataModel} damage
  * @property {ResourceDataModel} resource
  * @property {EffectsDataModel} effects
+ * @property {ActionCostDataModel} cost
  * @remarks This simpler model is used for adversaries.
  */
 export default class ActiveFeatureDataModel extends FeatureDataModel {
@@ -22,6 +24,7 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
       })),
       resource: new EmbeddedDataField(ResourceDataModel, {}),
       effects: new EmbeddedDataField(EffectsDataModel, {}),
+      cost: new EmbeddedDataField(ActionCostDataModel, {}),
     });
   }
 
@@ -30,6 +33,7 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     await this.damage.configureAction(config);
     await this.resource.configureAction(config);
     await this.effects.configureAction(config);
+    await this.cost.configureAction(config);
   }
 
 }

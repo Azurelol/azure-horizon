@@ -34,6 +34,7 @@ export class EffectsDataModel extends FieldsetDataModel {
    */
   configureAction(config) {
     if (this.entries.size > 0) {
+      config.setEffects(this);
     }
   }
 
