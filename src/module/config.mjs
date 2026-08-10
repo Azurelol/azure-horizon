@@ -268,7 +268,7 @@ AH.intervals = Object.freeze({
 });
 
 /**
- * @typedef {"character"|"party"|"adversary"|"unit"} AH_ActorType
+ * @typedef {"hero"|"party"|"adversary"|"unit"} AH_ActorType
  */
 
 AH.actorTypes = Object.freeze({

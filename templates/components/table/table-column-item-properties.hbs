@@ -2,7 +2,11 @@
 
   {{#if system.damage.enabled}}
     <span>
-      <i class="ah-icon --s {{ahIconClass system.damage.type}}"></i> {{system.damage.amount}}
+        <i class="ah-icon --s {{ahIconClass system.damage.primary.type}}"></i> {{system.damage.primary.amount}}
+      {{#if damage.secondary.type}}
+        <i class="ah-icon --s {{ahIconClass system.damage.secondary.type}}"></i> {{system.damage.secondary.amount}}
+      {{/if}}
+
     </span>
   {{/if}}
 

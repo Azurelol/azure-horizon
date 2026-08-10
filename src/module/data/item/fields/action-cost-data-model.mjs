@@ -11,13 +11,14 @@ import AH from "../../../config.mjs";
 import { StringUtils } from "../../../utils/_module.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
 import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
+import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mjs";
 
 /**
  * @property {AH_Resource} resource The resource type
  * @property {String} amount The resource cost
  * @property {boolean} perTarget Is the cost static or per target
  */
-export class ActionCostDataModel extends FieldsetDataModel {
+export class ActionCostDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
     const { StringField, BooleanField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {

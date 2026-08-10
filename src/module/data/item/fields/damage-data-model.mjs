@@ -1,8 +1,8 @@
-import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
 import AH from "../../../config.mjs";
 import { TraitsField } from "./_module.mjs";
 import { FoundryUtils } from "../../../utils/_module.mjs";
+import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mjs";
 
 // TODO: Add secondary damage component support
 
@@ -12,7 +12,7 @@ import { FoundryUtils } from "../../../utils/_module.mjs";
  * @property {DamageUnit} secondary
  * @property {TraitsField} traits
  */
-export default class DamageDataModel extends FieldsetDataModel {
+export default class DamageDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
     const { BooleanField, SchemaField, NumberField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
@@ -39,7 +39,6 @@ export default class DamageDataModel extends FieldsetDataModel {
       config.addTags({
         tag: AH.damageTypes[this.primary.type].long,
       });
-
       if (this.secondary.type) {
         config.modifyDamage(d => {
           d.add("AH.DAMAGE.Secondary", this.secondary.type, this.secondary.amount);

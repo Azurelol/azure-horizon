@@ -295,6 +295,8 @@ export class ActionConfig extends ActionInspector {
     this.check.secondary = secondary;
   }
 
+  // TODO: Change to add damage
+
   /**
    * @param {AH_DamageType} type
    * @param {Number} baseDamage

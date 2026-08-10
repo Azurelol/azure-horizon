@@ -1,8 +1,8 @@
 import WeaponUsageDataModel from "./fields/weapon-usage-data-model.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
-import config from "../../config.mjs";
 import AH from "../../config.mjs";
+import { isActorType } from "../../constants.mjs";
 
 /**
  * Skills belong to character classes and are selected and upgraded during a character's advancement
@@ -34,8 +34,40 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
     });
   }
 
+  /**
+   * @param {ActionConfig} config
+   * @returns {Promise<void>}
+   * @private
+   */
   async _initializeAction(config) {
     await super._initializeAction(config);
     this.usage.configureAction(config);
+
+    // TODO: Refactor
+    /** @type AHActor **/
+    const actor = this.parent.actor;
+    if (isActorType(actor) && (actor.type === "hero")) {
+      /** @type HeroDataModel **/
+      const heroData = actor.system;
+      const equipment = heroData.getEquippedItems();
+      if (equipment) {
+        const weapon = equipment.mainHand;
+        /** @type WeaponDataModel **/
+        const weaponData = weapon.system;
+        config.setItemReference(weapon);
+        if (this.usage.check) {
+          config.setAttributes(weaponData.check.primary, weaponData.check.secondary);
+        }
+        if (this.usage.damage) {
+          config.modifyDamage(d => {
+            d.add("AH.DAMAGE.Weapon", weaponData.damage.primary.type, weaponData.damage.primary.amount);
+          });
+          config.addTraits(weaponData.damage.primary.type);
+          config.addTags({
+            tag: AH.damageTypes[weaponData.damage.primary.type].long,
+          });
+        }
+      }
+    }
   }
 }

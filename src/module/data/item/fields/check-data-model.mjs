@@ -1,6 +1,6 @@
 import AH from "../../../config.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
-import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
+import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mjs";
 
 /**
  * @property {AH_Attribute} primary
@@ -8,7 +8,7 @@ import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
  * @property {AH_Defense} defense
  * @property {String} bonus
  */
-export default class CheckDataModel extends FieldsetDataModel {
+export default class CheckDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
     const { SchemaField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {

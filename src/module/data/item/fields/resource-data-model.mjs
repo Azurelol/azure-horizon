@@ -1,12 +1,12 @@
-import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
 import AH from "../../../config.mjs";
+import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mjs";
 
 /**
  * @property {AH_Resource} type
  * @property {String} amount An expression or value.
  */
-export default class ResourceDataModel extends FieldsetDataModel {
+export default class ResourceDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
     const { BooleanField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {

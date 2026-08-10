@@ -1,3 +1,6 @@
 <td class="ah-table-column__damage">
-  <i class="ah-icon --s {{ahIconClass damage.type}}"></i> {{damage.amount}}
+  <i class="ah-icon --s {{ahIconClass damage.primary.type}}"></i> {{damage.primary.amount}}
+  {{#if damage.secondary.type}}
+    <i class="ah-icon --s {{ahIconClass damage.secondary.type}}"></i> {{damage.secondary.amount}}
+  {{/if}}
 </td>

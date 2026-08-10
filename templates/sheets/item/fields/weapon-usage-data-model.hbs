@@ -5,10 +5,9 @@
       {{localize 'AH.COMMON.Usage'}}
     </label>
   </legend>
-  <div class="ah-field-group">
-    <div class="ah-field-group --row">
-      {{ahBooleanField path=(ahConcat path '.usage.check') label="AH.COMMON.Check" value=value.usage.check }}
-      {{ahBooleanField path=(ahConcat path '.usage.damage') label="AH.COMMON.Damage" value=value.usage.damage }}
-    </div>
+  <div class="ah-field-group --row">
+    {{log 'weapon usage' this }}
+    {{ahBooleanField path=(ahConcat path '.check') label="AH.COMMON.Check" value=value.check }}
+    {{ahBooleanField path=(ahConcat path '.damage') label="AH.COMMON.Damage" value=value.damage }}
   </div>
 </fieldset>

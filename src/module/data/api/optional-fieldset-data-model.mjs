@@ -1,9 +1,10 @@
-import VersionedDataModel from "./versioned-data-model.mjs";
+import FieldsetDataModel from "./fieldset-data-model.mjs";
 
 /**
+ * @inheritDoc OptionalDataModel
  * @property {Boolean} enabled
  */
-export default class OptionalDataModel extends VersionedDataModel {
+export default class OptionalFieldsetDataModel extends FieldsetDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { BooleanField } = foundry.data.fields;

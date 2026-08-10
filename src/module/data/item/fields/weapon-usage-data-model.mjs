@@ -16,8 +16,8 @@ export default class WeaponUsageDataModel extends FieldsetDataModel {
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, BooleanField, StringField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      check: new BooleanField(),
-      damage: new BooleanField(),
+      check: new BooleanField({ initial: false }),
+      damage: new BooleanField({ initial: false }),
     });
   }
 
@@ -29,11 +29,9 @@ export default class WeaponUsageDataModel extends FieldsetDataModel {
    * @param {ActionConfig} config
    */
   configureAction(config) {
-    if (this.enabled) {
-      config.setWeaponUsage({
-        check: this.usage.check,
-        damage: this.usage.damage,
-      });
-    }
+    config.setWeaponUsage({
+      check: this.check,
+      damage: this.damage,
+    });
   }
 }
