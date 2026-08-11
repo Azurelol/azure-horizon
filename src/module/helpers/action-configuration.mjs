@@ -172,7 +172,7 @@ export class ActionInspector {
    * @returns {AH_Tag[]}
    */
   get tags() {
-    return this.data[TAGS];
+    return this.data[TAGS] ?? [];
   }
 
   /**

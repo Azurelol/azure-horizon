@@ -1,7 +1,7 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { systemTemplatePath } from "../../constants.mjs";
 import * as fields from "../../data/item/fields/_module.mjs";
-import { FoundryUtils } from "../../utils/_module.mjs";
+import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -26,6 +26,9 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       createDoc: this.#createEffect,
       deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
+
+      addArrayElement: AHItemSheet.#addArrayElement,
+      removeArrayElement: AHItemSheet.#removeArrayElement,
     },
     form: {
       submitOnChange: true,
@@ -227,6 +230,46 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   /* -------------------------------------------------- */
   /*   Event handlers                                   */
   /* -------------------------------------------------- */
+
+  /**
+   * @this AHItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #addArrayElement(event, target) {
+    const path = target.dataset.path;
+    if (path) {
+      const array = ObjectUtils.getProperty(this.item, path);
+      if (array) {
+        array.push(null);
+        await this.item.update({
+          [`${path}`]: array,
+        });
+      }
+    }
+  }
+
+  /**
+   * @this AHItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #removeArrayElement(event, target) {
+    const path = target.dataset.path;
+    const index = Number.parseInt(target.dataset.index);
+    if (path) {
+      /** @type [] **/
+      const array = ObjectUtils.getProperty(this.item, path);
+      if (array && (index !== undefined)) {
+        array.splice(index, 1);
+        await this.item.update({
+          [`${path}`]: array,
+        });
+      }
+    }
+  }
 
   /**
    * Renders an embedded document's sheet.
