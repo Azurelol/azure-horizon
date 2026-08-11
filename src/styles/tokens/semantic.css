@@ -25,6 +25,7 @@
 
   --ah-surface-tab: var(--ah-surface-panel-nested);
   --ah-surface-tab-active: var(--ah-surface-hover);
+  --ah-surface-tab-content: var(--ah-surface-panel);
 
   --ah-surface-action: #c46022;
   --ah-surface-action-muted: #4e5364;

@@ -398,7 +398,11 @@
       "Light": "Light",
       "Heavy": "Heavy",
       "Traits": "Traits",
-      "PerTarget": "Per Target"
+      "PerTarget": "Per Target",
+      "Identity": "Identity",
+      "Origin": "Origin",
+      "Theme": "Theme",
+      "Anchor": "Anchor"
     },
     "RULE": {
       "Element": {

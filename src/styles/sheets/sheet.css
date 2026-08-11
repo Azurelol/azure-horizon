@@ -4,6 +4,7 @@
     .tab {
       padding: 1rem;
       overflow: auto;
+      background: var(--ah-surface-tab-content);
     }
   }
   .effects-list {
