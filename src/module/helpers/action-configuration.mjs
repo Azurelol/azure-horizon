@@ -149,12 +149,19 @@ export class ActionInspector {
   /**
    * @returns {ApplyEffectData|null}
    */
-  getEffects() {
+  get effects() {
     const data = this.data[EFFECTS];
     if (data) {
       return data;
     }
     return null;
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get hasEffects() {
+    return this.effects !== undefined;
   }
 
   /**
@@ -392,7 +399,7 @@ export class ActionConfig extends ActionInspector {
    */
   setEffects(effectData) {
     // We make a deep copy here since this will be modified during pipelines
-    this.check.data[EFFECTS] = FoundryUtils.safeClone(effectData);
+    this.check.data[EFFECTS] = ObjectUtils.safeClone(effectData);
     return this;
   }
 

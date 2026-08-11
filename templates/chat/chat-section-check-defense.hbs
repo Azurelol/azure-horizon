@@ -60,13 +60,13 @@
 
   <div class="ah-chat-section__defense__message">
     {{#if (eq potency 'standard')}}
-      {{localize 'AH.PIPELINE.CHAT.DefenseCheckPotencyStandard' attacker=attacker.name defender=defender.name item=item.name}}
+      {{localize 'AH.CHAT.DefenseCheckPotencyStandard' attacker=attacker.name defender=defender.name item=item.name}}
     {{else}}
       {{#if (eq potency 'reduced')}}
-        {{localize 'AH.PIPELINE.CHAT.DefenseCheckPotencyReduced' attacker=attacker.name defender=defender.name item=item.name}}
+        {{localize 'AH.CHAT.DefenseCheckPotencyReduced' attacker=attacker.name defender=defender.name item=item.name}}
       {{/if}}
       {{#if (eq potency 'powerful')}}
-        {{localize 'AH.PIPELINE.CHAT.DefenseCheckPotencyPowerful' attacker=attacker.name defender=defender.name item=item.name}}
+        {{localize 'AH.CHAT.DefenseCheckPotencyPowerful' attacker=attacker.name defender=defender.name item=item.name}}
       {{/if}}
     {{/if}}
   </div>

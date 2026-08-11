@@ -33,7 +33,7 @@ export class EffectsDataModel extends FieldsetDataModel {
    * @return {Promise}
    */
   configureAction(config) {
-    if (this.entries.size > 0) {
+    if (this.entries.length > 0) {
       config.setEffects(this);
     }
   }

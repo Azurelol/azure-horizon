@@ -139,7 +139,7 @@ export default class CompendiumIndex {
 	 * @param {String} slug An unique identifier used by the system.
 	 * @returns {Promise<CompendiumIndexEntry>} A compendium index entry.
 	 */
-  async getItemsBySlug(slug) {
+  async getItemBySlug(slug) {
     if (!this.#itemsBySlug) {
       this.#itemsBySlug = {};
       const itemGroups = await this.getItems();

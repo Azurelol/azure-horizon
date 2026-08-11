@@ -28,7 +28,7 @@ export default class ChatAction {
     this.tooltip = tooltip;
     this.withFields(fields);
     this.dataset = {};
-    // this.label = "AH.PIPELINE.CHAT.ApplySelected";
+    // this.label = "AH.CHAT.ApplySelected";
     this.owner = false;
     this.targeted = true;
     this.selected = false;
@@ -104,7 +104,7 @@ export default class ChatAction {
 	 * @returns {ChatAction}
 	 */
   withLabel(label) {
-    this.label = label ?? "AH.PIPELINE.CHAT.ApplySelected";
+    this.label = label ?? "AH.CHAT.ApplySelected";
     return this;
   }
 

@@ -63,7 +63,7 @@ function calculateResult(context) {
   }
 
   context.result = resolved;
-  context.message = "AH.PIPELINE.ChatApplyDamage";
+  context.message = "AH.CHATApplyDamage";
 }
 
 /**
@@ -262,6 +262,7 @@ const onProcessAction = (config, actor, item, registerCallback) => {
       }
     });
 
+    // Potencies
     config.setPotencies((potencies) => {
 
       const standardDamage = new DamageData(config.damage);

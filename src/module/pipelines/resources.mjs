@@ -45,7 +45,7 @@ export class ResourceRequest extends PipelineRequest {
 async function process(request) {
 
   // Some constants
-  const message = request.gain ? "AH.PIPELINE.CHAT.ResourceGain" : "AH.PIPELINE.CHAT.ResourceLoss";
+  const message = request.gain ? "AH.CHAT.ResourceGain" : "AH.CHAT.ResourceLoss";
   const fieldPath = `resources.${request.resource}`;
   const updates = [];
 
@@ -77,7 +77,7 @@ async function process(request) {
       // Cap the amount gained up to the maximum
       amount = Math.min(amount, resource.max - resource.value);
       if (amount === 0) {
-        const message = incomingRecoveryMultiplier > 0 ? "AH.PIPELINE.CHAT.RecoveryNotNeeded" : "AH.PIPELINE.CHAT.RecoveryNotPossible";
+        const message = incomingRecoveryMultiplier > 0 ? "AH.CHAT.RecoveryNotNeeded" : "AH.CHAT.RecoveryNotPossible";
         chatMessage.text(StringUtils.localize(message, {
           actor: subject.name,
           resource: request.resource.toUpperCase(),
@@ -160,7 +160,7 @@ function onRenderChatMessage(message, html) {
  */
 function getChatAction(request) {
   const resourceIcon = AH.resourceTypes[request.resource].icon;
-  const tooltip = StringUtils.localize(request.gain ? "AH.PIPELINE.CHAT.ResourceGainTooltip" : "AH.PIPELINE.CHAT.ResourceLossTooltip", {
+  const tooltip = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainTooltip" : "AH.CHAT.ResourceLossTooltip", {
     amount: request.amount,
     resource: StringUtils.localize(AH.resourceTypes[request.resource].long),
   });
@@ -186,7 +186,7 @@ function getChatAction(request) {
  */
 function getExpenseAction(expense, sourceInfo) {
   const resourceIcon = AH.resourceTypes[expense.resource].icon;
-  const tooltip = StringUtils.localize("AH.PIPELINE.CHAT.SpendResource", {
+  const tooltip = StringUtils.localize("AH.CHAT.SpendResource", {
     amount: expense.amount,
     resource: StringUtils.localize(AH.resourceTypes[expense.resource].long),
   });

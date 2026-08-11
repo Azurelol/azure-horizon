@@ -181,7 +181,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
    * @return {ActiveEffectData}
    */
   static resolveStatusEffect(id) {
-    return statusEffects.values.find((value) => value.id === id);
+    return statusEffects.entries[id];
   }
 
   /**

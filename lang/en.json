@@ -514,24 +514,25 @@
       "Equip": "Equip",
       "Unequip": "Unequip"
     },
+    "CHAT": {
+      "ApplySelected": "Apply to selected token.",
+      "ApplyEffect": "Apply {effect}",
+      "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+      "ResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+      "ResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+      "SpendResource": "Spend {amount} {resource}",
+      "RecoveryNotNeeded": "<strong>{actor}</strong> already has full {resource}.",
+      "RecoveryNotPossible": "<strong>{actor}</strong> was not able to recover {resource}.",
+      "ResourceGainTooltip": "Gain {amount} {resource}",
+      "ResourceLossTooltip": "Lose {amount} {resource}",
+      "DefenseCheckPotencyReduced": "{defender} successfully defends against {item} from {attacker}.",
+      "DefenseCheckPotencyStandard": "{defender} fails to defend against {item} from {attacker}.",
+      "DefenseCheckPotencyPowerful": "{attacker} strikes {defender} with {item} to devastating effect!"
+    },
     "PIPELINE": {
       "CriticalBonus": "Critical Bonus",
       "ResourceGain": "Gain",
-      "ResourceLoss": "Loss",
-      "CHAT": {
-        "ApplySelected": "Apply to selected token.",
-        "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
-        "ResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
-        "ResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
-        "SpendResource": "Spend {amount} {resource}",
-        "RecoveryNotNeeded": "<strong>{actor}</strong> already has full {resource}.",
-        "RecoveryNotPossible": "<strong>{actor}</strong> was not able to recover {resource}.",
-        "ResourceGainTooltip": "Gain {amount} {resource}",
-        "ResourceLossTooltip": "Lose {amount} {resource}",
-        "DefenseCheckPotencyReduced": "{defender} successfully defends against {item} from {attacker}.",
-        "DefenseCheckPotencyStandard": "{defender} fails to defend against {item} from {attacker}.",
-        "DefenseCheckPotencyPowerful": "{attacker} strikes {defender} with {item} to devastating effect!"
-      }
+      "ResourceLoss": "Loss"
     }
   },
   "TYPES": {
