@@ -69,13 +69,18 @@
       "name": "adversaries",
       "label": "AH.COMPENDIUM.adversaries",
       "type": "Actor"
+    },
+    {
+      "name": "effects",
+      "label": "AH.COMPENDIUM.effects",
+      "type": "ActiveEffect"
     }
   ],
   "packFolders": [
     {
       "name": "Azure Horizon System",
       "color": "#3d598b",
-      "packs": ["classes", "equipment", "spells", "journals", "features", "adversaries" ]
+      "packs": ["classes", "equipment", "spells", "effects", "journals", "features", "adversaries" ]
     }
   ],
   "manifest": "https://github.com/Azurelol/azure-horizon/releases/latest/download/system.json",

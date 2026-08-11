@@ -9,6 +9,17 @@ const SYSTEM_FIELD_NAMES = new Set(["TraitsField"]);
 export default class FoundryUtils {
 
   /**
+   * @returns {AHActor}
+   */
+  static get mockHero() {
+    if (!this.#dummyActor) {
+      this.#dummyActor = new foundry.documents.Actor.implementation({ type: "hero", name: "Temporary Hero" });
+    }
+    return this.#dummyActor;
+  }
+  static #dummyActor;
+
+  /**
    * @param {String} str
    * @return {Boolean}
    */

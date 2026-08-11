@@ -130,7 +130,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     const targetDocumentName = targetDocument.documentName;
     const targetDocumentType = targetDocument.type;
     const { documentName, documentType } = effectKeyOptions.dataset;
-    return documentName !== targetDocumentName || documentType !== targetDocumentType;
+    return (documentName !== targetDocumentName) || (documentType !== targetDocumentType);
   }
 
   #expandedRuleElements = {};
@@ -142,7 +142,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
 
     // CHANGES Tab
     const effectKeyOptions = html.querySelector("#effect-key-options");
-    const targetDocument = this.document.target ?? this.dummyActor;
+    const targetDocument = this.document.target ?? FoundryUtils.mockHero;
 
     if (this.#effectKeysRequireUpdate(effectKeyOptions, targetDocument)) {
       effectKeyOptions?.remove();
