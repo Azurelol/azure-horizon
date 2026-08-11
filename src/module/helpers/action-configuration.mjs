@@ -38,13 +38,13 @@ export class ActionInspector {
   /**
    * @type {Action|CheckResult|CheckOptions}
    */
-  #check;
+  #action;
 
   constructor(check) {
     if (check instanceof ChatMessage) {
       check = check.getFlag(systemID, Flags.ChatMessage.Check);
     }
-    this.#check = check;
+    this.#action = check;
   }
 
   //----------------------------------------------------------/
@@ -52,14 +52,14 @@ export class ActionInspector {
    * @return {CheckResult}
    */
   get check() {
-    return this.#check;
+    return this.#action;
   }
 
   /**
    * @returns {Object}
    */
   get data() {
-    return this.#check.data;
+    return this.#action.data;
   }
 
   /**
@@ -67,7 +67,7 @@ export class ActionInspector {
    * @param value
    */
   setData(key, value) {
-    ObjectUtils.setProperty(this.#check.data, key, value);
+    ObjectUtils.setProperty(this.#action.data, key, value);
   }
   //----------------------------------------------------------/
 
@@ -79,10 +79,17 @@ export class ActionInspector {
   }
 
   /**
+   * @returns {boolean}
+   */
+  get isCheck() {
+    return this.#action.type !== undefined;
+  }
+
+  /**
    * @returns {SourceInfo}
    */
   get sourceInfo() {
-    return this.#check.sourceInfo;
+    return this.#action.sourceInfo;
   }
 
   /**

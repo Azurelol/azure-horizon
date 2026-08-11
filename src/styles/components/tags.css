@@ -55,8 +55,8 @@
   color 0.1s,
   border-color 0.1s;
 
-  color: var(--ah-color-control);
-  background: var(--ah-background-control);
+  color: var(--ah-tag-color);
+  background: var(--ah-tag-background);
   border: 1px solid grey;
 
   &:hover {

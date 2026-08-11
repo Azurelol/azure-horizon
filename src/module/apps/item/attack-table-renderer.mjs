@@ -5,8 +5,7 @@ export default class AttackTableRenderer extends ItemTableRenderer {
 
   _getItemProperties() {
     return [
-      TableColumns.check(),
-      TableColumns.damage(),
+      TableColumns.itemProperties(),
     ];
   }
 }

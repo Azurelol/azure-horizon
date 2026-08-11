@@ -63,7 +63,7 @@ function calculateResult(context) {
   }
 
   context.result = resolved;
-  context.message = "AH.CHATApplyDamage";
+  context.message = "AH.CHAT.ApplyDamage";
 }
 
 /**
@@ -262,37 +262,40 @@ const onProcessAction = (config, actor, item, registerCallback) => {
       }
     });
 
-    // Potencies
-    config.setPotencies((potencies) => {
+    if (config.isCheck) {
+      config.setPotencies((potencies) => {
+        const standardDamage = new DamageData(config.damage);
+        const standard = getChatAction(standardDamage, sourceInfo, traits, false);
+        potencies.standard.components.push({
+          text: standardDamage.toString(),
+          actions: [standard],
+        });
 
-      const standardDamage = new DamageData(config.damage);
-      const standard = getChatAction(standardDamage, sourceInfo, traits, false);
-      potencies.standard.components.push({
-        text: standardDamage.toString(),
-        actions: [standard],
-      });
+        const reducedDamage = standardDamage.duplicate(d => {
+          const base = d.base;
+          d.clear();
+          d.add("AH.DAMAGE.Glancing", base.type, Math.round(base.amount * 0.5));
+        });
+        const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, false);
+        potencies.reduced.components.push({
+          text: reducedDamage.toString(),
+          actions: [reducedAction],
+        });
 
-      const reducedDamage = standardDamage.duplicate(d => {
-        const base = d.base;
-        d.clear();
-        d.add("AH.DAMAGE.Glancing", base.type, Math.round(base.amount * 0.5));
+        const powerfulDamage = standardDamage.duplicate(d => {
+          const criticalBonus = d.base.amount * 2;
+          d.add("AH.PIPELINE.CriticalBonus", "untyped", criticalBonus);
+        });
+        const powerful = getChatAction(powerfulDamage, sourceInfo, traits, false);
+        potencies.powerful.components.push({
+          text: powerfulDamage.toString(),
+          actions: [powerful],
+        });
       });
-      const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, false);
-      potencies.reduced.components.push({
-        text: reducedDamage.toString(),
-        actions: [reducedAction],
-      });
-
-      const powerfulDamage = standardDamage.duplicate(d => {
-        const criticalBonus = d.base.amount * 2;
-        d.add("AH.PIPELINE.CriticalBonus", "untyped", criticalBonus);
-      });
-      const powerful = getChatAction(powerfulDamage, sourceInfo, traits, false);
-      potencies.powerful.components.push({
-        text: powerfulDamage.toString(),
-        actions: [powerful],
-      });
-    });
+    }
+    else {
+      config.addAction(getChatAction(config.damage, sourceInfo, traits, true));
+    }
   }
 };
 

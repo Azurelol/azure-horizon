@@ -22,7 +22,7 @@
   font-family: var(--ah-font-family-application), serif;
 
   input[type='text'] {
-    background: var(--ah-background-input);
+    /*background: var(--ah-background-input);*/
   }
 
   textarea {
@@ -66,6 +66,7 @@
   .editor-container .editor-content {
     background: var(--ah-background-input);
     border: 1px solid var(--ah-surface-border);
+    padding-left: 8px;
   }
 
   button {

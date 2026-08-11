@@ -52,16 +52,6 @@
 
   {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
 
-  <div class="ah-character__sidebar__section">
-    <div class="ah-button-group">
-      {{ahButton action='rest' data='type=short' size='sm' icon=(ahIconClass 'shortRest') tooltip='AH.INTERVAL.ShortRest.long'}}
-      {{ahButton action='rest' data='type=long' size='sm' icon=(ahIconClass 'longRest') tooltip='AH.INTERVAL.LongRest.long'}}
-        {{#if (eq actorType 'hero')}}
-          {{ahButton action='rest' data='type=resupply' size='sm' icon=(ahIconClass 'resupply') tooltip='AH.INTERVAL.Resupply.long'}}
-        {{/if}}
-    </div>
-  </div>
-
   {{#if (eq actorType 'adversary')}}
     <div class="ah-character__sidebar__section">
       {{ahStringField path="system.profile.rank" value=system.profile.rank label='AH.FIELD.Rank' options=(ahFormOptions 'rank')}}
@@ -72,5 +62,15 @@
       {{ahBooleanField path="system.profile.villain" value=system.profile.villain label='AH.FIELD.Villain'}}
     </div>
   {{/if}}
+
+  <div class="ah-character__sidebar__section">
+    <div class="ah-button-group">
+      {{ahButton action='rest' data='type=short' size='sm' icon=(ahIconClass 'shortRest') tooltip='AH.INTERVAL.ShortRest.long'}}
+      {{ahButton action='rest' data='type=long' size='sm' icon=(ahIconClass 'longRest') tooltip='AH.INTERVAL.LongRest.long'}}
+        {{#if (eq actorType 'hero')}}
+          {{ahButton action='rest' data='type=resupply' size='sm' icon=(ahIconClass 'resupply') tooltip='AH.INTERVAL.Resupply.long'}}
+        {{/if}}
+    </div>
+  </div>
 
 </aside>
