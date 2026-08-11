@@ -21,7 +21,7 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
         type: new StringField({ initial: "untyped", choices: Object.keys(AH.damageTypes), blank: true, nullable: false }),
       }),
       secondary: new SchemaField({
-        amount: new NumberField({ initial: AH.defaults.damage.bonus, integer: true, nullable: true }),
+        amount: new StringField({ initial: "", integer: true, nullable: true }),
         type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.damageTypes), nullable: false }),
       }),
       traits: new TraitsField({

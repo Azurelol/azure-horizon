@@ -1,5 +1,22 @@
 .ah-application {
 
+  table th, table td {
+    padding: 0;
+  }
+
+  table tbody tr {
+    background: var(--ah-background-table-row);
+  }
+
+  table tbody tr:nth-child(even) {
+    background: var(--ah-background-table-row-alt);
+  }
+
+  table tbody th,
+  table tbody td {
+    padding: 8px 12px;
+  }
+
   /*Bring back?*/
   /*background: transparent; */
   font-family: var(--ah-font-family-application), serif;

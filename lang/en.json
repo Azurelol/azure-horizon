@@ -117,21 +117,29 @@
       }
     },
     "ADVERSARY": {
+      "Villain": "Villain",
       "Rank": {
         "long": "Rank"
       },
-      "Minion": {
-        "long": "Minion"
+      "RANK": {
+        "Minion": "Minion",
+        "Standard": "Standard",
+        "Elite": "Elite",
+        "Champion": "Champion"
       },
-      "Standard": {
-        "long": "Standard"
-      },
-      "Elite": {
-        "long": "Elite"
-      },
-      "Champion": {
-        "long": "Champion"
+      "Role": "Role",
+      "ROLE": {
+        "Custom": "Custom",
+        "Harrier": "Harrier",
+        "Brute": "Brute",
+        "Defender": "Defender",
+        "Artillery": "Artillery",
+        "Saboteur": "Saboteur",
+        "Controller": "Controller",
+        "Supporter": "Supporter",
+        "Leader": "Leader"
       }
+
     },
     "CHECK": {
       "Check": "Check",
@@ -351,6 +359,7 @@
     },
     "FIELD": {
       "Type": "Type",
+      "Villain": "Villain",
       "Entries": "Entries",
       "Effects": "Effects",
       "Category": "Category",
@@ -402,7 +411,10 @@
       "Identity": "Identity",
       "Origin": "Origin",
       "Theme": "Theme",
-      "Anchor": "Anchor"
+      "Anchor": "Anchor",
+      "Role": "Role",
+      "Rank": "Rank",
+      "Turns": "Turns"
     },
     "RULE": {
       "Element": {

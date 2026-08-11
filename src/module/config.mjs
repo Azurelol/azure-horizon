@@ -344,13 +344,15 @@ AH.effectTracking = {
  * @type {Record<AH_RoleType, string>}
  */
 AH.role = {
-  custom: "AH.ROLE.Custom",
-  brute: "AH.ROLE.Brute",
-  hunter: "AH.ROLE.Hunter",
-  mage: "AH.ROLE.Mage",
-  saboteur: "AH.ROLE.Saboteur",
-  sentinel: "AH.ROLE.Sentinel",
-  support: "AH.ROLE.Support",
+  custom: "AH.ADVERSARY.ROLE.Custom",
+  harrier: "AH.ADVERSARY.ROLE.Harrier", // Mobile, focuses on weaker targets, slips by enemies.
+  brute: "AH.ADVERSARY.ROLE.Brute", // Hardy, high damage and can shift enemies.
+  defender: "AH.ADVERSARY.ROLE.Defender", // Protect allies, redirects attacks.
+  artillery: "AH.ADVERSARY.ROLE.Artillery", // Unleash powerful attacks from the back row.
+  saboteur: "AH.ADVERSARY.ROLE.Saboteur", // Lower enemy effectiveness.
+  controller: "AH.ADVERSARY.ROLE.Controller", // Change the battlefield.
+  supporter: "AH.ADVERSARY.ROLE.Supporter", // Supports allies.
+  leader: "AH.ADVERSARY.ROLE.Leader", // Commands allies, affects action economy.
 };
 
 /**
@@ -358,10 +360,10 @@ AH.role = {
  */
 
 AH.rank = Object.freeze({
-  minion: "AH.ADVERSARY.Minion",
-  standard: "AH.ADVERSARY.Standard",
-  elite: "AH.ADVERSARY.Elite",
-  champion: "AH.ADVERSARY.Champion",
+  minion: "AH.ADVERSARY.RANK.Minion",
+  standard: "AH.ADVERSARY.RANK.Standard",
+  elite: "AH.ADVERSARY.RANK.Elite",
+  champion: "AH.ADVERSARY.RANK.Champion",
 });
 
 /**

@@ -43,8 +43,16 @@
   /* Tables */
   --ah-background-table: var(--ah-surface-base);
   --ah-background-table-header: var(--ah-surface-panel-nested);
-  --ah-background-table-row: var(--ah-surface-panel);
-  --ah-background-table-row-alt: var(--ah-surface-panel-nested);
+  --ah-background-table-row: color-mix(
+    in srgb,
+    var(--ah-surface-panel) 96%,
+    var(--ah-content-primary) 4%
+  );
+  --ah-background-table-row-alt: color-mix(
+    in srgb,
+    var(--ah-surface-panel) 70%,
+    var(--ah-content-primary) 12%
+  );
   --ah-background-table-row-hover: var(--ah-surface-hover);
   --ah-background-table-row-selected: var(--ah-surface-action);
 
