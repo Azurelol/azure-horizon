@@ -39,8 +39,45 @@
       "path": "lang/de.json"
     }
   ],
-  "packs": [],
-  "packFolders": [],
+  "packs": [
+    {
+      "name": "classes",
+      "label": "AH.COMPENDIUM.classes",
+      "type": "Item"
+    },
+    {
+      "name": "equipment",
+      "label": "AH.COMPENDIUM.equipment",
+      "type": "Item"
+    },
+    {
+      "name": "spells",
+      "label": "AH.COMPENDIUM.spells",
+      "type": "Item"
+    },
+    {
+      "name": "journals",
+      "label": "AH.COMPENDIUM.journals",
+      "type": "JournalEntry"
+    },
+    {
+      "name": "features",
+      "label": "AH.COMPENDIUM.features",
+      "type": "Item"
+    },
+    {
+      "name": "adversaries",
+      "label": "AH.COMPENDIUM.adversaries",
+      "type": "Actor"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Azure Horizon System",
+      "color": "#3d598b",
+      "packs": ["classes", "equipment", "spells", "journals", "features", "adversaries" ]
+    }
+  ],
   "manifest": "https://github.com/Azurelol/azure-horizon/releases/latest/download/system.json",
   "download": "AUTOMATIC",
   "background": "",

@@ -1,5 +1,14 @@
 {
   "AH": {
+    "COMPENDIUM": {
+      "classes": "Classes",
+      "equipment": "Equipment",
+      "spells": "Spells",
+      "journals": "System Journals",
+      "tables": "Roll Tables",
+      "adversaries": "Adversaries",
+      "features": "Features"
+    },
     "SHEET": {
       "Labels": {
         "ActorSheet": "Default Actor Sheet",

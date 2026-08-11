@@ -14,8 +14,8 @@
     <div class="ah-item__header__properties">
       {{formInput fields.name value=item.name classes="ah-sheet__name"}}
       <div class="ah-field-grid --triple">
-        {{formGroup systemFields.revision value=system.revision localize=true}}
-        {{formGroup systemFields.slug value=system.slug localize=true}}
+        {{formGroup systemFields.revision value=system.revision name='system.revision' localize=true}}
+        {{formGroup systemFields.slug value=system.slug name='system.slug' localize=true}}
         {{#each fieldMap.header as |entry|}}
           {{formGroup
             entry.field

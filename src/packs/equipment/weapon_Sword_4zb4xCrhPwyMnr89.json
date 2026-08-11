@@ -1,0 +1,54 @@
+{
+  "name": "Sword",
+  "type": "weapon",
+  "_id": "4zb4xCrhPwyMnr89",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-sword",
+    "description": "",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": 5,
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "handedness": "one"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786474033819,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!4zb4xCrhPwyMnr89"
+}
