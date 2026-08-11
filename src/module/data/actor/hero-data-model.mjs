@@ -2,9 +2,10 @@ import CharacterDataModel, {
   CharacterResourcesDataModel,
 } from "./character-data-model.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
-import EquipmentDataModel from "./system/equipment-data-model.mjs";
+import InventoryDataModel from "./system/inventory-data-model.mjs";
 import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
 import { CharacterResourceDataModel } from "./system/_module.mjs";
+import HeroProfileDataModel from "./system/hero-profile-data-model.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -49,7 +50,8 @@ class HeroResourcesDataModel extends CharacterResourcesDataModel {
  * Represents the data of PC in combat.
  * @property {HeroResourcesDataModel} resources
  * @property {HeroParametersDataModel} parameters
- * @property {EquipmentDataModel} equipment
+ * @property {InventoryDataModel} equipment
+ * @property {HeroProfileDataModel} profile
  */
 export default class HeroDataModel extends CharacterDataModel {
 
@@ -60,9 +62,10 @@ export default class HeroDataModel extends CharacterDataModel {
 
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      equipment: new EmbeddedDataField(EquipmentDataModel, {}),
+      equipment: new EmbeddedDataField(InventoryDataModel, {}),
       parameters: new EmbeddedDataField(HeroParametersDataModel, {}),
       resources: new EmbeddedDataField(HeroResourcesDataModel, {}),
+      profile: new EmbeddedDataField(HeroProfileDataModel, {}),
     });
   }
 

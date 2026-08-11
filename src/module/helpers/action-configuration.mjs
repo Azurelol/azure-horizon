@@ -154,7 +154,7 @@ export class ActionInspector {
     if (data) {
       return data;
     }
-    return null;
+    return undefined;
   }
 
   /**

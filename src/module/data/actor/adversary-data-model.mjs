@@ -2,7 +2,7 @@ import CharacterDataModel, {
   CharacterResourcesDataModel,
 } from "./character-data-model.mjs";
 import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
-import { CharacterResourceDataModel } from "./system/_module.mjs";
+import { AdversaryProfileDataModel, CharacterResourceDataModel } from "./system/_module.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -21,6 +21,9 @@ class AdversaryResourcesDataModel extends CharacterResourcesDataModel {
 
 /**
  * Represents the data of an adversary in combat.
+ * @property {CharacterParametersDataModel} parameters
+ * @property {AdversaryResourcesDataModel} resources
+ * @property {AdversaryProfileDataModel} profile
  */
 export default class AdversaryDataModel extends CharacterDataModel {
 
@@ -34,10 +37,31 @@ export default class AdversaryDataModel extends CharacterDataModel {
     return Object.assign(super.defineSchema(), {
       parameters: new EmbeddedDataField(CharacterParametersDataModel, {}),
       resources: new EmbeddedDataField(AdversaryResourcesDataModel, {}),
+      profile: new EmbeddedDataField(AdversaryProfileDataModel, {}),
     });
   }
 
   supportsItemType(type) {
     return AdversaryDataModel.ITEM_TYPES.has(type);
+  }
+
+  /**
+   * @override
+   */
+  prepareBaseData() {
+    super.prepareBaseData();
+    switch (this.profile.rank) {
+      case "minion":
+        this.profile.turns = 0;
+        break;
+      case "standard":
+        this.profile.turns = 1;
+        break;
+      case "elite":
+        this.profile.turns = 2;
+        break;
+      case "champion":
+        break;
+    }
   }
 }

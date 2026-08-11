@@ -337,6 +337,23 @@ AH.effectTracking = {
 };
 
 /**
+ * @typedef {"custom", "brute", "hunter", "mage", "saboteur", "sentinel", "support"} AH_RoleType
+ */
+
+/**
+ * @type {Record<AH_RoleType, string>}
+ */
+AH.role = {
+  custom: "AH.ROLE.Custom",
+  brute: "AH.ROLE.Brute",
+  hunter: "AH.ROLE.Hunter",
+  mage: "AH.ROLE.Mage",
+  saboteur: "AH.ROLE.Saboteur",
+  sentinel: "AH.ROLE.Sentinel",
+  support: "AH.ROLE.Support",
+};
+
+/**
  * @typedef {'minion'|'standard'|'elite'|'champion'} AH_Rank
  */
 
@@ -345,7 +362,17 @@ AH.rank = Object.freeze({
   standard: "AH.ADVERSARY.Standard",
   elite: "AH.ADVERSARY.Elite",
   champion: "AH.ADVERSARY.Champion",
+});
 
+/**
+ * @typedef {'humanoid'|'beast'|'undead'|'construct'} AH_Family The adversary classification.
+ */
+
+AH.family = Object.freeze({
+  minion: "AH.ADVERSARY.Minion",
+  standard: "AH.ADVERSARY.Standard",
+  elite: "AH.ADVERSARY.Elite",
+  champion: "AH.ADVERSARY.Champion",
 });
 
 /**

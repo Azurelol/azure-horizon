@@ -1,9 +1,6 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
-import { EquipmentTableRenderer } from "../item/_module.mjs";
-import { EquipmentDataModel } from "../../data/actor/system/_module.mjs";
-import AH from "../../config.mjs";
 import { ActionHandler } from "../ui/_module.mjs";
 
 /**

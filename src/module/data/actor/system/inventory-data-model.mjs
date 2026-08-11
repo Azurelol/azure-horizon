@@ -5,7 +5,7 @@ import { VersionedDataModel } from "../../api/_module.mjs";
  * @property {String} offHand
  * @property {String} armor
  */
-export default class EquipmentDataModel extends VersionedDataModel {
+export default class InventoryDataModel extends VersionedDataModel {
 
   /**
    * @type {Set<AH_ItemType>}
@@ -33,7 +33,7 @@ export default class EquipmentDataModel extends VersionedDataModel {
 
   /**
    * @param {AHItem} item
-   * @returns {EquipmentDataModel} The changed item
+   * @returns {InventoryDataModel} The changed item
    */
   toggleWeapon(item) {
     const unequipped = [];
@@ -63,7 +63,7 @@ export default class EquipmentDataModel extends VersionedDataModel {
 
   /**
    * @param {AHItem} item
-   * @return {EquipmentDataModel}
+   * @return {InventoryDataModel}
    */
   toggleArmor(item) {
     const data = this.toObject();
