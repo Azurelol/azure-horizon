@@ -29,6 +29,7 @@
         "Items": "Items",
         "Profile": "Profile",
         "Effects": "Effects",
+        "Assembly": "Assembly",
         "Codex": "Codex"
       },
       "MESSAGE": {
@@ -148,8 +149,16 @@
         "Controller": "Controller",
         "Supporter": "Supporter",
         "Leader": "Leader"
+      },
+      "Family": "Family",
+      "FAMILY": {
+        "Beast": "Beast",
+        "Undead": "Undead",
+        "Construct": "Construct",
+        "Monster": "Monster",
+        "Elemental": "Elemental",
+        "Plant": "Plant"
       }
-
     },
     "CHECK": {
       "Check": "Check",

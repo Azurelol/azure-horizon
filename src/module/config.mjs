@@ -411,17 +411,6 @@ AH.rank = Object.freeze({
 });
 
 /**
- * @typedef {'humanoid'|'beast'|'undead'|'construct'} AH_Family The adversary classification.
- */
-
-AH.family = Object.freeze({
-  minion: "AH.ADVERSARY.Minion",
-  standard: "AH.ADVERSARY.Standard",
-  elite: "AH.ADVERSARY.Elite",
-  champion: "AH.ADVERSARY.Champion",
-});
-
-/**
  * @typedef {"odd" | "even"} AH_Parity
  */
 
@@ -659,6 +648,10 @@ AH.hooks = Object.freeze({
 });
 
 /**
+ * @typedef {'humanoid'|'beast'|'undead'|'construct'} AH_Family The adversary classification.
+ */
+
+/**
  * Traits are tags with mechanical implications in the system.
  * @property {Record<String, AH_Constant>} action
  * @property {Record<String, AH_Constant>} damage
@@ -669,6 +662,15 @@ AH.hooks = Object.freeze({
  * @property {Record<String, AH_Constant>} armor
  */
 AH.traits = {
+  family: {
+    beast: { label: "AH.ADVERSARY.FAMILY.Beast" }, // Natural
+    monster: { label: "AH.ADVERSARY.FAMILY.Monster" }, // Unnatural
+    undead: { label: "AH.ADVERSARY.FAMILY.Undead" }, // Raised by dark powers
+    construct: { label: "AH.ADVERSARY.FAMILY.Construct" }, // Engineered
+    elemental: { label: "AH.ADVERSARY.FAMILY.Elemental" },
+    plant: { label: "AH.ADVERSARY.FAMILY.Plant" },
+
+  },
   action: {
     attack: { label: "AH.TRAIT.Attack", tooltip: "AH.TRAIT.AttackHint" },
     spell: { label: "AH.TRAIT.Spell", tooltip: "AH.TRAIT.SpellHint" },

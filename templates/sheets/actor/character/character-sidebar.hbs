@@ -57,9 +57,10 @@
       {{ahStringField path="system.profile.rank" value=system.profile.rank label='AH.FIELD.Rank' options=(ahFormOptions 'rank')}}
       {{#if (eq system.profile.rank 'champion')}}
         {{ahStringField path="system.profile.turns" value=system.profile.turns label='AH.FIELD.Turns' type='Number'}}
+        {{ahBooleanField path="system.profile.villain" value=system.profile.villain label='AH.FIELD.Villain'}}
       {{/if}}
       {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role' options=(ahFormOptions 'role')}}
-      {{ahBooleanField path="system.profile.villain" value=system.profile.villain label='AH.FIELD.Villain'}}
+      {{ahTraitsField schema=systemFields.profile.fields.traits path='system.profile.traits' label="AH.COMMON.Traits" value=system.profile.traits options=(ahFormOptions 'traits.family')}}
     </div>
   {{/if}}
 

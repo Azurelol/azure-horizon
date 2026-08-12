@@ -16,7 +16,8 @@ export class AdversarySheet extends AHBaseCharacterSheet {
     primary: {
       tabs: [
         { id: "features", label: "AH.SHEET.Tabs.Features", icon: "ra ra-fluffy-swirl" },
-        { id: "parameters", label: "AH.SHEET.Tabs.Parameters", icon: "ra ra-data" },
+        { id: "assembly", label: "AH.SHEET.Tabs.Assembly", icon: "ra ra-monster-skull" },
+        { id: "parameters", label: "AH.SHEET.Tabs.Parameters", icon: "ra ra-aquarius" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
       ],
       initial: "features",
@@ -28,6 +29,9 @@ export class AdversarySheet extends AHBaseCharacterSheet {
     ...super.PARTS,
     features: {
       template: systemTemplatePath("sheets/actor/character/character-features"),
+    },
+    assembly: {
+      template: systemTemplatePath("sheets/actor/character/character-assembly"),
     },
     parameters: {
       template: systemTemplatePath("sheets/actor/character/character-parameters"),
@@ -49,6 +53,10 @@ export class AdversarySheet extends AHBaseCharacterSheet {
           await this.#attackTableRenderer.render(this.actor.getItemsByType("attack")),
         ];
         break;
+
+      case "assembly":{
+        break;
+      }
 
       case "parameters":
         context.modifiers = this.actor.system.parameters.summarizeModifiers();
