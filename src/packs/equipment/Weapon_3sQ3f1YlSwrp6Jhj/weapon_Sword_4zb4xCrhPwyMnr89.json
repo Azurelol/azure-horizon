@@ -2,7 +2,7 @@
   "name": "Sword",
   "type": "weapon",
   "_id": "4zb4xCrhPwyMnr89",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/weapon_sword.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -10,7 +10,7 @@
     "description": "",
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def",
@@ -18,10 +18,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
         "amount": 5,
-        "type": "untyped"
+        "type": "slashing"
       },
       "secondary": {
         "amount": "",
@@ -33,8 +33,8 @@
     "handedness": "one"
   },
   "effects": [],
-  "folder": null,
-  "sort": 0,
+  "folder": "3sQ3f1YlSwrp6Jhj",
+  "sort": 100000,
   "ownership": {
     "default": 0
   },

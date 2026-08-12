@@ -1,7 +1,6 @@
 import AH from "../../../config.mjs";
-import { VersionedDataModel } from "../../api/_module.mjs";
-import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
+import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mjs";
 
 /**
  * @typedef ApplyEffectData
@@ -15,7 +14,7 @@ import { systemTemplatePath } from "../../../constants.mjs";
  * @property {AH_ActiveEffectDuration} duration
  * @property {Set<String>} entries
  */
-export class EffectsDataModel extends FieldsetDataModel {
+export class EffectsDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
     const { StringField, SchemaField, ArrayField, BooleanField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
@@ -33,8 +32,10 @@ export class EffectsDataModel extends FieldsetDataModel {
    * @return {Promise}
    */
   configureAction(config) {
-    if (this.entries.length > 0) {
-      config.setEffects(this);
+    if (this.enabled) {
+      if (this.entries.length > 0) {
+        config.setEffects(this);
+      }
     }
   }
 

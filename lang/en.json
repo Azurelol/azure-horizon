@@ -436,7 +436,8 @@
       "Role": "Role",
       "Rank": "Rank",
       "Turns": "Turns",
-      "Range": "Range"
+      "Range": "Range",
+      "Weapon": "Weapon"
     },
     "RULE": {
       "Element": {

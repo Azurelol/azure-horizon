@@ -58,7 +58,7 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculateDefense(attributes) {
-    return attributes.dex.current;
+    return this.round((attributes.dex.current + attributes.mig.current) / 2);
   }
 
   /**
@@ -66,7 +66,15 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculateMagicDefense(attributes) {
-    return attributes.ins.current;
+    return this.round((attributes.wlp.current + attributes.ins.current) / 2);
+  }
+
+  /**
+   * @param {AttributesDataModel} attributes
+   * @returns {Number}
+   */
+  static calculateInitiative(attributes) {
+    return this.round((attributes.dex.current + attributes.ins.current) / 2);
   }
 
   /**

@@ -41,7 +41,7 @@ function bindDataModels() {
   Object.assign(CONFIG.Item.dataModels, data.Item.dataModels);
   Object.assign(CONFIG.ActiveEffect.dataModels, data.ActiveEffect.dataModels);
   CONFIG.Actor.defaultType = "basic";
-
+  CONFIG.Token.hudClass = apps.HUD.AHTokenHUD;
   CONFIG.statusEffects = data.ActiveEffect.statusEffects.values;
   CONFIG.specialStatusEffects.DEFEATED = "ko";
 
@@ -126,8 +126,8 @@ function registerDataModels() {
 }
 
 Hooks.once("init", async () => {
-  registerDataModels();
   bindDocuments();
+  registerDataModels();
   bindDataModels();
   bindSheets();
   await initializeSystems();

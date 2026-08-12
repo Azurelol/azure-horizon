@@ -12,7 +12,9 @@ export class CharacterResourcesDataModel extends VersionedDataModel {
   static defineSchema() {
     const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      hp: new EmbeddedDataField(CharacterResourceDataModel, {}),
+      hp: new EmbeddedDataField(CharacterResourceDataModel, {
+        trackedAttribute: true,
+      }),
       mp: new EmbeddedDataField(CharacterResourceDataModel, {}),
     });
   }
@@ -70,6 +72,7 @@ export default class CharacterDataModel extends ActorDataModel {
     const data = this;
     this.parameters.def.defineCurrentProperty(() => Formulas.calculateDefense(data.attributes));
     this.parameters.mdef.defineCurrentProperty(() => Formulas.calculateMagicDefense(data.attributes));
+    this.parameters.init.defineCurrentProperty(() => Formulas.calculateInitiative(data.attributes));
   }
 
   /**

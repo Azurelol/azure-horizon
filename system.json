@@ -86,8 +86,8 @@
   "manifest": "https://github.com/Azurelol/azure-horizon/releases/latest/download/system.json",
   "download": "AUTOMATIC",
   "background": "",
-  "primaryTokenAttribute": "value",
-  "secondaryTokenAttribute": "",
+  "primaryTokenAttribute": "resources.hp",
+  "secondaryTokenAttribute": "resources.mp",
   "documentTypes": {
     "Actor": {
       "hero": {},

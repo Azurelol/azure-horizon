@@ -1,0 +1,33 @@
+{
+  "folder": "iH9OyoAoizAPCpjW",
+  "name": "Plate Armor",
+  "type": "armor",
+  "_id": "g7Civg5iIjMbA50R",
+  "img": "systems/azure-horizon/assets/icons/equipment/armor/plate.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-plate-armor",
+    "description": "",
+    "category": "heavy",
+    "traits": []
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786543210357,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!g7Civg5iIjMbA50R"
+}
