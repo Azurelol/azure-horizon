@@ -99,3 +99,22 @@ nav {
     justify-content: space-between;
   }
 }
+
+#sidebar-tabs {
+  menu {
+    background: var(--ah-background-tab);
+    padding: 0.2rem;
+  }
+}
+
+#sidebar-content {
+  .tab {
+    background: var(--ah-background-application);
+  }
+
+  .combat-tracker-header {
+    background: var(--ah-background-application-header);
+  }
+}
+
+
