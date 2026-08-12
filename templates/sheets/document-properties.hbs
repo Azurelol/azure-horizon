@@ -1,5 +1,13 @@
 <section class="standard-form tab scrollable {{tab.cssClass}}" data-group="primary" data-tab="properties">
 
+  <div class="ah-field__settings">
+    {{#each fieldsets as |field|}}
+      {{#if field.optional}}
+        {{ahBooleanField path=(ahConcat field.path '.enabled') icon=(ahIconClass field.name) style='compact' label=field.label value=field.value.enabled }}
+      {{/if}}
+    {{/each}}
+  </div>
+
   <div class="ah-field-group">
     {{#each fieldMap.default as |entry|}}
       {{formGroup
@@ -18,7 +26,9 @@
 
   <div class="ah-field-grid">
     {{#each fieldsets as |field|}}
-      {{> (lookup field 'template') }}
+      {{#if (or (not field.optional) field.value.enabled)}}
+        {{> (lookup field 'template') }}
+      {{/if}}
     {{/each}}
   </div>
 </section>

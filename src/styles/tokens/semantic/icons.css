@@ -189,6 +189,9 @@
   --ah-icon-rest-long: url("../../../../assets/icons/actions/rest-long.png");
   --ah-icon-resupply: url("../../../../assets/icons/actions/restock.png");
   --ah-icon-damage: url("../../../../assets/icons/common/damage.png");
+  --ah-icon-resource: url("../../../../assets/icons/common/resource.png");
+  --ah-icon-cost: url("../../../../assets/icons/common/cost.png");
+  --ah-icon-effects: url("../../../../assets/icons/common/effects.png");
   --ah-icon-target: url("../../../../assets/icons/common/target.png");
 
   --ah-icon-attack: url("../../../../assets/icons/actions/attack.png");
@@ -245,6 +248,18 @@
 
   .ah-icon-objective {
     background-image: var(--ah-icon-objective);
+  }
+
+  .ah-icon-resource {
+    background-image: var(--ah-icon-resource);
+  }
+
+  .ah-icon-cost {
+    background-image: var(--ah-icon-cost);
+  }
+
+  .ah-icon-effects {
+    background-image: var(--ah-icon-effects);
   }
 
   --ah-icon-pipeline-apply-damage: url("../../../../assets/icons/pipelines/apply-damage.svg");

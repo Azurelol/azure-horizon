@@ -272,6 +272,7 @@ export default class FoundryUtils {
    * @property field The foundry data field.
    * @property {Object} value
    * @property {String} template The partial template path.
+   * @property {Boolean} optional If the field is optional.
    */
 
   /**
@@ -283,15 +284,24 @@ export default class FoundryUtils {
   static getDataFieldInfo(source, fieldPath, field) {
     const value = foundry.utils.getProperty(source, fieldPath);
     let data = {
+      label: field.options.label ?? StringUtils.capitalize(field.name),
+      name: field.name,
       field: field,
       path: fieldPath,
+      options: field.options,
       value: value,
+      optional: field.fields?.enabled !== undefined,
     };
     if (field.model?.template) {
       data.template = field.model.template;
     }
     return data;
   }
+
+  /**
+   * @typedef AH_FieldsetMap
+   * @property {AH_DataFieldInfo[]} fieldsets
+   */
 
   /**
    * Gets a document's fields of a type

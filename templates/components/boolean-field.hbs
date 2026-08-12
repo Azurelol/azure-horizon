@@ -1,4 +1,8 @@
-<label class="ah-field">
-  <span>{{localize label}}</span>
+<label class="ah-field {{#if (eq style 'compact')}}--compact{{/if}}" data-tooltip="{{localize label}}">
+  {{#if (and (eq style 'compact') icon)}}
+    <i class="ah-icon --xs {{icon}}"></i>
+  {{else}}
+    <span>{{localize label}}</span>
+  {{/if}}
   <input type="checkbox" data-dtype="Boolean" name="{{path}}" {{ checked value }} />
 </label>

@@ -101,6 +101,10 @@
     width: 100%;
     height: 150px;
   }
+
+  &.--compact {
+    gap: 0;
+  }
 }
 
 .ah-field__input {
@@ -220,4 +224,14 @@
       flex: 0;
     }
   }
+}
+
+.ah-field__settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 1rem;
+  background: var(--ah-surface-panel-nested);
+  border: var(--ah-border);
+  padding-left: 1rem;
 }

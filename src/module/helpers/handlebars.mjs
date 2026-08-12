@@ -23,7 +23,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   badge: systemTemplatePath("components/badge"),
   skeleton: systemTemplatePath("components/skeleton"),
   tooltip: systemTemplatePath("components/tooltip"),
-  optionalFieldset: systemTemplatePath("components/optional-fieldset"),
+  optionalFieldset: systemTemplatePath("components/fieldset-optional-v2"),
 
   inlineProperty: systemTemplatePath("components/inline-property"),
   resourceBar: systemTemplatePath("components/resource-bar"),

@@ -757,6 +757,8 @@ AH.icons = {
   result: "ah-icon-check-result",
   target: "ah-icon-target",
   damage: "ah-icon-damage",
+  resource: "ah-icon-resource",
+  cost: "ah-icon-cost",
 
   check: "ah-icon-check-roll",
   openCheck: "ah-icon-check-open",

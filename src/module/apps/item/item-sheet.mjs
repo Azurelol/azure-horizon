@@ -71,7 +71,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       scrollable: [""],
     },
     properties: {
-      template: systemTemplatePath("sheets/document-fields"),
+      template: systemTemplatePath("sheets/document-properties"),
       templates: fields.templates,
       scrollable: [""],
     },
@@ -145,40 +145,6 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   }
 
   /* -------------------------------------------------- */
-
-  /**
-   * @typedef FieldSetV1
-   * @property {Boolean} fieldset
-   * @property {String} legend
-   * @property {FieldSetV1} outer The parent field.
-   * @property {Object} value
-   * @property {FieldSetV1[]} fields
-   */
-
-  /**
-   * Handles the system fields for the form-fields generic.
-   */
-  async _getFieldsV1() {
-    const doc = this.item;
-    const source = doc._source;
-    const systemFields = CONFIG.Item.dataModels[doc.type]?.schema.fields;
-    const fields = [];
-    // TODO: Find a clever way to handle enrichment
-    for (const field of Object.values(systemFields ?? {})) {
-      if (field.options?.config === false) {
-        continue;
-      }
-      const path = `system.${field.name}`;
-      if (field instanceof foundry.data.fields.SchemaField) {
-        const fieldset = { fieldset: true, legend: field.label, fields: [] };
-        await this.#addSystemFields(fieldset, field.fields, source, path);
-        fields.push(fieldset);
-      } else {
-        fields.push({ outer: { field, value: foundry.utils.getProperty(source, path) } });
-      }
-    }
-    return fields;
-  }
 
   /**
    * @returns {Promise<AH_DataFieldInfo[]>}

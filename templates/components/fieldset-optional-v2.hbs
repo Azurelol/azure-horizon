@@ -1,0 +1,11 @@
+<fieldset class="ah-fieldset --grid --optional {{class}} {{#if enabled}}active{{else}}inactive{{/if}}">
+  <legend class="">
+    <label>
+      {{#if icon}}<i class="ah-icon --s {{icon}}"></i>{{/if}}
+      {{localize label}}
+    </label>
+  </legend>
+  <div>
+    {{> @partial-block}}
+  </div>
+</fieldset>
