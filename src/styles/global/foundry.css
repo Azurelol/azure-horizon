@@ -114,6 +114,10 @@ nav {
 
   .combat-tracker-header {
     background: var(--ah-background-application-header);
+
+    .encounter-controls {
+      background: var(--ah-background-application-controls);
+    }
   }
 }
 

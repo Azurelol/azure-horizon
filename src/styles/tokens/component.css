@@ -6,9 +6,10 @@
    ============================================================ */
 :root {
   /*--------------------- ROLES ---------------------*/
-  /* 1.1 Application  */
+  /* Application  */
   --ah-background-application: var(--ah-surface-base);
   --ah-background-application-header: var(--ah-surface-application);
+  --ah-background-application-controls: var(--ah-surface-panel-nested);
   --ah-background-application-sidebar: var(--ah-surface-application);
   --ah-border-application-sidebar: rgba(255, 255, 255, 0.08);
   --ah-background-application-blend: linear-gradient(
@@ -24,6 +25,7 @@
   --ah-background-application-tabs: var(--ah-surface-panel);
   --ah-padding-application-part: 8px;
   --ah-padding-application-fields: 4px;
+  /* Controls  */
 
   /* Tabs */
   --ah-background-tab: var(--ah-surface-tab);

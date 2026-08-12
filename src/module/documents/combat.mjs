@@ -35,6 +35,52 @@ export class AHCombat extends foundry.documents.Combat {
   /* -------------------------------------------------- */
 
   /**
+   * Advance the combat to the next round
+   * @returns {Promise<this>}
+   */
+  async nextRound() {
+    await super.nextRound();
+    await this.resetAll();
+  }
+
+  /**
+   * Return the Array of combatants sorted into initiative order, breaking ties alphabetically by name.
+   * @override
+   * @returns {Combatant[]}
+   */
+  setupTurns() {
+    this.turns ||= [];
+
+    // Determine the turn order and the current turn
+    /** @type AHCombatant[] **/
+    let turns = this.combatants.contents.sort(this._sortCombatants);
+
+    // Sort combatants again to guarantee alternating between PCs and NPCs, starting with the highest initiative.
+    const allies = turns.filter(turn => turn.friendly);
+    const enemies = turns.filter(turn => turn.hostile);
+    let alternatingTurns = [];
+
+    if (this.turn !== null) {
+      if (this.turn < 0) this.turn = 0;
+      else if (this.turn >= turns.length) {
+        this.turn = 0;
+        this.round++;
+      }
+      turns.forEach((c, i) => c.turnNumber = i);
+    }
+
+    // Update state tracking
+    const c = turns[this.turn];
+    this.current = this._getCurrentState(c);
+
+    // One-time initialization of the previous state
+    if (!this.previous) this.previous = this.current;
+
+    // Return the array of prepared turns
+    return this.turns = turns;
+  }
+
+  /**
    * Adds a player combatant to the current combat.
    * @returns {Promise<import("./combatant.mjs").default>} The created Combatant.
    */
