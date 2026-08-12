@@ -119,8 +119,10 @@ async function addSections(builderData, config, actor, item) {
   // TAGS
   const traits = config.getTraits();
   for (const trait of traits) {
+    const traitProperties = AH.traits.all[trait];
     builderData.tags.push({
-      tag: AH.traits.all[trait],
+      tag: traitProperties.label,
+      tooltip: traitProperties.tooltip,
     });
   }
   for (const tag of config.tags) {

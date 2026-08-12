@@ -307,6 +307,10 @@
       "Toggle": "Toggle Effect"
     },
     "TRAIT": {
+      "ARMOR": {
+        "HeavyHint": "",
+        "LightHint": ""
+      },
       "Attack": "Attack",
       "Defense": "Defense",
       "Damage": "Damage",
@@ -325,7 +329,14 @@
       "Magical": "Magical",
       "Flexible": "Flexible",
       "Cooldown": "Cooldown",
-      "NonLethal": "Non-Lethal"
+      "NonLethal": "Non-Lethal",
+      "Reach": "Reach",
+      "Projectile": "Projectile",
+      "Reload": "Reload",
+      "Thrown": "Thrown",
+      "Shield": "Shield",
+      "Melee": "Melee",
+      "Ranged": "Ranged"
     },
     "DOMAIN": {
       "Light": "Light",
@@ -424,7 +435,8 @@
       "Anchor": "Anchor",
       "Role": "Role",
       "Rank": "Rank",
-      "Turns": "Turns"
+      "Turns": "Turns",
+      "Range": "Range"
     },
     "RULE": {
       "Element": {

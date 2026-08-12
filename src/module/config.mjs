@@ -1,5 +1,6 @@
 // NOTE: This file should have no other dependencies
 import { systemAssetPath, systemNS } from "./constants.mjs";
+import StringUtils from "./utils/string-utils.mjs";
 
 const AH = {};
 
@@ -12,8 +13,39 @@ const fields = foundry.data.fields;
  * @property {String|undefined} label
  * @property {String|undefined} long
  * @property {String|undefined} short
+ * @property {String} tooltip
  * @property {String} icon
  */
+
+/**
+ * @param {Object} value
+ * @param {AH_LocalizationFormat} format
+ * @returns {*}
+ */
+function resolveConfigRecordLabel(value, format) {
+  if (format) {
+    if (value[format]) {
+      return value[format];
+    }
+    if (value.label) {
+      return value.label;
+    }
+  }
+  return value;
+}
+
+/**
+ * @param {Record<String, String>} record   *
+ * @param {AH_LocalizationFormat} format
+ * @returns {FormSelectOption[]}
+ * @remarks To be used with specific records.
+ */
+export function getFormSelectOptions(record, format = "long") {
+  return Object.entries(record).map(([key, value]) => ({
+    label: StringUtils.localize(resolveConfigRecordLabel(value, format)),
+    value: key,
+  }));
+}
 
 /**
  * @typedef {String} AH_Slug
@@ -308,6 +340,18 @@ AH.itemGroup = {
 AH.handedness = {
   one: "AH.FIELD.OneHanded",
   two: "AH.FIELD.TwoHanded",
+};
+
+/**
+ * @typedef {"melee", "ranged"} AH_ActionRange
+ */
+
+/**
+ * @type {Record<string, AH_ActionRange>}
+ */
+AH.actionRange = {
+  melee: "AH.TRAIT.Melee",
+  ranged: "AH.TRAIT.Ranged",
 };
 
 AH.attackTypes = Object.freeze({
@@ -626,48 +670,65 @@ AH.hooks = Object.freeze({
  */
 AH.traits = {
   action: {
-    attack: "AH.TRAIT.Attack",
-    spell: "AH.TRAIT.Spell",
-    skill: "AH.TRAIT.Skill",
+    attack: { label: "AH.TRAIT.Attack", tooltip: "AH.TRAIT.AttackHint" },
+    spell: { label: "AH.TRAIT.Spell", tooltip: "AH.TRAIT.SpellHint" },
+    skill: { label: "AH.TRAIT.Skill", tooltip: "AH.TRAIT.SkillHint" },
 
-    action: "AH.TRAIT.Action",
-    maneuver: "AH.TRAIT.Maneuver",
+    action: { label: "AH.TRAIT.Action", tooltip: "AH.TRAIT.ActionHint" },
+    maneuver: { label: "AH.TRAIT.Maneuver", tooltip: "AH.TRAIT.ManeuverHint" },
 
-    damage: "AH.TRAIT.Damage",
-    restore: "AH.TRAIT.Restore",
+    damage: { label: "AH.TRAIT.Damage", tooltip: "AH.TRAIT.DamageHint" },
+    restore: { label: "AH.TRAIT.Restore", tooltip: "AH.TRAIT.RestoreHint" },
 
-    gain: "AH.TRAIT.Gain",
-    loss: "AH.TRAIT.Loss",
+    gain: { label: "AH.TRAIT.Gain", tooltip: "AH.TRAIT.GainHint" },
+    loss: { label: "AH.TRAIT.Loss", tooltip: "AH.TRAIT.LossHint" },
 
-    hp: "AH.TRAIT.HitPoint",
-    mp: "AH.TRAIT.MindPoint",
-    tp: "AH.TRAIT.TensionPoint",
-    ip: "AH.TRAIT.InventoryPoint",
+    hp: { label: "AH.TRAIT.HitPoint", tooltip: "AH.TRAIT.HitPointHint" },
+    mp: { label: "AH.TRAIT.MindPoint", tooltip: "AH.TRAIT.MindPointHint" },
+    tp: { label: "AH.TRAIT.TensionPoint", tooltip: "AH.TRAIT.TensionPointHint" },
+    ip: { label: "AH.TRAIT.InventoryPoint", tooltip: "AH.TRAIT.InventoryPointHint" },
   },
+
   damage: {
-    base: "AH.TRAIT.Base",
-    nonLethal: "AH.TRAIT.NonLethal",
+    base: { label: "AH.TRAIT.Base", tooltip: "AH.TRAIT.BaseHint" },
+    nonLethal: { label: "AH.TRAIT.NonLethal", tooltip: "AH.TRAIT.NonLethalHint" },
   },
 
   attack: {
-    stress: "AH.TRAIT.Stress",
+    stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
   },
   defense: {
-    deflection: "AH.TRAIT.Deflection", // Heavy
-    avoidance: "AH.TRAIT.Avoidance", // Light
+    deflection: { label: "AH.TRAIT.Deflection", tooltip: "AH.TRAIT.DeflectionHint" }, // Heavy
+    avoidance: { label: "AH.TRAIT.Avoidance", tooltip: "AH.TRAIT.AvoidanceHint" }, // Light
   },
 
   skill: {
-    cooldown: "AH.TRAIT.Cooldown",
-    stress: "AH.TRAIT.Stress",
+    cooldown: { label: "AH.TRAIT.Cooldown", tooltip: "AH.TRAIT.CooldownHint" },
+    stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
+    opener: { label: "AH.TRAIT.Opener", tooltip: "AH.TRAIT.OpenerHint" },
+    closer: { label: "AH.TRAIT.Closer", tooltip: "AH.TRAIT.CloserHint" },
+    finisher: { label: "AH.TRAIT.Finisher", tooltip: "AH.TRAIT.FinisherHint" },
   },
   weapon: {
-    reach: "AH.TRAIT.Reach",
+    reach: { label: "AH.TRAIT.Reach", tooltip: "AH.TRAIT.ReachHint" },
+    projectile: { label: "AH.TRAIT.Projectile", tooltip: "AH.TRAIT.ProjectileHint" },
+    reload: { label: "AH.TRAIT.Reload", tooltip: "AH.TRAIT.ReloadHint" },
+    thrown: { label: "AH.TRAIT.Thrown", tooltip: "AH.TRAIT.ThrownHint" },
+    shield: { label: "AH.TRAIT.Shield", tooltip: "AH.TRAIT.ShieldHint" },
   },
   armor: {
-    magical: "AH.TRAIT.Magical",
+    // heavy: { label: "AH.TRAIT.Heavy", tooltip: "AH.TRAIT.ARMOR.HeavyHint" },
+    // light: { label: "AH.TRAIT.Light", tooltip: "AH.TRAIT.ARMOR.LightHint" },
   },
 };
+
+/**
+ * @typedef {'reach'|'projetile'|'reload'|'thrown'} AH_WeaponTrait
+ */
+
+/**
+ * @typedef {'light'|'heavy'} AH_ArmorTrait
+ */
 
 //  Create a catch-all of traits for localization purposes
 AH.traits.all = Object.freeze({

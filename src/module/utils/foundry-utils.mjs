@@ -3,7 +3,7 @@ import StringUtils from "./string-utils.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
-const PRIMITIVE_FIELD_NAMES = new Set(["StringField", "NumberField", "BooleanField", "ObjectField"]);
+const SUPPORTED_FIELD_NAMES = new Set(["StringField", "NumberField", "BooleanField", "ObjectField"]);
 const SYSTEM_FIELD_NAMES = new Set(["TraitsField"]);
 
 export default class FoundryUtils {
@@ -362,7 +362,7 @@ export default class FoundryUtils {
         continue;
       }
       const fieldPath = `${path}.${field.name}`;
-      if (!field.recursive && (PRIMITIVE_FIELD_NAMES.has(field.constructor.name) || SYSTEM_FIELD_NAMES.has(field.constructor.name))) {
+      if (!field.recursive && (SUPPORTED_FIELD_NAMES.has(field.constructor.name) || SYSTEM_FIELD_NAMES.has(field.constructor.name))) {
         let fieldInfo = this.getDataFieldInfo(source, fieldPath, field);
         // Custom rendering targets for the system
         if (field.options?._part === "header") {

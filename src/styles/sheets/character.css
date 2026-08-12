@@ -1,4 +1,7 @@
 .ah-character {
+
+  background: transparent;
+
   .window-content {
     padding: 0;
     display: grid;

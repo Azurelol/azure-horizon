@@ -1,12 +1,13 @@
 import AttackDataModel from "./attack-data-model.mjs";
-import AH from "../../config.mjs";
-import { FoundryUtils } from "../../utils/_module.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
+import { TraitsField } from "./fields/_module.mjs";
 
 /**
  * Represents a hero's weapon, used for performing basic attacks and with some skills.
  * @property {DamageDataModel} damage
  * @property {CheckDataModel} check
  * @property {AH_Handedness} handedness
+ * @property {AH_WeaponTrait[]} traits
  */
 export default class WeaponDataModel extends AttackDataModel {
   /** @inheritdoc */
@@ -18,6 +19,10 @@ export default class WeaponDataModel extends AttackDataModel {
         blank: false,
         label: "AH.FIELD.Handedness",
         choices: () => AH.handedness,
+      }),
+      traits: new TraitsField({
+        label: "AH.FIELD.Traits",
+        options: getFormSelectOptions(AH.traits.weapon),
       }),
     });
   }
