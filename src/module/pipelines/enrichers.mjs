@@ -47,7 +47,7 @@ import { implementations } from "./enrichers/_module.mjs";
  */
 
 const Enrichers = Object.freeze({
-  initialize: async () => {
+  initialize: () => {
     for (const impl of Object.values(implementations))
     {
       if (impl.onDropActor) {

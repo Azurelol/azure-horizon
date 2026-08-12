@@ -85,21 +85,20 @@ function bindSheets() {
 
 /**
  * Initializes the system's subsystems.
- * @returns {Promise<void>}
  */
 async function initializeSystems() {
   helpers.Settings.initialize();
-  await helpers.Themes.initialize();
-  await helpers.AHHandlebars.loadTemplates();
-  await helpers.AHHandlebars.registerHelpers();
-  await helpers.AHHandlebars.registerPartials();
-  await data.Compendium.CompendiumIndex.initialize();
-  await pipelines.Enrichers.initialize();
-  await pipelines.Damage.initialize();
-  await pipelines.Resources.initialize();
-  await pipelines.Effects.initialize();
-  await pipelines.Rules.initialize();
-  await pipelines.Actions.initialize();
+  helpers.Themes.initialize();
+  helpers.AHHandlebars.loadTemplates();
+  helpers.AHHandlebars.registerHelpers();
+  helpers.AHHandlebars.registerPartials();
+  data.Compendium.CompendiumIndex.initialize();
+  pipelines.Enrichers.initialize();
+  pipelines.Damage.initialize();
+  pipelines.Resources.initialize();
+  pipelines.Effects.initialize();
+  pipelines.Rules.initialize();
+  pipelines.Actions.initialize();
 }
 
 /**
@@ -125,12 +124,12 @@ function registerDataModels() {
   AH.dataModelTemplates = data.ActiveEffect.templates;
 }
 
-Hooks.once("init", async () => {
+Hooks.once("init", function() {
   bindDocuments();
   registerDataModels();
   bindDataModels();
   bindSheets();
-  await initializeSystems();
+  initializeSystems();
 
   // Sidebar tabs
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;
