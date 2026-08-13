@@ -1,8 +1,7 @@
 import { Player } from "../data/combatant/player.mjs";
-import { notify, systemID, systemPath } from "../constants.mjs";
+import { systemID, systemPath } from "../constants.mjs";
 import AH, { getFormSelectOptions } from "../config.mjs";
 import { Dialogs } from "../helpers/_module.mjs";
-import { CombatEvent } from "../data/common/combat-event.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
@@ -68,7 +67,15 @@ export class AHCombat extends foundry.documents.Combat {
     this.setFlag(systemID, AH.flags.Combat.FirstTurn, selectedFaction);
     await this.setCurrentTurn(selectedFaction);
     console.debug(`Combat started for ${this.combatants.length} combatants`);
+    await this.#sortFactions();
     return super.startCombat();
+  }
+
+  async #sortFactions() {
+    this.turns = [];
+    const sorted = this.#zipCombatants(this.combatants.contents);
+    const updates = sorted.map(c => ({ _id: c.id, initiative: c.initiative }));
+    await this.updateEmbeddedDocuments("Combatant", updates);
   }
 
   /**
@@ -114,6 +121,36 @@ export class AHCombat extends foundry.documents.Combat {
   /* -------------------------------------------------- */
 
   /**
+   * This workflow occurs after a Combatant is added to the Combat.
+   * This can be overridden to implement system-specific combat tracking behaviors.
+   * The default implementation of this function does nothing.
+   * This method only executes for one designated GM user. If no GM users are present this method will not be called.
+   * @param {AHCombatant} combatant    The Combatant that entered the Combat
+   * @returns {Promise<void>}
+   * @protected
+   */
+  async _onEnter(combatant) {
+    console.info(`Combatant ${combatant.name} was added`);
+    //await this.#rollFactionInitiative([combatant]);
+    this.turns = [];
+  }
+
+  /**
+   * This workflow occurs after a Combatant is removed from the Combat.
+   * This can be overridden to implement system-specific combat tracking behaviors.
+   * The default implementation of this function does nothing.
+   * This method only executes for one designated GM user. If no GM users are present this method will not be called.
+   * @param {AHCombatant} combatant    The Combatant that exited the Combat
+   * @returns {Promise<void>}
+   * @protected
+   */
+  async _onExit(combatant) {
+    console.info(`Combatant ${combatant.name} was removed`);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * @inheritdoc In Draw Steel's default initiative, non-GM users cannot change the round
    * @param {User} user The user attempting to change the round.
    * @returns {boolean} Is the user allowed to change the round?
@@ -124,21 +161,49 @@ export class AHCombat extends foundry.documents.Combat {
 
   /** @inheritdoc */
   async nextRound() {
-    // In memory adjustment that will get committed during the super call
-    this.turn = null;
-    await super.nextRound();
+    ui.notifications.info("Setting up next round.");
 
-    notify("Setting up next round.");
-    const combatantUpdates = this.combatants.map(c => ({ _id: c.id, initiative: c.actor?.system.profile.turns ?? 1 }));
-    await this.updateEmbeddedDocuments("Combatant", combatantUpdates);
+    await this.#rollFactionInitiative([], true);
+
+    await super.nextRound();
     return this;
   }
 
   /**
-   * @param combatants
+   * @param {AHCombatant[]} combatants
+   * @param force
+   * @returns {Promise} Updates
+   */
+  async #rollFactionInitiative(combatants = [], force = false) {
+
+    let changed = false;
+    for (const combatant of combatants) {
+      if (!combatant?.isOwner) continue;
+      const roll = combatant.getInitiativeRoll();
+      await roll.evaluate();
+      changed = true;
+    }
+
+    if (!changed && !force) return this;
+
+    // Update combatants and combat turn
+    const updateOptions = { turnEvents: false };
+    updateOptions.combatTurn = this.turn;
+
+    // Now do a re-sort for all combatants
+    const sorted = this.#zipCombatants(this.combatants.contents);
+    const updates = sorted.map(c => ({ _id: c.id, initiative: c.initiative }));
+    await this.updateEmbeddedDocuments("Combatant", updates);
+  }
+
+  /**
+   * @param {AHCombatant[]} combatants
    * @returns {AHCombatant[]}
    */
-  static sortFactions(combatants) {
+  #zipCombatants(combatants) {
+
+    combatants = combatants.sort(this._sortCombatants);
+
     // Sort combatants again to guarantee alternating between PCs and NPCs, starting with the highest initiative.
     const allies = combatants.filter(turn => turn.friendly);
     const enemies = combatants.filter(turn => turn.hostile);
@@ -147,16 +212,26 @@ export class AHCombat extends foundry.documents.Combat {
     // Decide which side leads the alternation - based on top initiative only, once
     let leading = allies;
     let trailing = enemies;
-    if (enemies[0] && (!allies[0] || (enemies[0].initiative ?? -Infinity) > (allies[0].initiative ?? -Infinity))) {
+    const lead = this.getFlag(systemID, AH.flags.Combat.FirstTurn);
+    if (lead !== "heroes") {
       leading = enemies;
       trailing = allies;
     }
 
     // Zip the two sides together by index - no per-step initiative comparison
     const maxLength = Math.max(leading.length, trailing.length);
+    let initiative = 1;
     for (let i = 0; i < maxLength; i++) {
-      if (leading[i]) alternatingTurns.push(leading[i]);
-      if (trailing[i]) alternatingTurns.push(trailing[i]);
+      if (leading[i]) {
+        let lead = leading[i];
+        lead.initiative = initiative++;
+        alternatingTurns.push(lead);
+      }
+      if (trailing[i]) {
+        let trail = trailing[i];
+        trail.initiative = initiative++;
+        alternatingTurns.push(trail);
+      }
     }
 
     return alternatingTurns;
@@ -170,12 +245,13 @@ export class AHCombat extends foundry.documents.Combat {
   setupTurns() {
     this.turns ||= [];
 
-    notify("Setting up turns");
+    console.info("Setting up turns");
 
     // Determine the turn order and the current turn
     /** @type AHCombatant[] **/
     let turns = this.combatants.contents.sort(this._sortCombatants);
-    turns = AHCombat.sortFactions(turns);
+    // Then sort again by faction
+    //turns = this.#sortFactions(turns);
 
     if (this.turn !== null) {
       if (this.turn < 0) this.turn = 0;
@@ -196,15 +272,6 @@ export class AHCombat extends foundry.documents.Combat {
     // Return the array of prepared turns
     return this.turns = turns;
   }
-
-  // /**
-  //  * Advance the combat to the next round
-  //  * @returns {Promise<this>}
-  //  */
-  // async nextRound() {
-  //   await super.nextRound();
-  //   await this.resetAll();
-  // }
 
   /* -------------------------------------------------- */
   /**
