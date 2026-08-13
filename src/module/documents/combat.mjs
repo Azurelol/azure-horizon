@@ -1,21 +1,46 @@
 import { Player } from "../data/combatant/player.mjs";
-import { systemPath } from "../constants.mjs";
+import { notify, systemID, systemPath } from "../constants.mjs";
+import AH, { getFormSelectOptions } from "../config.mjs";
+import { Dialogs } from "../helpers/_module.mjs";
+import { CombatEvent } from "../data/common/combat-event.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
+ * @property {Combatant[]} turns
+ * @property {Combatant} combatant Get the Combatant who has the current turn.
+ * @property {CombatHistoryData} current  Record the current round, turn, and tokenId to understand changes in the encounter state
+ * @property {CombatHistoryData} previous Track the previous round, turn, and tokenId to understand changes in the encounter state
+ * @property {Boolean} started
+ * @property {Boolean} isActive Is this combat active in the current scene?
+ * @property {Function<Promise>} startCombat Begin the combat encounter, advancing to round 1 and turn 1
+ * @property {Function<Promise>} endCombat Display a dialog querying the GM whether they wish to end the combat encounter and empty the tracker
  * @property {Collection<AHCombatant>} combatants
  */
 export class AHCombat extends foundry.documents.Combat {
+
   /** @inheritdoc */
   prepareDerivedData() {
-
     super.prepareDerivedData();
-
     /**
      * Flexible hook for modules to alter derived document data.
      * @param {AHCombat} combat      The combat preparing derived data.
      */
     Hooks.callAll("AH.prepareCombatData", this);
+  }
+
+  /**
+   * @param {AHActor} actor
+   * @returns True if the actor is present in the combat
+   */
+  hasActor(actor) {
+    return this.actors.includes(actor);
+  }
+
+  /**
+   * @returns {AHActor[]}
+   */
+  get actors() {
+    return Array.from(this.combatants.map((c) => c.actor));
   }
 
   /**
@@ -33,32 +58,124 @@ export class AHCombat extends foundry.documents.Combat {
   }
 
   /* -------------------------------------------------- */
+  /** @inheritdoc */
+  async startCombat() {
+    const factions = getFormSelectOptions(AH.combat.factions);
+    const selectedFaction = await Dialogs.select("AH.COMBAT.FirstTurn", factions);
+    if (!selectedFaction) {
+      return this;
+    }
+    this.setFlag(systemID, AH.flags.Combat.FirstTurn, selectedFaction);
+    await this.setCurrentTurn(selectedFaction);
+    console.debug(`Combat started for ${this.combatants.length} combatants`);
+    return super.startCombat();
+  }
 
   /**
-   * Advance the combat to the next round
-   * @returns {Promise<this>}
+   * @override
    */
+  async endCombat() {
+    const end = await super.endCombat();
+    if (end) {
+      console.debug(`Combat ended for ${this.combatants.length} combatants`);
+    }
+    return end;
+  }
+
+  /* -------------------------------------------------- */
+  /**
+   * @returns {Boolean}
+   */
+  get isTurnStarted() {
+    return this.combatant != null;
+  }
+
+  /**
+   * @description Sets the faction that has the current turn
+   * @param {"hostile" | "friendly"} flag
+   */
+  setCurrentTurn(flag) {
+    if (game.user === game.users.activeGM) {
+      if (flag) {
+        return this.setFlag(systemID, AH.flags.Combat.CurrentTurn, flag);
+      } else {
+        return this.unsetFlag(systemID, AH.flags.Combat.CurrentTurn);
+      }
+    }
+  }
+
+  /**
+   * @return {"hostile" | "friendly" | undefined} The faction whose turn it is
+   */
+  getCurrentTurn() {
+    return this.getFlag(systemID, AH.flags.Combat.CurrentTurn);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @inheritdoc In Draw Steel's default initiative, non-GM users cannot change the round
+   * @param {User} user The user attempting to change the round.
+   * @returns {boolean} Is the user allowed to change the round?
+   */
+  _canChangeRound(user) {
+    return user.isGM;
+  }
+
+  /** @inheritdoc */
   async nextRound() {
+    // In memory adjustment that will get committed during the super call
+    this.turn = null;
     await super.nextRound();
-    await this.resetAll();
+
+    notify("Setting up next round.");
+    const combatantUpdates = this.combatants.map(c => ({ _id: c.id, initiative: c.actor?.system.profile.turns ?? 1 }));
+    await this.updateEmbeddedDocuments("Combatant", combatantUpdates);
+    return this;
+  }
+
+  /**
+   * @param combatants
+   * @returns {AHCombatant[]}
+   */
+  static sortFactions(combatants) {
+    // Sort combatants again to guarantee alternating between PCs and NPCs, starting with the highest initiative.
+    const allies = combatants.filter(turn => turn.friendly);
+    const enemies = combatants.filter(turn => turn.hostile);
+    let alternatingTurns = [];
+
+    // Decide which side leads the alternation - based on top initiative only, once
+    let leading = allies;
+    let trailing = enemies;
+    if (enemies[0] && (!allies[0] || (enemies[0].initiative ?? -Infinity) > (allies[0].initiative ?? -Infinity))) {
+      leading = enemies;
+      trailing = allies;
+    }
+
+    // Zip the two sides together by index - no per-step initiative comparison
+    const maxLength = Math.max(leading.length, trailing.length);
+    for (let i = 0; i < maxLength; i++) {
+      if (leading[i]) alternatingTurns.push(leading[i]);
+      if (trailing[i]) alternatingTurns.push(trailing[i]);
+    }
+
+    return alternatingTurns;
   }
 
   /**
    * Return the Array of combatants sorted into initiative order, breaking ties alphabetically by name.
    * @override
-   * @returns {Combatant[]}
+   * @returns {AHCombatant[]}
    */
   setupTurns() {
     this.turns ||= [];
 
+    notify("Setting up turns");
+
     // Determine the turn order and the current turn
     /** @type AHCombatant[] **/
     let turns = this.combatants.contents.sort(this._sortCombatants);
-
-    // Sort combatants again to guarantee alternating between PCs and NPCs, starting with the highest initiative.
-    const allies = turns.filter(turn => turn.friendly);
-    const enemies = turns.filter(turn => turn.hostile);
-    let alternatingTurns = [];
+    turns = AHCombat.sortFactions(turns);
 
     if (this.turn !== null) {
       if (this.turn < 0) this.turn = 0;
@@ -79,6 +196,62 @@ export class AHCombat extends foundry.documents.Combat {
     // Return the array of prepared turns
     return this.turns = turns;
   }
+
+  // /**
+  //  * Advance the combat to the next round
+  //  * @returns {Promise<this>}
+  //  */
+  // async nextRound() {
+  //   await super.nextRound();
+  //   await this.resetAll();
+  // }
+
+  /* -------------------------------------------------- */
+  /**
+   * @typedef CombatRenderData
+   * @description Used by component rendering (such as the combat tracker, combat hud)
+   * @property {Boolean} turnStarted
+   * @property {AHCombatant} combatant
+   * @property {Boolean} hasCombatStarted
+   * @property turnsLeft
+   * @property totalTurns
+   * @property factions
+   * @property currentTurn The faction whose turn it is
+   * @property isGM
+   * @property icons
+   * @property showNpcTurns
+   */
+
+  /**
+   * @param {CombatRenderData} data Used by the rendering components
+   */
+  populateData(data) {
+    // Whether combat has started
+    data.hasCombatStarted = this.started;
+    // What faction's turn it is
+    data.currentTurn = this.getCurrentTurn();
+    // Combatant.ID : Total Turns
+    data.totalTurns = this.combatants.reduce((agg, combatant) => {
+      agg[combatant.id] = combatant.totalTurns;
+      return agg;
+    }, {});
+    // Combatant ID : Turns Left
+    data.turnsLeft = this.countTurnsLeft();
+    // Whether an actor has started their turn
+    data.turnStarted = this.isTurnStarted;
+    // The current combatant, if any
+    data.combatant = this.combatant;
+    // Whether the user is a GM
+    data.isGM = game.user?.isGM;
+    // Icons
+    data.icons = {
+      active: game.settings.get(systemID, "play_circle"),
+      outOfTurns: game.settings.get(systemID, "check_circle"),
+      hiddenTurns: game.settings.get(systemID, "help"),
+    };
+  }
+
+  /* -------------------------------------------------- */
 
   /**
    * Adds a player combatant to the current combat.
@@ -101,8 +274,6 @@ export class AHCombat extends foundry.documents.Combat {
     const created = await this.createEmbeddedDocuments("Combatant", [data]);
     return created.shift();
   }
-
-  /* -------------------------------------------------- */
 
   /**
    * @remarks Variant createDialog that includes the Base type

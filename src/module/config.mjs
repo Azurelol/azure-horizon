@@ -477,6 +477,17 @@ AH.eventRelation = Object.freeze({
   target: "AH.COMMON.Target",
 });
 
+AH.combat = Object.freeze({
+  factions: {
+    heroes: {
+      label: "AH.COMMON.Heroes",
+    },
+    adversaries: {
+      label: "AH.COMMON.Adversaries",
+    },
+  },
+});
+
 /**
  * All settings associated with the system.
  * @type {Record<string, SettingConfig>}
@@ -517,6 +528,12 @@ AH.flags = Object.freeze({
     Suppressed: "Suppressed",
     Temporary: "Temporary",
     Identifier: "Identifier",
+  }),
+  Combat: Object.freeze({
+    FirstTurn: "First Turn",
+    CurrentTurn: "Current Turn",
+    TurnStarted: "TurnStarted",
+    TurnTaken: "TurnTaken",
   }),
   // ChatMessage
   ChatMessage: Object.freeze({

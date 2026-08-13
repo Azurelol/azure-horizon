@@ -581,6 +581,9 @@
       "CriticalBonus": "Critical Bonus",
       "ResourceGain": "Gain",
       "ResourceLoss": "Loss"
+    },
+    "COMBAT": {
+      "FirstTurn": "First Turn"
     }
   },
   "TYPES": {

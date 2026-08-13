@@ -1,3 +1,5 @@
+import { systemPath, systemTemplatePath } from "../../constants.mjs";
+
 /**
  * A custom combat tracker that adds support for adding "player" type combatants.
  */

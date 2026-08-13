@@ -96,3 +96,11 @@ export function isActorType(document) {
 export function isItemType(document) {
   return document?.documentName === "Item";
 }
+
+/**
+ * @param {String} message
+ * @param {'info'|'warn'|'error'} level
+ */
+export function notify(message, level = "info") {
+  ui.notifications[level](message);
+}

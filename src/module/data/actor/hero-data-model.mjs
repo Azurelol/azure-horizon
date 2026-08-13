@@ -88,9 +88,6 @@ export default class HeroDataModel extends CharacterDataModel {
       prototypeToken: {
         actorLink: true,
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
-        sight: {
-          enabled: true,
-        },
       },
     }, data, { insertKeys: false, insertValues: false, inplace: false });
 
