@@ -86,8 +86,12 @@ export default class Formulas {
     let _multiplicative = 1;
 
     for (const { key, additive, multiplicative } of modifiers) {
-      _additive += additive;
-      _multiplicative *= multiplicative;
+      if (additive) {
+        _additive += additive;
+      }
+      if (_multiplicative) {
+        _multiplicative *= multiplicative;
+      }
     }
 
     return { additive: _additive, multiplicative: _multiplicative, valid: (_additive !== 0) && (_multiplicative !== 1) };

@@ -446,7 +446,8 @@
       "Rank": "Rank",
       "Turns": "Turns",
       "Range": "Range",
-      "Weapon": "Weapon"
+      "Weapon": "Weapon",
+      "Power": "Power"
     },
     "RULE": {
       "Element": {
@@ -533,6 +534,7 @@
       "MODIFIER": {
         "Status": "Status",
         "Equipment": "Equipment",
+        "Skill": "Skill",
         "Situation": "Situation",
         "Key": "Key",
         "Additive": "Additive",
@@ -549,6 +551,14 @@
         "Standard": "Standard",
         "Reduced": "Reduced",
         "Powerful": "Powerful"
+      },
+      "POWER": {
+        "Light": "Light",
+        "Medium": "Medium",
+        "Heavy": "Heavy",
+        "Severe": "Severe",
+        "Massive": "Massive",
+        "Extreme": "Extreme"
       },
       "Attack": "Attack",
       "Skill": "Skill",

@@ -7,9 +7,16 @@ import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mj
 // TODO: Add secondary damage component support
 
 /**
+ * @typedef DamageScaling
+ * @property {AH_Power|undefined} power
+ * @property {Modifier} offset
+ */
+
+/**
  * @description Used when rolls are performed.
  * @property {DamageUnit} primary
  * @property {DamageUnit} secondary
+ * @property {AH_Power} power
  * @property {TraitsField} traits
  */
 export default class DamageDataModel extends OptionalFieldsetDataModel {
@@ -17,13 +24,14 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
     const { BooleanField, SchemaField, NumberField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       primary: new SchemaField({
-        amount: new NumberField({ initial: AH.defaults.damage.bonus, integer: true, nullable: false }),
+        amount: new StringField({ initial: "", integer: true, nullable: false }),
         type: new StringField({ initial: "untyped", choices: Object.keys(AH.damageTypes), blank: true, nullable: false }),
       }),
       secondary: new SchemaField({
         amount: new StringField({ initial: "", integer: true, nullable: true }),
         type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.damageTypes), nullable: false }),
       }),
+      power: new StringField({ initial: "", blank: true, choices: Object.keys(AH.power), nullable: false }),
       traits: new TraitsField({
         options: FoundryUtils.getFormSelectOptions(AH.traits.damage),
       }),
@@ -49,7 +57,15 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
           });
         }
       }
+      if (this.power) {
+        config.modifyDamage(d => {
+          d.modify("universal", {
+            key: "skill",
+            multiplicative: AH.power[this.power].value,
+          });
+        });
 
+      }
       const traits = this.traits.values();
       config.addTraits(...traits);
 

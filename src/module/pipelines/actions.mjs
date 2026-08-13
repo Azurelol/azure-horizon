@@ -120,10 +120,18 @@ async function addSections(builderData, config, actor, item) {
   const traits = config.getTraits();
   for (const trait of traits) {
     const traitProperties = AH.traits.all[trait];
-    builderData.tags.push({
-      tag: traitProperties.label,
-      tooltip: traitProperties.tooltip,
-    });
+    if (traitProperties) {
+      builderData.tags.push({
+        tag: traitProperties.label,
+        tooltip: traitProperties.tooltip,
+      });
+    }
+    else {
+      builderData.tags.push({
+        tag: StringUtils.capitalize(trait),
+      });
+      //ui.notifications.error(`Missing trait data for ${trait}`);
+    }
   }
   for (const tag of config.tags) {
     builderData.tags.push(tag);

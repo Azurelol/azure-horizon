@@ -81,8 +81,20 @@ AH.defaults = {
 
 AH.modifiers = Object.freeze({
   status: { label: "AH.STATUS.MODIFIER.Status" },
+  skill: { label: "AH.STATUS.MODIFIER.Skill" },
   equipment: { label: "AH.STATUS.MODIFIER.Equipment" },
   situation: { label: "AH.STATUS.MODIFIER.Situation" },
+});
+
+/**
+ * @typedef {'light'|'medium'|'heavy'|'severe'|'extreme'} AH_Power A multiplier used for scaling.
+ */
+
+AH.power = Object.freeze({
+  light: { label: "AH.ACTION.POWER.Light", value: 1.2 },
+  medium: { label: "AH.ACTION.POWER.Medium", value: 1.4 },
+  heavy: { label: "AH.ACTION.POWER.Heavy", value: 1.6 },
+  massive: { label: "AH.ACTION.POWER.Massive", value: 2 },
 });
 
 /**
@@ -753,6 +765,7 @@ AH.traits = {
 AH.traits.all = Object.freeze({
   ...AH.traits.action,
   ...AH.traits.damage,
+  ...AH.damageTypes,
   ...AH.traits.attack,
   ...AH.traits.defense,
   ...AH.traits.skill,

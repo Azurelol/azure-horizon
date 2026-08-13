@@ -21,12 +21,14 @@ export class ModifierDataField extends SchemaField {
  * Used for character-level modifiers such as damage dealt, healing received, etc.
  * @property {ModifierDataField} status
  * @property {ModifierDataField} equipment
+ * @property {ModifierDataField} skill
  */
 export class ModifiersDataModel extends VersionedDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       status: new ModifierDataField(),
       equipment: new ModifierDataField(),
+      skill: new ModifierDataField(),
     });
   }
 

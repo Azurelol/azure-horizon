@@ -11,6 +11,21 @@
   &.--triple {
     --ah-field-grid-columns: 3;
   }
+
+  &.--stack {
+    .ah-field {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .form-group {
+        label {
+          display: none;
+        }
+        width: 100%;
+      }
+    }
+  }
 }
 
 .ah-fieldset {

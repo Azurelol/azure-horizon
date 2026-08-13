@@ -123,12 +123,32 @@ export default class DamageData {
 
     const found = this.modifiers[type].find(c => c.key === modifier.key);
     if (!found) {
-
     }
 
     this.modifiers[type].push(modifier);
 
     return this;
+  }
+
+  /**
+   * @param {AH_DamageType} type
+   * @return {ParameterModifier[]}
+   */
+  resolve(type) {
+
+    /** @type ParameterModifier[] **/
+    let modifiers = [];
+
+    const group = AH.damageTypes[type]?.group;
+    const layers = ["universal", group, type].filter((key) => key && (key in this.modifiers));
+
+    for (const key of layers) {
+      const resolved = this.modifiers[key];
+      if (!resolved || !resolved.length) continue;
+      modifiers.push(...resolved);
+    }
+
+    return modifiers;
   }
 
   /**
@@ -163,7 +183,7 @@ export default class DamageData {
     // Apply modifiers
     let instances = [..._instances.values()];
     for (const inst of instances) {
-      inst.modifiers = this.modifiers[inst.type] ?? [];
+      inst.modifiers = this.resolve(inst.type) ?? [];
       inst.amount = Formulas.applyDamageModifiers(inst.amount, inst.modifiers);
     }
     return instances;
