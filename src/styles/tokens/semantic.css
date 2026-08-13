@@ -51,6 +51,8 @@
   --ah-border-radius: 4px;
   --ah-border-width: 2px;
   --ah-border: 0.065rem solid var(--ah-surface-border);
+  --ah-border-active: var(--ah-primitive-color-white);
+  --ah-glow-active: color-mix(in srgb, var(--ah-primitive-color-white) 40%, transparent);
   --ah-box-shadow:  0.065rem 0.1rem var(--ah-primitive-color-warm-brown);
   --ah-text-shadow: 1px 1px var(--ah-primitive-color-warm-brown);
   --ah-text-shadow-outline: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;

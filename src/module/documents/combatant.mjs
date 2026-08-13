@@ -1,6 +1,10 @@
 /**
+ * @typedef {'hero'|'adversary'} AH_Faction
+ */
+
+/**
  * A simple extension that adds a hook at the end of data prep.
- *
+ * @property {AHActor} actor
  */
 export class AHCombatant extends foundry.documents.Combatant {
 
@@ -30,6 +34,13 @@ export class AHCombatant extends foundry.documents.Combatant {
       -2;
     if ((disposition === CONST.TOKEN_DISPOSITIONS.FRIENDLY) && this.hasPlayerOwner) return 2;
     return disposition;
+  }
+
+  /**
+   * @return {AH_Faction}
+   */
+  get faction() {
+    return this.friendly ? "hero" : "adversary";
   }
 
   /**

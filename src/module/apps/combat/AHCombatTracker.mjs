@@ -4,6 +4,21 @@ import { systemPath, systemTemplatePath } from "../../constants.mjs";
  * A custom combat tracker that adds support for adding "player" type combatants.
  */
 export class AHCombatTracker extends foundry.applications.sidebar.tabs.CombatTracker {
+
+  /** @override */
+  static PARTS = {
+    header: {
+      template: "templates/sidebar/tabs/combat/header.hbs",
+    },
+    tracker: {
+      template: systemTemplatePath("apps/combat-tracker"),
+      scrollable: [""],
+    },
+    footer: {
+      template: "templates/sidebar/tabs/combat/footer.hbs",
+    },
+  };
+
   /** @inheritdoc */
   _getCombatContextOptions() {
     const options = super._getCombatContextOptions();
@@ -14,6 +29,27 @@ export class AHCombatTracker extends foundry.applications.sidebar.tabs.CombatTra
       callback: () => this.viewed.addPlayer(),
     });
     return options;
+  }
+
+  /**
+   * Prepare render context for a single entry in the combat tracker.
+   * @param {Combat} combat        The active combat.
+   * @param {AHCombatant} combatant  The Combatant whose turn is being prepared.
+   * @param {number} index         The index of this entry in the turn order.
+   * @returns {Promise<object>}
+   * @protected
+   */
+  async _prepareTurnContext(combat, combatant, index) {
+    const turn = await super._prepareTurnContext(combat, combatant, index);
+    turn.faction = combatant.faction;
+    if (combatant.actor && (combatant.actor.type === "adversary")) {
+      /** @type AdversaryProfileDataModel **/
+      const profile = combatant.actor.system.profile;
+      if (profile) {
+        turn.profile = profile;
+      }
+    }
+    return turn;
   }
 
   /* -------------------------------------------------- */

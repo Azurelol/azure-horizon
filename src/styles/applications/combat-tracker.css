@@ -1,0 +1,30 @@
+#sidebar-content {
+  .combat-tracker-header {
+    background: var(--ah-background-application-header);
+
+    .encounter-controls {
+      background: var(--ah-background-application-controls);
+    }
+  }
+
+  li.combatant {
+    margin: 8px;
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &.active {
+      transform: scale(1.03);
+      box-shadow: 0 0 0 1px var(--ah-border-active),
+      0 0 12px 2px var(--ah-glow-active);
+      z-index: 1;
+    }
+
+    &.adversary {
+      background: var(--ah-adversary-background);
+    }
+
+    &.hero {
+      background: var(--ah-hero-background);
+    }
+  }
+}

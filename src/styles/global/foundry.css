@@ -111,14 +111,6 @@ nav {
   .tab {
     background: var(--ah-background-application);
   }
-
-  .combat-tracker-header {
-    background: var(--ah-background-application-header);
-
-    .encounter-controls {
-      background: var(--ah-background-application-controls);
-    }
-  }
 }
 
 

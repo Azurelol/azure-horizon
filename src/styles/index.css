@@ -27,6 +27,7 @@
 @import "global/inline.css";
 
 @import "applications/browser.css";
+@import "applications/combat-tracker.css";
 
 @import "sheets/sheet.css";
 @import "sheets/actor.css";

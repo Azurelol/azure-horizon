@@ -161,10 +161,7 @@ export class AHCombat extends foundry.documents.Combat {
 
   /** @inheritdoc */
   async nextRound() {
-    ui.notifications.info("Setting up next round.");
-
     await this.#rollFactionInitiative([], true);
-
     await super.nextRound();
     return this;
   }
