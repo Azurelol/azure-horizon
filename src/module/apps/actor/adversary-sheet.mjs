@@ -1,6 +1,6 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import { AttackTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
+import { ActionTableRenderer, AttackTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
 import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
 
 /**
@@ -43,6 +43,7 @@ export class AdversarySheet extends AHBaseCharacterSheet {
 
   /* -------------------------------------------------- */
   #attackTableRenderer = new AttackTableRenderer();
+  #abilityTableRenderer = new ActionTableRenderer();
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
@@ -51,6 +52,7 @@ export class AdversarySheet extends AHBaseCharacterSheet {
       case "features":
         context.tables = [
           await this.#attackTableRenderer.render(this.actor.getItemsByType("attack")),
+          await this.#abilityTableRenderer.render(this.actor.getItemsByType("ability")),
         ];
         break;
 

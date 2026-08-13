@@ -1,8 +1,20 @@
 <fieldset>
   <legend>
     <i class="ah-icon --s {{ahIconClass 'class'}}"></i>
-    {{localize 'AH.FIELD.Class'}}
+    {{localize 'AH.FIELD.Benefits'}}
   </legend>
   <div>
+    <div class="ah-field-group --row">
+      <label class="ah-field-group__header">{{localize 'AH.CHARACTER.HitPoint.short'}}</label>
+      {{ahNumberField path=(ahConcat path '.hp.additive') icon=(ahIconClass 'additive') tooltip="AH.STATUS.MODIFIER.Additive" value=value.hp.additive }}
+      {{ahNumberField path=(ahConcat path '.hp.multiplicative') icon=(ahIconClass 'multiplicative') tooltip="AH.STATUS.MODIFIER.Multiplicative" value=value.hp.multiplicative }}
+    </div>
+
+    <div class="ah-field-group --row">
+      <label class="ah-field-group__header">{{localize 'AH.CHARACTER.MindPoint.short'}}</label>
+      {{ahNumberField path=(ahConcat path '.mp.additive') icon=(ahIconClass 'additive') tooltip="AH.STATUS.MODIFIER.Additive" value=value.mp.additive }}
+      {{ahNumberField path=(ahConcat path '.mp.multiplicative') icon=(ahIconClass 'multiplicative') tooltip="AH.STATUS.MODIFIER.Multiplicative" value=value.mp.multiplicative }}
+    </div>
+
   </div>
 </fieldset>

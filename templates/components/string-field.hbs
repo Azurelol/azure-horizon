@@ -1,5 +1,10 @@
-<label class="ah-field">
-  <span>{{localize label}}</span>
+<label class="ah-field" data-tooltip="{{tooltip}}">
+  {{#if label}}
+    <span>{{localize label}}</span>
+  {{/if}}
+  {{#if icon}}
+    <i class="ah-icon --xs {{icon}}"></i>
+  {{/if}}
   {{#if options}}
     <select name="{{path}}">
       {{#if blank}}

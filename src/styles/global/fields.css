@@ -52,6 +52,10 @@
   flex-direction: column;
   gap: 8px;
 
+  .ah-field-group__header {
+    font-size: var(--ah-font-weight-bold);
+  }
+
   &.--row {
     flex-direction: row;
     justify-content: space-between;

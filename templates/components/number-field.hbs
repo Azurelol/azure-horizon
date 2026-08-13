@@ -1,0 +1,13 @@
+<label class="ah-field" data-tooltip="{{tooltip}}">
+  {{#if label}}
+    <span>{{localize label}}</span>
+  {{/if}}
+  {{#if icon}}
+    <i class="ah-icon --xs {{icon}}"></i>
+  {{/if}}
+  <input
+    type="number"
+    name="{{path}}"
+    value="{{value}}"
+  />
+</label>

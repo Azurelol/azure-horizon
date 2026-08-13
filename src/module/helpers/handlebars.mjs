@@ -31,6 +31,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   field: systemTemplatePath("components/field"),
   arrayField: systemTemplatePath("components/array-field"),
   stringField: systemTemplatePath("components/string-field"),
+  numberField: systemTemplatePath("components/number-field"),
   booleanField: systemTemplatePath("components/boolean-field"),
   traitsField: systemTemplatePath("components/traits-field"),
 });
@@ -194,6 +195,17 @@ export default Object.freeze({
      */
     Handlebars.registerHelper("ahStringField", function (options) {
       return getTemplateString(COMPONENT_TEMPLATES.stringField, {
+        ...options.hash,
+      });
+    });
+    /**
+     * @typedef AH_NumberFieldOptions
+     * @property label
+     * @property path
+     * @property value
+     */
+    Handlebars.registerHelper("ahNumberField", function (options) {
+      return getTemplateString(COMPONENT_TEMPLATES.numberField, {
         ...options.hash,
       });
     });

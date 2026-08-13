@@ -458,6 +458,7 @@
       "Origin": "Origin",
       "Theme": "Theme",
       "Anchor": "Anchor",
+      "Benefits": "Benefits",
       "Role": "Role",
       "Rank": "Rank",
       "Turns": "Turns",
@@ -547,6 +548,7 @@
       "Adversaries": "Adversaries"
     },
     "STATUS": {
+      "Modifier": "Modifier",
       "MODIFIER": {
         "Status": "Status",
         "Equipment": "Equipment",
