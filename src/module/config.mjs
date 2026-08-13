@@ -53,20 +53,14 @@ export function getFormSelectOptions(record, format = "long") {
  */
 
 /**
- * @typedef {'crisis'} AH_StatusEffect
- * System-specific status effects.
- */
-
-AH.statusEffects = Object.freeze({
-  crisis: "AH.STATUS.Crisis",
-});
-
-/**
  * Default system values for various important properties.
  * @type {Record<string, *>}
- * @property damage.bonus
  */
 AH.defaults = {
+  attribute: {
+    min: 4,
+    max: 20,
+  },
   damage: {
     bonus: 5,
   },
@@ -84,6 +78,15 @@ AH.modifiers = Object.freeze({
   skill: { label: "AH.STATUS.MODIFIER.Skill" },
   equipment: { label: "AH.STATUS.MODIFIER.Equipment" },
   situation: { label: "AH.STATUS.MODIFIER.Situation" },
+});
+
+/**
+ * @typedef {'crisis'} AH_StatusEffect
+ * System-specific status effects.
+ */
+
+AH.statusEffects = Object.freeze({
+  crisis: "AH.STATUS.Crisis",
 });
 
 /**
@@ -698,7 +701,6 @@ AH.traits = {
     construct: { label: "AH.ADVERSARY.FAMILY.Construct" }, // Engineered
     elemental: { label: "AH.ADVERSARY.FAMILY.Elemental" },
     plant: { label: "AH.ADVERSARY.FAMILY.Plant" },
-
   },
   action: {
     attack: { label: "AH.TRAIT.Attack", tooltip: "AH.TRAIT.AttackHint" },
@@ -727,6 +729,7 @@ AH.traits = {
 
   attack: {
     stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
+    reach: { label: "AH.TRAIT.Reach", tooltip: "AH.TRAIT.ReachHint" },
   },
   defense: {
     deflection: { label: "AH.TRAIT.Deflection", tooltip: "AH.TRAIT.DeflectionHint" }, // Heavy

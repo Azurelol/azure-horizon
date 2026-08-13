@@ -1,0 +1,55 @@
+{
+  "folder": "DASkk42JOdNmJEYV",
+  "name": "Tusk",
+  "type": "attack",
+  "_id": "KQKI6YOOirP37jto",
+  "img": "icons/creatures/mammals/ox-bull-horned-glowing-orange.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "attack-tusk",
+    "description": "",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def",
+      "bonus": ""
+    },
+    "range": "melee",
+    "traits": [],
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "",
+        "type": "piercing"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786632266872,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!KQKI6YOOirP37jto"
+}

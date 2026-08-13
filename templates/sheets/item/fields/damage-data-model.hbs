@@ -10,7 +10,5 @@
     {{ahStringField path=(ahConcat path '.secondary.amount') label="AH.COMMON.Amount" value=value.secondary.amount }}
   </div>
 
-  {{ahStringField path=(ahConcat path '.power') label="AH.FIELD.Power" value=value.power blank=true options=(ahFormOptions 'power') }}
-
   {{ahTraitsField schema=field.fields.traits path=(ahConcat path '.traits') label="AH.COMMON.Traits" value=value.traits options=(ahFormOptions 'traits.damage')}}
 {{/ahOptionalFieldset}}

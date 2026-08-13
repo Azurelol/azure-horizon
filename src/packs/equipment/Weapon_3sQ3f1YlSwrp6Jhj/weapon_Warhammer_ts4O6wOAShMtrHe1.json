@@ -1,0 +1,57 @@
+{
+  "folder": "3sQ3f1YlSwrp6Jhj",
+  "name": "Warhammer",
+  "type": "weapon",
+  "_id": "ts4O6wOAShMtrHe1",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/warhammer.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "warhammer",
+    "description": "",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "mig",
+      "secondary": "mig",
+      "defense": "def",
+      "bonus": ""
+    },
+    "range": "melee",
+    "damage": {
+      "power": "",
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "5",
+        "type": "bludgeoning"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "handedness": "one",
+    "traits": []
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786628857111,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!ts4O6wOAShMtrHe1"
+}

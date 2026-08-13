@@ -1,0 +1,57 @@
+{
+  "folder": "VhlcaMe6gctxzSqF",
+  "name": "Shadow Bolt",
+  "type": "attack",
+  "_id": "6KFrtGapb6GPfcr6",
+  "img": "icons/magic/unholy/projectile-bullet-orb-pink.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "attack-shadow-bolt",
+    "description": "",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "ins",
+      "secondary": "wlp",
+      "defense": "mdef",
+      "bonus": ""
+    },
+    "range": "melee",
+    "traits": [
+      "stress"
+    ],
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "",
+        "type": "dark"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786632642140,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!6KFrtGapb6GPfcr6"
+}

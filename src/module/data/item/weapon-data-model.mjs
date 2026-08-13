@@ -1,6 +1,8 @@
 import AttackDataModel from "./attack-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
-import { TraitsField } from "./fields/_module.mjs";
+import { DamageDataModel, TraitsField } from "./fields/_module.mjs";
+import FeatureDataModel from "./feature-data-model.mjs";
+import { FoundryUtils } from "../../utils/_module.mjs";
 
 /**
  * Represents a hero's weapon, used for performing basic attacks and with some skills.
@@ -9,10 +11,10 @@ import { TraitsField } from "./fields/_module.mjs";
  * @property {AH_Handedness} handedness
  * @property {AH_WeaponTrait[]} traits
  */
-export default class WeaponDataModel extends AttackDataModel {
+export default class WeaponDataModel extends FeatureDataModel {
   /** @inheritdoc */
   static defineSchema() {
-    const { SchemaField, StringField } = foundry.data.fields;
+    const { SchemaField, EmbeddedDataField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       handedness: new StringField({
         initial: "one",
@@ -24,6 +26,9 @@ export default class WeaponDataModel extends AttackDataModel {
         label: "AH.FIELD.Traits",
         options: getFormSelectOptions(AH.traits.weapon),
       }),
+      damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
+        enabled: true,
+      })),
     });
   }
 }

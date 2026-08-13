@@ -86,7 +86,7 @@ export default class HeroDataModel extends CharacterDataModel {
 
     const updates = foundry.utils.mergeObject({
       prototypeToken: {
-        actorLink: true,
+        actorLink: true, 
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
       },
     }, data, { insertKeys: false, insertValues: false, inplace: false });

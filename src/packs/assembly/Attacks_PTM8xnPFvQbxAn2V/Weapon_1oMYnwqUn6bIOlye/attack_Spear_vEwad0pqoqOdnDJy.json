@@ -1,0 +1,57 @@
+{
+  "folder": "1oMYnwqUn6bIOlye",
+  "name": "Spear",
+  "type": "attack",
+  "_id": "vEwad0pqoqOdnDJy",
+  "img": "icons/weapons/polearms/glaive-simple.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "attack-spear",
+    "description": "",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def",
+      "bonus": ""
+    },
+    "range": "melee",
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "",
+        "type": "piercing"
+      },
+      "secondary": {
+        "amount": "",
+        "type": "piercing"
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "traits": [
+      "reach"
+    ]
+  },
+  "effects": [],
+  "sort": 150000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786631578884,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!vEwad0pqoqOdnDJy"
+}

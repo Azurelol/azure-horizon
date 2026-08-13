@@ -61,8 +61,8 @@
       "type": "JournalEntry"
     },
     {
-      "name": "features",
-      "label": "AH.COMPENDIUM.features",
+      "name": "assembly",
+      "label": "AH.COMPENDIUM.assembly",
       "type": "Item"
     },
     {
@@ -80,7 +80,7 @@
     {
       "name": "Azure Horizon System",
       "color": "#3d598b",
-      "packs": ["classes", "equipment", "spells", "effects", "journals", "features", "adversaries" ]
+      "packs": ["classes", "equipment", "spells", "effects", "journals", "assembly", "adversaries" ]
     }
   ],
   "manifest": "https://github.com/Azurelol/azure-horizon/releases/latest/download/system.json",

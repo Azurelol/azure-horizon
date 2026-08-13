@@ -1,0 +1,57 @@
+{
+  "folder": "VhlcaMe6gctxzSqF",
+  "name": "Daze",
+  "type": "attack",
+  "_id": "6z0xM1ESuufGHJwK",
+  "img": "icons/magic/unholy/orb-beam-pink.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "attack-daze",
+    "description": "",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "wlp",
+      "bonus": ""
+    },
+    "range": "ranged",
+    "traits": [
+      "stress"
+    ],
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "",
+        "type": "dark"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786632687899,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!6z0xM1ESuufGHJwK"
+}

@@ -1,5 +1,6 @@
 import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
+import AH from "../../../config.mjs";
 
 /**
  * @typedef WeaponUsageData
@@ -10,6 +11,7 @@ import { systemTemplatePath } from "../../../constants.mjs";
 /**
  * @property {Boolean} check Replace the check attributes.
  * @property {Boolean} damage Append the damage components.
+ * @property {AH_Power} power
  */
 export default class WeaponUsageDataModel extends FieldsetDataModel {
   /** @inheritdoc */
@@ -18,6 +20,7 @@ export default class WeaponUsageDataModel extends FieldsetDataModel {
     return Object.assign(super.defineSchema(), {
       check: new BooleanField({ initial: false }),
       damage: new BooleanField({ initial: false }),
+      power: new StringField({ initial: "", blank: true, choices: Object.keys(AH.power), nullable: false }),
     });
   }
 
@@ -33,5 +36,15 @@ export default class WeaponUsageDataModel extends FieldsetDataModel {
       check: this.check,
       damage: this.damage,
     });
+    if (this.damage) {
+      if (this.power) {
+        config.modifyDamage(d => {
+          d.modify("universal", {
+            key: "skill",
+            multiplicative: AH.power[this.power].value,
+          });
+        });
+      }
+    }
   }
 }

@@ -3,6 +3,7 @@ import AH from "../config.mjs";
 import { statusEffects } from "../data/effect/_module.mjs";
 import { FlagBuilder } from "../helpers/_module.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
+import { ObjectUtils } from "../utils/_module.mjs";
 
 /**
  * @typedef ActorData
@@ -66,6 +67,9 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
       if (this.isCharacterType && changed.system) {
         // If the level was changed, reset resources?
         if ("level" in changed.system) {
+          // TODO: Fix to execute after calculation
+          const restData = this.#calculateRest("long");
+          ObjectUtils.mergeObject(changed, restData);
         }
       }
     }
@@ -279,12 +283,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
   /*-------------------------------------------------------------------------*/
 
-  /**
-   * @param {AH_RestType} type
-   * @return Promise
-   */
-  async rest(type = "long") {
-
+  #calculateRest(type) {
     let hp, mp, tp, ip;
 
     const mhp = this.system.resources.hp?.max;
@@ -332,7 +331,15 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     if (ip !== undefined) {
       updateData["system.resources.ip.value"] = ip;
     }
+    return updateData;
+  }
 
+  /**
+   * @param {AH_RestType} type
+   * @return Promise
+   */
+  async rest(type = "long") {
+    const updateData = this.#calculateRest(type);
     await this.update(updateData);
   }
 }

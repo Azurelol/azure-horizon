@@ -28,6 +28,15 @@ export default class ObjectUtils {
   }
 
   /**
+   * @param {Object} object
+   * @param {Object} changes
+   * @remarks Mutates the original.
+   */
+  static mergeObject(object, changes) {
+    return foundry.utils.mergeObject(object, changes);
+  }
+
+  /**
    * @param {*} data
    * @returns {Object}
    */

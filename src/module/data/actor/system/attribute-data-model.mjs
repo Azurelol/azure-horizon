@@ -1,5 +1,6 @@
 import { VersionedDataModel } from "../../api/_module.mjs";
 import { MathUtils } from "../../../utils/_module.mjs";
+import AH from "../../../config.mjs";
 
 /**
  * Represents an attribute die for a character.
@@ -8,13 +9,12 @@ import { MathUtils } from "../../../utils/_module.mjs";
  */
 export default class AttributeDataModel extends VersionedDataModel {
 
-  static MINIMUM_VALUE = 4;
-  static MAXIMUM_VALUE = 12;
-
   static defineSchema() {
     const { NumberField } = foundry.data.fields;
     return {
-      base: new NumberField({ initial: 8, min: AttributeDataModel.MINIMUM_VALUE, max: AttributeDataModel.MAXIMUM_VALUE,
+      base: new NumberField({ initial: AH.defaults.attribute.min,
+        min: AH.defaults.attribute.min,
+        max: AH.defaults.attribute.max,
         integer: true, nullable: false, validate: MathUtils.isEven }),
       bonus: new NumberField({ integer: true, initial: 0 }),
     };

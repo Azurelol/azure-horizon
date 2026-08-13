@@ -1,0 +1,55 @@
+{
+  "folder": "VhlcaMe6gctxzSqF",
+  "name": "Fire Bolt",
+  "type": "attack",
+  "_id": "P9e4VHiZ49MTgN1n",
+  "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "attack-fire-bolt",
+    "description": "",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "ins",
+      "secondary": "wlp",
+      "defense": "mdef",
+      "bonus": ""
+    },
+    "range": "ranged",
+    "traits": [],
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "",
+        "type": "fire"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786632530160,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!P9e4VHiZ49MTgN1n"
+}
