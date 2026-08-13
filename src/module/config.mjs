@@ -197,7 +197,7 @@ AH.resourceTypes = {
  * @typedef {'attack'|'defend'|'skill'|'spell'|'inventory'|'equipment'|'objective'} AH_ActionType
  */
 
-AH.actionTypes = Object.freeze({
+AH.actions = Object.freeze({
   attack: { label: "AH.ACTION.Attack" },
   defend: { label: "AH.ACTION.Defend" },
   skill: { label: "AH.ACTION.Skill" },
@@ -205,6 +205,15 @@ AH.actionTypes = Object.freeze({
   inventory: { label: "AH.ACTION.Inventory" },
   equipment: { label: "AH.ACTION.Equipment" },
   objective: { label: "AH.ACTION.Objective" },
+});
+
+/**
+ * @typedef {'action'|'reaction'} AH_ActionType
+ */
+
+AH.actionTypes = Object.freeze({
+  action: { label: "AH.ACTION.Action" },
+  reaction: { label: "AH.ACTION.Reaction" },
 });
 
 /**

@@ -450,6 +450,8 @@
       "SelectorHint": "Determines which characters is the rule element executed on.",
       "Current": "Current",
       "Maximum": "Maximum",
+      "CurrentLevel": "LVL",
+      "MaximumLevel": "LVL MAX",
       "Light": "Light",
       "Heavy": "Heavy",
       "Traits": "Traits",

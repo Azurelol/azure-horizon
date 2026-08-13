@@ -362,7 +362,22 @@ export default class FoundryUtils {
         continue;
       }
       const fieldPath = `${path}.${field.name}`;
-      if (!field.recursive && (SUPPORTED_FIELD_NAMES.has(field.constructor.name) || SYSTEM_FIELD_NAMES.has(field.constructor.name))) {
+      // Support 1-level nested schema fields (which are very common)
+      if (field.constructor.name === "SchemaField") {
+        const schemaFields = Object.values(field.fields);
+        for (const sf of schemaFields) {
+          const sfieldInfo = this.getDataFieldInfo(source, `${fieldPath}.${sf.name}`, sf);
+          switch (sf.options?._part) {
+            case "header":
+              layout.header.push(sfieldInfo);
+              break;
+            case "properties":
+              layout.default.push(sfieldInfo);
+              break;
+          }
+        }
+      }
+      else if (!field.recursive && (SUPPORTED_FIELD_NAMES.has(field.constructor.name) || SYSTEM_FIELD_NAMES.has(field.constructor.name))) {
         let fieldInfo = this.getDataFieldInfo(source, fieldPath, field);
         // Custom rendering targets for the system
         if (field.options?._part === "header") {
