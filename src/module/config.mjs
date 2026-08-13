@@ -91,10 +91,10 @@ AH.modifiers = Object.freeze({
  */
 
 AH.power = Object.freeze({
-  light: { label: "AH.ACTION.POWER.Light", value: 1.2 },
-  medium: { label: "AH.ACTION.POWER.Medium", value: 1.4 },
-  heavy: { label: "AH.ACTION.POWER.Heavy", value: 1.6 },
-  massive: { label: "AH.ACTION.POWER.Massive", value: 2 },
+  low: { label: "AH.ACTION.POWER.Low", value: 1.2 },
+  medium: { label: "AH.ACTION.POWER.Moderate", value: 1.4 },
+  high: { label: "AH.ACTION.POWER.High", value: 1.6 },
+  extreme: { label: "AH.ACTION.POWER.Extreme", value: 2 },
 });
 
 /**

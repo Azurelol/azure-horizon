@@ -1,6 +1,8 @@
 <div class="ah-inline-property" data-tooltip="{{ahLocaleKey record key}}">
   <i class="ah-icon --s {{ahIconClass key}}"></i>
-  <span class="ah-inline-property__name">{{localize (ahLocaleKey record key format='short')}}</span>
+  {{#if label}}
+    <span class="ah-inline-property__name">{{localize (ahLocaleKey record key format='short')}}</span>
+  {{/if}}
   {{#if value}}
     <span class="ah-inline-property__value">{{value}}</span>
   {{/if}}

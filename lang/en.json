@@ -553,8 +553,11 @@
         "Powerful": "Powerful"
       },
       "POWER": {
+        "Low": "Low",
         "Light": "Light",
         "Medium": "Medium",
+        "Moderate": "Moderate",
+        "High": "High",
         "Heavy": "Heavy",
         "Severe": "Severe",
         "Massive": "Massive",

@@ -30,6 +30,7 @@
  * @property {Number} amount The sum total of addends and added modifiers.
  * @property {Number[]} addends
  * @property {ParameterModifier[]} modifiers
+ * @property {String} tooltip
  * @property {String[]} traits
  */
 
@@ -185,6 +186,18 @@ export default class DamageData {
     for (const inst of instances) {
       inst.modifiers = this.resolve(inst.type) ?? [];
       inst.amount = Formulas.applyDamageModifiers(inst.amount, inst.modifiers);
+      let tooltip = `${inst.addends.map(a => a).join(" + ")}`;
+      if (inst.modifiers.length > 0) {
+        for (const modifier of inst.modifiers) {
+          if (modifier.additive) {
+            tooltip += ` + ${modifier.additive}`;
+          }
+          if (modifier.multiplicative) {
+            tooltip += ` * ${modifier.multiplicative}`;
+          }
+        }
+      }
+      inst.tooltip = tooltip;
     }
     return instances;
   }
@@ -197,6 +210,7 @@ export default class DamageData {
     const total = active.reduce((sum, inst) => sum + inst.amount, 0);
     return {
       total: total,
+      modifiers: active.map(a => a.modifiers).flat(),
       instances: active,
     };
   }

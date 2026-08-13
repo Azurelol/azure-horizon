@@ -264,17 +264,20 @@ const onProcessAction = (config, actor, item, registerCallback) => {
 
     if (config.isCheck) {
       config.setPotencies((potencies) => {
+        // Standard
         const standardDamage = new DamageData(config.damage);
         const standard = getChatAction(standardDamage, sourceInfo, traits, false);
         potencies.standard.components.push({
           text: standardDamage.toString(),
           actions: [standard],
         });
+        const total = standardDamage.resolved.total;
 
+        // Reduced
         const reducedDamage = standardDamage.duplicate(d => {
           const base = d.base;
           d.clear();
-          d.add("AH.DAMAGE.Glancing", base.type, Math.round(base.amount * 0.5));
+          d.add("AH.DAMAGE.Glancing", base.type, Math.ceil(total * 0.5));
         });
         const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, false);
         potencies.reduced.components.push({
@@ -282,6 +285,7 @@ const onProcessAction = (config, actor, item, registerCallback) => {
           actions: [reducedAction],
         });
 
+        // Powerful
         const powerfulDamage = standardDamage.duplicate(d => {
           const criticalBonus = d.base.amount * 2;
           d.add("AH.PIPELINE.CriticalBonus", "untyped", criticalBonus);

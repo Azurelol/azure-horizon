@@ -38,6 +38,13 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
     });
   }
 
+  static migrateData(source) {
+    if (!(source.power in AH.power)) {
+      source.power = "";
+    }
+    return super.migrateData(source);
+  }
+
   /**
    * @param {ActionConfig} config
    */
