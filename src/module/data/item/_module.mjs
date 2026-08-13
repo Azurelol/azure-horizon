@@ -10,17 +10,18 @@ import * as fields from "./fields/_module.mjs";
 import ArmorDataModel from "./armor-data-model.mjs";
 import AccessoryDataModel from "./accessory-data-model.mjs";
 import ClassFeatureDataModel from "./class-feature-data-model.mjs";
+import AbilityDataModel from "./ability-data-model.mjs";
 
 const dataModels = Object.freeze({
   base: ItemDataModel,
 
   attack: AttackDataModel,
-
-  spell: SpellDataModel,
+  ability: AbilityDataModel,
 
   class: ClassDataModel,
   skill: SkillDataModel,
   classFeature: ClassFeatureDataModel,
+  spell: SpellDataModel,
 
   weapon: WeaponDataModel,
   armor: ArmorDataModel,

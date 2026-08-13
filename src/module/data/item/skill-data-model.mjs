@@ -7,7 +7,7 @@ import { isActorType } from "../../constants.mjs";
 /**
  * Skills belong to character classes and are selected and upgraded during a character's advancement
  * @inheritDoc
- * @extends FeatureDataModel
+ * @extends ActiveFeatureDataModel
  * @property {String} class The slug of the class this skill belongs to.
  * @property {Number} level.current
  * @property {Number} level.max

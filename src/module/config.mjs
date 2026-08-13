@@ -208,6 +208,23 @@ AH.actionTypes = Object.freeze({
 });
 
 /**
+ * @typedef {'attack'|'debuff'|'buff'|'heal'}  AH_Intent
+ */
+
+AH.intents = Object.freeze({
+  attack: { label: "AH.ADVERSARY.INTENT.Attack" }, // Base attack
+  fortify: { label: "AH.ADVERSARY.INTENT.Fortify" }, // Defensive buff
+  empower: { label: "AH.ADVERSARY.INTENT.Empower" }, // Offensive buff
+  damage: { label: "AH.ADVERSARY.INTENT.Damage" }, // Damaging ability
+  prepare: { label: "AH.ADVERSARY.INTENT.Prepare" }, // Prepare an action
+  afflict: { label: "AH.ADVERSARY.INTENT.Afflict" }, // Status affliction
+  control: { label: "AH.ADVERSARY.INTENT.Control" }, // Controlling ability
+  heal: { label: "AH.ADVERSARY.INTENT.Heal" }, // Heal self
+  escape: { label: "AH.ADVERSARY.INTENT.Escape" }, // Escape combat
+  summon: { label: "AH.ADVERSARY.INTENT.Summon" }, // Summon minion
+});
+
+/**
  * Provided defaults for the party codex.
  * @type {{tags: {character: string, location: string, event: string}}}
  */

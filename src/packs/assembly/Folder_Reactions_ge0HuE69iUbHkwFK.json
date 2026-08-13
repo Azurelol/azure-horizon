@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": null,
   "name": "Reactions",
-  "color": "#ff8000",
+  "color": "#ff8040",
   "sorting": "a",
   "_id": "ge0HuE69iUbHkwFK",
   "description": "",
-  "sort": 0,
+  "sort": 500000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

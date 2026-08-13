@@ -6,6 +6,7 @@
       "spells": "Spells",
       "journals": "System Journals",
       "tables": "Roll Tables",
+      "heroes": "Heroes",
       "adversaries": "Adversaries",
       "features": "Features",
       "effects": "Effects",
@@ -44,6 +45,7 @@
       "SchemaVersion": "SchemaVersion",
       "Description": "Description",
       "Attack": "Attack",
+      "Ability": "Ability",
       "Skill": "Skill",
       "Weapon": "Weapon",
       "Spell": "Spell",
@@ -159,6 +161,19 @@
         "Monster": "Monster",
         "Elemental": "Elemental",
         "Plant": "Plant"
+      },
+      "Intent": "Intent",
+      "INTENT": {
+        "Attack": "Attack",
+        "Heal": "Heal",
+        "Empower": "Empower",
+        "Fortify": "Fortify",
+        "Escape": "Escape",
+        "Prepare": "Prepare",
+        "Control": "Control",
+        "Summon": "Summon",
+        "Afflict": "Afflict",
+        "Damage": "Damage"
       }
     },
     "CHECK": {
@@ -620,7 +635,8 @@
       "skill": "Skill",
       "classFeature": "Class Feature",
       "spell": "Spell",
-      "consumable": "Consumable"
+      "consumable": "Consumable",
+      "ability": "Ability"
     },
     "Combatant": {
       "player": "Player"

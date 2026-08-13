@@ -5,7 +5,7 @@ import { ActionConfig } from "../../helpers/action-configuration.mjs";
 import { Actions } from "../../pipelines/_module.mjs";
 
 /**
- * A feature includes actions that can be performed by NPCs.
+ * A character-facing feature.
  * @property {CheckDataModel} check
  */
 export default class FeatureDataModel extends ItemDataModel {

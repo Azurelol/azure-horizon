@@ -1,0 +1,78 @@
+{
+  "folder": "epeyf7fvrv3mOIwh",
+  "name": "Grab",
+  "type": "ability",
+  "_id": "jOxT3nj8KsqPEuRN",
+  "img": "icons/creatures/claws/claw-talons-glowing-purple.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "ability-grab",
+    "description": "<p>You attack the target with the intent to grab them.</p>",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "mig",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "",
+        "type": "bludgeoning"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "entries": [
+        "grabbed"
+      ],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "intent": ""
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786644981925,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!jOxT3nj8KsqPEuRN"
+}

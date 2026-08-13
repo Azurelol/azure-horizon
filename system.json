@@ -56,6 +56,11 @@
       "type": "Item"
     },
     {
+      "name": "effects",
+      "label": "AH.COMPENDIUM.effects",
+      "type": "ActiveEffect"
+    },
+    {
       "name": "journals",
       "label": "AH.COMPENDIUM.journals",
       "type": "JournalEntry"
@@ -66,21 +71,22 @@
       "type": "Item"
     },
     {
-      "name": "adversaries",
-      "label": "AH.COMPENDIUM.adversaries",
+      "name": "heroes",
+      "label": "AH.COMPENDIUM.heroes",
       "type": "Actor"
     },
     {
-      "name": "effects",
-      "label": "AH.COMPENDIUM.effects",
-      "type": "ActiveEffect"
+      "name": "adversaries",
+      "label": "AH.COMPENDIUM.adversaries",
+      "type": "Actor"
     }
+
   ],
   "packFolders": [
     {
       "name": "Azure Horizon System",
       "color": "#3d598b",
-      "packs": ["classes", "equipment", "spells", "effects", "journals", "assembly", "adversaries" ]
+      "packs": ["classes", "equipment", "spells", "effects", "journals", "assembly", "adversaries", "heroes" ]
     }
   ],
   "manifest": "https://github.com/Azurelol/azure-horizon/releases/latest/download/system.json",
@@ -103,7 +109,8 @@
       "spell": {},
       "class": {},
       "consumable": {},
-      "attack": {}
+      "attack": {},
+      "ability": {}
     }
   },
   "flags": {

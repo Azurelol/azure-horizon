@@ -6,7 +6,7 @@ import ResourceDataModel from "./fields/resource-data-model.mjs";
 import { ActionCostDataModel } from "./fields/action-cost-data-model.mjs";
 
 /**
- * Represents a damaging action in the system.
+ * Represents an action in the system.
  * @property {CheckDataModel} check
  * @property {DamageDataModel} damage
  * @property {ResourceDataModel} resource

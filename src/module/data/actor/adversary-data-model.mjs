@@ -30,7 +30,7 @@ export default class AdversaryDataModel extends CharacterDataModel {
   /**
    * @type {Set<AH_ItemType>}
    */
-  static ITEM_TYPES = new Set(["attack"]);
+  static ITEM_TYPES = new Set(["attack", "ability"]);
 
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
