@@ -1,1 +1,1 @@
-export { AHCombatTracker } from "./AHCombatTracker.mjs";
+export { AHCombatTracker } from "./combat-tracker.mjs";

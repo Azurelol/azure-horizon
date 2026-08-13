@@ -7,24 +7,49 @@
     }
   }
 
-  li.combatant {
-    margin: 8px;
+  .combat-tracker {
 
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    li.combatant {
+      margin: 8px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
 
-    &.active {
-      transform: scale(1.03);
-      box-shadow: 0 0 0 1px var(--ah-border-active),
-      0 0 12px 2px var(--ah-glow-active);
-      z-index: 1;
+      &.active {
+        transform: scale(1.03);
+        box-shadow: 0 0 0 1px var(--ah-border-active),
+        0 0 12px 2px var(--ah-glow-active);
+        z-index: 1;
+      }
+
+      &.adversary {
+        background: var(--ah-adversary-background);
+
+        img.token-image {
+          &.elite {
+            /*border: 2px solid var(--ah-elite-border);*/
+          }
+
+          &.champion {
+            /*border: 3px double var(--ah-champion-border);*/
+          }
+        }
+      }
+
+      &.hero {
+        background: var(--ah-hero-background);
+        .token-image-wrapper {
+          /*border: 2px solid var(--ah-hero-border);*/
+        }
+        img.token-image {
+        }
+      }
     }
 
-    &.adversary {
-      background: var(--ah-adversary-background);
-    }
-
-    &.hero {
-      background: var(--ah-hero-background);
+    .token-initiative {
+      span {
+        display: none;
+      }
     }
   }
+
+
 }

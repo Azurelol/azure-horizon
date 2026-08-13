@@ -525,7 +525,9 @@
       "Options": "Options",
       "Usage": "Usage",
       "Check": "Check",
-      "Settings": "Settings"
+      "Settings": "Settings",
+      "Heroes": "Heroes",
+      "Adversaries": "Adversaries"
     },
     "STATUS": {
       "MODIFIER": {
@@ -583,7 +585,8 @@
       "ResourceLoss": "Loss"
     },
     "COMBAT": {
-      "FirstTurn": "First Turn"
+      "FirstTurn": "First Turn",
+      "InitiativeHint": "Initiative will be rolled for all characters at the start of the round."
     }
   },
   "TYPES": {

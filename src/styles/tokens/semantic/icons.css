@@ -269,5 +269,11 @@
     background-size: 75%;
   }
 
+  --ah-icon-ui-more: url("../../../../assets/icons/ui/more.svg");
+
+  .ah-icon-more {
+    background-image: var(--ah-icon-ui-more);
+  }
+
 
 }
