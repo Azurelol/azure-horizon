@@ -70,7 +70,7 @@ AH.defaults = {
 };
 
 /**
- * @typedef {'status'|'equipment'|'situation'} AH_Modifier
+ * @typedef {'status'|'skill'|'equipment'|'situation'} AH_Modifier
  */
 
 AH.modifiers = Object.freeze({

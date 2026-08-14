@@ -73,6 +73,11 @@ export default class CharacterDataModel extends ActorDataModel {
     this.parameters.def.defineCurrentProperty(() => Formulas.calculateDefense(data.attributes));
     this.parameters.mdef.defineCurrentProperty(() => Formulas.calculateMagicDefense(data.attributes));
     this.parameters.init.defineCurrentProperty(() => Formulas.calculateInitiative(data.attributes));
+
+    // Add entries from affinities
+    for (const aff of this.affinities.entries) {
+
+    }
   }
 
   /**
