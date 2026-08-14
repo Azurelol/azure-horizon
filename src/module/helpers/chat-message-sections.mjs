@@ -10,13 +10,12 @@ export const ChatSectionOrder = Object.freeze({
   flavor: Number.NaN,
   tags: -3000,
   tracker: -2500,
-  details: -2000,
-  reroll: -1100,
   check: -1000,
-  potencies: 1200,
   damage: -900,
-  push: -1200,
-  addendum: -900,
+  description: 0,
+  outcome: 700,
+  push: 500,
+  addendum: 900,
   result: 1000,
   targets: 1500,
   actions: 2000,
@@ -72,7 +71,7 @@ export const ChatMessageSections = Object.freeze({
    * @param {AH_Tag[]} tags
    * @param {number} [order]
    */
-  tags: (sections, tags = [], order = ChatSectionOrder.details) => {
+  tags: (sections, tags = [], order = ChatSectionOrder.tags) => {
     tags = tags.filter((tag) => !("show" in tag) || tag.show);
     if (tags.length > 0) {
       sections.push(async () => ({
@@ -118,7 +117,7 @@ export const ChatMessageSections = Object.freeze({
    * @param {string, Promise<string>} text
    * @param {number} [order]
    */
-  text: (sections, text, order) => {
+  text: (sections, text, order = ChatSectionOrder.description) => {
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.text,
       data: {
@@ -183,7 +182,7 @@ export const ChatMessageSections = Object.freeze({
    * @param {ActionPotencyTable} potencies
    * @param {number} [order]
    */
-  potencies: (sections, potencies, order = ChatSectionOrder.potencies) => {
+  potencies: (sections, potencies, order = ChatSectionOrder.outcome) => {
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.potencies,
       data: {

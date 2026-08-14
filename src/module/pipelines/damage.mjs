@@ -182,7 +182,7 @@ async function process(request) {
 function getChatAction(damageData, sourceInfo, traits, includeLabel = true) {
   const icon = AH.icons.damage;
   const resolved = damageData.resolved;
-  const tooltip = StringUtils.localize("AH.ACTION.ApplyDamageTooltip", {
+  const tooltip = StringUtils.localize("AH.CHAT.ACTION.ApplyDamageTooltip", {
     amount: resolved.total,
     type: StringUtils.localize(AH.damageTypes[damageData.type]),
   });
@@ -196,7 +196,7 @@ function getChatAction(damageData, sourceInfo, traits, includeLabel = true) {
     .withTraits(traits)
     .requiresOwner();
   if (includeLabel) {
-    action.withLabel("AH.ACTION.ApplyDamage");
+    action.withLabel("AH.CHAT.ACTION.ApplyDamage");
   }
   return action;
 }

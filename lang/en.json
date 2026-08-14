@@ -565,13 +565,23 @@
       "Crisis": "Crisis",
       "KO": "KO",
       "Bleed": "Bleed",
-      "Poison": "Poison"
+      "Poison": "Poison",
+      "Grab": "Grab",
+      "Berserk": "Berserk",
+      "Freeze": "Freeze",
+      "Delay": "Delay",
+      "Daze": "Daze",
+      "Stun": "Stun",
+      "Chill": "Chill"
     },
     "ACTION": {
       "Action": "Action",
       "Reaction": "Reaction",
       "POTENCY": {
         "Tier": "Tier",
+        "Partial": "Partial",
+        "Success": "Success",
+        "Critical": "Critical",
         "Standard": "Standard",
         "Reduced": "Reduced",
         "Powerful": "Powerful"
@@ -602,14 +612,16 @@
       "Objective": "Objective",
       "Swap": "Swap",
       "Inventory": "Inventory",
-      "ApplyDamage": "Apply Damage",
-      "ApplyDamageTooltip": "Apply damage to selected tokens.",
       "Equip": "Equip",
       "Unequip": "Unequip"
     },
     "CHAT": {
-      "ApplySelected": "Apply to selected token.",
-      "ApplyEffect": "Apply {effect}",
+      "ACTION": {
+        "ApplySelected": "Apply to selected token.",
+        "ApplyDamage": "Apply Damage",
+        "ApplyDamageTooltip": "Apply damage to selected tokens.",
+        "ApplyEffect": "Apply {effect}"
+      },
       "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "ResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "ResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",

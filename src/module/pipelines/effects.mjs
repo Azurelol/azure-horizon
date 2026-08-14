@@ -125,9 +125,10 @@ function removeEffect(document, source, effect) {
  * @param {String} id An uuid or fuid.
  * @param {SourceInfo} sourceInfo
  * @param {AH_ActiveEffectDuration} duration
+ * @param includeLabel
  * @returns {Promise<ChatAction>}
  */
-async function getChatAction(id, sourceInfo, duration = undefined) {
+async function getChatAction(id, sourceInfo, duration = undefined, includeLabel = true) {
   const effectData = await getEffectData(id);
   let name;
   let icon;
@@ -144,25 +145,25 @@ async function getChatAction(id, sourceInfo, duration = undefined) {
     return null;
   }
 
-  const tooltip = StringUtils.localize("AH.CHAT.ApplyEffectHint", {
-    effect: name,
-  });
-  const label = StringUtils.localize("AH.CHAT.ApplyEffect", {
+  const tooltip = StringUtils.localize("AH.CHAT.ACTION.ApplyEffect", {
     effect: name,
   });
 
-  return new ChatAction("applyEffect", icon, tooltip, {
+  const action = new ChatAction("applyEffect", icon, tooltip, {
     sourceInfo: sourceInfo,
     duration: duration,
   })
     .requiresOwner()
     .setFlag(AH.flags.ChatMessage.Effect)
     .withSelected()
-    .withLabel(label)
     .withImage(img)
     .withDataset({
       ["effect-id"]: id,
     });
+  if (includeLabel) {
+    action.withLabel(tooltip);
+  }
+  return action;
 }
 
 /**
@@ -241,15 +242,50 @@ function onRenderChatMessage(message, html) {
   });
 }
 
+/**
+ * @param {AH_Potency} potency
+ * @param {ApplyEffectData} effectData
+ * @param {SourceInfo} sourceInfo
+ * @returns {Promise<void>}
+ */
+async function getPotencyActions(potency, effectData, sourceInfo) {
+  let actions;
+  switch (potency) {
+    case "reduced":
+      actions = [];
+      break;
+    case "standard":
+      actions = await Promise.all(effectData.entries.map(async e => await getChatAction(e, sourceInfo, effectData.duration, false)));
+      break;
+    case "powerful":
+      actions = await Promise.all(effectData.entries.map(async e => await getChatAction(e, sourceInfo, effectData.duration, false)));
+      break;
+  }
+  return actions;
+}
+
 /** @type ActionProcessCallback **/
 const onProcessAction = async (config, actor, item, registerCallback) => {
   if (config.hasEffects) {
     const effectData = config.effects;
-    for (const id of effectData.entries) {
-      const action = await getChatAction(id, config.sourceInfo, effectData.duration);
-      config.addAction(action);
+    if (config.isCheck) {
+      const standard = await getPotencyActions("standard", effectData, config.sourceInfo);
+      const powerful = await getPotencyActions("powerful", effectData, config.sourceInfo);
+      config.setPotencies(potencies => {
+        potencies.standard.components.push({
+          actions: standard,
+        });
+        potencies.powerful.components.push({
+          actions: powerful,
+        });
+      });
     }
-
+    else {
+      for (const id of effectData.entries) {
+        const action = await getChatAction(id, config.sourceInfo, effectData.duration);
+        config.addAction(action);
+      }
+    }
   }
 };
 

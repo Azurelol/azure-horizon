@@ -8,7 +8,6 @@ import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mj
  * @description Used when rolls are performed.
  * @property {DamageUnit} primary
  * @property {DamageUnit} secondary
-
  * @property {TraitsField} traits
  */
 export default class DamageDataModel extends OptionalFieldsetDataModel {

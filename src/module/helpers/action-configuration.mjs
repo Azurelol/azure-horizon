@@ -28,6 +28,7 @@ const ACTIONS = "actions";
 const KEYBOARD_MODIFIERS = "keyboardModifiers";
 const ACTION_POTENCIES = "actionPotencies";
 const TAGS = "tags";
+const DESCRIPTION = "description";
 
 /**
  * @description Given a {@link CheckResult} object, provides additional information from it
@@ -136,6 +137,13 @@ export class ActionInspector {
    */
   get potencies() {
     return this.data[ACTION_POTENCIES];
+  }
+
+  /**
+   * @returns {String[]}
+   */
+  get description() {
+    return this.data[DESCRIPTION];
   }
 
   /**
@@ -596,6 +604,17 @@ export class ActionConfig extends ActionInspector {
   modifyDifficulty(callback) {
     const difficulty = this.check.data[DIFFICULTY] ?? null;
     this.check.data[DIFFICULTY] = callback(difficulty);
+    return this;
+  }
+
+  /**
+   * @param {String} text
+   * @returns {ActionConfig}
+   */
+  addDescription(text) {
+    const desc = this.description ?? [];
+    desc.push(text);
+    this.setData(DESCRIPTION, desc);
     return this;
   }
 

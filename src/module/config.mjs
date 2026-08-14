@@ -111,6 +111,16 @@ AH.potencies = Object.freeze({
 });
 
 /**
+ * @typedef {'partial'|'success'|'critical'} AH_Outcome
+ */
+
+AH.outcome = Object.freeze({
+  partial: { label: "AH.ACTION.OUTCOME.Partial" },
+  success: { label: "AH.ACTION.OUTCOME.Success" },
+  critical: { label: "AH.ACTION.OUTCOME.Critical" },
+});
+
+/**
  * System themes.
  * @type {Record<String, {label, path}>}
  */
@@ -412,6 +422,14 @@ AH.armorCategories = {
   light: "AH.FIELD.Light",
   heavy: "AH.FIELD.Heavy",
 };
+
+/**
+ * @typedef {'deflection'} AH_ArmorDefense
+ */
+
+AH.armorDefense = Object.freeze({
+  deflection: "AH.FIELD.Deflection",
+});
 
 /**
  * @description How the active effect's duration is tracked
@@ -752,7 +770,6 @@ AH.traits = {
     tp: { label: "AH.TRAIT.TensionPoint", tooltip: "AH.TRAIT.TensionPointHint" },
     ip: { label: "AH.TRAIT.InventoryPoint", tooltip: "AH.TRAIT.InventoryPointHint" },
   },
-
   damage: {
     base: { label: "AH.TRAIT.Base", tooltip: "AH.TRAIT.BaseHint" },
     nonLethal: { label: "AH.TRAIT.NonLethal", tooltip: "AH.TRAIT.NonLethalHint" },
@@ -769,6 +786,7 @@ AH.traits = {
 
   skill: {
     cooldown: { label: "AH.TRAIT.Cooldown", tooltip: "AH.TRAIT.CooldownHint" },
+    assist: { label: "AH.TRAIT.Assist", tooltip: "AH.TRAIT.AssistHint" },
     stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
     opener: { label: "AH.TRAIT.Opener", tooltip: "AH.TRAIT.OpenerHint" },
     closer: { label: "AH.TRAIT.Closer", tooltip: "AH.TRAIT.CloserHint" },
@@ -782,8 +800,11 @@ AH.traits = {
     shield: { label: "AH.TRAIT.Shield", tooltip: "AH.TRAIT.ShieldHint" },
   },
   armor: {
-    // heavy: { label: "AH.TRAIT.Heavy", tooltip: "AH.TRAIT.ARMOR.HeavyHint" },
-    // light: { label: "AH.TRAIT.Light", tooltip: "AH.TRAIT.ARMOR.LightHint" },
+    stable: { label: "AH.TRAIT.Stable", tooltip: "AH.TRAIT.StableHint" }, // Shifting resistance
+    fleet: { label: "AH.TRAIT.Fleet", tooltip: "AH.TRAIT.FleetHint" }, // Improved shifting
+    flexible: { label: "AH.TRAIT.Flexible", tooltip: "AH.TRAIT.FlexibleHint" }, //
+    comfort: { label: "AH.TRAIT.Comfort", tooltip: "AH.TRAIT.ComfortHint" }, // Improves stress recovery
+    storage: { label: "AH.TRAIT.Comfort", tooltip: "AH.TRAIT.ComfortHint" }, // Easy access to items
   },
   family: {
     beast: { label: "AH.ADVERSARY.FAMILY.Beast" }, // Natural

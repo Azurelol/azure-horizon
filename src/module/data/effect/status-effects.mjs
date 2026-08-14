@@ -13,20 +13,20 @@ const STATUS_EFFECTS = Object.freeze({
     name: "AH.STATUS.KO",
     img: "systems/azure-horizon/assets/icons/statuses/ko.png",
   },
-  bleeding: {
+  bleed: {
     id: "bleed",
     name: "AH.STATUS.Bleed",
     img: "systems/azure-horizon/assets/icons/statuses/bleed.png",
   },
-  poisoned: {
+  poison: {
     id: "poison",
     name: "AH.STATUS.Poison",
     img: "systems/azure-horizon/assets/icons/statuses/poison.png",
   },
-  grabbed: {
-    id: "grabbed",
-    name: "AH.STATUS.Grabbed",
-    img: "systems/azure-horizon/assets/icons/statuses/grabbed.png",
+  grab: {
+    id: "grab",
+    name: "AH.STATUS.Grab",
+    img: "systems/azure-horizon/assets/icons/statuses/grab.png",
   },
 });
 

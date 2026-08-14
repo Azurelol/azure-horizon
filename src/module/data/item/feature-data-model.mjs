@@ -45,5 +45,6 @@ export default class FeatureDataModel extends ItemDataModel {
    * @return {Promise}
    */
   async _initializeAction(config) {
+    config.addDescription(this.description);
   }
 }

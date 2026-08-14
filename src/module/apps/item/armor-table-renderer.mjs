@@ -1,8 +1,15 @@
 import AH from "../../config.mjs";
 import { isActorType } from "../../constants.mjs";
 import ItemTableRenderer from "./item-table-renderer.mjs";
+import TableColumns from "../api/table-columns.mjs";
 
 export default class ArmorTableRenderer extends ItemTableRenderer {
+
+  _getItemProperties() {
+    return [
+      TableColumns.itemProperties(),
+    ];
+  }
 
   _getItemActions() {
     return [

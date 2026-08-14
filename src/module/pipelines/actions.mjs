@@ -111,6 +111,13 @@ function getDefendAction(config, actor, item) {
  */
 async function addSections(builderData, config, actor, item) {
 
+  // DESCRIPTION
+  const desc = config.description;
+  if (desc.length > 0) {
+    ChatMessageSections.text(builderData.sections, desc.join("\n"));
+
+  }
+
   // ACTIONS
   if (config.actions.length > 0) {
     builderData.actions.push(...config.actions);
