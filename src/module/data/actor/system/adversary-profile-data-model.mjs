@@ -103,6 +103,8 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
           current: 0,
           available: 0,
         },
+        current: 0,
+        available: 0,
       },
     };
 
@@ -130,6 +132,23 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
     data.abilities.current = abilityItems.length;
     const level = system.level;
     data.abilities.available += data.abilities.sources.level = Math.round(level / 10);
+
+    // Affinities
+    const affinities = system.affinities.entries.filter(af => af.preset || af.amount);
+    data.affinities.current = affinities.length;
+    let availableAffinities = 0;
+    switch (this.rank) {
+      case "standard":
+        availableAffinities = 1;
+        break;
+      case "elite":
+        availableAffinities = 2;
+        break;
+      case "champion":
+        availableAffinities = 4;
+        break;
+    }
+    data.affinities.available = availableAffinities;
 
     return data;
   }

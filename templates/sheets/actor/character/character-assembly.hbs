@@ -1,40 +1,13 @@
 <section class="tab assembly {{tab.cssClass}}" data-tab="assembly" data-group="primary">
 
-  <div class="ah-flex-col" style="margin-top:8px;">
-    <prose-mirror name="system.profile.summary" value="{{system.profile.summary}}" toggled>
-      {{{lookup enriched 'system.profile.summary'}}}
-    </prose-mirror>
-  </div>
-
-  <div class="ah-grid-col-2">
-
-    <div class="ah-flex-col">
-      <fieldset>
-        <legend>{{localize 'AH.ADVERSARY.Attack.plural'}} [{{assembly.attacks.current}}/{{assembly.attacks.available}}]</legend>
-        <ul class="ah-list">
-          {{#each assembly.attacks.entries as |item|}}
-            <li>{{ahDocumentAnchor item}} {{item.name}}</li>
-          {{/each}}
-        </ul>
-      </fieldset>
-
-      <fieldset>
-        <legend>{{localize 'AH.ADVERSARY.Ability.plural'}} [{{assembly.abilities.current}}/{{assembly.abilities.available}}]</legend>
-        <ul class="ah-list">
-          {{#each assembly.abilities.entries as |item|}}
-            <li>{{ahDocumentAnchor item}} {{item.name}}</li>
-          {{/each}}
-        </ul>
-      </fieldset>
-    </div>
-
+  <div class="ah-flex-col">
     <fieldset>
-      <legend>{{localize 'AH.CHARACTER.Affinity.plural'}}</legend>
-      <table>
+      <legend>{{localize 'AH.CHARACTER.Affinity.plural'}} [{{assembly.affinities.current}}/{{assembly.affinities.available}}]</legend>
+      <table class="ah-table">
         <thead>
         <tr>
-          <th data-tooltip="{{localize "AH.CHARACTER.MODIFIER.Key"}}"><i class="{{ahIconClass 'parameter'}}"></i></th>
-          <th data-tooltip="{{localize "AH.CHARACTER.Affinity.long"}}"><i class="{{ahIconClass 'parameter'}}"></i></th>
+          <th data-tooltip="{{localize "AH.STATUS.Modifier"}}"><i class="{{ahIconClass 'parameter'}}"></i></th>
+          <th data-tooltip="{{localize "AH.CHARACTER.Affinity.long"}}"><i class="{{ahIconClass 'affinity'}}"></i></th>
           <th data-tooltip="{{localize "AH.FIELD.Type"}}"><i class="{{ahIconClass 'type'}}"></i></th>
           <th data-tooltip="{{localize "AH.FIELD.Amount"}}"><i class="{{ahIconClass 'amount'}}"></i></th>
         </tr>
@@ -46,13 +19,17 @@
               {{ahCapitalize key}}
             </td>
             <td>
-              {{ahStringField path=(ahConcat 'system.affinities.' key '.preset') value=aff.preset options=(ahFormOptions 'affinities') blank=true }}
+              {{ahStringField path=(ahConcat 'system.affinities.' key '.preset') value=aff.preset options=(ahFormOptions 'affinities' format='short') blank=true }}
             </td>
             <td>
-              {{ahStringField path=(ahConcat 'system.affinities.' key '.type') value=aff.preset options=(ahFormOptions 'modifier.type') }}
+              {{#unless aff.preset}}
+                {{ahStringField path=(ahConcat 'system.affinities.' key '.type') value=aff.preset options=(ahFormOptions 'modifier.type' format='short') }}
+              {{/unless}}
             </td>
             <td>
-              {{ahNumberField path=(ahConcat 'system.affinities.' key '.amount') value=aff.amount }}
+              {{#unless aff.preset}}
+                {{ahNumberField path=(ahConcat 'system.affinities.' key '.amount') value=aff.amount }}
+              {{/unless}}
             </td>
           </tr>
         {{/each}}
@@ -60,6 +37,23 @@
       </table>
     </fieldset>
 
+    <fieldset>
+      <legend>{{localize 'AH.ADVERSARY.Attack.plural'}} [{{assembly.attacks.current}}/{{assembly.attacks.available}}]</legend>
+      <ul class="ah-list">
+        {{#each assembly.attacks.entries as |item|}}
+          <li>{{ahDocumentAnchor item}} {{item.name}}</li>
+        {{/each}}
+      </ul>
+    </fieldset>
+
+    <fieldset>
+      <legend>{{localize 'AH.ADVERSARY.Ability.plural'}} [{{assembly.abilities.current}}/{{assembly.abilities.available}}]</legend>
+      <ul class="ah-list">
+        {{#each assembly.abilities.entries as |item|}}
+          <li>{{ahDocumentAnchor item}} {{item.name}}</li>
+        {{/each}}
+      </ul>
+    </fieldset>
   </div>
 
 </section>

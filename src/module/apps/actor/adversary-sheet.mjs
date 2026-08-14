@@ -16,6 +16,7 @@ export class AdversarySheet extends AHBaseCharacterSheet {
     primary: {
       tabs: [
         { id: "features", label: "AH.SHEET.Tabs.Features", icon: "ra ra-fluffy-swirl" },
+        { id: "profile", label: "AH.SHEET.Tabs.Profile", icon: "ra ra-campfire" },
         { id: "assembly", label: "AH.SHEET.Tabs.Assembly", icon: "ra ra-monster-skull" },
         { id: "parameters", label: "AH.SHEET.Tabs.Parameters", icon: "ra ra-aquarius" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
@@ -29,6 +30,9 @@ export class AdversarySheet extends AHBaseCharacterSheet {
     ...super.PARTS,
     features: {
       template: systemTemplatePath("sheets/actor/character/character-features"),
+    },
+    profile: {
+      template: systemTemplatePath("sheets/actor/character/character-profile"),
     },
     assembly: {
       template: systemTemplatePath("sheets/actor/character/character-assembly"),

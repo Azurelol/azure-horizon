@@ -16,31 +16,4 @@ export default class AffinityField extends SchemaField {
       amount: new NumberField(),
     }, options);
   }
-
-  /**
-   * @returns {Modifier}
-   */
-  toModifier() {
-    if (this.preset) {
-      const preset = AH.affinities[this.preset];
-      return {
-        additive: 0,
-        multiplicative: preset.modifier,
-      };
-    }
-    else {
-      return {
-        additive: 0,
-        multiplicative: 1,
-        [this.type]: this.amount,
-      };
-    }
-  }
-
-  /**
-   * @returns {boolean}
-   */
-  get valid() {
-    return (this.additive !== 0) && (this.multiplicative !== undefined);
-  }
 }

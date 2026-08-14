@@ -1,11 +1,26 @@
 <section class="tab profile {{tab.cssClass}}" data-tab="profile" data-group="primary">
 
-  <div class="ah-field-grid">
-    {{ahStringField path="system.profile.identity" value=system.profile.identity label='AH.FIELD.Identity'}}
-    {{ahStringField path="system.profile.theme" value=system.profile.theme label='AH.FIELD.Theme'}}
-    {{ahStringField path="system.profile.origin" value=system.profile.origin label='AH.FIELD.Origin'}}
-    {{ahStringField path="system.profile.anchor" value=system.profile.anchor label='AH.FIELD.Anchor'}}
-  </div>
+  {{#if (eq actor.type 'hero')}}
+    <div class="ah-field-grid">
+      {{ahStringField path="system.profile.identity" value=system.profile.identity label='AH.FIELD.Identity'}}
+      {{ahStringField path="system.profile.theme" value=system.profile.theme label='AH.FIELD.Theme'}}
+      {{ahStringField path="system.profile.origin" value=system.profile.origin label='AH.FIELD.Origin'}}
+      {{ahStringField path="system.profile.anchor" value=system.profile.anchor label='AH.FIELD.Anchor'}}
+    </div>
+  {{/if}}
+
+  {{#if (eq actor.type 'adversary')}}
+    <div class="ah-field-grid">
+      {{ahTraitsField schema=systemFields.profile.fields.traits path='system.profile.traits' label="AH.COMMON.Traits" value=system.profile.traits options=(ahFormOptions 'traits.family')}}
+      {{ahStringField path="system.profile.rank" value=system.profile.rank label='AH.FIELD.Rank' options=(ahFormOptions 'rank')}}
+      {{#if (eq system.profile.rank 'champion')}}
+        {{ahStringField path="system.profile.turns" value=system.profile.turns label='AH.FIELD.Turns' type='Number'}}
+        {{ahBooleanField path="system.profile.villain" value=system.profile.villain label='AH.FIELD.Villain'}}
+      {{/if}}
+      {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role' options=(ahFormOptions 'role')}}
+
+    </div>
+  {{/if}}
 
   <div class="ah-flex-col" style="margin-top:8px;">
     <prose-mirror name="system.profile.summary" value="{{system.profile.summary}}" toggled>

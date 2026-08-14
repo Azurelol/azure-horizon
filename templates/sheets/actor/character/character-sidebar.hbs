@@ -52,18 +52,6 @@
 
   {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
 
-  {{#if (eq actorType 'adversary')}}
-    <div class="ah-character__sidebar__section">
-      {{ahStringField path="system.profile.rank" value=system.profile.rank label='AH.FIELD.Rank' options=(ahFormOptions 'rank')}}
-      {{#if (eq system.profile.rank 'champion')}}
-        {{ahStringField path="system.profile.turns" value=system.profile.turns label='AH.FIELD.Turns' type='Number'}}
-        {{ahBooleanField path="system.profile.villain" value=system.profile.villain label='AH.FIELD.Villain'}}
-      {{/if}}
-      {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role' options=(ahFormOptions 'role')}}
-      {{ahTraitsField schema=systemFields.profile.fields.traits path='system.profile.traits' label="AH.COMMON.Traits" value=system.profile.traits options=(ahFormOptions 'traits.family')}}
-    </div>
-  {{/if}}
-
   <div class="ah-character__sidebar__section">
     <div class="ah-button-group">
       {{ahButton action='rest' data='type=short' size='sm' icon=(ahIconClass 'shortRest') tooltip='AH.INTERVAL.ShortRest.long'}}

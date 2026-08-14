@@ -90,13 +90,14 @@ AH.statusEffects = Object.freeze({
 });
 
 /**
- * @typedef {'light'|'medium'|'heavy'|'severe'|'extreme'} AH_Power A multiplier used for scaling.
+ * @typedef {'low'|'moderate'|'high'|'severe'|'extreme'} AH_Power A multiplier used for scaling.
  */
 
 AH.power = Object.freeze({
   low: { label: "AH.ACTION.POWER.Low", value: 1.2 },
-  medium: { label: "AH.ACTION.POWER.Moderate", value: 1.4 },
+  moderate: { label: "AH.ACTION.POWER.Moderate", value: 1.4 },
   high: { label: "AH.ACTION.POWER.High", value: 1.6 },
+  severe: { label: "AH.ACTION.POWER.Severe", value: 1.8 },
   extreme: { label: "AH.ACTION.POWER.Extreme", value: 2 },
 });
 
@@ -266,8 +267,14 @@ AH.codex = {
 
 AH.modifier = Object.freeze({
   type: {
-    additive: "AH.STATUS.MODIFIER.Additive",
-    multiplicative: "AH.STATUS.MODIFIER.Multiplicative",
+    additive: {
+      long: "AH.STATUS.MODIFIER.Additive",
+      short: "+",
+    },
+    multiplicative: {
+      long: "AH.STATUS.MODIFIER.Multiplicative",
+      short: "*",
+    },
   },
   direction: {
     incoming: "AH.STATUS.MODIFIER.Incoming",
@@ -281,15 +288,18 @@ AH.modifier = Object.freeze({
 
 AH.affinities = Object.freeze({
   vulnerability: {
-    label: "AH.DAMAGE.AFFINITY.Vulnerability",
+    long: "AH.DAMAGE.AFFINITY.Vulnerability.long",
+    short: "AH.DAMAGE.AFFINITY.Vulnerability.short",
     modifier: "1.25",
   },
   resistance: {
-    label: "AH.DAMAGE.AFFINITY.Resistance",
+    long: "AH.DAMAGE.AFFINITY.Resistance.long",
+    short: "AH.DAMAGE.AFFINITY.Resistance.short",
     modifier: "0.75",
   },
   immunity: {
-    label: "AH.DAMAGE.AFFINITY.Immunity",
+    long: "AH.DAMAGE.AFFINITY.Immunity.long",
+    short: "AH.DAMAGE.AFFINITY.Immunity.short",
     modifier: "0",
   },
   // TODO: Implement as a flag/property??
@@ -953,6 +963,8 @@ AH.icons = {
   reset: "fa fa-reset",
   refresh: "fa fa-refresh",
   broken: "fas fa-chain-broken",
+  type: "fa-solid fa-shapes",
+  amount: "fa-solid fa-calculator",
 
   roll: "ah-icon-check-roll",
   hr: "ah-icon-check-hr",
@@ -978,6 +990,7 @@ AH.icons = {
   parameter: "fa-solid fa-sliders",
   additive: "fa-solid fa-plus",
   multiplicative: "fa-solid fa-xmark",
+  affinity: "fa-solid fa-bolt",
 
   current: "fa-solid fa-plus",
   maximum: "fa-solid fa-minus",

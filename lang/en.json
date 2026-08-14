@@ -297,10 +297,22 @@
       "Secondary": "Secondary Damage",
       "Bonus": "Bonus Damage",
       "AFFINITY": {
-        "Vulnerability": "Vulnerability",
-        "Resistance": "Resistance",
-        "Immunity": "Immunity",
-        "Absorption": "Absorption"
+        "Vulnerability":  {
+          "long": "Vulnerability",
+          "short": "VU"
+        },
+        "Resistance": {
+          "long": "Resistance",
+          "short": "RS"
+        },
+        "Immunity": {
+          "long": "Immunity",
+          "short": "IM"
+        },
+        "Absorption": {
+          "long": "Absorption",
+          "short": "AB"
+        }
       }
     },
     "DICE": {
