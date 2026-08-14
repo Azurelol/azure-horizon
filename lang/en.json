@@ -407,6 +407,7 @@
       "Type": "Type",
       "Villain": "Villain",
       "Entries": "Entries",
+      "Action": "Action",
       "Effects": "Effects",
       "Category": "Category",
       "Initial": "Initial",
@@ -466,7 +467,8 @@
       "Turns": "Turns",
       "Range": "Range",
       "Weapon": "Weapon",
-      "Power": "Power"
+      "Power": "Power",
+      "Points": "Points"
     },
     "RULE": {
       "Element": {
@@ -566,6 +568,8 @@
       "Poison": "Poison"
     },
     "ACTION": {
+      "Action": "Action",
+      "Reaction": "Reaction",
       "POTENCY": {
         "Tier": "Tier",
         "Standard": "Standard",

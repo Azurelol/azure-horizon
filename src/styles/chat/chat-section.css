@@ -332,12 +332,12 @@
 
   .attacker {
     flex: 1;
-    background: var(--ah-adversary-background);
+    background: var(--ah-adversary-background-gradient);
   }
 
   .defender {
     flex: 1;
-    background: var(--ah-hero-background);
+    background: var(--ah-hero-background-gradient);
   }
 
   img {

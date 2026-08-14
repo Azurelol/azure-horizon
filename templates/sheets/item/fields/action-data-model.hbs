@@ -1,0 +1,4 @@
+{{#> ahFieldset label='AH.FIELD.Action' icon=(ahIconClass 'action') }}
+  {{ahStringField path=(ahConcat path '.type') label="AH.FIELD.Type" value=value.type blank=true options=(ahFormOptions 'actionTypes')}}
+  {{ahStringField path=(ahConcat path '.points') label="AH.FIELD.Points" value=value.points }}
+{{/ahFieldset}}

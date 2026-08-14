@@ -3,6 +3,7 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
 import { DamageDataModel, TraitsField } from "./fields/_module.mjs";
 import FeatureDataModel from "./feature-data-model.mjs";
 import { FoundryUtils } from "../../utils/_module.mjs";
+import config from "../../config.mjs";
 
 /**
  * Represents a hero's weapon, used for performing basic attacks and with some skills.
@@ -30,5 +31,10 @@ export default class WeaponDataModel extends FeatureDataModel {
         enabled: true,
       })),
     });
+  }
+
+  async _initializeAction(config) {
+    await super._initializeAction(config);
+    await this.damage.configureAction(config);
   }
 }

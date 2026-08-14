@@ -1,6 +1,6 @@
 .ah-character {
 
-  background: transparent;
+  /*background: transparent;*/
 
   .window-content {
     padding: 0;
@@ -56,6 +56,14 @@
     background: var(--ah-background-application-sidebar);
     background-blend-mode: color-burn;
     gap: 1rem;
+
+    &.hero {
+      /*background: var(--ah-hero-background-gradient);*/
+    }
+
+    &.adversary {
+      /*background: var(--ah-adversary-background-gradient);*/
+    }
   }
 
   .ah-character__sidebar__portrait {

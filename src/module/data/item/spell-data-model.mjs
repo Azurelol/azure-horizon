@@ -4,6 +4,7 @@ import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
 /**
  * A spell is a feature tied to a magical domain.
  * @property {AH_Domain} domain Can also be empty for non-domain spells.
+ * @property {AH_CastingSpeed} speed
  */
 export default class SpellDataModel extends ActiveFeatureDataModel {
   /** @inheritdoc */
@@ -14,6 +15,7 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
         blank: true,
         label: "AH.FIELD.Domain",
         choices: Object.keys(AH.domains) }),
+      speed: new StringField({ initial: "instant", blank: true, choices: Object.keys(AH.castingSpeed), required: true }),
     });
   }
 

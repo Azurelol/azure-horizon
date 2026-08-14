@@ -23,6 +23,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   badge: systemTemplatePath("components/badge"),
   skeleton: systemTemplatePath("components/skeleton"),
   tooltip: systemTemplatePath("components/tooltip"),
+  fieldset: systemTemplatePath("components/fieldset"),
   optionalFieldset: systemTemplatePath("components/fieldset-optional-v2"),
 
   inlineProperty: systemTemplatePath("components/inline-property"),
@@ -77,6 +78,7 @@ export default Object.freeze({
   registerPartials: async () => {
 
     Handlebars.registerPartial("ahOptionalFieldset", await foundry.applications.handlebars.getTemplate(COMPONENT_TEMPLATES.optionalFieldset));
+    Handlebars.registerPartial("ahFieldset", await foundry.applications.handlebars.getTemplate(COMPONENT_TEMPLATES.fieldset));
   },
   registerHelpers: () => {
     Handlebars.registerHelper("let", function (...args) {

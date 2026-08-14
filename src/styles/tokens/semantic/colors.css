@@ -79,9 +79,9 @@
   /* HEROES/ADVERSARIES */
   --ah-elite-border: var(--ah-primitive-color-gold-600);
   --ah-champion-border: var(--ah-primitive-color-burgundy-dark);
-  --ah-hero-background: linear-gradient(to left, var(--ah-color-azure-500), var(--ah-color-navy-700));
+  --ah-hero-background-gradient: linear-gradient(to left, var(--ah-color-azure-500), var(--ah-color-navy-700));
   --ah-hero-border: 2px solid var(--ah-color-azure-500);
-  --ah-adversary-background: linear-gradient(to right, var(--ah-color-burgundy-500), var(--ah-color-navy-700));
+  --ah-adversary-background-gradient: linear-gradient(to right, var(--ah-color-burgundy-500), var(--ah-color-navy-700));
   --ad-adversary-border: 2px solid var(--ah-color-burgundy-500);
 
 }

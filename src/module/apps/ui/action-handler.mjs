@@ -22,7 +22,7 @@ export default class ActionHandler {
   }
 
   /**
-   * @param {AH_ActionType} actionType
+   * @param {AH_Action} actionType
    * @param isShift
    * @returns {Promise<void>}
    */

@@ -4,9 +4,11 @@ import { FoundryUtils } from "../../utils/_module.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ResourceDataModel from "./fields/resource-data-model.mjs";
 import { ActionCostDataModel } from "./fields/action-cost-data-model.mjs";
+import { ActionDataModel } from "./fields/action-data-model.mjs";
 
 /**
  * Represents an action in the system.
+ * @property {ActionDataModel} action
  * @property {CheckDataModel} check
  * @property {DamageDataModel} damage
  * @property {ResourceDataModel} resource
@@ -19,6 +21,7 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
   static defineSchema() {
     const { SchemaField, StringField, HTMLField, NumberField, BooleanField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      action: new EmbeddedDataField(ActionDataModel, {}),
       damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
         enabled: true,
       })),
@@ -34,5 +37,6 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     await this.resource.configureAction(config);
     await this.effects.configureAction(config);
     await this.cost.configureAction(config);
+    await this.action.configureAction(config);
   }
 }

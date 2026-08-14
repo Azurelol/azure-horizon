@@ -194,7 +194,7 @@ AH.resourceTypes = {
 };
 
 /**
- * @typedef {'attack'|'defend'|'skill'|'spell'|'inventory'|'equipment'|'objective'} AH_ActionType
+ * @typedef {'attack'|'defend'|'skill'|'spell'|'inventory'|'equipment'|'objective'} AH_Action
  */
 
 AH.actions = Object.freeze({
@@ -208,12 +208,13 @@ AH.actions = Object.freeze({
 });
 
 /**
- * @typedef {'action'|'reaction'} AH_ActionType
+ * @typedef {'instant'|'fast'|'slow'} AH_CastingSpeed
  */
 
-AH.actionTypes = Object.freeze({
-  action: { label: "AH.ACTION.Action" },
-  reaction: { label: "AH.ACTION.Reaction" },
+AH.castingSpeed = Object.freeze({
+  instant: { label: "AH.ACTION.SPELL.Instant" }, // Immediate
+  fast: { label: "AH.ACTION.SPELL.Fast" }, // Finishes at next SOT
+  slow: { label: "AH.ACTION.SPELL.Slow" }, // Finishes at next EOT
 });
 
 /**
@@ -710,6 +711,15 @@ AH.hooks = Object.freeze({
  */
 
 /**
+ * @typedef {'action'|'reaction'} AH_ActionType
+ */
+
+AH.actionTypes = Object.freeze({
+  action: { label: "AH.ACTION.Action" },
+  reaction: { label: "AH.ACTION.Reaction" },
+});
+
+/**
  * Traits are tags with mechanical implications in the system.
  * @property {Record<String, AH_Constant>} action
  * @property {Record<String, AH_Constant>} damage
@@ -720,25 +730,20 @@ AH.hooks = Object.freeze({
  * @property {Record<String, AH_Constant>} armor
  */
 AH.traits = {
-  family: {
-    beast: { label: "AH.ADVERSARY.FAMILY.Beast" }, // Natural
-    monster: { label: "AH.ADVERSARY.FAMILY.Monster" }, // Unnatural
-    undead: { label: "AH.ADVERSARY.FAMILY.Undead" }, // Raised by dark powers
-    construct: { label: "AH.ADVERSARY.FAMILY.Construct" }, // Engineered
-    elemental: { label: "AH.ADVERSARY.FAMILY.Elemental" },
-    plant: { label: "AH.ADVERSARY.FAMILY.Plant" },
-  },
   action: {
     attack: { label: "AH.TRAIT.Attack", tooltip: "AH.TRAIT.AttackHint" },
     spell: { label: "AH.TRAIT.Spell", tooltip: "AH.TRAIT.SpellHint" },
     skill: { label: "AH.TRAIT.Skill", tooltip: "AH.TRAIT.SkillHint" },
 
     action: { label: "AH.TRAIT.Action", tooltip: "AH.TRAIT.ActionHint" },
+    reaction: { label: "AH.TRAIT.Reaction", tooltip: "AH.TRAIT.ReactionHint" },
     maneuver: { label: "AH.TRAIT.Maneuver", tooltip: "AH.TRAIT.ManeuverHint" },
 
     damage: { label: "AH.TRAIT.Damage", tooltip: "AH.TRAIT.DamageHint" },
     restore: { label: "AH.TRAIT.Restore", tooltip: "AH.TRAIT.RestoreHint" },
+  },
 
+  resource: {
     gain: { label: "AH.TRAIT.Gain", tooltip: "AH.TRAIT.GainHint" },
     loss: { label: "AH.TRAIT.Loss", tooltip: "AH.TRAIT.LossHint" },
 
@@ -779,6 +784,14 @@ AH.traits = {
   armor: {
     // heavy: { label: "AH.TRAIT.Heavy", tooltip: "AH.TRAIT.ARMOR.HeavyHint" },
     // light: { label: "AH.TRAIT.Light", tooltip: "AH.TRAIT.ARMOR.LightHint" },
+  },
+  family: {
+    beast: { label: "AH.ADVERSARY.FAMILY.Beast" }, // Natural
+    monster: { label: "AH.ADVERSARY.FAMILY.Monster" }, // Unnatural
+    undead: { label: "AH.ADVERSARY.FAMILY.Undead" }, // Raised by dark powers
+    construct: { label: "AH.ADVERSARY.FAMILY.Construct" }, // Engineered
+    elemental: { label: "AH.ADVERSARY.FAMILY.Elemental" },
+    plant: { label: "AH.ADVERSARY.FAMILY.Plant" },
   },
 };
 
@@ -881,6 +894,7 @@ AH.icons = {
   damage: "ah-icon-damage",
   resource: "ah-icon-resource",
   cost: "ah-icon-cost",
+  effects: "ra ra-biohazard",
 
   check: "ah-icon-check-roll",
   openCheck: "ah-icon-check-open",

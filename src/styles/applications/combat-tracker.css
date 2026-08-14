@@ -21,7 +21,7 @@
       }
 
       &.adversary {
-        background: var(--ah-adversary-background);
+        background: var(--ah-adversary-background-gradient);
 
         img.token-image {
           &.elite {
@@ -35,7 +35,7 @@
       }
 
       &.hero {
-        background: var(--ah-hero-background);
+        background: var(--ah-hero-background-gradient);
         .token-image-wrapper {
           /*border: 2px solid var(--ah-hero-border);*/
         }
