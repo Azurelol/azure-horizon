@@ -119,6 +119,33 @@ async function calculateResource(actor, item, config) {
 }
 
 /**
+ * @description Dispatched when an actor has a status toggled.
+ * @typedef StatusEvent
+ * @property {CharacterInfo} character
+ * @property {String} status The id of the status effect
+ * @property {String} enabled Whether the effect is enabled
+ */
+
+/**
+ * @description Dispatches an event to signal an effect has been applied onto an actor
+ * @param {AHActor} actor
+ * @param {String} statusEffectId
+ * @param {Boolean} enabled
+ */
+function status(actor, statusEffectId, enabled) {
+  const character = CharacterInfo.fromActor(actor);
+  Hooks.call(
+    AH.hooks.STATUS_EVENT,
+    /** @type StatusEvent **/
+    {
+      character: character,
+      status: statusEffectId,
+      enabled: enabled,
+    },
+  );
+}
+
+/**
  * @typedef PrepareCheckEvent
  * @property {CheckOptions} check
  * @property {CharacterInfo} source
@@ -278,6 +305,7 @@ const Events = Object.freeze({
   applyDamage,
   calculateResource,
   calculateExpense,
+  status,
 });
 
 export default Events;

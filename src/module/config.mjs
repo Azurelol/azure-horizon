@@ -711,6 +711,12 @@ AH.hooks = Object.freeze({
    */
   DAMAGE_EVENT: `${systemNS}.events.damage`,
   /**
+   * @description Dispatched after an actor has a status effect applied or removed on them.
+   * @example callback(event)
+   * @remarks Uses {@link StatusEvent}. It happens AFTER the status effect has been applied.
+   */
+  STATUS_EVENT: `${systemNS}.events.status`,
+  /**
    * @description Dispatched after an actor enters crisis.
    * @example callback(event)
    * @remarks Uses {@link CrisisEvent}. This can happen after a {@link DAMAGE_EVENT}.
@@ -907,6 +913,7 @@ AH.icons = {
   link: "fa fa-link",
   reset: "fa fa-reset",
   refresh: "fa fa-refresh",
+  broken: "fas fa-chain-broken",
 
   roll: "ah-icon-check-roll",
   hr: "ah-icon-check-hr",

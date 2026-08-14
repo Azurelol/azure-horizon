@@ -27,6 +27,16 @@ export default class TextEditorUtils {
   // TODO: Use a JSON map to then convert to a pattern?
 
   /**
+   * @param {String} identifier The name of the regex group
+   * @param {String} key The key of the property
+   * @param {String} value The pattern for the value of the property
+   * @returns {String}
+   */
+  static propertyPattern(identifier, key, value) {
+    return `(\\s+${key}:(?<${identifier}>${value}))?`;
+  }
+
+  /**
    * @param {String} name The name of the command
    * @param {String} required
    * @param {String[]|null} optional
@@ -62,6 +72,26 @@ export default class TextEditorUtils {
       anchor.append(icon);
       return icon;
     }
+  }
+
+  /**
+   * @param {HTMLElement} anchor
+   * @param {String} path
+   * @param {Number} size
+   * @param margin
+   * @returns {HTMLImageElement}
+   */
+  static image(anchor, path, size = 16, margin = true) {
+    const img = document.createElement("img");
+    img.src = path;
+    img.width = size;
+    img.height = size;
+    if (margin) {
+      img.style.marginLeft = "2px";
+      img.style.marginRight = "4px";
+    }
+    anchor.append(img);
+    return img;
   }
 
   /**

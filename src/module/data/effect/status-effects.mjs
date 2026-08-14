@@ -39,6 +39,13 @@ const statusEffects = Object.freeze({
    * @type {ActiveEffectData[]}
    */
   values: Object.values(STATUS_EFFECTS),
+  /**
+   * @param {String} id
+   * @returns {boolean}
+   */
+  contains: (id) => {
+    return id in STATUS_EFFECTS;
+  },
 });
 
 export default statusEffects;

@@ -5,6 +5,7 @@ import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import statusEffects from "../data/effect/status-effects.mjs";
 import { CompendiumIndex } from "../data/compendium/_module.mjs";
+import Events from "./events.mjs";
 
 /** *
  * @param {String} id An uuid or slug
@@ -119,6 +120,30 @@ function removeEffect(document, source, effect) {
   } else {
     console.log("No matching effect found to remove.");
   }
+}
+
+/**
+ * Disable a status effect on an Actor, if it's currently active.
+ * @param {AHActor} actor - The actor from which to remove the status effect.
+ * @param {string} statusEffectId - The effect ID from CONFIG.statusEffects.
+ * @returns {Promise<boolean>} - Whether the effect was removed.
+ */
+async function disableStatusEffect(actor, statusEffectId) {
+  if (!actor.isCharacterType) {
+    ui.notifications.error("AH.DIALOG.WARNING.ActorSheetEffectNotSupported", { localize: true });
+    return false;
+  }
+  const existing = actor.effects.filter((effect) => effect.statuses.has(statusEffectId));
+  if (existing.length > 0) {
+    await Promise.all(
+      existing.map((e) => {
+        Events.status(actor, statusEffectId, false);
+        return e.delete();
+      }),
+    );
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -305,6 +330,10 @@ function initialize() {
 
 const Effects = Object.freeze({
   initialize,
+  getEffectData,
+  applyEffect,
+  removeEffect,
+  disableStatusEffect,
 });
 
 export default Effects;
