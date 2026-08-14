@@ -63,6 +63,14 @@
     }
   }
 
+  .prosemirror.inactive {
+    border: 1px solid var(--ah-surface-border);
+    background: var(--ah-background-input);
+    .editor-content {
+      padding: 8px;
+    }
+  }
+
   .editor-container .editor-content {
     background: var(--ah-background-input);
     border: 1px solid var(--ah-surface-border);

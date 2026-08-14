@@ -17,6 +17,7 @@ export default class HeroProfileDataModel extends VersionedDataModel {
       origin: new StringField(),
       anchor: new StringField(),
       title: new StringField(),
+      summary: new HTMLField(),
     });
   }
 }

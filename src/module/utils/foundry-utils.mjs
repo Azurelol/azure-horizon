@@ -304,7 +304,7 @@ export default class FoundryUtils {
    */
 
   /**
-   * Gets a document's fields of a type
+   * Gets a document's fields of a type, recursively descending into nested schemas.
    * @param {Document} document
    * @param {string|number} documentClass
    * @param {string|number} fieldClass
@@ -316,17 +316,35 @@ export default class FoundryUtils {
     const systemFields = CONFIG[documentClass].dataModels[document.type]?.schema.fields;
     /** @type AH_DataFieldInfo[] **/
     const fields = [];
-    for (const field of Object.values(systemFields ?? {})) {
-      if (field.options?.config === false) {
-        continue;
-      }
+    this._collectFieldsOfType(source, systemFields, fieldClass, path, fields);
+    return fields;
+  }
+
+  /**
+   * Recursively walks a schema's fields, collecting every field matching fieldClass -
+   * including ones nested inside SchemaFields/EmbeddedDataFields at any depth.
+   * @param {object} source
+   * @param {Object<string, foundry.data.fields.DataField>} schemaFields
+   * @param {string} fieldClass
+   * @param {string} path
+   * @param {AH_DataFieldInfo[]} fields
+   * @private
+   */
+  static _collectFieldsOfType(source, schemaFields, fieldClass, path, fields) {
+    for (const field of Object.values(schemaFields ?? {})) {
+      if (field.options?.config === false) continue;
+
       const fieldPath = `${path}.${field.name}`;
+
       if (field instanceof foundry.data.fields[fieldClass]) {
-        let data = this.getDataFieldInfo(source, fieldPath, field);
-        fields.push(data);
+        fields.push(this.getDataFieldInfo(source, fieldPath, field));
+      }
+
+      // Recurse into any field that carries its own nested schema
+      if (field.fields) {
+        this._collectFieldsOfType(source, field.fields, fieldClass, fieldPath, fields);
       }
     }
-    return fields;
   }
 
   /**

@@ -8,13 +8,14 @@ import { renderTemplate } from "../../constants.mjs";
 /**
  * @typedef AH_TableConfig
  * @template {Object} T
- * @property {string} id An unique identifier to the table.
+ * @property {String} id An unique identifier to the table.
+ * @property {String} title Optional title for the table.
  * @property {DragDropConfiguration[]} [dragDrop]
- * @property {string} tableClass
- * @property {string} rowClass
+ * @property {String} tableClass
+ * @property {String} rowClass
  * @property {(T) => string | number} getKey
  * @property {(T) => Boolean} isVisible
- * @property {boolean} hideIfEmpty
+ * @property {Boolean} hideIfEmpty
  */
 
 /**

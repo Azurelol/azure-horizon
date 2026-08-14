@@ -1,6 +1,6 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import { HTMLUtils, ObjectUtils, StringUtils } from "../../utils/_module.mjs";
+import { FoundryUtils, HTMLUtils, ObjectUtils, StringUtils } from "../../utils/_module.mjs";
 import { Dialogs } from "../../helpers/_module.mjs";
 import AH from "../../config.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
@@ -114,6 +114,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    const rollData = this.actor ? this.actor.getRollData() : {};
 
     Object.assign(context, {
       owner: this.document.isOwner,
@@ -126,6 +127,11 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       flags: this.actor.flags,
       config: CONFIG,
       AH: AH,
+      enriched: await FoundryUtils.getEnriched(this.actor, "Actor", {
+        rollData: rollData,
+        relativeTo: this.actor,
+        secrets: this.isEditable,
+      }),
     });
 
     return context;

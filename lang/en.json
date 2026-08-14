@@ -468,7 +468,8 @@
       "Range": "Range",
       "Weapon": "Weapon",
       "Power": "Power",
-      "Points": "Points"
+      "Points": "Points",
+      "Summary": "Summary"
     },
     "RULE": {
       "Element": {

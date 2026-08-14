@@ -1,3 +1,8 @@
+{{#if config.title}}
+  <div class="ah-table__title">
+    {{localize config.title}}
+  </div>
+{{/if}}
 <table id="{{config.id}}" class="ah-table {{config.cssClass}}" data-table-id="{{config.id}}">
   <thead>
     <tr>

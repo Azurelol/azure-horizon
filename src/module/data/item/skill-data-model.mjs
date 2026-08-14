@@ -27,8 +27,8 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
         _part: "header",
       }),
       level: new SchemaField({
-        current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "properties" }),
-        max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "properties" }),
+        current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "header" }),
+        max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header" }),
       }),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
     });

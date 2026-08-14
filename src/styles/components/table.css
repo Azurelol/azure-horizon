@@ -101,3 +101,11 @@
   justify-content: center;
   gap: 0.1rem;
 }
+
+.ah-table__title {
+  background:var(--ah-background-table-header);
+  font-size: 20px;
+  padding: 4px;
+  text-transform: uppercase;
+  text-align: center;
+}

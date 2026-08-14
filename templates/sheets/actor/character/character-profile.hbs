@@ -7,4 +7,10 @@
     {{ahStringField path="system.profile.anchor" value=system.profile.anchor label='AH.FIELD.Anchor'}}
   </div>
 
+  <div class="ah-flex-col" style="margin-top:8px;">
+    <prose-mirror name="system.profile.summary" value="{{system.profile.summary}}" toggled>
+      {{{lookup enriched 'system.profile.summary'}}}
+    </prose-mirror>
+  </div>
+
 </section>
