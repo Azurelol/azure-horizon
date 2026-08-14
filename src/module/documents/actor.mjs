@@ -4,6 +4,7 @@ import { statusEffects } from "../data/effect/_module.mjs";
 import { FlagBuilder } from "../helpers/_module.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import { ObjectUtils } from "../utils/_module.mjs";
+import Events from "../pipelines/events.mjs";
 
 /**
  * @typedef ActorData
@@ -126,7 +127,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     if (existing.length > 0) {
       await Promise.all(
         existing.map((e) => {
-          //CommonEvents.status(this, statusEffectId, false);
+          Events.status(this, statusEffectId, false);
           //sendToChatEffectRemoved(e, this);
           return e.delete();
         }),
@@ -156,12 +157,12 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
         {
           ...statusEffect,
           statuses: [statusEffectId],
-          flags: this.createEffectFlags(statusEffect, sourceInfo, statusEffectId),
+          flags: this.createEffectFlags(statusEffect, sourceInfo, statusEffectId, true),
         },
         { parent: this },
       );
       await instance.applyConfiguration(config);
-      //CommonEvents.status(actor, statusEffectId, true);
+      Events.status(this, statusEffectId, true);
     }
     return true;
   }
@@ -170,11 +171,14 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
    * @param {ActiveEffectData} effect
    * @param {SourceInfo} sourceInfo
    * @param {String} identifier An unique identifier for the effect
+   * @param {Boolean} temporary
    * @returns {Object}
    */
-  createEffectFlags(effect, sourceInfo, identifier) {
+  createEffectFlags(effect, sourceInfo, identifier, temporary) {
     const fb = new FlagBuilder();
-    fb.set(AH.flags.ActiveEffect.Temporary, true);
+    if (temporary) {
+      fb.set(AH.flags.ActiveEffect.Temporary, true);
+    }
     fb.set(AH.flags.ActiveEffect.Source, sourceInfo);
     fb.set(AH.flags.ActiveEffect.Identifier, identifier);
     return fb.toObject();

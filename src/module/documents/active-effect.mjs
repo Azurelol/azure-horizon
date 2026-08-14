@@ -1,6 +1,7 @@
 
-import { isActorType, isItemType } from "../constants.mjs";
+import { isActorType, isItemType, systemID } from "../constants.mjs";
 import DocumentMixin from "./document-mixin.mjs";
+import AH from "../config.mjs";
 
 /**
  * @typedef EffectChangeData
@@ -38,6 +39,17 @@ import DocumentMixin from "./document-mixin.mjs";
  * @property {String} name
  * @property {AH_EffectTracking} tracking t:
  * @property {Record<String, String>} updates Specific updates on initial data.
+ */
+
+/**
+ * @typedef EffectDurationData
+ * @property {ActiveEffectDurationUnit} units The time- or combat-based unit of the duration value
+ * @property {number|null} value  The maximum duration of the Effect in the quantity of the unit, with null being
+ *                                initialized to Infinity
+ * @property {string|null} expiry An identifier of an event at which the Effect will expire: expiration occurs when both
+ *                                the end of the duration and the expiry event are reached. A truly indefinite duration
+ *                                is one in which both duration value and expiry are null.
+ * @property {boolean} expired    Is this ActiveEffect expired?
  */
 
 /**
@@ -81,6 +93,8 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
     Hooks.callAll("AH.prepareActiveEffectData", this);
   }
 
+  /*-------------------------------------------------------------------------*/
+
   /**
    * @private
    * @override
@@ -111,6 +125,19 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
     this.updateSource(changes);
     return super._preCreate(data, options, user);
   }
+
+  /**
+   * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check.
+   * @inheritdoc
+   */
+  get isTemporary() {
+    if (this.getFlag(systemID, AH.flags.ActiveEffect.Temporary)) {
+      return true;
+    }
+    return this.system._isTemporary ?? super.isTemporary;
+  }
+
+  /*-------------------------------------------------------------------------*/
 
   /**
    * @param {AH_ActiveEffectConfiguration} configuration

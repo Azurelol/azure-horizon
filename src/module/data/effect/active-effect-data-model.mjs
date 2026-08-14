@@ -12,7 +12,7 @@ import { RuleElementDataModel } from "./_module.mjs";
  * A data model used by default effects with properties to control the expiration behavior.
  * @property {RuleElementDataModel[]} rules
  */
-export default class ActiveEffectModel extends foundry.data.ActiveEffectTypeDataModel {
+export default class ActiveEffectDataModel extends foundry.data.ActiveEffectTypeDataModel {
 
   /**
    * @type {SubDocumentMetadata}
@@ -30,5 +30,14 @@ export default class ActiveEffectModel extends foundry.data.ActiveEffectTypeData
     return Object.assign(super.defineSchema(), {
       rules: new SubDocumentCollectionField(RuleElementDataModel),
     });
+  }
+
+  /**
+   * An effect is also temporary if...?
+   * @returns {boolean | null}
+   * @internal
+   */
+  get _isTemporary() {
+    return false;
   }
 }

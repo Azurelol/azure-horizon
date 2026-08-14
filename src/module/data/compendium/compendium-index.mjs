@@ -37,7 +37,7 @@
  */
 
 import { StringUtils } from "../../utils/_module.mjs";
-import { systemID } from "../../constants.mjs";
+import { getSystemSetting, systemID } from "../../constants.mjs";
 
 /**
  * @desc Handles indexing of system-specific documents.
@@ -272,9 +272,7 @@ export default class CompendiumIndex {
 	 * @returns {[]}
 	 */
   getPacks(type) {
-    // TODO: System setting?
-    const compendiumBrowserPacks = "system";
-    const setting = game.settings.get(systemID, compendiumBrowserPacks);
+    const setting = "system";//  getSystemSetting(compendiumBrowserPacks);
     return game.packs.filter((p) => {
       const isSystemPack = p.collection.startsWith(`${systemID}.`);
       switch (setting) {

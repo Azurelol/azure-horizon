@@ -632,7 +632,8 @@
       "ResourceLossTooltip": "Lose {amount} {resource}",
       "DefenseCheckPotencyReduced": "{defender} successfully defends against {item} from {attacker}.",
       "DefenseCheckPotencyStandard": "{defender} fails to defend against {item} from {attacker}.",
-      "DefenseCheckPotencyPowerful": "{attacker} strikes {defender} with {item} to devastating effect!"
+      "DefenseCheckPotencyPowerful": "{attacker} strikes {defender} with {item} to devastating effect!",
+      "EffectInvalid": "Invalid Effect"
     },
     "PIPELINE": {
       "CriticalBonus": "Critical Bonus",
