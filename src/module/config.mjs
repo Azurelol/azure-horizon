@@ -208,13 +208,13 @@ AH.actions = Object.freeze({
 });
 
 /**
- * @typedef {'instant'|'fast'|'slow'} AH_CastingSpeed
+ * @typedef {'instant'|'fast'|'slow'} AH_Speed
  */
 
-AH.castingSpeed = Object.freeze({
-  instant: { label: "AH.ACTION.SPELL.Instant" }, // Immediate
-  fast: { label: "AH.ACTION.SPELL.Fast" }, // Finishes at next SOT
-  slow: { label: "AH.ACTION.SPELL.Slow" }, // Finishes at next EOT
+AH.speed = Object.freeze({
+  instant: { label: "AH.ACTION.SPEED.Instant" }, // Immediate
+  fast: { label: "AH.ACTION.SPEED.Fast" }, // Finishes at next SOT
+  slow: { label: "AH.ACTION.SPEED.Slow" }, // Finishes at next EOT
 });
 
 /**
@@ -807,12 +807,14 @@ AH.traits = {
 AH.traits.all = Object.freeze({
   ...AH.traits.action,
   ...AH.traits.damage,
-  ...AH.damageTypes,
+  ...AH.traits.resource,
   ...AH.traits.attack,
   ...AH.traits.defense,
   ...AH.traits.skill,
   ...AH.traits.weapon,
   ...AH.traits.armor,
+  ...AH.damageTypes,
+  ...AH.speed,
 });
 Object.freeze(AH.traits);
 

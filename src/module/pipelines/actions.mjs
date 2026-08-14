@@ -117,22 +117,22 @@ async function addSections(builderData, config, actor, item) {
   }
 
   // TRAITS > TAGS (Not needed for now?)
-  // const traits = config.getTraits();
-  // for (const trait of traits) {
-  //   const traitProperties = AH.traits.all[trait];
-  //   if (traitProperties) {
-  //     builderData.tags.push({
-  //       tag: traitProperties.label ?? traitProperties.long,
-  //       tooltip: traitProperties.tooltip,
-  //     });
-  //   }
-  //   else {
-  //     builderData.tags.push({
-  //       tag: StringUtils.capitalize(trait),
-  //     });
-  //     //ui.notifications.error(`Missing trait data for ${trait}`);
-  //   }
-  // }
+  const traits = config.getTraits();
+  for (const trait of traits) {
+    const traitProperties = AH.traits.all[trait];
+    if (traitProperties) {
+      builderData.tags.push({
+        tag: traitProperties.label ?? traitProperties.long,
+        tooltip: traitProperties.tooltip,
+      });
+    }
+    else {
+      builderData.tags.push({
+        tag: StringUtils.capitalize(trait),
+      });
+      ui.notifications.error(`Missing trait data for ${trait}`);
+    }
+  }
 
   // TAGS
   for (const tag of config.tags) {

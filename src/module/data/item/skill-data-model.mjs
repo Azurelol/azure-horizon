@@ -63,9 +63,6 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
             d.add("AH.DAMAGE.Weapon", weaponData.damage.primary.type, weaponData.damage.primary.amount);
           });
           config.addTraits(weaponData.damage.primary.type);
-          config.addTags({
-            tag: AH.damageTypes[weaponData.damage.primary.type].long,
-          });
         }
       }
     }

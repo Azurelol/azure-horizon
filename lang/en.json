@@ -587,6 +587,12 @@
         "Massive": "Massive",
         "Extreme": "Extreme"
       },
+      "Speed": "Speed",
+      "SPEED": {
+        "Instant": "Instant",
+        "Fast": "Fast",
+        "Slow": "Slow"
+      },
       "Attack": "Attack",
       "Skill": "Skill",
       "Spell": "Spell",

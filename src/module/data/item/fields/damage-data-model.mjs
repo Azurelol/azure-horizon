@@ -42,17 +42,13 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
   configureAction(config) {
     if (this.enabled) {
       config.setDamage(this.primary.type, this.primary.amount);
-      config.addTags({
-        tag: AH.damageTypes[this.primary.type].long,
-      });
+      config.addTraits(this.primary.type);
       if (this.secondary.type) {
         config.modifyDamage(d => {
           d.add("AH.DAMAGE.Secondary", this.secondary.type, this.secondary.amount);
         });
         if (this.secondary.type !== this.primary.type) {
-          config.addTags({
-            tag: AH.damageTypes[this.secondary.type].long,
-          });
+          config.addTraits(this.secondary.type);
         }
       }
 
