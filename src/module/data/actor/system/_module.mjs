@@ -1,6 +1,6 @@
 export { default as AttributeDataModel } from "./attribute-data-model.mjs";
 export { default as AttributesDataModel } from "./attributes-data-model.mjs";
-export { default as AffinityDataModel } from "./affinity-data-model.mjs";
+export { default as AffinityField } from "./affinity-field.mjs";
 export { default as AffinitiesDataModel } from "./affinities-data-model.mjs";
 export { default as ParameterDataModel } from "./parameter-data-model.mjs";
 export { default as InventoryDataModel } from "./inventory-data-model.mjs";

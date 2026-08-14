@@ -128,6 +128,10 @@
       "Bonus": {
         "long": "Bonus",
         "plural": "Bonuses"
+      },
+      "Affinity": {
+        "long":  "Affinity",
+        "plural": "Affinities"
       }
     },
     "ADVERSARY": {
@@ -182,10 +186,6 @@
       "Ability": {
         "long": "Ability",
         "plural": "Abilities"
-      },
-      "Affinity": {
-        "long":  "Affinity",
-        "plural": "Affinities"
       }
     },
     "CHECK": {
@@ -295,7 +295,13 @@
       "Base": "Base Damage",
       "Primary": "Primary Damage",
       "Secondary": "Secondary Damage",
-      "Bonus": "Bonus Damage"
+      "Bonus": "Bonus Damage",
+      "AFFINITY": {
+        "Vulnerability": "Vulnerability",
+        "Resistance": "Resistance",
+        "Immunity": "Immunity",
+        "Absorption": "Absorption"
+      }
     },
     "DICE": {
       "D4": "D4",
@@ -573,7 +579,9 @@
         "Situation": "Situation",
         "Key": "Key",
         "Additive": "Additive",
-        "Multiplicative": "Multiplicative"
+        "Multiplicative": "Multiplicative",
+        "Incoming": "Incoming",
+        "Outgoing": "Outgoing"
       },
       "Crisis": "Crisis",
       "KO": "KO",

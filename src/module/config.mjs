@@ -257,8 +257,47 @@ AH.codex = {
 };
 
 /**
+ * @typedef {'additive'|'multiplicative'} AH_ModifierType
+ */
+
+/**
  * @typedef {'incoming'|'outgoing'} AH_ModifierDirection
  */
+
+AH.modifier = Object.freeze({
+  type: {
+    additive: "AH.STATUS.MODIFIER.Additive",
+    multiplicative: "AH.STATUS.MODIFIER.Multiplicative",
+  },
+  direction: {
+    incoming: "AH.STATUS.MODIFIER.Incoming",
+    outgoing: "AH.STATUS.MODIFIER.Outgoing",
+  },
+});
+
+/**
+ * @typedef {'resistance'|'vulnerability'|'immunity'} AH_Affinity
+ */
+
+AH.affinities = Object.freeze({
+  vulnerability: {
+    label: "AH.DAMAGE.AFFINITY.Vulnerability",
+    modifier: "1.25",
+  },
+  resistance: {
+    label: "AH.DAMAGE.AFFINITY.Resistance",
+    modifier: "0.75",
+  },
+  immunity: {
+    label: "AH.DAMAGE.AFFINITY.Immunity",
+    modifier: "0",
+  },
+  // TODO: Implement as a flag/property??
+  // absorption: {
+  //   label: "AH.DAMAGE.AFFINITY.Absorption",
+  //   modifier: "-1",
+  // },
+});
 
 /**
  * @typedef {'universal'|'physical'|'elemental'|'spiritual'} AH_DamageGroup

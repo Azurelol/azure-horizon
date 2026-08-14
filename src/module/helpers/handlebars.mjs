@@ -251,6 +251,11 @@ export default Object.freeze({
     Handlebars.registerHelper("ahValue", function (value, reference) {
       return (value instanceof Function ? value(reference) : value);
     });
+    Handlebars.registerHelper("ahFilterFields", function (fields) {
+      return Object.fromEntries(
+        Object.entries(this.system.affinities).filter(([key]) => key !== "schemaVersion"),
+      );
+    });
     Handlebars.registerHelper("ahAutoComplete", autoComplete);
     Handlebars.registerHelper("ahBadge", badge);
     Handlebars.registerHelper("ahButton", button);

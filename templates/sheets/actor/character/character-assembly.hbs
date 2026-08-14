@@ -29,10 +29,35 @@
     </div>
 
     <fieldset>
-      <legend>{{localize 'AH.ADVERSARY.Affinity.plural'}}</legend>
-      <div>
-
-      </div>
+      <legend>{{localize 'AH.CHARACTER.Affinity.plural'}}</legend>
+      <table>
+        <thead>
+        <tr>
+          <th data-tooltip="{{localize "AH.CHARACTER.MODIFIER.Key"}}"><i class="{{ahIconClass 'parameter'}}"></i></th>
+          <th data-tooltip="{{localize "AH.CHARACTER.Affinity.long"}}"><i class="{{ahIconClass 'parameter'}}"></i></th>
+          <th data-tooltip="{{localize "AH.FIELD.Type"}}"><i class="{{ahIconClass 'type'}}"></i></th>
+          <th data-tooltip="{{localize "AH.FIELD.Amount"}}"><i class="{{ahIconClass 'amount'}}"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each (ahFilterFields system.affinities) as |aff key|}}
+          <tr>
+            <td>
+              {{ahCapitalize key}}
+            </td>
+            <td>
+              {{ahStringField path=(ahConcat 'system.affinities.' key '.preset') value=aff.preset options=(ahFormOptions 'affinities') blank=true }}
+            </td>
+            <td>
+              {{ahStringField path=(ahConcat 'system.affinities.' key '.type') value=aff.preset options=(ahFormOptions 'modifier.type') }}
+            </td>
+            <td>
+              {{ahNumberField path=(ahConcat 'system.affinities.' key '.amount') value=aff.amount }}
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
     </fieldset>
 
   </div>
