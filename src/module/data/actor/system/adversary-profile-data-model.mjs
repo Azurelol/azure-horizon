@@ -122,8 +122,8 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
         availableAttacks += 1;
         break;
     }
-    data.attacks.current = availableAttacks;
-    data.attacks.available = attackItems.length;
+    data.attacks.current = attackItems.length;
+    data.attacks.available = availableAttacks;
     data.attacks.entries = attackItems;
 
     // Abilities

@@ -75,8 +75,25 @@ export default class CharacterDataModel extends ActorDataModel {
     this.parameters.init.defineCurrentProperty(() => Formulas.calculateInitiative(data.attributes));
 
     // Add entries from affinities
-    for (const aff of this.affinities.entries) {
-
+    for (const [key, aff] of Object.entries(this.affinities)) {
+      if (aff.preset || aff.amount) {
+        if (this.parameters.damage[key]) {
+          const list = this.parameters.damage[key].incoming.skill;
+          if (aff.preset) {
+            list.multiplicative.push(AH.affinities[aff.preset].modifier);
+          }
+          else {
+            switch (aff.type) {
+              case "additive":
+                list.additive.push(aff.amount);
+                break;
+              case "multiplicative":
+                list.multiplicative.push(aff.amount);
+                break;
+            }
+          }
+        }
+      }
     }
   }
 
