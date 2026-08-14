@@ -47,6 +47,14 @@ ol.acc-list li {
   margin: 0;
   display: flex;
   flex-direction: column;
+  list-style: none;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
 
   ul, ol {
     padding: 0;

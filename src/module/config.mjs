@@ -140,7 +140,7 @@ AH.themes = {
  */
 AH.progression = Object.freeze({
   level: {
-    minimum: 5,
+    minimum: 10,
     maximum: 99,
   },
 });

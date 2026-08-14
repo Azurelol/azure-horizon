@@ -57,6 +57,7 @@ export class AdversarySheet extends AHBaseCharacterSheet {
         break;
 
       case "assembly":{
+        context.assembly = this.actor.system.profile.prepareAssemblyData();
         break;
       }
 

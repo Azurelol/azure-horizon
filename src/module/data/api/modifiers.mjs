@@ -11,25 +11,58 @@ const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField } =
 export class ModifierDataField extends SchemaField {
   constructor(options = {}) {
     super({
-      additive: new ArrayField(new NumberField()),
-      multiplicative: new ArrayField(new NumberField()),
+      additive: new NumberField(),
+      multiplicative: new NumberField({ blank: true, nullable: true }),
     }, options);
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get valid() {
+    return (this.additive !== 0) && (this.multiplicative !== undefined);
   }
 }
 
 /**
  * Used for character-level modifiers such as damage dealt, healing received, etc.
- * @property {ModifierDataField} status
- * @property {ModifierDataField} equipment
- * @property {ModifierDataField} skill
+ */
+export class ModifierListDataField extends SchemaField {
+  constructor(options = {}) {
+    super({
+      additive: new ArrayField(new NumberField()),
+      multiplicative: new ArrayField(new NumberField()),
+    }, options);
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get valid() {
+    return (this.additive.length > 0) && (this.multiplicative.length > 0);
+  }
+}
+
+/**
+ * Used for character-level modifiers such as damage dealt, healing received, etc.
+ * @property {ModifierListDataField} status
+ * @property {ModifierListDataField} equipment
+ * @property {ModifierListDataField} skill
  */
 export class ModifiersDataModel extends VersionedDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      status: new ModifierDataField(),
-      equipment: new ModifierDataField(),
-      skill: new ModifierDataField(),
+      status: new ModifierListDataField(),
+      equipment: new ModifierListDataField(),
+      skill: new ModifierListDataField(),
     });
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get valid() {
+    return this.status.valid && this.equipment.valid && this.skill.valid;
   }
 
   /**
@@ -98,6 +131,7 @@ export class ExchangeModifiersDataModel extends foundry.abstract.DataModel {
  * @returns {ModifierEntry[]}
  */
 function resolveFromModel(model) {
+
   /** @param {ModifiersDataModel} model **/
   const collectModifiers = (model) => {
     return Formulas.joinModifiers(model.resolveModifiers());

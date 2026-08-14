@@ -1,3 +1,40 @@
 <section class="tab assembly {{tab.cssClass}}" data-tab="assembly" data-group="primary">
 
+  <div class="ah-flex-col" style="margin-top:8px;">
+    <prose-mirror name="system.profile.summary" value="{{system.profile.summary}}" toggled>
+      {{{lookup enriched 'system.profile.summary'}}}
+    </prose-mirror>
+  </div>
+
+  <div class="ah-grid-col-2">
+
+    <div class="ah-flex-col">
+      <fieldset>
+        <legend>{{localize 'AH.ADVERSARY.Attack.plural'}} [{{assembly.attacks.current}}/{{assembly.attacks.available}}]</legend>
+        <ul class="ah-list">
+          {{#each assembly.attacks.entries as |item|}}
+            <li>{{ahDocumentAnchor item}} {{item.name}}</li>
+          {{/each}}
+        </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>{{localize 'AH.ADVERSARY.Ability.plural'}} [{{assembly.abilities.current}}/{{assembly.abilities.available}}]</legend>
+        <ul class="ah-list">
+          {{#each assembly.abilities.entries as |item|}}
+            <li>{{ahDocumentAnchor item}} {{item.name}}</li>
+          {{/each}}
+        </ul>
+      </fieldset>
+    </div>
+
+    <fieldset>
+      <legend>{{localize 'AH.ADVERSARY.Affinity.plural'}}</legend>
+      <div>
+
+      </div>
+    </fieldset>
+
+  </div>
+
 </section>

@@ -1,6 +1,6 @@
 import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
-import { ModifierDataField } from "../../api/_module.mjs";
+import { ModifierListDataField } from "../../api/_module.mjs";
 
 const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField } = foundry.data.fields;
 
@@ -17,9 +17,9 @@ export class BenefitDataField extends SchemaField {
 }
 
 /**
- * @property {ModifierDataField} hp
- * @property {ModifierDataField} mp
- * @property {ModifierDataField} ip
+ * @property {ModifierListDataField} hp
+ * @property {ModifierListDataField} mp
+ * @property {ModifierListDataField} ip
  */
 export default class ClassBenefitsDataModel extends FieldsetDataModel {
   static defineSchema() {

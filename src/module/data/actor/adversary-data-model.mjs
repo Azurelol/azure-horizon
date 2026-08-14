@@ -64,4 +64,9 @@ export default class AdversaryDataModel extends CharacterDataModel {
         break;
     }
   }
+
+  _prepareParameters() {
+    super._prepareParameters();
+    // Let's add adversary affinities when they are present
+  }
 }
