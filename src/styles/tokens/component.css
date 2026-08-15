@@ -111,7 +111,7 @@
   --ah-color-inline: var(--ah-content-primary);
   --ah-color-box-shadow-inline: var(--ah-border-accent);
   --ah-color-text-shadow-inline: var(--ah-border-accent);
-  --ah-background-inline: var(--ah-surface-panel);
+  --ah-background-inline: var(--ah-surface-action);
   --ah-font-size-inline: var(--ah-primitive-size-text-sm);
   --ah-font-size-message-header: 16px;
   --ah-background-inline-value: var(--ah-surface-value);

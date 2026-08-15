@@ -34,6 +34,10 @@
   }
 }
 
+.ah-item__name {
+  width: 325px;
+}
+
 .ah-item__revision {
   width: 80px;
 }
