@@ -1,14 +1,14 @@
 {
   "folder": "FAJt0Dim8RzQ8BHP",
-  "name": "Power Strike",
+  "name": "Follow Through",
   "type": "skill",
-  "_id": "Vr4OV4fATDqDW33a",
-  "img": "icons/skills/melee/hand-grip-staff-yellow-brown.webp",
+  "_id": "kok6FsiBHrU0R6dB",
+  "img": "icons/skills/melee/strike-sword-gray.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "armiger-power-strike",
-    "description": "<p>You unleash a powerful attack with your equipped weapon.</p>",
+    "slug": "armiger-follow-through",
+    "description": "",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -17,11 +17,17 @@
       "defense": "def",
       "bonus": ""
     },
+    "action": {
+      "schemaVersion": 1,
+      "type": "reaction",
+      "points": 1,
+      "traits": []
+    },
     "damage": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": {
-        "amount": "0",
+        "amount": "",
         "type": "untyped"
       },
       "secondary": {
@@ -39,19 +45,19 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "15",
+      "amount": "",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
+      "enabled": false,
       "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
-      },
-      "enabled": false
+      }
     },
     "level": {
       "current": 1,
@@ -59,18 +65,11 @@
     },
     "usage": {
       "schemaVersion": 1,
-      "check": true,
+      "check": false,
       "damage": true,
-      "power": "moderate"
+      "power": ""
     },
-    "class": "armiger",
-    "action": {
-      "type": "action",
-      "points": 1,
-      "traits": [
-        "cooldown"
-      ]
-    }
+    "class": "armiger"
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +81,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786544570507,
+    "createdTime": 1786782914294,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Vr4OV4fATDqDW33a"
+  "_key": "!items!kok6FsiBHrU0R6dB"
 }

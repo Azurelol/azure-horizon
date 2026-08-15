@@ -1,8 +1,8 @@
 {
-  "folder": "wATG2JP0nO7e3x18",
-  "name": "Zombie",
-  "type": "adversary",
-  "_id": "pQrVfMl2njPdNV27",
+  "folder": "Ejk69Kl3yqGHjinP",
+  "name": "Ballet",
+  "type": "hero",
+  "_id": "U7lzQZHaPk0TnHST",
   "img": "icons/svg/mystery-man.svg",
   "system": {
     "attributes": {
@@ -27,6 +27,7 @@
       "schemaVersion": 1
     },
     "level": 5,
+    "equipment": {},
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -308,13 +309,13 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 25,
+        "value": 0,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 25,
+        "value": 0,
         "bonus": 0,
         "temporary": 0
       },
@@ -332,21 +333,13 @@
       }
     },
     "profile": {
-      "schemaVersion": 1,
-      "traits": [
-        "undead"
-      ],
-      "family": "standard",
-      "role": "harrier",
-      "villain": false,
-      "rank": "standard",
-      "turns": 1
+      "schemaVersion": 1
     }
   },
   "prototypeToken": {
-    "name": "Zombie",
+    "name": "Ballet",
     "displayName": 0,
-    "actorLink": false,
+    "actorLink": true,
     "width": 1,
     "height": 1,
     "depth": 1,
@@ -363,7 +356,7 @@
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
-    "disposition": -1,
+    "disposition": 1,
     "displayBars": 0,
     "bar1": {
       "attribute": "resources.hp"
@@ -435,146 +428,7 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [
-    {
-      "name": "Fist",
-      "type": "attack",
-      "_id": "Lah7ZwkaipeUFaIo",
-      "img": "icons/skills/melee/unarmed-punch-fist.webp",
-      "system": {
-        "schemaVersion": 1,
-        "revision": 1,
-        "slug": "attack-fist",
-        "description": "",
-        "check": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": "dex",
-          "secondary": "mig",
-          "defense": "def",
-          "bonus": ""
-        },
-        "range": "melee",
-        "traits": [],
-        "damage": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": {
-            "amount": "",
-            "type": "bludgeoning"
-          },
-          "secondary": {
-            "amount": "",
-            "type": ""
-          },
-          "traits": [
-            "nonLethal"
-          ]
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1786645353915,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.Lah7ZwkaipeUFaIo",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "B84lnG927FT7kWX1": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!pQrVfMl2njPdNV27.Lah7ZwkaipeUFaIo"
-    },
-    {
-      "name": "Grab",
-      "type": "ability",
-      "_id": "jOxT3nj8KsqPEuRN",
-      "img": "icons/creatures/claws/claw-talons-glowing-purple.webp",
-      "system": {
-        "schemaVersion": 1,
-        "revision": 1,
-        "slug": "ability-grab",
-        "description": "<p>You attack the target with the intent to grab them.</p>",
-        "check": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": "dex",
-          "secondary": "mig",
-          "defense": "mig",
-          "bonus": ""
-        },
-        "damage": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": {
-            "amount": "",
-            "type": "bludgeoning"
-          },
-          "secondary": {
-            "amount": "",
-            "type": ""
-          },
-          "traits": []
-        },
-        "resource": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "type": "hp",
-          "amount": ""
-        },
-        "cost": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "resource": "mp",
-          "amount": "",
-          "perTarget": false
-        },
-        "effects": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "entries": [
-            "grabbed"
-          ],
-          "duration": {
-            "event": "",
-            "tracking": ""
-          }
-        },
-        "intent": "",
-        "action": {
-          "type": "action"
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1786646255165,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.jOxT3nj8KsqPEuRN",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "B84lnG927FT7kWX1": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!pQrVfMl2njPdNV27.jOxT3nj8KsqPEuRN"
-    }
-  ],
+  "items": [],
   "effects": [],
   "sort": 0,
   "ownership": {
@@ -585,12 +439,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786645284439,
+    "createdTime": 1786646202088,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!pQrVfMl2njPdNV27"
+  "_key": "!actors!U7lzQZHaPk0TnHST"
 }

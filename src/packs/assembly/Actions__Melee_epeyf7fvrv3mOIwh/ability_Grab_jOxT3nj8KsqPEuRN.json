@@ -55,7 +55,11 @@
         "tracking": ""
       }
     },
-    "intent": ""
+    "intent": "",
+    "action": {
+      "type": "action",
+      "points": 1
+    }
   },
   "effects": [],
   "sort": 0,

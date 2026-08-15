@@ -18,15 +18,24 @@ export default class FeatureDataModel extends ItemDataModel {
   }
 
   /**
+   * @returns {CheckDataModel}
+   * @protected
+   */
+  resolveCheckData() {
+    return this.check;
+  }
+
+  /**
    * @param {KeyboardModifiers} modifiers
    * @returns {Promise<boolean>}
    */
   async perform(modifiers) {
-    if (this.check.enabled) {
+    const checkData = this.resolveCheckData();
+    if (checkData.enabled) {
       await Checks.actionCheck(this.parent.actor, this.parent, async (check, actor, item) => {
         const config = new ActionConfig(check);
-        config.setAttributes(this.check.primary, this.check.secondary);
-        config.setTargetedDefense(this.check.defense);
+        config.setAttributes(checkData.primary, checkData.secondary);
+        config.setTargetedDefense(checkData.defense);
         await this._initializeAction(config);
       });
     }

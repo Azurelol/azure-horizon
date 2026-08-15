@@ -35,6 +35,26 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
   }
 
   /**
+   * @returns {AHItem}
+   */
+  resolveWeapon() {
+    const actor = this.parent.actor;
+    /** @type HeroDataModel **/
+    const heroData = actor.system;
+    const equipment = heroData.getEquippedItems();
+    const weapon = equipment.mainHand;
+    return weapon;
+  }
+
+  resolveCheckData() {
+    if (this.usage.check) {
+      const weapon = this.resolveWeapon();
+      return weapon.system.check;
+    }
+    return super.resolveCheckData();
+  }
+
+  /**
    * @param {ActionConfig} config
    * @returns {Promise<void>}
    * @private
@@ -47,19 +67,11 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
     /** @type AHActor **/
     const actor = this.parent.actor;
     if (isActorType(actor) && (actor.type === "hero")) {
-      /** @type HeroDataModel **/
-      const heroData = actor.system;
-      const equipment = heroData.getEquippedItems();
-      if (equipment) {
-        const weapon = equipment.mainHand;
-        /** @type WeaponDataModel **/
-        const weaponData = weapon.system;
+      const weapon = this.resolveWeapon();
+      if (weapon) {
         config.setItemReference(weapon);
-        if (this.usage.check) {
-          config.setAttributes(weaponData.check.primary, weaponData.check.secondary);
-        }
         if (this.usage.damage) {
-          weaponData.damage.configureAction(config, {
+          weapon.system.damage.configureAction(config, {
             label: "AH.ITEM.Weapon",
           });
         }

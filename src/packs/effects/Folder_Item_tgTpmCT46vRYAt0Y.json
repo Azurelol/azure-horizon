@@ -1,23 +1,23 @@
 {
-  "type": "Item",
+  "type": "ActiveEffect",
   "folder": null,
-  "name": "Actions: Recovery",
-  "color": "#4d4dff",
+  "name": "Item",
+  "color": null,
   "sorting": "a",
-  "_id": "rBR4Y10b1vscBrTK",
+  "_id": "tgTpmCT46vRYAt0Y",
   "description": "",
-  "sort": 1000000,
+  "sort": 0,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786633834681,
+    "createdTime": 1786721643872,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!rBR4Y10b1vscBrTK"
+  "_key": "!folders!tgTpmCT46vRYAt0Y"
 }

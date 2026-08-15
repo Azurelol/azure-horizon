@@ -1,14 +1,14 @@
 {
-  "folder": "FAJt0Dim8RzQ8BHP",
-  "name": "Armiger",
+  "folder": "gSNr762qPCxFwYcm",
+  "name": "Brawler",
   "type": "class",
-  "_id": "gMn0yJrV0U7mRKOJ",
+  "_id": "H1gWaSP7iNsKBjVf",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "armiger",
-    "description": "<p>A versatile warrior that values tactical flexibility over the study of a single weapon.</p>",
+    "slug": "brawler",
+    "description": "",
     "benefits": {
       "schemaVersion": 1,
       "hp": true,
@@ -16,8 +16,7 @@
       "ip": false
     },
     "traits": [
-      "warrior",
-      "offense"
+      "warrior"
     ]
   },
   "effects": [],
@@ -30,12 +29,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786543592891,
+    "createdTime": 1786719149237,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!gMn0yJrV0U7mRKOJ"
+  "_key": "!items!H1gWaSP7iNsKBjVf"
 }

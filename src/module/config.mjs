@@ -817,6 +817,7 @@ AH.traits = {
     restore: { label: "AH.TRAIT.Restore", tooltip: "AH.TRAIT.RestoreHint" },
   },
 
+  // Action
   action: {
     cooldown: { label: "AH.TRAIT.Cooldown", tooltip: "AH.TRAIT.CooldownHint" },
     press: { label: "AH.TRAIT.Press", tooltip: "AH.TRAIT.PressHint" },
@@ -906,6 +907,7 @@ AH.traits = {
 
 //  Create a catch-all of traits for localization purposes
 AH.traits.all = Object.freeze({
+  ...AH.traits.general,
   ...AH.traits.action,
   ...AH.traits.damage,
   ...AH.traits.resource,
