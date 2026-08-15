@@ -451,9 +451,12 @@
       }
     },
     "FIELD": {
+      "Name": "Name",
       "Type": "Type",
       "Villain": "Villain",
       "Entries": "Entries",
+      "Tracker": "Tracker",
+      "Style": "Style",
       "Action": "Action",
       "Effects": "Effects",
       "Category": "Category",

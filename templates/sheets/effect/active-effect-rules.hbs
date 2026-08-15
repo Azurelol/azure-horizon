@@ -1,5 +1,16 @@
 <section class="tab {{tab.cssClass}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
 
+  {{!-- Tracker --}}
+  <fieldset>
+    <legend>{{ahBooleanField label='AH.FIELD.Tracker' path='system.tracker.enabled' value=system.tracker.enabled}} </legend>
+    <div class="ah-field-grid">
+      {{ahStringField path='system.tracker.name' label='AH.FIELD.Name' value=system.tracker.name}}
+      {{ahStringField path='system.tracker.id' label='AH.FIELD.Identifier' value=system.tracker.id}}
+      {{ahNumberField path='system.tracker.current' label='AH.FIELD.Current' value=system.tracker.current}}
+      {{ahNumberField path='system.tracker.max' label='AH.FIELD.Maximum' value=system.tracker.max}}
+    </div>
+  </fieldset>
+
 	{{!-- Rule Elements --}}
 	<fieldset>
 		<legend>

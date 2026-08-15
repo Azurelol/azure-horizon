@@ -1,4 +1,4 @@
-import { SubDocumentCollectionField } from "../api/_module.mjs";
+import { SubDocumentCollectionField, TrackerDataModel } from "../api/_module.mjs";
 import { RuleElementDataModel } from "./_module.mjs";
 
 /**
@@ -10,6 +10,7 @@ import { RuleElementDataModel } from "./_module.mjs";
 
 /**
  * A data model used by default effects with properties to control the expiration behavior.
+ * @property {TrackerDataModel} tracker
  * @property {RuleElementDataModel[]} rules
  */
 export default class ActiveEffectDataModel extends foundry.data.ActiveEffectTypeDataModel {
@@ -26,8 +27,9 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
   }
 
   static defineSchema() {
-    const fields = foundry.data.fields;
+    const { EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      tracker: new EmbeddedDataField(TrackerDataModel, { required: false }),
       rules: new SubDocumentCollectionField(RuleElementDataModel),
     });
   }
