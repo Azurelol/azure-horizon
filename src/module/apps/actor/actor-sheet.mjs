@@ -525,7 +525,14 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       case "Item": {
         const item = this.actor.items.get(id);
         if (item) {
-          await item.delete();
+          const confirm = await Dialogs.confirm(
+            {
+              title: "AH.COMMON.Remove",
+              message: StringUtils.localize("AH.DIALOG.RemoveObject", { label: item.name }),
+            });
+          if (confirm) {
+            item.delete();
+          }
         }
         break;
       }
