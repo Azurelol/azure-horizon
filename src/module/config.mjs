@@ -414,7 +414,7 @@ AH.actorTypes = Object.freeze({
  * @typedef {'weapon'|'armor'|'accessory'|'skill'|'spell'|'consumable'|'attack'|'ability'|'class'} AH_ItemType
  */
 
-AH.itemType = {
+AH.itemTypes = {
   weapon: "AH.ITEM.Weapon",
   armor: "AH.ITEM.Armor",
   skill: "AH.ITEM.Skill",
@@ -424,7 +424,7 @@ AH.itemType = {
  * @typedef {"attack" | "skill" | "spell" | "item"} AH_ItemGroup
  */
 
-AH.itemGroup = {
+AH.itemGroups = {
   attack: "AH.ITEM.Attack",
   skill: "AH.ITEM.Skill",
   spell: "AH.ITEM.Spell",

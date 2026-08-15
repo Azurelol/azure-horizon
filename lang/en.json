@@ -192,6 +192,7 @@
     },
     "CHECK": {
       "Check": "Check",
+      "Action": "Action Check",
       "Attribute": "Attribute Check",
       "Defense": "Defense Check",
       "Open": "Open Check",
@@ -345,24 +346,6 @@
       "UploadDirectory": "Codex Upload Directory",
       "UploadDirectoryHint": "Where uploads used in codex entries are uploaded to."
     },
-    "Combat": {
-      "AddPlayer": "Add Player",
-      "AddPlayerCombatTracker": "Add Player to Combat Tracker",
-      "player": {
-        "FIELDS": {
-          "user": {
-            "label": "Player"
-          }
-        }
-      }
-    },
-    "Effect": {
-      "Label": "Effect",
-      "Inactive": "Inactive",
-      "Passive": "Passive",
-      "Temporary": "Temporary",
-      "Toggle": "Toggle Effect"
-    },
     "TRAIT": {
       "ARMOR": {
         "HeavyHint": "",
@@ -485,6 +468,10 @@
       "LessThan": "Less Than",
       "Local": "Local",
       "Handedness": "Handedness",
+      "CheckType": {
+        "long": "Check Type",
+        "plural": "Check Types"
+      },
       "DamageType": {
         "long": "Damage Type",
         "plural": "Damage Types"
@@ -545,8 +532,31 @@
       "Trigger": {
         "long": "Trigger"
       },
-      "CalculateDamage": "Calculate Damage",
-      "ApplyDamage": "Apply Damage",
+      "TRIGGER": {
+        "Combat": "Combat",
+        "PerformAction": "Perform Action",
+        "RenderAction": "Render Action",
+        "CalculateDamage": "Calculate Damage",
+        "Signal": "Signal",
+        "Damage": "Damage"
+      },
+      "PREDICATE": {
+        "Check": "Check",
+        "Rank": "Rank",
+        "Traits": "Traits",
+        "Effect": "Effect",
+        "Weapon": "Weapon",
+        "FactionRelation": "Faction Relation"
+      },
+      "ACTION": {
+        "ApplyDamage": "Apply Damage",
+        "ModifyDamage": "Modify Damage",
+        "ApplyEffect": "Apply Effect",
+        "Signal": "Signal",
+        "Message": "Message",
+        "OpenApplication": "Open Application",
+        "ExecuteMacro": "Execute Macro"
+      },
       "TriggerHint": "The event that initiates execution of this element.",
       "Predicates": "Predicates",
       "PredicatesHint": "Optional conditions that determine whether this element should execute.",
@@ -702,6 +712,24 @@
     "COMBAT": {
       "FirstTurn": "First Turn",
       "InitiativeHint": "Initiative will be rolled for all characters at the start of the round."
+    },
+    "Combat": {
+      "AddPlayer": "Add Player",
+      "AddPlayerCombatTracker": "Add Player to Combat Tracker",
+      "player": {
+        "FIELDS": {
+          "user": {
+            "label": "Player"
+          }
+        }
+      }
+    },
+    "Effect": {
+      "Label": "Effect",
+      "Inactive": "Inactive",
+      "Passive": "Passive",
+      "Temporary": "Temporary",
+      "Toggle": "Toggle Effect"
     }
   },
   "TYPES": {

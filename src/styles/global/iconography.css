@@ -4,6 +4,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  &.--transparent {
+    background-color: transparent;
+    border: none;
+  }
 }
 
 .ah-button-group {

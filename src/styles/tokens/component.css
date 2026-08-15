@@ -68,7 +68,7 @@
   /* Field Sets */
   --ah-background-fieldgroup: var(--ah-surface-base);
   --ah-background-fieldset: var(--ah-surface-panel);
-  --ah-background-fieldset-header: var(--ah-surface-accent);
+  --ah-background-fieldset-header: var(--ah-surface-panel-nested);
   --ah-color-fieldset: var(--ah-content-primary);
   --ah-color-fieldset-header: var(--ah-content-primary);
   --ah-border-color-fieldset: var(--ah-border-panel);

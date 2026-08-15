@@ -7,7 +7,7 @@
 }
 
 .ah-foldout > summary {
-  background: var(--ah-color-background-control-header);
+  background: var(--ah-background-fieldset-header);
   cursor: pointer;
   outline: none;
   display: flex;
@@ -15,16 +15,10 @@
   align-items: center;
   transition: background-color 0.2s ease;
   padding: 0 0.5rem;
-  border-radius: 4px;
-  box-shadow: 1px 2px var(--color-primary);
 
   span,
   label,
   i {
-    --color-text-primary: var(--ah-color-app-item-header-content);
-    color: var(--color-text-primary);
-    text-shadow: 1px 1px var(--ah-color-app-item-header-shadow);
-    font-weight: var(--font-weight-bold);
     font-size: large;
   }
 }
@@ -50,9 +44,9 @@
 .ah-foldout > .ah-foldout__content {
   padding: 15px 20px;
   line-height: 1.6;
-  background: var(--ah-background-control);
+  background: var(--ah-background-fieldset);
   border-radius: 5px;
-  border: 1px solid var(--ah-border-control);
+  border: var(--ah-border);
 }
 
 .ah-foldout[open] > .ah-foldout__content {

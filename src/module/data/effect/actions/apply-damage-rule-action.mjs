@@ -34,7 +34,7 @@ export default class ApplyDamageRuleAction extends RuleActionDataModel {
   }
 
   static get localization() {
-    return "AH.RULE.ApplyDamage";
+    return "AH.RULE.ACTION.ApplyDamage";
   }
 
   static get template() {

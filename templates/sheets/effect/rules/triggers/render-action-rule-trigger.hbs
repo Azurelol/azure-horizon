@@ -1,0 +1,7 @@
+{{ahTraitsField schema=trigger.schema.fields.itemGroups label="AH.FIELD.ItemGroup.plural" value=trigger.itemGroups options=(ahFormOptions 'itemGroups') path=(ahConcat path ".itemGroups") }}
+{{ahTraitsField schema=trigger.schema.fields.checkTypes label="AH.FIELD.CheckType.plural" value=trigger.checkTypes options=(ahFormOptions 'checkTypes') path=(ahConcat path ".checkTypes") }}
+
+<div class="ah-field-group --row">
+  {{ahField schema=trigger.schema.fields.local path=(ahConcat path ".local") value=trigger.local label='AH.FIELD.Local'}}
+  {{ahStringField path=(ahConcat path ".identifier") value=trigger.identifier label='AH.FIELD.Identifier'}}
+</div>

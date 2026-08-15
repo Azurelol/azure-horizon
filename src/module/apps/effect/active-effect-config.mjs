@@ -8,6 +8,9 @@ import { Dialogs } from "../../helpers/_module.mjs";
 import { SubDocumentCollectionField } from "../../data/api/_module.mjs";
 import { templates as ruleTemplates } from "../../data/effect/_module.mjs";
 
+/**
+ *
+ */
 export default class AHActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
 
   #expandedRules = {};
@@ -66,7 +69,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
   };
 
   /**
-   * @returns {ActiveEffectModel}
+   * @returns {ActiveEffectDataModel}
    */
   get system() {
     return this.document.system;
@@ -113,7 +116,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
             ruleActions: AH.dataModelRegistries.ruleAction.localizedEntries,
             ruleTriggers: AH.dataModelRegistries.ruleTrigger.localizedEntries,
             damageTypeOptions: FoundryUtils.getFormSelectOptions(AH.damageTypes),
-            itemGroupOptions: FoundryUtils.getFormSelectOptions(AH.itemGroup),
+            itemGroupOptions: FoundryUtils.getFormSelectOptions(AH.itemGroups),
             checkTypeOptions: FoundryUtils.getFormSelectOptions(AH.checkTypes),
             rankOptions: FoundryUtils.getFormSelectOptions(AH.rank),
           };
@@ -198,14 +201,16 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
       options,
     );
 
-    const triggerModel = AH.dataModelRegistries.ruleTrigger.types[type];
-    const trigger = new triggerModel();
-    const data = {
-      trigger: trigger,
-      type: RuleElementDataModel.TYPE,
-    };
-    await SubDocumentCollectionField.addDocumentModel(this.document, this.document.system.rules, data);
-    console.debug(`Added rule element with trigger ${type}`);
+    if (type) {
+      const triggerModel = AH.dataModelRegistries.ruleTrigger.types[type];
+      const trigger = new triggerModel();
+      const data = {
+        trigger: trigger,
+        type: RuleElementDataModel.TYPE,
+      };
+      await SubDocumentCollectionField.addDocumentModel(this.document, this.document.system.rules, data);
+      console.debug(`Added rule element with trigger ${type}`);
+    }
   }
 
   /**

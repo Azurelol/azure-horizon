@@ -1,8 +1,8 @@
 import AH from "../../../config.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
 import RuleTriggerDataModel from "../rule-trigger-data-model.mjs";
-
-const fields = foundry.data.fields;
+import { TraitsField } from "../../item/fields/_module.mjs";
+import { FoundryUtils } from "../../../utils/_module.mjs";
 
 /**
  * @description Trigger based on a {@linkcode CalculateDamageEvent}
@@ -27,13 +27,17 @@ export default class CalculateDamageRuleTrigger extends RuleTriggerDataModel {
   }
 
   static defineSchema() {
-    const schema = Object.assign(super.defineSchema(), {
-      itemGroups: new fields.SetField(new fields.StringField()),
-      damageTypes: new fields.SetField(new fields.StringField()),
-      identifier: new fields.StringField(),
-      local: new fields.BooleanField(),
+    const { BooleanField, StringField } = foundry.data.fields;
+    return Object.assign(super.defineSchema(), {
+      itemGroups: new TraitsField({
+        options: FoundryUtils.getFormSelectOptions(AH.itemGroups),
+      }),
+      damageTypes: new TraitsField({
+        options: FoundryUtils.getFormSelectOptions(AH.damageTypes),
+      }),
+      identifier: new StringField(),
+      local: new BooleanField(),
     });
-    return schema;
   }
 
   static migrateData(source) {
@@ -41,7 +45,7 @@ export default class CalculateDamageRuleTrigger extends RuleTriggerDataModel {
   }
 
   static get localization() {
-    return "AH.RULE.CalculateDamage";
+    return "AH.RULE.TRIGGER.CalculateDamage";
   }
 
   static get template() {
