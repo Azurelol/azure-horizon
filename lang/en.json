@@ -48,6 +48,8 @@
       "Ability": "Ability",
       "Skill": "Skill",
       "Weapon": "Weapon",
+      "Armor": "Armor",
+      "Accessory": "Accessory",
       "Spell": "Spell",
       "Item": "Item",
       "Class": "Class"

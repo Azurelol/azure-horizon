@@ -85,6 +85,12 @@ export default class CompendiumIndex {
   #effects;
 
   /**
+   * @desc All compendium items by their slug.
+   @type {Record<string, CompendiumIndexEntry>}
+   */
+  #effectsBySlug;
+
+  /**
 	 * @desc Where the keys are the actor types.
 	 * @type {Record<string, CompendiumIndexEntry[]>}
 	 */
@@ -103,9 +109,8 @@ export default class CompendiumIndex {
 
   // Actors
   static npcFields = Object.freeze({
-    species: "system.species.value",
-    rank: "system.rank.value",
-    role: "system.role.value",
+    rank: "system.profile.rank",
+    role: "system.profile.role",
   });
 
   /**
@@ -122,6 +127,15 @@ export default class CompendiumIndex {
 	 */
   static itemFields = Object.freeze({
     slug: "system.slug",
+  });
+
+  /**
+   * Active Effect specific data model fields to be indexed.
+   * @returns {Record<string, string>}
+   */
+  static effectFields = Object.freeze({
+    slug: "system.slug",
+
   });
 
   /**
@@ -200,9 +214,29 @@ export default class CompendiumIndex {
 	 */
   async getEffects() {
     if (!this.#effects) {
-      this.#effects = await this.getItemsOfType("effect");
+      const entries = await this.getEntries("ActiveEffect", undefined, Object.values(CompendiumIndex.effectFields));
+      this.#effects = entries.base; // Since we just use the "base" type.
     }
     return this.#effects;
+  }
+
+  /**
+   * @param {String} slug An unique identifier used by the system.
+   * @returns {Promise<CompendiumIndexEntry>} A compendium index entry.
+   */
+  async getEffectBySlug(slug) {
+    if (!this.#effectsBySlug) {
+      this.#effectsBySlug = {};
+      const entries = await this.getEffects();
+      for (const entry of entries) {
+        const slug = entry.system.slug;
+        if (slug) {
+          this.#effectsBySlug[slug] = entry;
+        }
+      }
+    }
+
+    return this.#effectsBySlug[slug] ?? null;
   }
 
   /**

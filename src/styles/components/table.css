@@ -1,3 +1,12 @@
+.ah-table__collection {
+  display: flex;
+  flex-direction: column;
+
+  table {
+    margin-top: 0;
+  }
+}
+
 .ah-table {
   table-layout: fixed;
   width: 100%;

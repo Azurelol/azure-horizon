@@ -26,7 +26,7 @@ async function getEffectData(id) {
     }
     // Resolve by slug
     else {
-      const entry = await CompendiumIndex.instance.getItemBySlug(id);
+      const entry = await CompendiumIndex.instance.getEffectBySlug(id);
       if (entry) {
         effect = await fromUuid(entry.uuid);
       }
@@ -308,7 +308,9 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
     else {
       for (const id of effectData.entries) {
         const action = await getChatAction(id, config.sourceInfo, effectData.duration);
-        config.addAction(action);
+        if (action) {
+          config.addAction(action);
+        }
       }
     }
   }

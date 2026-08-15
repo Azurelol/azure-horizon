@@ -73,17 +73,20 @@ export default class InventoryDataModel extends VersionedDataModel {
       }
 
     }
-    if (!unequipped.includes("mainHand")) {
-      data.mainHand = item.id;
-      if (twoHanded) {
-        data.offHand = item.id;
-      }
-      else {
-        data.offHand = null;
-      }
-    }
 
     return data;
+  }
+
+  get unlocked2() {
+    return this.parent.level >= 20;
+  }
+
+  get unlocked3() {
+    return this.parent.level >= 40;
+  }
+
+  get unlocked4() {
+    return this.parent.level >= 60;
   }
 
   /**

@@ -87,11 +87,14 @@
   }
 
   .ah-character__equipment {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 40px 30px 30px 40px;
+    grid-template-areas:
+    "mainHand armor armor offHand"
+    "acc acc   acc   acc";
+    gap: 8px;
     justify-content: center;
     align-items: center;
-    gap: 8px;
 
     .ah-character__equipment__slot {
       border: 1px solid var(--ah-border-control);
@@ -104,6 +107,31 @@
       img {
         object-fit: fill;
       }
+
+      &.--mainHand {
+        grid-area: mainHand;
+      }
+
+      &.--armor {
+        grid-area: armor;
+        width: 100%;
+        height: 100%;
+      }
+
+      &.--offHand {
+        grid-area: offHand;
+      }
+
+
+    }
+
+    .ah-character__equipment__accessories {
+      grid-area: acc;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 8px;
     }
   }
+
 }

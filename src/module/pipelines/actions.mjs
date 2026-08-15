@@ -256,6 +256,8 @@ async function perform(actor, item, prepare) {
   await prepare(config, actor, item);
   await Events.performAction(config, actor, item);
   await invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
+  // TODO: Nooo... how could you?
+  await new Promise((resolve) => setTimeout(resolve, 10));
   await renderAction(config, actor, item);
   Events.resolveAction(new ActionInspector(config.check), actor, item);
 }

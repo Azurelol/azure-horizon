@@ -27,8 +27,16 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
   }
 
   static defineSchema() {
-    const { EmbeddedDataField } = foundry.data.fields;
+    const { EmbeddedDataField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      slug: new StringField({
+        required: false,
+        blank: true,
+        initial: "",
+        config: false,
+        label: "AH.ITEM.Slug",
+        validate: (value) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value),
+      }),
       tracker: new EmbeddedDataField(TrackerDataModel, { required: false }),
       rules: new SubDocumentCollectionField(RuleElementDataModel),
     });

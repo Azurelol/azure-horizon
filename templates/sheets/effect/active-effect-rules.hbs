@@ -1,5 +1,7 @@
 <section class="tab {{tab.cssClass}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
 
+  {{formGroup systemFields.slug value=system.slug name='system.slug' localize=true}}
+
   {{!-- Tracker --}}
   <fieldset>
     <legend>{{ahBooleanField label='AH.FIELD.Tracker' path='system.tracker.enabled' value=system.tracker.enabled}} </legend>
