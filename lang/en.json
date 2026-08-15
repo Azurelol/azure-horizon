@@ -428,6 +428,7 @@
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",
+        "EffectChangeInvalidFormula": "The given formula while evaluating {key} of effect {effect} on {target} was invalid.",
         "ApplyNoDamage": "No damage was applied onto {actor} by {source}.",
         "MissingEffect": "Missing Effect",
         "MissingActor": "Missing Actor",

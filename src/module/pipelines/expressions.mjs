@@ -91,6 +91,10 @@ function evaluateVariables(expression, context) {
       case "tc": {
         return context.targets.length;
       }
+      // Skill level
+      case "sl":
+        context.assertItem(match);
+        return context.item.system.level.current;
       // Check Result
       case "chk": {
         if (context.check) {
@@ -132,6 +136,19 @@ function evaluateMacros(expression, context) {
         const actor = context.resolveActorOrSource(match, redirect);
         const attribute = parseIdentifier(splitArgs[0]);
         return getAttributeSize(actor, attribute);
+      }
+      // Skill level
+      case "sl": {
+        const actor = context.resolveActorOrSource(match, redirect, false);
+        if (!actor) {
+          return 0;
+        }
+        const skillId = parseIdentifier(splitArgs[0]);
+        const skill = actor.resolveItemsBySlug(skillId, "skill")?.[0];
+        if (!skill) {
+          return 0;
+        }
+        return skill.system.level.current;
       }
       // Tracker: Filled sections
       case "pg": {

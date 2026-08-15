@@ -1,5 +1,6 @@
 import SourceInfo from "./source-info.mjs";
 import Targeting from "../../helpers/targeting.mjs";
+import { isActorType, isItemType } from "../../constants.mjs";
 
 /**
  * @description Contains contextual objects used for evaluating expressions
@@ -57,6 +58,34 @@ export default class EvaluationContext {
    */
   static fromTargetData(actor, item, targets) {
     return new EvaluationContext(actor, item, Targeting.deserializeTargetData(targets));
+  }
+
+  /**
+   * @param {*}target
+   * @returns {EvaluationContext}
+   */
+  static fromTarget(target) {
+    let actor;
+    let item;
+
+    // 1. The effect is being applied onto an actor
+    // 2. The effect is being applied onto an item
+    if (isActorType(target)) {
+      actor = target;
+      if (isItemType(this.parent)) {
+        item = this.parent;
+      }
+    } else if (isItemType(target)) {
+      item = target;
+      actor = item.actor;
+    }
+
+    const context = new EvaluationContext(actor, item, [target]);
+    context.effect = this;
+    if (this.sourceInfo) {
+      context.setSourceItem(this.sourceInfo.itemUuid);
+    }
+    return context;
   }
 
   /**

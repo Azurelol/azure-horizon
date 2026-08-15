@@ -299,6 +299,18 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
   }
 
   /**
+   * @param {String} slug
+   * @param {AH_ItemType} type
+   * @return {AHItem[]}
+   */
+  resolveItemsBySlug(slug, type) {
+    const slugFilter = (i) => i.system.slug === slug;
+    if (!type) return this.items.filter(slugFilter);
+    const items = this.getItemsByType(type);
+    return items.filter(slugFilter);
+  }
+
+  /**
    * @returns {boolean}
    */
   isCharacterType() {

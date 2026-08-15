@@ -2,6 +2,8 @@
 import { isActorType, isItemType, systemID } from "../constants.mjs";
 import DocumentMixin from "./document-mixin.mjs";
 import AH from "../config.mjs";
+import { EvaluationContext } from "../data/common/_module.mjs";
+import { Expressions } from "../pipelines/_module.mjs";
 
 /**
  * @typedef EffectChangeData
@@ -114,14 +116,6 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
       changes.img = this.parent.img;
     }
 
-    // If no source info is provided, it could have been created directly
-    // if (!data.flags?.ah?.source && data.origin) {
-    //   /** @type AHItem **/
-    //   const compendiumItem = await fromUuid(data.origin);
-    //   const sourceInfo = new SourceInfo(compendiumItem.name, null, compendiumItem.uuid, null, compendiumItem.system.slug);
-    //   changes.flags = new FlagBuilder().set(Flags.ActiveEffect.Source, sourceInfo);
-    // }
-
     this.updateSource(changes);
     return super._preCreate(data, options, user);
   }
@@ -135,6 +129,42 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
       return true;
     }
     return this.system._isTemporary ?? super.isTemporary;
+  }
+
+  /**
+   * @param {AHActor|AHItem} target
+   * @param {EffectChangeData} change
+   * @returns {{}|*}
+   */
+  apply(target, change) {
+    // Support expressions
+    if (change.value && (typeof change.value === "string")) {
+      try {
+        // First, evaluate using built-in support
+        const expression = Roll.replaceFormulaData(change.value, this.parent);
+        // Second, evaluate with our custom expressions
+        const context = EvaluationContext.fromTarget(target);
+        const value = Expressions.evaluate(expression, context);
+        change.value = String(value ?? 0);
+        //console.debug(`Assigning ${change.key} (MODE ${change.mode}): ${change.value}`);
+      } catch (e) {
+        console.error(e);
+        ui.notifications?.error(
+          game.i18n.format("AH.WARNING.EffectChangeInvalidFormula", {
+            key: change.key,
+            effect: this.name,
+            target: target.name,
+          }),
+        );
+        return {};
+      }
+    }
+
+    const changes = super.apply(target, change);
+    if ((change.mode === CONST.ACTIVE_EFFECT_MODES.CUSTOM) && (changes[change.key] == null)) {
+      delete changes[change.key];
+    }
+    return changes;
   }
 
   /*-------------------------------------------------------------------------*/
@@ -165,7 +195,6 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
       await this.update(updates);
     }
   }
-
 }
 
 // /**
