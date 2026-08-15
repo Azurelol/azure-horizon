@@ -49,7 +49,9 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
   resolveCheckData() {
     if (this.usage.check) {
       const weapon = this.resolveWeapon();
-      return weapon.system.check;
+      if (weapon) {
+        return weapon.system.check;
+      }
     }
     return super.resolveCheckData();
   }

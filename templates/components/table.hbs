@@ -1,6 +1,8 @@
 {{#if config.title}}
   <div class="ah-table__title">
-    {{localize config.title}}
+    <span>
+      {{localize config.title}}
+    </span>
   </div>
 {{/if}}
 <table id="{{config.id}}" class="ah-table {{config.cssClass}}" data-table-id="{{config.id}}">
