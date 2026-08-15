@@ -102,6 +102,11 @@ function evaluateVariables(expression, context) {
       case "hr": {
         return getHighRoll(context.check);
       }
+      // Tracker (From effect)
+      case "pg": {
+        context.assertEffect(match);
+        return context.effect.system.tracker.current;
+      }
       default:
         throw new Error(`Unsupported symbol ${symbol}`);
     }
@@ -127,6 +132,17 @@ function evaluateMacros(expression, context) {
         const actor = context.resolveActorOrSource(match, redirect);
         const attribute = parseIdentifier(splitArgs[0]);
         return getAttributeSize(actor, attribute);
+      }
+      // Tracker: Filled sections
+      case "pg": {
+        const actor = context.resolveActorOrSource(match, redirect);
+        const id = parseIdentifier(splitArgs[0]);
+        const clock = actor.resolveTracker(id);
+        if (!clock) {
+          ui.notifications.warn(`${StringUtils.localize("AH.CHAT.EvaluateNoProgress")}: '${id}'`, { localize: true });
+          throw new Error(`The progress track with id ${id} was not found`);
+        }
+        return clock.current;
       }
       default:
         throw new Error(`Unsupported macro ${name}`);

@@ -111,6 +111,24 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
   /*-------------------------------------------------------------------------*/
 
   /**
+   * @description Resolves a tracker with the given id among the actor's items and effects.
+   * @param {String} id
+   * @returns {TrackerDataModel}
+   */
+  resolveTracker(id) {
+    // Search active effects: match the id on the progress track
+    for (const effect of this.allApplicableEffects()) {
+      if (effect.system.tracker?.enabled) {
+        const tracker = effect.system.tracker;
+        if (tracker.id === id) {
+          return tracker;
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
    * A helper function to toggle a status effect on an Actor.
    * Designed based off TokenDocument#toggleActiveEffect to properly interact with token hud.
    * @param {string} statusEffectId The status effect id based on CONFIG.statusEffects
@@ -184,6 +202,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     return fb.toObject();
   }
 
+  // TODO: Factor out
   /**
    * @param {String} id
    * @return {ActiveEffectData}
@@ -192,6 +211,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     return statusEffects.entries[id];
   }
 
+  // TODO: Factor out
   /**
    * @param {AHActiveEffect} effect
    * @param {String} statusEffectId
