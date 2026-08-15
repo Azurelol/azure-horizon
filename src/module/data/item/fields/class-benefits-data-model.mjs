@@ -1,32 +1,19 @@
 import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
-import { ModifierListDataField } from "../../api/_module.mjs";
 
-const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField } = foundry.data.fields;
-
-/**
- * Used for class-specific benefits.
- */
-export class BenefitDataField extends SchemaField {
-  constructor(options = {}) {
-    super({
-      additive: new NumberField(),
-      multiplicative: new NumberField(),
-    }, options);
-  }
-}
+const { SchemaField, NumberField, BooleanField, StringField, EmbeddedDataField, ArrayField } = foundry.data.fields;
 
 /**
- * @property {ModifierListDataField} hp
- * @property {ModifierListDataField} mp
- * @property {ModifierListDataField} ip
+ * @property {Boolean} hp
+ * @property {Boolean} mp
+ * @property {Boolean} ip
  */
 export default class ClassBenefitsDataModel extends FieldsetDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      hp: new BenefitDataField(),
-      mp: new BenefitDataField(),
-      ip: new BenefitDataField(),
+      hp: new BooleanField(),
+      mp: new BooleanField(),
+      ip: new BooleanField(),
     });
   }
 

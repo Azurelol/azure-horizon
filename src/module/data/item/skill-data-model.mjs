@@ -59,10 +59,9 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
           config.setAttributes(weaponData.check.primary, weaponData.check.secondary);
         }
         if (this.usage.damage) {
-          config.modifyDamage(d => {
-            d.add("AH.DAMAGE.Weapon", weaponData.damage.primary.type, weaponData.damage.primary.amount);
+          weaponData.damage.configureAction(config, {
+            label: "AH.ITEM.Weapon",
           });
-          config.addTraits(weaponData.damage.primary.type);
         }
       }
     }

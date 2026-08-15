@@ -33,3 +33,13 @@
     align-items: center;
   }
 }
+
+.ah-item__revision {
+  width: 80px;
+}
+
+.ah-item__slug {
+  width: 300px;
+}
+
+

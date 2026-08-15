@@ -35,7 +35,7 @@ function resolveConfigRecordLabel(value, format) {
 }
 
 /**
- * @param {Record<String, String>} record   *
+ * @param {Record<String, String|AH_Constant>} record   *
  * @param {AH_LocalizationFormat} format
  * @returns {FormSelectOption[]}
  * @remarks To be used with specific records.
@@ -803,7 +803,8 @@ AH.actionTypes = Object.freeze({
  * @property {Record<String, AH_Constant>} armor
  */
 AH.traits = {
-  action: {
+  // General Traits
+  general: {
     attack: { label: "AH.TRAIT.Attack", tooltip: "AH.TRAIT.AttackHint" },
     spell: { label: "AH.TRAIT.Spell", tooltip: "AH.TRAIT.SpellHint" },
     skill: { label: "AH.TRAIT.Skill", tooltip: "AH.TRAIT.SkillHint" },
@@ -814,6 +815,15 @@ AH.traits = {
 
     damage: { label: "AH.TRAIT.Damage", tooltip: "AH.TRAIT.DamageHint" },
     restore: { label: "AH.TRAIT.Restore", tooltip: "AH.TRAIT.RestoreHint" },
+  },
+
+  action: {
+    cooldown: { label: "AH.TRAIT.Cooldown", tooltip: "AH.TRAIT.CooldownHint" },
+    press: { label: "AH.TRAIT.Press", tooltip: "AH.TRAIT.PressHint" },
+    opener: { label: "AH.TRAIT.Opener", tooltip: "AH.TRAIT.OpenerHint" },
+    closer: { label: "AH.TRAIT.Closer", tooltip: "AH.TRAIT.CloserHint" },
+    finisher: { label: "AH.TRAIT.Finisher", tooltip: "AH.TRAIT.FinisherHint" },
+    stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
   },
 
   resource: {
@@ -839,14 +849,29 @@ AH.traits = {
     avoidance: { label: "AH.TRAIT.Avoidance", tooltip: "AH.TRAIT.AvoidanceHint" }, // Light
   },
 
-  skill: {
-    cooldown: { label: "AH.TRAIT.Cooldown", tooltip: "AH.TRAIT.CooldownHint" },
-    assist: { label: "AH.TRAIT.Assist", tooltip: "AH.TRAIT.AssistHint" },
-    stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
-    opener: { label: "AH.TRAIT.Opener", tooltip: "AH.TRAIT.OpenerHint" },
-    closer: { label: "AH.TRAIT.Closer", tooltip: "AH.TRAIT.CloserHint" },
-    finisher: { label: "AH.TRAIT.Finisher", tooltip: "AH.TRAIT.FinisherHint" },
+  // Class-level traits
+  class: {
+    warrior: { label: "AH.TRAIT.Warrior", tooltip: "AH.TRAIT.WarriorHint" },
+    mage: { label: "AH.TRAIT.Mage", tooltip: "AH.TRAIT.MageHint" },
+    support: { label: "AH.TRAIT.Support", tooltip: "AH.TRAIT.SupportHint" },
+
+    offense: { label: "AH.TRAIT.Offense", tooltip: "AH.TRAIT.OffenseHint" },
+    defense: { label: "AH.TRAIT.Defense", tooltip: "AH.TRAIT.DefenseHint" },
+    skirmish: { label: "AH.TRAIT.Skirmish", tooltip: "AH.TRAIT.SkirmishHint" },
+    survival: { label: "AH.TRAIT.Survival", tooltip: "AH.TRAIT.SurvivalHint" },
+    stealth: { label: "AH.TRAIT.Stealth", tooltip: "AH.TRAIT.StealthHint" },
+
+    lore: { label: "AH.TRAIT.Lore", tooltip: "AH.TRAIT.LoreHint" },
+    tactics: { label: "AH.TRAIT.Tactics", tooltip: "AH.TRAIT.Tactics" },
+    dance: { label: "AH.TRAIT.Dance", tooltip: "AH.TRAIT.DanceHint" },
+    music: { label: "AH.TRAIT.Music", tooltip: "AH.TRAIT.MusicHint" },
+    alchemy: { label: "AH.TRAIT.Alchemy", tooltip: "AH.TRAIT.AlchemyHint" },
+
+    companion: { label: "AH.TRAIT.Companion", tooltip: "AH.TRAIT.CompanionHint" },
   },
+  skill: {
+  },
+
   weapon: {
     reach: { label: "AH.TRAIT.Reach", tooltip: "AH.TRAIT.ReachHint" },
     projectile: { label: "AH.TRAIT.Projectile", tooltip: "AH.TRAIT.ProjectileHint" },

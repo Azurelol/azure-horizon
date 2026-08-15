@@ -37,22 +37,37 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
 
   /**
    * @param {ActionConfig} config
+   * @param options
    */
-  configureAction(config) {
+  configureAction(config, options = {}) {
+    const label = options.label ?? "AH.DAMAGE.Damage";
     if (this.enabled) {
-      config.setDamage(this.primary.type, this.primary.amount);
+
       config.addTraits(this.primary.type);
-      if (this.secondary.type) {
-        config.modifyDamage(d => {
-          d.add("AH.DAMAGE.Secondary", this.secondary.type, this.secondary.amount);
+      const traits = this.traits.values();
+      config.addTraits(...traits);
+
+      if (config.hasDamage) {
+        config.modifyDamage(dmg => {
+          dmg.add(label, this.primary.type, this.primary.amount);
+          if (this.secondary.type) {
+            config.addTraits(this.secondary.type);
+            dmg.add(label, this.secondary.type, this.secondary.amount);
+          }
         });
-        if (this.secondary.type !== this.primary.type) {
-          config.addTraits(this.secondary.type);
+      }
+      else {
+        config.setDamage(this.primary.type, this.primary.amount);
+        if (this.secondary.type) {
+          config.modifyDamage(d => {
+            d.add("AH.DAMAGE.Secondary", this.secondary.type, this.secondary.amount);
+          });
+          if (this.secondary.type !== this.primary.type) {
+            config.addTraits(this.secondary.type);
+          }
         }
       }
 
-      const traits = this.traits.values();
-      config.addTraits(...traits);
     }
   }
 

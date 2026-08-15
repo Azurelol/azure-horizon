@@ -12,8 +12,8 @@
         data-tooltip="{{item.name}}"
         height="100" width="100">
       {{formInput fields.name value=item.name classes="ah-sheet__name"}}
-      {{formGroup systemFields.revision value=system.revision name='system.revision' localize=true}}
-      {{formGroup systemFields.slug value=system.slug name='system.slug' localize=true}}
+      {{formGroup systemFields.revision value=system.revision name='system.revision' localize=true classes='ah-item__revision'}}
+      {{formGroup systemFields.slug value=system.slug name='system.slug' localize=true classes='ah-item__slug'}}
     </div>
     <div class="ah-item__header__properties">
       {{#each fieldMap.header as |entry|}}
