@@ -144,8 +144,10 @@ function evaluateMacros(expression, context) {
           return 0;
         }
         const skillId = parseIdentifier(splitArgs[0]);
-        const skill = actor.resolveItemsBySlug(skillId, "skill")?.[0];
+        const skills = actor.resolveItemsBySlug(skillId, "skill");
+        const skill = skills[0];
         if (!skill) {
+          ui.notifications.warn(`Did not resolve the skill ${skillId} on ${actor.name}`);
           return 0;
         }
         return skill.system.level.current;

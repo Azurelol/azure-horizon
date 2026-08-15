@@ -131,40 +131,61 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
     return this.system._isTemporary ?? super.isTemporary;
   }
 
-  /**
-   * @param {AHActor|AHItem} target
-   * @param {EffectChangeData} change
-   * @returns {{}|*}
-   */
-  apply(target, change) {
-    // Support expressions
+  static evaluateExpression(targetDoc, change) {
     if (change.value && (typeof change.value === "string")) {
       try {
         // First, evaluate using built-in support
         const expression = Roll.replaceFormulaData(change.value, this.parent);
         // Second, evaluate with our custom expressions
-        const context = EvaluationContext.fromTarget(target);
+        const context = EvaluationContext.fromTarget(targetDoc);
         const value = Expressions.evaluate(expression, context);
         change.value = String(value ?? 0);
-        //console.debug(`Assigning ${change.key} (MODE ${change.mode}): ${change.value}`);
       } catch (e) {
         console.error(e);
         ui.notifications?.error(
           game.i18n.format("AH.WARNING.EffectChangeInvalidFormula", {
             key: change.key,
             effect: this.name,
-            target: target.name,
+            target: targetDoc.name,
           }),
         );
         return {};
       }
     }
+  }
 
-    const changes = super.apply(target, change);
-    if ((change.mode === CONST.ACTIVE_EFFECT_MODES.CUSTOM) && (changes[change.key] == null)) {
-      delete changes[change.key];
-    }
-    return changes;
+  /**
+   * Apply EffectChangeData to a field within a Document.
+   * @param {Actor|Item|TokenDocument} targetDoc The model instance.
+   * @param {EffectChangeData} change            The change to apply.
+   * @param {object} [options]                   Additional options to configure the change application.
+   * @param {DataField} [options.field]          The field: if not supplied, it will be retrieved from the supplied
+   *                                             Document.
+   * @param {Record<string, unknown>} [options.replacementData] Data used to resolve "@" expressions.
+   * @param {boolean} [options.modifyTarget]     Modify the target Document with the updated value.
+   * @returns {unknown} The updated value.
+   */
+  static applyChangeField(targetDoc, change, { field, replacementData = {}, modifyTarget = true } = {}) {
+    AHActiveEffect.evaluateExpression(targetDoc, change);
+    return super.applyChangeField(targetDoc, change, { field, replacementData, modifyTarget });
+  }
+
+  /**
+   * If the current value is null, the change value is assigned directly.
+   * If the current type is a string, the change value is concatenated.
+   * If the current type is a number, the change value is cast to numeric and added.
+   * If the current type is an array, the change value is appended to the existing array if it matches in type.
+   *
+   * @param {Actor|Item|TokenDocument} targetDoc The Document to which this effect should be applied
+   * @param {EffectChangeData} change            The change data being applied
+   * @param {unknown} current                    The current value being modified
+   * @param {unknown} delta                      The parsed value of the change object
+   * @param {object} changes                     An object which accumulates changes to be applied
+   * @protected
+   */
+  static _applyChangeAdd(targetDoc, change, current, delta, changes) {
+    AHActiveEffect.evaluateExpression(targetDoc, change);
+    return super._applyChangeAdd(targetDoc, change, current, delta, changes);
   }
 
   /*-------------------------------------------------------------------------*/
