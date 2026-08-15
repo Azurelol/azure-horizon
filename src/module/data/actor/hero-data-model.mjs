@@ -86,7 +86,7 @@ export default class HeroDataModel extends CharacterDataModel {
 
     const updates = foundry.utils.mergeObject({
       prototypeToken: {
-        actorLink: true, 
+        actorLink: true,
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
       },
     }, data, { insertKeys: false, insertValues: false, inplace: false });
@@ -117,6 +117,31 @@ export default class HeroDataModel extends CharacterDataModel {
       offHand: actor.items.get(this.equipment.offHand),
       armor: actor.items.get(this.equipment.armor),
     };
+  }
+
+  /**
+   * @param {AHItem} item
+   * @param {AH_InventorySlot }slot
+   */
+  async equipItem(item, slot) {
+    const type = item.type;
+    const actor = this.parent;
+    switch (type) {
+      case "weapon": {
+        const data = actor.system.equipment.toggleWeapon(item, slot);
+        if (data) {
+          await actor.update({ "system.equipment": data });
+        }
+        break;
+      }
+      case "armor": {
+        const data = actor.system.equipment.toggleArmor(item);
+        if (data) {
+          await actor.update({ "system.equipment": data });
+        }
+        break;
+      }
+    }
   }
 
   /**

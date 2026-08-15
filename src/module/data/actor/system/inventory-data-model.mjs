@@ -1,6 +1,10 @@
 import { VersionedDataModel } from "../../api/_module.mjs";
 
 /**
+ * @typedef {'mainHand'|'offHand'|'armor'} AH_InventorySlot
+ */
+
+/**
  * @property {String} mainHand
  * @property {String} offHand
  * @property {String} armor
@@ -33,9 +37,10 @@ export default class InventoryDataModel extends VersionedDataModel {
 
   /**
    * @param {AHItem} item
+   * @param {AH_InventorySlot} slot
    * @returns {InventoryDataModel} The changed item
    */
-  toggleWeapon(item) {
+  toggleWeapon(item, slot) {
     const unequipped = [];
     const data = this.toObject();
     if (this.mainHand === item.id) {
@@ -48,6 +53,26 @@ export default class InventoryDataModel extends VersionedDataModel {
     }
 
     const twoHanded = item.system.handedness === "two";
+    if (twoHanded) {
+      if (!unequipped.includes("mainHand")) {
+        data.mainHand = item.id;
+        data.offHand = item.id;
+      }
+    }
+    else {
+      switch (slot) {
+        case "mainHand":
+          if (!unequipped.includes("mainHand")) {
+            data.mainHand = item.id;
+          }
+          break;
+        case "offHand":
+          if (!unequipped.includes("offHand")) {
+            data.offHand = item.id;
+          }
+      }
+
+    }
     if (!unequipped.includes("mainHand")) {
       data.mainHand = item.id;
       if (twoHanded) {

@@ -117,23 +117,8 @@ export class HeroSheet extends AHBaseCharacterSheet {
   static async #equipItem(event, target) {
     const { id } = target.dataset;
     const item = this.actor.items.get(id);
-    const type = item.type;
-    console.debug(`Equipping ${type} ${item.name}`);
-    switch (type) {
-      case "weapon": {
-        const data = this.actor.system.equipment.toggleWeapon(item);
-        if (data) {
-          await this.actor.update({ "system.equipment": data });
-        }
-        break;
-      }
-      case "armor": {
-        const data = this.actor.system.equipment.toggleArmor(item);
-        if (data) {
-          await this.actor.update({ "system.equipment": data });
-        }
-        break;
-      }
+    if (item) {
+      this.actor.system.equipItem(item);
     }
   }
 

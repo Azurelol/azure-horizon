@@ -61,6 +61,19 @@ export default class ActionHandler {
     // const consumables = ["consumable"].map((t) => actor.getItemsByType(t)).flat();
     // FoundryUtils.itemContextMenu(element, "[data-context-menu=\"inventory\"]", consumables);
     if (this.actor.type === "hero") {
+      // EQUIPMENT
+      const weapons = this.actor.getItemsByType("weapon");
+      FoundryUtils.itemContextMenu(element, "[data-slot=\"mainHand\"]", weapons, async item => {
+        this.actor.system.equipItem(item, "mainHand");
+      });
+      FoundryUtils.itemContextMenu(element, "[data-slot=\"offHand\"]", weapons, async item => {
+        this.actor.system.equipItem(item, "offHand");
+      });
+      const armors = this.actor.getItemsByType("armor");
+      FoundryUtils.itemContextMenu(element, "[data-slot=\"armor\"]", armors, async item => {
+        this.actor.system.equipItem(item);
+      });
+
       // SKILLS
       /** @type {AHItem[]} **/
       let skills = ["skill"]
