@@ -41,8 +41,11 @@ function getEquippedWeapons(actor) {
 
   if (actor.type === "hero") {
     const mainHand = getEquipment(actor, "mainHand");
-    const offHand = getEquipment(actor, "offHand");
+    let offHand = getEquipment(actor, "offHand");
     const armor = getEquipment(actor, "armor");
+    if (offHand.system.traits.has("shield")) {
+      offHand = null;
+    }
     equippedWeapons.push(...new Set([mainHand, offHand, armor]));
   }
   else if (actor.type === "adversary") {
