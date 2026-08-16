@@ -517,7 +517,8 @@
       "Weapon": "Weapon",
       "Power": "Power",
       "Points": "Points",
-      "Summary": "Summary"
+      "Summary": "Summary",
+      "Buff": "Buff"
     },
     "RULE": {
       "Element": {

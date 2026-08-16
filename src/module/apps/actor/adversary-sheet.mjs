@@ -46,8 +46,8 @@ export class AdversarySheet extends AHBaseCharacterSheet {
   };
 
   /* -------------------------------------------------- */
-  #attackTableRenderer = new AttackTableRenderer();
-  #abilityTableRenderer = new ActionTableRenderer();
+  #attackTableRenderer = new AttackTableRenderer({ title: "AH.ADVERSARY.Attack.plural" });
+  #abilityTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural" });
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {

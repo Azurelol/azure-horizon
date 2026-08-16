@@ -96,3 +96,13 @@ export function isActorType(document) {
 export function isItemType(document) {
   return document?.documentName === "Item";
 }
+
+/**
+ * @param {Boolean} condition
+ * @param {String} message
+ */
+export function assertCondition(condition, message) {
+  if (condition) return true;
+  ui.notifications.error(message);
+  throw Error(message);
+}

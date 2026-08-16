@@ -33,7 +33,7 @@ async function getEffectData(id) {
     }
     // Get the first AE attached to the item
     if (effect && isItemType(effect)) {
-      sourceInfo = new SourceInfo(effect.name, null, effect.uuid, null, effect.system.fuid);
+      sourceInfo = new SourceInfo(effect.name, null, effect.uuid, null, effect.system.slug);
       effect = effect.effects.entries().next().value[1];
     }
   }
@@ -78,7 +78,7 @@ async function applyEffect(document, effect, sourceInfo, config = undefined) {
       ui.notifications.error("AH.DIALOG.WARNING.ActorSheetEffectNotSupported", { localize: true });
       return;
     }
-    const flags = createEffectFlags(effect, sourceInfo, sourceInfo?.fuid);
+    const flags = createEffectFlags(effect, sourceInfo, sourceInfo?.slug);
     // eslint-disable-next-line no-undef
     const instance = await ActiveEffect.create(
       {
@@ -147,7 +147,7 @@ async function disableStatusEffect(actor, statusEffectId) {
 }
 
 /**
- * @param {String} id An uuid or fuid.
+ * @param {String} id An uuid or slug.
  * @param {SourceInfo} sourceInfo
  * @param {AH_ActiveEffectDuration} duration
  * @param includeLabel
@@ -293,7 +293,7 @@ async function getPotencyActions(potency, effectData, sourceInfo) {
 const onProcessAction = async (config, actor, item, registerCallback) => {
   if (config.hasEffects) {
     const effectData = config.effects;
-    if (config.isCheck) {
+    if (config.isCheck && (effectData.selector !== "buff")) {
       const standard = await getPotencyActions("standard", effectData, config.sourceInfo);
       const powerful = await getPotencyActions("powerful", effectData, config.sourceInfo);
       config.setPotencies(potencies => {
@@ -310,6 +310,9 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
         const action = await getChatAction(id, config.sourceInfo, effectData.duration);
         if (action) {
           config.addAction(action);
+        }
+        else {
+          ui.notifications.warn(`Could not resolve the effect with id: ${id}`);
         }
       }
     }

@@ -490,6 +490,15 @@ AH.armorDefense = Object.freeze({
 });
 
 /**
+ * @typedef {'buff'|'debuff'} AH_EffectSelector
+ */
+
+AH.effectSelector = Object.freeze({
+  buff: "AH.FIELD.Buff",
+  deuff: "AH.FIELD.Debuff",
+});
+
+/**
  * @description How the active effect's duration is tracked
  * @type {{self: string, source: string}}
  */

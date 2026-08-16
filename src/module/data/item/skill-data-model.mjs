@@ -2,7 +2,7 @@ import WeaponUsageDataModel from "./fields/weapon-usage-data-model.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
 import AH from "../../config.mjs";
-import { isActorType } from "../../constants.mjs";
+import { assertCondition, isActorType } from "../../constants.mjs";
 
 /**
  * Skills belong to character classes and are selected and upgraded during a character's advancement
@@ -49,7 +49,7 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
   resolveCheckData() {
     if (this.usage.check) {
       const weapon = this.resolveWeapon();
-      if (weapon) {
+      if (assertCondition(weapon, "A weapon must be assigned for this skill.")) {
         return weapon.system.check;
       }
     }

@@ -2,6 +2,7 @@ import Events from "./events.mjs";
 import { ActionConfig, ActionInspector } from "../helpers/action-configuration.mjs";
 import AH from "../config.mjs";
 import {
+  AsyncHooks,
   ChatAction,
   ChatMessageBuilder,
   ChatMessageHelper,
@@ -62,7 +63,8 @@ async function invokeWithCallbacks(hook, action, actor, item) {
     callbacks.push({ callback, priority });
   };
 
-  Hooks.callAll(hook, action, actor, item, registerCallbacks);
+  await AsyncHooks.callSequential(hook, action, actor, item, registerCallbacks);
+  //Hooks.callAll(hook, action, actor, item, registerCallbacks);
 
   callbacks.sort((a, b) => a.priority - b.priority);
   for (let callbackObj of callbacks) {

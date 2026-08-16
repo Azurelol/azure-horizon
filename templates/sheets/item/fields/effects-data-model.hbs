@@ -1,3 +1,4 @@
 {{#> ahFieldset label='AH.FIELD.Effects' icon=(ahIconClass 'effect') }}
+  {{ahStringField path=(ahConcat path ".selector") options=(ahFormOptions 'effectSelector') value=value.selector blank=true label='AH.FIELD.Selector'}}
   {{ahArrayField path=(ahConcat path '.entries') label="AH.FIELD.Entries" array=value.entries type='string'}}
 {{/ahFieldset}}

@@ -52,7 +52,7 @@ export class FollowerSheet extends AHActorSheet {
   };
 
   /* -------------------------------------------------- */
-  #abilityTableRenderer = new ActionTableRenderer();
+  #abilityTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural" });
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {

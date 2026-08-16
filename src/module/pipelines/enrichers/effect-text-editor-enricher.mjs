@@ -44,13 +44,13 @@ function createCompendiumEffectAnchor(effect, config, label) {
   const anchor = TextEditorUtils.anchor();
   anchor.draggable = true;
   anchor.dataset.effect = StringUtils.toBase64(effect);
-  if (effect.flags[systemID][AH.flags.ActiveEffect.Source]) {
+  if (effect?.flags[systemID]?.[AH.flags.ActiveEffect.Source]) {
     const sourceInfo = effect.flags[systemID][AH.flags.ActiveEffect.Source];
     anchor.dataset.uuid = sourceInfo.effectUuid;
-    anchor.dataset.fuid = sourceInfo.fuid;
+    anchor.dataset.slug = sourceInfo.slug;
   } else {
     anchor.dataset.uuid = effect.uuid;
-    anchor.dataset.fuid = effect.parent?.system?.fuid;
+    anchor.dataset.slug = effect.parent?.system?.slug;
   }
   anchor.dataset.config = StringUtils.toBase64(config);
   anchor.setAttribute("data-tooltip", `${StringUtils.localize("AH.CHAT.ACTION.ApplySelected")}`);
