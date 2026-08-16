@@ -167,6 +167,7 @@ async function getChatAction(id, sourceInfo, duration = undefined, includeLabel 
     }
     name = StringUtils.localize(effectData.name);
   } else {
+    ui.notifications.warn(`Could not resolve the effect with id: ${id}`);
     return null;
   }
 
@@ -307,13 +308,7 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
     }
     else {
       for (const id of effectData.entries) {
-        const action = await getChatAction(id, config.sourceInfo, effectData.duration);
-        if (action) {
-          config.addAction(action);
-        }
-        else {
-          ui.notifications.warn(`Could not resolve the effect with id: ${id}`);
-        }
+        config.addAction(getChatAction(id, config.sourceInfo, effectData.duration));
       }
     }
   }

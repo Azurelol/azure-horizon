@@ -123,7 +123,7 @@ export class ActionInspector {
   }
 
   /**
-   * @returns {ChatAction[]}
+   * @returns {(ChatAction|Promise<ChatAction>)[]}
    */
   get actions() {
     if (this.data[ACTIONS] === undefined) {
@@ -343,7 +343,7 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
-   * @param {ChatAction} action
+   * @param {ChatAction|Promise<ChatAction>} action
    */
   addAction(action) {
     const actions = this.actions;
@@ -474,15 +474,6 @@ export class ActionConfig extends ActionInspector {
     return this;
   }
 
-  /**
-   * @param {Set<String>} traits
-   * @returns {ActionConfig}
-   * @remarks In the item's data model they are serialized in title case
-   */
-  addTraitsFromItemModel(traits) {
-    this.addTraits(...Array.from(traits, StringUtils.titleToKebab));
-    return this;
-  }
   /**
    * @description A modifier to the check (accuracy)
    * @param {String} label

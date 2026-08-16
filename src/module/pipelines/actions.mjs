@@ -120,9 +120,15 @@ async function addSections(builderData, config, actor, item) {
 
   }
 
-  // ACTIONS
+  // ACTIONS: We delay evaluating some of them until now to avoid race conditions
   if (config.actions.length > 0) {
-    builderData.actions.push(...config.actions);
+    for (let action of config.actions) {
+      action = await action;
+      if (action)
+      {
+        builderData.actions.push(action);
+      }
+    }
   }
 
   // TRAITS > TAGS (Not needed for now?)
@@ -259,7 +265,7 @@ async function perform(actor, item, prepare) {
   await Events.performAction(config, actor, item);
   await invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
   // TODO: Nooo... how could you?
-  await new Promise((resolve) => setTimeout(resolve, 10));
+  await new Promise((resolve) => setTimeout(resolve, 50));
   await renderAction(config, actor, item);
   Events.resolveAction(new ActionInspector(config.check), actor, item);
 }
