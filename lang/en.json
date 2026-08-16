@@ -18,7 +18,8 @@
         "ItemSheet": "Default Item Sheet",
         "HeroSheet": "Hero Sheet",
         "AdversarySheet": "Adversary Sheet",
-        "PartySheet": "Party Sheet"
+        "PartySheet": "Party Sheet",
+        "FollowerSheet": "Follower Sheet"
       },
       "Tabs": {
         "Overview": "Overview",
@@ -32,6 +33,7 @@
         "Profile": "Profile",
         "Effects": "Effects",
         "Assembly": "Assembly",
+        "Advancement": "Advancement",
         "Codex": "Codex"
       },
       "MESSAGE": {
@@ -135,6 +137,11 @@
         "long":  "Affinity",
         "plural": "Affinities"
       }
+    },
+    "FOLLOWER": {
+      "Kind": "Kind",
+      "Guest": "Guest",
+      "Companion": "Companion"
     },
     "ADVERSARY": {
       "Villain": "Villain",
@@ -738,7 +745,8 @@
       "hero": "Hero",
       "adversary": "Adversary",
       "party": "Party",
-      "unit": "Unit"
+      "unit": "Unit",
+      "follower": "Follower"
     },
     "Item": {
       "attack": "Attack",

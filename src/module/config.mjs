@@ -401,13 +401,19 @@ AH.intervals = Object.freeze({
 });
 
 /**
- * @typedef {"hero"|"party"|"adversary"|"unit"} AH_ActorType
+ * @typedef {"hero"|'follower'|"party"|"adversary"|"unit"} AH_ActorType
  */
 
 AH.actorTypes = Object.freeze({
   character: "TYPES.Actor.Character",
   adversary: "TYPES.Actor.Adversary",
   party: "TYPES.Actor.Party",
+  follower: "TYPES.Actor.Follower",
+});
+
+AH.followerTypes = Object.freeze({
+  guest: { label: "AH.FOLLOWER.Guest" },
+  companion: { label: "AH.FOLLOWER.Companion" },
 });
 
 /**

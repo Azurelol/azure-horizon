@@ -1,6 +1,6 @@
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
-import AH from "../../config.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
 
 /**
  * Abilities belong to adversaries and are their equivalent of PC skills.
@@ -17,7 +17,7 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      intent: new StringField({ initial: "", choices: Object.keys(AH.intents), blank: true, nullable: false, label: "AH.ADVERSARY.Intent" }),
+      intent: new StringField({ initial: "", choices: Object.keys(AH.intents), formOptions: getFormSelectOptions(AH.intents), blank: true, nullable: false, label: "AH.ADVERSARY.Intent" }),
     });
   }
 

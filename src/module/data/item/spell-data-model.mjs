@@ -1,4 +1,4 @@
-import AH from "../../config.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
 import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
 
 /**
@@ -14,8 +14,10 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
       domain: new StringField({ initial: "",
         blank: true,
         label: "AH.FIELD.Domain",
+        formOptions: getFormSelectOptions(AH.domains),
         choices: Object.keys(AH.domains) }),
-      speed: new StringField({ initial: "instant", blank: true, label: "AH.ACTION.Speed", choices: Object.keys(AH.speed), required: true }),
+      speed: new StringField({ initial: "instant", blank: true, label: "AH.ACTION.Speed",
+        formOptions: getFormSelectOptions(AH.speed), choices: Object.keys(AH.speed), required: true }),
     });
   }
 

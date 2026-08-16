@@ -3,6 +3,7 @@ import HeroDataModel from "./hero-data-model.mjs";
 import AdversaryDataModel from "./adversary-data-model.mjs";
 import PartyDataModel from "./party-data-model.mjs";
 import UnitDataModel from "./unit-data-model.mjs";
+import FollowerDataModel from "./follower-data-model.mjs";
 
 const dataModels = Object.freeze({
   base: ActorDataModel,
@@ -10,6 +11,7 @@ const dataModels = Object.freeze({
   hero: HeroDataModel,
   party: PartyDataModel,
   adversary: AdversaryDataModel,
+  follower: FollowerDataModel,
 
   unit: UnitDataModel,
 });

@@ -99,6 +99,7 @@
       "hero": {},
       "adversary": {},
       "party": {},
+      "follower": {},
       "unit": {}
     },
     "Item": {
