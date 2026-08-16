@@ -10,3 +10,4 @@ export { default as CharacterResourceDataModel } from "./character-resource-data
 export { default as ProfileDataModel } from "./profile-data-model.mjs";
 export { default as HeroProfileDataModel } from "./hero-profile-data-model.mjs";
 export { default as AdversaryProfileDataModel } from "./adversary-profile-data-model.mjs";
+export { default as FollowerProfileDataModel } from "./follower-profile-data-model.mjs";

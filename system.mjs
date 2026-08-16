@@ -69,10 +69,15 @@ function bindSheets() {
     makeDefault: true,
     label: "AH.SHEET.Labels.AdversarySheet",
   });
-  Actors.registerSheet("ah", apps.Actor.AHPartySheet, {
+  Actors.registerSheet("ah", apps.Actor.PartySheet, {
     types: ["party"],
     makeDefault: true,
     label: "AH.SHEET.Labels.PartySheet",
+  });
+  Actors.registerSheet("ah", apps.Actor.FollowerSheet, {
+    types: ["follower"],
+    makeDefault: true,
+    label: "AH.SHEET.Labels.FollowerSheet",
   });
   Items.registerSheet("ah", apps.Item.AHItemSheet, {
     makeDefault: true, label: "AH.SHEET.Labels.ItemSheet",

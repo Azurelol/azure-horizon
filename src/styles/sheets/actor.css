@@ -8,3 +8,9 @@
     text-transform: uppercase;
   }
 }
+
+.ah-follower {
+  .window-content {
+    gap: 1rem;
+  }
+}

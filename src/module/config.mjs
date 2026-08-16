@@ -411,6 +411,9 @@ AH.actorTypes = Object.freeze({
   follower: "TYPES.Actor.Follower",
 });
 
+/**
+ * @typedef {"guest"|'companion'} AH_FollowerType
+ */
 AH.followerTypes = Object.freeze({
   guest: { label: "AH.FOLLOWER.Guest" },
   companion: { label: "AH.FOLLOWER.Companion" },

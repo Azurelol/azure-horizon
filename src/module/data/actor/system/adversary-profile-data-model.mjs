@@ -22,6 +22,7 @@ class AdversaryModifiersDataModel extends VersionedDataModel {
  * @property {AH_Rank} rank The adversary rank.
  * @property {Boolean} villain If the adversary is a villain.
  * @property {Number} turns For champion-level adversaries, how many turns should they get.
+ * @property {String} summary
  */
 export default class AdversaryProfileDataModel extends VersionedDataModel {
   static defineSchema() {

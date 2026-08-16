@@ -7,6 +7,7 @@ import { VersionedDataModel } from "../../api/_module.mjs";
  * @property {String} origin Where the character comes from.
  * @property {String} anchor What the character cannot bear to lose. Their emotional anchor.
  * @property {String} title What the world knows the character for. Unlocked during promotion.
+ * @property {String} summary
  */
 export default class HeroProfileDataModel extends VersionedDataModel {
   static defineSchema() {

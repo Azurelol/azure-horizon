@@ -2,7 +2,7 @@ import { AHActorSheet } from "./actor-sheet.mjs";
 import { renderTemplate, systemTemplatePath } from "../../constants.mjs";
 import { CodexBrowser } from "../ui/_module.mjs";
 
-export class AHPartySheet extends AHActorSheet {
+export class PartySheet extends AHActorSheet {
 
   /**
    * @inheritDoc
@@ -208,7 +208,7 @@ export class AHPartySheet extends AHActorSheet {
   /*-----------------------------------------------------------------*/
 
   /**
-   * @this AHPartySheet
+   * @this PartySheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @returns {Promise<void>}
@@ -218,7 +218,7 @@ export class AHPartySheet extends AHActorSheet {
   }
 
   /**
-   * @this AHPartySheet
+   * @this PartySheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @returns {Promise<void>}
@@ -228,7 +228,7 @@ export class AHPartySheet extends AHActorSheet {
   }
 
   /**
-   * @this AHPartySheet
+   * @this PartySheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @returns {Promise<void>}
@@ -237,7 +237,7 @@ export class AHPartySheet extends AHActorSheet {
   }
 
   /**
-   * @this AHPartySheet
+   * @this PartySheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @returns {Promise<void>}
@@ -246,7 +246,7 @@ export class AHPartySheet extends AHActorSheet {
   }
 
   /**
-   * @this AHPartySheet
+   * @this PartySheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @returns {Promise<void>}
@@ -256,7 +256,7 @@ export class AHPartySheet extends AHActorSheet {
   }
 
   /**
-   * @this AHPartySheet
+   * @this PartySheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @returns {Promise<void>}
