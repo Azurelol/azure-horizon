@@ -23,11 +23,21 @@ import { CheckPrompt } from "../helpers/check-prompt.mjs";
  */
 
 /**
+ * @callback ActionCallback
+ * @param {ActionConfig} config
+ * @param {AHActor} actor
+ * @param {AHItem} item
+ * @returns {Promise<void>|void}
+ */
+
+/**
  * @callback ActionPrepareCallback
  * @param {ActionConfig} config
  * @param {AHActor} actor
  * @param {AHItem} item
- * @return {Promise | void}
+ * @param {ActionCallback} registerCallback
+ * @remarks If asynchronous procedures are needed, register a callback.
+ * @return {void}
  */
 
 /**
@@ -35,7 +45,9 @@ import { CheckPrompt } from "../helpers/check-prompt.mjs";
  * @param {ActionConfig} config
  * @param {AHActor} actor
  * @param {AHItem} item
- * @return {Promise | void}
+ * @param {ActionCallback} registerCallback
+ * @remarks If asynchronous procedures are needed, register a callback.
+ * @return {void}
  */
 
 /**
@@ -46,31 +58,6 @@ import { CheckPrompt } from "../helpers/check-prompt.mjs";
  * @param {AHItem} item
  * @return {Promise | void}
  */
-
-/**
- * @param {String} hook The name of the hook
- * @param {Partial<ActionConfig>} action
- * @param {AHActor} actor
- * @param {AHItem} item
- * @returns {Promise<void>}
- */
-async function invokeWithCallbacks(hook, action, actor, item) {
-  /**
-   * @type {{callback: Promise | (() => Promise | void), priority: number}[]}
-   */
-  const callbacks = [];
-  const registerCallbacks = (callback, priority = 0) => {
-    callbacks.push({ callback, priority });
-  };
-
-  await AsyncHooks.callSequential(hook, action, actor, item, registerCallbacks);
-  //Hooks.callAll(hook, action, actor, item, registerCallbacks);
-
-  callbacks.sort((a, b) => a.priority - b.priority);
-  for (let callbackObj of callbacks) {
-    await callbackObj.callback(action, actor, item);
-  }
-}
 
 /**
  * @typedef DefenseCheckSourceData
@@ -263,7 +250,7 @@ async function perform(actor, item, prepare) {
   const config = new ActionConfig(action);
   await prepare(config, actor, item);
   await Events.performAction(config, actor, item);
-  await invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
+  await AsyncHooks.invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
   // TODO: Nooo... how could you?
   await new Promise((resolve) => setTimeout(resolve, 50));
   await renderAction(config, actor, item);

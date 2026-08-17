@@ -203,8 +203,7 @@ function getExpenseAction(expense, sourceInfo) {
     .withSelected();
 }
 
-/** @type ActionProcessCallback **/
-const onProcessAction = async (config, actor, item, registerCallback) => {
+async function processAction(config, actor, item) {
   const targets = Targeting.deserializeTargetData(config.getTargets());
 
   // RESOURCE: General chat action
@@ -228,6 +227,11 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
       config.addAction(getExpenseAction(expense, config.sourceInfo));
     }
   }
+}
+
+/** @type ActionProcessCallback **/
+const onProcessAction = (config, actor, item, registerCallback) => {
+  registerCallback(processAction);
 };
 
 /** @type ActionRenderCallback **/

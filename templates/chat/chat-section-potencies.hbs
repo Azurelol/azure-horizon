@@ -3,7 +3,9 @@
 
   <tr class="ah-potency-table__row --reduced">
     <td class="ah-potency-table__tier">
-      <i class="ah-icon --xs {{ahIconClass 'reduced'}}" data-tooltip="{{localize "AH.ACTION.POTENCY.Reduced"}}"></i>
+      <div class="ah-flex-center">
+        <i class="ah-icon --xs {{ahIconClass 'reduced'}}" data-tooltip="{{localize "AH.ACTION.POTENCY.Reduced"}}"></i>
+      </div>
     </td>
     <td class="ah-potency-table__components">
       {{#each potencies.reduced.components as |component|}}
@@ -16,7 +18,9 @@
 
   <tr class="ah-potency-table__row --standard">
     <td class="ah-potency-table__tier">
-      <i class="ah-icon --xs {{ahIconClass 'standard'}}" data-tooltip="{{localize "AH.ACTION.POTENCY.Standard"}}"></i>
+      <div class="ah-flex-center">
+        <i class="ah-icon --xs {{ahIconClass 'standard'}}" data-tooltip="{{localize "AH.ACTION.POTENCY.Standard"}}"></i>
+      </div>
     </td>
     <td class="ah-potency-table__components">
       {{#each potencies.standard.components as |component|}}
@@ -29,7 +33,9 @@
 
   <tr class="ah-potency-table__row --powerful">
     <td class="ah-potency-table__tier">
-      <i class="ah-icon --xs {{ahIconClass 'powerful'}}" data-tooltip="{{localize "AH.ACTION.POTENCY.Powerful"}}"></i>
+      <div class="ah-flex-center">
+        <i class="ah-icon --xs {{ahIconClass 'powerful'}}" data-tooltip="{{localize "AH.ACTION.POTENCY.Powerful"}}"></i>
+      </div>
     </td>
     <td class="ah-potency-table__components">
       {{#each potencies.powerful.components as |component|}}

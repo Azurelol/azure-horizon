@@ -1,5 +1,5 @@
 import {
-  ActionConfig, ActionInspector,
+  ActionConfig, ActionInspector, AsyncHooks,
   ChatAction,
   ChatMessageBuilder,
   ChatMessageSections,
@@ -76,7 +76,9 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @param {CheckOptions} check
  * @param {AHActor} actor
  * @param {AHItem} item
- * @return {Promise | void}
+ * @param {ActionCallback} registerCallback
+ * @remarks If asynchronous procedures are needed, register a callback.
+ * @return {void}
  */
 
 /**
@@ -95,30 +97,6 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @param {AHItem} item
  * @return {Promise | void}
  */
-
-/**
- * @param {String} hook The name of the hook
- * @param {Partial<CheckOptions|CheckResult>} check
- * @param {AHActor} actor
- * @param {AHItem} item
- * @returns {Promise<void>}
- */
-async function invokeWithCallbacks(hook, check, actor, item) {
-  /**
-   * @type {{callback: Promise | (() => Promise | void), priority: number}[]}
-   */
-  const callbacks = [];
-  const registerCallbacks = (callback, priority = 0) => {
-    callbacks.push({ callback, priority });
-  };
-
-  Hooks.callAll(hook, check, actor, item, registerCallbacks);
-
-  callbacks.sort((a, b) => a.priority - b.priority);
-  for (let callbackObj of callbacks) {
-    await callbackObj.callback(check, actor, item);
-  }
-}
 
 /**
  * @param {Partial<CheckOptions>} check
@@ -166,7 +144,7 @@ async function prepareCheck(check, actor, item, onPrepare) {
   // ObjectUtils.lockAndValidateProperty(check, "type");
   // ObjectUtils.lockAndValidateProperty(check, "id", false);
 
-  await invokeWithCallbacks(AH.hooks.PREPARE_CHECK, check, actor, item);
+  await AsyncHooks.invokeWithCallbacks(AH.hooks.PREPARE_CHECK, check, actor, item);
   await Events.prepareCheck(check, actor, item);
 
   validateCheckAttributes(check);
@@ -277,8 +255,8 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
   config.updateTargetResults();
 
   if (callHook) {
-    await invokeWithCallbacks(AH.hooks.PROCESS_CHECK, result, actor, item);
-    await invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
+    await AsyncHooks.invokeWithCallbacks(AH.hooks.PROCESS_CHECK, result, actor, item);
+    await AsyncHooks.invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);
   }
 
   return result;

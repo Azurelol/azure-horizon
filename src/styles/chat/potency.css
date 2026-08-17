@@ -8,10 +8,11 @@
 
   .ah-potency-table__tier {
     width: 30px;
+    padding: 0;
   }
 
   .ah-potency-table__components {
-    padding: 6px 8px;
+    padding: 0;
     display: flex;
     gap: 4px;
     align-items: center;

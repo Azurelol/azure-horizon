@@ -290,8 +290,7 @@ async function getPotencyActions(potency, effectData, sourceInfo) {
   return actions;
 }
 
-/** @type ActionProcessCallback **/
-const onProcessAction = async (config, actor, item, registerCallback) => {
+async function _onProcessAction(config, actor, item) {
   if (config.hasEffects) {
     const effectData = config.effects;
     if (config.isCheck && (effectData.selector !== "buff")) {
@@ -312,6 +311,11 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
       }
     }
   }
+}
+
+/** @type ActionProcessCallback **/
+const processAction = (config, actor, item, registerCallback) => {
+  registerCallback(_onProcessAction);
 };
 
 /** @type ActionRenderCallback **/
@@ -324,7 +328,7 @@ const onRenderAction = (config, data, actor, item, registerCallback) => {
  */
 function initialize() {
   Hooks.on("renderChatMessageHTML", onRenderChatMessage);
-  Hooks.on(AH.hooks.PROCESS_ACTION, onProcessAction);
+  Hooks.on(AH.hooks.PROCESS_ACTION, processAction);
   Hooks.on(AH.hooks.RENDER_ACTION, onRenderAction);
 }
 

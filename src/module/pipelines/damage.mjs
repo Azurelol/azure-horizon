@@ -237,7 +237,7 @@ function onRenderChatMessage(message, html) {
 }
 
 /** @type ActionProcessCallback **/
-const onProcessAction = (config, actor, item, registerCallback) => {
+const onProcessAction = (config, actor, item, callback) => {
   if (config.hasDamage) {
     Events.calculateDamage(actor, item, config);
     const sourceInfo = config.sourceInfo;

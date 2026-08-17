@@ -78,4 +78,31 @@ export default class AsyncHooks {
 
     return results;
   }
+
+  /**
+   * @template {any[]} Args
+   * @callback HookCallback
+   * @param {...Args} args
+   * @returns {Promise<void>|void}
+   */
+
+  /**
+   * @template {any[]} Args
+   * @param {String} hook The name of the hook
+   * @param {...Args} args Arguments passed to both the hook and each registered callback
+   * @returns {Promise<void>}
+   */
+  static async invokeWithCallbacks(hook, ...args) {
+    const callbacks = [];
+
+    Hooks.callAll(hook, ...args, (callback, priority = 0) => {
+      callbacks.push({ callback, priority });
+    });
+
+    callbacks.sort((a, b) => a.priority - b.priority);
+
+    for (const { callback } of callbacks) {
+      await callback(...args);
+    }
+  }
 }

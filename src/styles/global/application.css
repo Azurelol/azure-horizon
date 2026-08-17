@@ -54,13 +54,17 @@
       opacity: 0.5;
       border: 1px solid var(--color-tabs-border);
       background: var(--ah-surface-tab);
-      flex: 1;
+      flex: auto;
 
       &.active {
         opacity: 1;
         background: var(--ah-surface-tab-active);
       }
     }
+  }
+
+  .tabs__button {
+    flex-shrink: 1;
   }
 
   .prosemirror.inactive {
