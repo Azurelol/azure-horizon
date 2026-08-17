@@ -37,6 +37,12 @@ export class AHBaseCharacterSheet extends AHActorSheet {
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),
     },
+    effects: {
+      template: systemTemplatePath("sheets/actor/character/character-effects"),
+      templates: [
+        systemTemplatePath("sheets/actor/character/character-partial-modifiers"),
+      ],
+    },
   };
 
   /* -------------------------------------------------- */
@@ -68,6 +74,9 @@ export class AHBaseCharacterSheet extends AHActorSheet {
         context.actions = this.actionHandler.getMenuActions();
         break;
       }
+      case "effects":
+        context.modifiers = this.actor.system.parameters.summarizeModifiers();
+        break;
     }
   }
 
