@@ -1,11 +1,11 @@
-import ActorDataModel from "./actor-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { FollowerProfileDataModel } from "./system/_module.mjs";
+import EntityDataModel from "./entity-data-model.mjs";
 
 /**
  * @property {AH_FollowerType} kind
  */
-export default class FollowerDataModel extends ActorDataModel {
+export default class FollowerDataModel extends EntityDataModel {
 
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;

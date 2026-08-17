@@ -1,21 +1,22 @@
 import AH from "../../config.mjs";
-import { AffinitiesDataModel, AttributesDataModel, CharacterResourceDataModel } from "./system/_module.mjs";
+import { ActorResourceDataModel, AffinitiesDataModel, AttributesDataModel } from "./system/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import ActorDataModel from "./actor-data-model.mjs";
 import { VersionedDataModel } from "../api/_module.mjs";
+import EntityDataModel from "./entity-data-model.mjs";
 
 /**
- * @property {CharacterResourceDataModel} hp
- * @property {CharacterResourceDataModel} mp
+ * @property {ActorResourceDataModel} hp
+ * @property {ActorResourceDataModel} mp
  */
 export class CharacterResourcesDataModel extends VersionedDataModel {
   static defineSchema() {
     const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      hp: new EmbeddedDataField(CharacterResourceDataModel, {
+      hp: new EmbeddedDataField(ActorResourceDataModel, {
         trackedAttribute: true,
       }),
-      mp: new EmbeddedDataField(CharacterResourceDataModel, {}),
+      mp: new EmbeddedDataField(ActorResourceDataModel, {}),
     });
   }
 }
@@ -29,19 +30,12 @@ export class CharacterResourcesDataModel extends VersionedDataModel {
  * @property {CharacterResourcesDataModel} resources
  * @property {CharacterParametersDataModel} parameters
  */
-export default class CharacterDataModel extends ActorDataModel {
+export default class CharacterDataModel extends EntityDataModel {
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       attributes: new EmbeddedDataField(AttributesDataModel, {}),
       affinities: new EmbeddedDataField(AffinitiesDataModel, {}),
-      level: new NumberField({
-        initial: AH.progression.level.minimum,
-        min: AH.progression.level.minimum,
-        max: AH.progression.level.maximum,
-        integer: true,
-        nullable: false,
-      }),
     });
   }
 
@@ -53,7 +47,7 @@ export default class CharacterDataModel extends ActorDataModel {
    * @override
    */
   prepareDerivedData() {
-    this._prepareResources();
+    super.prepareDerivedData();
     this._prepareParameters();
   }
 
@@ -61,10 +55,11 @@ export default class CharacterDataModel extends ActorDataModel {
    * @protected Prepares the character's resources such as HP.
    */
   _prepareResources() {
+    super._prepareResources();
     const data = this;
-    this.resources.hp.defineMaximumProperty(() => Formulas.calculateHitPoints(data.level, data.attributes.mig.base));
     this.resources.mp.defineMaximumProperty(() => Formulas.calculateMindPoints(data.level, data.attributes.wlp.base));
   }
+
   /**
    * @protected Prepares the character's parameters.
    */
@@ -75,21 +70,23 @@ export default class CharacterDataModel extends ActorDataModel {
     this.parameters.init.defineCurrentProperty(() => Formulas.calculateInitiative(data.attributes));
 
     // Add entries from affinities
-    for (const [key, aff] of Object.entries(this.affinities)) {
-      if (aff.preset || aff.amount) {
-        if (this.parameters.damage[key]) {
-          const list = this.parameters.damage[key].incoming.skill;
-          if (aff.preset) {
-            list.multiplicative.push(AH.affinities[aff.preset].modifier);
-          }
-          else {
-            switch (aff.type) {
-              case "additive":
-                list.additive.push(aff.amount);
-                break;
-              case "multiplicative":
-                list.multiplicative.push(aff.amount);
-                break;
+    if (this.affinities) {
+      for (const [key, aff] of Object.entries(this.affinities)) {
+        if (aff.preset || aff.amount) {
+          if (this.parameters.damage[key]) {
+            const list = this.parameters.damage[key].incoming.skill;
+            if (aff.preset) {
+              list.multiplicative.push(AH.affinities[aff.preset].modifier);
+            }
+            else {
+              switch (aff.type) {
+                case "additive":
+                  list.additive.push(aff.amount);
+                  break;
+                case "multiplicative":
+                  list.multiplicative.push(aff.amount);
+                  break;
+              }
             }
           }
         }

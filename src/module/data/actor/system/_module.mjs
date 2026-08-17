@@ -6,7 +6,7 @@ export { default as ParameterDataModel } from "./parameter-data-model.mjs";
 export { default as InventoryDataModel } from "./inventory-data-model.mjs";
 export { default as DamageModifierDataModel } from "./damage-modifiers-data-model.mjs";
 export { default as CheckModifiersDataModel } from "./check-modifiers-data-model.mjs";
-export { default as CharacterResourceDataModel } from "./character-resource-data-model.mjs";
+export { default as ActorResourceDataModel } from "./actor-resource-data-model.mjs";
 export { default as ProfileDataModel } from "./profile-data-model.mjs";
 export { default as HeroProfileDataModel } from "./hero-profile-data-model.mjs";
 export { default as AdversaryProfileDataModel } from "./adversary-profile-data-model.mjs";

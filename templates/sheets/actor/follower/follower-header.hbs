@@ -1,0 +1,9 @@
+<header class="sheet-header ah-sheet__header">
+
+  <div class="ah-sheet-header__row">
+    {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
+    {{ahInput 'system.level' system.level size ='l' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="ah-character__level" }}
+    {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+  </div>
+
+</header>

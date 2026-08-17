@@ -5,6 +5,7 @@ import { Dialogs } from "../../helpers/_module.mjs";
 import AH from "../../config.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 import { ActionHandler } from "../ui/_module.mjs";
+import Handlebars from "../../helpers/handlebars.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -138,7 +139,26 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   }
 
   /* -------------------------------------------------- */
+  /**
+   * Attach event listeners to rendered template parts.
+   * @param {string} partId The id of the part being rendered.
+   * @param {HTMLElement} html The rendered HTML element for the part.
+   * @param {ApplicationRenderOptions} options Rendering options passed to the render method.
+   * @protected
+   */
+  _attachPartListeners(partId, html, options) {
+    super._attachPartListeners(partId, html, options);
+    switch (partId) {
+      case "header":
+      case "sidebar":
+      {
+        Handlebars.setupComponent.resourceBar(html);
+        break;
+      }
+    }
+  }
 
+  /* -------------------------------------------------- */
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
     // Set the active tab

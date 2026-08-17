@@ -93,7 +93,6 @@ export class AHBaseCharacterSheet extends AHActorSheet {
       case "sidebar":
       {
         this.actionHandler.setupMenu(html);
-        Handlebars.setupComponent.resourceBar(html);
         break;
       }
     }

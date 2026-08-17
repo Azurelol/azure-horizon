@@ -40,6 +40,9 @@ export class FollowerSheet extends AHActorSheet {
   static PARTS = {
     ...super.PARTS,
 
+    header: {
+      template: systemTemplatePath("sheets/actor/follower/follower-header"),
+    },
     features: {
       template: systemTemplatePath("sheets/actor/character/character-features"),
     },

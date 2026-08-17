@@ -6,7 +6,7 @@ import { VersionedDataModel } from "../../api/_module.mjs";
  * @property {Number} bonus Added to the maximum.
  * @property {Number} temporary Used as a buffer for some resources.
  */
-export default class CharacterResourceDataModel extends VersionedDataModel {
+export default class ActorResourceDataModel extends VersionedDataModel {
   static defineSchema() {
     const { NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {

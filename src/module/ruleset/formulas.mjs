@@ -1,9 +1,12 @@
+// CHARACTERS
 const HP_MIGHT_FACTOR = 5;
 const MP_WILLPOWER_FACTOR = 5;
 const IP_BASE = 6;
 const TP_BASE = 10;
 const MIN_ATTRIBUTE_DIE = 4;
 const MAX_ATTRIBUTE_DIE = 12;
+// FOLLOWERS
+const HP_LEVEL_FACTOR = 5;
 
 /**
  * @typedef Modifier
@@ -22,12 +25,28 @@ export default class Formulas {
   static CRITICAL_THRESHOLD = MIN_ATTRIBUTE_DIE;
 
   /**
-   * @param {Number} level
-   * @param {Number} might
+   * @param {EntityDataModel} system
    * @returns {Number}
    */
-  static calculateHitPoints(level, might) {
-    return (might * HP_MIGHT_FACTOR) + level;
+  static calculateHitPoints(system) {
+    const actor = system.parent;
+    switch (actor.type) {
+      case "hero":
+      case "adversary": {
+        /** @type AttributesDataModel **/
+        const attributes = system.attributes;
+        return (attributes.mig.base * HP_MIGHT_FACTOR) + system.level;
+      }
+
+      case "follower":
+      case "guest":
+        return system.level * HP_LEVEL_FACTOR;
+
+      case "unit":
+        break;
+    }
+    // TODO: Throw?
+    return 0;
   }
 
   /**
