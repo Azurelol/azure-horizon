@@ -57,11 +57,11 @@
     --icon-size: 96px;
   }
 
-  &.glow {
-    filter: drop-shadow(0 0 4px var(--ah-color-text-shadow));
+  &.--glow {
+    filter: var(--ah-filter-glow);
   }
 
-  &.warn {
+  &.--warn {
     color: var(--ah-primitive-color-warning);
   }
 
@@ -73,21 +73,21 @@
     color: var(--ah-color-light);
   }
 
-  &.center {
+  &.--center {
     align-self: center;
     justify-self: center;
   }
 
-  &.invert {
+  &.--invert {
     filter: invert(1);
   }
 
-  &.outline {
+  &.--outline {
     filter: drop-shadow(0 0 0.5px var(--ah-color-text-shadow)) drop-shadow(0 0 0.5px var(--acc-color-shadow));
   }
 
-  &.spin {
-    animation: spin 1s linear infinite;
+  &.--spin {
+    animation: spin 30s linear infinite;
   }
 
   @keyframes spin {

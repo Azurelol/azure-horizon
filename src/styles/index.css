@@ -33,6 +33,7 @@
 @import "sheets/actor.css";
 @import "sheets/item.css";
 @import "sheets/character.css";
+@import "sheets/follower.css";
 @import "sheets/party.css";
 @import "sheets/party/party-modern.css";
 @import "sheets/rules.css";

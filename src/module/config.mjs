@@ -954,7 +954,7 @@ AH.icons = {
 
   def: "ah-icon-def",
   mdef: "ah-icon-mdef",
-  init: "ra ra-clockwork",
+  init: "ah-icon-init",
 
   mig: "ah-icon-might",
   dex: "ah-icon-dexterity",

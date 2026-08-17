@@ -11,32 +11,28 @@
         {{ahSelector size='sm' icon=(ahIconClass key)
                      label=(ahLocaleKey 'attributes' key format='short')
                      values=@root.AH.attributeDice value=attribute.base
+                     iconClasses='--glow'
                      path=(ahConcat 'system.attributes.' key '.base') }}
       {{/each}}
     </div>
 
     <div class="ah-sheet__group">
-      {{#if (eq actorType 'hero')}}
-        {{ahBadge size='sm' icon=(ahIconClass 'def')
-                  label='AH.CHARACTER.Defense.short'
-                  classes='--wide'
-                  value=def }}
-        {{ahBadge size='sm' icon=(ahIconClass 'mdef')
-                  label='AH.CHARACTER.MagicDefense.short'
-                  classes='--wide'
-                  value=mdef }}
-      {{else}}
-        {{ahBadge size='sm' icon=(ahIconClass 'def')
-                  label='AH.CHARACTER.Defense.short'
-                  value= system.parameters.def.current }}
-        {{ahBadge size='sm' icon=(ahIconClass 'mdef')
-                  label='AH.CHARACTER.MagicDefense.short'
-                  value=system.parameters.mdef.current }}
-      {{/if}}
+      {{ahBadge size='sm' icon=(ahIconClass 'def')
+                label='AH.CHARACTER.Defense.short'
+                iconClasses='--glow'
+                value= system.parameters.def.current }}
+      {{ahBadge size='sm' icon=(ahIconClass 'mdef')
+                label='AH.CHARACTER.MagicDefense.short'
+                iconClasses='--glow'
+                value=system.parameters.mdef.current }}
+      {{ahBadge size='sm' icon=(ahIconClass 'init')
+                label='AH.CHARACTER.Initiative.short'
+                iconClasses='--glow'
+                value=system.parameters.init.current }}
     </div>
 
     <div class="ah-sheet__group">
-      {{ahButton action='performAction' size='m' data='type=attribute-check;size=large' icon=(ahIconClass 'attributeCheck') iconClasses="--roll spin2win" tooltip='AH.CHECK.Attribute'}}
+      {{ahButton action='performAction' size='m' data='type=attribute-check;size=large' icon=(ahIconClass 'attributeCheck') iconClasses="--roll --spin" tooltip='AH.CHECK.Attribute'}}
     </div>
 
   </div>

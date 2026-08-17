@@ -1,9 +1,32 @@
 <header class="sheet-header ah-sheet__header">
+  <div class="ah-follower__header">
+    <div class="ah-follower-header__name">
+      <img
+        class="profile-img"
+        src="{{actor.img}}"
+        alt="{{actor.name}}"
+        {{#if editable}}
+        data-action="editImage"
+        data-edit="img"
+        {{/if}}
+        data-tooltip="{{actor.name}}"
+        height="100" width="100">
+      {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
+      {{ahStringField path='system.kind' value=system.kind icon=(ahIconClass 'follower') options=(ahFormOptions 'followerTypes') tooltip='AH.FIELD.Kind' }}
+    </div>
 
-  <div class="ah-sheet-header__row">
-    {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
-    {{ahInput 'system.level' system.level size ='l' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="ah-character__level" }}
-    {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+    <div class="ah-sheet-header__row">
+      {{ahInput 'system.level' system.level size ='l' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="ah-character__level" }}
+      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+
+      {{#if (eq actor.type 'guest')}}
+      {{/if}}
+
+      {{#if (eq actor.type 'companion')}}
+      {{/if}}
+
+    </div>
   </div>
+
 
 </header>

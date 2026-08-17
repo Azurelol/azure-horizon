@@ -1,0 +1,23 @@
+.ah-follower {
+  .window-content {
+    gap: 1rem;
+  }
+}
+
+.ah-follower__header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.ah-follower-header__name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  img {
+    width: 48px;
+    height: 48px;
+  }
+}

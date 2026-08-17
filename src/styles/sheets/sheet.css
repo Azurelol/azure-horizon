@@ -52,7 +52,7 @@
 }
 
 .ah-sheet__header {
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

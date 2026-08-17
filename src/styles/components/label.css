@@ -46,7 +46,7 @@
 
   span {
     order: 2;
-    font-size: var(--ah-font-size-input);
+    font-size: var(--ah-font-size-badge);
     text-transform: uppercase;
     letter-spacing: 0.01em;
     white-space: nowrap;
@@ -86,7 +86,7 @@
   }
 
   span {
-    font-size: var(--ah-font-size-label);
+    font-size: var(--ah-font-size-badge);
   }
 
   input {

@@ -124,6 +124,10 @@
         "long": "Magic Defense",
         "short": "MDEF"
       },
+      "Initiative": {
+        "long": "Initiative",
+        "short": "INIT"
+      },
       "Modifier": {
         "long": "Modifier",
         "plural": "Modifiers",
