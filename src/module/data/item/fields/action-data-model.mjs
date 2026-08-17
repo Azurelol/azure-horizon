@@ -11,6 +11,12 @@ export class ActionDataModel extends FieldsetDataModel {
   static defineSchema() {
     const { StringField, BooleanField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      range: new StringField({
+        initial: "",
+        blank: true,
+        label: "AH.FIELD.Range",
+        choices: () => AH.traits.range,
+      }),
       type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.actionTypes), required: true }),
       points: new NumberField({ initial: 1, max: 2 }),
       traits: new TraitsField({
@@ -38,6 +44,9 @@ export class ActionDataModel extends FieldsetDataModel {
           });
           break;
       }
+    }
+    if (this.range) {
+      config.addTraits(this.range);
     }
   }
 

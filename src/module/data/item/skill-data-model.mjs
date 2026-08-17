@@ -64,9 +64,6 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
   async _initializeAction(config) {
     await super._initializeAction(config);
     this.usage.configureAction(config);
-
-    // TODO: Refactor
-    /** @type AHActor **/
     const actor = this.parent.actor;
     if (isActorType(actor) && (actor.type === "hero")) {
       const weapon = this.resolveWeapon();
@@ -77,6 +74,8 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
             label: "AH.ITEM.Weapon",
           });
         }
+        config.removeTraits("melee", "ranged");
+        config.addTraits(weapon.system.range);
       }
     }
   }

@@ -462,6 +462,30 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
+   * @param {String[]|String} traits
+   * @returns {ActionConfig}
+   */
+  removeTraits(...traits) {
+    if (!this.check.data[TRAITS]) {
+      this.check.data[TRAITS] = [];
+    }
+
+    const toRemove = new Set(
+      traits
+        .flat()
+        .filter((t) => t != null)
+        .map((t) => String(t).toLowerCase().trim())
+        .filter((t) => t !== ""),
+    );
+
+    this.check.data[TRAITS] = this.check.data[TRAITS].filter(
+      (t) => !toRemove.has(t),
+    );
+
+    return this;
+  }
+
+  /**
    * @param {AH_Tag|AH_Tag[]} tags
    * @returns {ActionConfig}
    */

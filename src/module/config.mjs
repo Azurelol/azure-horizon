@@ -456,14 +456,6 @@ AH.handedness = {
  * @typedef {"melee", "ranged"} AH_ActionRange
  */
 
-/**
- * @type {Record<string, AH_ActionRange>}
- */
-AH.actionRange = {
-  melee: "AH.TRAIT.Melee",
-  ranged: "AH.TRAIT.Ranged",
-};
-
 AH.attackTypes = Object.freeze({
   attack: "AH.ITEM.Attack",
   weapon: "AH.ITEM.Weapon",
@@ -891,6 +883,11 @@ AH.traits = {
   skill: {
   },
 
+  range: {
+    melee: { label: "AH.TRAIT.Melee" },
+    ranged: { label: "AH.TRAIT.Ranged" },
+  },
+
   weapon: {
     reach: { label: "AH.TRAIT.Reach", tooltip: "AH.TRAIT.ReachHint" },
     projectile: { label: "AH.TRAIT.Projectile", tooltip: "AH.TRAIT.ProjectileHint" },
@@ -932,6 +929,7 @@ AH.traits.all = Object.freeze({
   ...AH.traits.attack,
   ...AH.traits.defense,
   ...AH.traits.skill,
+  ...AH.traits.range,
   ...AH.traits.weapon,
   ...AH.traits.armor,
   ...AH.damageTypes,

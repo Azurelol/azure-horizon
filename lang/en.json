@@ -370,6 +370,7 @@
       "Skill": "Skill",
       "Gain": "Gain",
       "Loss": "Loss",
+      "Chain": "Chain",
       "Base": "Base",
       "Light": "Light",
       "Heavy": "Heavy",
@@ -518,7 +519,8 @@
       "Power": "Power",
       "Points": "Points",
       "Summary": "Summary",
-      "Buff": "Buff"
+      "Buff": "Buff",
+      "Debuff": "Debuff"
     },
     "RULE": {
       "Element": {

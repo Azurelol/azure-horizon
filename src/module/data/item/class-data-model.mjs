@@ -13,7 +13,7 @@ export default class ClassDataModel extends ItemDataModel {
     return Object.assign(super.defineSchema(), {
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
-        options: getFormSelectOptions(AH.traits.class),
+        formOptions: getFormSelectOptions(AH.traits.class),
       }),
       benefits: new EmbeddedDataField(ClassBenefitsDataModel, {}),
     });

@@ -21,7 +21,7 @@ export default class AttackDataModel extends FeatureDataModel {
         initial: "melee",
         blank: false,
         label: "AH.FIELD.Range",
-        choices: () => AH.actionRange,
+        choices: () => AH.traits.range,
       }),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
@@ -35,6 +35,7 @@ export default class AttackDataModel extends FeatureDataModel {
 
   async _initializeAction(config) {
     await super._initializeAction(config);
+    config.addTraits(this.range);
     await this.damage.configureAction(config);
   }
 }
