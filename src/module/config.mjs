@@ -112,6 +112,17 @@ AH.potencies = Object.freeze({
 });
 
 /**
+ * @typedef {'individual'|'small'|'large'|'huge'} AH_Area
+ */
+
+AH.area = {
+  individual: { label: "AH.ACTION.AREA.Individual" },
+  small: { label: "AH.ACTION.AREA.Small" },
+  large: { label: "AH.ACTION.AREA.Large" },
+  huge: { label: "AH.ACTION.AREA.Huge" },
+};
+
+/**
  * @typedef {'partial'|'success'|'critical'} AH_Outcome
  */
 

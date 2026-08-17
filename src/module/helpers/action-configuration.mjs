@@ -364,8 +364,8 @@ export class ActionConfig extends ActionInspector {
    * @param {(potencies: ActionPotencyTable) => void} callback
    * @return {ActionConfig}
    */
-  setPotencies(callback) {
-    const potencies = this.potencies ?? {
+  setPotency(callback) {
+    const tiers = this.potencies ?? {
       reduced: {
         components: [],
       },
@@ -376,9 +376,9 @@ export class ActionConfig extends ActionInspector {
         components: [],
       },
     };
-    if (potencies) {
-      callback(potencies);
-      this.setData(ACTION_POTENCIES, potencies);
+    if (tiers) {
+      callback(tiers);
+      this.setData(ACTION_POTENCIES, tiers);
     }
     return this;
   }

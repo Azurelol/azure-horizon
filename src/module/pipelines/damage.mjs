@@ -271,13 +271,13 @@ const onProcessAction = async (config, actor, item) => {
       amount = await Expressions.evaluateAsync(amount, context);
       component.amount = amount;
     }
-    // 4.) Set Potencies
+    // 4.) Set Potency
     if (config.isCheck) {
-      config.setPotencies((potencies) => {
+      config.setPotency((tiers) => {
         // Standard
         const standardDamage = new DamageData(dmg);
         const standard = getChatAction(standardDamage, sourceInfo, traits, false);
-        potencies.standard.components.push({
+        tiers.standard.components.push({
           text: standardDamage.toString(),
           actions: [standard],
         });
@@ -290,7 +290,7 @@ const onProcessAction = async (config, actor, item) => {
           d.add("AH.DAMAGE.Glancing", base.type, Math.ceil(total * 0.5));
         });
         const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, false);
-        potencies.reduced.components.push({
+        tiers.reduced.components.push({
           text: reducedDamage.toString(),
           actions: [reducedAction],
         });
@@ -301,7 +301,7 @@ const onProcessAction = async (config, actor, item) => {
           d.add("AH.PIPELINE.CriticalBonus", "untyped", criticalBonus);
         });
         const powerful = getChatAction(powerfulDamage, sourceInfo, traits, false);
-        potencies.powerful.components.push({
+        tiers.powerful.components.push({
           text: powerfulDamage.toString(),
           actions: [powerful],
         });

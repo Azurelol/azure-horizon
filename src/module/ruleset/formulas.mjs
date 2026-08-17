@@ -31,11 +31,18 @@ export default class Formulas {
   static calculateHitPoints(system) {
     const actor = system.parent;
     switch (actor.type) {
-      case "hero":
+      case "hero": {
+        /** @type AttributesDataModel **/
+        const attributes = system.attributes;
+        return system.level + (attributes.mig.base * HP_MIGHT_FACTOR);
+      }
       case "adversary": {
         /** @type AttributesDataModel **/
         const attributes = system.attributes;
-        return (attributes.mig.base * HP_MIGHT_FACTOR) + system.level;
+        /** @type AdversaryProfileDataModel **/
+        const profile = system.profile;
+        const rankMultiplier = profile.turns;
+        return (system.level + (attributes.mig.base * HP_MIGHT_FACTOR)) * rankMultiplier;
       }
 
       case "follower":
@@ -157,5 +164,12 @@ export default class Formulas {
   static applyDamageModifiers(amount, modifiers) {
     const { additive, multiplicative } = Formulas.joinModifiers(modifiers);
     return Formulas.round((amount + additive) * multiplicative);
+  }
+
+  /**
+   * @param {AH_Power} power
+   */
+  static calculatePowerBonus(power) {
+
   }
 }
