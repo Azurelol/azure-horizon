@@ -690,6 +690,8 @@
       "Equipment": "Equipment",
       "Objective": "Objective",
       "Swap": "Swap",
+      "Item": "Item",
+      "Maneuver": "Maneuver",
       "Inventory": "Inventory",
       "Equip": "Equip",
       "Unequip": "Unequip"

@@ -48,6 +48,70 @@ export default class ActionHandler {
   }
 
   /**
+   * @typedef AH_CharacterAction
+   * @property id
+   * @property label
+   * @property tooltip
+   * @property ctx The context menu
+   * @property type The type of character.
+   */
+
+  /**
+   *
+   * @returns {AH_CharacterAction[]}
+   */
+  getMenuActions() {
+    /** @type AH_CharacterAction[] **/
+    let actions = [];
+    actions.push({
+      id: "attack",
+      label: "AH.ACTION.Attack",
+      tooltip: "AH.ACTION.AttackHint",
+      ctx: "attack",
+    });
+    if (this.actor.type === "hero") {
+      actions.push({
+        id: "skill",
+        label: "AH.ACTION.Skill",
+        tooltip: "AH.ACTION.SkillHint",
+        type: "hero",
+        ctx: "skill",
+      });
+      actions.push({
+        id: "spell",
+        label: "AH.ACTION.Spell",
+        tooltip: "AH.ACTION.SpellHint",
+        type: "hero",
+        ctx: "spell",
+      });
+    }
+    else if (this.actor.type === "adversary") {
+      actions.push({
+        id: "ability",
+        label: "AH.ACTION.Ability",
+        tooltip: "AH.ACTION.AbilityHint",
+        type: "adversary",
+        ctx: "ability",
+      });
+    }
+    actions.push({
+      id: "maneuver",
+      label: "AH.ACTION.Maneuver",
+      tooltip: "AH.ACTION.ManeuverHint",
+      ctx: "maneuver",
+    });
+    if (this.actor.type === "hero") {
+      actions.push({
+        id: "item",
+        label: "AH.ACTION.Item",
+        tooltip: "AH.ACTION.ItemHint",
+        ctx: "item",
+      });
+    }
+    return actions;
+  }
+
+  /**
    * @param {HTMLElement} element
    */
   setupMenu(element) {
@@ -57,9 +121,9 @@ export default class ActionHandler {
     // SPELLS
     const spells = ["spell"].map((t) => this.actor.getItemsByType(t)).flat();
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"spell\"]", spells);
-    // // INVENTORY
-    // const consumables = ["consumable"].map((t) => actor.getItemsByType(t)).flat();
-    // FoundryUtils.itemContextMenu(element, "[data-context-menu=\"inventory\"]", consumables);
+    // INVENTORY
+    const consumables = this.actor.getItemsByType("consumable");
+    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"item\"]", consumables);
     if (this.actor.type === "hero") {
       // EQUIPMENT
       const weapons = this.actor.getItemsByType("weapon");
@@ -73,7 +137,6 @@ export default class ActionHandler {
       FoundryUtils.itemContextMenu(element, "[data-slot=\"armor\"]", armors, async item => {
         this.actor.system.equipItem(item);
       });
-
       // SKILLS
       /** @type {AHItem[]} **/
       let skills = ["skill"]

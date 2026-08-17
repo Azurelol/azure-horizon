@@ -49,8 +49,27 @@ export class AHBaseCharacterSheet extends AHActorSheet {
     return context;
   }
 
-  /** @type ActionHandler **/
+  /**
+   * @returns {ActionHandler}
+   */
+  get actionHandler() {
+    if (!this.#actionHandler) {
+      this.#actionHandler = new ActionHandler(this.actor);
+    }
+    return this.#actionHandler;
+  }
   #actionHandler;
+
+  /** @inheritdoc */
+  async _preparePartContext(partId, context) {
+    await super._preparePartContext(partId, context);
+    switch (partId) {
+      case "sidebar": {
+        context.actions = this.actionHandler.getMenuActions();
+        break;
+      }
+    }
+  }
 
   /**
    * Attach event listeners to rendered template parts.
@@ -64,10 +83,7 @@ export class AHBaseCharacterSheet extends AHActorSheet {
     switch (partId) {
       case "sidebar":
       {
-        if (!this.#actionHandler) {
-          this.#actionHandler = new ActionHandler(this.actor);
-        }
-        this.#actionHandler.setupMenu(html);
+        this.actionHandler.setupMenu(html);
         Handlebars.setupComponent.resourceBar(html);
         break;
       }

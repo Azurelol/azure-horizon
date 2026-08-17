@@ -6,15 +6,7 @@
 
   <div class="ah-actor__actions">
   {{!-- Shared actions --}}
-  {{#each (ahArray
-            (ahHash id="attack"    label="AH.ACTION.Attack"    tooltip="AH.ACTION.AttackHint"      ctx="attack" )
-            (ahHash id="ability"    label="AH.ACTION.Ability"    tooltip="AH.ACTION.AbilityHint"   ctx="ability" type='adversary' )
-            (ahHash id="skill"     label="AH.ACTION.Skill"     tooltip="AH.ACTION.SkillHint"       ctx="skill" type='hero')
-            (ahHash id="spell"     label="AH.ACTION.Spell"     tooltip="AH.ACTION.SpellHint"       ctx="spell" type='hero')
-            (ahHash id="defend"     label="AH.ACTION.Defend"   tooltip="AH.ACTION.DefendHint"      ctx="")
-            (ahHash id="objective" label="AH.ACTION.Objective" tooltip="AH.ACTION.ObjectiveHint"   ctx=""   type='hero')
-          )}}
-
+  {{#each actions}}
     {{#unless (and this.type (ahNotEquals this.type @root.actor.type))}}
       <button id="{{this.id}}Action"
               {{#unless this.ctx}}data-action="performAction"{{/unless}}
