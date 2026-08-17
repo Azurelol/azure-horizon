@@ -80,3 +80,13 @@
   gap: 8px;
 }
 
+.ah-character__level {
+  span, i {
+  }
+  input {
+    font-size: 28px;
+    background: transparent;
+    width: 50px;
+    text-align: center;
+  }
+}

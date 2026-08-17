@@ -9,14 +9,14 @@
         data-action="editImage"
         data-edit="img"
         {{/if}}
-        data-tooltip="{{actor.name}}"
-        height="100" width="100">
+        data-tooltip="{{actor.name}}">
       {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
-      {{ahStringField path='system.kind' value=system.kind icon=(ahIconClass 'follower') options=(ahFormOptions 'followerTypes') tooltip='AH.FIELD.Kind' }}
+      {{ahStringField path='system.kind' value=system.kind icon=(ahIconClass 'follower') options=(ahFormOptions 'followerTypes') classes="ah-width-50" tooltip='AH.FIELD.Kind' }}
+      {{ahInput 'system.level' system.level size ='l' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="ah-character__level" }}
     </div>
 
     <div class="ah-sheet-header__row">
-      {{ahInput 'system.level' system.level size ='l' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="ah-character__level" }}
+
       {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
 
       {{#if (eq actor.type 'guest')}}
