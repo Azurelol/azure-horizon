@@ -1,0 +1,41 @@
+{
+  "folder": "HvRr9GFUHOmYzNEk",
+  "name": "Lancer",
+  "type": "class",
+  "_id": "0ogZm1r46mKL5P3W",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "lancer",
+    "description": "<p>An acrobatic warrior who specializes in fighting at range with a long spear.</p>",
+    "traits": [
+      "warrior",
+      "offense"
+    ],
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": true,
+      "mp": false,
+      "ip": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786813060438,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!0ogZm1r46mKL5P3W"
+}

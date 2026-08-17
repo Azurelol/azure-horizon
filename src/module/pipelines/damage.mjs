@@ -1,4 +1,4 @@
-import { SourceInfo } from "../data/common/_module.mjs";
+import { EvaluationContext, SourceInfo } from "../data/common/_module.mjs";
 
 import AH from "../config.mjs";
 import {
@@ -18,6 +18,7 @@ import { StringUtils, TokenUtils } from "../utils/_module.mjs";
 import { DamageRequest } from "./_module.mjs";
 import PipelineContext from "./pipeline-context.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
+import Expressions from "./expressions.mjs";
 
 /**
  * @property {DamageData} damageData
@@ -236,36 +237,45 @@ function onRenderChatMessage(message, html) {
   });
 }
 
-/** @type ActionProcessCallback **/
-const onProcessAction = (config, actor, item, callback) => {
+/** @type ActionCallback **/
+const onProcessAction = async (config, actor, item) => {
   if (config.hasDamage) {
     Events.calculateDamage(actor, item, config);
     const sourceInfo = config.sourceInfo;
     const traits = config.getTraits();
 
-    config.modifyDamage((dmg) => {
-      const hr = config.hr;
-      if (hr) {
-        dmg.add("AH.CHECK.HighRoll.short", dmg.type, hr.result);
-      }
-      /** @type CharacterParametersDataModel **/
-      const outgoing = actor?.system?.parameters;
-      if (outgoing) {
-        for (const type of dmg.types) {
-          const mods = outgoing.damage.resolve(type, "outgoing");
-          if (mods.length) {
-            for (const mod of mods) {
-              dmg.modify(dmg.type, mod);
-            }
+    const dmg = config.damage;
+
+    // 1.) Add high roll damage
+    const hr = config.hr;
+    if (hr) {
+      dmg.add("AH.CHECK.HighRoll.short", dmg.type, hr.result);
+    }
+    // 2.) Add outgoing modifiers
+    /** @type CharacterParametersDataModel **/
+    const outgoing = actor?.system?.parameters;
+    if (outgoing) {
+      for (const type of dmg.types) {
+        const mods = outgoing.damage.resolve(type, "outgoing");
+        if (mods.length) {
+          for (const mod of mods) {
+            dmg.modify(dmg.type, mod);
           }
         }
       }
-    });
-
+    }
+    // 3.) Evaluate any components that have expressions
+    const context = new EvaluationContext(actor, item, config.getTargets());
+    for (const component of dmg.components) {
+      let amount = component.amount;
+      amount = await Expressions.evaluateAsync(amount, context);
+      component.amount = amount;
+    }
+    // 4.) Set Potencies
     if (config.isCheck) {
       config.setPotencies((potencies) => {
         // Standard
-        const standardDamage = new DamageData(config.damage);
+        const standardDamage = new DamageData(dmg);
         const standard = getChatAction(standardDamage, sourceInfo, traits, false);
         potencies.standard.components.push({
           text: standardDamage.toString(),
@@ -321,7 +331,9 @@ const onRenderAction = (config, data, actor, item, registerCallback) => {
  */
 function initialize() {
   Hooks.on("renderChatMessageHTML", onRenderChatMessage);
-  Hooks.on(AH.hooks.PROCESS_ACTION, onProcessAction);
+  Hooks.on(AH.hooks.PROCESS_ACTION, (config, actor, item, registerCallback) => {
+    onProcessAction(config, actor, item);
+  });
   Hooks.on(AH.hooks.RENDER_ACTION, onRenderAction);
 }
 

@@ -54,7 +54,8 @@
       "Accessory": "Accessory",
       "Spell": "Spell",
       "Item": "Item",
-      "Class": "Class"
+      "Class": "Class",
+      "Move": "Move"
     },
     "THEME": {
       "BackgroundPrimary": "Background Primary",
@@ -145,7 +146,11 @@
     "FOLLOWER": {
       "Kind": "Kind",
       "Guest": "Guest",
-      "Companion": "Companion"
+      "Companion": "Companion",
+      "Move": {
+        "long": "Move",
+        "plural": "Moves"
+      }
     },
     "ADVERSARY": {
       "Villain": "Villain",
@@ -767,7 +772,8 @@
       "classFeature": "Class Feature",
       "spell": "Spell",
       "consumable": "Consumable",
-      "ability": "Ability"
+      "ability": "Ability",
+      "move": "Move"
     },
     "Combatant": {
       "player": "Player"

@@ -11,12 +11,15 @@ import ArmorDataModel from "./armor-data-model.mjs";
 import AccessoryDataModel from "./accessory-data-model.mjs";
 import ClassFeatureDataModel from "./class-feature-data-model.mjs";
 import AbilityDataModel from "./ability-data-model.mjs";
+import MoveDataModel from "./move-data-model.mjs";
 
 const dataModels = Object.freeze({
   base: ItemDataModel,
 
   attack: AttackDataModel,
   ability: AbilityDataModel,
+
+  move: MoveDataModel,
 
   class: ClassDataModel,
   skill: SkillDataModel,

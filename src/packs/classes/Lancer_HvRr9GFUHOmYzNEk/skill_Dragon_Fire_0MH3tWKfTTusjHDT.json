@@ -1,14 +1,14 @@
 {
-  "folder": "FAJt0Dim8RzQ8BHP",
-  "name": "Power Strike",
+  "folder": "HvRr9GFUHOmYzNEk",
+  "name": "Dragon Fire",
   "type": "skill",
-  "_id": "Vr4OV4fATDqDW33a",
-  "img": "systems/azure-horizon/assets/icons/classes/armiger/power-strike.png",
+  "_id": "0MH3tWKfTTusjHDT",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "armiger-power-strike",
-    "description": "<p>You unleash a powerful attack with your equipped weapon.</p>",
+    "slug": "lancer-dragon-fire",
+    "description": "",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -17,12 +17,19 @@
       "defense": "def",
       "bonus": ""
     },
+    "action": {
+      "schemaVersion": 1,
+      "range": "ranged",
+      "type": "action",
+      "points": 1,
+      "traits": []
+    },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "0",
-        "type": "untyped"
+        "amount": "20",
+        "type": "fire"
       },
       "secondary": {
         "amount": "",
@@ -39,38 +46,32 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "15",
+      "amount": "",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
       "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
-      },
-      "enabled": false
+      }
     },
     "level": {
       "current": 1,
-      "max": 2
+      "max": 1
     },
     "usage": {
       "schemaVersion": 1,
       "check": true,
-      "damage": true,
+      "damage": false,
       "power": "moderate"
     },
-    "class": "armiger",
-    "action": {
-      "type": "action",
-      "points": 1,
-      "traits": [
-        "cooldown"
-      ]
-    }
+    "class": "lancer"
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +83,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786544570507,
+    "createdTime": 1786954126206,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Vr4OV4fATDqDW33a"
+  "_key": "!items!0MH3tWKfTTusjHDT"
 }

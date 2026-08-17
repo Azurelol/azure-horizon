@@ -14,4 +14,8 @@ export default class FollowerDataModel extends EntityDataModel {
       profile: new EmbeddedDataField(FollowerProfileDataModel, {}),
     });
   }
+
+  supportsItemType(type) {
+    return type === "move";
+  }
 }

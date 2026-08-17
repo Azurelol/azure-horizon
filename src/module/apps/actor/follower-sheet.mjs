@@ -55,7 +55,7 @@ export class FollowerSheet extends AHActorSheet {
   };
 
   /* -------------------------------------------------- */
-  #abilityTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural" });
+  #moveTableRenderer = new ActionTableRenderer({ title: "AH.FOLLOWER.Move.plural" });
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
@@ -68,7 +68,7 @@ export class FollowerSheet extends AHActorSheet {
 
       case "features": {
         context.tables = [
-          await this.#abilityTableRenderer.render(this.actor.getItemsByType("ability")),
+          await this.#moveTableRenderer.render(this.actor.getItemsByType("move")),
         ];
         break;
       }

@@ -1,0 +1,47 @@
+{
+  "name": "Effect: Jump",
+  "_id": "3PsMm6Dpep367CE2",
+  "img": "icons/svg/aura.svg",
+  "type": "base",
+  "system": {
+    "changes": [],
+    "slug": "lancer-airborne",
+    "rules": {},
+    "tracker": {
+      "enabled": false,
+      "name": "",
+      "id": "",
+      "current": 0,
+      "max": 6
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>You are high up in the air in a manner of your choosing. Your next action will deal increased damage and can target any row, and will end this effect.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "folder": "fVBEJbnbRAlzqJea",
+  "sort": 200000,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786953636574,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!3PsMm6Dpep367CE2"
+}

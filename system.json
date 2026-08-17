@@ -111,7 +111,8 @@
       "class": {},
       "consumable": {},
       "attack": {},
-      "ability": {}
+      "ability": {},
+      "move": {}
     }
   },
   "flags": {

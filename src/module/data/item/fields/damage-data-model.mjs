@@ -57,7 +57,7 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
         });
       }
       else {
-        config.setDamage(this.primary.type, this.primary.amount);
+        config.addDamage(this.primary.type, this.primary.amount);
         if (this.secondary.type) {
           config.modifyDamage(d => {
             d.add("AH.DAMAGE.Secondary", this.secondary.type, this.secondary.amount);

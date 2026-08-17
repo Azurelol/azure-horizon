@@ -1,27 +1,33 @@
 {
-  "folder": "FAJt0Dim8RzQ8BHP",
-  "name": "Power Strike",
+  "folder": "HvRr9GFUHOmYzNEk",
+  "name": "Wyvern Tail",
   "type": "skill",
-  "_id": "Vr4OV4fATDqDW33a",
-  "img": "systems/azure-horizon/assets/icons/classes/armiger/power-strike.png",
+  "_id": "pcGS42dO1xFpFiR8",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "armiger-power-strike",
-    "description": "<p>You unleash a powerful attack with your equipped weapon.</p>",
+    "slug": "lancer-wyvern-tail",
+    "description": "<p>While under the effect of Coiled Tail, you can perform a <em>cleaving</em> melee attack.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def",
-      "bonus": ""
+      "defense": "def"
+    },
+    "action": {
+      "schemaVersion": 1,
+      "range": "melee",
+      "type": "action",
+      "points": 1,
+      "traits": []
     },
     "damage": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": {
-        "amount": "0",
+        "amount": "",
         "type": "untyped"
       },
       "secondary": {
@@ -39,23 +45,24 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "15",
+      "amount": "",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
       "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
-      },
-      "enabled": false
+      }
     },
     "level": {
       "current": 1,
-      "max": 2
+      "max": 1
     },
     "usage": {
       "schemaVersion": 1,
@@ -63,14 +70,7 @@
       "damage": true,
       "power": "moderate"
     },
-    "class": "armiger",
-    "action": {
-      "type": "action",
-      "points": 1,
-      "traits": [
-        "cooldown"
-      ]
-    }
+    "class": "lancer-dragon-tail"
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +82,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786544570507,
+    "createdTime": 1786953748103,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Vr4OV4fATDqDW33a"
+  "_key": "!items!pcGS42dO1xFpFiR8"
 }

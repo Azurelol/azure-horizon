@@ -1,0 +1,42 @@
+{
+  "folder": "cFbfdJxdSSKxQ4Eb",
+  "name": "Blademaster",
+  "type": "class",
+  "_id": "AeRIq5387gZSSNE5",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "blademaster",
+    "description": "<p>A warrior who specializes in fighting opponent with their blade.</p>",
+    "traits": [
+      "warrior",
+      "offense",
+      "defense"
+    ],
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": true,
+      "mp": false,
+      "ip": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786813510461,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!AeRIq5387gZSSNE5"
+}

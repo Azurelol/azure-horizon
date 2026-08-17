@@ -143,7 +143,7 @@ export class ActionInspector {
    * @returns {String[]}
    */
   get description() {
-    return this.data[DESCRIPTION];
+    return this.data[DESCRIPTION] ?? [];
   }
 
   /**
@@ -320,11 +320,20 @@ export class ActionConfig extends ActionInspector {
   // TODO: Change to add damage
 
   /**
+   * @param {DamageData} data
+   * @return {ActionConfig}
+   */
+  setDamage(data) {
+    this.setData(DAMAGE, data);
+    return this;
+  }
+
+  /**
    * @param {AH_DamageType} type
    * @param {Number} baseDamage
    * @return {ActionConfig}
    */
-  setDamage(type, baseDamage) {
+  addDamage(type, baseDamage) {
     this.setData(DAMAGE, DamageData.construct(type, baseDamage));
     return this;
   }

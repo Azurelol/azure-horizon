@@ -66,9 +66,9 @@ function evaluateVariables(expression, context) {
   function evaluate(match, symbol) {
     switch (symbol) {
       // Character level
-      case "cl": {
+      case "lvl": {
         context.assertActorOrTargets(match);
-        return context.resolveActorOrHighestLevelTarget().system.level.value;
+        return context.resolveActorOrHighestLevelTarget().system.level;
       }
       // Attributes
       case "mig":

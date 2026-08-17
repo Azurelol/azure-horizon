@@ -1,27 +1,32 @@
 {
   "folder": "FAJt0Dim8RzQ8BHP",
-  "name": "Power Strike",
+  "name": "Arsenal",
   "type": "skill",
-  "_id": "Vr4OV4fATDqDW33a",
-  "img": "systems/azure-horizon/assets/icons/classes/armiger/power-strike.png",
+  "_id": "kJGAKUMekVLPcwuy",
+  "img": "systems/azure-horizon/assets/icons/classes/armiger/arsenal.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "armiger-power-strike",
-    "description": "<p>You unleash a powerful attack with your equipped weapon.</p>",
+    "slug": "armiger-arsenal",
+    "description": "<p>Whenever you swap weapons you gain a <em>physical damage bonus</em> to your next attack.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def",
-      "bonus": ""
+      "defense": "def"
+    },
+    "action": {
+      "schemaVersion": 1,
+      "type": "",
+      "points": 1,
+      "traits": []
     },
     "damage": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": {
-        "amount": "0",
+        "amount": "",
         "type": "untyped"
       },
       "secondary": {
@@ -39,19 +44,21 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "15",
+      "amount": "",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "entries": [],
+      "enabled": true,
+      "entries": [
+        "armiger-arsenal-effect"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
-      },
-      "enabled": false
+      }
     },
     "level": {
       "current": 1,
@@ -59,18 +66,11 @@
     },
     "usage": {
       "schemaVersion": 1,
-      "check": true,
-      "damage": true,
-      "power": "moderate"
+      "check": false,
+      "damage": false,
+      "power": ""
     },
-    "class": "armiger",
-    "action": {
-      "type": "action",
-      "points": 1,
-      "traits": [
-        "cooldown"
-      ]
-    }
+    "class": "armiger"
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +82,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786544570507,
+    "createdTime": 1786804641987,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Vr4OV4fATDqDW33a"
+  "_key": "!items!kJGAKUMekVLPcwuy"
 }

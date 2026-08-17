@@ -420,7 +420,7 @@ AH.followerTypes = Object.freeze({
 });
 
 /**
- * @typedef {'weapon'|'armor'|'accessory'|'skill'|'spell'|'consumable'|'attack'|'ability'|'class'} AH_ItemType
+ * @typedef {'weapon'|'armor'|'accessory'|'skill'|'spell'|'consumable'|'attack'|'ability'|'class'|'move'} AH_ItemType
  */
 
 AH.itemTypes = {
