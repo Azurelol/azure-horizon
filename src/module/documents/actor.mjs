@@ -68,7 +68,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     if (changed) {
       if (this.isCharacterType && changed.system) {
         // If the level was changed, reset resources?
-        if ("level" in changed.system) {
+        if (("level" in changed.system) && (changed.system.level !== this.system.level)) {
           // TODO: Fix to execute after calculation
           this.system.level = changed.system.level;
           const restData = this.#calculateRest("long");

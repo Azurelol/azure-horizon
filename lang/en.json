@@ -52,6 +52,7 @@
       "Weapon": "Weapon",
       "Armor": "Armor",
       "Accessory": "Accessory",
+      "Consumable": "Consumable",
       "Spell": "Spell",
       "Item": "Item",
       "Class": "Class",

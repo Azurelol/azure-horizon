@@ -1,0 +1,13 @@
+<td class="ah-table__column__item__cost">
+  {{#if system.cost.enabled}}
+    <span>
+      <i class="ah-icon --s {{ahIconClass system.cost.resource}}"></i> {{system.cost.amount}}
+    </span>
+  {{/if}}
+
+  {{#if (eq system.type 'consumable')}}
+    <span>
+      <i class="ah-icon --s {{ahIconClass 'ip'}}"></i> {{system.cost.amount}}
+    </span>
+  {{/if}}
+</td>

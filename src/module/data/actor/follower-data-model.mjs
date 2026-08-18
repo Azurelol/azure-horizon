@@ -25,4 +25,19 @@ export default class FollowerDataModel extends EntityDataModel {
   supportsItemType(type) {
     return type === "move";
   }
+
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    const updates = foundry.utils.mergeObject({
+      prototypeToken: {
+        actorLink: true,
+        disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+      },
+    }, data, { insertKeys: false, insertValues: false, inplace: false });
+
+    this.parent.updateSource(updates);
+  }
 }

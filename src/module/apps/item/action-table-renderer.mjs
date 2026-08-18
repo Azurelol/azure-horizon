@@ -6,6 +6,7 @@ export default class ActionTableRenderer extends ItemTableRenderer {
   _getItemProperties() {
     return [
       TableColumns.itemProperties(),
+      TableColumns.itemCost(),
     ];
   }
 }

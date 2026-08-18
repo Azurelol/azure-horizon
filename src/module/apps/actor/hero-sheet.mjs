@@ -8,6 +8,7 @@ import {
 } from "../item/_module.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
+import Handlebars from "../../helpers/handlebars.mjs";
 
 /**
  * @extends AHActorSheet
@@ -63,6 +64,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon" });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor" });
   #accessoryTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Accessory" });
+  #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable" });
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
@@ -94,6 +96,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
           await this.#weaponTableRenderer.render(this.actor.getItemsByType("weapon")),
           await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
           await this.#accessoryTableRenderer.render(this.actor.getItemsByType("accessory")),
+          await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),
         ];
         break;
 

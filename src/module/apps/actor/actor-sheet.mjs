@@ -318,6 +318,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
    */
   async _onRender(context, options) {
     await super._onRender(context, options);
+    HTMLUtils.setupInputs(this.element);
     this.#disableOverrides();
   }
 

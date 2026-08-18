@@ -9,6 +9,7 @@ const TEMPLATES = Object.freeze({
   damage: systemTemplatePath("components/table/table-column-damage"),
   resource: systemTemplatePath("components/table/table-column-resource"),
   itemProperties: systemTemplatePath("components/table/table-column-item-properties"),
+  itemCost: systemTemplatePath("components/table/table-column-item-cost"),
 });
 
 /**
@@ -137,6 +138,28 @@ function itemProperties(options = {}) {
 /**
  * @template {Object} T
  * @param {AH_TextColumnOptions} [options]
+ * @return {AH_TableColumnConfig}
+ */
+function itemCost(options = {}) {
+  return {
+    hideHeader: !options.header,
+    renderHeader: () => StringUtils.localize(options.header ?? "AH.FIELD.Cost"),
+    headerAlignment: options.alignment,
+
+    renderCell: async (entry) => {
+      /** @type ActiveFeatureDataModel **/
+      const system = entry.system;
+      return renderTemplate(TEMPLATES.itemCost, {
+        system: system,
+        cssClass: options.cssClass,
+      }, false);
+    },
+  };
+}
+
+/**
+ * @template {Object} T
+ * @param {AH_TextColumnOptions} [options]
  * @return {AH_TableColumnConfig<T>}
  */
 function damage(options = {}) {
@@ -229,6 +252,7 @@ const TableColumns = Object.freeze({
   actions,
 
   itemProperties,
+  itemCost,
   damage,
   resource,
   check,

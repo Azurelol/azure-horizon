@@ -1,5 +1,6 @@
 // DSL supported by the inline amount expression
 import { MathUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
 
 const referenceSymbol = "@";
 const itemLabel = "item";
@@ -136,6 +137,17 @@ function evaluateMacros(expression, context) {
         const actor = context.resolveActorOrSource(match, redirect);
         const attribute = parseIdentifier(splitArgs[0]);
         return getAttributeSize(actor, attribute);
+      }
+      // Resource
+      case "hp": {
+        const percent = parseIdentifier(splitArgs[0]);
+        const max = context.resolveActorOrHighestLevelTarget().system.resources.hp.max;
+        return Formulas.round(percent * max);
+      }
+      case "mp": {
+        const percent = parseIdentifier(splitArgs[0]);
+        const max = context.resolveActorOrHighestLevelTarget().system.resources.mp.max;
+        return Formulas.round(percent * max);
       }
       // Skill level
       case "sl": {
