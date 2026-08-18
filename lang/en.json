@@ -56,7 +56,8 @@
       "Spell": "Spell",
       "Item": "Item",
       "Class": "Class",
-      "Move": "Move"
+      "Move": "Move",
+      "ClassFeature": "Class Feature"
     },
     "THEME": {
       "BackgroundPrimary": "Background Primary",

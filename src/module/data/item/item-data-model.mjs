@@ -1,4 +1,5 @@
 import { VersionedDataModel } from "../api/_module.mjs";
+import { systemTemplatePath } from "../../constants.mjs";
 
 const fields = foundry.data.fields;
 
@@ -44,13 +45,18 @@ export default class ItemDataModel extends VersionedDataModel {
     return false;
 
   }
-  // TODO: Used?
+
+  /**
+   * @typedef AH_ItemTemplateParts
+   * @property header
+   * @property properties
+   */
+
   /**
    * @protected
-   * @returns {string} The system template path to the partial used by this item.
+   * @returns {AH_ItemTemplateParts} The system template path to the partial used by this item.
    */
-  static get template() {
-    return undefined;
+  static get templates() {
+    return {};
   }
-
 }

@@ -445,7 +445,7 @@ AH.triggers = Object.freeze({
 });
 
 /**
- * @typedef {'weapon'|'armor'|'accessory'|'skill'|'spell'|'consumable'|'attack'|'ability'|'class'|'move'} AH_ItemType
+ * @typedef {'weapon'|'armor'|'accessory'|'skill'|'classFeature'|'spell'|'consumable'|'attack'|'ability'|'class'|'move'} AH_ItemType
  */
 
 AH.itemTypes = {

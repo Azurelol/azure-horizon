@@ -60,6 +60,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
   /* -------------------------------------------------- */
 
   #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill" });
+  #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature" });
   #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell" });
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon" });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor" });
@@ -82,6 +83,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
       case "features": {
         context.tables = [
           await this.#skillTableRenderer.render(this.actor.getItemsByType("skill")),
+          await this.#classFeatureTableRenderer.render(this.actor.getItemsByType("classFeature")),
           await this.#spellTableRenderer.render(this.actor.getItemsByType("spell")),
         ];
         break;

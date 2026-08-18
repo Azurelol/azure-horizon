@@ -21,6 +21,7 @@ export default class DataModelRegistry {
 
   /**
 	 * @returns {Object<String, DataModel>}
+   * @remarks Types without prefixes.
 	 */
   get types() {
     return Object.fromEntries(this.#types);
@@ -28,6 +29,7 @@ export default class DataModelRegistry {
 
   /**
 	 * @returns {Object<string, DataModel>}
+   * @remarks Types with full prefixes.
 	 */
   get qualifiedTypes() {
     return Object.fromEntries(this.#qualifiedTypes);
@@ -77,14 +79,14 @@ export default class DataModelRegistry {
 	 * @remarks Fully qualified
 	 */
   get entries() {
-    return Object.entries(this.qualifiedTypes).reduce((agg, [key, value]) => (agg[key] = value.translation) && agg, {});
+    return Object.entries(this.qualifiedTypes).reduce((agg, [key, value]) => (agg[key] = value.localization) && agg, {});
   }
 
   /**
 	 * @returns {Record<string, string>} The type to its localization.
 	 */
   get localizedEntries() {
-    return Object.entries(this.types).reduce((agg, [key, value]) => (agg[key] = value.translation ?? value.localization) && agg, {});
+    return Object.entries(this.types).reduce((agg, [key, value]) => (agg[key] = value.localization) && agg, {});
   }
 
   /**

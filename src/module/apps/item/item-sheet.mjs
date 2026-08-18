@@ -2,6 +2,8 @@ import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { systemTemplatePath } from "../../constants.mjs";
 import * as fields from "../../data/item/fields/_module.mjs";
 import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
+import { Dialogs } from "../../helpers/_module.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -29,6 +31,8 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
 
       addArrayElement: AHItemSheet.#addArrayElement,
       removeArrayElement: AHItemSheet.#removeArrayElement,
+
+      changeType: AHItemSheet.#changeType,
     },
     form: {
       submitOnChange: true,
@@ -61,6 +65,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   static PARTS = {
     header: {
       template: systemTemplatePath("sheets/item/item-header"),
+      templates: [systemTemplatePath("sheets/item/item-class-feature")],
     },
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),
@@ -115,7 +120,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       systemSource: this.item.system._source,
       systemFields: this.document.system.schema.fields,
       flags: this.item.flags,
-      propertiesTemplate: this.item.system.constructor.template,
+      templates: this.item.system.constructor.templates,
       config: CONFIG,
     });
 
@@ -136,6 +141,9 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         context.tab = context.tabs[partId];
         break;
       case "header":{
+        if (this.item.system === "classFeature") {
+          context.classFeatureOptions = AH.dataModelRegistries.classFeature.localizedEntries;
+        }
         break;
       }
       case "properties":
@@ -234,6 +242,25 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         await this.item.update({
           [`${path}`]: array,
         });
+      }
+    }
+  }
+
+  /**
+   * @this AHItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #changeType(event, target) {
+    if (this.item.type === "classFeature") {
+      const subTypes = AH.dataModelRegistries.classFeature.entries;
+      const options = getFormSelectOptions(subTypes);
+      const selectedType = await Dialogs.select("Change Type", options, this.item.system.feature.type);
+      if (selectedType != null) {
+        /** @type ClassFeatureDataModel **/
+        const system = this.item.system;
+        await system.changeFeature(selectedType);
       }
     }
   }

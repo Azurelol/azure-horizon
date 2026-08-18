@@ -25,6 +25,10 @@
           options=entry.field.options.options
         }}
       {{/each}}
+
+      {{#if templates.header}}
+        {{> (lookup templates 'header') }}
+      {{/if}}
     </div>
   </div>
 </header>
