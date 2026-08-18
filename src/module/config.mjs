@@ -94,11 +94,11 @@ AH.statusEffects = Object.freeze({
  */
 
 AH.power = Object.freeze({
-  low: { label: "AH.ACTION.POWER.Low", value: 1.2 },
-  moderate: { label: "AH.ACTION.POWER.Moderate", value: 1.4 },
-  high: { label: "AH.ACTION.POWER.High", value: 1.6 },
-  severe: { label: "AH.ACTION.POWER.Severe", value: 1.8 },
-  extreme: { label: "AH.ACTION.POWER.Extreme", value: 2 },
+  low: { label: "AH.ACTION.POWER.Low", multiplicative: 1.2 },
+  moderate: { label: "AH.ACTION.POWER.Moderate", multiplicative: 1.4 },
+  high: { label: "AH.ACTION.POWER.High", multiplicative: 1.6 },
+  severe: { label: "AH.ACTION.POWER.Severe", multiplicative: 1.8 },
+  extreme: { label: "AH.ACTION.POWER.Extreme", multiplicative: 2 },
 });
 
 /**
@@ -428,6 +428,16 @@ AH.actorTypes = Object.freeze({
 AH.followerTypes = Object.freeze({
   guest: { label: "AH.FOLLOWER.Guest" },
   companion: { label: "AH.FOLLOWER.Companion" },
+});
+
+/**
+ * @typedef {'command'|'reaction'|'initiative'} AH_TriggerType
+ */
+
+AH.triggers = Object.freeze({
+  command: { label: "AH.FOLLOWER.MOVE.Command" },
+  reaction: { label: "AH.FOLLOWER.MOVE.Reaction" },
+  initiative: { label: "AH.FOLLOWER.MOVE.Initiative" },
 });
 
 /**

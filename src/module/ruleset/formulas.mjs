@@ -165,11 +165,4 @@ export default class Formulas {
     const { additive, multiplicative } = Formulas.joinModifiers(modifiers);
     return Formulas.round((amount + additive) * multiplicative);
   }
-
-  /**
-   * @param {AH_Power} power
-   */
-  static calculatePowerBonus(power) {
-
-  }
 }

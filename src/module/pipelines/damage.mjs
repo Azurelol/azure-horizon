@@ -244,38 +244,47 @@ const onProcessAction = async (config, actor, item) => {
     const sourceInfo = config.sourceInfo;
     const traits = config.getTraits();
 
-    const dmg = config.damage;
+    // We will begin modifying this before setting it back
+    const damage = config.damage;
 
     // 1.) Add high roll damage
     const hr = config.hr;
     if (hr) {
-      dmg.add("AH.CHECK.HighRoll.short", dmg.type, hr.result);
+      damage.add("AH.CHECK.HighRoll.short", damage.type, hr.result);
     }
     // 2.) Add outgoing modifiers
     /** @type CharacterParametersDataModel **/
     const outgoing = actor?.system?.parameters;
     if (outgoing) {
-      for (const type of dmg.types) {
+      for (const type of damage.types) {
         const mods = outgoing.damage.resolve(type, "outgoing");
         if (mods.length) {
           for (const mod of mods) {
-            dmg.modify(dmg.type, mod);
+            damage.modify(damage.type, mod);
           }
         }
       }
     }
-    // 3.) Evaluate any components that have expressions
+    // 3.) Add power modifiers
+    if (config.power) {
+      damage.modify("universal", {
+        key: "skill",
+        multiplicative: AH.power[config.power].multiplicative,
+      });
+    }
+
+    // 4.) Evaluate any components that have expressions
     const context = new EvaluationContext(actor, item, config.getTargets());
-    for (const component of dmg.components) {
+    for (const component of damage.components) {
       let amount = component.amount;
       amount = await Expressions.evaluateAsync(amount, context);
       component.amount = amount;
     }
-    // 4.) Set Potency
+    // 5.) Set Potency
     if (config.isCheck) {
       config.setPotency((tiers) => {
         // Standard
-        const standardDamage = new DamageData(dmg);
+        const standardDamage = new DamageData(damage);
         const standard = getChatAction(standardDamage, sourceInfo, traits, false);
         tiers.standard.components.push({
           text: standardDamage.toString(),
@@ -308,7 +317,7 @@ const onProcessAction = async (config, actor, item) => {
       });
     }
     else {
-      config.addAction(getChatAction(config.damage, sourceInfo, traits, true));
+      config.addAction(getChatAction(damage, sourceInfo, traits, true));
     }
   }
 };

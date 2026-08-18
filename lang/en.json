@@ -150,6 +150,12 @@
       "Move": {
         "long": "Move",
         "plural": "Moves"
+      },
+      "MOVE": {
+        "Command": "Command",
+        "Reaction": "Reaction",
+        "Initiative": "Initiative",
+        "EndOfRound": "End Of Round"
       }
     },
     "ADVERSARY": {
@@ -485,6 +491,7 @@
       "LessThan": "Less Than",
       "Local": "Local",
       "Handedness": "Handedness",
+      "Trigger": "Trigger",
       "CheckType": {
         "long": "Check Type",
         "plural": "Check Types"

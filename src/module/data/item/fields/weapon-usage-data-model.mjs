@@ -38,12 +38,7 @@ export default class WeaponUsageDataModel extends FieldsetDataModel {
     });
     if (this.damage) {
       if (this.power) {
-        config.modifyDamage(d => {
-          d.modify("universal", {
-            key: "skill",
-            multiplicative: AH.power[this.power].value,
-          });
-        });
+        config.setPower(this.power);
       }
     }
   }

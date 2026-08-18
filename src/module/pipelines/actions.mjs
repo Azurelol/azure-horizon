@@ -18,6 +18,8 @@ import { CheckPrompt } from "../helpers/check-prompt.mjs";
 /**
  * @typedef Action
  * @property {CheckId} id A unique identifier for this action.
+ * @property {string} actorUuid
+ * @property {string} itemUuid
  * @property {Object} data
  * @property {SourceInfo} sourceInfo
  */
@@ -245,6 +247,8 @@ async function perform(actor, item, prepare) {
   const action = {
     id: foundry.utils.randomID(),
     data: {},
+    actorUuid: actor.uuid,
+    item: item.uuid,
     sourceInfo: SourceInfo.fromInstance(actor, item),
   };
   const config = new ActionConfig(action);

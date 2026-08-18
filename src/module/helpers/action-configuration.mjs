@@ -7,6 +7,8 @@ import { Formulas } from "../ruleset/_module.mjs";
 import AH from "../config.mjs";
 
 // Data keys
+const ACTOR = "actor";
+const ITEM = "item";
 const TARGETS = "targets";
 const TARGETED_DEFENSE = "targetedDefense";
 const DEFENSE_CHECK = "defenseCheck";
@@ -20,7 +22,6 @@ const FLAGS = "flags";
 const TRAITS = "traits";
 const WEAPON_TRAITS = "weaponTraits";
 const LABEL_KEY = "label";
-const CHAT_ACTIONS = "targetedActions";
 const WEAPON_USAGE = "weaponUsage";
 const ITEM_REFERENCE = "itemReference";
 const INITIAL_CHECK = "initialCheck";
@@ -29,6 +30,7 @@ const KEYBOARD_MODIFIERS = "keyboardModifiers";
 const ACTION_POTENCIES = "actionPotencies";
 const TAGS = "tags";
 const DESCRIPTION = "description";
+const POWER = "power";
 
 /**
  * @description Given a {@link CheckResult} object, provides additional information from it
@@ -50,10 +52,17 @@ export class ActionInspector {
 
   //----------------------------------------------------------/
   /**
-   * @return {CheckResult}
+   * @return {Action|CheckResult|CheckOptions}
    */
   get check() {
     return this.#action;
+  }
+
+  /**
+   * @returns {AHActor}
+   */
+  get actor() {
+    return fromUuidSync(this.check.actorUuid);
   }
 
   /**
@@ -294,10 +303,10 @@ export class ActionInspector {
   }
 
   /**
-   * @returns {ChatAction[]}
+   * @returns {AH_Power|undefined}
    */
-  get chatActions() {
-    return this.data[CHAT_ACTIONS] ?? [];
+  get power() {
+    return this.data[POWER];
   }
 }
 
@@ -664,6 +673,7 @@ export class ActionConfig extends ActionInspector {
    */
   setWeaponUsage(usage) {
     this.setData(WEAPON_USAGE, usage);
+    return this;
   }
 
   /**
@@ -672,17 +682,7 @@ export class ActionConfig extends ActionInspector {
    */
   setLabel(label) {
     this.check.data[LABEL_KEY] = label;
-  }
-
-  /**
-   * @param {ChatAction} action
-   * @remarks Will reject adding duplicates.
-   */
-  addChatAction(action) {
-    if (!this.check.data[CHAT_ACTIONS]) {
-      this.check.data[CHAT_ACTIONS] = [];
-    }
-    this.check.data[CHAT_ACTIONS].push(action);
+    return this;
   }
 
   /**
@@ -690,6 +690,7 @@ export class ActionConfig extends ActionInspector {
    */
   setInitialCheck(check) {
     this.check.data[INITIAL_CHECK] = check;
+    return this;
   }
 
   /**
@@ -698,5 +699,14 @@ export class ActionConfig extends ActionInspector {
    */
   setItemReference(item) {
     this.check.data[ITEM_REFERENCE] = item.uuid;
+    return this;
+  }
+
+  /**
+   * @param {AH_Power} power
+   */
+  setPower(power) {
+    this.data[POWER] = power;
+    return this;
   }
 }
