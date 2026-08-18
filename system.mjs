@@ -7,7 +7,6 @@ import * as pipelines from "./src/module/pipelines/_module.mjs";
 import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/utils/utils.mjs";
 import { systemID } from "./src/module/constants.mjs";
-import { RuleElementDataModel } from "./src/module/data/effect/_module.mjs";
 
 /**
  * Exports the API so that it can be used at runtime
@@ -122,6 +121,7 @@ function registerDataModels() {
     ruleAction: data.ActiveEffect.Registries.RuleActionRegistry.instance,
     ruleTrigger: data.ActiveEffect.Registries.RuleTriggerRegistry.instance,
     rulePredicate: data.ActiveEffect.Registries.RulePredicateRegistry.instance,
+    classFeature: data.Item.ClassFeatureRegistry.instance,
   };
   /**
    * @type {String[]}
