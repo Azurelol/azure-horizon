@@ -103,6 +103,9 @@ async function initializeSystems() {
   pipelines.Effects.initialize();
   pipelines.Rules.initialize();
   pipelines.Actions.initialize();
+  apps.UI.CompendiumBrowser.initialize();
+  // We initialize the controls last as they will call a registration hook
+  apps.API.SystemControls.initialize();
 }
 
 /**

@@ -1,5 +1,5 @@
 // NOTE: This file should have no other dependencies
-import { systemAssetPath, systemNS } from "./constants.mjs";
+import { systemAssetPath, systemID, systemNS } from "./constants.mjs";
 import StringUtils from "./utils/string-utils.mjs";
 
 const AH = {};
@@ -697,6 +697,11 @@ AH.flags = Object.freeze({
  * Hooks used by the system.
  */
 AH.hooks = Object.freeze({
+
+  /**
+   * @description Dispatched when system control tools are being initialized.
+   */
+  REGISTER_SYSTEM_TOOLS: `${systemID}.getSystemControlTools`,
 
   /**
    * @description Dispatched when a check is being initialized.

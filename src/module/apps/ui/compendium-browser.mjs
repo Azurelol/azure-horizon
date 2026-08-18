@@ -1,5 +1,6 @@
 import { AHApplication } from "../api/_module.mjs";
 import { CompendiumIndex } from "../../data/compendium/_module.mjs";
+import AH from "../../config.mjs";
 
 export default class CompendiumBrowser extends AHApplication {
   /**
@@ -45,6 +46,26 @@ export default class CompendiumBrowser extends AHApplication {
       initial: "classes",
     },
   };
+
+  /**
+   * Initializes the compendium browser, registering its menu.
+   */
+  static initialize() {
+    /**
+     * @param {SystemControlTool[]} tools
+     */
+    const onGetSystemTools = (tools) => {
+      tools.push({
+        name: "AH.APPLICATION.CompendiumBrowser",
+        icon: "fa-solid fa-book",
+        onClick: () => {
+          CompendiumBrowser.instance.render(true);
+        },
+      });
+    };
+
+    Hooks.on(AH.hooks.REGISTER_SYSTEM_TOOLS, onGetSystemTools);
+  }
 
   /**
    * @typedef CompendiumTableData
