@@ -1001,12 +1001,17 @@ AH.icons = {
   poison: "ah-icon-poison",
 
   attack: "ah-icon-attack",
+  ability: "ah-icon-ability",
+
   skill: "ah-icon-skill",
   spell: "ah-icon-spell",
   defend: "ah-icon-defend",
-  inventory: "ah-icon-inventory",
+  item: "ah-icon-inventory",
   equipment: "ah-icon-equipment",
   objective: "ah-icon-objective",
+
+  maneuver: "ah-icon-maneuver",
+  recover: "ah-icon-recover",
 
   shortRest: "ah-icon-rest-short",
   longRest: "ah-icon-rest-long",

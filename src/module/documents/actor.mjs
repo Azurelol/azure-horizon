@@ -70,6 +70,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
         // If the level was changed, reset resources?
         if ("level" in changed.system) {
           // TODO: Fix to execute after calculation
+          this.system.level = changed.system.level;
           const restData = this.#calculateRest("long");
           ObjectUtils.mergeObject(changed, restData);
         }
@@ -327,6 +328,10 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
   /*-------------------------------------------------------------------------*/
 
+  /**
+   * @param {AH_RestType} type
+   * @returns {Object}
+   */
   #calculateRest(type) {
     let hp, mp, tp, ip;
 

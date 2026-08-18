@@ -3,6 +3,10 @@
   align-items: center;
   width: 100%;
   gap: var(--ah-gap-input);
+
+  &.--small {
+    width: 250px
+  }
 }
 
 .ah-resource-bar__label {

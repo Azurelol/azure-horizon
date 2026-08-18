@@ -6,7 +6,7 @@ import {
   ArmorTableRenderer,
   WeaponTableRenderer,
 } from "../item/_module.mjs";
-import { StringUtils } from "../../utils/_module.mjs";
+import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 
 /**
@@ -63,6 +63,7 @@ export class FollowerSheet extends AHActorSheet {
     switch (partId) {
       case "header":
       {
+        context.actors = FoundryUtils.getOwnedActors("hero");
         break;
       }
 

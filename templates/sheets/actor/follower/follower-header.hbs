@@ -17,15 +17,16 @@
 
     <div class="ah-sheet-header__row">
 
-      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') classes='--small' colorClass="--ah-color-hp" }}
+
+      {{#if (eq system.kind 'guest')}}
+      {{/if}}
+
+      {{#if (eq system.kind 'companion')}}
+        {{ahDocumentField path='system.references.actor' label='AH.FOLLOWER.Master' value=system.references.actor icon=(ahIconClass 'master') documents=actors }}
+      {{/if}}
+
       {{ahNumberField path='system.potential' value=system.potential icon=(ahIconClass 'follower') label='AH.FOLLOWER.Potential' min=0 max=5 range=true }}
-
-      {{#if (eq actor.type 'guest')}}
-      {{/if}}
-
-      {{#if (eq actor.type 'companion')}}
-      {{/if}}
-
     </div>
   </div>
 

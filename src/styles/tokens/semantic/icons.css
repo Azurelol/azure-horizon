@@ -202,6 +202,23 @@
   --ah-icon-equipment: url("../../../../assets/icons/actions/equipment.png");
   --ah-icon-objective: url("../../../../assets/icons/actions/objective.png");
 
+  --ah-icon-ability: url("../../../../assets/icons/actions/ability.png");
+
+  --ah-icon-maneuver: url("../../../../assets/icons/actions/maneuver.png");
+  --ah-icon-recover: url("../../../../assets/icons/actions/recover.png");
+
+  .ah-icon-recover {
+    background-image: var(--ah-icon-recover);
+  }
+
+  .ah-icon-ability {
+    background-image: var(--ah-icon-ability);
+  }
+
+  .ah-icon-maneuver {
+    background-image: var(--ah-icon-maneuver);
+  }
+
   .ah-icon-rest-short {
     background-image: var(--ah-icon-rest-short);
   }

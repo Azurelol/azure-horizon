@@ -117,6 +117,21 @@ export default class FoundryUtils {
   }
 
   /**
+   * @template T
+   * @param {T[]} values
+   * @param {(T) => String} getLabel
+   * @param {(T) => String} getValue
+   * @returns {FormSelectOption[]}
+   * @remarks To be used with specific records.
+   */
+  static fromValuesToFormSelectOptions(values, getLabel, getValue = undefined) {
+    return values.map(v => ({
+      label: getLabel(v),
+      value: getValue ? getValue(v) : v,
+    }));
+  }
+
+  /**
    * @callback ContextMenuCallback
    * @param {HTMLElement} target                          The element that the context menu has been triggered for.
    * @returns {unknown}
@@ -194,9 +209,17 @@ export default class FoundryUtils {
   }
 
   /**
+   * @typedef AH_ContextMenuItem
+   * @property name
+   * @property img
+   * @property icon
+   * @property {() => Promise|void} perform
+   */
+
+  /**
    * @param {HTMLElement} html
    * @param {String} className
-   * @param {AHItem[]} items
+   * @param {(AHItem|AH_ContextMenuItem)[]} items
    * @param {function(AHItem): Promise<void>} [action]
    * @param {Boolean} quick
    * @remarks {Boolean} True if the context menu was set.
@@ -206,9 +229,10 @@ export default class FoundryUtils {
       .toSorted((a, b) => a.name.localeCompare(b.name))
       .map((item) => {
         return {
-          name: item.name,
-          icon: `<img class="ah-icon --xs" src="${item.img}" alt="${item.name}"/>`,
-          callback: async (html) => {
+          label: item.name,
+          icon: item.img ? `<img class="ah-icon --xs" src="${item.img}" alt="${item.name}"/>`
+            : `<i class='ah-icon --xs ${item.icon}'></i>`,
+          onClick: async (html) => {
             if (action) {
               return action(item);
             }
@@ -224,7 +248,7 @@ export default class FoundryUtils {
         el.addEventListener(
           "click",
           () => {
-            return entries[0].callback(el);
+            return entries[0].onClick(el);
           },
         );
       });
@@ -434,6 +458,13 @@ export default class FoundryUtils {
     }
 
     return map;
+  }
+
+  /**
+   * @return {AHActor[]}
+   */
+  static getOwnedActors(type) {
+    return game.actors.filter((a) => (a.type === type) && a.testUserPermission(game.user, "OWNER"));
   }
 
 }

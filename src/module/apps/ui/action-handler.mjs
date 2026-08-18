@@ -112,6 +112,28 @@ export default class ActionHandler {
   }
 
   /**
+   * @return {AH_ContextMenuItem[]}
+   */
+  getManeuvers() {
+    /** @type AH_ContextMenuItem[] **/
+    let items = [];
+    if (this.actor.type === "hero") {
+      items.push({
+        name: "AH.ACTION.Recover",
+        icon: "ah-icon-recover",
+        perform: () => {
+          ui.notifications.info("Recovering");
+        },
+      });
+
+    }
+    else if (this.actor.type === "adversary") {
+
+    }
+    return items;
+  }
+
+  /**
    * @param {HTMLElement} element
    */
   setupMenu(element) {
@@ -146,6 +168,8 @@ export default class ActionHandler {
           return s.system.action.type === "action";
         });
       FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
+      // MANEUVER
+      FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
     }
     else if (this.actor.type === "adversary") {
       // ABILITIES

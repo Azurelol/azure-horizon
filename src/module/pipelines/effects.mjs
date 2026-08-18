@@ -296,11 +296,11 @@ async function _onProcessAction(config, actor, item) {
     if (config.isCheck && (effectData.selector !== "buff")) {
       const standard = await getPotencyActions("standard", effectData, config.sourceInfo);
       const powerful = await getPotencyActions("powerful", effectData, config.sourceInfo);
-      config.setPotencies(potencies => {
-        potencies.standard.components.push({
+      config.setPotency(potency => {
+        potency.standard.components.push({
           actions: standard,
         });
-        potencies.powerful.components.push({
+        potency.powerful.components.push({
           actions: powerful,
         });
       });

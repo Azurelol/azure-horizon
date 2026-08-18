@@ -32,6 +32,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   field: systemTemplatePath("components/field"),
   arrayField: systemTemplatePath("components/array-field"),
   stringField: systemTemplatePath("components/string-field"),
+  documentField: systemTemplatePath("components/document-field"),
   numberField: systemTemplatePath("components/number-field"),
   booleanField: systemTemplatePath("components/boolean-field"),
   traitsField: systemTemplatePath("components/traits-field"),
@@ -236,15 +237,13 @@ export default Object.freeze({
         ...options.hash,
       });
     });
-    /**
-     * @typedef AH_TraitsFieldOptions
-     * @property schema
-     * @property label
-     * @property path
-     * @property value
-     */
     Handlebars.registerHelper("ahField", function (options) {
       return getTemplateString(COMPONENT_TEMPLATES.field, {
+        ...options.hash,
+      });
+    });
+    Handlebars.registerHelper("ahDocumentField", function (options) {
+      return getTemplateString(COMPONENT_TEMPLATES.documentField, {
         ...options.hash,
       });
     });

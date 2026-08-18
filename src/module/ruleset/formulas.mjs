@@ -28,7 +28,7 @@ export default class Formulas {
    * @param {EntityDataModel} system
    * @returns {Number}
    */
-  static calculateHitPoints(system) {
+  static calculateHitPoints(system, level = undefined) {
     const actor = system.parent;
     switch (actor.type) {
       case "hero": {
@@ -165,4 +165,5 @@ export default class Formulas {
     const { additive, multiplicative } = Formulas.joinModifiers(modifiers);
     return Formulas.round((amount + additive) * multiplicative);
   }
+
 }

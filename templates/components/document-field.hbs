@@ -1,0 +1,17 @@
+<label class="ah-field {{classes}}" data-tooltip="{{tooltip}}">
+  {{#if label}}
+    <span>{{localize label}}</span>
+  {{/if}}
+  {{#if icon}}
+    <i class="ah-icon --xs {{icon}}"></i>
+  {{/if}}
+  <select name="{{path}}">
+    <option value="">-</option>
+    {{#each documents as |document|}}
+      <option value="{{document.id}}"
+              {{#if (eq ../value.id document.id)}}selected{{/if}}>
+        {{document.name}}
+      </option>
+    {{/each}}
+  </select>
+</label>
