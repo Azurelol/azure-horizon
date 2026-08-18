@@ -5,9 +5,18 @@
   {{#if icon}}
     <i class="ah-icon --xs {{icon}}"></i>
   {{/if}}
-  <input
-    type="number"
-    name="{{path}}"
-    value="{{value}}"
-  />
+  {{#if range}}
+    <input type="range"
+           name="{{path}}"
+           style="margin: 0 1rem 0 1rem"
+           min="{{min}}" max="{{max}}" step="1"
+           value="{{value}}" />
+    <output for="{{path}}">{{value}}</output>
+  {{else}}
+    <input
+      type="number"
+      name="{{path}}"
+      value="{{value}}"/>
+  {{/if}}
+
 </label>

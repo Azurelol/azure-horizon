@@ -67,6 +67,10 @@ AH.defaults = {
   check: {
     criticalThreshold: 6,
   },
+  potential: {
+    min: 0,
+    max: 5,
+  },
 };
 
 /**

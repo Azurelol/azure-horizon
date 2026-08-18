@@ -25,23 +25,29 @@
  */
 function constructData(actor) {
   /** @type TargetData **/
-  return {
+  let data = {
     name: actor.name,
     uuid: actor.uuid,
     link: actor.link,
     img: actor.img,
     type: actor.type,
     potency: "",
-    defenses: {
+    isOwner: actor.isOwner,
+  };
+  if (actor.isCharacterType) {
+    data.defenses = {
       def: actor.system.parameters.def.current,
       mdef: actor.system.parameters.mdef.current,
       dex: actor.system.attributes.dex.current,
       ins: actor.system.attributes.ins.current,
       mig: actor.system.attributes.mig.current,
       wlp: actor.system.attributes.wlp.current,
-    },
-    isOwner: actor.isOwner,
-  };
+    };
+  }
+  else if (actor.isEntityType) {
+    data.potency = "standard";
+  }
+  return data;
 }
 
 /**

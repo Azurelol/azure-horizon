@@ -147,6 +147,7 @@
       "Kind": "Kind",
       "Guest": "Guest",
       "Companion": "Companion",
+      "Potential": "Potential",
       "Move": {
         "long": "Move",
         "plural": "Moves"

@@ -41,6 +41,7 @@ import Events from "../pipelines/events.mjs";
 export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
   static CHARACTER_TYPES = new Set(["hero", "adversary"]);
+  static ENTITY_TYPES = new Set(["hero", "adversary", "follower"]);
 
   /*-------------------------------------------------------------------------*/
 
@@ -313,8 +314,15 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
   /**
    * @returns {boolean}
    */
-  isCharacterType() {
+  get isCharacterType() {
     return AHActor.CHARACTER_TYPES.has(this.type);
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get isEntityType() {
+    return AHActor.ENTITY_TYPES.has(this.type);
   }
 
   /*-------------------------------------------------------------------------*/

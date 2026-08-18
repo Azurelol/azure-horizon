@@ -113,6 +113,7 @@
 
   span {
     width: var(--property-label-width);
+    font-size: var(--ah-font-size-label);
     font-weight: bold;
   }
 

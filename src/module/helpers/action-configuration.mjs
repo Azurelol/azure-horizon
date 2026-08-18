@@ -575,9 +575,15 @@ export class ActionConfig extends ActionInspector {
       const targetedDefense = this.getTargetedDefense();
       for (let t = 0; t < targets.length; t++) {
         const target = targets[t];
-        const difficulty = target.defenses[targetedDefense];
-        // Update the original
-        this.check.data[TARGETS][t].potency = Formulas.calculatePotency(this.check, difficulty);
+        // Character types
+        if (target.defenses) {
+          const difficulty = target.defenses[targetedDefense];
+          this.check.data[TARGETS][t].potency = Formulas.calculatePotency(this.check, difficulty);
+        }
+        // Entity types (always hit)
+        else {
+          this.check.data[TARGETS][t].potency = "standard";
+        }
       }
     }
   }
@@ -603,7 +609,7 @@ export class ActionConfig extends ActionInspector {
       [...game.user.targets]
         .filter((token) => !!token.actor)
         .map((token) => {
-          if (!token.actor.isCharacterType) {
+          if (!token.actor.isEntityType) {
             ui.notifications.error("AH.DIALOG.InvalidTarget", { localize: true });
             throw Error("Only character types can be targeted");
           }

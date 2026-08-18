@@ -4,6 +4,8 @@ import EntityDataModel from "./entity-data-model.mjs";
 
 /**
  * @property {AH_FollowerType} kind
+ * @property {FollowerProfileDataModel} profile
+ * @property {Number} potential
  */
 export default class FollowerDataModel extends EntityDataModel {
 
@@ -11,6 +13,7 @@ export default class FollowerDataModel extends EntityDataModel {
     const { SchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       kind: new StringField({ initial: "guest", blank: true, label: "AH.FOLLOWER.Kind", choices: Object.keys(AH.followerTypes), formOptions: getFormSelectOptions(AH.followerTypes), required: true }),
+      potential: new NumberField({ initial: 0, max: AH.defaults.potential.max }),
       profile: new EmbeddedDataField(FollowerProfileDataModel, {}),
     });
   }

@@ -38,9 +38,14 @@ class DamageContext extends PipelineContext {
 
 /**
  * @param {DamageContext} context
- * @return {Promise<Boolean>}
+ * @return {Promise<Boolean>|void}
  */
 async function collectModifiers(context) {
+
+  // Only collect modifiers for heroes/adversaries
+  if (!context.subject.isCharacterType) {
+    return;
+  }
 
   /** @type CharacterParametersDataModel **/
   const incoming = context.subject.system.parameters;
