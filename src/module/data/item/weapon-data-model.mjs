@@ -32,7 +32,7 @@ export default class WeaponDataModel extends FeatureDataModel {
       }),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
-        options: getFormSelectOptions(AH.traits.weapon),
+        formOptions: getFormSelectOptions(AH.traits.weapon),
       }),
       damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
         enabled: true,

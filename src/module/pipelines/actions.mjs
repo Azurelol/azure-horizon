@@ -168,7 +168,11 @@ async function addSections(builderData, config, actor, item) {
     for (const potency of [potencies.reduced, potencies.standard, potencies.powerful]) {
       for (const component of potency.components) {
         for (const action of component.actions) {
-          fb.set(action.flag.key, action.flag.value).toObject();
+          if (action) {
+            fb.set(action.flag.key, action.flag.value).toObject();
+          }
+          else {
+          }
         }
       }
     }
