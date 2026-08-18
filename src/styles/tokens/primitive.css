@@ -148,5 +148,17 @@
   --ah-color-warm-brown-500: #8a6844;
   --ah-color-warm-brown-700: #5c4429;
 
+  --ah-color-gold-800: #7a5c1e;
+  --ah-color-gold-700: #96742a;
+  --ah-color-gold-600: #b18d38;
+  --ah-color-gold-500: #cda64a;
+
+  --ah-color-slate-800: #3a4048;
+  --ah-color-slate-700: #4d545e;
+  --ah-color-slate-600: #626b76;
+  --ah-color-slate-500: #78828e;
+
+(Placeholder hex values — swap for whatever your actual navy/azure/burg
+
   --ah-primitive-image-placeholder: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }

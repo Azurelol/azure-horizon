@@ -1,4 +1,4 @@
-<header class="sheet-header ah-sheet__header">
+<header class="sheet-header ah-sheet__header {{system.kind}}">
   <div class="ah-follower__header">
     <div class="ah-follower-header__name">
       <img
@@ -23,12 +23,10 @@
       {{/if}}
 
       {{#if (eq system.kind 'companion')}}
-        {{log 'options' actorOptions }}
-        {{log 'reference actor' system.references.actor }}
         {{formGroup systemFields.references.fields.actor value=system.references.actor.id options=actorOptions }}
       {{/if}}
 
-      {{ahNumberField path='system.potential' value=system.potential icon=(ahIconClass 'follower') label='AH.FOLLOWER.Potential' min=0 max=5 range=true }}
+      {{ahNumberField path='system.potential' value=system.potential icon=(ahIconClass 'follower') label='AH.FOLLOWER.Potential' style='width:200px;' min=0 max=5 range=true }}
     </div>
   </div>
 

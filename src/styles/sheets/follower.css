@@ -1,6 +1,23 @@
 .ah-follower {
+
   .window-content {
-    gap: 1rem;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .tab {
+    flex: 1;
+  }
+
+}
+
+.ah-sheet__header {
+  &.companion {
+    background: var(--ah-companion-background-gradient);
+  }
+  &.guest {
+    background: var(--ah-guest-background-gradient);
   }
 }
 
@@ -21,3 +38,5 @@
     height: 64px;
   }
 }
+
+

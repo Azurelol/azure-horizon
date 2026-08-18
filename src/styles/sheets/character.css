@@ -1,7 +1,5 @@
 .ah-character {
 
-  /*background: transparent;*/
-
   .window-content {
     padding: 0;
     display: grid;
@@ -35,6 +33,15 @@
       grid-area: active-tab;
       grid-row: 3;
       grid-column: 2;
+    }
+  }
+
+  .ah-sheet__header {
+    &.hero {
+      background: var(--ah-hero-background-gradient);
+    }
+    &.adversary {
+      background: var(--ah-adversary-background-gradient);
     }
   }
 

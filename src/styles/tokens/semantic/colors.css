@@ -76,12 +76,19 @@
   --ah-modifier-status-color: #82cb82;
   --ah-modifier-equipment-color: orange;
 
-  /* HEROES/ADVERSARIES */
+  /* Ranks */
   --ah-elite-border: var(--ah-primitive-color-gold-600);
   --ah-champion-border: var(--ah-primitive-color-burgundy-dark);
+
+  /* Character Types */
   --ah-hero-background-gradient: linear-gradient(to left, var(--ah-color-azure-500), var(--ah-color-navy-700));
   --ah-hero-border: 2px solid var(--ah-color-azure-500);
   --ah-adversary-background-gradient: linear-gradient(to right, var(--ah-color-burgundy-500), var(--ah-color-navy-700));
   --ad-adversary-border: 2px solid var(--ah-color-burgundy-500);
+
+  --ah-companion-background-gradient: linear-gradient(to left, var(--ah-color-gold-500), var(--ah-color-navy-700));
+  --ah-companion-border: 2px solid var(--ah-color-gold-500);
+  --ah-guest-background-gradient: linear-gradient(to right, var(--ah-color-slate-500), var(--ah-color-navy-700));
+  --ah-guest-border: 2px solid var(--ah-color-slate-500);
 
 }
