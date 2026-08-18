@@ -12,6 +12,12 @@
       "effects": "Effects",
       "assembly": "Assembly"
     },
+    "APPLICATION": {
+      "CompendiumBrowser": "Compendium Browser",
+      "MESSAGE": {
+        "IndexRefresh": "The compendium index has been refreshed."
+      }
+    },
     "SHEET": {
       "Labels": {
         "ActorSheet": "Default Actor Sheet",
@@ -47,16 +53,32 @@
       "SchemaVersion": "SchemaVersion",
       "Description": "Description",
       "Attack": "Attack",
-      "Ability": "Ability",
+      "Ability": {
+        "long": "Ability",
+        "plural": "Abilities"
+      },
       "Skill": "Skill",
       "Weapon": "Weapon",
       "Armor": "Armor",
       "Accessory": "Accessory",
       "Consumable": "Consumable",
-      "Spell": "Spell",
-      "Item": "Item",
-      "Class": "Class",
-      "Move": "Move",
+      "Equipment": "Equipment",
+      "Spell": {
+        "long": "Spell",
+        "plural": "Spells"
+      },
+      "Item": {
+        "long": "Item",
+        "plural": "Items"
+      },
+      "Class": {
+        "long": "Class",
+        "plural": "Classes"
+      },
+      "Move": {
+        "long": "Move",
+        "plural": "Moves"
+      },
       "ClassFeature": "Class Feature"
     },
     "THEME": {
@@ -406,6 +428,7 @@
       "Ranged": "Ranged",
       "Opener": "Opener",
       "Closer": "Closer",
+      "Brawl": "Brawl",
       "Finisher": "Finisher",
       "Assist": "Assist",
       "Press": "Press",
