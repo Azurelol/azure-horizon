@@ -28,7 +28,7 @@ export class ResourceRequest extends PipelineRequest {
    * @param {SourceInfo} sourceInfo
    * @param {AHActor[]} targets
    * @param {AH_Resource} resource
-   * @param {Number} amount
+   * @param {Number|String} amount
    */
   constructor(sourceInfo, targets, resource, amount) {
     super(sourceInfo, targets);
@@ -65,7 +65,11 @@ async function process(request) {
     flags.toggle(AH.flags.ChatMessage.Resource);
     const chatMessage = new ChatMessageBuilder(subject, request.item).withFlags(flags);
 
-    let amount;
+    let amount = request.amount;
+
+    // Evaluate the expression
+    const context = new EvaluationContext(subject, request.item, request.targets, request.sourceInfo);
+    amount = await Expressions.evaluateAsync(amount, context);
 
     // GAIN
     if (request.gain) {
@@ -73,7 +77,7 @@ async function process(request) {
       const outgoingRecoveryMultiplier = 1; //request.actor?.system.multipliers.outgoingRecovery[request.resourceType] || 1;
       const incomingRecoveryBonus = 0; //subject.system.bonuses.incomingRecovery[request.resourceType] || 0;
       const incomingRecoveryMultiplier = 1; //subject.system.multipliers.incomingRecovery[request.resourceType] ?? 1;
-      amount = Math.max(0, Math.floor((request.amount + incomingRecoveryBonus + outgoingRecoveryBonus) * (incomingRecoveryMultiplier * outgoingRecoveryMultiplier)));
+      amount = Math.max(0, Math.floor((amount + incomingRecoveryBonus + outgoingRecoveryBonus) * (incomingRecoveryMultiplier * outgoingRecoveryMultiplier)));
       // Cap the amount gained up to the maximum
       amount = Math.min(amount, resource.max - resource.value);
       if (amount === 0) {
@@ -90,7 +94,7 @@ async function process(request) {
     else {
       const incomingLossBonus = 0; // actor.system.bonuses.incomingLoss[request.resourceType] || 0;
       const incomingLossMultiplier = 1; // actor.system.multipliers.incomingLoss[request.resourceType] || 1;
-      amount = -Math.max(0, Math.floor((Math.abs(request.amount) + incomingLossBonus) * incomingLossMultiplier));
+      amount = -Math.max(0, Math.floor((Math.abs(amount) + incomingLossBonus) * incomingLossMultiplier));
     }
 
     // Create the resource update
@@ -204,7 +208,13 @@ function getExpenseAction(expense, sourceInfo) {
 }
 
 async function processAction(config, actor, item) {
+
+}
+
+/** @type ActionProcessCallback **/
+const onProcessAction = async (config, actor, item, registerCallback) => {
   const targets = Targeting.deserializeTargetData(config.getTargets());
+  const context = EvaluationContext.fromTargetData(actor, item, targets);
 
   // RESOURCE: General chat action
   if (config.hasResource) {
@@ -219,7 +229,6 @@ async function processAction(config, actor, item) {
   if (expenses.length > 0) {
     for (const expense of expenses) {
       const itemGroup = ItemInfo.resolveItemGroup(item);
-      const context = EvaluationContext.fromTargetData(actor, item, targets);
       const _amount = await Expressions.evaluateAsync(expense.amount, context);
       expense.amount = _amount * (expense.perTarget ? Math.max(1, targets.length) : 1);
       expense.source = itemGroup;
@@ -227,22 +236,11 @@ async function processAction(config, actor, item) {
       config.addAction(getExpenseAction(expense, config.sourceInfo));
     }
   }
-}
-
-/** @type ActionProcessCallback **/
-const onProcessAction = (config, actor, item, registerCallback) => {
-  registerCallback(processAction);
 };
 
 /** @type ActionRenderCallback **/
 const onRenderAction = (config, data, actor, item, registerCallback) => {
   if (config.hasResource) {
-    // data.sections.push({
-    //   order: ChatSectionOrder.damage,
-    //   partial: systemTemplatePath("chat/chat-section-update-resource"),
-    //   data: {
-    //   },
-    // });
   }
 };
 
@@ -251,7 +249,10 @@ const onRenderAction = (config, data, actor, item, registerCallback) => {
  */
 function initialize() {
   Hooks.on("renderChatMessageHTML", onRenderChatMessage);
-  Hooks.on(AH.hooks.PROCESS_ACTION, onProcessAction);
+  Hooks.on(AH.hooks.PROCESS_ACTION, (config, actor, item, registerCallback) =>
+  {
+    registerCallback(onProcessAction);
+  });
   Hooks.on(AH.hooks.RENDER_ACTION, onRenderAction);
 }
 

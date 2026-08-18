@@ -18,11 +18,11 @@ export default class EvaluationContext {
   /** @type {String} **/
   #itemUuid;
 
-  constructor(actor, item, targets) {
+  constructor(actor, item, targets, sourceInfo) {
     this.actor = actor;
     this.item = item;
     this.targets = targets;
-    this.sourceInfo = SourceInfo.fromInstance(this.actor, this.item);
+    this.sourceInfo = sourceInfo ?? SourceInfo.fromInstance(this.actor, this.item);
   }
 
   /**

@@ -9,6 +9,7 @@ import { Actions } from "../../pipelines/_module.mjs";
  * @property {DamageDataModel} damage
  * @property {ResourceDataModel} resource
  * @property {EffectsDataModel} effects
+ * @property {Number} cost.amount
  */
 export default class ConsumableDataModel extends ItemDataModel {
   /** @inheritdoc */
@@ -16,7 +17,7 @@ export default class ConsumableDataModel extends ItemDataModel {
     const { SchemaField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       cost: new SchemaField({
-        amount: new NumberField({ initial: 3, min: 0, label: "AH.FIELD.Cost", integer: true }),
+        amount: new NumberField({ initial: 3, min: 0, label: "AH.FIELD.Cost", integer: true, _part: "properties" }),
       }),
       damage: new EmbeddedDataField(DamageDataModel, {}),
       resource: new EmbeddedDataField(ResourceDataModel, {}),
@@ -32,7 +33,7 @@ export default class ConsumableDataModel extends ItemDataModel {
     await Actions.perform(this.parent.actor, this.parent, async (config, actor, item) => {
       config.addExpense({
         resource: "ip",
-        amount: this.cost,
+        amount: this.cost.amount,
         evaluated: false,
       });
       await this.damage.configureAction(config);

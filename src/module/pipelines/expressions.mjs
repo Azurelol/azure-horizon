@@ -4,7 +4,7 @@ import { Formulas } from "../ruleset/_module.mjs";
 
 const referenceSymbol = "@";
 const itemLabel = "item";
-const redirectSymbol = "~";
+const redirectSymbol = "~"; // If set, will evaluate it from the source
 
 // Used for referencing
 const sourceLabel = "source";
@@ -34,6 +34,14 @@ function resolveActorFromLabel(match, label, context) {
  */
 function parseIdentifier(arg) {
   return arg.match(/(\w+-*\s*)+/gm)[0];
+}
+
+/**
+ * @param {String} arg
+ * @returns {Number}
+ */
+function parseNumber(arg) {
+  return Number(arg.match(/-?\d+(\.\d+)?/gm)[0]);
 }
 
 /**
@@ -140,12 +148,12 @@ function evaluateMacros(expression, context) {
       }
       // Resource
       case "hp": {
-        const percent = parseIdentifier(splitArgs[0]);
+        const percent = parseNumber(splitArgs[0]);
         const max = context.resolveActorOrHighestLevelTarget().system.resources.hp.max;
         return Formulas.round(percent * max);
       }
       case "mp": {
-        const percent = parseIdentifier(splitArgs[0]);
+        const percent = parseNumber(splitArgs[0]);
         const max = context.resolveActorOrHighestLevelTarget().system.resources.mp.max;
         return Formulas.round(percent * max);
       }
