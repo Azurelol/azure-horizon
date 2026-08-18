@@ -14,11 +14,12 @@ import AH from "../config.mjs";
 import Events from "./events.mjs";
 import { Expressions } from "./_module.mjs";
 import Targeting from "../helpers/targeting.mjs";
+import ResourceData from "./resource-data.mjs";
 
 /**
  * @property {AH_Resource} resource
- * @property {Number} amount
  * @property {Boolean} gain
+ * @property {ResourceData} data
  * @extends PipelineRequest
  * @inheritDoc
  */
@@ -27,14 +28,19 @@ export class ResourceRequest extends PipelineRequest {
   /**
    * @param {SourceInfo} sourceInfo
    * @param {AHActor[]} targets
-   * @param {AH_Resource} resource
-   * @param {Number|String} amount
+   * @param {ResourceData} data
    */
-  constructor(sourceInfo, targets, resource, amount) {
+  constructor(sourceInfo, targets, data) {
     super(sourceInfo, targets);
-    this.resource = resource;
-    this.gain = amount >= 0;
-    this.amount = amount;
+    this.data = data;
+    this.gain = data.total >= 0;
+  }
+
+  /**
+   * @returns {AH_Resource}
+   */
+  get resource() {
+    return this.data.type;
   }
 }
 
@@ -65,11 +71,13 @@ async function process(request) {
     flags.toggle(AH.flags.ChatMessage.Resource);
     const chatMessage = new ChatMessageBuilder(subject, request.item).withFlags(flags);
 
-    let amount = request.amount;
-
-    // Evaluate the expression
+    // Evaluate modifiers
     const context = new EvaluationContext(subject, request.item, request.targets, request.sourceInfo);
-    amount = await Expressions.evaluateAsync(amount, context);
+    let amount = 0;
+    for (const mod of request.data.modifiers) {
+      const ma = await Expressions.evaluateAsync(mod.amount, context);
+      amount += ma;
+    }
 
     // GAIN
     if (request.gain) {
@@ -135,11 +143,13 @@ function onRenderChatMessage(message, html) {
   ChatMessageHelper.handleClick(message, html, "updateResource", async (dataset) => {
     const fields = StringUtils.fromBase64(dataset.fields);
     const sourceInfo = SourceInfo.fromObject(fields.sourceInfo);
+    /** @type ResourceData **/
+    const data = new ResourceData(fields.data);
     const amount = fields.amount;
     const type = fields.type;
     const targets = await ChatAction.getTargetsFromAction(dataset);
     const traits = fields.traits;
-    const request = new ResourceRequest(sourceInfo, targets, type, amount);
+    const request = new ResourceRequest(sourceInfo, targets, data);
     if (traits) {
       request.addTraits(traits);
     }
@@ -165,13 +175,13 @@ function onRenderChatMessage(message, html) {
 function getChatAction(request) {
   const resourceIcon = AH.resourceTypes[request.resource].icon;
   const tooltip = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainTooltip" : "AH.CHAT.ResourceLossTooltip", {
-    amount: request.amount,
+    amount: request.data.toString(),
     resource: StringUtils.localize(AH.resourceTypes[request.resource].long),
   });
 
   return new ChatAction("updateResource", resourceIcon, tooltip, {
-    amount: request.amount,
     type: request.resource,
+    data: request.data,
     sourceInfo: request.sourceInfo,
     traits: Array.from(request.traits),
   })
@@ -207,10 +217,6 @@ function getExpenseAction(expense, sourceInfo) {
     .withSelected();
 }
 
-async function processAction(config, actor, item) {
-
-}
-
 /** @type ActionProcessCallback **/
 const onProcessAction = async (config, actor, item, registerCallback) => {
   const targets = Targeting.deserializeTargetData(config.getTargets());
@@ -220,7 +226,7 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
   if (config.hasResource) {
     await Events.calculateResource(actor, item, config);
     const resourceData = config.resource;
-    const request = new ResourceRequest(config.sourceInfo, targets, resourceData.type, resourceData.total);
+    const request = new ResourceRequest(config.sourceInfo, targets, resourceData);
     config.addAction(getChatAction(request));
   }
 

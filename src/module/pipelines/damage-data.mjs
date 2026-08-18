@@ -2,7 +2,6 @@
  * @typedef ScalarModifier
  * @property {Boolean} enabled
  * @property {Number|String} amount
- * @property {}
  * @property {String[]} traits
  */
 

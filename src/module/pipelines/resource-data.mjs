@@ -1,3 +1,5 @@
+import AH from "../config.mjs";
+
 /**
  * @class
  * @property {String} type
@@ -18,7 +20,7 @@ export default class ResourceData {
   /**
    * @param {AH_Resource} type
    * @param {number} amount
-   * @returns {DamageData}
+   * @returns {ResourceData}
    */
   static construct(type, amount) {
     const data = new ResourceData();
@@ -43,6 +45,7 @@ export default class ResourceData {
 
   /**
    * @returns {number}
+   * @remark Does not evaluate expressions.
    */
   get total() {
     let result = 0;
@@ -52,5 +55,13 @@ export default class ResourceData {
       }
     }
     return result;
+  }
+
+  /**
+   * @returns {String}
+   */
+  toString() {
+    const parts = this.modifiers.map(m => m.amount);
+    return `${parts.join(" + ")}`;
   }
 }

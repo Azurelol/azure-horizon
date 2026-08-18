@@ -7,6 +7,7 @@ import Resources, { ResourceRequest } from "../resources.mjs";
 import Expressions from "../expressions.mjs";
 import Events from "../events.mjs";
 import Targeting from "../../helpers/targeting.mjs";
+import ResourceData from "../resource-data.mjs";
 
 const RESOURCE_GAIN_IDENTIFIER = "ResourceGain";
 const RESOURCE_LOSS_IDENTIFIER = "ResourceGain";
@@ -75,7 +76,7 @@ async function onRender(element) {
       if (renderContext.dataset.change === "loss") {
         amount = -amount;
       }
-      const request = new ResourceRequest(renderContext.sourceInfo, targets, type, amount);
+      const request = new ResourceRequest(renderContext.sourceInfo, targets, ResourceData.construct(type, amount));
       await Resources.process(request);
     }
   });

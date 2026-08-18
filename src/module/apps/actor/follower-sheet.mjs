@@ -64,6 +64,7 @@ export class FollowerSheet extends AHActorSheet {
       case "header":
       {
         context.actors = FoundryUtils.getOwnedActors("hero");
+        context.actorOptions = FoundryUtils.fromValuesToFormSelectOptions(context.actors, a => a.name, a => a.id);
         break;
       }
 
