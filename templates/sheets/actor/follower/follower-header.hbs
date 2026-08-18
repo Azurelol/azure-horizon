@@ -25,7 +25,7 @@
       {{#if (eq system.kind 'companion')}}
         {{log 'options' actorOptions }}
         {{log 'reference actor' system.references.actor }}
-        {{formGroup systemFields.references.fields.actor value=system.references.actor options=actorOptions }}
+        {{formGroup systemFields.references.fields.actor value=system.references.actor.id options=actorOptions }}
       {{/if}}
 
       {{ahNumberField path='system.potential' value=system.potential icon=(ahIconClass 'follower') label='AH.FOLLOWER.Potential' min=0 max=5 range=true }}
