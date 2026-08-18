@@ -112,6 +112,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       }),
       rollData: rollData,
       system: this.item.system,
+      systemSource: this.actor.system._source,
       systemFields: this.document.system.schema.fields,
       flags: this.item.flags,
       propertiesTemplate: this.item.system.constructor.template,

@@ -39,6 +39,7 @@
 
 .ah-sheet__name {
   font-size: var(--ah-font-size-application-name);
+  color: var(--ah-content-primary);
   background-color: transparent;
   border-color: transparent;
   height: 48px;

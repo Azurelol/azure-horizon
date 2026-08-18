@@ -124,6 +124,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       actorType: this.actor.type,
       actorFields: this.actor.schema.fields,
       system: this.actor.system,
+      systemSource: this.actor.system._source,
       systemFields: this.actor.system.schema.fields,
       flags: this.actor.flags,
       config: CONFIG,
