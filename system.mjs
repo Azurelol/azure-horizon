@@ -92,7 +92,6 @@ function bindSheets() {
  */
 async function initializeSystems() {
   helpers.Settings.initialize();
-  helpers.Themes.initialize();
   helpers.AHHandlebars.loadTemplates();
   helpers.AHHandlebars.registerHelpers();
   helpers.AHHandlebars.registerPartials();
@@ -104,8 +103,11 @@ async function initializeSystems() {
   pipelines.Rules.initialize();
   pipelines.Actions.initialize();
   apps.UI.CompendiumBrowser.initialize();
-  // We initialize the controls last as they will call a registration hook
+  helpers.Themes.initialize();
+
+  // We initialize hotkeys && controls last as they will call a registration hook
   apps.API.SystemControls.initialize();
+  helpers.Keybindings.initialize();
 }
 
 /**

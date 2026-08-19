@@ -702,6 +702,10 @@ AH.hooks = Object.freeze({
    * @description Dispatched when system control tools are being initialized.
    */
   REGISTER_SYSTEM_TOOLS: `${systemID}.getSystemControlTools`,
+  /**
+   * @description Dispatched when system control tools are being initialized.
+   */
+  REGISTER_KEYBINDINGS: `${systemID}.registerKeybinding`,
 
   /**
    * @description Dispatched when a check is being initialized.

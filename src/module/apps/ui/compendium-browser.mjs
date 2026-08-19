@@ -68,6 +68,25 @@ export default class CompendiumBrowser extends AHApplication {
     };
 
     Hooks.on(AH.hooks.REGISTER_SYSTEM_TOOLS, onGetSystemTools);
+
+    /**
+     * @type {RegisterKeybindings}
+     */
+    const onRegisterKeybindings = (entries) => {
+
+      entries.openBrowser = {
+        name: "AH.APPLICATION.CompendiumBrowser",
+        editable: [
+          { key: "KeyB", modifiers: ["Control"] },
+        ],
+        onDown: () => {
+          CompendiumBrowser.instance.render(true);
+          return true;
+        },
+      };
+    };
+
+    Hooks.on(AH.hooks.REGISTER_KEYBINDINGS, onRegisterKeybindings);
   }
 
   /**
