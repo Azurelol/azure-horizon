@@ -191,7 +191,8 @@
       }
     },
     "PARTY": {
-      "ActiveSetNotification": "The active party has been set."
+      "ActiveSetNotification": "The active party has been set.",
+      "ActivePartyNotAssigned": "The active party has not been assigned. You can do so in the party sheet settings."
     },
     "ADVERSARY": {
       "Villain": "Villain",

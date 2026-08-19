@@ -1,9 +1,10 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
-import { renderTemplate, setSystemSetting, systemTemplatePath } from "../../constants.mjs";
+import { getSystemSetting, renderTemplate, setSystemSetting, systemTemplatePath } from "../../constants.mjs";
 import { CodexBrowser } from "../ui/_module.mjs";
 import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
 import { CharacterSheet } from "./base-character-sheet.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
+import AH from "../../config.mjs";
 
 export class PartySheet extends AHActorSheet {
 
@@ -39,6 +40,34 @@ export class PartySheet extends AHActorSheet {
     console.debug(`Setting ${this.actor.name} as the active party.`);
     await setSystemSetting("activeParty", this.actor._id);
     ui.notifications.info(game.i18n.format("AH.PARTY.ActiveSetNotification", { name: this.actor.name }));
+  }
+
+  /**
+   * @returns {Promise<AHActor>}
+   */
+  static async getActiveActor() {
+    const activePartyUuid = getSystemSetting("activeParty");
+    if (activePartyUuid) {
+      const party = fromUuidSync(`Actor.${activePartyUuid}`);
+      if (party && (party.type === "party")) {
+        return party;
+      }
+    }
+    return null;
+  }
+
+  static async toggleActive() {
+    const party = await PartySheet.getActiveActor();
+    if (party) {
+      const sheet = party.sheet;
+      if (sheet.rendered) {
+        sheet.close();
+      } else {
+        sheet.render(true);
+      }
+    } else {
+      ui.notifications.warn("AH.PARTY.ActivePartyNotAssigned", { localize: true });
+    }
   }
 
   /**
@@ -337,5 +366,25 @@ export class PartySheet extends AHActorSheet {
           break;
       }
     }
+  }
+
+  static initialize() {
+    /**
+     * @type {RegisterKeybindings}
+     */
+    const onRegisterKeybindings = (entries) => {
+      entries.openBrowser = {
+        name: "AH.SHEET.Party",
+        editable: [
+          { key: "KeyP" },
+        ],
+        onDown: () => {
+          PartySheet.toggleActive();
+          return true;
+        },
+      };
+    };
+
+    Hooks.on(AH.hooks.REGISTER_KEYBINDINGS, onRegisterKeybindings);
   }
 }

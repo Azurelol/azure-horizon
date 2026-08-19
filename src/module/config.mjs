@@ -633,6 +633,10 @@ AH.combat = Object.freeze({
 });
 
 /**
+ * @typedef {'theme'|'activeParty'} AH_SystemSetting
+ */
+
+/**
  * All settings associated with the system.
  * @type {Record<string, SettingConfig>}
  */

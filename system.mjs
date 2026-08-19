@@ -88,9 +88,16 @@ function bindSheets() {
 }
 
 /**
+ * Some sheets and applications need to register hooks.
+ */
+function initializeApps() {
+  apps.Actor.PartySheet.initialize();
+}
+
+/**
  * Initializes the system's subsystems.
  */
-async function initializeSystems() {
+function initializeSystems() {
   helpers.Settings.initialize();
   helpers.AHHandlebars.loadTemplates();
   helpers.AHHandlebars.registerHelpers();
@@ -106,6 +113,7 @@ async function initializeSystems() {
   helpers.Themes.initialize();
 
   // We initialize hotkeys && controls last as they will call a registration hook
+  initializeApps();
   apps.API.SystemControls.initialize();
   helpers.Keybindings.initialize();
 }

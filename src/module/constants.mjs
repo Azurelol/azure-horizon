@@ -35,7 +35,7 @@ export const systemTemplatePath = (path) => {
 
 /**
  * Gets a system setting.
- * @param {String} key
+ * @param {AH_SystemSetting} key
  * @param defaultValue
  * @returns {*|undefined}
  */
@@ -45,7 +45,7 @@ export function getSystemSetting(key, defaultValue = undefined) {
 
 /**
  * Sets a system setting.
- * @param {String} key
+ * @param {AH_SystemSetting} key
  * @param value
  * @return {Promise}
  */
