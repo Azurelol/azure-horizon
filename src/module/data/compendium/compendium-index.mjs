@@ -116,7 +116,11 @@ export default class CompendiumIndex {
 	 */
   static itemFields = Object.freeze({
     slug: "system.slug",
-    damageType: "system.damage.primary.type",
+    damage: "system.damage.enabled",
+    damagePrimaryType: "system.damage.primary.type",
+    damagePrimaryAmount: "system.damage.primary.amount",
+    damageSecondaryType: "system.damage.secondary.type",
+    damageSecondaryAmount: "system.damage.secondary.amount",
   });
 
   /**

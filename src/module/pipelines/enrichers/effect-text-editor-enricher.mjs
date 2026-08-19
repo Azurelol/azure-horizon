@@ -82,7 +82,7 @@ function createStatusAnchor(effectValue, status, config) {
   anchor.dataset.status = effectValue;
   anchor.dataset.config = StringUtils.toBase64(config);
   const localizedName = StringUtils.localize(status.name);
-  anchor.setAttribute("data-tooltip", `${StringUtils.localize("FU.ChatApplySelected")}`);
+  anchor.setAttribute("data-tooltip", `${StringUtils.localize("AH.PIPELINE.MESSAGE.ApplySelected")}`);
   TextEditorUtils.image(anchor, status.img);
   anchor.append(localizedName);
   return anchor;

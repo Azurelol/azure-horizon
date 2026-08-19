@@ -491,17 +491,17 @@ export default class CompendiumBrowser extends AHApplication {
       if (showTable) {
         // Look up all its list elements
         let visibleCount = 0;
-        const listElements = renderedTable.querySelectorAll("li.fu-table__row-container.item");
-        for (const li of listElements) {
-          const uuid = li.dataset.uuid;
+        const rowElements = renderedTable.querySelectorAll("tbody tr");
+        for (const row of rowElements) {
+          const uuid = row.dataset.key;
           // ✅ Check uuid exists
           if (!uuid) {
-            console.error(`Missing uuid information on the list element ${li.toString()}`);
+            console.error(`Missing uuid information on the list element ${row.toString()}`);
             continue;
           }
           // Toggle visibility based on filter
           const visible = tableData.visible.has(uuid);
-          li.classList.toggle("hidden", !visible);
+          row.classList.toggle("hidden", !visible);
           if (visible) {
             visibleCount++;
           }
@@ -643,7 +643,7 @@ export default class CompendiumBrowser extends AHApplication {
               },
               attackDamage: {
                 label: "AH.FIELD.DamageType.long",
-                propertyPath: CompendiumIndex.itemFields.damageType,
+                propertyPath: CompendiumIndex.itemFields.damagePrimaryType,
                 options: getFormSelectOptions(AH.damageTypes),
               },
               compendium: this.#compendiumFilter,

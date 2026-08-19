@@ -23,9 +23,8 @@
 
   <tbody>
   {{#each rows as |row|}}
-    <tr>
+    <tr data-key="{{row.key}}">
       {{#each row.cells as |cell|}}
-
         {{{cell.template}}}
       {{/each}}
     </tr>
