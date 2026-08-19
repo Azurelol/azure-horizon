@@ -24,6 +24,7 @@ import { renderTemplate } from "../../constants.mjs";
  * @template {Object} T
  * @property {AH_Render<T>} renderHeader
  * @property {AH_Render<T>} renderCell
+ * @property {Boolean} preview Whether this column can be rendered in preview mode.
  * @property {String} cssClass
  */
 

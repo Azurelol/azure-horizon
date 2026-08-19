@@ -418,6 +418,7 @@ export default class CompendiumIndex {
    * @property {CompendiumIndexEntry[]} weapon
    * @property {CompendiumIndexEntry[]} armor
    * @property {CompendiumIndexEntry[]} accessory
+   * @property {CompendiumIndexEntry[]} consumable
    */
 
   /**
@@ -428,6 +429,7 @@ export default class CompendiumIndex {
       weapon: await this.getItemsOfType("weapon"),
       armor: await this.getItemsOfType("armor"),
       accessory: await this.getItemsOfType("accessory"),
+      consumable: await this.getItemsOfType("consumable"),
     };
     return entries;
   }
@@ -460,10 +462,10 @@ export default class CompendiumIndex {
   /**
    * @returns {Promise<AH_AbilityEntries>}
    */
-  async getAbilityEntries() {
+  async getAssemblyEntries() {
     const entries = {
-      class: await this.getItemsOfType("attack"),
-      skill: await this.getItemsOfType("ability"),
+      attack: await this.getItemsOfType("attack"),
+      ability: await this.getItemsOfType("ability"),
     };
     return entries;
   }

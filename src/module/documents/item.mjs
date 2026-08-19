@@ -27,7 +27,8 @@ export class AHItem extends DocumentMixin(foundry.documents.Item) {
    * @returns {Promise<void>}
    */
   async perform(modifiers) {
-    const performed = await this.system.perform();
+    // Only perform when equipped to an actor
+    const performed = (this.parent !== undefined) && await this.system.perform();
     if (!performed) {
       await this.sendToChat();
     }

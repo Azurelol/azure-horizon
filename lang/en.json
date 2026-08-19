@@ -52,7 +52,6 @@
       "Slug": "Slug",
       "SchemaVersion": "SchemaVersion",
       "Description": "Description",
-      "Attack": "Attack",
       "Ability": {
         "long": "Ability",
         "plural": "Abilities"
@@ -63,6 +62,10 @@
       "Accessory": "Accessory",
       "Consumable": "Consumable",
       "Equipment": "Equipment",
+      "Attack": {
+        "long": "Attack",
+        "plural": "Attacks"
+      },
       "Spell": {
         "long": "Spell",
         "plural": "Spells"

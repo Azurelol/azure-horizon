@@ -236,6 +236,7 @@ function actions(options = {}) {
     hideHeader: !options.header,
     renderHeader: () => StringUtils.localize(options.header),
     cssClass: options.cssClass,
+    preview: false,
     renderCell: async (entry) => {
       return renderTemplate(TEMPLATES.actions, {
         entry,

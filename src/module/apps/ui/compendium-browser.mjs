@@ -9,7 +9,7 @@ import { ActorTableRenderer, AdversaryTableRenderer } from "../actor/_module.mjs
 import { EffectTableRenderer } from "../effect/_module.mjs";
 
 /**
- * @typedef {"classes"|"skills"|"equipment"|"spells"|"adversaries"|"abilities"|"effects"} CompendiumBrowserTab
+ * @typedef {"classes"|"skills"|"equipment"|"spells"|"adversaries"|"assembly"|"followers"|"effects"} CompendiumBrowserTab
  */
 
 /**
@@ -90,7 +90,7 @@ export default class CompendiumBrowser extends AHApplication {
         switch (tab) {
           case "classes":
           case "equipment":
-          case "abilities":
+          case "assembly":
           case "spells":
             filters.type.selected = [inputFilter.type];
             break;
@@ -496,13 +496,13 @@ export default class CompendiumBrowser extends AHApplication {
   #classTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Class.long", preview: true });
   #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature", preview: true });
   #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill", preview: true });
-  #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell", preview: true });
+  #spellTableRenderer = new ActionTableRenderer({ preview: true });
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", preview: true });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor", preview: true });
   #accessoryTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Accessory", preview: true });
   #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable", preview: true });
   // Adversaries
-  #attackTableRenderer = new AttackTableRenderer({ title: "AH.ADVERSARY.Attack.plural", preview: true });
+  #attackTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Attack.plural", preview: true });
   #abilityTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural", preview: true });
   #adversaryTableRenderer = new AdversaryTableRenderer({ title: "AH.COMPENDIUM.adversaries", preview: true });
   // Followers
@@ -578,17 +578,17 @@ export default class CompendiumBrowser extends AHApplication {
         }
         break;
 
-      case "abilities":
+      case "assembly":
         {
-          const abilities = await this.index.getAbilityEntries();
+          const assembly = await this.index.getAssemblyEntries();
           await this.onRenderTables(
             [
               {
-                entries: abilities.attack,
+                entries: assembly.attack,
                 renderer: this.#attackTableRenderer,
               },
               {
-                entries: abilities.ability,
+                entries: assembly.ability,
                 renderer: this.#abilityTableRenderer,
               },
             ],
@@ -599,16 +599,16 @@ export default class CompendiumBrowser extends AHApplication {
                 options: [
                   {
                     value: "attack",
-                    label: "AH.ITEM.Attack",
+                    label: "AH.ITEM.Attack.long",
                   },
                   {
                     value: "ability",
-                    label: "AH.ITEM.Ability",
+                    label: "AH.ITEM.Ability.long",
                   },
                 ],
               },
               attackDamage: {
-                label: "AH.DAMAGE.DamageType",
+                label: "AH.FIELD.DamageType",
                 propertyPath: CompendiumIndex.itemFields.damageType,
                 options: getFormSelectOptions(AH.damageTypes),
               },
@@ -681,7 +681,7 @@ export default class CompendiumBrowser extends AHApplication {
             ],
             {
               rank: {
-                label: "AH.ADVERSARY.Rank",
+                label: "AH.ADVERSARY.Rank.long",
                 propertyPath: "system.profile.rank",
                 options: getFormSelectOptions(AH.rank),
               },
