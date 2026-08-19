@@ -25,17 +25,6 @@
  * @property {String} img
  */
 
-/**
- * @typedef AH_EquipmentEntries
- * @property {CompendiumIndexEntry[]} weapon
- */
-
-/**
- * @typedef AH_ActorEntries
- * @property {CompendiumIndexEntry[]} character
- * @property {CompendiumIndexEntry[]} adversary
- */
-
 import { StringUtils } from "../../utils/_module.mjs";
 import { getSystemSetting, systemID } from "../../constants.mjs";
 
@@ -127,6 +116,7 @@ export default class CompendiumIndex {
 	 */
   static itemFields = Object.freeze({
     slug: "system.slug",
+    damageType: "system.damage.primary.type",
   });
 
   /**
@@ -424,34 +414,75 @@ export default class CompendiumIndex {
   }
 
   /**
+   * @typedef AH_EquipmentEntries
+   * @property {CompendiumIndexEntry[]} weapon
+   * @property {CompendiumIndexEntry[]} armor
+   * @property {CompendiumIndexEntry[]} accessory
+   */
+
+  /**
 	 * @returns {Promise<AH_EquipmentEntries>}
 	 */
   async getEquipmenEntries() {
     const entries = {
       weapon: await this.getItemsOfType("weapon"),
+      armor: await this.getItemsOfType("armor"),
+      accessory: await this.getItemsOfType("accessory"),
     };
     return entries;
   }
 
   /**
-	 * @returns {Promise<CompendiumIndexEntry[]>}
+   * @typedef AH_ClassEntries
+   * @property {CompendiumIndexEntry[]} class
+   * @property {CompendiumIndexEntry[]} skill
+   * @property {CompendiumIndexEntry[]} classFeature
+   */
+
+  /**
+	 * @returns {Promise<AH_ClassEntries>}
 	 */
   async getClassEntries() {
-    let classes = await this.getItemsOfType("class");
-
     const entries = {
-      class: classes,
+      class: await this.getItemsOfType("class"),
+      skill: await this.getItemsOfType("skill"),
+      classFeature: await this.getItemsOfType("classFeature"),
     };
     return entries;
   }
+
+  /**
+   * @typedef AH_AbilityEntries
+   * @property {CompendiumIndexEntry[]} attack
+   * @property {CompendiumIndexEntry[]} ability
+   */
+
+  /**
+   * @returns {Promise<AH_AbilityEntries>}
+   */
+  async getAbilityEntries() {
+    const entries = {
+      class: await this.getItemsOfType("attack"),
+      skill: await this.getItemsOfType("ability"),
+    };
+    return entries;
+  }
+
+  /**
+   * @typedef AH_ActorEntries
+   * @property {CompendiumIndexEntry[]} hero
+   * @property {CompendiumIndexEntry[]} adversary
+   * @property {CompendiumIndexEntry[]} follower
+   */
 
   /**
 	 * @returns {Promise<AH_ActorEntries>}
 	 */
   async getActorEntries() {
     const entries = {
-      character: await this.getActorsOfType("character"),
-      npc: await this.getActorsOfType("adversary"),
+      hero: await this.getActorsOfType("hero"),
+      adversary: await this.getActorsOfType("adversary"),
+      follower: await this.getActorsOfType("follower"),
     };
     return entries;
   }

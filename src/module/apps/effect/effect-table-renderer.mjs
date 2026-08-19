@@ -1,9 +1,9 @@
-import { DocumentTableRenderer } from '../api/_module.mjs';
-import TableColumns from '../api/table-columns.mjs';
-import AH from '../../config.mjs';
+import { DocumentTableRenderer } from "../api/_module.mjs";
+import TableColumns from "../api/table-columns.mjs";
+import AH from "../../config.mjs";
 
 // TODO: Needed?
-export default class EffectTableRenderer extends DocumentTableRenderer {
+export class EffectTableRenderer extends DocumentTableRenderer {
   getColumns() {
     let columns = super.getColumns();
     columns.push(

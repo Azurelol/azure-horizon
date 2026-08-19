@@ -15,6 +15,7 @@ import { renderTemplate } from "../../constants.mjs";
  * @property {String} rowClass
  * @property {(T) => string | number} getKey
  * @property {(T) => Boolean} isVisible
+ * @property {Boolean} preview Whether the table is set to preview-mode
  * @property {Boolean} hideIfEmpty
  */
 
