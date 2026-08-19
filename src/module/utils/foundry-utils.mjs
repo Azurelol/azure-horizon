@@ -258,7 +258,9 @@ export default class FoundryUtils {
         el.addEventListener(
           "click",
           () => {
-            ui.notifications.warn(StringUtils.localize("AH.DIALOG.WARNING.EntriesMissing"));
+            ui.notifications.warn(StringUtils.localize("AH.DIALOG.WARNING.EntriesMissing", {
+              type: className,
+            }));
           },
           { once: true },
         );

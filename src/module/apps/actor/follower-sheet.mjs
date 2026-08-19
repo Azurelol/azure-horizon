@@ -55,7 +55,7 @@ export class FollowerSheet extends AHActorSheet {
   };
 
   /* -------------------------------------------------- */
-  #moveTableRenderer = new ActionTableRenderer({ title: "AH.FOLLOWER.Move.plural" });
+  #moveTableRenderer = new ActionTableRenderer({ title: "AH.FOLLOWER.Move.plural", actions: CharacterSheet.getCompendiumTableActions("assembly", "ability") });
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {

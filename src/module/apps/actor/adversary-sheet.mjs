@@ -39,8 +39,8 @@ export class AdversarySheet extends CharacterSheet {
   };
 
   /* -------------------------------------------------- */
-  #attackTableRenderer = new AttackTableRenderer({ title: "AH.ADVERSARY.Attack.plural" });
-  #abilityTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural" });
+  #attackTableRenderer = new AttackTableRenderer({ title: "AH.ADVERSARY.Attack.plural", actions: CharacterSheet.getCompendiumTableActions("assembly", "attack") });
+  #abilityTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural", actions: CharacterSheet.getCompendiumTableActions("assembly", "ability") });
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {

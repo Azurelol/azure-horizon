@@ -59,13 +59,13 @@ export class HeroSheet extends CharacterSheet {
 
   /* -------------------------------------------------- */
 
-  #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill" });
-  #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature" });
-  #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long" });
+  #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill", actions: CharacterSheet.getCompendiumTableActions("classes", "skill") });
+  #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature", actions: CharacterSheet.getCompendiumTableActions("classes", "classFeature") });
+  #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long", actions: CharacterSheet.getCompendiumTableActions("spells") });
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", actions: CharacterSheet.getCompendiumTableActions("equipment", "weapon") });
-  #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor" });
-  #accessoryTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Accessory" });
-  #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable" });
+  #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor", actions: CharacterSheet.getCompendiumTableActions("equipment", "armor") });
+  #accessoryTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Accessory", actions: CharacterSheet.getCompendiumTableActions("equipment", "accessory") });
+  #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") });
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {

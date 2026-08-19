@@ -20,7 +20,7 @@ export class CharacterSheet extends AHActorSheet {
     },
     actions: {
       rest: this.#rest,
-      browseCompendium: this.#browseCompendium,
+
     },
   };
 
@@ -112,33 +112,4 @@ export class CharacterSheet extends AHActorSheet {
     return this.actor.rest(type);
   }
 
-  /**
-   * @this CharacterSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
-   */
-  static async #browseCompendium(event, target) {
-    const { tab, type } = target.dataset;
-    return CompendiumBrowser.open(tab, {
-      type: type,
-    });
-  }
-
-  /**
-   * @param tab
-   * @param type
-   * @return {ChatAction[]}
-   */
-  static getCompendiumTableActions(tab, type) {
-    let actions = [];
-    const browse = new ChatAction("browseCompendium", AH.icons.compendium,
-      "AH.APPLICATION.MESSAGE.BrowseCompendium");
-    browse.withDataset({
-      tab: tab,
-      type: type,
-    });
-    actions.push(browse);
-    return actions;
-  }
 }

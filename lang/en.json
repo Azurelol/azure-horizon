@@ -472,7 +472,7 @@
         "MissingItem": "Missing Item",
         "SingleTarget": "A single target is required.",
         "MissingSource": "Missing Source",
-        "EntriesMissing": "Entries are missing.",
+        "EntriesMissing": "Entries of type {type} are missing.",
         "InvalidTarget": "Invalid Targets",
         "ErrorNoFileUploaded": "No file was uploaded.",
         "MissingTargeting": "No tokens have been targeted.",

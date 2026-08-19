@@ -289,8 +289,8 @@
   }
 
   i, img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     color: var(--ah-content-action);
     text-shadow: 1px 1px var(--ah-text-shadow-control);
     font-variant: small-caps;

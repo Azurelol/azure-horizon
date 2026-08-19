@@ -1,10 +1,10 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import { FoundryUtils, HTMLUtils, ObjectUtils, StringUtils } from "../../utils/_module.mjs";
-import { Dialogs } from "../../helpers/_module.mjs";
+import { ChatAction, Dialogs } from "../../helpers/_module.mjs";
 import AH from "../../config.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
-import { ActionHandler } from "../ui/_module.mjs";
+import { ActionHandler, CompendiumBrowser } from "../ui/_module.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
 
 const { api, sheets } = foundry.applications;
@@ -48,6 +48,8 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
 
       addArrayElement: this.#addArrayElement,
       removeArrayElement: this.#removeArrayElement,
+
+      browseCompendium: this.#browseCompendium,
 
       performAction: this.#performAction,
       sendItem: this.#sendItem,
@@ -443,6 +445,36 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
         });
       }
     }
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #browseCompendium(event, target) {
+    const { tab, type } = target.dataset;
+    return CompendiumBrowser.open(tab, {
+      type: type,
+    });
+  }
+
+  /**
+   * @param tab
+   * @param type
+   * @return {ChatAction[]}
+   */
+  static getCompendiumTableActions(tab, type) {
+    let actions = [];
+    const browse = new ChatAction("browseCompendium", AH.icons.compendium,
+      "AH.APPLICATION.MESSAGE.BrowseCompendium");
+    browse.withDataset({
+      tab: tab,
+      type: type,
+    });
+    actions.push(browse);
+    return actions;
   }
 
   /**

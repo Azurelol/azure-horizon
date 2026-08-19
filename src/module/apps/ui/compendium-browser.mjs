@@ -530,7 +530,7 @@ export default class CompendiumBrowser extends AHApplication {
   #classTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Class.long", preview: true });
   #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature", preview: true });
   #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill", preview: true });
-  #spellTableRenderer = new ActionTableRenderer({ preview: true });
+  #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long", preview: true });
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", preview: true });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor", preview: true });
   #accessoryTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Accessory", preview: true });
