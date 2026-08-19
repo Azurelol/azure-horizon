@@ -116,12 +116,10 @@
   gap: 0.1rem;
 }
 
-.ah-table__title {
+.ah-table__caption {
   background:var(--ah-background-table-header);
   font-size: 20px;
-  padding: 4px;
   text-transform: uppercase;
-  padding: 4px 8px 4px 8px;
   text-align: center;
   align-self: flex-start;
 }

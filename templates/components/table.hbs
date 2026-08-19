@@ -1,11 +1,10 @@
-{{#if config.title}}
-  <div class="ah-table__title">
-    <span>
-      {{localize config.title}}
-    </span>
-  </div>
-{{/if}}
+
 <table id="{{config.id}}" class="ah-table {{config.cssClass}}" data-table-id="{{config.id}}">
+  {{#if config.title}}
+    <caption class="ah-table__caption">
+      {{localize config.title}}
+    </caption>
+  {{/if}}
   <thead>
     <tr>
       {{#each columns as |column|}}

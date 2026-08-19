@@ -81,9 +81,11 @@ export default class AH_TableRenderer {
   }
 
   /**
-   * @type {String} Unique identifier for the table.
+   * @returns {String} Unique identifier for the table.
    */
-  #id;
+  get id() {
+    return this.#config.id;
+  }
 
   #clickHandler = this.#onClick.bind(this);
 
@@ -102,7 +104,9 @@ export default class AH_TableRenderer {
     const config = {};
     configurations.forEach((configuration) => foundry.utils.mergeObject(config, foundry.utils.deepClone(configuration), { performDeletions: true }));
     Object.assign(config, overrides);
-    this.#id = config.id ?? foundry.utils.randomID();
+    if (!config.id) {
+      config.id = foundry.utils.randomID();
+    }
     this.#config = foundry.utils.deepFreeze(config);
   }
 
@@ -114,7 +118,7 @@ export default class AH_TableRenderer {
 
     const renderHookId = Hooks.on("renderApplicationV2", (application, element) => {
       if (application === this.application) {
-        const tables = element.querySelectorAll(`.ah-table[data-table-id="${this.#id}"]`);
+        const tables = element.querySelectorAll(`.ah-table[data-table-id="${this.id}"]`);
         tables.forEach((table) => {
           table.addEventListener("click", this.#clickHandler);
           table.addEventListener("contextmenu", this.#clickHandler);
@@ -132,7 +136,7 @@ export default class AH_TableRenderer {
   }
 
   #onClick(event) {
-    const table = event.target.closest(`[data-table-id="${this.#id}"]`);
+    const table = event.target.closest(`[data-table-id="${this.id}"]`);
     if (table) {
     }
   }

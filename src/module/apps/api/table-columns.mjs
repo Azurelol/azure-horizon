@@ -254,10 +254,48 @@ function actions(options = {}) {
   };
 }
 
+/**
+ * @typedef AH_PropertyColumnOptions
+ * @template {Object} T
+ * @property {string} header
+ * @property {string} [cssClass]
+ * @property {"start", "center", "end"} [alignment="center"]
+ * @property {"low", "normal", "high"} [importance="normal"]
+ * @property {(T) => string|number|Promise<string|number>} getText result will be translated
+ * @property {string|((T) => string|number|Promise<string|number>)} [tooltip]
+ */
+
+/**
+ * @template {Object} T
+ * @param {AH_PropertyColumnOptions} [options]
+ * @return {AH_TableColumnConfig<T>}
+ */
+function property(options = {}) {
+  return {
+    hideHeader: !options.header,
+    renderHeader: () => StringUtils.localize(options.header ?? "AH.COMMON.Damage"),
+    headerAlignment: options.alignment,
+    preview: true,
+
+    renderCell: async (entry) => {
+      /** @type DamageDataModel **/
+      const damage = entry.system.damage;
+      if (!damage || !damage.enabled) {
+        return "";
+      }
+      return renderTemplate(TEMPLATES.damage, {
+        damage,
+        cssClass: options.cssClass,
+      }, false);
+    },
+  };
+}
+
 const TableColumns = Object.freeze({
   documentName,
   textColumn,
   actions,
+  property,
 
   itemProperties,
   itemCost,

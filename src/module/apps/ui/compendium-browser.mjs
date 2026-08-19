@@ -4,10 +4,15 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
 import { systemTemplatePath } from "../../constants.mjs";
 import { CompendiumFilter } from "./compendium-filter.mjs";
 import { HTMLUtils } from "../../utils/_module.mjs";
-import { ActionTableRenderer, ArmorTableRenderer, AttackTableRenderer, WeaponTableRenderer } from "../item/_module.mjs";
-import { ActorTableRenderer, AdversaryTableRenderer } from "../actor/_module.mjs";
+import {
+  ActionTableRenderer,
+  ArmorTableRenderer,
+  AttackTableRenderer,
+  EquipmentTableRenderer,
+  WeaponTableRenderer,
+} from "../item/_module.mjs";
+import { AdversaryTableRenderer, FollowerTableRenderer } from "../actor/_module.mjs";
 import { EffectTableRenderer } from "../effect/_module.mjs";
-import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 
 /**
  * @typedef {"classes"|"skills"|"equipment"|"spells"|"adversaries"|"assembly"|"followers"|"effects"} CompendiumBrowserTab
@@ -38,7 +43,7 @@ export default class CompendiumBrowser extends AHApplication {
       ],
     },
     form: { closeOnSubmit: false },
-    position: { width: 800, height: "800" },
+    position: { width: 900, height: "800" },
     actions: {
       refreshIndex: this.refreshIndex,
       performAction: this.#performAction,
@@ -149,6 +154,7 @@ export default class CompendiumBrowser extends AHApplication {
         { id: "spells", label: "AH.COMPENDIUM.spells", icon: "ra ra-fairy-wand" },
         { id: "assembly", label: "AH.COMPENDIUM.assembly", icon: "ra ra-bird-claw" },
         { id: "adversaries", label: "AH.COMPENDIUM.adversaries", icon: "ra ra-monster-skull" },
+        { id: "followers", label: "AH.COMPENDIUM.followers", icon: "ra ra-double-team" },
         { id: "effects", label: "AH.COMPENDIUM.effects", icon: "ra ra-droplet-splash" },
       ],
       initial: "classes",
@@ -213,6 +219,9 @@ export default class CompendiumBrowser extends AHApplication {
       template: systemTemplatePath("apps/compendium-browser/compendium-browser-tab"),
     },
     adversaries: {
+      template: systemTemplatePath("apps/compendium-browser/compendium-browser-tab"),
+    },
+    followers: {
       template: systemTemplatePath("apps/compendium-browser/compendium-browser-tab"),
     },
     effects: {
@@ -301,6 +310,7 @@ export default class CompendiumBrowser extends AHApplication {
       case "equipment":
       case "spells":
       case "assembly":
+      case "followers":
       case "effects":
         {
           context.tables = tabData.tables.map((t) => t.html);
@@ -523,15 +533,15 @@ export default class CompendiumBrowser extends AHApplication {
   #spellTableRenderer = new ActionTableRenderer({ preview: true });
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", preview: true });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor", preview: true });
-  #accessoryTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Accessory", preview: true });
+  #accessoryTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Accessory", preview: true });
   #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable", preview: true });
   // Adversaries
   #attackTableRenderer = new AttackTableRenderer({ title: "AH.ADVERSARY.Attack.plural", preview: true });
   #abilityTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural", preview: true });
   #adversaryTableRenderer = new AdversaryTableRenderer({ title: "AH.COMPENDIUM.adversaries", preview: true });
   // Followers
-  #moveTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Move.plural", preview: true });
-  #followerTableRenderer = new ActorTableRenderer({ title: "AH.COMPENDIUM.followers", preview: true });
+  #moveTableRenderer = new AttackTableRenderer({ title: "AH.FOLLOWER.Move.plural", preview: true });
+  #followerTableRenderer = new FollowerTableRenderer({ title: "AH.COMPENDIUM.followers", preview: true });
   // Effects
   #effectTableRenderer = new EffectTableRenderer({ title: "AH.COMPENDIUM.effects", preview: true });
 
@@ -592,7 +602,7 @@ export default class CompendiumBrowser extends AHApplication {
                 ],
               },
               class: {
-                label: "AH.ITEM.Class",
+                label: "AH.ITEM.Class.long",
                 propertyPath: ["system.class", "metadata.class"],
                 options: classOptions,
               },
@@ -705,7 +715,7 @@ export default class CompendiumBrowser extends AHApplication {
             ],
             {
               rank: {
-                label: "AH.ADVERSARY.Rank.long",
+                label: "AH.ADVERSARY.Rank",
                 propertyPath: "system.profile.rank",
                 options: getFormSelectOptions(AH.rank),
               },
@@ -713,6 +723,33 @@ export default class CompendiumBrowser extends AHApplication {
                 label: "AH.ADVERSARY.Role",
                 propertyPath: "system.profile.role",
                 options: getFormSelectOptions(AH.role),
+              },
+              compendium: this.#compendiumFilter,
+            },
+          );
+        }
+        break;
+
+      case "followers":
+        {
+          const moves = await this.index.getItemsOfType("move");
+          const actors = await this.index.getActorsOfType("follower");
+          await this.onRenderTables(
+            [
+              {
+                entries: moves,
+                renderer: this.#moveTableRenderer,
+              },
+              {
+                entries: actors,
+                renderer: this.#followerTableRenderer,
+              },
+            ],
+            {
+              kind: {
+                label: "AH.FOLLOWER.Kind",
+                propertyPath: "system.profile.kind",
+                options: getFormSelectOptions(AH.followerTypes),
               },
               compendium: this.#compendiumFilter,
             },

@@ -10,7 +10,8 @@
       "adversaries": "Adversaries",
       "features": "Features",
       "effects": "Effects",
-      "assembly": "Assembly"
+      "assembly": "Assembly",
+      "followers": "Followers"
     },
     "APPLICATION": {
       "CompendiumBrowser": "Compendium Browser",
@@ -189,9 +190,7 @@
     },
     "ADVERSARY": {
       "Villain": "Villain",
-      "Rank": {
-        "long": "Rank"
-      },
+      "Rank": "Rank",
       "RANK": {
         "Minion": "Minion",
         "Standard": "Standard",

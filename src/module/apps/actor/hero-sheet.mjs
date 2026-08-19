@@ -61,7 +61,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
 
   #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill" });
   #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature" });
-  #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell" });
+  #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long" });
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon" });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor" });
   #accessoryTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Accessory" });
