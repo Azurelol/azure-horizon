@@ -1,9 +1,14 @@
 .ah-button {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  gap: 0.25rem;
+
+  label {
+    text-wrap: nowrap;
+  }
 
   &.--transparent {
     background-color: transparent;

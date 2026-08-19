@@ -1,21 +1,25 @@
 <section class="tab settings {{tab.cssClass}}" data-tab="settings" data-group="primary">
 
   <!-- Header  -->
-	<header class="sheet-header">
-		<div>
-			<img class="profile-img" src="{{actor.img}}" data-edit="img" data-action="editImage" title="{{actor.name}}"
-				 style="height: 52px; width: auto; object-fit: contain;" />
-			<div>
-				<div class="ah-sheet__name">
-					<h2 class="charname" style="flex: 3;">
-            <label>
-              <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
-            </label>
-          </h2>
-				</div>
-			</div>
-		</div>
-	</header>
+  <header class="ah-party__header">
+    <div class="ah-party__name">
+      <img
+        class="profile-img"
+        src="{{actor.img}}"
+        alt="{{actor.name}}"
+        {{#if editable}}
+        data-action="editImage"
+        data-edit="img"
+        {{/if}}
+        data-tooltip="{{actor.name}}">
+      {{formInput fields.name value=actor.name classes="ah-sheet__name ah-party__name"}}
+      <div class="ah-button-group">
+        {{ahButton action='activate' icon='fas fa-pen-to-square' label='Set Active' }}
+        {{ahButton action='resetCodexTags' icon='fas fa-list' label='Reset Tags' }}
+        {{ahButton action='browseUploadDirectory' icon='fas fa-clipboard' label='Browse Upload' }}
+      </div>
+    </div>
+  </header>
 
 	<!-- Settings -->
 	<main>
@@ -23,13 +27,10 @@
 			<legend>
         {{localize 'AH.COMMON.Settings'}}
 			</legend>
-			<div>
-				<div>
-					<button data-action="activate"><i class="fas fa-pen-to-square icon"></i>Set Active</button>
-					<button data-action="resetCodexTags"><i class="fas fa-list icon"></i>Reset Tags</button>
-					<button data-action="browseUploadDirectory"><i class="fas fa-clipboard"></i>Browse Upload Directory</button>
-				</div>
-				{{ahArrayField array=system.codex.tags label="AH.FIELD.Tags" path="system.codex.tags" type="string" }}
+			<div class="ah-grid-2">
+        <div>
+          {{ahArrayField array=system.codex.tags label="AH.FIELD.Tags" path="system.codex.tags" type="string" }}
+        </div>
 			</div>
 		</fieldset>
 	</main>

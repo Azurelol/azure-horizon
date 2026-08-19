@@ -660,6 +660,21 @@ AH.settings = Object.freeze({
     type: String,
     filePicker: "folder",
   },
+  activeParty: {
+    name: "AH.SETTING.ActiveParty",
+    hint: "AH.SETTING.ActivePartyHint",
+    icon: "fa-solid fa-users",
+    config: true,
+    scope: "world",
+    // eslint-disable-next-line no-undef
+    type: new fields.ForeignDocumentField(Actor, {
+      nullable: true,
+      blank: true,
+      idOnly: true,
+      choices: () => Object.fromEntries(game.actors.contents.filter((actor) => actor.type === "party").map((a) => [a.id, a.name])),
+    }),
+    restricted: true,
+  },
 });
 
 /**

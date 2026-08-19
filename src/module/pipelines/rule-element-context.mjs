@@ -12,7 +12,7 @@ import { EvaluationContext, SourceInfo } from "../data/common/_module.mjs";
  * @property {AHItem|null} item The item the rule element could be on.
  * @property {CharacterInfo} source The source character of the event.
  * @property {CharacterInfo[]} targets The targets of the event.
- * @property {CharacterInfo[]} scene.characters All the characters involved in the scene.
+ * @property {CharacterInfo[]} scene.heroes All the characters involved in the scene.
  * @property {String} origin An unique identifier for the rule element
  * @property {String} label A human-readable identifier for the rule element
  * @property {T} event

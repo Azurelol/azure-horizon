@@ -1,5 +1,5 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
-import { renderTemplate, systemTemplatePath } from "../../constants.mjs";
+import { renderTemplate, setSystemSetting, systemTemplatePath } from "../../constants.mjs";
 import { CodexBrowser } from "../ui/_module.mjs";
 import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
 import { CharacterSheet } from "./base-character-sheet.mjs";
@@ -20,6 +20,8 @@ export class PartySheet extends AHActorSheet {
       icon: "fas fa-people-group",
     },
     actions: {
+      activate: this.#activate,
+
       revealActor: this.#revealActor,
       addCodexEntry: this.#addCodexEntry,
       onCodexEntry: this.#onCodexEntry,
@@ -28,6 +30,16 @@ export class PartySheet extends AHActorSheet {
       resetCodexTags: this.#onResetCodexTags,
     },
   };
+
+  /**
+   * @this PartySheet
+   * @returns {Promise<void>}
+   */
+  static async #activate() {
+    console.debug(`Setting ${this.actor.name} as the active party.`);
+    await setSystemSetting("activeParty", this.actor._id);
+    ui.notifications.info(game.i18n.format("AH.PARTY.ActiveSetNotification", { name: this.actor.name }));
+  }
 
   /**
    * @override
@@ -137,7 +149,7 @@ export class PartySheet extends AHActorSheet {
         context.tabs = this._prepareTabs("primary");
         break;
       case "overview":
-        context.characters = await this.system.getCharacters();
+        context.characters = await this.system.getHeroes();
         context.overview = await renderTemplate(`sheets/actor/party/party-overview-${this.theme}`, context);
         break;
       case "character":
@@ -201,7 +213,7 @@ export class PartySheet extends AHActorSheet {
           const type = el.dataset.type;
           switch (type) {
             case "character":
-              this.party.removeCharacter(id);
+              this.system.removeHero(id);
               break;
           }
         },
@@ -242,7 +254,7 @@ export class PartySheet extends AHActorSheet {
   async _onDropActor(event, actor) {
     if (actor.type === "hero") {
       ui.notifications.info(`Dropped ${actor.name}`);
-      await this.system.addCharacter(actor);
+      await this.system.addHero(actor);
     }
     return null;
   }
@@ -321,7 +333,7 @@ export class PartySheet extends AHActorSheet {
       const type = target.dataset.type;
       switch (type) {
         case "character":
-          this.system.removeCharacter(uuid);
+          this.system.removeHero(uuid);
           break;
       }
     }

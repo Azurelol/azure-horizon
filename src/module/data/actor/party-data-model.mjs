@@ -2,7 +2,7 @@ import { CodexDataModel } from "../ui/_module.mjs";
 import ActorDataModel from "./actor-data-model.mjs";
 
 /**
- * @typedef PartyCharacterData
+ * @typedef PartyHeroData
  * @property {AHActor} actor
  * @property {String} name
  * @property {Number} level
@@ -10,14 +10,15 @@ import ActorDataModel from "./actor-data-model.mjs";
 
 /**
  * Represents a group of player characters.
- * @property {Set<String>} characters The uuids of the characters in the party.
+ * @property {Set<String>} heroes The uuids of the characters in the party.
  * @property {CodexDataModel} codex
  */
 export default class PartyDataModel extends ActorDataModel {
   static defineSchema() {
     const { HTMLField, StringField, SetField, DocumentUUIDField, ObjectField, NumberField, SchemaField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      characters: new SetField(new DocumentUUIDField({ nullable: true, fieldType: "Actor", config: false })),
+      heroes: new SetField(new DocumentUUIDField({ nullable: true, fieldType: "Actor", config: false })),
+      followers: new SetField(new DocumentUUIDField({ nullable: true, fieldType: "Actor", config: false })),
       codex: new EmbeddedDataField(CodexDataModel, {}),
     });
   }
@@ -89,37 +90,37 @@ export default class PartyDataModel extends ActorDataModel {
    * @param {AHActor} actor
    * @returns {Promise<void>}
    */
-  async addCharacter(actor) {
+  async addHero(actor) {
     if (actor.type !== "hero") {
       console.warn(`${actor.name} is not a player character!`);
       return;
     }
 
-    const characters = this.characters;
-    if (characters.has(actor.uuid)) {
+    const heroes = this.heroes;
+    if (heroes.has(actor.uuid)) {
       return;
     }
-    characters.add(actor.uuid);
-    await this.parent.update({ ["system.characters"]: characters });
+    heroes.add(actor.uuid);
+    await this.parent.update({ ["system.heroes"]: heroes });
     ui.notifications.info(`${actor.name} was added to the party`);
   }
 
   /**
    * @param {String} id
    */
-  removeCharacter(id) {
-    const current = this.characters;
+  removeHero(id) {
+    const current = this.heroes;
     current.delete(id);
-    this.parent.update({ ["system.characters"]: current });
+    this.parent.update({ ["system.heroes"]: current });
     console.debug(`${id} was removed from the party sheet`);
   }
 
   /**
    *
    * @param {AHActor} actor
-   * @returns {PartyCharacterData}
+   * @returns {PartyHeroData}
    */
-  constructCharacterData(actor) {
+  constructHeroData(actor) {
     /** @type CharacterDataModel **/
     const system = actor.system;
     const name = actor.name.split(" ")[0];
@@ -130,12 +131,12 @@ export default class PartyDataModel extends ActorDataModel {
   }
 
   /**
-   * @return {Promise<PartyCharacterData[]>}
+   * @return {Promise<PartyHeroData[]>}
    */
-  async getCharacters() {
-    const characters = await this.getActors("characters");
-    return characters.map((actor) => {
-      return this.constructCharacterData(actor);
+  async getHeroes() {
+    const heroes = await this.getActors("heroes");
+    return heroes.map((actor) => {
+      return this.constructHeroData(actor);
     });
   }
 }

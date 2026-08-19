@@ -39,7 +39,7 @@
 }
 
 .ah-grid,
-.ah-grid-col-2 {
+.ah-grid-2 {
   display: grid;
   grid-column: span 2 / span 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));

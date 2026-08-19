@@ -23,6 +23,24 @@
     grid-area: active-tab;
   }
 
+  .ah-party__header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ah-party__name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
   .overview {
     .party {
       display: flex;

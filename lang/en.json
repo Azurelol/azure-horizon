@@ -190,6 +190,9 @@
         "EndOfRound": "End Of Round"
       }
     },
+    "PARTY": {
+      "ActiveSetNotification": "The active party has been set."
+    },
     "ADVERSARY": {
       "Villain": "Villain",
       "Rank": "Rank",
