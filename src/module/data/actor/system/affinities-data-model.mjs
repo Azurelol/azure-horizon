@@ -11,6 +11,9 @@ import AH from "../../../config.mjs";
  * @property {AffinityField} fire
  * @property {AffinityField} cold
  * @property {AffinityField} electric
+ * @property {AffinityField} spiritual
+ * @property {AffinityField} light
+ * @property {AffinityField} dark
  * @remarks This is a set is later added into {@linkcode CharacterParametersDataModel}
  */
 export default class AffinitiesDataModel extends VersionedDataModel {
@@ -26,6 +29,10 @@ export default class AffinitiesDataModel extends VersionedDataModel {
       fire: new AffinityField(),
       cold: new AffinityField(),
       electric: new AffinityField(),
+
+      spiritual: new AffinityField(),
+      light: new AffinityField(),
+      dark: new AffinityField(),
     });
   }
 
@@ -34,7 +41,8 @@ export default class AffinitiesDataModel extends VersionedDataModel {
    */
   get entries() {
     return [this.physical, this.slashing, this.piercing, this.bludgeoning,
-      this.elemental, this.fire, this.cold, this.electric];
+      this.elemental, this.fire, this.cold, this.electric,
+      this.spiritual, this.light, this.dark];
   }
 
   /**

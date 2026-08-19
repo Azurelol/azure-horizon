@@ -162,7 +162,7 @@ AH.progression = Object.freeze({
 });
 
 /**
- * @desc The set of ability scores used for characters in the system.
+ * The set of ability scores used for characters in the system.
  * @typedef {"dex", "str", "res", "per"} AH_Attribute
  */
 
@@ -525,7 +525,7 @@ AH.effectTracking = {
 };
 
 /**
- * @typedef {"custom", "brute", "hunter", "mage", "saboteur", "sentinel", "support"} AH_RoleType
+ * @typedef {"custom", "harrier", "brute", "defender", "artillery", "saboteur", "controller", "supporter", "leader"} AH_RoleType
  */
 
 /**

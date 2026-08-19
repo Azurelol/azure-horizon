@@ -28,6 +28,10 @@
   align-items: center;
 }
 
+.ah-gap-1 {
+  gap: 1rem;
+}
+
 .ah-grid {
   > *:only-child {
     grid-column: 1 / -1;

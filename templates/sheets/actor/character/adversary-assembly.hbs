@@ -37,7 +37,9 @@
         {{#each (ahFilterFields system.affinities) as |aff key|}}
           <tr>
             <td>
+              <span class="ah-flex-center ah-gap-1">
              <i class="ah-icon --xs {{ahIconClass key}}"></i> {{ahCapitalize key}}
+              </span>
             </td>
             <td>
               {{ahStringField path=(ahConcat 'system.affinities.' key '.preset') value=aff.preset options=(ahFormOptions 'affinities' format='short') blank=true }}

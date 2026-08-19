@@ -8,11 +8,19 @@
   <div class="ah-sheet-header__row">
     <div class="ah-sheet__group">
       {{#each system.attributes as |attribute key|}}
-        {{ahSelector size='sm' icon=(ahIconClass key)
-                     label=(ahLocaleKey 'attributes' key format='short')
-                     values=@root.AH.attributeDice value=attribute.base
-                     iconClasses='--glow'
-                     path=(ahConcat 'system.attributes.' key '.base') }}
+        {{#if ../system.assembled}}
+          {{ahBadge size='sm' icon=(ahIconClass key)
+                    label=(ahLocaleKey 'attributes' key format='short')
+                    iconClasses='--glow'
+                    value=attribute.base }}
+        {{else}}
+          {{ahSelector size='sm' icon=(ahIconClass key)
+                       label=(ahLocaleKey 'attributes' key format='short')
+                       values=@root.AH.attributeDice value=attribute.base
+                       iconClasses='--glow'
+                       path=(ahConcat 'system.attributes.' key '.base') }}
+        {{/if}}
+
       {{/each}}
     </div>
 

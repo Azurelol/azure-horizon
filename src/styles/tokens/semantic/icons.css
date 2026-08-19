@@ -68,8 +68,8 @@
 
   /*Damage Types*/
   --ah-icon-untyped: url("../../../../assets/icons/affinities/untyped.png");
-  --ah-icon-elemental: url("assets/icons/Pixel_RPG_Items_Pack/purple_feather.png");
 
+  --ah-icon-elemental: url("../../../../assets/icons/affinities/elemental.png");
   --ah-icon-fire: url("../../../../assets/icons/affinities/fire.png");
   --ah-icon-cold: url("../../../../assets/icons/affinities/cold.png");
   --ah-icon-electric: url("../../../../assets/icons/affinities/electric.png");
@@ -80,8 +80,8 @@
   --ah-icon-piercing: url("../../../../assets/icons/affinities/piercing.png");
   --ah-icon-bludgeoning: url("../../../../assets/icons/affinities/bludgeoning.png");
 
-  --ah-icon-spiritual: url("../../../../assets/icons/Pixel_RPG_Items_Pack/spellbook.png");
-  --ah-icon-light: url("../../../../assets/icons/Pixel_RPG_Items_Pack/torch.png");
+  --ah-icon-spiritual: url("../../../../assets/icons/affinities/spiritual.png");
+  --ah-icon-light: url("../../../../assets/icons/affinities/light.png");
   --ah-icon-dark: url("../../../../assets/icons/affinities/dark.png");
 
   --ah-icon-poison: url("../../../../assets/icons/affinities/poison.png");
@@ -131,7 +131,7 @@
     background-image: var(--ah-icon-light);
   }
 
-  .ah-asset-dark {
+  .ah-icon-dark {
     background-image: var(--ah-icon-dark);
   }
 

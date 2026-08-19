@@ -5,6 +5,7 @@ const IP_BASE = 6;
 const TP_BASE = 10;
 const MIN_ATTRIBUTE_DIE = 4;
 const MAX_ATTRIBUTE_DIE = 12;
+
 // FOLLOWERS
 const HP_LEVEL_FACTOR = 5;
 
