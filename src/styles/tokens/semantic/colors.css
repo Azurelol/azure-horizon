@@ -77,10 +77,10 @@
   --ah-modifier-equipment-color: orange;
 
   /* Ranks */
-  --ah-elite-background: var(--ah-primitive-color-gold-400);
-  --ah-elite-border: var(--ah-primitive-color-gold-600);
-  --ah-champion-background: var(--ah-primitive-color-burgundy);
-  --ah-champion-border: var(--ah-primitive-color-burgundy-dark);
+  --ah-elite-background: var(--ah-primitive-color-silver-400);
+  --ah-elite-border: var(--ah-primitive-color-silver-600);
+  --ah-champion-background: var(--ah-primitive-color-gold-400);
+  --ah-champion-border: var(--ah-primitive-color-gold-600);
 
   /* Character Types */
   --ah-hero-background-gradient: linear-gradient(to left, var(--ah-color-azure-500), var(--ah-color-navy-700));

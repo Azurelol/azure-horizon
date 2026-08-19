@@ -50,6 +50,15 @@ export default class PartyDataModel extends ActorDataModel {
   }
 
   /**
+   * @type {Set<AH_ItemType>}
+   */
+  static ITEM_TYPES = new Set(["armor", "weapon", "accessory", "consumable"]);
+
+  supportsItemType(type) {
+    return PartyDataModel.ITEM_TYPES.has(type);
+  }
+
+  /**
    * @param {String} propertyPath
    * @returns {Promise<AHActor[]>}
    */
@@ -81,7 +90,7 @@ export default class PartyDataModel extends ActorDataModel {
    * @returns {Promise<void>}
    */
   async addCharacter(actor) {
-    if (actor.type !== "character") {
+    if (actor.type !== "hero") {
       console.warn(`${actor.name} is not a player character!`);
       return;
     }

@@ -95,9 +95,7 @@ export class HeroSheet extends CharacterSheet {
       }
       case "equipment":
         context.tables = [
-          await this.#weaponTableRenderer.render(this.actor.getItemsByType("weapon"), {
-
-          }),
+          await this.#weaponTableRenderer.render(this.actor.getItemsByType("weapon")),
           await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
           await this.#accessoryTableRenderer.render(this.actor.getItemsByType("accessory")),
           await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),

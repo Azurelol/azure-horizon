@@ -33,11 +33,21 @@
   --ah-primitive-color-brown-dark: #4A2C0A;
   --ah-primitive-color-sepia: #704214;
   --ah-primitive-color-sepia-light: #8B5E3C;
-  --ah-primitive-color-burgundy: #7B2D2D;
+  --ah-primitive-color-burgundy: #9f4f4f;
   --ah-primitive-color-burgundy-dark: #6B1E1E;
   --ah-primitive-color-ink-blue: #2C3E6B;
   --ah-primitive-color-grey-850: #00000050;
   --ah-primitive-color-grey-800: #00000080;
+
+  --ah-primitive-color-silver-100: #f4f4f5;
+  --ah-primitive-color-silver-200: #e4e4e7;
+  --ah-primitive-color-silver-300: #d1d1d6;
+  --ah-primitive-color-silver-400: #b8b8c0;
+  --ah-primitive-color-silver-500: #9c9ca6;
+  --ah-primitive-color-silver-600: #7d7d88;
+  --ah-primitive-color-silver-700: #62626c;
+  --ah-primitive-color-silver-800: #48484f;
+  --ah-primitive-color-silver-900: #2f2f34;
 
   --ah-primitive-color-gold-300: #e8c873;
   --ah-primitive-color-gold-400: #d4af5a;

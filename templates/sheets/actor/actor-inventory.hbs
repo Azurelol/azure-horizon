@@ -1,3 +1,7 @@
 <section class="tab inventory {{tab.cssClass}}" data-tab="inventory" data-group="primary">
-  Boop
+  <div class="ah-table__collection">
+    {{#each tables as |table|}}
+      {{{table}}}
+    {{/each}}
+  </div>
 </section>

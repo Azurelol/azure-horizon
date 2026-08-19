@@ -1,6 +1,8 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { renderTemplate, systemTemplatePath } from "../../constants.mjs";
 import { CodexBrowser } from "../ui/_module.mjs";
+import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
+import { CharacterSheet } from "./base-character-sheet.mjs";
 
 export class PartySheet extends AHActorSheet {
 
@@ -34,8 +36,9 @@ export class PartySheet extends AHActorSheet {
     primary: {
       tabs: [
         { id: "overview", label: "AH.SHEET.Tabs.Overview", icon: "ra ra-double-team" },
-        { id: "inventory", label: "AH.SHEET.Tabs.Inventory", icon: "ra ra-double-team" },
+        { id: "inventory", label: "AH.SHEET.Tabs.Inventory", icon: "ra ra-ammo-bag" },
         { id: "codex", label: "AH.SHEET.Tabs.Codex", icon: "ra ra-book" },
+        { id: "settings", label: "AH.SHEET.Tabs.Settings", icon: "ra ra-candle" },
       ],
       initial: "overview",
     },
@@ -62,6 +65,9 @@ export class PartySheet extends AHActorSheet {
     codex: {
       template: systemTemplatePath("sheets/actor/party/party-codex"),
     },
+    settings: {
+      template: systemTemplatePath("sheets/actor/party/party-settings"),
+    },
   };
 
   #codexBrowser;
@@ -78,7 +84,7 @@ export class PartySheet extends AHActorSheet {
   }
 
   /**
-   * @returns {PartyData}
+   * @returns {PartyDataModel}
    */
   get system() {
     return this.actor.system;
@@ -117,6 +123,8 @@ export class PartySheet extends AHActorSheet {
     return context;
   }
 
+  #equipmentTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Equipment", actions: AHActorSheet.getCompendiumTableActions("equipment") });
+
   /** @inheritdoc */
   async _preparePartContext(partId, ctx, options) {
     const context = await super._preparePartContext(partId, ctx, options);
@@ -132,6 +140,13 @@ export class PartySheet extends AHActorSheet {
         context.overview = await renderTemplate(`sheets/actor/party/party-overview-${this.theme}`, context);
         break;
       case "character":
+        break;
+
+      case "inventory": {
+        context.tables = [
+          await this.#equipmentTableRenderer.render(this.actor.getItemsByType("weapon", "armor", "accessory", "consumable")),
+        ];
+      }
         break;
       case "codex": {
         await this.codexBrowser.prepareContext(context);
@@ -189,7 +204,7 @@ export class PartySheet extends AHActorSheet {
    * @override
    */
   async _onDropActor(event, actor) {
-    if (actor.type === "character") {
+    if (actor.type === "hero") {
       ui.notifications.info(`Dropped ${actor.name}`);
       await this.system.addCharacter(actor);
     }

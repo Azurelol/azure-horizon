@@ -3,6 +3,12 @@
   height: 100%;
   padding: 0;
 
+  &.window-content {
+    .tab {
+      background: none;
+    }
+  }
+
   section {
     height: 100%;
   }
