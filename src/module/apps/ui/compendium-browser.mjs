@@ -25,8 +25,8 @@ export default class CompendiumBrowser extends AHApplication {
     window: {
       title: "AH.APPLICATION.CompendiumBrowser",
       icon: "fas fa-book",
-      contentClasses: [""],
       resizable: true,
+      contentClasses: ["ah-application__browser"],
       controls: [
         {
           action: "refreshIndex",
@@ -123,8 +123,8 @@ export default class CompendiumBrowser extends AHApplication {
         { id: "classes", label: "AH.COMPENDIUM.classes", icon: "ra ra-player" },
         { id: "equipment", label: "AH.COMPENDIUM.equipment", icon: "ra ra-anvil" },
         { id: "spells", label: "AH.COMPENDIUM.spells", icon: "ra ra-fairy-wand" },
-        { id: "adversaries", label: "AH.COMPENDIUM.adversaries", icon: "ra ra-monster-skull" },
         { id: "assembly", label: "AH.COMPENDIUM.assembly", icon: "ra ra-bird-claw" },
+        { id: "adversaries", label: "AH.COMPENDIUM.adversaries", icon: "ra ra-monster-skull" },
         { id: "effects", label: "AH.COMPENDIUM.effects", icon: "ra ra-droplet-splash" },
       ],
       initial: "classes",
@@ -377,7 +377,7 @@ export default class CompendiumBrowser extends AHApplication {
   async onRenderTables(tables, filters) {
     let result = [];
 
-    if (filters && Object.keys(filters).length > 0) {
+    if (filters && (Object.keys(filters).length > 0)) {
       if (this.#configureFilters) {
         this.#configureFilters(filters);
         this.#configureFilters = undefined;
@@ -387,7 +387,7 @@ export default class CompendiumBrowser extends AHApplication {
     this.filter.setCategories(filters);
 
     for (const trd of tables) {
-      const html = await trd.renderer.renderTable(trd.entries, {
+      const html = await trd.renderer.render(trd.entries, {
         hideIfEmpty: false,
         isVisible: (item) => {
           return this.filter.filter(item);
@@ -493,7 +493,7 @@ export default class CompendiumBrowser extends AHApplication {
   };
 
   // Heroes
-  #classTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Class", preview: true });
+  #classTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Class.long", preview: true });
   #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature", preview: true });
   #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill", preview: true });
   #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell", preview: true });
@@ -620,7 +620,7 @@ export default class CompendiumBrowser extends AHApplication {
 
       case "equipment":
         {
-          const equipment = await this.index.getEquipment();
+          const equipment = await this.index.getEquipmenEntries();
           await this.onRenderTables(
             [
               {

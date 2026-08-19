@@ -618,6 +618,7 @@
     },
     "COMMON": {
       "Document": "Document",
+      "Compendium": "Compendium",
       "Damage": "Damage",
       "Actor": "Actor",
       "Item": "Item",

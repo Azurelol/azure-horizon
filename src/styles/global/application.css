@@ -130,6 +130,20 @@
   }
 }
 
+.ah-application__browser {
+  display: grid;
+  height: 100%;
+  grid-template-areas:
+		'tabs tabs'
+		'sidebar content';
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 240px 1fr;
+
+  .sheet-tabs.nav{
+    grid-area: tabs;
+  }
+}
+
 .ah-application__sidebar {
   padding: 0.75rem;
   border-right: 1px solid var(--color-border-light-primary);

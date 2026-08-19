@@ -14,6 +14,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   tagPicker: systemTemplatePath("components/tag-picker"),
   documentAnchor: systemTemplatePath("components/document-anchor"),
   documentCarousel: systemTemplatePath("components/document-carousel"),
+  tabs: systemTemplatePath("components/tabs"),
 
   traitsFieldSet: systemTemplatePath("components/traits-fieldset"),
 
