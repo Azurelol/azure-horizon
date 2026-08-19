@@ -31,6 +31,10 @@
   min-width: 0;
   padding: var(--ah-padding-input);
 
+  &.disabled {
+    opacity: 0.75;
+  }
+
   &.--border {
     background: rgba(0, 0, 0, 0.05);
     border: 1px solid var(--ah-color-border-input);
@@ -72,8 +76,6 @@
     margin-top: 1px;
   }
 }
-
-
 
 .ah-badge {
   display: flex;

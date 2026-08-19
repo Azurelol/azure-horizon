@@ -37,14 +37,14 @@ async function transformEntry(entry) {
   if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
 
   for (const jep of entry.pages) {
-    const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
+    const docsPath = path.join("src", "docs", jep.flags["azure-horizon"].wikiPath);
     const mdSource = await fs.readFile(docsPath, {
       encoding: "utf8",
     });
 
     // re-route wiki image links to in-game asset links
     const htmlContent = converter.makeHtml(
-      mdSource.replaceAll("https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs", "systems/draw-steel/assets/docs"),
+      mdSource.replaceAll("https://github.com/Azurelol/azure-horizon/blob/develop/assets/docs", "systems/azure-horizon/assets/docs"),
     );
     jep.text.markdown = mdSource;
     jep.text.content = htmlContent;
