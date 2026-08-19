@@ -18,7 +18,7 @@
   border: 0.063rem solid var(--ah-tag-border);
   text-shadow: var(--ah-text-shadow);
 
-  font-family: var(--ah-font-tag);
+  font-family: var(--ah-font-family-tag), serif;
   font-variant: small-caps;
   font-size: var(--ah-tag-font-size);
   font-weight: var(--ah-tag-font-weight);

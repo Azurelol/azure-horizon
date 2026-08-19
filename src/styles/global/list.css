@@ -24,7 +24,6 @@
     .acc-list__container__header__title {
       padding: 4px;
       font-size: var(--ah-font-size-title);
-      font-family: Segoe UI serif;
       font-weight: bold;
     }
   }
@@ -152,7 +151,6 @@ ol.acc-list li {
       justify-content: space-between;
 
       .ah-list__entry__name {
-        font-family: 'CreditValleybold';
         font-size: xx-large;
         font-weight: 700;
       }
@@ -186,7 +184,6 @@ ol.acc-list li {
       width: 100%;
 
       .ah-list__entry__name {
-        font-family: 'CreditValleybold';
         font-size: 20px;
         font-weight: 700;
         text-wrap: nowrap;

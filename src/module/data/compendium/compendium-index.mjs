@@ -121,6 +121,8 @@ export default class CompendiumIndex {
     damagePrimaryAmount: "system.damage.primary.amount",
     damageSecondaryType: "system.damage.secondary.type",
     damageSecondaryAmount: "system.damage.secondary.amount",
+    costAmount: "system.cost.amount",
+    traits: "system.traits",
   });
 
   /**

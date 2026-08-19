@@ -44,7 +44,7 @@
             </td>
             <td>
               {{#unless aff.preset}}
-                {{ahStringField path=(ahConcat 'system.affinities.' key '.type') value=aff.preset options=(ahFormOptions 'modifier.type' format='short') }}
+                {{ahStringField path=(ahConcat 'system.affinities.' key '.type') value=aff.preset options=(ahFormOptions 'modifier.type' format='long') }}
               {{/unless}}
             </td>
             <td>

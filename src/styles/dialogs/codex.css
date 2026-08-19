@@ -59,7 +59,7 @@
   .name {
     font-size: 32px;
     text-align: center;
-    font-family: 'CreditValleybold', serif;
+    font-family: var(--ah-list-entry-name-font-family), serif;
     margin: 1rem;
     --shadow-color: var(--ah-box-shadow-fieldset-header);
     text-shadow: 0 0 2px var(--ah-color-text-shadow-inline);

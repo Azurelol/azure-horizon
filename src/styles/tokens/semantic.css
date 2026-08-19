@@ -70,10 +70,11 @@
   --ah-font-size-lg: var(--ah-primitive-size-text-lg);
   --ah-font-size-xl: var(--ah-primitive-size-text-xl);
   /* Fonts */
-  --ah-font-title: var(--ah-primitive-font-title);
-  --ah-font-heading: var(--ah-primitive-font-heading);
-  --ah-font-body: var(--ah-primitive-font-body);
-  --ah-font-tag: 500 0.6875rem/1 "Inter", system-ui, sans-serif;
+  --ah-font-family-application: "Silver";
+  --ah-font-family-title: Silver;
+  --ah-font-family-data: Signika;
+  --ah-font-family-tag: 500 0.6875rem/1 "Inter";
+
   /* Filters */
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
 }

@@ -84,8 +84,6 @@
     }
 
     .overview {
-      font-family: 'Rajdhani', sans-serif;
-
       .bars {
         padding-left: 34px;
       }
@@ -221,7 +219,6 @@
           min-width: 100px;
           height: 100px;
           padding: 8px;
-          font-family: 'Rajdhani', sans-serif;
           font-size: 0.65rem;
           font-weight: 600;
           letter-spacing: 0.12em;

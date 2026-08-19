@@ -1,21 +1,20 @@
 .ah-application {
 
   table th, table td {
-    padding: 0;
   }
 
   table tbody tr {
-    background: var(--ah-background-table-row);
+    background: var(--ah-table-background-row);
   }
 
   table tbody tr:nth-child(even) {
-    background: var(--ah-background-table-row-alt);
+    background: var(--ah-table-background-row-alt);
   }
 
-  table tbody th,
-  table tbody td {
-    padding: 8px 12px;
-  }
+  /*table tbody th,*/
+  /*table tbody td {*/
+  /*  padding: 8px 12px;*/
+  /*}*/
 
   /*Bring back?*/
   /*background: transparent;*/

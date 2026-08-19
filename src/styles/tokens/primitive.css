@@ -65,10 +65,6 @@
   --ah-primitive-color-crimson-800: #5c2020;
   --ah-primitive-color-amber-900: #2d1a08;
 
-  /* font family */
-  --ah-primitive-font-title: 'Alfa Slab One', sans-serif;
-  --ah-primitive-font-heading: 'Cinzel', serif;
-  --ah-primitive-font-body: 'EB Garamond', serif;
 
   /* font size */
   --ah-primitive-size-text-xs: 0.7rem;

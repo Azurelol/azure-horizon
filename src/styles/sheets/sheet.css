@@ -9,14 +9,14 @@
   }
   .effects-list {
     padding: 0;
-    background: var(--ah-background-table);
+    background: var(--ah-table-background);
 
     .effect-list {
 
     }
 
     .effects-header {
-      background: var(--ah-background-table-header);
+      background: var(--ah-table-background-header);
     }
 
     .effect {
@@ -38,6 +38,7 @@
 }
 
 .ah-sheet__name {
+  font-family: var(--ah-font-family-title);
   font-size: var(--ah-font-size-application-name);
   color: var(--ah-content-primary);
   background-color: transparent;
