@@ -9,7 +9,7 @@ export class EffectTableRenderer extends DocumentTableRenderer {
     columns.push(
       TableColumns.documentName({
         header: "AH.COMMON.Name",
-        perform: true,
+        perform: false,
         type: "effect",
       }));
     columns.push(TableColumns.actions(

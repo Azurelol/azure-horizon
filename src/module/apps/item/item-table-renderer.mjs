@@ -31,7 +31,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
     columns.push(
       TableColumns.documentName({
         header: "AH.COMMON.Name",
-        perform: true,
+        perform: !this.config.preview,
         type: "item",
       }));
     columns.push(...this._getItemProperties());

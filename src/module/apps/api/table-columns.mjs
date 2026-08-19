@@ -33,6 +33,7 @@ function documentName(options) {
     headerAlignment: "start",
     headerSpan: options.headerSpan,
     cssClass: "ah-table__column__primary",
+    preview: true,
     renderHeader: options.header instanceof Function ? options.header : () => StringUtils.localize(options.header || "AH.COMMON.Name"),
     renderCell: async(entry) => {
       return renderTemplate(TEMPLATES.documentName, {
@@ -69,6 +70,7 @@ function textColumn(options = {}) {
     hideHeader: !options.header,
     renderHeader: () => StringUtils.localize(options.header),
     headerAlignment: options.alignment,
+    preview: true,
 
     renderCell: async (entry) => {
       let text = "" + (await options.getText(entry));
@@ -98,6 +100,7 @@ function check(options = {}) {
     hideHeader: !options.header,
     renderHeader: () => StringUtils.localize(options.header ?? "AH.COMMON.Check"),
     headerAlignment: options.alignment,
+    preview: true,
 
     renderCell: async (entry) => {
       /** @type CheckDataModel **/
@@ -123,6 +126,7 @@ function itemProperties(options = {}) {
     hideHeader: !options.header,
     renderHeader: () => StringUtils.localize(options.header ?? "AH.FIELD.Properties"),
     headerAlignment: options.alignment,
+    preview: true,
 
     renderCell: async (entry) => {
       /** @type ActiveFeatureDataModel **/
@@ -145,6 +149,7 @@ function itemCost(options = {}) {
     hideHeader: !options.header,
     renderHeader: () => StringUtils.localize(options.header ?? "AH.FIELD.Cost"),
     headerAlignment: options.alignment,
+    preview: true,
 
     renderCell: async (entry) => {
       /** @type ActiveFeatureDataModel **/
@@ -167,6 +172,7 @@ function damage(options = {}) {
     hideHeader: !options.header,
     renderHeader: () => StringUtils.localize(options.header ?? "AH.COMMON.Damage"),
     headerAlignment: options.alignment,
+    preview: true,
 
     renderCell: async (entry) => {
       /** @type DamageDataModel **/
@@ -192,6 +198,7 @@ function resource(options = {}) {
     hideHeader: !options.header,
     renderHeader: () => StringUtils.localize(options.header ?? "AH.COMMON.Damage"),
     headerAlignment: options.alignment,
+    preview: true,
 
     renderCell: async (entry) => {
       /** @type ResourceDataModel **/

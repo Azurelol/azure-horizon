@@ -7,6 +7,7 @@ import { HTMLUtils } from "../../utils/_module.mjs";
 import { ActionTableRenderer, ArmorTableRenderer, AttackTableRenderer, WeaponTableRenderer } from "../item/_module.mjs";
 import { ActorTableRenderer, AdversaryTableRenderer } from "../actor/_module.mjs";
 import { EffectTableRenderer } from "../effect/_module.mjs";
+import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 
 /**
  * @typedef {"classes"|"skills"|"equipment"|"spells"|"adversaries"|"assembly"|"followers"|"effects"} CompendiumBrowserTab
@@ -40,6 +41,7 @@ export default class CompendiumBrowser extends AHApplication {
     position: { width: 800, height: "800" },
     actions: {
       refreshIndex: this.refreshIndex,
+      performAction: this.#performAction,
     },
   };
 
@@ -75,6 +77,28 @@ export default class CompendiumBrowser extends AHApplication {
     if (CompendiumBrowser.instance) {
       CompendiumBrowser.instance.filter.clear();
       CompendiumBrowser.instance.render(true);
+    }
+  }
+
+  /**
+   * @this
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #performAction(event, target) {
+    event.preventDefault();
+
+    /** @type AH_SheetActionData **/
+    const { type, id } = target.dataset;
+    const modifiers = HTMLUtils.getKeyboardModifiers(event);
+
+    switch (type) {
+      case "item": {
+        const item = await this.actor.items.get(id);
+        await item.perform(modifiers);
+      }
+        break;
     }
   }
 
@@ -502,7 +526,7 @@ export default class CompendiumBrowser extends AHApplication {
   #accessoryTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Accessory", preview: true });
   #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable", preview: true });
   // Adversaries
-  #attackTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Attack.plural", preview: true });
+  #attackTableRenderer = new AttackTableRenderer({ title: "AH.ADVERSARY.Attack.plural", preview: true });
   #abilityTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural", preview: true });
   #adversaryTableRenderer = new AdversaryTableRenderer({ title: "AH.COMPENDIUM.adversaries", preview: true });
   // Followers
@@ -608,7 +632,7 @@ export default class CompendiumBrowser extends AHApplication {
                 ],
               },
               attackDamage: {
-                label: "AH.FIELD.DamageType",
+                label: "AH.FIELD.DamageType.long",
                 propertyPath: CompendiumIndex.itemFields.damageType,
                 options: getFormSelectOptions(AH.damageTypes),
               },

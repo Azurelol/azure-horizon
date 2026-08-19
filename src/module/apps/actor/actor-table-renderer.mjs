@@ -17,7 +17,7 @@ export class ActorTableRenderer extends DocumentTableRenderer {
     columns.push(
       TableColumns.documentName({
         header: "AH.COMMON.Name",
-        perform: true,
+        perform: false,
         type: "item",
       }));
     columns.push(...this._getActorProperties());
@@ -26,4 +26,8 @@ export class ActorTableRenderer extends DocumentTableRenderer {
 }
 
 export class AdversaryTableRenderer extends ActorTableRenderer {
+
+  _getActorProperties() {
+    return super._getActorProperties();
+  }
 }
