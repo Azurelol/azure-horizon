@@ -54,6 +54,7 @@
  */
 
 const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
+const { DragDrop } = foundry.applications.ux;
 
 /**
  * A stock form application meant for async behavior using templates.
@@ -79,15 +80,11 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
   };
 
   /* -------------------------------------------------- */
-
   /**
    * Stored form data.
    * @type {object|null}
    */
   #config = null;
-
-  /* -------------------------------------------------- */
-
   /**
    * Stored form data.
    * @type {object|null}
@@ -95,7 +92,6 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
   get config() {
     return this.#config;
   }
-
   /* -------------------------------------------------- */
 
   /**
@@ -113,6 +109,7 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
   }
 
   /* -------------------------------------------------- */
+  #dragDrop;
 
   /** @inheritdoc */
   async _onFirstRender(context, options) {
@@ -128,7 +125,96 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
       this.close();
     }, timeout);
 
+    this.#dragDrop = new DragDrop.implementation({
+      dragSelector: ".draggable",
+      dropSelector: ".window-content",
+      permissions: {
+        dragstart: this._canDragStart.bind(this),
+        drop: this._canDragDrop.bind(this),
+      },
+      callbacks: {
+        dragstart: this._onDragStart.bind(this),
+        dragover: this._onDragOver.bind(this),
+        drop: this._onDrop.bind(this),
+      },
+    });
+
     await super._onFirstRender(context, options);
+
+  }
+
+  /**
+   * Define whether a user is able to begin a dragstart workflow for a given drag selector.
+   * @param {string} selector       The candidate HTML selector for dragging
+   * @returns {boolean}             Can the current user drag this selector?
+   * @protected
+   */
+  _canDragStart(selector) {
+    return true;
+  }
+
+  /**
+   * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector.
+   * @param {string} selector       The candidate HTML selector for the drop target
+   * @returns {boolean}             Can the current user drop on this selector?
+   * @protected
+   */
+  _canDragDrop(selector) {
+    return this.isEditable;
+  }
+
+  /**
+   * An event that occurs when a drag workflow begins for a draggable Item or ActiveEffect on the sheet.
+   * @param {DragEvent} event       The initiating drag start event
+   * @returns {Promise<void>}
+   * @protected
+   */
+  _onDragStart(event) {
+    const target = event.currentTarget;
+    if ("link" in event.target.dataset) return;
+    let dragData;
+
+    // Owned Items
+    if (target.dataset.uuid) {
+      const item = fromUuidSync(target.dataset.uuid);
+      if (item) {
+        dragData = item.toDragData();
+      }
+    }
+
+    // Set data transfer
+    if (!dragData) return;
+    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+  }
+
+  /**
+   * An event that occurs when a drag workflow moves over a drop target.
+   * @param {DragEvent} event
+   * @protected
+   */
+  _onDragOver(event) {
+    event.preventDefault(); // required to allow dropping
+  }
+
+  // Handle the actual drop
+  async _onDrop(event) {
+    // eslint-disable-next-line no-undef
+    const data = TextEditor.implementation.getDragEventData(event);
+
+    // Dropped Documents
+    const documentClass = foundry.utils.getDocumentClass(data.type);
+    if (documentClass) {
+      const document = await documentClass.fromDropData(data);
+      await this._onDropDocument(event, document);
+    }
+  }
+
+  /* -------------------------------------------------- */
+  /** @inheritDoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    this.#dragDrop.bind(this.element);
+    console.info("_onRender: Assigning drag and drop");
   }
 
   /* -------------------------------------------------- */

@@ -3,6 +3,7 @@ import { renderTemplate, systemTemplatePath } from "../../constants.mjs";
 import { CodexBrowser } from "../ui/_module.mjs";
 import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
 import { CharacterSheet } from "./base-character-sheet.mjs";
+import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 
 export class PartySheet extends AHActorSheet {
 
@@ -167,12 +168,47 @@ export class PartySheet extends AHActorSheet {
   _attachPartListeners(partId, html, options) {
     super._attachPartListeners(partId, html, options);
     switch (partId) {
+      case "overview": {
+        this.setupCharacterContextMenu(html);
+        break;
+      }
+
       case "codex":
       {
         this.codexBrowser.attachListeners(html);
         break;
       }
     }
+  }
+
+  /**
+   * @description Sets up a context menu for characters in the overview
+   * @param html
+   */
+  setupCharacterContextMenu(html) {
+    // Don't provide this context menu to players
+    if (!game.user.isGM) {
+      return;
+    }
+
+    // Initialize the context menu options
+    let contextMenuOptions = [
+      {
+        name: StringUtils.localize("AH.COMMON.Delete"),
+        icon: "<i class=\"fas fa-trash\"></i>",
+        callback: (el) => {
+          const id = el.dataset.uuid;
+          const type = el.dataset.type;
+          switch (type) {
+            case "character":
+              this.party.removeCharacter(id);
+              break;
+          }
+        },
+      },
+    ];
+
+    FoundryUtils.contextMenu(html, ".character-option", contextMenuOptions, "contextmenu");
   }
 
   // TODO: Provide setting

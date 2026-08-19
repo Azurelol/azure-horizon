@@ -42,7 +42,8 @@
         "Effects": "Effects",
         "Assembly": "Assembly",
         "Advancement": "Advancement",
-        "Codex": "Codex"
+        "Codex": "Codex",
+        "Settings": "Settings"
       },
       "MESSAGE": {
         "NoDataAvailable": "No data is available.",

@@ -115,6 +115,21 @@ export default class AH_TableRenderer {
     if (!_config.id) {
       _config.id = foundry.utils.randomID();
     }
+
+    _config.dragDrop = (_config.dragDrop ?? []).map((dragDropConfig) => {
+      dragDropConfig.permissions ??= {};
+      for (let key in dragDropConfig.permissions) {
+        dragDropConfig.permissions[key] = dragDropConfig.permissions[key].bind(this);
+      }
+
+      dragDropConfig.callbacks ??= {};
+      for (let key in dragDropConfig.callbacks) {
+        dragDropConfig.callbacks[key] = dragDropConfig.callbacks[key].bind(this);
+      }
+
+      return new foundry.applications.ux.DragDrop.implementation(dragDropConfig);
+    });
+
     this.#config = foundry.utils.deepFreeze(_config);
   }
 

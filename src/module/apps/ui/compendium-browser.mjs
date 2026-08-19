@@ -333,6 +333,7 @@ export default class CompendiumBrowser extends AHApplication {
       case "effects":
         {
           context.tables = tabData.tables.map((t) => t.html);
+          console.info("_preparePartContext:  Assigning tables to context");
         }
         break;
     }
@@ -356,11 +357,6 @@ export default class CompendiumBrowser extends AHApplication {
    */
   get activeTabId() {
     return this.tabGroups.primary;
-  }
-
-  async _onFirstRender(context, options) {
-    await super._onRender(context, options);
-    await this.renderTables(this.activeTabId, true);
   }
 
   /**
@@ -563,6 +559,11 @@ export default class CompendiumBrowser extends AHApplication {
   #followerTableRenderer = new FollowerTableRenderer({ title: "AH.COMPENDIUM.followers", preview: true });
   // Effects
   #effectTableRenderer = new EffectTableRenderer({ title: "AH.COMPENDIUM.effects", preview: true });
+
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+    await this.renderTables(this.activeTabId, true);
+  }
 
   /**
    *
@@ -822,6 +823,7 @@ export default class CompendiumBrowser extends AHApplication {
       parts.push("sidebar");
     }
     this.render(false, { parts: parts });
+    console.info("renderTables:");
   }
 
 }
