@@ -274,6 +274,7 @@
 
   &.--transparent {
     background: transparent;
+    border: none;
     i, img {
       border: none;
     }
@@ -290,13 +291,10 @@
   i, img {
     width: 24px;
     height: 24px;
-
     color: var(--ah-content-action);
     text-shadow: 1px 1px var(--ah-text-shadow-control);
     font-variant: small-caps;
-    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.063rem;
     text-rendering: optimizeLegibility;
     -webkit-box-align: center;
 

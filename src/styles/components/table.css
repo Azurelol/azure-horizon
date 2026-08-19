@@ -13,6 +13,16 @@
   white-space: nowrap;
   background: var(--ah-background-table);
 
+  caption {
+    span {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+
   thead {
     border: none;
     background: var(--ah-background-table-header);

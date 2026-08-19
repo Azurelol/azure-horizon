@@ -1,6 +1,6 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
+import { CharacterSheet } from "./base-character-sheet.mjs";
 import {
   AccessoryTableRenderer, ActionTableRenderer,
   ArmorTableRenderer,
@@ -16,7 +16,7 @@ import Handlebars from "../../helpers/handlebars.mjs";
  * @property {HeroDataModel} system
  * @inheritDoc
  */
-export class HeroSheet extends AHBaseCharacterSheet {
+export class HeroSheet extends CharacterSheet {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
@@ -62,7 +62,7 @@ export class HeroSheet extends AHBaseCharacterSheet {
   #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill" });
   #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature" });
   #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long" });
-  #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon" });
+  #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", actions: CharacterSheet.getCompendiumTableActions("equipment", "weapon") });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor" });
   #accessoryTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Accessory" });
   #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable" });
@@ -95,7 +95,9 @@ export class HeroSheet extends AHBaseCharacterSheet {
       }
       case "equipment":
         context.tables = [
-          await this.#weaponTableRenderer.render(this.actor.getItemsByType("weapon")),
+          await this.#weaponTableRenderer.render(this.actor.getItemsByType("weapon"), {
+
+          }),
           await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
           await this.#accessoryTableRenderer.render(this.actor.getItemsByType("accessory")),
           await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),

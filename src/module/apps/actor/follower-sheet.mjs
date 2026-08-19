@@ -1,6 +1,6 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
+import { CharacterSheet } from "./base-character-sheet.mjs";
 import {
   AccessoryTableRenderer, ActionTableRenderer,
   ArmorTableRenderer,

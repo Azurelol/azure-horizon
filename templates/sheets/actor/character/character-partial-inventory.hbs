@@ -13,13 +13,11 @@
       {{/if}}
     </a>
 
-    {{#unless (eq equipment.mainHand.system.handedness 'two')}}
-      <a class="ah-character__equipment__slot --offHand" data-tooltip="{{equipment.offHand.name}}" data-action="swapEquipment" data-slot="offHand">
-        {{#if equipment.offHand}}
-          <img src="{{equipment.offHand.img}}" alt="{{equipment.offHand.name}}">
-        {{/if}}
-      </a>
-    {{/unless}}
+    <a class="ah-character__equipment__slot --offHand" data-tooltip="{{equipment.offHand.name}}" data-action="swapEquipment" data-slot="offHand">
+      {{#if equipment.offHand}}
+        <img src="{{equipment.offHand.img}}" alt="{{equipment.offHand.name}}">
+      {{/if}}
+    </a>
 
     <div class="ah-character__equipment__accessories">
       <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory1.name}}" data-action="swapEquipment" data-slot="accessory1">

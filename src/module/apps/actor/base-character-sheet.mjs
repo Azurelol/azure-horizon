@@ -1,7 +1,8 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import Handlebars from "../../helpers/handlebars.mjs";
-import { ActionHandler } from "../ui/_module.mjs";
+import { ActionHandler, CompendiumBrowser } from "../ui/_module.mjs";
+import AH from "../../config.mjs";
+import { ChatAction } from "../../helpers/_module.mjs";
 
 /**
  * @extends AHActorSheet
@@ -9,7 +10,7 @@ import { ActionHandler } from "../ui/_module.mjs";
  * @property {CharacterDataModel} system
  * @inheritDoc
  */
-export class AHBaseCharacterSheet extends AHActorSheet {
+export class CharacterSheet extends AHActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["ah-character"],
@@ -19,6 +20,7 @@ export class AHBaseCharacterSheet extends AHActorSheet {
     },
     actions: {
       rest: this.#rest,
+      browseCompendium: this.#browseCompendium,
     },
   };
 
@@ -100,7 +102,7 @@ export class AHBaseCharacterSheet extends AHActorSheet {
 
   /* -------------------------------------------------- */
   /**
-   * @this AHBaseCharacterSheet
+   * @this CharacterSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
@@ -110,4 +112,33 @@ export class AHBaseCharacterSheet extends AHActorSheet {
     return this.actor.rest(type);
   }
 
+  /**
+   * @this CharacterSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #browseCompendium(event, target) {
+    const { tab, type } = target.dataset;
+    return CompendiumBrowser.open(tab, {
+      type: type,
+    });
+  }
+
+  /**
+   * @param tab
+   * @param type
+   * @return {ChatAction[]}
+   */
+  static getCompendiumTableActions(tab, type) {
+    let actions = [];
+    const browse = new ChatAction("browseCompendium", AH.icons.compendium,
+      "AH.APPLICATION.MESSAGE.BrowseCompendium");
+    browse.withDataset({
+      tab: tab,
+      type: type,
+    });
+    actions.push(browse);
+    return actions;
+  }
 }

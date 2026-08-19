@@ -6,10 +6,18 @@ import { renderTemplate } from "../../constants.mjs";
  */
 
 /**
+ * @typedef AH_TableAction
+ * @property label
+ * @property icon
+ * @property action
+ */
+
+/**
  * @typedef AH_TableConfig
  * @template {Object} T
  * @property {String} id An unique identifier to the table.
- * @property {String} title Optional title for the table.
+ * @property {String} title Optional caption for the table.
+ * @property {ChatAction[]} actions Optional action buttons to display for the table.
  * @property {DragDropConfiguration[]} [dragDrop]
  * @property {String} tableClass
  * @property {String} rowClass
@@ -101,13 +109,13 @@ export default class AH_TableRenderer {
       cls = Object.getPrototypeOf(cls);
     }
 
-    const config = {};
-    configurations.forEach((configuration) => foundry.utils.mergeObject(config, foundry.utils.deepClone(configuration), { performDeletions: true }));
-    Object.assign(config, overrides);
-    if (!config.id) {
-      config.id = foundry.utils.randomID();
+    const _config = {};
+    configurations.forEach((configuration) => foundry.utils.mergeObject(_config, foundry.utils.deepClone(configuration), { performDeletions: true }));
+    Object.assign(_config, overrides);
+    if (!_config.id) {
+      _config.id = foundry.utils.randomID();
     }
-    this.#config = foundry.utils.deepFreeze(config);
+    this.#config = foundry.utils.deepFreeze(_config);
   }
 
   /**
@@ -164,6 +172,10 @@ export default class AH_TableRenderer {
       }
       return true;
     });
+
+    if (config.hideIfEmpty) {
+      return "";
+    }
 
     /**
      * @type {AH_TableColumnHeader[]}

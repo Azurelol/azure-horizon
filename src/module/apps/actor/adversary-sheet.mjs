@@ -1,7 +1,7 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import { ActionTableRenderer, AttackTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
-import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
+import { CharacterSheet } from "./base-character-sheet.mjs";
 
 /**
  * @extends AHActorSheet
@@ -9,7 +9,7 @@ import { AHBaseCharacterSheet } from "./base-character-sheet.mjs";
  * @property {AdversaryDataModel} system
  * @inheritDoc
  */
-export class AdversarySheet extends AHBaseCharacterSheet {
+export class AdversarySheet extends CharacterSheet {
 
   /** @inheritdoc */
   static TABS = {

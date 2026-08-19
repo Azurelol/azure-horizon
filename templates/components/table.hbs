@@ -1,8 +1,14 @@
-
 <table id="{{config.id}}" class="ah-table {{config.cssClass}}" data-table-id="{{config.id}}">
   {{#if config.title}}
     <caption class="ah-table__caption">
-      {{localize config.title}}
+      <span>
+        {{localize config.title}}
+        {{#if config.actions}}
+          {{#each config.actions}}
+            {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--transparent"}}
+          {{/each}}
+        {{/if}}
+      </span>
     </caption>
   {{/if}}
   <thead>

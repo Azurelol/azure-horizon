@@ -16,7 +16,8 @@
     "APPLICATION": {
       "CompendiumBrowser": "Compendium Browser",
       "MESSAGE": {
-        "IndexRefresh": "The compendium index has been refreshed."
+        "IndexRefresh": "The compendium index has been refreshed.",
+        "BrowseCompendium": "Browse Compendium"
       }
     },
     "SHEET": {
