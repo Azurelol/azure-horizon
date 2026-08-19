@@ -77,7 +77,9 @@
   --ah-modifier-equipment-color: orange;
 
   /* Ranks */
+  --ah-elite-background: var(--ah-primitive-color-gold-400);
   --ah-elite-border: var(--ah-primitive-color-gold-600);
+  --ah-champion-background: var(--ah-primitive-color-burgundy);
   --ah-champion-border: var(--ah-primitive-color-burgundy-dark);
 
   /* Character Types */

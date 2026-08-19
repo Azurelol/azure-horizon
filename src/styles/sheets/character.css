@@ -82,6 +82,23 @@
     align-items: center;
   }
 
+  .ah-character__title{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+
+    &.elite {
+      color: var(--ah-elite-background);
+    }
+
+    &.champion {
+      color: var(--ah-champion-background);
+    }
+  }
+
   .ah-character__equipment {
     display: grid;
     grid-template-areas:

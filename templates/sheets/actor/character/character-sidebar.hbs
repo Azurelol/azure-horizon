@@ -10,11 +10,19 @@
       {{/if}}
       data-tooltip="{{actor.name}}"
       height="100" width="100">
+
+    {{#if (eq actorType 'adversary') }}
+      <div class="ah-character__title {{system.profile.rank}}">
+        <span>{{localize (ahLocaleKey 'rank' system.profile.rank)}}</span>
+        <span>{{localize (ahLocaleKey 'role' system.profile.role)}}</span>
+        <div class="ah-tag__group --center">
+          {{#each system.profile.traits as |trait|}}
+            <span class="ah-tag --transparent">{{ahCapitalize trait}}</span>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
   </div>
-
-  {{#if (eq actorType 'adversary') }}
-
-  {{/if}}
 
   <div class="ah-character__sidebar__section">
     {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}

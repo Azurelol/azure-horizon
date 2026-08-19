@@ -108,7 +108,7 @@
   --ah-icon-color-hover: var(--ah-content-icon-hover);
 
   /* Tags/Badges  */
-  --ah-tag-font-size: 12px;
+  --ah-tag-font-size: 11px;
   --ah-tag-font-weight: 600;
   --ah-tag-letter-spacing: 0.063rem;
   --ah-tag-color: var(--ah-content-primary);

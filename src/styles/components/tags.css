@@ -7,6 +7,10 @@
   flex-wrap: wrap;
   flex-direction: row;
 
+  &.--center {
+    justify-content: center;
+  }
+
   &.--reverse {
     flex-direction: row-reverse;
   }
@@ -32,6 +36,11 @@
   display: inline-flex;
   margin: 0.0625rem 0;
   line-height: 20px;
+
+  &.--transparent {
+    background: transparent;
+    border: none;
+  }
 
   & i {
     color: var(--ah-icon-color);
