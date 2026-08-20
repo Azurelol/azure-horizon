@@ -3,7 +3,7 @@
   "name": "Wyrm Fang",
   "type": "skill",
   "_id": "FEeq6919mGOEGWU0",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/strike-polearm-light-orange.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

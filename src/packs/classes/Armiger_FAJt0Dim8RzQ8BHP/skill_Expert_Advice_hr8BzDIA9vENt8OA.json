@@ -3,7 +3,7 @@
   "name": "Expert Advice",
   "type": "skill",
   "_id": "hr8BzDIA9vENt8OA",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/social/thumbsup-approval-like.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

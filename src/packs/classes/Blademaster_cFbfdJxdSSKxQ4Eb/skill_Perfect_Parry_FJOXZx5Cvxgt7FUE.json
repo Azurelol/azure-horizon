@@ -3,7 +3,7 @@
   "name": "Perfect Parry",
   "type": "skill",
   "_id": "FJOXZx5Cvxgt7FUE",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/swords-parry-block-yellow.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

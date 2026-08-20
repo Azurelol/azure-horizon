@@ -1,14 +1,14 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Wyvern Tail",
-  "type": "skill",
-  "_id": "pcGS42dO1xFpFiR8",
-  "img": "icons/skills/melee/spear-tips-three-green.webp",
+  "folder": "XjyNiQOswJqOmONv",
+  "name": "Iron Hand",
+  "type": "classFeature",
+  "_id": "xLnuWrW8vZYn39M7",
+  "img": "icons/commodities/metal/plating-metal-steel.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-wyvern-tail",
-    "description": "<p>While under the effect of Coiled Tail, you can perform a <em>cleaving</em> melee attack.</p>",
+    "slug": "brawler-iron-hand",
+    "description": "",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -20,7 +20,7 @@
       "schemaVersion": 1,
       "range": "melee",
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": []
     },
     "damage": {
@@ -60,17 +60,17 @@
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 1
+    "feature": {
+      "_id": "mJCv2WItVVAn1LaQ",
+      "type": "emptyClassFeature"
     },
+    "class": "brawler",
+    "skill": "brawler-martial-arts",
     "usage": {
-      "schemaVersion": 1,
       "check": true,
       "damage": true,
-      "power": "moderate"
-    },
-    "class": "lancer-dragon-tail"
+      "power": "low"
+    }
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +82,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953748103,
+    "createdTime": 1787067499387,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!pcGS42dO1xFpFiR8"
+  "_key": "!items!xLnuWrW8vZYn39M7"
 }

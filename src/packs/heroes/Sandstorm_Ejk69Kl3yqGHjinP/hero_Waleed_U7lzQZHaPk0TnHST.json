@@ -1,6 +1,6 @@
 {
   "folder": "Ejk69Kl3yqGHjinP",
-  "name": "Ballet",
+  "name": "Waleed",
   "type": "hero",
   "_id": "U7lzQZHaPk0TnHST",
   "img": "icons/svg/mystery-man.svg",
@@ -333,7 +333,12 @@
       }
     },
     "profile": {
-      "schemaVersion": 1
+      "schemaVersion": 1,
+      "identity": "",
+      "theme": "",
+      "origin": "",
+      "anchor": "",
+      "summary": ""
     }
   },
   "prototypeToken": {

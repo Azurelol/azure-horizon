@@ -1,14 +1,14 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Wyvern Tail",
+  "folder": "FAJt0Dim8RzQ8BHP",
+  "name": "Sunder",
   "type": "skill",
-  "_id": "pcGS42dO1xFpFiR8",
-  "img": "icons/skills/melee/spear-tips-three-green.webp",
+  "_id": "qyfX45ZP377wC5dz",
+  "img": "icons/skills/melee/shield-damaged-broken-blue.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-wyvern-tail",
-    "description": "<p>While under the effect of Coiled Tail, you can perform a <em>cleaving</em> melee attack.</p>",
+    "slug": "armiger-sunder",
+    "description": "<p>You perform an attack that lowers the target's defenses against physical attacks.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -20,8 +20,10 @@
       "schemaVersion": 1,
       "range": "melee",
       "type": "action",
-      "points": 1,
-      "traits": []
+      "points": 2,
+      "traits": [
+        "cooldown"
+      ]
     },
     "damage": {
       "schemaVersion": 1,
@@ -52,9 +54,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "selector": "",
-      "entries": [],
+      "entries": [
+        "armiger-effect-sunder"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -68,9 +72,9 @@
       "schemaVersion": 1,
       "check": true,
       "damage": true,
-      "power": "moderate"
+      "power": "low"
     },
-    "class": "lancer-dragon-tail"
+    "class": "armiger"
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +86,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953748103,
+    "createdTime": 1787069825621,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!pcGS42dO1xFpFiR8"
+  "_key": "!items!qyfX45ZP377wC5dz"
 }

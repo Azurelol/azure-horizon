@@ -24,7 +24,62 @@
       }
     },
     "affinities": {
-      "schemaVersion": 1
+      "schemaVersion": 1,
+      "physical": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "slashing": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "piercing": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "bludgeoning": {
+        "preset": "",
+        "type": "additive",
+        "amount": 5
+      },
+      "elemental": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "fire": {
+        "preset": "",
+        "type": "additive",
+        "amount": 5
+      },
+      "cold": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "electric": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "spiritual": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "light": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "dark": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      }
     },
     "level": 5,
     "parameters": {

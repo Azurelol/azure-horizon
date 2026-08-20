@@ -3,7 +3,7 @@
   "name": "Dragon Fire",
   "type": "skill",
   "_id": "0MH3tWKfTTusjHDT",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/projectile-wave-arrow.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

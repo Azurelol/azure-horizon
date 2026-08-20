@@ -1,32 +1,30 @@
 {
-  "folder": "3sQ3f1YlSwrp6Jhj",
-  "name": "Leather Glove",
-  "type": "weapon",
-  "_id": "szOOL3tYm9lePH1i",
-  "img": "systems/azure-horizon/assets/icons/equipment/weapons/leather_glove.png",
+  "folder": "VhlcaMe6gctxzSqF",
+  "name": "Water Spout",
+  "type": "attack",
+  "_id": "LKpVr2iDYaS9qQPJ",
+  "img": "icons/magic/water/orb-water-bubbles.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-leather-glove",
+    "slug": "attack-water-spout",
     "description": "",
     "check": {
       "schemaVersion": 1,
       "enabled": true,
-      "primary": "dex",
-      "secondary": "mig",
-      "defense": "def",
+      "primary": "ins",
+      "secondary": "wlp",
+      "defense": "mdef",
       "bonus": ""
     },
-    "handedness": "two",
-    "traits": [
-      "brawl"
-    ],
+    "range": "ranged",
+    "traits": [],
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
         "amount": "",
-        "type": "bludgeoning"
+        "type": "cold"
       },
       "secondary": {
         "amount": "",
@@ -46,12 +44,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786645740832,
+    "createdTime": 1787195246623,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!szOOL3tYm9lePH1i"
+  "_key": "!items!LKpVr2iDYaS9qQPJ"
 }

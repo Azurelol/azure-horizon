@@ -1,0 +1,41 @@
+{
+  "folder": "DIcQgSswuHz1Mh9b",
+  "name": "Master",
+  "type": "class",
+  "_id": "Q9ApcMaSQYXHpwUz",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "master",
+    "description": "",
+    "traits": [
+      "support",
+      "companion"
+    ],
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": false,
+      "mp": true,
+      "ip": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787062362632,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Q9ApcMaSQYXHpwUz"
+}

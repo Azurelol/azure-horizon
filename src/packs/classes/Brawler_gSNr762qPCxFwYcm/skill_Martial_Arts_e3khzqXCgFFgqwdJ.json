@@ -1,14 +1,14 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Wyvern Tail",
+  "folder": "gSNr762qPCxFwYcm",
+  "name": "Martial Arts",
   "type": "skill",
-  "_id": "pcGS42dO1xFpFiR8",
-  "img": "icons/skills/melee/spear-tips-three-green.webp",
+  "_id": "e3khzqXCgFFgqwdJ",
+  "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-wyvern-tail",
-    "description": "<p>While under the effect of Coiled Tail, you can perform a <em>cleaving</em> melee attack.</p>",
+    "slug": "brawler-martial-arts",
+    "description": "<p>You acquire an additional martial arts technique for each point invested in this skill.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -18,8 +18,8 @@
     },
     "action": {
       "schemaVersion": 1,
-      "range": "melee",
-      "type": "action",
+      "range": "",
+      "type": "",
       "points": 1,
       "traits": []
     },
@@ -62,15 +62,15 @@
     },
     "level": {
       "current": 1,
-      "max": 1
+      "max": 5
     },
     "usage": {
       "schemaVersion": 1,
-      "check": true,
-      "damage": true,
-      "power": "moderate"
+      "check": false,
+      "damage": false,
+      "power": ""
     },
-    "class": "lancer-dragon-tail"
+    "class": "brawler"
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +82,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953748103,
+    "createdTime": 1787067433303,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!pcGS42dO1xFpFiR8"
+  "_key": "!items!e3khzqXCgFFgqwdJ"
 }

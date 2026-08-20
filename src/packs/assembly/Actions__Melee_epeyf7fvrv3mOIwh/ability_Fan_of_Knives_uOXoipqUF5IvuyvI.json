@@ -1,34 +1,35 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Wyvern Tail",
-  "type": "skill",
-  "_id": "pcGS42dO1xFpFiR8",
-  "img": "icons/skills/melee/spear-tips-three-green.webp",
+  "folder": "epeyf7fvrv3mOIwh",
+  "name": "Fan of Knives",
+  "type": "ability",
+  "_id": "uOXoipqUF5IvuyvI",
+  "img": "icons/skills/ranged/daggers-thrown-salvo-orange.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-wyvern-tail",
-    "description": "<p>While under the effect of Coiled Tail, you can perform a <em>cleaving</em> melee attack.</p>",
+    "slug": "ability-fan-of-knives",
+    "description": "<p>You throw daggers at multiple targets.</p>",
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
-      "secondary": "mig",
-      "defense": "def"
+      "secondary": "ins",
+      "defense": "def",
+      "bonus": ""
     },
     "action": {
       "schemaVersion": 1,
-      "range": "melee",
+      "range": "ranged",
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": []
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
         "amount": "",
-        "type": "untyped"
+        "type": "piercing"
       },
       "secondary": {
         "amount": "",
@@ -60,17 +61,7 @@
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 1
-    },
-    "usage": {
-      "schemaVersion": 1,
-      "check": true,
-      "damage": true,
-      "power": "moderate"
-    },
-    "class": "lancer-dragon-tail"
+    "intent": ""
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +73,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953748103,
+    "createdTime": 1787195394166,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!pcGS42dO1xFpFiR8"
+  "_key": "!items!uOXoipqUF5IvuyvI"
 }

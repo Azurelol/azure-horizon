@@ -1,17 +1,17 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Wyvern Tail",
-  "type": "skill",
-  "_id": "pcGS42dO1xFpFiR8",
-  "img": "icons/skills/melee/spear-tips-three-green.webp",
+  "folder": "SMkvBfZbUFJku1OT",
+  "name": "Engage",
+  "type": "ability",
+  "_id": "zffVgtvhpaEHpFdy",
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-wyvern-tail",
-    "description": "<p>While under the effect of Coiled Tail, you can perform a <em>cleaving</em> melee attack.</p>",
+    "slug": "ability-engage",
+    "description": "<p>You perform an attack on the target. Until the start of you next turn if it shifts or performs any action on targets but you they trigger a free attack from you.</p>",
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
@@ -20,15 +20,15 @@
       "schemaVersion": 1,
       "range": "melee",
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": []
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
         "amount": "",
-        "type": "untyped"
+        "type": "slashing"
       },
       "secondary": {
         "amount": "",
@@ -60,20 +60,10 @@
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 1
-    },
-    "usage": {
-      "schemaVersion": 1,
-      "check": true,
-      "damage": true,
-      "power": "moderate"
-    },
-    "class": "lancer-dragon-tail"
+    "intent": "control"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 300000,
   "ownership": {
     "default": 0
   },
@@ -82,12 +72,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953748103,
+    "createdTime": 1787196202773,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!pcGS42dO1xFpFiR8"
+  "_key": "!items!zffVgtvhpaEHpFdy"
 }

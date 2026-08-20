@@ -1,35 +1,27 @@
 {
-  "folder": "bx9MNmczTLwMoouk",
-  "name": "Ice Lance",
-  "type": "spell",
-  "_id": "tFe1mVDLxjR3wP9G",
-  "img": "icons/svg/item-bag.svg",
+  "folder": "Q9b99KsJBVA6jScT",
+  "name": "Remedy",
+  "type": "consumable",
+  "_id": "EaYhc3so1Xqw5qXj",
+  "img": "systems/azure-horizon/assets/icons/equipment/consumables/remedy.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ice-lance",
-    "description": "",
-    "check": {
-      "schemaVersion": 1,
-      "enabled": true,
-      "primary": "dex",
-      "secondary": "mig",
-      "defense": "def",
-      "bonus": ""
-    },
+    "slug": "equipment-remedy",
+    "description": "<p>You immediately clear two negative status effects.</p>",
+    "cost": 2,
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
-        "amount": 5,
-        "type": "cold"
+        "amount": "",
+        "type": "untyped"
       },
       "secondary": {
         "amount": "",
         "type": ""
       },
-      "traits": [],
-      "inplace": false
+      "traits": []
     },
     "resource": {
       "schemaVersion": 1,
@@ -37,23 +29,16 @@
       "type": "hp",
       "amount": ""
     },
-    "cost": {
-      "schemaVersion": 1,
-      "enabled": true,
-      "resource": "mp",
-      "amount": "5",
-      "perTarget": false
-    },
     "effects": {
       "schemaVersion": 1,
       "enabled": false,
+      "selector": "",
       "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
       }
-    },
-    "domain": ""
+    }
   },
   "effects": [],
   "sort": 0,
@@ -65,12 +50,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786617478161,
+    "createdTime": 1787047260017,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!tFe1mVDLxjR3wP9G"
+  "_key": "!items!EaYhc3so1Xqw5qXj"
 }

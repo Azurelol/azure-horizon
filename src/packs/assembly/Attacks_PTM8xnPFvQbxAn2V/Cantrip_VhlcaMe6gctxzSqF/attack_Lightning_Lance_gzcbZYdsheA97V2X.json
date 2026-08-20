@@ -1,32 +1,30 @@
 {
-  "folder": "3sQ3f1YlSwrp6Jhj",
-  "name": "Leather Glove",
-  "type": "weapon",
-  "_id": "szOOL3tYm9lePH1i",
-  "img": "systems/azure-horizon/assets/icons/equipment/weapons/leather_glove.png",
+  "folder": "VhlcaMe6gctxzSqF",
+  "name": "Lightning Lance",
+  "type": "attack",
+  "_id": "gzcbZYdsheA97V2X",
+  "img": "icons/magic/lightning/bolt-strike-beam-yellow.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-leather-glove",
+    "slug": "attack-lightning-lance",
     "description": "",
     "check": {
       "schemaVersion": 1,
       "enabled": true,
-      "primary": "dex",
-      "secondary": "mig",
-      "defense": "def",
+      "primary": "ins",
+      "secondary": "wlp",
+      "defense": "mdef",
       "bonus": ""
     },
-    "handedness": "two",
-    "traits": [
-      "brawl"
-    ],
+    "range": "ranged",
+    "traits": [],
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
         "amount": "",
-        "type": "bludgeoning"
+        "type": "electric"
       },
       "secondary": {
         "amount": "",
@@ -46,12 +44,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786645740832,
+    "createdTime": 1787195163871,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!szOOL3tYm9lePH1i"
+  "_key": "!items!gzcbZYdsheA97V2X"
 }

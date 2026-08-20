@@ -1,0 +1,37 @@
+{
+  "folder": "Q9b99KsJBVA6jScT",
+  "name": "Potion",
+  "type": "consumable",
+  "_id": "E7g2okEnEVkVLeyc",
+  "img": "systems/azure-horizon/assets/icons/equipment/consumables/potion.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-potion",
+    "description": "<p>You recover a minor amount of hit points.</p>",
+    "cost": 2,
+    "resource": {
+      "enabled": true,
+      "type": "hp",
+      "amount": "25+&hp(0.25)"
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787045610775,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!E7g2okEnEVkVLeyc"
+}

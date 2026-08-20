@@ -1,14 +1,14 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Wyvern Tail",
-  "type": "skill",
-  "_id": "pcGS42dO1xFpFiR8",
-  "img": "icons/skills/melee/spear-tips-three-green.webp",
+  "folder": "SMkvBfZbUFJku1OT",
+  "name": "Flee",
+  "type": "ability",
+  "_id": "3yg5qPsHM25cNqQE",
+  "img": "icons/skills/movement/feet-winged-boots-brown.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-wyvern-tail",
-    "description": "<p>While under the effect of Coiled Tail, you can perform a <em>cleaving</em> melee attack.</p>",
+    "slug": "ability-flee",
+    "description": "<p>You prepare to <strong>flee the scene</strong>. At the <strong style=\"\">end of the next round</strong> you will escape the scene.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -18,8 +18,8 @@
     },
     "action": {
       "schemaVersion": 1,
-      "range": "melee",
-      "type": "action",
+      "range": "",
+      "type": "",
       "points": 1,
       "traits": []
     },
@@ -60,17 +60,7 @@
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 1
-    },
-    "usage": {
-      "schemaVersion": 1,
-      "check": true,
-      "damage": true,
-      "power": "moderate"
-    },
-    "class": "lancer-dragon-tail"
+    "intent": ""
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +72,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953748103,
+    "createdTime": 1787197455856,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!pcGS42dO1xFpFiR8"
+  "_key": "!items!3yg5qPsHM25cNqQE"
 }

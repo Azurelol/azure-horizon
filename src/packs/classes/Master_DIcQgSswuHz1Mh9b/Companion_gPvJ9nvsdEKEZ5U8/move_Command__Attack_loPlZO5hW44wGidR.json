@@ -1,35 +1,28 @@
 {
-  "folder": "bx9MNmczTLwMoouk",
-  "name": "Ice Lance",
-  "type": "spell",
-  "_id": "tFe1mVDLxjR3wP9G",
-  "img": "icons/svg/item-bag.svg",
+  "folder": "gPvJ9nvsdEKEZ5U8",
+  "name": "Command: Attack",
+  "type": "move",
+  "_id": "loPlZO5hW44wGidR",
+  "img": "icons/skills/melee/strike-slashes-orange.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ice-lance",
+    "slug": "companion-attack",
     "description": "",
-    "check": {
-      "schemaVersion": 1,
-      "enabled": true,
-      "primary": "dex",
-      "secondary": "mig",
-      "defense": "def",
-      "bonus": ""
-    },
+    "trigger": "command",
+    "power": "",
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": 5,
-        "type": "cold"
+        "amount": "5",
+        "type": "slashing"
       },
       "secondary": {
         "amount": "",
         "type": ""
       },
-      "traits": [],
-      "inplace": false
+      "traits": []
     },
     "resource": {
       "schemaVersion": 1,
@@ -37,23 +30,16 @@
       "type": "hp",
       "amount": ""
     },
-    "cost": {
-      "schemaVersion": 1,
-      "enabled": true,
-      "resource": "mp",
-      "amount": "5",
-      "perTarget": false
-    },
     "effects": {
       "schemaVersion": 1,
       "enabled": false,
+      "selector": "",
       "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
       }
-    },
-    "domain": ""
+    }
   },
   "effects": [],
   "sort": 0,
@@ -65,12 +51,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786617478161,
+    "createdTime": 1787045757148,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!tFe1mVDLxjR3wP9G"
+  "_key": "!items!loPlZO5hW44wGidR"
 }

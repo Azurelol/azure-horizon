@@ -3,7 +3,7 @@
   "name": "Parry",
   "type": "skill",
   "_id": "0TObl0ThML5gZYGn",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/swords-parry-block-blue.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

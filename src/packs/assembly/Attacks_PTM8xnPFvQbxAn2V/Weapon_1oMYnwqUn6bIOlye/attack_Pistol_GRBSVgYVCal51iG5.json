@@ -1,32 +1,30 @@
 {
-  "folder": "3sQ3f1YlSwrp6Jhj",
-  "name": "Leather Glove",
-  "type": "weapon",
-  "_id": "szOOL3tYm9lePH1i",
-  "img": "systems/azure-horizon/assets/icons/equipment/weapons/leather_glove.png",
+  "folder": "1oMYnwqUn6bIOlye",
+  "name": "Pistol",
+  "type": "attack",
+  "_id": "GRBSVgYVCal51iG5",
+  "img": "icons/weapons/guns/gun-pistol-flintlock-metal.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-leather-glove",
+    "slug": "attack-pistol",
     "description": "",
     "check": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": "dex",
-      "secondary": "mig",
+      "secondary": "ins",
       "defense": "def",
       "bonus": ""
     },
-    "handedness": "two",
-    "traits": [
-      "brawl"
-    ],
+    "range": "ranged",
+    "traits": [],
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
         "amount": "",
-        "type": "bludgeoning"
+        "type": "piercing"
       },
       "secondary": {
         "amount": "",
@@ -46,12 +44,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786645740832,
+    "createdTime": 1787195012550,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!szOOL3tYm9lePH1i"
+  "_key": "!items!GRBSVgYVCal51iG5"
 }
