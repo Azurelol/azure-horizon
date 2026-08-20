@@ -37,18 +37,17 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
   /**
    * @returns {AHItem}
    */
-  resolveWeapon() {
+  async resolveWeapon() {
     const actor = this.parent.actor;
     /** @type HeroDataModel **/
     const heroData = actor.system;
     const equipment = heroData.getEquippedItems();
-    const weapon = equipment.mainHand;
-    return weapon;
+    return equipment.mainHand;
   }
 
-  resolveCheckData() {
+  async resolveCheckData() {
     if (this.usage.check) {
-      const weapon = this.resolveWeapon();
+      const weapon = await this.resolveWeapon();
       if (assertCondition(weapon, "A weapon must be assigned for this skill.")) {
         return weapon.system.check;
       }
@@ -65,8 +64,8 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
     await super._initializeAction(config);
     this.usage.configureAction(config);
     const actor = this.parent.actor;
-    if (isActorType(actor) && (actor.type === "hero")) {
-      const weapon = this.resolveWeapon();
+    if (isActorType(actor)) {
+      const weapon = await this.resolveWeapon();
       if (weapon) {
         config.setItemReference(weapon);
         if (this.usage.damage) {
@@ -79,4 +78,5 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
       }
     }
   }
+
 }

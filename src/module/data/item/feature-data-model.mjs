@@ -21,7 +21,7 @@ export default class FeatureDataModel extends ItemDataModel {
    * @returns {CheckDataModel}
    * @protected
    */
-  resolveCheckData() {
+  async resolveCheckData() {
     return this.check;
   }
 
@@ -30,7 +30,7 @@ export default class FeatureDataModel extends ItemDataModel {
    * @returns {Promise<boolean>}
    */
   async perform(modifiers) {
-    const checkData = this.resolveCheckData();
+    const checkData = await this.resolveCheckData();
     if (checkData.enabled) {
       await Checks.actionCheck(this.parent.actor, this.parent, async (check, actor, item) => {
         const config = new ActionConfig(check);

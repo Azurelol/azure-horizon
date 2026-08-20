@@ -61,6 +61,9 @@ AH.defaults = {
     min: 4,
     max: 20,
   },
+  action: {
+    attack: { cost: 2 },
+  },
   damage: {
     bonus: 5,
   },

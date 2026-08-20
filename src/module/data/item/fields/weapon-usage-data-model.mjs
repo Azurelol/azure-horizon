@@ -36,10 +36,12 @@ export default class WeaponUsageDataModel extends FieldsetDataModel {
       check: this.check,
       damage: this.damage,
     });
+
     if (this.damage) {
       if (this.power) {
         config.setPower(this.power);
       }
     }
+
   }
 }

@@ -19,6 +19,7 @@
   gap: 4px;
   margin-bottom: 0.125rem;
   margin-top: 0.5rem;
+  justify-content: space-between;
 
   h2 {
     flex-grow: 8;

@@ -42,6 +42,10 @@ export default class WeaponDataModel extends FeatureDataModel {
 
   async _initializeAction(config) {
     await super._initializeAction(config);
+    config.addTags({
+      tag: AH.actionTypes.action.label,
+      value: AH.defaults.action.attack.cost,
+    });
     config.addTraits(this.range);
     await this.damage.configureAction(config);
   }
