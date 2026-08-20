@@ -1,0 +1,41 @@
+{
+  "folder": "jLUpgQeSORhBYWj7",
+  "name": "Tactician",
+  "type": "class",
+  "_id": "PGsNQeymZeAVlCvw",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactician",
+    "description": "",
+    "traits": [
+      "support",
+      "tactics"
+    ],
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": false,
+      "mp": false,
+      "ip": true
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787215809253,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!PGsNQeymZeAVlCvw"
+}

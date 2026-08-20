@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": null,
   "name": "Master",
-  "color": null,
+  "color": "#00a400",
   "sorting": "a",
   "_id": "DIcQgSswuHz1Mh9b",
   "description": "",
-  "sort": 0,
+  "sort": 200000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

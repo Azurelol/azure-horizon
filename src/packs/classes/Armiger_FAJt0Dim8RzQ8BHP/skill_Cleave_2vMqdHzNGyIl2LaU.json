@@ -46,10 +46,10 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
-      "perTarget": false
+      "amount": "5",
+      "perTarget": true
     },
     "effects": {
       "schemaVersion": 1,
@@ -70,7 +70,8 @@
       "damage": true,
       "power": "low"
     },
-    "class": "armiger"
+    "class": "armiger",
+    "power": "low"
   },
   "effects": [],
   "sort": 0,

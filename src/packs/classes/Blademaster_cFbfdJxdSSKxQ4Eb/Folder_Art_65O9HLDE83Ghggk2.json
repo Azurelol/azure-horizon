@@ -1,10 +1,10 @@
 {
-  "type": "ActiveEffect",
-  "folder": null,
-  "name": "Item",
+  "type": "Item",
+  "folder": "cFbfdJxdSSKxQ4Eb",
+  "name": "Art",
   "color": null,
   "sorting": "a",
-  "_id": "tgTpmCT46vRYAt0Y",
+  "_id": "65O9HLDE83Ghggk2",
   "description": "",
   "sort": 0,
   "flags": {},
@@ -12,12 +12,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786721643872,
+    "createdTime": 1787210228079,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!tgTpmCT46vRYAt0Y"
+  "_key": "!folders!65O9HLDE83Ghggk2"
 }

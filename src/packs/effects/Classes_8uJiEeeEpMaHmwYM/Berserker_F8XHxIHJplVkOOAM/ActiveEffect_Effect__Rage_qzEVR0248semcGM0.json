@@ -1,0 +1,47 @@
+{
+  "folder": "F8XHxIHJplVkOOAM",
+  "name": "Effect: Rage",
+  "_id": "qzEVR0248semcGM0",
+  "img": "icons/skills/social/intimidation-impressing.webp",
+  "type": "base",
+  "system": {
+    "changes": [],
+    "slug": "berserker-rage",
+    "rules": {},
+    "tracker": {
+      "enabled": false,
+      "name": "",
+      "id": "",
+      "current": 0,
+      "max": 6
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": "combatEnd",
+    "expired": false
+  },
+  "description": "<ul><li><p>You automatically fail any resolve checks and suffer from the <em>berserk</em> status when you do so.</p></li><li><p>You cannot cast perform mentally taxing actions such as casting spells.</p></li></ul>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787211955862,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!qzEVR0248semcGM0"
+}

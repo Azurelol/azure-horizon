@@ -5,7 +5,7 @@ import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ResourceDataModel from "./fields/resource-data-model.mjs";
 import { ActionCostDataModel } from "./fields/action-cost-data-model.mjs";
 import { ActionDataModel } from "./fields/action-data-model.mjs";
-import AH from "../../config.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
 
 /**
  * Represents an action in the system.
@@ -28,6 +28,7 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
       resource: new EmbeddedDataField(ResourceDataModel, {}),
       cost: new EmbeddedDataField(ActionCostDataModel, {}),
       effects: new EmbeddedDataField(EffectsDataModel, {}),
+      power: new StringField({ initial: "", blank: true, label: "AH.FIELD.Power", choices: Object.keys(AH.power), formOptions: getFormSelectOptions(AH.power), nullable: false }),
     });
   }
 
@@ -37,5 +38,8 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     await this.resource.configureAction(config);
     await this.effects.configureAction(config);
     await this.cost.configureAction(config);
+    if (this.power) {
+      config.setPower(this.power);
+    }
   }
 }

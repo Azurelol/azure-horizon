@@ -1,0 +1,41 @@
+{
+  "folder": "KVeVnCZsumfntGLT",
+  "name": "Alchemist",
+  "type": "class",
+  "_id": "sviaVNRRQK5xtK5D",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "alchemist",
+    "description": "",
+    "traits": [
+      "support",
+      "alchemy"
+    ],
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": false,
+      "mp": false,
+      "ip": true
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787219954691,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!sviaVNRRQK5xtK5D"
+}

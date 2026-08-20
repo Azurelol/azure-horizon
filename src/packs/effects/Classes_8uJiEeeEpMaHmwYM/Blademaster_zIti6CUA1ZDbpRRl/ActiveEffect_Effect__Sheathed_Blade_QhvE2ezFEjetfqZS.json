@@ -1,0 +1,47 @@
+{
+  "folder": "zIti6CUA1ZDbpRRl",
+  "name": "Effect: Sheathed Blade",
+  "_id": "QhvE2ezFEjetfqZS",
+  "img": "icons/weapons/swords/sword-katana.webp",
+  "type": "base",
+  "system": {
+    "changes": [],
+    "slug": "effect-sheathed-blade",
+    "rules": {},
+    "tracker": {
+      "enabled": false,
+      "name": "",
+      "id": "",
+      "current": 0,
+      "max": 6
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Your next <em>blademaster</em> skill gains an additional effect.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787211163632,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!QhvE2ezFEjetfqZS"
+}

@@ -926,8 +926,10 @@ AH.traits = {
     offense: { label: "AH.TRAIT.Offense", tooltip: "AH.TRAIT.OffenseHint" },
     defense: { label: "AH.TRAIT.Defense", tooltip: "AH.TRAIT.DefenseHint" },
     skirmish: { label: "AH.TRAIT.Skirmish", tooltip: "AH.TRAIT.SkirmishHint" },
-    survival: { label: "AH.TRAIT.Survival", tooltip: "AH.TRAIT.SurvivalHint" },
+    endurance: { label: "AH.TRAIT.Endurance", tooltip: "AH.TRAIT.EnduranceHint" },
+    mobility: { label: "AH.TRAIT.Mobility", tooltip: "AH.TRAIT.MobilityHint" },
     stealth: { label: "AH.TRAIT.Stealth", tooltip: "AH.TRAIT.StealthHint" },
+    stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
 
     lore: { label: "AH.TRAIT.Lore", tooltip: "AH.TRAIT.LoreHint" },
     tactics: { label: "AH.TRAIT.Tactics", tooltip: "AH.TRAIT.Tactics" },

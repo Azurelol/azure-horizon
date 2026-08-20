@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": null,
+  "name": "Dancer",
+  "color": "#00a400",
+  "sorting": "a",
+  "_id": "F1xhj8b8GPOd817H",
+  "description": "",
+  "sort": 1400000,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787217172344,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!F1xhj8b8GPOd817H"
+}

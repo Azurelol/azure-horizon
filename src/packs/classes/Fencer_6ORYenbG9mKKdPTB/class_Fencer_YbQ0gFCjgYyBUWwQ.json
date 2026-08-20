@@ -1,0 +1,41 @@
+{
+  "folder": "6ORYenbG9mKKdPTB",
+  "name": "Fencer",
+  "type": "class",
+  "_id": "YbQ0gFCjgYyBUWwQ",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "fencer",
+    "description": "",
+    "traits": [
+      "warrior",
+      "offense"
+    ],
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": true,
+      "mp": false,
+      "ip": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787218060430,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!YbQ0gFCjgYyBUWwQ"
+}

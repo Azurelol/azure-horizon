@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": null,
   "name": "Sharpshooter",
-  "color": null,
+  "color": "#c80000",
   "sorting": "a",
   "_id": "8rYPdUeZxKDnoD6J",
   "description": "",
-  "sort": 0,
+  "sort": 100000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

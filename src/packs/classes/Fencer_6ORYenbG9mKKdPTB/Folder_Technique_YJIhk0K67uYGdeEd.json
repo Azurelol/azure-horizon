@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "6ORYenbG9mKKdPTB",
+  "name": "Technique",
+  "color": null,
+  "sorting": "a",
+  "_id": "YJIhk0K67uYGdeEd",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787219082794,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!YJIhk0K67uYGdeEd"
+}

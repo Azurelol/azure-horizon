@@ -1,8 +1,10 @@
 import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
-import AH from "../../config.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
 import EmptyClassFeature from "./classFeatures/empty-class-feature.mjs";
 import { systemTemplatePath } from "../../constants.mjs";
 import WeaponUsageDataModel from "./fields/weapon-usage-data-model.mjs";
+import { ActionDataModel } from "./fields/action-data-model.mjs";
+import config from "../../config.mjs";
 
 /**
  * A feature includes actions that can be performed by NPCs.
@@ -21,8 +23,14 @@ export default class ClassFeatureDataModel extends ActiveFeatureDataModel {
       feature: new TypedSchemaField(AH.dataModelRegistries.classFeature.types, {
         initial: new EmptyClassFeature(),
       }),
+      action: new EmbeddedDataField(ActionDataModel, {}),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
     });
+  }
+
+  async _initializeAction(config) {
+    await super._initializeAction(config);
+    await this.action.configureAction(config);
   }
 
   /**

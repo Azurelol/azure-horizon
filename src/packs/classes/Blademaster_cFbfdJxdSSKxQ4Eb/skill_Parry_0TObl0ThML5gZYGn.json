@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-parry",
-    "description": "<p>When you are attacked in melee</p>",
+    "description": "<p>You adopt a defensive posture in order to parry the next melee attack performed against you. You gain the <em>Parry</em> effect and may perform a free attack against your attacker.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -19,9 +19,11 @@
     "action": {
       "schemaVersion": 1,
       "range": "melee",
-      "type": "reaction",
+      "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [
+        "closer"
+      ]
     },
     "damage": {
       "schemaVersion": 1,
@@ -67,13 +69,13 @@
     "usage": {
       "schemaVersion": 1,
       "check": false,
-      "damage": false,
+      "damage": true,
       "power": ""
     },
     "class": "blademaster"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },

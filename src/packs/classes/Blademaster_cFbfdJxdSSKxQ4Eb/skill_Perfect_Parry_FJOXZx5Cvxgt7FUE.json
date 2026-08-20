@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-perfect-parry",
-    "description": "<p>When you successfully parry an attack you may exert yourself at the cost of 2 TP in order to negate it and counter with a direct attack of your own.</p>",
+    "description": "<p>When you successfully parry an attack you may exert yourself at the cost of 4 TP in order to negate it and counter with a fixed attack of your own.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -41,7 +41,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "type": "tp",
-      "amount": "2"
+      "amount": "4"
     },
     "cost": {
       "schemaVersion": 1,
@@ -73,7 +73,7 @@
     "class": "blademaster"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 500000,
   "ownership": {
     "default": 0
   },

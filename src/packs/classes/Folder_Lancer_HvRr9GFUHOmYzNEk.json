@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": null,
   "name": "Lancer",
-  "color": null,
+  "color": "#c80000",
   "sorting": "a",
   "_id": "HvRr9GFUHOmYzNEk",
   "description": "",
-  "sort": 0,
+  "sort": 400000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": null,
   "name": "Tactician",
-  "color": null,
+  "color": "#00a400",
   "sorting": "a",
   "_id": "jLUpgQeSORhBYWj7",
   "description": "",
-  "sort": 0,
+  "sort": 800000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

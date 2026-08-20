@@ -1,0 +1,95 @@
+{
+  "folder": "jLUpgQeSORhBYWj7",
+  "name": "Pawn Break",
+  "type": "skill",
+  "_id": "cJo3lODUHBmw4ZCJ",
+  "img": "icons/sundries/gaming/chess-pawn-white-pink.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactician-pawn-break",
+    "description": "<p>When you are targeted by an action, an adjacent ally may be targeted instead.</p>",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "5",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "type": "reaction",
+      "points": 1,
+      "traits": [
+        "cooldown"
+      ]
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "check": false,
+      "damage": false
+    },
+    "class": "tactician"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787216911460,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!cJo3lODUHBmw4ZCJ"
+}

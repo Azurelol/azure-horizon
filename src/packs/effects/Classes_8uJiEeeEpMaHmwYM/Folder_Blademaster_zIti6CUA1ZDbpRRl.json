@@ -1,10 +1,10 @@
 {
   "type": "ActiveEffect",
-  "folder": "3FxfZOI8nEaUR0ty",
-  "name": "Damage",
+  "folder": "8uJiEeeEpMaHmwYM",
+  "name": "Blademaster",
   "color": null,
   "sorting": "a",
-  "_id": "OtxZvoEHMa1DI0rI",
+  "_id": "zIti6CUA1ZDbpRRl",
   "description": "",
   "sort": 0,
   "flags": {},
@@ -12,12 +12,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786738932980,
+    "createdTime": 1787211103653,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!OtxZvoEHMa1DI0rI"
+  "_key": "!folders!zIti6CUA1ZDbpRRl"
 }

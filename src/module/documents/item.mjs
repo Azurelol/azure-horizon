@@ -57,7 +57,7 @@ Hooks.on("preCreateItem", (item, options, userId) => {
   // If no slug has been generated
   if (!item.system.slug && item.name) {
     // Generate slug using the slugify utility
-    const slug = StringUtils.slugify(item.name);
+    const slug = StringUtils.slugify(`${item.name}`);
     if (slug) {
       item.updateSource({ "system.slug": slug });
     } else {

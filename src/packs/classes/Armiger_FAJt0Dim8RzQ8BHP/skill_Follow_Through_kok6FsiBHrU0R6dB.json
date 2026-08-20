@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "armiger-follow-through",
-    "description": "",
+    "description": "<p>When a party member attacks a target you may follow up with a free attack of your own.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
