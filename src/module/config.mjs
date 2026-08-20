@@ -904,7 +904,7 @@ AH.traits = {
   },
   damage: {
     fixed: { label: "AH.TRAIT.Fixed", tooltip: "AH.TRAIT.FixedHint" },
-    base: { label: "AH.TRAIT.Base", tooltip: "AH.TRAIT.BaseHint" },
+    poison: { label: "AH.TRAIT.Poison", tooltip: "AH.TRAIT.PoisonHint" },
     nonLethal: { label: "AH.TRAIT.NonLethal", tooltip: "AH.TRAIT.NonLethalHint" },
   },
 
