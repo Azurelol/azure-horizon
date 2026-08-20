@@ -1,14 +1,13 @@
 {
-  "folder": "cFbfdJxdSSKxQ4Eb",
-  "name": "Blade Study",
-  "type": "skill",
-  "_id": "8bhucsEryEuxRWiX",
-  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+  "folder": "iaJ4VXZEyynWIQe3",
+  "name": "Alchemist Fire",
+  "type": "classFeature",
+  "img": "icons/magic/fire/projectile-smoke-swirl-red.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-blade-study",
-    "description": "<p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>",
+    "slug": "alchemist-alchemist-fire",
+    "description": "<p>You deal fire damage to the target and those adjacent to it.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -18,23 +17,22 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
         "amount": "",
-        "type": "untyped"
+        "type": "fire"
       },
       "secondary": {
         "amount": "",
         "type": ""
       },
-      "traits": [],
-      "inplace": false
+      "traits": []
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "hp",
-      "amount": ""
+      "enabled": true,
+      "type": "ip",
+      "amount": "1"
     },
     "cost": {
       "schemaVersion": 1,
@@ -53,41 +51,43 @@
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 5
+    "power": "",
+    "feature": {
+      "_id": "4zU9bzrhaKsfVQlc",
+      "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
-      "points": 1,
+      "type": "action",
+      "points": 2,
       "traits": []
     },
-    "power": "",
     "usage": {
       "schemaVersion": 1,
       "check": false,
       "damage": false
     },
-    "class": "blademaster"
+    "class": "alchemist",
+    "skill": "alchemy-bomb"
   },
   "effects": [],
-  "sort": 300000,
-  "ownership": {
-    "default": 0
-  },
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787209779674,
+    "createdTime": 1787229014822,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!8bhucsEryEuxRWiX"
+  "ownership": {
+    "default": 0
+  },
+  "_id": "ujuv9lKN4pDVQjqq",
+  "sort": 0,
+  "_key": "!items!ujuv9lKN4pDVQjqq"
 }

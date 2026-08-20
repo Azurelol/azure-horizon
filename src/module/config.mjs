@@ -962,6 +962,9 @@ AH.traits = {
     comfort: { label: "AH.TRAIT.Comfort", tooltip: "AH.TRAIT.ComfortHint" }, // Improves stress recovery
     storage: { label: "AH.TRAIT.Comfort", tooltip: "AH.TRAIT.ComfortHint" }, // Easy access to items
   },
+  consumable: {
+    potion: { label: "AH.TRAIT.Potion", tooltip: "AH.TRAIT.PotionHint" },
+  },
   family: {
     beast: { label: "AH.ADVERSARY.FAMILY.Beast" }, // Natural
     monster: { label: "AH.ADVERSARY.FAMILY.Monster" }, // Unnatural

@@ -1,27 +1,28 @@
 {
-  "folder": "6ORYenbG9mKKdPTB",
-  "name": "Fencer",
+  "folder": "lD96mPQsub9u5Lb9",
+  "name": "Bard",
   "type": "class",
-  "_id": "YbQ0gFCjgYyBUWwQ",
+  "_id": "uZ4Oouqy5oBOtuLV",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "fencer",
+    "slug": "bard",
     "description": "",
     "traits": [
-      "warrior",
-      "offense"
+      "support",
+      "music",
+      "stress"
     ],
     "benefits": {
       "schemaVersion": 1,
-      "hp": true,
-      "mp": false,
+      "hp": false,
+      "mp": true,
       "ip": false
     }
   },
   "effects": [],
-  "sort": 400000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -30,12 +31,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787218060430,
+    "createdTime": 1787229505597,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!YbQ0gFCjgYyBUWwQ"
+  "_key": "!items!uZ4Oouqy5oBOtuLV"
 }

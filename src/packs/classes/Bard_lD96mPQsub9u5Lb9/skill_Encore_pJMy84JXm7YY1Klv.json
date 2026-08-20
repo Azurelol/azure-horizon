@@ -1,14 +1,14 @@
 {
-  "folder": "6ORYenbG9mKKdPTB",
-  "name": "Dueling Form",
+  "folder": "lD96mPQsub9u5Lb9",
+  "name": "Encore",
   "type": "skill",
-  "_id": "2hylt5U5VgGuoCRC",
-  "img": "icons/skills/melee/weapons-crossed-swords-black-gray.webp",
+  "_id": "pJMy84JXm7YY1Klv",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "fencer-dueling-form",
-    "description": "<p>You immediately adopt your offensive stance or defensive stance.</p>",
+    "slug": "bard-encore",
+    "description": "<p>After you end a song, you may repeat it again on the next turn at 1 less AP.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -45,12 +45,9 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": true,
-      "selector": "buff",
-      "entries": [
-        "fencer-offensive-stance",
-        "fencer-defensive-stance"
-      ],
+      "enabled": false,
+      "selector": "",
+      "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
@@ -64,7 +61,7 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "action",
+      "type": "",
       "points": 1,
       "traits": []
     },
@@ -73,7 +70,7 @@
       "check": false,
       "damage": false
     },
-    "class": "fencer"
+    "class": "bard"
   },
   "effects": [],
   "sort": 0,
@@ -85,12 +82,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787218165607,
+    "createdTime": 1787230071329,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!2hylt5U5VgGuoCRC"
+  "_key": "!items!pJMy84JXm7YY1Klv"
 }

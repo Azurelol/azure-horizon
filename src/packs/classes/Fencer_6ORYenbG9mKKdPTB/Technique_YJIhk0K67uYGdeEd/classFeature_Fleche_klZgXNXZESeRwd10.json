@@ -1,14 +1,14 @@
 {
-  "folder": "cFbfdJxdSSKxQ4Eb",
-  "name": "Blade Study",
-  "type": "skill",
-  "_id": "8bhucsEryEuxRWiX",
-  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+  "folder": "YJIhk0K67uYGdeEd",
+  "name": "Fleche",
+  "type": "classFeature",
+  "_id": "klZgXNXZESeRwd10",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-blade-study",
-    "description": "<p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>",
+    "slug": "fencer-fleche",
+    "description": "<p>While in the back row you make a powerful lunging attack with your melee weapon. You enter offensive stance after the attack is resolved.</p><ul><li><p><strong>Offensive Stance</strong>: You deal increased damage.</p></li></ul>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -53,27 +53,28 @@
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 5
+    "power": "high",
+    "feature": {
+      "_id": "4zU9bzrhaKsfVQlc",
+      "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
-      "points": 1,
+      "type": "action",
+      "points": 2,
       "traits": []
     },
-    "power": "",
     "usage": {
       "schemaVersion": 1,
-      "check": false,
-      "damage": false
+      "check": true,
+      "damage": true
     },
-    "class": "blademaster"
+    "class": "fencer",
+    "skill": "fencer-technique"
   },
   "effects": [],
-  "sort": 300000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -82,12 +83,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787209779674,
+    "createdTime": 1787220936311,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!8bhucsEryEuxRWiX"
+  "_key": "!items!klZgXNXZESeRwd10"
 }

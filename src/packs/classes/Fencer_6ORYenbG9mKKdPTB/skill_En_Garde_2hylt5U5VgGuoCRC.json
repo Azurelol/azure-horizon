@@ -1,14 +1,14 @@
 {
-  "folder": "cFbfdJxdSSKxQ4Eb",
-  "name": "Blade Study",
+  "folder": "6ORYenbG9mKKdPTB",
+  "name": "En Garde",
   "type": "skill",
-  "_id": "8bhucsEryEuxRWiX",
-  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+  "_id": "2hylt5U5VgGuoCRC",
+  "img": "icons/skills/melee/weapons-crossed-swords-black-gray.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-blade-study",
-    "description": "<p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>",
+    "slug": "fencer-en-garde",
+    "description": "<p>You immediately adopt your offensive stance or defensive stance.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -45,35 +45,38 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "fencer-offensive-stance",
+        "fencer-defensive-stance"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
+    "power": "",
     "level": {
       "current": 1,
-      "max": 5
+      "max": 1
     },
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
+      "type": "action",
       "points": 1,
       "traits": []
     },
-    "power": "",
     "usage": {
       "schemaVersion": 1,
       "check": false,
       "damage": false
     },
-    "class": "blademaster"
+    "class": "fencer"
   },
   "effects": [],
-  "sort": 300000,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -82,12 +85,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787209779674,
+    "createdTime": 1787218165607,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!8bhucsEryEuxRWiX"
+  "_key": "!items!2hylt5U5VgGuoCRC"
 }

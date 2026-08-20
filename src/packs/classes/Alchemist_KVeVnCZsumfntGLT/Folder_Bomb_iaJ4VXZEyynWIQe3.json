@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "KVeVnCZsumfntGLT",
+  "name": "Bomb",
+  "color": null,
+  "sorting": "a",
+  "_id": "iaJ4VXZEyynWIQe3",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787225077796,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!iaJ4VXZEyynWIQe3"
+}

@@ -1,14 +1,14 @@
 {
-  "folder": "cFbfdJxdSSKxQ4Eb",
-  "name": "Blade Study",
+  "folder": "6ORYenbG9mKKdPTB",
+  "name": "Technique",
   "type": "skill",
-  "_id": "8bhucsEryEuxRWiX",
-  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+  "_id": "pxEtUsleFjMc71At",
+  "img": "icons/skills/melee/weapons-crossed-swords-black.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-blade-study",
-    "description": "<p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>",
+    "slug": "fencer-technique",
+    "description": "<p>You gain the use of a <em>fencer</em> <em>technique </em>for each point invested into this skill.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -53,6 +53,7 @@
         "tracking": ""
       }
     },
+    "power": "",
     "level": {
       "current": 1,
       "max": 5
@@ -64,16 +65,15 @@
       "points": 1,
       "traits": []
     },
-    "power": "",
     "usage": {
       "schemaVersion": 1,
       "check": false,
       "damage": false
     },
-    "class": "blademaster"
+    "class": "fencer"
   },
   "effects": [],
-  "sort": 300000,
+  "sort": 500000,
   "ownership": {
     "default": 0
   },
@@ -82,12 +82,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787209779674,
+    "createdTime": 1787220432838,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!8bhucsEryEuxRWiX"
+  "_key": "!items!pxEtUsleFjMc71At"
 }

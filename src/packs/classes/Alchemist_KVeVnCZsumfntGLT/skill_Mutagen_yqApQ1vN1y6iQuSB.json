@@ -1,14 +1,14 @@
 {
-  "folder": "cFbfdJxdSSKxQ4Eb",
-  "name": "Blade Study",
+  "folder": "KVeVnCZsumfntGLT",
+  "name": "Mutagen",
   "type": "skill",
-  "_id": "8bhucsEryEuxRWiX",
-  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+  "_id": "yqApQ1vN1y6iQuSB",
+  "img": "icons/skills/toxins/poison-bottle-corked-fire-green.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-blade-study",
-    "description": "<p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>",
+    "slug": "alchemist-mutagen",
+    "description": "<p>During a short rest scene you may imbibe a dangerous personal brew to gain one of the following effects:</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,24 +38,28 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "ip",
+      "amount": "2",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "selector": "",
-      "entries": [],
+      "entries": [
+        "alchemist-mutagen-owl",
+        "alchemist-mutagen-cat"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
+    "power": "",
     "level": {
       "current": 1,
-      "max": 5
+      "max": 1
     },
     "action": {
       "schemaVersion": 1,
@@ -64,16 +68,15 @@
       "points": 1,
       "traits": []
     },
-    "power": "",
     "usage": {
       "schemaVersion": 1,
       "check": false,
       "damage": false
     },
-    "class": "blademaster"
+    "class": "alchemist"
   },
   "effects": [],
-  "sort": 300000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -82,12 +85,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787209779674,
+    "createdTime": 1787224792017,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!8bhucsEryEuxRWiX"
+  "_key": "!items!yqApQ1vN1y6iQuSB"
 }

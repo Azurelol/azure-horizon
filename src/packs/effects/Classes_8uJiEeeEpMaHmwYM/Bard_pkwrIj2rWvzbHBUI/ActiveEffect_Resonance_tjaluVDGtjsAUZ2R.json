@@ -1,0 +1,55 @@
+{
+  "folder": "pkwrIj2rWvzbHBUI",
+  "name": "Resonance",
+  "_id": "tjaluVDGtjsAUZ2R",
+  "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
+  "type": "base",
+  "system": {
+    "changes": [
+      {
+        "key": "system.parameters.damage.universal.outgoing.status.multiplicative",
+        "type": "add",
+        "value": 1.5,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "slug": "bard-resonance",
+    "rules": {},
+    "tracker": {
+      "enabled": false,
+      "name": "",
+      "id": "",
+      "current": 0,
+      "max": 6
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Your next action is 50% more effective. Afterwards, the incantation \"Deculture\" reduces your TP by one.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787230178261,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!tjaluVDGtjsAUZ2R"
+}

@@ -73,7 +73,7 @@
     "class": "fencer"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 300000,
   "ownership": {
     "default": 0
   },
