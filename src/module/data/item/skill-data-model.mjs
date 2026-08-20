@@ -1,7 +1,7 @@
 import WeaponUsageDataModel from "./fields/weapon-usage-data-model.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
-import AH from "../../config.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
 import { assertCondition, isActorType } from "../../constants.mjs";
 import { ActionDataModel } from "./fields/action-data-model.mjs";
 
@@ -17,6 +17,7 @@ import { ActionDataModel } from "./fields/action-data-model.mjs";
  * @property {DamageDataModel} damage
  * @property {ResourceDataModel} resource
  * @property {EffectsDataModel} effects
+ * @property {AH_Power} power
  */
 export default class SkillDataModel extends ActiveFeatureDataModel {
   /** @inheritdoc */
@@ -32,6 +33,7 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
         max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header" }),
       }),
       action: new EmbeddedDataField(ActionDataModel, {}),
+      power: new StringField({ initial: "", blank: true, label: "AH.FIELD.Power", choices: Object.keys(AH.power), formOptions: getFormSelectOptions(AH.power), nullable: false }),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
     });
   }
@@ -44,6 +46,9 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
   async _initializeAction(config) {
     await super._initializeAction(config);
     await this.action.configureAction(config);
+    if (this.power) {
+      config.setPower(this.power);
+    }
     this.usage.configureAction(config);
     const actor = this.parent.actor;
     if (isActorType(actor)) {

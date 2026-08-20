@@ -24,6 +24,7 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
       intent: new StringField({ initial: "", choices: Object.keys(AH.intents), formOptions: getFormSelectOptions(AH.intents), blank: true, nullable: false, label: "AH.ADVERSARY.Intent" }),
       action: new EmbeddedDataField(ActionDataModel, {}),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
+      power: new StringField({ initial: "", blank: true, label: "AH.FIELD.Power", choices: Object.keys(AH.power), formOptions: getFormSelectOptions(AH.power), nullable: false }),
     });
   }
 
@@ -35,6 +36,9 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
   async _initializeAction(config) {
     await super._initializeAction(config);
     await this.action.configureAction(config);
+    if (this.power) {
+      config.setPower(this.power);
+    }
     this.usage.configureAction(config);
     const actor = this.parent.actor;
     if (isActorType(actor)) {
