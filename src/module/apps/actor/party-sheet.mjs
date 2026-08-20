@@ -373,7 +373,7 @@ export class PartySheet extends AHActorSheet {
      * @type {RegisterKeybindings}
      */
     const onRegisterKeybindings = (entries) => {
-      entries.openBrowser = {
+      entries.openPartySheet = {
         name: "AH.SHEET.Party",
         editable: [
           { key: "KeyP" },

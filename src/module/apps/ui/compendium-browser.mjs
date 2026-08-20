@@ -74,10 +74,10 @@ export default class CompendiumBrowser extends AHApplication {
      */
     const onRegisterKeybindings = (entries) => {
 
-      entries.openBrowser = {
+      entries.openCompendiumBrowser = {
         name: "AH.APPLICATION.CompendiumBrowser",
         editable: [
-          { key: "KeyB", modifiers: ["Control"] },
+          { key: "KeyB" },
         ],
         onDown: () => {
           CompendiumBrowser.instance.render(true);
@@ -562,6 +562,8 @@ export default class CompendiumBrowser extends AHApplication {
 
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
+    this.#attackTableRenderer.attachListeners(this);
+    this.#abilityTableRenderer.attachListeners(this);
     await this.renderTables(this.activeTabId, true);
   }
 

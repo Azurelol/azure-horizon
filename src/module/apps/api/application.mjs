@@ -124,7 +124,7 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
       });
       this.close();
     }, timeout);
-
+    await super._onFirstRender(context, options);
     this.#dragDrop = new DragDrop.implementation({
       dragSelector: ".draggable",
       dropSelector: ".window-content",
@@ -138,8 +138,7 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
         drop: this._onDrop.bind(this),
       },
     });
-
-    await super._onFirstRender(context, options);
+    console.info("_onFirstRender: Initializing drag and drop");
 
   }
 
@@ -177,8 +176,14 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
     // Owned Items
     if (target.dataset.uuid) {
       const item = fromUuidSync(target.dataset.uuid);
-      if (item) {
+      // Real, loaded Document (e.g. owned item) — use its own drag data.
+      if (item instanceof foundry.abstract.Document) {
         dragData = item.toDragData();
+      }
+      // Compendium index entry (or nothing cached yet) — ship type+uuid, let the
+      // drop target resolve it via fromUuid.
+      else {
+        dragData = { type: "Item", uuid: target.dataset.uuid };
       }
     }
 
@@ -209,12 +214,24 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
     }
   }
 
+  /**
+   * @template {Document} TDocument
+   * @param {DragEvent} event         The initiating drop event
+   * @param {TDocument} document       The resolved Document class
+   * @returns {Promise<TDocument|null>} A Document of the same type as the dropped one in case of a successful result,
+   *                                    or null in case of failure or no action being taken
+   * @protected
+   */
+  async _onDropDocument(event, document) {
+    return null;
+  }
+
   /* -------------------------------------------------- */
   /** @inheritDoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.#dragDrop.bind(this.element);
-    console.info("_onRender: Assigning drag and drop");
+    console.info("_onRender: Binding drag and drop");
   }
 
   /* -------------------------------------------------- */
