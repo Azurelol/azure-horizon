@@ -7,8 +7,8 @@ import { HTMLUtils } from "../../utils/_module.mjs";
 import {
   ActionTableRenderer,
   ArmorTableRenderer,
-  AttackTableRenderer,
-  EquipmentTableRenderer,
+  AttackTableRenderer, ClassFeatureTableRenderer, ClassTableRenderer,
+  EquipmentTableRenderer, SkillTableRenderer,
   WeaponTableRenderer,
 } from "../item/_module.mjs";
 import { AdversaryTableRenderer, FollowerTableRenderer } from "../actor/_module.mjs";
@@ -547,9 +547,9 @@ export default class CompendiumBrowser extends AHApplication {
   };
 
   // Heroes
-  #classTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Class.long", preview: true });
-  #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature", preview: true });
-  #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill", preview: true });
+  #classTableRenderer = new ClassTableRenderer({ title: "AH.ITEM.Class.long", preview: true });
+  #classFeatureTableRenderer = new ClassFeatureTableRenderer({ title: "AH.ITEM.ClassFeature", preview: true });
+  #skillTableRenderer = new SkillTableRenderer({ title: "AH.ITEM.Skill", preview: true });
   #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long", preview: true });
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", preview: true });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor", preview: true });
