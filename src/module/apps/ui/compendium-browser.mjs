@@ -338,7 +338,6 @@ export default class CompendiumBrowser extends AHApplication {
       case "effects":
         {
           context.tables = tabData.tables.map((t) => t.html);
-          console.info("_preparePartContext:  Assigning tables to context");
         }
         break;
     }

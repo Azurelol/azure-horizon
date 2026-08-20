@@ -52,7 +52,7 @@ async function process(request) {
 
   // Some constants
   const message = request.gain ? "AH.CHAT.ResourceGain" : "AH.CHAT.ResourceLoss";
-  const fieldPath = `resources.${request.resource}`;
+  const fieldPath = `resources.${request.data.type}`;
   const updates = [];
 
   console.debug(`Applying resource change from request with traits: ${[...request.traits].join(", ")}`);
@@ -211,9 +211,11 @@ function getExpenseAction(expense, sourceInfo) {
     resource: StringUtils.localize(AH.resourceTypes[expense.resource].long),
   });
 
+  const data = ResourceData.construct(expense.resource, expense.amount);
   return new ChatAction("updateResource", resourceIcon, tooltip, {
     amount: -expense.amount,
     type: expense.resource,
+    data: data,
     sourceInfo: sourceInfo,
   })
     .requiresOwner()

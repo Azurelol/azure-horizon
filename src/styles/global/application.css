@@ -1,6 +1,7 @@
 .ah-application {
 
   table th, table td {
+    text-align: center;
   }
 
   table tbody tr {
