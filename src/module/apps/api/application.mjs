@@ -138,8 +138,6 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
         drop: this._onDrop.bind(this),
       },
     });
-    console.info("_onFirstRender: Initializing drag and drop");
-
   }
 
   /**
@@ -231,7 +229,6 @@ export default class AHApplication extends HandlebarsApplicationMixin(Applicatio
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.#dragDrop.bind(this.element);
-    console.info("_onRender: Binding drag and drop");
   }
 
   /* -------------------------------------------------- */

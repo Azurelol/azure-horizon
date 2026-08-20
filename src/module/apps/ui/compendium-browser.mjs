@@ -80,7 +80,12 @@ export default class CompendiumBrowser extends AHApplication {
           { key: "KeyB" },
         ],
         onDown: () => {
-          CompendiumBrowser.instance.render(true);
+          if (CompendiumBrowser.instance.rendered) {
+            CompendiumBrowser.instance.close();
+          }
+          else {
+            CompendiumBrowser.instance.render(true);
+          }
           return true;
         },
       };
@@ -825,7 +830,6 @@ export default class CompendiumBrowser extends AHApplication {
       parts.push("sidebar");
     }
     this.render(false, { parts: parts });
-    console.info("renderTables:");
   }
 
 }

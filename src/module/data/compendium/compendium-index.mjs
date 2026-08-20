@@ -123,6 +123,8 @@ export default class CompendiumIndex {
     damageSecondaryAmount: "system.damage.secondary.amount",
     costAmount: "system.cost.amount",
     traits: "system.traits",
+    classRef: "system.class",
+    skillRef: "system.skill",
   });
 
   /**
@@ -416,6 +418,10 @@ export default class CompendiumIndex {
     // TODO: Use when indexing won't make it
     entry.metadata = {
     };
+    switch (entry.type) {
+      case "class":
+        entry.metadata.class = entry.system.slug;
+    }
     return entry;
   }
 
