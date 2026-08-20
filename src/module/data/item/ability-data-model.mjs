@@ -3,6 +3,7 @@ import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import WeaponUsageDataModel from "./fields/weapon-usage-data-model.mjs";
 import { assertCondition, isActorType } from "../../constants.mjs";
+import { ActionDataModel } from "./fields/action-data-model.mjs";
 
 /**
  * Abilities belong to adversaries and are their equivalent of PC skills.
@@ -21,8 +22,34 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
     const { SchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       intent: new StringField({ initial: "", choices: Object.keys(AH.intents), formOptions: getFormSelectOptions(AH.intents), blank: true, nullable: false, label: "AH.ADVERSARY.Intent" }),
+      action: new EmbeddedDataField(ActionDataModel, {}),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
     });
+  }
+
+  /**
+   * @param {ActionConfig} config
+   * @returns {Promise<void>}
+   * @private
+   */
+  async _initializeAction(config) {
+    await super._initializeAction(config);
+    await this.action.configureAction(config);
+    this.usage.configureAction(config);
+    const actor = this.parent.actor;
+    if (isActorType(actor)) {
+      const attack = await this.resolveAttack();
+      if (attack) {
+        config.setItemReference(attack);
+        if (this.usage.damage) {
+          attack.system.damage.configureAction(config, {
+            label: "AH.ITEM.Attack",
+          });
+        }
+        config.removeTraits("melee", "ranged");
+        config.addTraits(attack.system.range);
+      }
+    }
   }
 
   /**
@@ -45,29 +72,5 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
       }
     }
     return super.resolveCheckData();
-  }
-
-  /**
-   * @param {ActionConfig} config
-   * @returns {Promise<void>}
-   * @private
-   */
-  async _initializeAction(config) {
-    await super._initializeAction(config);
-    this.usage.configureAction(config);
-    const actor = this.parent.actor;
-    if (isActorType(actor)) {
-      const attack = await this.resolveAttack();
-      if (attack) {
-        config.setItemReference(attack);
-        if (this.usage.damage) {
-          attack.system.damage.configureAction(config, {
-            label: "AH.ITEM.Attack",
-          });
-        }
-        config.removeTraits("melee", "ranged");
-        config.addTraits(attack.system.range);
-      }
-    }
   }
 }

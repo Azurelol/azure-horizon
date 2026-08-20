@@ -1,0 +1,89 @@
+{
+  "folder": "woV9SaG66qd9BoeW",
+  "name": "Shadowmeld",
+  "type": "ability",
+  "_id": "9rE4jieqTGXqVsSY",
+  "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "ability-shadowmeld",
+    "description": "<p>At the start of a conflict you become <em>untargetable</em>.</p>",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "intent": "",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "type": "",
+      "points": 1,
+      "traits": []
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "check": false,
+      "damage": false,
+      "power": ""
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787200174851,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!9rE4jieqTGXqVsSY"
+}

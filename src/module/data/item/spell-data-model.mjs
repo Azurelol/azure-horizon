@@ -1,5 +1,6 @@
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
+import { ActionDataModel } from "./fields/action-data-model.mjs";
 
 /**
  * A spell is a feature tied to a magical domain.
@@ -11,6 +12,7 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      action: new EmbeddedDataField(ActionDataModel, {}),
       domain: new StringField({ initial: "",
         blank: true,
         label: "AH.FIELD.Domain",
@@ -23,6 +25,7 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
 
   async _initializeAction(config) {
     await super._initializeAction(config);
+    await this.action.configureAction(config);
     config.addTraits("spell");
     if (this.domain) {
       config.addTraits(this.domain);

@@ -1,0 +1,89 @@
+{
+  "folder": "woV9SaG66qd9BoeW",
+  "name": "Alpha Strike",
+  "type": "ability",
+  "_id": "7YsLDcB66hVyrSWH",
+  "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "ability-alpha-strike",
+    "description": "<p>At the start of a combat scene you immediately perform an attack against your foes.</p>",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "intent": "",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "type": "",
+      "points": 1,
+      "traits": []
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "check": false,
+      "damage": false,
+      "power": ""
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787200063077,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!7YsLDcB66hVyrSWH"
+}

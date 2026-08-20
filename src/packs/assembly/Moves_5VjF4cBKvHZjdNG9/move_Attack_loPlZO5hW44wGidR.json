@@ -1,13 +1,13 @@
 {
   "folder": "5VjF4cBKvHZjdNG9",
-  "name": "Command: Attack",
+  "name": "Attack",
   "type": "move",
   "_id": "loPlZO5hW44wGidR",
   "img": "icons/skills/melee/strike-slashes-orange.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "companion-attack",
+    "slug": "move-attack",
     "description": "",
     "trigger": "command",
     "power": "",

@@ -22,7 +22,6 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
   static defineSchema() {
     const { SchemaField, StringField, HTMLField, NumberField, BooleanField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      action: new EmbeddedDataField(ActionDataModel, {}),
       damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
         enabled: true,
       })),
@@ -38,6 +37,5 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     await this.resource.configureAction(config);
     await this.effects.configureAction(config);
     await this.cost.configureAction(config);
-    await this.action.configureAction(config);
   }
 }

@@ -1,0 +1,62 @@
+{
+  "folder": "5VjF4cBKvHZjdNG9",
+  "name": "Expose Weakness",
+  "type": "move",
+  "_id": "kTtGe7ucvbkzE71O",
+  "img": "icons/skills/melee/shield-damaged-broken-gold.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "move-expose-weakness",
+    "description": "<p>You lower the target's physical defenses.</p>",
+    "trigger": "",
+    "power": "",
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": []
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787199974567,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!kTtGe7ucvbkzE71O"
+}
