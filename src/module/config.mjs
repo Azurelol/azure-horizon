@@ -903,6 +903,7 @@ AH.traits = {
     ip: { label: "AH.TRAIT.InventoryPoint", tooltip: "AH.TRAIT.InventoryPointHint" },
   },
   damage: {
+    fixed: { label: "AH.TRAIT.Fixed", tooltip: "AH.TRAIT.FixedHint" },
     base: { label: "AH.TRAIT.Base", tooltip: "AH.TRAIT.BaseHint" },
     nonLethal: { label: "AH.TRAIT.NonLethal", tooltip: "AH.TRAIT.NonLethalHint" },
   },

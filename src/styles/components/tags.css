@@ -48,7 +48,6 @@
 
   &:hover {
     background: var(--ah-tag-background-hover);
-
     & i {
     }
   }
@@ -65,7 +64,7 @@
   border-color 0.1s;
 
   color: var(--ah-tag-color);
-  background: var(--ah-tag-background);
+  background: var(--ah-tag-filter-background);
   border: 1px solid grey;
 
   &:hover {

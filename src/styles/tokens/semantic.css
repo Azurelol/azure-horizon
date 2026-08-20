@@ -27,6 +27,7 @@
   --ah-surface-tab-active: var(--ah-surface-hover);
   --ah-surface-tab-content: var(--ah-surface-panel);
 
+  --ah-surface-interactive: #484343;
   --ah-surface-action: #c46022;
   --ah-surface-action-muted: #4e5364;
   --ah-surface-action-hover: var(--ah-primitive-color-orange-400);

@@ -113,6 +113,7 @@
   --ah-tag-letter-spacing: 0.063rem;
   --ah-tag-color: var(--ah-content-primary);
   --ah-tag-background: var(--ah-surface-tag);
+  --ah-tag-filter-background: var(--ah-surface-interactive);;
   --ah-tag-background-hover: var(--ah-surface-tag-hover);
   --ah-tag-border: var(--ah-surface-border);
   --ah-badge-background: var(--ah-surface-action-muted);

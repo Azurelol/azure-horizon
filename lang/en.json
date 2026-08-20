@@ -452,7 +452,10 @@
       "Dance": "Dance",
       "Music": "Music",
       "Alchemy": "Alchemy",
-      "Companion": "Companion"
+      "Companion": "Companion",
+      "Fixed": "Fixed",
+      "FixedHint": "This type of damage cannot defeat higher-rank adversaries.",
+      "Recharge": "Recharge"
     },
     "DOMAIN": {
       "Light": "Light",

@@ -9,7 +9,7 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
  * @property {AH_ActionRange} range
  * @property {CheckDataModel} check
  * @property {DamageDataModel} damage
- * @property {String[]} traits
+ * @property {TraitsField} traits
  * @remarks This simpler model is used for adversaries.
  */
 export default class AttackDataModel extends FeatureDataModel {
@@ -36,6 +36,7 @@ export default class AttackDataModel extends FeatureDataModel {
   async _initializeAction(config) {
     await super._initializeAction(config);
     config.addTraits(this.range);
+    config.addTraits(Array.from(this.traits));
     config.addTags({
       tag: AH.actionTypes.action.label,
       value: AH.defaults.action.attack.cost,
