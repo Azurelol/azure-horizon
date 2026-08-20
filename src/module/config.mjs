@@ -1077,12 +1077,13 @@ AH.icons = {
   difficulty: "ah-icon-check-difficulty",
   result: "ah-icon-check-result",
   target: "ah-icon-target",
+
   damage: "ah-icon-damage",
   resource: "ah-icon-resource",
   cost: "ah-icon-cost",
-  effects: "ra ra-biohazard",
-
+  effects: "ra ra-acid",
   check: "ah-icon-check-roll",
+
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",
   actionCheck: "ah-icon-check-action",
