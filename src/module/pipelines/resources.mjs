@@ -170,16 +170,17 @@ function onRenderChatMessage(message, html) {
 
 /**
  * @param {ResourceRequest} request
+ * @param {Boolean} includeLabel
  * @returns {ChatAction}
  */
-function getChatAction(request) {
+function getChatAction(request, includeLabel = true) {
   const resourceIcon = AH.resourceTypes[request.resource].icon;
   const tooltip = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainTooltip" : "AH.CHAT.ResourceLossTooltip", {
     amount: request.data.toString(),
     resource: StringUtils.localize(AH.resourceTypes[request.resource].long),
   });
 
-  return new ChatAction("updateResource", resourceIcon, tooltip, {
+  const ca = new ChatAction("updateResource", resourceIcon, tooltip, {
     type: request.resource,
     data: request.data,
     sourceInfo: request.sourceInfo,
@@ -187,10 +188,15 @@ function getChatAction(request) {
   })
     .requiresOwner()
     .setFlag(AH.flags.ChatMessage.Resource)
-    .withLabel(tooltip)
     .withColor(request.gain ? "var(--color-hp)" : "var(--color-hp-crisis)")
     .withTraits(Array.from(request.traits))
     .withSelected();
+
+  if (includeLabel) {
+    ca.withLabel(tooltip);
+  }
+
+  return ca;
 }
 
 /**
@@ -240,6 +246,31 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
       expense.source = itemGroup;
       await Events.calculateExpense(actor, item, targets, expense);
       config.addAction(getExpenseAction(expense, config.sourceInfo));
+    }
+  }
+
+  // TRAITS
+  if (config.hasTrait("stress")) {
+    const stressData = ResourceData.construct("tp", 1);
+    const request = new ResourceRequest(config.sourceInfo, targets, stressData);
+
+    if (actor.type === "hero") {
+      config.addAction(getChatAction(request));
+    }
+    else if (actor.type === "adversary") {
+      if (config.isCheck) {
+        config.setPotency(potency => {
+          potency.standard.components.push({
+            actions: [getChatAction(request, false)],
+          });
+          potency.powerful.components.push({
+            actions: [getChatAction(request, false)],
+          });
+        });
+      }
+      else {
+
+      }
     }
   }
 };

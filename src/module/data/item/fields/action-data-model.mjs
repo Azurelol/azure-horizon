@@ -48,6 +48,7 @@ export class ActionDataModel extends FieldsetDataModel {
     if (this.range) {
       config.addTraits(this.range);
     }
+    config.addTraits(Array.from(this.traits));
   }
 
   static get template() {
