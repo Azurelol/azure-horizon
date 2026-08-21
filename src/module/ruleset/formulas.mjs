@@ -10,9 +10,6 @@ const MIN_ATTRIBUTE_DIE = 4;
 const MAX_ATTRIBUTE_DIE = 12;
 const PROFICIENCY_FACTOR = 5;
 
-// FOLLOWERS
-const HP_LEVEL_FACTOR = 5;
-
 /**
  * @typedef Modifier
  * @property {Number} additive Should default to 0.
@@ -58,7 +55,7 @@ class ClassicDifficulty extends Difficulty {
  * @remarks Numbers go up.
  */
 class HorizonDifficulty extends Difficulty {
-  static HF = 10;
+  static HF = 5;
   calculateProficiencyBonus(level) {
     return Formulas.round(level / PROFICIENCY_FACTOR);
   }
@@ -144,18 +141,16 @@ export default class Formulas {
       }
 
       // For checks use the HR since its variable; else use the minimum of the given attribute die.
-      const attributeFactor = hr.result ?? Formulas.round(hr.dice / 4);
-      const attributeDivisor = 2;
       const gradeFactor = _grade.scale;
 
-      total = (base * gradeFactor) * diffFactor; // (base * gradeFactor) * (attributeFactor / attributeDivisor);
-      formula = `((BASE:${base} + DIFFICULTY:${diffFactor}) * GRADE:${gradeFactor}) * ATTRIBUTE:${attributeFactor} / DIVISOR:${attributeDivisor})`;
+      total = (base * gradeFactor) * diffFactor;
+      formula = `(BASE:${base} * GRADE:${gradeFactor}) * DIFFICULTY:${diffFactor}`;
       total = Formulas.round(total);
     }
     // FLAT
     else {
       base = instances.reduce((sum, inst) => sum + inst.amount, 0);
-      total = base;
+      total = base * diffFactor;
       formula = `${base}`;
     }
 
@@ -172,7 +167,6 @@ export default class Formulas {
    */
   static calculateHitPoints(system, level = undefined) {
     const actor = system.parent;
-    const factor = this.difficulty.getFactor();
     level ??= system.level;
     let hp = 0;
     switch (actor.type) {
@@ -202,8 +196,8 @@ export default class Formulas {
       case "unit":
         break;
     }
+    const factor = this.difficulty.getFactor();
     hp = hp * factor;
-
     return hp;
   }
 
