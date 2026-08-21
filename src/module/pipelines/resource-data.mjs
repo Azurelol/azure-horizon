@@ -1,4 +1,4 @@
-import AH from "../config.mjs";
+import { MathUtils } from "../utils/_module.mjs";
 
 /**
  * @class
@@ -63,5 +63,17 @@ export default class ResourceData {
   toString() {
     const parts = this.modifiers.map(m => m.amount);
     return `${parts.join(" + ")}`;
+  }
+
+  /**
+   * @returns {Boolean}
+   */
+  get isPositive() {
+    for (const mod of this.modifiers) {
+      if (MathUtils.resolveSign(mod.amount) < 0) {
+        return false;
+      }
+    }
+    return true;
   }
 }

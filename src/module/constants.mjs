@@ -54,6 +54,14 @@ export function setSystemSetting(key, value) {
 }
 
 /**
+ * Handles the scaling of any value according to the current difficulty
+ * @param value
+ */
+export function scaleValue(value) {
+  return 1;
+}
+
+/**
  * @param {String} templatePath The path relative to the system's templates directory.
  * @param {Object} context Used by the template.
  * @param {Boolean} relative If the path is relative to the templates directory. If not, the translation will be applied.

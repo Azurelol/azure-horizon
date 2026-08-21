@@ -33,7 +33,7 @@ export class ResourceRequest extends PipelineRequest {
   constructor(sourceInfo, targets, data) {
     super(sourceInfo, targets);
     this.data = data;
-    this.gain = data.total >= 0;
+    this.gain = data.isPositive;
   }
 
   /**

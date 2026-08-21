@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  color: var(--ah-content-primary);
 }
 
 /*--FLAVOR--*/

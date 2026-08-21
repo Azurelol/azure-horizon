@@ -31,4 +31,42 @@ export default class MathUtils {
   static isEven(number) {
     return number % 2 === 0;
   }
+
+  /**
+   * Attempts to resolve the sign of a single modifier amount without
+   * fully evaluating dice terms.
+   * @param {String|Number} amount
+   * @returns {1|0|-1}
+   * @remark Best-effort. Static expressions (no dice) resolve exactly.
+   *   Expressions containing dice terms fall back to reading the
+   *   leading operator, since dice can't roll negative.
+   */
+  static resolveSign(amount) {
+    if (typeof amount === "number") {
+      return Math.sign(amount);
+    }
+
+    const trimmed = String(amount ?? "").trim();
+    if (!trimmed) return 0;
+
+    // Plain integer/decimal string
+    const asNumber = Number(trimmed);
+    if (!Number.isNaN(asNumber)) {
+      return Math.sign(asNumber);
+    }
+
+    // Static (dice-free) expression — safe to fully evaluate
+    if (!/d\d*/i.test(trimmed)) {
+      try {
+        const evaluated = Roll.safeEval(trimmed);
+        return Math.sign(evaluated);
+      } catch {
+        // fall through to heuristic below
+      }
+    }
+
+    // Expression contains dice terms — dice never roll negative,
+    // so the sign is determined by the leading operator.
+    return trimmed.startsWith("-") ? -1 : 1;
+  }
 }

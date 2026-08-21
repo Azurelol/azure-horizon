@@ -25,7 +25,6 @@
   --ah-background-application-tabs: var(--ah-surface-panel);
   --ah-padding-application-part: 8px;
   --ah-padding-application-fields: 4px;
-  /* Controls  */
 
   /* Tabs */
   --ah-background-tab: var(--ah-surface-tab);
@@ -141,6 +140,9 @@
   --ah-text-shadow-control: var(--ah-border-panel);
   --ah-color-control-header: var(--ah-content-primary);
   --ah-color-bg-input: var(--ah-surface-base);
+
+  /* Chat Message*/
+  --ah-chat-message-text-background: var(--ah-surface-panel-nested);
 
 
 }
