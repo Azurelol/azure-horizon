@@ -9,21 +9,21 @@ import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mj
  * @property {DamageUnit} primary
  * @property {DamageUnit} secondary
  * @property {TraitsField} traits
+ * @property {AH_Grade} grade
  */
 export default class DamageDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
     const { BooleanField, SchemaField, NumberField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       primary: new SchemaField({
-        grade: new StringField({ initial: "B", choices: Object.keys(AH.grades), nullable: false }),
         amount: new StringField({ initial: "", integer: true, nullable: false }),
         type: new StringField({ initial: "untyped", choices: Object.keys(AH.damageTypes), blank: true, nullable: false }),
       }),
       secondary: new SchemaField({
-        grade: new StringField({ initial: "B", choices: Object.keys(AH.grades), nullable: false }),
         amount: new StringField({ initial: "", integer: true, nullable: true }),
         type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.damageTypes), nullable: false }),
       }),
+      grade: new StringField({ initial: "C", choices: Object.keys(AH.grades), nullable: false }),
       traits: new TraitsField({
         options: FoundryUtils.getFormSelectOptions(AH.traits.damage),
       }),
@@ -51,6 +51,9 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
 
       if (config.hasDamage) {
         config.modifyDamage(dmg => {
+          if (!dmg.grade) {
+            dmg.grade = this.grade;
+          }
           dmg.add(label, this.primary);
           if (this.secondary.type) {
             config.addTraits(this.secondary.type);
@@ -59,7 +62,7 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
         });
       }
       else {
-        config.addDamage(this.primary);
+        config.setDamage(this.primary, this.grade);
         if (this.secondary.type) {
           config.modifyDamage(d => {
             d.add("AH.DAMAGE.Secondary", this.secondary);

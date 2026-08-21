@@ -59,7 +59,11 @@ export default class ApplyDamageRuleAction extends RuleActionDataModel {
         }
       }
     } else {
-      const damageData = DamageData.construct(this.damageType, evalAmount);
+      const damageData = DamageData.initialize({
+        type: this.damageType,
+        amount: evalAmount,
+        grade: "B",
+      });
       const request = new DamageRequest(context.sourceInfo, targets, damageData);
       if (!this.traits.empty) {
         request.addTraits(this.traits.values);

@@ -8,7 +8,6 @@
 /**
  * @typedef DamageUnit
  * @property {String|Number} amount
- * @property {AH_Grade} grade
  * @property {AH_DamageType} type
  *
 
@@ -39,11 +38,17 @@ import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 
+/** @type AH_Grade **/
+const DEFAULT_GRADE = "B";
+
 /**
  * Contains damage data used in pipelines.
  * @property {DamageComponent[]} components
  * @property {Record<AH_DamageType, ParameterModifier[]>} modifiers
  * @property {AH_DamageType} type The base damage type
+ * @property {AttributeDieRoll} hr The high roll is used during damage scaling.
+ * @property {Number} proficiency The proficiency bonus is used during damage calculation and is a special case.
+ * @property {AH_Grade} grade The damage grade is used during damage scaling.
  */
 export default class DamageData {
 
@@ -55,11 +60,13 @@ export default class DamageData {
 
   /**
    * @param {DamageUnit} unit
+   * @param {AH_Grade} grade
    * @returns {DamageData}
    */
-  static construct(unit) {
+  static initialize(unit, grade) {
     const data = new DamageData();
     data.add("AH.DAMAGE.Primary", unit);
+    data.grade = grade;
     data.type = unit.type;
     return data;
   }
@@ -202,10 +209,11 @@ export default class DamageData {
 
   /**
    * @returns {DamageResolution}
+   * @remark Resolves outgoing damage according to the current difficulty setting.
    */
   get resolved() {
     const active = this.instances;
-    const total = active.reduce((sum, inst) => sum + inst.amount, 0);
+    const total = Formulas.calculateDamage(active, this.grade, this.hr?.result ?? 0);
     return {
       total: total,
       modifiers: active.map(a => a.modifiers).flat(),
@@ -217,20 +225,8 @@ export default class DamageData {
    * @returns {string}
    */
   toString() {
-    const totals = new Map();
-
-    for (const inst of this.instances) {
-      const amount = Number(inst.amount) || 0;
-      totals.set(inst.type, (totals.get(inst.type) ?? 0) + amount);
-    }
-
-    const parts = Array.from(totals.entries())
-      .map(([type, amount]) => {
-        const icon = AH.icons[type];
-        return `${amount}`;
-      });
-
-    return `${parts.join(" + ")}`;
+    const resolved = this.resolved;
+    return `${resolved.total}`;
   }
 
   /**

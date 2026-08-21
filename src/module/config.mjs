@@ -97,7 +97,16 @@ AH.statusEffects = Object.freeze({
 });
 
 /**
- * @typedef {'low'|'moderate'|'high'|'severe'|'extreme'} AH_Grade A letter grade to represent an attack's scaling with the character's attributes.
+ * @typedef {'horizon'|'classic'} AH_Difficulty
+ */
+
+AH.difficulties = Object.freeze({
+  classic: "AH.DIFFICULTY.Classic",
+  horizon: "AH.DIFFICULTY.Horizon",
+});
+
+/**
+ * @typedef {'E'|'D'|'C'|'B'|'A'|'S'} AH_Grade A letter grade to represent an attack's scaling with the character's attributes.
  */
 
 AH.grades = Object.freeze({
@@ -673,6 +682,16 @@ AH.settings = Object.freeze({
     requiresReload: false,
     default: null,
     scope: "world",
+  },
+  difficulty: {
+    name: "AH.SETTING.DifficultyLabel",
+    hint: "AH.SETTING.DifficultyHint",
+    type: String,
+    config: true,
+    default: "horizon",
+    scope: "world",
+    choices: () => AH.difficulties,
+    requiresReload: true,
   },
   codexUploadDirectory: {
     name: "AH.SETTING.UploadDirectory",

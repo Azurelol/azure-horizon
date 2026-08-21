@@ -1,10 +1,14 @@
 // CHARACTERS
+import { getSystemSetting } from "../constants.mjs";
+import AH from "../config.mjs";
+
 const HP_MIGHT_FACTOR = 5;
 const MP_WILLPOWER_FACTOR = 5;
 const IP_BASE = 6;
 const TP_BASE = 10;
 const MIN_ATTRIBUTE_DIE = 4;
 const MAX_ATTRIBUTE_DIE = 12;
+const PROFICIENCY_FACTOR = 5;
 
 // FOLLOWERS
 const HP_LEVEL_FACTOR = 5;
@@ -17,6 +21,53 @@ const HP_LEVEL_FACTOR = 5;
  */
 
 /**
+ * A difficulty setting scales many parameters up and down.
+ */
+class Difficulty {
+  /**
+   * @abstract
+   * @param {Number} level
+   * @returns {Number}
+   */
+  calculateProficiencyBonus(level) {
+    throw Error;
+  }
+  /**
+   * @abstract
+   * @returns {Number}
+   */
+  getHorizonFactor() {
+    throw Error;
+  }
+}
+
+/**
+ * A classical difficulty with more manageable numbers.
+ */
+class ClassicDifficulty extends Difficulty {
+  calculateProficiencyBonus(level) {
+    return 0;
+  }
+  getHorizonFactor() {
+    return 1;
+  }
+}
+
+/**
+ * The intended difficulty, for the digital experience.
+ * @remarks Numbers go up.
+ */
+class HorizonDifficulty extends Difficulty {
+  static HF = 10;
+  calculateProficiencyBonus(level) {
+    return Formulas.round(level / PROFICIENCY_FACTOR);
+  }
+  getHorizonFactor() {
+    return HorizonDifficulty.HF;
+  }
+}
+
+/**
  * @typedef {Modifier} ParameterModifier
  * @property {AH_Modifier} key
  */
@@ -26,16 +77,65 @@ export default class Formulas {
   static CRITICAL_THRESHOLD = MIN_ATTRIBUTE_DIE;
 
   /**
+   * @returns {Difficulty}
+   */
+  static get difficulty() {
+    if (!this.#difficulty) {
+      const setting = getSystemSetting("difficulty");
+      switch (setting) {
+        case "horizon":
+          this.#difficulty = new HorizonDifficulty();
+          break;
+        default:
+          this.#difficulty = new ClassicDifficulty();
+          break;
+      }
+    }
+    return this.#difficulty;
+  }
+  static #difficulty;
+
+  /**
+   * @param {Number} level
+   * @returns {Number}
+   */
+  static calculateProficiencyBonus(level) {
+    const diff = this.difficulty;
+    return diff.calculateProficiencyBonus(level);
+  }
+
+  /**
+   * @param {DamageInstance[]} instances
+   * @param {AH_Grade} grade
+   * @param {Number} hr
+   * @return {Number}
+   */
+  static calculateDamage(instances, grade, hr) {
+    const diff = this.difficulty;
+    const hf = diff.getHorizonFactor();
+    const gf = AH.grades[grade].value;
+
+    let total = instances.reduce((sum, inst) => sum + inst.amount, 0);
+    total = ((total + hf) * gf) * (hr / 2);
+    total = Formulas.round(total);
+    return total;
+
+  }
+
+  /**
    * @param {EntityDataModel} system
+   * @param {Number} level A level different from the serialized one.
    * @returns {Number}
    */
   static calculateHitPoints(system, level = undefined) {
     const actor = system.parent;
+    const hf = this.difficulty.getHorizonFactor();
+    level ??= system.level;
     switch (actor.type) {
       case "hero": {
         /** @type AttributesDataModel **/
         const attributes = system.attributes;
-        return system.level + (attributes.mig.base * HP_MIGHT_FACTOR);
+        return (level * hf) + (attributes.mig.base * HP_MIGHT_FACTOR);
       }
       case "adversary": {
         /** @type AttributesDataModel **/
@@ -43,12 +143,12 @@ export default class Formulas {
         /** @type AdversaryProfileDataModel **/
         const profile = system.profile;
         const rankMultiplier = profile.turns;
-        return (system.level + (attributes.mig.base * HP_MIGHT_FACTOR)) * rankMultiplier;
+        return ((level * hf) + (attributes.mig.base * HP_MIGHT_FACTOR)) * rankMultiplier;
       }
 
       case "follower":
       case "guest":
-        return system.level * HP_LEVEL_FACTOR;
+        return (level * hf);
 
       case "unit":
         break;
@@ -63,6 +163,7 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculateMindPoints(level, willpower) {
+    const hf = this.difficulty.getHorizonFactor();
     return (willpower * MP_WILLPOWER_FACTOR) + level;
   }
 

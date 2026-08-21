@@ -252,12 +252,31 @@ const onProcessAction = async (config, actor, item) => {
     // We will begin modifying this before setting it back
     const damage = config.damage;
 
-    // 1.) Add high roll damage
+    // 1.) Set high roll
     const hr = config.hr;
     if (hr) {
-      damage.add("AH.CHECK.HighRoll.short", damage.type, hr.result);
+      damage.hr = hr;
     }
-    // 2.) Add outgoing modifiers
+
+    // 2.) Add proficiency bonus
+    const prof = Formulas.calculateProficiencyBonus(actor.level);
+    if (prof) {
+      damage.add("AH.DAMAGE.ProficiencyBonus", {
+        amount: prof,
+        type: damage.type,
+        enabled: true,
+      });
+    }
+
+    // 4.) Evaluate any components that have expressions
+    const context = new EvaluationContext(actor, item, config.getTargets());
+    for (const component of damage.components) {
+      let amount = component.amount;
+      amount = await Expressions.evaluateAsync(amount, context);
+      component.amount = amount;
+    }
+
+    // 3.1) Add outgoing modifiers
     /** @type CharacterParametersDataModel **/
     const outgoing = actor?.system?.parameters;
     if (outgoing) {
@@ -270,7 +289,8 @@ const onProcessAction = async (config, actor, item) => {
         }
       }
     }
-    // 3.) Add power modifiers
+
+    // 3.2) Add power modifiers
     if (config.power) {
       damage.modify("universal", {
         key: "skill",
@@ -278,14 +298,7 @@ const onProcessAction = async (config, actor, item) => {
       });
     }
 
-    // 4.) Evaluate any components that have expressions
-    const context = new EvaluationContext(actor, item, config.getTargets());
-    for (const component of damage.components) {
-      let amount = component.amount;
-      amount = await Expressions.evaluateAsync(amount, context);
-      component.amount = amount;
-    }
-    // 5.) Set Potency
+    // 4.) Set Potency
     if (config.isCheck) {
       config.setPotency((tiers) => {
         // Standard
@@ -311,8 +324,11 @@ const onProcessAction = async (config, actor, item) => {
 
         // Powerful
         const powerfulDamage = standardDamage.duplicate(d => {
-          const criticalBonus = d.base.amount * 2;
-          d.add("AH.PIPELINE.CriticalBonus", "untyped", criticalBonus);
+          const criticalBonus = d.hr.dice * 2;
+          d.add("AH.PIPELINE.CriticalBonus", {
+            type: "untyped",
+            amount: criticalBonus,
+          });
         });
         const powerful = getChatAction(powerfulDamage, sourceInfo, traits, false);
         tiers.powerful.components.push({

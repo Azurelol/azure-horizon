@@ -326,23 +326,13 @@ export class ActionConfig extends ActionInspector {
     this.check.secondary = secondary;
   }
 
-  // TODO: Change to add damage
-
-  /**
-   * @param {DamageData} data
-   * @return {ActionConfig}
-   */
-  setDamage(data) {
-    this.setData(DAMAGE, data);
-    return this;
-  }
-
   /**
    * @param {DamageUnit} unit
+   * @param {AH_Grade} grade
    * @return {ActionConfig}
    */
-  addDamage(unit) {
-    this.setData(DAMAGE, DamageData.construct(unit));
+  setDamage(unit, grade) {
+    this.setData(DAMAGE, DamageData.initialize(unit, grade));
     return this;
   }
 

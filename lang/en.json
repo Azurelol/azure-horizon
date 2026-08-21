@@ -401,7 +401,13 @@
       "ThemeLabel": "Configure Theme",
       "ThemeHint": "Change or customize the current theme.",
       "UploadDirectory": "Codex Upload Directory",
-      "UploadDirectoryHint": "Where uploads used in codex entries are uploaded to."
+      "UploadDirectoryHint": "Where uploads used in codex entries are uploaded to.",
+      "Difficulty": "Difficulty",
+      "DifficultyHint": "The difficulty scales the HP and DAMAGE of all characters."
+    },
+    "DIFFICULTY": {
+      "Horizon": "Horizon",
+      "Classic": "Classic"
     },
     "TRAIT": {
       "ARMOR": {
@@ -516,6 +522,7 @@
       "Category": "Category",
       "Initial": "Initial",
       "Grade": "Grade",
+      "Offset": "Offset",
       "Allies": "Allies",
       "Enemies": "Enemies",
       "Properties": "Properties",
