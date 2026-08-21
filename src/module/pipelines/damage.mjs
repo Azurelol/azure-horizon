@@ -253,13 +253,27 @@ const onProcessAction = async (config, actor, item) => {
     const damage = config.damage;
 
     // 1.) Set high roll
-    const hr = config.hr;
-    if (hr) {
+    const hr = config.check.hr;
+    const lr = config.check.lr;
+    if (hr && lr) {
       damage.hr = hr;
+      const secondaryDamage = damage.components[1];
+      // Add high roll to primary damage
+      damage.add("AH.CHECK.HighRoll.long", {
+        type: damage.type,
+        amount: hr.result,
+      });
+      // Add low roll to secondary damage
+      if (secondaryDamage) {
+        damage.add("AH.CHECK.LowRoll.long", {
+          type: secondaryDamage.type,
+          amount: lr.result,
+        });
+      }
     }
 
     // 2.) Add proficiency bonus
-    const prof = Formulas.calculateProficiencyBonus(actor.level);
+    const prof = Formulas.calculateProficiencyBonus(actor.system.level);
     if (prof) {
       damage.add("AH.DAMAGE.ProficiencyBonus", {
         amount: prof,
@@ -312,9 +326,12 @@ const onProcessAction = async (config, actor, item) => {
 
         // Reduced
         const reducedDamage = standardDamage.duplicate(d => {
-          const base = d.base;
           d.clear();
-          d.add("AH.DAMAGE.Glancing", base.type, Math.ceil(total * 0.5));
+          d.add("AH.ACTION.POTENCY.Reduced", {
+            amount: Formulas.round(standardDamage.resolved.total / 2),
+            type: damage.type,
+            enabled: true,
+          });
         });
         const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, false);
         tiers.reduced.components.push({
@@ -324,7 +341,7 @@ const onProcessAction = async (config, actor, item) => {
 
         // Powerful
         const powerfulDamage = standardDamage.duplicate(d => {
-          const criticalBonus = d.hr.dice * 2;
+          const criticalBonus = d.hr.dice;
           d.add("AH.PIPELINE.CriticalBonus", {
             type: "untyped",
             amount: criticalBonus,

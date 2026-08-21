@@ -5,15 +5,15 @@
       <span>{{localize 'AH.CHECK.TargetResource' result=damage.resolved.total resource='HP'}}</span>
     </div>
 
-    <div class='ah-chat-section__check__components'>
-      {{#with damage.resolved}}
+    {{#with damage.resolved}}
+    <div class='ah-chat-section__check__components' data-tooltip="{{formula}}">
+
         {{#each instances as |component|}}
           <div class="ah-chat-section__damage__component" data-tooltip="{{localize component.tooltip}}">
             {{ahInlineProperty 'damageTypes' component.type value=component.amount }}
-
           </div>
         {{/each}}
-      {{/with}}
     </div>
+    {{/with}}
   </div>
 </section>

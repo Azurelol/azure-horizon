@@ -62,8 +62,10 @@ async function onRender(element) {
       const type = renderContext.dataset.type;
       let amount = await Expressions.evaluateAsync(renderContext.dataset.amount, context);
       let traits = [];
-      let damageData = new DamageData();
-      damageData.add("AH.DAMAGE.Base", type, amount);
+      let damageData = DamageData.initialize({
+        type,
+        amount,
+      });
 
       const request = new DamageRequest(renderContext.sourceInfo, targets, damageData);
       request.addTraits(traits);

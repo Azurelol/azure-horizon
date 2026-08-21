@@ -65,6 +65,7 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @property {AttributeDieRoll} primary
  * @property {AttributeDieRoll} secondary
  * @property {AttributeDieRoll} hr
+ * @property {AttributeDieRoll} lr
  * @property {number} modifierTotal The sum of all modifier
  * @property {number} total The total result of the check
  * @property {boolean} fumble
@@ -214,7 +215,8 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
 
   const primary = extractDieResults(roll.terms[0], actor);
   const secondary = extractDieResults(roll.terms[2], actor);
-  const highRoll = primary.result > secondary.result ? primary : secondary;
+  const highRoll = primary.result >= secondary.result ? primary : secondary;
+  const lowRoll = primary.result >= secondary.result ? secondary : primary;
 
   const critThreshold = check.critThreshold ?? Formulas.CRITICAL_THRESHOLD;
 
@@ -241,6 +243,7 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
       result: secondary.result,
     }),
     hr: highRoll,
+    lr: lowRoll,
     generateOpportunity: check.generateOpportunity ?? true,
     modifiers: Object.freeze(check.modifiers.map(Object.freeze)),
     modifierTotal: check.modifiers.reduce((agg, curr) => agg + curr.value, 0),

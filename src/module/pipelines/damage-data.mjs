@@ -25,13 +25,14 @@
  */
 
 /**
- * @typedef DamageInstance The calculated damage instance.
+ * @typedef DamageInstance The combined damage of all components of the same type.
  * @property {AH_DamageType} type
- * @property {Number} amount The sum total of addends and added modifiers.
+ * @property {Number} amount The sum total of addends
  * @property {Number[]} addends
  * @property {ParameterModifier[]} modifiers
  * @property {String} tooltip
  * @property {String[]} traits
+ * @remarks The modifiers are not evaluated yet, and are done at the end.
  */
 
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
@@ -115,6 +116,8 @@ export default class DamageData {
    */
   clear() {
     this.components = [];
+    this.hr = undefined;
+    this.proficiency = undefined;
     return this;
   }
 
@@ -186,11 +189,10 @@ export default class DamageData {
       existing.traits.push(...traits);
     }
 
-    // Apply modifiers
+    // Add modifiers
     let instances = [..._instances.values()];
     for (const inst of instances) {
       inst.modifiers = this.resolve(inst.type) ?? [];
-      inst.amount = Formulas.applyDamageModifiers(inst.amount, inst.modifiers);
       let tooltip = `${inst.addends.map(a => a).join(" + ")}`;
       if (inst.modifiers.length > 0) {
         for (const modifier of inst.modifiers) {
@@ -213,9 +215,9 @@ export default class DamageData {
    */
   get resolved() {
     const active = this.instances;
-    const total = Formulas.calculateDamage(active, this.grade, this.hr?.result ?? 0);
+    const calculation = Formulas.calculateDamage(active, this.grade, this.hr);
     return {
-      total: total,
+      ...calculation,
       modifiers: active.map(a => a.modifiers).flat(),
       instances: active,
     };

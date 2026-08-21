@@ -7,8 +7,10 @@ import WeaponUsageDataModel from "./weapon-usage-data-model.mjs";
 import { EffectsDataModel } from "./effects-data-model.mjs";
 import { ActionCostDataModel } from "./action-cost-data-model.mjs";
 import { ActionDataModel } from "./action-data-model.mjs";
+import { ActionAttributesDataModel } from "./action-attributes-data-model.mjs";
 
 const dataModels = Object.freeze({
+  attributes: ActionAttributesDataModel,
   check: CheckDataModel,
   damage: DamageDataModel,
   resource: ResourceDataModel,

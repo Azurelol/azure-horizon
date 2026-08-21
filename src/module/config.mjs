@@ -64,6 +64,7 @@ AH.defaults = {
   action: {
     attack: { cost: 2 },
   },
+  grade: "B",
   damage: {
     bonus: 5,
   },
@@ -110,12 +111,12 @@ AH.difficulties = Object.freeze({
  */
 
 AH.grades = Object.freeze({
-  E: { label: "E", value: 0.35 },
-  D: { label: "D", value: 0.5 },
-  C: { label: "C", value: 0.75 },
-  B: { label: "B", value: 1 },
-  A: { label: "A", value: 1.25 },
-  S: { label: "S", value: 1.5 },
+  E: { label: "E", scale: 0.35, base: 3 },
+  D: { label: "D", scale: 0.5, base: 5 },
+  C: { label: "C", scale: 0.75, base: 8 },
+  B: { label: "B", scale: 1, base: 10 }, // Baseline
+  A: { label: "A", scale: 1.25, base: 12 },
+  S: { label: "S", scale: 1.5, base: 15 },
 });
 
 /**

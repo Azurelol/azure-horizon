@@ -36,7 +36,7 @@ class Difficulty {
    * @abstract
    * @returns {Number}
    */
-  getHorizonFactor() {
+  getFactor() {
     throw Error;
   }
 }
@@ -48,7 +48,7 @@ class ClassicDifficulty extends Difficulty {
   calculateProficiencyBonus(level) {
     return 0;
   }
-  getHorizonFactor() {
+  getFactor() {
     return 1;
   }
 }
@@ -62,7 +62,7 @@ class HorizonDifficulty extends Difficulty {
   calculateProficiencyBonus(level) {
     return Formulas.round(level / PROFICIENCY_FACTOR);
   }
-  getHorizonFactor() {
+  getFactor() {
     return HorizonDifficulty.HF;
   }
 }
@@ -105,21 +105,64 @@ export default class Formulas {
   }
 
   /**
+   * @typedef DamageCalculation
+   * @property {Number} total
+   * @property {String} formula
+   */
+
+  /**
+   * @param {Number} amount
+   * @param {ParameterModifier[]} modifiers
+   */
+  static calculateDamageInstance(amount, modifiers) {
+    const { additive, multiplicative } = Formulas.joinModifiers(modifiers);
+    return Formulas.round((amount + additive) * multiplicative);
+  }
+
+  /**
    * @param {DamageInstance[]} instances
    * @param {AH_Grade} grade
-   * @param {Number} hr
-   * @return {Number}
+   * @param {AttributeDieRoll} hr
+   * @return {DamageCalculation}
    */
   static calculateDamage(instances, grade, hr) {
     const diff = this.difficulty;
-    const hf = diff.getHorizonFactor();
-    const gf = AH.grades[grade].value;
+    const diffFactor = diff.getFactor();
 
-    let total = instances.reduce((sum, inst) => sum + inst.amount, 0);
-    total = ((total + hf) * gf) * (hr / 2);
-    total = Formulas.round(total);
-    return total;
+    let base = instances;
+    let total;
+    let formula;
 
+    // Using the DIFFICULTY scaling system
+    if (grade && hr) {
+
+      // Apply all modifiers first
+      const _grade = AH.grades[grade];
+      let base = 0;
+      for (const inst of instances) {
+        base += Formulas.calculateDamageInstance(inst.amount, inst.modifiers);
+      }
+
+      // For checks use the HR since its variable; else use the minimum of the given attribute die.
+      const attributeFactor = hr.result ?? Formulas.round(hr.dice / 4);
+      const attributeDivisor = 2;
+      const gradeFactor = _grade.scale;
+
+      total = (base * gradeFactor) * diffFactor; // (base * gradeFactor) * (attributeFactor / attributeDivisor);
+      formula = `((BASE:${base} + DIFFICULTY:${diffFactor}) * GRADE:${gradeFactor}) * ATTRIBUTE:${attributeFactor} / DIVISOR:${attributeDivisor})`;
+      total = Formulas.round(total);
+    }
+    // FLAT
+    else {
+      base = instances.reduce((sum, inst) => sum + inst.amount, 0);
+      total = base;
+      formula = `${base}`;
+    }
+
+    return {
+      total,
+      formula,
+    };
   }
 
   /**
@@ -129,32 +172,39 @@ export default class Formulas {
    */
   static calculateHitPoints(system, level = undefined) {
     const actor = system.parent;
-    const hf = this.difficulty.getHorizonFactor();
+    const factor = this.difficulty.getFactor();
     level ??= system.level;
+    let hp = 0;
     switch (actor.type) {
+
       case "hero": {
         /** @type AttributesDataModel **/
         const attributes = system.attributes;
-        return (level * hf) + (attributes.mig.base * HP_MIGHT_FACTOR);
+        hp = level + (attributes.mig.base * HP_MIGHT_FACTOR);
+        break;
       }
+
       case "adversary": {
         /** @type AttributesDataModel **/
         const attributes = system.attributes;
         /** @type AdversaryProfileDataModel **/
         const profile = system.profile;
         const rankMultiplier = profile.turns;
-        return ((level * hf) + (attributes.mig.base * HP_MIGHT_FACTOR)) * rankMultiplier;
+        hp = (level + (attributes.mig.base * HP_MIGHT_FACTOR)) * rankMultiplier;
+        break;
       }
 
       case "follower":
       case "guest":
-        return (level * hf);
+        hp = level;
+        break;
 
       case "unit":
         break;
     }
-    // TODO: Throw?
-    return 0;
+    hp = hp * factor;
+
+    return hp;
   }
 
   /**
@@ -163,7 +213,7 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculateMindPoints(level, willpower) {
-    const hf = this.difficulty.getHorizonFactor();
+    const hf = this.difficulty.getFactor();
     return (willpower * MP_WILLPOWER_FACTOR) + level;
   }
 
@@ -257,15 +307,6 @@ export default class Formulas {
           : "failure";
 
     return this.#POTENCY_BY_OUTCOME[outcome][defense ? "defense" : "attacker"];
-  }
-
-  /**
-   * @param {Number} amount
-   * @param {ParameterModifier[]} modifiers
-   */
-  static applyDamageModifiers(amount, modifiers) {
-    const { additive, multiplicative } = Formulas.joinModifiers(modifiers);
-    return Formulas.round((amount + additive) * multiplicative);
   }
 
 }
