@@ -445,6 +445,8 @@ AH.triggers = Object.freeze({
   command: { label: "AH.FOLLOWER.MOVE.Command" },
   reaction: { label: "AH.FOLLOWER.MOVE.Reaction" },
   initiative: { label: "AH.FOLLOWER.MOVE.Initiative" },
+  startOfRound: { label: "AH.FOLLOWER.MOVE.StartOfRound" },
+  endOfRound: { label: "AH.FOLLOWER.MOVE.EndOfRound" },
 });
 
 /**

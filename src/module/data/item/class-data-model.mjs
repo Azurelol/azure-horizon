@@ -5,17 +5,22 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
 
 /**
  * @property {ClassBenefitsDataModel} benefits
+ * @property {TraitsField} traits
+ * @property {String[]} triggers The experience triggers for this class.
  */
 export default class ClassDataModel extends ItemDataModel {
   /** @inheritdoc */
   static defineSchema() {
-    const { SchemaField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
+    const { SchemaField, ArrayField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      benefits: new EmbeddedDataField(ClassBenefitsDataModel, {}),
+      triggers: new ArrayField(new StringField({ nullable: true }, {
+        label: "AH.FIELD.ExperienceTrigger",
+      })),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
         formOptions: getFormSelectOptions(AH.traits.class),
       }),
-      benefits: new EmbeddedDataField(ClassBenefitsDataModel, {}),
     });
   }
 }

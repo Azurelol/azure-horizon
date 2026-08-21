@@ -187,6 +187,7 @@
         "Command": "Command",
         "Reaction": "Reaction",
         "Initiative": "Initiative",
+        "StartOfRound": "Start Of Round",
         "EndOfRound": "End Of Round"
       }
     },
@@ -442,8 +443,12 @@
       "Press": "Press",
       "Warrior": "Warrior",
       "Mage": "Mage",
+      "Pressure": "Pressure",
+      "Shift": "Shift",
       "Offense": "Offense",
       "Support": "Support",
+      "Endurance": "Endurance",
+      "Mobility": "Mobility",
       "Survival": "Survival",
       "Stealth": "Stealth",
       "Skirmish": "Skirmish",

@@ -2,6 +2,7 @@ import { enrichHTML } from "../constants.mjs";
 import StringUtils from "./string-utils.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
+const { SchemaField, ArrayField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 const SUPPORTED_FIELD_NAMES = new Set(["StringField", "NumberField", "BooleanField", "ObjectField"]);
 const SYSTEM_FIELD_NAMES = new Set(["TraitsField"]);
@@ -299,6 +300,7 @@ export default class FoundryUtils {
    * @property {Object} value
    * @property {String} template The partial template path.
    * @property {Boolean} optional If the field is optional.
+   * @property {Boolean} isArray
    */
 
   /**
@@ -406,8 +408,9 @@ export default class FoundryUtils {
         continue;
       }
       const fieldPath = `${path}.${field.name}`;
+      let fieldClass = field.constructor.name;
       // Support 1-level nested schema fields (which are very common)
-      if (field.constructor.name === "SchemaField") {
+      if (fieldClass === "SchemaField") {
         const schemaFields = Object.values(field.fields);
         for (const sf of schemaFields) {
           const sfieldInfo = this.getDataFieldInfo(source, `${fieldPath}.${sf.name}`, sf);
@@ -421,7 +424,16 @@ export default class FoundryUtils {
           }
         }
       }
-      else if (!field.recursive && (SUPPORTED_FIELD_NAMES.has(field.constructor.name) || SYSTEM_FIELD_NAMES.has(field.constructor.name))) {
+      // Support array fields
+      else if (fieldClass === "ArrayField") {
+        if (field.element instanceof StringField) {
+          const fieldInfo = this.getDataFieldInfo(source, fieldPath, field);
+          fieldInfo.isArray = true;
+          layout.default.push(fieldInfo);
+        }
+      }
+      // Primitives
+      else if (!field.recursive && (SUPPORTED_FIELD_NAMES.has(fieldClass) || SYSTEM_FIELD_NAMES.has(fieldClass))) {
         let fieldInfo = this.getDataFieldInfo(source, fieldPath, field);
         // Custom rendering targets for the system
         if (field.options?._part === "header") {

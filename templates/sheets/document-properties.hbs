@@ -12,18 +12,6 @@
     {{/if}}
   </div>
 
-  <div class="ah-field-grid">
-    {{#each fieldMap.default as |entry|}}
-      {{formGroup
-        entry.field
-        value=entry.value
-        name=entry.path
-        localize=true
-        options=entry.field.options.formOptions
-      }}
-    {{/each}}
-  </div>
-
   {{#if propertiesTemplate}}
     {{> propertiesTemplate}}
   {{/if}}
@@ -32,6 +20,20 @@
     {{#each fieldsets as |field|}}
       {{#if (or (not field.optional) field.value.enabled)}}
         {{> (lookup field 'template') }}
+      {{/if}}
+    {{/each}}
+
+    {{#each fieldMap.default as |entry|}}
+      {{#if entry.isArray}}
+        {{ahArrayField path=entry.path label=entry.label array=entry.value type='string'}}
+      {{else}}
+        {{formGroup
+          entry.field
+          value=entry.value
+          name=entry.path
+          localize=true
+          options=entry.field.options.formOptions
+        }}
       {{/if}}
     {{/each}}
   </div>
