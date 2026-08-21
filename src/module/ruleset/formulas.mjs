@@ -7,7 +7,6 @@ const MP_WILLPOWER_FACTOR = 5;
 const IP_BASE = 6;
 const TP_BASE = 10;
 const MIN_ATTRIBUTE_DIE = 4;
-const MAX_ATTRIBUTE_DIE = 12;
 const PROFICIENCY_FACTOR = 5;
 
 /**
@@ -57,6 +56,7 @@ class ClassicDifficulty extends Difficulty {
 class HorizonDifficulty extends Difficulty {
   static HF = 5;
   calculateProficiencyBonus(level) {
+    return 0;
     return Formulas.round(level / PROFICIENCY_FACTOR);
   }
   getFactor() {

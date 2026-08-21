@@ -64,7 +64,7 @@ export default class DamageData {
    * @param {AH_Grade} grade
    * @returns {DamageData}
    */
-  static initialize(unit, grade) {
+  static initialize(unit, grade = undefined) {
     const data = new DamageData();
     data.add("AH.DAMAGE.Primary", unit);
     data.grade = grade;
@@ -116,6 +116,8 @@ export default class DamageData {
    */
   clear() {
     this.components = [];
+    this.modifiers = {};
+    this.grade = undefined;
     this.hr = undefined;
     this.proficiency = undefined;
     return this;
@@ -176,7 +178,7 @@ export default class DamageData {
       if (!_instances.has(component.type)) {
         _instances.set(component.type, {
           amount,
-          addends: [amount],
+          addends: amount ? [amount] : [],
           type: component.type,
           traits: [...traits],
         });

@@ -272,7 +272,7 @@ const onProcessAction = async (config, actor, item) => {
       }
     }
 
-    // 2.) Add proficiency bonus
+    // 2.) Add proficiency bonus to primary type
     const prof = Formulas.calculateProficiencyBonus(actor.system.level);
     if (prof) {
       damage.add("AH.DAMAGE.ProficiencyBonus", {
@@ -282,7 +282,7 @@ const onProcessAction = async (config, actor, item) => {
       });
     }
 
-    // 4.) Evaluate any components that have expressions
+    // 3.) Evaluate any components that have expressions
     const context = new EvaluationContext(actor, item, config.getTargets());
     for (const component of damage.components) {
       let amount = component.amount;
@@ -290,7 +290,7 @@ const onProcessAction = async (config, actor, item) => {
       component.amount = amount;
     }
 
-    // 3.1) Add outgoing modifiers
+    // 4.) Add outgoing modifiers
     /** @type CharacterParametersDataModel **/
     const outgoing = actor?.system?.parameters;
     if (outgoing) {
@@ -322,15 +322,11 @@ const onProcessAction = async (config, actor, item) => {
           text: standardDamage.toString(),
           actions: [standard],
         });
-        const total = standardDamage.resolved.total;
 
         // Reduced
         const reducedDamage = standardDamage.duplicate(d => {
-          d.clear();
-          d.add("AH.ACTION.POTENCY.Reduced", {
-            amount: Formulas.round(standardDamage.resolved.total / 2),
-            type: damage.type,
-            enabled: true,
+          d.modify("universal", {
+            multiplicative: 0.5,
           });
         });
         const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, false);
@@ -341,7 +337,7 @@ const onProcessAction = async (config, actor, item) => {
 
         // Powerful
         const powerfulDamage = standardDamage.duplicate(d => {
-          const criticalBonus = d.hr.dice;
+          const criticalBonus = hr.dice;
           d.add("AH.PIPELINE.CriticalBonus", {
             type: "untyped",
             amount: criticalBonus,
