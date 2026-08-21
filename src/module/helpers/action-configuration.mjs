@@ -338,12 +338,11 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
-   * @param {AH_DamageType} type
-   * @param {Number} baseDamage
+   * @param {DamageUnit} unit
    * @return {ActionConfig}
    */
-  addDamage(type, baseDamage) {
-    this.setData(DAMAGE, DamageData.construct(type, baseDamage));
+  addDamage(unit) {
+    this.setData(DAMAGE, DamageData.construct(unit));
     return this;
   }
 

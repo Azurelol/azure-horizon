@@ -15,10 +15,12 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
     const { BooleanField, SchemaField, NumberField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       primary: new SchemaField({
+        grade: new StringField({ initial: "B", choices: Object.keys(AH.grades), nullable: false }),
         amount: new StringField({ initial: "", integer: true, nullable: false }),
         type: new StringField({ initial: "untyped", choices: Object.keys(AH.damageTypes), blank: true, nullable: false }),
       }),
       secondary: new SchemaField({
+        grade: new StringField({ initial: "B", choices: Object.keys(AH.grades), nullable: false }),
         amount: new StringField({ initial: "", integer: true, nullable: true }),
         type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.damageTypes), nullable: false }),
       }),
@@ -49,18 +51,18 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
 
       if (config.hasDamage) {
         config.modifyDamage(dmg => {
-          dmg.add(label, this.primary.type, this.primary.amount);
+          dmg.add(label, this.primary);
           if (this.secondary.type) {
             config.addTraits(this.secondary.type);
-            dmg.add(label, this.secondary.type, this.secondary.amount);
+            dmg.add(label, this.secondary);
           }
         });
       }
       else {
-        config.addDamage(this.primary.type, this.primary.amount);
+        config.addDamage(this.primary);
         if (this.secondary.type) {
           config.modifyDamage(d => {
-            d.add("AH.DAMAGE.Secondary", this.secondary.type, this.secondary.amount);
+            d.add("AH.DAMAGE.Secondary", this.secondary);
           });
           if (this.secondary.type !== this.primary.type) {
             config.addTraits(this.secondary.type);

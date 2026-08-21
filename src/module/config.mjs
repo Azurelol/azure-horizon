@@ -97,7 +97,20 @@ AH.statusEffects = Object.freeze({
 });
 
 /**
- * @typedef {'low'|'moderate'|'high'|'severe'|'extreme'} AH_Power A multiplier used for scaling.
+ * @typedef {'low'|'moderate'|'high'|'severe'|'extreme'} AH_Grade A letter grade to represent an attack's scaling with the character's attributes.
+ */
+
+AH.grades = Object.freeze({
+  E: { label: "E", value: 0.35 },
+  D: { label: "D", value: 0.5 },
+  C: { label: "C", value: 0.75 },
+  B: { label: "B", value: 1 },
+  A: { label: "A", value: 1.25 },
+  S: { label: "S", value: 1.5 },
+});
+
+/**
+ * @typedef {'low'|'moderate'|'high'|'severe'|'extreme'} AH_Power A multiplier used for additional damage scaling.
  */
 
 AH.power = Object.freeze({

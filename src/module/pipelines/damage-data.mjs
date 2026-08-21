@@ -8,6 +8,7 @@
 /**
  * @typedef DamageUnit
  * @property {String|Number} amount
+ * @property {AH_Grade} grade
  * @property {AH_DamageType} type
  *
 
@@ -53,14 +54,13 @@ export default class DamageData {
   }
 
   /**
-   * @param {AH_DamageType} type
-   * @param {String|Number} amount
+   * @param {DamageUnit} unit
    * @returns {DamageData}
    */
-  static construct(type, amount) {
+  static construct(unit) {
     const data = new DamageData();
-    data.add("AH.DAMAGE.Primary", type, amount);
-    data.type = type;
+    data.add("AH.DAMAGE.Primary", unit);
+    data.type = unit.type;
     return data;
   }
 
@@ -90,15 +90,13 @@ export default class DamageData {
 
   /**
    * @param {String} label
-   * @param {AH_DamageType} type
-   * @param {String|Number} amount
+   * @param {DamageUnit} unit
    * @returns DamageData
    */
-  add(label, type, amount) {
+  add(label, unit) {
     this.custom({
       label: label,
-      type: type,
-      amount: amount,
+      ...unit,
       enabled: true,
     });
     return this;
