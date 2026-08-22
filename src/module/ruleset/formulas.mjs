@@ -119,10 +119,9 @@ export default class Formulas {
   /**
    * @param {DamageInstance[]} instances
    * @param {AH_Grade} grade
-   * @param {AttributeDieRoll} hr
    * @return {DamageCalculation}
    */
-  static calculateDamage(instances, grade, hr) {
+  static calculateDamage(instances, grade) {
     const diff = this.difficulty;
     const diffFactor = diff.getFactor();
 
@@ -131,7 +130,7 @@ export default class Formulas {
     let formula;
 
     // Using the DIFFICULTY scaling system
-    if (grade && hr) {
+    if (grade) {
 
       // Apply all modifiers first
       const _grade = AH.grades[grade];

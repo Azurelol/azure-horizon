@@ -211,7 +211,7 @@ function getExpenseAction(expense, sourceInfo) {
     resource: StringUtils.localize(AH.resourceTypes[expense.resource].long),
   });
 
-  const data = ResourceData.construct(expense.resource, expense.amount);
+  const data = ResourceData.construct(expense.resource, -expense.amount);
   return new ChatAction("updateResource", resourceIcon, tooltip, {
     amount: -expense.amount,
     type: expense.resource,

@@ -285,7 +285,9 @@
       "TargetResource": "{result} VS {resource}",
       "CheckDefense": "{result} {defense}",
       "Hit": "Hit",
-      "Miss": "Miss"
+      "Miss": "Miss",
+      "PrimaryAttribute": "Primary Attribute",
+      "SecondaryAttribute": "Secondary Attribute"
     },
     "INTERVAL": {
       "StartOfCombat": {

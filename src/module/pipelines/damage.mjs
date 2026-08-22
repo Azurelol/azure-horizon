@@ -242,6 +242,8 @@ function onRenderChatMessage(message, html) {
   });
 }
 
+const FIXED_SCALING = 0.25;
+
 /** @type ActionCallback **/
 const onProcessAction = async (config, actor, item) => {
   if (config.hasDamage) {
@@ -252,22 +254,21 @@ const onProcessAction = async (config, actor, item) => {
     // We will begin modifying this before setting it back
     const damage = config.damage;
 
-    // 1.) Set high roll
-    const hr = config.check.hr;
-    const lr = config.check.lr;
-    if (hr && lr) {
-      damage.hr = hr;
+    // 1.) Set attribute scaling
+    const primary = config.check.hr?.result ?? Formulas.round(config.check.primary.dice * FIXED_SCALING);
+    const secondary = config.check.lr?.result ?? Formulas.round(config.check.secondary.dice * FIXED_SCALING);
+    if (primary && secondary) {
       const secondaryDamage = damage.components[1];
       // Add high roll to primary damage
-      damage.add("AH.CHECK.HighRoll.long", {
+      damage.add("AH.CHECK.PrimaryAttribute", {
         type: damage.type,
-        amount: hr.result,
+        amount: primary,
       });
       // Add low roll to secondary damage
       if (secondaryDamage) {
-        damage.add("AH.CHECK.LowRoll.long", {
+        damage.add("AH.CHECK.SecondaryAttribute", {
           type: secondaryDamage.type,
-          amount: lr.result,
+          amount: secondary,
         });
       }
     }
@@ -337,10 +338,9 @@ const onProcessAction = async (config, actor, item) => {
 
         // Powerful
         const powerfulDamage = standardDamage.duplicate(d => {
-          const criticalBonus = hr.dice;
           d.add("AH.PIPELINE.CriticalBonus", {
             type: "untyped",
-            amount: criticalBonus,
+            amount: primary,
           });
         });
         const powerful = getChatAction(powerfulDamage, sourceInfo, traits, false);

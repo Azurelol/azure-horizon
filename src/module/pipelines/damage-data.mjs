@@ -47,7 +47,6 @@ const DEFAULT_GRADE = "B";
  * @property {DamageComponent[]} components
  * @property {Record<AH_DamageType, ParameterModifier[]>} modifiers
  * @property {AH_DamageType} type The base damage type
- * @property {AttributeDieRoll} hr The high roll is used during damage scaling.
  * @property {Number} proficiency The proficiency bonus is used during damage calculation and is a special case.
  * @property {AH_Grade} grade The damage grade is used during damage scaling.
  */
@@ -118,7 +117,6 @@ export default class DamageData {
     this.components = [];
     this.modifiers = {};
     this.grade = undefined;
-    this.hr = undefined;
     this.proficiency = undefined;
     return this;
   }
@@ -217,7 +215,7 @@ export default class DamageData {
    */
   get resolved() {
     const active = this.instances;
-    const calculation = Formulas.calculateDamage(active, this.grade, this.hr);
+    const calculation = Formulas.calculateDamage(active, this.grade);
     return {
       ...calculation,
       modifiers: active.map(a => a.modifiers).flat(),
