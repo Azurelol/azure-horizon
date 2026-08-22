@@ -152,7 +152,7 @@ function registerFonts() {
   CONFIG.fontDefinitions["Pixeloid"] = {
     editor: true,
     fonts: [
-      { urls: ["systems/azure-horizon/assets/fonts/PixeloidMono.woff2"] },
+      { urls: ["systems/azure-horizon/assets/fonts/PixeloidSans.woff2"] },
     ],
   };
 }
