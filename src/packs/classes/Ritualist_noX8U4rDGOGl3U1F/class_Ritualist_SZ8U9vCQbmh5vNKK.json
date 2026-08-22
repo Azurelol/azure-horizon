@@ -1,0 +1,39 @@
+{
+  "folder": "noX8U4rDGOGl3U1F",
+  "name": "Ritualist",
+  "type": "class",
+  "_id": "SZ8U9vCQbmh5vNKK",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "ritualist",
+    "description": "",
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": false,
+      "mp": false,
+      "ip": false
+    },
+    "triggers": [],
+    "traits": []
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787411902446,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!SZ8U9vCQbmh5vNKK"
+}

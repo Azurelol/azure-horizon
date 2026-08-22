@@ -1,28 +1,33 @@
 {
-  "folder": "bx9MNmczTLwMoouk",
-  "name": "Ice Lance",
-  "type": "spell",
-  "_id": "tFe1mVDLxjR3wP9G",
-  "img": "icons/svg/item-bag.svg",
+  "folder": "noX8U4rDGOGl3U1F",
+  "name": "Dark Spell",
+  "type": "skill",
+  "_id": "kRHNThbskMgSJzhQ",
+  "img": "icons/magic/unholy/energy-smoke-pink.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ice-lance",
-    "description": "",
-    "check": {
+    "slug": "ritualist-dark-spell",
+    "description": "<p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Dark </em>domain.</p>",
+    "attributes": {
       "schemaVersion": 1,
-      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def",
-      "bonus": ""
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
-        "amount": 5,
-        "type": "cold"
+        "amount": "",
+        "type": "untyped"
       },
       "secondary": {
         "amount": "",
@@ -39,21 +44,40 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "5",
+      "amount": "",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
       "enabled": false,
+      "selector": "",
       "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "domain": ""
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 5
+    },
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "type": "",
+      "points": 1,
+      "traits": []
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "ritualist"
   },
   "effects": [],
   "sort": 0,
@@ -65,12 +89,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786617478161,
+    "createdTime": 1787411984509,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!tFe1mVDLxjR3wP9G"
+  "_key": "!items!kRHNThbskMgSJzhQ"
 }
