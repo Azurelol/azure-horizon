@@ -66,7 +66,8 @@
       "type": "action",
       "points": 2,
       "traits": [
-        "stress"
+        "stress",
+        "exhaust"
       ]
     },
     "usage": {

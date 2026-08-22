@@ -1,0 +1,42 @@
+{
+  "folder": "TKGG7DbmG3KyDFid",
+  "name": "Gunner",
+  "type": "class",
+  "_id": "R3N0TiFLWi4Cbfsf",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "gunner",
+    "description": "",
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": false,
+      "mp": true,
+      "ip": false
+    },
+    "triggers": [
+      "You acknowledge someone.",
+      "You shoot first."
+    ],
+    "traits": []
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787396247343,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!R3N0TiFLWi4Cbfsf"
+}

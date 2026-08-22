@@ -67,7 +67,7 @@
     height: 1.4em;
     line-height: 1.4em;
     font-size: var(--ah-font-size-input-selector);
-    color: var(--ah-content-primary);
+    color: var(--ah-content-accent-alt);
     text-align: center;
     text-align-last: center;
     border: none;
@@ -96,7 +96,7 @@
   input {
     font-size: var(--ah-font-size-input);
     background: transparent;
-    color: unset;
+    color: var(--ah-content-accent-alt);
     border: none;
     text-align: center;
     width: 40px;

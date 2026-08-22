@@ -363,13 +363,13 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 45,
+        "value": 140,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 45,
+        "value": 50,
         "bonus": 0,
         "temporary": 0
       },

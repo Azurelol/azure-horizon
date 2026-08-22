@@ -18,7 +18,12 @@
       "hp": true,
       "mp": false,
       "ip": false
-    }
+    },
+    "triggers": [
+      "You prove your skill to an audience.",
+      "You challenge someone to a duel.",
+      "You spare your defeated opponent in a duel."
+    ]
   },
   "effects": [],
   "sort": 400000,

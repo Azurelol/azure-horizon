@@ -19,7 +19,11 @@
       "hp": true,
       "mp": false,
       "ip": false
-    }
+    },
+    "triggers": [
+      "You have an encounter with a fated rival.",
+      "You perform a great feat then leave the scene without looking back."
+    ]
   },
   "effects": [],
   "sort": 400000,

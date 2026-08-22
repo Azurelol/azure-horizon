@@ -18,7 +18,11 @@
       "hp": false,
       "mp": false,
       "ip": true
-    }
+    },
+    "triggers": [
+      "You help a local community with their needs.",
+      "You treat a disease or illness with one of your concoctions."
+    ]
   },
   "effects": [],
   "sort": 0,

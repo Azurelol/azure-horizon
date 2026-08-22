@@ -4,8 +4,16 @@
   "img": "icons/svg/aura.svg",
   "type": "base",
   "system": {
-    "changes": [],
-    "slug": "lancer-airborne",
+    "changes": [
+      {
+        "key": "system.parameters.damage.physical.outgoing.skill.multiplicative",
+        "type": "add",
+        "value": 1.25,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "slug": "lancer-jump",
     "rules": {},
     "tracker": {
       "enabled": false,

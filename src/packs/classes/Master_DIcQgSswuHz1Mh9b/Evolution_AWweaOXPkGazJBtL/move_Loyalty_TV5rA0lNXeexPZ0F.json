@@ -1,22 +1,22 @@
 {
-  "folder": "gPvJ9nvsdEKEZ5U8",
-  "name": "Command: Attack",
+  "folder": "AWweaOXPkGazJBtL",
+  "name": "Loyalty",
   "type": "move",
-  "_id": "loPlZO5hW44wGidR",
-  "img": "icons/skills/melee/strike-slashes-orange.webp",
+  "_id": "TV5rA0lNXeexPZ0F",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "companion-attack",
-    "description": "",
-    "trigger": "command",
+    "slug": "master-loyalty",
+    "description": "<p>When the master would be defeated by an attack, the companion takes it in their stead and is reduced to 0 hit points.</p>",
+    "trigger": "",
     "power": "",
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
-        "amount": "5",
-        "type": "slashing"
+        "amount": "",
+        "type": "untyped"
       },
       "secondary": {
         "amount": "",
@@ -51,12 +51,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787045757148,
+    "createdTime": 1787240255398,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!loPlZO5hW44wGidR"
+  "_key": "!items!TV5rA0lNXeexPZ0F"
 }

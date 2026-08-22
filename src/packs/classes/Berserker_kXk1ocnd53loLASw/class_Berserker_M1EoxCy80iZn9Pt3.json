@@ -18,7 +18,12 @@
       "hp": true,
       "mp": false,
       "ip": false
-    }
+    },
+    "triggers": [
+      "You recklessly put yourself in great danger.",
+      "You drink someone under the table.",
+      "You spare someone you have defeated."
+    ]
   },
   "effects": [],
   "sort": 0,

@@ -17,6 +17,10 @@
     },
     "traits": [
       "warrior"
+    ],
+    "triggers": [
+      "You take part in a brawl.",
+      "You speak truth to authority."
     ]
   },
   "effects": [],

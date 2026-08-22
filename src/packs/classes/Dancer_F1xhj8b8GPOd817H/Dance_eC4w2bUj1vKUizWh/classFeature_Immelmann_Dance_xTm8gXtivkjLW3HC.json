@@ -1,14 +1,20 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Draconic Surge",
-  "type": "skill",
-  "_id": "WoRVtl6fopiH3jp4",
-  "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
+  "folder": "eC4w2bUj1vKUizWh",
+  "name": "Immelmann Dance",
+  "type": "classFeature",
+  "_id": "xTm8gXtivkjLW3HC",
+  "img": "icons/skills/movement/ball-spinning-blue.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-draconic-surge",
-    "description": "<p>Your next attack gains 50% of its damage converted to block.</p>",
+    "slug": "dancer-immelmann-dance",
+    "description": "<p>You grant a party member 2 AP which they can use to perform one of their actions immediately.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -54,26 +60,30 @@
       }
     },
     "power": "",
-    "level": {
-      "current": 1,
-      "max": 1
+    "feature": {
+      "_id": "dnzRbbuzX9oNOd74",
+      "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "exhaust"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
+      "attributes": false,
       "check": false,
       "damage": false
     },
-    "class": "lancer"
+    "class": "dancer",
+    "skill": "dancer-dance"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -82,12 +92,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787215451917,
+    "createdTime": 1787397519251,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!WoRVtl6fopiH3jp4"
+  "_key": "!items!xTm8gXtivkjLW3HC"
 }

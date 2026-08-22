@@ -3,7 +3,7 @@
   "name": "Armiger",
   "type": "class",
   "_id": "gMn0yJrV0U7mRKOJ",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/armiger/armiger.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -18,6 +18,10 @@
     "traits": [
       "warrior",
       "offense"
+    ],
+    "triggers": [
+      "You acquire a new weapon.",
+      "You mentor someone."
     ]
   },
   "effects": [],

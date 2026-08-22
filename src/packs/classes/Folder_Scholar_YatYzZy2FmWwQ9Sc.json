@@ -1,10 +1,10 @@
 {
-  "type": "ActiveEffect",
+  "type": "Item",
   "folder": null,
-  "name": "Actor",
-  "color": null,
+  "name": "Scholar",
+  "color": "#00a400",
   "sorting": "a",
-  "_id": "3FxfZOI8nEaUR0ty",
+  "_id": "YatYzZy2FmWwQ9Sc",
   "description": "",
   "sort": 0,
   "flags": {},
@@ -12,12 +12,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786721639910,
+    "createdTime": 1787241410579,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!3FxfZOI8nEaUR0ty"
+  "_key": "!folders!YatYzZy2FmWwQ9Sc"
 }

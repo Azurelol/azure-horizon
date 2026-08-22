@@ -21,7 +21,7 @@
     var(--ah-surface-panel-nested) 100%
   );
 
-  --ah-surface-entry: #C0C3CE;
+  --ah-surface-entry: #CACACA;
   --ah-surface-entry-gradient: linear-gradient(
     to bottom,
     var(--ah-surface-panel) 0%,
@@ -59,6 +59,7 @@
   --ah-content-disabled: var(--ah-primitive-color-white-50);
   --ah-content-on-accent: var(--ah-content-primary);
   --ah-content-accent: #EAD470;
+  --ah-content-accent-alt: #a7c6d1;
   --ah-content-caption: #C7DEE5;
 
   --ah-content-tab: var(--ah-content-muted);

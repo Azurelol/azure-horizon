@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "master",
-    "description": "",
+    "description": "<p>You have a companion that travels by your side wherever you go.</p>",
     "traits": [
       "support",
       "companion"
@@ -18,7 +18,10 @@
       "hp": false,
       "mp": true,
       "ip": false
-    }
+    },
+    "triggers": [
+      null
+    ]
   },
   "effects": [],
   "sort": 0,

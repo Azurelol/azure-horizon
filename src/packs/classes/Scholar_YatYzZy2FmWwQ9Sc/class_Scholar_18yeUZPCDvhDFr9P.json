@@ -1,0 +1,41 @@
+{
+  "folder": "YatYzZy2FmWwQ9Sc",
+  "name": "Scholar",
+  "type": "class",
+  "_id": "18yeUZPCDvhDFr9P",
+  "img": "systems/azure-horizon/assets/icons/classes/scholar/scholar.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "scholar",
+    "description": "",
+    "traits": [
+      "support",
+      "lore"
+    ],
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": false,
+      "mp": false,
+      "ip": true
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787241419711,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!18yeUZPCDvhDFr9P"
+}

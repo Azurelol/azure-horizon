@@ -954,6 +954,8 @@ AH.traits = {
     opener: { label: "AH.TRAIT.Opener", tooltip: "AH.TRAIT.OpenerHint" },
     closer: { label: "AH.TRAIT.Closer", tooltip: "AH.TRAIT.CloserHint" },
     finisher: { label: "AH.TRAIT.Finisher", tooltip: "AH.TRAIT.FinisherHint" },
+    exhaust: { label: "AH.TRAIT.Exhaust", tooltip: "AH.TRAIT.ExhaustHint" },
+    performance: { label: "AH.TRAIT.Performance", tooltip: "AH.TRAIT.PerformanceHint" },
     stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
   },
 

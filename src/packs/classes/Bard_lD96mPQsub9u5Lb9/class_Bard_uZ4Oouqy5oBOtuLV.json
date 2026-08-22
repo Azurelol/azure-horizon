@@ -11,15 +11,20 @@
     "description": "",
     "traits": [
       "support",
-      "music",
-      "stress"
+      "stress",
+      "music"
     ],
     "benefits": {
       "schemaVersion": 1,
       "hp": false,
       "mp": true,
       "ip": false
-    }
+    },
+    "triggers": [
+      "You stop a conflict with your performance.",
+      "You recount your party's exploits in a performance.",
+      "You inadvertently create a misunderstanding."
+    ]
   },
   "effects": [],
   "sort": 0,

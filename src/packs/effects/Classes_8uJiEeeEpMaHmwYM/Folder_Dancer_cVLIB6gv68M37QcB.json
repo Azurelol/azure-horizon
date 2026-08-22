@@ -1,23 +1,23 @@
 {
-  "type": "Item",
-  "folder": null,
-  "name": "Sharpshooter",
-  "color": "#c80000",
+  "type": "ActiveEffect",
+  "folder": "8uJiEeeEpMaHmwYM",
+  "name": "Dancer",
+  "color": null,
   "sorting": "a",
-  "_id": "8rYPdUeZxKDnoD6J",
+  "_id": "cVLIB6gv68M37QcB",
   "description": "",
-  "sort": 100000,
+  "sort": 0,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786646439007,
+    "createdTime": 1787398956152,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!8rYPdUeZxKDnoD6J"
+  "_key": "!folders!cVLIB6gv68M37QcB"
 }

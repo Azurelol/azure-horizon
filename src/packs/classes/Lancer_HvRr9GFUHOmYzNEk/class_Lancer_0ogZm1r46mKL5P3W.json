@@ -18,7 +18,11 @@
       "hp": true,
       "mp": false,
       "ip": false
-    }
+    },
+    "triggers": [
+      "You liberate someone.",
+      "You jump from a great height and land in a dramatic pose."
+    ]
   },
   "effects": [],
   "sort": 0,

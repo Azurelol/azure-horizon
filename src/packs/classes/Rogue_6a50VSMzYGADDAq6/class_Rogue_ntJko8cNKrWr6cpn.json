@@ -1,0 +1,47 @@
+{
+  "folder": "6a50VSMzYGADDAq6",
+  "name": "Rogue",
+  "type": "class",
+  "_id": "ntJko8cNKrWr6cpn",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "rogue",
+    "description": "",
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": false,
+      "mp": false,
+      "ip": true
+    },
+    "triggers": [
+      "You uncover a well-kept secret.",
+      "You infiltrate a location without being discovered.",
+      "You disable or help your party by a trap or hazzard."
+    ],
+    "traits": [
+      "offense",
+      "mobility",
+      "stealth"
+    ]
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787301065182,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!ntJko8cNKrWr6cpn"
+}

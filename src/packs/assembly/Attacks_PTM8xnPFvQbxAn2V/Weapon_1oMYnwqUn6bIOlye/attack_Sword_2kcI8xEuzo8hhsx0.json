@@ -22,7 +22,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "5",
+        "amount": "",
         "type": "slashing"
       },
       "secondary": {

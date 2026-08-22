@@ -3,7 +3,7 @@ import { scaleValue } from "../config.mjs";
 
 /**
  * @class
- * @property {String} type
+ * @property {AH_Resource} type
  * @property {ScalarModifier[]} modifiers
  */
 export default class ResourceData {
@@ -38,7 +38,7 @@ export default class ResourceData {
     /** @type ScalarModifier **/
     const modifier = {
       label: label ?? ResourceData.baseModifier,
-      amount: scaleValue(amount),
+      amount: this.type === "hp" ? scaleValue(amount) : amount,
       enabled: true,
     };
     this.modifiers.push(modifier);
