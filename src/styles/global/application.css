@@ -1,17 +1,5 @@
 .ah-application {
 
-  table th, table td {
-    text-align: center;
-  }
-
-  table tbody tr {
-    background: var(--ah-table-background-row);
-  }
-
-  table tbody tr:nth-child(even) {
-    background: var(--ah-table-background-row-alt);
-  }
-
   font-family: var(--ah-font-family-application), serif;
 
   input[type='text'] {

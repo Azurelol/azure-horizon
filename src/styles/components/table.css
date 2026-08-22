@@ -1,3 +1,18 @@
+.ah-application {
+
+  table th, table td {
+    text-align: center;
+  }
+
+  table tbody tr {
+    background: var(--ah-table-background-row);
+  }
+
+  table tbody tr:nth-child(even) {
+    background: var(--ah-table-background-row-alt);
+  }
+}
+
 .ah-table__collection {
   display: flex;
   flex-direction: column;
@@ -11,16 +26,19 @@
   table-layout: fixed;
   width: 100%;
   white-space: nowrap;
+  border: var(--ah-table-border);
+  border-radius: var(--ah-border-radius);
   background: var(--ah-table-background);
   font-family: var(--ah-table-font-family), serif;
 
   caption {
-    background: var(--ah-table-background-caption);
     span {
       font-size: var(--ah-table-caption-font-size);
       display: flex;
+      color: var(--ah-table-caption-color);
       flex-direction: row;
       align-items: center;
+      text-transform: uppercase;
       justify-content: center;
       gap: 1rem;
       padding: 4px;
@@ -28,9 +46,9 @@
   }
 
   thead {
+    background: none;
     border: none;
     font-size: var(--ah-table-header-font-size);
-    background: var(--ah-table-background-header);
     tr {
       th {
         text-align: center;
@@ -40,10 +58,16 @@
 
   tbody {
     font-size: var(--ah-table-body-font-size);
-    background: var(--ah-table-background-body);
     tr {
       height: var(--ah-table-row-height);
-      background: var(--ah-table-background-row);
+      background: none !important;
+      border-bottom: 1px solid var(--ah-table-row-divider);
+    }
+    tr:nth-child(even) {
+      background: none !important;
+    }
+    tr:last-child {
+      border: none;
     }
   }
 
@@ -138,12 +162,4 @@
   align-items: center;
   justify-content: center;
   gap: 0.1rem;
-}
-
-.ah-table__caption {
-  background:var(--ah-table-background-header);
-  font-size: 20px;
-  text-transform: uppercase;
-  text-align: center;
-  align-self: flex-start;
 }

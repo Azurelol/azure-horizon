@@ -43,28 +43,18 @@
   --ah-list-entry-name-font-family: 'CreditValleybold';
 
   /* Tables */
+  --ah-table-background: var(--ah-surface-table);
+  --ah-table-border: var(--ah-border-muted);
   --ah-table-font-family: Signika;
+
+  --ah-table-caption-color: var(--ah-content-caption);
+
   --ah-table-caption-font-size: 18px;
   --ah-table-header-font-size: 14px;
   --ah-table-body-font-size: 12px;
   --ah-table-icon-size: 20px;
-  --ah-table-background: var(--ah-surface-base);
-  --ah-table-background-caption: linear-gradient(
-    180deg,
-    var(--ah-primitive-color-navy-900) 0%,
-    var(--ah-primitive-color-navy-700) 100%
-  );
-  --ah-table-background-header: var(--ah-surface-panel-nested);
-  --ah-table-background-row: color-mix(
-    in srgb,
-    var(--ah-surface-panel) 96%,
-    var(--ah-content-primary) 4%
-  );
-  --ah-table-background-row-alt: color-mix(
-    in srgb,
-    var(--ah-surface-panel) 70%,
-    var(--ah-content-primary) 12%
-  );
+
+  --ah-table-row-divider: color-mix(in oklch, white 8%, transparent);
   --ah-background-table-row-hover: var(--ah-surface-hover);
   --ah-background-table-row-selected: var(--ah-surface-action);
   --ah-table-header-color: var(--ah-content-secondary);
