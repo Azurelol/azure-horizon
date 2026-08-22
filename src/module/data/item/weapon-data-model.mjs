@@ -22,17 +22,21 @@ export default class WeaponDataModel extends FeatureDataModel {
         initial: "melee",
         blank: false,
         label: "AH.FIELD.Range",
+        _part: "header",
         choices: () => AH.traits.range,
       }),
       handedness: new StringField({
         initial: "one",
         blank: false,
         label: "AH.FIELD.Handedness",
+        _part: "header",
         choices: () => AH.handedness,
       }),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
+        _part: "header",
         formOptions: getFormSelectOptions(AH.traits.weapon),
+        choices: () => AH.traits.weapon,
       }),
       damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
         enabled: true,

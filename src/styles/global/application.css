@@ -12,17 +12,9 @@
     background: var(--ah-table-background-row-alt);
   }
 
-  /*table tbody th,*/
-  /*table tbody td {*/
-  /*  padding: 8px 12px;*/
-  /*}*/
-
-  /*Bring back?*/
-  /*background: transparent;*/
   font-family: var(--ah-font-family-application), serif;
 
   input[type='text'] {
-    /*background: var(--ah-background-input);*/
   }
 
   textarea {
@@ -89,6 +81,10 @@
     &:hover {
       background: var(--ah-color-control-hover);
     }
+  }
+
+  multi-select {
+    flex-direction: column-reverse;
   }
 
   fieldset {

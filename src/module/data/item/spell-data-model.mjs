@@ -17,9 +17,16 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
         blank: true,
         label: "AH.FIELD.Domain",
         formOptions: getFormSelectOptions(AH.domains),
-        choices: Object.keys(AH.domains) }),
-      speed: new StringField({ initial: "instant", blank: true, label: "AH.ACTION.Speed",
-        formOptions: getFormSelectOptions(AH.speed), choices: Object.keys(AH.speed), required: true }),
+        _part: "header",
+        choices: () => AH.domains }),
+      speed: new StringField({
+        blank: true,
+        label: "AH.ACTION.Speed",
+        initial: "instant",
+        formOptions: getFormSelectOptions(AH.speed),
+        _part: "header",
+        choices: () => AH.speed,
+        required: true }),
     });
   }
 
