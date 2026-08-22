@@ -405,7 +405,11 @@
       "UploadDirectory": "Codex Upload Directory",
       "UploadDirectoryHint": "Where uploads used in codex entries are uploaded to.",
       "Difficulty": "Difficulty",
-      "DifficultyHint": "The difficulty scales the HP and DAMAGE of all characters."
+      "DifficultyHint": "The difficulty setting affects various things.",
+      "Scale": "Scale",
+      "ScaleHint": "The scale affects how HP/DMG are scaled. Should numbers go up?",
+      "ActiveParty": "Active Party",
+      "ActivePartyHint": "The campaign's current party. Make sure to set it for various automation features."
     },
     "DIFFICULTY": {
       "Horizon": "Horizon",
@@ -538,6 +542,7 @@
       "Scene": "Scene",
       "Cost": "Cost",
       "Tags": "Tags",
+      "Potency": "Potency",
       "Identifier": "Identifier",
       "ComparisonOperator": "Comparison Operator",
       "GreaterThan": "Greater Than",

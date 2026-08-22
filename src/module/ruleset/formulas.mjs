@@ -122,28 +122,30 @@ export default class Formulas {
    * @param {AHActor} actor
    */
   static calculateAttributeInputs(config, actor) {
-
     if (config.isCheck) {
+      const grade = AH.grades[config.grade].scale;
       return {
-        primary: config.check.hr?.result,
-        secondary: config.check.lr?.result,
+        primary: config.check.hr?.result * grade,
+        secondary: config.check.lr?.result * grade,
       };
     }
     else {
       const attributes = actor.system.attributes;
+      const primary = attributes[config.check.primary].current * FIXED_ATTRIBUTE_SCALING;
+      const secondary = attributes[config.check.secondary].current * FIXED_ATTRIBUTE_SCALING;
       return {
-        primary: attributes[config.check.primary] * FIXED_ATTRIBUTE_SCALING,
-        secondary: attributes[config.check.secondary] * FIXED_ATTRIBUTE_SCALING,
+        primary: primary,
+        secondary: secondary,
       };
     }
   }
 
   /**
    * @param {DamageInstance[]} instances
-   * @param {AH_Grade} grade
+   * @param {Boolean} fixed
    * @return {DamageCalculation}
    */
-  static calculateDamage(instances, grade) {
+  static calculateDamage(instances, fixed) {
     const diff = this.difficulty;
     const diffFactor = diff.getFactor();
 
@@ -151,28 +153,19 @@ export default class Formulas {
     let total;
     let formula;
 
-    // Using the DIFFICULTY scaling system
-    if (grade) {
-
-      // Apply all modifiers first
-      const _grade = AH.grades[grade];
+    if (fixed) {
+      base = instances.reduce((sum, inst) => sum + inst.amount, 0);
+      total = base * diffFactor;
+      formula = `${base}`;
+    }
+    else {
       let base = 0;
       for (const inst of instances) {
         base += Formulas.calculateDamageInstance(inst.amount, inst.modifiers);
       }
-
-      // For checks use the HR since its variable; else use the minimum of the given attribute die.
-      const gradeFactor = _grade.scale;
-
-      total = (base * gradeFactor) * diffFactor;
-      formula = `(BASE:${base} * GRADE:${gradeFactor}) * DIFFICULTY:${diffFactor}`;
+      total = (base) * diffFactor;
+      formula = `(BASE:${base} * DIFFICULTY:${diffFactor}`;
       total = Formulas.round(total);
-    }
-    // FLAT
-    else {
-      base = instances.reduce((sum, inst) => sum + inst.amount, 0);
-      total = base * diffFactor;
-      formula = `${base}`;
     }
 
     return {

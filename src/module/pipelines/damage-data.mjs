@@ -9,6 +9,7 @@
  * @typedef DamageUnit
  * @property {String|Number} amount
  * @property {AH_DamageType} type
+ * @property {String} tooltip
  *
 
 /**
@@ -25,7 +26,7 @@
  */
 
 /**
- * @typedef DamageInstance The combined damage of all components of the same type.
+ * @typedef DamageInstance The combined damage from all components of the same type.
  * @property {AH_DamageType} type
  * @property {Number} amount The sum total of addends
  * @property {Number[]} addends
@@ -39,16 +40,12 @@ import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 
-/** @type AH_Grade **/
-const DEFAULT_GRADE = "B";
-
 /**
  * Contains damage data used in pipelines.
  * @property {DamageComponent[]} components
  * @property {Record<AH_DamageType, ParameterModifier[]>} modifiers
  * @property {AH_DamageType} type The base damage type
- * @property {Number} proficiency The proficiency bonus is used during damage calculation and is a special case.
- * @property {AH_Grade} grade The damage grade is used during damage scaling.
+ * @property {Boolean} fixed Fixed damage does not apply modifiers.
  */
 export default class DamageData {
 
@@ -60,13 +57,11 @@ export default class DamageData {
 
   /**
    * @param {DamageUnit} unit
-   * @param {AH_Grade} grade
    * @returns {DamageData}
    */
-  static initialize(unit, grade = undefined) {
+  static initialize(unit) {
     const data = new DamageData();
     data.add("AH.DAMAGE.Primary", unit);
-    data.grade = grade;
     data.type = unit.type;
     return data;
   }
@@ -215,7 +210,7 @@ export default class DamageData {
    */
   get resolved() {
     const active = this.instances;
-    const calculation = Formulas.calculateDamage(active, this.grade);
+    const calculation = Formulas.calculateDamage(active, this.fixed);
     return {
       ...calculation,
       modifiers: active.map(a => a.modifiers).flat(),

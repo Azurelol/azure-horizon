@@ -1,5 +1,5 @@
 // NOTE: This file should have no other dependencies
-import { systemAssetPath, systemID, systemNS } from "./constants.mjs";
+import { getSystemSetting, systemAssetPath, systemID, systemNS } from "./constants.mjs";
 import StringUtils from "./utils/string-utils.mjs";
 
 const AH = {};
@@ -111,12 +111,12 @@ AH.difficulties = Object.freeze({
  */
 
 AH.grades = Object.freeze({
-  E: { label: "E", scale: 0.35, base: 3 },
-  D: { label: "D", scale: 0.5, base: 5 },
-  C: { label: "C", scale: 0.75, base: 8 },
-  B: { label: "B", scale: 1, base: 10 }, // Baseline
-  A: { label: "A", scale: 1.25, base: 12 },
-  S: { label: "S", scale: 1.5, base: 15 },
+  E: { label: "E", scale: 0.6, base: 3 },
+  D: { label: "D", scale: 0.8, base: 5 },
+  C: { label: "C", scale: 1, base: 8 }, // Baseline
+  B: { label: "B", scale: 1.25, base: 10 },
+  A: { label: "A", scale: 1.5, base: 12 },
+  S: { label: "S", scale: 2, base: 15 },
 });
 
 /**
@@ -664,6 +664,19 @@ AH.combat = Object.freeze({
  * @typedef {'theme'|'activeParty'} AH_SystemSetting
  */
 
+let _scale;
+
+/**
+ * Handles the scaling of any value according to the current difficulty
+ * @param value
+ */
+export function scaleValue(value) {
+  if (_scale === undefined) {
+    _scale = getSystemSetting("scale", 1);
+  }
+  return _scale;
+}
+
 /**
  * All settings associated with the system.
  * @type {Record<string, SettingConfig>}
@@ -677,7 +690,7 @@ AH.settings = Object.freeze({
     scope: "world",
   },
   theme: {
-    name: "AH.SETTING.ThemeLabel",
+    name: "AH.SETTING.Theme",
     hint: "AH.SETTING.ThemeHint",
     type: Object,
     requiresReload: false,
@@ -685,13 +698,22 @@ AH.settings = Object.freeze({
     scope: "world",
   },
   difficulty: {
-    name: "AH.SETTING.DifficultyLabel",
+    name: "AH.SETTING.Difficulty",
     hint: "AH.SETTING.DifficultyHint",
     type: String,
     config: true,
     default: "horizon",
     scope: "world",
     choices: () => AH.difficulties,
+    requiresReload: true,
+  },
+  scale: {
+    name: "AH.SETTING.Scale",
+    hint: "AH.SETTING.ScaleHint",
+    type: Number,
+    config: true,
+    default: 1,
+    scope: "world",
     requiresReload: true,
   },
   codexUploadDirectory: {

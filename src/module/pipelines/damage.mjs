@@ -269,7 +269,6 @@ const onProcessAction = async (config, actor, item) => {
         });
       }
     }
-    damage.grade = config.grade;
 
     // 2.) Add proficiency bonus to primary type
     const prof = Formulas.calculateProficiencyBonus(actor.system.level);
