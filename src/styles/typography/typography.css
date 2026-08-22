@@ -2,8 +2,17 @@
 
 @font-face {
   font-family: "Silver", sans-serif;
-  font-style: normal;
   src: url("../../../assets/fonts/Silver.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Monogram", sans-serif;
+  src: url("../../../assets/fonts/monogram.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Pixeloid", sans-serif;
+  src: url("../../../assets/fonts/PixeloidMono.woff2") format("woff2");
 }
 
 :root {

@@ -12,7 +12,6 @@
             {{ahInlineProperty 'damageTypes' component.type value=component.amount }}
           </div>
         {{/each}}
-        {{log 'modifiers' modifiers }}
         {{#if modifiers}}
           {{#each modifiers as |mod|}}
             <div class="ah-chat-section__damage__component" data-tooltip="{{mod.key}}">

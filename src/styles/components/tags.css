@@ -63,6 +63,8 @@
   color 0.1s,
   border-color 0.1s;
 
+  font-family: var(--ah-font-family-tag), serif;
+
   color: var(--ah-tag-color);
   background: var(--ah-tag-filter-background);
   border: 1px solid grey;

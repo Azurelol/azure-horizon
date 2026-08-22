@@ -3,7 +3,7 @@ import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import { CharacterSheet } from "./base-character-sheet.mjs";
 import {
   AccessoryTableRenderer, ActionTableRenderer,
-  ArmorTableRenderer,
+  ArmorTableRenderer, ClassTableRenderer,
   WeaponTableRenderer,
 } from "../item/_module.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
@@ -59,6 +59,7 @@ export class HeroSheet extends CharacterSheet {
 
   /* -------------------------------------------------- */
 
+  #classTableRenderer = new ClassTableRenderer({ title: "AH.ITEM.Class.long", actions: CharacterSheet.getCompendiumTableActions("classes", "class") });
   #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill", actions: CharacterSheet.getCompendiumTableActions("classes", "skill") });
   #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature", actions: CharacterSheet.getCompendiumTableActions("classes", "classFeature") });
   #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long", actions: CharacterSheet.getCompendiumTableActions("spells") });
@@ -85,6 +86,7 @@ export class HeroSheet extends CharacterSheet {
           await this.#skillTableRenderer.render(this.actor.getItemsByType("skill")),
           await this.#classFeatureTableRenderer.render(this.actor.getItemsByType("classFeature")),
           await this.#spellTableRenderer.render(this.actor.getItemsByType("spell")),
+          await this.#classTableRenderer.render(this.actor.getItemsByType("class")),
         ];
         break;
       }

@@ -142,24 +142,32 @@ function registerDataModels() {
   AH.dataModelTemplates = data.ActiveEffect.templates;
 }
 
-Hooks.once("init", function() {
-  bindDocuments();
-  registerDataModels();
-  bindDataModels();
-  bindSheets();
-  initializeSystems();
-
-  // Sidebar tabs
-  CONFIG.ui.combat = apps.Combat.AHCombatTracker;
-  CONFIG.AH = AH;
-
-  // FONTS
+function registerFonts() {
   CONFIG.fontDefinitions["Silver"] = {
     editor: true,
     fonts: [
       { urls: ["systems/azure-horizon/assets/fonts/Silver.ttf"] },
     ],
   };
+  CONFIG.fontDefinitions["Pixeloid"] = {
+    editor: true,
+    fonts: [
+      { urls: ["systems/azure-horizon/assets/fonts/PixeloidMono.woff2"] },
+    ],
+  };
+}
+
+Hooks.once("init", function() {
+  bindDocuments();
+  registerDataModels();
+  bindDataModels();
+  bindSheets();
+  initializeSystems();
+  registerFonts();
+
+  // Sidebar tabs
+  CONFIG.ui.combat = apps.Combat.AHCombatTracker;
+  CONFIG.AH = AH;
 
   exportAPI();
 });

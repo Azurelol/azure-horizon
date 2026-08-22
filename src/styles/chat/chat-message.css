@@ -3,6 +3,7 @@
   color: var(--ah-content-primary);
   border: var(--ah-chat-message-border);
   border-radius: var(--ah-border-radius);
+  font-family: var(--ah-font-family-chat);
 
   .message-header {
     color: var(--ah-content-muted);

@@ -93,10 +93,12 @@
   --ah-font-size-lg: var(--ah-primitive-size-text-lg);
   --ah-font-size-xl: var(--ah-primitive-size-text-xl);
   /* Fonts */
-  --ah-font-family-application: "Silver";
-  --ah-font-family-title: "Inter";
-  --ah-font-family-data: Signika;
-  --ah-font-family-tag: 500 0.6875rem/1 "Inter";
+  --ah-font-family-application: Pixeloid;
+  --ah-font-family-title: Pixeloid;
+  --ah-font-family-data: Pixeloid;
+  --ah-font-family-button: Pixeloid;
+  --ah-font-family-tag: Pixeloid;
+  --ah-font-family-chat: Pixeloid;
 
   /* Filters */
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));

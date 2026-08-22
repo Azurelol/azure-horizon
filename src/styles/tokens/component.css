@@ -45,7 +45,7 @@
   /* Tables */
   --ah-table-background: var(--ah-surface-table);
   --ah-table-border: var(--ah-border-muted);
-  --ah-table-font-family: Signika;
+  --ah-table-font-family: var(--ah-font-family-data);
 
   --ah-table-caption-color: var(--ah-content-caption);
 

@@ -1,28 +1,4 @@
-.ah-button {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  gap: 0.25rem;
 
-  label {
-    text-wrap: nowrap;
-  }
-
-  &.--transparent {
-    background-color: transparent;
-    border: none;
-  }
-}
-
-.ah-button-group {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-}
 
 .ah-icon {
   --icon-size: 100%;

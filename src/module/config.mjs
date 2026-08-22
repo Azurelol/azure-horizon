@@ -677,11 +677,11 @@ export function scaleValue(value) {
   if (typeof value === "string") {
     const nValue = Number.parseInt(value);
     if (nValue) {
-      return nValue * _scale;
+      return Math.round(nValue * _scale);
     }
     return value;
   }
-  return value * _scale;
+  return Math.round(value * _scale);
 }
 
 /**
