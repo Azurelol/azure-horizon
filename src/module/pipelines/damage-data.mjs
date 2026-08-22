@@ -37,7 +37,7 @@
  */
 
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
-import AH from "../config.mjs";
+import AH, { scaleValue } from "../config.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 
 /**
@@ -129,7 +129,10 @@ export default class DamageData {
     if (!found) {
     }
 
-    this.modifiers[type].push(modifier);
+    this.modifiers[type].push({
+      ...modifier,
+      additive: scaleValue(modifier.additive),
+    });
 
     return this;
   }
@@ -165,7 +168,7 @@ export default class DamageData {
     for (const component of this.components) {
       if (!component.enabled) continue;
 
-      const amount = Number(component.amount) || 0;
+      const amount = scaleValue(Number(component.amount) || 0);
       const traits = component.traits || [];
 
       if (!_instances.has(component.type)) {

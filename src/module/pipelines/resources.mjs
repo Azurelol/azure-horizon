@@ -211,7 +211,7 @@ function getExpenseAction(expense, sourceInfo) {
     resource: StringUtils.localize(AH.resourceTypes[expense.resource].long),
   });
 
-  const data = ResourceData.construct(expense.resource, -expense.amount);
+  const data = ResourceData.initialize(expense.resource, -expense.amount);
   return new ChatAction("updateResource", resourceIcon, tooltip, {
     amount: -expense.amount,
     type: expense.resource,
@@ -253,7 +253,7 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
 
   // TRAITS
   if (config.hasTrait("stress")) {
-    const stressData = ResourceData.construct("tp", 1);
+    const stressData = ResourceData.initialize("tp", 1);
     const request = new ResourceRequest(config.sourceInfo, targets, stressData);
 
     if (actor.type === "hero") {

@@ -395,7 +395,7 @@ export class ActionConfig extends ActionInspector {
    * @return {ActionConfig}
    */
   setResource(type, amount) {
-    this.check.data[RESOURCE] = ResourceData.construct(type, amount);
+    this.check.data[RESOURCE] = ResourceData.initialize(type, amount);
     this.addTraits(type);
     if (Number.isInteger(amount)) {
       if (amount >= 0) {

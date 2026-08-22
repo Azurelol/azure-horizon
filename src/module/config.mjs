@@ -668,11 +668,18 @@ let _scale;
 
 /**
  * Handles the scaling of any value according to the current difficulty
- * @param value
+ * @param {Number|String} value
  */
 export function scaleValue(value) {
   if (_scale === undefined) {
     _scale = getSystemSetting("scale", 1);
+  }
+  if (typeof value === "string") {
+    const nValue = Number.parseInt(value);
+    if (nValue) {
+      return nValue * _scale;
+    }
+    return value;
   }
   return value * _scale;
 }

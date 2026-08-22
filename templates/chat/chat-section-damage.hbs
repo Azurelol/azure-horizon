@@ -9,9 +9,23 @@
     <div class='ah-chat-section__check__components'>
         {{#each instances as |component|}}
           <div class="ah-chat-section__damage__component" data-tooltip="{{localize component.tooltip}}">
-            {{ahInlineProperty 'damageTypes' component.type value=(ahScaleValue component.amount) }}
+            {{ahInlineProperty 'damageTypes' component.type value=component.amount }}
           </div>
         {{/each}}
+        {{log 'modifiers' modifiers }}
+        {{#if modifiers}}
+          {{#each modifiers as |mod|}}
+            <div class="ah-chat-section__damage__component" data-tooltip="{{mod.key}}">
+              {{ahInlineProperty 'damageTypes' mod.key }}
+              {{#if mod.additive}}
+                <span>{{numberFormat mod.additive sign=true}}</span>
+              {{/if}}
+              {{#if (ahNotEquals mod.multiplicative 1)}}
+                <span>{{ahPercentModifier mod.multiplicative}}</span>
+              {{/if}}
+            </div>
+          {{/each}}
+        {{/if}}
     </div>
     {{/with}}
   </div>

@@ -76,7 +76,7 @@ async function onRender(element) {
       if (renderContext.dataset.change === "loss") {
         amount = -amount;
       }
-      const request = new ResourceRequest(renderContext.sourceInfo, targets, ResourceData.construct(type, amount));
+      const request = new ResourceRequest(renderContext.sourceInfo, targets, ResourceData.initialize(type, amount));
       await Resources.process(request);
     }
   });

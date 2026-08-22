@@ -2,12 +2,12 @@
 
   <div class="ah-field-group">
     {{ahStringField path=(ahConcat path '.primary.type') label="AH.COMMON.Primary" value=value.primary.type options=(ahFormOptions 'damageTypes')}}
-    {{ahStringField path=(ahConcat path '.primary.amount') label="AH.FIELD.Offset" value=value.primary.amount }}
+    {{ahStringField path=(ahConcat path '.primary.amount') label="AH.FIELD.Bonus" value=value.primary.amount }}
   </div>
 
   <div class="ah-field-group">
     {{ahStringField blank=true path=(ahConcat path '.secondary.type') label="AH.COMMON.Secondary" value=value.secondary.type options=(ahFormOptions 'damageTypes')}}
-    {{ahStringField path=(ahConcat path '.secondary.amount') label="AH.FIELD.Offset" value=value.secondary.amount }}
+    {{ahStringField path=(ahConcat path '.secondary.amount') label="AH.FIELD.Bonus" value=value.secondary.amount }}
   </div>
 
   {{ahTraitsField schema=field.fields.traits path=(ahConcat path '.traits') label="AH.COMMON.Traits" value=value.traits options=(ahFormOptions 'traits.damage')}}

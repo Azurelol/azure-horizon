@@ -2,9 +2,9 @@
 
   {{#if system.damage.enabled}}
     <span>
-        <i class="ah-icon --s {{ahIconClass system.damage.primary.type}}"></i> {{system.damage.primary.amount}}
+        <i class="ah-icon --s {{ahIconClass system.damage.primary.type}}"></i> {{ahScaleValue system.damage.primary.amount}}
       {{#if damage.secondary.type}}
-        <i class="ah-icon --s {{ahIconClass system.damage.secondary.type}}"></i> {{system.damage.secondary.amount}}
+        <i class="ah-icon --s {{ahIconClass system.damage.secondary.type}}"></i> {{ahScaleValue system.damage.secondary.amount}}
       {{/if}}
 
     </span>
@@ -12,7 +12,7 @@
 
   {{#if system.resource.enabled}}
     <span>
-    <i class="ah-icon --s {{ahIconClass system.resource.type}}"></i> {{system.resource.amount}}
+    <i class="ah-icon --s {{ahIconClass system.resource.type}}"></i> {{ahScaleValue system.resource.amount}}
     </span>
   {{/if}}
 

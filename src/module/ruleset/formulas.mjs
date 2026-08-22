@@ -85,7 +85,7 @@ export default class Formulas {
 
     if (fixed) {
       base = instances.reduce((sum, inst) => sum + inst.amount, 0);
-      total = scaleValue(base);
+      total = base;
       formula = `${base}`;
     }
     else {
@@ -93,7 +93,7 @@ export default class Formulas {
       for (const inst of instances) {
         base += Formulas.calculateDamageInstance(inst.amount, inst.modifiers);
       }
-      total = scaleValue(base);
+      total = base;
       formula = `${base}`;
       total = Formulas.round(total);
     }

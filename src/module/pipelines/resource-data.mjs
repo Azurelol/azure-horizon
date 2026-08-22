@@ -23,7 +23,7 @@ export default class ResourceData {
    * @param {number} amount
    * @returns {ResourceData}
    */
-  static construct(type, amount) {
+  static initialize(type, amount) {
     const data = new ResourceData();
     data.addModifier(this.baseModifier, amount);
     data.type = type;
@@ -38,7 +38,7 @@ export default class ResourceData {
     /** @type ScalarModifier **/
     const modifier = {
       label: label ?? ResourceData.baseModifier,
-      amount: amount,
+      amount: scaleValue(amount),
       enabled: true,
     };
     this.modifiers.push(modifier);
@@ -55,14 +55,16 @@ export default class ResourceData {
         result += Number.parseInt(mod.amount);
       }
     }
-    return scaleValue(result);
+    return result;
   }
 
   /**
    * @returns {String}
    */
   toString() {
-    const parts = this.modifiers.map(m => m.amount);
+    const parts = this.modifiers.map(m => {
+      return m.amount;
+    });
     return `${parts.join(" + ")}`;
   }
 
