@@ -13,7 +13,7 @@
               data-type="{{this.id}}" {{#if this.ctx}}data-context-menu="{{this.ctx}}"{{/if}}
               data-tooltip="{{localize this.tooltip}}">
         <i class="ah-icon --xs {{ahIconClass id}}"></i>
-        {{localize this.label}}
+        <span>{{localize this.label}}</span>
       </button>
     {{/unless}}
   {{/each}}

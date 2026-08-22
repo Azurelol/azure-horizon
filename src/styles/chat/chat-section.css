@@ -42,7 +42,7 @@
   color: var(--ah-primitive-color-white);
   font-size: var(--ah-font-size-m);
   text-shadow: var( --ah-text-shadow-outline);
-  background: var(--ah-background-components);
+  background: var(--ah-surface-entry);
 }
 
 .ah-chat-section__check__components {
@@ -70,7 +70,7 @@
   padding: 2px;
   align-items: center;
   flex: 2;
-  font-size: 18px;
+  font-size: var(--ah-font-size-md);
 
   --background: var(--ah-background-result);
   background: var(--background);
@@ -199,7 +199,7 @@
 .ah-chat-section__target {
   display: flex;
   flex-direction: row;
-  border: 1px solid aliceblue;
+  border: var(--ah-border);
   padding-left: 8px;
   color: var(--ah-content-primary);
   background: var(--ah-potency-unknown-surface);

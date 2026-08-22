@@ -36,7 +36,7 @@
 
   --ah-surface-hover: var(--ah-primitive-color-navy-400);
   --ah-surface-value: color-mix(in srgb, var(--ah-color-navy-500) 12%, transparent);
-  --ah-surface-tag: var(--ah-primitive-color-grey-light);
+  --ah-surface-tag: #5C5C5B;
   --ah-surface-tag-hover: var(--ah-primitive-color-grey-mid);
   --ah-surface-border: var(--ah-primitive-color-navy-500);
   --ah-border-panel: var(--ah-primitive-color-navy-600);
@@ -85,13 +85,12 @@
   --ah-font-weight-medium: 500;
   --ah-font-weight-bold: 700;
   /* Font Sizes */
-  --ah-font-size-header: 18px;
-  --ah-font-size-xs: var(--ah-primitive-size-text-xs);
-  --ah-font-size-sm: var(--ah-primitive-size-text-sm);
-  --ah-font-size-m: var(--ah-primitive-size-text-m);
-  --ah-font-size-base: var(--ah-primitive-size-text-base);
-  --ah-font-size-lg: var(--ah-primitive-size-text-lg);
-  --ah-font-size-xl: var(--ah-primitive-size-text-xl);
+  --ah-font-size-xs: 9px;
+  --ah-font-size-sm: 10px;
+  --ah-font-size-m: 12px;
+  --ah-font-size-md: 14px;
+  --ah-font-size-lg: 16px;
+  --ah-font-size-xl: 18px;
   /* Fonts */
   --ah-font-family-application: Pixeloid;
   --ah-font-family-title: Pixeloid;

@@ -12,4 +12,8 @@
       color: var(--ah-content-accent);
     }
   }
+
+  i {
+    color: var(--ah-content-primary);
+  }
 }

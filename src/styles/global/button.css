@@ -1,6 +1,8 @@
 .ah-application {
   a.button, button {
-    font-family: var(--ah-font-family-button);
+    span {
+      font-family: var(--ah-font-family-button);
+    }
   }
 }
 

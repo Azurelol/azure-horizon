@@ -390,7 +390,7 @@ export default class Expressions {
    * @returns {boolean} True if the expression requires a context to be evaluated
    */
   static requiresContext(expression) {
-    return !Number.isInteger(Number(expression));
+    return !Number.isFinite(Number(expression));
   }
 
 }

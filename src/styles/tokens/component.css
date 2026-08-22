@@ -115,7 +115,7 @@
   --ah-color-text-shadow-inline: var(--ah-border-accent);
   --ah-background-inline: var(--ah-surface-action);
   --ah-font-size-inline: var(--ah-primitive-size-text-sm);
-  --ah-font-size-message-header: 16px;
+  --ah-font-size-message-header: var(--ah-font-size-lg);
   --ah-background-inline-value: var(--ah-surface-value);
 
   /* 2.1 Controls */
