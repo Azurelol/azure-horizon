@@ -4,12 +4,14 @@ import AH from "../../../config.mjs";
 
 /**
  * @typedef WeaponUsageData
- * @property {Boolean} check Replace the check attributes.
+ * @property {Boolean} attributes Replace the check attributes.
+ * @property {Boolean} check Replace the check configuration.
  * @property {Boolean} damage Append the damage components.
  */
 
 /**
- * @property {Boolean} check Replace the check attributes.
+ * @property {Boolean} attributes Replace the check attributes.
+ * @property {Boolean} check Replace the check configuration.
  * @property {Boolean} damage Append the damage components.
  */
 export default class WeaponUsageDataModel extends FieldsetDataModel {
@@ -17,6 +19,7 @@ export default class WeaponUsageDataModel extends FieldsetDataModel {
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, BooleanField, StringField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      attributes: new BooleanField({ initial: false }),
       check: new BooleanField({ initial: false }),
       damage: new BooleanField({ initial: false }),
     });
@@ -32,6 +35,7 @@ export default class WeaponUsageDataModel extends FieldsetDataModel {
   configureAction(config) {
     config.setWeaponUsage({
       check: this.check,
+      attributes: this.attributes,
       damage: this.damage,
     });
   }

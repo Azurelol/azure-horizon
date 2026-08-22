@@ -1030,6 +1030,7 @@ AH.traits.all = Object.freeze({
   ...AH.traits.range,
   ...AH.traits.weapon,
   ...AH.traits.armor,
+  ...AH.domains,
   ...AH.damageTypes,
   ...AH.speed,
 });

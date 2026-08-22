@@ -8,6 +8,7 @@ const IP_BASE = 6;
 const TP_BASE = 10;
 const MIN_ATTRIBUTE_DIE = 4;
 const PROFICIENCY_FACTOR = 5;
+const FIXED_ATTRIBUTE_SCALING = 0.25;
 
 /**
  * @typedef Modifier
@@ -114,6 +115,27 @@ export default class Formulas {
   static calculateDamageInstance(amount, modifiers) {
     const { additive, multiplicative } = Formulas.joinModifiers(modifiers);
     return Formulas.round((amount + additive) * multiplicative);
+  }
+
+  /**
+   * @param {ActionConfig} config
+   * @param {AHActor} actor
+   */
+  static calculateAttributeInputs(config, actor) {
+
+    if (config.isCheck) {
+      return {
+        primary: config.check.hr?.result,
+        secondary: config.check.lr?.result,
+      };
+    }
+    else {
+      const attributes = actor.system.attributes;
+      return {
+        primary: attributes[config.check.primary] * FIXED_ATTRIBUTE_SCALING,
+        secondary: attributes[config.check.secondary] * FIXED_ATTRIBUTE_SCALING,
+      };
+    }
   }
 
   /**

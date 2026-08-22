@@ -27,6 +27,10 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
     });
   }
 
+  get isCheck() {
+    return super.isCheck || this.usage.check;
+  }
+
   /**
    * @param {ActionConfig} config
    * @returns {Promise<void>}
@@ -39,13 +43,23 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
     const actor = this.parent.actor;
     if (isActorType(actor)) {
       const attack = await this.resolveAttack();
-      if (attack) {
+      if (assertCondition(attack !== undefined, "An attack must be assigned for this ability.")) {
         config.setItemReference(attack);
+        // Override check
+        if (this.isCheck && this.usage.check) {
+          config.setTargetedDefense(attack.system.check.defense);
+        }
+        // Override damage
         if (this.usage.damage) {
           attack.system.damage.configureAction(config, {
             label: "AH.ITEM.Attack",
           });
         }
+        // Override attributes
+        if (this.usage.attributes) {
+          attack.system.attributes.configureAction(config, {});
+        }
+        // Use attack range
         config.removeTraits("melee", "ranged");
         config.addTraits(attack.system.range);
       }
@@ -62,15 +76,5 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
     // TODO: Selector?
     const attack = attacks[0];
     return attack;
-  }
-
-  async resolveCheckData() {
-    if (this.usage.check) {
-      const attack = await this.resolveAttack();
-      if (assertCondition(attack, "An attack must be assigned for this skill.")) {
-        return attack.system.check;
-      }
-    }
-    return super.resolveCheckData();
   }
 }

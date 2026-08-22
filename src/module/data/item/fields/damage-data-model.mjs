@@ -23,7 +23,6 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
         amount: new StringField({ initial: "", integer: true, nullable: true }),
         type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.damageTypes), nullable: false }),
       }),
-      grade: new StringField({ initial: "C", choices: Object.keys(AH.grades), nullable: false }),
       traits: new TraitsField({
         options: FoundryUtils.getFormSelectOptions(AH.traits.damage),
       }),
@@ -51,9 +50,6 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
 
       if (config.hasDamage) {
         config.modifyDamage(dmg => {
-          if (!dmg.grade) {
-            dmg.grade = this.grade;
-          }
           dmg.add(label, this.primary);
           if (this.secondary.type) {
             config.addTraits(this.secondary.type);

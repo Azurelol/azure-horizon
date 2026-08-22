@@ -242,8 +242,6 @@ function onRenderChatMessage(message, html) {
   });
 }
 
-const FIXED_SCALING = 0.25;
-
 /** @type ActionCallback **/
 const onProcessAction = async (config, actor, item) => {
   if (config.hasDamage) {
@@ -255,8 +253,7 @@ const onProcessAction = async (config, actor, item) => {
     const damage = config.damage;
 
     // 1.) Set attribute scaling
-    const primary = config.check.hr?.result ?? Formulas.round(config.check.primary.dice * FIXED_SCALING);
-    const secondary = config.check.lr?.result ?? Formulas.round(config.check.secondary.dice * FIXED_SCALING);
+    const { primary, secondary } = Formulas.calculateAttributeInputs(config, actor);
     if (primary && secondary) {
       const secondaryDamage = damage.components[1];
       // Add high roll to primary damage
@@ -272,6 +269,7 @@ const onProcessAction = async (config, actor, item) => {
         });
       }
     }
+    damage.grade = config.grade;
 
     // 2.) Add proficiency bonus to primary type
     const prof = Formulas.calculateProficiencyBonus(actor.system.level);

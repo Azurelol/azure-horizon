@@ -28,7 +28,15 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
       resource: new EmbeddedDataField(ResourceDataModel, {}),
       cost: new EmbeddedDataField(ActionCostDataModel, {}),
       effects: new EmbeddedDataField(EffectsDataModel, {}),
-      power: new StringField({ initial: "", blank: true, label: "AH.FIELD.Power", choices: Object.keys(AH.power), formOptions: getFormSelectOptions(AH.power), nullable: false }),
+      power: new StringField({
+        initial: "",
+        blank: true,
+        label: "AH.FIELD.Power",
+        _part: "header",
+        choices: () => AH.power,
+        formOptions: getFormSelectOptions(AH.power),
+        nullable: false,
+      }),
     });
   }
 

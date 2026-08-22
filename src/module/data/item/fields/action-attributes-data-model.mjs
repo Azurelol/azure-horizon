@@ -12,10 +12,20 @@ export class ActionAttributesDataModel extends FieldsetDataModel {
     return Object.assign(super.defineSchema(), {
       primary: new StringField({ initial: "dex", blank: true, choices: Object.keys(AH.attributes) }),
       secondary: new StringField({ initial: "mig", blank: true, choices: Object.keys(AH.attributes) }),
+      grade: new StringField({ initial: "C", choices: Object.keys(AH.grades), nullable: false }),
     });
   }
 
   static get template() {
     return systemTemplatePath("sheets/item/fields/attributes-data-model");
+  }
+
+  /**
+   * @param {ActionConfig} config
+   * @param options
+   */
+  configureAction(config, options = {}) {
+    config.setAttributes(this.primary, this.secondary);
+    config.setGrade(this.grade);
   }
 }

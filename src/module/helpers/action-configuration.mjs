@@ -30,7 +30,8 @@ const KEYBOARD_MODIFIERS = "keyboardModifiers";
 const ACTION_POTENCIES = "actionPotencies";
 const TAGS = "tags";
 const DESCRIPTION = "description";
-const POWER = "power";
+const POWER = "power"; // Preset universal scaling
+const GRADE = "grade"; // Attribute scaling
 
 /**
  * @description Given a {@link CheckResult} object, provides additional information from it
@@ -146,6 +147,13 @@ export class ActionInspector {
    */
   get potencies() {
     return this.data[ACTION_POTENCIES];
+  }
+
+  /**
+   * @returns {AH_Grade}
+   */
+  get grade() {
+    return this.data[GRADE];
   }
 
   /**
@@ -328,11 +336,10 @@ export class ActionConfig extends ActionInspector {
 
   /**
    * @param {DamageUnit} unit
-   * @param {AH_Grade} grade
    * @return {ActionConfig}
    */
-  setDamage(unit, grade) {
-    this.setData(DAMAGE, DamageData.initialize(unit, grade));
+  setDamage(unit) {
+    this.setData(DAMAGE, DamageData.initialize(unit));
     return this;
   }
 
@@ -703,5 +710,12 @@ export class ActionConfig extends ActionInspector {
   setPower(power) {
     this.data[POWER] = power;
     return this;
+  }
+
+  /**
+   * @param {AH_Grade} grade
+   */
+  setGrade(grade) {
+    this.check.data[GRADE] = grade;
   }
 }

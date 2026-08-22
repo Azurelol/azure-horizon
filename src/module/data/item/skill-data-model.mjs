@@ -37,25 +37,35 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
     });
   }
 
-  /**
-   * @param {ActionConfig} config
-   * @returns {Promise<void>}
-   * @private
-   */
-  async _initializeAction(config) {
+  get isCheck() {
+    return super.isCheck || this.usage.check;
+  }
+
+  async _initializeAction(config, data) {
     await super._initializeAction(config);
     await this.action.configureAction(config);
     this.usage.configureAction(config);
+
     const actor = this.parent.actor;
     if (isActorType(actor)) {
       const weapon = await this.resolveWeapon();
-      if (weapon) {
+      if (assertCondition(weapon !== undefined, "A weapon must be assigned for this skill.")) {
         config.setItemReference(weapon);
+        // Override check
+        if (this.isCheck && this.usage.check) {
+          config.setTargetedDefense(weapon.system.check.defense);
+        }
+        // Override damage
         if (this.usage.damage) {
           weapon.system.damage.configureAction(config, {
             label: "AH.ITEM.Weapon",
           });
         }
+        // Override attributes
+        if (this.usage.attributes) {
+          weapon.system.attributes.configureAction(config, {});
+        }
+        // Use weapon range
         config.removeTraits("melee", "ranged");
         config.addTraits(weapon.system.range);
       }
@@ -71,16 +81,6 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
     const heroData = actor.system;
     const equipment = heroData.getEquippedItems();
     return equipment.mainHand;
-  }
-
-  async resolveCheckData() {
-    if (this.usage.check) {
-      const weapon = await this.resolveWeapon();
-      if (assertCondition(weapon, "A weapon must be assigned for this skill.")) {
-        return weapon.system.check;
-      }
-    }
-    return super.resolveCheckData();
   }
 
 }

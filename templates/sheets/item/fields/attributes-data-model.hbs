@@ -1,4 +1,5 @@
 {{#> ahFieldset label='AH.CHARACTER.Attribute.plural' icon=(ahIconClass 'attributes') }}
   {{ahStringField path=(ahConcat path '.primary') options=(ahFormOptions 'attributes') label="AH.COMMON.Primary" value=value.primary }}
   {{ahStringField path=(ahConcat path '.secondary') options=(ahFormOptions 'attributes') label="AH.COMMON.Secondary" value=value.secondary }}
+  {{ahStringField path=(ahConcat path '.grade') label="AH.FIELD.Grade" value=value.grade options=(ahFormOptions 'grades')}}
 {{/ahFieldset}}

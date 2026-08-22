@@ -21,11 +21,10 @@ export default class FeatureDataModel extends ItemDataModel {
   }
 
   /**
-   * @returns {CheckDataModel}
-   * @protected
+   * @returns {Boolean}
    */
-  async resolveCheckData() {
-    return this.check;
+  get isCheck() {
+    return this.check.enabled;
   }
 
   /**
@@ -33,27 +32,16 @@ export default class FeatureDataModel extends ItemDataModel {
    * @returns {Promise<boolean>}
    */
   async perform(modifiers) {
-    const checkData = await this.resolveCheckData();
-    if (checkData.enabled) {
+    if (this.isCheck) {
       await Checks.actionCheck(this.parent.actor, this.parent, async (check, actor, item) => {
         const config = new ActionConfig(check);
-        config.setAttributes(this.attributes.primary, this.attributes.secondary);
-        config.setTargetedDefense(checkData.defense);
+        await this._initializeCheck(config);
         await this._initializeAction(config);
       });
     }
     else {
       await Actions.perform(this.parent.actor, this.parent, async (config, actor, item) => {
         /** @type CharacterDataModel **/
-        const system = this.parent.actor.system;
-        const attributes = system.attributes;
-        config.setAttributes({
-          attribute: this.attributes.primary,
-          dice: attributes[this.attributes.primary].current,
-        }, {
-          attribute: this.attributes.secondary,
-          dice: attributes[this.attributes.secondary].current,
-        });
         await this._initializeAction(config);
       });
     }
@@ -66,7 +54,17 @@ export default class FeatureDataModel extends ItemDataModel {
    * @protected
    * @return {Promise}
    */
+  async _initializeCheck(config) {
+    config.setTargetedDefense(this.check.defense);
+  }
+
+  /**
+   * @param {ActionConfig} config
+   * @protected
+   * @return {Promise}
+   */
   async _initializeAction(config) {
+    this.attributes.configureAction(config);
     config.addDescription(this.description);
   }
 }

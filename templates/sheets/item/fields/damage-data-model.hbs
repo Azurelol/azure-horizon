@@ -10,6 +10,5 @@
     {{ahStringField path=(ahConcat path '.secondary.amount') label="AH.FIELD.Offset" value=value.secondary.amount }}
   </div>
 
-  {{ahStringField path=(ahConcat path '.grade') label="AH.FIELD.Grade" value=value.grade options=(ahFormOptions 'grades')}}
   {{ahTraitsField schema=field.fields.traits path=(ahConcat path '.traits') label="AH.COMMON.Traits" value=value.traits options=(ahFormOptions 'traits.damage')}}
 {{/ahOptionalFieldset}}
