@@ -38,7 +38,7 @@
 }
 
 .ah-sheet__name {
-  font-family: var(--ah-font-family-title);
+  font-family: var(--ah-font-family-title), serif;
   font-size: var(--ah-font-size-application-name);
   color: var(--ah-content-accent);
   background-color: transparent;

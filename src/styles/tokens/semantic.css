@@ -94,7 +94,7 @@
   --ah-font-size-xl: var(--ah-primitive-size-text-xl);
   /* Fonts */
   --ah-font-family-application: "Silver";
-  --ah-font-family-title: Silver;
+  --ah-font-family-title: "Inter";
   --ah-font-family-data: Signika;
   --ah-font-family-tag: 500 0.6875rem/1 "Inter";
 

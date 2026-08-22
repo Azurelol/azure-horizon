@@ -153,6 +153,14 @@ Hooks.once("init", function() {
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;
   CONFIG.AH = AH;
 
+  // FONTS
+  CONFIG.fontDefinitions["Silver"] = {
+    editor: true,
+    fonts: [
+      { urls: ["systems/azure-horizon/assets/fonts/Silver.ttf"] },
+    ],
+  };
+
   exportAPI();
 });
 
