@@ -1,0 +1,53 @@
+.sheet.journal-sheet {
+
+  font-family: var(--ah-font-family-journal);
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family: var(--ah-font-family-journal);
+  }
+
+  .window-header {
+    background: var(--ah-background-application-header);
+  }
+
+  .window-content {
+    background: var(--ah-background-application);
+
+    .sidebar {
+      flex: 0 0 275px;
+      background: var(--ah-surface-panel);
+      border: 2px solid var(--ah-surface-base);
+
+      search {
+      }
+
+      nav {
+        background: var(--ah-surface-panel);
+
+        li {
+          border-bottom: 1px solid var(--ah-table-row-divider);
+        }
+        li:last-child {
+          border: none;
+        }
+      }
+    }
+
+    .journal-entry-content {
+      background: var(--ah-surface-entry-gradient);
+
+      .journal-header {
+        input {
+          color: var(--ah-content-accent);
+          background: none;
+        }
+      }
+
+      h1, h2{
+        border-bottom: none;
+      }
+    }
+  }
+
+
+}

@@ -4,7 +4,7 @@
       "classes": "Classes",
       "equipment": "Equipment",
       "spells": "Spells",
-      "journals": "System Journals",
+      "journals": "Journals",
       "tables": "Roll Tables",
       "heroes": "Heroes",
       "adversaries": "Adversaries",
@@ -731,6 +731,7 @@
     "ACTION": {
       "Action": "Action",
       "Reaction": "Reaction",
+      "Activity": "Activity",
       "POTENCY": {
         "Tier": "Tier",
         "Partial": "Partial",

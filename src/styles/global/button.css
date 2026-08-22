@@ -6,6 +6,12 @@
   }
 }
 
+a.button, button {
+  span {
+    font-family: var(--ah-font-family-button);
+  }
+}
+
 .ah-button {
   display: flex;
   flex-direction: row;

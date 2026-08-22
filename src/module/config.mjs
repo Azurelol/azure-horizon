@@ -920,6 +920,7 @@ AH.hooks = Object.freeze({
 AH.actionTypes = Object.freeze({
   action: { label: "AH.ACTION.Action" },
   reaction: { label: "AH.ACTION.Reaction" },
+  activity: { label: "AH.ACTION.Activity" },
 });
 
 /**
