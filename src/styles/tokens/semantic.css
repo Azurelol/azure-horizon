@@ -15,6 +15,17 @@
   --ah-surface-base: var(--ah-primitive-color-navy-900);
   --ah-surface-panel: var(--ah-primitive-color-navy-800);
   --ah-surface-panel-nested: var(--ah-primitive-color-navy-700);
+  --ah-surface-panel-gradient: linear-gradient(
+    to right,
+    var(--ah-surface-panel) 0%,
+    var(--ah-surface-panel-nested) 100%
+  );
+  --ah-surface-entry: #C0C3CE;
+  --ah-surface-entry-gradient: linear-gradient(
+    to bottom,
+    var(--ah-surface-panel) 0%,
+    color-mix(in oklch, var(--ah-surface-panel) 60%, var(--ah-surface-entry) 40%) 100%
+  );
   --ah-surface-hover: var(--ah-primitive-color-navy-400);
   --ah-surface-value: color-mix(in srgb, var(--ah-color-navy-500) 12%, transparent);
   --ah-surface-tag: var(--ah-primitive-color-grey-light);
@@ -39,6 +50,7 @@
   --ah-content-muted: var(--ah-primitive-color-white-70);
   --ah-content-disabled: var(--ah-primitive-color-white-50);
   --ah-content-on-accent: var(--ah-content-primary);
+  --ah-content-accent: #EAD470;
 
   --ah-content-tab: var(--ah-content-muted);
   --ah-content-tab-active: var(--ah-content-primary);
@@ -52,6 +64,7 @@
   --ah-border-radius: 4px;
   --ah-border-width: 2px;
   --ah-border: 0.065rem solid var(--ah-surface-border);
+  --ah-border-muted: 0.065rem solid var(--ah-surface-action-muted);
   --ah-border-active: var(--ah-primitive-color-white);
   --ah-glow-active: color-mix(in srgb, var(--ah-primitive-color-white) 40%, transparent);
   --ah-box-shadow:  0.065rem 0.1rem var(--ah-primitive-color-warm-brown);

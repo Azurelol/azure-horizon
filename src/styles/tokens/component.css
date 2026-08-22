@@ -142,7 +142,9 @@
   --ah-color-bg-input: var(--ah-surface-base);
 
   /* Chat Message*/
-  --ah-chat-message-text-background: var(--ah-surface-panel-nested);
+  --ah-chat-message-background: var(--ah-surface-entry-gradient);
+  --ah-chat-message-border: var(--ah-border-muted);
+  --ah-chat-message-color: var(--ah-content-primary);
 
 
 }

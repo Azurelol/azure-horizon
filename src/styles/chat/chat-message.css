@@ -1,0 +1,14 @@
+.chat-message {
+  background: var(--ah-chat-message-background);
+  color: var(--ah-content-primary);
+  border: var(--ah-chat-message-border);
+  border-radius: var(--ah-border-radius);
+
+  .message-header {
+    color: var(--ah-content-muted);
+
+    .flavor-text {
+      color: var(--ah-content-accent);
+    }
+  }
+}
