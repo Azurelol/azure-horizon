@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": null,
   "name": "Dark",
-  "color": null,
+  "color": "#a406ac",
   "sorting": "a",
   "_id": "v88m7Lr3fUgwqwKG",
   "description": "",
-  "sort": 0,
+  "sort": 400000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

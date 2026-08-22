@@ -1,13 +1,13 @@
 {
-  "folder": "WjGchKL3CS9YTXMV",
-  "name": "Spiritist",
+  "folder": "pG5IWpxjuaRL5qNZ",
+  "name": "Animist",
   "type": "class",
-  "_id": "eDSQyYvdmdtdbGqt",
+  "_id": "oS2fslcM8cglZdIk",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "spiritist",
+    "slug": "animist",
     "description": "",
     "benefits": {
       "schemaVersion": 1,
@@ -16,13 +16,12 @@
       "ip": false
     },
     "triggers": [
-      "You save someone.",
-      "You help a spirit pass on.",
-      "You cleanse a location of the undead or spirits."
+      "You befriend an animal.",
+      "You spare a cornered beast.",
+      "You champion nature."
     ],
     "traits": [
-      "mage",
-      "defense"
+      "mage"
     ]
   },
   "effects": [],
@@ -35,12 +34,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787412069986,
+    "createdTime": 1787426850798,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!eDSQyYvdmdtdbGqt"
+  "_key": "!items!oS2fslcM8cglZdIk"
 }

@@ -54,7 +54,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>We define a <em>Journey</em> in the system as the activity performed when the party travels from their current location to a distant one over the course of one day or more.</p><p>When there is risk involved, we call that a <em>journey</em> and make use of the rules in this section. Each journey will begin with a <em>travel check</em>.</p><p></p><h1>Travel Check</h1><p>Once the heroes have decided on a destination and have confirmed they are setting out, the party will make a travel check.  A player can volunteer one of their heroes to make the check using the dice listed below.</p><table><tbody><tr><td><p>Location</p></td><td><p>Danger Level</p></td><td><p>Travel Check</p></td></tr><tr><td><p>Settlements</p></td><td><p>Low</p></td><td><p>D4</p></td></tr><tr><td><p>Roads</p></td><td><p>Moderate</p></td><td><p>D6</p></td></tr><tr><td><p>Wilds</p></td><td><p>High</p></td><td><p>D8</p></td></tr><tr><td><p>Dense forests</p></td><td><p>Severe</p></td><td><p>D10</p></td></tr><tr><td><p>Monster-infested</p></td><td><p>Extreme</p></td><td><p>D12</p></td></tr></tbody></table><ul><li><p><strong>On a result of 6 or higher</strong>, the party encounters a danger.</p></li><li><p><strong>On a result of 1</strong>, the party makes a discovery.</p></li></ul><p>After the check and its resulting event is resolved, the party will enter a long rest scene at their <em>Camp</em>. Here the heroes can unwind, work on their downtime projects and deepen their relationships.</p><blockquote><p>Most journeys can be resolved with a single travel check. Refrain from making more than that unless it's a very long journey lest you bog down your session.</p></blockquote><h2>Dangers</h2><h3>Hazard</h3><p>The party can encounter a natural hazard, which will be taxing to traverse.</p><h3>Ambush</h3><p>The party can be beset upon by hostile creatures.</p><h3>Loss</h3><p>The party loses an important item or a piece of equipment. Let the players volunteer it.</p><h3>Villain</h3><p>The party can encounter a villain or one of their associates.</p><p></p><h2>Discoveries</h2><p>One of the most positive outcomes of a travel check is that of a discovery, which can be one of the following.</p><h3>Location</h3><p>An entrance to an abandoned keep. A waterfall with a hidden entrance behind it. All of these are locations where exciting developments can occur and where danger lurks. A chance for the heroes to test themselves and learn more about the world.</p><h3>Guests</h3><p>There are many individuals of an adventurous streak who make a living in the world. When you encounter one of them and yours goals align perhaps they can join your party for a time. Maybe they need help. Maybe you are the ones in need of help. (See the rules for <em>Guests</em>).</p><h3>Merchant</h3><p>It is not uncommon for enterprising merchants to travel the lands, especially while making use of roads or when traveling to settlements. In such encounters perhaps such merchants can offer the party some rare items or consumables?</p><h3>Treasure</h3><p>Heroes may uncover treasure by chance while traveling through an abandoned area. Such treasure can be a rare ingredient or material, a piece of equipment or perhaps a plot-relevant item that leads to heroes gathering more information.</p><h3>Vista</h3><p>During travel one of the possible discoveries is that of a vista. A breathtaking locale or solemn monument. In short, they are memorable places of your party's journey.</p><p>When encountering one, the players are incentivized to take the lead in describing it and how it fits with the setting.</p><p>If one of the players decides to contribute art for it, they get bonus points! You will want to save it in your <em>album.</em></p>"
+        "content": "<p>We define a <em>Journey</em> in the system as the activity performed when the party travels from their current location to a distant one over the course of one day or more.</p><p>When there is risk involved, we call that a <em>journey</em> and make use of the rules in this section. Each journey will begin with a <em>travel check</em>.</p><p></p><h2>Travel Check</h2><p>Once the heroes have decided on a destination and have confirmed they are setting out, the party will make a travel check. A player can volunteer one of their heroes to make the check using the dice listed below.</p><table><tbody><tr><td><p>Location</p></td><td><p>Danger Level</p></td><td><p>Travel Check</p></td></tr><tr><td><p>Settlements</p></td><td><p>Low</p></td><td><p>D4</p></td></tr><tr><td><p>Road</p></td><td><p>Moderate</p></td><td><p>D6</p></td></tr><tr><td><p>Wilderness</p></td><td><p>High</p></td><td><p>D8</p></td></tr><tr><td><p>Remote Locale</p></td><td><p>Severe</p></td><td><p>D10</p></td></tr><tr><td><p>Hazardous Locale</p></td><td><p>Extreme</p></td><td><p>D12</p></td></tr></tbody></table><ul><li><p><strong>On a result of 6 or higher</strong>, the party encounters a danger.</p></li><li><p><strong>On a result of 1</strong>, the party makes a discovery.</p></li></ul><p>After the check and its resulting event is resolved, the party will enter a long rest scene at their <em>Camp</em>. Here the heroes can unwind, work on their downtime projects and deepen their relationships.</p><blockquote><p>Most journeys can be resolved with a single travel check. Refrain from making more than that unless it's a very long journey lest you bog down your session.</p></blockquote><h2>Dangers</h2><h3>Hazard</h3><p>The party can encounter a natural hazard, which will be taxing to traverse.</p><h3>Ambush</h3><p>The party can be beset upon by hostile creatures.</p><h3>Loss</h3><p>The party loses an important item or a piece of equipment. Let the players volunteer it.</p><h3>Villain</h3><p>The party can encounter a villain or one of their associates.</p><p></p><h2>Discoveries</h2><p>One of the most positive outcomes of a travel check is that of a discovery, which can be one of the following.</p><h3>Location</h3><p>An entrance to an abandoned keep. A waterfall with a hidden entrance behind it. All of these are locations where exciting developments can occur and where danger lurks. A chance for the heroes to test themselves and learn more about the world.</p><h3>Guests</h3><p>There are many individuals of an adventurous streak who make a living in the world. When you encounter one of them and yours goals align perhaps they can join your party for a time. Maybe they need help. Maybe you are the ones in need of help. (See the rules for <em>Guests</em>).</p><h3>Merchant</h3><p>It is not uncommon for enterprising merchants to travel the lands, especially while making use of roads or when traveling to settlements. In such encounters perhaps such merchants can offer the party some rare items or consumables?</p><h3>Treasure</h3><p>Heroes may uncover treasure by chance while traveling through an abandoned area. Such treasure can be a rare ingredient or material, a piece of equipment or perhaps a plot-relevant item that leads to heroes gathering more information.</p><h3>Vista</h3><p>During travel one of the possible discoveries is that of a vista. A breathtaking locale or solemn monument. In short, they are memorable places of your party's journey.</p><p>When encountering one, the players are incentivized to take the lead in describing it and how it fits with the setting.</p><p>If one of the players decides to contribute art for it, they get bonus points! You will want to save it in your <em>album.</em></p>"
       },
       "video": {
         "controls": true,
@@ -79,6 +79,45 @@
         "exportSource": null
       },
       "_key": "!journal.pages!vXS4sg3LV9drMb21.grwdijSSodh2vpmO"
+    },
+    {
+      "sort": 300000,
+      "name": "Downtime",
+      "type": "text",
+      "_id": "oy8DeXGI08o2lvOU",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>When the heroes are in settlement or exploring a location they may want to do certain actions whose resolution should be simple and painless.</p><p>These will be covered in this section.</p><h2>Gathering Information</h2><p>When the players want to spend time gaining information about people, places or things they can make a @CHECK[ins wlp].</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787422713767,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!vXS4sg3LV9drMb21.oy8DeXGI08o2lvOU"
     }
   ],
   "folder": null,

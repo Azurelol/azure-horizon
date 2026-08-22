@@ -1,0 +1,91 @@
+{
+  "folder": "v88m7Lr3fUgwqwKG",
+  "name": "Curse Weapon",
+  "type": "spell",
+  "_id": "atdhqDELkenD8M5u",
+  "img": "icons/magic/unholy/hand-weapon-glow-black-green.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "dark-curse-weapon",
+    "description": "<p>You envelop your weapon in dark energies so that it also deals dark damage.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "mp",
+      "amount": "10",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "type": "action",
+      "points": 1,
+      "traits": []
+    },
+    "domain": "dark",
+    "speed": "instant"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787426196632,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!atdhqDELkenD8M5u"
+}

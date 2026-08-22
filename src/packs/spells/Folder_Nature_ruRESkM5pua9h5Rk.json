@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": null,
   "name": "Nature",
-  "color": null,
+  "color": "#0de10d",
   "sorting": "a",
   "_id": "ruRESkM5pua9h5Rk",
   "description": "",
-  "sort": 0,
+  "sort": 200000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

@@ -1,0 +1,92 @@
+{
+  "folder": "OkTmivfii1s2NxeJ",
+  "name": "Gale Blast",
+  "type": "spell",
+  "_id": "jWFPdlUro26H4qBx",
+  "img": "icons/magic/air/air-wave-gust-blue.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "elemental-gale-blast",
+    "description": "<p>You let loose a fierce gust of wind that deals bludgeoning damage to an enemy and has a chance to push them back.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "mdef",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "",
+        "type": "bludgeoning"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "mp",
+      "amount": "15",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "moderate",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "type": "action",
+      "points": 2,
+      "traits": []
+    },
+    "domain": "elemental",
+    "speed": "instant"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787425671554,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!jWFPdlUro26H4qBx"
+}

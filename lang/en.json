@@ -472,7 +472,10 @@
       "Companion": "Companion",
       "Fixed": "Fixed",
       "FixedHint": "This type of damage cannot defeat higher-rank adversaries.",
-      "Recharge": "Recharge"
+      "Recharge": "Recharge",
+      "Exhaust": "Exhaust",
+      "Performance": "Performance",
+      "Free": "Free"
     },
     "DOMAIN": {
       "Light": "Light",

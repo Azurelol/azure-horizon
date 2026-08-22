@@ -17,7 +17,8 @@
     },
     "triggers": [],
     "traits": [
-      "mage"
+      "mage",
+      "offense"
     ]
   },
   "effects": [],

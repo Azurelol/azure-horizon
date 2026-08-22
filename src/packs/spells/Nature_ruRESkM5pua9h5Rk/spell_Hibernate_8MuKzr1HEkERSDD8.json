@@ -1,0 +1,95 @@
+{
+  "folder": "ruRESkM5pua9h5Rk",
+  "name": "Hibernate",
+  "type": "spell",
+  "_id": "8MuKzr1HEkERSDD8",
+  "img": "icons/magic/nature/moon-crescent.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "nature-hibernate",
+    "description": "<p>The target enemy suffers from the Sleep status for…</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "mp",
+      "amount": "10",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "selector": "",
+      "entries": [
+        "sleep"
+      ],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "exhaust"
+      ]
+    },
+    "domain": "nature",
+    "speed": "fast"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787426513353,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!8MuKzr1HEkERSDD8"
+}

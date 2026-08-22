@@ -1,0 +1,92 @@
+{
+  "folder": "OkTmivfii1s2NxeJ",
+  "name": "Ignition",
+  "type": "spell",
+  "_id": "TUUZhoaQeNhSDsCE",
+  "img": "icons/magic/fire/blast-jet-stream-embers-red.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "elemental-ignition",
+    "description": "<p>You deal fire damage to enemy in close range.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "B"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "mdef",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "",
+        "type": "fire"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "high",
+    "action": {
+      "schemaVersion": 1,
+      "range": "melee",
+      "type": "action",
+      "points": 2,
+      "traits": []
+    },
+    "domain": "elemental",
+    "speed": "instant"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787425581247,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!TUUZhoaQeNhSDsCE"
+}

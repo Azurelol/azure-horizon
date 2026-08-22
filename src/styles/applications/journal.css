@@ -54,11 +54,12 @@
       h1 {
         padding: 8px;
         color: var(--ah-content-accent-alt);
-        border-bottom: 2px solid var(--ah-table-row-divider);
+        border-bottom: 4px solid var(--ah-table-row-divider);
       }
 
       h2{
-        border-bottom: none;
+        padding: 4px;
+        border-bottom: 2px solid var(--ah-table-row-divider);
       }
     }
   }
