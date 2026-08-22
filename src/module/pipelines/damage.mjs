@@ -270,16 +270,6 @@ const onProcessAction = async (config, actor, item) => {
       }
     }
 
-    // 2.) Add proficiency bonus to primary type
-    const prof = Formulas.calculateProficiencyBonus(actor.system.level);
-    if (prof) {
-      damage.add("AH.DAMAGE.ProficiencyBonus", {
-        amount: prof,
-        type: damage.type,
-        enabled: true,
-      });
-    }
-
     // 3.) Evaluate any components that have expressions
     const context = new EvaluationContext(actor, item, config.getTargets());
     for (const component of damage.components) {

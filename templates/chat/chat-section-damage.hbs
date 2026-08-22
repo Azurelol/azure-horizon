@@ -7,10 +7,9 @@
 
     {{#with damage.resolved}}
     <div class='ah-chat-section__check__components'>
-
         {{#each instances as |component|}}
           <div class="ah-chat-section__damage__component" data-tooltip="{{localize component.tooltip}}">
-            {{ahInlineProperty 'damageTypes' component.type value=component.amount }}
+            {{ahInlineProperty 'damageTypes' component.type value=(ahScaleValue component.amount) }}
           </div>
         {{/each}}
     </div>

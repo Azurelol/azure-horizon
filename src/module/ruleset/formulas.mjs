@@ -1,6 +1,6 @@
 // CHARACTERS
 import { getSystemSetting } from "../constants.mjs";
-import AH from "../config.mjs";
+import AH, { scaleValue } from "../config.mjs";
 
 const HP_MIGHT_FACTOR = 5;
 const MP_WILLPOWER_FACTOR = 5;
@@ -18,54 +18,6 @@ const FIXED_ATTRIBUTE_SCALING = 0.25;
  */
 
 /**
- * A difficulty setting scales many parameters up and down.
- */
-class Difficulty {
-  /**
-   * @abstract
-   * @param {Number} level
-   * @returns {Number}
-   */
-  calculateProficiencyBonus(level) {
-    throw Error;
-  }
-  /**
-   * @abstract
-   * @returns {Number}
-   */
-  getFactor() {
-    throw Error;
-  }
-}
-
-/**
- * A classical difficulty with more manageable numbers.
- */
-class ClassicDifficulty extends Difficulty {
-  calculateProficiencyBonus(level) {
-    return 0;
-  }
-  getFactor() {
-    return 1;
-  }
-}
-
-/**
- * The intended difficulty, for the digital experience.
- * @remarks Numbers go up.
- */
-class HorizonDifficulty extends Difficulty {
-  static HF = 5;
-  calculateProficiencyBonus(level) {
-    return 0;
-    return Formulas.round(level / PROFICIENCY_FACTOR);
-  }
-  getFactor() {
-    return HorizonDifficulty.HF;
-  }
-}
-
-/**
  * @typedef {Modifier} ParameterModifier
  * @property {AH_Modifier} key
  */
@@ -74,32 +26,13 @@ export default class Formulas {
 
   static CRITICAL_THRESHOLD = MIN_ATTRIBUTE_DIE;
 
-  /**
-   * @returns {Difficulty}
-   */
-  static get difficulty() {
-    if (!this.#difficulty) {
-      const setting = getSystemSetting("difficulty");
-      switch (setting) {
-        case "horizon":
-          this.#difficulty = new HorizonDifficulty();
-          break;
-        default:
-          this.#difficulty = new ClassicDifficulty();
-          break;
-      }
-    }
-    return this.#difficulty;
-  }
-  static #difficulty;
-
+  // TODO: Use for checks???
   /**
    * @param {Number} level
    * @returns {Number}
    */
   static calculateProficiencyBonus(level) {
-    const diff = this.difficulty;
-    return diff.calculateProficiencyBonus(level);
+    return level / 5;
   }
 
   /**
@@ -146,16 +79,13 @@ export default class Formulas {
    * @return {DamageCalculation}
    */
   static calculateDamage(instances, fixed) {
-    const diff = this.difficulty;
-    const diffFactor = diff.getFactor();
-
     let base = instances;
     let total;
     let formula;
 
     if (fixed) {
       base = instances.reduce((sum, inst) => sum + inst.amount, 0);
-      total = base * diffFactor;
+      total = scaleValue(base);
       formula = `${base}`;
     }
     else {
@@ -163,8 +93,8 @@ export default class Formulas {
       for (const inst of instances) {
         base += Formulas.calculateDamageInstance(inst.amount, inst.modifiers);
       }
-      total = (base) * diffFactor;
-      formula = `(BASE:${base} * DIFFICULTY:${diffFactor}`;
+      total = scaleValue(base);
+      formula = `${base}`;
       total = Formulas.round(total);
     }
 
@@ -175,7 +105,7 @@ export default class Formulas {
   }
 
   /**
-   * @param {EntityDataModel} system
+   * @param {EntityDataModel|HeroDataModel|AdversaryDataModel} system
    * @param {Number} level A level different from the serialized one.
    * @returns {Number}
    */
@@ -210,8 +140,7 @@ export default class Formulas {
       case "unit":
         break;
     }
-    const factor = this.difficulty.getFactor();
-    hp = hp * factor;
+    hp = scaleValue(hp);
     return hp;
   }
 
@@ -221,7 +150,6 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculateMindPoints(level, willpower) {
-    const hf = this.difficulty.getFactor();
     return (willpower * MP_WILLPOWER_FACTOR) + level;
   }
 

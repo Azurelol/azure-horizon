@@ -674,7 +674,7 @@ export function scaleValue(value) {
   if (_scale === undefined) {
     _scale = getSystemSetting("scale", 1);
   }
-  return _scale;
+  return value * _scale;
 }
 
 /**

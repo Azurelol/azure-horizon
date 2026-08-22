@@ -1,6 +1,6 @@
 import { systemTemplatePath } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
-import AH from "../config.mjs";
+import AH, { scaleValue } from "../config.mjs";
 import { ChatMessageSectionTemplate } from "./chat-message-sections.mjs";
 import TableColumns from "../apps/api/table-columns.mjs";
 
@@ -264,6 +264,9 @@ export default Object.freeze({
     Handlebars.registerHelper("ahInput", input);
     Handlebars.registerHelper("ahTooltip", tooltip);
     Handlebars.registerHelper("ahResourceBar", resourceBar);
+    Handlebars.registerHelper("ahScaleValue", (value) => {
+      return scaleValue(value);
+    });
     Handlebars.registerHelper("ahDocumentCarousel", documentCarousel);
     Handlebars.registerHelper("ahCheckOutcome",
       /**

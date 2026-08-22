@@ -1,4 +1,5 @@
 import { MathUtils } from "../utils/_module.mjs";
+import { scaleValue } from "../config.mjs";
 
 /**
  * @class
@@ -54,7 +55,7 @@ export default class ResourceData {
         result += Number.parseInt(mod.amount);
       }
     }
-    return result;
+    return scaleValue(result);
   }
 
   /**
