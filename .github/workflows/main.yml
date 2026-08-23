@@ -57,7 +57,9 @@ jobs:
           allowUpdates: true
           name: ${{ github.event.release.name }}
           draft: false
-          prerelease: false
+          prerelease: true
+          omitDraftDuringUpdate: true
+          omitPrereleaseDuringUpdate: true
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "./system.json, ./system.zip"
           tag: ${{ github.event.release.tag_name }}
