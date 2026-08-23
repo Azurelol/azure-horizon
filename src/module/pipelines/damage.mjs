@@ -127,9 +127,8 @@ async function process(request) {
 
     // If no damage was dealt or absorbed, exit early
     if (damageTaken === 0) {
-      ui.notifications.warn(`The damage to ${subject.name} was reduced to 0.`);
       if (amountBlocked !== undefined) {
-        updates.push(subject.modifyTokenAttribute(`resources.${resource}.temporary`, -amountBlocked, true).then(async (result) => {
+        updates.push(subject.modifyTokenAttribute(`resources.${resource}.temporary`, -amountBlocked, true, false).then(async (result) => {
           ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ subject }),
             content: StringUtils.localize("AH.CHAT.DamageFullBlock", {
