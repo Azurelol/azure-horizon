@@ -57,7 +57,7 @@ export default class CharacterDataModel extends EntityDataModel {
   _prepareResources() {
     super._prepareResources();
     const data = this;
-    this.resources.mp.defineMaximumProperty(() => Formulas.calculateMindPoints(data.level, data.attributes.wlp.base));
+    this.resources.mp.defineMaximumProperty(() => Formulas.calculateMindPoints(this));
   }
 
   /**

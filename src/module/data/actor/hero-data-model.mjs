@@ -48,6 +48,7 @@ class HeroResourcesDataModel extends CharacterResourcesDataModel {
 
 /**
  * Represents the data of PC in combat.
+ * @property {AHActor} parent
  * @property {HeroResourcesDataModel} resources
  * @property {HeroParametersDataModel} parameters
  * @property {InventoryDataModel} equipment
@@ -71,8 +72,8 @@ export default class HeroDataModel extends CharacterDataModel {
 
   _prepareResources() {
     super._prepareResources();
-    this.resources.ip.defineMaximumProperty(() => Formulas.calculateInventoryPoints());
-    this.resources.tp.defineMaximumProperty(() => Formulas.calculateTensionPoints());
+    this.resources.ip.defineMaximumProperty(() => Formulas.calculateInventoryPoints(this));
+    this.resources.tp.defineMaximumProperty(() => Formulas.calculateTensionPoints(this));
   }
 
   _prepareParameters() {

@@ -19,6 +19,7 @@ export default class ClassDataModel extends ItemDataModel {
       })),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
+        _part: "header",
         formOptions: getFormSelectOptions(AH.traits.class),
       }),
     });

@@ -111,8 +111,8 @@ AH.difficulties = Object.freeze({
  */
 
 AH.grades = Object.freeze({
-  E: { label: "E", scale: 0.6, base: 3 },
-  D: { label: "D", scale: 0.8, base: 5 },
+  E: { label: "E", scale: 0.5, base: 3 },
+  D: { label: "D", scale: 0.75, base: 5 },
   C: { label: "C", scale: 1, base: 8 }, // Baseline
   B: { label: "B", scale: 1.25, base: 10 },
   A: { label: "A", scale: 1.5, base: 12 },
@@ -959,6 +959,7 @@ AH.traits = {
     shift: { label: "AH.TRAIT.Shift", tooltip: "AH.TRAIT.ShiftHint" },
     performance: { label: "AH.TRAIT.Performance", tooltip: "AH.TRAIT.PerformanceHint" },
     stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
+    interrupt: { label: "AH.TRAIT.Interrupt", tooltip: "AH.TRAIT.InterruptHint" },
   },
 
   resource: {

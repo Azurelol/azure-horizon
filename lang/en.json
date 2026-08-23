@@ -437,6 +437,7 @@
       "Light": "Light",
       "Heavy": "Heavy",
       "Magical": "Magical",
+      "Interrupt": "Interrupt",
       "Flexible": "Flexible",
       "Cooldown": "Cooldown",
       "NonLethal": "Non-Lethal",

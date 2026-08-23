@@ -1,14 +1,17 @@
 // CHARACTERS
-import { getSystemSetting } from "../constants.mjs";
 import AH, { scaleValue } from "../config.mjs";
+
+const MIN_ATTRIBUTE_DIE = 4;
+const MAX_ATTRIBUTE_DIE = 20; // L90
 
 const HP_MIGHT_FACTOR = 5;
 const MP_WILLPOWER_FACTOR = 5;
+
 const IP_BASE = 6;
 const TP_BASE = 10;
-const MIN_ATTRIBUTE_DIE = 4;
-const PROFICIENCY_FACTOR = 5;
-const FIXED_ATTRIBUTE_SCALING = 0.25;
+
+const CLASS_BENEFIT_HP = 10;
+const CLASS_BENEFIT_MP = 10;
 
 /**
  * @typedef Modifier
@@ -21,6 +24,18 @@ const FIXED_ATTRIBUTE_SCALING = 0.25;
  * @typedef {Modifier} ParameterModifier
  * @property {AH_Modifier} key
  */
+
+/**
+ * @param {AHActor} actor
+ * @param {(ClassBenefitsDataModel) => void} onBenefits
+ */
+function forClassBenefits(actor, onBenefits) {
+  const classItems = actor.getItemsByType("class");
+  for (const ci of classItems) {
+    const benefits = ci.system.benefits;
+    onBenefits(benefits);
+  }
+}
 
 export default class Formulas {
 
@@ -63,9 +78,10 @@ export default class Formulas {
       };
     }
     else {
+      const scale = AH.grades.E.scale;
       const attributes = actor.system.attributes;
-      const primary = attributes[config.check.primary].current * FIXED_ATTRIBUTE_SCALING;
-      const secondary = attributes[config.check.secondary].current * FIXED_ATTRIBUTE_SCALING;
+      const primary = attributes[config.check.primary].current * scale;
+      const secondary = attributes[config.check.secondary].current * scale;
       return {
         primary: primary,
         secondary: secondary,
@@ -110,6 +126,7 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculateHitPoints(system, level = undefined) {
+    /** @type AHActor **/
     const actor = system.parent;
     level ??= system.level;
     let hp = 0;
@@ -118,7 +135,12 @@ export default class Formulas {
       case "hero": {
         /** @type AttributesDataModel **/
         const attributes = system.attributes;
-        hp = level + (attributes.mig.base * HP_MIGHT_FACTOR);
+        hp += level + (attributes.mig.base * HP_MIGHT_FACTOR);
+        forClassBenefits(actor, (benefits) => {
+          if (benefits.hp) {
+            hp += CLASS_BENEFIT_HP;
+          }
+        });
         break;
       }
 
@@ -145,26 +167,42 @@ export default class Formulas {
   }
 
   /**
-   * @param {Number} level
-   * @param {Number} willpower
+   * @param {CharacterDataModel|HeroDataModel|AdversaryDataModel} system
    * @returns {Number}
    */
-  static calculateMindPoints(level, willpower) {
-    return (willpower * MP_WILLPOWER_FACTOR) + level;
+  static calculateMindPoints(system) {
+    const wlp = system.attributes.wlp.current;
+    let mp = (wlp * MP_WILLPOWER_FACTOR) + system.level;
+    if (system.parent.type === "hero") {
+      forClassBenefits(system.parent, benefits => {
+        if (benefits.mp) {
+          mp += CLASS_BENEFIT_HP;
+        }
+      });
+    }
+    return mp;
   }
 
   /**
+   * @param {HeroDataModel} system
    * @returns {Number}
    */
-  static calculateInventoryPoints() {
-    return IP_BASE;
+  static calculateInventoryPoints(system) {
+    let ip = IP_BASE;
+    forClassBenefits(system.parent, (benefits) => {
+      if (benefits.ip) {
+        ip += CLASS_BENEFIT_HP;
+      }
+    });
+    return ip;
   }
 
   /**
+   * @param {HeroDataModel} system
    * @returns {Number}
    */
-  static calculateTensionPoints() {
-    return TP_BASE;
+  static calculateTensionPoints(system) {
+    return TP_BASE + system.attributes.wlp.current;
   }
 
   /**
