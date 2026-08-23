@@ -1,5 +1,14 @@
-.application.dialog {
+/*.application.dialog {*/
+/*  background: var(--ah-background-application);*/
+/*}*/
+
+.application {
   background: var(--ah-background-application);
+  font-family: var(--ah-font-family-application);
+
+  .window-header {
+    background: var(--ah-background-application-header);
+  }
 }
 
 .application.sheet.ah {

@@ -17,7 +17,7 @@
 @import "components/foldout.css";
 
 @import "global/foundry.css";
-@import "global/application.css";
+@import "applications/application.css";
 @import "global/dialog.css";
 @import "global/fields.css";
 @import "global/menu.css";

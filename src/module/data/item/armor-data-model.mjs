@@ -18,11 +18,13 @@ export default class ArmorDataModel extends EquipmentDataModel {
       category: new StringField({
         initial: "light",
         blank: false,
+        _part: "header",
         label: "AH.FIELD.Category",
         choices: () => AH.armorCategories,
       }),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
+        _part: "header",
         formOptions: getFormSelectOptions(AH.traits.armor),
       }),
     });

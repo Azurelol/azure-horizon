@@ -10,10 +10,12 @@ export default class EquipmentDataModel extends ItemDataModel {
   static defineSchema() {
     const { SchemaField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      rarity: new TraitsField({
+      rarity: new StringField({
+        initial: "common",
+        blank: false,
         label: "AH.EQUIPMENT.Rarity",
         _part: "header",
-        formOptions: getFormSelectOptions(AH.rarity),
+        choices: () => AH.rarity,
       }),
     });
   }
