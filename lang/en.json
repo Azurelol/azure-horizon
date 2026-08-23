@@ -478,6 +478,10 @@
       "Music": "Music",
       "Alchemy": "Alchemy",
       "Companion": "Companion",
+      "Storage": "Storage",
+      "Comfort": "Comfort",
+      "Stable": "Stable",
+      "Fleet": "Fleet",
       "Fixed": "Fixed",
       "FixedHint": "This type of damage cannot defeat higher-rank adversaries.",
       "Recharge": "Recharge",
@@ -713,6 +717,13 @@
       "Settings": "Settings",
       "Heroes": "Heroes",
       "Adversaries": "Adversaries"
+    },
+    "EQUIPMENT": {
+      "Rarity": "Rarity",
+      "RARITY": {
+        "Common": "Common",
+        "Rare": "Rare"
+      }
     },
     "STATUS": {
       "Modifier": "Modifier",

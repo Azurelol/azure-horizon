@@ -153,6 +153,15 @@ AH.area = {
 };
 
 /**
+ * @typedef {'common'|'rare'|'epic'} AH_Rarity
+ */
+
+AH.rarity = Object.freeze({
+  common: { label: "AH.EQUIPMENT.RARITY.Common" },
+  rare: { label: "AH.EQUIPMENT.RARITY.Rare" },
+});
+
+/**
  * @typedef {'partial'|'success'|'critical'} AH_Outcome
  */
 
@@ -1029,7 +1038,7 @@ AH.traits = {
     fleet: { label: "AH.TRAIT.Fleet", tooltip: "AH.TRAIT.FleetHint" }, // Improved shifting
     flexible: { label: "AH.TRAIT.Flexible", tooltip: "AH.TRAIT.FlexibleHint" }, //
     comfort: { label: "AH.TRAIT.Comfort", tooltip: "AH.TRAIT.ComfortHint" }, // Improves stress recovery
-    storage: { label: "AH.TRAIT.Comfort", tooltip: "AH.TRAIT.ComfortHint" }, // Easy access to items
+    storage: { label: "AH.TRAIT.Storage", tooltip: "AH.TRAIT.StorageHint" }, // Easy access to items
   },
   consumable: {
     potion: { label: "AH.TRAIT.Potion", tooltip: "AH.TRAIT.PotionHint" },

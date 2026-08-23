@@ -270,3 +270,7 @@
   border: var(--ah-border);
   padding-left: 1rem;
 }
+
+.ah-field__settings:not(:has(*)) {
+  display: none;
+}
