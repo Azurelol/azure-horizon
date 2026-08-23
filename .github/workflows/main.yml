@@ -56,7 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           tag: ${{ env.TAG_NAME }}
-          doNotFailIfNotFound: true
+          doNotFailIfNotFound: false
 
       # Create a release for this specific version.
       - name: Update Release with Files
@@ -69,6 +69,6 @@ jobs:
           draft: ${{ github.event.release.unpublished }}
           prerelease: ${{ github.event.release.prerelease }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './${{ env.PACKAGE_TYPE }}.json, ./${{ env.ZIP_NAME }}'
-          tag: ${{ env.TAG_NAME }}
+          artifacts: "./system.json, ./system.zip"
+          tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
