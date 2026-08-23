@@ -103,6 +103,10 @@
     }
   }
 
+  .ah-character__parameters {
+
+  }
+
   .ah-character__equipment {
     display: grid;
     grid-template-areas:

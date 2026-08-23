@@ -1,6 +1,6 @@
 import { systemID } from "../../constants.mjs";
 import { HTMLUtils, StringUtils, TextEditorUtils } from "../../utils/_module.mjs";
-import AH from "../../config.mjs";
+import AH, { scaleValue } from "../../config.mjs";
 import Targeting from "../../helpers/targeting.mjs";
 import { EvaluationContext } from "../../data/common/_module.mjs";
 import Flags from "../../data/common/flags.mjs";
@@ -33,7 +33,7 @@ function enricher(match, options) {
       anchor.append(label);
       anchor.dataset.amount = amount;
     } else {
-      TextEditorUtils.amount(anchor, amount);
+      TextEditorUtils.amount(anchor, amount, true);
       anchor.append(` ${StringUtils.localize(AH.damageTypes[type].label)}`);
     }
     // 3. DAMAGE TYPE ICON

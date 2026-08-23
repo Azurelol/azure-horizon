@@ -148,15 +148,23 @@
         "plural": "Mind Points",
         "short": "MP"
       },
-      "TensionPoint": {
-        "long": "Tension Point",
-        "plural": "Tension Points",
-        "short": "TP"
-      },
       "InventoryPoint": {
         "long": "Inventory Point",
         "plural": "Inventory Points",
         "short": "IP"
+      },
+      "TensionPoint": {
+        "long": "Tension",
+        "plural": "Tension",
+        "short": "TP"
+      },
+      "TemporaryHitPoint": {
+        "long": "Block",
+        "short": "BLK"
+      },
+      "Block": {
+        "long": "Block",
+        "short": "BLK"
       },
       "Defense": {
         "long": "Defense",
@@ -812,6 +820,8 @@
         "ApplyEffect": "Apply {effect}"
       },
       "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+      "DamagePartialBlock": "<strong>{amount}</strong> was blocked.",
+      "DamageFullBlock": "<strong>{actor}</strong> fully blocked an attack from <strong>{from}</strong> for <strong>{amount}</strong> damage!",
       "ResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "ResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "SpendResource": "Spend {amount} {resource}",

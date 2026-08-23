@@ -3,6 +3,12 @@
     {{{localize message actor=actor damage=damage amount=amount from=from resource=resource}}}
   </span>
 
+  {{#if amountBlocked}}
+    <span>
+      {{{ localize 'AH.CHAT.DamagePartialBlock' amount=amountBlocked}}}
+    </span>
+  {{/if}}
+
   <div class="ah-chat-section__damage__box">
     {{#each result.instances}}
       <label data-tooltip="{{localize (ahLocaleKey 'damageTypes' type)}}">

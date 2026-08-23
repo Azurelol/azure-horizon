@@ -33,7 +33,7 @@ function createReplacementElement(amount, type, tooltip, label, change) {
       anchor.dataset.amount = amount;
     } else {
       // AMOUNT
-      TextEditorUtils.amount(anchor, amount);
+      TextEditorUtils.amount(anchor, amount, true);
       // TYPE
       anchor.append(` ${typeName}`);
     }

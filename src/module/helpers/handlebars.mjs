@@ -545,6 +545,7 @@ function arrayField(options) {
  * @property icon
  * @property label
  * @property value
+ * @property path
  * @property iconClass
  * @property {AH_IconSize} size
  */

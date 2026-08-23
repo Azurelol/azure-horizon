@@ -28,16 +28,19 @@
     {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
     {{ahResourceBar 'system.resources.mp.value' system.resources.mp.value system.resources.mp.max label='AH.CHARACTER.MindPoint.short' icon=(ahIconClass 'mp') colorClass="--ah-color-mp" }}
       {{#if (eq actorType 'hero')}}
-        {{ahResourceBar 'system.resources.tp.value' system.resources.tp.value system.resources.tp.max label='AH.CHARACTER.TensionPoint.short' icon=(ahIconClass 'tp') colorClass="--ah-color-tp" }}
         {{ahResourceBar 'system.resources.ip.value' system.resources.ip.value system.resources.ip.max label='AH.CHARACTER.InventoryPoint.short' icon=(ahIconClass 'ip') colorClass="--ah-color-ip" }}
+        <div class="ah-flex-center" style="margin-top: 8px;">
+          {{ahBadge path='system.resources.tp.value' classes='--row' value=system.resources.tp.value type='Number' min=0 max=system.resources.tp.max label='AH.CHARACTER.TensionPoint.long' icon=(ahIconClass 'tp') size='s'}}
+          {{ahBadge path='system.resources.hp.temporary' classes='--row' value=system.resources.hp.temporary type='Number' min=0 label='AH.CHARACTER.Block.long' icon=(ahIconClass 'block') size='s' }}
+        </div>
       {{/if}}
   </div>
+
+  {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
 
   {{#if (eq actorType 'hero')}}
     {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-inventory.hbs"}}
   {{/if}}
-
-  {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
 
   <div class="ah-character__sidebar__section">
     <div class="ah-button-group">

@@ -102,25 +102,21 @@ async function process(request) {
     /** @type ActorResourceDataModel **/
     const resourceField = subject.system.resources[resource];
 
-    let temporaryHPLost = 0;
+    let amountBlocked = undefined;
 
-    // Remove from THP first
     if (resource === "hp") {
       if (resourceField.temporary > 0) {
-        const remainingBlock = resourceField.temporary - damageTaken;
-        // Damage ate through all the block, reduce it and keep going
+        let remainingBlock = resourceField.temporary - damageTaken;
         if (remainingBlock < 0) {
+          // Damage ate through all the block, reduce it and keep going
           damageTaken = Math.abs(remainingBlock);
-        }
-        // Damage was absorbed fully by block
-        else {
+          amountBlocked = resourceField.temporary;
+          remainingBlock = 0;
+        } else {
+          // Damage was absorbed fully by block
           damageTaken = 0;
+          amountBlocked = resourceField.temporary - remainingBlock;
         }
-        // Update
-        updates.push(
-          subject.modifyTokenAttribute(`resources.${resource}.temporary`, remainingBlock, true).then(async (result) => {
-
-          }));
       }
     }
 
@@ -132,13 +128,27 @@ async function process(request) {
     // If no damage was dealt or absorbed, exit early
     if (damageTaken === 0) {
       ui.notifications.warn(`The damage to ${subject.name} was reduced to 0.`);
-      ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ subject }),
-        content: StringUtils.localize("AH.DIALOG.WARNING.ApplyNoDamage", {
-          actor: subject.name,
-          from: request.sourceInfo.name,
-        }),
-      });
+      if (amountBlocked !== undefined) {
+        updates.push(subject.modifyTokenAttribute(`resources.${resource}.temporary`, -amountBlocked, true).then(async (result) => {
+          ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ subject }),
+            content: StringUtils.localize("AH.CHAT.DamageFullBlock", {
+              actor: subject.name,
+              from: request.sourceInfo.name,
+              amount: amountBlocked,
+            }),
+          });
+        }));
+      }
+      else {
+        ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ subject }),
+          content: StringUtils.localize("AH.DIALOG.WARNING.ApplyNoDamage", {
+            actor: subject.name,
+            from: request.sourceInfo.name,
+          }),
+        });
+      }
       continue;
     }
 
@@ -159,6 +169,10 @@ async function process(request) {
           postRenderActions: [],
           flags: [],
         };
+
+        if (amountBlocked !== undefined) {
+          await subject.modifyTokenAttribute(`resources.${resource}.temporary`, -amountBlocked, true);
+        }
 
         await Events.applyDamage(request.sourceInfo, context.result, request.item, request.actor, subject, request.origin, renderData);
         TokenUtils.showFloatyText(subject, `${-damageTaken} ${resource.toUpperCase()}`, color);
@@ -183,6 +197,7 @@ async function process(request) {
             rootUuid: subject.resolveUuid(),
             amount: damageTaken,
             content: content,
+            amountBlocked: amountBlocked,
             result: context.result,
             from: StringUtils.localize(request.sourceInfo.name),
             sourceActorUuid: request.sourceInfo.actorUuid,
@@ -254,7 +269,6 @@ function onRenderChatMessage(message, html) {
     return process(request);
   });
 
-  // TODO: Update
   ChatMessageHelper.handleClickRevert(message, html, "revertDamage", async (dataset) => {
     const uuid = dataset.uuid;
     const actor = fromUuidSync(uuid);

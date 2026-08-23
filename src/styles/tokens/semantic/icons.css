@@ -24,12 +24,17 @@
 
   /* Resources */
   --ah-icon-hp: url("../../../../assets/icons/parameters/hp.png");
+  --ah-icon-thp: url("../../../../assets/icons/parameters/thp.png");
   --ah-icon-mp: url("../../../../assets/icons/parameters/mp.png");
   --ah-icon-ip: url("../../../../assets/icons/parameters/ip.png");
   --ah-icon-tp: url("../../../../assets/icons/parameters/tp.png");
 
   .ah-icon-hp {
     background-image: var(--ah-icon-hp);
+  }
+
+  .ah-icon-thp {
+    background-image: var(--ah-icon-thp);
   }
 
   .ah-icon-mp {

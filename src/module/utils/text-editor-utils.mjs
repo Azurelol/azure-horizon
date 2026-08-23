@@ -1,4 +1,4 @@
-import AH from "../config.mjs";
+import AH, { scaleValue } from "../config.mjs";
 import Expressions from "../pipelines/expressions.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import StringUtils from "./string-utils.mjs";
@@ -97,14 +97,15 @@ export default class TextEditorUtils {
   /**
    * @param {HTMLAnchorElement} anchor
    * @param {String} amount
+   * @param {Boolean} scale
    */
-  static amount(anchor, amount) {
+  static amount(anchor, amount, scale = false) {
     anchor.dataset.amount = amount;
     const dynamicAmount = Expressions.requiresContext(amount);
     if (dynamicAmount) {
       anchor.append(StringUtils.localize("AH.COMMON.Variable"));
     } else {
-      anchor.append(amount);
+      anchor.append(scale ? scaleValue(amount) : amount);
     }
   }
 

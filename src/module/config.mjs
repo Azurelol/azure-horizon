@@ -1099,6 +1099,8 @@ AH.icons = {
   mp: "ah-icon-mp",
   ip: "ah-icon-ip",
   tp: "ah-icon-tp",
+  thp: "ah-icon-thp",
+  block: "ah-icon-thp",
 
   def: "ah-icon-def",
   mdef: "ah-icon-mdef",
