@@ -14,6 +14,7 @@ import AbilityDataModel from "./ability-data-model.mjs";
 import MoveDataModel from "./move-data-model.mjs";
 
 import { ClassFeatureRegistry } from "./class-feature-registry.mjs";
+import EngramDataModel from "./engram-data-model.mjs";
 
 const dataModels = Object.freeze({
   base: ItemDataModel,
@@ -32,6 +33,7 @@ const dataModels = Object.freeze({
   armor: ArmorDataModel,
   accessory: AccessoryDataModel,
   consumable: ConsumableDataModel,
+  engram: EngramDataModel,
 
 });
 

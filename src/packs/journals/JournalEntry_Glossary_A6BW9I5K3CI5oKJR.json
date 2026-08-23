@@ -1,0 +1,102 @@
+{
+  "name": "Glossary",
+  "_id": "A6BW9I5K3CI5oKJR",
+  "pages": [
+    {
+      "sort": 100000,
+      "name": "Affinity",
+      "type": "text",
+      "_id": "SMGi6Ml15iR9sN2U",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>An affinity is an \"element\" type and is considered only for the damage system. They can also be considered damage types.</p><p>Each affinity has a status associated with it. When creatures suffer damage from a type they are vulnerable to (meaning they take increased damage) they will often also gain the associated status.</p><p></p><table><tbody><tr><td><p>Type</p></td><td><p>Category</p></td><td data-colwidth=\"139\"><p>Status</p></td><td><p>Major Status</p></td></tr><tr><td><p>Untyped</p></td><td><p></p></td><td data-colwidth=\"139\"><p></p></td><td><p></p></td></tr><tr><td><p>Slashing</p></td><td><p>Physical</p></td><td data-colwidth=\"139\"><p>Bleed</p></td><td><p></p></td></tr><tr><td><p>Bludgeoning</p></td><td><p>Physical</p></td><td data-colwidth=\"139\"><p>Bleed</p></td><td><p>Fracture</p></td></tr><tr><td><p>Piercing</p></td><td><p>Physical</p></td><td data-colwidth=\"139\"><p>Bleed</p></td><td><p></p></td></tr><tr><td><p>Fire</p></td><td><p>Elemental</p></td><td data-colwidth=\"139\"><p>Burn</p></td><td><p>Scorch</p></td></tr><tr><td><p>Cold</p></td><td><p>Elemental</p></td><td data-colwidth=\"139\"><p>Chill</p></td><td><p>Freeze</p></td></tr><tr><td><p>Electric</p></td><td><p>Elemental</p></td><td data-colwidth=\"139\"><p>Shock</p></td><td><p>Paralysis</p></td></tr><tr><td><p>Light</p></td><td><p>Spiritual</p></td><td data-colwidth=\"139\"><p>Daze</p></td><td><p>Disjoint</p></td></tr><tr><td><p>Dark</p></td><td><p>Spiritual</p></td><td data-colwidth=\"139\"><p></p></td><td><p>Necrosis</p></td></tr><tr><td><p>Mental</p></td><td><p></p></td><td data-colwidth=\"139\"><p></p></td><td><p></p></td></tr></tbody></table>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787463361878,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.SMGi6Ml15iR9sN2U"
+    },
+    {
+      "sort": 200000,
+      "name": "Stress",
+      "type": "text",
+      "_id": "mDXdfBygq9VDrgtO",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787463990064,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.mDXdfBygq9VDrgtO"
+    }
+  ],
+  "folder": null,
+  "categories": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787462587816,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!journal!A6BW9I5K3CI5oKJR"
+}

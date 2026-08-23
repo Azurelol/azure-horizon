@@ -1,17 +1,20 @@
 {
   "folder": "iH9OyoAoizAPCpjW",
-  "name": "Plate Armor",
+  "name": "Outfit",
   "type": "armor",
-  "_id": "g7Civg5iIjMbA50R",
-  "img": "systems/azure-horizon/assets/icons/equipment/armor/plate.png",
+  "_id": "wdDrP8GR8xh9VzHi",
+  "img": "icons/equipment/chest/shirt-collared-brown.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-plate-armor",
-    "description": "",
-    "category": "heavy",
+    "slug": "equipment-outfit",
+    "description": "<p>A character's default outfit, what they are most comfortable wearing.</p>",
+    "category": "light",
     "traits": [
-      "stable"
+      "comfort"
+    ],
+    "rarity": [
+      "common"
     ]
   },
   "effects": [],
@@ -24,12 +27,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786543210357,
+    "createdTime": 1787464736415,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!g7Civg5iIjMbA50R"
+  "_key": "!items!wdDrP8GR8xh9VzHi"
 }

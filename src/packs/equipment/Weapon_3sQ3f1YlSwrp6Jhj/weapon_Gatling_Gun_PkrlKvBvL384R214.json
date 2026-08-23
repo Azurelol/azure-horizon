@@ -11,10 +11,11 @@
     "description": "",
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "bonus": ""
     },
     "handedness": "two",
     "traits": [
@@ -22,10 +23,10 @@
     ],
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
         "amount": "",
-        "type": "untyped"
+        "type": "piercing"
       },
       "secondary": {
         "amount": "",
@@ -34,7 +35,12 @@
       "traits": [],
       "inplace": false
     },
-    "range": "ranged"
+    "range": "ranged",
+    "attributes": {
+      "primary": "mig",
+      "secondary": "dex",
+      "grade": "A"
+    }
   },
   "effects": [],
   "sort": 0,

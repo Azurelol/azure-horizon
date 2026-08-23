@@ -24,7 +24,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "3",
+        "amount": "",
         "type": "piercing"
       },
       "secondary": {
@@ -33,6 +33,11 @@
       },
       "traits": [],
       "inplace": false
+    },
+    "attributes": {
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "B"
     }
   },
   "effects": [],

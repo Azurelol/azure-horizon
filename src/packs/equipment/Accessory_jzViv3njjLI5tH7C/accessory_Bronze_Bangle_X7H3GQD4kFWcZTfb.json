@@ -1,18 +1,14 @@
 {
-  "folder": "iH9OyoAoizAPCpjW",
-  "name": "Plate Armor",
-  "type": "armor",
-  "_id": "g7Civg5iIjMbA50R",
-  "img": "systems/azure-horizon/assets/icons/equipment/armor/plate.png",
+  "folder": "jzViv3njjLI5tH7C",
+  "name": "Bronze Bangle",
+  "type": "accessory",
+  "_id": "X7H3GQD4kFWcZTfb",
+  "img": "icons/equipment/wrist/bracer-belted-leather-brown.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-plate-armor",
-    "description": "",
-    "category": "heavy",
-    "traits": [
-      "stable"
-    ]
+    "slug": "equipment-bronze-bangle",
+    "description": ""
   },
   "effects": [],
   "sort": 0,
@@ -24,12 +20,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786543210357,
+    "createdTime": 1787464604666,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!g7Civg5iIjMbA50R"
+  "_key": "!items!X7H3GQD4kFWcZTfb"
 }

@@ -30,7 +30,12 @@
       "traits": [],
       "inplace": false
     },
-    "handedness": "one"
+    "handedness": "one",
+    "attributes": {
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "B"
+    }
   },
   "effects": [],
   "folder": "3sQ3f1YlSwrp6Jhj",

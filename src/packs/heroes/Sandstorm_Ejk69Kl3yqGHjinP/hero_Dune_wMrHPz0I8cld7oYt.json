@@ -27,7 +27,10 @@
       "schemaVersion": 1
     },
     "level": 5,
-    "equipment": {},
+    "equipment": {
+      "mainHand": "KafQxWpBEbGWLKyW",
+      "offHand": "KafQxWpBEbGWLKyW"
+    },
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -309,7 +312,7 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 30,
+        "value": 300,
         "bonus": 0,
         "temporary": 0
       },
@@ -483,10 +486,404 @@
       "folder": null,
       "sort": 0,
       "_key": "!actors.items!wMrHPz0I8cld7oYt.KafQxWpBEbGWLKyW"
+    },
+    {
+      "name": "Armiger",
+      "type": "class",
+      "_id": "gMn0yJrV0U7mRKOJ",
+      "img": "systems/azure-horizon/assets/icons/classes/armiger/armiger.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "armiger",
+        "description": "<p>A versatile warrior that values tactical flexibility over the study of a single weapon.</p>",
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": true,
+          "mp": false,
+          "ip": false
+        },
+        "traits": [
+          "warrior",
+          "offense"
+        ],
+        "triggers": [
+          "You acquire a new weapon.",
+          "You mentor someone."
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787464442090,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.gMn0yJrV0U7mRKOJ",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!wMrHPz0I8cld7oYt.gMn0yJrV0U7mRKOJ"
+    },
+    {
+      "name": "Elementalist",
+      "type": "class",
+      "_id": "vPxlegSUy94bAx2V",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "elementalist",
+        "description": "",
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": false,
+          "mp": true,
+          "ip": false
+        },
+        "triggers": [],
+        "traits": [
+          "mage",
+          "offense"
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787464458454,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.vPxlegSUy94bAx2V",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!wMrHPz0I8cld7oYt.vPxlegSUy94bAx2V"
+    },
+    {
+      "name": "Expert Advice",
+      "type": "skill",
+      "_id": "hr8BzDIA9vENt8OA",
+      "img": "icons/skills/social/thumbsup-approval-like.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "armiger-expert-advice",
+        "description": "<p>During a rest scene you may spend time with another player to give them SL stacks of <em>Expert Advice</em>.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "",
+          "points": 1,
+          "traits": [],
+          "range": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "entries": [
+            "armiger-expect-advice"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          },
+          "selector": ""
+        },
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "attributes": false
+        },
+        "class": "armiger",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "power": ""
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787464494810,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.hr8BzDIA9vENt8OA",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!wMrHPz0I8cld7oYt.hr8BzDIA9vENt8OA"
+    },
+    {
+      "name": "Power Strike",
+      "type": "skill",
+      "_id": "Vr4OV4fATDqDW33a",
+      "img": "systems/azure-horizon/assets/icons/classes/armiger/power-strike.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "armiger-power-strike",
+        "description": "<p>You unleash a powerful attack with your equipped weapon.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "0",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "15",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          },
+          "enabled": false,
+          "selector": ""
+        },
+        "level": {
+          "current": 1,
+          "max": 2
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": true,
+          "damage": true,
+          "attributes": false
+        },
+        "class": "armiger",
+        "action": {
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "cooldown"
+          ],
+          "schemaVersion": 1,
+          "range": ""
+        },
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "power": ""
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787464497063,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.Vr4OV4fATDqDW33a",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!wMrHPz0I8cld7oYt.Vr4OV4fATDqDW33a"
+    },
+    {
+      "name": "Elemental Spell",
+      "type": "skill",
+      "_id": "9D70AgF7EfFC8FGy",
+      "img": "icons/magic/fire/beam-jet-stream-trails-orange.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "elementalist-elemental-spell",
+        "description": "<p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Elemental </em>domain.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 2,
+          "max": 5
+        },
+        "action": {
+          "schemaVersion": 1,
+          "range": "",
+          "type": "",
+          "points": 1,
+          "traits": []
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        },
+        "class": "elementalist"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787464509261,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.9D70AgF7EfFC8FGy",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!wMrHPz0I8cld7oYt.9D70AgF7EfFC8FGy"
     }
   ],
   "effects": [],
-  "sort": 0,
+  "sort": 200000,
   "ownership": {
     "default": 0
   },

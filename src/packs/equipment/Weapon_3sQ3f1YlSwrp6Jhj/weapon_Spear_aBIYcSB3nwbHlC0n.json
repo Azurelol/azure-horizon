@@ -33,7 +33,14 @@
       "inplace": false
     },
     "handedness": "two",
-    "traits": []
+    "traits": [
+      "reach"
+    ],
+    "attributes": {
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "B"
+    }
   },
   "effects": [],
   "sort": 0,

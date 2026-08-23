@@ -34,7 +34,12 @@
       "inplace": false
     },
     "handedness": "one",
-    "traits": []
+    "traits": [],
+    "attributes": {
+      "primary": "mig",
+      "secondary": "wlp",
+      "grade": "B"
+    }
   },
   "effects": [],
   "sort": 0,

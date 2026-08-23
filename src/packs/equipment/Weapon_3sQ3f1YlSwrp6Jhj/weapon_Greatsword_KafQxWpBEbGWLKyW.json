@@ -22,7 +22,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "5",
+        "amount": "",
         "type": "slashing"
       },
       "secondary": {
@@ -33,7 +33,12 @@
       "inplace": false
     },
     "handedness": "two",
-    "traits": []
+    "traits": [],
+    "attributes": {
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "A"
+    }
   },
   "effects": [],
   "sort": 0,
