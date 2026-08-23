@@ -5,22 +5,24 @@
     {{ahInput 'system.level' system.level size ='l' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="ah-character__level" }}
   </div>
 
-  <div class="ah-sheet-header__row">
+  <div class="ah-sheet-header__row ah-character__header__attributes">
     <div class="ah-sheet__group">
       {{#each system.attributes as |attribute key|}}
-        {{#if ../system.assembled}}
-          {{ahBadge size='sm' icon=(ahIconClass key)
-                    label=(ahLocaleKey 'attributes' key format='short')
-                    iconClasses='--glow'
-                    value=attribute.base }}
-        {{else}}
-          {{ahSelector size='sm' icon=(ahIconClass key)
-                       label=(ahLocaleKey 'attributes' key format='short')
-                       values=@root.AH.attributeDice value=attribute.base
-                       iconClasses='--glow'
-                       path=(ahConcat 'system.attributes.' key '.base') }}
-        {{/if}}
-
+        <div class="ah-flex-center --stack">
+          {{#if ../system.assembled}}
+            {{ahBadge size='sm' icon=(ahIconClass key)
+                      label=(ahLocaleKey 'attributes' key format='short')
+                      iconClasses='--glow'
+                      value=attribute.base }}
+          {{else}}
+            {{ahSelector size='sm' icon=(ahIconClass key)
+                         label=(ahLocaleKey 'attributes' key format='short')
+                         values=@root.AH.attributeDice value=attribute.base
+                         bonus=attribute.bonus
+                         iconClasses='--glow'
+                         path=(ahConcat 'system.attributes.' key '.base') }}
+          {{/if}}
+        </div>
       {{/each}}
     </div>
 
@@ -42,6 +44,6 @@
     <div class="ah-sheet__group">
       {{ahButton action='performAction' size='m' data='type=attribute-check;size=large' icon=(ahIconClass 'attributeCheck') iconClasses="--roll --spin" tooltip='AH.CHECK.Attribute'}}
     </div>
-
   </div>
+
 </header>

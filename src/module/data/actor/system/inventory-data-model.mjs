@@ -102,4 +102,20 @@ export default class InventoryDataModel extends VersionedDataModel {
     }
     return data;
   }
+
+  /**
+   * @param {AHItem} item
+   * @param {Number} slot
+   * @return {InventoryDataModel}
+   */
+  toggleAccessory(item, slot) {
+    const data = this.toObject();
+    let path = `accessory${slot}`;
+    if (data[path] === item.id) {
+      data[path] = null;
+    } else {
+      data[path] = item.id;
+    }
+    return data;
+  }
 }

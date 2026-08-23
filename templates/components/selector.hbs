@@ -4,4 +4,7 @@
   <select name="{{path}}">
     {{selectOptions values selected=value localize=true}}
   </select>
+  {{#if bonus}}
+    <span class="bonus">{{numberFormat bonus sign=true}}</span>
+  {{/if}}
 </label>

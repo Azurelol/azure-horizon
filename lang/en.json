@@ -72,6 +72,10 @@
       "Accessory": "Accessory",
       "Consumable": "Consumable",
       "Equipment": "Equipment",
+      "Engram": {
+        "long": "Engram",
+        "plural": "Engrams"
+      },
       "Attack": {
         "long": "Attack",
         "plural": "Attacks"
@@ -858,6 +862,7 @@
       "weapon": "Weapon",
       "armor": "Armor",
       "accessory": "Accessory",
+      "engram": "Engram",
       "class": "Class",
       "skill": "Skill",
       "classFeature": "Class Feature",

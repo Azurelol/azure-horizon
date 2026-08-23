@@ -1,9 +1,10 @@
 import ItemDataModel from "./item-data-model.mjs";
+import EquipmentDataModel from "./equipment-data-model.mjs";
 
 /**
  * An engram is an item that allows the user to cast magic or perform certain abilities they could not otherwise.
  */
-export default class EngramDataModel extends ItemDataModel {
+export default class EngramDataModel extends EquipmentDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, StringField, ForeignDocumentField } = foundry.data.fields;

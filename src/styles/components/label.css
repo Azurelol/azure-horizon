@@ -24,8 +24,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 4px;
+  height: var(--ah-badge-height);
 
   flex: 1 1 0;
   min-width: 0;
@@ -75,15 +75,20 @@
     padding: 0;
     margin-top: 1px;
   }
+  .bonus {
+    order: 4;
+    color: var(--ah-badge-bonus-color);
+    font-size: var(--ah-font-size-m);
+  }
 }
 
 .ah-badge {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 4px;
   --badge-size: 40px;
+  height: var(--ah-badge-height);
 
   i {
     font-size: var(--ah-font-size-label-icon);

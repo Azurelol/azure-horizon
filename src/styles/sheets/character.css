@@ -62,6 +62,10 @@
     }
   }
 
+  .ah-character__header__attributes {
+    height: 100px;
+  }
+
   .ah-character__sidebar__portrait {
     height: 200px;
 

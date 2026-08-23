@@ -97,6 +97,7 @@
   --ah-icon-color-hover: var(--ah-content-icon-hover);
 
   /* Tags/Badges  */
+  --ah-badge-height: 100px;
   --ah-tag-font-size: 11px;
   --ah-tag-font-weight: 600;
   --ah-tag-letter-spacing: 0.063rem;
@@ -107,6 +108,7 @@
   --ah-tag-border: var(--ah-surface-border);
   --ah-badge-background: var(--ah-surface-action-muted);
   --ah-badge-color: var(--ah-content-primary);
+  --ah-badge-bonus-color: #7aec76;
 
   /* Inline */
   --ah-line-height-inline: 18px;
