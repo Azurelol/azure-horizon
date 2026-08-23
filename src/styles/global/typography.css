@@ -1,0 +1,24 @@
+blockquote{
+  background: var(--ah-blockquote-background);
+  border: var(--ah-blockquote-border);
+  font-size: var(--ah-blockquote-font-size);
+  font-family: var(--ah-font-family-application);
+  font-style: normal;
+}
+
+table {
+  tbody {
+    font-size: var(--ah-table-body-font-size);
+    tr {
+      background: none !important;
+      border-bottom: 1px solid var(--ah-table-row-divider);
+    }
+    tr:nth-child(even) {
+      background: none !important;
+    }
+    tr:last-child {
+      border: none;
+    }
+  }
+}
+

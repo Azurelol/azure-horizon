@@ -969,6 +969,7 @@ AH.traits = {
     performance: { label: "AH.TRAIT.Performance", tooltip: "AH.TRAIT.PerformanceHint" },
     stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
     interrupt: { label: "AH.TRAIT.Interrupt", tooltip: "AH.TRAIT.InterruptHint" },
+    free: { label: "AH.TRAIT.Free", tooltip: "AH.FreeHint" },
   },
 
   resource: {
@@ -1003,11 +1004,11 @@ AH.traits = {
 
     offense: { label: "AH.TRAIT.Offense", tooltip: "AH.TRAIT.OffenseHint" },
     defense: { label: "AH.TRAIT.Defense", tooltip: "AH.TRAIT.DefenseHint" },
-    skirmish: { label: "AH.TRAIT.Skirmish", tooltip: "AH.TRAIT.SkirmishHint" },
     endurance: { label: "AH.TRAIT.Endurance", tooltip: "AH.TRAIT.EnduranceHint" },
     mobility: { label: "AH.TRAIT.Mobility", tooltip: "AH.TRAIT.MobilityHint" },
     stealth: { label: "AH.TRAIT.Stealth", tooltip: "AH.TRAIT.StealthHint" },
     stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
+    shift: { label: "AH.TRAIT.Shift", tooltip: "AH.TRAIT.ShiftHint" },
 
     lore: { label: "AH.TRAIT.Lore", tooltip: "AH.TRAIT.LoreHint" },
     tactics: { label: "AH.TRAIT.Tactics", tooltip: "AH.TRAIT.Tactics" },
@@ -1017,7 +1018,12 @@ AH.traits = {
 
     companion: { label: "AH.TRAIT.Companion", tooltip: "AH.TRAIT.CompanionHint" },
   },
-  skill: {
+
+  // Targeting trait
+  target: {
+    cleave: { label: "AH.TRAIT.Cleave", tooltip: "AH.TRAIT.CleaveHint" },
+    pierce: { label: "AH.TRAIT.Pierce", tooltip: "AH.TRAIT.PierceHint" },
+    splash: { label: "AH.TRAIT.Splash", tooltip: "AH.TRAIT.SplashHint" },
   },
 
   range: {

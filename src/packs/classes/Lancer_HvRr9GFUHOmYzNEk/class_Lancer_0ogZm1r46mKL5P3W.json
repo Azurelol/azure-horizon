@@ -11,7 +11,8 @@
     "description": "<p>An acrobatic warrior who specializes in fighting at range with a long spear.</p>",
     "traits": [
       "warrior",
-      "offense"
+      "offense",
+      "mobility"
     ],
     "benefits": {
       "schemaVersion": 1,
@@ -21,7 +22,8 @@
     },
     "triggers": [
       "You liberate someone.",
-      "You jump from a great height and land in a dramatic pose."
+      "You jump from a great height and land in a dramatic pose.",
+      "You defeat an enemy with a Jump."
     ]
   },
   "effects": [],

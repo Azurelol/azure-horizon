@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "lancer-wyrm-fang",
-    "description": "<p>You perform a piercing attack.</p>",
+    "description": "<p>While under the effects of Bared Fang you perform a piercing attack.  If performed directly after a Jump you apply <em>Sunder</em> to the target.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

@@ -448,6 +448,7 @@
       "Light": "Light",
       "Heavy": "Heavy",
       "Magical": "Magical",
+      "Poison": "Poison",
       "Interrupt": "Interrupt",
       "Flexible": "Flexible",
       "Cooldown": "Cooldown",
@@ -491,7 +492,10 @@
       "Recharge": "Recharge",
       "Exhaust": "Exhaust",
       "Performance": "Performance",
-      "Free": "Free"
+      "Free": "Free",
+      "Pierce": "Pierce",
+      "Splash": "Splash",
+      "Cleave": "Cleave"
     },
     "DOMAIN": {
       "Light": "Light",

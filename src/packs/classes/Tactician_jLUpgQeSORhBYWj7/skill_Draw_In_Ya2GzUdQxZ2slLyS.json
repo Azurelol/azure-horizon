@@ -1,14 +1,20 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Preempt",
+  "folder": "jLUpgQeSORhBYWj7",
+  "name": "Draw In",
   "type": "skill",
-  "_id": "jxa8l7C9sjxzDTlP",
-  "img": "icons/weapons/polearms/spear-flared-silver-pink.webp",
+  "_id": "Ya2GzUdQxZ2slLyS",
+  "img": "icons/skills/targeting/target-glowing-yellow.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-preempt",
-    "description": "<p>When you are targeted by a melee attack you may perform a free attack before your attacker.</p>",
+    "slug": "tactician-draw-in",
+    "description": "<p>You immediately gain <em>Taunt</em>. If you are attacked before your next turn starts, a party member can perform a free attack against your attacker.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "2",
       "perTarget": false
     },
     "effects": {
@@ -67,13 +73,14 @@
     },
     "usage": {
       "schemaVersion": 1,
+      "attributes": false,
       "check": false,
       "damage": true
     },
-    "class": "lancer"
+    "class": "tactician"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 600000,
   "ownership": {
     "default": 0
   },
@@ -82,12 +89,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787215572830,
+    "createdTime": 1787493142475,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!jxa8l7C9sjxzDTlP"
+  "_key": "!items!Ya2GzUdQxZ2slLyS"
 }

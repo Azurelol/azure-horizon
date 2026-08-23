@@ -75,6 +75,12 @@ export default class Formulas {
    * @param {AHActor} actor
    */
   static calculateAttributeInputs(config, actor) {
+    if (!actor.isCharacterType) {
+      return {
+        primary: undefined,
+        secondary: undefined,
+      };
+    }
     if (config.isCheck) {
       const grade = AH.grades[config.grade].scale;
       return {

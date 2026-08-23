@@ -1,27 +1,26 @@
 {
-  "folder": "TKGG7DbmG3KyDFid",
-  "name": "Gunner",
+  "folder": "8r0dDajMQKyNpdgb",
+  "name": "Mechanist",
   "type": "class",
-  "_id": "R3N0TiFLWi4Cbfsf",
+  "_id": "9UGq7rIzxLAG8aK5",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "gunner",
+    "slug": "mechanist",
     "description": "",
     "benefits": {
       "schemaVersion": 1,
       "hp": false,
-      "mp": true,
-      "ip": false
+      "mp": false,
+      "ip": true
     },
     "triggers": [
-      "You acknowledge someone.",
-      "You shoot first."
+      "You fix something broken for someone in need.",
+      "You create a new device.",
+      "You discover new technology."
     ],
-    "traits": [
-      "warrior"
-    ]
+    "traits": []
   },
   "effects": [],
   "sort": 0,
@@ -33,12 +32,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787396247343,
+    "createdTime": 1787502170375,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!R3N0TiFLWi4Cbfsf"
+  "_key": "!items!9UGq7rIzxLAG8aK5"
 }

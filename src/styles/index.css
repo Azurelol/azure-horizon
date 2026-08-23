@@ -25,6 +25,7 @@
 @import "global/messages.css";
 @import "global/button.css";
 @import "global/iconography.css";
+@import "global/typography.css";
 @import "global/list.css";
 @import "global/inline.css";
 
@@ -41,5 +42,6 @@
 @import "sheets/party.css";
 @import "sheets/party/party-modern.css";
 @import "sheets/rules.css";
+
 
 @import "typography/rpg-awesome.min.css";

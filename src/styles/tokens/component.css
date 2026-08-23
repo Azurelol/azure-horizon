@@ -138,5 +138,8 @@
   --ah-chat-message-border: var(--ah-border-muted);
   --ah-chat-message-color: var(--ah-content-primary);
 
-
+  /*Blockquote*/
+  --ah-blockquote-background: var(--ah-surface-panel-block);
+  --ah-blockquote-border: var(--ah-border-thick);
+  --ah-blockquote-font-size: var(--ah-font-size-lg);
 }

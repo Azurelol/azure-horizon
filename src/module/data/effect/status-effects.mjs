@@ -15,6 +15,13 @@ const STATUS_EFFECTS = Object.freeze({
     img: "systems/azure-horizon/assets/icons/statuses/ko.png",
   },
 
+  // TARGETING
+  stealth: {
+    id: "stealth",
+    name: "AH.STATUS.Stealth",
+    img: "systems/azure-horizon/assets/icons/statuses/stealth.png",
+  },
+
   // AFFINITY-BASED
   bleed: {
     id: "bleed",

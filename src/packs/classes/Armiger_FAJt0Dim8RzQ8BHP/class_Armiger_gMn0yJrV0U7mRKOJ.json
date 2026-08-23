@@ -21,7 +21,8 @@
     ],
     "triggers": [
       "You acquire a new weapon.",
-      "You mentor someone."
+      "You mentor someone.",
+      "You learn a new technique."
     ]
   },
   "effects": [],
