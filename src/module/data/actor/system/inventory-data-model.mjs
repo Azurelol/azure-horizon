@@ -1,13 +1,15 @@
 import { VersionedDataModel } from "../../api/_module.mjs";
 
 /**
- * @typedef {'mainHand'|'offHand'|'armor'} AH_InventorySlot
+ * @typedef {'mainHand'|'offHand'|'armor'|'accessory1'|'accessory2'} AH_InventorySlot
  */
 
 /**
  * @property {String} mainHand
  * @property {String} offHand
  * @property {String} armor
+ * @property {String} accessory1
+ * @property {String} accessory2
  */
 export default class InventoryDataModel extends VersionedDataModel {
 
@@ -105,17 +107,33 @@ export default class InventoryDataModel extends VersionedDataModel {
 
   /**
    * @param {AHItem} item
-   * @param {Number} slot
+   * @param {'accessory1'|'accessory2'} slot
    * @return {InventoryDataModel}
    */
   toggleAccessory(item, slot) {
     const data = this.toObject();
-    let path = `accessory${slot}`;
-    if (data[path] === item.id) {
-      data[path] = null;
+    const unequipped = [];
+
+    if (data[slot] === item.id) {
+      data[slot] = null;
+      unequipped.push(slot);
     } else {
-      data[path] = item.id;
+      data[slot] = item.id;
     }
+
+    switch (slot) {
+      case "accessory1":
+        if (data.accessory2 === item.id) {
+          data.accessory2 = null;
+        }
+        break;
+      case "accessory2":
+        if (data.accessory1 === item.id) {
+          data.accessory1 = null;
+        }
+        break;
+    }
+
     return data;
   }
 }

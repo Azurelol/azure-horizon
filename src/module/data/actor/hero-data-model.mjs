@@ -117,12 +117,14 @@ export default class HeroDataModel extends CharacterDataModel {
       mainHand: actor.items.get(this.equipment.mainHand),
       offHand: actor.items.get(this.equipment.offHand),
       armor: actor.items.get(this.equipment.armor),
+      accessory1: actor.items.get(this.equipment.accessory1),
+      accessory2: actor.items.get(this.equipment.accessory2),
     };
   }
 
   /**
    * @param {AHItem} item
-   * @param {AH_InventorySlot }slot
+   * @param {AH_InventorySlot|Number} slot
    */
   async equipItem(item, slot) {
     const type = item.type;
@@ -137,6 +139,13 @@ export default class HeroDataModel extends CharacterDataModel {
       }
       case "armor": {
         const data = actor.system.equipment.toggleArmor(item);
+        if (data) {
+          await actor.update({ "system.equipment": data });
+        }
+        break;
+      }
+      case "accessory": {
+        const data = actor.system.equipment.toggleAccessory(item, slot);
         if (data) {
           await actor.update({ "system.equipment": data });
         }

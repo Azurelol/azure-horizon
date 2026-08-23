@@ -159,6 +159,13 @@ export default class ActionHandler {
       FoundryUtils.itemContextMenu(element, "[data-slot=\"armor\"]", armors, async item => {
         this.actor.system.equipItem(item);
       });
+      const accessories = this.actor.getItemsByType("accessory");
+      FoundryUtils.itemContextMenu(element, "[data-slot=\"accessory1\"]", accessories, async item => {
+        this.actor.system.equipItem(item, "accessory1");
+      });
+      FoundryUtils.itemContextMenu(element, "[data-slot=\"accessory2\"]", accessories, async item => {
+        this.actor.system.equipItem(item, "accessory2");
+      });
       // SKILLS
       /** @type {AHItem[]} **/
       let skills = ["skill"]

@@ -117,10 +117,10 @@ export class HeroSheet extends CharacterSheet {
    * @private
    */
   static async #equipItem(event, target) {
-    const { id } = target.dataset;
+    const { id, slot } = target.dataset;
     const item = this.actor.items.get(id);
     if (item) {
-      this.actor.system.equipItem(item);
+      this.actor.system.equipItem(item, slot);
     }
   }
 
