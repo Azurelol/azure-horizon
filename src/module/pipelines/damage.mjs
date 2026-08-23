@@ -99,7 +99,32 @@ async function process(request) {
     let resource = "hp";
     let color = "red";
     let damageTaken = context.result.total;
-    const difference = subject.system.resources[resource].value - damageTaken;
+    /** @type ActorResourceDataModel **/
+    const resourceField = subject.system.resources[resource];
+
+    let temporaryHPLost = 0;
+
+    // Remove from THP first
+    if (resource === "hp") {
+      if (resourceField.temporary > 0) {
+        const remainingBlock = resourceField.temporary - damageTaken;
+        // Damage ate through all the block, reduce it and keep going
+        if (remainingBlock < 0) {
+          damageTaken = Math.abs(remainingBlock);
+        }
+        // Damage was absorbed fully by block
+        else {
+          damageTaken = 0;
+        }
+        // Update
+        updates.push(
+          subject.modifyTokenAttribute(`resources.${resource}.temporary`, remainingBlock, true).then(async (result) => {
+
+          }));
+      }
+    }
+
+    const difference = resourceField.value - damageTaken;
     if (difference < 0) {
       damageTaken -= Math.abs(difference);
     }

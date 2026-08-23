@@ -79,7 +79,7 @@ export default class Themes {
     if (themeData) {
       const theme = Themes.from(themeData);
       if (theme) {
-        theme.apply();
+        //theme.apply();
       }
     }
   }
