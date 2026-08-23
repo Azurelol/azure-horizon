@@ -48,6 +48,16 @@ jobs:
       - name: Create ZIP archive
         run: zip -r ./system.zip system.json system.mjs system.css assets/ lang/ templates/
 
+      # Fetch release body.
+      - name: Fetch Release Body
+        id: release
+        uses: cardinalby/git-get-release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag: ${{ env.TAG_NAME }}
+          doNotFailIfNotFound: true
+
       # Create a release for this specific version.
       - name: Update Release with Files
         if: "!github.event.release.prerelease"
@@ -59,6 +69,6 @@ jobs:
           draft: ${{ github.event.release.unpublished }}
           prerelease: ${{ github.event.release.prerelease }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: "./system.json, ./system.zip"
-          tag: ${{ github.event.release.tag_name }}
+          artifacts: './${{ env.PACKAGE_TYPE }}.json, ./${{ env.ZIP_NAME }}'
+          tag: ${{ env.TAG_NAME }}
           body: ${{ github.event.release.body }}

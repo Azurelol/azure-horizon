@@ -252,7 +252,7 @@ async function perform(actor, item, prepare) {
     id: foundry.utils.randomID(),
     data: {},
     actorUuid: actor.uuid,
-    item: item.uuid,
+    item: item?.uuid,
     sourceInfo: SourceInfo.fromInstance(actor, item),
   };
   const config = new ActionConfig(action);

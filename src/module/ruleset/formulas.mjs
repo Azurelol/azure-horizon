@@ -14,6 +14,10 @@ const TP_BASE = 4;
 const CLASS_BENEFIT_HP = 10;
 const CLASS_BENEFIT_MP = 10;
 
+const RECOVERY_HP_GAINED = 0.3;
+const RECOVERY_MP_SPENT = 0.2;
+const RECOVERY_TP_ADDED = 1;
+
 /**
  * @typedef Modifier
  * @property {Number} additive Should default to 0.
@@ -231,6 +235,32 @@ export default class Formulas {
    */
   static calculateInitiative(attributes) {
     return this.round((attributes.dex.current + attributes.ins.current) / 2);
+  }
+
+  /**
+   * @typedef AH_RecoveryData
+   * @property {Number} hp The HP gained.
+   * @property {Number} mp The MP spent.
+   * @property {Number} tp The TP increased.
+   */
+
+  /**
+   * @param {HeroDataModel} system
+   * @returns {AH_RecoveryData}
+   */
+  static calculateRecovery(system) {
+    const maxHP = system.resources.hp.max;
+    const maxMP = system.resources.mp.max;
+
+    const hp = this.round(maxHP * RECOVERY_HP_GAINED);
+    const mp = this.round(maxMP * RECOVERY_MP_SPENT);
+    const tp = RECOVERY_TP_ADDED;
+
+    return {
+      hp,
+      mp,
+      tp,
+    };
   }
 
   /**

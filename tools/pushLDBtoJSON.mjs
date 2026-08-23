@@ -61,7 +61,7 @@ async function transformEntry(entry) {
     lastModifiedBy: null,
   });
   // Remove module flags
-  for (const key of Object.keys(entry.flags)) if (!["core", "draw-steel"].includes(key)) delete entry.flags[key];
+  for (const key of Object.keys(entry.flags)) if (!["core", "azure-horizon"].includes(key)) delete entry.flags[key];
 
   // Fix ownership (folders don't have ownership)
   if (entry.ownership) entry.ownership = { default: 0 };
@@ -79,10 +79,10 @@ async function transformEntry(entry) {
   if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
 
   for (const jep of entry.pages) {
-    const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
+    const docsPath = path.join("src", "docs", jep.flags["azure-horizon"].wikiPath);
 
     // re-route in-game asset links to wiki image links
-    const mdContent = jep.text.markdown.replaceAll("systems/draw-steel/assets/docs", "https://github.com/Azurelol/azure-horizon/blob/develop/assets/docs");
+    const mdContent = jep.text.markdown.replaceAll("systems/azure-horizon/assets/docs", "https://github.com/Azurelol/azure-horizon/blob/develop/assets/docs");
 
     await fs.writeFile(docsPath, mdContent, { encoding: "utf8" });
     jep.text = { format: 2 };

@@ -39,6 +39,10 @@ export default class ChatMessageBuilder {
    */
   #rolls;
 
+  /**
+   * @param {AHActor} actor
+   * @param {AHItem} item
+   */
   constructor(actor, item) {
     this.#actor = actor;
     this.#item = item;

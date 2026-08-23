@@ -1,6 +1,6 @@
-import { systemID } from "../constants.mjs";
+import { isActorType, systemID } from "../constants.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
-import { Flags } from "../data/common/_module.mjs";
+import { Flags, SourceInfo } from "../data/common/_module.mjs";
 import { DamageData, ResourceData } from "../pipelines/_module.mjs";
 import Targeting from "./targeting.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
@@ -44,11 +44,20 @@ export class ActionInspector {
    */
   #action;
 
-  constructor(check) {
-    if (check instanceof ChatMessage) {
-      check = check.getFlag(systemID, Flags.ChatMessage.Check);
+  constructor(data) {
+    if (data instanceof ChatMessage) {
+      data = data.getFlag(systemID, Flags.ChatMessage.Check);
     }
-    this.#action = check;
+    else if (isActorType(data)) {
+      data = {
+        id: foundry.utils.randomID(),
+        data: {},
+        actorUuid: data.uuid,
+        item: undefined,
+        sourceInfo: SourceInfo.fromInstance(data, undefined),
+      };
+    }
+    this.#action = data;
   }
 
   //----------------------------------------------------------/

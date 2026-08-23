@@ -1,5 +1,8 @@
 import { FoundryUtils } from "../../utils/_module.mjs";
 import { WeaponResolver } from "../../helpers/weapon-resolver.mjs";
+import { ActionConfig, ChatMessageBuilder } from "../../helpers/_module.mjs";
+import { Formulas } from "../../ruleset/_module.mjs";
+import Actions from "../../pipelines/actions.mjs";
 
 /**
  * @desc Encapsulates basic character actions.
@@ -117,20 +120,43 @@ export default class ActionHandler {
   getManeuvers() {
     /** @type AH_ContextMenuItem[] **/
     let items = [];
+    items.push({
+      name: "AH.ACTION.Defend",
+      icon: "ah-icon-defend",
+      perform: async () => {
+        await this.performDefense();
+      },
+    });
     if (this.actor.type === "hero") {
       items.push({
         name: "AH.ACTION.Recover",
         icon: "ah-icon-recover",
-        perform: () => {
-          ui.notifications.info("Recovering");
+        perform: async () => {
+          await this.performRecovery();
         },
       });
-
     }
     else if (this.actor.type === "adversary") {
 
     }
     return items;
+  }
+
+  async performRecovery() {
+    ui.notifications.info("Recovering");
+    const recovery = Formulas.calculateRecovery(this.actor.system);
+
+    Actions.perform(this.actor, null, (config, actor, item) => {
+      config.addExpense({
+        source: "skill",
+        resource: "mp",
+        amount: recovery.mp,
+      });
+    });
+  }
+
+  async performDefense() {
+    ui.notifications.info("Recovering");
   }
 
   /**
