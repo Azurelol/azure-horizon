@@ -79,7 +79,8 @@ const defaultImage = "icons/svg/aura.svg";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
- * @property {ActiveEffectModel} system
+ * @property {ActiveEffectDataModel} system
+ * @property {AHActor|AHItem} parent
  * @property {Set<String>} statuses
  */
 export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect) {

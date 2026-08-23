@@ -6,6 +6,7 @@ import InventoryDataModel from "./system/inventory-data-model.mjs";
 import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
 import { ActorResourceDataModel } from "./system/_module.mjs";
 import HeroProfileDataModel from "./system/hero-profile-data-model.mjs";
+import { isItemType } from "../../constants.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -99,6 +100,25 @@ export default class HeroDataModel extends CharacterDataModel {
 
   supportsItemType(type) {
     return HeroDataModel.ITEM_TYPES.has(type);
+  }
+
+  /**
+   * @param {AHActiveEffect} effect
+   * @returns {boolean}
+   */
+  shouldExcludeEffect(effect) {
+    if (isItemType(effect.parent)) {
+      const item = effect.parent;
+      const itemType = item.type;
+      switch (itemType) {
+        case "weapon":
+        case "accessory":
+        case "armor": {
+          return !this.equipment.has(item);
+        }
+      }
+    }
+    return false;
   }
 
   /**

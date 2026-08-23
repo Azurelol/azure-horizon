@@ -5,6 +5,7 @@ import { FlagBuilder } from "../helpers/_module.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import { ObjectUtils } from "../utils/_module.mjs";
 import Events from "../pipelines/events.mjs";
+import { isItemType } from "../constants.mjs";
 
 /**
  * @typedef ActorData
@@ -108,6 +109,31 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
       }
     }
     super._onUpdate(changed, options, userId);
+  }
+
+  /**
+   * Get all ActiveEffects that may apply to this Actor, filtered to exclude [whatever].
+   * @override
+   * @yields {ActiveEffect}
+   * @returns {Generator<ActiveEffect, void, void>}
+   * @remarks Filters out [specific reason] from the base implementation
+   */
+  *allApplicableEffects() {
+    for (const effect of super.allApplicableEffects()) {
+      if (this._shouldExcludeEffect(effect)) continue;
+      yield effect;
+    }
+  }
+
+  /**
+   * @param {AHActiveEffect} effect
+   * @returns {boolean}
+   */
+  _shouldExcludeEffect(effect) {
+    if (!this.system.shouldExcludeEffect) {
+      return false;
+    }
+    return this.system.shouldExcludeEffect(effect);
   }
 
   /*-------------------------------------------------------------------------*/

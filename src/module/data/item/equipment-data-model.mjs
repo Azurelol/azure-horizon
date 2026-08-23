@@ -19,4 +19,11 @@ export default class EquipmentDataModel extends ItemDataModel {
       }),
     });
   }
+
+  /**
+   * @returns {boolean} Used to ensure that items onyl transfer their effects when they are equipped onto a character.
+   */
+  get equippable() {
+    return true;
+  }
 }
