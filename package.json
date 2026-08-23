@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "prettier": "prettier --write .",
-    "build": "rollup -c",
     "createSymlinks": "node ./tools/create-symlinks.mjs",
     "postinstall": "npm run createSymlinks",
     "pullJSONtoLDB": "node ./tools/pullJSONtoLDB.mjs",
     "pushLDBtoJSON": "node ./tools/pushLDBtoJSON.mjs",
+    "build": "rollup -c",
     "unpack": "npm run pushLDBtoJSON",
     "pack": "npm run pullJSONtoLDB",
+    "publish": "npm run pack && npm run build",
     "lint": "eslint system.mjs src/module/**/* templates/**/*",
     "lint:fix": "eslint --fix system.mjs src/module/**/* templates/**/*"
   },

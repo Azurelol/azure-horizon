@@ -32,7 +32,7 @@
 
   .ah-potency-table__row {
     &.--reduced {
-      background: color-mix(in srgb, var(--ah-potency-reduced-surface) 15%, transparent);
+      background: color-mix(in srgb, var(--ah-potency-reduced-surface) 50%, transparent);
       border-left: 3px solid var(--ah-potency-reduced-surface);
 
       .ah-potency-table__tier i {
@@ -41,7 +41,7 @@
     }
 
     &.--standard {
-      background: color-mix(in srgb, var(--ah-potency-standard-surface) 15%, transparent);
+      background: color-mix(in srgb, var(--ah-potency-standard-surface) 50%, transparent);
       border-left: 3px solid var(--ah-potency-standard-surface);
 
       .ah-potency-table__tier i {
@@ -50,7 +50,7 @@
     }
 
     &.--powerful {
-      background: color-mix(in srgb, var(--ah-potency-powerful-surface) 25%, transparent);
+      background: color-mix(in srgb, var(--ah-potency-powerful-surface) 50%, transparent);
       border-left: 3px solid var(--ah-potency-powerful-surface);
 
       .ah-potency-table__tier i {
