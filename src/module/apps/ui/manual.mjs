@@ -18,6 +18,15 @@ function initialize() {
         journal?.sheet.render({ force: true });
       },
     });
+    tools.push({
+      name: "AH.APPLICATION.MANUAL.Glossary",
+      icon: "fa-solid fa-spell-check",
+      onClick: async () => {
+        const manual = await CompendiumIndex.instance.getManualEntries();
+        const journal = await fromUuid(manual.glossary.uuid);
+        journal?.sheet.render({ force: true });
+      },
+    });
     if (game.user.isGM) {
       tools.push({
         name: "AH.APPLICATION.MANUAL.DirectorGuide",

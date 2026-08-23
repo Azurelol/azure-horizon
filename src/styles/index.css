@@ -31,7 +31,7 @@
 @import "applications/browser.css";
 @import "applications/combat-tracker.css";
 @import "applications/journal.css";
-@import "applications/interface.css";
+@import "applications/system-controls.css";
 
 @import "sheets/sheet.css";
 @import "sheets/actor.css";

@@ -16,7 +16,7 @@ function initialize() {
   if (!initialized) {
     Hooks.on("renderPlayers", (app, element) => {
       const containerElement = document.createElement("div");
-      containerElement.classList.add("system-controls");
+      containerElement.classList.add("ah-system-controls");
 
       /** @type {SystemControlTool[]} */
       const systemTools = [];

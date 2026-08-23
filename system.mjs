@@ -156,6 +156,12 @@ function registerFonts() {
       { urls: ["systems/azure-horizon/assets/fonts/PixeloidSans.woff2"] },
     ],
   };
+  CONFIG.fontDefinitions["Pixeloid2"] = {
+    editor: true,
+    fonts: [
+      { urls: ["systems/azure-horizon/assets/fonts/PixeloidSans.woff2"] },
+    ],
+  };
 }
 
 Hooks.once("init", function() {

@@ -524,6 +524,7 @@ export default class CompendiumIndex {
   /**
    * @typedef AH_ManualEntries
    * @property {CompendiumIndexEntry[]} rules
+   * @property {CompendiumIndexEntry[]} glossary
    * @property {CompendiumIndexEntry[]} director
    * @property {CompendiumIndexEntry[]} player
    */
@@ -538,11 +539,13 @@ export default class CompendiumIndex {
     const rules = journalsByName.get("Manual");
     const player = journalsByName.get("Player Guide");
     const director = journalsByName.get("Director Guide");
+    const glossary = journalsByName.get("Glossary");
 
     return {
       rules,
       director,
       player,
+      glossary,
     };
   }
 
