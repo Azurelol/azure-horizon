@@ -110,6 +110,7 @@ function initializeSystems() {
   pipelines.Rules.initialize();
   pipelines.Actions.initialize();
   apps.UI.CompendiumBrowser.initialize();
+  apps.UI.Manual.initialize();
   helpers.Themes.initialize();
 
   // We initialize hotkeys && controls last as they will call a registration hook

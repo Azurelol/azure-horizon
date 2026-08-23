@@ -2,19 +2,25 @@
 
   font-family: var(--ah-font-family-journal);
 
-  h1,h2,h3,h4,h5,h6 {
-    font-family: var(--ah-font-family-journal);
-  }
-
-  h1 {
-    margin: 0 0 16px;
-  }
-
   .window-header {
     background: var(--ah-background-application-header);
+
+    .window-title {
+      font-size: var(--ah-font-size-lg);
+    }
   }
 
   .window-content {
+
+
+    h1 {
+      margin: 0 0 16px;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+      font-family: var(--ah-font-family-journal);
+    }
+
     background: var(--ah-background-application);
 
     .sidebar {

@@ -18,6 +18,12 @@
       "MESSAGE": {
         "IndexRefresh": "The compendium index has been refreshed.",
         "BrowseCompendium": "Browse Compendium"
+      },
+      "MANUAL": {
+        "Manual": "Manual",
+        "GameRules": "Game Rules",
+        "PlayerGuide": "Player's Guide",
+        "DirectorGuide": "Director's Guide"
       }
     },
     "SHEET": {

@@ -26,7 +26,7 @@
  */
 
 import { StringUtils } from "../../utils/_module.mjs";
-import { getSystemSetting, systemID } from "../../constants.mjs";
+import { systemID } from "../../constants.mjs";
 
 /**
  * @desc Handles indexing of system-specific documents.
@@ -84,6 +84,12 @@ export default class CompendiumIndex {
 	 * @type {Record<string, CompendiumIndexEntry[]>}
 	 */
   #actorsByType;
+
+  /**
+   * @desc Where the keys are the journal types.
+   * @type {Record<string, CompendiumIndexEntry[]>}
+   */
+  #journals;
 
   /**
    * List of all effects by their slug.
@@ -204,6 +210,20 @@ export default class CompendiumIndex {
       return entries[type];
     }
     return [];
+  }
+
+  /**
+   *
+   * @param {String} type The journal type.
+   * @param {Boolean} force
+   * @returns {Promise<CompendiumIndexEntry[]>}
+   */
+  async getJournals(type = "unknown", force = false) {
+    if (!this.#journals || force) {
+      const entries = await this.getEntries("JournalEntry", undefined, undefined);
+      this.#journals = entries[type];
+    }
+    return this.#journals;
   }
 
   /**
@@ -499,6 +519,31 @@ export default class CompendiumIndex {
       follower: await this.getActorsOfType("follower"),
     };
     return entries;
+  }
+
+  /**
+   * @typedef AH_ManualEntries
+   * @property {CompendiumIndexEntry[]} rules
+   * @property {CompendiumIndexEntry[]} director
+   * @property {CompendiumIndexEntry[]} player
+   */
+
+  /**
+   * @returns {Promise<AH_ManualEntries>}
+   */
+  async getManualEntries() {
+    const journals = await this.getJournals();
+    const journalsByName = new Map(journals.map(journal => [journal.name, journal]));
+
+    const rules = journalsByName.get("Manual");
+    const player = journalsByName.get("Player Guide");
+    const director = journalsByName.get("Director Guide");
+
+    return {
+      rules,
+      director,
+      player,
+    };
   }
 
   /**

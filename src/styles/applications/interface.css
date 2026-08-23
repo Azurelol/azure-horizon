@@ -1,0 +1,22 @@
+.vtt {
+  .system-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    button {
+      background: var(--ah-surface-action);
+
+      --icon-size: 20px;
+      i{
+        background-position: center;
+        font-size: var(--icon-size);
+        width: var(--icon-size);
+        height: var(--icon-size);
+        line-height: 1;
+        object-fit: contain;
+      }
+    }
+
+  }
+}

@@ -6,9 +6,10 @@ const MAX_ATTRIBUTE_DIE = 20; // L90
 
 const HP_MIGHT_FACTOR = 5;
 const MP_WILLPOWER_FACTOR = 5;
+const HP_POTENTIAL_FACTOR = 10;
 
 const IP_BASE = 6;
-const TP_BASE = 10;
+const TP_BASE = 4;
 
 const CLASS_BENEFIT_HP = 10;
 const CLASS_BENEFIT_MP = 10;
@@ -121,7 +122,7 @@ export default class Formulas {
   }
 
   /**
-   * @param {EntityDataModel|HeroDataModel|AdversaryDataModel} system
+   * @param {EntityDataModel|HeroDataModel|AdversaryDataModel|FollowerDataModel} system
    * @param {Number} level A level different from the serialized one.
    * @returns {Number}
    */
@@ -154,12 +155,15 @@ export default class Formulas {
         break;
       }
 
-      case "follower":
-      case "guest":
+      case "follower": {
         hp = level;
+        const potential = system.potential;
+        hp += (HP_POTENTIAL_FACTOR * potential);
+      }
         break;
 
       case "unit":
+        hp = level;
         break;
     }
     hp = scaleValue(hp);
