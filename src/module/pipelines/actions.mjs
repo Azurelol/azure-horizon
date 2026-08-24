@@ -12,7 +12,7 @@ import {
 import Flags from "../data/common/flags.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import { renderTemplate, systemID } from "../constants.mjs";
-import { StringUtils } from "../utils/_module.mjs";
+import { StringUtils, TokenUtils } from "../utils/_module.mjs";
 import { CheckPrompt } from "../helpers/check-prompt.mjs";
 
 /**
@@ -269,29 +269,38 @@ async function perform(actor, item, prepare) {
  * @param {HTMLElement} html
  */
 function onRenderChatMessage(message, html) {
-  if (!message.getFlag(systemID, AH.flags.ChatMessage.DefenseCheck)) {
-    return;
+
+  if (message.getFlag(systemID, AH.flags.ChatMessage.Targeting)) {
+    ChatMessageHelper.handleClick(message, html, "targetSingle",
+      async (dataset) => {
+        const actor = fromUuidSync(dataset.uuid);
+        if (!actor) {
+          return;
+        }
+        TokenUtils.targetToken(actor, false);
+      });
   }
 
-  ChatMessageHelper.handleClick(message, html, "defenseCheck",
-    /** @param {DefenseCheckSourceData} dataset  **/
-    async (dataset) => {
+  if (message.getFlag(systemID, AH.flags.ChatMessage.DefenseCheck)) {
+    ChatMessageHelper.handleClick(message, html, "defenseCheck",
+      /** @param {DefenseCheckSourceData} dataset  **/
+      async (dataset) => {
 
-      const fields = StringUtils.fromBase64(dataset.fields);
-      const sourceInfo = SourceInfo.fromObject(fields.sourceInfo);
-      const actor = fromUuidSync(dataset.uuid);
-      if (!actor) {
-        return;
-      }
+        const fields = StringUtils.fromBase64(dataset.fields);
+        const sourceInfo = SourceInfo.fromObject(fields.sourceInfo);
+        const actor = fromUuidSync(dataset.uuid);
+        if (!actor) {
+          return;
+        }
 
-      await CheckPrompt.defenseCheck(actor, {
-        initialConfig: {
-          ...dataset,
-          sourceInfo: sourceInfo,
-        },
+        await CheckPrompt.defenseCheck(actor, {
+          initialConfig: {
+            ...dataset,
+            sourceInfo: sourceInfo,
+          },
+        });
       });
-    });
-
+  }
 }
 
 /**

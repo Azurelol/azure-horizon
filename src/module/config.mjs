@@ -785,6 +785,7 @@ AH.flags = Object.freeze({
     Damage: "Damage",
     Resource: "Resource",
     RevertedAction: "RevertedAction",
+    Targeting: "Targeting",
   }),
 });
 

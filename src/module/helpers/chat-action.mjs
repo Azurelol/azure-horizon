@@ -1,6 +1,7 @@
 import { StringUtils } from "../utils/_module.mjs";
 import { renderTemplate } from "../constants.mjs";
 import Targeting from "./targeting.mjs";
+import AH from "../config.mjs";
 
 /**
  * @description Actions that can be executed from chat messages.
@@ -198,5 +199,5 @@ export default class ChatAction {
    * @type {ChatAction}
    * @description Target the token
    */
-  static TARGET_ACTION = new ChatAction("targetSingle", "fas fa-bullseye", "AH.ACTION.Target");
+  static TARGET_ACTION = new ChatAction("targetSingle", "ah-icon-target", "AH.ACTION.Target").setFlag(AH.flags.ChatMessage.Targeting);
 }

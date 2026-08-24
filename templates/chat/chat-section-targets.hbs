@@ -18,7 +18,7 @@
         <div class="ah-chat-section__target__actions">
           {{#each ../actions as |action|}}
             {{#if targeted}}
-              {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs'}}
+              {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs' target=target }}
             {{/if}}
           {{/each}}
         </div>

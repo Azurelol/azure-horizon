@@ -46,4 +46,20 @@ export default class TokenUtils {
       await canvas.interface?.createScrollingText(...scrollingTextArgs);
     }
   }
+
+  /**
+   * @param {AHActor} actor
+   * @param {Boolean} add
+   */
+  static targetToken(actor, add) {
+    if (!actor) {
+      return;
+    }
+    for (const token of actor.getActiveTokens(true)) {
+      token.setTarget(true, {
+        user: game.user,
+        releaseOthers: !add,
+      });
+    }
+  }
 }
