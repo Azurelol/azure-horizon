@@ -281,29 +281,36 @@ export default class Formulas {
    */
 
   /**
-   * @param {HeroDataModel} system
+   * @param {HeroDataModel|AdversaryDataModel} system
    * @returns {AH_BlockData}
    */
   static calculateBlock(system) {
     const maxHP = system.resources.hp.max;
 
     let ratio = BLOCK_RATIO_BASE;
-    const equippedItems = system.getEquippedItems();
-    if (equippedItems.armor) {
-      /** @type ArmorDataModel **/
-      const armorData = equippedItems.armor.system;
-      switch (armorData.category) {
-        case "heavy":
-          ratio += BLOCK_RATIO_HEAVY_ARMOR;
-          break;
-        case "light":
-          ratio += BLOCK_RATIO_LIGHT_ARMOR;
-          break;
+    let tp;
+
+    if (system.parent.type === "hero") {
+      const equippedItems = system.getEquippedItems();
+      if (equippedItems.armor) {
+        /** @type ArmorDataModel **/
+        const armorData = equippedItems.armor.system;
+        switch (armorData.category) {
+          case "heavy":
+            ratio += BLOCK_RATIO_HEAVY_ARMOR;
+            break;
+          case "light":
+            ratio += BLOCK_RATIO_LIGHT_ARMOR;
+            break;
+        }
       }
+      tp = BLOCK_TP_GAINED;
+    }
+    else if (system.parent.type === "adversary") {
     }
 
     const hp = this.round(maxHP * ratio);
-    const tp = BLOCK_TP_GAINED;
+
     return {
       hp,
       tp,

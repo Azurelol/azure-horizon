@@ -378,6 +378,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     const mmp = this.system.resources.mp?.max;
     const mtp = this.system.resources.tp?.max;
     const mip = this.system.resources.ip?.max;
+    let thp = 0; // Always gets reset
 
     switch (type) {
       case "resupply":
@@ -419,6 +420,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     if (ip !== undefined) {
       updateData["system.resources.ip.value"] = ip;
     }
+    updateData["system.resources.hp.temporary"] = thp;
     return updateData;
   }
 

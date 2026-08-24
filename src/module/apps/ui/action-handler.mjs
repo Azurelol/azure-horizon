@@ -167,11 +167,13 @@ export default class ActionHandler {
     Actions.perform(this.actor, null, (config, actor, item) => {
       config.setLabel("AH.ACTION.Defend");
       config.setResource("hp", block.hp, true);
-      config.addExpense({
-        source: "skill",
-        resource: "tp",
-        amount: block.tp,
-      });
+      if (block.tp) {
+        config.addExpense({
+          source: "skill",
+          resource: "tp",
+          amount: block.tp,
+        });
+      }
     });
   }
 
@@ -217,13 +219,13 @@ export default class ActionHandler {
           return s.system.action.type === "action";
         });
       FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
-      // MANEUVER
-      FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
     }
     else if (this.actor.type === "adversary") {
       // ABILITIES
       let abilities = this.actor.getItemsByType("ability").filter(a => a.system.action.type === "action");
       FoundryUtils.itemContextMenu(element, "[data-context-menu=\"ability\"]", abilities);
     }
+    // MANEUVER
+    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
   }
 }

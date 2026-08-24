@@ -76,7 +76,7 @@
   --ah-gap-fieldset-fields: 8px;
 
   /* Labels — sizing only, no color family involved, unchanged */
-  --ah-font-size-badge: 12px;
+  --ah-font-size-badge: 1.1em;
   --ah-font-size-label: 1.2em;
   --ah-font-size-label-icon: 1.5em;
 
