@@ -106,7 +106,25 @@ async function addSections(builderData, config, actor, item) {
   const desc = config.description;
   if (desc.length > 0) {
     ChatMessageSections.text(builderData.sections, desc.join("\n"));
+  }
 
+  // TODO: Should it be here or?
+  // TARGETS
+  if (config.check.type === "action") {
+    const targets = config.getTargets();
+    const isTargeted = targets.length > 0;
+    if (isTargeted) {
+      if (config.isDefenseCheck) {
+        const defendAction = getDefenseCheckAction(config, actor, item);
+        builderData.actions.push(defendAction);
+        ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
+      }
+      else {
+        const targetAction = ChatAction.TARGET_ACTION;
+        builderData.actions.push(targetAction);
+        ChatMessageSections.targets(builderData.sections, targets, [targetAction]);
+      }
+    }
   }
 
   // ACTIONS: We delay evaluating some of them until now to avoid race conditions
@@ -141,22 +159,6 @@ async function addSections(builderData, config, actor, item) {
   // TAGS
   for (const tag of config.tags) {
     builderData.tags.push(tag);
-  }
-
-  // TARGETS
-  if (config.check.type === "action") {
-    const targets = config.getTargets();
-    const isTargeted = targets.length > 0;
-    if (isTargeted) {
-      if (config.isDefenseCheck) {
-        const defendAction = getDefenseCheckAction(config, actor, item);
-        builderData.actions.push(defendAction);
-        ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
-      }
-      else {
-        ChatMessageSections.targets(builderData.sections, targets, [ChatAction.TARGET_ACTION]);
-      }
-    }
   }
 
   let fb = new FlagBuilder(builderData.flags);
