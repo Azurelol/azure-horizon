@@ -1,6 +1,29 @@
 import AH from "../config.mjs";
 
 /**
+ * An intent is an action planned out by an adversary against a specific target.
+ * @typedef IntentAction
+ * @property {AH_Intent} type
+ * @property {String} icon
+ * @property {String[]} targets The ids of the targets of the action.
+ * @property {String} item The id of the ability or attack to be used (an Item)
+ */
+
+/**
+ * @param {AdversaryDataModel} system
+ * @param {AHCombatant[]} combatants
+ * @return {IntentAction[]}
+ */
+function generateIntents(system, combatants) {
+
+  // TODO: Depending on the adversary role and what abilities/attacks they have, their intents
+  // should be decided.
+  if (system.profile.rank === "champion") {
+
+  }
+}
+
+/**
  * Assign intents to all adversaries.
  * @param combat
  */
@@ -23,8 +46,10 @@ function process(combat) {
   for (const [actor, combatants] of adversaries) {
     /** @type AdversaryDataModel **/
     const system = actor.system;
+    const intents = generateIntents(system, combatants);
+    ui.notifications.info(`Assigning intents for ${system.profile.rank} rank ${actor.name}`);
     if (system.profile.rank === "champion") {
-      ui.notifications.info(`Assigning turn for champion ${actor.name}`);
+
     }
   }
 }

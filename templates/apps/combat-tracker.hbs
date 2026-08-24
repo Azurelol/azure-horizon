@@ -43,12 +43,12 @@
         </div>
       {{/if}}
 
-      {{!-- Initiative --}}
+      {{!-- Initiative / Intents --}}
       <div class="token-initiative" data-tooltip="{{localize 'AH.COMBAT.InitiativeHint'}}">
-
+        {{log 'turn' this}}
         {{!-- Display Initiative --}}
-        {{#if initiative includeZero=true}}
-          <span>{{ initiative }}</span>
+        {{#if initiative}}
+          <i class="ah-icon --s {{intent.icon}}"></i>
         {{!-- Roll Initiative --}}
         {{else if isOwner}}
           <i class="ah-icon --sm ah-icon-more"></i>

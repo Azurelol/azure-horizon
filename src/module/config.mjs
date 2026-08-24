@@ -279,20 +279,21 @@ AH.speed = Object.freeze({
 });
 
 /**
- * @typedef {'attack'|'debuff'|'buff'|'heal'}  AH_Intent
+ * @typedef {'unknown'|'attack'|'damage'|'control'|'heal'|'prepare'|'afflict'} AH_Intent
  */
 
 AH.intents = Object.freeze({
-  attack: { label: "AH.ADVERSARY.INTENT.Attack" }, // Base attack
-  fortify: { label: "AH.ADVERSARY.INTENT.Fortify" }, // Defensive buff
-  empower: { label: "AH.ADVERSARY.INTENT.Empower" }, // Offensive buff
-  damage: { label: "AH.ADVERSARY.INTENT.Damage" }, // Damaging ability
-  prepare: { label: "AH.ADVERSARY.INTENT.Prepare" }, // Prepare an action
-  afflict: { label: "AH.ADVERSARY.INTENT.Afflict" }, // Status affliction
-  control: { label: "AH.ADVERSARY.INTENT.Control" }, // Controlling ability
-  heal: { label: "AH.ADVERSARY.INTENT.Heal" }, // Heal self
-  escape: { label: "AH.ADVERSARY.INTENT.Escape" }, // Escape combat
-  summon: { label: "AH.ADVERSARY.INTENT.Summon" }, // Summon minion
+  unknown: { label: "AH.ACTION.Intent.Unknown", icon: "ra ra-uncertainty" },
+  attack: { label: "AH.ADVERSARY.INTENT.Attack", icon: "ra ra-sword" }, // Base attack
+  fortify: { label: "AH.ADVERSARY.INTENT.Fortify", icon: "ra ra-shield" }, // Defensive buff
+  empower: { label: "AH.ADVERSARY.INTENT.Empower", icon: "ra ra-fire-symbol" }, // Offensive buff
+  damage: { label: "AH.ADVERSARY.INTENT.Damage", icon: "ra ra-plain-dagger" }, // Damaging ability
+  prepare: { label: "AH.ADVERSARY.INTENT.Prepare", icon: "ra ra-hourglass" }, // Prepare an action
+  afflict: { label: "AH.ADVERSARY.INTENT.Afflict", icon: "ra ra-poison-bottle" }, // Status affliction
+  control: { label: "AH.ADVERSARY.INTENT.Control", icon: "ra ra-hypnotized-eye" }, // Controlling ability
+  heal: { label: "AH.ADVERSARY.INTENT.Heal", icon: "ra ra-heart-plus" }, // Heal self
+  escape: { label: "AH.ADVERSARY.INTENT.Escape", icon: "ra ra-run" }, // Escape combat
+  summon: { label: "AH.ADVERSARY.INTENT.Summon", icon: "ra ra-summon" }, // Summon minion
 });
 
 /**
@@ -786,11 +787,16 @@ AH.flags = Object.freeze({
     Temporary: "Temporary",
     Identifier: "Identifier",
   }),
+  // Combat
   Combat: Object.freeze({
     FirstTurn: "First Turn",
     CurrentTurn: "Current Turn",
     TurnStarted: "TurnStarted",
     TurnTaken: "TurnTaken",
+  }),
+  // Combatant
+  Combatant: Object.freeze({
+    Intent: "Intent",
   }),
   // ChatMessage
   ChatMessage: Object.freeze({

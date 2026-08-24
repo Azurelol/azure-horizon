@@ -2,6 +2,9 @@
  * @typedef {'hero'|'adversary'} AH_Faction
  */
 
+import AH from "../config.mjs";
+import { systemID } from "../constants.mjs";
+
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {AHActor} actor
@@ -64,4 +67,30 @@ export class AHCombatant extends foundry.documents.Combatant {
 
     return "1d@attributes.dex.current + 1d@attributes.ins.current + @parameters.init.current";
   }
+
+  /**
+   * @param {IntentAction} intent
+   */
+  setIntent(intent) {
+    this.setFlag(systemID, AH.flags.Combatant.Intent, intent);
+  }
+
+  /**
+   * @returns {IntentAction|undefined}
+   * @remarks Fetched by the combat tracker.
+   */
+  get intent() {
+    /** @type IntentAction **/
+    let intent = this.getFlag(systemID, AH.flags.Combatant.Intent);
+    if (intent === undefined) {
+      intent = {
+        type: "unknown",
+        item: "",
+        targets: "",
+      };
+    }
+    intent.icon = AH.intents[intent.type].icon;
+    return intent;
+  }
+
 }

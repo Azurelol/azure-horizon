@@ -42,6 +42,9 @@ export class AHCombatTracker extends foundry.applications.sidebar.tabs.CombatTra
   async _prepareTurnContext(combat, combatant, index) {
     const turn = await super._prepareTurnContext(combat, combatant, index);
     turn.faction = combatant.faction;
+    if (combatant.hostile) {
+      turn.intent = combatant.intent;
+    }
     if (combatant.actor && (combatant.actor.type === "adversary")) {
       /** @type AdversaryProfileDataModel **/
       const profile = combatant.actor.system.profile;

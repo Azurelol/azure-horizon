@@ -42,6 +42,13 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
   }
 
   /**
+   *
+   */
+  generateIntents() {
+
+  }
+
+  /**
    * A budget tracker for a single pool of adversary assembly points (attacks, abilities, etc.) -
    * how many have been spent (`current`) against how many are allotted (`available`).
    * @typedef {object} AH_AssemblyBudget
