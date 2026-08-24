@@ -503,7 +503,8 @@
       "Free": "Free",
       "Pierce": "Pierce",
       "Splash": "Splash",
-      "Cleave": "Cleave"
+      "Cleave": "Cleave",
+      "Block": "Block"
     },
     "DOMAIN": {
       "Light": "Light",
@@ -824,7 +825,8 @@
       "DamageFullBlock": "<strong>{actor}</strong> fully blocked an attack from <strong>{from}</strong> for <strong>{amount}</strong> damage!",
       "ResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "ResourceLoss": "<strong>{actor}</strong> lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
-      "SpendResource": "Spend {amount} {resource}",
+      "SpendResource": "Spend {amount}",
+      "SpendResourceHint": "Spend {amount} {resource}",
       "RecoveryNotNeeded": "<strong>{actor}</strong> already has full {resource}.",
       "RecoveryNotPossible": "<strong>{actor}</strong> was not able to recover {resource}.",
       "ResourceGainLabel": "Gain {amount}",

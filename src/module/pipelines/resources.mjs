@@ -137,7 +137,7 @@ async function process(request) {
             previous: previous,
             gain: request.gain,
             amount: amount,
-            resource: request.resource,
+            resource: "Block",
             from: request.sourceInfo.name,
             change: request.gain ? "gain" : "loss",
           },
@@ -227,10 +227,9 @@ function getChatAction(request, includeLabel = true) {
   const label = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainLabel" : "AH.CHAT.ResourceLossLabel", {
     amount: request.data.toString(),
   });
-
   const tooltip = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainTooltip" : "AH.CHAT.ResourceLossTooltip", {
     amount: request.data.toString(),
-    resource: StringUtils.localize(AH.resourceTypes[request.resource].label),
+    resource: StringUtils.localize(request.data.temp ? AH.resourceTypes[request.resource].temporary : AH.resourceTypes[request.resource].label),
   });
 
   const ca = new ChatAction("updateResource", resourceIcon, tooltip, {
@@ -259,9 +258,13 @@ function getChatAction(request, includeLabel = true) {
  */
 function getExpenseAction(expense, sourceInfo) {
   const resourceIcon = AH.resourceTypes[expense.resource].icon;
-  const tooltip = StringUtils.localize("AH.CHAT.SpendResource", {
+
+  const label = StringUtils.localize("AH.CHAT.SpendResource", {
     amount: expense.amount,
-    resource: StringUtils.localize(AH.resourceTypes[expense.resource].long),
+  });
+  const tooltip = StringUtils.localize("AH.CHAT.SpendResourceHint", {
+    amount: expense.amount,
+    resource: StringUtils.localize(AH.resourceTypes[expense.resource].label),
   });
 
   const data = ResourceData.initialize(expense.resource, -expense.amount);
@@ -273,7 +276,7 @@ function getExpenseAction(expense, sourceInfo) {
   })
     .requiresOwner()
     .setFlag(AH.flags.ChatMessage.Resource)
-    .withLabel(tooltip)
+    .withLabel(label)
     .withTraits(["loss"])
     .withSelected();
 }

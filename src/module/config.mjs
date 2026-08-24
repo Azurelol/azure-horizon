@@ -248,7 +248,7 @@ AH.checkTypes = {
  * @type {Record<string, AH_Constant>}}
  */
 AH.resourceTypes = {
-  hp: { label: "AH.CHARACTER.HitPoint.short", icon: "ah-icon-hp" },
+  hp: { label: "AH.CHARACTER.HitPoint.short", temporary: "AH.CHARACTER.TemporaryHitPoint.short", icon: "ah-icon-hp" },
   mp: { label: "AH.CHARACTER.MindPoint.short", icon: "ah-icon-mp" },
   ip: { label: "AH.CHARACTER.InventoryPoint.short", icon: "ah-icon-ip" },
   tp: { label: "AH.CHARACTER.TensionPoint.short", icon: "ah-icon-tp" },
@@ -980,6 +980,7 @@ AH.traits = {
     mp: { label: "AH.TRAIT.MindPoint", tooltip: "AH.TRAIT.MindPointHint" },
     tp: { label: "AH.TRAIT.TensionPoint", tooltip: "AH.TRAIT.TensionPointHint" },
     ip: { label: "AH.TRAIT.InventoryPoint", tooltip: "AH.TRAIT.InventoryPointHint" },
+    thp: { label: "AH.TRAIT.Block", tooltip: "AH.TRAIT.BlockHint" },
   },
   damage: {
     fixed: { label: "AH.TRAIT.Fixed", tooltip: "AH.TRAIT.FixedHint" },
