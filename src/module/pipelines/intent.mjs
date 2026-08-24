@@ -5,10 +5,27 @@ import AH from "../config.mjs";
  * @param combat
  */
 function process(combat) {
-  const adversaries = combat.getAdversaries();
-  ui.notifications.info(`Assigning intent for ${adversaries.length} adversaries`);
-  for (const adversary of adversaries) {
+  const combatants = combat.getAdversaries();
+  /** @type {Map<AHActor,AHCombatant[]>} **/
+  const adversaries = new Map();
 
+  for (const combatant of combatants) {
+    const actor = combatant.actor;
+    if (!actor) continue;
+
+    if (!adversaries.has(actor)) {
+      adversaries.set(actor, []);
+    }
+    adversaries.get(actor).push(combatant);
+  }
+
+  ui.notifications.info(`Assigning intent for adversaries (${adversaries.size})`);
+  for (const [actor, combatants] of adversaries) {
+    /** @type AdversaryDataModel **/
+    const system = actor.system;
+    if (system.profile.rank === "champion") {
+      ui.notifications.info(`Assigning turn for champion ${actor.name}`);
+    }
   }
 }
 
