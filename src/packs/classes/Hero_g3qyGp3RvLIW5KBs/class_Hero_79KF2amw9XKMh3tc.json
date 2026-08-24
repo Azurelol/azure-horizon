@@ -1,0 +1,39 @@
+{
+  "folder": "g3qyGp3RvLIW5KBs",
+  "name": "Hero",
+  "type": "class",
+  "_id": "79KF2amw9XKMh3tc",
+  "img": "icons/magic/control/control-influence-crown-gold.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "hero",
+    "description": "<p>A person who has transcended their limits. </p><p><em>Available only once a character has reached Level 60.</em></p>",
+    "benefits": {
+      "schemaVersion": 1,
+      "hp": false,
+      "mp": false,
+      "ip": false
+    },
+    "triggers": [],
+    "traits": []
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787573971356,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!79KF2amw9XKMh3tc"
+}

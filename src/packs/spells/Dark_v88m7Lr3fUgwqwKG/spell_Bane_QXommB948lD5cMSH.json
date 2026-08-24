@@ -3,7 +3,7 @@
   "name": "Bane",
   "type": "spell",
   "_id": "QXommB948lD5cMSH",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -11,16 +11,17 @@
     "description": "<p>You</p>",
     "attributes": {
       "schemaVersion": 1,
-      "primary": "dex",
-      "secondary": "mig",
+      "primary": "ins",
+      "secondary": "wlp",
       "grade": "C"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "wlp",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -63,8 +64,8 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
-      "points": 1,
+      "type": "action",
+      "points": 2,
       "traits": []
     },
     "domain": "dark",

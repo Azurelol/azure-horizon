@@ -153,11 +153,7 @@ export default class ActionHandler {
         resource: "mp",
         amount: recovery.mp,
       });
-      config.addExpense({
-        source: "skill",
-        resource: "tp",
-        amount: recovery.tp,
-      });
+      config.addTraits("stress"); // setResource("tp", recovery.tp);
     });
   }
 
@@ -168,11 +164,8 @@ export default class ActionHandler {
       config.setLabel("AH.ACTION.Defend");
       config.setResource("hp", block.hp, true);
       if (block.tp) {
-        config.addExpense({
-          source: "skill",
-          resource: "tp",
-          amount: block.tp,
-        });
+        config.addTraits("stress");
+        //config.setResource("tp", block.tp);
       }
     });
   }

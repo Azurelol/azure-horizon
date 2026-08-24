@@ -115,6 +115,10 @@
     border: none;
     text-align: center;
     width: 40px;
+
+    &[type=number] {
+      font-size: var(--ah-font-size-badge-lg);
+    }
   }
 
   &.--stretch {

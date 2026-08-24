@@ -1,30 +1,26 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Jump",
-  "type": "skill",
-  "_id": "I1w5OaDxd0fdZeA6",
-  "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+  "folder": "UEhZ4pIw8AKsoyND",
+  "name": "Divine Shield",
+  "type": "spell",
+  "_id": "3JMalFHpG3HLs08w",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue-yellow.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-jump",
-    "description": "<p>You leap into the air, immediately ending your turn and gaining the <em>Jump </em>effect. It will end immediately as you land after your first action on your next turn.</p>",
+    "slug": "light-divine-shield",
+    "description": "<p>You give the target <em>Block</em>.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
-    },
-    "action": {
-      "schemaVersion": 1,
-      "range": "",
-      "type": "action",
-      "points": 1,
-      "traits": [
-        "cooldown",
-        "closer"
-      ]
     },
     "damage": {
       "schemaVersion": 1,
@@ -48,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -63,17 +59,16 @@
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 1
-    },
-    "usage": {
+    "power": "",
+    "action": {
       "schemaVersion": 1,
-      "check": false,
-      "damage": false,
-      "power": ""
+      "range": "",
+      "type": "action",
+      "points": 1,
+      "traits": []
     },
-    "class": "lancer"
+    "domain": "light",
+    "speed": "instant"
   },
   "effects": [],
   "sort": 0,
@@ -85,12 +80,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953476142,
+    "createdTime": 1787579337369,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!I1w5OaDxd0fdZeA6"
+  "_key": "!items!3JMalFHpG3HLs08w"
 }

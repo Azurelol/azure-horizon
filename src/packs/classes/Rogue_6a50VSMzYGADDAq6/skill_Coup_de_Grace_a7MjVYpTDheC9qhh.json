@@ -1,30 +1,26 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Jump",
+  "folder": "6a50VSMzYGADDAq6",
+  "name": "Coup de Grace",
   "type": "skill",
-  "_id": "I1w5OaDxd0fdZeA6",
-  "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+  "_id": "a7MjVYpTDheC9qhh",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-jump",
-    "description": "<p>You leap into the air, immediately ending your turn and gaining the <em>Jump </em>effect. It will end immediately as you land after your first action on your next turn.</p>",
+    "slug": "rogue-coup-de-grace",
+    "description": "<p>While targeting an enemy that cannot perform actions you can perform a powerful attack to it.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
-    },
-    "action": {
-      "schemaVersion": 1,
-      "range": "",
-      "type": "action",
-      "points": 1,
-      "traits": [
-        "cooldown",
-        "closer"
-      ]
     },
     "damage": {
       "schemaVersion": 1,
@@ -63,17 +59,27 @@
         "tracking": ""
       }
     },
+    "power": "severe",
     "level": {
       "current": 1,
       "max": 1
     },
+    "action": {
+      "schemaVersion": 1,
+      "range": "melee",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "cooldown"
+      ]
+    },
     "usage": {
       "schemaVersion": 1,
-      "check": false,
-      "damage": false,
-      "power": ""
+      "attributes": false,
+      "check": true,
+      "damage": true
     },
-    "class": "lancer"
+    "class": "rogue"
   },
   "effects": [],
   "sort": 0,
@@ -85,12 +91,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953476142,
+    "createdTime": 1787574503414,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!I1w5OaDxd0fdZeA6"
+  "_key": "!items!a7MjVYpTDheC9qhh"
 }
