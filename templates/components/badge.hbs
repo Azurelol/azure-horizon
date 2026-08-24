@@ -4,8 +4,8 @@
     <span>{{ localize label }}</span>
   </div>
   {{#if path}}
-    {{#if (eq type 'Number')}}
-      <input type="Number" name="{{path}}" value="{{ value }}" min="{{min}}" max="{{max}}">
+    {{#if (eq type 'number')}}
+      <input type="number" name="{{path}}" value="{{ value }}" min="{{min}}" max="{{max}}">
     {{/if}}
 
   {{else}}

@@ -5,6 +5,7 @@ import { scaleValue } from "../config.mjs";
  * @class
  * @property {AH_Resource} type
  * @property {ScalarModifier[]} modifiers
+ * @property {Boolean} temp Whether to affect the temporary pool for the resource.
  */
 export default class ResourceData {
   static get baseModifier() {
@@ -21,11 +22,13 @@ export default class ResourceData {
   /**
    * @param {AH_Resource} type
    * @param {number} amount
+   * @param {Boolean} temp
    * @returns {ResourceData}
    */
-  static initialize(type, amount) {
+  static initialize(type, amount, temp) {
     const data = new ResourceData();
     data.addModifier(this.baseModifier, amount);
+    data.temp = temp;
     data.type = type;
     return data;
   }

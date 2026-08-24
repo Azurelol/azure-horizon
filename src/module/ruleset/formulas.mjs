@@ -18,6 +18,11 @@ const RECOVERY_HP_GAINED = 0.3;
 const RECOVERY_MP_SPENT = 0.2;
 const RECOVERY_TP_ADDED = 1;
 
+const BLOCK_RATIO_BASE = 0.05;
+const BLOCK_RATIO_LIGHT_ARMOR = 0.5;
+const BLOCK_RATIO_HEAVY_ARMOR = 0.1;
+const BLOCK_TP_GAINED = 1;
+
 /**
  * @typedef Modifier
  * @property {Number} additive Should default to 0.
@@ -265,6 +270,42 @@ export default class Formulas {
     return {
       hp,
       mp,
+      tp,
+    };
+  }
+
+  /**
+   * @typedef AH_BlockData
+   * @property {Number} hp The HP gained.
+   * @property {Number} tp The TP increased.
+   */
+
+  /**
+   * @param {HeroDataModel} system
+   * @returns {AH_BlockData}
+   */
+  static calculateBlock(system) {
+    const maxHP = system.resources.hp.max;
+
+    let ratio = BLOCK_RATIO_BASE;
+    const equippedItems = system.getEquippedItems();
+    if (equippedItems.armor) {
+      /** @type ArmorDataModel **/
+      const armorData = equippedItems.armor.system;
+      switch (armorData.category) {
+        case "heavy":
+          ratio += BLOCK_RATIO_HEAVY_ARMOR;
+          break;
+        case "light":
+          ratio += BLOCK_RATIO_LIGHT_ARMOR;
+          break;
+      }
+    }
+
+    const hp = this.round(maxHP * ratio);
+    const tp = BLOCK_TP_GAINED;
+    return {
+      hp,
       tp,
     };
   }

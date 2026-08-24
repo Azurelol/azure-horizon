@@ -401,10 +401,11 @@ export class ActionConfig extends ActionInspector {
    * @desc Sets a resource gain/loss action.
    * @param {AH_Resource} type
    * @param {Number|String} amount
+   * @property {Boolean} temp
    * @return {ActionConfig}
    */
-  setResource(type, amount) {
-    this.check.data[RESOURCE] = ResourceData.initialize(type, amount);
+  setResource(type, amount, temp = false) {
+    this.check.data[RESOURCE] = ResourceData.initialize(type, amount, temp);
     this.addTraits(type);
     if (Number.isInteger(amount)) {
       if (amount >= 0) {

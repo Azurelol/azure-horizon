@@ -30,8 +30,8 @@
       {{#if (eq actorType 'hero')}}
         {{ahResourceBar 'system.resources.ip.value' system.resources.ip.value system.resources.ip.max label='AH.CHARACTER.InventoryPoint.short' icon=(ahIconClass 'ip') colorClass="--ah-color-ip" }}
         <div class="ah-flex-center" style="margin-top: 8px;">
-          {{ahBadge path='system.resources.tp.value' classes='--row' value=system.resources.tp.value type='Number' min=0 max=system.resources.tp.max label='AH.CHARACTER.TensionPoint.long' icon=(ahIconClass 'tp') size='s'}}
-          {{ahBadge path='system.resources.hp.temporary' classes='--row' value=system.resources.hp.temporary type='Number' min=0 label='AH.CHARACTER.Block.long' icon=(ahIconClass 'block') size='s' }}
+          {{ahBadge path='system.resources.tp.value' classes='--row' value=system.resources.tp.value type='number' min=0 max=system.resources.tp.max label='AH.CHARACTER.TensionPoint.long' icon=(ahIconClass 'tp') size='s'}}
+          {{ahBadge path='system.resources.hp.temporary' classes='--row' value=system.resources.hp.temporary type='number' min=0 label='AH.CHARACTER.Block.long' icon=(ahIconClass 'block') size='s' }}
         </div>
       {{/if}}
   </div>

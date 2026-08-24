@@ -55,6 +55,7 @@ export const ChatMessageSectionTemplate = Object.freeze({
   damage: systemTemplatePath("chat/chat-section-damage"),
   applyDamage: systemTemplatePath("chat/chat-section-apply-damage"),
   updateResource: systemTemplatePath("chat/chat-section-update-resource"),
+  updateResourceTemporary: systemTemplatePath("chat/chat-section-update-resource-temporary"),
   resource: systemTemplatePath("chat/chat-section-update-resource"),
   text: systemTemplatePath("chat/chat-section-text"),
   actions: systemTemplatePath("chat/chat-section-actions"),

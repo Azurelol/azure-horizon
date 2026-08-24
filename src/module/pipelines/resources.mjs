@@ -51,7 +51,6 @@ export class ResourceRequest extends PipelineRequest {
 async function process(request) {
 
   // Some constants
-  const message = request.gain ? "AH.CHAT.ResourceGain" : "AH.CHAT.ResourceLoss";
   const fieldPath = `resources.${request.data.type}`;
   const updates = [];
 
@@ -64,6 +63,7 @@ async function process(request) {
     }
 
     // Get the resource property
+    /** @type ActorResourceDataModel **/
     const resource = ObjectUtils.getProperty(subject.system, fieldPath);
 
     // The chat message to be generated
@@ -71,7 +71,7 @@ async function process(request) {
     flags.toggle(AH.flags.ChatMessage.Resource);
     const chatMessage = new ChatMessageBuilder(subject, request.item).withFlags(flags);
 
-    // Evaluate modifiers
+    // Evaluate modifiers from the request
     const context = new EvaluationContext(subject, request.item, request.targets, request.sourceInfo);
     let amount = 0;
     for (const mod of request.data.modifiers) {
@@ -79,54 +79,97 @@ async function process(request) {
       amount += ma;
     }
 
-    // GAIN
-    if (request.gain) {
-      const outgoingRecoveryBonus = 0; // request.actor?.system.bonuses.outgoingRecovery[request.resourceType] || 0;
-      const outgoingRecoveryMultiplier = 1; //request.actor?.system.multipliers.outgoingRecovery[request.resourceType] || 1;
-      const incomingRecoveryBonus = 0; //subject.system.bonuses.incomingRecovery[request.resourceType] || 0;
-      const incomingRecoveryMultiplier = 1; //subject.system.multipliers.incomingRecovery[request.resourceType] ?? 1;
-      amount = Math.max(0, Math.floor((amount + incomingRecoveryBonus + outgoingRecoveryBonus) * (incomingRecoveryMultiplier * outgoingRecoveryMultiplier)));
-      // Cap the amount gained up to the maximum
-      amount = Math.min(amount, resource.max - resource.value);
-      if (amount === 0) {
-        const message = incomingRecoveryMultiplier > 0 ? "AH.CHAT.RecoveryNotNeeded" : "AH.CHAT.RecoveryNotPossible";
-        chatMessage.text(StringUtils.localize(message, {
+    // TEMP
+    if (request.data.temp) {
+      // Check whether the incoming temp gain is less than the current
+      if (amount < resource.temporary) {
+        chatMessage.text(StringUtils.localize("AH.CHAT.TemporaryResourceLess", {
           actor: subject.name,
           resource: request.resource.toUpperCase(),
         }));
         await chatMessage.create();
         continue;
       }
+
     }
-    // LOSS
     else {
-      const incomingLossBonus = 0; // actor.system.bonuses.incomingLoss[request.resourceType] || 0;
-      const incomingLossMultiplier = 1; // actor.system.multipliers.incomingLoss[request.resourceType] || 1;
-      amount = -Math.max(0, Math.floor((Math.abs(amount) + incomingLossBonus) * incomingLossMultiplier));
+      // GAIN
+      if (request.gain) {
+        // Apply modifiers from the character's parameters
+        const outgoingRecoveryBonus = 0; // request.actor?.system.bonuses.outgoingRecovery[request.resourceType] || 0;
+        const outgoingRecoveryMultiplier = 1; //request.actor?.system.multipliers.outgoingRecovery[request.resourceType] || 1;
+        const incomingRecoveryBonus = 0; //subject.system.bonuses.incomingRecovery[request.resourceType] || 0;
+        const incomingRecoveryMultiplier = 1; //subject.system.multipliers.incomingRecovery[request.resourceType] ?? 1;
+        amount = Math.max(0, Math.floor((amount + incomingRecoveryBonus + outgoingRecoveryBonus) * (incomingRecoveryMultiplier * outgoingRecoveryMultiplier)));
+
+        // Cap the amount gained up to the maximum
+        amount = Math.min(amount, resource.max - resource.value);
+        if (amount === 0) {
+          const message = incomingRecoveryMultiplier > 0 ? "AH.CHAT.RecoveryNotNeeded" : "AH.CHAT.RecoveryNotPossible";
+          chatMessage.text(StringUtils.localize(message, {
+            actor: subject.name,
+            resource: request.resource.toUpperCase(),
+          }));
+          await chatMessage.create();
+          continue;
+        }
+      }
+      // LOSS
+      else {
+        // Apply modifiers from the character's parameters
+        const incomingLossBonus = 0; // actor.system.bonuses.incomingLoss[request.resourceType] || 0;
+        const incomingLossMultiplier = 1; // actor.system.multipliers.incomingLoss[request.resourceType] || 1;
+        amount = -Math.max(0, Math.floor((Math.abs(amount) + incomingLossBonus) * incomingLossMultiplier));
+      }
     }
 
     // Create the resource update
-    updates.push(
-      subject.modifyTokenAttribute(fieldPath, amount, true).then(async (result) => {
+    const message = request.gain ? "AH.CHAT.ResourceGain" : "AH.CHAT.ResourceLoss";
+    if (request.data.temp) {
+      const previous = resource.temporary;
+      updates.push(subject.update({ [`system.${fieldPath}.temporary`]: amount }).then(async (actor) => {
         chatMessage.template(
-          "chat/chat-section-update-resource",
+          "chat/chat-section-update-resource-temporary",
           {
             message: message,
             actor: subject.name,
             uuid: subject.uuid,
+            previous: previous,
             gain: request.gain,
             amount: amount,
             resource: request.resource,
             from: request.sourceInfo.name,
             change: request.gain ? "gain" : "loss",
           },
-          ChatSectionOrder.details,
+          ChatSectionOrder.description,
         );
         await chatMessage.create();
-        TokenUtils.showFloatyText(subject, `${amount} ${request.resource.toUpperCase()}`, "lightgreen");
-        return result;
-      }),
-    );
+      }));
+    }
+    else {
+      updates.push(
+        subject.modifyTokenAttribute(fieldPath, amount, true).then(async (actor) => {
+          chatMessage.template(
+            "chat/chat-section-update-resource",
+            {
+              message: message,
+              actor: subject.name,
+              uuid: subject.uuid,
+              gain: request.gain,
+              amount: amount,
+              resource: request.resource,
+              from: request.sourceInfo.name,
+              change: request.gain ? "gain" : "loss",
+            },
+            ChatSectionOrder.description,
+          );
+          await chatMessage.create();
+          TokenUtils.showFloatyText(subject, `${amount} ${request.resource.toUpperCase()}`, "lightgreen");
+          return actor;
+        }),
+      );
+    }
+
   }
   return Promise.all(updates);
 }
@@ -174,10 +217,20 @@ function onRenderChatMessage(message, html) {
  * @returns {ChatAction}
  */
 function getChatAction(request, includeLabel = true) {
-  const resourceIcon = AH.resourceTypes[request.resource].icon;
+  let resourceIcon;
+  if (request.data.temp && (request.resource === "hp")) {
+    resourceIcon = AH.icons.thp;
+  } else {
+    resourceIcon = AH.resourceTypes[request.resource].icon;
+  }
+
+  const label = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainLabel" : "AH.CHAT.ResourceLossLabel", {
+    amount: request.data.toString(),
+  });
+
   const tooltip = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainTooltip" : "AH.CHAT.ResourceLossTooltip", {
     amount: request.data.toString(),
-    resource: StringUtils.localize(AH.resourceTypes[request.resource].long),
+    resource: StringUtils.localize(AH.resourceTypes[request.resource].label),
   });
 
   const ca = new ChatAction("updateResource", resourceIcon, tooltip, {
@@ -193,7 +246,7 @@ function getChatAction(request, includeLabel = true) {
     .withSelected();
 
   if (includeLabel) {
-    ca.withLabel(tooltip);
+    ca.withLabel(label);
   }
 
   return ca;

@@ -143,20 +143,36 @@ export default class ActionHandler {
   }
 
   async performRecovery() {
-    ui.notifications.info("Recovering");
     const recovery = Formulas.calculateRecovery(this.actor.system);
 
     Actions.perform(this.actor, null, (config, actor, item) => {
+      config.setLabel("AH.ACTION.Recover");
+      config.setResource("hp", recovery.hp);
       config.addExpense({
         source: "skill",
         resource: "mp",
         amount: recovery.mp,
       });
+      config.addExpense({
+        source: "skill",
+        resource: "tp",
+        amount: recovery.tp,
+      });
     });
   }
 
   async performDefense() {
-    ui.notifications.info("Recovering");
+    const block = Formulas.calculateBlock(this.actor.system);
+
+    Actions.perform(this.actor, null, (config, actor, item) => {
+      config.setLabel("AH.ACTION.Defend");
+      config.setResource("hp", block.hp, true);
+      config.addExpense({
+        source: "skill",
+        resource: "tp",
+        amount: block.tp,
+      });
+    });
   }
 
   /**

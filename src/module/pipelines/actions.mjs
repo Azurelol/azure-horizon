@@ -77,7 +77,7 @@ import { CheckPrompt } from "../helpers/check-prompt.mjs";
  * @param {AHItem} item
  * @returns {ChatAction}
  */
-function getDefendAction(config, actor, item) {
+function getDefenseCheckAction(config, actor, item) {
   const defend = new ChatAction("defenseCheck", AH.icons.defenseCheck, "AH.CHECK.Defense");
   defend.withDataset({
     id: config.check.id,
@@ -149,7 +149,7 @@ async function addSections(builderData, config, actor, item) {
     const isTargeted = targets.length > 0;
     if (isTargeted) {
       if (config.isDefenseCheck) {
-        const defendAction = getDefendAction(config, actor, item);
+        const defendAction = getDefenseCheckAction(config, actor, item);
         builderData.actions.push(defendAction);
         ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
       }
@@ -196,7 +196,7 @@ async function addSections(builderData, config, actor, item) {
       linked: linked,
     });
   } else {
-    let flavorTitle = StringUtils.localize(AH.checkTypes[config.check.type] || "AH.CHECK.Check");
+    let flavorTitle = StringUtils.localize(config.getLabel() ?? AH.checkTypes[config.check.type] ?? "AH.ACTION.Action");
     const itemRef = config.getItemReference();
     let referencedItem;
     if (itemRef) {
@@ -207,7 +207,6 @@ async function addSections(builderData, config, actor, item) {
       icon: AH.icons[`${config.check.type}Check`],
       title: flavorTitle,
       item: referencedItem,
-      label: config.getLabel(),
     });
   }
 

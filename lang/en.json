@@ -827,12 +827,15 @@
       "SpendResource": "Spend {amount} {resource}",
       "RecoveryNotNeeded": "<strong>{actor}</strong> already has full {resource}.",
       "RecoveryNotPossible": "<strong>{actor}</strong> was not able to recover {resource}.",
+      "ResourceGainLabel": "Gain {amount}",
       "ResourceGainTooltip": "Gain {amount} {resource}",
+      "ResourceLossLabel": "Lose {amount}",
       "ResourceLossTooltip": "Lose {amount} {resource}",
       "DefenseCheckPotencyReduced": "{defender} successfully defends against {item} from {attacker}.",
       "DefenseCheckPotencyStandard": "{defender} fails to defend against {item} from {attacker}.",
       "DefenseCheckPotencyPowerful": "{attacker} strikes {defender} with {item} to devastating effect!",
-      "EffectInvalid": "Invalid Effect"
+      "EffectInvalid": "Invalid Effect",
+      "TemporaryResourceLess": "The given <strong>{resource}</strong> gain is less than the current for <strong>{actor}</strong>."
     },
     "PIPELINE": {
       "CriticalBonus": "Critical Bonus",
