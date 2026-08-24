@@ -4,6 +4,13 @@ import AH, { getFormSelectOptions } from "../config.mjs";
 import { Dialogs } from "../helpers/_module.mjs";
 
 /**
+ * @typedef CombatUpdateData
+ * @property {Number} round
+ * @property {Number} turn
+ * @property
+ */
+
+/**
  * A simple extension that adds a hook at the end of data prep.
  * @property {Combatant[]} turns
  * @property {Combatant} combatant Get the Combatant who has the current turn.
@@ -40,6 +47,20 @@ export class AHCombat extends foundry.documents.Combat {
    */
   get actors() {
     return Array.from(this.combatants.map((c) => c.actor));
+  }
+
+  /**
+   * @returns {AHCombatant[]}
+   */
+  getHeroes() {
+    return this.combatants.filter(turn => turn.friendly);
+  }
+
+  /**
+   * @returns {AHCombatant[]}
+   */
+  getAdversaries() {
+    return this.combatants.filter(turn => turn.hostile);
   }
 
   /**

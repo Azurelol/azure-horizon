@@ -109,6 +109,7 @@ function initializeSystems() {
   pipelines.Effects.initialize();
   pipelines.Rules.initialize();
   pipelines.Actions.initialize();
+  pipelines.Intent.initialize();
   apps.UI.CompendiumBrowser.initialize();
   apps.UI.Manual.initialize();
   helpers.Themes.initialize();
@@ -143,6 +144,20 @@ function registerDataModels() {
   AH.dataModelTemplates = data.ActiveEffect.templates;
 }
 
+/**
+ * Registers to combat hooks sent by Foundry's Combat class.
+ */
+function bindCombatEvents() {
+
+  Hooks.on(AH.hooks.foundry.combat.combatTurn, (data) => {
+
+  });
+
+}
+
+/**
+ * Add fonts used by the system.
+ */
 function registerFonts() {
   CONFIG.fontDefinitions["Silver"] = {
     editor: true,
@@ -171,6 +186,7 @@ Hooks.once("init", function() {
   bindSheets();
   initializeSystems();
   registerFonts();
+  bindCombatEvents();
 
   // Sidebar tabs
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;

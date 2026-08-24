@@ -658,7 +658,14 @@ AH.eventRelation = Object.freeze({
   target: "AH.COMMON.Target",
 });
 
+/**
+ * @typedef {'startOfCombat' | 'startOfTurn' | 'endOfTurn' | 'startOfRound' | 'endOfRound' | 'endOfCombat'} AH_CombatEvent
+ */
+
 AH.combat = Object.freeze({
+  /**
+   * @desc Factions of the system.
+   */
   factions: {
     heroes: {
       label: "AH.COMMON.Heroes",
@@ -666,6 +673,17 @@ AH.combat = Object.freeze({
     adversaries: {
       label: "AH.COMMON.Adversaries",
     },
+  },
+  /**
+   * @description Events dispatched during battle scenes.
+   */
+  event: {
+    startOfCombat: "AH.COMBAT.Start",
+    startOfTurn: "AH.COMBAT.TurnStart",
+    endOfTurn: "H.COMBAT.TurnEnd",
+    startOfRound: "H.COMBAT.RoundStart",
+    endOfRound: "AH.COMBAT.RoundEnd",
+    endOfCombat: "H.COMBAT.End",
   },
 });
 
@@ -793,6 +811,18 @@ AH.flags = Object.freeze({
  * Hooks used by the system.
  */
 AH.hooks = Object.freeze({
+
+  /**
+   * Foundry-s own hooks.
+   */
+  foundry: Object.freeze({
+
+    combat: {
+      combatStart: "combatStart",
+      combatRound: "combatRound",
+      combatTurn: "combatTurn",
+    },
+  }),
 
   /**
    * @description Dispatched when system control tools are being initialized.

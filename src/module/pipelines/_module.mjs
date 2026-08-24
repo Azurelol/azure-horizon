@@ -10,3 +10,4 @@ export { default as ResourceData } from "./resource-data.mjs";
 export { default as Rules } from "./rules.mjs";
 export { default as Actions } from "./actions.mjs";
 export { default as Effects } from "./effects.mjs";
+export { default as Intent } from "./intent.mjs";

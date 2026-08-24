@@ -33,5 +33,10 @@
     "author": "finalbossblues",
     "url": "https://finalbossblues.itch.io/",
     "license": "PAID"
+  },
+  "pixeloid": {
+    "author": "GGBotNet",
+    "url": "https://ggbot.itch.io/pixeloid-font",
+    "license": "SIL Open Font"
   }
 }

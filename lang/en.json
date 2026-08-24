@@ -846,6 +846,12 @@
     },
     "COMBAT": {
       "FirstTurn": "First Turn",
+      "Start": "Battle Start",
+      "RoundStart": "Round Start",
+      "TurnStart": "Turn Start",
+      "TurnEnd": "Turn End",
+      "RoundEnd": "Round End",
+      "End": "Battle End",
       "InitiativeHint": "Initiative will be rolled for all characters at the start of the round."
     },
     "Combat": {
