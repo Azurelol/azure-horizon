@@ -245,6 +245,7 @@
         "Plant": "Plant"
       },
       "Intent": "Intent",
+      "Weight": "Weight",
       "INTENT": {
         "Unknown": "Unknown",
         "Attack": "Attack",

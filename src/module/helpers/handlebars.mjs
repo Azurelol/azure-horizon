@@ -93,10 +93,15 @@ export default Object.freeze({
     });
     Handlebars.registerHelper("ahFormOptions", formOptions);
     Handlebars.registerHelper("ahDocumentAnchor", documentAnchor);
-    Handlebars.registerHelper("ahIconClass", function (icon) {
+    Handlebars.registerHelper("ahIconClass", function (icon, options) {
       if (!icon) {
         return "";
       }
+
+      if (options.hash?.record) {
+        return AH[options.hash.record][icon].icon;
+      }
+
       return AH.icons[icon];
     });
     Handlebars.registerHelper("ahInlineProperty", function (record, key, options) {

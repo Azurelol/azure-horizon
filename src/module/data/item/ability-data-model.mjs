@@ -15,6 +15,7 @@ import { ActionDataModel } from "./fields/action-data-model.mjs";
  * @property {EffectsDataModel} effects
  * @property {WeaponUsageDataModel} usage
  * @property {AH_Intent} intent The intent behind this ability.
+ * @property {AH_Weight} weight The weight for this item when selected against other items of its intent.
  */
 export default class AbilityDataModel extends ActiveFeatureDataModel {
   /** @inheritdoc */
@@ -27,6 +28,14 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
         blank: true,
         nullable: false,
         label: "AH.ADVERSARY.Intent",
+        _part: "header",
+      }),
+      weight: new StringField({ initial: "",
+        choices: Object.keys(AH.weights),
+        formOptions: getFormSelectOptions(AH.weights),
+        blank: true,
+        nullable: false,
+        label: "AH.ADVERSARY.Weight",
         _part: "header",
       }),
       action: new EmbeddedDataField(ActionDataModel, {}),

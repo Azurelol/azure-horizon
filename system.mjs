@@ -36,10 +36,12 @@ function bindDocuments() {
  */
 function bindDataModels() {
   Object.assign(CONFIG.Actor.dataModels, data.Actor.dataModels);
+  CONFIG.Actor.defaultType = "basic";
   Object.assign(CONFIG.Combatant.dataModels, data.Combatant.dataModels);
   Object.assign(CONFIG.Item.dataModels, data.Item.dataModels);
   Object.assign(CONFIG.ActiveEffect.dataModels, data.ActiveEffect.dataModels);
-  CONFIG.Actor.defaultType = "basic";
+  Object.assign(CONFIG.Combat.dataModels, data.Combat.dataModels);
+  CONFIG.Combat.defaultType = "base";
   CONFIG.Token.hudClass = apps.HUD.AHTokenHUD;
   CONFIG.statusEffects = data.ActiveEffect.statusEffects.values;
   CONFIG.specialStatusEffects.DEFEATED = "ko";

@@ -1,20 +1,14 @@
 import AH from "../config.mjs";
 import { CheckPrompt } from "../helpers/check-prompt.mjs";
+import { MathUtils } from "../utils/_module.mjs";
 
 /**
  * An intent is an action planned out by an adversary against a specific target.
  * @typedef IntentAction
  * @property {AH_Intent} type
- * @property {IntentTarget[]} targets The ids of the targets of the action.
- * @property {String} item The id of the ability or attack to be used (an Item)
- * @property {String} icon Assigned later.
- */
-
-/**
- * @typedef IntentTarget
- * @property {String} name
- * @property {String} uuid
- * @property {String} img
+ * @property {String} icon The intent icon. Assigned later.
+ * @property {DocumentReference[]} targets The ids of the targets of the action.
+ * @property {DocumentReference} item The id of the ability or attack to be used (an Item)
  */
 
 /**
@@ -31,7 +25,6 @@ import { CheckPrompt } from "../helpers/check-prompt.mjs";
 
 /**
  * @typedef RoleTactics
- * @property {AH_Intent[][]} cycle
  * @property {RoleRoutine} standard
  * @property {RoleRoutine} elite
  * @property {RoleRoutine} champion
@@ -135,6 +128,44 @@ function getRoutine(role) {
 }
 
 /**
+ * Picks the hero to target.
+ * @param {AbilityDataModel|AttackDataModel} item
+ * @param {HeroDataModel[]} heroes
+ * @returns {DocumentReference[]}
+ */
+function selectTargets(item, heroes) {
+  if (heroes.length === 0) {
+    return [];
+  }
+  let targets = Array.from(heroes);
+  for (let i = targets.length - 1; i > 0; i--) {
+    const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
+    [targets[i], targets[j]] = [targets[j], targets[i]];
+  }
+  // TODO: If there's more space in the tracker..
+  return targets.slice(0, 1).map(t => {
+    return {
+      name: t.name,
+      img: t.img,
+      uuid: t.uuid,
+    };
+  });
+}
+
+/**
+ * @param {AttackDataModel[]|AbilityDataModel[]} abilities
+ * @return {AttackDataModel|AbilityDataModel}
+ */
+function selectAbility(abilities) {
+  if ((abilities === undefined) || (abilities.length === 0)) {
+    return undefined;
+  }
+  const weights = abilities.map(a => 1);
+  const index = MathUtils.weightedRandomIndex(weights);
+  return abilities[index];
+}
+
+/**
  * @param {AdversaryDataModel} adversary
  * @param {AHCombatant[]} combatants
  * @param {HeroDataModel[]} heroes
@@ -142,22 +173,74 @@ function getRoutine(role) {
  */
 function generateIntents(adversary, combatants, heroes) {
 
-  // TODO: Depending on the adversary role and what abilities/attacks they have, their intents
-  // should be decided.
-
   const profile = adversary.profile;
   const assembly = profile.prepareAssemblyData();
-  const attackItems = assembly.attacks.entries;
   const abilityItems = assembly.abilities.entries;
+  /** @type {Record<AH_Intent, AbilityDataModel[]>} **/
+  const abilityMap = abilityItems.reduce((map, item) => {
+    const intent = item.system.intent;
+    (map[intent] ??= []).push(item.system);
+    return map;
+  }, {});
+  /** @type AttackDataModel[] **/
+  const attackItems = assembly.attacks.entries.map(item => item.system);
 
-  // For every turn the adversary has, pick a target
-  const targets = [];
+  const tactics = getRoutine(profile.role);
+  /** @type RoleRoutine **/
+  const routine = tactics[profile.rank];
 
-  // TODO: Pick a target for the action
-  const routine = getRoutine(profile.role);
-
+  // The cycle for the current turn
+  const cycle = routine.cycle[0];
   /** @type IntentAction[] **/
   let intents = [];
+  for (let t = 0; t < combatants.length; t++) {
+    /** @type IntentAction **/
+    let action = {
+      type: cycle[t],
+
+    };
+    /** @type {AttackDataModel|AbilityDataModel} **/
+    let item;
+    /** @type DocumentReference[] **/
+    let targets;
+
+    switch (action.type) {
+      case "unknown":
+        break;
+      case "attack":{
+        item = selectAbility(attackItems);
+        targets = selectTargets(item, heroes);
+      }
+        break;
+      case "damage":
+        item = selectAbility(abilityMap.damage);
+        targets = selectTargets(item, heroes);
+        break;
+      case "control":
+        break;
+      case "heal":
+        item = selectAbility(abilityMap.heal);
+        break;
+      case "block":
+        item = selectAbility(abilityMap.block);
+        break;
+      case "prepare":
+        break;
+      case "status":
+        break;
+    }
+
+    if (item) {
+      action.item = {
+        img: item.img,
+        name: item.name,
+        uuid: item.uuid,
+      };
+      action.targets = targets;
+    }
+
+    intents.push(action);
+  }
 
   switch (adversary.profile.rank) {
     // They don't really get actions

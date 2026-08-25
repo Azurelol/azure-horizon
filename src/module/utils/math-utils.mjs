@@ -69,4 +69,21 @@ export default class MathUtils {
     // so the sign is determined by the leading operator.
     return trimmed.startsWith("-") ? -1 : 1;
   }
+
+  /**
+   * Pick a random index from an array of weights, proportional to their values.
+   * @param {number[]} weights - non-negative weights (need not sum to 1)
+   * @returns {number} the chosen index, or -1 if weights is empty or all-zero
+   */
+  static weightedRandomIndex(weights) {
+    const total = weights.reduce((sum, w) => sum + w, 0);
+    if (total <= 0) return -1;
+
+    let roll = Math.random() * total;
+    for (let i = 0; i < weights.length; i++) {
+      roll -= weights[i];
+      if (roll < 0) return i;
+    }
+    return weights.length - 1;
+  }
 }

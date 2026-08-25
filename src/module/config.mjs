@@ -9,6 +9,13 @@ const AH = {};
 const fields = foundry.data.fields;
 
 /**
+ * @typedef DocumentReference
+ * @property {String} name
+ * @property {String} uuid
+ * @property {String} img
+ */
+
+/**
  * @typedef AH_Constant
  * @property {String|undefined} label
  * @property {String|undefined} long
@@ -562,6 +569,17 @@ AH.role = {
   supporter: "AH.ADVERSARY.ROLE.Supporter", // Supports allies.
   leader: "AH.ADVERSARY.ROLE.Leader", // Commands allies, affects action economy.
 };
+
+/**
+ * @typedef {'low'|'normal'|'high'|'always'} AH_Weight
+ */
+
+AH.weights = Object.freeze({
+  low: { value: 1, label: "Low", tooltip: "Below-average likelihood" },
+  normal: { value: 2, label: "Normal", tooltip: "Baseline likelihood" },
+  high: { value: 4, label: "High", tooltip: "Above-average likelihood" },
+  always: { value: 99, label: "Always", tooltip: "Chosen whenever available, overriding other options" },
+});
 
 /**
  * @typedef {'unknown'|'attack'|'damage'|'control'|'heal'|'block'|'prepare'|'status'} AH_Intent

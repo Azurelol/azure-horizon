@@ -1,9 +1,9 @@
+import AH from "../config.mjs";
+import { systemID } from "../constants.mjs";
+
 /**
  * @typedef {'hero'|'adversary'} AH_Faction
  */
-
-import AH from "../config.mjs";
-import { systemID } from "../constants.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
