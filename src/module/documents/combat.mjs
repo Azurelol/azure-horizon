@@ -61,7 +61,9 @@ export class AHCombat extends foundry.documents.Combat {
    * @returns {AHCombatant[]}
    */
   getAdversaries() {
-    return this.combatants.filter(turn => turn.hostile);
+    return this.combatants
+      .filter(turn => turn.hostile)
+      .sort((a, b) => b.initiative - a.initiative);
   }
 
   /**
