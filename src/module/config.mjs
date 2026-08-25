@@ -279,24 +279,6 @@ AH.speed = Object.freeze({
 });
 
 /**
- * @typedef {'unknown'|'attack'|'damage'|'control'|'heal'|'prepare'|'afflict'} AH_Intent
- */
-
-AH.intents = Object.freeze({
-  unknown: { label: "AH.ACTION.Intent.Unknown", icon: "ra ra-uncertainty" },
-  attack: { label: "AH.ADVERSARY.INTENT.Attack", icon: "ra ra-sword" }, // Base attack
-  fortify: { label: "AH.ADVERSARY.INTENT.Fortify", icon: "ra ra-shield" }, // Defensive buff
-  empower: { label: "AH.ADVERSARY.INTENT.Empower", icon: "ra ra-fire-symbol" }, // Offensive buff
-  damage: { label: "AH.ADVERSARY.INTENT.Damage", icon: "ra ra-plain-dagger" }, // Damaging ability
-  prepare: { label: "AH.ADVERSARY.INTENT.Prepare", icon: "ra ra-hourglass" }, // Prepare an action
-  afflict: { label: "AH.ADVERSARY.INTENT.Afflict", icon: "ra ra-poison-bottle" }, // Status affliction
-  control: { label: "AH.ADVERSARY.INTENT.Control", icon: "ra ra-hypnotized-eye" }, // Controlling ability
-  heal: { label: "AH.ADVERSARY.INTENT.Heal", icon: "ra ra-heart-plus" }, // Heal self
-  escape: { label: "AH.ADVERSARY.INTENT.Escape", icon: "ra ra-run" }, // Escape combat
-  summon: { label: "AH.ADVERSARY.INTENT.Summon", icon: "ra ra-summon" }, // Summon minion
-});
-
-/**
  * Provided defaults for the party codex.
  * @type {{tags: {character: string, location: string, event: string}}}
  */
@@ -580,6 +562,30 @@ AH.role = {
   supporter: "AH.ADVERSARY.ROLE.Supporter", // Supports allies.
   leader: "AH.ADVERSARY.ROLE.Leader", // Commands allies, affects action economy.
 };
+
+/**
+ * @typedef {'unknown'|'attack'|'damage'|'control'|'heal'|'block'|'prepare'|'status'} AH_Intent
+ */
+
+AH.intents = Object.freeze({
+  unknown: { label: "AH.ACTION.Intent.Unknown", icon: "ra ra-uncertainty" },
+  attack: { label: "AH.ADVERSARY.INTENT.Attack", icon: "ra ra-sword" }, // Base attack
+
+  damage: { label: "AH.ADVERSARY.INTENT.Damage", icon: "ra ra-plain-dagger" }, // Damaging ability
+  empower: { label: "AH.ADVERSARY.INTENT.Empower", icon: "ra ra-fire-symbol" }, // Offensive buff
+  weaken: { label: "AH.ADVERSARY.INTENT.Weaken", icon: "ra ra-fire-symbol" }, // Offensive debuff
+  fortify: { label: "AH.ADVERSARY.INTENT.Fortify", icon: "ra ra-shield" }, // Defensive buff
+  breach: { label: "AH.ADVERSARY.INTENT.Breach", icon: "ra ra-cracked-shield" }, // Defensive debuff
+  status: { label: "AH.ADVERSARY.INTENT.Status", icon: "ra ra-poison-bottle" }, // Status effect
+  control: { label: "AH.ADVERSARY.INTENT.Control", icon: "ra ra-hypnotized-eye" }, // Controlling ability
+
+  prepare: { label: "AH.ADVERSARY.INTENT.Prepare", icon: "ra ra-hourglass" }, // Prepare an action
+
+  block: { label: "AH.ADVERSARY.INTENT.Block", icon: "ra ra-shield" }, // Heal self
+  heal: { label: "AH.ADVERSARY.INTENT.Heal", icon: "ra ra-heart-plus" }, // Heal self
+  escape: { label: "AH.ADVERSARY.INTENT.Escape", icon: "ra ra-run" }, // Escape combat
+  summon: { label: "AH.ADVERSARY.INTENT.Summon", icon: "ra ra-summon" }, // Summon minion
+});
 
 /**
  * @typedef {'minion'|'standard'|'elite'|'champion'} AH_Rank

@@ -21,7 +21,14 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      intent: new StringField({ initial: "", choices: Object.keys(AH.intents), formOptions: getFormSelectOptions(AH.intents), blank: true, nullable: false, label: "AH.ADVERSARY.Intent" }),
+      intent: new StringField({ initial: "",
+        choices: Object.keys(AH.intents),
+        formOptions: getFormSelectOptions(AH.intents),
+        blank: true,
+        nullable: false,
+        label: "AH.ADVERSARY.Intent",
+        _part: "header",
+      }),
       action: new EmbeddedDataField(ActionDataModel, {}),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
     });

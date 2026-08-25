@@ -59,13 +59,13 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
   /**
    * Tracks the attacks assembled onto an adversary.
    * @typedef {AH_AssemblyBudget} AH_AttackAssemblyData
-   * @property {Array} entries - The attack entries assembled so far.
+   * @property {AHItem[]} entries - The attack entries assembled so far.
    */
 
   /**
    * Tracks the abilities assembled onto an adversary, including where each was sourced from.
    * @typedef {AH_AssemblyBudget} AH_AbilityAssemblyData
-   * @property {Array} entries - The ability entries assembled so far.
+   * @property {AHItem[]} entries - The ability entries assembled so far.
    * @property {Object<string, *>} sources - Maps ability entries to the source they were drawn from.
    */
 
