@@ -71,16 +71,22 @@
       flex: 1;
       display: flex;
       flex-direction: row;
-      gap: 0.25rem;
+      gap: 0.5rem;
 
       .intent-target {
-        border: 2px solid var(--ah-background-damage);
+        border: 1px solid var(--ah-border-muted);
         width: 24px;
         height: 24px;
       }
 
+      .intent-item {
+        border: 2px solid var(--ah-adversary-background-gradient);
+        width: 32px;
+        height: 32px;
+      }
+
       span {
-        display: none;
+        font-size: var(--ah-font-size-sm);
       }
     }
   }

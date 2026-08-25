@@ -46,13 +46,21 @@
       {{/if}}
 
       {{!-- Initiative / Intents --}}
-      <div class="token-initiative" {{#if intent}}data-tooltip="{{ahCapitalize intent.type}}"{{/if}} >
+      <div class="token-initiative" {{#if intent}} data-tooltip="{{ahCapitalize intent.type}} {{intent.item.name}}"{{/if}} >
         {{!-- Display Initiative --}}
         {{#if initiative}}
-          <i class="ah-icon --sm {{ahIconClass intent.type record="intents"}}"></i>
+          {{log 'COMBATANT:' this 'INTENT:' intent}}
+          <div class="ah-flex-center --col">
+            {{#if (and isOwner intent.item)}}
+              <img class="intent-item" src="{{ intent.item.img }}" alt="{{ intent.item.name }}" loading="lazy">
+              <span>{{ahCapitalize intent.type}}</span>
+            {{else}}
+              <i class="ah-icon --sm {{ahIconClass intent.type record="intents"}}"></i>
+            {{/if}}
+          </div>
           {{#if intent.targets}}
             {{#each intent.targets}}
-              <img class="intent-target" src="{{ img }}" alt="{{ name }}" loading="lazy">
+              <img data-tooltip="{{name}}" class="intent-target" src="{{ img }}" alt="{{ name }}" loading="lazy">
             {{/each}}
           {{/if}}
         {{!-- Roll Initiative --}}

@@ -1,5 +1,4 @@
 import AH from "../config.mjs";
-import { CheckPrompt } from "../helpers/check-prompt.mjs";
 import { MathUtils } from "../utils/_module.mjs";
 
 /**
@@ -19,7 +18,7 @@ import { MathUtils } from "../utils/_module.mjs";
  */
 
 /**
- * @typedef RoleTactics
+ * @typedef RoleRoutineMap
  * @property {RoleRoutine} standard
  * @property {RoleRoutine} elite
  * @property {RoleRoutine} champion
@@ -27,7 +26,7 @@ import { MathUtils } from "../utils/_module.mjs";
 
 /**
  * Routines for the different adversary roles.
- * @type {Record<AH_RoleType, RoleTactics>}
+ * @type {Record<AH_RoleType, RoleRoutineMap>}
  */
 const ROLE_ROUTINES = Object.freeze({
 
@@ -108,15 +107,20 @@ const ROLE_ROUTINES = Object.freeze({
  */
 
 /**
- * @param {AH_RoleType} role
- * @return {RoleTactics}
+ * @param {AdversaryDataModel} system
+ * @return {AH_Intent[][]}
  */
-function getRoutine(role) {
-  let routine = ROLE_ROUTINES[role];
-  if (!routine) {
-    routine = ROLE_ROUTINES.default;
+function resolveIntents(system) {
+  /** @type RoleRoutineMap **/
+  let map = ROLE_ROUTINES[system.profile.role];
+  if (!map) {
+    map = ROLE_ROUTINES.default;
   }
-  return routine;
+
+  const routine = map[system.profile.rank];
+  // TODO: Pick variant based on status
+  const variant = "default";
+  return routine[variant];
 }
 
 /**
@@ -178,16 +182,12 @@ function generateIntents(adversary, combatants, heroes, history) {
   /** @type AttackDataModel[] **/
   const attackItems = assembly.attacks.entries.map(item => item.system);
 
-  const tactics = getRoutine(profile.role);
-  // Add checking for crisis, etc
-  const variant = "default";
-  /** @type RoleRoutine **/
-  const routine = tactics[profile.rank];
+  const intents = resolveIntents(adversary);
 
   // The cycle for the current turn.
   let cycleIndex;
   if (history !== undefined) {
-    cycleIndex = history.round % routine.cycle.length;
+    cycleIndex = history.round % intents.length;
     const adversaryActorUuid = adversary.parent.uuid;
     const actorHistory = history.actors.find((uuid) => uuid === adversaryActorUuid);
     if (actorHistory) {
@@ -197,19 +197,16 @@ function generateIntents(adversary, combatants, heroes, history) {
   else {
     cycleIndex = 0;
   }
-  const cycle = routine[variant][Math.min(routine.cycle.length - 1, cycleIndex)];
-  // If no cycle was found, return te
-  if (!cycle) {
 
-  }
+  /** @type AH_Intent[] **/
+  const cycle = intents[Math.min(intents.length - 1, cycleIndex)];
 
   /** @type IntentAction[] **/
-  let intents = [];
+  let actions = [];
   for (let t = 0; t < combatants.length; t++) {
     /** @type IntentAction **/
     let action = {
       type: cycle[t],
-
     };
     /** @type {AttackDataModel|AbilityDataModel} **/
     let item;
@@ -244,14 +241,14 @@ function generateIntents(adversary, combatants, heroes, history) {
 
     if (item) {
       action.item = {
-        img: item.img,
-        name: item.name,
-        uuid: item.uuid,
+        img: item.parent.img,
+        name: item.parent.name,
+        uuid: item.parent.uuid,
       };
       action.targets = targets;
     }
 
-    intents.push(action);
+    actions.push(action);
   }
 
   switch (adversary.profile.rank) {
@@ -266,7 +263,7 @@ function generateIntents(adversary, combatants, heroes, history) {
       break;
   }
 
-  return intents;
+  return actions;
 }
 
 /**
@@ -365,7 +362,7 @@ function initialize() {
 
 const Intent = Object.freeze({
   initialize,
-  getRoutine,
+  getRoutine: resolveIntents,
 });
 
 export default Intent;
