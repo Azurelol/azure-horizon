@@ -5,7 +5,10 @@ import { TraitsField } from "./_module.mjs";
 
 /**
  * @property {AH_ActionType} type The type of action, if it's one.
+ * @property {AH_TargetingRule} targeting
+ * @property {AH_ActionRange} range
  * @property {Number} points How many action points the action costs.
+ * @property {TraitsField} traits
  */
 export class ActionDataModel extends FieldsetDataModel {
   static defineSchema() {
@@ -17,8 +20,14 @@ export class ActionDataModel extends FieldsetDataModel {
         label: "AH.FIELD.Range",
         choices: () => AH.traits.range,
       }),
+      targeting: new StringField({
+        initial: "single",
+        blank: true,
+        label: "AH.FIELD.Targeting",
+        choices: () => AH.targetingRule,
+      }),
       type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.actionTypes), required: true }),
-      points: new NumberField({ initial: 1, max: 2 }),
+      points: new NumberField({ initial: 1, max: 3 }),
       traits: new TraitsField({
         options: getFormSelectOptions(AH.traits.action),
       }),
@@ -44,6 +53,9 @@ export class ActionDataModel extends FieldsetDataModel {
           });
           break;
       }
+    }
+    if (this.targeting) {
+      config.setTargeting(this.targeting);
     }
     if (this.range) {
       config.addTraits(this.range);

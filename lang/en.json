@@ -572,6 +572,7 @@
       "Allies": "Allies",
       "Enemies": "Enemies",
       "Properties": "Properties",
+      "Targeting": "Targeting",
       "Resource": "Resource",
       "General": "General",
       "Class": "Class",
@@ -749,6 +750,11 @@
         "Common": "Common",
         "Rare": "Rare"
       }
+    },
+    "TARGETING": {
+      "Self": "Self",
+      "Single": "Single",
+      "Multiple": "Multiple"
     },
     "STATUS": {
       "Modifier": "Modifier",

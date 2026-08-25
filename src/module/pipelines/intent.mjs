@@ -14,13 +14,8 @@ import { MathUtils } from "../utils/_module.mjs";
 /**
  * @typedef RoleRoutine
  * The actions to take during that turn.
- * @property {AH_Intent[][]} cycle The default  cycle of intents for the adversary.
+ * @property {AH_Intent[][]} default The default  cycle of intents for the adversary.
  * @property {AH_Intent[][]} crisis A different cycle to execute once in crisis.
- */
-
-/**
- * @typedef RoleTurn
- * @property
  */
 
 /**
@@ -38,18 +33,18 @@ const ROLE_ROUTINES = Object.freeze({
 
   default: {
     standard: {
-      cycle: [
-        ["attack"],
+      default: [
+        ["unknown"],
       ],
     },
     elite: {
-      cycle: [
-        ["attack"],
+      default: [
+        ["unknown", "unknown"],
       ],
     },
     champion: {
-      cycle: [
-        ["attack"],
+      default: [
+        ["unknown", "unknown", "unknown", "unknown"],
       ],
     },
   },
@@ -57,19 +52,19 @@ const ROLE_ROUTINES = Object.freeze({
   // Hardy, high damage and can shift enemies.
   brute: {
     standard: {
-      cycle: [
+      default: [
         ["attack"],
         ["damage"],
       ],
     },
     elite: {
-      cycle: [
+      default: [
         ["attack", "damage"],
         ["empower", "damage"],
       ],
     },
     champion: {
-      cycle: [
+      default: [
         ["attack", "damage"],
         ["empower", "damage"],
       ],
@@ -79,19 +74,19 @@ const ROLE_ROUTINES = Object.freeze({
   // Mobile, focuses on weaker targets, slips by enemies.
   harrier: {
     standard: {
-      cycle: [
+      default: [
         ["attack"],
         ["damage"],
       ],
     },
     elite: {
-      cycle: [
+      default: [
         ["attack", "damage"],
         ["empower", "damage"],
       ],
     },
     champion: {
-      cycle: [
+      default: [
         ["attack", "damage"],
         ["empower", "damage"],
       ],
@@ -111,9 +106,6 @@ const ROLE_ROUTINES = Object.freeze({
  * @property {AHItem[]} control
  * @property {AHItem[]} prepare
  */
-
-/** @type {AH_Intent[]} **/
-const UNTARGETABLE_INTENTS = ["block", "heal", "prepare", "empower", "fortify"];
 
 /**
  * @param {AH_RoleType} role
@@ -137,7 +129,7 @@ function selectTargets(item, heroes) {
   if (heroes.length === 0) {
     return [];
   }
-  let targets = Array.from(heroes);
+  let targets = Array.from(heroes.map(h => h.parent));
   for (let i = targets.length - 1; i > 0; i--) {
     const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
     [targets[i], targets[j]] = [targets[j], targets[i]];
@@ -169,9 +161,10 @@ function selectAbility(abilities) {
  * @param {AdversaryDataModel} adversary
  * @param {AHCombatant[]} combatants
  * @param {HeroDataModel[]} heroes
+ * @param {CombatRoundHistory} history
  * @return {IntentAction[]}
  */
-function generateIntents(adversary, combatants, heroes) {
+function generateIntents(adversary, combatants, heroes, history) {
 
   const profile = adversary.profile;
   const assembly = profile.prepareAssemblyData();
@@ -186,11 +179,30 @@ function generateIntents(adversary, combatants, heroes) {
   const attackItems = assembly.attacks.entries.map(item => item.system);
 
   const tactics = getRoutine(profile.role);
+  // Add checking for crisis, etc
+  const variant = "default";
   /** @type RoleRoutine **/
   const routine = tactics[profile.rank];
 
-  // The cycle for the current turn
-  const cycle = routine.cycle[0];
+  // The cycle for the current turn.
+  let cycleIndex;
+  if (history !== undefined) {
+    cycleIndex = history.round % routine.cycle.length;
+    const adversaryActorUuid = adversary.parent.uuid;
+    const actorHistory = history.actors.find((uuid) => uuid === adversaryActorUuid);
+    if (actorHistory) {
+      // TODO: Pull additional data?
+    }
+  }
+  else {
+    cycleIndex = 0;
+  }
+  const cycle = routine[variant][Math.min(routine.cycle.length - 1, cycleIndex)];
+  // If no cycle was found, return te
+  if (!cycle) {
+
+  }
+
   /** @type IntentAction[] **/
   let intents = [];
   for (let t = 0; t < combatants.length; t++) {
@@ -259,10 +271,12 @@ function generateIntents(adversary, combatants, heroes) {
 
 /**
  * Assign intents to all adversaries.
- * @param combat
+ * @param {AHCombat} combat
+ * @param {Number} round
  */
-function process(combat) {
+function process(combat, round) {
   const combatants = combat.getAdversaries();
+
   /** @type {Map<AHActor,AHCombatant[]>} **/
   const adversaries = new Map();
 
@@ -277,18 +291,35 @@ function process(combat) {
   }
 
   ui.notifications.info(`Assigning intent for adversaries (${adversaries.size})`);
-  const heroes = combat.getHeroes();
+  const heroes = combat.getHeroes().map(h => h.actor.system);
+
+  let history;
+  if (round !== 1) {
+    history = combat.system.rounds[round - 2]; // Because we are using 0-indexing AND round is the number of the UPCOMING round.
+  }
+
+  let newRoundHistory = {
+    round: round,
+    actors: [],
+  };
+
   for (const [actor, combatants] of adversaries) {
     /** @type AdversaryDataModel **/
     const system = actor.system;
-    const intents = generateIntents(system, combatants, heroes);
+    const actions = generateIntents(system, combatants, heroes, history);
     // Assign the intents in order
     for (let c = 0; c < combatants.length; c++) {
-      const intent = intents[c];
+      const intent = actions[c];
       const combatant = combatants[c];
       combatant.setIntent(intent);
+      newRoundHistory.actors.push({
+        actor: actor.uuid,
+        actions: actions,
+      });
     }
   }
+
+  combat.system.addRoundHistory(newRoundHistory);
 }
 
 /**
@@ -297,7 +328,7 @@ function process(combat) {
  */
 function onCombatChange(combat, updateData, updateOptions) {
   if (updateData.round === 1) {
-    process(combat);
+    process(combat, updateData.round);
   }
 }
 
@@ -308,7 +339,7 @@ function onCombatChange(combat, updateData, updateOptions) {
  */
 function onRoundChange(combat, updateData, updateOptions) {
   if (updateData.round !== 1) {
-    process(combat);
+    process(combat, updateData.round);
   }
 }
 

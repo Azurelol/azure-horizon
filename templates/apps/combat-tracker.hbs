@@ -47,7 +47,6 @@
 
       {{!-- Initiative / Intents --}}
       <div class="token-initiative" {{#if intent}}data-tooltip="{{ahCapitalize intent.type}}"{{/if}} >
-        {{log 'COMBATANT:' this}}
         {{!-- Display Initiative --}}
         {{#if initiative}}
           <i class="ah-icon --sm {{ahIconClass intent.type record="intents"}}"></i>

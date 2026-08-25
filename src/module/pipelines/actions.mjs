@@ -112,7 +112,8 @@ async function addSections(builderData, config, actor, item) {
   // TARGETS
   const targets = config.getTargets();
   const isTargeted = targets.length > 0;
-  if (isTargeted) {
+  const selfTargeted = config.getTargeting() === "self";
+  if (isTargeted && !selfTargeted) {
     if (config.isDefenseCheck) {
       const defendAction = getDefenseCheckAction(config, actor, item);
       builderData.actions.push(defendAction);

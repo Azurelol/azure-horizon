@@ -672,6 +672,15 @@ AH.comparisonOperator = {
 };
 
 /**
+ * @typedef {"self", "single", "multiple"} AH_TargetingRule
+ */
+AH.targetingRule = {
+  self: "AH.TARGETING.Self",
+  single: "AH.TARGETING.Single",
+  multiple: "AH.TARGETING.Multiple",
+};
+
+/**
  * @typedef {"source" | "target"} AH_EventRelationKey
  */
 

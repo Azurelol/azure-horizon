@@ -90,7 +90,6 @@ async function process(request) {
         await chatMessage.create();
         continue;
       }
-
     }
     else {
       // GAIN

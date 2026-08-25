@@ -32,6 +32,7 @@ const TAGS = "tags";
 const DESCRIPTION = "description";
 const POWER = "power"; // Preset universal scaling
 const GRADE = "grade"; // Attribute scaling
+const TARGETING = "targeting";
 
 /**
  * @description Given a {@link CheckResult} object, provides additional information from it
@@ -310,6 +311,13 @@ export class ActionInspector {
    */
   getLabel() {
     return this.data[LABEL_KEY];
+  }
+
+  /**
+   * @returns {AH_TargetingRule} Optional label for this check
+   */
+  getTargeting() {
+    return this.data[TARGETING];
   }
 
   /**
@@ -742,5 +750,12 @@ export class ActionConfig extends ActionInspector {
    */
   setGrade(grade) {
     this.check.data[GRADE] = grade;
+  }
+
+  /**
+   * @param {AH_TargetingRule} rule
+   */
+  setTargeting(rule) {
+    this.check.data[TARGETING] = rule;
   }
 }

@@ -12,6 +12,7 @@ import { Dialogs } from "../helpers/_module.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
+ * @property {CombatDataModel} system
  * @property {Combatant[]} turns
  * @property {Combatant} combatant Get the Combatant who has the current turn.
  * @property {CombatHistoryData} current  Record the current round, turn, and tokenId to understand changes in the encounter state
