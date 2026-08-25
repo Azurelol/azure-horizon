@@ -10,11 +10,11 @@ table {
   tbody {
     font-size: var(--ah-table-body-font-size);
     tr {
-      background: none !important;
+      background: none;
       border-bottom: 1px solid var(--ah-table-row-divider);
     }
     tr:nth-child(even) {
-      background: none !important;
+      background: none;
     }
     tr:last-child {
       border: none;

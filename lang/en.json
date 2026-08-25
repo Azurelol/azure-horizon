@@ -818,6 +818,7 @@
       "Item": "Item",
       "Maneuver": "Maneuver",
       "Inventory": "Inventory",
+      "Check": "Check",
       "Equip": "Equip",
       "Unequip": "Unequip"
     },

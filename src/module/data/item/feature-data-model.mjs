@@ -65,6 +65,7 @@ export default class FeatureDataModel extends ItemDataModel {
    */
   async _initializeAction(config) {
     this.attributes.configureAction(config);
+    config.setDefaultTargets();
     config.addDescription(this.description);
   }
 }

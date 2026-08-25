@@ -259,7 +259,6 @@ async function perform(actor, item, prepare) {
     sourceInfo: SourceInfo.fromInstance(actor, item),
   };
   const config = new ActionConfig(action);
-  config.setDefaultTargets();
   await prepare(config, actor, item);
   await Events.performAction(config, actor, item);
   await AsyncHooks.invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);

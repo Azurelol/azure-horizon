@@ -3,6 +3,8 @@ import { WeaponResolver } from "../../helpers/weapon-resolver.mjs";
 import { ActionConfig, ChatMessageBuilder } from "../../helpers/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import Actions from "../../pipelines/actions.mjs";
+import Checks from "../../pipelines/checks.mjs";
+import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 
 /**
  * @desc Encapsulates basic character actions.
@@ -103,6 +105,12 @@ export default class ActionHandler {
       tooltip: "AH.ACTION.ManeuverHint",
       ctx: "maneuver",
     });
+    actions.push({
+      id: "check",
+      label: "AH.ACTION.Check",
+      tooltip: "AH.ACTION.CheckHint",
+      ctx: "check",
+    });
     if (this.actor.type === "hero") {
       actions.push({
         id: "item",
@@ -138,6 +146,31 @@ export default class ActionHandler {
     }
     else if (this.actor.type === "adversary") {
 
+    }
+    return items;
+  }
+
+  /**
+   * @return {AH_ContextMenuItem[]}
+   */
+  getChecks() {
+    /** @type AH_ContextMenuItem[] **/
+    let items = [];
+    items.push({
+      name: "AH.CHECK.Attribute",
+      icon: "ah-icon-check-attribute",
+      perform: async () => {
+        await CheckPrompt.attributeCheck(this.actor);
+      },
+    });
+    if (this.actor.type === "hero") {
+      items.push({
+        name: "AH.CHECK.Ritual",
+        icon: "ah-icon-check-ritual",
+        perform: async () => {
+          await CheckPrompt.ritualCheck(this.actor);
+        },
+      });
     }
     return items;
   }
@@ -220,5 +253,7 @@ export default class ActionHandler {
     }
     // MANEUVER
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
+    // CHECKS
+    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"check\"]", this.getChecks(), undefined);
   }
 }

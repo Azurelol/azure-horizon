@@ -20,7 +20,6 @@ export class CharacterSheet extends AHActorSheet {
     },
     actions: {
       rest: this.#rest,
-
     },
   };
 
