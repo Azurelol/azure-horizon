@@ -10,7 +10,9 @@
       {{/if}}
       data-tooltip="{{actor.name}}"
       height="100" width="100">
+  </div>
 
+  <div class="ah-character__sidebar__section">
     {{#if (eq actorType 'adversary') }}
       <div class="ah-character__title {{system.profile.rank}}">
         <span>{{localize (ahLocaleKey 'rank' system.profile.rank)}}</span>
@@ -42,20 +44,10 @@
     {{/if}}
   </div>
 
-  {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
-
   {{#if (eq actorType 'hero')}}
     {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-inventory.hbs"}}
   {{/if}}
 
-  <div class="ah-character__sidebar__section">
-    <div class="ah-button-group">
-      {{ahButton action='rest' data='type=short' size='sm' icon=(ahIconClass 'shortRest') tooltip='AH.INTERVAL.ShortRest.long'}}
-      {{ahButton action='rest' data='type=long' size='sm' icon=(ahIconClass 'longRest') tooltip='AH.INTERVAL.LongRest.long'}}
-        {{#if (eq actorType 'hero')}}
-          {{ahButton action='rest' data='type=resupply' size='sm' icon=(ahIconClass 'resupply') tooltip='AH.INTERVAL.Resupply.long'}}
-        {{/if}}
-    </div>
-  </div>
+  {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
 
 </aside>

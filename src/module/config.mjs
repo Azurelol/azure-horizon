@@ -1197,6 +1197,7 @@ AH.icons = {
   item: "ah-icon-inventory",
   equipment: "ah-icon-equipment",
   objective: "ah-icon-objective",
+  rest: "ah-icon-rest-long",
 
   maneuver: "ah-icon-maneuver",
   recover: "ah-icon-recover",

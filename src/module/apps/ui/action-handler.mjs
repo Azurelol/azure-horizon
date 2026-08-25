@@ -5,6 +5,7 @@ import { Formulas } from "../../ruleset/_module.mjs";
 import Actions from "../../pipelines/actions.mjs";
 import Checks from "../../pipelines/checks.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
+import AH from "../../config.mjs";
 
 /**
  * @desc Encapsulates basic character actions.
@@ -119,6 +120,12 @@ export default class ActionHandler {
         ctx: "item",
       });
     }
+    actions.push({
+      id: "rest",
+      label: "AH.ACTION.Rest",
+      tooltip: "AH.ACTION.RestHint",
+      ctx: "rest",
+    });
     return actions;
   }
 
@@ -141,6 +148,43 @@ export default class ActionHandler {
         icon: "ah-icon-recover",
         perform: async () => {
           await this.performRecovery();
+        },
+      });
+    }
+    else if (this.actor.type === "adversary") {
+
+    }
+    return items;
+  }
+
+  /**
+   * @return {AH_ContextMenuItem[]}
+   */
+  getRestActions() {
+    /** @type AH_ContextMenuItem[] **/
+    let items = [];
+
+    items.push({
+      name: "AH.INTERVAL.LongRest.long",
+      icon: AH.icons.longRest,
+      perform: async () => {
+        return this.actor.rest("long");
+      },
+    });
+
+    if (this.actor.type === "hero") {
+      items.push({
+        name: "AH.INTERVAL.ShortRest.long",
+        icon: AH.icons.shortRest,
+        perform: async () => {
+          return this.actor.rest("short");
+        },
+      });
+      items.push({
+        name: "AH.INTERVAL.Resupply.long",
+        icon: AH.icons.resupply,
+        perform: async () => {
+          return this.actor.rest("resupply");
         },
       });
     }
@@ -255,5 +299,7 @@ export default class ActionHandler {
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
     // CHECKS
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"check\"]", this.getChecks(), undefined);
+    // REST
+    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"rest\"]", this.getRestActions(), undefined);
   }
 }

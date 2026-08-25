@@ -51,7 +51,7 @@
     padding: 1rem;
     background: var(--ah-background-application-sidebar);
     background-blend-mode: color-burn;
-    gap: 1rem;
+    gap: 0.5rem;
 
     &.hero {
       /*background: var(--ah-hero-background-gradient);*/
@@ -123,6 +123,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      background: var(--ah-surface-entry-gradient);
 
       img {
         object-fit: fill;
