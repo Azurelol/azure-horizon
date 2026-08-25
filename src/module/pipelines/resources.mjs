@@ -278,6 +278,7 @@ function getExpenseAction(expense, sourceInfo) {
     .setFlag(AH.flags.ChatMessage.Resource)
     .withLabel(label)
     .withTraits(["loss"])
+    .notTargeted()
     .withSelected();
 }
 

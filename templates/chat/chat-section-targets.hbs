@@ -18,7 +18,9 @@
         <div class="ah-chat-section__target__actions">
           {{#each ../actions as |action|}}
             {{#if targeted}}
-              {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs' target=target }}
+              {{#unless (and (ahNotEmpty action.dataset.potency) (ahNotEquals action.dataset.potency target.potency)) }}
+                {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs' target=target }}
+              {{/unless}}
             {{/if}}
           {{/each}}
         </div>

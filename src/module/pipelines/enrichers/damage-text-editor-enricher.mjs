@@ -2,9 +2,11 @@ import { systemID } from "../../constants.mjs";
 import { HTMLUtils, StringUtils, TextEditorUtils } from "../../utils/_module.mjs";
 import AH, { scaleValue } from "../../config.mjs";
 import Targeting from "../../helpers/targeting.mjs";
-import { EvaluationContext } from "../../data/common/_module.mjs";
+import { EvaluationContext, SourceInfo } from "../../data/common/_module.mjs";
 import Flags from "../../data/common/flags.mjs";
 import { Damage, DamageData, DamageRequest, Expressions } from "../_module.mjs";
+
+const ID = "DamageTextEditorEnricher";
 
 /**
  * @param {RegExpMatchArray} match The text within a chat message that matches the given pattern
@@ -76,23 +78,62 @@ async function onRender(element) {
       await Damage.process(request);
     }
   });
+
+  // Handle dragstart
+  element.addEventListener("dragstart", async function (event) {
+    const sourceInfo = SourceInfo.resolve(document, renderContext.target);
+    const data = {
+      type: ID,
+      _sourceInfo: sourceInfo,
+      damageType: renderContext.dataset.type,
+      amount: renderContext.dataset.amount,
+      traits: renderContext.dataset.traits,
+    };
+
+    event.dataTransfer.setData("text/plain", JSON.stringify(data));
+    event.stopPropagation();
+  });
 }
 
 /**
  * @type TextEditorEnricherConfig
  */
 const config = {
-  id: "DamageTextEditorEnricher",
+  id: ID,
   pattern: TextEditorUtils.pattern("DMG", "\\s*(?<amount>\\(?.*?\\)*?)\\s(?<type>\\w+?)"),
   enricher,
   onRender,
 };
+
+async function onDropActor(actor, sheet, { type, damageType, amount, _sourceInfo, traits, ignore }) {
+  if (type === ID) {
+    // Need to rebuild the class after it was deserialized
+    const sourceInfo = SourceInfo.fromObject(_sourceInfo);
+    const context = EvaluationContext.fromSourceInfo(sourceInfo, [actor]);
+    const _amount = await Expressions.evaluateAsync(amount, context);
+    const damageData = DamageData.initialize(
+      {
+        type: damageType,
+        amount: _amount,
+      },
+    );
+
+    const request = new DamageRequest(sourceInfo, [actor], damageData);
+    if (traits) {
+      request.addTraits(...traits.split(","));
+    }
+
+    await Damage.process(request);
+    return false;
+  }
+}
 
 /**
  * @type {AH_TextEditorEnrichment}
  */
 const DamageTextEditorEnricher = Object.freeze({
   enrichers: [config],
+  onDropActor,
 });
 
 export default DamageTextEditorEnricher;

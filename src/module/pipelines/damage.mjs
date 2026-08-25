@@ -103,10 +103,11 @@ async function process(request) {
     const resourceField = subject.system.resources[resource];
 
     let amountBlocked = undefined;
+    let remainingBlock = undefined;
 
     if (resource === "hp") {
       if (resourceField.temporary > 0) {
-        let remainingBlock = resourceField.temporary - damageTaken;
+        remainingBlock = resourceField.temporary - damageTaken;
         if (remainingBlock < 0) {
           // Damage ate through all the block, reduce it and keep going
           damageTaken = Math.abs(remainingBlock);
@@ -128,7 +129,7 @@ async function process(request) {
     // If no damage was dealt or absorbed, exit early
     if (damageTaken === 0) {
       if (amountBlocked !== undefined) {
-        updates.push(subject.modifyTokenAttribute(`resources.${resource}.temporary`, -amountBlocked, true, false).then(async (result) => {
+        updates.push(subject.update({ [`system.resources.${resource}.temporary`]: remainingBlock }).then(async (result) => {
           ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ subject }),
             content: StringUtils.localize("AH.CHAT.DamageFullBlock", {
@@ -170,7 +171,7 @@ async function process(request) {
         };
 
         if (amountBlocked !== undefined) {
-          await subject.modifyTokenAttribute(`resources.${resource}.temporary`, -amountBlocked, true);
+          await subject.update({ [`system.resources.${resource}.temporary`]: remainingBlock });
         }
 
         await Events.applyDamage(request.sourceInfo, context.result, request.item, request.actor, subject, request.origin, renderData);
@@ -221,10 +222,10 @@ async function process(request) {
  * @param {DamageData} damageData
  * @param {SourceInfo} sourceInfo
  * @param {String[]} traits
- * @param includeLabel
+ * @param {PotencyActionOptions} options
  * @returns {ChatAction}
  */
-function getChatAction(damageData, sourceInfo, traits, includeLabel = true) {
+function getChatAction(damageData, sourceInfo, traits, options = { potency: undefined }) {
   const icon = AH.icons.damage;
   const resolved = damageData.resolved;
   const tooltip = StringUtils.localize("AH.CHAT.ACTION.ApplyDamageTooltip", {
@@ -237,10 +238,18 @@ function getChatAction(damageData, sourceInfo, traits, includeLabel = true) {
     traits: traits,
   })
     .setFlag(Flags.ChatMessage.Damage, resolved.total)
-    .withSelected()
     .withTraits(traits)
+    .withDataset({
+      potency: options.potency,
+    })
     .requiresOwner();
-  if (includeLabel) {
+  if (options.potency) {
+    action.withDataset({
+      potency: options.potency,
+    });
+  }
+  else {
+    action.withSelected();
     action.withLabel("AH.CHAT.ACTION.ApplyDamage");
   }
   return action;
@@ -343,7 +352,9 @@ const onProcessAction = async (config, actor, item) => {
       config.setPotency((tiers) => {
         // Standard
         const standardDamage = new DamageData(damage);
-        const standard = getChatAction(standardDamage, sourceInfo, traits, false);
+        const standard = getChatAction(standardDamage, sourceInfo, traits, {
+          potency: "standard",
+        });
         tiers.standard.components.push({
           text: standardDamage.toString(),
           actions: [standard],
@@ -355,7 +366,9 @@ const onProcessAction = async (config, actor, item) => {
             multiplicative: 0.5,
           });
         });
-        const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, false);
+        const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, {
+          potency: "reduced",
+        });
         tiers.reduced.components.push({
           text: reducedDamage.toString(),
           actions: [reducedAction],
@@ -368,7 +381,9 @@ const onProcessAction = async (config, actor, item) => {
             amount: primary,
           });
         });
-        const powerful = getChatAction(powerfulDamage, sourceInfo, traits, false);
+        const powerful = getChatAction(powerfulDamage, sourceInfo, traits, {
+          potency: "powerful",
+        });
         tiers.powerful.components.push({
           text: powerfulDamage.toString(),
           actions: [powerful],

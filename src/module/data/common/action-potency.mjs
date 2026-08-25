@@ -15,3 +15,8 @@
  * @property {ActionPotency} standard
  * @property {ActionPotency} powerful
  */
+
+/**
+ * @typedef PotencyActionOptions
+ * @property {AH_Potency} potency
+ */

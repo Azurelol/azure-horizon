@@ -185,7 +185,7 @@ export default class ChatAction {
    */
   static async getTargetsFromAction(dataset) {
     let targets = [];
-    let actorId = dataset ? (dataset.actorId ?? dataset.id) : undefined;
+    let actorId = dataset ? (dataset.actorId ?? dataset.uuid) : undefined;
     if (actorId) {
       const actor = await fromUuid(actorId);
       targets.push(actor);
