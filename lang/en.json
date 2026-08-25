@@ -544,6 +544,8 @@
       }
     },
     "DOCUMENT": {
+      "Revision": "Revision",
+      "Slug": "Slug",
       "Actor": {
         "long": "Actor",
         "plural": "Actors"

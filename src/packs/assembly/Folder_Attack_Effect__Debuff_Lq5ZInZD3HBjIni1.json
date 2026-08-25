@@ -1,23 +1,23 @@
 {
   "type": "Item",
   "folder": null,
-  "name": "Actions: Shift",
-  "color": "#4d4dff",
+  "name": "Attack Effect: Debuff",
+  "color": "#ff6f6f",
   "sorting": "a",
-  "_id": "WmAnZ22X7yYF0thM",
+  "_id": "Lq5ZInZD3HBjIni1",
   "description": "",
-  "sort": 700000,
+  "sort": 1400000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786633829651,
+    "createdTime": 1786633684508,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!WmAnZ22X7yYF0thM"
+  "_key": "!folders!Lq5ZInZD3HBjIni1"
 }

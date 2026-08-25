@@ -2,11 +2,11 @@
   "type": "ActiveEffect",
   "folder": null,
   "name": "Equipment",
-  "color": null,
+  "color": "#a4a4a4",
   "sorting": "a",
   "_id": "UsnzdJNxHchHCrck",
   "description": "",
-  "sort": 0,
+  "sort": 400000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

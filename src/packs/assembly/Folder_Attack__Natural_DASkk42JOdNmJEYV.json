@@ -1,23 +1,23 @@
 {
   "type": "Item",
   "folder": null,
-  "name": "Attacks: Restoration",
+  "name": "Attack: Natural",
   "color": "#ff4a4a",
   "sorting": "a",
-  "_id": "e82tKnaKEGcFdFN5",
+  "_id": "DASkk42JOdNmJEYV",
   "description": "",
-  "sort": 1800000,
+  "sort": 2000000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786633703101,
+    "createdTime": 1786632086276,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!e82tKnaKEGcFdFN5"
+  "_key": "!folders!DASkk42JOdNmJEYV"
 }

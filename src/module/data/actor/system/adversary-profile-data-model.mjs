@@ -37,6 +37,23 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
       rank: new StringField({ initial: "standard", choices: Object.keys(AH.rank) }),
       turns: new NumberField({ initial: 1, min: 0, max: 6 }),
       summary: new HTMLField(),
+      revision: new NumberField({
+        required: true,
+        nullable: false,
+        initial: 1,
+        label: "AH.DOCUMENT.Revision",
+        integer: true,
+        config: false,
+      }),
+      slug: new StringField({
+        required: false,
+        blank: true,
+        initial: "",
+        config: false,
+        label: "AH.DOCUMENT.Slug",
+        validate: (value) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value),
+      }),
+      // TODO: Remove?
       modifiers: new EmbeddedDataField(AdversaryModifiersDataModel, {}),
     });
   }

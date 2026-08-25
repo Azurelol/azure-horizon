@@ -1,23 +1,23 @@
 {
   "type": "Item",
   "folder": null,
-  "name": "Attacks",
+  "name": "Attack: Weapon",
   "color": "#ff4a4a",
   "sorting": "a",
-  "_id": "PTM8xnPFvQbxAn2V",
+  "_id": "1oMYnwqUn6bIOlye",
   "description": "",
-  "sort": 1200000,
+  "sort": 1900000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786629676968,
+    "createdTime": 1786631886943,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!PTM8xnPFvQbxAn2V"
+  "_key": "!folders!1oMYnwqUn6bIOlye"
 }

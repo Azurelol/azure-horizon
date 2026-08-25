@@ -30,7 +30,8 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
         label: "AH.ADVERSARY.Intent",
         _part: "header",
       }),
-      weight: new StringField({ initial: "",
+      weight: new StringField({
+        initial: "normal",
         choices: Object.keys(AH.weights),
         formOptions: getFormSelectOptions(AH.weights),
         blank: true,

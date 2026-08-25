@@ -1,0 +1,101 @@
+{
+  "folder": "xJDqS1SeQo6c2Mme",
+  "name": "Guard",
+  "type": "ability",
+  "_id": "Zh10ESATUJZjeJCa",
+  "img": "icons/skills/melee/hand-grip-staff-blue.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "ability-riposte",
+    "description": "<p>You gain a minor amount of <strong>Block</strong> and <strong>Riposte</strong>.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "riposte"
+      ],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "intent": "fortify",
+    "weight": "",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "cooldown"
+      ]
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787649820560,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Zh10ESATUJZjeJCa"
+}

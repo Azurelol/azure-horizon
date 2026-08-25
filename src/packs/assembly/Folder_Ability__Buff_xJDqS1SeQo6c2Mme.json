@@ -1,10 +1,10 @@
 {
   "type": "Item",
-  "folder": "PTM8xnPFvQbxAn2V",
-  "name": "Weapon",
-  "color": "#ff8080",
+  "folder": null,
+  "name": "Ability: Buff",
+  "color": "#4d4dff",
   "sorting": "a",
-  "_id": "1oMYnwqUn6bIOlye",
+  "_id": "xJDqS1SeQo6c2Mme",
   "description": "",
   "sort": 0,
   "flags": {},
@@ -12,12 +12,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786631886943,
+    "createdTime": 1787649679897,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!1oMYnwqUn6bIOlye"
+  "_key": "!folders!xJDqS1SeQo6c2Mme"
 }

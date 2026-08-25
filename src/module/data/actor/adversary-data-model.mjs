@@ -116,6 +116,14 @@ async function assemble(actor, newRole, newLevel) {
 
 Hooks.on("preUpdateActor", async (document, changed) => {
   if (document.system instanceof AdversaryDataModel) {
+
+    // If rank changed
+    const newRank = ObjectUtils.getProperty(changed, "system.rank");
+    if (newRank) {
+      assemble(document, document.system.role, undefined);
+      return;
+    }
+
     // If role or level changed
     const newRole = ObjectUtils.getProperty(changed, "system.profile.role");
     let roleChanged = (newRole !== undefined) && (newRole !== document.system.role);

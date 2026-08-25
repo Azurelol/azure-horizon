@@ -1,23 +1,23 @@
 {
   "type": "Item",
   "folder": null,
-  "name": "Attacks: Control",
-  "color": "#ff4a4a",
+  "name": "Attack Effect: Restoration",
+  "color": "#ff6f6f",
   "sorting": "a",
-  "_id": "j0w8uqsQuFe6CMb0",
+  "_id": "e82tKnaKEGcFdFN5",
   "description": "",
-  "sort": 1300000,
+  "sort": 1800000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786633550679,
+    "createdTime": 1786633703101,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!j0w8uqsQuFe6CMb0"
+  "_key": "!folders!e82tKnaKEGcFdFN5"
 }

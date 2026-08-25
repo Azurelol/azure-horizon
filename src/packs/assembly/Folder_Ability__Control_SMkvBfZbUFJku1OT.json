@@ -1,23 +1,23 @@
 {
   "type": "Item",
   "folder": null,
-  "name": "Attacks: Persistent Damage",
-  "color": "#ff4a4a",
+  "name": "Ability: Control",
+  "color": "#4d4dff",
   "sorting": "a",
-  "_id": "q5RmBNjKaXEHpHo1",
+  "_id": "SMkvBfZbUFJku1OT",
   "description": "",
-  "sort": 1600000,
+  "sort": 300000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786633697989,
+    "createdTime": 1787196019354,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!q5RmBNjKaXEHpHo1"
+  "_key": "!folders!SMkvBfZbUFJku1OT"
 }

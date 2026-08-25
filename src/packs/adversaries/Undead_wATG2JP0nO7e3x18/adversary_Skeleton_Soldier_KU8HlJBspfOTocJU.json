@@ -7,7 +7,7 @@
   "system": {
     "attributes": {
       "mig": {
-        "base": 8,
+        "base": 6,
         "bonus": 0
       },
       "dex": {
@@ -15,11 +15,11 @@
         "bonus": 0
       },
       "ins": {
-        "base": 8,
+        "base": 4,
         "bonus": 0
       },
       "wlp": {
-        "base": 8,
+        "base": 4,
         "bonus": 0
       }
     },
@@ -395,7 +395,9 @@
       "role": "harrier",
       "villain": false,
       "rank": "standard",
-      "turns": 1
+      "turns": 1,
+      "slug": "adversary-skeleton-soldier",
+      "summary": ""
     }
   },
   "prototypeToken": {
@@ -547,6 +549,102 @@
       "folder": null,
       "sort": 0,
       "_key": "!actors.items!KU8HlJBspfOTocJU.vEwad0pqoqOdnDJy"
+    },
+    {
+      "name": "Heavy Blow",
+      "type": "ability",
+      "_id": "PjB3UyI3B4cUnuf6",
+      "img": "icons/skills/melee/strike-flail-destructive-yellow.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "ability-heavy-blow",
+        "description": "",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "high",
+        "intent": "damage",
+        "action": {
+          "schemaVersion": 1,
+          "range": "",
+          "type": "action",
+          "points": 2,
+          "traits": []
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": true,
+          "damage": true
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787629032715,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.PjB3UyI3B4cUnuf6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KU8HlJBspfOTocJU.PjB3UyI3B4cUnuf6"
     }
   ],
   "effects": [],

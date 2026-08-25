@@ -1,12 +1,12 @@
 {
   "type": "Item",
   "folder": null,
-  "name": "Actions: Setup",
+  "name": "Ability: Preparation",
   "color": "#4d4dff",
   "sorting": "a",
   "_id": "VxfouSCvmBieccNO",
   "description": "",
-  "sort": 500000,
+  "sort": 900000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

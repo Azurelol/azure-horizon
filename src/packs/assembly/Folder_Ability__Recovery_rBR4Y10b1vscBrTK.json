@@ -1,23 +1,23 @@
 {
   "type": "Item",
   "folder": null,
-  "name": "Attacks: Debuff",
-  "color": "#ff4a4a",
+  "name": "Ability: Recovery",
+  "color": "#4d4dff",
   "sorting": "a",
-  "_id": "Lq5ZInZD3HBjIni1",
+  "_id": "rBR4Y10b1vscBrTK",
   "description": "",
-  "sort": 1400000,
+  "sort": 1100000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786633684508,
+    "createdTime": 1786633834681,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!Lq5ZInZD3HBjIni1"
+  "_key": "!folders!rBR4Y10b1vscBrTK"
 }

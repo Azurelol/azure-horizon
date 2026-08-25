@@ -1,23 +1,23 @@
 {
-  "type": "Item",
-  "folder": "PTM8xnPFvQbxAn2V",
-  "name": "Cantrip",
-  "color": "#ff8080",
+  "type": "ActiveEffect",
+  "folder": null,
+  "name": "Equipment: Qualities",
+  "color": "#a4a4a4",
   "sorting": "a",
-  "_id": "VhlcaMe6gctxzSqF",
+  "_id": "tgTpmCT46vRYAt0Y",
   "description": "",
-  "sort": 0,
+  "sort": 350000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786632466800,
+    "createdTime": 1786721643872,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!VhlcaMe6gctxzSqF"
+  "_key": "!folders!tgTpmCT46vRYAt0Y"
 }

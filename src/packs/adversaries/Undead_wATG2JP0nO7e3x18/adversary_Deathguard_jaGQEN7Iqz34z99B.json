@@ -1,17 +1,45 @@
 {
   "folder": "wATG2JP0nO7e3x18",
-  "name": "Zombie",
+  "name": "Deathguard",
   "type": "adversary",
-  "_id": "pQrVfMl2njPdNV27",
+  "_id": "jaGQEN7Iqz34z99B",
   "img": "icons/svg/mystery-man.svg",
   "system": {
+    "level": 20,
+    "resources": {
+      "schemaVersion": 1,
+      "hp": {
+        "schemaVersion": 1,
+        "value": 1000,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "mp": {
+        "schemaVersion": 1,
+        "value": 40,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "ip": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "tp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      }
+    },
     "attributes": {
       "mig": {
-        "base": 6,
+        "base": 8,
         "bonus": 0
       },
       "dex": {
-        "base": 8,
+        "base": 4,
         "bonus": 0
       },
       "ins": {
@@ -51,7 +79,7 @@
         "amount": null
       },
       "fire": {
-        "preset": "",
+        "preset": "vulnerability",
         "type": "additive",
         "amount": null
       },
@@ -71,7 +99,7 @@
         "amount": null
       },
       "light": {
-        "preset": "",
+        "preset": "vulnerability",
         "type": "additive",
         "amount": null
       },
@@ -81,7 +109,6 @@
         "amount": null
       }
     },
-    "level": 5,
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -359,49 +386,25 @@
         "schemaVersion": 1
       }
     },
-    "resources": {
-      "schemaVersion": 1,
-      "hp": {
-        "schemaVersion": 1,
-        "value": 25,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "mp": {
-        "schemaVersion": 1,
-        "value": 25,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "ip": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "tp": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      }
-    },
     "profile": {
       "schemaVersion": 1,
       "traits": [
         "undead"
       ],
       "family": "standard",
-      "role": "harrier",
+      "role": "brute",
       "villain": false,
-      "rank": "standard",
+      "rank": "elite",
       "turns": 1,
-      "slug": "adversary-zombie",
-      "summary": ""
+      "summary": "",
+      "modifiers": {
+        "schemaVersion": 1
+      },
+      "slug": "adversary-deathguard"
     }
   },
   "prototypeToken": {
-    "name": "Zombie",
+    "name": "Deathguard",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
@@ -494,39 +497,81 @@
   },
   "items": [
     {
-      "name": "Fist",
-      "type": "attack",
-      "_id": "Lah7ZwkaipeUFaIo",
-      "img": "icons/skills/melee/unarmed-punch-fist.webp",
+      "name": "Shadow Strike",
+      "type": "ability",
+      "_id": "PBzIlccVjMPROeaz",
+      "img": "icons/magic/unholy/hand-weapon-glow-black-green.webp",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "attack-fist",
-        "description": "",
-        "check": {
+        "slug": "shadow-strike",
+        "description": "<p>You deal a high amount of physical damage to the target.</p>",
+        "attributes": {
           "schemaVersion": 1,
-          "enabled": true,
           "primary": "dex",
           "secondary": "mig",
-          "defense": "def",
-          "bonus": ""
+          "grade": "C"
         },
-        "range": "melee",
-        "traits": [],
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
         "damage": {
           "schemaVersion": 1,
-          "enabled": true,
+          "enabled": false,
           "primary": {
             "amount": "",
-            "type": "bludgeoning"
+            "type": "untyped"
           },
           "secondary": {
             "amount": "",
             "type": ""
           },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "high",
+        "intent": "damage",
+        "weight": "",
+        "action": {
+          "schemaVersion": 1,
+          "range": "",
+          "type": "",
+          "points": 1,
           "traits": [
-            "nonLethal"
+            "stress"
           ]
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": true,
+          "check": true,
+          "damage": true
         }
       },
       "effects": [],
@@ -535,10 +580,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1786645353915,
+        "createdTime": 1787648748030,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.Lah7ZwkaipeUFaIo",
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.PBzIlccVjMPROeaz",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -548,32 +593,134 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!pQrVfMl2njPdNV27.Lah7ZwkaipeUFaIo"
+      "_key": "!actors.items!jaGQEN7Iqz34z99B.PBzIlccVjMPROeaz"
     },
     {
-      "name": "Grab",
+      "name": "Swipe",
       "type": "ability",
-      "_id": "jOxT3nj8KsqPEuRN",
-      "img": "icons/creatures/claws/claw-talons-glowing-purple.webp",
+      "_id": "EMxpXDZiOiPfQgBv",
+      "img": "icons/skills/melee/strike-sword-steel-yellow.webp",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "ability-grab",
-        "description": "<p>You attack the target with the intent to grab them.</p>",
-        "check": {
+        "slug": "ability-swipe",
+        "description": "<p>You attack the target and two adjacent allies in the same row.</p>",
+        "attributes": {
           "schemaVersion": 1,
-          "enabled": true,
           "primary": "dex",
           "secondary": "mig",
-          "defense": "mig",
-          "bonus": ""
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
         },
         "damage": {
           "schemaVersion": 1,
-          "enabled": true,
+          "enabled": false,
           "primary": {
             "amount": "",
-            "type": "bludgeoning"
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "moderate",
+        "intent": "damage",
+        "weight": "",
+        "action": {
+          "schemaVersion": 1,
+          "range": "melee",
+          "type": "action",
+          "points": 2,
+          "traits": []
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": true,
+          "damage": true
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787649435598,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.EMxpXDZiOiPfQgBv",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!jaGQEN7Iqz34z99B.EMxpXDZiOiPfQgBv"
+    },
+    {
+      "name": "Guard",
+      "type": "ability",
+      "_id": "Zh10ESATUJZjeJCa",
+      "img": "icons/skills/melee/hand-grip-staff-blue.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "ability-riposte",
+        "description": "<p>You gain a minor amount of <strong>Block</strong> and <strong>Riposte</strong>.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
           },
           "secondary": {
             "amount": "",
@@ -597,17 +744,32 @@
         "effects": {
           "schemaVersion": 1,
           "enabled": true,
+          "selector": "buff",
           "entries": [
-            "grabbed"
+            "riposte"
           ],
           "duration": {
             "event": "",
             "tracking": ""
           }
         },
-        "intent": "",
+        "power": "",
+        "intent": "fortify",
+        "weight": "",
         "action": {
-          "type": "action"
+          "schemaVersion": 1,
+          "range": "",
+          "type": "action",
+          "points": 2,
+          "traits": [
+            "cooldown"
+          ]
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": false,
+          "damage": false
         }
       },
       "effects": [],
@@ -616,10 +778,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1786646255165,
+        "createdTime": 1787650158509,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.jOxT3nj8KsqPEuRN",
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.Zh10ESATUJZjeJCa",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -629,7 +791,68 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!pQrVfMl2njPdNV27.jOxT3nj8KsqPEuRN"
+      "_key": "!actors.items!jaGQEN7Iqz34z99B.Zh10ESATUJZjeJCa"
+    },
+    {
+      "name": "Greatsword",
+      "type": "attack",
+      "_id": "pb2NglAGh5h49ftH",
+      "img": "icons/weapons/swords/greatsword-evil-green.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "attack-greatsword",
+        "description": "",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "A"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "range": "melee",
+        "traits": [],
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "",
+            "type": "slashing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787650441310,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.pb2NglAGh5h49ftH",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!jaGQEN7Iqz34z99B.pb2NglAGh5h49ftH"
     }
   ],
   "effects": [],
@@ -642,12 +865,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786645284439,
+    "createdTime": 1787647902598,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!pQrVfMl2njPdNV27"
+  "_key": "!actors!jaGQEN7Iqz34z99B"
 }

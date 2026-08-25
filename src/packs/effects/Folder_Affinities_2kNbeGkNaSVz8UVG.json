@@ -1,23 +1,23 @@
 {
-  "type": "Item",
-  "folder": "PTM8xnPFvQbxAn2V",
-  "name": "Natural",
-  "color": "#ff8080",
+  "type": "ActiveEffect",
+  "folder": null,
+  "name": "Affinities",
+  "color": "#400080",
   "sorting": "a",
-  "_id": "DASkk42JOdNmJEYV",
+  "_id": "2kNbeGkNaSVz8UVG",
   "description": "",
-  "sort": 0,
+  "sort": 100000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786632086276,
+    "createdTime": 1786721678894,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!DASkk42JOdNmJEYV"
+  "_key": "!folders!2kNbeGkNaSVz8UVG"
 }
