@@ -110,31 +110,22 @@ async function addSections(builderData, config, actor, item) {
 
   // TODO: Should it be here or?
   // TARGETS
-  if (config.check.type === "action") {
-    const targets = config.getTargets();
-    const isTargeted = targets.length > 0;
-    if (isTargeted) {
-      if (config.isDefenseCheck) {
-        const defendAction = getDefenseCheckAction(config, actor, item);
-        builderData.actions.push(defendAction);
-        ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
-      }
-      else {
-        // Add potency actions (will match targets by result)
+  const targets = config.getTargets();
+  const isTargeted = targets.length > 0;
+  if (isTargeted) {
+    if (config.isDefenseCheck) {
+      const defendAction = getDefenseCheckAction(config, actor, item);
+      builderData.actions.push(defendAction);
+      ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
+    }
+    else {
+      // Add potency actions (will match targets by result)
+      if (config.potencies) {
         builderData.actions.push(...config.potencies.reduced.components.flatMap(c => c.actions));
         builderData.actions.push(...config.potencies.standard.components.flatMap(c => c.actions));
         builderData.actions.push(...config.potencies.powerful.components.flatMap(c => c.actions));
-
-        // TODO: Add target?
-        // const targetAction = ChatAction.TARGET_ACTION;
-        // builderData.actions.push(targetAction);
-        ChatMessageSections.targets(builderData.sections, targets, builderData.actions);
       }
-
-      for (const target of targets) {
-
-      }
-
+      ChatMessageSections.targets(builderData.sections, targets, builderData.actions);
     }
   }
 
@@ -268,6 +259,7 @@ async function perform(actor, item, prepare) {
     sourceInfo: SourceInfo.fromInstance(actor, item),
   };
   const config = new ActionConfig(action);
+  config.setDefaultTargets();
   await prepare(config, actor, item);
   await Events.performAction(config, actor, item);
   await AsyncHooks.invokeWithCallbacks(AH.hooks.PROCESS_ACTION, config, actor, item);

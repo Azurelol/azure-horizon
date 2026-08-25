@@ -102,7 +102,7 @@ export class ActionInspector {
    * @returns {boolean}
    */
   get isCheck() {
-    return this.#action.type !== undefined;
+    return this.#action.type === "action";
   }
 
   /**
@@ -570,9 +570,10 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
+   * @param {AH_Potency} potency If set, it will override the calculation.
    * @remarks Invoked whenever targets or targeted defense change
    */
-  updateTargetResults() {
+  updateTargetResults(potency) {
     // A PC-facing defense check is handled differently
     if (this.isDefenseCheck) {
       return;
@@ -580,6 +581,15 @@ export class ActionConfig extends ActionInspector {
 
     const targets = this.getTargets();
     if (targets?.length) {
+      // If overriding potency
+      if (potency) {
+        for (let t = 0; t < targets.length; t++) {
+          this.check.data[TARGETS][t].potency = potency;
+        }
+        return;
+      }
+
+      // If there's an actual check
       if (!this.check.total) {
         return;
       }

@@ -243,15 +243,25 @@ function getChatAction(damageData, sourceInfo, traits, options = { potency: unde
       potency: options.potency,
     })
     .requiresOwner();
+
   if (options.potency) {
     action.withDataset({
       potency: options.potency,
     });
+
+    if (options.selected) {
+      action.withSelected();
+    }
+
+    if (options.label) {
+      action.withLabel("AH.CHAT.ACTION.ApplyDamage");
+    }
   }
   else {
     action.withSelected();
     action.withLabel("AH.CHAT.ACTION.ApplyDamage");
   }
+
   return action;
 }
 
@@ -391,7 +401,12 @@ const onProcessAction = async (config, actor, item) => {
       });
     }
     else {
-      config.addAction(getChatAction(damage, sourceInfo, traits, true));
+      config.updateTargetResults("standard");
+      config.addAction(getChatAction(damage, sourceInfo, traits, {
+        potency: "standard",
+        selected: true,
+        label: true,
+      }));
     }
   }
 };
