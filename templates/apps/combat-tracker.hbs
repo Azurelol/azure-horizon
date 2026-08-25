@@ -46,11 +46,11 @@
       {{/if}}
 
       {{!-- Initiative / Intents --}}
-      <div class="token-initiative">
+      <div class="token-initiative" {{#if intent}}data-tooltip="{{ahCapitalize intent.type}}"{{/if}} >
         {{log 'COMBATANT:' this}}
         {{!-- Display Initiative --}}
         {{#if initiative}}
-          <i class="ah-icon --sm {{ahIconClass intent.type record="intents"}}" data-tooltip="{{intent.type}}"></i>
+          <i class="ah-icon --sm {{ahIconClass intent.type record="intents"}}"></i>
           {{#if intent.targets}}
             {{#each intent.targets}}
               <img class="intent-target" src="{{ img }}" alt="{{ name }}" loading="lazy">

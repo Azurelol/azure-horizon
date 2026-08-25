@@ -213,10 +213,10 @@ function onRenderChatMessage(message, html) {
 
 /**
  * @param {ResourceRequest} request
- * @param {Boolean} includeLabel
+ * @param {PotencyActionOptions} options
  * @returns {ChatAction}
  */
-function getChatAction(request, includeLabel = true) {
+function getChatAction(request, options = {}) {
   let resourceIcon;
   if (request.data.temp && (request.resource === "hp")) {
     resourceIcon = AH.icons.thp;
@@ -232,7 +232,7 @@ function getChatAction(request, includeLabel = true) {
     resource: StringUtils.localize(request.data.temp ? AH.resourceTypes[request.resource].temporary : AH.resourceTypes[request.resource].label),
   });
 
-  const ca = new ChatAction("updateResource", resourceIcon, tooltip, {
+  const action = new ChatAction("updateResource", resourceIcon, tooltip, {
     type: request.resource,
     data: request.data,
     sourceInfo: request.sourceInfo,
@@ -241,14 +241,27 @@ function getChatAction(request, includeLabel = true) {
     .requiresOwner()
     .setFlag(AH.flags.ChatMessage.Resource)
     .withColor(request.gain ? "var(--color-hp)" : "var(--color-hp-crisis)")
-    .withTraits(Array.from(request.traits))
-    .withSelected();
+    .withTraits(Array.from(request.traits));
 
-  if (includeLabel) {
-    ca.withLabel(label);
+  if (options.potency) {
+    action.withDataset({
+      potency: options.potency,
+    });
+
+    if (options.selected) {
+      action.withSelected();
+    }
+
+    if (options.label) {
+      action.withLabel(label);
+    }
+  }
+  else {
+    action.withSelected();
+    action.withLabel(label);
   }
 
-  return ca;
+  return action;
 }
 
 /**
@@ -320,15 +333,16 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
       if (config.isCheck) {
         config.setPotency(potency => {
           potency.standard.components.push({
-            actions: [getChatAction(request, false)],
+            actions: [getChatAction(request, {
+              potency: "standard",
+            })],
           });
           potency.powerful.components.push({
-            actions: [getChatAction(request, false)],
+            actions: [getChatAction(request, {
+              potency: "powerful",
+            })],
           });
         });
-      }
-      else {
-
       }
     }
   }

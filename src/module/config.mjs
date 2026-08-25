@@ -589,10 +589,10 @@ AH.intents = Object.freeze({
   unknown: { label: "AH.ACTION.Intent.Unknown", icon: "ra ra-uncertainty" },
   attack: { label: "AH.ADVERSARY.INTENT.Attack", icon: "ra ra-sword" }, // Base attack
 
-  damage: { label: "AH.ADVERSARY.INTENT.Damage", icon: "ra ra-plain-dagger" }, // Damaging ability
+  damage: { label: "AH.ADVERSARY.INTENT.Damage", icon: "ra ra-all-for-one" }, // Damaging ability
   empower: { label: "AH.ADVERSARY.INTENT.Empower", icon: "ra ra-fire-symbol" }, // Offensive buff
-  weaken: { label: "AH.ADVERSARY.INTENT.Weaken", icon: "ra ra-fire-symbol" }, // Offensive debuff
-  fortify: { label: "AH.ADVERSARY.INTENT.Fortify", icon: "ra ra-shield" }, // Defensive buff
+  weaken: { label: "AH.ADVERSARY.INTENT.Weaken", icon: "ra ra-cracked-shield" }, // Offensive debuff
+  fortify: { label: "AH.ADVERSARY.INTENT.Fortify", icon: "ra ra-bolt-shield" }, // Defensive buff
   breach: { label: "AH.ADVERSARY.INTENT.Breach", icon: "ra ra-cracked-shield" }, // Defensive debuff
   status: { label: "AH.ADVERSARY.INTENT.Status", icon: "ra ra-poison-bottle" }, // Status effect
   control: { label: "AH.ADVERSARY.INTENT.Control", icon: "ra ra-hypnotized-eye" }, // Controlling ability
