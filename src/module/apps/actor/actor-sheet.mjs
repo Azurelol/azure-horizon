@@ -42,7 +42,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
         {
           action: "migrateItems",
           icon: "fa-regular fa-refresh",
-          label: "AH.COMMON.MigrateItems",
+          label: "AH.COMMON.PropagateItem",
           ownership: "OWNER",
           visible: () => {
             return game.user.isGM;

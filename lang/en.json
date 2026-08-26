@@ -750,7 +750,9 @@
       "CompendiumItem": "Compendium Item",
       "Adversaries": "Adversaries",
       "MigrateActor": "Migrate Actor",
-      "MigrateItems": "Migrate Items"
+      "MigrateItems": "Migrate Items",
+      "PushUpdate": "Push Update",
+      "PullUpdate": "Pull Update"
     },
     "EQUIPMENT": {
       "Rarity": "Rarity",

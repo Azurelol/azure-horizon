@@ -3,7 +3,7 @@ import { systemTemplatePath } from "../../constants.mjs";
 import * as fields from "../../data/item/fields/_module.mjs";
 import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
-import { Dialogs } from "../../helpers/_module.mjs";
+import { Dialogs, Migrations } from "../../helpers/_module.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -21,6 +21,26 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
     },
     window: {
       resizable: true,
+      controls: [
+        {
+          action: "pushUpdate",
+          icon: "fa-solid fa-arrow-up-right-from-square",
+          label: "AH.COMMON.PushUpdate",
+          ownership: "OWNER",
+          visible: () => {
+            return game.user.isGM;
+          },
+        },
+        {
+          action: "pullUpdate",
+          icon: "fa-solid fa-cloud-arrow-down",
+          label: "AH.COMMON.PullUpdate",
+          ownership: "OWNER",
+          visible: () => {
+            return game.user.isGM;
+          },
+        },
+      ],
     },
     classes: ["ah-application", "ah-sheet", "ah-item"],
     actions: {
@@ -31,6 +51,9 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
 
       addArrayElement: AHItemSheet.#addArrayElement,
       removeArrayElement: AHItemSheet.#removeArrayElement,
+
+      pushUpdate: AHItemSheet.#pushUpdate,
+      pullUpdate: AHItemSheet.#pullUpdate,
 
       changeType: AHItemSheet.#changeType,
     },
@@ -263,6 +286,29 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         await system.changeFeature(selectedType);
       }
     }
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #pushUpdate(event, target) {
+    if (!this.item.pack) {
+      ui.notifications.warn("Only available for items in compendiums.");
+      return;
+    }
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #pullUpdate(event, target) {
+
   }
 
   /**

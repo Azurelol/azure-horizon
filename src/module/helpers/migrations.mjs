@@ -156,12 +156,30 @@ async function migrateItems(actor) {
  * @returns {Promise<void>}
  */
 async function migrateActor(actor) {
+}
 
+/**
+ * Pushes an update to all items that share this one's slug.
+ * @param {AHItem} item
+ * @returns {Promise<void>}
+ */
+async function pushItemUpdate(item) {
+}
+
+/**
+ * Pushes an update to all items that share this one's slug.
+ * @param {AHItem} item
+ * @returns {Promise<void>}
+ */
+async function pullItemUpdate(item) {
 }
 
 const Migrations = Object.freeze({
   migrateItems,
   migrateActor,
+
+  pushItemUpdate,
+  pullItemUpdate,
 });
 
 export default Migrations;

@@ -1281,6 +1281,10 @@ AH.icons = {
   send: "fas fa-comment",
   equip: "fa fa-hand-fist",
   unequip: "fa fa-hand",
+
+  push: "fa-solid fa-arrow-up-right-from-square",
+  pull: "fa-solid fa-cloud-arrow-down",
+
 };
 
 export default AH;
