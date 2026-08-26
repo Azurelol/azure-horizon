@@ -1,5 +1,5 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
-import { systemTemplatePath } from "../../constants.mjs";
+import { isCompendiumEntry, systemTemplatePath } from "../../constants.mjs";
 import * as fields from "../../data/item/fields/_module.mjs";
 import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
@@ -289,26 +289,27 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   }
 
   /**
-   * @this AHActorSheet
+   * @this AHItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise<void>}
    */
   static async #pushUpdate(event, target) {
-    if (!this.item.pack) {
+    if (!isCompendiumEntry(this.item)) {
       ui.notifications.warn("Only available for items in compendiums.");
       return;
     }
+    return Migrations.pushItemUpdate(this.item);
   }
 
   /**
-   * @this AHActorSheet
+   * @this AHItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise<void>}
    */
   static async #pullUpdate(event, target) {
-
+    return Migrations.pullItemUpdate(this.item);
   }
 
   /**

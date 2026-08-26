@@ -98,6 +98,14 @@ export function isItemType(document) {
 }
 
 /**
+ * @param document
+ * @returns {Boolean} True if the given document is a compendium entry.
+ */
+export function isCompendiumEntry(document) {
+  return document.pack;
+}
+
+/**
  * @param {Boolean} condition
  * @param {String} message
  */

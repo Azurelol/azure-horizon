@@ -1,6 +1,7 @@
-import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
+import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { CompendiumIndex } from "../data/compendium/_module.mjs";
 import Dialogs from "./dialogs.mjs";
+import { isCompendiumEntry, isItemType } from "../constants.mjs";
 
 /**
  * @typedef ItemMigrationAction
@@ -11,12 +12,18 @@ import Dialogs from "./dialogs.mjs";
 
 /**
  * @desc Migrates the data of an item onto another.
- * @param {AHItem} sourceItem
+ * @param {AHItem|CompendiumIndexEntry} sourceItem
  * @param {AHItem} targetItem
  * @returns {Promise}
  * @async
  */
 async function migrateItem(sourceItem, targetItem) {
+
+  // Load the item if it's an entry
+  if (isCompendiumEntry(sourceItem)) {
+    sourceItem = await fromUuid(sourceItem.uuid);
+  }
+
   // Gather retained data model properties
   const retainedFields = {};
   for (const fieldPath of targetItem.system.retainedFieldPaths) {
@@ -78,6 +85,22 @@ async function migrateItem(sourceItem, targetItem) {
 }
 
 /**
+ * @param {AHItem|CompendiumIndexEntry} sourceItem
+ * @param {AHItem} targetItem
+ * @returns {{item, compendiumItem, procedure: ((function(): Promise<void>)|*)}}
+ */
+function constructAction(sourceItem, targetItem) {
+  const procedure = async () => {
+    await migrateItem(sourceItem, targetItem);
+  };
+  return {
+    item: targetItem,
+    compendiumItem: sourceItem,
+    procedure,
+  };
+}
+
+/**
  * @param {AHItem[]} items
  * @returns {Promise<ItemMigrationAction[]>}
  */
@@ -94,36 +117,25 @@ async function getItemMigrationActions(items) {
       if (!compendiumItem) {
         continue;
       }
-      const procedure = async () => {
-        await migrateItem(compendiumItem, item);
-      };
-      updates.push({
-        item: item,
-        compendiumItem: compendiumItem,
-        procedure,
-      });
+      updates.push(constructAction(compendiumItem, item));
+
     }
   }
   return updates;
 }
 
 /**
- * Prompts a migration action for all items in the actor that come from a compendium entry.
- * @param {AHActor} actor
- * @returns {Promise<void>}
+ * @param {String} messageStr
+ * @param {ItemMigrationAction[]} updates
+ * @return {Promise}
  */
-async function migrateItems(actor) {
-  /** @type AHItem[] **/
-  let items = Array.from(actor.items.values()).sort((a, b) => a.name.localeCompare(b.name));
-  /** @type ItemMigrationAction[] **/
-  const updates = await getItemMigrationActions(items);
-
+async function promptMigration(messageStr, updates) {
   if (updates.length > 0) {
-    const message = StringUtils.localize("AH.DIALOG.CompendiumMigrateActorItemsMessage", {
+    const message = StringUtils.localize(messageStr, {
       count: updates.length,
     });
 
-    items = updates.map((upd) => upd.item);
+    const items = updates.map((upd) => upd.item);
     const compendiumItems = updates.map((upd) => upd.compendiumItem);
 
     const title = "AH.COMMON.MigrateItems";
@@ -135,8 +147,7 @@ async function migrateItems(actor) {
       items: items,
       compendiumItems: compendiumItems,
       getDescription: async (item) => {
-        const text = item.system?.description ?? "";
-        return text;
+        return item.system?.description ?? "";
       },
     };
 
@@ -151,6 +162,20 @@ async function migrateItems(actor) {
 }
 
 /**
+ * Prompts a migration action for all items in the actor that come from a compendium entry.
+ * @param {AHActor} actor
+ * @returns {Promise<void>}
+ */
+async function migrateItems(actor) {
+  /** @type AHItem[] **/
+  let items = Array.from(actor.items.values()).sort((a, b) => a.name.localeCompare(b.name));
+
+  /** @type ItemMigrationAction[] **/
+  const updates = await getItemMigrationActions(items);
+  return promptMigration("AH.DIALOG.CompendiumMigrateActorItemsMessage", updates);
+}
+
+/**
  * Prompts a migration action for all the actor that comes from an adversary compendium entry.
  * @param {AHActor} actor
  * @returns {Promise<void>}
@@ -159,11 +184,63 @@ async function migrateActor(actor) {
 }
 
 /**
- * Pushes an update to all items that share this one's slug.
- * @param {AHItem} item
- * @returns {Promise<void>}
+ * Finds all items across the world, all actors, and all Item compendiums that share the given slug.
+ * @param {string} slug
+ * @returns {Promise<AHItem[]>}
  */
-async function pushItemUpdate(item) {
+async function findItemsBySlug(slug) {
+  const matches = [];
+
+  // World items
+  for (const item of game.items) {
+    if (item.system.slug === slug) matches.push(item);
+  }
+
+  // Actor-owned items
+  for (const actor of game.actors) {
+    for (const item of actor.items) {
+      if (item.system.slug === slug) matches.push(item);
+    }
+  }
+
+  // Compendium-Actor items
+  const actorEntriesByType = await CompendiumIndex.instance.getActors();
+  /** @type CompendiumIndexEntry[] **/
+  const actorsEntries = Object.values(actorEntriesByType);
+  for (const entry of actorsEntries) {
+    /** @type AHActor **/
+    const actor = await fromUuid(entry.uuid);
+    for (const item of actor.items) {
+      if (item.system.slug === slug) matches.push(item);
+    }
+  }
+
+  return matches;
+}
+
+/**
+ * Pushes an update to all items that share this one's slug.
+ * @param {AHItem} sourceItem
+ * @returns {Promise<ItemMigrationAction[]>}
+ */
+async function getItemUpdates(sourceItem) {
+  const items = await findItemsBySlug(sourceItem.system.slug);
+
+  /** @type ItemMigrationAction[] **/
+  const updates = [];
+
+  for (const item of items) {
+    const procedure = async () => {
+      await migrateItem(item, item);
+    };
+    updates.push({
+      item: item,
+      compendiumItem: sourceItem,
+      procedure,
+    });
+  }
+
+  return updates;
 }
 
 /**
@@ -171,13 +248,29 @@ async function pushItemUpdate(item) {
  * @param {AHItem} item
  * @returns {Promise<void>}
  */
+async function pushItemUpdate(item) {
+  const updates = await getItemUpdates(item);
+  return promptMigration("AH.DIALOG.CompendiumPushItemUpdate", updates);
+}
+
+/**
+ * Pulls an update from the source compendium item if possible.
+ * @param {AHItem} item
+ * @returns {Promise<void>}
+ */
 async function pullItemUpdate(item) {
+  const sourceItem = await CompendiumIndex.instance.getItemBySlug(item.system.slug);
+  if (sourceItem) {
+    const updates = [constructAction(sourceItem, item)];
+    return promptMigration("AH.DIALOG.CompendiumPullItemUpdate", updates);
+  }
 }
 
 const Migrations = Object.freeze({
   migrateItems,
   migrateActor,
 
+  findItemsBySlug,
   pushItemUpdate,
   pullItemUpdate,
 });

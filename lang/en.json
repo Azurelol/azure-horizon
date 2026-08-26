@@ -526,6 +526,8 @@
       "ImportThemeTitle": "Import Theme",
       "SelectAttackTitle": "Select Attack",
       "CompendiumMigrateActorItemsMessage": "Would you like to migrate the data in the selected items of the actor to that of the compendiums?",
+      "CompendiumPushItemUpdate": "Would you like to push an item update to the following items among the world and compendiums?",
+      "CompendiumPullItemUpdate": "Would you like to pull an item update from the compendium?",
       "CompendiumMigrateSuccess": "Successfully migrated {count} compendium items!",
 
       "WARNING": {

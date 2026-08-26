@@ -86,7 +86,7 @@
       align-items: center;
       margin: 0 auto;
       padding: 0.2rem;
-      /*background: var(--ah-background-fieldset-header);*/
+      gap: 0.5rem;
       color: var(--ah-primitive-color-white);
       position: relative;
       text-align: center;

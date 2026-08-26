@@ -191,7 +191,7 @@ export default class CompendiumIndex {
 	 * @param {Boolean} force
 	 * @returns {Promise<Record<string, CompendiumIndexEntry[]>>}
 	 */
-  async getActors(force) {
+  async getActors(force = false) {
     if (!this.#actorsByType || force) {
       this.#actorsByType = await this.getEntries("Actor", null, Object.values(CompendiumIndex.actorFields));
     }

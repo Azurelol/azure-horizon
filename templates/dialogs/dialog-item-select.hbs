@@ -90,7 +90,6 @@
           <th></th>
           <th>{{localize 'AH.COMMON.Entry'}}</th>
           {{#if compendiumItems}}
-            <th></th>
             <th>{{localize 'AH.COMMON.CompendiumItem'}}</th>
           {{/if}}
           {{#each columns as |col|}}
@@ -98,6 +97,8 @@
           {{/each}}
         </tr>
         </thead>
+
+        <tbody>
         {{#each items as |item|}}
           <tr>
             <td>
@@ -120,14 +121,12 @@
               {{#with (lookup ../compendiumItems @index) as |item|}}
                 <td>
                   {{ahDocumentAnchor item}}
-                </td>
-                <td class="align-left">
                   <span>{{item.name}}</span>
                 </td>
               {{/with}}
             {{/if}}
             {{#each @root.columns as |col|}}
-              <td class="align-left">
+              <td>
 									<span>
                     {{lookup (lookup @root.columnData col.label) @../index}}
                   </span>
@@ -135,6 +134,8 @@
             {{/each}}
           </tr>
         {{/each}}
+        </tbody>
+
       </table>
     </div>
   </fieldset>
