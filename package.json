@@ -14,7 +14,8 @@
     "pack": "npm run pullJSONtoLDB",
     "publish": "npm run pack && npm run build",
     "lint": "eslint system.mjs src/module/**/* templates/**/*",
-    "lint:fix": "eslint --fix system.mjs src/module/**/* templates/**/*"
+    "lint:fix": "eslint --fix system.mjs src/module/**/* templates/**/*",
+    "docs": "node ./tools/build-docs.mjs"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,8 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "prettier": "3.8.3",
     "rollup": "^4.9.1",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "build-md": "0.4.6"
+
   }
 }
