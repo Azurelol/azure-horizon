@@ -266,8 +266,6 @@ export class AHCombat extends foundry.documents.Combat {
   setupTurns() {
     this.turns ||= [];
 
-    console.info("Setting up turns");
-
     // Determine the turn order and the current turn
     /** @type AHCombatant[] **/
     let turns = this.combatants.contents.sort(this._sortCombatants);

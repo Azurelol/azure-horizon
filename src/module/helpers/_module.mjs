@@ -10,3 +10,4 @@ export { default as AsyncHooks } from "./async-hooks.mjs";
 export { ActionInspector, ActionConfig } from "./action-configuration.mjs";
 export { default as FlagBuilder } from "./flag-builder.mjs";
 export { default as ChatMessageHelper } from "./chat-message-helper.mjs";
+export { default as Migrations } from "./migrations.mjs";

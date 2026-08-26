@@ -52,6 +52,11 @@
     tr {
       th {
         text-align: center;
+
+        &.--static {
+          position: static;
+        }
+
       }
     }
   }

@@ -1,7 +1,8 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
-import { systemPath, systemTemplatePath } from "../../constants.mjs";
+import { systemTemplatePath } from "../../constants.mjs";
 import { ActionTableRenderer, AttackTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
 import { CharacterSheet } from "./base-character-sheet.mjs";
+import { Migrations } from "../../helpers/_module.mjs";
 
 /**
  * @extends AHActorSheet
@@ -10,6 +11,23 @@ import { CharacterSheet } from "./base-character-sheet.mjs";
  * @inheritDoc
  */
 export class AdversarySheet extends CharacterSheet {
+
+  /** @inheritdoc */
+  static DEFAULT_OPTIONS = {
+    window: {
+      controls: [
+        {
+          action: "migrateActor",
+          icon: "fa-regular fa-people",
+          label: "AH.COMMON.MigrateActor",
+          ownership: "OWNER",
+        },
+      ],
+    },
+    actions: {
+      migrateActor: this.#migrateActor,
+    },
+  };
 
   /** @inheritdoc */
   static TABS = {
@@ -63,6 +81,16 @@ export class AdversarySheet extends CharacterSheet {
         break;
     }
     return context;
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #migrateActor(event, target) {
+    return Migrations.migrateActor(this.actor);
   }
 
 }

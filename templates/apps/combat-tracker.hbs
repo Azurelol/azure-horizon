@@ -49,7 +49,6 @@
       <div class="token-initiative" {{#if intent}} data-tooltip="{{ahCapitalize intent.type}} {{intent.item.name}}"{{/if}} >
         {{!-- Display Initiative --}}
         {{#if initiative}}
-          {{log 'COMBATANT:' this 'INTENT:' intent}}
           <div class="ah-flex-center --col">
             {{#if (and isOwner intent.item)}}
               <img class="intent-item" src="{{ intent.item.img }}" alt="{{ intent.item.name }}" loading="lazy">

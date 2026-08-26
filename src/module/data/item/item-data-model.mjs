@@ -59,4 +59,11 @@ export default class ItemDataModel extends VersionedDataModel {
   static get templates() {
     return {};
   }
+
+  /**
+   * @returns {String[]} The path to fields in this data model that should be retained during migrations.
+   */
+  get retainedFieldPaths() {
+    return [];
+  }
 }

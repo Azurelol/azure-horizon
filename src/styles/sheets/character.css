@@ -123,7 +123,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: var(--ah-surface-entry-gradient);
+
+      &:has(img[src=""]),
+      &:has(img:not([src])) {
+        background: var(--ah-surface-entry-gradient);
+      }
 
       img {
         object-fit: fill;

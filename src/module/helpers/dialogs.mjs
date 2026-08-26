@@ -1,5 +1,5 @@
 import { renderTemplate, systemTemplatePath } from "../constants.mjs";
-import { ObjectUtils } from "../utils/_module.mjs";
+import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
 
@@ -208,6 +208,289 @@ export default class Dialogs {
       content: content,
     });
     return data?.option ?? null;
+  }
+
+  /**
+   * @typedef ItemSelectionColumn
+   * @property {String} label
+   * @property {function(Item) : String} getContent
+   */
+
+  /**
+   * @typedef {'grid'|'list'|'deck'|'grouped-list'} ItemSelectStyle
+   */
+
+  /**
+   * @typedef ItemSelectionEntry
+   * @property {String} name
+   * @property {String} img
+   */
+
+  /**
+   * @typedef ItemSelectionData
+   * @property {String} title
+   * @property {String} message
+   * @property {ItemSelectionEntry[]} items
+   * @property {Object[]} payload Associated data returned instead of the item reference.
+   * @property {AHItem[]} compendiumItems If assigned, will be used to compare to the original items.
+   * @property {Object[]} initial
+   * @property {{name: string, items: Object[]}[]} groups
+   * @property {ItemSelectionColumn[]} columns Additional columns for the dialog.
+   * @property {ItemSelectStyle} style
+   * @property {Number} max
+   * @property {(item: AHItem) => Promise<string>} getDescription
+   * @property {String} okLabel
+   */
+
+  /**
+   * @param {ItemSelectionData} data
+   * @returns {Promise<Object[]>}
+   */
+  static async itemSelect(data) {
+    data.style = data.style ?? "grid";
+    data.title = data.title ?? StringUtils.localize("AH.COMMON.Selection");
+
+    let selectedItems = [];
+    let selectedIndexes = [];
+    if (data.initial) {
+      selectedItems.push(...data.initial);
+      selectedIndexes.push(...data.initial.map((initial) => (initial._originalIndex !== undefined ? initial._originalIndex : data.items.findIndex((item) => item.id === initial.id))));
+    }
+
+    // We cache the item descriptions here...
+    const descriptions = await Promise.all(data.items.map((item) => data.getDescription(item)));
+    // Additional columns
+    let columnData = {};
+    if (data.columns) {
+      for (const column of data.columns) {
+        columnData[column.label] = await Promise.all(data.items.map((item) => column.getContent(item)));
+      }
+    }
+    const context = {
+      ...data,
+      descriptions,
+      columnData,
+    };
+
+    /**
+     * @param {HTMLElement} container
+     * @param {HTMLElement} card
+     * @param {Boolean} updateData
+     */
+    const toggleCardSelection = (container, card, updateData = true) => {
+      const index = Number.parseInt(card.dataset.index);
+      const cardItem = data.items[index];
+      if (!card.classList.contains("selected")) {
+        const selectedCards = container.querySelectorAll(".ah-dialog-item.selected");
+        if (selectedCards.length >= data.max) return;
+        card.classList.add("selected");
+        if (updateData) {
+          selectedItems.push(cardItem);
+          selectedIndexes.push(index);
+        }
+      } else {
+        card.classList.remove("selected");
+        if (updateData) {
+          selectedItems = selectedItems.filter((it) => it !== cardItem);
+          selectedIndexes = selectedIndexes.filter((it) => it !== index);
+        }
+      }
+    };
+
+    const result = await foundry.applications.api.DialogV2.input({
+      window: {
+        title: data.title,
+      },
+      position: {
+        width: 600,
+      },
+      actions: {
+        /** @param {Event} event
+         *  @param {HTMLElement} dialog **/
+        selectAll: (event, dialog) => {
+          const inputs = dialog.closest("#items").querySelectorAll("input[name=\"selected\"]");
+          const _selectedIndexes = [];
+          for (const input of inputs) {
+            input.checked = true;
+            const card = input.closest(".ah-dialog-item");
+            if (card) {
+              card.classList.toggle("selected", true);
+              const index = Number.parseInt(card.dataset.index);
+              if (Number.isFinite(index)) _selectedIndexes.push(index);
+            }
+          }
+          selectedItems = data.items;
+          selectedIndexes = _selectedIndexes;
+          return false;
+        },
+        /** @param {Event} event
+         *  @param {HTMLElement} dialog **/
+        deselectAll: (event, dialog) => {
+          const inputs = dialog.closest("#items").querySelectorAll("input[name=\"selected\"]:checked");
+          for (const input of inputs) {
+            input.checked = false;
+            const card = input.closest(".ah-dialog-item");
+            if (card) {
+              card.classList.toggle("selected", false);
+            }
+          }
+          selectedItems = [];
+          selectedIndexes = [];
+          return false;
+        },
+      },
+      classes: DIALOG_CLASSES,
+      content: await renderTemplate("dialogs/dialog-item-select", context),
+      rejectClose: false,
+      ok: {
+        icon: "fas fa-check",
+        label: data.okLabel ?? "AH.COMMON.Confirm",
+      },
+      /** @param {Event} event
+       *  @param {HTMLElement} dialog **/
+      render: async (event, dialog) => {
+        const document = dialog.element;
+        const container = document.querySelector("#items");
+        const searchInput = document.querySelector("[data-role=\"selection-filter\"]");
+
+        const applySearchFilter = () => {
+          if (!container || !searchInput) return;
+          const query = searchInput.value.trim().toLocaleLowerCase();
+
+          for (const entry of container.querySelectorAll(".ah-dialog-item[data-index]")) {
+            const target = entry.closest("tr") ?? entry;
+            const name = (entry.dataset.name || entry.textContent || "").toLocaleLowerCase();
+            target.style.display = !query || name.includes(query) ? "" : "none";
+          }
+
+          if (data.style !== "grouped-list") return;
+          for (const header of container.querySelectorAll(".group-header")) {
+            let row = header.nextElementSibling;
+            let hasVisibleRows = false;
+            while (row && !row.classList.contains("group-header")) {
+              if (row.style.display !== "none") {
+                hasVisibleRows = true;
+                break;
+              }
+              row = row.nextElementSibling;
+            }
+            header.style.display = hasVisibleRows ? "" : "none";
+          }
+        };
+
+        searchInput?.addEventListener("input", applySearchFilter);
+
+        // Handle opening journal entries when clicking the icon
+        document.addEventListener(
+          "click",
+          (clickEvent) => {
+            const wrapper = clickEvent.target.closest(".journal-page-icon-wrapper[data-journal-uuid][data-page-uuid]");
+            if (wrapper) {
+              const journalUuid = wrapper.dataset.journalUuid;
+              const pageUuid = wrapper.dataset.pageUuid;
+              if (journalUuid && pageUuid) {
+                clickEvent.preventDefault();
+                clickEvent.stopPropagation();
+                const journal = fromUuidSync(journalUuid);
+                const page = fromUuidSync(pageUuid);
+
+                if (journal && page) {
+                  const jSheet = journal.sheet;
+                  const goToPage = () => {
+                    if (typeof jSheet.goToPage === "function") return jSheet.goToPage(page.id);
+                    if (typeof jSheet.navigatePage === "function") return jSheet.navigatePage(page.id);
+                  };
+
+                  if (jSheet.rendered) {
+                    goToPage();
+                    return;
+                  }
+
+                  Hooks.once("renderJournalSheet", (sheet) => {
+                    if (sheet === jSheet) goToPage();
+                  });
+                  jSheet.render(true, { pageId: page.id });
+                }
+              }
+            }
+          },
+          true,
+        );
+
+        // Initial Selection
+        const inputs = container.querySelectorAll("input[name=\"selected\"]:checked");
+        for (const input of inputs) {
+          const card = input.closest(".ah-dialog-item");
+          if (card) {
+            toggleCardSelection(container, card, false);
+          }
+        }
+
+        if ((data.style !== "list") && (data.style !== "grouped-list")) {
+          container.addEventListener("mousedown", async (event) => {
+            const card = event.target.closest(".ah-dialog-item");
+            if (!card) return;
+            toggleCardSelection(container, card);
+          });
+        } else {
+          container.addEventListener("change", (event) => {
+            const input = event.target;
+
+            // Handle group checkbox
+            if (input?.name === "group-selected") {
+              const groupIndex = Number.parseInt(input.dataset.groupIndex);
+              if (Number.isFinite(groupIndex) && data.groups && data.groups[groupIndex]) {
+                const groupRow = input.closest(".group-header");
+                if (groupRow) {
+                  const nextRow = groupRow.nextElementSibling;
+                  let currentRow = nextRow;
+                  // Toggle all pages in this group
+                  while (currentRow && !currentRow.classList.contains("group-header")) {
+                    const pageCheckbox = currentRow.querySelector("input[name=\"selected\"]");
+                    if (pageCheckbox) {
+                      pageCheckbox.checked = input.checked;
+                      pageCheckbox.dispatchEvent(new Event("change", { bubbles: true }));
+                    }
+                    currentRow = currentRow.nextElementSibling;
+                  }
+                }
+              }
+              return;
+            }
+
+            // Handle individual page checkbox
+            if (input?.name !== "selected") return;
+            const card = input.closest(".ah-dialog-item");
+            if (!card) return;
+            const index = Number.parseInt(card.dataset.index);
+            if (!Number.isFinite(index)) return;
+            const listItem = data.items[index];
+            if (input.checked) {
+              if (!selectedIndexes.includes(index)) {
+                selectedItems.push(listItem);
+                selectedIndexes.push(index);
+              }
+            } else {
+              selectedItems = selectedItems.filter((it) => it !== listItem);
+              selectedIndexes = selectedIndexes.filter((it) => it !== index);
+            }
+          });
+        }
+
+        applySearchFilter();
+      },
+    });
+    if (result) {
+      // If a custom payload is expected
+      if (data.payload) {
+        return selectedIndexes.map((idx) => data.payload[idx]);
+      } else {
+        return selectedItems;
+      }
+    } else {
+      throw Error(StringUtils.localize("AH.COMMON.CanceledByUser"));
+    }
+
   }
 
 }

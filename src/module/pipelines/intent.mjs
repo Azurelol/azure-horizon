@@ -287,7 +287,6 @@ function process(combat, round) {
     adversaries.get(actor).push(combatant);
   }
 
-  ui.notifications.info(`Assigning intent for adversaries (${adversaries.size})`);
   const heroes = combat.getHeroes().map(h => h.actor.system);
 
   let history;

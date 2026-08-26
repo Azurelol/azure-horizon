@@ -1,0 +1,167 @@
+import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
+import { CompendiumIndex } from "../data/compendium/_module.mjs";
+import Dialogs from "./dialogs.mjs";
+
+/**
+ * @typedef ItemMigrationAction
+ * @property {Promise} procedure
+ * @property {AHItem} item
+ * @property {AHItem} compendiumItem
+ */
+
+/**
+ * @desc Migrates the data of an item onto another.
+ * @param {AHItem} sourceItem
+ * @param {AHItem} targetItem
+ * @returns {Promise}
+ * @async
+ */
+async function migrateItem(sourceItem, targetItem) {
+  // Gather retained data model properties
+  const retainedFields = {};
+  for (const fieldPath of targetItem.system.retainedFieldPaths) {
+    const systemPath = `system.${fieldPath}`;
+    const fieldValue = ObjectUtils.getProperty(targetItem, systemPath);
+    if (fieldValue !== undefined) {
+      retainedFields[systemPath] = fieldValue;
+    }
+  }
+
+  // Properties
+  await targetItem.update(
+    {
+      name: sourceItem.name,
+      img: sourceItem.img,
+      system: foundry.utils.deepClone(sourceItem.system),
+      flags: foundry.utils.deepClone(sourceItem.flags),
+    },
+    { diff: false },
+  );
+
+  // After the deep clone, apply them again.
+  await targetItem.update(retainedFields);
+
+  // Effects
+  const updates = [];
+  const creates = [];
+
+  const targetEffectsByLabel = new Map(targetItem.effects.map((e) => [e.label, e]));
+  for (const sourceEffect of sourceItem.effects) {
+    const data = foundry.utils.deepClone(sourceEffect.toObject());
+
+    // Never reuse IDs or origins
+    delete data._id;
+    delete data.origin;
+
+    const targetEffect = targetEffectsByLabel.get(sourceEffect.label);
+    if (targetEffect) {
+      updates.push({
+        _id: targetEffect.id,
+        changes: data.changes,
+        duration: data.duration,
+        flags: data.flags,
+        disabled: data.disabled,
+        system: foundry.utils.deepClone(sourceEffect.system),
+      });
+    } else {
+      creates.push(data);
+    }
+  }
+
+  if (updates.length) {
+    await targetItem.updateEmbeddedDocuments("ActiveEffect", updates);
+  }
+
+  if (creates.length) {
+    await targetItem.createEmbeddedDocuments("ActiveEffect", creates);
+  }
+}
+
+/**
+ * @param {AHItem[]} items
+ * @returns {Promise<ItemMigrationAction[]>}
+ */
+async function getItemMigrationActions(items) {
+  /** @type ItemMigrationAction[] **/
+  const updates = [];
+  for (const item of items) {
+    if (item.system.slug && (item.system.slug !== "")) {
+      const compendiumEntry = await CompendiumIndex.instance.getItemBySlug(item.system.slug);
+      if (!compendiumEntry) {
+        continue;
+      }
+      const compendiumItem = await fromUuid(compendiumEntry.uuid);
+      if (!compendiumItem) {
+        continue;
+      }
+      const procedure = async () => {
+        await migrateItem(compendiumItem, item);
+      };
+      updates.push({
+        item: item,
+        compendiumItem: compendiumItem,
+        procedure,
+      });
+    }
+  }
+  return updates;
+}
+
+/**
+ * Prompts a migration action for all items in the actor that come from a compendium entry.
+ * @param {AHActor} actor
+ * @returns {Promise<void>}
+ */
+async function migrateItems(actor) {
+  /** @type AHItem[] **/
+  let items = Array.from(actor.items.values()).sort((a, b) => a.name.localeCompare(b.name));
+  /** @type ItemMigrationAction[] **/
+  const updates = await getItemMigrationActions(items);
+
+  if (updates.length > 0) {
+    const message = StringUtils.localize("AH.DIALOG.CompendiumMigrateActorItemsMessage", {
+      count: updates.length,
+    });
+
+    items = updates.map((upd) => upd.item);
+    const compendiumItems = updates.map((upd) => upd.compendiumItem);
+
+    const title = "AH.COMMON.MigrateItems";
+    /** @type ItemSelectionData **/
+    const data = {
+      title: title,
+      message,
+      style: "list",
+      items: items,
+      compendiumItems: compendiumItems,
+      getDescription: async (item) => {
+        const text = item.system?.description ?? "";
+        return text;
+      },
+    };
+
+    const result = await Dialogs.itemSelect(data);
+    if (result && (result.length > 0)) {
+      const uuids = new Set(result.map((item) => item.uuid));
+      const selectedUpdates = updates.filter((u) => uuids.has(u.item.uuid)).map((u) => u.procedure);
+      await Promise.all(selectedUpdates.map((fn) => fn()));
+      ui.notifications.info(StringUtils.localize("AH.DIALOG.MigrationSuccess", { count: selectedUpdates.length }));
+    }
+  }
+}
+
+/**
+ * Prompts a migration action for all the actor that comes from an adversary compendium entry.
+ * @param {AHActor} actor
+ * @returns {Promise<void>}
+ */
+async function migrateActor(actor) {
+
+}
+
+const Migrations = Object.freeze({
+  migrateItems,
+  migrateActor,
+});
+
+export default Migrations;

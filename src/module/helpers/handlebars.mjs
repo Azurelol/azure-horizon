@@ -177,6 +177,45 @@ export default Object.freeze({
       const percentage = (value / max) * 100;
       return percentage.toFixed(2) + "%";
     });
+    Handlebars.registerHelper("ahMath", function (left, operator, right) {
+      left = parseFloat(left);
+      right = parseFloat(right);
+      return {
+        "+": left + right,
+        "-": left - right,
+        "*": left * right,
+        "/": left / right,
+        "%": left % right,
+      }[operator];
+    });
+    Handlebars.registerHelper("ahRomanNumeral", function (num) {
+      if ((num === null) || (num === undefined) || (num < 0)) return "";
+
+      const map = [
+        [1000, "M"],
+        [900, "CM"],
+        [500, "D"],
+        [400, "CD"],
+        [100, "C"],
+        [90, "XC"],
+        [50, "L"],
+        [40, "XL"],
+        [10, "X"],
+        [9, "IX"],
+        [5, "V"],
+        [4, "IV"],
+        [1, "I"],
+      ];
+
+      let result = "";
+      for (const [value, numeral] of map) {
+        while (num >= value) {
+          result += numeral;
+          num -= value;
+        }
+      }
+      return result;
+    });
     Handlebars.registerHelper("ahPercentModifier", function (multiplier, { hash }) {
       const relative = hash.relative ?? true;
       const decimals = hash.decimals ?? 0;

@@ -525,6 +525,9 @@
       "ClearObjects": "Are you sure you would ike to clear all items?",
       "ImportThemeTitle": "Import Theme",
       "SelectAttackTitle": "Select Attack",
+      "CompendiumMigrateActorItemsMessage": "Migrate Actor Items",
+      "MigrationSuccess": "Migration was successful.",
+
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",
@@ -712,6 +715,8 @@
       "Reset": "Reset",
       "Share": "Share",
       "Browse": "Browse",
+      "Selection": "Selection",
+      "Search": "Search",
       "Description": "Description",
       "Notes": "Notes",
       "Half": "Half",
@@ -742,7 +747,10 @@
       "Check": "Check",
       "Settings": "Settings",
       "Heroes": "Heroes",
-      "Adversaries": "Adversaries"
+      "CompendiumItem": "Compendium Item",
+      "Adversaries": "Adversaries",
+      "MigrateActor": "Migrate Actor",
+      "MigrateItems": "Migrate Items"
     },
     "EQUIPMENT": {
       "Rarity": "Rarity",

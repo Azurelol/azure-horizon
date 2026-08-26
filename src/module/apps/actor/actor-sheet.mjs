@@ -1,7 +1,7 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import { FoundryUtils, HTMLUtils, ObjectUtils, StringUtils } from "../../utils/_module.mjs";
-import { ChatAction, Dialogs } from "../../helpers/_module.mjs";
+import { ChatAction, Dialogs, Migrations } from "../../helpers/_module.mjs";
 import AH from "../../config.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 import { ActionHandler, CompendiumBrowser } from "../ui/_module.mjs";
@@ -38,6 +38,17 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
     },
     window: {
       resizable: true,
+      controls: [
+        {
+          action: "migrateItems",
+          icon: "fa-regular fa-refresh",
+          label: "AH.COMMON.MigrateItems",
+          ownership: "OWNER",
+          visible: () => {
+            return game.user.isGM;
+          },
+        },
+      ],
     },
     actions: {
       // TODO: Deprecate? Was used in reference implementation.
@@ -50,6 +61,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       removeArrayElement: this.#removeArrayElement,
 
       browseCompendium: this.#browseCompendium,
+      migrateItems: this.#migrateItems,
 
       performAction: this.#performAction,
       sendItem: this.#sendItem,
@@ -528,6 +540,16 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       }
         break;
     }
+  }
+
+  /**
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #migrateItems(event, target) {
+    return Migrations.migrateItems(this.actor);
   }
 
   /**

@@ -1,0 +1,210 @@
+<main class="ah-dialog-selection">
+	{{#if message}}
+		<div class="ah-message --center">
+			<span>
+				{{{message}}}
+			</span>
+		</div>
+	{{/if}}
+	<div class="ah-dialog-selection__filter">
+		<input type="search"
+			   data-role="selection-filter"
+			   placeholder="{{localize 'AH.COMMON.Search'}}"
+			   aria-label="{{localize 'AH.COMMON.Search'}}"
+			   autocomplete="off" />
+	</div>
+
+	{{#if (eq style 'grid')}}
+		<div id="items" class="ah-dialog-item-grid ah-icon__radio-group">
+			{{#each items as |item| }}
+				<label class= "ah-dialog-item ah-dialog-item-grid__element"
+					   for="{{item.name}}"
+					   data-index="{{@index}}"
+					   data-name="{{item.name}}">
+					<input type="checkbox"
+						   name="selected"
+						   id="{{item.name}}"
+						   {{#if (ahContains ../initial item )}}checked{{/if}}
+						   value="{{item.name}}">
+					<img class="ah-icon--l" src="{{item.img}}"
+						 alt="{{item.name}}"/>
+					<span class="">{{item.name}}</span>
+				</label>
+			{{/each}}
+		</div>
+	{{/if}}
+
+	{{#if (eq style 'deck')}}
+		<div id="items" class="ah-dialog-item-grid ah-arcana__radio-group">
+			{{#each items as |item|}}
+				<label class="ah-dialog-item ah-arcana-card"
+					   for="{{item.name}}"
+					   data-index="{{@index}}"
+					   data-name="{{item.name}}">
+					<input type="checkbox"
+						   name="selected"
+						   id="{{item.name}}"
+						   {{#if (ahContains ../initial item)}}checked{{/if}}
+						   value="{{item.name}}">
+
+					<div class="ah-arcana-card__inner">
+						<div class="ah-arcana-card__top-band">
+							<span class="ah-arcana-card__numeral">· {{ahRomanNumeral (ahMath @index '+' 1)}} ·</span>
+						</div>
+
+						<div class="ah-arcana-card__frame">
+							<img class="ah-arcana-card__art" src="{{item.img}}" alt="{{item.name}}"/>
+						</div>
+
+						<div class="ah-arcana-card__bottom-band">
+							<span class="ah-arcana-card__name">{{item.name}}</span>
+						</div>
+					</div>
+
+					<div class="ah-arcana-card__selected-overlay">
+					</div>
+				</label>
+			{{/each}}
+		</div>
+	{{/if}}
+
+
+	{{#if (eq style 'list')}}
+		<fieldset id="items">
+			<legend>
+				<span>
+					<a type="button" data-tooltip="{{localize 'AH.COMMON.SelectAll'}}" data-action="selectAll">
+						<i class="ah-icon fas fa-list-check"></i>
+					</a>
+				</span>
+				<label>{{localize 'AH.COMMON.Selection'}}</label>
+				<span>
+					<a type="button" data-tooltip="{{localize 'AH.COMMON.DeselectAll'}}" data-action="deselectAll">
+						<i class="ah-icon fas fa-xmark-square"></i>
+					</a>
+				</span>
+			</legend>
+			<div class="ah-dialog__table__wrapper">
+				<table class="ah-table scrollable --static">
+					<thead>
+					<tr>
+						<th></th>
+						<th>{{localize 'AH.COMMON.Entry'}}</th>
+						{{#if compendiumItems}}
+							<th></th>
+							<th>{{localize 'AH.COMMON.CompendiumItem'}}</th>
+						{{/if}}
+						{{#each columns as |col|}}
+							<th>{{localize col.label}}</th>
+						{{/each}}
+					</tr>
+					</thead>
+					{{#each items as |item|}}
+						<tr>
+							<td>
+								<label class="ah-dialog-item"
+									   data-index="{{@index}}"
+									   data-name="{{item.name}}">
+									<input type="checkbox"
+										   name="selected"
+										   {{#if (ahContains ../initial item)}}checked{{/if}}
+										   value="{{item.name}}">
+								</label>
+							</td>
+							<td>
+								<div>
+									{{ahDocumentAnchor item}}
+									<span data-tooltip="{{lookup ../descriptions @index}}">{{item.name}}</span>
+								</div>
+							</td>
+							{{#if @root.compendiumItems}}
+								{{#with (lookup ../compendiumItems @index) as |item|}}
+									<td>
+										{{ahDocumentAnchor item}}
+									</td>
+									<td class="align-left">
+										<span>{{item.name}}</span>
+									</td>
+								{{/with}}
+							{{/if}}
+							{{#each @root.columns as |col|}}
+								<td class="align-left">
+									<span>
+										{{lookup (lookup @root.columnData col.label) @../index}}
+									</span>
+								</td>
+							{{/each}}
+						</tr>
+					{{/each}}
+				</table>
+			</div>
+		</fieldset>
+	{{/if}}
+
+	{{#if (eq style 'grouped-list')}}
+		<fieldset id="items">
+			<legend>
+				<span>
+					<a type="button" data-tooltip="{{localize 'AH.COMMON.SelectAll'}}" data-action="selectAll">
+						<i class="icon fas fa-list-check"></i>
+					</a>
+				</span>
+				<label>{{localize 'AH.COMMON.Selection'}}</label>
+				<span>
+					<a type="button" data-tooltip="{{localize 'AH.COMMON.DeselectAll'}}" data-action="deselectAll">
+						<i class="icon fas fa-xmark-square"></i>
+					</a>
+				</span>
+			</legend>
+			<div class="ah-dialog__table__wrapper">
+				<table class="ah-table scrollable --static">
+					<thead>
+					<tr>
+						<th></th>
+						<th>{{localize 'AH.COMMON.Entry'}}</th>
+					</tr>
+					</thead>
+					<tbody>
+						{{#each groups as |group|}}
+							<tr class="group-header" data-group-index="{{@index}}">
+								<td>
+									<label class="ah-dialog-item group-checkbox">
+										<input type="checkbox"
+											   name="group-selected"
+											   class="group-check  ah-dialog-selection__group-check-input"
+											   data-group-index="{{@index}}"
+											   >
+									</label>
+								</td>
+								<td>
+									<i class="icon fas fa-folder"></i>
+									{{group.name}}
+								</td>
+							</tr>
+							{{#each group.items as |item|}}
+								<tr>
+									<td>
+										<label class="ah-dialog-item"
+											   data-index="{{item._flatIndex}}"
+											   data-name="{{item.name}}">
+											<input type="checkbox"
+												   name="selected"
+												   {{#if (ahContains @root.initial item)}}checked{{/if}}
+												   value="{{item.name}}">
+										</label>
+									</td>
+									<td>
+										<div class="journal-page-icon-wrapper" data-journal-uuid="{{item._journalUuid}}" data-page-uuid="{{item.uuid}}">
+											{{ahDocumentAnchor item}}
+											<span class="">{{item.name}}</span>
+										</div>
+									</td>
+								</tr>
+							{{/each}}
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+		</fieldset>
+	{{/if}}
+</main>
