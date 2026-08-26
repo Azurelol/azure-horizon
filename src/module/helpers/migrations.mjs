@@ -2,6 +2,7 @@ import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { CompendiumIndex } from "../data/compendium/_module.mjs";
 import Dialogs from "./dialogs.mjs";
 import { isCompendiumEntry, isItemType } from "../constants.mjs";
+import AH from "../config.mjs";
 
 /**
  * @typedef ItemMigrationAction
@@ -276,7 +277,21 @@ async function pullItemUpdate(item) {
   }
 }
 
+function initialize() {
+  Hooks.on(AH.hooks.REGISTER_SYSTEM_SETTINGS_BUTTON, (buttons) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> ${StringUtils.localize("AH.DIALOG.MigrationTools")}`;
+    button.addEventListener("click", () => {
+
+    });
+    buttons.push(button);
+  });
+}
+
 const Migrations = Object.freeze({
+  initialize,
+
   migrateItems,
   migrateActor,
 

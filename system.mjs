@@ -100,6 +100,7 @@ function initializeApps() {
  * Initializes the system's subsystems.
  */
 function initializeSystems() {
+  helpers.Migrations.initialize();
   helpers.Settings.initialize();
   helpers.AHHandlebars.loadTemplates();
   helpers.AHHandlebars.registerHelpers();

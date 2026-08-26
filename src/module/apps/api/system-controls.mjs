@@ -1,4 +1,5 @@
 import AH from "../../config.mjs";
+import { StringUtils } from "../../utils/_module.mjs";
 
 /**
  * @typedef SystemControlTool
@@ -14,7 +15,7 @@ let initialized;
 
 function initialize() {
   if (!initialized) {
-    Hooks.on("renderPlayers", (app, element) => {
+    Hooks.on("renderPlayers", (app, html) => {
       const containerElement = document.createElement("div");
       containerElement.classList.add("ah-system-controls");
 
@@ -54,8 +55,21 @@ function initialize() {
         });
 
       containerElement.append(...menuItems);
-      element.prepend(containerElement);
+      html.prepend(containerElement);
     });
+
+    Hooks.on("renderSettings", (app, html, context) => {
+
+      const settings = html.querySelector("section .settings");
+      if (settings) {
+        let buttons = [];
+        Hooks.callAll(AH.hooks.REGISTER_SYSTEM_SETTINGS_BUTTON, buttons);
+        for (const button of buttons) {
+          settings.appendChild(button);
+        }
+      }
+    });
+
   }
 }
 

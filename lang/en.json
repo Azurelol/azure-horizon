@@ -529,7 +529,9 @@
       "CompendiumPushItemUpdate": "Would you like to push an item update to the following items among the world and compendiums?",
       "CompendiumPullItemUpdate": "Would you like to pull an item update from the compendium?",
       "CompendiumMigrateSuccess": "Successfully migrated {count} compendium items!",
-
+      "MigrationTools": "Migration Tools",
+      "MigrateAll": "Migrate All",
+      "MigrateAllHint": "Migrate all actors and items to the latest entries in the system compendiums?",
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",
