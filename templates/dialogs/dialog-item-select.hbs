@@ -114,6 +114,9 @@
             <td>
               <div>
                 {{#if (and @root.options.showActor item.parent)}}
+                  {{#if item.parent.pack}}
+                    <i class="ah-icon --xs {{ahIconClass 'compendium'}}"></i>
+                  {{/if}}
                   {{ahDocumentAnchor item.parent}}
                 {{/if}}
                 {{ahDocumentAnchor item}}

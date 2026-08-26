@@ -5,65 +5,60 @@ import { isCompendiumEntry, isItemType } from "../constants.mjs";
 import AH from "../config.mjs";
 
 /**
- * @typedef ItemMigrationAction
- * @property {Promise} procedure
- * @property {AHItem} item
- * @property {AHItem} compendiumItem
+ * @typedef {Object} ItemMigrationAction
+ * @property {AHItem} item — the item being migrated onto (world, embedded, or compendium)
+ * @property {AHItem|CompendiumIndexEntry} compendiumItem — the compendium source (possibly unresolved)
  */
 
 /**
- * @desc Migrates the data of an item onto another.
- * @param {AHItem|CompendiumIndexEntry} sourceItem
- * @param {AHItem} targetItem
- * @returns {Promise}
- * @async
+ * @typedef {Object} ResolvedMigration
+ * @property {AHItem} item — the item being migrated onto
+ * @property {object} updateData — the {name, img, system, flags} payload to apply to the item
+ * @property {object[]} effectUpdates — ActiveEffect update payloads, keyed by existing effect _id
+ * @property {object[]} effectCreates — ActiveEffect creation payloads for effects with no target match
  */
-async function migrateItem(sourceItem, targetItem) {
 
-  // Load the item if it's an entry
-  if (isCompendiumEntry(sourceItem)) {
-    sourceItem = await fromUuid(sourceItem.uuid);
-  }
+/**
+ * Resolves the actual diff for one migration action: loads the source item if needed,
+ * computes the merged system data (with retained fields applied), and separates
+ * effect changes into updates vs. creates. Does not write anything.
+ * @param {ItemMigrationAction} action
+ * @returns {Promise<ResolvedMigration>}
+ */
+async function resolveMigrationData({ item: targetItem, compendiumItem }) {
+  const sourceItem = isCompendiumEntry(compendiumItem)
+    ? await fromUuid(compendiumItem.uuid)
+    : compendiumItem;
 
-  // Gather retained data model properties
-  const retainedFields = {};
+  // Merge retained fields into the clone up front — single final state, single write
+  const clonedSystem = foundry.utils.deepClone(sourceItem.system);
   for (const fieldPath of targetItem.system.retainedFieldPaths) {
-    const systemPath = `system.${fieldPath}`;
-    const fieldValue = ObjectUtils.getProperty(targetItem, systemPath);
-    if (fieldValue !== undefined) {
-      retainedFields[systemPath] = fieldValue;
+    const currentValue = ObjectUtils.getProperty(targetItem, `system.${fieldPath}`);
+    if (currentValue !== undefined) {
+      foundry.utils.setProperty(clonedSystem, fieldPath, currentValue);
     }
   }
 
-  // Properties
-  await targetItem.update(
-    {
-      name: sourceItem.name,
-      img: sourceItem.img,
-      system: foundry.utils.deepClone(sourceItem.system),
-      flags: foundry.utils.deepClone(sourceItem.flags),
-    },
-    { diff: false },
-  );
+  const updateData = {
+    name: sourceItem.name,
+    img: sourceItem.img,
+    system: clonedSystem,
+    flags: foundry.utils.deepClone(sourceItem.flags),
+  };
 
-  // After the deep clone, apply them again.
-  await targetItem.update(retainedFields);
-
-  // Effects
-  const updates = [];
-  const creates = [];
-
+  // Effects — still per-item, but computed here rather than written here
+  const effectUpdates = [];
+  const effectCreates = [];
   const targetEffectsByLabel = new Map(targetItem.effects.map((e) => [e.label, e]));
+
   for (const sourceEffect of sourceItem.effects) {
     const data = foundry.utils.deepClone(sourceEffect.toObject());
-
-    // Never reuse IDs or origins
     delete data._id;
     delete data.origin;
 
     const targetEffect = targetEffectsByLabel.get(sourceEffect.label);
     if (targetEffect) {
-      updates.push({
+      effectUpdates.push({
         _id: targetEffect.id,
         changes: data.changes,
         duration: data.duration,
@@ -72,57 +67,70 @@ async function migrateItem(sourceItem, targetItem) {
         system: foundry.utils.deepClone(sourceEffect.system),
       });
     } else {
-      creates.push(data);
+      effectCreates.push(data);
     }
   }
 
-  if (updates.length) {
-    await targetItem.updateEmbeddedDocuments("ActiveEffect", updates);
-  }
-
-  if (creates.length) {
-    await targetItem.createEmbeddedDocuments("ActiveEffect", creates);
-  }
+  return { item: targetItem, updateData, effectUpdates, effectCreates };
 }
 
 /**
- * @param {AHItem|CompendiumIndexEntry} sourceItem
- * @param {AHItem} targetItem
- * @returns {{item, compendiumItem, procedure: ((function(): Promise<void>)|*)}}
+ * Applies a batch of resolved migrations, grouped by target collection.
+ * @param {ResolvedMigration[]} resolved
+ * @returns {Promise<void>}
  */
-function constructAction(sourceItem, targetItem) {
-  const procedure = async () => {
-    await migrateItem(sourceItem, targetItem);
-  };
-  return {
-    item: targetItem,
-    compendiumItem: sourceItem,
-    procedure,
-  };
-}
+async function applyMigrations(resolved) {
+  const worldUpdates = [];
+  const embeddedByActor = new Map();
+  const packItemUpdates = new Map();
+  const packActorUpdates = new Map();
 
-/**
- * @param {AHItem[]} items
- * @returns {Promise<ItemMigrationAction[]>}
- */
-async function getItemMigrationActions(items) {
-  /** @type ItemMigrationAction[] **/
-  const updates = [];
-  for (const item of items) {
-    if (item.system.slug && (item.system.slug !== "")) {
-      const compendiumEntry = await CompendiumIndex.instance.getItemBySlug(item.system.slug);
-      if (!compendiumEntry) {
-        continue;
+  for (const { item, updateData } of resolved) {
+    const payload = { _id: item.id, ...updateData };
+    if (item.pack) {
+      if (item.parent) {
+        if (!packActorUpdates.has(item.parent)) packActorUpdates.set(item.parent, []);
+        packActorUpdates.get(item.parent).push(payload);
       }
-      const compendiumItem = await fromUuid(compendiumEntry.uuid);
-      if (!compendiumItem) {
-        continue;
+      else {
+        if (!packItemUpdates.has(item.pack)) packItemUpdates.set(item.pack, []);
+        packItemUpdates.get(item.pack).push(payload);
       }
-      updates.push(constructAction(compendiumItem, item));
-
+    } else if (item.parent) {
+      if (!embeddedByActor.has(item.parent)) embeddedByActor.set(item.parent, []);
+      embeddedByActor.get(item.parent).push(payload);
+    } else {
+      worldUpdates.push(payload);
     }
   }
-  return updates;
+
+  const ops = [];
+  // WORLD ITEMS
+  if (worldUpdates.length) {
+    ops.push(Item.updateDocuments(worldUpdates, { diff: false }));
+  }
+  // WORLD EMBEDDED ITEMS
+  for (const [actor, updates] of embeddedByActor) {
+    ops.push(actor.updateEmbeddedDocuments("Item", updates, { diff: false }));
+  }
+  // PACK EMBEDDED ITEMS
+  for (const [actor, updates] of packActorUpdates) {
+    ops.push(actor.updateEmbeddedDocuments("Item", updates, { diff: false }));
+  }
+  // PACK ITEMS
+  for (const [packId, updates] of packItemUpdates) {
+    ops.push(Item.updateDocuments(updates, { pack: packId, diff: false }));
+  }
+  await Promise.all(ops);
+
+  // Effects can't be batched across different parent items, but each item's
+  // pair of calls is independent of every other item's, so run them all in parallel.
+  const effectOps = [];
+  for (const { item, effectUpdates, effectCreates } of resolved) {
+    if (effectUpdates.length) effectOps.push(item.updateEmbeddedDocuments("ActiveEffect", effectUpdates));
+    if (effectCreates.length) effectOps.push(item.createEmbeddedDocuments("ActiveEffect", effectCreates));
+  }
+  await Promise.all(effectOps);
 }
 
 /**
@@ -162,14 +170,51 @@ async function promptMigration(messageStr, updates, options = {}) {
     const result = await Dialogs.itemSelect(data);
     if (result && (result.length > 0)) {
       const uuids = new Set(result.map((item) => item.uuid));
-      const selectedUpdates = updates.filter((u) => uuids.has(u.item.uuid)).map((u) => u.procedure);
-      await Promise.all(selectedUpdates.map((fn) => fn()));
-      ui.notifications.info(StringUtils.localize("AH.DIALOG.CompendiumMigrateSuccess", { count: selectedUpdates.length }));
+      const selectedActions = updates.filter((u) => uuids.has(u.item.uuid));
+      const resolved = await Promise.all(selectedActions.map(resolveMigrationData));
+      await applyMigrations(resolved);
+      ui.notifications.info(StringUtils.localize("AH.DIALOG.CompendiumMigrateSuccess", { count: selectedActions.length }));
     }
     else {
       ui.notifications.warn(StringUtils.localize("AH.DIALOG.CompendiumMigrateFailure"));
     }
   }
+}
+
+/**
+ * @param {AHItem|CompendiumIndexEntry} sourceItem
+ * @param {AHItem} targetItem
+ * @returns {ItemMigrationAction}
+ */
+function constructAction(sourceItem, targetItem) {
+  return {
+    item: targetItem,
+    compendiumItem: sourceItem,
+  };
+}
+
+/**
+ * @param {AHItem[]} items
+ * @returns {Promise<ItemMigrationAction[]>}
+ */
+async function getItemMigrationActions(items) {
+  /** @type ItemMigrationAction[] **/
+  const updates = [];
+  for (const item of items) {
+    if (item.system.slug && (item.system.slug !== "")) {
+      const compendiumEntry = await CompendiumIndex.instance.getItemBySlug(item.system.slug);
+      if (!compendiumEntry) {
+        continue;
+      }
+      const compendiumItem = await fromUuid(compendiumEntry.uuid);
+      if (!compendiumItem) {
+        continue;
+      }
+      updates.push(constructAction(compendiumItem, item));
+
+    }
+  }
+  return updates;
 }
 
 /**
@@ -197,10 +242,10 @@ async function migrateActor(actor) {
 /**
  * Finds all items across the world, all actors, and all Item compendiums that share the given slug.
  * @param {String} slug
- * @param {Boolean} compendium Whether to include compendium entries.
+ * @param {Boolean} compendiumActor Whether to include entries from compendium actors.
  * @returns {Promise<AHItem[]>}
  */
-async function findItemsBySlug(slug, compendium) {
+async function findItemsBySlug(slug, compendiumActor) {
   const matches = [];
 
   // World items
@@ -216,7 +261,7 @@ async function findItemsBySlug(slug, compendium) {
   }
 
   // Compendium-Actor items
-  if (compendium) {
+  if (compendiumActor) {
     const actorEntries = await CompendiumIndex.instance.getActorEntries("adversary");
     /** @type CompendiumIndexEntry[] **/
     const actors = [...actorEntries.adversary, ...actorEntries.follower];
@@ -236,23 +281,17 @@ async function findItemsBySlug(slug, compendium) {
 /**
  * Pushes an update to all items that share this one's slug.
  * @param {AHItem} sourceItem
+ * @param {Boolean} compendiumActor
  * @returns {Promise<ItemMigrationAction[]>}
  */
-async function getItemUpdates(sourceItem) {
-  const items = await findItemsBySlug(sourceItem.system.slug, true);
+async function getItemUpdates(sourceItem, compendiumActor = true) {
+  const items = await findItemsBySlug(sourceItem.system.slug, compendiumActor);
 
   /** @type ItemMigrationAction[] **/
   const updates = [];
 
   for (const item of items) {
-    const procedure = async () => {
-      await migrateItem(sourceItem, item);
-    };
-    updates.push({
-      item: item,
-      compendiumItem: sourceItem,
-      procedure,
-    });
+    updates.push(constructAction(sourceItem, item));
   }
 
   return updates;
