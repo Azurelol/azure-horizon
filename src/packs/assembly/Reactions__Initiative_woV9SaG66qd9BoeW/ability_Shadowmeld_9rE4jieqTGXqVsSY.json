@@ -59,7 +59,8 @@
       "range": "",
       "type": "",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "targeting": "self"
     },
     "usage": {
       "schemaVersion": 1,

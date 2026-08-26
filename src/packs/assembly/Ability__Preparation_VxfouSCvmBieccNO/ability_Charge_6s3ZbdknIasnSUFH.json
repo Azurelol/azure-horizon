@@ -21,7 +21,8 @@
       "range": "",
       "type": "",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "targeting": "self"
     },
     "damage": {
       "schemaVersion": 1,

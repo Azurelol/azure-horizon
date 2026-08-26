@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "tactician-formation",
-    "description": "<p>You gain the use of a <em>tactician formation</em> for each invested skill point.</p>",
+    "description": "<p>You gain the use of a <em>tactician formation</em> for each invested skill point. A formation is a party-wide command that action. All formations share a cooldown.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

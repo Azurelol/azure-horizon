@@ -3,7 +3,7 @@
   "_id": "A6BW9I5K3CI5oKJR",
   "pages": [
     {
-      "sort": 100000,
+      "sort": 300000,
       "name": "Affinity",
       "type": "text",
       "_id": "SMGi6Ml15iR9sN2U",
@@ -43,7 +43,7 @@
     },
     {
       "sort": 200000,
-      "name": "Stress",
+      "name": "Tension",
       "type": "text",
       "_id": "mDXdfBygq9VDrgtO",
       "system": {},
@@ -53,7 +53,8 @@
       },
       "image": {},
       "text": {
-        "format": 1
+        "format": 1,
+        "content": "<p>Tension is the character resource which relates to their current mental health and stress levels. It will usually increase during battles and must be actively managed through skills, activities and other features.</p>"
       },
       "video": {
         "controls": true,
@@ -78,6 +79,318 @@
         "exportSource": null
       },
       "_key": "!journal.pages!A6BW9I5K3CI5oKJR.mDXdfBygq9VDrgtO"
+    },
+    {
+      "sort": 0,
+      "name": "Director",
+      "type": "text",
+      "_id": "bqqof2lvZKPuwAKj",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>The director is the term by which the system refers to the role of the Gamemaster (GM). </p><p>We name them so in this system due to wanting to frame their role very clearly: they are there to take an active role in maintaining the pacing of a session, cutting out unnecessary parts as necessary and being the first among equals in the table.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787655282121,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.bqqof2lvZKPuwAKj"
+    },
+    {
+      "sort": 400000,
+      "name": "Ritual",
+      "type": "text",
+      "_id": "Py87Loa3OQDF9kGt",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A ritual is an activity performed whenever a hero with a magical aptitude wants to perform a magical feat outside of a battle.</p><p>If a spiritist wants to pacify a tormented ghost or if an elementalist wants to pacify rampant elementals in a location, this is the activity they would perform in the system.</p><p>They are meant to be straightforward checks which parameters are a conversation between the ritual caster and the director.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787655866970,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.Py87Loa3OQDF9kGt"
+    },
+    {
+      "sort": 650000,
+      "name": "Block",
+      "type": "text",
+      "_id": "EtiH0i24Hcj5h6D1",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Block is what the system calls temporary hit points. Whenever a character suffers damage, if they have block the damage will first go through the block before affecting their current hit points.</p><blockquote><p>This resource is meant to incentivize active damage mitigation by the heroes instead of having to rely on reactive healing, which in this system is not very efficient and would dry a party's mind points rather quickly.</p></blockquote>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787656214699,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.EtiH0i24Hcj5h6D1"
+    },
+    {
+      "sort": 600000,
+      "name": "Crisis",
+      "type": "text",
+      "_id": "AH0R2AhQkokBcqYO",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A character who is at 50% hit points or less is considered to be in crisis. Many abilities are predicated on this state.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787656380852,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.AH0R2AhQkokBcqYO"
+    },
+    {
+      "sort": 700000,
+      "name": "Fast Forward",
+      "type": "text",
+      "_id": "hFI71t9qk3ByUJ73",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>When the outcome of a non-climactic battle is all but decided the director can prompt a Fast Forward, which immediately ends the encounter and skips to the next scene where the heroes deal with the aftermath.</p><blockquote><p>This is yet another pacing mechanic to avoid dragging things out when they don't need to be. Don't waste your valuable time!</p></blockquote>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787750553909,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.hFI71t9qk3ByUJ73"
+    },
+    {
+      "sort": 100000,
+      "name": "Hero",
+      "type": "text",
+      "_id": "vWIKsnPckL6IYh4r",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A hero is a player character in this system. It calls them heroes because they have the potential to be both as people and as fighters.</p><p>They can come from any walk of life or any background. They don't have to be necessarily perfectly well-adjusted individuals, but they all share one thing in common. </p><p>That they haven't given up on their world and are willing to fight for it. Or learn to.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787752712991,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.vWIKsnPckL6IYh4r"
+    },
+    {
+      "sort": 350000,
+      "name": "Battle",
+      "type": "text",
+      "_id": "SPaqGfmuD2iSuwai",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A battle is the term the system uses for scenes where heroes and adversaries square off against each other.</p><p>Not all battles need to end when either side is reduced to 0 hit points. And they don't have to end with the slaughter of one side or the other.</p><p>When heroes are defeated the director will consider consequences and discuss them with the players.</p><p>When adversaries are defeated, unless it's a villain that escapes then the players get to establish the fiction. Do they kill their enemy? Do they knock them out? The players get to decide that according to their morals and the situation.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787752816692,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.SPaqGfmuD2iSuwai"
+    },
+    {
+      "sort": 800000,
+      "name": "Rest",
+      "type": "text",
+      "_id": "KjtfIFiAadcwE8Ji",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A rest scene is one where the heroes get a respite from the demanding realities of their adventuring day. Of these we have two types.</p><p>A short rest usually takes place in adventuring location and allows heroes to partially recover resources and perform an activity or two before moving on.</p><p>A long rest takes place in a settlement or at camp and fully restores the heroes' resources.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787752943209,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.KjtfIFiAadcwE8Ji"
     }
   ],
   "folder": null,

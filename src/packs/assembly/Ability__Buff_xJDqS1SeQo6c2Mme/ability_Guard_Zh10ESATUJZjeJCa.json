@@ -71,7 +71,8 @@
       "points": 2,
       "traits": [
         "cooldown"
-      ]
+      ],
+      "targeting": "self"
     },
     "usage": {
       "schemaVersion": 1,

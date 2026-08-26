@@ -14,14 +14,16 @@
       "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "bonus": ""
     },
     "action": {
       "schemaVersion": 1,
       "range": "melee",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "targeting": "multiple"
     },
     "damage": {
       "schemaVersion": 1,

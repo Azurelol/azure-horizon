@@ -763,7 +763,8 @@
           "points": 2,
           "traits": [
             "cooldown"
-          ]
+          ],
+          "targeting": "self"
         },
         "usage": {
           "schemaVersion": 1,
@@ -807,7 +808,7 @@
           "schemaVersion": 1,
           "primary": "dex",
           "secondary": "mig",
-          "grade": "A"
+          "grade": "B"
         },
         "check": {
           "schemaVersion": 1,
