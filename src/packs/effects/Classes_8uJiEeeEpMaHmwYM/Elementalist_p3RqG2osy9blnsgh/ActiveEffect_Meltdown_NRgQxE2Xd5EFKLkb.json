@@ -1,0 +1,55 @@
+{
+  "folder": "p3RqG2osy9blnsgh",
+  "name": "Meltdown",
+  "_id": "NRgQxE2Xd5EFKLkb",
+  "img": "icons/magic/fire/elemental-fire-humanoid.webp",
+  "type": "base",
+  "system": {
+    "changes": [
+      {
+        "key": "system.parameters.damage.elemental.outgoing.skill.multiplicative",
+        "type": "add",
+        "value": 1.25,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "slug": "elementalist-meltdown",
+    "rules": {},
+    "tracker": {
+      "enabled": false,
+      "name": "",
+      "id": "",
+      "current": 0,
+      "max": 6
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": 2,
+    "units": "turns",
+    "expiry": "turnEnd",
+    "expired": false
+  },
+  "description": "",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787760528918,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!NRgQxE2Xd5EFKLkb"
+}

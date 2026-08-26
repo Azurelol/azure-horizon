@@ -24,10 +24,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "untyped"
+        "amount": "5",
+        "type": "dark"
       },
       "secondary": {
         "amount": "",

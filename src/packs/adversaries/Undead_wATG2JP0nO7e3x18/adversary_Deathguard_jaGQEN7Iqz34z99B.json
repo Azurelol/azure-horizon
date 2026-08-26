@@ -510,7 +510,7 @@
           "schemaVersion": 1,
           "primary": "dex",
           "secondary": "mig",
-          "grade": "C"
+          "grade": "B"
         },
         "check": {
           "schemaVersion": 1,
@@ -521,10 +521,10 @@
         },
         "damage": {
           "schemaVersion": 1,
-          "enabled": false,
+          "enabled": true,
           "primary": {
-            "amount": "",
-            "type": "untyped"
+            "amount": "5",
+            "type": "dark"
           },
           "secondary": {
             "amount": "",
@@ -565,7 +565,8 @@
           "points": 1,
           "traits": [
             "stress"
-          ]
+          ],
+          "targeting": "single"
         },
         "usage": {
           "schemaVersion": 1,
@@ -662,7 +663,8 @@
           "range": "melee",
           "type": "action",
           "points": 2,
-          "traits": []
+          "traits": [],
+          "targeting": "single"
         },
         "usage": {
           "schemaVersion": 1,

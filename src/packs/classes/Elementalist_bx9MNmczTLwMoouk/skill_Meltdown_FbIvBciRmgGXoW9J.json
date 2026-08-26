@@ -1,27 +1,32 @@
 {
-  "folder": "FAJt0Dim8RzQ8BHP",
-  "name": "Power Strike",
+  "folder": "bx9MNmczTLwMoouk",
+  "name": "Meltdown",
   "type": "skill",
-  "_id": "Vr4OV4fATDqDW33a",
-  "img": "systems/azure-horizon/assets/icons/classes/armiger/power-strike.png",
+  "_id": "FbIvBciRmgGXoW9J",
+  "img": "icons/magic/fire/elemental-fire-humanoid.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "armiger-power-strike",
-    "description": "<p>You unleash a powerful attack with your equipped weapon.</p>",
+    "slug": "elementalist-meltdown",
+    "description": "<p>You gain the <em>Meltdown</em> effect for this turn and the next. It greatly increases your elemental damage but causes you to suffer heavy damage and gain tension.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def",
-      "bonus": ""
+      "defense": "def"
     },
     "damage": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": {
-        "amount": "0",
+        "amount": "",
         "type": "untyped"
       },
       "secondary": {
@@ -41,38 +46,43 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "15",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "elementalist-meltdown"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
-      },
-      "enabled": false
+      }
     },
+    "power": "",
     "level": {
       "current": 1,
-      "max": 2
+      "max": 1
     },
-    "usage": {
-      "schemaVersion": 1,
-      "check": true,
-      "damage": true,
-      "power": "moderate",
-      "attributes": true
-    },
-    "class": "armiger",
     "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "self",
       "type": "action",
       "points": 1,
       "traits": [
-        "cooldown"
+        "stress"
       ]
     },
-    "power": "moderate"
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "elementalist"
   },
   "effects": [],
   "sort": 0,
@@ -84,12 +94,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786544570507,
+    "createdTime": 1787760346610,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Vr4OV4fATDqDW33a"
+  "_key": "!items!FbIvBciRmgGXoW9J"
 }

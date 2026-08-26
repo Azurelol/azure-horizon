@@ -527,7 +527,13 @@
         },
         "traits": [
           "reach"
-        ]
+        ],
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        }
       },
       "effects": [],
       "flags": {},
@@ -559,7 +565,7 @@
         "schemaVersion": 1,
         "revision": 1,
         "slug": "ability-heavy-blow",
-        "description": "",
+        "description": "<p>You deal high damage to the target.</p>",
         "attributes": {
           "schemaVersion": 1,
           "primary": "dex",
@@ -616,14 +622,16 @@
           "range": "",
           "type": "action",
           "points": 2,
-          "traits": []
+          "traits": [],
+          "targeting": "single"
         },
         "usage": {
           "schemaVersion": 1,
           "attributes": false,
           "check": true,
           "damage": true
-        }
+        },
+        "weight": "normal"
       },
       "effects": [],
       "flags": {},

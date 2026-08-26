@@ -51,7 +51,7 @@
         "amount": null
       },
       "fire": {
-        "preset": "",
+        "preset": "vulnerability",
         "type": "additive",
         "amount": null
       },
@@ -71,7 +71,7 @@
         "amount": null
       },
       "light": {
-        "preset": "",
+        "preset": "vulnerability",
         "type": "additive",
         "amount": null
       },
@@ -527,6 +527,12 @@
           "traits": [
             "nonLethal"
           ]
+        },
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
         }
       },
       "effects": [],
@@ -603,11 +609,31 @@
           "duration": {
             "event": "",
             "tracking": ""
-          }
+          },
+          "selector": ""
         },
         "intent": "",
         "action": {
-          "type": "action"
+          "type": "action",
+          "points": 1,
+          "schemaVersion": 1,
+          "range": "",
+          "targeting": "single",
+          "traits": []
+        },
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "power": "",
+        "weight": "normal",
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": false,
+          "damage": false
         }
       },
       "effects": [],
