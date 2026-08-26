@@ -145,7 +145,7 @@ async function migrateItems(actor) {
       const uuids = new Set(result.map((item) => item.uuid));
       const selectedUpdates = updates.filter((u) => uuids.has(u.item.uuid)).map((u) => u.procedure);
       await Promise.all(selectedUpdates.map((fn) => fn()));
-      ui.notifications.info(StringUtils.localize("AH.DIALOG.MigrationSuccess", { count: selectedUpdates.length }));
+      ui.notifications.info(StringUtils.localize("AH.DIALOG.CompendiumMigrateSuccess", { count: selectedUpdates.length }));
     }
   }
 }

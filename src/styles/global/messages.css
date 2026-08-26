@@ -1,8 +1,8 @@
 .ah-message {
   text-align: left;
-  font-size: 0.875rem;
   padding: 0.313rem 0.5rem;
   margin: 5px 0;
+
   color: #4a3d00;
   -webkit-box-shadow: 1px 2px #7c6a00;
   box-shadow: 1px 2px #7c6a00;
@@ -10,10 +10,13 @@
   border-radius: 10px;
   border-top: 1px solid #f1e59d;
 
+  &.--warning {
+    font-size: 0.875rem;
+  }
+
   &.--center {
     align-self: center;
     text-align: center;
-    font-size: x-large;
     flex-grow: 1;
   }
 }

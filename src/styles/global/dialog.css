@@ -24,9 +24,6 @@
   position: static;
 }
 
-.ah-dialog-selection {
-}
-
 .ah-dialog-selection__group-check-input {
   cursor: pointer;
   filter: invert(1);

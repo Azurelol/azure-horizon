@@ -525,8 +525,8 @@
       "ClearObjects": "Are you sure you would ike to clear all items?",
       "ImportThemeTitle": "Import Theme",
       "SelectAttackTitle": "Select Attack",
-      "CompendiumMigrateActorItemsMessage": "Migrate Actor Items",
-      "MigrationSuccess": "Migration was successful.",
+      "CompendiumMigrateActorItemsMessage": "Would you like to migrate the data in the selected items of the actor to that of the compendiums?",
+      "CompendiumMigrateSuccess": "Successfully migrated {count} compendium items!",
 
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
