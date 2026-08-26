@@ -166,6 +166,9 @@ async function promptMigration(messageStr, updates, options = {}) {
       await Promise.all(selectedUpdates.map((fn) => fn()));
       ui.notifications.info(StringUtils.localize("AH.DIALOG.CompendiumMigrateSuccess", { count: selectedUpdates.length }));
     }
+    else {
+      ui.notifications.warn(StringUtils.localize("AH.DIALOG.CompendiumMigrateFailure"));
+    }
   }
 }
 
@@ -193,10 +196,11 @@ async function migrateActor(actor) {
 
 /**
  * Finds all items across the world, all actors, and all Item compendiums that share the given slug.
- * @param {string} slug
+ * @param {String} slug
+ * @param {Boolean} compendium Whether to include compendium entries.
  * @returns {Promise<AHItem[]>}
  */
-async function findItemsBySlug(slug) {
+async function findItemsBySlug(slug, compendium) {
   const matches = [];
 
   // World items
@@ -212,15 +216,17 @@ async function findItemsBySlug(slug) {
   }
 
   // Compendium-Actor items
-  const actorEntries = await CompendiumIndex.instance.getActorEntries("adversary");
-  /** @type CompendiumIndexEntry[] **/
-  const actors = [...actorEntries.adversary, ...actorEntries.follower];
+  if (compendium) {
+    const actorEntries = await CompendiumIndex.instance.getActorEntries("adversary");
+    /** @type CompendiumIndexEntry[] **/
+    const actors = [...actorEntries.adversary, ...actorEntries.follower];
 
-  for (const entry of actors) {
-    /** @type AHActor **/
-    const actor = await fromUuid(entry.uuid);
-    for (const item of actor.items) {
-      if (item.system.slug === slug) matches.push(item);
+    for (const entry of actors) {
+      /** @type AHActor **/
+      const actor = await fromUuid(entry.uuid);
+      for (const item of actor.items) {
+        if (item.system.slug === slug) matches.push(item);
+      }
     }
   }
 
@@ -233,7 +239,7 @@ async function findItemsBySlug(slug) {
  * @returns {Promise<ItemMigrationAction[]>}
  */
 async function getItemUpdates(sourceItem) {
-  const items = await findItemsBySlug(sourceItem.system.slug);
+  const items = await findItemsBySlug(sourceItem.system.slug, true);
 
   /** @type ItemMigrationAction[] **/
   const updates = [];
@@ -277,13 +283,32 @@ async function pullItemUpdate(item) {
   }
 }
 
+/**
+ * Prompts the user to migrate all actors and items from the compendium to the latest.
+ * @returns {Promise<void>}
+ */
+async function migrateAll() {
+  let updates = [];
+  const itemsByType = await CompendiumIndex.instance.getItems();
+  /** @type AHItem **/
+  const items = Object.values(itemsByType).flat(Infinity);
+  for (const item of items) {
+    const itemUpdates = await getItemUpdates(item);
+    updates.push(...itemUpdates);
+  }
+  return promptMigration("AH.DIALOG.MigrateAllHint", updates, {
+    showActor: true,
+  });
+
+}
+
 function initialize() {
   Hooks.on(AH.hooks.REGISTER_SYSTEM_SETTINGS_BUTTON, (buttons) => {
     const button = document.createElement("button");
     button.type = "button";
     button.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> ${StringUtils.localize("AH.DIALOG.MigrationTools")}`;
-    button.addEventListener("click", () => {
-
+    button.addEventListener("click", async () => {
+      return migrateAll();
     });
     buttons.push(button);
   });

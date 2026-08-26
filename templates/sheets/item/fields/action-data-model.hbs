@@ -1,10 +1,8 @@
 {{#> ahFieldset label='AH.FIELD.Action' icon=(ahIconClass 'action') }}
-  <div class="ah-field-group --row">
-    {{ahStringField path=(ahConcat path '.type') label="AH.FIELD.Type" value=value.type blank=true classes='--flex2' options=(ahFormOptions 'actionTypes')}}
-    {{#if (eq value.type 'action')}}
-      {{ahStringField path=(ahConcat path '.points') label="AH.FIELD.Points" value=value.points }}
-    {{/if}}
-  </div>
+  {{ahStringField path=(ahConcat path '.type') label="AH.FIELD.Type" value=value.type blank=true classes='--flex2' options=(ahFormOptions 'actionTypes')}}
+  {{#if (eq value.type 'action')}}
+    {{ahStringField path=(ahConcat path '.points') label="AH.FIELD.Points" value=value.points }}
+  {{/if}}
     {{ahStringField path=(ahConcat path '.range') label="AH.FIELD.Range" value=value.range blank=true options=(ahFormOptions 'traits.range')}}
     {{ahStringField path=(ahConcat path '.targeting') label="AH.FIELD.Targeting" value=value.targeting blank=true options=(ahFormOptions 'targetingRule')}}
   {{ahTraitsField schema=field.fields.traits path=(ahConcat path '.traits') label="AH.COMMON.Traits" value=value.traits options=(ahFormOptions 'traits.action')}}

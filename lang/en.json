@@ -529,6 +529,7 @@
       "CompendiumPushItemUpdate": "Would you like to push an item update to the following items among the world and compendiums?",
       "CompendiumPullItemUpdate": "Would you like to pull an item update from the compendium?",
       "CompendiumMigrateSuccess": "Successfully migrated {count} compendium items!",
+      "CompendiumMigrateFailure": "Failed to migrate the given items.",
       "MigrationTools": "Migration Tools",
       "MigrateAll": "Migrate All",
       "MigrateAllHint": "Migrate all actors and items to the latest entries in the system compendiums?",
