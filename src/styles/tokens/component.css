@@ -9,6 +9,7 @@
   /* Application  */
   --ah-background-application: var(--ah-surface-base);
   --ah-background-application-header: var(--ah-surface-application);
+  --ah-background-application-header-alt: var(--ah-surface-application);
   --ah-background-application-controls: var(--ah-surface-panel-nested);
   --ah-background-application-sidebar: var(--ah-surface-application);
   --ah-border-application-sidebar: rgba(255, 255, 255, 0.08);
@@ -25,6 +26,7 @@
   --ah-background-application-tabs: var(--ah-surface-panel);
   --ah-padding-application-part: 8px;
   --ah-padding-application-fields: 4px;
+  --ah-border-compendium: var(--ah-border-active);
 
   /* Tabs */
   --ah-background-tab: var(--ah-surface-tab);

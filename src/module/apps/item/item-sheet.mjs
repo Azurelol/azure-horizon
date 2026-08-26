@@ -4,6 +4,7 @@ import * as fields from "../../data/item/fields/_module.mjs";
 import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { Dialogs, Migrations } from "../../helpers/_module.mjs";
+import { CompendiumIndex } from "../../data/compendium/_module.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -24,7 +25,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       controls: [
         {
           action: "pushUpdate",
-          icon: "fa-solid fa-arrow-up-right-from-square",
+          icon: "fa-solid fa-arrow-up",
           label: "AH.COMMON.PushUpdate",
           ownership: "OWNER",
           visible: () => {
@@ -33,12 +34,18 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         },
         {
           action: "pullUpdate",
-          icon: "fa-solid fa-cloud-arrow-down",
+          icon: "fa-solid fa-arrow-down",
           label: "AH.COMMON.PullUpdate",
           ownership: "OWNER",
           visible: () => {
             return game.user.isGM;
           },
+        },
+        {
+          action: "openCompendiumEntry",
+          icon: "fa-solid fa-atlas",
+          label: "AH.COMMON.OpenCompendiumEntry",
+          ownership: "OWNER",
         },
       ],
     },
@@ -54,6 +61,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
 
       pushUpdate: AHItemSheet.#pushUpdate,
       pullUpdate: AHItemSheet.#pullUpdate,
+      openCompendiumEntry: AHItemSheet.#openCompendiumEntry,
 
       changeType: AHItemSheet.#changeType,
     },
@@ -164,6 +172,7 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
         context.tab = context.tabs[partId];
         break;
       case "header":{
+        context.isCompendium = isCompendiumEntry(this.item);
         if (this.item.system === "classFeature") {
           context.classFeatureOptions = AH.dataModelRegistries.classFeature.localizedEntries;
         }
@@ -309,7 +318,31 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
    * @returns {Promise<void>}
    */
   static async #pullUpdate(event, target) {
+    if (isCompendiumEntry(this.item)) {
+      ui.notifications.warn("Only available for items in the world or within actors.");
+      return;
+    }
     return Migrations.pullItemUpdate(this.item);
+  }
+
+  /**
+   * @this AHItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #openCompendiumEntry(event, target) {
+    if (isCompendiumEntry(this.item)) {
+      ui.notifications.warn("Only available for items in the world or within actors.");
+      return;
+    }
+    const entry = await CompendiumIndex.instance.getItemBySlug(this.item.system.slug);
+    if (entry) {
+      const item = await fromUuid(entry.uuid);
+      if (item) {
+        item.sheet.render({ force: true });
+      }
+    }
   }
 
   /**
