@@ -125,11 +125,17 @@ async function getItemMigrationActions(items) {
 }
 
 /**
+ * @typedef PromptMigrationOptions
+ * @property {Boolean} showActor
+ */
+
+/**
  * @param {String} messageStr
  * @param {ItemMigrationAction[]} updates
+ * @param {PromptMigrationOptions} options
  * @return {Promise}
  */
-async function promptMigration(messageStr, updates) {
+async function promptMigration(messageStr, updates, options = {}) {
   if (updates.length > 0) {
     const message = StringUtils.localize(messageStr, {
       count: updates.length,
@@ -143,6 +149,7 @@ async function promptMigration(messageStr, updates) {
     const data = {
       title: title,
       message,
+      options: options,
       style: "list",
       items: items,
       compendiumItems: compendiumItems,
@@ -204,10 +211,11 @@ async function findItemsBySlug(slug) {
   }
 
   // Compendium-Actor items
-  const actorEntriesByType = await CompendiumIndex.instance.getActors();
+  const actorEntries = await CompendiumIndex.instance.getActorEntries("adversary");
   /** @type CompendiumIndexEntry[] **/
-  const actorsEntries = Object.values(actorEntriesByType);
-  for (const entry of actorsEntries) {
+  const actors = [...actorEntries.adversary, ...actorEntries.follower];
+
+  for (const entry of actors) {
     /** @type AHActor **/
     const actor = await fromUuid(entry.uuid);
     for (const item of actor.items) {
@@ -231,7 +239,7 @@ async function getItemUpdates(sourceItem) {
 
   for (const item of items) {
     const procedure = async () => {
-      await migrateItem(item, item);
+      await migrateItem(sourceItem, item);
     };
     updates.push({
       item: item,
@@ -250,7 +258,9 @@ async function getItemUpdates(sourceItem) {
  */
 async function pushItemUpdate(item) {
   const updates = await getItemUpdates(item);
-  return promptMigration("AH.DIALOG.CompendiumPushItemUpdate", updates);
+  return promptMigration("AH.DIALOG.CompendiumPushItemUpdate", updates, {
+    showActor: true,
+  });
 }
 
 /**

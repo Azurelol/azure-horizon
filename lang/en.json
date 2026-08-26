@@ -727,6 +727,7 @@
       "Label": "Label",
       "Primary": "Primary",
       "Secondary": "Secondary",
+      "CanceledByUser": "Canceled by user.",
       "Edit": "Edit",
       "Self": "Self",
       "Source": "Source",

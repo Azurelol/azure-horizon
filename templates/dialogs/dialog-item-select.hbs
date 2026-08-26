@@ -113,6 +113,9 @@
             </td>
             <td>
               <div>
+                {{#if (and @root.options.showActor item.parent)}}
+                  {{ahDocumentAnchor item.parent}}
+                {{/if}}
                 {{ahDocumentAnchor item}}
                 <span data-tooltip="{{lookup ../descriptions @index}}">{{item.name}}</span>
               </div>
