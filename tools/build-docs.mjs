@@ -19,7 +19,7 @@ class DocBuilder extends MarkdownBuilder {
     let parts = [];
     parts.push("<div class=\"document-traits\">");
     for (const trait of traits) {
-      parts.push("<span class=\"document-trait\">${trait}</span>");
+      parts.push(`<span class="document-trait">${trait}</span>`);
     }
     parts.push("</div>");
     const content = parts.join("\n");
@@ -209,10 +209,17 @@ for (const entry of classes) {
 
   // Skills
   md.hr();
-  md.heading(2, "Skills");
+  md.customHeading(1, "Skills", "class__skills");
   for (const skill of entry.skills) {
     const skillDocument = await deserializeDocument(skill);
-    md.documentHeader(skillDocument.name, skillDocument.img, `<i class="fa-solid fa-star-half-o"></i> ${skillDocument.system.level.max}`);
+    md.documentHeader(skillDocument.name, skillDocument.img, `<i class="fa-solid fa-star"></i> ${skillDocument.system.level.max}`);
+    let traits = [];
+    if (skillDocument.system.action.traits) {
+      traits.push(...skillDocument.system.action.traits);
+    }
+    if (traits.length > 0) {
+      md.traits(traits);
+    }
     md.p(skillDocument.system.description);
   }
   // Features

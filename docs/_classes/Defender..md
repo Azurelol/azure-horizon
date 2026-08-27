@@ -3,8 +3,8 @@ title: Defender
 ---
 
 <div class="document-traits">
-<span class="document-trait">${trait}</span>
-<span class="document-trait">${trait}</span>
+<span class="document-trait">warrior</span>
+<span class="document-trait">defense</span>
 </div>
 
 
@@ -18,4 +18,4 @@ title: Defender
 
 ---
 
-## Skills
+<h1 id="skills" class="class__skills">Skills</h1>

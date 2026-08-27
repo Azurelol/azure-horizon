@@ -3,8 +3,8 @@ title: Fencer
 ---
 
 <div class="document-traits">
-<span class="document-trait">${trait}</span>
-<span class="document-trait">${trait}</span>
+<span class="document-trait">warrior</span>
+<span class="document-trait">offense</span>
 </div>
 
 
@@ -19,39 +19,39 @@ title: Fencer
 
 ---
 
-## Skills
+<h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Antagonize</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 2</div>
+<div><i class="fa-solid fa-star"></i> 2</div>
 </div>
 
 <p>You gain SL stacks of <em>Taunt</em>.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Bravado</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 1</div>
+<div><i class="fa-solid fa-star"></i> 1</div>
 </div>
 
 <p>Once per round whenever you shift you reduce 1 TP.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/weapons-crossed-swords-black-gray.webp"><span>En Garde</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 1</div>
+<div><i class="fa-solid fa-star"></i> 1</div>
 </div>
 
 <p>You immediately adopt your offensive stance or defensive stance.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/hand-grip-sword-white-brown.webp"><span>Riposte</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 1</div>
+<div><i class="fa-solid fa-star"></i> 1</div>
 </div>
 
 <p>When you are attacked in melee and the result of the check was an even number you can immediately perform a free attack against the attacker.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/weapons-crossed-swords-black.webp"><span>Technique</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 5</div>
+<div><i class="fa-solid fa-star"></i> 5</div>
 </div>
 
 <p>You gain the use of a <em>fencer</em> <em>technique </em>for each point invested into this skill.</p>

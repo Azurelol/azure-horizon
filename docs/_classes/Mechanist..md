@@ -17,4 +17,4 @@ title: Mechanist
 
 ---
 
-## Skills
+<h1 id="skills" class="class__skills">Skills</h1>

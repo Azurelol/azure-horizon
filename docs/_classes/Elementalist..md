@@ -3,26 +3,30 @@ title: Elementalist
 ---
 
 <div class="document-traits">
-<span class="document-trait">${trait}</span>
-<span class="document-trait">${trait}</span>
+<span class="document-trait">mage</span>
+<span class="document-trait">offense</span>
 </div>
 
 
 
 ---
 
-## Skills
+<h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/fire/beam-jet-stream-trails-orange.webp"><span>Elemental Spell</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 5</div>
+<div><i class="fa-solid fa-star"></i> 5</div>
 </div>
 
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Elemental </em>domain.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/fire/elemental-fire-humanoid.webp"><span>Meltdown</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 1</div>
+<div><i class="fa-solid fa-star"></i> 1</div>
+</div>
+
+<div class="document-traits">
+<span class="document-trait">stress</span>
 </div>
 
 <p>You gain the <em>Meltdown</em> effect for this turn and the next. It greatly increases your elemental damage but causes you to suffer heavy damage and gain tension.</p>

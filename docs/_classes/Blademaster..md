@@ -3,9 +3,9 @@ title: Blademaster
 ---
 
 <div class="document-traits">
-<span class="document-trait">${trait}</span>
-<span class="document-trait">${trait}</span>
-<span class="document-trait">${trait}</span>
+<span class="document-trait">warrior</span>
+<span class="document-trait">offense</span>
+<span class="document-trait">defense</span>
 </div>
 
 <p>A warrior who specializes in fighting opponent with their blade.</p>
@@ -19,39 +19,47 @@ title: Blademaster
 
 ---
 
-## Skills
+<h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/maneuver-sword-katana-yellow.webp"><span>Blade Study</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 5</div>
+<div><i class="fa-solid fa-star"></i> 5</div>
 </div>
 
 <p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/weapons-crossed-swords-yellow.webp"><span>Call Out</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 2</div>
+<div><i class="fa-solid fa-star"></i> 2</div>
 </div>
 
 <p>During a combat scene when making an attack you may call it out in order to gain an SL bonus to the check. You may do this up to SL times.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/swords-parry-block-blue.webp"><span>Parry</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 1</div>
+<div><i class="fa-solid fa-star"></i> 1</div>
+</div>
+
+<div class="document-traits">
+<span class="document-trait">closer</span>
 </div>
 
 <p>You adopt a defensive posture in order to parry the next melee attack performed against you. You gain the <em>Parry</em> effect and may perform a free attack against your attacker.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/swords-parry-block-yellow.webp"><span>Perfect Parry</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 1</div>
+<div><i class="fa-solid fa-star"></i> 1</div>
 </div>
 
 <p>When you successfully parry an attack you may exert yourself at the cost of 4 TP in order to negate it completely and perform a <em>Blademaster</em> weapon skill instead.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/weapons/swords/sword-katana.webp"><span>Sheathe</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 1</div>
+<div><i class="fa-solid fa-star"></i> 1</div>
+</div>
+
+<div class="document-traits">
+<span class="document-trait">closer</span>
 </div>
 
 <p>You sheathe your blade, gaining the <em>Sheathed Blade</em> effect. When you execute a blademaster skill under this effect it gains additional effects.</p>

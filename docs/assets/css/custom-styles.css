@@ -18,6 +18,14 @@ img {
   gap: 0.5rem;
 }
 
+.document__header__extra {
+}
+
+:root{
+  --ah-surface-border: var(#3d5f8f);
+  --ah-border: 0.065rem solid var(--ah-surface-border);
+}
+
 .document-traits {
   display: flex;
   flex-direction: row;
@@ -29,4 +37,8 @@ img {
   color: #ffffff;
   background:  #5C5C5B;
   border: 1px solid #27374a;
+  padding: 4px;
+}
+
+.class__skills {
 }

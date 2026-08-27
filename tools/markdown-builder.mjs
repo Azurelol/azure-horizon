@@ -69,6 +69,10 @@ export class MarkdownBuilder {
     return this._push(`${"#".repeat(lvl)} ${text}`);
   }
 
+  customHeading(level, text, classes) {
+    return this._push(`<h${level} id="${text.toLowerCase()}" class="${classes}">${text}</h${level}>`);
+  }
+
   // ---- Text blocks ----
   p(text) { return this._push(text); }
 

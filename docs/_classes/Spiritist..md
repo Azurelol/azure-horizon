@@ -3,8 +3,8 @@ title: Spiritist
 ---
 
 <div class="document-traits">
-<span class="document-trait">${trait}</span>
-<span class="document-trait">${trait}</span>
+<span class="document-trait">mage</span>
+<span class="document-trait">defense</span>
 </div>
 
 
@@ -19,18 +19,18 @@ title: Spiritist
 
 ---
 
-## Skills
+<h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/light/beam-rays-orange-small.webp"><span>Light Spell</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 5</div>
+<div><i class="fa-solid fa-star"></i> 5</div>
 </div>
 
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Light </em>domain.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/holy/prayer-hands-glowing-yellow.webp"><span>Prayer</span></div>
-<div><i class="fa-solid fa-star-half-o"></i> 1</div>
+<div><i class="fa-solid fa-star"></i> 1</div>
 </div>
 
 <p>During a rest scene you make a heartfelt prayer to your deity and ask for their guidance. The director gives you the best advice they can for the situation.</p>
