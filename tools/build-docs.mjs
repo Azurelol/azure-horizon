@@ -21,6 +21,7 @@ class DocBuilder extends MarkdownBuilder {
     for (const trait of traits) {
       parts.push("<span class=\"document-trait\">${trait}</span>");
     }
+    parts.push("</div>");
     const content = parts.join("\n");
     return this.html(content);
   }
@@ -188,19 +189,21 @@ for (const entry of classes) {
 
   let md = new DocBuilder();
   md.frontMatter({ title: classDocument.name });
-  md.traits(classDocument.system.traits);
+  if (classDocument.system.traits) {
+    md.traits(classDocument.system.traits);
+  }
   md.p(classDocument.system.description);
 
   // Triggers
-  if (classDocument.system.triggers.length > 0) {
+  if (classDocument.system.triggers?.length > 0) {
     md.hr();
-    md.heading(2, "Experience Triggers");
+    md.heading(3, "Experience Triggers");
     md.list(classDocument.system.triggers);
   }
   // Complications
-  if (classDocument.system.complications.length > 0) {
+  if (classDocument.system.complications?.length > 0) {
     md.hr();
-    md.heading(2, "Complications");
+    md.heading(3, "Complications");
     md.list(classDocument.system.complications);
   }
 
@@ -209,7 +212,7 @@ for (const entry of classes) {
   md.heading(2, "Skills");
   for (const skill of entry.skills) {
     const skillDocument = await deserializeDocument(skill);
-    md.documentHeader(skillDocument.name, skillDocument.img, `SL ${skillDocument.system.level.max}`);
+    md.documentHeader(skillDocument.name, skillDocument.img, `<i class="fa-solid fa-star-half-o"></i> ${skillDocument.system.level.max}`);
     md.p(skillDocument.system.description);
   }
   // Features

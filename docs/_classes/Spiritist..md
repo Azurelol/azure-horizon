@@ -2,9 +2,20 @@
 title: Spiritist
 ---
 
-# Spiritist
+<div class="document-traits">
+<span class="document-trait">${trait}</span>
+<span class="document-trait">${trait}</span>
+</div>
 
 
+
+---
+
+### Experience Triggers
+
+- You save someone.
+- You help a spirit pass on.
+- You cleanse a location of the undead or spirits.
 
 ---
 
@@ -12,14 +23,14 @@ title: Spiritist
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/light/beam-rays-orange-small.webp"><span>Light Spell</span></div>
-<div>SL 5</div>
+<div><i class="fa-solid fa-star-half-o"></i> 5</div>
 </div>
 
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Light </em>domain.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/holy/prayer-hands-glowing-yellow.webp"><span>Prayer</span></div>
-<div>SL 1</div>
+<div><i class="fa-solid fa-star-half-o"></i> 1</div>
 </div>
 
 <p>During a rest scene you make a heartfelt prayer to your deity and ask for their guidance. The director gives you the best advice they can for the situation.</p>

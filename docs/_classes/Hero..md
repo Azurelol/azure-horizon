@@ -2,9 +2,10 @@
 title: Hero
 ---
 
-# Hero
+<div class="document-traits">
+</div>
 
-<p>A person who has transcended their limits. </p><p><em>Available only once a character has reached Level 60.</em></p>
+<p>A person who has transcended their limits.</p><blockquote><p><em>Available only once a character has reached Level 60.</em></p></blockquote>
 
 ---
 
@@ -12,7 +13,7 @@ title: Hero
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/light/beam-strike-village-yellow.webp"><span>Brave the Darkness</span></div>
-<div>SL 1</div>
+<div><i class="fa-solid fa-star-half-o"></i> 1</div>
 </div>
 
 
