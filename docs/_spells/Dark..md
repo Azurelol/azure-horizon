@@ -1,5 +1,6 @@
 ---
 title: Dark
+img: /assets/icons/spells/dark.png
 ---
 
 <div class="document-header">

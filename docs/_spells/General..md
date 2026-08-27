@@ -1,5 +1,6 @@
 ---
 title: General
+img: /assets/icons/spells/General.png
 ---
 
 <div class="document-header">

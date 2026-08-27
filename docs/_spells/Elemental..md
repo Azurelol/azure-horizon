@@ -1,5 +1,6 @@
 ---
 title: Elemental
+img: /assets/icons/spells/elemental.png
 ---
 
 <div class="document-header">

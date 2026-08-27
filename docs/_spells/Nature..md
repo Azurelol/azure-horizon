@@ -1,5 +1,6 @@
 ---
 title: Nature
+img: /assets/icons/spells/nature.png
 ---
 
 <div class="document-header">

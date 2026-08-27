@@ -315,11 +315,10 @@ for (const dir of SRC_SPELL_DIRECTORIES) {
 // Now write the domain files
 const DST_SPELL_DIR = PATH.join(ROOT_DIRECTORY, "docs", "_spells");
 await cleanDirectory(DST_SPELL_DIR);
-for (let [domain, spells] of spellsByDomain) {
-  domain = capitalize(domain);
-  const fileName = PATH.join(DST_SPELL_DIR, `${domain}.${FILE_EXTENSION}`);
+for (const [domain, spells] of spellsByDomain) {
+  const fileName = PATH.join(DST_SPELL_DIR, `${capitalize(domain)}.${FILE_EXTENSION}`);
   let md = new DocBuilder();
-  md.frontMatter({ title: domain });
+  md.frontMatter({ title: capitalize(domain), img: `${ASSETS_DIRECTORY}/icons/spells/${domain}.png` });
   for (const spell of spells) {
     let traits = [];
     traits.push(spell.system.speed);

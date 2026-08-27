@@ -4,8 +4,13 @@ title: Spells
 permalink: /spells/
 ---
 
-<ul>
+<div class="entry__grid --large">
 {% for entry in site.spells %}
-  <li><a href="{{ site.baseurl }}{{ entry.url }}">{{ entry.title }}</a></li>
+<article>
+<a href="{{ site.baseurl }}{{ entry.url }}">
+<img src="{{ site.baseurl }}{{ entry.img }}" />
+  <span>{{ entry.title }}</span>
+</a>
+</article>
 {% endfor %}
-</ul>
+</div>

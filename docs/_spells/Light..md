@@ -1,5 +1,6 @@
 ---
 title: Light
+img: /assets/icons/spells/light.png
 ---
 
 <div class="document-header">

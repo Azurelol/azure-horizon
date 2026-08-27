@@ -121,6 +121,10 @@ img {
         image-rendering: crisp-edges;
       }
     }
+
+    &.--large {
+      --entry-size: 240px;
+    }
   }
 }
 
