@@ -12,7 +12,6 @@ jobs:
 
       - name: Copy shared assets into Jekyll source
         run: |
-          mkdir -p docs/assets
           cp -r assets/. docs/assets/
 
       - uses: ruby/setup-ruby@v1
