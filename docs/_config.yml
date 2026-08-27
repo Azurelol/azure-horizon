@@ -29,6 +29,7 @@ collections:
 
 navbar-links:
   Classes: "classes"
+  Glossary: "glossary"
   About Me: "aboutme"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
@@ -39,15 +40,14 @@ navbar-links:
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/assets/img/feather.png"
+#avatar: "/assets/img/feather.png"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
 round-avatar: true
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
-#title-img: /path/to/image
-
+title-img: "/assets/img/feather.png"
 
 #####################################
 # --- Footer social media links --- #

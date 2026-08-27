@@ -3,6 +3,7 @@ import PATH from "path";
 import { MarkdownBuilder } from "./markdown-builder.mjs";
 
 const ROOT_DIRECTORY = process.cwd();
+const DOCS_DIRECTORY = PATH.join(ROOT_DIRECTORY, "docs");
 const PACKS_DIR_PATH = "./src/packs";
 const FOUNDRY_SYSTEM_PATH = "systems/azure-horizon/";
 
@@ -203,6 +204,7 @@ const SRC_JOURNAL_DOCUMENTS = await getDocuments(JOURNAL_DIR_ENTRY, "JournalEntr
 
 /**
  * @typedef JournalEntry
+ * @property {String} name
  * @property {JournalEntryPage[]} pages
  */
 
@@ -219,9 +221,19 @@ for (const entry of SRC_JOURNAL_DOCUMENTS) {
   journals.set(doc.name, doc);
 }
 
+// GLOSSARY
 const glossary = journals.get("Glossary");
 if (glossary) {
-
+  const fileName = PATH.join(DOCS_DIRECTORY, `glossary.${FILE_EXTENSION}`);
+  let md = new DocBuilder();
+  md.frontMatter({ title: glossary.name });
+  for (const page of glossary.pages) {
+    md.h1(page.name);
+    md.p(page.text.content);
+  }
+  const content = md.build();
+  await fs.writeFile(fileName, content);
+  console.log(`Writing file to ${fileName}`);
 }
 
 // MANUAL
