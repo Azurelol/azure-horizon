@@ -1,5 +1,6 @@
 ---
 title: Lancer
+img: /assets/icons/classes/lancer/lancer.png
 ---
 
 <div class="document-traits --center">

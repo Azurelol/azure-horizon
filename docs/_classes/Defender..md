@@ -1,5 +1,6 @@
 ---
 title: Defender
+img: /assets/icons/classes/defender/defender.png
 ---
 
 <div class="document-traits --center">

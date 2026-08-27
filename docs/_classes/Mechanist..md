@@ -1,5 +1,6 @@
 ---
 title: Mechanist
+img: /assets/icons/classes/mechanist/mechanist.png
 ---
 
 

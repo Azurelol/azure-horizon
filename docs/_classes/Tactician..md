@@ -1,5 +1,6 @@
 ---
 title: Tactician
+img: /assets/icons/classes/tactician/tactician.png
 ---
 
 <div class="document-traits --center">

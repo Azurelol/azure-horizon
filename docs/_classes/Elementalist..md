@@ -1,5 +1,6 @@
 ---
 title: Elementalist
+img: /assets/icons/classes/elementalist/elementalist.png
 ---
 
 <div class="document-traits --center">

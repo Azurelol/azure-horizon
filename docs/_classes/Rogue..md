@@ -1,5 +1,6 @@
 ---
 title: Rogue
+img: /assets/icons/classes/rogue/rogue.png
 ---
 
 <div class="document-traits --center">

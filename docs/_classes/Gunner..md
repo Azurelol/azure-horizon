@@ -1,5 +1,6 @@
 ---
 title: Gunner
+img: /assets/icons/classes/gunner/gunner.png
 ---
 
 <div class="document-traits --center">

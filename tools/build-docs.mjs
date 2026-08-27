@@ -4,7 +4,7 @@ import { MarkdownBuilder } from "./markdown-builder.mjs";
 
 const ROOT_DIRECTORY = process.cwd();
 const DOCS_DIRECTORY = PATH.join(ROOT_DIRECTORY, "docs");
-const ASSETS_DIRECTORY = PATH.join(DOCS_DIRECTORY, "assets");
+const ASSETS_DIRECTORY = "/assets";
 const PACKS_DIR_PATH = "./src/packs";
 const FOUNDRY_SYSTEM_PATH = "systems/azure-horizon/";
 
@@ -225,7 +225,7 @@ for (const entry of classes) {
   const className = classDocument.name.toLowerCase();
 
   let md = new DocBuilder();
-  md.frontMatter({ title: classDocument.name, img: `${ASSETS_DIRECTORY}/classes/${className}/${className}.png` });
+  md.frontMatter({ title: classDocument.name, img: `${ASSETS_DIRECTORY}/icons/classes/${className}/${className}.png` });
   if (classDocument.system.traits) {
     md.traits(classDocument.system.traits, "--center");
   }

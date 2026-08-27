@@ -1,5 +1,6 @@
 ---
 title: Berserker
+img: /assets/icons/classes/berserker/berserker.png
 ---
 
 <div class="document-traits --center">

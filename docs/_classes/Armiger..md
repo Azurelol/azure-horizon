@@ -1,5 +1,6 @@
 ---
 title: Armiger
+img: /assets/icons/classes/armiger/armiger.png
 ---
 
 <div class="document-traits --center">

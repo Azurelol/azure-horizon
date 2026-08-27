@@ -1,5 +1,6 @@
 ---
 title: Dancer
+img: /assets/icons/classes/dancer/dancer.png
 ---
 
 <div class="document-traits --center">

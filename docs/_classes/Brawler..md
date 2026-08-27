@@ -1,5 +1,6 @@
 ---
 title: Brawler
+img: /assets/icons/classes/brawler/brawler.png
 ---
 
 <div class="document-traits --center">

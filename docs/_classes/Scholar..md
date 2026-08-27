@@ -1,5 +1,6 @@
 ---
 title: Scholar
+img: /assets/icons/classes/scholar/scholar.png
 ---
 
 <div class="document-traits --center">

@@ -1,5 +1,6 @@
 ---
 title: Archer
+img: /assets/icons/classes/archer/archer.png
 ---
 
 <div class="document-traits --center">

@@ -1,5 +1,6 @@
 ---
 title: Bard
+img: /assets/icons/classes/bard/bard.png
 ---
 
 <div class="document-traits --center">

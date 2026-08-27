@@ -1,5 +1,6 @@
 ---
 title: Hero
+img: /assets/icons/classes/hero/hero.png
 ---
 
 

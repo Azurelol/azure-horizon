@@ -1,5 +1,6 @@
 ---
 title: Blademaster
+img: /assets/icons/classes/blademaster/blademaster.png
 ---
 
 <div class="document-traits --center">

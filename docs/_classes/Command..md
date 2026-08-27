@@ -1,5 +1,6 @@
 ---
 title: Command
+img: /assets/icons/classes/command/command.png
 ---
 
 <p>You command your companion to perform an action.</p>

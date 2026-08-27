@@ -1,5 +1,6 @@
 ---
 title: Fencer
+img: /assets/icons/classes/fencer/fencer.png
 ---
 
 <div class="document-traits --center">

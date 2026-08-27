@@ -1,5 +1,6 @@
 ---
 title: Ritualist
+img: /assets/icons/classes/ritualist/ritualist.png
 ---
 
 

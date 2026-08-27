@@ -1,5 +1,6 @@
 ---
 title: Animist
+img: /assets/icons/classes/animist/animist.png
 ---
 
 <div class="document-traits --center">

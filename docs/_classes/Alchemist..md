@@ -1,5 +1,6 @@
 ---
 title: Alchemist
+img: /assets/icons/classes/alchemist/alchemist.png
 ---
 
 <div class="document-traits --center">

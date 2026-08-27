@@ -1,5 +1,6 @@
 ---
 title: Spiritist
+img: /assets/icons/classes/spiritist/spiritist.png
 ---
 
 <div class="document-traits --center">
