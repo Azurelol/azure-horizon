@@ -2,9 +2,9 @@
 title: Scholar
 ---
 
-<div class="document-traits">
-<span class="document-trait">support</span>
-<span class="document-trait">lore</span>
+<div class="document-traits --center">
+<span class="document-trait">Support</span>
+<span class="document-trait">Lore</span>
 </div>
 
 

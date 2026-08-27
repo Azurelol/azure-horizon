@@ -8,39 +8,75 @@ const PACKS_DIR_PATH = "./src/packs";
 const FOUNDRY_SYSTEM_PATH = "systems/azure-horizon/";
 
 /**
+ * @param {String|*} input
+ * @returns {String}
+ */
+function capitalize(input) {
+  return typeof input === "string" ? input.charAt(0).toUpperCase() + input.slice(1).toLowerCase() : input;
+}
+
+/**
  * Adds custom functions for this file.
  */
 class DocBuilder extends MarkdownBuilder {
 
+  static NEWLINE = "\n";
+
   /**
+   * @param {String[]} parts
    * @param {String[]} traits
+   * @param {String} classes
    */
-  traits(traits) {
-    let parts = [];
-    parts.push("<div class=\"document-traits\">");
+  constructTraitsElements(parts, traits, classes) {
+    if (traits.length === 0) {
+      return;
+    }
+    parts.push(`<div class="document-traits ${classes}">`);
     for (const trait of traits) {
-      parts.push(`<span class="document-trait">${trait}</span>`);
+      parts.push(`<span class="document-trait">${capitalize(trait)}</span>`);
     }
     parts.push("</div>");
-    const content = parts.join("\n");
+  }
+
+  /**
+   * @param {String[]} traits
+   * @param classes
+   */
+  traits(traits, classes = "") {
+    let parts = [];
+    this.constructTraitsElements(parts, traits, classes);
+    const content = parts.join(DocBuilder.NEWLINE);
     return this.html(content);
   }
 
   /**
+   * @typedef DocumentHeaderOptions
+   * @property {String[]} traits
+   * @property {String} additional
+   */
+
+  /**
    * @param {String} name
    * @param {String} img
-   * @param {String} additional
+   * @param {DocumentHeaderOptions} options
    * @returns {DocBuilder}
    */
-  documentHeader(name, img, additional) {
+  documentHeader(name, img, options) {
     let parts = [];
     parts.push("<div class=\"document-header\">");
     parts.push(`<div class="document-header__name"><img src="${this.#normalizeImagePath(img)}"><span>${name}</span></div>`);
-    if (additional) {
-      parts.push(`<div>${additional}</div>`);
+
+    parts.push("<div class='document-header__properties'>");
+    if (options.traits) {
+      this.constructTraitsElements(parts, options.traits, "--small");
+    }
+    if (options.additional) {
+      parts.push(options.additional);
     }
     parts.push("</div>");
-    const content = parts.join("\n");
+
+    parts.push("</div>");
+    const content = parts.join(DocBuilder.NEWLINE);
     return this.html(content);
   }
 
@@ -75,7 +111,6 @@ async function getDirectories(path) {
   for (const entry of entries) {
     const path = PATH.join(entry.parentPath, entry.name);
     if (entry.isDirectory()) {
-      console.log();
       dirs.push({
         ...entry,
         path: path,
@@ -86,7 +121,7 @@ async function getDirectories(path) {
 }
 
 /**
- * @typedef {'class'|'skill'|'classFeature'|'JournalEntry'} DocumentType
+ * @typedef {'class'|'skill'|'classFeature'|'spell'|'JournalEntry'} DocumentType
  */
 
 /**
@@ -151,13 +186,13 @@ const FILE_EXTENSION = ".md";
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * @typedef ClassEntry
+ * @typedef ClassDocumentCollection
  * @property {FileSystemEntry} file
  * @property {FileSystemEntry[]} skills
  * @property {FileSystemEntry[]} features
  */
 
-/** @type ClassEntry[] **/
+/** @type ClassDocumentCollection[] **/
 let classes = [];
 
 const SRC_CLASSES_DIR_PATH = PATH.join(PACKS_DIR_PATH, "classes");
@@ -190,7 +225,7 @@ for (const entry of classes) {
   let md = new DocBuilder();
   md.frontMatter({ title: classDocument.name });
   if (classDocument.system.traits) {
-    md.traits(classDocument.system.traits);
+    md.traits(classDocument.system.traits, "--center");
   }
   md.p(classDocument.system.description);
 
@@ -212,7 +247,8 @@ for (const entry of classes) {
   md.customHeading(1, "Skills", "class__skills");
   for (const skill of entry.skills) {
     const skillDocument = await deserializeDocument(skill);
-    md.documentHeader(skillDocument.name, skillDocument.img, `<i class="fa-solid fa-star"></i> ${skillDocument.system.level.max}`);
+
+    // Gather traits among all fields
     let traits = [];
     if (skillDocument.system.action.traits) {
       traits.push(...skillDocument.system.action.traits);
@@ -220,6 +256,12 @@ for (const entry of classes) {
     if (traits.length > 0) {
       md.traits(traits);
     }
+
+    md.documentHeader(skillDocument.name, skillDocument.img, {
+      traits: traits,
+      additional: `<i class="fa-solid fa-star"></i> ${skillDocument.system.level.max}`,
+    });
+
     md.p(skillDocument.system.description);
   }
   // Features
@@ -228,7 +270,7 @@ for (const entry of classes) {
     md.heading(2, "Features");
     for (const feature of entry.features) {
       const doc = await deserializeDocument(feature);
-      md.documentHeader(doc.name, doc.img, "");
+      md.documentHeader(doc.name, doc.img, {});
       md.p(doc.system.description);
     }
   }
@@ -236,7 +278,62 @@ for (const entry of classes) {
   const content = md.build();
 
   await fs.writeFile(entryFileName, content);
-  console.log(`Writing file to ${entryFileName}`);
+  console.log(`Writing class file to ${entryFileName}`);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// SPELLS
+///////////////////////////////////////////////////////////////////////////////
+const SRC_SPELL_DIR = PATH.join(PACKS_DIR_PATH, "spells");
+const SRC_SPELL_DIRECTORIES = await getDirectories(SRC_SPELL_DIR);
+
+/**
+ * @typedef {DocumentEntry} SpellEntry
+ * @property {String} system.domain
+ */
+
+const UNTYPED_DOMAIN = "General";
+
+/** @type {Map<String, SpellEntry[]>} **/
+let spellsByDomain = new Map();
+
+for (const dir of SRC_SPELL_DIRECTORIES) {
+  const spellEntries = await getDocuments(dir, "spell");
+  for (const entry of spellEntries) {
+    /** @type SpellEntry **/
+    const spell = await deserializeDocument(entry);
+    let domain = spell.system.domain;
+    if (!domain) {
+      domain = UNTYPED_DOMAIN;
+    }
+    if (!spellsByDomain.has(domain)) {
+      spellsByDomain.set(domain, []);
+    }
+    const sd = spellsByDomain.get(domain);
+    sd.push(spell);
+    spellsByDomain.set(domain, sd);
+  }
+}
+
+// Now write the domain files
+const DST_SPELL_DIR = PATH.join(ROOT_DIRECTORY, "docs", "_spells");
+await cleanDirectory(DST_SPELL_DIR);
+for (let [domain, spells] of spellsByDomain) {
+  domain = capitalize(domain);
+  const fileName = PATH.join(DST_SPELL_DIR, `${domain}.${FILE_EXTENSION}`);
+  let md = new DocBuilder();
+  md.frontMatter({ title: domain });
+  for (const spell of spells) {
+    let traits = [];
+    traits.push(spell.system.speed);
+    md.documentHeader(spell.name, spell.img, {
+      traits: traits,
+    });
+    md.p(spell.system.description);
+  }
+  const content = md.build();
+  await fs.writeFile(fileName, content);
+  console.log(`Writing spell file to ${fileName}`);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -281,7 +378,7 @@ if (glossary) {
   }
   const content = md.build();
   await fs.writeFile(fileName, content);
-  console.log(`Writing file to ${fileName}`);
+  console.log(`Writing glossary file to ${fileName}`);
 }
 
 // MANUAL
@@ -309,6 +406,6 @@ if (manual) {
     md.html(page.text.content);
     const content = md.build();
     await fs.writeFile(fileName, content);
-    console.log(`Writing file to ${fileName}`);
+    console.log(`Writing manual file to ${fileName}`);
   }
 }

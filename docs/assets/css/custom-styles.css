@@ -31,14 +31,26 @@ img {
   flex-direction: row;
   align-items: center;
   gap: 0.25rem;
+
+  &.--center {
+    justify-content: center;
+  }
+
+  .document-trait {
+    color: #ffffff;
+    background:  #5C5C5B;
+    border: 1px solid #27374a;
+    padding: 4px;
+  }
+
+  &.--small {
+    .document-trait {
+      padding: 2px;
+    }
+  }
 }
 
-.document-trait {
-  color: #ffffff;
-  background:  #5C5C5B;
-  border: 1px solid #27374a;
-  padding: 4px;
-}
+
 
 .class__skills {
 }

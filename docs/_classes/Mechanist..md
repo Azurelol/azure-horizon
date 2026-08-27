@@ -2,8 +2,7 @@
 title: Mechanist
 ---
 
-<div class="document-traits">
-</div>
+
 
 
 

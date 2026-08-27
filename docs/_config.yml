@@ -23,17 +23,22 @@ collections:
   classes:
     output: true
     permalink: /classes/:name/
+  spells:
+      output: true
+      permalink: /spells/:name/
   manual:
     output: true
     permalink: /manual/:name/
 
 navbar-links:
-  Classes: "classes"
   Manual: "manual"
+  Classes: "classes"
+  Spells: "spells"
   Glossary: "glossary"
-  About Me: "aboutme"
+  About: "aboutme"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
+    - Itch.io: "https://itch.io/"
 
 ################
 # --- Logo --- #

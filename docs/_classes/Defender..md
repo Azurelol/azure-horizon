@@ -2,9 +2,9 @@
 title: Defender
 ---
 
-<div class="document-traits">
-<span class="document-trait">warrior</span>
-<span class="document-trait">defense</span>
+<div class="document-traits --center">
+<span class="document-trait">Warrior</span>
+<span class="document-trait">Defense</span>
 </div>
 
 
