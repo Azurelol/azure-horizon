@@ -19,6 +19,11 @@ author: Christian Sagel
 # --- List of links in the navigation bar --- #
 ###############################################
 
+collections:
+  classes:
+    output: true
+    permalink: /classes/:name/
+
 navbar-links:
   Classes: "classes"
   About Me: "aboutme"
@@ -79,7 +84,7 @@ social-network-links:
 
 # If you want your website to generate an RSS feed, provide a description
 # The URL for the feed will be https://<your_website>/feed.xml
-rss-description: This website is a virtual proof that I'm awesome
+rss-description: This is a reference website for the Azure Horizon system.
 
 ###########################
 # --- General options --- #
