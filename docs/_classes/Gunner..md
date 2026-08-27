@@ -11,35 +11,35 @@ title: Gunner
 ## Skills
 
 <div class="document-header">
-<div><img src="icons/magic/fire/flame-burning-embers-orange.webp"><span>Bonus Round</span></div>
+<div class="document-header__name"><img src="icons/magic/fire/flame-burning-embers-orange.webp"><span>Bonus Round</span></div>
 <div>SL 1</div>
 </div>
 
 <p>Whenever you empty your ammunition you deal an additional free attack.</p>
 
 <div class="document-header">
-<div><img src="icons/skills/ranged/cannon-barrel-firing-white-yellow.webp"><span>Focused Shot</span></div>
+<div class="document-header__name"><img src="icons/skills/ranged/cannon-barrel-firing-white-yellow.webp"><span>Focused Shot</span></div>
 <div>SL 1</div>
 </div>
 
 <p>You perform a strong attack that pressures the enemy.</p>
 
 <div class="document-header">
-<div><img src="icons/skills/ranged/cannon-barrel-firing-yellow.webp"><span>Point Blank</span></div>
+<div class="document-header__name"><img src="icons/skills/ranged/cannon-barrel-firing-yellow.webp"><span>Point Blank</span></div>
 <div>SL 2</div>
 </div>
 
 <p>While in the front row you can rush forwards and blast an enemy within reach, dealing significant damage. At SL2 you shift backwards.</p>
 
 <div class="document-header">
-<div><img src="icons/weapons/guns/pistol-handgun-large.webp"><span>Rapid Reload</span></div>
+<div class="document-header__name"><img src="icons/weapons/guns/pistol-handgun-large.webp"><span>Rapid Reload</span></div>
 <div>SL 1</div>
 </div>
 
 <p>If the result of your your last attack was an even check, next time you reload you gain a damage bonus to your next attack.</p>
 
 <div class="document-header">
-<div><img src="icons/skills/ranged/blast-energy-plating-orange.webp"><span>Unload</span></div>
+<div class="document-header__name"><img src="icons/skills/ranged/blast-energy-plating-orange.webp"><span>Unload</span></div>
 <div>SL 2</div>
 </div>
 

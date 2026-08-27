@@ -11,7 +11,7 @@ title: Hero
 ## Skills
 
 <div class="document-header">
-<div><img src="icons/magic/light/beam-strike-village-yellow.webp"><span>Brave the Darkness</span></div>
+<div class="document-header__name"><img src="icons/magic/light/beam-strike-village-yellow.webp"><span>Brave the Darkness</span></div>
 <div>SL 1</div>
 </div>
 

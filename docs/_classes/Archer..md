@@ -11,7 +11,7 @@ title: Archer
 ## Skills
 
 <div class="document-header">
-<div><img src="icons/weapons/bows/shortbow-recurve-yellow.webp"><span>Draw</span></div>
+<div class="document-header__name"><img src="icons/weapons/bows/shortbow-recurve-yellow.webp"><span>Draw</span></div>
 <div>SL 2</div>
 </div>
 

@@ -18,7 +18,7 @@ class DocBuilder extends MarkdownBuilder {
    */
   normalizeImagePath(img) {
     if (img.startsWith(FOUNDRY_SYSTEM_PATH)) {
-      img = img.replace(FOUNDRY_SYSTEM_PATH, "{{site.baseurl}/");
+      img = img.replace(FOUNDRY_SYSTEM_PATH, "{{ site.baseurl }}/");
     }
     return img;
   }

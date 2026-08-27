@@ -11,7 +11,7 @@ title: Brawler
 ## Skills
 
 <div class="document-header">
-<div><img src="icons/skills/melee/unarmed-punch-fist-yellow-red.webp"><span>Martial Arts</span></div>
+<div class="document-header__name"><img src="icons/skills/melee/unarmed-punch-fist-yellow-red.webp"><span>Martial Arts</span></div>
 <div>SL 5</div>
 </div>
 

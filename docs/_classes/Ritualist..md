@@ -11,7 +11,7 @@ title: Ritualist
 ## Skills
 
 <div class="document-header">
-<div><img src="icons/magic/unholy/energy-smoke-pink.webp"><span>Dark Spell</span></div>
+<div class="document-header__name"><img src="icons/magic/unholy/energy-smoke-pink.webp"><span>Dark Spell</span></div>
 <div>SL 5</div>
 </div>
 
