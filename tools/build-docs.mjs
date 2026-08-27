@@ -71,7 +71,7 @@ async function getDirectories(path) {
 }
 
 /**
- * @typedef {'class'|'skill'|'classFeature'} DocumentType
+ * @typedef {'class'|'skill'|'classFeature'|'JournalEntry'} DocumentType
  */
 
 /**
@@ -84,7 +84,6 @@ async function getDocuments(entry, type) {
   const entries = await fs.readdir(entry.path, {
     withFileTypes: true, withFileExtensions: true, withExtensions: true,
   });
-  //console.log(entries);
   for (const entry of entries) {
     if (entry.name.startsWith(type)) {
       documents.push({
@@ -130,16 +129,18 @@ async function cleanDirectory(directoryPath) {
   await fs.mkdir(directoryPath);
 }
 
+const FILE_EXTENSION = ".md";
+
+///////////////////////////////////////////////////////////////////////////////
+// CLASSES
+///////////////////////////////////////////////////////////////////////////////
+
 /**
  * @typedef ClassEntry
  * @property {FileSystemEntry} file
  * @property {FileSystemEntry[]} skills
  * @property {FileSystemEntry[]} features
  */
-
-///////////////////////////////////////////////////////////////////////////////
-// CLASSES
-///////////////////////////////////////////////////////////////////////////////
 
 /** @type ClassEntry[] **/
 let classes = [];
@@ -169,7 +170,7 @@ await cleanDirectory(DST_CLASSES_DIR_PATH);
 for (const entry of classes) {
   //console.log(`Parsed class ${entry.file.name} with skills: ${entry.skills.map(s => s.name).join(", ")}`);
   const classDocument = await deserializeDocument(entry.file);
-  const entryFileName = PATH.join(DST_CLASSES_DIR_PATH, `${classDocument.name}.md`);
+  const entryFileName = PATH.join(DST_CLASSES_DIR_PATH, `${classDocument.name}.${FILE_EXTENSION}`);
 
   let md = new DocBuilder();
   md.frontMatter({ title: classDocument.name });
@@ -193,5 +194,48 @@ for (const entry of classes) {
 // JOURNALS
 ///////////////////////////////////////////////////////////////////////////////
 const SRC_JOURNAL_DIR = PATH.join(PACKS_DIR_PATH, "journals");
+const JOURNAL_DIR_ENTRY = {
+  name: "journals",
+  parentPath: PACKS_DIR_PATH,
+  path: SRC_JOURNAL_DIR,
+};
+const SRC_JOURNAL_DOCUMENTS = await getDocuments(JOURNAL_DIR_ENTRY, "JournalEntry");
+
+/**
+ * @typedef JournalEntry
+ * @property {JournalEntryPage[]} pages
+ */
+
+/**
+ * @typedef JournalEntryPage
+ * @property {String} name
+ * @property {String} text.content
+ */
+
+/** @type {Map<String, JournalEntry>} **/
+const journals = new Map();
+for (const entry of SRC_JOURNAL_DOCUMENTS) {
+  const doc = await deserializeDocument(entry);
+  journals.set(doc.name, doc);
+}
+
+const glossary = journals.get("Glossary");
+if (glossary) {
+
+}
+
+// MANUAL
 const DST_MANUAL_DIR = PATH.join(ROOT_DIRECTORY, "docs", "_manual");
 await cleanDirectory(DST_MANUAL_DIR);
+const manual = journals.get("Manual");
+if (manual) {
+  for (const page of manual.pages) {
+    const fileName = PATH.join(DST_MANUAL_DIR, `${page.name}.${FILE_EXTENSION}`);
+    let md = new DocBuilder();
+    md.frontMatter({ title: page.name });
+    md.html(page.text.content);
+    const content = md.build();
+    await fs.writeFile(fileName, content);
+    console.log(`Writing file to ${fileName}`);
+  }
+}
