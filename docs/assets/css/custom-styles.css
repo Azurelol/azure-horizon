@@ -15,11 +15,12 @@
   --ah-trait-border: black;
   --ah-trait-color: #f4f0f0;
   --ah-document-header-background: #354564;
+  --ah-entry-background: #4f5e8c;
   --ah-content-color: white;
 
   /*Override*/
-  --body-font: PressStart2P, 'Times New Roman', serif;
-  --header-font: Pixeloid, 'Open Sans', serif;
+  /*--body-font: PressStart2P, 'Times New Roman', serif;*/
+  /*--header-font: Pixeloid, 'Open Sans', serif;*/
 }
 
 i {
@@ -81,21 +82,28 @@ img {
 }
 
 .class__grid {
+  --entry-size: 160px;
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  padding: clamp(32px, 5vw, 80px);
+  grid-template-columns: repeat(auto-fit, minmax(var(--entry-size), 1fr));
 
   article {
+    background: var(--ah-entry-background);
     border: 1px solid #e2e8f0;
     border-radius: 20px;
     padding: 28px;
     background: #fff;
 
     a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
       img {
-        width: 32px;
-        height: 32px;
+        width: 64px;
+        height: 64px;
       }
     }
   }

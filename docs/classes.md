@@ -8,8 +8,8 @@ permalink: /classes/
 {% for entry in site.classes %}
 <article>
 <a href="{{ site.baseurl }}{{ entry.url }}">
+<img src="{{ site.baseurl }} {{ entry.img }}" />
   {{ entry.title }}
-  <img src="{{ site.baseurl }}/assets/icons/classes/{{entry.id}}/{{entry.id}}.png" alt="classes" />
 </a>
 </article>
 {% endfor %}

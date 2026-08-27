@@ -4,6 +4,7 @@ import { MarkdownBuilder } from "./markdown-builder.mjs";
 
 const ROOT_DIRECTORY = process.cwd();
 const DOCS_DIRECTORY = PATH.join(ROOT_DIRECTORY, "docs");
+const ASSETS_DIRECTORY = PATH.join(DOCS_DIRECTORY, "assets");
 const PACKS_DIR_PATH = "./src/packs";
 const FOUNDRY_SYSTEM_PATH = "systems/azure-horizon/";
 
@@ -221,9 +222,10 @@ for (const entry of classes) {
   //console.log(`Parsed class ${entry.file.name} with skills: ${entry.skills.map(s => s.name).join(", ")}`);
   const classDocument = await deserializeDocument(entry.file);
   const entryFileName = PATH.join(DST_CLASSES_DIR_PATH, `${classDocument.name}.${FILE_EXTENSION}`);
+  const className = classDocument.name.toLowerCase();
 
   let md = new DocBuilder();
-  md.frontMatter({ title: classDocument.name });
+  md.frontMatter({ title: classDocument.name, img: `${ASSETS_DIRECTORY}/classes/${className}/${className}.png` });
   if (classDocument.system.traits) {
     md.traits(classDocument.system.traits, "--center");
   }
