@@ -8,7 +8,7 @@ img: /assets/icons/classes/alchemist/alchemist.png
 <span class="document-trait">Alchemy</span>
 </div>
 
-
+<p>An enterprising individual who has taken it upon themselves to brew potions, elixirs and all kinds of concoctions. They can be found traveling the world, plying their services or as residents in settlements where they usually become a backbone of the community.</p><blockquote><p>The Alchemist is an excellent class for providing general resource support to a party lacking in those means while also boasting moderate offensive capabilities with their bombs.</p></blockquote><p></p>
 
 ---
 
@@ -16,6 +16,15 @@ img: /assets/icons/classes/alchemist/alchemist.png
 
 - You help a local community with their needs.
 - You treat a disease or illness with one of your concoctions.
+- You cook a delicious meal.
+
+---
+
+### Complications
+
+- You are accused of a fouled batch.
+- A very influential person asks you for a favor.
+- A rare reagent can be found nearby and you really want it.
 
 ---
 

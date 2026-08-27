@@ -21,7 +21,12 @@
       "You champion nature."
     ],
     "traits": [
-      "mage"
+      "mage",
+      "support"
+    ],
+    "complications": [
+      "A strange animal seeks out your help.",
+      "You find an abandoned animal."
     ]
   },
   "effects": [],

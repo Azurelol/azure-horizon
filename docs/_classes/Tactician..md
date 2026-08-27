@@ -8,7 +8,24 @@ img: /assets/icons/classes/tactician/tactician.png
 <span class="document-trait">Tactics</span>
 </div>
 
+<p>An individual who prefers to rely on tactics and strategy rather than pure strength when it comes to winning conflicts. They are often military commanders, squad leaders and those with natural leadership abilities.</p><blockquote><p>The Tactician is the class for those who wish to coordinate and directly lead their allies in battle, as their <em>formation</em> skills allow them to directly manipulate their party members positioning and actions.</p></blockquote>
 
+---
+
+### Experience Triggers
+
+- You avoid a needless battle.
+- You come up with a sound battle plan.
+- You make someone believe you are a genius.
+- You intimidate your advesaries with your foresight.
+
+---
+
+### Complications
+
+- You are blamed for a battle in your past.
+- You are asked to help plan for a battle you wish to avoid.
+- One of things you were planning for goes wrong.
 
 ---
 

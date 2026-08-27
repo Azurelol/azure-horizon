@@ -9,7 +9,7 @@ img: /assets/icons/classes/lancer/lancer.png
 <span class="document-trait">Mobility</span>
 </div>
 
-<p>An acrobatic warrior who specializes in fighting at range with a long spear.</p>
+<p>An acrobatic warrior who specializes in fighting at range with a long spear. They could be the elites of military organizations or disciples of renowned martial masters. They specialize in getting past defenses to directly deal with dangerous opponents.</p><blockquote><p>The Lancer should be a fun class for those wishing to engage with the fantasy of the fighter who leaps around the battlefield. Their iconic Jump skill allows them to avoid being targeted and unleash more powerful versions of their main skills.</p></blockquote>
 
 ---
 
@@ -18,6 +18,14 @@ img: /assets/icons/classes/lancer/lancer.png
 - You liberate someone.
 - You jump from a great height and land in a dramatic pose.
 - You defeat an enemy with a Jump.
+
+---
+
+### Complications
+
+- A rival lancer has been possessed by an evil dragon spirit.
+- Your romantic rival wins the heart of the object of your affection.
+- You realize those you once served were wrong all along.
 
 ---
 

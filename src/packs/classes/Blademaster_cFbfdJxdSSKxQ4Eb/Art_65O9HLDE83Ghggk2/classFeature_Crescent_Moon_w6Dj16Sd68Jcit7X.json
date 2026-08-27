@@ -64,7 +64,7 @@
     },
     "class": "blademaster",
     "skill": "blademaster-blade-study",
-    "power": "moderate"
+    "power": "low"
   },
   "effects": [],
   "sort": 100000,

@@ -1,14 +1,20 @@
 {
-  "folder": "65O9HLDE83Ghggk2",
-  "name": "New Moon",
-  "type": "classFeature",
-  "_id": "q4MhVLUzDJJ4yr0e",
-  "img": "icons/skills/melee/blade-tips-double-blue.webp",
+  "folder": "bx9MNmczTLwMoouk",
+  "name": "Ice Block",
+  "type": "skill",
+  "_id": "bF5Ho63DfxooBvdz",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-new-moon",
-    "description": "<p>You deal damage to a target. Can only be executed during an odd turn.</p>",
+    "slug": "elementalist-ice-block",
+    "description": "<p>As a reaction you can gain <em>Stasis</em> and become immune to all damage and effects.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -18,10 +24,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
-        "amount": "5",
-        "type": "light"
+        "amount": "",
+        "type": "untyped"
       },
       "secondary": {
         "amount": "",
@@ -53,21 +59,31 @@
         "tracking": ""
       }
     },
-    "feature": {
-      "_id": "zTjo9dSBqomKrWkO",
-      "type": "emptyClassFeature"
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "self",
+      "type": "reaction",
+      "points": 1,
+      "traits": [
+        "exhaust"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
-      "check": true,
-      "damage": true
+      "attributes": false,
+      "check": false,
+      "damage": false
     },
-    "class": "blademaster",
-    "skill": "blademaster-blade-study",
-    "power": "high"
+    "class": "elementalist"
   },
   "effects": [],
-  "sort": 200000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -76,12 +92,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787209877504,
+    "createdTime": 1787859540005,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!q4MhVLUzDJJ4yr0e"
+  "_key": "!items!bF5Ho63DfxooBvdz"
 }

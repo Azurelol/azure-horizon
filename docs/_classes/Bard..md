@@ -9,7 +9,7 @@ img: /assets/icons/classes/bard/bard.png
 <span class="document-trait">Music</span>
 </div>
 
-
+<p>A person with great musical talent, which they can use to rally their allies to great deeds. Whether they be lone performers, career musicians or outright celebrities, they all share a love of music in common and believe it has a power of its own.</p><blockquote><p>The Bard is a rather interesting class for those want to be creative in crafting their own songs and engage with its performance mechanics which usually disallow them from taking offensive actions and instead have them prioritize selectively enhancing certain party members. </p></blockquote>
 
 ---
 
@@ -18,6 +18,15 @@ img: /assets/icons/classes/bard/bard.png
 - You stop a conflict with your performance.
 - You recount your party's exploits in a performance.
 - You inadvertently create a misunderstanding.
+- You perform and win over an audience.
+
+---
+
+### Complications
+
+- Your performance goes wrong.
+- An obsessive fan stalks you.
+- One of your compositions ears the emnity of a powerful figure.
 
 ---
 

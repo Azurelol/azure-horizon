@@ -5,6 +5,7 @@ img: /assets/icons/classes/animist/animist.png
 
 <div class="document-traits --center">
 <span class="document-trait">Mage</span>
+<span class="document-trait">Support</span>
 </div>
 
 
@@ -16,6 +17,13 @@ img: /assets/icons/classes/animist/animist.png
 - You befriend an animal.
 - You spare a cornered beast.
 - You champion nature.
+
+---
+
+### Complications
+
+- A strange animal seeks out your help.
+- You find an abandoned animal.
 
 ---
 

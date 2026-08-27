@@ -8,7 +8,7 @@ img: /assets/icons/classes/berserker/berserker.png
 <span class="document-trait">Offense</span>
 </div>
 
-<p>An instinctual warrior who fights with unbridled ferocity.</p>
+<p>An instinctual warrior who fights with unbridled ferocity. They can range from tribal warriors to particularly hotblooded individuals who tap into their emotions to fuel their fighting spirit. Though this often comes at a risk of losing themselves in battle.</p><blockquote><p>The Berserker is a nice class for those who wish their character to rush into the fray and keep a relentless offense throughout. How they interact with the tension mechanic differs from other classes and leads to a high-risk high-reward playstyle.</p></blockquote>
 
 ---
 
@@ -17,6 +17,14 @@ img: /assets/icons/classes/berserker/berserker.png
 - You recklessly put yourself in great danger.
 - You drink someone under the table.
 - You spare someone you have defeated.
+
+---
+
+### Complications
+
+- You lash out at a friend.
+- A warlord you once served seeks you out.
+- You hurt someone you didn't mean to.
 
 ---
 

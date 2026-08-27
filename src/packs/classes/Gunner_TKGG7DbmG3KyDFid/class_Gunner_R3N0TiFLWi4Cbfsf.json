@@ -21,6 +21,10 @@
     ],
     "traits": [
       "warrior"
+    ],
+    "complications": [
+      "Your firearm jams at a critical time.",
+      "The authorities deem you a prime suspect."
     ]
   },
   "effects": [],

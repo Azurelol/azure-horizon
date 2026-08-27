@@ -6,9 +6,10 @@ img: /assets/icons/classes/fencer/fencer.png
 <div class="document-traits --center">
 <span class="document-trait">Warrior</span>
 <span class="document-trait">Offense</span>
+<span class="document-trait">Shift</span>
 </div>
 
-
+<p>A disciplined warrior who fights with style and grace. They could be a daring swashbuckler or a noble practicing an established style. They specialize in darting among their foes with flair, waiting for the right chance to take them down.</p><blockquote><p>The Fencer is a great class for those who prize mobility. Most of their skills have them shift around the battlefield and sometimes require them to be in specific rows before activating powerful effects.</p></blockquote>
 
 ---
 
@@ -17,6 +18,15 @@ img: /assets/icons/classes/fencer/fencer.png
 - You prove your skill to an audience.
 - You challenge someone to a duel.
 - You spare your defeated opponent in a duel.
+- You defend your honor.
+
+---
+
+### Complications
+
+- You are challenged to a duel you can't refuse.
+- Your honor is questioned.
+- Someone important asks you to be their champion.
 
 ---
 

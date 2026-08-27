@@ -8,13 +8,22 @@ img: /assets/icons/classes/master/master.png
 <span class="document-trait">Companion</span>
 </div>
 
-<p>You have a companion that travels by your side wherever you go.</p>
+<p>A person who travels with their trusty companion, a being they trust above all others with their life. They have long experience or the training to maximize the talents of their companion and together they are a force to be reckoned with.</p><blockquote><p>The Master is the class for those who wish to fulfill the fantasy of fighting alongside a companion of their choice. As the companion can be built flexibly through skill investment, it can fulfill a variety of roles.</p></blockquote>
 
 ---
 
 ### Experience Triggers
 
-- 
+- Your companion comforts someone in need.
+- You challenge another master to a duel.
+
+---
+
+### Complications
+
+- Something is wrong with your companion.
+- Your companion is kidnapped.
+- A nefarious organization targets your companion.
 
 ---
 

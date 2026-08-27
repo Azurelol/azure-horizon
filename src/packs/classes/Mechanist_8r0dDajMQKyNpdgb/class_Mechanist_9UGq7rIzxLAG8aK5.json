@@ -18,9 +18,18 @@
     "triggers": [
       "You fix something broken for someone in need.",
       "You create a new device.",
-      "You discover new technology."
+      "You discover new technology.",
+      "You fight a giant mechanical monstrosity."
     ],
-    "traits": []
+    "traits": [
+      "support"
+    ],
+    "complications": [
+      "You break something you shouldn't have.",
+      "One of your creations goes haywire.",
+      "One of your precious gadgets breaks.",
+      "Someone makes use of one of your inventions with an evil intent."
+    ]
   },
   "effects": [],
   "sort": 0,

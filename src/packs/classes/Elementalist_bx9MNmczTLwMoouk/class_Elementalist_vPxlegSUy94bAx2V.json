@@ -8,17 +8,28 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "elementalist",
-    "description": "",
+    "description": "<p>A caster in certain control of the primal elements that govern the world. They can be found in distinguished magical or military academies and can be found adventurers, soldiers and many other positions where their destructive talents can be put to use.</p><blockquote><p>The Elementalist is the recommended class for those who want their character to unleash their magical arsenal on their foes, target elemental weaknesses and generally prioritize offense and not much else.</p></blockquote>",
     "benefits": {
       "schemaVersion": 1,
       "hp": false,
       "mp": true,
       "ip": false
     },
-    "triggers": [],
+    "triggers": [
+      "You deal with a problem involving the prime elements.",
+      "You unleash your magical power in a grand fashion.",
+      "You meet a powerful elemental.",
+      "You acquire a large pointy hat."
+    ],
     "traits": [
       "mage",
       "offense"
+    ],
+    "complications": [
+      "You lose control at a critical time.",
+      "An ensorcelled hatted doll appears.",
+      "An elemental conjunction appears.",
+      "A wild magic storm is imminent."
     ]
   },
   "effects": [],
