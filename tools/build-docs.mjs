@@ -68,7 +68,7 @@ class DocBuilder extends MarkdownBuilder {
 
     parts.push("<div class='document-header__properties'>");
     if (options.traits) {
-      this.constructTraitsElements(parts, options.traits, "--small");
+      this.constructTraitsElements(parts, options.traits, "--nested");
     }
     if (options.additional) {
       parts.push(options.additional);

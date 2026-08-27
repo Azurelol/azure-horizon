@@ -34,7 +34,7 @@ title: Bard
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Dedicate</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Stress</span>
 <span class="document-trait">Exhaust</span>
 </div>
@@ -83,7 +83,7 @@ title: Bard
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Interlude</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Stress</span>
 </div>
 <i class="fa-solid fa-star"></i> 1

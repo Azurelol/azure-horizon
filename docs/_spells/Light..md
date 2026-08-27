@@ -5,7 +5,7 @@ title: Light
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/light/beam-horizon-strike-yellow.webp"><span>Bless Weapon</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>
@@ -16,7 +16,7 @@ title: Light
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/light/beam-strike-orange.webp"><span>Dispel</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>
@@ -27,7 +27,7 @@ title: Light
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/defensive/shield-barrier-flaming-pentagon-blue-yellow.webp"><span>Divine Shield</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>
@@ -38,7 +38,7 @@ title: Light
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/light/beams-rays-orange-purple-large.webp"><span>Holy Light</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>

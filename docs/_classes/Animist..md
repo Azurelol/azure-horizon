@@ -41,7 +41,7 @@ title: Animist
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/nature/beam-hand-leaves-green.webp"><span>Innervate</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -71,7 +71,7 @@ title: Animist
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/nature/leaf-juggle-humanoid-green.webp"><span>Swiftmend</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
 </div>
 <i class="fa-solid fa-star"></i> 1

@@ -5,7 +5,7 @@ title: Elemental
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/lightning/bolt-strike-forked-blue.webp"><span>Chain Lightning</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Slow</span>
 </div>
 </div>
@@ -16,7 +16,7 @@ title: Elemental
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/water/barrier-ice-crystal-wall-jagged.webp"><span>Cone of Cold</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Fast</span>
 </div>
 </div>
@@ -27,7 +27,7 @@ title: Elemental
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/air/air-wave-gust-blue.webp"><span>Gale Blast</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>
@@ -38,7 +38,7 @@ title: Elemental
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/fire/blast-jet-stream-embers-red.webp"><span>Ignition</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>

@@ -5,7 +5,7 @@ title: Dark
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/death/skull-horned-worn-fire-blue.webp"><span>Bane</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>
@@ -16,7 +16,7 @@ title: Dark
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/unholy/hand-weapon-glow-black-green.webp"><span>Curse Weapon</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>
@@ -27,7 +27,7 @@ title: Dark
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/unholy/barrier-shield-glowing-pink.webp"><span>Shadow Cloak</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>

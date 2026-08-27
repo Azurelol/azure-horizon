@@ -42,7 +42,7 @@ title: Blademaster
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/swords-parry-block-blue.webp"><span>Parry</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Closer</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -63,7 +63,7 @@ title: Blademaster
 <div class="document-header">
 <div class="document-header__name"><img src="icons/weapons/swords/sword-katana.webp"><span>Sheathe</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Closer</span>
 </div>
 <i class="fa-solid fa-star"></i> 1

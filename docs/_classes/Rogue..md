@@ -25,7 +25,7 @@ title: Rogue
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/blade-tip-chipped-blood-red.webp"><span>Coup de Grace</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -73,7 +73,7 @@ title: Rogue
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/perception/shadow-stealth-eyes-purple.webp"><span>Vanish</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 <span class="document-trait">Closer</span>
 </div>

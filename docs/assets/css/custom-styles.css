@@ -1,6 +1,7 @@
 :root{
   --ah-border: 0.065rem solid #3d5f8f;
-  --ah-trait-background: #5a6778;
+  --ah-trait-background: #fa8c49;
+  --ah-trait-border: black;
   --ah-trait-color: #f4f0f0;
   --ah-document-header-background:#e3edfb;
 }
@@ -21,6 +22,8 @@ img {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  font-weight: bold;
+  padding: 8px;
 }
 
 .document-header__properties {
@@ -28,6 +31,7 @@ img {
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
+  margin-right: 1rem;
 }
 
 .document-traits {
@@ -43,13 +47,14 @@ img {
   .document-trait {
     color: var(--ah-trait-color);
     background: var(--ah-trait-background);
-    border: var(--ah-border);
     padding: 4px;
+    font-size: smaller;
   }
 
-  &.--small {
+  &.--nested {
     .document-trait {
       padding: 2px;
+      font-size: small;
     }
   }
 }

@@ -16,7 +16,7 @@ title: Tactician
 <div class="document-header">
 <div class="document-header__name"><img src="icons/sundries/flags/banner-sword-blue.webp"><span>Battle Standard</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Closer</span>
 <span class="document-trait">Stress</span>
 </div>
@@ -29,7 +29,7 @@ title: Tactician
 <div class="document-header">
 <div class="document-header__name"><img src="icons/sundries/gaming/chess-knight-white.webp"><span>Countergambit</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -68,7 +68,7 @@ title: Tactician
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Gambit</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -80,7 +80,7 @@ title: Tactician
 <div class="document-header">
 <div class="document-header__name"><img src="icons/sundries/gaming/chess-pawn-white-pink.webp"><span>Pawn Break</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 </div>
 <i class="fa-solid fa-star"></i> 1

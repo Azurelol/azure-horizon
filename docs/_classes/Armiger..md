@@ -32,7 +32,7 @@ title: Armiger
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/all-or-nothing.png"><span>All or Nothing</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -53,7 +53,7 @@ title: Armiger
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/cleave.png"><span>Cleave</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 </div>
 <i class="fa-solid fa-star"></i> 2
@@ -83,7 +83,7 @@ title: Armiger
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/power-strike.png"><span>Power Strike</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 </div>
 <i class="fa-solid fa-star"></i> 2
@@ -95,7 +95,7 @@ title: Armiger
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/sunder.png"><span>Sunder</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 </div>
 <i class="fa-solid fa-star"></i> 1

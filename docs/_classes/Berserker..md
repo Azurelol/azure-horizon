@@ -24,7 +24,7 @@ title: Berserker
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Challenging Shout</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 <span class="document-trait">Stress</span>
 </div>
@@ -37,7 +37,7 @@ title: Berserker
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Enrage</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Stress</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -76,7 +76,7 @@ title: Berserker
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>War Cry</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 </div>
 <i class="fa-solid fa-star"></i> 1

@@ -34,7 +34,7 @@ title: Lancer
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/spear-tips-double-purple.webp"><span>Drake Thrust</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Opener</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -46,7 +46,7 @@ title: Lancer
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/movement/feet-winged-boots-glowing-yellow.webp"><span>Jump</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 <span class="document-trait">Closer</span>
 </div>

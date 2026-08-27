@@ -5,7 +5,7 @@ title: Nature
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/nature/moon-crescent.webp"><span>Hibernate</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Fast</span>
 </div>
 </div>
@@ -16,7 +16,7 @@ title: Nature
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/nature/plant-sprout-snow-green.webp"><span>Rejuvenate</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>
@@ -27,7 +27,7 @@ title: Nature
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/nature/root-vine-thorned-fire-purple.webp"><span>Thorns</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Instant</span>
 </div>
 </div>
@@ -38,7 +38,7 @@ title: Nature
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/earth/barrier-stone-explosion-spiked.webp"><span>Wall of Stone</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --small">
+<div class="document-traits --nested">
 <span class="document-trait">Slow</span>
 </div>
 </div>
