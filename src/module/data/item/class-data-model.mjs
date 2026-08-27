@@ -7,6 +7,7 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
  * @property {ClassBenefitsDataModel} benefits
  * @property {TraitsField} traits
  * @property {String[]} triggers The experience triggers for this class.
+ * @property {String[]} complications Complication suggestions for this class.
  */
 export default class ClassDataModel extends ItemDataModel {
   /** @inheritdoc */
@@ -16,6 +17,9 @@ export default class ClassDataModel extends ItemDataModel {
       benefits: new EmbeddedDataField(ClassBenefitsDataModel, {}),
       triggers: new ArrayField(new StringField({ nullable: true }, {
         label: "AH.FIELD.ExperienceTrigger",
+      })),
+      complications: new ArrayField(new StringField({ nullable: true }, {
+        label: "AH.FIELD.Complications",
       })),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",

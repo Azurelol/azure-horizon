@@ -594,6 +594,7 @@
       "Potency": "Potency",
       "Identifier": "Identifier",
       "ComparisonOperator": "Comparison Operator",
+      "Complications": "Complications",
       "GreaterThan": "Greater Than",
       "Equals": "Equals",
       "LessThan": "Less Than",

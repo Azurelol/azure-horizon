@@ -3,7 +3,7 @@
   "name": "Master",
   "type": "class",
   "_id": "Q9ApcMaSQYXHpwUz",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/master/master.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -20,7 +20,7 @@
       "ip": false
     },
     "triggers": [
-      null
+      ""
     ]
   },
   "effects": [],

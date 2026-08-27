@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "armiger",
-    "description": "<p>A versatile warrior that values tactical flexibility over the study of a single weapon.</p>",
+    "description": "<p>A versatile warrior that values tactical flexibility over the study of a single weapon. They are often mercenaries; veterans that have tried many weapons over their careers and are capable of competently using any of them at their disposal.</p><blockquote><p>The Armiger is a great class for newcomers due to their relatively simple and effective skills which can easily complement other classes.</p></blockquote>",
     "benefits": {
       "schemaVersion": 1,
       "hp": true,
@@ -23,6 +23,11 @@
       "You acquire a new weapon.",
       "You mentor someone.",
       "You learn a new technique."
+    ],
+    "complications": [
+      "Your favorite weapon breaks.",
+      "A fellow mercenary is at odds with you.",
+      "Problems from the aftermath of an old battle spark up again."
     ]
   },
   "effects": [],

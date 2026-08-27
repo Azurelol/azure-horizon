@@ -3,7 +3,7 @@
   "name": "Follow Through",
   "type": "skill",
   "_id": "kok6FsiBHrU0R6dB",
-  "img": "icons/skills/melee/strike-sword-gray.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/armiger/follow-through.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

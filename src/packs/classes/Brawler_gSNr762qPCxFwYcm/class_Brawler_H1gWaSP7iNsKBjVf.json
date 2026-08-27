@@ -3,7 +3,7 @@
   "name": "Brawler",
   "type": "class",
   "_id": "H1gWaSP7iNsKBjVf",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/brawler/brawler.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

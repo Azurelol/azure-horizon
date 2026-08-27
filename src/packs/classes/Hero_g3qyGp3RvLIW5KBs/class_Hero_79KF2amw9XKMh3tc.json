@@ -3,12 +3,12 @@
   "name": "Hero",
   "type": "class",
   "_id": "79KF2amw9XKMh3tc",
-  "img": "icons/magic/control/control-influence-crown-gold.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/hero/hero.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "hero",
-    "description": "<p>A person who has transcended their limits. </p><p><em>Available only once a character has reached Level 60.</em></p>",
+    "description": "<p>A person who has transcended their limits.</p><blockquote><p><em>Available only once a character has reached Level 60.</em></p></blockquote>",
     "benefits": {
       "schemaVersion": 1,
       "hp": false,

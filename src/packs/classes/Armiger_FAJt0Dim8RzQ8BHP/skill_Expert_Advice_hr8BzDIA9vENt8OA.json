@@ -3,7 +3,7 @@
   "name": "Expert Advice",
   "type": "skill",
   "_id": "hr8BzDIA9vENt8OA",
-  "img": "icons/skills/social/thumbsup-approval-like.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/armiger/expert-advice.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

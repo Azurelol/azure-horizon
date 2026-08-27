@@ -3,7 +3,7 @@
   "name": "All or Nothing",
   "type": "skill",
   "_id": "9zuHaM2TWa1WA3Xs",
-  "img": "icons/skills/melee/weapons-crossed-daggers-orange.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/armiger/all-or-nothing.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

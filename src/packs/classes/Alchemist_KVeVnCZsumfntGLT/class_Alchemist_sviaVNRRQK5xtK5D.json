@@ -3,7 +3,7 @@
   "name": "Alchemist",
   "type": "class",
   "_id": "sviaVNRRQK5xtK5D",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/alchemist/alchemist.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

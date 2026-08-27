@@ -3,7 +3,7 @@
   "name": "Sunder",
   "type": "skill",
   "_id": "qyfX45ZP377wC5dz",
-  "img": "icons/skills/melee/shield-damaged-broken-blue.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/armiger/sunder.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

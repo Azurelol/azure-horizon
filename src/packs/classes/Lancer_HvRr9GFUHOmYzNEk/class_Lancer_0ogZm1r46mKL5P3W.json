@@ -3,7 +3,7 @@
   "name": "Lancer",
   "type": "class",
   "_id": "0ogZm1r46mKL5P3W",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/lancer/lancer.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

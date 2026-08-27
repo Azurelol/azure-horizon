@@ -13,14 +13,16 @@ const FOUNDRY_SYSTEM_PATH = "systems/azure-horizon/";
 class DocBuilder extends MarkdownBuilder {
 
   /**
-   * @param {String} img
-   * @returns {String}
+   * @param {String[]} traits
    */
-  normalizeImagePath(img) {
-    if (img.startsWith(FOUNDRY_SYSTEM_PATH)) {
-      img = img.replace(FOUNDRY_SYSTEM_PATH, "{{ site.baseurl }}/");
+  traits(traits) {
+    let parts = [];
+    parts.push("<div class=\"document-traits\">");
+    for (const trait of traits) {
+      parts.push("<span class=\"document-trait\">${trait}</span>");
     }
-    return img;
+    const content = parts.join("\n");
+    return this.html(content);
   }
 
   /**
@@ -32,13 +34,24 @@ class DocBuilder extends MarkdownBuilder {
   documentHeader(name, img, additional) {
     let parts = [];
     parts.push("<div class=\"document-header\">");
-    parts.push(`<div class="document-header__name"><img src="${this.normalizeImagePath(img)}"><span>${name}</span></div>`);
+    parts.push(`<div class="document-header__name"><img src="${this.#normalizeImagePath(img)}"><span>${name}</span></div>`);
     if (additional) {
       parts.push(`<div>${additional}</div>`);
     }
     parts.push("</div>");
     const content = parts.join("\n");
     return this.html(content);
+  }
+
+  /**
+   * @param {String} img
+   * @returns {String}
+   */
+  #normalizeImagePath(img) {
+    if (img.startsWith(FOUNDRY_SYSTEM_PATH)) {
+      img = img.replace(FOUNDRY_SYSTEM_PATH, "{{ site.baseurl }}/");
+    }
+    return img;
   }
 }
 
@@ -175,14 +188,39 @@ for (const entry of classes) {
 
   let md = new DocBuilder();
   md.frontMatter({ title: classDocument.name });
-  md.heading(1, classDocument.name);
+  md.traits(classDocument.system.traits);
   md.p(classDocument.system.description);
+
+  // Triggers
+  if (classDocument.system.triggers.length > 0) {
+    md.hr();
+    md.heading(2, "Experience Triggers");
+    md.list(classDocument.system.triggers);
+  }
+  // Complications
+  if (classDocument.system.complications.length > 0) {
+    md.hr();
+    md.heading(2, "Complications");
+    md.list(classDocument.system.complications);
+  }
+
+  // Skills
   md.hr();
   md.heading(2, "Skills");
   for (const skill of entry.skills) {
     const skillDocument = await deserializeDocument(skill);
     md.documentHeader(skillDocument.name, skillDocument.img, `SL ${skillDocument.system.level.max}`);
     md.p(skillDocument.system.description);
+  }
+  // Features
+  if (entry.features.length > 0) {
+    md.hr();
+    md.heading(2, "Features");
+    for (const feature of entry.features) {
+      const doc = await deserializeDocument(feature);
+      md.documentHeader(doc.name, doc.img, "");
+      md.p(doc.system.description);
+    }
   }
 
   const content = md.build();
@@ -239,9 +277,22 @@ if (glossary) {
 // MANUAL
 const DST_MANUAL_DIR = PATH.join(ROOT_DIRECTORY, "docs", "_manual");
 await cleanDirectory(DST_MANUAL_DIR);
+const IGNORED_MANUAL_PAGES = new Set(["Foreword"]);
 const manual = journals.get("Manual");
 if (manual) {
+  const pagesByName = new Map(manual.pages.map(p => [p.name, p.text]));
+
+  // Add foreword
+  const foreword = pagesByName.get("Foreword");
+  if (foreword) {
+
+  }
+
+  // Add rest of pages
   for (const page of manual.pages) {
+    if (IGNORED_MANUAL_PAGES.has(page.name)) {
+      continue;
+    }
     const fileName = PATH.join(DST_MANUAL_DIR, `${page.name}.${FILE_EXTENSION}`);
     let md = new DocBuilder();
     md.frontMatter({ title: page.name });

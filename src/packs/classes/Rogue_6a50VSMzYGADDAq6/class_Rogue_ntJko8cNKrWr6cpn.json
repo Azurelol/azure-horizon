@@ -3,7 +3,7 @@
   "name": "Rogue",
   "type": "class",
   "_id": "ntJko8cNKrWr6cpn",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/rogue/rogue.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
