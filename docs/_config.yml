@@ -6,3 +6,9 @@ collections:
   classes:
     output: true
     permalink: /classes/:name/
+
+defaults:
+  - scope:
+      type: classes
+    values:
+      layout: page
