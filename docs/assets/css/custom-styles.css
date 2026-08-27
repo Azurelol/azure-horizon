@@ -34,6 +34,11 @@ i {
 img {
 }
 
+.index-title {
+  font-size: xx-large;
+  text-transform: uppercase;
+}
+
 .document-header {
   display: flex;
   flex-direction: row;
