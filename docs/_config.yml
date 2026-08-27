@@ -22,10 +22,10 @@ author: Christian Sagel
 collections:
   classes:
     output: true
-    permalink: /classes/:name
+    permalink: /classes/:name/
   manual:
     output: true
-    permalink: /manual/:name
+    permalink: /manual/:name/
 
 navbar-links:
   Classes: "classes"
