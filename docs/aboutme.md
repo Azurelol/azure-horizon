@@ -1,16 +1,15 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: About Me
+subtitle: Why you should trust me with your time.
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+My name is Christian Sagel and I am the developer of this VTTRPG system.
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+- My favorite game genre are JRPGs.
+- I play TTRPGs once a week as a GM.
+- I spend way too much thinking about RPG design.
 
-What else do you need?
+### Background
 
-### My story
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+I have been playing RPGs, particularly JRPGs for over 30 years.

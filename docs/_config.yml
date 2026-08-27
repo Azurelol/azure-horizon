@@ -20,6 +20,7 @@ author: Christian Sagel
 ###############################################
 
 navbar-links:
+  Classes: "classes"
   About Me: "aboutme"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
@@ -94,7 +95,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"
+url-pretty: "azure-horizon.com"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
@@ -129,16 +130,16 @@ navbar-var-length: false
 # Personalize the colours in your website. Colour values can be any valid CSS colour
 
 page-col: "#FFFFFF"
-text-col: "#404040"
-link-col: "#008AFF"
-hover-col: "#0085A1"
-navbar-col: "#EAEAEA"
-navbar-text-col: "#404040"
-navbar-border-col: "#DDDDDD"
-footer-col: "#EAEAEA"
-footer-text-col: "#777777"
-footer-link-col: "#404040"
-footer-hover-col: "#0085A1"
+text-col: "#1A2233"        # navy, for body text
+link-col: "#0072CE"        # azure
+hover-col: "#004C99"       # darker azure on hover
+navbar-col: "#1A2233"      # navy
+navbar-text-col: "#FFFFFF"
+navbar-border-col: "#2C3A5C"  # lighter navy border
+footer-col: "#1A2233"      # navy
+footer-text-col: "#A9B4C9"    # muted navy-grey
+footer-link-col: "#FFFFFF"
+footer-hover-col: "#F2A93B"   # orange (actions) as an accent pop
 
 # Alternatively, the navbar, footer, and page background can be set to an image
 # instead of colour
