@@ -13,11 +13,6 @@ title: Tactician
 
 <h1 id="skills" class="class__skills">Skills</h1>
 
-<div class="document-traits ">
-<span class="document-trait">Closer</span>
-<span class="document-trait">Stress</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="icons/sundries/flags/banner-sword-blue.webp"><span>Battle Standard</span></div>
 <div class='document-header__properties'>
@@ -30,10 +25,6 @@ title: Tactician
 </div>
 
 <p>You brandish your battle standard, inspiring your allies.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/sundries/gaming/chess-knight-white.webp"><span>Countergambit</span></div>
@@ -74,10 +65,6 @@ title: Tactician
 
 <p>You gain the use of a <em>tactician formation</em> for each invested skill point. A formation is a party-wide command that action. All formations share a cooldown.</p>
 
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Gambit</span></div>
 <div class='document-header__properties'>
@@ -89,10 +76,6 @@ title: Tactician
 </div>
 
 <p>You give your ally an extra reaction which allows them to perform one of their actions on a specific trigger before the start of their next turn.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/sundries/gaming/chess-pawn-white-pink.webp"><span>Pawn Break</span></div>

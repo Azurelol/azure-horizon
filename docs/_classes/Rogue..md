@@ -22,10 +22,6 @@ title: Rogue
 
 <h1 id="skills" class="class__skills">Skills</h1>
 
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/blade-tip-chipped-blood-red.webp"><span>Coup de Grace</span></div>
 <div class='document-header__properties'>
@@ -73,11 +69,6 @@ title: Rogue
 </div>
 
 <p>While in a settlement, any exploration actions that deal with the underworld elements of society require no checks. You can also invite a guest at your discretion's and the GM.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-<span class="document-trait">Closer</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/perception/shadow-stealth-eyes-purple.webp"><span>Vanish</span></div>

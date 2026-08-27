@@ -1,13 +1,18 @@
+:root{
+  --ah-border: 0.065rem solid #3d5f8f;
+  --ah-trait-background: #5a6778;
+  --ah-trait-color: #f4f0f0;
+  --ah-document-header-background:#e3edfb;
+}
+
 img {
-  .avatar-img {
-    background: #0d6aad;
-  }
 }
 
 .document-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background: var(--ah-document-header-background);
 }
 
 .document-header__name {
@@ -18,12 +23,11 @@ img {
   gap: 0.5rem;
 }
 
-.document__header__extra {
-}
-
-:root{
-  --ah-surface-border: var(#3d5f8f);
-  --ah-border: 0.065rem solid var(--ah-surface-border);
+.document-header__properties {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .document-traits {
@@ -37,9 +41,9 @@ img {
   }
 
   .document-trait {
-    color: #ffffff;
-    background:  #5C5C5B;
-    border: 1px solid #27374a;
+    color: var(--ah-trait-color);
+    background: var(--ah-trait-background);
+    border: var(--ah-border);
     padding: 4px;
   }
 
@@ -49,8 +53,6 @@ img {
     }
   }
 }
-
-
 
 .class__skills {
 }

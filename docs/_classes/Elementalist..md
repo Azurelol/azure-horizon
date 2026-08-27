@@ -22,10 +22,6 @@ title: Elementalist
 
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Elemental </em>domain.</p>
 
-<div class="document-traits ">
-<span class="document-trait">Stress</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/fire/elemental-fire-humanoid.webp"><span>Meltdown</span></div>
 <div class='document-header__properties'>

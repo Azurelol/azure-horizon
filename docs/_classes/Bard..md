@@ -31,11 +31,6 @@ title: Bard
 
 <p>You add your voice to that of an ongoing <em>performance</em>, boosting its strength.</p>
 
-<div class="document-traits ">
-<span class="document-trait">Stress</span>
-<span class="document-trait">Exhaust</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Dedicate</span></div>
 <div class='document-header__properties'>
@@ -84,10 +79,6 @@ title: Bard
 </div>
 
 <p>When an adversary enters crisis in a combat scene you gain SL * 5 mind points.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Stress</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Interlude</span></div>

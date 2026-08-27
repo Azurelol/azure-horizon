@@ -21,11 +21,6 @@ title: Berserker
 
 <h1 id="skills" class="class__skills">Skills</h1>
 
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-<span class="document-trait">Stress</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Challenging Shout</span></div>
 <div class='document-header__properties'>
@@ -38,10 +33,6 @@ title: Berserker
 </div>
 
 <p>You gain SL stacks of <em>Taunt</em>.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Stress</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Enrage</span></div>
@@ -81,10 +72,6 @@ title: Berserker
 </div>
 
 <p>When you defeat an enemy you gain block and an ally of your choice gains <em>encourage</em>.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>War Cry</span></div>

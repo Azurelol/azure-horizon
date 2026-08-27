@@ -38,10 +38,6 @@ title: Animist
 
 <p>When you cast a Nature spell you reduce your TP by SL.</p>
 
-<div class="document-traits ">
-<span class="document-trait">Exhaust</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/nature/beam-hand-leaves-green.webp"><span>Innervate</span></div>
 <div class='document-header__properties'>
@@ -71,10 +67,6 @@ title: Animist
 </div>
 
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Nature </em>domain.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Exhaust</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/nature/leaf-juggle-humanoid-green.webp"><span>Swiftmend</span></div>

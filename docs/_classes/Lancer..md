@@ -31,10 +31,6 @@ title: Lancer
 
 <p>While under the effects of <em>Dragon Breath</em> you perform a splash fire attack. If performed directly after a Jump you instead hit all enemies.</p>
 
-<div class="document-traits ">
-<span class="document-trait">Opener</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/spear-tips-double-purple.webp"><span>Drake Thrust</span></div>
 <div class='document-header__properties'>
@@ -46,11 +42,6 @@ title: Lancer
 </div>
 
 <p>You perform a melee attack with increased potency. On an even check you gain <em>Fangs Bared</em>, otherwise <em>Coiled Tail</em>. On a critical you instead gain <em>Dragon Breath.</em></p>
-
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-<span class="document-trait">Closer</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/movement/feet-winged-boots-glowing-yellow.webp"><span>Jump</span></div>

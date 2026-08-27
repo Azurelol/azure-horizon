@@ -29,10 +29,6 @@ title: Armiger
 
 <h1 id="skills" class="class__skills">Skills</h1>
 
-<div class="document-traits ">
-<span class="document-trait">Exhaust</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/all-or-nothing.png"><span>All or Nothing</span></div>
 <div class='document-header__properties'>
@@ -53,10 +49,6 @@ title: Armiger
 </div>
 
 <p>Whenever you swap weapons you gain a <em>physical damage bonus</em> to your next attack.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/cleave.png"><span>Cleave</span></div>
@@ -88,10 +80,6 @@ title: Armiger
 
 <p>When a party member attacks a target you may follow up with a free attack of your own.</p>
 
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/power-strike.png"><span>Power Strike</span></div>
 <div class='document-header__properties'>
@@ -103,10 +91,6 @@ title: Armiger
 </div>
 
 <p>You unleash a powerful attack with your equipped weapon.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Cooldown</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/sunder.png"><span>Sunder</span></div>

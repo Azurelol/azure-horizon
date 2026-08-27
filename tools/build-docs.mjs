@@ -253,9 +253,6 @@ for (const entry of classes) {
     if (skillDocument.system.action.traits) {
       traits.push(...skillDocument.system.action.traits);
     }
-    if (traits.length > 0) {
-      md.traits(traits);
-    }
 
     md.documentHeader(skillDocument.name, skillDocument.img, {
       traits: traits,

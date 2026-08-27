@@ -39,10 +39,6 @@ title: Blademaster
 
 <p>During a combat scene when making an attack you may call it out in order to gain an SL bonus to the check. You may do this up to SL times.</p>
 
-<div class="document-traits ">
-<span class="document-trait">Closer</span>
-</div>
-
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/swords-parry-block-blue.webp"><span>Parry</span></div>
 <div class='document-header__properties'>
@@ -63,10 +59,6 @@ title: Blademaster
 </div>
 
 <p>When you successfully parry an attack you may exert yourself at the cost of 4 TP in order to negate it completely and perform a <em>Blademaster</em> weapon skill instead.</p>
-
-<div class="document-traits ">
-<span class="document-trait">Closer</span>
-</div>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/weapons/swords/sword-katana.webp"><span>Sheathe</span></div>
