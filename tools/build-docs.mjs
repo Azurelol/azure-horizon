@@ -289,7 +289,7 @@ const SRC_SPELL_DIRECTORIES = await getDirectories(SRC_SPELL_DIR);
  * @property {String} system.domain
  */
 
-const UNTYPED_DOMAIN = "General";
+const UNTYPED_DOMAIN = "general";
 
 /** @type {Map<String, SpellEntry[]>} **/
 let spellsByDomain = new Map();
