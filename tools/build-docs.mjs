@@ -136,7 +136,7 @@ async function getDocuments(entry, type) {
     withFileTypes: true, withFileExtensions: true, withExtensions: true,
   });
   for (const entry of entries) {
-    if (entry.name.startsWith(type)) {
+    if (entry.name.startsWith(`${type}_`)) {
       documents.push({
         ...entry,
         path: PATH.join(entry.parentPath, entry.name),

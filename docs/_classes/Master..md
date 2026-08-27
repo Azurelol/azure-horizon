@@ -1,9 +1,20 @@
 ---
-title: Command
-img: /assets/icons/classes/command/command.png
+title: Master
+img: /assets/icons/classes/master/master.png
 ---
 
-<p>You command your companion to perform an action.</p>
+<div class="document-traits --center">
+<span class="document-trait">Support</span>
+<span class="document-trait">Companion</span>
+</div>
+
+<p>You have a companion that travels by your side wherever you go.</p>
+
+---
+
+### Experience Triggers
+
+- 
 
 ---
 

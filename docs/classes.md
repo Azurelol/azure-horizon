@@ -4,7 +4,7 @@ title: Classes
 permalink: /classes/
 ---
 
-<div class="class__grid">
+<div class="entry__grid">
 {% for entry in site.classes %}
 <article>
 <a href="{{ site.baseurl }}{{ entry.url }}">
