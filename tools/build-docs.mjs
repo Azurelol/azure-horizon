@@ -137,13 +137,16 @@ async function cleanDirectory(directoryPath) {
  * @property {FileSystemEntry[]} features
  */
 
-// 1. CLASS FILES
+///////////////////////////////////////////////////////////////////////////////
+// CLASSES
+///////////////////////////////////////////////////////////////////////////////
 
 /** @type ClassEntry[] **/
 let classes = [];
-const CLASSES_DIR_PATH = PATH.join(PACKS_DIR_PATH, "classes");
-const CLASS_DIRECTORIES = await getDirectories(CLASSES_DIR_PATH);
-for (const classDir of CLASS_DIRECTORIES) {
+
+const SRC_CLASSES_DIR_PATH = PATH.join(PACKS_DIR_PATH, "classes");
+const SRC_CLASS_DIRECTORIES = await getDirectories(SRC_CLASSES_DIR_PATH);
+for (const classDir of SRC_CLASS_DIRECTORIES) {
   const _classes = await getDocuments(classDir, "class");
   //console.log(`Parsed classes ${ _classes.length}`);
   const skills = await getDocuments(classDir, "skill");
@@ -160,13 +163,13 @@ for (const classDir of CLASS_DIRECTORIES) {
   });
 }
 
-const OUTPUT_CLASSES_DIRECTORY = PATH.join(ROOT_DIRECTORY, "docs", "_classes");
-await cleanDirectory(OUTPUT_CLASSES_DIRECTORY);
+const DST_CLASSES_DIR_PATH = PATH.join(ROOT_DIRECTORY, "docs", "_classes");
+await cleanDirectory(DST_CLASSES_DIR_PATH);
 
 for (const entry of classes) {
   //console.log(`Parsed class ${entry.file.name} with skills: ${entry.skills.map(s => s.name).join(", ")}`);
   const classDocument = await deserializeDocument(entry.file);
-  const entryFileName = PATH.join(OUTPUT_CLASSES_DIRECTORY, `${classDocument.name}.md`);
+  const entryFileName = PATH.join(DST_CLASSES_DIR_PATH, `${classDocument.name}.md`);
 
   let md = new DocBuilder();
   md.frontMatter({ title: classDocument.name });
@@ -185,3 +188,10 @@ for (const entry of classes) {
   await fs.writeFile(entryFileName, content);
   console.log(`Writing file to ${entryFileName}`);
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// JOURNALS
+///////////////////////////////////////////////////////////////////////////////
+const SRC_JOURNAL_DIR = PATH.join(PACKS_DIR_PATH, "journals");
+const DST_MANUAL_DIR = PATH.join(ROOT_DIRECTORY, "docs", "_manual");
+await cleanDirectory(DST_MANUAL_DIR);
