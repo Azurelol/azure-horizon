@@ -32,7 +32,7 @@ class DocBuilder extends MarkdownBuilder {
   documentHeader(name, img, additional) {
     let parts = [];
     parts.push("<div class=\"document-header\">");
-    parts.push(`<div><img src="${this.normalizeImagePath(img)}"><span>${name}</span></div>`);
+    parts.push(`<div class="document-header__name"><img src="${this.normalizeImagePath(img)}"><span>${name}</span></div>`);
     if (additional) {
       parts.push(`<div>${additional}</div>`);
     }
