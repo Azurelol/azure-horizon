@@ -6,7 +6,7 @@ title: Home
 <img class="index-banner" alt="Banner" src="assets/img/index_banner.webp">
 
 <h1 class="index-title">{{ "Azure Horizon" }}</h1>
-<p class="index-subtitle">A searchable reference website for the Azure Horizon TTRPG.</p>
+<h6 class="index-subtitle">A searchable reference website for the Azure Horizon TTRPG.</h6>
 
 <hr>
 
