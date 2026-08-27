@@ -10,8 +10,7 @@ title: Home
 
 <hr>
 
-Welcome to the reference documentation page for Azure Horizon, a virtual role-playing game system (VTTRPG).
-
+<p>Welcome to the reference documentation page for Azure Horizon, a virtual tabletop role-playing game system (VTTRPG) that is being developed as a digital-first game experience.</p>
 
 ## Getting Started
 

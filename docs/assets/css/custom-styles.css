@@ -102,7 +102,7 @@ img {
 
 .entry__grid {
   --entry-size: 160px;
-  --icon--size: 64px;
+  --icon-size: 64px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--entry-size), 1fr));
 
@@ -112,7 +112,8 @@ img {
   }
 
   article {
-    padding: 28px;
+    width: auto;
+    height: var(--entry-size);
 
     a {
       display: flex;
@@ -128,8 +129,8 @@ img {
       }
 
       img {
-        width: var(--icon--size);
-        height: var(--icon--size);
+        width: var(--icon-size);
+        height: var(--icon-size);
       }
     }
 
