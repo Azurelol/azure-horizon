@@ -1,9 +1,23 @@
+@font-face {
+  font-family: 'Pixeloid';
+  src: url('../fonts/PixeloidSans.woff2');
+}
+
 :root{
   --ah-border: 0.065rem solid #3d5f8f;
   --ah-trait-background: #fa8c49;
+  --ah-icon-color: #fa8c49;
   --ah-trait-border: black;
   --ah-trait-color: #f4f0f0;
   --ah-document-header-background:#e3edfb;
+
+  /*Override*/
+  --body-font: Pixeloid, 'Times New Roman', serif;
+  /*--header-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+}
+
+i {
+  color: var(--ah-icon-color);
 }
 
 img {
