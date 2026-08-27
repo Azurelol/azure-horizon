@@ -41,8 +41,6 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "prettier": "3.8.3",
     "rollup": "^4.9.1",
-    "showdown": "^2.1.0",
-    "build-md": "0.4.6"
-
+    "showdown": "^2.1.0"
   }
 }

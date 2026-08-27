@@ -1,9 +1,45 @@
 import { promises as fs } from "fs";
 import PATH from "path";
-import { MarkdownDocument } from "build-md";
+import { MarkdownBuilder } from "./markdown-builder.mjs";
 
 const ROOT_DIRECTORY = process.cwd();
 const PACKS_DIR_PATH = "./src/packs";
+const FOUNDRY_SYSTEM_PATH = "systems/azure-horizon/";
+
+/**
+ * Adds custom functions for this file.
+ */
+class DocBuilder extends MarkdownBuilder {
+
+  /**
+   * @param {String} img
+   * @returns {String}
+   */
+  normalizeImagePath(img) {
+    if (img.startsWith(FOUNDRY_SYSTEM_PATH)) {
+      img = img.replace(FOUNDRY_SYSTEM_PATH, "");
+    }
+    return img;
+  }
+
+  /**
+   * @param {String} name
+   * @param {String} img
+   * @param {String} additional
+   * @returns {DocBuilder}
+   */
+  documentHeader(name, img, additional) {
+    let parts = [];
+    parts.push("<div class=\"document-header\">");
+    parts.push(`<div><img src="${this.normalizeImagePath(img)}"><span>${name}</span></div>`);
+    if (additional) {
+      parts.push(`<div>${additional}</div>`);
+    }
+    parts.push("</div>");
+    const content = parts.join("\n");
+    return this.html(content);
+  }
+}
 
 /**
  * @typedef FileSystemEntry
@@ -124,7 +160,7 @@ for (const classDir of CLASS_DIRECTORIES) {
   });
 }
 
-const OUTPUT_CLASSES_DIRECTORY = PATH.join(ROOT_DIRECTORY, "docs", "classes");
+const OUTPUT_CLASSES_DIRECTORY = PATH.join(ROOT_DIRECTORY, "docs", "_classes");
 await cleanDirectory(OUTPUT_CLASSES_DIRECTORY);
 
 for (const entry of classes) {
@@ -132,10 +168,19 @@ for (const entry of classes) {
   const classDocument = await deserializeDocument(entry.file);
   const entryFileName = PATH.join(OUTPUT_CLASSES_DIRECTORY, `${classDocument.name}.md`);
 
-  let md = new MarkdownDocument({ mutable: true });
+  let md = new DocBuilder();
+  md.frontMatter({ title: classDocument.name });
   md.heading(1, classDocument.name);
-  md.paragraph(classDocument.system.description);
-  const content = md.toString();
+  md.p(classDocument.system.description);
+  md.hr();
+  md.heading(2, "Skills");
+  for (const skill of entry.skills) {
+    const skillDocument = await deserializeDocument(skill);
+    md.documentHeader(skillDocument.name, skillDocument.img, `SL ${skillDocument.system.level.max}`);
+    md.p(skillDocument.system.description);
+  }
+
+  const content = md.build();
 
   await fs.writeFile(entryFileName, content);
   console.log(`Writing file to ${entryFileName}`);
