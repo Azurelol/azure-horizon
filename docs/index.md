@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-<img alt="Banner" src="/assets/img/index_banner.webp">
+<img class="index-banner" alt="Banner" src="assets/img/index_banner.webp">
 
 <h1 class="index-title">{{ "Azure Horizon" }}</h1>
 <p class="index-subtitle">A searchable reference website for the Azure Horizon TTRPG.</p>
