@@ -9,6 +9,10 @@
 }
 
 :root{
+  --ah-content-color: white;
+  --ah-content-action-color: #e8681a;
+  --ah-content-action-hover-color: #d69575;
+
   --ah-border: 0.065rem solid #3d5f8f;
   --ah-trait-background: #e8681a;
   --ah-icon-color: #fa8c49;
@@ -16,7 +20,7 @@
   --ah-trait-color: #f4f0f0;
   --ah-document-header-background: #354564;
   --ah-entry-background: #4f5e8c;
-  --ah-content-color: white;
+
 
   /*Override*/
   /*--body-font: PressStart2P, 'Times New Roman', serif;*/
@@ -89,17 +93,27 @@ img {
 
   article {
     background: var(--ah-entry-background);
+    color: var(--ah-content-color);
     border: 1px solid #e2e8f0;
     border-radius: 20px;
     padding: 28px;
-    background: #fff;
 
     a {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
+      color: var(--ah-content-action-color);
+
+      &:hover {
+        color: var(--ah-content-action-hover-color);
+      }
+
+      span {
+        font-size: large;
+        text-transform: uppercase;
+      }
 
       img {
         width: 64px;

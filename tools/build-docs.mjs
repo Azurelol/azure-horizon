@@ -200,7 +200,6 @@ const SRC_CLASSES_DIR_PATH = PATH.join(PACKS_DIR_PATH, "classes");
 const SRC_CLASS_DIRECTORIES = await getDirectories(SRC_CLASSES_DIR_PATH);
 for (const classDir of SRC_CLASS_DIRECTORIES) {
   const _classes = await getDocuments(classDir, "class");
-  //console.log(`Parsed classes ${ _classes.length}`);
   const skills = await getDocuments(classDir, "skill");
   let features = [];
   const featureDirs = await getDirectories(classDir.path);
@@ -219,7 +218,6 @@ const DST_CLASSES_DIR_PATH = PATH.join(ROOT_DIRECTORY, "docs", "_classes");
 await cleanDirectory(DST_CLASSES_DIR_PATH);
 
 for (const entry of classes) {
-  //console.log(`Parsed class ${entry.file.name} with skills: ${entry.skills.map(s => s.name).join(", ")}`);
   const classDocument = await deserializeDocument(entry.file);
   const entryFileName = PATH.join(DST_CLASSES_DIR_PATH, `${classDocument.name}.${FILE_EXTENSION}`);
   const className = classDocument.name.toLowerCase();
