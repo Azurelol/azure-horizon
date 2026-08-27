@@ -22,10 +22,11 @@ author: Christian Sagel
 collections:
   classes:
     output: true
+    search: true
     permalink: /classes/:name/
   spells:
-      output: true
-      permalink: /spells/:name/
+    output: true
+    permalink: /spells/:name/
   manual:
     output: true
     permalink: /manual/:name/

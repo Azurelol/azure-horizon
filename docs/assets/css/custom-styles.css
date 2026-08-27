@@ -3,17 +3,23 @@
   src: url('../fonts/PixeloidSans.woff2');
 }
 
+@font-face {
+  font-family: 'PressStart2P';
+  src: url('../fonts/PressStart2P-Regular.ttf');
+}
+
 :root{
   --ah-border: 0.065rem solid #3d5f8f;
-  --ah-trait-background: #fa8c49;
+  --ah-trait-background: #e8681a;
   --ah-icon-color: #fa8c49;
   --ah-trait-border: black;
   --ah-trait-color: #f4f0f0;
-  --ah-document-header-background:#e3edfb;
+  --ah-document-header-background: #354564;
+  --ah-content-color: white;
 
   /*Override*/
-  --body-font: Pixeloid, 'Times New Roman', serif;
-  /*--header-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  --body-font: PressStart2P, 'Times New Roman', serif;
+  --header-font: Pixeloid, 'Open Sans', serif;
 }
 
 i {
@@ -28,6 +34,7 @@ img {
   flex-direction: row;
   justify-content: space-between;
   background: var(--ah-document-header-background);
+  color: var(--ah-content-color);
 }
 
 .document-header__name {
@@ -62,13 +69,34 @@ img {
     color: var(--ah-trait-color);
     background: var(--ah-trait-background);
     padding: 4px;
-    font-size: smaller;
+    font-size: large;
+    text-transform: uppercase;
   }
 
   &.--nested {
     .document-trait {
-      padding: 2px;
-      font-size: small;
+      font-size: medium;
+    }
+  }
+}
+
+.class__grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  padding: clamp(32px, 5vw, 80px);
+
+  article {
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 28px;
+    background: #fff;
+
+    a {
+      img {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 }
