@@ -248,7 +248,7 @@ AH.checkTypes = {
 
 /**
  * @desc The set of ability scores used for characters in the system.
- * @typedef {"hp"|"mp"|"tp"| "ip"} AH_Resource
+ * @typedef {"hp"|"mp"|"tp"|"ip"|"thp"} AH_Resource
  */
 
 /**
@@ -259,6 +259,7 @@ AH.resourceTypes = {
   mp: { label: "AH.CHARACTER.MindPoint.short", icon: "ah-icon-mp" },
   ip: { label: "AH.CHARACTER.InventoryPoint.short", icon: "ah-icon-ip" },
   tp: { label: "AH.CHARACTER.TensionPoint.short", icon: "ah-icon-tp" },
+  thp: { label: "AH.CHARACTER.TemporaryHitPoint.short", icon: "ah-icon-thp" },
 };
 
 /**

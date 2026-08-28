@@ -413,6 +413,11 @@ export class ActionConfig extends ActionInspector {
    * @return {ActionConfig}
    */
   setResource(type, amount, temp = false) {
+    // TODO: Better way to handle?
+    if (type === "thp") {
+      type = "hp";
+      temp = true;
+    }
     this.check.data[RESOURCE] = ResourceData.initialize(type, amount, temp);
     if (temp && (type === "hp")) {
       this.addTraits("thp");

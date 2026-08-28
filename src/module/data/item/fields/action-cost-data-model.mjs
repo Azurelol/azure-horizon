@@ -45,6 +45,11 @@ export class ActionCostDataModel extends OptionalFieldsetDataModel {
    */
   configureAction(config) {
     if (this.assigned) {
+      if (this.resource === "thp") {
+        ui.notifications.warn("Temporary hit points cannot be used as an expense.");
+        return;
+      }
+
       config.addExpense({
         resource: this.resource,
         amount: this.amount,

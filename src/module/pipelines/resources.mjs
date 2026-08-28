@@ -271,17 +271,20 @@ function getChatAction(request, options = {}) {
 function getExpenseAction(expense, sourceInfo) {
   const resourceIcon = AH.resourceTypes[expense.resource].icon;
 
-  const label = StringUtils.localize("AH.CHAT.SpendResource", {
+  const isTension = expense.resource === "tp";
+  const label = StringUtils.localize(isTension ? "AH.CHAT.ResourceGainLabel" : "AH.CHAT.SpendResource", {
     amount: expense.amount,
   });
-  const tooltip = StringUtils.localize("AH.CHAT.SpendResourceHint", {
+  const tooltip = StringUtils.localize(isTension ? "AH.CHAT.ResourceGainTooltip" : "AH.CHAT.SpendResourceHint", {
     amount: expense.amount,
     resource: StringUtils.localize(AH.resourceTypes[expense.resource].label),
   });
 
-  const data = ResourceData.initialize(expense.resource, -expense.amount);
+  // Tension always goes up when "spending" it.
+  const amount = isTension ? expense.amount : -expense.amount;
+  const data = ResourceData.initialize(expense.resource, amount);
   return new ChatAction("updateResource", resourceIcon, tooltip, {
-    amount: -expense.amount,
+    amount: amount,
     type: expense.resource,
     data: data,
     sourceInfo: sourceInfo,
@@ -289,7 +292,7 @@ function getExpenseAction(expense, sourceInfo) {
     .requiresOwner()
     .setFlag(AH.flags.ChatMessage.Resource)
     .withLabel(label)
-    .withTraits(["loss"])
+    .withTraits(isTension ? ["gain"] : ["loss"])
     .notTargeted()
     .withSelected();
 }
