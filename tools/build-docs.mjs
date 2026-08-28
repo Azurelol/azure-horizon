@@ -180,7 +180,7 @@ async function cleanDirectory(directoryPath) {
   await fs.mkdir(directoryPath);
 }
 
-const FILE_EXTENSION = ".md";
+const FILE_EXTENSION = "md";
 
 ///////////////////////////////////////////////////////////////////////////////
 // CLASSES
@@ -217,6 +217,22 @@ for (const classDir of SRC_CLASS_DIRECTORIES) {
 const DST_CLASSES_DIR_PATH = PATH.join(ROOT_DIRECTORY, "docs", "_classes");
 await cleanDirectory(DST_CLASSES_DIR_PATH);
 
+function getFeatureTraits(entry) {
+  let traits = [];
+  if (entry.system.action?.traits) {
+    traits.push(...entry.system.action.traits);
+  }
+  if (entry.system.action?.type) {
+    if (entry.system.action.type === "action") {
+      traits.push(`Action ${entry.system.action.points}`);
+    }
+    else {
+      traits.push(entry.system.action.type);
+    }
+  }
+  return traits;
+}
+
 for (const entry of classes) {
   const classDocument = await deserializeDocument(entry.file);
   const entryFileName = PATH.join(DST_CLASSES_DIR_PATH, `${classDocument.name}.${FILE_EXTENSION}`);
@@ -245,30 +261,29 @@ for (const entry of classes) {
   // Skills
   md.hr();
   md.customHeading(1, "Skills", "class__skills");
-  for (const skill of entry.skills) {
-    const skillDocument = await deserializeDocument(skill);
+  for (const skillEntry of entry.skills) {
+    const skill = await deserializeDocument(skillEntry);
 
     // Gather traits among all fields
-    let traits = [];
-    if (skillDocument.system.action.traits) {
-      traits.push(...skillDocument.system.action.traits);
-    }
-
-    md.documentHeader(skillDocument.name, skillDocument.img, {
+    const traits = getFeatureTraits(skill);
+    md.documentHeader(skill.name, skill.img, {
       traits: traits,
-      additional: `<i class="fa-solid fa-star"></i> ${skillDocument.system.level.max}`,
+      additional: `<i class="fa-solid fa-star"></i> ${skill.system.level.max}`,
     });
 
-    md.p(skillDocument.system.description);
+    md.p(skill.system.description);
   }
   // Features
   if (entry.features.length > 0) {
     md.hr();
     md.heading(2, "Features");
-    for (const feature of entry.features) {
-      const doc = await deserializeDocument(feature);
-      md.documentHeader(doc.name, doc.img, {});
-      md.p(doc.system.description);
+    for (const featureEntry of entry.features) {
+      const feature = await deserializeDocument(featureEntry);
+      const traits = getFeatureTraits(feature);
+      md.documentHeader(feature.name, feature.img, {
+        traits: traits,
+      });
+      md.p(feature.system.description);
     }
   }
 

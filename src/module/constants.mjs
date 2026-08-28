@@ -98,6 +98,14 @@ export function isItemType(document) {
 }
 
 /**
+ * @param {DataModel} document
+ * @return {Boolean}
+ */
+export function isEffectType(document) {
+  return document?.documentName === "ActiveEffect";
+}
+
+/**
  * @param document
  * @returns {Boolean} True if the given document is a compendium entry.
  */

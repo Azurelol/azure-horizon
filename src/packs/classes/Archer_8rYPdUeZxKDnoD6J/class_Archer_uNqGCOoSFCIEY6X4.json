@@ -16,11 +16,17 @@
       "ip": false
     },
     "triggers": [
-      "You scout a location."
+      "You scout a location.",
+      "You discover a trap..",
+      "You hunt someone or something down."
     ],
     "traits": [
       "offense",
       "stealth"
+    ],
+    "complications": [
+      "You realize you are about to be ambushed.",
+      "An arrow suddenly pierces you."
     ]
   },
   "effects": [],

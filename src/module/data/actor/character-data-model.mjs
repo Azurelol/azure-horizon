@@ -68,6 +68,7 @@ export default class CharacterDataModel extends EntityDataModel {
     this.parameters.def.defineCurrentProperty(() => Formulas.calculateDefense(data.attributes));
     this.parameters.mdef.defineCurrentProperty(() => Formulas.calculateMagicDefense(data.attributes));
     this.parameters.init.defineCurrentProperty(() => Formulas.calculateInitiative(data.attributes));
+    this.parameters.block.defineCurrentProperty(() => Formulas.calculateBlockParameter(data));
 
     // Add entries from affinities
     if (this.affinities) {

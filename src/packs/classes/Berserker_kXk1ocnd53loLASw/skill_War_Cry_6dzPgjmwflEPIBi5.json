@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "berserker-war-cry",
-    "description": "<p>Your party gains</p>",
+    "description": "<p>Your party gains 1 stack of DAMAGE BUFF.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "brawler-iron-hand",
-    "description": "",
+    "description": "<p>You deal damage to the target and pressure them.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

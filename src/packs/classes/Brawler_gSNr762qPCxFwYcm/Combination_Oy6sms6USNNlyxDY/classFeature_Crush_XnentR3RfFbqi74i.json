@@ -1,0 +1,102 @@
+{
+  "folder": "Oy6sms6USNNlyxDY",
+  "name": "Crush",
+  "type": "classFeature",
+  "_id": "XnentR3RfFbqi74i",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "brawler-crush",
+    "description": "<p>When you have a full combo sequence, you can deal a powerful attack to the target.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "high",
+    "feature": {
+      "_id": "Liuj3SeBbeEE1CMV",
+      "type": "emptyClassFeature"
+    },
+    "action": {
+      "schemaVersion": 1,
+      "range": "melee",
+      "targeting": "single",
+      "type": "action",
+      "points": 3,
+      "traits": []
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": true,
+      "damage": true
+    },
+    "class": "brawler",
+    "skill": ""
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787898125418,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!XnentR3RfFbqi74i"
+}

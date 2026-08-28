@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "gSNr762qPCxFwYcm",
+  "name": "Combination",
+  "color": null,
+  "sorting": "a",
+  "_id": "Oy6sms6USNNlyxDY",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787898047224,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!Oy6sms6USNNlyxDY"
+}

@@ -1,0 +1,47 @@
+{
+  "folder": "jKu0BGZLbaPawTDQ",
+  "name": "Left",
+  "_id": "5vOfx7HABw6KppwN",
+  "img": "systems/azure-horizon/assets/icons/classes/brawler/left.png",
+  "type": "base",
+  "system": {
+    "changes": [],
+    "slug": "brawler-sequence-left",
+    "rules": {},
+    "tracker": {
+      "enabled": false,
+      "name": "",
+      "id": "",
+      "current": 0,
+      "max": 6
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787898783635,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!5vOfx7HABw6KppwN"
+}

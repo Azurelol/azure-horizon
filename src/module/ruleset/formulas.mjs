@@ -249,6 +249,15 @@ export default class Formulas {
   }
 
   /**
+   * @param {HeroDataModel|AdversaryDataModel} system
+   * @returns {Number}
+   */
+  static calculateBlockParameter(system) {
+    // For now let's do it over there
+    return 0;
+  }
+
+  /**
    * @typedef AH_RecoveryData
    * @property {Number} hp The HP gained.
    * @property {Number} mp The MP spent.
@@ -289,6 +298,10 @@ export default class Formulas {
 
     let ratio = BLOCK_RATIO_BASE;
     let tp;
+
+    if (system.parameters.block.current) {
+      ratio += (system.parameters.block.current / 100);
+    }
 
     if (system.parent.type === "hero") {
       const equippedItems = system.getEquippedItems();

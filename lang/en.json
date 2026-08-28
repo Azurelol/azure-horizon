@@ -190,6 +190,10 @@
       "Affinity": {
         "long":  "Affinity",
         "plural": "Affinities"
+      },
+      "PARAMETER": {
+        "Initiative": "Initiative",
+        "Block": "Block Ratio"
       }
     },
     "FOLLOWER": {
@@ -513,6 +517,9 @@
       "Pierce": "Pierce",
       "Splash": "Splash",
       "Cleave": "Cleave",
+      "Mechanism": "Mechanism",
+      "Perception": "Perception",
+      "Sniper": "Sniper",
       "Block": "Block"
     },
     "DOMAIN": {

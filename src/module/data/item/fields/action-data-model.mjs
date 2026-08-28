@@ -21,7 +21,7 @@ export class ActionDataModel extends FieldsetDataModel {
         choices: () => AH.traits.range,
       }),
       targeting: new StringField({
-        initial: "single",
+        initial: "",
         blank: true,
         label: "AH.FIELD.Targeting",
         choices: () => AH.targetingRule,

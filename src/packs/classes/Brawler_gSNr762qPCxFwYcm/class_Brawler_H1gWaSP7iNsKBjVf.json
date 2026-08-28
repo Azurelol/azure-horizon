@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "brawler",
-    "description": "",
+    "description": "<p>A practitioner of the martial arts. They could be a disciple of a traveling master, a hotblooded youth or a student of a martial arts school. They excel in pressuring their foes in close quarters combat, building up their momentum before unleashing powerful combination attacks.</p><blockquote><p>The Brawler is a class for those who wish to reliable pressure their opponents while steadily building up their combination for a big payoff.</p></blockquote>",
     "benefits": {
       "schemaVersion": 1,
       "hp": true,
@@ -16,15 +16,22 @@
       "ip": false
     },
     "traits": [
-      "warrior"
+      "warrior",
+      "mobility"
     ],
     "triggers": [
       "You take part in a brawl.",
-      "You speak truth to authority."
+      "You speak truth to authority.",
+      "You punch someone who deserves it."
+    ],
+    "complications": [
+      "A former friend who was a bad influence appears.",
+      "Your master dies.",
+      "You get arrested."
     ]
   },
   "effects": [],
-  "sort": 0,
+  "sort": 400000,
   "ownership": {
     "default": 0
   },

@@ -138,7 +138,7 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
         // First, evaluate using built-in support
         const expression = Roll.replaceFormulaData(change.value, this.parent);
         // Second, evaluate with our custom expressions
-        const context = EvaluationContext.fromTarget(targetDoc);
+        const context = EvaluationContext.fromTarget(targetDoc, change.effect);
         const value = Expressions.evaluate(expression, context);
         change.value = String(value ?? 0);
       } catch (e) {

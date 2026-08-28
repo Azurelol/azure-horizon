@@ -1,0 +1,103 @@
+{
+  "folder": "gSNr762qPCxFwYcm",
+  "name": "Chakra",
+  "type": "skill",
+  "_id": "Z5zkjBy29CVrf5rn",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "brawler-chakra",
+    "description": "<p>You recover a minor amount of hit points while recovering from a single negative status effect.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "hp",
+      "amount": "&hp(0.1)"
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "tp",
+      "amount": "2",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "self",
+      "type": "action",
+      "points": 1,
+      "traits": [
+        "cooldown"
+      ]
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "brawler"
+  },
+  "effects": [],
+  "sort": 500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787892694340,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Z5zkjBy29CVrf5rn"
+}

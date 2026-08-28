@@ -1,6 +1,6 @@
 import SourceInfo from "./source-info.mjs";
 import Targeting from "../../helpers/targeting.mjs";
-import { isActorType, isItemType } from "../../constants.mjs";
+import { isActorType, isEffectType, isItemType } from "../../constants.mjs";
 
 /**
  * @description Contains contextual objects used for evaluating expressions
@@ -61,10 +61,11 @@ export default class EvaluationContext {
   }
 
   /**
-   * @param {*}target
+   * @param {AHActor|AHItem} target
+   * @param {AHActiveEffect} effect
    * @returns {EvaluationContext}
    */
-  static fromTarget(target) {
+  static fromTarget(target, effect) {
     let actor;
     let item;
 
@@ -78,6 +79,10 @@ export default class EvaluationContext {
     } else if (isItemType(target)) {
       item = target;
       actor = item.actor;
+    }
+    // 3. The effect is being applied onto an actor as part of a transfer
+    if (effect && isItemType(effect.parent)) {
+      item = effect.parent;
     }
 
     const context = new EvaluationContext(actor, item, [target]);
@@ -224,7 +229,9 @@ export default class EvaluationContext {
    */
   assertItem(match) {
     if (this.item == null) {
-      ui.notifications.warn("AH.DIALOG.Warnings.MissingItem", { localize: true });
+      if (ui.notifications) {
+        ui.notifications.warn("AH.DIALOG.Warnings.MissingItem", { localize: true });
+      }
       throw new Error(`No reference to an item provided while evaluating expression "${match}"`);
     }
   }

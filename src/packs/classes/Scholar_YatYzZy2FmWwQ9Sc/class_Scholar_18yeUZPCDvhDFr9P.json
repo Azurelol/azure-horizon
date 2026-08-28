@@ -18,7 +18,18 @@
       "hp": false,
       "mp": false,
       "ip": true
-    }
+    },
+    "triggers": [
+      "You uncover forgotten knowledge.",
+      "You convince someone through logical arguments.",
+      "You share your knowledge with someone influential.",
+      "You successfully recall a rule your director doesn't remember."
+    ],
+    "complications": [
+      "You learn something you really shouldn't have.",
+      "A secret society intends to silence you.",
+      "You bore someone."
+    ]
   },
   "effects": [],
   "sort": 0,

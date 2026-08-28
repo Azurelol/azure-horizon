@@ -19,7 +19,9 @@
     },
     "range": "ranged",
     "handedness": "two",
-    "traits": [],
+    "traits": [
+      "draw"
+    ],
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
