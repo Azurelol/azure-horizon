@@ -111,6 +111,12 @@ function evaluateVariables(expression, context) {
         }
         return 0;
       }
+      // Block amount for the character
+      case "blk":{
+        context.assertActor(match);
+        const block = Formulas.calculateBlock(context.actor.system);
+        return block.hp;
+      }
       // High Roll of Check
       case "hr": {
         return getHighRoll(context.check);

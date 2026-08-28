@@ -38,5 +38,10 @@
     "author": "GGBotNet",
     "url": "https://ggbot.itch.io/pixeloid-font",
     "license": "SIL Open Font"
+  },
+  "1-bit-pixel-icons": {
+    "author": "Nikoichu",
+    "url": "https://nikoichu.itch.io/pixel-icons",
+    "license": "CC0 1.0"
   }
 }

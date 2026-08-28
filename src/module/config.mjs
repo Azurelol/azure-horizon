@@ -1057,6 +1057,7 @@ AH.traits = {
     thp: { label: "AH.TRAIT.Block", tooltip: "AH.TRAIT.BlockHint" },
   },
   damage: {
+    pressure: { label: "AH.TRAIT.Pressure", tooltip: "AH.TRAIT.PressureHint" },
     fixed: { label: "AH.TRAIT.Fixed", tooltip: "AH.TRAIT.FixedHint" },
     poison: { label: "AH.TRAIT.Poison", tooltip: "AH.TRAIT.PoisonHint" },
     nonLethal: { label: "AH.TRAIT.NonLethal", tooltip: "AH.TRAIT.NonLethalHint" },
@@ -1071,7 +1072,7 @@ AH.traits = {
     avoidance: { label: "AH.TRAIT.Avoidance", tooltip: "AH.TRAIT.AvoidanceHint" }, // Light
   },
 
-  // Class-level traits
+  // Class traits
   class: {
     warrior: { label: "AH.TRAIT.Warrior", tooltip: "AH.TRAIT.WarriorHint" },
     mage: { label: "AH.TRAIT.Mage", tooltip: "AH.TRAIT.MageHint" },
@@ -1090,8 +1091,15 @@ AH.traits = {
     dance: { label: "AH.TRAIT.Dance", tooltip: "AH.TRAIT.DanceHint" },
     music: { label: "AH.TRAIT.Music", tooltip: "AH.TRAIT.MusicHint" },
     alchemy: { label: "AH.TRAIT.Alchemy", tooltip: "AH.TRAIT.AlchemyHint" },
+    mechanism: { label: "AH.TRAIT.Mechanism", tooltip: "AH.TRAIT.MechanismHint" },
 
     companion: { label: "AH.TRAIT.Companion", tooltip: "AH.TRAIT.CompanionHint" },
+  },
+  // Class feature traits
+  feature: {
+    dance: { label: "AH.TRAIT.Dance", tooltip: "AH.TRAIT.DanceHint" },
+    song: { label: "AH.TRAIT.Song", tooltip: "AH.TRAIT.SongHint" },
+    brawl: { label: "AH.TRAIT.Brawl", tooltip: "AH.TRAIT.BrawlHint" },
   },
 
   // Targeting trait
@@ -1110,10 +1118,10 @@ AH.traits = {
     reach: { label: "AH.TRAIT.Reach", tooltip: "AH.TRAIT.ReachHint" },
     projectile: { label: "AH.TRAIT.Projectile", tooltip: "AH.TRAIT.ProjectileHint" },
     reload: { label: "AH.TRAIT.Reload", tooltip: "AH.TRAIT.ReloadHint" },
+    draw: { label: "AH.TRAIT.Draw", tooltip: "AH.TRAIT.DrawHint" },
     thrown: { label: "AH.TRAIT.Thrown", tooltip: "AH.TRAIT.ThrownHint" },
     shield: { label: "AH.TRAIT.Shield", tooltip: "AH.TRAIT.ShieldHint" },
     brawl: { label: "AH.TRAIT.Brawl", tooltip: "AH.TRAIT.BrawlHint" },
-    firearm: { label: "AH.TRAIT.Firearm", tooltip: "AH.TRAIT.FirearmHint" },
   },
   armor: {
     stable: { label: "AH.TRAIT.Stable", tooltip: "AH.TRAIT.StableHint" }, // Shifting resistance

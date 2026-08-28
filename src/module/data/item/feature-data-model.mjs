@@ -4,11 +4,13 @@ import Checks from "../../pipelines/checks.mjs";
 import { ActionConfig } from "../../helpers/action-configuration.mjs";
 import { Actions } from "../../pipelines/_module.mjs";
 import { ActionAttributesDataModel } from "./fields/action-attributes-data-model.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
 
 /**
  * A character-facing feature.
  * @property {ActionAttributesDataModel} attributes
  * @property {CheckDataModel} check
+ * @property {String} trait
  */
 export default class FeatureDataModel extends ItemDataModel {
   /** @inheritdoc */

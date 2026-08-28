@@ -25,6 +25,11 @@ export default class ClassFeatureDataModel extends ActiveFeatureDataModel {
       }),
       action: new EmbeddedDataField(ActionDataModel, {}),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
+      trait: new StringField({ initial: "",
+        blank: true,
+        label: "AH.FIELD.Trait",
+        _part: "header",
+        choices: () => AH.traits.feature }),
     });
   }
 
