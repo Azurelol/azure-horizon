@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-shadow-spear",
-    "description": "",
+    "description": "<p>You deal heavy magical dark damage to the target.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "ins",
@@ -68,8 +68,8 @@
       "points": 2,
       "traits": []
     },
-    "domain": "",
-    "speed": "instant"
+    "domain": "dark",
+    "speed": "fast"
   },
   "effects": [],
   "sort": 0,

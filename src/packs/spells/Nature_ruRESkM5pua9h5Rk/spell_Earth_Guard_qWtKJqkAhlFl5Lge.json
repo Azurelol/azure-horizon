@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "nature-earth-guard",
-    "description": "<p>The target and adjacent allies gain a moderate amount of <em>Block</em>.</p>",
+    "description": "<p>The target and adjacent allies gain <em>block</em>.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -67,7 +67,7 @@
       "points": 2,
       "traits": []
     },
-    "domain": "",
+    "domain": "light",
     "speed": "fast"
   },
   "effects": [],

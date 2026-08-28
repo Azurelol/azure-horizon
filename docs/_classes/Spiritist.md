@@ -33,7 +33,7 @@ img: /assets/icons/classes/spiritist/spiritist.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/light/beam-rays-orange-small.webp"><span>Light Spell</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/spiritist/sprite-1-9.png"><span>Light Spell</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -42,7 +42,7 @@ img: /assets/icons/classes/spiritist/spiritist.png
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Light </em>domain.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/holy/prayer-hands-glowing-yellow.webp"><span>Prayer</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/spiritist/sprite-1-7.png"><span>Prayer</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>

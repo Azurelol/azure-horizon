@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-atrophy",
-    "description": "",
+    "description": "<p>You inflict Weak on the target.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -63,11 +63,12 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "type": "action",
+      "points": 2,
+      "traits": [],
+      "targeting": "single"
     },
-    "domain": "",
+    "domain": "dark",
     "speed": "fast"
   },
   "effects": [],

@@ -3,7 +3,7 @@
   "name": "Prayer",
   "type": "skill",
   "_id": "CgDmHUZQ9UmKW9iq",
-  "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/spiritist/sprite-1-7.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

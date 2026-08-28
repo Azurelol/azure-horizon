@@ -3,7 +3,7 @@
   "name": "Surprise Attack",
   "type": "skill",
   "_id": "03ckg9lcfRdSGwcK",
-  "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/rogue/throw.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

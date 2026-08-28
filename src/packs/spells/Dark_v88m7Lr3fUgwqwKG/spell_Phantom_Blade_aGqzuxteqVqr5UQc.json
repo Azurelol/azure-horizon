@@ -1,0 +1,93 @@
+{
+  "folder": "v88m7Lr3fUgwqwKG",
+  "name": "Phantom Blade",
+  "type": "spell",
+  "_id": "aGqzuxteqVqr5UQc",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "dark-phantom-blade",
+    "description": "",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "A"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "5",
+        "type": "dark"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "multiple",
+      "type": "action",
+      "points": 2,
+      "traits": []
+    },
+    "domain": "dark",
+    "speed": "fast"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787923941535,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!aGqzuxteqVqr5UQc"
+}

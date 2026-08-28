@@ -26,6 +26,17 @@ img: /assets/icons/spells/elemental.png
 <p>You deal cold damage to the closest enemy row.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Elemental Shroud</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Fast</span>
+</div>
+</div>
+</div>
+
+<p>You grant your party resistance against one of the elemental types you control.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/magic/air/air-wave-gust-blue.webp"><span>Gale Blast</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">

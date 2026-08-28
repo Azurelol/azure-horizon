@@ -1,0 +1,101 @@
+{
+  "folder": "noX8U4rDGOGl3U1F",
+  "name": "Bargain",
+  "type": "skill",
+  "_id": "5whyBi2OpbJCYgrX",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "ritualist-bargain",
+    "description": "<p>During a rest scene you make a devil's bargain with a spirit and ask for their assistance. They help you as requested but it comes with a consequence decided by the director.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "",
+      "type": "activity",
+      "points": 1,
+      "traits": []
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "ritualist"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787938875059,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!5whyBi2OpbJCYgrX"
+}

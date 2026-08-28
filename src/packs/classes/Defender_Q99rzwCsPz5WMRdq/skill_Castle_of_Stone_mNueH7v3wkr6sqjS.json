@@ -1,13 +1,13 @@
 {
   "folder": "Q99rzwCsPz5WMRdq",
-  "name": "Iron Wall",
+  "name": "Castle of Stone",
   "type": "skill",
   "_id": "mNueH7v3wkr6sqjS",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "defender-iron-wall",
+    "slug": "defender-castle-of-stone",
     "description": "<p>You stand in front of the party and adopt a defensive posture until the start of your next turn. All single target attacks must target you.</p><ul><li><p><strong>SL2</strong>: Any actions that target the party are downgraded to reduced potency.</p></li></ul>",
     "attributes": {
       "schemaVersion": 1,

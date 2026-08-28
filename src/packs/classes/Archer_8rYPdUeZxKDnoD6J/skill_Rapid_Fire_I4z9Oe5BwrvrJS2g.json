@@ -1,0 +1,101 @@
+{
+  "folder": "8rYPdUeZxKDnoD6J",
+  "name": "Rapid Fire",
+  "type": "skill",
+  "_id": "I4z9Oe5BwrvrJS2g",
+  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS59.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "archer-rapid-fire",
+    "description": "<p>You enter into a stance where you can can perform free attacks for every action performed until the start of your next turn.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "",
+      "type": "",
+      "points": 1,
+      "traits": []
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "archer"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787940551010,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!I4z9Oe5BwrvrJS2g"
+}

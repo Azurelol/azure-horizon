@@ -1,0 +1,92 @@
+{
+  "folder": "v88m7Lr3fUgwqwKG",
+  "name": "Slow",
+  "type": "spell",
+  "_id": "I9L2r585s638UxuO",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "dark-slow",
+    "description": "<p>You inflict the target with <em>Slow.</em></p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "mp",
+      "amount": "20",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "single",
+      "type": "action",
+      "points": 2,
+      "traits": []
+    },
+    "domain": "dark",
+    "speed": "fast"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787921416936,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!I9L2r585s638UxuO"
+}

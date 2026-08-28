@@ -3,7 +3,7 @@
   "name": "Light Spell",
   "type": "skill",
   "_id": "9w2KrWmTEgAW7Sqv",
-  "img": "icons/magic/light/beam-rays-orange-small.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/spiritist/sprite-1-9.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

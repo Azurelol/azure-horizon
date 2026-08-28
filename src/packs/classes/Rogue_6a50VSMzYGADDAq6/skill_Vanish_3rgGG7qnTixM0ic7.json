@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "rogue-vanish",
-    "description": "<p>You become untargetable until the start of your next turn.</p>",
+    "description": "<p>You gain <em>Stealth</em> until the start of your next turn.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -45,9 +45,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "stealth"
+      ],
       "duration": {
         "event": "",
         "tracking": ""

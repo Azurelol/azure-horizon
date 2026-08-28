@@ -1,14 +1,14 @@
 {
-  "folder": "Q99rzwCsPz5WMRdq",
-  "name": "Challenging Shout",
+  "folder": "6a50VSMzYGADDAq6",
+  "name": "Counteraction",
   "type": "skill",
-  "_id": "4CENMXQqj3x4ikGR",
+  "_id": "DmBqKv4rP8sYwRbQ",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "defender-challenging-shout",
-    "description": "<p>You gain <em>SL</em> stacks of <em>Taunt</em>.</p>",
+    "slug": "rogue-counteraction",
+    "description": "",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "5",
+      "amount": "",
       "perTarget": false
     },
     "effects": {
@@ -62,13 +62,13 @@
     "power": "",
     "level": {
       "current": 1,
-      "max": 2
+      "max": 1
     },
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "targeting": "self",
-      "type": "action",
+      "targeting": "",
+      "type": "",
       "points": 1,
       "traits": []
     },
@@ -78,7 +78,7 @@
       "check": false,
       "damage": false
     },
-    "class": "defender"
+    "class": "rogue"
   },
   "effects": [],
   "sort": 0,
@@ -90,12 +90,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787911641048,
+    "createdTime": 1787920633452,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!4CENMXQqj3x4ikGR"
+  "_key": "!items!DmBqKv4rP8sYwRbQ"
 }

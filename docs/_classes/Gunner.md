@@ -37,6 +37,18 @@ img: /assets/icons/classes/gunner/gunner.png
 <p>Whenever you empty your ammunition you deal an additional free attack.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Cover Fire</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Reaction</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>When an ally triggers a reaction during a melee attack you may perform a free attack and downgrade the attack.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/skills/ranged/cannon-barrel-firing-white-yellow.webp"><span>Focused Shot</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">

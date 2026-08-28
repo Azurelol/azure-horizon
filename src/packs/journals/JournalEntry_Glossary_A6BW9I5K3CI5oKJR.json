@@ -171,7 +171,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>Block is what the system calls temporary hit points. Whenever a character suffers damage, if they have block the damage will first go through the block before affecting their current hit points.</p><blockquote><p>This resource is meant to incentivize active damage mitigation by the heroes instead of having to rely on reactive healing, which in this system is not very efficient and would dry a party's mind points rather quickly.</p></blockquote>"
+        "content": "<p>Block is what the system calls temporary hit points. Whenever a character suffers damage, if they have block the damage will first go through the block before affecting their current hit points.</p><p>Whenever a character is said to gain <em>Block</em> they are considered to be gaining their standard amount computed for their <em>Defend</em> action.</p><blockquote><p>This resource is meant to incentivize active damage mitigation by the heroes instead of having to rely on reactive healing, which in this system is not very efficient and would dry a party's mind points rather quickly.</p></blockquote>"
       },
       "video": {
         "controls": true,
@@ -237,7 +237,7 @@
       "_key": "!journal.pages!A6BW9I5K3CI5oKJR.AH0R2AhQkokBcqYO"
     },
     {
-      "sort": 700000,
+      "sort": 1100000,
       "name": "Fast Forward",
       "type": "text",
       "_id": "hFI71t9qk3ByUJ73",
@@ -391,6 +391,84 @@
         "exportSource": null
       },
       "_key": "!journal.pages!A6BW9I5K3CI5oKJR.KjtfIFiAadcwE8Ji"
+    },
+    {
+      "sort": 900000,
+      "name": "Draw",
+      "type": "text",
+      "_id": "VOUFcFGxKUAvupcM",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A weapon with this trait must be drawn before it can be used to fire a shot. It takes one action to draw and another to shoot and they need not be performed in the same turn.</p><p>Performing other actions that require manipulation cancels the draw.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787920061719,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.VOUFcFGxKUAvupcM"
+    },
+    {
+      "sort": 1000000,
+      "name": "Reload",
+      "type": "text",
+      "_id": "T1NjR0BDYCxAndEQ",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A weapon with this trait has a fixed amount of ammunition which is spent when it is used to attack with, after which it can be reloaded with 1 action.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1787920197671,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.T1NjR0BDYCxAndEQ"
     }
   ],
   "folder": null,

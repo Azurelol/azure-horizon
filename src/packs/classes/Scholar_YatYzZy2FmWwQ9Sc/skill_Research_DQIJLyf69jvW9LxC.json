@@ -1,14 +1,14 @@
 {
-  "folder": "UEhZ4pIw8AKsoyND",
-  "name": "Dispel",
-  "type": "spell",
-  "_id": "Nj4ObtZASNydWOEV",
-  "img": "icons/magic/light/beam-strike-orange.webp",
+  "folder": "YatYzZy2FmWwQ9Sc",
+  "name": "Research",
+  "type": "skill",
+  "_id": "DQIJLyf69jvW9LxC",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "light-dispel",
-    "description": "<p>You dispel one magical effect from a party member.</p>",
+    "slug": "scholar-research",
+    "description": "<p>During a long rest you devote yourself to the study of a topic. In collaboration with your director a truth comes to light that changes your understanding of the world. </p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "10",
+      "amount": "",
       "perTarget": false
     },
     "effects": {
@@ -60,15 +60,25 @@
       }
     },
     "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "action",
+      "targeting": "",
+      "type": "activity",
       "points": 1,
       "traits": []
     },
-    "domain": "light",
-    "speed": "instant"
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "scholar"
   },
   "effects": [],
   "sort": 0,
@@ -80,12 +90,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787423614965,
+    "createdTime": 1787919026668,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Nj4ObtZASNydWOEV"
+  "_key": "!items!DQIJLyf69jvW9LxC"
 }

@@ -1,0 +1,94 @@
+{
+  "folder": "Tw1Y0NhNsYc2Pp8A",
+  "name": "Thorn Bind Hostage",
+  "type": "spell",
+  "_id": "cCYK5HOjPGnwQqI0",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "thorn-bind-hostage",
+    "description": "<p>You inflict the target with a status that roots them in place and has them suffer additional magical damage each time they take damage.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "mp",
+      "amount": "10",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "single",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "exhaust"
+      ]
+    },
+    "domain": "",
+    "speed": "instant"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787924593861,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!cCYK5HOjPGnwQqI0"
+}

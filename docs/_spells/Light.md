@@ -4,6 +4,17 @@ img: /assets/icons/spells/light.png
 ---
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Barrier</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Instant</span>
+</div>
+</div>
+</div>
+
+<p>You grant a target party member a stack of…</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/magic/light/beam-horizon-strike-yellow.webp"><span>Bless Weapon</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
@@ -13,17 +24,6 @@ img: /assets/icons/spells/light.png
 </div>
 
 <p>You enhance a party member's weapon so that it also deals light damage.</p>
-
-<div class="document-header">
-<div class="document-header__name"><img src="icons/magic/light/beam-strike-orange.webp"><span>Dispel</span></div>
-<div class='document-header__properties'>
-<div class="document-traits --nested">
-<span class="document-trait">Instant</span>
-</div>
-</div>
-</div>
-
-<p>You dispel one magical effect from a party member.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/defensive/shield-barrier-flaming-pentagon-blue-yellow.webp"><span>Divine Shield</span></div>
@@ -46,3 +46,47 @@ img: /assets/icons/spells/light.png
 </div>
 
 
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Mirage</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Instant</span>
+</div>
+</div>
+</div>
+
+
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/magic/light/beam-strike-orange.webp"><span>Purify</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Instant</span>
+</div>
+</div>
+</div>
+
+<p>You dispel one magical effect from a party member.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Revealing Light</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Instant</span>
+</div>
+</div>
+</div>
+
+
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/magic/defensive/shield-barrier-flaming-pentagon-green.webp"><span>Earth Guard</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Fast</span>
+</div>
+</div>
+</div>
+
+<p>The target and adjacent allies gain <em>block</em>.</p>

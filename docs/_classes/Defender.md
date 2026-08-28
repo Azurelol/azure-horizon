@@ -32,6 +32,18 @@ img: /assets/icons/classes/defender/defender.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Anchor Howl</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
+<i class="fa-solid fa-star"></i> 2
+</div>
+</div>
+
+<p>You defend and gain <em>SL</em> stacks of <em>Taunt</em>.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Bolster</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
@@ -45,16 +57,17 @@ img: /assets/icons/classes/defender/defender.png
 <p>You and another party member reduce your TP by SL.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Challenging Shout</span></div>
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Castle of Stone</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Action 1</span>
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Action 3</span>
 </div>
 <i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
-<p>You gain <em>SL</em> stacks of <em>Taunt</em>.</p>
+<p>You stand in front of the party and adopt a defensive posture until the start of your next turn. All single target attacks must target you.</p><ul><li><p><strong>SL2</strong>: Any actions that target the party are downgraded to reduced potency.</p></li></ul>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Intervene</span></div>
@@ -67,19 +80,6 @@ img: /assets/icons/classes/defender/defender.png
 </div>
 
 <p>When a  party member is targeted by a single-target hostile action you can shift in front of them if you aren't already before becoming the target instead.</p>
-
-<div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Iron Wall</span></div>
-<div class='document-header__properties'>
-<div class="document-traits --nested">
-<span class="document-trait">Exhaust</span>
-<span class="document-trait">Action 3</span>
-</div>
-<i class="fa-solid fa-star"></i> 2
-</div>
-</div>
-
-<p>You stand in front of the party and adopt a defensive posture until the start of your next turn. All single target attacks must target you.</p><ul><li><p><strong>SL2</strong>: Any actions that target the party are downgraded to reduced potency.</p></li></ul>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Rally</span></div>

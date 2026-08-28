@@ -24,6 +24,15 @@ img: /assets/icons/classes/rogue/rogue.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Counteraction</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/blade-tip-chipped-blood-red.webp"><span>Coup de Grace</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
@@ -37,7 +46,7 @@ img: /assets/icons/classes/rogue/rogue.png
 <p>While targeting an enemy that cannot perform actions you can perform a powerful attack to it.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/targeting/crosshair-mark-rough-pink.webp"><span>Misdirect</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/rogue/surprise-attack.png"><span>Misdirect</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -58,7 +67,7 @@ img: /assets/icons/classes/rogue/rogue.png
 <p>Your next attack inflicts an ailment on the target.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/control/debuff-energy-hold-blue-yellow.webp"><span>Surprise Attack</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/rogue/throw.png"><span>Surprise Attack</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -87,4 +96,4 @@ img: /assets/icons/classes/rogue/rogue.png
 </div>
 </div>
 
-<p>You become untargetable until the start of your next turn.</p>
+<p>You gain <em>Stealth</em> until the start of your next turn.</p>

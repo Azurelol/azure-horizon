@@ -3,7 +3,7 @@
   "name": "Misdirect",
   "type": "skill",
   "_id": "EVcMJ2nOdxkjEy9k",
-  "img": "icons/skills/targeting/crosshair-mark-rough-pink.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/rogue/surprise-attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -46,3 +46,14 @@ img: /assets/icons/spells/nature.png
 </div>
 
 <p>You summon a wall of stone from the ground, separating the battlefield between your party and your enemies. Until it is destroyed neither side can target each other.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Wind Wall</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Fast</span>
+</div>
+</div>
+</div>
+
+<p>You summon a wall of wind in front of the party that downgrades the potency of any ranged actions until the start of the next turn.</p>

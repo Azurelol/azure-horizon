@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "8rYPdUeZxKDnoD6J",
+  "name": "Trap",
+  "color": null,
+  "sorting": "a",
+  "_id": "KNo0R6fVDgOwEcDr",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787940724737,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!KNo0R6fVDgOwEcDr"
+}

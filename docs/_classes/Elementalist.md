@@ -51,6 +51,15 @@ img: /assets/icons/classes/elementalist/elementalist.png
 <p>After you cast a spell if you cast the same spell as your next action you gain a damage bonus.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Enchant</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>When a party member performs a physical attack you can enchant it before it resolves to deal additional elemental damage of your choice.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Ice Block</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">

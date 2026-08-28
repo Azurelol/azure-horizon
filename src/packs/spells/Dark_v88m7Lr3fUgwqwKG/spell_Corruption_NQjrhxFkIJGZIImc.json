@@ -1,27 +1,26 @@
 {
   "folder": "v88m7Lr3fUgwqwKG",
-  "name": "Bane",
+  "name": "Corruption",
   "type": "spell",
-  "_id": "QXommB948lD5cMSH",
-  "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+  "_id": "NQjrhxFkIJGZIImc",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dark-bane",
-    "description": "<p>You</p>",
+    "slug": "dark-corruption",
+    "description": "",
     "attributes": {
       "schemaVersion": 1,
-      "primary": "ins",
-      "secondary": "wlp",
+      "primary": "dex",
+      "secondary": "mig",
       "grade": "C"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "wlp",
-      "bonus": ""
+      "defense": "def"
     },
     "damage": {
       "schemaVersion": 1,
@@ -64,8 +63,9 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "action",
-      "points": 2,
+      "targeting": "",
+      "type": "",
+      "points": 1,
       "traits": []
     },
     "domain": "dark",
@@ -81,12 +81,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787426123509,
+    "createdTime": 1787921570690,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!QXommB948lD5cMSH"
+  "_key": "!items!NQjrhxFkIJGZIImc"
 }

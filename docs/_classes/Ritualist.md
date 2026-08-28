@@ -33,6 +33,18 @@ img: /assets/icons/classes/ritualist/ritualist.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Bargain</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Activity</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>During a rest scene you make a devil's bargain with a spirit and ask for their assistance. They help you as requested but it comes with a consequence decided by the director.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/magic/unholy/energy-smoke-pink.webp"><span>Dark Spell</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5

@@ -20,7 +20,7 @@ title: Glossary
 
 # Block
 
-<p>Block is what the system calls temporary hit points. Whenever a character suffers damage, if they have block the damage will first go through the block before affecting their current hit points.</p><blockquote><p>This resource is meant to incentivize active damage mitigation by the heroes instead of having to rely on reactive healing, which in this system is not very efficient and would dry a party's mind points rather quickly.</p></blockquote>
+<p>Block is what the system calls temporary hit points. Whenever a character suffers damage, if they have block the damage will first go through the block before affecting their current hit points.</p><p>Whenever a character is said to gain <em>Block</em> they are considered to be gaining their standard amount computed for their <em>Defend</em> action.</p><blockquote><p>This resource is meant to incentivize active damage mitigation by the heroes instead of having to rely on reactive healing, which in this system is not very efficient and would dry a party's mind points rather quickly.</p></blockquote>
 
 # Crisis
 
@@ -41,3 +41,11 @@ title: Glossary
 # Rest
 
 <p>A rest scene is one where the heroes get a respite from the demanding realities of their adventuring day. Of these we have two types.</p><p>A short rest usually takes place in adventuring location and allows heroes to partially recover resources and perform an activity or two before moving on.</p><p>A long rest takes place in a settlement or at camp and fully restores the heroes' resources.</p>
+
+# Draw
+
+<p>A weapon with this trait must be drawn before it can be used to fire a shot. It takes one action to draw and another to shoot and they need not be performed in the same turn.</p><p>Performing other actions that require manipulation cancels the draw.</p>
+
+# Reload
+
+<p>A weapon with this trait has a fixed amount of ammunition which is spent when it is used to attack with, after which it can be reloaded with 1 action.</p>
