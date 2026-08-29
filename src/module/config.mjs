@@ -148,10 +148,10 @@ AH.power = Object.freeze({
  */
 
 AH.potency = Object.freeze({
-  minor: { label: "AH.POTENCY.Minor ", difficulty: AH.difficulty.easy, cost: 20, selected: true },
-  medium: { label: "AH.POTENCY.Medium", difficulty: AH.difficulty.normal, cost: 30 },
-  major: { label: "AH.POTENCY.Major", difficulty: AH.difficulty.hard, cost: 40 },
-  utmost: { label: "AH.POTENCY.Utmost", difficulty: AH.difficulty.impossible, cost: 50 },
+  minor: { label: "AH.ACTION.POTENCY.Minor", difficulty: AH.difficulty.easy.value, cost: 20, selected: true },
+  medium: { label: "AH.ACTION.POTENCY.Medium", difficulty: AH.difficulty.normal.value, cost: 30 },
+  major: { label: "AH.ACTION.POTENCY.Major", difficulty: AH.difficulty.hard.value, cost: 40 },
+  utmost: { label: "AH.ACTION.POTENCY.Utmost", difficulty: AH.difficulty.impossible.value, cost: 50 },
 });
 
 //TODO: Rename?
@@ -1287,6 +1287,7 @@ AH.icons = {
   attributeCheck: "ah-icon-check-attribute",
   actionCheck: "ah-icon-check-action",
   defenseCheck: "ah-icon-check-defense",
+  ritualCheck: "ah-icon-check-ritual",
 
   reduced: "ra ra-level-two",
   standard: "ra ra-level-three",

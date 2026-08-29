@@ -40,8 +40,11 @@
     {{/if}}
   </div>
 
-  <!-- ATTRIBUTES -->
-  <div>
+
+
+
+  <div class="ah-grid-2">
+    <!-- ATTRIBUTES -->
     <fieldset>
       <legend>{{localize 'AH.CHARACTER.Attribute.plural'}}</legend>
       <div class="ah-field-group --row">
@@ -73,10 +76,8 @@
         </div>
       </div>
     </fieldset>
-  </div>
 
-  <div class="flexrow">
-   <!-- MODIFIER -->
+    <!-- MODIFIER -->
     <fieldset>
       <legend>{{localize 'AH.CHARACTER.Modifier.long'}}</legend>
       <div class="ah-field-group --row">
@@ -87,7 +88,8 @@
         </label>
       </div>
     </fieldset>
-    <!-- DIFFICULTY -->
+
+    <!-- DIFFICULTY  -->
     {{#if (eq type 'attribute')}}
       <fieldset>
         <legend>{{localize 'AH.CHECK.DifficultyLevel.long'}}</legend>
@@ -107,4 +109,85 @@
       </fieldset>
     {{/if}}
   </div>
+
+    {{#if (eq type 'ritual')}}
+        <fieldset>
+          <legend>{{localize 'AH.ACTION.Potency'}}</legend>
+          <table>
+            <thead>
+            <tr>
+              <th></th>
+              <th>{{localize 'AH.ACTION.Potency'}}</th>
+              <th>{{localize 'AH.CHARACTER.MindPoint.plural'}}</th>
+              <th>{{localize 'AH.CHECK.DifficultyLevel.long'}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each potencyOptions as |potency|}}
+              <tr class="{{#if potency.selected}}selected{{/if}}"
+                  data-action="updateRitual">
+                <td>
+                  <label>
+                    <input
+                      type="radio"
+                      name="potency"
+                      value="{{@key}}"
+                      {{#if potency.selected}}checked{{/if}}
+                    />
+                  </label>
+                </td>
+                <th>{{localize potency.label}}</th>
+                <td>{{potency.cost}}</td>
+                <td>{{potency.difficulty}}</td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+        </fieldset>
+
+        <fieldset>
+          <legend>{{localize 'AH.FIELD.Area'}}</legend>
+          <table>
+            <thead>
+            <tr>
+              <th></th>
+              <th>{{localize 'AH.FIELD.Area'}}</th>
+              <th>{{localize 'AH.FIELD.Multiplier'}}</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {{#each areaOptions as |area index|}}
+              <tr>
+                <td>
+                  <label>
+                    <input
+                      type="radio"
+                      name="area"
+                      data-action="updateRitual"
+                      value="{{@key}}"
+                      {{#if area.selected}}checked{{/if}}/>
+                  </label>
+                </td>
+                <th>{{localize area.label}}</th>
+                <td>{{area.multiplier}}</td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+        </fieldset>
+
+      <fieldset>
+        <legend>
+          <label>{{localize 'AH.FIELD.Cost'}}</label>
+        </legend>
+        <span class="ah-dialog__output" id="ritual-cost">
+          {{cost}}
+        </span>
+      </fieldset>
+
+      <!-- Hidden: used by the result-->
+      <label><input name="difficulty" type="number" value="{{potency.difficulty}}" min="0" hidden/></label>
+      <label><input name="cost" type="number" value="{{cost}}" min="0" hidden/></label>
+    {{/if}}
 </section>

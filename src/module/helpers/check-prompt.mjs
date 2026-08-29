@@ -5,6 +5,7 @@ import Handlebars from "./handlebars.mjs";
 import Checks from "../pipelines/checks.mjs";
 import { ActionConfig } from "./action-configuration.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
+import Dialogs from "./dialogs.mjs";
 
 /**
  * @typedef CheckConfig
@@ -57,6 +58,36 @@ async function onSetDifficulty(event, target) {
   input.value = target.dataset.value ?? "";
   input.dispatchEvent(new Event("input", { bubbles: true }));
   input.dispatchEvent(new Event("change", { bubbles: true }));
+}
+
+/**
+ * @param {PointerEvent} event   The originating click event
+ * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+ * @returns {Promise<void>}
+ */
+async function onUpdateRitual(event, target) {
+  const form = target.closest("form"); // ?? this.element;
+
+  // Selected radios
+  const potencyInput = form.querySelector("input[name=\"potency\"]:checked");
+  const potencyKey = potencyInput?.value ?? null;
+  const areaKey = form.querySelector("input[name=\"area\"]:checked")?.value ?? null;
+
+  const potency = AH.potency[potencyKey];
+  const area = AH.area[areaKey];
+  const cost = potency.cost * area.multiplier;
+
+  // Update hidden difficulty input
+  const diffInput = form.querySelector("input[name=\"difficulty\"]");
+  if (diffInput) diffInput.value = potency.difficulty;
+
+  const costInput = form.querySelector("input[name=\"cost\"]");
+  if (costInput) costInput.value = cost;
+
+  const costEl = form.querySelector("#ritual-cost");
+  if (costEl) {
+    costEl.textContent = cost.toString();
+  }
 }
 
 /**
@@ -165,22 +196,28 @@ async function prompt(actor, type, initialConfig = {}) {
         potency: potency,
         area: area,
         cost: potency.cost * area.multiplier,
-        potencyList: Object.values(AH.potency),
-        areaList: Object.values(AH.area),
+        potencyOptions: AH.potency,
+        areaOptions: AH.area,
       });
       break;
     }
   }
 
   const title = initialConfig.title ?? AH.checkTypes[type];
-  const result = await foundry.applications.api.DialogV2.input({
+  const result = await Dialogs.input({
     window: {
-      title: game.i18n.localize(title),
+      title: StringUtils.localize(title),
       icon: "fa-solid fa-dice",
+      scrollable: true,
+    },
+    position: {
+      width: 500,
+      height: "auto",
     },
     classes: ["ah-application", "ah-dialog"],
     actions: {
       setDifficulty: onSetDifficulty,
+      updateRitual: onUpdateRitual,
     },
     content: await renderTemplate("dialogs/dialog-check-prompt", context),
     rejectClose: false,
@@ -269,7 +306,7 @@ async function attributeCheck(actor, options = {}) {
 async function ritualCheck(actor, item, options = {}) {
   const promptResult = await prompt(actor, "ritual", options);
   if (promptResult) {
-    return Checks.attributeCheck(
+    return Checks.ritualCheck(
       actor,
       {
         primary: promptResult.primary,

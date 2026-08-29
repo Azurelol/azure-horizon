@@ -410,6 +410,24 @@ export default class Checks {
   }
 
   /**
+   * @param {AHActor} actor
+   * @param {CheckAttributes} attributes
+   * @param {AHItem} item
+   * @param {CheckPrepareCallback} onPrepare
+   * @param {CheckResultCallback} onResult
+   */
+  static async ritualCheck(actor, attributes, item, onPrepare, onResult = undefined) {
+    /** @type Partial<CheckOptions> */
+    const check = {
+      type: "ritual",
+      primary: attributes.primary,
+      secondary: attributes.secondary,
+    };
+
+    return Checks.performCheck(check, actor, item, onPrepare, onResult);
+  }
+
+  /**
    * @typedef DefenseCheckConfig
    * @property {AH_Attribute} primary
    * @property {AH_Attribute} secondary

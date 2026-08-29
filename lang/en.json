@@ -591,6 +591,7 @@
       "Action": "Action",
       "Effects": "Effects",
       "Bonus": "Bonus",
+      "Multiplier": "Multiplier",
       "Category": "Category",
       "Initial": "Initial",
       "Grade": "Grade",
@@ -610,6 +611,7 @@
       "Cost": "Cost",
       "Tags": "Tags",
       "Potency": "Potency",
+      "Area": "Area",
       "Identifier": "Identifier",
       "ComparisonOperator": "Comparison Operator",
       "Complications": "Complications",
@@ -822,6 +824,13 @@
       "Action": "Action",
       "Reaction": "Reaction",
       "Activity": "Activity",
+      "AREA": {
+        "Individual": "Individual",
+        "Small": "Small",
+        "Large": "Large",
+        "Huge": "Huge"
+      },
+      "Potency": "Potency",
       "POTENCY": {
         "Tier": "Tier",
         "Partial": "Partial",
@@ -829,7 +838,11 @@
         "Critical": "Critical",
         "Standard": "Standard",
         "Reduced": "Reduced",
-        "Powerful": "Powerful"
+        "Powerful": "Powerful",
+        "Minor": "Minor",
+        "Medium": "Medium",
+        "Major": "Major",
+        "Utmost": "Utmost"
       },
       "POWER": {
         "Low": "Low",

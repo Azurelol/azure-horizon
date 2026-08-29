@@ -72,3 +72,11 @@
     filter: brightness(1.2) grayscale(0.5) opacity(0.9);
   }
 }
+
+.ah-dialog__output {
+  font-size: var(--ah-font-size-xxl);
+  padding: 4px;
+  text-align: center;
+  border: var(--ah-border-muted);
+  background: var(--ah-background-result);
+}

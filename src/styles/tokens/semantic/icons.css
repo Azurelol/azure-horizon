@@ -151,6 +151,7 @@
   /*Checks*/
   --ah-icon-check-defense: url("../../../../assets/icons/checks/check-defense.svg");
   --ah-icon-check-attribute: url("../../../../assets/icons/checks/attribute_check.png");
+  --ah-icon-check-ritual: url("../../../../assets/icons/checks/ritual_check.png");
   --ah-icon-check-open: url("../../../../assets/icons/checks/perspective-dice-six-faces-random.svg");
   --ah-icon-check-difficulty: url("../../../../assets/icons/checks/difficulty.png");
   --ah-icon-check-modifier: url("../../../../assets/icons/checks/modifier.png");
@@ -160,6 +161,10 @@
 
   .ah-icon-check-roll {
     background-image: var(--ah-icon-check-roll);
+  }
+
+  .ah-icon-check-ritual {
+    background-image: var(--ah-icon-check-ritual);
   }
 
   .ah-icon-check-attribute {

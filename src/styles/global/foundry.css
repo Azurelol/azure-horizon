@@ -2,6 +2,10 @@
 /*  background: var(--ah-background-application);*/
 /*}*/
 
+table {
+  margin: 0;
+}
+
 .application {
   background: var(--ah-application-background);
   font-family: var(--ah-font-family-application);
