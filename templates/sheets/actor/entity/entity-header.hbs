@@ -11,10 +11,11 @@
         {{/if}}
         data-tooltip="{{actor.name}}">
       {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
+      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+      {{ahInput 'system.level' system.level size ='m' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="ah-character__level" }}
     </div>
 
     <div class="ah-sheet-header__row">
-      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') classes='--small' colorClass="--ah-color-hp" }}
     </div>
   </div>
 

@@ -3,7 +3,7 @@ import { ActorResourceDataModel, AffinitiesDataModel, AttributesDataModel } from
 import { Formulas } from "../../ruleset/_module.mjs";
 import ActorDataModel from "./actor-data-model.mjs";
 import { VersionedDataModel } from "../api/_module.mjs";
-import EntityDataModel from "./entity-data-model.mjs";
+import { BaseEntityDataModel } from "./entity-data-model.mjs";
 
 /**
  * @property {ActorResourceDataModel} hp
@@ -30,7 +30,7 @@ export class CharacterResourcesDataModel extends VersionedDataModel {
  * @property {CharacterResourcesDataModel} resources
  * @property {CharacterParametersDataModel} parameters
  */
-export default class CharacterDataModel extends EntityDataModel {
+export default class CharacterDataModel extends BaseEntityDataModel {
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {

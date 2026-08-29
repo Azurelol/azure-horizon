@@ -20,6 +20,10 @@ export class EntitySheet extends AHActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["ah-entity"],
+    position: {
+      width: 600,
+      height: 350,
+    },
     actions: {
     },
   };

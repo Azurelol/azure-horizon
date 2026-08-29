@@ -2,6 +2,7 @@
 
   .window-content {
     .tab {
+      flex: 1;
       padding: 1rem;
       overflow: auto;
       background: var(--ah-surface-tab-content);
@@ -90,7 +91,7 @@
   input {
     font-size: 28px;
     background: transparent;
-    width: 50px;
+    width: 60px;
     text-align: center;
   }
 }

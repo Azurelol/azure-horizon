@@ -4,7 +4,7 @@ import AdversaryDataModel from "./adversary-data-model.mjs";
 import PartyDataModel from "./party-data-model.mjs";
 import UnitDataModel from "./unit-data-model.mjs";
 import FollowerDataModel from "./follower-data-model.mjs";
-import EntityDataModel from "./entity-data-model.mjs";
+import { EntityDataModel } from "./entity-data-model.mjs";
 
 const dataModels = Object.freeze({
   base: ActorDataModel,

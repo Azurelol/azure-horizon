@@ -18,12 +18,7 @@ export class EntityResourcesDataModel extends VersionedDataModel {
   }
 }
 
-/**
- * Models characters and interactive objects in the world.
- * @property {Number} level
- * @property {EntityResourcesDataModel} resources
- */
-export default class EntityDataModel extends ActorDataModel {
+export class BaseEntityDataModel extends ActorDataModel {
   static defineSchema() {
     const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
@@ -47,5 +42,22 @@ export default class EntityDataModel extends ActorDataModel {
 
   _prepareResources() {
     this.resources.hp.defineMaximumProperty(() => Formulas.calculateHitPoints(this));
+  }
+}
+
+/**
+ * Models characters and interactive objects in the world.
+ * @property {Number} level
+ * @property {String} description
+ * @property {EntityResourcesDataModel} resources
+ */
+export class EntityDataModel extends BaseEntityDataModel {
+  static defineSchema() {
+    const { EmbeddedDataField, SchemaField, NumberField, HTMLField } = foundry.data.fields;
+    return Object.assign(super.defineSchema(), {
+      description: new HTMLField({
+        label: "AH.FIELD.Description",
+      }),
+    });
   }
 }

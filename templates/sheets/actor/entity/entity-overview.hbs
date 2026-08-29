@@ -1,2 +1,7 @@
 <section class="tab overview {{tab.cssClass}}" data-tab="overview" data-group="primary">
+  <div class="ah-flex-col" style="margin-top:8px;">
+    <prose-mirror name="system.description" value="{{system.description}}" toggled>
+      {{{lookup enriched 'system.description'}}}
+    </prose-mirror>
+  </div>
 </section>

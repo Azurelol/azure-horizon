@@ -177,6 +177,11 @@ export default class Formulas {
       }
         break;
 
+      case "entity": {
+        hp = level;
+      }
+        break;
+
       case "unit":
         hp = level;
         break;

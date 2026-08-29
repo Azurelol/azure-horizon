@@ -17,7 +17,7 @@ export class FollowerSheet extends AHActorSheet {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["ah-follower"],
+    classes: ["ah-entity"],
     actions: {
     },
   };

@@ -1,13 +1,13 @@
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { FollowerProfileDataModel } from "./system/_module.mjs";
-import EntityDataModel from "./entity-data-model.mjs";
+import { BaseEntityDataModel } from "./entity-data-model.mjs";
 
 /**
  * @property {AH_FollowerType} kind
  * @property {FollowerProfileDataModel} profile
  * @property {Number} potential
  */
-export default class FollowerDataModel extends EntityDataModel {
+export default class FollowerDataModel extends BaseEntityDataModel {
 
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField, ForeignDocumentField, HTMLField, NumberField } = foundry.data.fields;
