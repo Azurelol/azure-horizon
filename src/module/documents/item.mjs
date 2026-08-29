@@ -1,4 +1,4 @@
-import { ChatMessageBuilder } from "../helpers/_module.mjs";
+import { ChatMessageBuilder, ChatMessageSections } from "../helpers/_module.mjs";
 import DocumentMixin from "./document-mixin.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 import { isActorType } from "../constants.mjs";
@@ -39,6 +39,9 @@ export class AHItem extends DocumentMixin(foundry.documents.Item) {
    */
   async sendToChat() {
     const builder = new ChatMessageBuilder(this.parent, this);
+    if (this.system.description) {
+      builder.text(this.system.description);
+    }
     return builder.create();
   }
 }

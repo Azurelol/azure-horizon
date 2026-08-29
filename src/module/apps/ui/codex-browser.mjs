@@ -1,8 +1,9 @@
-import { getSystemSetting, renderTemplate, systemAssetPath } from "../../constants.mjs";
+import { enrichHTML, getSystemSetting, renderTemplate, systemAssetPath } from "../../constants.mjs";
 import { FileUtils, FoundryUtils, HTMLUtils, ObjectUtils, StringUtils } from "../../utils/_module.mjs";
 import { CodexDataModel, CodexEntryDataModel } from "../../data/ui/_module.mjs";
 import AH from "../../config.mjs";
 import { Dialogs } from "../../helpers/_module.mjs";
+import enrichers from "../../pipelines/enrichers.mjs";
 
 export default class CodexBrowser {
   /** @type AHPartySheet **/
@@ -215,7 +216,7 @@ export default class CodexBrowser {
       if (match.toLowerCase() === entry.name.toLowerCase()) return match;
       return `@CODEX[${match}]`;
     });
-    return await FoundryUtils.enrichText(autoLinked, {});
+    return await enrichHTML(autoLinked, {});
   }
 
   /**
