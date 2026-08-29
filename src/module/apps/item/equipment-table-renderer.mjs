@@ -7,4 +7,8 @@ export default class EquipmentTableRenderer extends ItemTableRenderer {
       TableColumns.itemProperties(),
     ];
   }
+
+  previewActions() {
+    return true;
+  }
 }

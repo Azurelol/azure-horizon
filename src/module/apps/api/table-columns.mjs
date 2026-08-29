@@ -229,6 +229,7 @@ function resource(options = {}) {
  * @template {Object} T
  * @property {string} header
  * @property {string} [cssClass]
+ * @property {Boolean} preview Whether these actions can be shown in preview.
  * @property {(T) => Record<string, string>} dataset
  * @property {AH_TableAction[]} actions
  */
@@ -243,7 +244,7 @@ function actions(options = {}) {
     hideHeader: !options.header,
     renderHeader: () => StringUtils.localize(options.header),
     cssClass: options.cssClass,
-    preview: false,
+    preview: options.preview,
     renderCell: async (entry) => {
       return renderTemplate(TEMPLATES.actions, {
         entry,

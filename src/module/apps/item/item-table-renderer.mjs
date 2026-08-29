@@ -26,6 +26,53 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
     return [];
   }
 
+  /**
+   * @returns {boolean} Whether actions should be shown in preview mode.
+   * @virtual
+   */
+  get previewActions() {
+    return false;
+  }
+
+  /**
+   * @returns {AH_TableColumnConfig}}
+   * @private
+   */
+  _getCommonActionOptions() {
+    return TableColumns.actions({
+      header: "AH.COMMON.Actions",
+      cssClass: "ah-table__column__actions",
+      preview: this.previewActions,
+      dataset: (entry) => {
+        return {
+          id: entry.id,
+          type: "Item",
+        };
+      },
+      actions: [
+        {
+          action: "sendItem",
+          tooltip: "AH.COMMON.Send",
+          icon: AH.icons.send,
+          keys: ["id"],
+        },
+        {
+          action: "editDocument",
+          tooltip: "AH.COMMON.Edit",
+          icon: AH.icons.edit,
+          keys: ["id", "type"],
+        },
+        {
+          action: "deleteDocument",
+          tooltip: "AH.COMMON.Remove",
+          icon: AH.icons.remove,
+          keys: ["id", "type"],
+        },
+        ...this._getItemActions(),
+      ],
+    });
+  }
+
   getColumns() {
     let columns = super.getColumns();
     columns.push(
@@ -35,39 +82,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
         type: "item",
       }));
     columns.push(...this._getItemProperties());
-    columns.push(TableColumns.actions(
-      {
-        header: "AH.COMMON.Actions",
-        cssClass: "ah-table__column__actions",
-        dataset: (entry) => {
-          return {
-            id: entry.id,
-            type: "Item",
-          };
-        },
-        actions: [
-          {
-            action: "sendItem",
-            tooltip: "AH.COMMON.Send",
-            icon: AH.icons.send,
-            keys: ["id"],
-          },
-          {
-            action: "editDocument",
-            tooltip: "AH.COMMON.Edit",
-            icon: AH.icons.edit,
-            keys: ["id", "type"],
-          },
-          {
-            action: "deleteDocument",
-            tooltip: "AH.COMMON.Remove",
-            icon: AH.icons.remove,
-            keys: ["id", "type"],
-          },
-          ...this._getItemActions(),
-        ],
-      },
-    ));
+    columns.push(this._getCommonActionOptions());
     return columns;
   }
 }

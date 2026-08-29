@@ -164,7 +164,7 @@ export class PartySheet extends AHActorSheet {
     return context;
   }
 
-  #equipmentTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Equipment", actions: AHActorSheet.getCompendiumTableActions("equipment") });
+  #equipmentTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Equipment", actions: AHActorSheet.getCompendiumTableActions("equipment"), preview: true, stash: true });
 
   /** @inheritdoc */
   async _preparePartContext(partId, ctx, options) {
