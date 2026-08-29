@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "archer-draw",
-    "description": "",
+    "description": "<p>You deal damage to the target and those around it.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -53,22 +53,26 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "low",
     "level": {
       "current": 1,
       "max": 2
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "range": "ranged",
+      "type": "action",
+      "points": 3,
+      "traits": [
+        "cooldown"
+      ],
+      "targeting": "multiple"
     },
     "usage": {
       "schemaVersion": 1,
-      "check": false,
-      "damage": false
+      "check": true,
+      "damage": true,
+      "attributes": true
     },
     "class": "archer"
   },

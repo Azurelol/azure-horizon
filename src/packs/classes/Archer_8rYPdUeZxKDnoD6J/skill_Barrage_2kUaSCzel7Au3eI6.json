@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "archer-barrage",
-    "description": "",
+    "description": "<p>You deal damage to a column.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -59,24 +59,26 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "moderate",
     "level": {
       "current": 1,
       "max": 1
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "targeting": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "range": "ranged",
+      "targeting": "multiple",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "cooldown"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false
+      "attributes": true,
+      "check": true,
+      "damage": true
     },
     "class": "archer"
   },

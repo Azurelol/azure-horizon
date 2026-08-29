@@ -20,7 +20,8 @@
       "You shoot first."
     ],
     "traits": [
-      "offense"
+      "offense",
+      "perception"
     ],
     "complications": [
       "Your firearm jams at a critical time.",
