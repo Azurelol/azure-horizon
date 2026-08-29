@@ -11,7 +11,8 @@
       "features": "Features",
       "effects": "Effects",
       "assembly": "Assembly",
-      "followers": "Followers"
+      "followers": "Followers",
+      "entities": "Entities"
     },
     "APPLICATION": {
       "CompendiumBrowser": "Compendium Browser",
@@ -34,7 +35,8 @@
         "HeroSheet": "Hero Sheet",
         "AdversarySheet": "Adversary Sheet",
         "PartySheet": "Party Sheet",
-        "FollowerSheet": "Follower Sheet"
+        "FollowerSheet": "Follower Sheet",
+        "EntitySheet": "Entity Sheet"
       },
       "Tabs": {
         "Overview": "Overview",
@@ -526,7 +528,8 @@
       "Light": "Light",
       "Dark": "Dark",
       "Nature": "Nature",
-      "Elemental": "Elemental"
+      "Elemental": "Elemental",
+      "Arcane": "Arcane"
     },
     "DIALOG": {
       "UploadClipboardImage": "Upload Clipboard Image",
@@ -928,7 +931,8 @@
       "adversary": "Adversary",
       "party": "Party",
       "unit": "Unit",
-      "follower": "Follower"
+      "follower": "Follower",
+      "entity": "Entity"
     },
     "Item": {
       "attack": "Attack",

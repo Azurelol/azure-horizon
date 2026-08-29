@@ -1,0 +1,22 @@
+<header class="sheet-header ah-sheet__header {{system.kind}}">
+  <div class="ah-entity__header">
+    <div class="ah-entity-header__name">
+      <img
+        class="profile-img"
+        src="{{actor.img}}"
+        alt="{{actor.name}}"
+        {{#if editable}}
+        data-action="editImage"
+        data-edit="img"
+        {{/if}}
+        data-tooltip="{{actor.name}}">
+      {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
+    </div>
+
+    <div class="ah-sheet-header__row">
+      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') classes='--small' colorClass="--ah-color-hp" }}
+    </div>
+  </div>
+
+
+</header>

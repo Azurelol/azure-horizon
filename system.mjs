@@ -80,6 +80,11 @@ function bindSheets() {
     makeDefault: true,
     label: "AH.SHEET.Labels.FollowerSheet",
   });
+  Actors.registerSheet("ah", apps.Actor.EntitySheet, {
+    types: ["entity"],
+    makeDefault: true,
+    label: "AH.SHEET.Labels.EntitySheet",
+  });
   Items.registerSheet("ah", apps.Item.AHItemSheet, {
     makeDefault: true, label: "AH.SHEET.Labels.ItemSheet",
   });

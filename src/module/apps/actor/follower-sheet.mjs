@@ -1,13 +1,11 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
-import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import { CharacterSheet } from "./base-character-sheet.mjs";
+import { systemTemplatePath } from "../../constants.mjs";
+import { CharacterSheet } from "./character-sheet.mjs";
 import {
-  AccessoryTableRenderer, ActionTableRenderer,
-  ArmorTableRenderer,
-  WeaponTableRenderer,
+  ActionTableRenderer,
+
 } from "../item/_module.mjs";
-import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
-import AH from "../../config.mjs";
+import { FoundryUtils } from "../../utils/_module.mjs";
 
 /**
  * @extends AHActorSheet
@@ -41,7 +39,7 @@ export class FollowerSheet extends AHActorSheet {
     ...super.PARTS,
 
     header: {
-      template: systemTemplatePath("sheets/actor/follower/follower-header"),
+      template: systemTemplatePath("sheets/actor/entity/follower-header"),
     },
     features: {
       template: systemTemplatePath("sheets/actor/character/character-features"),

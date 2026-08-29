@@ -21,14 +21,14 @@
   }
 }
 
-.ah-follower__header {
+.ah-entity__header {
   display: flex;
   flex-direction: column;
   width: 100%;
   justify-content: center;
 }
 
-.ah-follower-header__name {
+.ah-entity-header__name {
   display: flex;
   flex-direction: row;
   align-items: center;

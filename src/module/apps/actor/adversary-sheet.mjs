@@ -1,7 +1,7 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemTemplatePath } from "../../constants.mjs";
 import { ActionTableRenderer, AttackTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
-import { CharacterSheet } from "./base-character-sheet.mjs";
+import { CharacterSheet } from "./character-sheet.mjs";
 import { Migrations } from "../../helpers/_module.mjs";
 
 /**

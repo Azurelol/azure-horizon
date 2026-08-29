@@ -2,7 +2,7 @@ import { AHActorSheet } from "./actor-sheet.mjs";
 import { getSystemSetting, renderTemplate, setSystemSetting, systemTemplatePath } from "../../constants.mjs";
 import { CodexBrowser } from "../ui/_module.mjs";
 import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
-import { CharacterSheet } from "./base-character-sheet.mjs";
+import { CharacterSheet } from "./character-sheet.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 
