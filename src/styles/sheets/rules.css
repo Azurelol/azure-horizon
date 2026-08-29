@@ -1,7 +1,7 @@
 .ah-rule-element__section {
   header {
     padding: 0 0.5rem;
-    background: var(--ah-background-list-header);
+    background: var(--ah-list-header-background);
     box-shadow: 1px 2px var(--ah-color-box-shadow-list-header);
     display: flex;
     justify-content: space-between;
@@ -16,7 +16,7 @@
     span,
     label,
     i {
-      color: var(--ah-color-list) !important;
+      color: var(--ah-list-color) !important;
       text-shadow: 1px 1px var(--ah-color-text-shadow-list);
       font-weight: var(--ah-font-weight-bold);
       border-radius: 4px;
@@ -31,7 +31,7 @@
 
 .ah-rule-element__item {
   border-radius: 5px;
-  border: var(--ah-border-list-item);
+  border: var(--ah-list-item-border);
   background: none;
 }
 

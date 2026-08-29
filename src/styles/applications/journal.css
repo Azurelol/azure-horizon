@@ -3,7 +3,7 @@
   font-family: var(--ah-font-family-journal);
 
   .window-header {
-    background: var(--ah-background-application-header);
+    background: var(--ah-application-header-background);
 
     .window-title {
       font-size: var(--ah-font-size-lg);
@@ -20,7 +20,7 @@
       font-family: var(--ah-font-family-journal);
     }
 
-    background: var(--ah-background-application);
+    background: var(--ah-application-background);
 
     .sidebar {
       flex: 0 0 275px;

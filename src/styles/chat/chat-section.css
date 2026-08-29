@@ -28,7 +28,7 @@
 
 .ah-chat-section__flavor__name {
   margin-left: 4px;
-  font-size: var(--ah-font-size-message-header);
+  font-size: var(--ah-chat-message-header-font-size);
   font-weight: bold;
   font-variant: small-caps;
 }
@@ -165,7 +165,7 @@
   display: flex;
   gap: 0.25rem;
   flex-wrap: wrap;
-  font-size: var(--ah-font-size-label);
+  font-size: var(--ah-label-font-size);
   width: 100%;
 
   background: var(--ah-background-damage);
@@ -294,7 +294,7 @@
     width: 20px;
     height: 20px;
     color: var(--ah-content-action);
-    text-shadow: 1px 1px var(--ah-text-shadow-control);
+    text-shadow: 1px 1px var(--ah-control-text-shadow);
     font-variant: small-caps;
     font-weight: 500;
     text-rendering: optimizeLegibility;

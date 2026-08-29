@@ -3,11 +3,11 @@
 /*}*/
 
 .application {
-  background: var(--ah-background-application);
+  background: var(--ah-application-background);
   font-family: var(--ah-font-family-application);
 
   .window-header {
-    background: var(--ah-background-application-header);
+    background: var(--ah-application-header-background);
   }
 }
 
@@ -116,14 +116,14 @@ nav {
 
 #sidebar-tabs {
   menu {
-    background: var(--ah-background-tab);
+    background: var(--ah-tab-background);
     padding: 0.2rem;
   }
 }
 
 #sidebar-content {
   .tab {
-    background: var(--ah-background-application);
+    background: var(--ah-application-background);
   }
 }
 

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  gap: var(--ah-gap-input);
+  gap: var(--ah-input-gap);
 
   &.--small {
     width: 250px
@@ -13,8 +13,8 @@
   display: flex;
   align-items: center;
   flex: 0 0 auto;
-  font-size: var(--ah-font-size-label);
-  font-weight: var(--ah-font-weight-input);
+  font-size: var(--ah-label-font-size);
+  font-weight: var(--ah-input-font-weight);
   text-transform: uppercase;
   white-space: nowrap;
   min-width: 60px;
@@ -22,7 +22,7 @@
 }
 
 .ah-resource-bar__label i {
-  font-size: var(--ah-font-size-label);
+  font-size: var(--ah-label-font-size);
   opacity: 0.85;
 }
 
@@ -31,13 +31,13 @@
   position: relative;
   flex: 1 1 auto;
   min-width: 40px;
-  height: var(--ah-height-resource-bar);
+  height: var(--ah-resource-bar-height);
   background: rgba(0, 0, 0, 0.15);
   border: 1px solid var(--color-border-light-tertiary, #999);
   border-radius: 3px;
   overflow: hidden;
   cursor: pointer;
-  font-size: calc(var(--ah-height-resource-bar) * 0.75);
+  font-size: calc(var(--ah-resource-bar-height) * 0.75);
 }
 
 .ah-resource-bar__control__fill {

@@ -61,8 +61,8 @@
     text-align: center;
     font-family: var(--ah-list-entry-name-font-family), serif;
     margin: 1rem;
-    --shadow-color: var(--ah-box-shadow-fieldset-header);
-    text-shadow: 0 0 2px var(--ah-color-text-shadow-inline);
+    --shadow-color: var(--ah-fieldset-header-box-shadow);
+    text-shadow: 0 0 2px var(--ah-inline-color-text-shadow);
   }
 
   .description {

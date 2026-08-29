@@ -46,10 +46,10 @@
   }
 
   .ah-character__sidebar {
-    border-right: 1px solid var(--ah-border-application-sidebar);
+    border-right: 1px solid var(--ah-application-sidebar-border);
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.3);
     padding: 1rem;
-    background: var(--ah-background-application-sidebar);
+    background: var(--ah-application-background-sidebar);
     background-blend-mode: color-burn;
     gap: 0.5rem;
 
@@ -78,8 +78,8 @@
   }
 
   .ah-character__sidebar__section {
-    padding: var(--ah-padding-application-fields);
-    gap: var(--ah-gap-fieldset-fields);
+    padding: var(--ah-application-fields-padding);
+    gap: var(--ah-fieldset-fields-gap);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -117,7 +117,7 @@
     align-items: center;
 
     .ah-character__equipment__slot {
-      border: 1px solid var(--ah-border-control);
+      border: 1px solid var(--ah-control-border);
       width: 40px;
       height: 40px;
       display: flex;

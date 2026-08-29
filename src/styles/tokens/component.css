@@ -7,41 +7,41 @@
 :root {
   /*--------------------- ROLES ---------------------*/
   /* Application  */
-  --ah-background-application: var(--ah-surface-base);
-  --ah-background-application-header: var(--ah-surface-application);
-  --ah-background-application-header-alt: var(--ah-surface-application);
-  --ah-background-application-controls: var(--ah-surface-panel-nested);
-  --ah-background-application-sidebar: var(--ah-surface-application);
-  --ah-border-application-sidebar: rgba(255, 255, 255, 0.08);
-  --ah-background-application-blend: linear-gradient(
+  --ah-application-background: var(--ah-surface-base);
+  --ah-application-header-background: var(--ah-surface-application);
+  --ah-application-header-background-alt: var(--ah-surface-application);
+  --ah-application-controls-background: var(--ah-surface-panel-nested);
+  --ah-application-background-sidebar: var(--ah-surface-application);
+  --ah-application-sidebar-border: rgba(255, 255, 255, 0.08);
+  --ah-application-background-blend: linear-gradient(
     to bottom,
     var(--ah-surface-application) 0%,
     var(--ah-surface-base) 100%
   );
-  --ah-background-image-application: var(--ah-primitive-image-placeholder);
-  --ah-background-blend-mode-application: overlay, normal;
-  --ah-border-color-application: var(--ah-surface-border);
-  --ah-color-application: var(--ah-content-primary);
-  --ah-font-size-application-name: 2rem;
-  --ah-background-application-tabs: var(--ah-surface-panel);
-  --ah-padding-application-part: 8px;
-  --ah-padding-application-fields: 4px;
-  --ah-border-compendium: var(--ah-border-active);
+  --ah-application-background-image: var(--ah-icon-placeholder);
+  --ah-application-background-blend-mode: overlay, normal;
+  --ah-application-border-color: var(--ah-surface-border);
+  --ah-application-color: var(--ah-content-primary);
+  --ah-application-name-font-size: 2rem;
+  --ah-application-tabs-background: var(--ah-surface-panel);
+  --ah-application-part-padding: 8px;
+  --ah-application-fields-padding: 4px;
+  --ah-compendium-border: var(--ah-border-active);
 
   /* Tabs */
-  --ah-background-tab: var(--ah-surface-tab);
-  --ah-background-tab-active: var(--ah-surface-tab-active);
-  --ah-color-tab: var(--ah-content-tab);
-  --ah-color-tab-active: var(--ah-content-tab-active);
+  --ah-tab-background: var(--ah-surface-tab);
+  --ah-tab-background-active: var(--ah-surface-tab-active);
+  --ah-tab-color: var(--ah-content-tab);
+  --ah-tab-active-color: var(--ah-content-tab-active);
 
   /* Lists */
-  --ah-background-list: var(--ah-surface-panel);
-  --ah-background-list-header: var(--ah-surface-panel-nested);
-  --ah-color-list: var(--ah-content-primary);
-  --ah-color-list-header: var(--ah-content-secondary);
-  --ah-border-color-list: var(--ah-border-panel);
-  --ah-border-list-item: 1px solid var(--ah-surface-border);
-  --ah-box-shadow-list-header: 0 1px 2px var(--ah-border-panel);
+  --ah-list-background: var(--ah-surface-panel);
+  --ah-list-header-background: var(--ah-surface-panel-nested);
+  --ah-list-color: var(--ah-content-primary);
+  --ah-list-header-color: var(--ah-content-secondary);
+  --ah-list-item-border: 1px solid var(--ah-surface-border);
+  --ah-list-header-box-shadow: 0 1px 2px var(--ah-border-panel);
+  --ah-list-entry-background: var(--ah-surface-entry-gradient);
   --ah-list-entry-name-font-family: 'CreditValleybold';
 
   /* Tables */
@@ -68,36 +68,33 @@
   --ah-table-cell-border: 1px solid var(--ah-border-panel);
 
   /* Field Sets */
-  --ah-background-fieldgroup: var(--ah-surface-base);
-  --ah-background-fieldset: var(--ah-surface-panel);
-  --ah-background-fieldset-header: var(--ah-surface-panel-nested);
-  --ah-color-fieldset: var(--ah-content-primary);
-  --ah-color-fieldset-header: var(--ah-content-primary);
-  --ah-border-color-fieldset: var(--ah-border-panel);
-  --ah-box-shadow-fieldset-header: 0 1px 2px var(--ah-surface-accent);
-  --ah-gap-fieldset-fields: 8px;
+  --ah-fieldgroup-background: var(--ah-surface-base);
+  --ah-fieldset-background: var(--ah-surface-panel);
+  --ah-fieldset-header-background: var(--ah-surface-panel-nested);
+  --ah-fieldset-color: var(--ah-content-primary);
+  --ah-fieldset-header-color: var(--ah-content-primary);
+  --ah-fieldset-border-color: var(--ah-border-panel);
+  --ah-fieldset-header-box-shadow: 0 1px 2px var(--ah-surface-accent);
+  --ah-fieldset-fields-gap: 8px;
 
   /* Labels — sizing only, no color family involved, unchanged */
-  --ah-font-size-badge: 1.1em;
-  --ah-font-size-badge-lg: 1.2em;
-  --ah-font-size-label: 1.2em;
-  --ah-font-size-label-icon: 1.5em;
+  --ah-badge-font-size: 1.1em;
+  --ah-badge-font-size-lg: 1.2em;
+  --ah-label-font-size: 1.2em;
+  --ah-label-font-size-icon: 1.5em;
 
   /* Inputs */
-  --ah-background-input: var(--ah-surface-base);
-  --ah-padding-input: 2px;
-  --ah-font-size-input: 1.1em;
-  --ah-color-border-input: var(--ah-surface-border);
-  --ah-font-size-input-selector: 1em;
-  --ah-gap-input: 4px;
-  --ah-font-weight-input: 600;
-  --ah-height-resource-bar: 1.5em;
+  --ah-input-background: var(--ah-surface-base);
+  --ah-input-padding: 2px;
+  --ah-input-font-size: 1.1em;
+  --ah-input-color-border: var(--ah-surface-border);
+  --ah-input-selector-font-size: 1em;
+  --ah-input-gap: 4px;
+  --ah-input-font-weight: 600;
+  --ah-resource-bar-height: 1.5em;
 
   /* Icons */
   --ah-icon-color: var(--ah-content-icon);
-  --ah-icon-background: var(--ah-surface-action-muted);
-  --ah-icon-color-shadow: var(--ah-border-accent);
-  --ah-icon-color-hover: var(--ah-content-icon-hover);
 
   /* Tags/Badges  */
   --ah-badge-height: 100px;
@@ -107,39 +104,39 @@
   --ah-tag-color: var(--ah-content-primary);
   --ah-tag-background: var(--ah-surface-tag);
   --ah-tag-filter-background: var(--ah-surface-interactive);;
+  --ah-tag-filter-hover-background: var(--ah-surface-tag-hover);
+  --ah-tag-filter-active-background: var(--ah-surface-tag-active);
+  --ah-tag-filter-active-color: var(--ah-content-action);
   --ah-tag-background-hover: var(--ah-surface-tag-hover);
   --ah-tag-border: var(--ah-surface-border);
   --ah-badge-background: var(--ah-surface-action-muted);
   --ah-badge-color: var(--ah-content-primary);
   --ah-badge-bonus-color: #7aec76;
 
-  /* Inline */
-  --ah-line-height-inline: 18px;
-  --ah-color-inline: var(--ah-content-primary);
-  --ah-color-box-shadow-inline: var(--ah-border-accent);
-  --ah-color-text-shadow-inline: var(--ah-border-accent);
-  --ah-background-inline: var(--ah-surface-action);
-  --ah-font-size-inline: var(--ah-font-size-m);
-  --ah-font-size-message-header: var(--ah-font-size-lg);
-  --ah-background-inline-value: var(--ah-surface-value);
-
-  /* 2.1 Controls */
-  --ah-color-control: var(--ah-content-action);
-  --ah-color-control-hover: var(--ah-surface-action-hover);
-  --ah-background-control: var(--ah-surface-action);
-  --ah-background-control-hover: var(--ah-surface-action);
-  --ah-color-shadow-control: var(--ah-border-accent);
-  --ah-color-border-control: var(--ah-surface-border);
-  --ah-color-background-control-header: var(--ah-surface-panel-nested);
-  --ah-border-control: var(--ah-surface-border);
-  --ah-text-shadow-control: var(--ah-border-panel);
-  --ah-color-control-header: var(--ah-content-primary);
-  --ah-color-bg-input: var(--ah-surface-base);
-
-  /* Chat Message*/
+  /* Chat Message  */
   --ah-chat-message-background: var(--ah-surface-entry-gradient);
   --ah-chat-message-border: var(--ah-border-muted);
   --ah-chat-message-color: var(--ah-content-primary);
+  --ah-chat-message-header-font-size: var(--ah-font-size-lg);
+  --ah-inline-line-height: 18px;
+  --ah-inline-color: var(--ah-content-primary);
+  --ah-inline-color-box-shadow: var(--ah-border-accent);
+  --ah-inline-color-text-shadow: var(--ah-border-accent);
+  --ah-inline-background: var(--ah-surface-action);
+  --ah-inline-font-size: var(--ah-font-size-m);
+  --ah-inline-value-background: var(--ah-surface-value);
+
+  /* 2.1 Controls */
+  --ah-control-color: var(--ah-content-action);
+  --ah-control-hover-color: var(--ah-surface-action-hover);
+  --ah-control-background: var(--ah-surface-action);
+  --ah-control-hover-background: var(--ah-surface-action);
+  --ah-control-color-shadow: var(--ah-border-accent);
+  --ah-control-color-border: var(--ah-surface-border);
+  --ah-control-border: var(--ah-surface-border);
+  --ah-control-text-shadow: var(--ah-border-panel);
+
+
 
   /*Blockquote*/
   --ah-blockquote-background: var(--ah-surface-panel-block);

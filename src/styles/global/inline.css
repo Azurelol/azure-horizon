@@ -4,22 +4,22 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  line-height: var(--ah-line-height-inline);
+  line-height: var(--ah-inline-line-height);
 
   border-radius: 0.5rem;
-  font-size: var(--ah-font-size-inline);
+  font-size: var(--ah-inline-font-size);
   font-weight: bold;
   white-space: nowrap;
   word-break: break-all;
-  color: var(--ah-color-inline);
-  background: var(--ah-background-inline);
-  box-shadow: 0.063rem 0.1rem var(--ah-color-box-shadow-inline);
+  color: var(--ah-inline-color);
+  background: var(--ah-inline-background);
+  box-shadow: 0.063rem 0.1rem var(--ah-inline-color-box-shadow);
   border: var(--ah-border);
-  text-shadow: 1px 1px var(--ah-color-text-shadow-inline);
+  text-shadow: 1px 1px var(--ah-inline-color-text-shadow);
   margin: 0 0 1px 0;
   padding: 0 0.25rem;
   vertical-align: text-top;
-  height: calc(var(--ah-line-height-inline) + 0.25rem);
+  height: calc(var(--ah-inline-line-height) + 0.25rem);
 
   img {
     border: none;
@@ -36,7 +36,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: var(--ah-font-size-inline);
+  font-size: var(--ah-inline-font-size);
 
   i {
   }

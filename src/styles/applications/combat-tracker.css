@@ -1,9 +1,9 @@
 #sidebar-content {
   .combat-tracker-header {
-    background: var(--ah-background-application-header);
+    background: var(--ah-application-header-background);
 
     .encounter-controls {
-      background: var(--ah-background-application-controls);
+      background: var(--ah-application-controls-background);
     }
   }
 

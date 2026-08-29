@@ -3,7 +3,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--ah-background-list);
+  background: var(--ah-list-background);
   border: 1px solid var(--ah-color-border-list);
 
   &.--borderless {
@@ -13,8 +13,8 @@
   .acc-list__container__header {
     display: flex;
     flex-direction: row;
-    background: var(--ah-background-list-header);
-    color: var(--ah-color-list-header);
+    background: var(--ah-list-header-background);
+    color: var(--ah-list-header-color);
     justify-content: space-between;
 
     i {
@@ -71,9 +71,9 @@ ol.acc-list li {
 }
 
 .ah-list__entry {
-  color: var(--ah-color-list);
-  border: 1px solid var(--ah-color-border-list);
-  background: var(--ah-background-list);
+  color: var(--ah-list-color);
+  border: var(--ah-border);
+  background: var(--ah-list-entry-background);
   background-blend-mode: multiply;
   background-position: right top;
 

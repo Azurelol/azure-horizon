@@ -30,6 +30,7 @@
 
   .ah-toolbar__search {
     flex: 2;
+    border: var(--ah-border);
 
     input {
       height: 24px;

@@ -7,7 +7,7 @@
 }
 
 .ah-foldout > summary {
-  background: var(--ah-background-fieldset-header);
+  background: var(--ah-fieldset-header-background);
   cursor: pointer;
   outline: none;
   display: flex;
@@ -44,7 +44,7 @@
 .ah-foldout > .ah-foldout__content {
   padding: 15px 20px;
   line-height: 1.6;
-  background: var(--ah-background-fieldset);
+  background: var(--ah-fieldset-background);
   border-radius: 5px;
   border: var(--ah-border);
 }

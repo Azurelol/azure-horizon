@@ -1,11 +1,11 @@
 <section class="tab overview {{tab.cssClass}}" data-tab="overview" data-group="primary">
-	<section class="party">
-		{{#if characters}}
+  {{#if characters}}
+    <section class="party">
       {{{overview}}}
-    {{else}}
-      <div class="ah-message__centered">
-        {{localize 'AH.SHEET.MESSAGE.NoDataAvailable'}}
-      </div>
-		{{/if}}
-	</section>
+    </section>
+  {{else}}
+    <div class="ah-message --banner">
+      {{localize 'AH.SHEET.MESSAGE.NoDataAvailable'}}
+    </div>
+  {{/if}}
 </section>

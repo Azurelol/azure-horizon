@@ -74,8 +74,8 @@
   }
 
   &.active {
-    background: color-mix(in srgb, var(--ah-color-shadow-control) 70%, white);
-    color: color-mix(in srgb, var(--ah-color-control) 70%, white);
+    background: var(--ah-tag-filter-active-background);
+    color: color-mix(in srgb, var(--ah-control-color) 70%, white);
   }
 }
 
@@ -110,7 +110,7 @@
   top: 100%;
   left: 0;
   z-index: 100;
-  background: var(--ah-background-list);
+  background: var(--ah-list-background);
   border: 1px solid var(--ah-border-panel);
   border-radius: 4px;
   padding: 4px;

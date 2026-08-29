@@ -6,17 +6,17 @@
   }
 
   textarea {
-    background: var(--ah-background-input);
+    background: var(--ah-input-background);
   }
 
   .window-header {
-    background-color: var(--ah-background-application-header);
+    background-color: var(--ah-application-header-background);
   }
 
   .window-content {
-    background:  var(--ah-background-image-application), var(--ah-background-application);
-    background-blend-mode: var(--ah-background-blend-mode-application);
-    color: var(--ah-color-application);
+    background:  var(--ah-application-background-image), var(--ah-application-background);
+    background-blend-mode: var(--ah-application-background-blend-mode);
+    color: var(--ah-application-color);
 
     opacity: 0.95;
     backdrop-filter: blur(8px);
@@ -24,7 +24,7 @@
   }
 
   .tabs {
-    background: var(--ah-background-application-tabs);
+    background: var(--ah-application-tabs-background);
     text-transform: uppercase;
     gap: 0;
     border: none;
@@ -49,25 +49,25 @@
 
   .prosemirror.inactive {
     border: 1px solid var(--ah-surface-border);
-    background: var(--ah-background-input);
+    background: var(--ah-input-background);
     .editor-content {
       padding: 8px;
     }
   }
 
   .editor-container .editor-content {
-    background: var(--ah-background-input);
+    background: var(--ah-input-background);
     border: 1px solid var(--ah-surface-border);
     padding-left: 8px;
   }
 
   button {
-    background: var(--ah-background-control);
-    color: var(--ah-color-control);
+    background: var(--ah-control-background);
+    color: var(--ah-control-color);
     border-radius: 0;
 
     &:hover {
-      background: var(--ah-color-control-hover);
+      background: var(--ah-control-hover-color);
     }
   }
 
@@ -76,7 +76,7 @@
   }
 
   fieldset {
-    background: var(--ah-background-fieldset);
+    background: var(--ah-fieldset-background);
     border-radius: 0;
     border: 1px solid var(--ah-surface-border);
 
