@@ -7,7 +7,7 @@
     grid-template-rows: auto auto 1fr;
     height: 100%;
     width: 100%;
-    overflow-x: auto;
+    overflow-x: clip;
 
     .sheet-sidebar {
       grid-row: 1 / span 3;

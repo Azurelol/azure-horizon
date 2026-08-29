@@ -21,6 +21,20 @@ export default class FoundryUtils {
   static #dummyActor;
 
   /**
+   * @param {String} src
+   * @param {String} title
+   * @param {String} uuid
+   */
+  static popoutImage(src, title, uuid = undefined) {
+    // eslint-disable-next-line no-undef
+    const popout = new ImagePopout(src, {
+      title: title,
+      uuid: uuid,
+    });
+    popout.render(true);
+  }
+
+  /**
    * @param {String} str
    * @return {Boolean}
    */
@@ -479,6 +493,86 @@ export default class FoundryUtils {
    */
   static getOwnedActors(type) {
     return game.actors.filter((a) => (a.type === type) && a.testUserPermission(game.user, "OWNER"));
+  }
+
+  /**
+   * @param imagePath
+   * @returns {Promise<Tile>}
+   */
+  static async placeTile(imagePath) {
+    const scene = game.scenes.viewed;
+
+    // Get image dimensions to use as default tile size
+    // eslint-disable-next-line no-undef
+    const tex = await loadTexture(imagePath);
+    let width, height;
+
+    const promptTitle = `${StringUtils.localize("CONTROLS.TilePlace")} - Preset`;
+    const preset = await FoundryUtils.selectOptionDialog(promptTitle, [
+      {
+        label: StringUtils.localizeMultiple(["Token", "Scale"]),
+        value: "token",
+      },
+      {
+        label: StringUtils.localizeMultiple(["Default", "Scale"]),
+        value: "default",
+      },
+    ]);
+    switch (preset) {
+      case "token":
+        {
+          const scale = Math.min(100 / tex.width, 100 / tex.height);
+          width = tex.width * scale;
+          height = tex.height * scale;
+        }
+        break;
+      case "default":
+        width = tex.width;
+        height = tex.height;
+        break;
+    }
+
+    if (!preset) {
+      return;
+    }
+
+    const notification = ui.notifications.info("Left click to place tile on the active scene, right click to cancel the operation.", { permanent: true });
+
+    return new Promise((resolve) => {
+      const clickHandler = async (event) => {
+        const { x, y } = event.getLocalPosition(canvas.stage);
+
+        cleanup();
+
+        const [tileDocument] = await scene.createEmbeddedDocuments("Tile", [
+          {
+            texture: { src: imagePath },
+            width,
+            height,
+            x: x - width / 2,
+            y: y - height / 2,
+          },
+        ]);
+
+        canvas.tiles.releaseAll();
+        resolve(tileDocument);
+      };
+
+      const rightClickHandler = () => {
+        cleanup();
+        ui.notifications.warn("Cancelled tile placement.");
+        resolve(null); // cancelled
+      };
+
+      const cleanup = () => {
+        canvas.stage.off("click", clickHandler);
+        canvas.stage.off("rightclick", rightClickHandler);
+        ui.notifications.remove(notification);
+      };
+
+      canvas.stage.on("click", clickHandler);
+      canvas.stage.on("rightclick", rightClickHandler);
+    });
   }
 
 }

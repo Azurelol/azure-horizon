@@ -530,7 +530,10 @@
     },
     "DIALOG": {
       "UploadClipboardImage": "Upload Clipboard Image",
+      "RemoveMessage": "Are you sure you would you like to remove <strong>{label}</strong>?",
       "BrowseImage": "Browse Image",
+      "ChatMessageSend": "Send to Chat",
+      "InstantiateToken": "Instantiate Token",
       "RemoveObject": "Are you sure you would like to remove {label}?",
       "ClearObjects": "Are you sure you would ike to clear all items?",
       "ImportThemeTitle": "Import Theme",

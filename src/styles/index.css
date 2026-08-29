@@ -8,6 +8,7 @@
 @import "chat/chat-message.css";
 @import "chat/chat-section.css";
 @import "chat/potency.css";
+@import "chat/chat-codex.css";
 
 @import "components/skeleton.css";
 @import "components/tags.css";

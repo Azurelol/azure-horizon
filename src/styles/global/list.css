@@ -77,18 +77,6 @@ ol.acc-list li {
   background-blend-mode: multiply;
   background-position: right top;
 
-  .ah-list__entry__action {
-    display: flex;
-    align-items: center;
-    color: var(--ah-icon-color);
-  }
-
-  .ah-list__entry__controls {
-    display: flex;
-    flex-direction: row;
-    gap: 0.4rem;
-  }
-
   &.--compact {
 
     display: flex;
@@ -105,9 +93,6 @@ ol.acc-list li {
         font-size: 16px;
         font-weight: 400;
       }
-    }
-
-    .ah-list__entry__controls {
     }
   }
 

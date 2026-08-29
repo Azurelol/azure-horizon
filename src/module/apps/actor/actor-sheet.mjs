@@ -133,6 +133,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
 
     Object.assign(context, {
       owner: this.document.isOwner,
+      isOwner: this.document.isOwner,
       limited: this.document.limited,
       actor: this.actor,
       actorType: this.actor.type,

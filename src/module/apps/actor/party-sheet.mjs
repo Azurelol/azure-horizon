@@ -161,7 +161,6 @@ export class PartySheet extends AHActorSheet {
   /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-    context.isGM = game.user.isGM;
     return context;
   }
 

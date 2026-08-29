@@ -36,6 +36,7 @@ export default class CodexBrowser {
    * @param {HTMLElement} html
    */
   attachListeners(html) {
+    // TOOLBAR
     const toolbar = html.querySelector(".ah-toolbar");
     const searchInput = toolbar.querySelector(".ah-toolbar__search").querySelector("input");
     if (searchInput) {
@@ -49,7 +50,6 @@ export default class CodexBrowser {
         }, 150),
       );
     }
-
     html.querySelectorAll(".ah-tag__group .ah-tag__filter").forEach((tag) => {
       tag.addEventListener("click", () => {
         const value = tag.dataset.tag;
@@ -65,6 +65,46 @@ export default class CodexBrowser {
         this.updateEntries();
       });
     });
+    // ENTRIES
+    FoundryUtils.contextMenu(
+      html,
+      "[data-context-menu=\"shareCodexEntry\"]",
+      [
+        {
+          name: StringUtils.localize("SIDEBAR.CharArt"),
+          icon: "<i class=\"ah-icon--xs fas fa-image\"></i>",
+          callback: async (el) => {
+            const { index } = el.dataset;
+            return this.executeCodexEntryAction(Number.parseInt(index), "display");
+          },
+        },
+        {
+          name: StringUtils.localize("AH.DIALOG.ChatMessageSend"),
+          icon: "<i class=\"ah-icon--xs fas fa-comment\"></i>",
+          callback: async (el) => {
+            const { index } = el.dataset;
+            return this.executeCodexEntryAction(Number.parseInt(index), "send");
+          },
+        },
+        {
+          name: StringUtils.localize("AH.DIALOG.InstantiateToken"),
+          icon: "<i class=\"ah-icon--xs fas fa-user\"></i>",
+          callback: async (el) => {
+            const { index } = el.dataset;
+            return this.executeCodexEntryAction(Number.parseInt(index), "token");
+          },
+        },
+        {
+          name: StringUtils.localize("CONTROLS.TilePlace"),
+          icon: "<i class=\"ah-icon--xs fa-solid fa-cube\"></i>",
+          callback: async (el) => {
+            const { index } = el.dataset;
+            return this.executeCodexEntryAction(Number.parseInt(index), "tile");
+          },
+        },
+      ],
+      "click",
+    );
   }
 
   /**
@@ -227,7 +267,7 @@ export default class CodexBrowser {
           const enrichedDescription = await this.#enrichEntryDescription(entry);
           await this.#enrichEntryDescription(entry);
           const chatMessage = {
-            content: await FoundryUtils.renderTemplate("chat/chat-codex-entry", {
+            content: await renderTemplate("chat/chat-codex-entry", {
               entry: entry,
               enrichedDescription,
             }),
@@ -276,7 +316,7 @@ export default class CodexBrowser {
             actor = await Actor.implementation.create({
               name: CodexBrowser.PROXY_ACTOR_NAME,
               img: CodexBrowser.PROXY_ACTOR_IMG,
-              type: "stash",
+              type: "entity",
             });
           }
           const token = await FoundryUtils.instantiateActor(
