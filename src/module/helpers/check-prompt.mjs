@@ -24,6 +24,11 @@ import { Formulas } from "../ruleset/_module.mjs";
  */
 
 /**
+ * @typedef {CheckConfig} GroupCheckConfig
+ * @property {number|undefined} difficulty If set, will be checked against.
+ */
+
+/**
  * @typedef {CheckConfig} DefenseCheckConfig
  * @property {AH_Defense} defense The defense being checked for.
  * @property {number|undefined} difficulty If set, will be checked against.
@@ -145,12 +150,24 @@ async function prompt(actor, type, initialConfig = {}) {
     modifier: recentCheck.modifier,
     difficulty: recentCheck.difficulty,
     supportDifficulty: recentCheck.supportDifficulty,
-    bonus: actor.system?.bonuses?.accuracy?.all ?? 0,
+    bonus: actor.system?.parameters?.checks?.all ?? 0,
   };
 
   switch (type) {
     case "open": {
       context.bonus += 0;
+      break;
+    }
+    case "ritual": {
+      const potency = AH.potency.minor;
+      const area = AH.area.individual;
+      context = Object.assign(context, {
+        potency: potency,
+        area: area,
+        cost: potency.cost * area.multiplier,
+        potencyList: Object.values(AH.potency),
+        areaList: Object.values(AH.area),
+      });
       break;
     }
   }
@@ -245,6 +262,49 @@ async function attributeCheck(actor, options = {}) {
 
 /**
  * @param {AHActor} actor
+ * @param {AHItem} item
+ * @param {CheckPromptOptions<GroupCheckConfig>} [options]
+ * @returns {Promise<void>}
+ */
+async function ritualCheck(actor, item, options = {}) {
+  const promptResult = await prompt(actor, "ritual", options);
+  if (promptResult) {
+    return Checks.attributeCheck(
+      actor,
+      {
+        primary: promptResult.primary,
+        secondary: promptResult.secondary,
+      },
+      item,
+      (check, callbackActor, item) => {
+
+        const config = new ActionConfig(check);
+        config.setAttributes(promptResult.primary, promptResult.secondary);
+        if (promptResult.difficulty) {
+          config.setDifficulty(promptResult.difficulty);
+        }
+        if (promptResult.modifier) {
+          config.addModifier("AH.CHECK.SituationalModifier", promptResult.modifier);
+        }
+        if (item) {
+          config.setItemReference(item);
+        }
+        config.addExpense({
+          resource: "mp",
+          amount: promptResult.cost,
+        });
+        // TODO: Add bonuses to ally based on traits
+
+        if (options.checkCallback) {
+          options.checkCallback(check, callbackActor, item);
+        }
+      },
+    );
+  }
+}
+
+/**
+ * @param {AHActor} actor
  * @param {CheckPromptOptions<DefenseCheckConfig>} [options]
  * @returns {Promise<void>}
  */
@@ -311,4 +371,5 @@ export const CheckPrompt = Object.freeze({
   attributeCheck,
   openCheck,
   defenseCheck,
+  ritualCheck,
 });

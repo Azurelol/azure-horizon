@@ -18,7 +18,7 @@
 
 /**
  * @typedef PotencyActionOptions
- * @property {AH_Potency} potency
+ * @property {AH_ActionPotency} potency
  * @property {Boolean} selected
  * @property {Boolean} label
  */

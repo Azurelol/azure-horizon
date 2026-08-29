@@ -15,7 +15,7 @@
  * @property {string} link An html link to the actor
  * @property {DefenseData} defenses
  * @property {number} difficulty
- * @property {AH_Potency} potency Updated during evaluation
+ * @property {AH_ActionPotency} potency Updated during evaluation
  * @property {Boolean} isOwner
  */
 

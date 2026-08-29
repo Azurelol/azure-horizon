@@ -269,7 +269,7 @@ function onRenderChatMessage(message, html) {
 }
 
 /**
- * @param {AH_Potency} potency
+ * @param {AH_ActionPotency} potency
  * @param {ApplyEffectData} effectData
  * @param {SourceInfo} sourceInfo
  * @returns {Promise<void>}

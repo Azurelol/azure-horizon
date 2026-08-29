@@ -583,7 +583,7 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
-   * @param {AH_Potency} potency If set, it will override the calculation.
+   * @param {AH_ActionPotency} potency If set, it will override the calculation.
    * @remarks Invoked whenever targets or targeted defense change
    */
   updateTargetResults(potency) {

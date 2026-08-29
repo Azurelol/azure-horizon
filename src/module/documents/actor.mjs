@@ -42,7 +42,7 @@ import { isItemType } from "../constants.mjs";
 export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
   static CHARACTER_TYPES = new Set(["hero", "adversary"]);
-  static ENTITY_TYPES = new Set(["hero", "adversary", "follower"]);
+  static ENTITY_TYPES = new Set(["hero", "adversary", "follower", "entity"]);
 
   /*-------------------------------------------------------------------------*/
 

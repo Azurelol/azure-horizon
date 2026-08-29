@@ -422,7 +422,7 @@ export default class Checks {
    * @property {AH_Attribute} secondary
    * @property {Number} difficulty
    * @property {AH_Defense} defense
-   * @property {AH_Potency} potency
+   * @property {AH_ActionPotency} potency
    * @property {AHActor} attacker
    * @property {AHActor} defender
    * @property {String} winner

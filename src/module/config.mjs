@@ -104,10 +104,6 @@ AH.statusEffects = Object.freeze({
   crisis: "AH.STATUS.Crisis",
 });
 
-/**
- * @typedef {'horizon'|'classic'} AH_Difficulty
- */
-
 AH.difficulties = Object.freeze({
   classic: "AH.DIFFICULTY.Classic",
   horizon: "AH.DIFFICULTY.Horizon",
@@ -126,6 +122,15 @@ AH.grades = Object.freeze({
   S: { label: "S", scale: 2, base: 15 },
 });
 
+/** @typedef {'easy'|'normal'|'hard'|'impossible'} AH_Difficulty **/
+
+AH.difficulty = Object.freeze({
+  easy: { label: "AH.DIFFICULTY.Easy", value: 7 },
+  normal: { label: "AH.DIFFICULTY.Normal", value: 10 },
+  hard: { label: "AH.DIFFICULTY.Hard", value: 13 },
+  impossible: { label: "AH.DIFFICULTY.Impossible", value: 16 },
+});
+
 /**
  * @typedef {'low'|'moderate'|'high'|'severe'|'extreme'} AH_Power A multiplier used for additional damage scaling.
  */
@@ -133,13 +138,25 @@ AH.grades = Object.freeze({
 AH.power = Object.freeze({
   low: { label: "AH.ACTION.POWER.Low", multiplicative: 1.2 },
   moderate: { label: "AH.ACTION.POWER.Moderate", multiplicative: 1.4 },
-  high: { label: "AH.ACTION.POWER.High", multiplicative: 1.6 },
+  high: { label: "AH.ACTION.POWER.High", multiplicative: 1.6, difficulty: 13 },
   severe: { label: "AH.ACTION.POWER.Severe", multiplicative: 1.8 },
   extreme: { label: "AH.ACTION.POWER.Extreme", multiplicative: 2 },
 });
 
 /**
- * @typedef {'reduced'|'standard'|'powerful'} AH_Potency
+ * @typedef {'minor'|'medium'|'major'|'utmost'} AH_Potency
+ */
+
+AH.potency = Object.freeze({
+  minor: { label: "AH.POTENCY.Minor ", difficulty: AH.difficulty.easy, cost: 20, selected: true },
+  medium: { label: "AH.POTENCY.Medium", difficulty: AH.difficulty.normal, cost: 30 },
+  major: { label: "AH.POTENCY.Major", difficulty: AH.difficulty.hard, cost: 40 },
+  utmost: { label: "AH.POTENCY.Utmost", difficulty: AH.difficulty.impossible, cost: 50 },
+});
+
+//TODO: Rename?
+/**
+ * @typedef {'reduced'|'standard'|'powerful'} AH_ActionPotency
  */
 
 AH.potencies = Object.freeze({
@@ -153,10 +170,10 @@ AH.potencies = Object.freeze({
  */
 
 AH.area = {
-  individual: { label: "AH.ACTION.AREA.Individual" },
-  small: { label: "AH.ACTION.AREA.Small" },
-  large: { label: "AH.ACTION.AREA.Large" },
-  huge: { label: "AH.ACTION.AREA.Huge" },
+  individual: { label: "AH.ACTION.AREA.Individual", multiplier: 1, selected: true },
+  small: { label: "AH.ACTION.AREA.Small", multiplier: 2 },
+  large: { label: "AH.ACTION.AREA.Large", multiplier: 3 },
+  huge: { label: "AH.ACTION.AREA.Huge", multiplier: 4 },
 };
 
 /**
@@ -233,7 +250,7 @@ AH.attributeDice = {
  */
 
 /**
- * @typedef {"attribute"|"open"|'action'|'defense'} CheckType
+ * @typedef {"attribute"|"open"|'action'|'defense'|'ritual'} CheckType
  */
 
 /**
@@ -244,6 +261,7 @@ AH.checkTypes = {
   open: "AH.CHECK.Open",
   action: "AH.CHECK.Action",
   defense: "AH.CHECK.Defense",
+  ritual: "AH.CHECK.Ritual",
 };
 
 /**

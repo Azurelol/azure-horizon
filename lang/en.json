@@ -283,6 +283,7 @@
       "Action": "Action Check",
       "Attribute": "Attribute Check",
       "Defense": "Defense Check",
+      "Ritual": "Ritual Check",
       "Open": "Open Check",
       "Difficulty": "Difficulty",
       "Threshold": "Threshold",
