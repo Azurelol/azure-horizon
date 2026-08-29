@@ -1,12 +1,12 @@
 {
-  "name": "Player Guide",
-  "_id": "HrPbN4hhAwU6ZQbk",
+  "name": "Heroes",
+  "_id": "wGofzufKl6yJsZ40",
   "pages": [
     {
       "sort": 100000,
-      "name": "Introduction",
+      "name": "Opening",
       "type": "text",
-      "_id": "NI2TzWpAnSmZleUY",
+      "_id": "OMqB1T4F5UpDsiz0",
       "system": {},
       "title": {
         "show": true,
@@ -15,7 +15,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": ""
+        "content": "<p>This chapter covers the procedure for character creation in the system and other rules to keep in mind such as their advancement and equipment.</p>"
       },
       "video": {
         "controls": true,
@@ -32,20 +32,20 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1787453166622,
+        "createdTime": 1788028574125,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!journal.pages!HrPbN4hhAwU6ZQbk.NI2TzWpAnSmZleUY"
+      "_key": "!journal.pages!wGofzufKl6yJsZ40.OMqB1T4F5UpDsiz0"
     },
     {
       "sort": 200000,
-      "name": "FAQ",
+      "name": "Wealth",
       "type": "text",
-      "_id": "7B3OHKkAVpSWmKbV",
+      "_id": "CINSIE1O6JBbxa1i",
       "system": {},
       "title": {
         "show": true,
@@ -53,7 +53,8 @@
       },
       "image": {},
       "text": {
-        "format": 1
+        "format": 1,
+        "content": "<p>An individual character's wealth is not tracked by the system. Instead when they enter a settlement and purchase basic goods and services (such as resting in an inn) they are considered to be able to afford them.</p><p></p>"
       },
       "video": {
         "controls": true,
@@ -70,19 +71,19 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1787454113087,
+        "createdTime": 1788030302321,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.azure-horizon.journals.JournalEntry.vXS4sg3LV9drMb21.JournalEntryPage.CINSIE1O6JBbxa1i",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!journal.pages!HrPbN4hhAwU6ZQbk.7B3OHKkAVpSWmKbV"
+      "_key": "!journal.pages!wGofzufKl6yJsZ40.CINSIE1O6JBbxa1i"
     }
   ],
   "folder": null,
   "categories": [],
-  "sort": 800000,
+  "sort": 600000,
   "ownership": {
     "default": 0
   },
@@ -91,12 +92,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787412293122,
+    "createdTime": 1788027874040,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!journal!HrPbN4hhAwU6ZQbk"
+  "_key": "!journal!wGofzufKl6yJsZ40"
 }

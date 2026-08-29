@@ -40,9 +40,6 @@
     {{/if}}
   </div>
 
-
-
-
   <div class="ah-grid-2">
     <!-- ATTRIBUTES -->
     <fieldset>
@@ -81,8 +78,8 @@
     <fieldset>
       <legend>{{localize 'AH.CHARACTER.Modifier.long'}}</legend>
       <div class="ah-field-group --row">
-        {{ahBadge iconClass='modifier' label='AH.CHARACTER.Modifier.short' value=bonus }}
-        <label>
+        {{ahBadge iconClass='modifier' label='AH.CHARACTER.Modifier.short' value=bonus classes="--row" }}
+        <label class="ah-flex-1">
           {{localize 'AH.CHARACTER.Modifier.long'}}
           <input name="modifier" type="number" value="{{modifier}}">
         </label>

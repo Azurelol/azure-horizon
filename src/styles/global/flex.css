@@ -1,4 +1,8 @@
-.ah-flex2 {
+.ah-flex-1 {
+  flex: 1;
+}
+
+.ah-flex-2 {
   flex: 2;
 }
 

@@ -1,12 +1,12 @@
 {
-  "name": "Player Guide",
-  "_id": "HrPbN4hhAwU6ZQbk",
+  "name": "Battle",
+  "_id": "um7auHnwULdLZhQ8",
   "pages": [
     {
-      "sort": 100000,
-      "name": "Introduction",
+      "sort": 0,
+      "name": "Pressure",
       "type": "text",
-      "_id": "NI2TzWpAnSmZleUY",
+      "_id": "dTKaRkwQloK9Ug7a",
       "system": {},
       "title": {
         "show": true,
@@ -15,7 +15,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": ""
+        "content": "<p>Adversaries of elite rank and above can be pressured and eventually staggered.</p><p>When an adversary is staggered, they take an increased amount of damage from all sources and  are considered stunned.</p>"
       },
       "video": {
         "controls": true,
@@ -32,20 +32,20 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1787453166622,
+        "createdTime": 1788030291145,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.azure-horizon.journals.JournalEntry.vXS4sg3LV9drMb21.JournalEntryPage.dTKaRkwQloK9Ug7a",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!journal.pages!HrPbN4hhAwU6ZQbk.NI2TzWpAnSmZleUY"
+      "_key": "!journal.pages!um7auHnwULdLZhQ8.dTKaRkwQloK9Ug7a"
     },
     {
-      "sort": 200000,
-      "name": "FAQ",
+      "sort": 100000,
+      "name": "Formations",
       "type": "text",
-      "_id": "7B3OHKkAVpSWmKbV",
+      "_id": "lkVlpXiz90jpT80Z",
       "system": {},
       "title": {
         "show": true,
@@ -53,7 +53,8 @@
       },
       "image": {},
       "text": {
-        "format": 1
+        "format": 1,
+        "content": "<p></p>"
       },
       "video": {
         "controls": true,
@@ -70,19 +71,19 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1787454113087,
+        "createdTime": 1788030544635,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!journal.pages!HrPbN4hhAwU6ZQbk.7B3OHKkAVpSWmKbV"
+      "_key": "!journal.pages!um7auHnwULdLZhQ8.lkVlpXiz90jpT80Z"
     }
   ],
   "folder": null,
   "categories": [],
-  "sort": 800000,
+  "sort": 300000,
   "ownership": {
     "default": 0
   },
@@ -91,12 +92,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787412293122,
+    "createdTime": 1788030052915,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!journal!HrPbN4hhAwU6ZQbk"
+  "_key": "!journal!um7auHnwULdLZhQ8"
 }

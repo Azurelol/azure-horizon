@@ -1,0 +1,219 @@
+{
+  "name": "Campaign",
+  "_id": "lbaBSJwShjtQCzwn",
+  "pages": [
+    {
+      "sort": 100000,
+      "name": "Preface",
+      "type": "text",
+      "_id": "ujNUGHt2USOW32gi",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>This chapter covers both the procedure for starting your campaign in the system and for running your sessions.</p><p>You will learn how to create your setting, give your party a shared goal and start play with a prologue.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788028440304,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!lbaBSJwShjtQCzwn.ujNUGHt2USOW32gi"
+    },
+    {
+      "sort": 200000,
+      "name": "Session Zero",
+      "type": "text",
+      "_id": "pheKUcexnOtSb6Sk",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788028535998,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!lbaBSJwShjtQCzwn.pheKUcexnOtSb6Sk"
+    },
+    {
+      "sort": 300000,
+      "name": "Episode",
+      "type": "text",
+      "_id": "2742sBM1d9CfiQVX",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>To carry on the general framing of our campaign structure the system refers to a session as an <em>episode</em>, with a defined beginning, middle and end, with procedures to go along with it all.</p><p>The intent is to provide directors with a structure they can follow from session to session and players with anticipation for some of the procedures these contain.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788030649098,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!lbaBSJwShjtQCzwn.2742sBM1d9CfiQVX"
+    },
+    {
+      "sort": 400000,
+      "name": "Opening",
+      "type": "text",
+      "_id": "UV3w7Ebpvp6pEWcC",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>After both you and your players are ready to begin play, we go on with the <em>opening</em> procedure. It not only includes some things you are familiar with (such as recounting the events of the last session) but a few more, all in a more formalized way.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788030680676,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!lbaBSJwShjtQCzwn.UV3w7Ebpvp6pEWcC"
+    },
+    {
+      "sort": 500000,
+      "name": "Credits",
+      "type": "text",
+      "_id": "MwHfaT4ls684Fy0Q",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>At the end of each episode the director will run the following procedure to tally which experience triggers were met during the session. These consist not only of the default list below but also those from among each of the heroes' classes.</p><p>Every episode the party gains 10 XP (worth one level) by default, and can earn up to 10 more through meeting the various experience triggers.</p><p>This is meant to incentivize the players to play to the fictions of their characters and to the ideals of the genre.</p><h2>Experience Triggers</h2><p>The following is the default list of experience triggers.</p><table><tbody><tr><td><p>A needless battle was avoided.</p></td><td><p>1</p></td></tr><tr><td><p>A dangerous foe was defeated.</p></td><td><p>1</p></td></tr><tr><td><p>A guest was recruited.</p></td><td><p>1</p></td></tr></tbody></table>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788030689962,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!lbaBSJwShjtQCzwn.MwHfaT4ls684Fy0Q"
+    }
+  ],
+  "folder": null,
+  "categories": [],
+  "sort": 225000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788028017305,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!journal!lbaBSJwShjtQCzwn"
+}

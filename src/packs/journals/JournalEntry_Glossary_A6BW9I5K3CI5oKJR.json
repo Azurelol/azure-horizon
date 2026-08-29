@@ -469,11 +469,89 @@
         "exportSource": null
       },
       "_key": "!journal.pages!A6BW9I5K3CI5oKJR.T1NjR0BDYCxAndEQ"
+    },
+    {
+      "sort": 1200000,
+      "name": "Bonuses",
+      "type": "text",
+      "_id": "YlXxH3ZhV6RZX3SZ",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Various skills, equipment and status effects can provide bonuses or inflict maluses on characters. Each bonus belongs to one of the following categories and cannot stack with other bonuses of the same category. Only the highest bonus should be counted.</p><ul><li><p><strong>Status</strong>: These are temporary and often come from status effects.</p></li><li><p><strong>Skill</strong>: These passive bonuses come from character and adversary skills.</p></li><li><p><strong>Equipment</strong>: These are provided from equipment such as weapons, armor, etc.</p></li><li><p><strong>Situational</strong>: These are based on the character’s tactical positioning.</p></li></ul>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788028672202,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.YlXxH3ZhV6RZX3SZ"
+    },
+    {
+      "sort": 1300000,
+      "name": "Traits",
+      "type": "text",
+      "_id": "NX8DvapIlGd0kYdf",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>In the system traits are tags with mechanical connotations associated with them. They can be found in characters and many features such as classes, skills, etc.</p><p>Characters gain their traits through class selections whereas adversaries are assigned a number of them depending on their rank.</p><p>They are meant to provide an additional layer of texture to differentiate characters from one another, inform their fictional standing and help both players and the director to guide their actions and motivations.</p><p>More information on them will be provided in the character creation chapter.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788028693142,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.NX8DvapIlGd0kYdf"
     }
   ],
   "folder": null,
   "categories": [],
-  "sort": 0,
+  "sort": 650000,
   "ownership": {
     "default": 0
   },

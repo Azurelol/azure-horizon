@@ -1,0 +1,24 @@
+{
+  "name": "Adversaries",
+  "_id": "FWQX4HQbXWVHCS8m",
+  "pages": [],
+  "folder": null,
+  "categories": [],
+  "sort": 625000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788030099354,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!journal!FWQX4HQbXWVHCS8m"
+}
