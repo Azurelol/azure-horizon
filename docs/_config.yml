@@ -35,7 +35,6 @@ navbar-links:
   Manual: "manual"
   Classes: "classes"
   Spells: "spells"
-  Glossary: "glossary"
   About: "aboutme"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
