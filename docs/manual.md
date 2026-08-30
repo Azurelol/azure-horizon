@@ -4,9 +4,14 @@ title: Manual
 permalink: /manual/
 ---
 
-<ul>
-{% for page in site.manual %}
-  <li><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
+<div class="entry__grid">
+{% for entry in site.manual %}
+<article>
+<a href="{{ site.baseurl }}{{ entry.url }}">
+<i class="{{ entry.icon }}"></i>
+  <span>{{ entry.title }}</span>
+</a>
+</article>
 {% endfor %}
-</ul>
+</div>
 

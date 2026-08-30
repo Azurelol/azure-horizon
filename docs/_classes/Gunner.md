@@ -5,6 +5,7 @@ img: /assets/icons/classes/gunner/gunner.png
 
 <div class="document-traits --center">
 <span class="document-trait">Offense</span>
+<span class="document-trait">Perception</span>
 </div>
 
 

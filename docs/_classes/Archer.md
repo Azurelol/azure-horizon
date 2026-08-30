@@ -41,11 +41,15 @@ img: /assets/icons/classes/archer/archer.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS35.png"><span>Barrage</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Cooldown</span>
+<span class="document-trait">Action 2</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
-
+<p>You deal damage to a column.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS87.png"><span>Flame Arrow</span></div>
@@ -95,11 +99,15 @@ img: /assets/icons/classes/archer/archer.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS34.png"><span>Volley</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Cooldown</span>
+<span class="document-trait">Action 3</span>
+</div>
 <i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
-
+<p>You deal damage to the target and those around it.</p>
 
 ---
 

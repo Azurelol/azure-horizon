@@ -377,46 +377,58 @@ for (const entry of SRC_JOURNAL_DOCUMENTS) {
   journals.set(doc.name, doc);
 }
 
-// GLOSSARY
-const glossary = journals.get("Glossary");
-if (glossary) {
-  const fileName = PATH.join(DOCS_DIRECTORY, `glossary.${FILE_EXTENSION}`);
-  let md = new DocBuilder();
-  md.frontMatter({ title: glossary.name });
-  for (const page of glossary.pages) {
-    md.h1(page.name);
-    md.p(page.text.content);
-  }
-  const content = md.build();
-  await fs.writeFile(fileName, content);
-  console.log(`Writing glossary file to ${fileName}`);
-}
-
-// MANUAL
+// MANUAL (Each chapter is a file)
 const DST_MANUAL_DIR = PATH.join(ROOT_DIRECTORY, "docs", "_manual");
 await cleanDirectory(DST_MANUAL_DIR);
-const IGNORED_MANUAL_PAGES = new Set(["Foreword"]);
-const manual = journals.get("Manual");
-if (manual) {
-  const pagesByName = new Map(manual.pages.map(p => [p.name, p.text]));
+const IGNORED_MANUAL_PAGES = new Set(["Foreword", "Preface"]);
 
-  // Add foreword
-  const foreword = pagesByName.get("Foreword");
-  if (foreword) {
+const CHAPTERS = [
+  { name: "Introduction", icon: "fa-solid fa-book-open" },
+  { name: "Campaign", icon: "fa-solid fa-map" },
+  { name: "Heroes", icon: "fa-solid fa-user-shield" },
+  { name: "Exploration", icon: "fa-solid fa-compass" },
+  { name: "Battle", icon: "fa-solid fa-khanda" },
+  { name: "Adversaries", icon: "fa-solid fa-dragon" },
+  { name: "Glossary", icon: "fa-solid fa-book" },
+  { name: "PlayerGuide", icon: "fa-solid fa-dice-d20" },
+  { name: "DirectorGuide", icon: "fa-solid fa-chess-king" },
+];
 
-  }
+for (let e = 0; e < CHAPTERS.length; e++) {
+  const entry = CHAPTERS[e];
+  const chapter = journals.get(entry.name);
+  if (chapter) {
 
-  // Add rest of pages
-  for (const page of manual.pages) {
-    if (IGNORED_MANUAL_PAGES.has(page.name)) {
-      continue;
-    }
-    const fileName = PATH.join(DST_MANUAL_DIR, `${page.name}.${FILE_EXTENSION}`);
+    const fileName = PATH.join(DST_MANUAL_DIR, `${e + 1}_${chapter.name}.${FILE_EXTENSION}`);
     let md = new DocBuilder();
-    md.frontMatter({ title: page.name });
-    md.html(page.text.content);
+    md.frontMatter({ title: chapter.name });
+    for (const page of chapter.pages) {
+      md.h1(page.name);
+      md.p(page.text.content);
+    }
     const content = md.build();
     await fs.writeFile(fileName, content);
-    console.log(`Writing manual file to ${fileName}`);
+    console.log(`Writing single file to ${fileName}`);
+
+    if (entry.single) {
+
+    }
+    else {
+      // const pagesByName = chapter.pages;
+      // const CHAPTER_DST_DIR = PATH.join(DST_MANUAL_DIR, chapter.name);
+      // await cleanDirectory(CHAPTER_DST_DIR);
+      // for (const page of pagesByName) {
+      //   if (IGNORED_MANUAL_PAGES.has(page.name)) {
+      //     continue;
+      //   }
+      //   const fileName = PATH.join(CHAPTER_DST_DIR, `${page.name}.${FILE_EXTENSION}`);
+      //   let md = new DocBuilder();
+      //   md.frontMatter({ title: page.name });
+      //   md.html(page.text.content);
+      //   const content = md.build();
+      //   await fs.writeFile(fileName, content);
+      //   console.log(`Writing manual file to ${fileName}`);
+      // }
+    }
   }
 }

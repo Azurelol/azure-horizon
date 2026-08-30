@@ -1,5 +1,0 @@
----
-title: Tiers of Play
----
-
-

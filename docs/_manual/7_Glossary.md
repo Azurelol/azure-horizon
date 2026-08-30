@@ -20,7 +20,7 @@ title: Glossary
 
 # Block
 
-<p>Block is what the system calls temporary hit points. Whenever a character suffers damage, if they have block the damage will first go through the block before affecting their current hit points.</p><blockquote><p>This resource is meant to incentivize active damage mitigation by the heroes instead of having to rely on reactive healing, which in this system is not very efficient and would dry a party's mind points rather quickly.</p></blockquote>
+<p>Block is what the system calls temporary hit points. Whenever a character suffers damage, if they have block the damage will first go through the block before affecting their current hit points.</p><p>Whenever a character is said to gain <em>Block</em> they are considered to be gaining their standard amount computed for their <em>Defend</em> action.</p><blockquote><p>This resource is meant to incentivize active damage mitigation by the heroes instead of having to rely on reactive healing, which in this system is not very efficient and would dry a party's mind points rather quickly.</p></blockquote>
 
 # Crisis
 
@@ -41,3 +41,19 @@ title: Glossary
 # Rest
 
 <p>A rest scene is one where the heroes get a respite from the demanding realities of their adventuring day. Of these we have two types.</p><p>A short rest usually takes place in adventuring location and allows heroes to partially recover resources and perform an activity or two before moving on.</p><p>A long rest takes place in a settlement or at camp and fully restores the heroes' resources.</p>
+
+# Draw
+
+<p>A weapon with this trait must be drawn before it can be used to fire a shot. It takes one action to draw and another to shoot and they need not be performed in the same turn.</p><p>Performing other actions that require manipulation cancels the draw.</p>
+
+# Reload
+
+<p>A weapon with this trait has a fixed amount of ammunition which is spent when it is used to attack with, after which it can be reloaded with 1 action.</p>
+
+# Bonuses
+
+<p>Various skills, equipment and status effects can provide bonuses or inflict maluses on characters. Each bonus belongs to one of the following categories and cannot stack with other bonuses of the same category. Only the highest bonus should be counted.</p><ul><li><p><strong>Status</strong>: These are temporary and often come from status effects.</p></li><li><p><strong>Skill</strong>: These passive bonuses come from character and adversary skills.</p></li><li><p><strong>Equipment</strong>: These are provided from equipment such as weapons, armor, etc.</p></li><li><p><strong>Situational</strong>: These are based on the character’s tactical positioning.</p></li></ul>
+
+# Traits
+
+<p>In the system traits are tags with mechanical connotations associated with them. They can be found in characters and many features such as classes, skills, etc.</p><p>Characters gain their traits through class selections whereas adversaries are assigned a number of them depending on their rank.</p><p>They are meant to provide an additional layer of texture to differentiate characters from one another, inform their fictional standing and help both players and the director to guide their actions and motivations.</p><p>More information on them will be provided in the character creation chapter.</p>
