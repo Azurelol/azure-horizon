@@ -5,7 +5,7 @@ icon: fa-solid fa-compass
 
 # Checks
 
-
+<h2>Action Checks</h2><p>This type of Check is used when a character performs various actions such as attacks, skills and spells. Its result determines how potent the action was, in various tiers. Any actions that lead to this check cannot miss. Their consequences (such as taking damage) can only be avoided or diminished through the use of specific defensive actions.</p><p>Depending on the result of the check, the potency of the action varies.</p><div><table><tbody><tr><td><p>Failure</p></td><td><p>Reduced</p></td><td><p>Usually minimal damage with no extra effects.</p></td></tr><tr><td><p>Success</p></td><td><p>Standard</p></td><td><p>Average damage with default effects.</p></td></tr><tr><td><p>Critical</p></td><td><p>Powerful</p></td><td><p>Same as standard, provides an opportunity.</p></td></tr></tbody></table></div><h3>Examples</h3><p>Meravel attacks a Wolf which has 8 DEF.</p><div><table><tbody><tr><td><p>13</p></td><td><p>Success</p></td><td><p>The wolf suffers the sword’s (base bonus + high roll) in physical damage.</p></td></tr><tr><td><p>7</p></td><td><p>Failure</p></td><td><p>The wolf suffers (base bonus * 0.5) in physical damage.</p></td></tr><tr><td><p>16</p></td><td><p>Critical Success</p></td><td><p>The wolf suffers (base bonus + high roll) and the character gets an opportunity. CB is a valid opportunity option.</p></td></tr></tbody></table></div><p></p><h2>Opposed Checks</h2><p>This type of Check is performed when two characters oppose each other in an action.</p><h2>Recovery Checks</h2><p>Some harmful effects persist until a successful recovery check has been made.</p>
 
 # Rest
 
@@ -22,3 +22,7 @@ icon: fa-solid fa-compass
 # Rituals
 
 <p>A ritual is an activity performed whenever a hero with a magical aptitude wants to perform a magical feat outside of a battle.</p><p>If a spiritist wants to pacify a tormented ghost or if an elementalist wants to pacify rampant elementals in a location, this is the activity they would perform in the system.</p><p>They are meant to be straightforward checks which parameters are a conversation between the ritual caster and the director.</p><p></p>
+
+# Preface
+
+<p>In this chapter will cover the many kinds of checks you will make during exploration.</p>

@@ -9,4 +9,8 @@ icon: fa-solid fa-khanda
 
 # Formations
 
-<p></p>
+
+
+# Preface
+
+<p>This chapter will cover the rules for running battles in the system.</p>

@@ -18,11 +18,3 @@ icon: fa-solid fa-book-open
 # Scenes
 
 <p>An episode consists of many scenes that stitch the narrative together and propel it forward.</p><ul><li><p><strong>Exploration</strong>: When the party is at a location, they are considered to be in this type of scene until they encounter an event that transitions to a battle scene or the like.</p></li><li><p><strong>Battle</strong>: A scene where the party encounters adversaries in deadly combat.</p></li><li><p><strong>Rest</strong>: A scene where the party rests for a moment or ends the adventuring day.</p></li><li><p><strong>Cutaway: </strong>A scene where the campaign’s other characters act off-screen.</p></li></ul><p></p>
-
-# Tiers of Play
-
-
-
-# Wealth
-
-<p>An individual character's wealth is not tracked by the system. Instead when they enter a settlement and purchase basic goods and services (such as resting in an inn) they are considered to be able to afford them.</p><p></p>
