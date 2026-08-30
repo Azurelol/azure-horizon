@@ -17,7 +17,8 @@
     },
     "triggers": [
       "You acknowledge someone.",
-      "You shoot first."
+      "You shoot first.",
+      "You interfere in someone's affairs."
     ],
     "traits": [
       "offense",

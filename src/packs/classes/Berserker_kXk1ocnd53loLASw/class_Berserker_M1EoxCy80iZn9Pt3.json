@@ -22,7 +22,8 @@
     "triggers": [
       "You recklessly put yourself in great danger.",
       "You drink someone under the table.",
-      "You spare someone you have defeated."
+      "You spare someone you have defeated.",
+      "You intimidated an enemy into avoiding battle."
     ],
     "complications": [
       "You lash out at a friend.",

@@ -17,8 +17,8 @@
     },
     "triggers": [
       "You scout a location.",
-      "You discover a trap..",
-      "You hunt someone or something down."
+      "You hunt someone or something down.",
+      "You guided others through unknown or dangerous territory."
     ],
     "traits": [
       "offense",

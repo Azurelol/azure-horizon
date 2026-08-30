@@ -191,7 +191,7 @@ async function prompt(actor, type, initialConfig = {}) {
     }
     case "ritual": {
       const potency = AH.potency.minor;
-      const area = AH.area.individual;
+      const area = AH.area.entity;
       context = Object.assign(context, {
         potency: potency,
         area: area,

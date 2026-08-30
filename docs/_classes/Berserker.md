@@ -17,6 +17,7 @@ img: /assets/icons/classes/berserker/berserker.png
 - You recklessly put yourself in great danger.
 - You drink someone under the table.
 - You spare someone you have defeated.
+- You intimidated an enemy into avoiding battle.
 
 ---
 

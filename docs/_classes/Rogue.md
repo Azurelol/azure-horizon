@@ -15,9 +15,10 @@ img: /assets/icons/classes/rogue/rogue.png
 
 ### Experience Triggers
 
-- You uncover a well-kept secret.
+- You commit an act of espionage or sabotage.
 - You infiltrate a location without being discovered.
 - You disable or help your party by a trap or hazzard.
+- You spot a trap or ambush.
 
 ---
 

@@ -18,7 +18,8 @@
     "triggers": [
       "You befriend an animal.",
       "You spare a cornered beast.",
-      "You champion nature."
+      "You champion nature.",
+      "Your actions fostered a change in a character or group."
     ],
     "traits": [
       "mage",

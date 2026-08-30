@@ -16,6 +16,7 @@ img: /assets/icons/classes/gunner/gunner.png
 
 - You acknowledge someone.
 - You shoot first.
+- You interfere in someone's affairs.
 
 ---
 

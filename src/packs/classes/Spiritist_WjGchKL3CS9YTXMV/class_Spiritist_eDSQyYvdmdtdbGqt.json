@@ -18,12 +18,13 @@
     "triggers": [
       "You save someone.",
       "You help a spirit pass on.",
-      "You cleanse a location of the undead or spirits."
+      "You cleanse a location of the undead or spirits.",
+      "You deescalated a violent conflict."
     ],
     "traits": [
       "mage",
-      "defense",
-      "support"
+      "support",
+      "defense"
     ],
     "complications": [
       "A ghost visits you at night.",

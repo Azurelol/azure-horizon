@@ -132,7 +132,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<h2>Parameters</h2><p>The following parameters are derived from a character’s attributes and can be modified through skills, equipment and various effects.</p><h3>Shared Resources</h3><ul><li><p>Hit Points (HP): Represents a character’s capability to fight. When reduced to 0, the character is defeated and at the mercy of their opponent.</p></li><li><p>Mind Points (MP): Represents the character’s internal, finite reserves of willpower. Required for all spells and some skills.</p></li><li><p>Block: (BLK): Temporary hit points granted by certain actions.</p></li></ul><h3>Hero Resources</h3><ul><li><p>Tension Points (TP): Represents the character’s current mental state or wellness. Ranges from 0 to 10.</p></li><li><p>Inventory Points (IP): Represents the character’s access to consumables. Expended in order to produce consumables for use during scenes. </p></li></ul>"
+        "content": "<p>The following parameters are derived from a character’s attributes and can be modified through skills, equipment and various effects.</p><h3>Shared Resources</h3><ul><li><p>Hit Points (HP): Represents a character’s capability to fight. When reduced to 0, the character is defeated and at the mercy of their opponent.</p></li><li><p>Mind Points (MP): Represents the character’s internal, finite reserves of willpower. Required for all spells and some skills.</p></li><li><p>Block: (BLK): Temporary hit points granted by certain actions.</p></li></ul><h3>Hero Resources</h3><ul><li><p>Tension Points (TP): Represents the character’s current mental state or wellness. Ranges from 0 to 10.</p></li><li><p>Inventory Points (IP): Represents the character’s access to consumables. Expended in order to produce consumables for use during scenes. </p></li></ul>"
       },
       "video": {
         "controls": true,
@@ -210,7 +210,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>A character's classes inform not just their background and aspirations but also their current state in the campaign. They are designed with the following design principles.</p><h2>Design Principles</h2><ul><li><p>The core set of classes should cover most of the classical archetypes.</p></li><li><p>Most classes should provide an anchor skill that significantly alters the PC’s tactics and can serve as the foundation for the combat style for a character. (Like the AM’s stances).</p></li><li><p>Each class should have at least one non-combat-oriented skill.</p></li><li><p>No skills should be “splashable”, as in being powerful 1-point investments into the class.</p></li><li><p>Avoid the classical splatbook powercreep of newer options over older ones. Instead, aim to fulfill class/character fantasies and gameplay loops.</p></li><li><p>Talents should not provide combat bonuses. Instead they should reinforce the flavor of the class when used outside combat.</p></li><li><p>Given a standard party of 4 PCs, there should be minimal overlap between classes. For the purposes of the design an average of 2 shared classes between 2 PCs is ideal.</p></li></ul><h2>Summary</h2><p>Each class is a composed of the following:</p><div><table><tbody><tr><td><p>Level</p></td><td><p>The level of a class is equal to the number of skill points invested in skills that belong to it.</p></td></tr><tr><td><p>Traits</p></td><td><p>A set of key words which can be used to determine whether a character has access to certain skills, spells, equipment, items.</p></td></tr><tr><td><p>Skills</p></td><td><p>Each class comes with 5 skills that can be selected.</p></td></tr><tr><td><p>Mastery</p></td><td><p>Once a class has 10 class levels, it is considered mastered. This provides an unique bonus for it.</p></td></tr><tr><td><p>Talents</p></td><td><p>Each class provides a choice of an exploration talent when first acquired.</p></td></tr></tbody></table></div><h2>Progression</h2><ul><li><p>The character gains class levels every odd level starting from level 1 to level 60.</p></li><li><p>Each class can only have up to 10 skill points invested in it.</p></li><li><p>A PC can have a max of 2 unmastered classes at any time.</p></li><li><p>A level 99 PC would have 3 classes.</p></li><li><p>Multiple instances of a trait stack in terms of the bonuses they can give upon a roll. (Such as a hero having two Warrior classes).</p></li></ul>"
+        "content": "<p>A character's classes inform not just their background and aspirations but also their current state in the campaign. They are designed with the following design principles.</p><h2>Design Principles</h2><ul><li><p>The core set of classes should cover most of the classical archetypes.</p></li><li><p>Most classes should provide an anchor skill that significantly alters the PC’s tactics and can serve as the foundation for the combat style for a character. (Like the AM’s stances).</p></li><li><p>Each class should have at least one non-combat-oriented skill.</p></li><li><p>No skills should be “splashable”, as in being powerful 1-point investments into the class.</p></li><li><p>Avoid the classical splatbook powercreep of newer options over older ones. Instead, aim to fulfill class/character fantasies and gameplay loops.</p></li><li><p>Talents should not provide combat bonuses. Instead they should reinforce the flavor of the class when used outside combat.</p></li><li><p>Given a standard party of 4 PCs, there should be minimal overlap between classes. For the purposes of the design an average of 2 shared classes between 2 PCs is ideal.</p></li></ul><h2>Summary</h2><p>Each class is a composed of the following:</p><div><table><tbody><tr><td><p>Level</p></td><td><p>The level of a class is equal to the number of skill points invested in skills that belong to it.</p></td></tr><tr><td><p>Traits</p></td><td><p>A set of key words which can be used to determine whether a character has access to certain skills, spells, equipment, items.</p></td></tr><tr><td><p>Skills</p></td><td><p>Each class comes with 5 skills that can be selected.</p></td></tr><tr><td><p>Mastery</p></td><td><p>Once a class has 10 class levels, it is considered mastered. This provides an unique bonus for it.</p></td></tr></tbody></table></div><h2>Progression</h2><ul><li><p>The character gains class levels every odd level starting from level 1 to level 60.</p></li><li><p>Each class can only have up to 10 skill points invested in it.</p></li><li><p>A PC can have a max of 2 unmastered classes at any time.</p></li><li><p>A level 99 PC would have 3 of their core classes and the legendary <em>Hero</em> class starting from level 60 onwards.</p></li><li><p>Multiple instances of a trait stack in terms of the bonuses they can give upon a roll. (Such as a hero having two Warrior classes).</p></li></ul>"
       },
       "video": {
         "controls": true,
@@ -249,7 +249,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<h2>Design Principles</h2><ul><li><p>There should be clear strengths and drawbacks between equipment choices. There shouldn’t be a clear choice for a given archetype.</p></li><li><p>Accessories should neither give always-applicable global numerical bonuses or provide immunities to status effects. Instead bonuses should be conditional when given and resistances to status effects should cost something.</p></li></ul><p>Some equipment has certain trait restrictions, meaning it can only be used by characters with those tags.</p><h3>Slots</h3><p>Each character can equip items in the following slots:</p><ul style=\"margin-top:0;margin-bottom:0;padding-inline-start:48px\" id=\"docs-internal-guid-b3ef2203-7fff-8b00-0290-53308133287b\"><li><p>Main Hand</p></li><li><p>Off Hand</p></li><li><p>Armor</p></li><li><p>Accessory 1</p></li><li><p>Accessory 2</p></li></ul><p>Each piece of equipment is composed of its attributes and traits.</p>"
+        "content": "<h2>Design Principles</h2><ul><li><p>There should be clear strengths and drawbacks between equipment choices. There shouldn’t be a clear choice for a given archetype.</p></li><li><p>Accessories should neither give always-applicable global numerical bonuses or provide immunities to status effects. Instead bonuses should be conditional when given and resistances to status effects should cost something.</p></li></ul><p>Some equipment has certain trait restrictions, meaning it can only be used by characters with those tags.</p><h3>Slots</h3><p>Each character can equip items in the following slots:</p><ul style=\"margin-top:0;margin-bottom:0;padding-inline-start:48px\" id=\"docs-internal-guid-b3ef2203-7fff-8b00-0290-53308133287b\"><li><p>Main Hand</p></li><li><p>Off Hand</p></li><li><p>Armor</p></li><li><p>Accessory 1</p></li><li><p>Accessory 2</p></li></ul><p>Each piece of equipment is composed of its attributes and traits.</p><h3>Engrams</h3><p>Depending on the campaign setting, these are pieces of equipment which grant the user access to specific spells or magic.</p><ul><li><p>Each engram has a list of required traits the character must have in order to equip it.</p><p>They can be changed during rest scenes.</p><p>They are commodities and can be purchased, sold and discovered during play.</p><p>Engrams of higher rarity can grant multiple spells.</p></li></ul>"
       },
       "video": {
         "controls": true,
@@ -313,6 +313,44 @@
         "exportSource": null
       },
       "_key": "!journal.pages!wGofzufKl6yJsZ40.lYRH0t52Q2w1x5vz"
+    },
+    {
+      "sort": 1200000,
+      "name": "Creation",
+      "type": "text",
+      "_id": "obgboe1ukjiW8M6u",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788087138508,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!wGofzufKl6yJsZ40.obgboe1ukjiW8M6u"
     }
   ],
   "folder": null,

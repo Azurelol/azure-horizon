@@ -19,6 +19,7 @@ img: /assets/icons/classes/blademaster/blademaster.png
 - You perform a great feat then leave the scene without looking back.
 - You enlist the services of a bladesmith.
 - You stop the plot of a nefarious warmonger.
+- You defeat an enemy in single combat.
 
 ---
 

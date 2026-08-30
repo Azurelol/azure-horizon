@@ -5,7 +5,6 @@ img: /assets/icons/classes/bard/bard.png
 
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
-<span class="document-trait">Stress</span>
 <span class="document-trait">Music</span>
 </div>
 
@@ -19,6 +18,7 @@ img: /assets/icons/classes/bard/bard.png
 - You recount your party's exploits in a performance.
 - You inadvertently create a misunderstanding.
 - You perform and win over an audience.
+- You soothed the emotions of an important character.
 
 ---
 

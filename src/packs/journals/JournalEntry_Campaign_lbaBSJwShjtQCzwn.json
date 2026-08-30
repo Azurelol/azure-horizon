@@ -53,7 +53,8 @@
       },
       "image": {},
       "text": {
-        "format": 1
+        "format": 1,
+        "content": "<p>Once you have gathered enough players to start a campaign your very first session together should be what the tabletop community commonly refers to as Session Zero.</p><p>This session will </p>"
       },
       "video": {
         "controls": true,
@@ -92,7 +93,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>To carry on the general framing of our campaign structure the system refers to a session as an <em>episode</em>, with a defined beginning, middle and end, with procedures to go along with it all.</p><p>The intent is to provide directors with a structure they can follow from session to session and players with anticipation for some of the procedures these contain.</p>"
+        "content": "<p>To carry on the general framing of our campaign structure the system refers to a session as an <em>episode</em>, with a defined beginning, middle and end, with procedures to go along with it all.</p><p>The intent is to provide directors with a structure they can follow from session to session and players with anticipation for some of the procedures these contain.</p><h2>Structure</h2><ul><li><p><strong>Opening</strong>: The first scene in the session should be low in tension (unless resuming directly from a cliffhanger in the last session), as a low simmer.</p></li><li><p><strong>Scenes</strong>: Here's where the plot happens and the narrative moves forwards.</p></li><li><p><strong>Ending</strong>: The last scene in a session should foreshadow an upcoming beat, </p></li><li><p><strong>Feedback</strong>: After you formally end your session, I recommend going around the table and gathering feedback from your players regarding how they felt the session went for them.</p></li></ul>"
       },
       "video": {
         "controls": true,
@@ -131,7 +132,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>After both you and your players are ready to begin play, we go on with the <em>opening</em> procedure. It not only includes some things you are familiar with (such as recounting the events of the last session) but a few more, all in a more formalized way.</p>"
+        "content": "<p>After both you and your players are ready to begin play, we go on with the <em>opening</em> procedure. It not only includes some things you are familiar with (such as recounting the events of the last session) but a few more, all in a more formalized way.</p><h2>Recap</h2><p>At the beginning of each session, pick a random player to summarize the events of the last session. </p><p>It can help to build up a convention at your table of how this goes. For example you could begin in a mock-narrator tone “Previously on Final Azure Quest 4…” before calling out the player to continue.</p><h2>Cutaway</h2><p>When reasonable it is good practice to start with a cutaway scene before the spotlight returns to the heroes. This scene can highlight what the villains are doing or what other characters in the setting are up to. </p><p>It is meant to remind players that the world does not revolve around them and that everyone else's plans continuously progress.</p>"
       },
       "video": {
         "controls": true,
@@ -195,6 +196,84 @@
         "exportSource": null
       },
       "_key": "!journal.pages!lbaBSJwShjtQCzwn.MwHfaT4ls684Fy0Q"
+    },
+    {
+      "sort": 150000,
+      "name": "Summary",
+      "type": "text",
+      "_id": "TsaEMuStoEbY34Lt",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788085885647,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!lbaBSJwShjtQCzwn.TsaEMuStoEbY34Lt"
+    },
+    {
+      "sort": 250000,
+      "name": "Prologue",
+      "type": "text",
+      "_id": "v77y1THyGqdqPJvj",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>The prologue is the very first episode of your campaign and is of utmost importance for introducing the campaign's setting, its heroes and the kind of stakes they are against.</p><p>Depending on the setting you all settled on and the kind of party your players decided on, the kind of prologue that kicks off the campaign will differ.</p><p>The important thing is for it to be exciting. </p><p>You should not begin it with an expositional lore dump.</p><p>No matter how epic it may sound to you, do refrain from planning overly detailed prologues that would end up spilling into multiple sessions. Not only would this be a burden to you as the director but it also sets the wrong expectations of the players. They are meant to drive the plot forward with the actions their characters take, not be forced to react to whatever you throw at them repeatedly.</p><p></p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788086009557,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!lbaBSJwShjtQCzwn.v77y1THyGqdqPJvj"
     }
   ],
   "folder": null,

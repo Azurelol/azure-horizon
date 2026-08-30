@@ -166,11 +166,11 @@ AH.potencies = Object.freeze({
 });
 
 /**
- * @typedef {'individual'|'small'|'large'|'huge'} AH_Area
+ * @typedef {'entity'|'small'|'large'|'huge'} AH_Area
  */
 
 AH.area = {
-  individual: { label: "AH.ACTION.AREA.Individual", multiplier: 1, selected: true },
+  entity: { label: "AH.ACTION.AREA.Individual", multiplier: 1, selected: true },
   small: { label: "AH.ACTION.AREA.Small", multiplier: 2 },
   large: { label: "AH.ACTION.AREA.Large", multiplier: 3 },
   huge: { label: "AH.ACTION.AREA.Huge", multiplier: 4 },

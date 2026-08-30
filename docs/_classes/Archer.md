@@ -15,8 +15,8 @@ img: /assets/icons/classes/archer/archer.png
 ### Experience Triggers
 
 - You scout a location.
-- You discover a trap..
 - You hunt someone or something down.
+- You guided others through unknown or dangerous territory.
 
 ---
 

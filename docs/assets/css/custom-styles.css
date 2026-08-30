@@ -114,6 +114,9 @@ img {
   }
 
   article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: auto;
     height: var(--entry-size);
 
@@ -134,6 +137,7 @@ img {
         color: var(--ah-entry-icon-color);
         width: var(--icon-size);
         height: var(--icon-size);
+        font-size: var(--icon-size);
       }
     }
 

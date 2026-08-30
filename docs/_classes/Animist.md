@@ -17,6 +17,7 @@ img: /assets/icons/classes/animist/animist.png
 - You befriend an animal.
 - You spare a cornered beast.
 - You champion nature.
+- Your actions fostered a change in a character or group.
 
 ---
 
