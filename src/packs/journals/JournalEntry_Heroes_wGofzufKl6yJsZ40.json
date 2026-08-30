@@ -93,7 +93,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>Characters are composed of the following:</p><ol><li><p><strong>Level</strong>: Up to level 99.</p></li><li><p><strong>Profile</strong>: Identity, Theme, Origin, Background.</p></li><li><p><strong>Attributes</strong>: These are the primary attributes for each character.</p></li><li><p><strong>Bonds</strong>: Mechanical relationships with other characters.</p></li><li><p><strong>Classes</strong>: Each level in a class provides a skill in that class.</p></li><li><p><strong>Equipment</strong>: Each character can equip weapons, armor and accessories.</p></li></ol><h2>Level</h2><p>Each player character starts play at level 10 and during the course of play can reach a maximum level of 99. A character will level at least once per session, sometimes two if they accomplish during the end of session procedure.</p><p>Experienced groups may begin play at higher tiers.</p><h2>Profile</h2><p>A character’s profile is the starting point of their fiction and is authored by players at the start of the campaign. It provides both player and the director with narrative hooks that can be explored during the course of a campaign.</p><ol><li><p>Identity — How the character sees themselves. E.g. \"Retired Assassin.\"</p></li><li><p>Theme — Why the character fights. E.g. \"Vengeance.\"</p></li><li><p>Origin — Where the character comes from. E.g. \"Imperial Capital Slums.\"</p></li><li><p>Anchor — What the character cannot bear to lose. Their emotional anchor. E.g. \"Dog.\"</p></li></ol><p>While the focus of a campaign should be the resolution of the greater threats and problems that endanger the world the player characters live in, the director is encouraged to thread each character’s storylines into the greater narrative as seamlessly as possible.</p><p>As such, players are encouraged to author characters whose inclusion fit the setting, enrich the shared fiction and have personal goals that match the party’s. Their characters should be serving the narrative and their portrayal should enrich the table’s experience with it.</p><h2>Attributes</h2><p>Each PC and NPC has the following attributes which provide an abstract representation. </p><ul><li><p>Might (MIG): Represents a character’s overall physical strength and ability to withstand punishment.</p></li><li><p>Dexterity (DEX): Represents a character’s overall reflexes and coordination, ability to perform tasks with precision.</p></li><li><p>Insight (INS): Represents a character’s overall mental acuity, ability to perceive things and reason out logical deductions.</p></li><li><p>Willpower (WLP): Represents a character’s willpower and emotional resilience.</p></li></ul><p>Each attribute is represented by a die size, ranging from d4 to d12.</p><p>A character starts at level 10 with one of the following attribute arrays.</p><ul><li><p>d8,d6,d4,d4</p></li><li><p>d6,d6,d6,d4</p></li></ul>"
+        "content": "<p>Characters are composed of the following:</p><ol><li><p><strong>Level</strong>: Up to level 99.</p></li><li><p><strong>Profile</strong>: Identity, Theme, Origin, Background.</p></li><li><p><strong>Attributes</strong>: These are the primary attributes for each character.</p></li><li><p><strong>Bonds</strong>: Mechanical relationships with other characters.</p></li><li><p><strong>Classes</strong>: Each level in a class provides a skill in that class.</p></li><li><p><strong>Equipment</strong>: Each character can equip weapons, armor and accessories.</p></li></ol>"
       },
       "video": {
         "controls": true,
@@ -198,7 +198,7 @@
       "_key": "!journal.pages!wGofzufKl6yJsZ40.OBu9hfetqHwrBdj8"
     },
     {
-      "sort": 600000,
+      "sort": 325000,
       "name": "Classes",
       "type": "text",
       "_id": "nyKdG6TbxgIj2ffp",
@@ -237,7 +237,7 @@
       "_key": "!journal.pages!wGofzufKl6yJsZ40.nyKdG6TbxgIj2ffp"
     },
     {
-      "sort": 1000000,
+      "sort": 350000,
       "name": "Equipment",
       "type": "text",
       "_id": "MHoHUeChDGBMf7SI",
@@ -351,6 +351,162 @@
         "exportSource": null
       },
       "_key": "!journal.pages!wGofzufKl6yJsZ40.obgboe1ukjiW8M6u"
+    },
+    {
+      "sort": 125000,
+      "name": "Ideals",
+      "type": "text",
+      "_id": "1R80XzAydz21wbgs",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>What makes a not-so ordinary character a hero? This system believes that a hero must hold some of the following ideals.</p><ul><li><p>They are proactive towards realizing their goals.</p></li><li><p>They would rather sacrifice themselves than others.</p></li><li><p>They empathize towards others, even their enemies.</p></li><li><p>They will take responsibility for what they have done.</p></li><li><p>They can't stand to suffering or injustice.</p></li><li><p>They long to find a place to belong..</p></li><li><p>They regret their mistakes.</p></li><li><p>They will fight oppression whenever they can.</p></li><li><p>They want to create a place for others to belong.</p></li><li><p>They will unite instead of divide, bringing people together.</p></li></ul><p>In short, a hero could start the campaign as a troubled mercenary, an ex-assassin or someone who was capable of terrible things in their past but is now committed to putting that behind them.</p><p>They crystallize the ideals we not-so-fictional people would like to aspire to but find difficult to put into practice.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788093536755,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!wGofzufKl6yJsZ40.1R80XzAydz21wbgs"
+    },
+    {
+      "sort": 225000,
+      "name": "Profile",
+      "type": "text",
+      "_id": "JfnftW5UP58pDjSk",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A character’s profile is the starting point of their fiction and is authored by players at the start of the campaign. It provides both player and the director with narrative hooks that can be explored during the course of a campaign.</p><ol><li><p>Identity — How the character sees themselves. E.g. \"Retired Assassin.\"</p></li><li><p>Theme — Why the character fights. E.g. \"Vengeance.\"</p></li><li><p>Origin — Where the character comes from. E.g. \"Imperial Capital Slums.\"</p></li><li><p>Anchor — What the character cannot bear to lose. Their emotional anchor. E.g. \"Dog.\"</p></li></ol><p>While the focus of a campaign should be the resolution of the greater threats and problems that endanger the world the player characters live in, the director is encouraged to thread each character’s storylines into the greater narrative as seamlessly as possible.</p><p>As such, players are encouraged to author characters whose inclusion fit the setting, enrich the shared fiction and have personal goals that match the party’s. Their characters should be serving the narrative and their portrayal should enrich the table’s experience with it.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788097106802,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!wGofzufKl6yJsZ40.JfnftW5UP58pDjSk"
+    },
+    {
+      "sort": 262500,
+      "name": "Attributes",
+      "type": "text",
+      "_id": "nO9SXsQfQD0k8eG8",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Each PC and NPC has the following attributes which provide an abstract representation. </p><ul><li><p>Might (MIG): Represents a character’s overall physical strength and ability to withstand punishment.</p></li><li><p>Dexterity (DEX): Represents a character’s overall reflexes and coordination, ability to perform tasks with precision.</p></li><li><p>Insight (INS): Represents a character’s overall mental acuity, ability to perceive things and reason out logical deductions.</p></li><li><p>Willpower (WLP): Represents a character’s willpower and emotional resilience.</p></li></ul><p>Each attribute is represented by a die size, ranging from d4 to d12.</p><p>A character starts at level 10 with one of the following attribute arrays.</p><ul><li><p>d8,d6,d4,d4</p></li><li><p>d6,d6,d6,d4</p></li></ul>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788097195033,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!wGofzufKl6yJsZ40.nO9SXsQfQD0k8eG8"
+    },
+    {
+      "sort": 187500,
+      "name": "Level",
+      "type": "text",
+      "_id": "FNvEn7QBvyPYl0eA",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Each player character starts play at level 10 and during the course of play can reach a maximum level of 99. A character will level at least once per session, sometimes two if they meet many experience triggers during the credits sequence.</p><p>Experienced groups may begin play at higher tiers.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788097217353,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!wGofzufKl6yJsZ40.FNvEn7QBvyPYl0eA"
     }
   ],
   "folder": null,

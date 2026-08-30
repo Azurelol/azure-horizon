@@ -1,0 +1,35 @@
+{
+  "folder": "ivGIDK1pbY7LbfHe",
+  "name": "Black Heart Glasses",
+  "type": "accessory",
+  "_id": "A9HYkglLLHpVRXmJ",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-black-heart-glasses",
+    "description": "<p>Once per long rest when your party is planning something, you can push up your glasses and give whoever performs the next check a +2 situation bonus.</p>",
+    "rarity": "rare",
+    "slots": {
+      "schemaVersion": 1
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788098857004,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!A9HYkglLLHpVRXmJ"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "ActiveEffect",
+  "folder": "8uJiEeeEpMaHmwYM",
+  "name": "Ritualist",
+  "color": null,
+  "sorting": "a",
+  "_id": "qnR7D0l6hEbezcZ0",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788098660218,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!qnR7D0l6hEbezcZ0"
+}

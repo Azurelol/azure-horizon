@@ -1,28 +1,26 @@
 {
-  "folder": "FAJt0Dim8RzQ8BHP",
-  "name": "Expert Advice",
+  "folder": "noX8U4rDGOGl3U1F",
+  "name": "Sacrifice",
   "type": "skill",
-  "_id": "hr8BzDIA9vENt8OA",
-  "img": "systems/azure-horizon/assets/icons/classes/armiger/expert-advice.png",
+  "_id": "89QvQaHbG6WgV8JJ",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "armiger-expert-advice",
-    "description": "<p>During a rest scene you may spend time with another player to give them SL stacks of <em>Expert Advice</em>.</p>",
+    "slug": "ritualist-sacrifice",
+    "description": "<p>You restore another party member's hit points at the cost of your own.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
-    },
-    "action": {
-      "schemaVersion": 1,
-      "type": "activity",
-      "points": 1,
-      "traits": [],
-      "range": "",
-      "targeting": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -40,39 +38,49 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "type": "hp",
-      "amount": ""
+      "amount": "&hp(0.5)"
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "hp",
+      "amount": "&hp(0.3)",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": true,
-      "entries": [
-        "armiger-expect-advice"
-      ],
+      "enabled": false,
+      "selector": "",
+      "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
+    "power": "",
     "level": {
       "current": 1,
       "max": 1
     },
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "single",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "exhaust"
+      ]
+    },
     "usage": {
       "schemaVersion": 1,
+      "attributes": false,
       "check": false,
-      "damage": false,
-      "power": ""
+      "damage": false
     },
-    "class": "armiger"
+    "class": "ritualist"
   },
   "effects": [],
   "sort": 0,
@@ -84,12 +92,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786818107349,
+    "createdTime": 1788100114074,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!hr8BzDIA9vENt8OA"
+  "_key": "!items!89QvQaHbG6WgV8JJ"
 }

@@ -2,7 +2,7 @@
   "folder": "noX8U4rDGOGl3U1F",
   "name": "Bargain",
   "type": "skill",
-  "_id": "5whyBi2OpbJCYgrX",
+  "_id": "Dg2d8ZGHiZhxBq5K",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
@@ -90,12 +90,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787938875059,
+    "createdTime": 1788097763537,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!5whyBi2OpbJCYgrX"
+  "_key": "!items!Dg2d8ZGHiZhxBq5K"
 }

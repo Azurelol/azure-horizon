@@ -1,14 +1,14 @@
 {
   "folder": "v88m7Lr3fUgwqwKG",
-  "name": "Corruption",
+  "name": "Erosion",
   "type": "spell",
   "_id": "NQjrhxFkIJGZIImc",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dark-corruption",
-    "description": "",
+    "slug": "dark-erosion",
+    "description": "<p>You afflict the target with the Erosion effect, which deals dark damage to them for the next 3 turns.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -63,10 +63,12 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "targeting": "",
-      "type": "",
+      "targeting": "single",
+      "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [
+        "opener"
+      ]
     },
     "domain": "dark",
     "speed": "instant"

@@ -66,9 +66,10 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
+      "type": "activity",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "targeting": ""
     },
     "usage": {
       "schemaVersion": 1,

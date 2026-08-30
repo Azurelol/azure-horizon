@@ -1,35 +1,34 @@
 {
-  "folder": "FAJt0Dim8RzQ8BHP",
-  "name": "Expert Advice",
-  "type": "skill",
-  "_id": "hr8BzDIA9vENt8OA",
-  "img": "systems/azure-horizon/assets/icons/classes/armiger/expert-advice.png",
+  "folder": "v88m7Lr3fUgwqwKG",
+  "name": "Phantom",
+  "type": "spell",
+  "_id": "aGqzuxteqVqr5UQc",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "armiger-expert-advice",
-    "description": "<p>During a rest scene you may spend time with another player to give them SL stacks of <em>Expert Advice</em>.</p>",
+    "slug": "dark-phantom",
+    "description": "<p>You summon a Phantom on a valid space of your choice. Next time you are attacked you trade places with your phantom, after which it vanishes.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "A"
+    },
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
-    },
-    "action": {
-      "schemaVersion": 1,
-      "type": "activity",
-      "points": 1,
-      "traits": [],
-      "range": "",
-      "targeting": ""
+      "defense": "def",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "untyped"
+        "amount": "5",
+        "type": "dark"
       },
       "secondary": {
         "amount": "",
@@ -46,33 +45,34 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "15",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": true,
-      "entries": [
-        "armiger-expect-advice"
-      ],
+      "enabled": false,
+      "selector": "",
+      "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 1
-    },
-    "usage": {
+    "power": "",
+    "action": {
       "schemaVersion": 1,
-      "check": false,
-      "damage": false,
-      "power": ""
+      "range": "",
+      "targeting": "multiple",
+      "type": "action",
+      "points": 1,
+      "traits": [
+        "exhaust"
+      ]
     },
-    "class": "armiger"
+    "domain": "dark",
+    "speed": "fast"
   },
   "effects": [],
   "sort": 0,
@@ -84,12 +84,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786818107349,
+    "createdTime": 1787923941535,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!hr8BzDIA9vENt8OA"
+  "_key": "!items!aGqzuxteqVqr5UQc"
 }

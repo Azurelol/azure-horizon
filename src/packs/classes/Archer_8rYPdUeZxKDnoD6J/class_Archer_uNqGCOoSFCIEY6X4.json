@@ -22,7 +22,8 @@
     ],
     "traits": [
       "offense",
-      "stealth"
+      "stealth",
+      "perception"
     ],
     "complications": [
       "You realize you are about to be ambushed.",

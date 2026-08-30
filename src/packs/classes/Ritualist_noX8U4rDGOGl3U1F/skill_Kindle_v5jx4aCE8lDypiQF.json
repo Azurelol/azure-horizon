@@ -1,34 +1,33 @@
 {
-  "folder": "v88m7Lr3fUgwqwKG",
-  "name": "Phantom Blade",
-  "type": "spell",
-  "_id": "aGqzuxteqVqr5UQc",
+  "folder": "noX8U4rDGOGl3U1F",
+  "name": "Kindle",
+  "type": "skill",
+  "_id": "v5jx4aCE8lDypiQF",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dark-phantom-blade",
-    "description": "",
+    "slug": "ritualist-kindle",
+    "description": "<p>You advance the current casting of a party member one step.</p>",
     "attributes": {
       "schemaVersion": 1,
-      "primary": "ins",
-      "secondary": "wlp",
-      "grade": "A"
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def",
-      "bonus": ""
+      "defense": "def"
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
-        "amount": "5",
-        "type": "dark"
+        "amount": "",
+        "type": "untyped"
       },
       "secondary": {
         "amount": "",
@@ -45,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "4",
       "perTarget": false
     },
     "effects": {
@@ -61,16 +60,25 @@
       }
     },
     "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "targeting": "multiple",
-      "type": "action",
-      "points": 2,
+      "targeting": "",
+      "type": "reaction",
+      "points": 1,
       "traits": []
     },
-    "domain": "dark",
-    "speed": "fast"
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "ritualist"
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +90,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787923941535,
+    "createdTime": 1788099934317,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!aGqzuxteqVqr5UQc"
+  "_key": "!items!v5jx4aCE8lDypiQF"
 }

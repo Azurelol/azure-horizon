@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "jzViv3njjLI5tH7C",
+  "name": "Rare",
+  "color": null,
+  "sorting": "a",
+  "_id": "ivGIDK1pbY7LbfHe",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788098845629,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!ivGIDK1pbY7LbfHe"
+}
