@@ -16,10 +16,12 @@
   --ah-border: 0.065rem solid #3d5f8f;
   --ah-trait-background: #e8681a;
   --ah-icon-color: #fa8c49;
+
   --ah-trait-border: black;
   --ah-trait-color: #f4f0f0;
   --ah-document-header-background: #354564;
   --ah-entry-background: #4f5e8c;
+  --ah-entry-icon-color: #354564;
 
 
   /*Override*/
@@ -128,7 +130,8 @@ img {
         text-transform: uppercase;
       }
 
-      img {
+      img, i {
+        color: var(--ah-entry-icon-color);
         width: var(--icon-size);
         height: var(--icon-size);
       }

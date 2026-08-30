@@ -523,10 +523,15 @@ export default class CompendiumIndex {
 
   /**
    * @typedef AH_ManualEntries
-   * @property {CompendiumIndexEntry[]} rules
-   * @property {CompendiumIndexEntry[]} glossary
-   * @property {CompendiumIndexEntry[]} director
-   * @property {CompendiumIndexEntry[]} player
+   * @property {CompendiumIndexEntry} introduction
+   * @property {CompendiumIndexEntry} campaign
+   * @property {CompendiumIndexEntry} exploration
+   * @property {CompendiumIndexEntry} battle
+   * @property {CompendiumIndexEntry} heroes
+   * @property {CompendiumIndexEntry} adversaries
+   * @property {CompendiumIndexEntry} glossary
+   * @property {CompendiumIndexEntry} director
+   * @property {CompendiumIndexEntry} player
    */
 
   /**
@@ -536,13 +541,25 @@ export default class CompendiumIndex {
     const journals = await this.getJournals();
     const journalsByName = new Map(journals.map(journal => [journal.name, journal]));
 
-    const rules = journalsByName.get("Manual");
+    const introduction = journalsByName.get("Introduction");
+    const campaign = journalsByName.get("Manual");
+
+    const battle = journalsByName.get("Battle");
+    const exploration = journalsByName.get("Exploration");
+    const heroes = journalsByName.get("Heroes");
+    const adversaries = journalsByName.get("Adversaries");
+
     const player = journalsByName.get("Player Guide");
     const director = journalsByName.get("Director Guide");
     const glossary = journalsByName.get("Glossary");
 
     return {
-      rules,
+      introduction,
+      campaign,
+      exploration,
+      battle,
+      heroes,
+      adversaries,
       director,
       player,
       glossary,

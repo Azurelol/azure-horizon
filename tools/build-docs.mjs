@@ -390,8 +390,8 @@ const CHAPTERS = [
   { name: "Battle", icon: "fa-solid fa-khanda" },
   { name: "Adversaries", icon: "fa-solid fa-dragon" },
   { name: "Glossary", icon: "fa-solid fa-book" },
-  { name: "Player_Guide", icon: "fa-solid fa-dice-d20" },
-  { name: "Director_Guide", icon: "fa-solid fa-chess-king" },
+  { name: "Player Guide", icon: "fa-solid fa-dice-d20" },
+  { name: "Director Guide", icon: "fa-solid fa-chess-king" },
 ];
 
 for (let e = 0; e < CHAPTERS.length; e++) {
