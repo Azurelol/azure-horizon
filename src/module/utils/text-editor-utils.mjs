@@ -24,6 +24,13 @@ export default class TextEditorUtils {
    */
   static traitsPattern = "(\\|(?<traits>[a-zA-Z-,]+)\\|)?";
 
+  /**
+   * @type {String[]} The pattern used to update document properties.
+   */
+  static documentPatternGroup = [TextEditorUtils.propertyPattern("document", "document", "[\\w.-]+"),
+    TextEditorUtils.propertyPattern("propertyPath", "propertyPath", "[\\w.-]+"),
+    TextEditorUtils.propertyPattern("index", "index", "\\d")];
+
   // TODO: Use a JSON map to then convert to a pattern?
 
   /**
@@ -60,7 +67,7 @@ export default class TextEditorUtils {
   }
 
   /**
-   * @param {HTMLAnchorElement} anchor
+   * @param {HTMLAnchorElement|HTMLSpanElement} anchor
    * @param {String} name
    *
    */
@@ -109,6 +116,35 @@ export default class TextEditorUtils {
     }
   }
 
+  /**
+   * @param {HTMLAnchorElement} anchor
+   * @param {String} key The key in the `anchor.dataset`
+   * @param {String} expression
+   * @param {String} localization
+   */
+  static variable(anchor, key, expression, localization = "FU.Variable") {
+    anchor.dataset[key] = expression;
+    const dynamicAmount = Expressions.requiresContext(expression);
+    const content = dynamicAmount ? StringUtils.localize(localization) : expression;
+    const span = document.createElement("span");
+    span.textContent = content;
+    anchor.appendChild(span);
+  }
+
+  /**
+   * @param {HTMLAnchorElement} anchor
+   * @param {'left'|'right'} direction
+   */
+  static connector(anchor, direction) {
+    const dlConnectorIcon = document.createElement("i");
+    dlConnectorIcon.classList.add("connector", "fa", `fa-caret-${direction}`);
+    anchor.append(dlConnectorIcon);
+  }
+
+  /**
+   * @param {String} messageId
+   * @returns {*}
+   */
   static getChatMessageFromId(messageId) {
     return game.messages.get(messageId);
   }

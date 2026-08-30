@@ -8,10 +8,10 @@
       </div>
 
     {{else}}
-      {{#if (gt difficulty 0)}}
+      {{#if (gt difficultyLevel 0)}}
         <div class="ah-chat-section__check__total" data-tooltip="{{localize 'AH.CHECK.DifficultyLevel.long'}}">
-          <i class="ah-icon --s {{ahIconClass 'difficulty'}}"></i>
-          <span>{{difficulty}}</span>
+          <i class="ah-icon --s {{ahIconClass 'difficultyLevel'}}"></i>
+          <span>{{difficultyLevel}}</span>
         </div>
       {{/if}}
     {{/if}}
@@ -28,19 +28,19 @@
     </div>
   </div>
 
-  {{#if (or (gt difficulty 0) result.crit result.fumble)}}
-    <div class='ah-chat-section__check__outcome {{ahCheckOutcome result.total difficulty}}'>
+  {{#if (or (gt difficultyLevel 0) result.crit result.fumble)}}
+    <div class='ah-chat-section__check__outcome {{ahCheckOutcome result.total difficultyLevel}}'>
       <div class="ah-chat-section__check__outcome__number">
         <i class="{{ahIconClass (ahConcat check.type 'Check')}}"></i>
         <span>{{result.total}}</span>
       </div>
-      {{#if difficulty}}
+      {{#if difficultyLevel}}
         <div class="ah-chat-section__check__outcome__text">
           {{#if result.crit}}
             <span>{{localize 'AH.CHECK.Critical'}}!</span>
           {{else if result.fumble}}
             <span>{{localize 'AH.CHECK.Fumble'}}</span>
-          {{else if (gte result.total difficulty)}}
+          {{else if (gte result.total difficultyLevel)}}
             <span>{{localize 'AH.CHECK.Success'}}</span>
           {{else}}
             <span>{{localize 'AH.CHECK.Failure'}}</span>

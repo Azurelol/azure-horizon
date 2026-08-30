@@ -76,6 +76,7 @@ AH.defaults = {
     bonus: 5,
   },
   check: {
+    type: "attribute",
     criticalThreshold: 6,
   },
   potential: {
@@ -122,9 +123,9 @@ AH.grades = Object.freeze({
   S: { label: "S", scale: 2, base: 15 },
 });
 
-/** @typedef {'easy'|'normal'|'hard'|'impossible'} AH_Difficulty **/
+/** @typedef {'easy'|'normal'|'hard'|'impossible'} AH_DifficultyLevel **/
 
-AH.difficulty = Object.freeze({
+AH.difficultyLevel = Object.freeze({
   easy: { label: "AH.DIFFICULTY.Easy", value: 7 },
   normal: { label: "AH.DIFFICULTY.Normal", value: 10 },
   hard: { label: "AH.DIFFICULTY.Hard", value: 13 },
@@ -148,10 +149,10 @@ AH.power = Object.freeze({
  */
 
 AH.potency = Object.freeze({
-  minor: { label: "AH.ACTION.POTENCY.Minor", difficulty: AH.difficulty.easy.value, cost: 20, selected: true },
-  medium: { label: "AH.ACTION.POTENCY.Medium", difficulty: AH.difficulty.normal.value, cost: 30 },
-  major: { label: "AH.ACTION.POTENCY.Major", difficulty: AH.difficulty.hard.value, cost: 40 },
-  utmost: { label: "AH.ACTION.POTENCY.Utmost", difficulty: AH.difficulty.impossible.value, cost: 50 },
+  minor: { label: "AH.ACTION.POTENCY.Minor", difficulty: AH.difficultyLevel.easy.value, cost: 20, selected: true },
+  medium: { label: "AH.ACTION.POTENCY.Medium", difficulty: AH.difficultyLevel.normal.value, cost: 30 },
+  major: { label: "AH.ACTION.POTENCY.Major", difficulty: AH.difficultyLevel.hard.value, cost: 40 },
+  utmost: { label: "AH.ACTION.POTENCY.Utmost", difficulty: AH.difficultyLevel.impossible.value, cost: 50 },
 });
 
 //TODO: Rename?
@@ -985,6 +986,12 @@ AH.hooks = Object.freeze({
    * @remarks Uses {@link CombatEvent}
    */
   COMBAT_EVENT: `${systemNS}.events.combat`,
+  /**
+   * @description Dispatched after a progress tracker has been updated.
+   * @example callback(event)
+   * @remarks Uses {@link TrackEvent}
+   */
+  TRACK_EVENT: `${systemNS}.events.track`,
 
   /**
    * @description Invoked after damage has been applied to an actor

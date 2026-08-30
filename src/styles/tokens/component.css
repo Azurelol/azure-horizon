@@ -112,6 +112,9 @@
   --ah-badge-background: var(--ah-surface-action-muted);
   --ah-badge-color: var(--ah-content-primary);
   --ah-badge-bonus-color: #7aec76;
+  --ah-tracker-background: var(--ah-surface-action);
+  --ah-tracker-background-active: var(--ah-surface-action-active);
+  --ah-tracker-background-hover: var(--ah-surface-action-hover);
 
   /* Chat Message  */
   --ah-chat-message-background: var(--ah-surface-entry-gradient);

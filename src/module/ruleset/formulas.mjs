@@ -397,4 +397,27 @@ export default class Formulas {
     return this.#POTENCY_BY_OUTCOME[outcome][defense ? "defense" : "attacker"];
   }
 
+  /**
+   * @description Calculates the change in a clock due to the result of a check
+   * @param {Number} result
+   * @param {Number} difficulty
+   * @param {Boolean} critical
+   * @returns {number}
+   */
+  static calculateTrackChange(result, difficulty, critical) {
+    let change = 1;
+
+    const difference = result - difficulty;
+    if (difference >= 6) {
+      change += 2;
+    } else if (difference >= 3) {
+      change++;
+    }
+
+    if (critical) {
+      change += 2;
+    }
+    return change;
+  }
+
 }

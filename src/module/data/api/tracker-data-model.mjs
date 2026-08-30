@@ -54,4 +54,5 @@ export default class TrackerDataModel extends VersionedDataModel {
       checked: this.current === i + 1,
     })).reverse();
   }
+
 }

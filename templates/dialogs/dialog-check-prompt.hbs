@@ -94,7 +94,7 @@
         {{else}}
           <label>
             {{localize 'AH.CHECK.DifficultyLevel.long'}}
-            <input name="difficulty" type="number" value="{{difficulty}}" min="0">
+            <input name="difficulty" type="number" value="{{difficultyLevel}}" min="0">
           </label>
         {{/if}}
         <div class="ah-flex-row">
@@ -135,7 +135,7 @@
                 </td>
                 <th>{{localize potency.label}}</th>
                 <td>{{potency.cost}}</td>
-                <td>{{potency.difficulty}}</td>
+                <td>{{potency.difficultyLevel}}</td>
               </tr>
             {{/each}}
             </tbody>
@@ -184,7 +184,7 @@
       </fieldset>
 
       <!-- Hidden: used by the result-->
-      <label><input name="difficulty" type="number" value="{{potency.difficulty}}" min="0" hidden/></label>
+      <label><input name="difficulty" type="number" value="{{potency.difficultyLevel}}" min="0" hidden/></label>
       <label><input name="cost" type="number" value="{{cost}}" min="0" hidden/></label>
     {{/if}}
 </section>

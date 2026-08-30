@@ -3,6 +3,28 @@ import { CharacterInfo, ItemInfo, SourceInfo } from "../data/common/_module.mjs"
 import { ActionConfig, ActionInspector, AsyncHooks } from "../helpers/_module.mjs";
 
 /**
+ * @typedef TrackUpdateEvent
+ * @description Dispatched when a progress track has been updated
+ * @property {Document} document The document that has the tracker
+ * @property {TrackerDataModel} track The tracker in question
+ * @property {"add"|"remove"|"update"} action The action that was performed
+ * @property {Number|undefined} increment If an update was performed, the change in the tracker,
+ * @property {Document|undefined} source If an update was performed, the source behind the change.
+ */
+
+function track(document, track, action, increment = undefined, source = undefined) {
+  /** @type TrackUpdateEvent  **/
+  const event = {
+    document: document,
+    track: track,
+    action: action,
+    increment: increment,
+    source: source,
+  };
+  Hooks.call(AH.hooks.TRACK_EVENT, event);
+}
+
+/**
  * @description Dispatched when an actor updates its resources (such as HP, MP)
  * @typedef CalculateExpenseEvent
  * @property {ResourceExpense} expense
@@ -306,6 +328,8 @@ const Events = Object.freeze({
   calculateResource,
   calculateExpense,
   status,
+
+  track,
 });
 
 export default Events;
