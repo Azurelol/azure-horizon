@@ -19,6 +19,7 @@
   /* Check Result */
   --ah-background-default: linear-gradient(to right, #7da0ca, #004f89);
   --ah-background-success: linear-gradient(to right, #91c469, #228c22);
+  --ah-background-partial: linear-gradient(to right, #cf994d, #c35f2e);
   --ah-background-failure: linear-gradient(to right, #edb7aa, #880012);
   --ah-color-critical-start: #f7c754;
   --ah-color-critical-end: #d17f10;

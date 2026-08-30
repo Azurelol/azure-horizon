@@ -45,7 +45,7 @@ const { DiceTerm, NumericTerm } = foundry.dice.terms;
  * @property {CheckType} type The type of the check.
  * @property {CheckModifier[]} modifiers array of modifiers
  * @property {Boolean} generateOpportunity Whether this check can generate an opportunity.
- * @property {number} critThreshold The critical threshold for this check.
+ * @property {number} criticalThreshold The critical threshold for this check.
  */
 
 /**
@@ -247,7 +247,7 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
     generateOpportunity: check.generateOpportunity ?? true,
     modifiers: Object.freeze(check.modifiers.map(Object.freeze)),
     modifierTotal: check.modifiers.reduce((agg, curr) => agg + curr.value, 0),
-    critThreshold: critThreshold,
+    criticalThreshold: critThreshold,
     total: roll.total,
     fumble: (primary.result === 1) && (secondary.result === 1),
     critical: (primary.result === secondary.result) && (primary.result >= Math.max(2, critThreshold)),
@@ -309,7 +309,8 @@ async function renderCheck(result, actor, item, flags = {}) {
         partial: systemTemplatePath("chat/chat-section-check"),
         data: {
           result: result,
-          difficulty: config.getDifficulty(),
+          difficultyLevel: config.getDifficulty(),
+          outcome: Formulas.calculateOutcome(result, config.getDifficulty()),
         },
       });
       break;

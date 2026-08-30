@@ -29,35 +29,35 @@
   </div>
 
   {{#if (or (gt difficultyLevel 0) result.crit result.fumble)}}
-    <div class='ah-chat-section__check__outcome {{ahCheckOutcome result.total difficultyLevel}}'>
-      <div class="ah-chat-section__check__outcome__number">
-        <i class="{{ahIconClass (ahConcat check.type 'Check')}}"></i>
-        <span>{{result.total}}</span>
-      </div>
-      {{#if difficultyLevel}}
-        <div class="ah-chat-section__check__outcome__text">
-          {{#if result.crit}}
-            <span>{{localize 'AH.CHECK.Critical'}}!</span>
-          {{else if result.fumble}}
-            <span>{{localize 'AH.CHECK.Fumble'}}</span>
-          {{else if (gte result.total difficultyLevel)}}
-            <span>{{localize 'AH.CHECK.Success'}}</span>
-          {{else}}
-            <span>{{localize 'AH.CHECK.Failure'}}</span>
-          {{/if}}
+      <div class='ah-chat-section__check__outcome {{outcome}}'>
+        <div class="ah-chat-section__check__outcome__number">
+          <i class="{{ahIconClass (ahConcat check.type 'Check')}}"></i>
+          <span>{{result.total}}</span>
         </div>
-      {{else}}
-        {{#if (or result.crit result.fumble)}}
-          <div>
-            {{#if result.crit}}
+        {{#if difficultyLevel}}
+          <div class="ah-chat-section__check__outcome__text">
+            {{#if (eq outcome 'critical')}}
               <span>{{localize 'AH.CHECK.Critical'}}!</span>
-            {{else if result.fumble}}
+            {{else if (eq outcome 'fumble')}}
               <span>{{localize 'AH.CHECK.Fumble'}}</span>
+            {{else if (eq outcome 'success')}}
+              <span>{{localize 'AH.CHECK.Success'}}</span>
+            {{else}}
+              <span>{{localize 'AH.CHECK.Partial'}}</span>
             {{/if}}
           </div>
+        {{else}}
+          {{#if (or result.crit result.fumble)}}
+            <div>
+              {{#if result.crit}}
+                <span>{{localize 'AH.CHECK.Critical'}}!</span>
+              {{else if result.fumble}}
+                <span>{{localize 'AH.CHECK.Fumble'}}</span>
+              {{/if}}
+            </div>
+          {{/if}}
         {{/if}}
-      {{/if}}
-    </div>
+      </div>
   {{/if}}
 
 </section>

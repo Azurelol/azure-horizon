@@ -196,6 +196,7 @@ async function prompt(actor, type, initialConfig = {}) {
         potency: potency,
         area: area,
         cost: potency.cost * area.multiplier,
+        difficulty: potency.difficulty,
         potencyOptions: AH.potency,
         areaOptions: AH.area,
       });
@@ -320,6 +321,12 @@ async function ritualCheck(actor, item, options = {}) {
         if (promptResult.difficulty) {
           config.setDifficulty(promptResult.difficulty);
         }
+        // TODO: Fix on prompt invoke
+        // Use default difficulty if it wasn't changed
+        else {
+          config.setDifficulty(AH.potency.minor.difficulty);
+        }
+
         if (promptResult.modifier) {
           config.addModifier("AH.CHECK.SituationalModifier", promptResult.modifier);
         }

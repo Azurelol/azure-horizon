@@ -108,6 +108,10 @@
     background: var(--ah-background-success);
   }
 
+  &.partial {
+    background: var(--ah-background-partial);
+  }
+
   &.failure {
     background: var(--ah-background-failure);
   }

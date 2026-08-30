@@ -307,6 +307,7 @@
       },
       "Success": "Success",
       "Failure": "Failure",
+      "Partial": "Partial",
       "Critical": "Critical",
       "Fumble": "Fumble",
       "Easy": "Easy",
@@ -894,7 +895,7 @@
         "ApplyDamageTooltip": "Apply damage to selected tokens.",
         "ApplyEffect": "Apply {effect}"
       },
-      "RollCheck": "Roll Check",
+      "RollCheck": "Roll Check [Shift-Click to Configure]",
       "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "DamagePartialBlock": "<strong>{amount}</strong> was blocked.",
       "DamageFullBlock": "<strong>{actor}</strong> fully blocked an attack from <strong>{from}</strong> for <strong>{amount}</strong> damage!",

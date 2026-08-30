@@ -3,6 +3,7 @@ import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import AH, { scaleValue } from "../config.mjs";
 import { ChatMessageSectionTemplate } from "./chat-message-sections.mjs";
 import TableColumns from "../apps/api/table-columns.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
 
 const COMPONENT_TEMPLATES = Object.freeze({
   empty: systemTemplatePath("components/empty"),
@@ -314,25 +315,11 @@ export default Object.freeze({
     Handlebars.registerHelper("ahDocumentCarousel", documentCarousel);
     Handlebars.registerHelper("ahCheckOutcome",
       /**
-       * @param result
+       * @param {CheckResult} result
        * @param difficulty
        */
       function (result, difficulty) {
-        if (result.critical) {
-          return "critical";
-        } else if (result.fumble) {
-          return "fumble";
-        }
-
-        if (Number.isInteger(difficulty)) {
-          if (result >= difficulty) {
-            return "success";
-          } else {
-            return "failure";
-          }
-        }
-
-        return "default";
+        return Formulas.calculateOutcome(result, difficulty);
       },
     );
   },

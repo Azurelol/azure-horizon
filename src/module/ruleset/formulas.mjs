@@ -49,7 +49,7 @@ function forClassBenefits(actor, onBenefits) {
 
 export default class Formulas {
 
-  static CRITICAL_THRESHOLD = MIN_ATTRIBUTE_DIE;
+  static CRITICAL_THRESHOLD = 6;
 
   // TODO: Use for checks???
   /**
@@ -372,18 +372,36 @@ export default class Formulas {
   };
 
   /**
-   * @param {CheckResult} check
+   * @param {CheckResult} result
    * @param {Number} difficulty
    * @return {AH_Outcome}
+   * @remarks Handles critical thresholds as well.
    */
-  static calculateOutcome(check, difficulty) {
-    return check.critical
-      ? "critical"
-      : check.fumble
-        ? "fumble"
-        : check.total >= difficulty
-          ? "success"
-          : "partial";
+  static calculateOutcome(result, difficulty) {
+
+    if (result.critical) {
+      return "critical";
+    } else if (result.fumble) {
+      return "fumble";
+    }
+
+    if (Number.isInteger(difficulty)) {
+      if (result.total >= difficulty) {
+        const difference = result.total - difficulty;
+        if (difference >= result.criticalThreshold) {
+          return "critical";
+        }
+        return "success";
+      } else {
+        const difference = difficulty - result.total;
+        if (difference >= result.criticalThreshold) {
+          return "fumble";
+        }
+        return "partial";
+      }
+    }
+
+    return "default"; // Used just for rendering
   }
 
   /**

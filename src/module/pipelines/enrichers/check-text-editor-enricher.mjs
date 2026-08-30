@@ -6,6 +6,10 @@ import { EvaluationContext, SourceInfo } from "../../data/common/_module.mjs";
 import Flags from "../../data/common/flags.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import Tracks from "../tracks.mjs";
+import Checks from "../checks.mjs";
+import { ActionConfig } from "../../helpers/_module.mjs";
+import Expressions from "../expressions.mjs";
+import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 
 const ID = "CheckTextEditorEnricher";
 
@@ -87,7 +91,7 @@ function enricher(match, options) {
     let tooltip = StringUtils.localize("AH.CHAT.RollCheck");
 
     // ICON
-    TextEditorUtils.icon(anchor, type);
+    TextEditorUtils.icon(anchor, `${type}Check`);
 
     if (label) {
       anchor.append(label);
@@ -139,12 +143,12 @@ async function onRender(element) {
   element.addEventListener("click", async function(event) {
     /** @type InlineCheckDataset **/
     const dataset = renderContext.dataset;
-    const targets = await getSelection();
+    const targets = await Targeting.getSelected();
 
     if (targets.length === 0) return;
     const first = dataset.first;
     const second = dataset.second;
-    const difficulty = dataset.difficulty;
+    const difficulty = Number(dataset.difficulty);
 
     let type = dataset.type;
     const prompt = event.shiftKey;
@@ -152,20 +156,20 @@ async function onRender(element) {
     const item = renderContext.sourceInfo.resolveItem();
 
     /** @type CheckResultCallback **/
-    const onResult = async (check) => {
+    const onResult = async (result) => {
       if (difficulty && dataset.document) {
-        const result = check.result;
         if (result.fumble || (result < difficulty)) {
           return;
         }
 
-        let increment = Formulas.calculateTrackChange(result, difficulty, result.critical);
+        let increment = Formulas.calculateTrackChange(result.total, difficulty, result.critical);
         if (dataset.increment === "false") {
           increment = -increment;
         }
 
         const document = await fromUuid(dataset.document);
-        if (dataset.index) {
+        // Yes it can be a string "undefined".
+        if (dataset.index && (dataset.index !== "undefined")) {
           await Tracks.updateAtIndexForDocument(document, dataset.propertyPath, dataset.index, increment, {
             source: targets[0],
           });
@@ -174,9 +178,72 @@ async function onRender(element) {
     };
 
     for (const actor of targets) {
+      if (prompt) {
+        let modifier = 0;
+        if (dataset.modifier !== undefined) {
+          const context = EvaluationContext.fromSourceInfo(renderContext.sourceInfo, targets);
+          modifier = await Expressions.evaluateAsync(dataset.modifier, context);
+          if (isNaN(modifier)) {
+            modifier = 0;
+          }
+        }
+
+        switch (type) {
+          case "attribute":
+            await CheckPrompt.attributeCheck(actor, {
+              initialConfig: {
+                primary: attributes.primary,
+                secondary: attributes.secondary,
+                difficulty: difficulty,
+                modifier: modifier,
+                label: dataset.label,
+              },
+              checkCallback: (check) => {
+                let config = new ActionConfig(check);
+                config.setLabel(dataset.label);
+              },
+              resultCallback: onResult,
+            });
+            break;
+        }
+
+      }
+      else {
+        switch (type) {
+          case "attribute":
+            await Checks.attributeCheck(
+              actor,
+              attributes,
+              null,
+              async (check) => {
+                let config = new ActionConfig(check);
+                config.setLabel(dataset.label);
+                let modifier = 0;
+
+                if (item) {
+                  config.setItemReference(item);
+                }
+
+                if (dataset.modifier !== undefined) {
+                  const context = EvaluationContext.fromSourceInfo(renderContext.sourceInfo, targets);
+                  modifier = await Expressions.evaluateAsync(dataset.modifier, context);
+                }
+
+                if (difficulty > 0) {
+                  config.setDifficulty(difficulty);
+                }
+
+                if (modifier !== 0) {
+                  config.addModifier("AH.CHECK.SituationalModifier", modifier);
+                }
+              },
+              onResult,
+            );
+            break;
+        }
+      }
 
     }
-
   });
 
   // Handle dragstart
