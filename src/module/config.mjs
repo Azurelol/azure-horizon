@@ -190,9 +190,10 @@ AH.rarity = Object.freeze({
  */
 
 AH.outcome = Object.freeze({
-  partial: { label: "AH.ACTION.OUTCOME.Partial" },
-  success: { label: "AH.ACTION.OUTCOME.Success" },
   critical: { label: "AH.ACTION.OUTCOME.Critical" },
+  success: { label: "AH.ACTION.OUTCOME.Success" },
+  partial: { label: "AH.ACTION.OUTCOME.Partial" },
+  fumble: { label: "AH.ACTION.OUTCOME.Fumble" },
 });
 
 /**

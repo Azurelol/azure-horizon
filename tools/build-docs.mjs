@@ -390,8 +390,8 @@ const CHAPTERS = [
   { name: "Battle", icon: "fa-solid fa-khanda" },
   { name: "Adversaries", icon: "fa-solid fa-dragon" },
   { name: "Glossary", icon: "fa-solid fa-book" },
-  { name: "PlayerGuide", icon: "fa-solid fa-dice-d20" },
-  { name: "DirectorGuide", icon: "fa-solid fa-chess-king" },
+  { name: "Player_Guide", icon: "fa-solid fa-dice-d20" },
+  { name: "Director_Guide", icon: "fa-solid fa-chess-king" },
 ];
 
 for (let e = 0; e < CHAPTERS.length; e++) {
@@ -401,7 +401,7 @@ for (let e = 0; e < CHAPTERS.length; e++) {
 
     const fileName = PATH.join(DST_MANUAL_DIR, `${e + 1}_${chapter.name}.${FILE_EXTENSION}`);
     let md = new DocBuilder();
-    md.frontMatter({ title: chapter.name });
+    md.frontMatter({ title: chapter.name, icon: entry.icon });
     for (const page of chapter.pages) {
       md.h1(page.name);
       md.p(page.text.content);

@@ -302,6 +302,7 @@ async function renderCheck(result, actor, item, flags = {}) {
     case "attribute":
     case "open":
     case "action":
+    case "ritual":
       // CHECK Section
       builderData.sections.push({
         order: ChatSectionOrder.check,
@@ -324,6 +325,12 @@ async function renderCheck(result, actor, item, flags = {}) {
       });
     }
       break;
+  }
+
+  if (result.type === "ritual") {
+    const outcome = Formulas.calculateOutcome(result, config.getDifficulty());
+    const ritualMessage = `AH.CHECK.RITUAL.OUTCOME.${StringUtils.capitalize(outcome)}`;
+    ChatMessageSections.text(builderData.sections, StringUtils.localize(ritualMessage));
   }
 
   // Flags

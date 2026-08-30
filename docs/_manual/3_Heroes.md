@@ -1,5 +1,6 @@
 ---
 title: Heroes
+icon: fa-solid fa-user-shield
 ---
 
 # Opening

@@ -1,5 +1,6 @@
 ---
 title: Exploration
+icon: fa-solid fa-compass
 ---
 
 # Checks

@@ -1,5 +1,6 @@
 ---
 title: Battle
+icon: fa-solid fa-khanda
 ---
 
 # Pressure

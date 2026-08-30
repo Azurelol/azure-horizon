@@ -325,7 +325,7 @@ export default Object.freeze({
         }
 
         if (Number.isInteger(difficulty)) {
-          if (result.total >= difficulty) {
+          if (result >= difficulty) {
             return "success";
           } else {
             return "failure";

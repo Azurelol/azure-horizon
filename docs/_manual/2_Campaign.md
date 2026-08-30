@@ -1,5 +1,6 @@
 ---
 title: Campaign
+icon: fa-solid fa-map
 ---
 
 # Preface

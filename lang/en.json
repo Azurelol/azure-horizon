@@ -319,7 +319,15 @@
       "Hit": "Hit",
       "Miss": "Miss",
       "PrimaryAttribute": "Primary Attribute",
-      "SecondaryAttribute": "Secondary Attribute"
+      "SecondaryAttribute": "Secondary Attribute",
+      "RITUAL": {
+        "OUTCOME": {
+          "Critical": "The ritual was incredibly successful!",
+          "Success": "The ritual was successful.",
+          "Partial": "The ritual was partially successful, but there are consequences.",
+          "Fumble": "The ritual failed catastrophically!"
+        }
+      }
     },
     "INTERVAL": {
       "StartOfCombat": {

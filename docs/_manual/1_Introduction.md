@@ -1,5 +1,6 @@
 ---
 title: Introduction
+icon: fa-solid fa-book-open
 ---
 
 # Foreword

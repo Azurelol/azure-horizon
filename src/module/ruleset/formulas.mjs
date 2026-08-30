@@ -368,8 +368,23 @@ export default class Formulas {
     critical: { attacker: "powerful", defense: "reduced" },
     fumble: { attacker: "reduced", defense: "powerful" },
     success: { attacker: "standard", defense: "reduced" },
-    failure: { attacker: "reduced", defense: "standard" },
+    partial: { attacker: "reduced", defense: "standard" },
   };
+
+  /**
+   * @param {CheckResult} check
+   * @param {Number} difficulty
+   * @return {AH_Outcome}
+   */
+  static calculateOutcome(check, difficulty) {
+    return check.critical
+      ? "critical"
+      : check.fumble
+        ? "fumble"
+        : check.total >= difficulty
+          ? "success"
+          : "partial";
+  }
 
   /**
    * @param {CheckResult} check
@@ -378,14 +393,7 @@ export default class Formulas {
    * @return {AH_ActionPotency}
    */
   static calculatePotency(check, difficulty, defense = false) {
-    const outcome = check.critical
-      ? "critical"
-      : check.fumble
-        ? "fumble"
-        : check.total >= difficulty
-          ? "success"
-          : "failure";
-
+    const outcome = this.calculateOutcome(check, difficulty);
     return this.#POTENCY_BY_OUTCOME[outcome][defense ? "defense" : "attacker"];
   }
 

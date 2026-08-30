@@ -1,5 +1,6 @@
 ---
 title: Glossary
+icon: fa-solid fa-book
 ---
 
 # Affinity
