@@ -797,7 +797,7 @@ export default class CompendiumBrowser extends AHApplication {
             {
               class: {
                 label: "AH.FIELD.Domain",
-                propertyPath: "system.domain",
+                propertyPath: CompendiumIndex.itemFields.spellDomain,
                 options: domainOptions,
               },
               compendium: this.#compendiumFilter,

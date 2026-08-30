@@ -49,8 +49,6 @@ function forClassBenefits(actor, onBenefits) {
 
 export default class Formulas {
 
-  static CRITICAL_THRESHOLD = 6;
-
   // TODO: Use for checks???
   /**
    * @param {Number} level

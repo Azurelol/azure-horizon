@@ -17,13 +17,14 @@
   --ah-color-difficulty-veryHard: #8c2e2e;
 
   /* Check Result */
-  --ah-background-default: linear-gradient(to right, #7da0ca, #004f89);
-  --ah-background-success: linear-gradient(to right, #91c469, #228c22);
-  --ah-background-partial: linear-gradient(to right, #cf994d, #c35f2e);
-  --ah-background-failure: linear-gradient(to right, #edb7aa, #880012);
+  --ah-background-default:  linear-gradient(to right, var(--ah-primitive-color-azure-400), var(--ah-primitive-color-navy-700));
+  --ah-background-critical: linear-gradient(to right, var(--ah-color-critical-start), var(--ah-color-critical-end));
+  --ah-background-success:  linear-gradient(to right, var(--ah-primitive-color-green-400), var(--ah-primitive-color-green-700));
+  --ah-background-partial: linear-gradient(to right, #d4d96a, #8a9c1f);
+  --ah-background-failure:  linear-gradient(to right, var(--ah-primitive-color-red-400), var(--ah-primitive-color-red-700));
   --ah-color-critical-start: #f7c754;
   --ah-color-critical-end: #d17f10;
-  --ah-background-critical: linear-gradient(to right, var(--ah-color-critical-start), var(--ah-color-critical-end));
+
 
   --ah-fumble-start: #b087a6;
   --ah-fumble-end: #15031e;

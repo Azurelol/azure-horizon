@@ -50,7 +50,7 @@
           <div class="ah-icon__radio-group">
             {{#each attributeOptions as |attr| }}
               <label class="ah-icon --s {{icon}}"
-                     data-tooltip="{{localize label}}">
+                     data-tooltip="{{localize attr.label}}">
                 <input checked="checked" type="radio" name="primary" value="{{value}}">
               </label>
             {{/each}}
@@ -62,7 +62,7 @@
           <div class="ah-icon__radio-group">
             {{#each attributeOptions as |attr| }}
               <label class="ah-icon --s {{icon}}"
-                     data-tooltip="{{localize label}}">
+                     data-tooltip="{{localize attr.label}}">
                 <input checked="checked"
                        type="radio"
                        name="secondary"

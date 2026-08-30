@@ -179,7 +179,7 @@ async function prompt(actor, type, initialConfig = {}) {
     primary: recentCheck.primary,
     secondary: recentCheck.secondary,
     modifier: recentCheck.modifier,
-    difficulty: recentCheck.difficulty,
+    difficultyLevel: initialConfig.difficulty ?? recentCheck.difficulty,
     supportDifficulty: recentCheck.supportDifficulty,
     bonus: actor.system?.parameters?.checks?.all ?? 0,
   };
@@ -212,7 +212,7 @@ async function prompt(actor, type, initialConfig = {}) {
       scrollable: true,
     },
     position: {
-      width: 500,
+      width: 575,
       height: "auto",
     },
     classes: ["ah-application", "ah-dialog"],

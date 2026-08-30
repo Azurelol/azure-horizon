@@ -218,7 +218,7 @@ const processResult = async (check, roll, actor, item, callHook = true) => {
   const highRoll = primary.result >= secondary.result ? primary : secondary;
   const lowRoll = primary.result >= secondary.result ? secondary : primary;
 
-  const critThreshold = check.critThreshold ?? Formulas.CRITICAL_THRESHOLD;
+  const critThreshold = check.critThreshold ?? AH.defaults.check.criticalThreshold;
 
   /**
    * @type {Readonly<CheckResult>}

@@ -217,7 +217,7 @@ export default class FoundryUtils {
    */
   static generateConfigIconOptions(keys, labelRecord, iconRecord) {
     return Array.from(keys).map((key) => ({
-      label: StringUtils.localize(labelRecord[key]),
+      label: StringUtils.localize(labelRecord[key].long ?? labelRecord[key].label),
       icon: iconRecord[key],
       value: key,
     }));

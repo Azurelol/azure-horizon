@@ -128,6 +128,7 @@ export default class CompendiumIndex {
     damageSecondaryType: "system.damage.secondary.type",
     damageSecondaryAmount: "system.damage.secondary.amount",
     costAmount: "system.cost.amount",
+    spellDomain: "system.domain",
     traits: "system.traits",
     classRef: "system.class",
     skillRef: "system.skill",

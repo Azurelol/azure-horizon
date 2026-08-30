@@ -163,6 +163,11 @@
   --ah-color-slate-700: #4d545e;
   --ah-color-slate-600: #626b76;
   --ah-color-slate-500: #78828e;
+;
+  --ah-primitive-color-green-700: #1f6e2e;
+  --ah-primitive-color-amber-700: #b1571f;
+  --ah-primitive-color-red-400: #d9776b;
+  --ah-primitive-color-red-700: #7a1220;
 
 (Placeholder hex values — swap for whatever your actual navy/azure/burg
 

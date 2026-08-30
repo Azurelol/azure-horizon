@@ -212,7 +212,12 @@ export default class ActionHandler {
         name: "AH.CHECK.Ritual",
         icon: "ah-icon-check-ritual",
         perform: async () => {
-          await CheckPrompt.ritualCheck(this.actor);
+          await CheckPrompt.ritualCheck(this.actor, undefined, {
+            initialConfig: {
+              primary: "ins",
+              secondary: "wlp",
+            },
+          });
         },
       });
     }

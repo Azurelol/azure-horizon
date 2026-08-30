@@ -77,7 +77,7 @@ AH.defaults = {
   },
   check: {
     type: "attribute",
-    criticalThreshold: 6,
+    criticalThreshold: 8,
   },
   potential: {
     min: 0,
