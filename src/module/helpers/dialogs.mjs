@@ -234,6 +234,7 @@ export default class Dialogs {
    * @property {Object[]} payload Associated data returned instead of the item reference.
    * @property {AHItem[]} compendiumItems If assigned, will be used to compare to the original items.
    * @property {Object[]} initial
+   * @property {Boolean} quick If set, the selection will be confirmed on a single click.
    * @property {{name: string, items: Object[]}[]} groups
    * @property {ItemSelectionColumn[]} columns Additional columns for the dialog.
    * @property {ItemSelectStyle} style
@@ -280,6 +281,7 @@ export default class Dialogs {
     const toggleCardSelection = (container, card, updateData = true) => {
       const index = Number.parseInt(card.dataset.index);
       const cardItem = data.items[index];
+
       if (!card.classList.contains("selected")) {
         const selectedCards = container.querySelectorAll(".ah-dialog-item.selected");
         if (selectedCards.length >= data.max) return;
@@ -339,7 +341,7 @@ export default class Dialogs {
           return false;
         },
       },
-      classes: DIALOG_CLASSES,
+      classes: data.quick ? DIALOG_CLASSES.concat("--quick") : DIALOG_CLASSES,
       content: await renderTemplate("dialogs/dialog-item-select", context),
       rejectClose: false,
       ok: {
@@ -431,6 +433,11 @@ export default class Dialogs {
             const card = event.target.closest(".ah-dialog-item");
             if (!card) return;
             toggleCardSelection(container, card);
+
+            if (data.quick) {
+              const submitButton = document.querySelector("button[type=submit]");
+              return dialog._onSubmit(submitButton, event);
+            }
           });
         } else {
           container.addEventListener("change", (event) => {

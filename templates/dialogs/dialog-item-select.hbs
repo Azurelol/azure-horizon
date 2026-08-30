@@ -5,18 +5,11 @@
       </span>
   </div>
 {{/if}}
-<div class="ah-dialog-selection__filter">
-  <input type="search"
-         data-role="selection-filter"
-         placeholder="{{localize 'AH.COMMON.Search'}}"
-         aria-label="{{localize 'AH.COMMON.Search'}}"
-         autocomplete="off" />
-</div>
 
 {{#if (eq style 'grid')}}
-  <div id="items" class="ah-dialog-item-grid ah-icon__radio-group">
+  <div id="items" class="ah-dialog-item-grid ah-icon__radio-group {{classes}}">
     {{#each items as |item| }}
-      <label class= "ah-dialog-item ah-dialog-item-grid__element"
+      <label class= "ah-dialog-item"
              for="{{item.name}}"
              data-index="{{@index}}"
              data-name="{{item.name}}">
@@ -25,8 +18,10 @@
                id="{{item.name}}"
                {{#if (ahContains ../initial item )}}checked{{/if}}
                value="{{item.name}}">
-        <img class="ah-icon--l" src="{{item.img}}"
-             alt="{{item.name}}"/>
+        {{#if item.img}}
+          <img class="ah-icon--l" src="{{item.img}}"
+               alt="{{item.name}}"/>
+        {{/if}}
         <span class="">{{item.name}}</span>
       </label>
     {{/each}}
@@ -34,7 +29,7 @@
 {{/if}}
 
 {{#if (eq style 'deck')}}
-  <div id="items" class="ah-dialog-item-grid ah-arcana__radio-group">
+  <div id="items" class="ah-dialog-item-grid ah-arcana__radio-group {{classes}}">
     {{#each items as |item|}}
       <label class="ah-dialog-item ah-arcana-card"
              for="{{item.name}}"
@@ -69,6 +64,15 @@
 
 
 {{#if (eq style 'list')}}
+
+  <div class="ah-dialog-selection__filter">
+    <input type="search"
+           data-role="selection-filter"
+           placeholder="{{localize 'AH.COMMON.Search'}}"
+           aria-label="{{localize 'AH.COMMON.Search'}}"
+           autocomplete="off" />
+  </div>
+
   <fieldset id="items">
     <legend>
 				<span>

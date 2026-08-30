@@ -542,10 +542,10 @@ export default class CompendiumIndex {
     const journalsByName = new Map(journals.map(journal => [journal.name, journal]));
 
     const introduction = journalsByName.get("Introduction");
-    const campaign = journalsByName.get("Manual");
+    const campaign = journalsByName.get("Campaign");
+    const exploration = journalsByName.get("Exploration");
 
     const battle = journalsByName.get("Battle");
-    const exploration = journalsByName.get("Exploration");
     const heroes = journalsByName.get("Heroes");
     const adversaries = journalsByName.get("Adversaries");
 
@@ -557,9 +557,11 @@ export default class CompendiumIndex {
       introduction,
       campaign,
       exploration,
+
       battle,
       heroes,
       adversaries,
+
       director,
       player,
       glossary,

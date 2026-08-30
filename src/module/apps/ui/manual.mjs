@@ -6,15 +6,26 @@ import { StringUtils } from "../../utils/_module.mjs";
 async function openManual() {
   const manual = await CompendiumIndex.instance.getManualEntries();
   if (manual) {
-    const manualOptions = Object.keys(manual).reduce((acc, key) => {
-      acc[key] = StringUtils.capitalize(key);
-      return acc;
-    }, {});
-    const formOptions = getFormSelectOptions(manualOptions);
-    const option = await Dialogs.select("AH.APPLICATION.MANUAL.Manual", formOptions);
+    const title = "AH.APPLICATION.MANUAL.Manual";
+    const result = await Dialogs.itemSelect(
+      {
+        title: title,
+        style: "grid",
+        max: 1,
+        classes: "--text",
+        quick: true,
+        items: Object.values(manual),
+        getDescription: async (item) => {
+          return "";
+        },
+      },
+    );
+    const option = result[0];
+    //const option = await Dialogs.select(title, formOptions);
+
     if (option) {
-      const entry = manual[option];
-      const journal = await fromUuid(entry.uuid);
+      //const entry = manual[option];
+      const journal = await fromUuid(option.uuid);
       journal?.sheet.render({ force: true });
     }
   }
