@@ -38,6 +38,8 @@ const COMPONENT_TEMPLATES = Object.freeze({
   numberField: systemTemplatePath("components/number-field"),
   booleanField: systemTemplatePath("components/boolean-field"),
   traitsField: systemTemplatePath("components/traits-field"),
+
+  documentEffects: systemTemplatePath("sheets/document-effects-partial"),
 });
 
 const MESSAGE_TEMPLATES = Object.freeze({

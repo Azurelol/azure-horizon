@@ -8,20 +8,28 @@
       background: var(--ah-surface-tab-content);
     }
   }
+
   .effects-list {
     padding: 0;
     background: var(--ah-table-background);
+    border: var(--ah-table-border);
+    border-radius: var(--ah-border-radius);
 
     .effect-list {
-
+      padding: 0;
     }
 
     .effects-header {
-      background: var(--ah-table-background-header);
+      font-weight: bold;
+      font-size: var(--ah-table-header-font-size);
+      color: var(--ah-table-caption-color);
+      padding: 4px;
+      border-bottom: 1px solid var(--ah-table-row-divider);
     }
 
     .effect {
       height: 24px;
+      padding: 0.25rem;
     }
 
     .effect-label {
@@ -29,10 +37,41 @@
       flex-direction: row;
       align-items: center;
       text-align: left;
+      gap: 0.25rem;
+      min-width: 200px;
 
       .effect-image {
         width: 20px;
         height: 20px;
+      }
+    }
+
+    .effect-source {
+      --width: 120px;
+      width: var(--width);
+      max-width: var(--width);
+    }
+
+    .effect-duration {
+      --width: 80px;
+      width: var(--width);
+      max-width: var(--width);
+    }
+
+    .document-controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      --width: 80px;
+      width: var(--width);
+      max-width: var(--width);
+
+      .effect-controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
