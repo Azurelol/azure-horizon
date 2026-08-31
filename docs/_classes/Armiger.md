@@ -41,7 +41,7 @@ img: /assets/icons/classes/armiger/armiger.png
 </div>
 </div>
 
-<p>After you have performed the check for your next action, if the result of the check was even you gain <em>Empower</em>, otherwise <em>Vulnerable.</em></p>
+<p>After you have performed the check for your next action and before the damage is resolved, if the result of the check was even you gain <em>Empower</em>, otherwise <em>Vulnerable.</em></p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/arsenal.png"><span>Arsenal</span></div>
@@ -68,6 +68,9 @@ img: /assets/icons/classes/armiger/armiger.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/expert-advice.png"><span>Expert Advice</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Activity</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
@@ -78,6 +81,7 @@ img: /assets/icons/classes/armiger/armiger.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/follow-through.png"><span>Follow Through</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
+<span class="document-trait">Free</span>
 <span class="document-trait">Reaction</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -91,7 +95,7 @@ img: /assets/icons/classes/armiger/armiger.png
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
-<span class="document-trait">Action 1</span>
+<span class="document-trait">Action 2</span>
 </div>
 <i class="fa-solid fa-star"></i> 2
 </div>

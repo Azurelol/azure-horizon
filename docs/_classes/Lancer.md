@@ -41,7 +41,7 @@ img: /assets/icons/classes/lancer/lancer.png
 </div>
 </div>
 
-<p>While under the effects of <em>Dragon Breath</em> you perform a splash fire attack. If performed directly after a Jump you instead hit all enemies.</p>
+<p>While under the effects of <em>Dragon Breath</em> you perform a splash fire attack. While <em>jumping</em> you instead hit all enemies.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/spear-tips-double-purple.webp"><span>Drake Thrust</span></div>
@@ -98,7 +98,7 @@ img: /assets/icons/classes/lancer/lancer.png
 </div>
 </div>
 
-<p>While under the effects of Bared Fang you perform a piercing attack.  If performed directly after a Jump you apply <em>Sunder</em> to the target.</p>
+<p>While under the effects of Bared Fang you perform a piercing attack. While <em>jumping</em> you also apply <em>Sunder</em> to the target.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/spear-tips-three-green.webp"><span>Wyvern Tail</span></div>
@@ -110,4 +110,4 @@ img: /assets/icons/classes/lancer/lancer.png
 </div>
 </div>
 
-<p>While under the effect of Coiled Tail, you can perform a cleaving melee attack. If performed directly after a <em>Jump </em>you can perform a free attack on any enemies hit.</p>
+<p>While under the effect of Coiled Tail, you can perform a cleaving melee attack. While <em>jumping</em> you also perform a <em>free</em> <em>attack</em> on any enemies hit.</p>

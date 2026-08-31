@@ -5,8 +5,8 @@ img: /assets/icons/classes/dancer/dancer.png
 
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
-<span class="document-trait">Mobility</span>
 <span class="document-trait">Dance</span>
+<span class="document-trait">Shift</span>
 </div>
 
 <p>An acrobatic performer who relies on their quick feet and graceful movements to get them by in life.  Behind their elegant movements belies a martial discipline that is both flexible and strong when it needs to be.</p><blockquote><p>The Dancer is a class that excels in providing options to easily reposition not only their party but also their foes, all while steadily building up their tempo to increase their damage.</p></blockquote>

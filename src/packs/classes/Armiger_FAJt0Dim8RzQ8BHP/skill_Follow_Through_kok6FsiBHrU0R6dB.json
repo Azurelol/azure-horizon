@@ -21,7 +21,11 @@
       "schemaVersion": 1,
       "type": "reaction",
       "points": 1,
-      "traits": []
+      "traits": [
+        "free"
+      ],
+      "range": "melee",
+      "targeting": "single"
     },
     "damage": {
       "schemaVersion": 1,

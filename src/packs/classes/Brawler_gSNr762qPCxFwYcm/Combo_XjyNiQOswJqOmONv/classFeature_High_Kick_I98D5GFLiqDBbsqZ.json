@@ -1,14 +1,14 @@
 {
   "folder": "XjyNiQOswJqOmONv",
-  "name": "Spinning Heel",
+  "name": "High Kick",
   "type": "classFeature",
-  "_id": "a5U3vGdTVMlIib4W",
+  "_id": "I98D5GFLiqDBbsqZ",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "brawler-spinning-heel",
-    "description": "<p>You deal damage to your target and those adjacent to it in the same row while shifting each of them away.</p>",
+    "slug": "brawler-high-kick",
+    "description": "<p>You deal damage to the target and gain an <em>up</em> sequence input.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -51,35 +51,38 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "brawler-up"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "moderate",
+    "power": "",
     "feature": {
       "_id": "Liuj3SeBbeEE1CMV",
       "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
+      "range": "melee",
       "targeting": "single",
-      "type": "",
+      "type": "action",
       "points": 1,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false
+      "attributes": true,
+      "check": true,
+      "damage": true
     },
     "class": "brawler",
-    "skill": "brawler-martial-arts"
+    "skill": "brawler-martial-arts",
+    "trait": "brawl"
   },
   "effects": [],
   "sort": 0,
@@ -91,12 +94,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787892564543,
+    "createdTime": 1787893082523,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!a5U3vGdTVMlIib4W"
+  "_key": "!items!I98D5GFLiqDBbsqZ"
 }

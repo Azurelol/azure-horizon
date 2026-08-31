@@ -547,6 +547,123 @@
         "exportSource": null
       },
       "_key": "!journal.pages!A6BW9I5K3CI5oKJR.NX8DvapIlGd0kYdf"
+    },
+    {
+      "sort": 1400000,
+      "name": "Cooldown",
+      "type": "text",
+      "_id": "FtHHB9Ua3WOKnFyK",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>An action with this trait cannot be used on consecutive turns.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788117440173,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.FtHHB9Ua3WOKnFyK"
+    },
+    {
+      "sort": 1500000,
+      "name": "Exhaust",
+      "type": "text",
+      "_id": "gCzxcLlBTwQgOAyC",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>An action with this trait can only be used once per battle.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788117458481,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.gCzxcLlBTwQgOAyC"
+    },
+    {
+      "sort": 1600000,
+      "name": "Free Attack",
+      "type": "text",
+      "_id": "exaOot3GG3KwAcS8",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>An attack with this descriptor requires no check and always does a fixed amount of damage based on the attacker's weapon or attack.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788117483683,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.exaOot3GG3KwAcS8"
     }
   ],
   "folder": null,

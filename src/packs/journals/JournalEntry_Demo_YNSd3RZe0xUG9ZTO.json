@@ -4,7 +4,7 @@
   "pages": [
     {
       "sort": 100000,
-      "name": "Introduction",
+      "name": "Preface",
       "type": "text",
       "_id": "xjKZgia36gqYpbDH",
       "system": {},
@@ -15,7 +15,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>Hello!</p><p>This journal will cover the materials for running a demonstration of the system through an unique scenario, which will hopefully teach you and your players everything you need to get started with running campaigns in the system.</p><p>The following pages will cover the setup you will need to do on your end, which is not much!</p>"
+        "content": "<p>Hello!</p><p>This journal will cover the materials for running a demonstration of the system through an unique scenario, which will hopefully teach you and your players everything you need to get started with running campaigns in the system.</p><p>The following pages will cover the setup you will need to do on your end, which is not much!</p><blockquote><p>If you are a player, go away!</p></blockquote>"
       },
       "video": {
         "controls": true,
@@ -43,9 +43,48 @@
     },
     {
       "sort": 200000,
-      "name": "Setup",
+      "name": "Events",
       "type": "text",
       "_id": "2mGogNH9q0PCW3HG",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>These are roughly the order of events that could take place in the scenario I have envisioned for the demonstration of the system.</p><ol><li><p>The party meet their employer, the young aide of a general of the empire who has been tasked to recover a stolen crystal by orcs, who have fled into the desert.</p></li><li><p>They travel the day and spend the night in an oasis, where they are attacked by a wild beast and an elemental. Someone in the party comments the elemental looked disturbed.</p></li><li><p>The next day they encounter the orcs who attack on sight. When defeated they explain their circumstances. The crystal belong to their tribe and they have been guarding it for generations.</p></li><li><p>The aide is shook. Their loyalty to the mission of the empire is shaken.</p></li><li><p>The imperial general arrives on the scene to congratulate the aide, recover the gem and execute the orcs. Add copious amounts of scenery chewing.</p></li><li><p>What will the heroes do!?</p></li></ol><blockquote><p>The order of events here are just a loose recommendation on how to tie a short narrative together. Feel free to adjust any steps or add your own as you see fit.</p></blockquote>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1786631406728,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!YNSd3RZe0xUG9ZTO.2mGogNH9q0PCW3HG"
+    },
+    {
+      "sort": 300000,
+      "name": "Introduction",
+      "type": "text",
+      "_id": "64zeyLjSksr51Pnx",
       "system": {},
       "title": {
         "show": true,
@@ -71,14 +110,14 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1786631406728,
+        "createdTime": 1788205774345,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!journal.pages!YNSd3RZe0xUG9ZTO.2mGogNH9q0PCW3HG"
+      "_key": "!journal.pages!YNSd3RZe0xUG9ZTO.64zeyLjSksr51Pnx"
     }
   ],
   "folder": null,

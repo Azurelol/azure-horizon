@@ -67,10 +67,12 @@
     "class": "armiger",
     "action": {
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": [
         "cooldown"
-      ]
+      ],
+      "range": "melee",
+      "targeting": "single"
     },
     "power": "moderate"
   },

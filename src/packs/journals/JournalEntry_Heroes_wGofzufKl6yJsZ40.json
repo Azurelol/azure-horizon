@@ -82,7 +82,7 @@
     },
     {
       "sort": 150000,
-      "name": "Anatomy",
+      "name": "Summary",
       "type": "text",
       "_id": "XPAuEFEC8uClw359",
       "system": {},
@@ -159,7 +159,7 @@
       "_key": "!journal.pages!wGofzufKl6yJsZ40.57ILvPMso2T3bCne"
     },
     {
-      "sort": 500000,
+      "sort": 387500,
       "name": "Advancement",
       "type": "text",
       "_id": "OBu9hfetqHwrBdj8",
@@ -315,7 +315,7 @@
       "_key": "!journal.pages!wGofzufKl6yJsZ40.lYRH0t52Q2w1x5vz"
     },
     {
-      "sort": 1200000,
+      "sort": 168750,
       "name": "Creation",
       "type": "text",
       "_id": "obgboe1ukjiW8M6u",
@@ -326,7 +326,8 @@
       },
       "image": {},
       "text": {
-        "format": 1
+        "format": 1,
+        "content": "<p>The procedure for creating a new character for a campaign is something the everyone at the player should at least start together on session zero, leaving only the minor details out until the prologue starts.</p><p>It will take place over a sequence of steps, (although the order of some steps can be changed around).</p><p>Each hero generally starts play at level 10.</p><ol><li><p>Create the hero's <strong>profile</strong>, which is a set of descriptors which are used to frame who the character is and why they are taking part in the campaign</p></li><li><p>Choose the hero's initial <strong>classes</strong>, up to a maximum of two.</p></li><li><p>Decide on the hero's initial <strong>attributes</strong> among the four attribute scores.</p></li><li><p>Pick out the hero's starting <strong>equipment</strong>.</p></li><li><p>Decide on the hero's <strong>name</strong> and <strong>artwork</strong>.</p></li></ol>"
       },
       "video": {
         "controls": true,
@@ -353,7 +354,7 @@
       "_key": "!journal.pages!wGofzufKl6yJsZ40.obgboe1ukjiW8M6u"
     },
     {
-      "sort": 125000,
+      "sort": 375000,
       "name": "Ideals",
       "type": "text",
       "_id": "1R80XzAydz21wbgs",

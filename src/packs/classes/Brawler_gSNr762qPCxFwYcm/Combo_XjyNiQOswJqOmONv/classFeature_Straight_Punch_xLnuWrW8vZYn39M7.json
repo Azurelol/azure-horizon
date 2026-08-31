@@ -1,26 +1,28 @@
 {
-  "folder": "Oy6sms6USNNlyxDY",
-  "name": "Suplex",
+  "folder": "XjyNiQOswJqOmONv",
+  "name": "Straight Punch",
   "type": "classFeature",
-  "_id": "6n0Af4pgnyEGt4Ls",
-  "img": "icons/svg/item-bag.svg",
+  "_id": "xLnuWrW8vZYn39M7",
+  "img": "icons/commodities/metal/plating-metal-steel.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "brawler-suplex",
-    "description": "<p>When you have a ▶▶▲▼ <em>combo</em> <em>sequence</em>, you deal damage to the target and knock it <em>prone</em> and leave it <em>stunned</em>.</p>",
-    "attributes": {
-      "schemaVersion": 1,
-      "primary": "dex",
-      "secondary": "mig",
-      "grade": "C"
-    },
+    "slug": "brawler-straight-punch",
+    "description": "<p>You deal damage to the target and gain a <em>right</em> sequence input.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
+    },
+    "action": {
+      "schemaVersion": 1,
+      "range": "melee",
+      "type": "action",
+      "points": 1,
+      "traits": [],
+      "targeting": "single"
     },
     "damage": {
       "schemaVersion": 1,
@@ -51,38 +53,33 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "brawler-right"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "high",
     "feature": {
-      "_id": "Liuj3SeBbeEE1CMV",
+      "_id": "mJCv2WItVVAn1LaQ",
       "type": "emptyClassFeature"
     },
-    "action": {
-      "schemaVersion": 1,
-      "range": "melee",
-      "targeting": "single",
-      "type": "action",
-      "points": 3,
-      "traits": []
-    },
-    "usage": {
-      "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false
-    },
     "class": "brawler",
-    "skill": ""
+    "skill": "brawler-punch",
+    "usage": {
+      "check": true,
+      "damage": true,
+      "power": "low",
+      "attributes": true
+    },
+    "power": "",
+    "trait": "brawl"
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -91,12 +88,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787897536979,
+    "createdTime": 1787067499387,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!6n0Af4pgnyEGt4Ls"
+  "_key": "!items!xLnuWrW8vZYn39M7"
 }

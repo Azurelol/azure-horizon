@@ -1,14 +1,14 @@
 {
-  "folder": "Oy6sms6USNNlyxDY",
-  "name": "Rising Dragon",
+  "folder": "XjyNiQOswJqOmONv",
+  "name": "Low Kick",
   "type": "classFeature",
-  "_id": "F0w6NjWfNx1bR2a1",
+  "_id": "BAFS1dFH89p4cqcC",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "brawler-rising-dragon",
-    "description": "<p>Once you have a ◀▶▼▲ <em>combo</em> <em>sequence</em>, you can deal a powerful attack to the target.</p>",
+    "slug": "brawler-low-kick",
+    "description": "<p>You deal damage to the target and gain an <em>down </em>sequence input.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,43 +44,45 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
-      "resource": "hp",
-      "amount": "&hp(0.1)",
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "brawler-down"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "extreme",
+    "power": "",
     "feature": {
-      "_id": "68vW0ry3mgwkOTps",
+      "_id": "7mKzVdLw9VTmpmNM",
       "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
-      "range": "melee",
-      "targeting": "single",
-      "type": "action",
-      "points": 3,
+      "range": "",
+      "targeting": "",
+      "type": "",
+      "points": 1,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
+      "attributes": true,
       "check": true,
       "damage": true
     },
+    "trait": "brawl",
     "class": "brawler",
-    "skill": "brawler-martial-arts",
-    "trait": ""
+    "skill": "brawler-martial-arts"
   },
   "effects": [],
   "sort": 0,
@@ -92,12 +94,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787899219700,
+    "createdTime": 1788114689927,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!F0w6NjWfNx1bR2a1"
+  "_key": "!items!BAFS1dFH89p4cqcC"
 }

@@ -6,7 +6,7 @@ img: /assets/icons/classes/defender/defender.png
 <div class="document-traits --center">
 <span class="document-trait">Warrior</span>
 <span class="document-trait">Defense</span>
-<span class="document-trait">Stress</span>
+<span class="document-trait">Tension</span>
 </div>
 
 <p>A fighter who specializes in defending their party. They could be a veteran adventurer, a career soldier or a stalwart protector who puts their body on the line to protect those he deems worthy of protecting.</p><blockquote><p>The Defender is the class for those who are interested in actively defending their allies while consistently mitigating damage, no matter their weapon of choice.</p></blockquote>

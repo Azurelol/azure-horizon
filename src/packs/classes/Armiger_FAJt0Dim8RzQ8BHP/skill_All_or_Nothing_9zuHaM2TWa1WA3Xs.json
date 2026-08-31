@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "armiger-all-or-nothing",
-    "description": "<p>After you have performed the check for your next action, if the result of the check was even you gain <em>Empower</em>, otherwise <em>Vulnerable.</em></p>",
+    "description": "<p>After you have performed the check for your next action and before the damage is resolved, if the result of the check was even you gain <em>Empower</em>, otherwise <em>Vulnerable.</em></p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

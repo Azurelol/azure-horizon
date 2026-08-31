@@ -6,6 +6,7 @@ img: /assets/icons/classes/bard/bard.png
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
 <span class="document-trait">Music</span>
+<span class="document-trait">Tension</span>
 </div>
 
 <p>A person with great musical talent, which they can use to rally their allies to great deeds. Whether they be lone performers, career musicians or outright celebrities, they all share a love of music in common and believe it has a power of its own.</p><blockquote><p>The Bard is a rather interesting class for those want to be creative in crafting their own songs and engage with its performance mechanics which usually disallow them from taking offensive actions and instead have them prioritize selectively enhancing certain party members. </p></blockquote>
@@ -107,6 +108,9 @@ img: /assets/icons/classes/bard/bard.png
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/life/heart-shadow-red.webp"><span>Love Polygon</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Activity</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>

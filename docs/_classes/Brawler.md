@@ -44,6 +44,15 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>You recover a minor amount of hit points while recovering from a single negative status effect.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Combination</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>Each turn you can perform two <em>combo </em>actions in sequence for 2 AP or one <em>combo</em> action followed up by a <em>finisher</em> for 3AP.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Cross Counter</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
@@ -54,7 +63,7 @@ img: /assets/icons/classes/brawler/brawler.png
 </div>
 </div>
 
-<p>You prepare to counter an incoming melee attack. The next time you are attacked before the start of your next turn you can perform a powerful attack.</p>
+<p>You prepare to counter an incoming melee attack. The next time you are attacked before the start of your next turn you can perform one of your brawl actions followed up by a combination.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/unarmed-punch-fist-yellow-red.webp"><span>Martial Arts</span></div>
@@ -63,7 +72,7 @@ img: /assets/icons/classes/brawler/brawler.png
 </div>
 </div>
 
-<p>You acquire one martial art and a combination for each point invested in this skill. Each time you perform one of your brawling arts you gain 2 combo sequence inputs depending on the result of the check.</p><table><tbody><tr><td data-colwidth="162"><p></p></td><td><p><strong>Even</strong></p></td><td><p><strong>Odd</strong></p></td></tr><tr><td data-colwidth="162"><p><strong>High Roll</strong></p></td><td><p>▲</p></td><td><p>▼</p></td></tr><tr><td data-colwidth="162"><p><strong>Total</strong></p></td><td><p>◀</p></td><td><p>▶</p></td></tr></tbody></table>
+<p>You acquire one martial art and a finisher for each point invested in this skill. Each time you perform one of your brawl skills you gain a distinct combo sequence input.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Snap Kick</span></div>
@@ -83,47 +92,51 @@ img: /assets/icons/classes/brawler/brawler.png
 ## Features
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Flying Knee</span></div>
-<div class='document-header__properties'>
-</div>
-</div>
-
-
-
-<div class="document-header">
-<div class="document-header__name"><img src="icons/commodities/metal/plating-metal-steel.webp"><span>Iron Hand</span></div>
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>High Kick</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Action 2</span>
+<span class="document-trait">Action 1</span>
 </div>
 </div>
 </div>
 
-<p>You deal damage to the target and pressure them.</p>
-
-<div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Spinning Heel</span></div>
-<div class='document-header__properties'>
-</div>
-</div>
-
-<p>You deal damage to your target and those adjacent to it in the same row while shifting each of them away.</p>
+<p>You deal damage to the target and gain an <em>up</em> sequence input.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Crush</span></div>
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Left Hook</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Action 3</span>
+<span class="document-trait">Action 1</span>
 </div>
 </div>
 </div>
 
-<p>When you have a full combo sequence, you can deal a powerful attack to the target.</p>
+<p>You deal damage to the target and gain a <em>left </em>sequence input.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Rising Dragon</span></div>
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Low Kick</span></div>
+<div class='document-header__properties'>
+</div>
+</div>
+
+<p>You deal damage to the target and gain an <em>down </em>sequence input.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/commodities/metal/plating-metal-steel.webp"><span>Straight Punch</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
+<span class="document-trait">Action 1</span>
+</div>
+</div>
+</div>
+
+<p>You deal damage to the target and gain a <em>right</em> sequence input.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Meteor Drive</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Finisher</span>
 <span class="document-trait">Action 3</span>
 </div>
 </div>
@@ -132,9 +145,34 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>Once you have a ◀▶▼▲ <em>combo</em> <em>sequence</em>, you can deal a powerful attack to the target.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Pummel</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Finisher</span>
+<span class="document-trait">Action 3</span>
+</div>
+</div>
+</div>
+
+<p>When you have a full combo sequence, you can deal a powerful attack to the target and pressure it.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Spinning Heel</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Finisher</span>
+</div>
+</div>
+</div>
+
+<p>When you have a ◀▼▶▲ <em>combo</em> <em>sequence</em>, you can deal damage to your target and those adjacent to it in the same row while shifting each of them away.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Suplex</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Finisher</span>
 <span class="document-trait">Action 3</span>
 </div>
 </div>

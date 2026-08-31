@@ -33,6 +33,20 @@ img: /assets/icons/classes/ritualist/ritualist.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Aura</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Closer</span>
+<span class="document-trait">Cooldown</span>
+<span class="document-trait">Action 1</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You gather dark energy within yourself. Your next attack will deal additional dark damage.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Bargain</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
@@ -52,3 +66,37 @@ img: /assets/icons/classes/ritualist/ritualist.png
 </div>
 
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Dark </em>domain.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Kindle</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Reaction</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You advance the current casting of a party member one step.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Misery</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 2
+</div>
+</div>
+
+<p>When you are in crisis your damage is increased by SL.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Sacrifice</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Action 2</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You restore another party member's hit points at the cost of your own.</p>

@@ -6,6 +6,7 @@ img: /assets/icons/classes/scholar/scholar.png
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
 <span class="document-trait">Lore</span>
+<span class="document-trait">Perception</span>
 </div>
 
 <p>An individual who seeks to learn about the world or a particular subject, who values the preservation and sharing of knowledge. They excel at gathering information more quickly and effectively than the average person and can support their allies with it.</p><blockquote><p>The Scholar is a class for those who value gathering knowledge effectively and supporting their allies with it through effective buffs and debuffs.</p></blockquote>

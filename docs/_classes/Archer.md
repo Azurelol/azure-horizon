@@ -6,6 +6,7 @@ img: /assets/icons/classes/archer/archer.png
 <div class="document-traits --center">
 <span class="document-trait">Offense</span>
 <span class="document-trait">Stealth</span>
+<span class="document-trait">Perception</span>
 </div>
 
 

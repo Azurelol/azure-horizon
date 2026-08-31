@@ -1,14 +1,14 @@
 {
-  "folder": "Oy6sms6USNNlyxDY",
-  "name": "Crush",
-  "type": "classFeature",
-  "_id": "XnentR3RfFbqi74i",
+  "folder": "gSNr762qPCxFwYcm",
+  "name": "Combination",
+  "type": "skill",
+  "_id": "ZAdaWMygjl1Su8PJ",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "brawler-crush",
-    "description": "<p>When you have a full combo sequence, you can deal a powerful attack to the target.</p>",
+    "slug": "brawler-combination",
+    "description": "<p>Each turn you can perform two <em>combo </em>actions in sequence for 2 AP or one <em>combo</em> action followed up by a <em>finisher</em> for 3AP.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -59,30 +59,29 @@
         "tracking": ""
       }
     },
-    "power": "high",
-    "feature": {
-      "_id": "Liuj3SeBbeEE1CMV",
-      "type": "emptyClassFeature"
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
     },
     "action": {
       "schemaVersion": 1,
-      "range": "melee",
-      "targeting": "single",
-      "type": "action",
-      "points": 3,
+      "range": "",
+      "targeting": "",
+      "type": "",
+      "points": 1,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": false,
-      "check": true,
-      "damage": true
+      "check": false,
+      "damage": false
     },
-    "class": "brawler",
-    "skill": ""
+    "class": "brawler"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 150000,
   "ownership": {
     "default": 0
   },
@@ -91,12 +90,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787898125418,
+    "createdTime": 1788114725861,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!XnentR3RfFbqi74i"
+  "_key": "!items!ZAdaWMygjl1Su8PJ"
 }

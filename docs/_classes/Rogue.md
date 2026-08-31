@@ -47,6 +47,15 @@ img: /assets/icons/classes/rogue/rogue.png
 <p>While targeting an enemy that cannot perform actions you can perform a powerful attack to it.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Cripple</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You deal damage and inflict <em>Weak</em> to it.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/rogue/surprise-attack.png"><span>Misdirect</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
@@ -79,6 +88,9 @@ img: /assets/icons/classes/rogue/rogue.png
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/social/theft-pickpocket-bribery-brown.webp"><span>Underworld Connections</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Activity</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>

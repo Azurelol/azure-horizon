@@ -22,7 +22,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "3",
+        "amount": "",
         "type": "piercing"
       },
       "secondary": {

@@ -1,27 +1,26 @@
 {
-  "folder": "XjyNiQOswJqOmONv",
-  "name": "Iron Hand",
-  "type": "classFeature",
-  "_id": "xLnuWrW8vZYn39M7",
-  "img": "icons/commodities/metal/plating-metal-steel.webp",
+  "folder": "g3qyGp3RvLIW5KBs",
+  "name": "Shadowbringer",
+  "type": "skill",
+  "_id": "hMwrQ8nyhRTHTit3",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "brawler-iron-hand",
-    "description": "<p>You deal damage to the target and pressure them.</p>",
+    "slug": "shadowbringer",
+    "description": "",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
-    },
-    "action": {
-      "schemaVersion": 1,
-      "range": "melee",
-      "type": "action",
-      "points": 2,
-      "traits": []
     },
     "damage": {
       "schemaVersion": 1,
@@ -60,17 +59,26 @@
         "tracking": ""
       }
     },
-    "feature": {
-      "_id": "mJCv2WItVVAn1LaQ",
-      "type": "emptyClassFeature"
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
     },
-    "class": "brawler",
-    "skill": "brawler-martial-arts",
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "targeting": "",
+      "type": "",
+      "points": 1,
+      "traits": []
+    },
     "usage": {
-      "check": true,
-      "damage": true,
-      "power": "low"
-    }
+      "schemaVersion": 1,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "hero"
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +90,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787067499387,
+    "createdTime": 1788117240913,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!xLnuWrW8vZYn39M7"
+  "_key": "!items!hMwrQ8nyhRTHTit3"
 }

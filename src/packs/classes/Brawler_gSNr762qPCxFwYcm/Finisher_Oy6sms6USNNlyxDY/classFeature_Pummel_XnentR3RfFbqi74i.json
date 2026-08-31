@@ -1,14 +1,14 @@
 {
-  "folder": "XjyNiQOswJqOmONv",
-  "name": "Flying Knee",
+  "folder": "Oy6sms6USNNlyxDY",
+  "name": "Pummel",
   "type": "classFeature",
-  "_id": "I98D5GFLiqDBbsqZ",
+  "_id": "XnentR3RfFbqi74i",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "flying-knee",
-    "description": "",
+    "slug": "brawler-pummel",
+    "description": "<p>When you have a full combo sequence, you can deal a powerful attack to the target and pressure it.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -59,28 +59,32 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "high",
     "feature": {
       "_id": "Liuj3SeBbeEE1CMV",
       "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
+      "range": "melee",
       "targeting": "single",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "type": "action",
+      "points": 3,
+      "traits": [
+        "finisher"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": false,
-      "check": false,
-      "damage": false
-    }
+      "check": true,
+      "damage": true
+    },
+    "class": "brawler",
+    "skill": "brawler-martial-arts"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 300000,
   "ownership": {
     "default": 0
   },
@@ -89,12 +93,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787893082523,
+    "createdTime": 1787898125418,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!I98D5GFLiqDBbsqZ"
+  "_key": "!items!XnentR3RfFbqi74i"
 }

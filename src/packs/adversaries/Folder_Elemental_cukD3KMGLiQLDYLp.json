@@ -1,10 +1,10 @@
 {
-  "type": "Item",
-  "folder": "gSNr762qPCxFwYcm",
-  "name": "Arts",
+  "type": "Actor",
+  "folder": null,
+  "name": "Elemental",
   "color": null,
   "sorting": "a",
-  "_id": "XjyNiQOswJqOmONv",
+  "_id": "cukD3KMGLiQLDYLp",
   "description": "",
   "sort": 0,
   "flags": {},
@@ -12,12 +12,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787067476505,
+    "createdTime": 1788206451004,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!XjyNiQOswJqOmONv"
+  "_key": "!folders!cukD3KMGLiQLDYLp"
 }

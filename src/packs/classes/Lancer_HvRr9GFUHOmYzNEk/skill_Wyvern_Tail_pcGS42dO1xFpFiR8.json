@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "lancer-wyvern-tail",
-    "description": "<p>While under the effect of Coiled Tail, you can perform a cleaving melee attack. If performed directly after a <em>Jump </em>you can perform a free attack on any enemies hit.</p>",
+    "description": "<p>While under the effect of Coiled Tail, you can perform a cleaving melee attack. While <em>jumping</em> you also perform a <em>free</em> <em>attack</em> on any enemies hit.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

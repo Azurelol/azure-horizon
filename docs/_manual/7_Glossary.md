@@ -58,3 +58,15 @@ icon: fa-solid fa-book
 # Traits
 
 <p>In the system traits are tags with mechanical connotations associated with them. They can be found in characters and many features such as classes, skills, etc.</p><p>Characters gain their traits through class selections whereas adversaries are assigned a number of them depending on their rank.</p><p>They are meant to provide an additional layer of texture to differentiate characters from one another, inform their fictional standing and help both players and the director to guide their actions and motivations.</p><p>More information on them will be provided in the character creation chapter.</p>
+
+# Cooldown
+
+<p>An action with this trait cannot be used on consecutive turns.</p>
+
+# Exhaust
+
+<p>An action with this trait can only be used once per battle.</p>
+
+# Free Attack
+
+<p>An attack with this descriptor requires no check and always does a fixed amount of damage based on the attacker's weapon or attack.</p>

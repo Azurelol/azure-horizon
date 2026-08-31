@@ -19,7 +19,8 @@
     },
     "handedness": "two",
     "traits": [
-      "projectile"
+      "projectile",
+      "reload"
     ],
     "damage": {
       "schemaVersion": 1,

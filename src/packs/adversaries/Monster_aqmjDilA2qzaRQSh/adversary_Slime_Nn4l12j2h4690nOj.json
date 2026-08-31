@@ -3,11 +3,11 @@
   "name": "Slime",
   "type": "adversary",
   "_id": "Nn4l12j2h4690nOj",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/azure-horizon/assets/characters/adversaries/slime.png",
   "system": {
     "attributes": {
       "mig": {
-        "base": 8,
+        "base": 6,
         "bonus": 0
       },
       "dex": {
@@ -15,16 +15,71 @@
         "bonus": 0
       },
       "ins": {
-        "base": 8,
+        "base": 4,
         "bonus": 0
       },
       "wlp": {
-        "base": 8,
+        "base": 4,
         "bonus": 0
       }
     },
     "affinities": {
-      "schemaVersion": 1
+      "schemaVersion": 1,
+      "physical": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "slashing": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "piercing": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "bludgeoning": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "elemental": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "fire": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "cold": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "electric": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "spiritual": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "light": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "dark": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      }
     },
     "level": 5,
     "parameters": {
@@ -283,7 +338,7 @@
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg",
+      "src": "systems/azure-horizon/assets/characters/adversaries/slime.png",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "contain",

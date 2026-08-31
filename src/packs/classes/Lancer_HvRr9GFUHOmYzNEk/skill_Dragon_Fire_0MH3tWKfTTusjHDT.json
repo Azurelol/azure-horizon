@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "lancer-dragon-fire",
-    "description": "<p>While under the effects of <em>Dragon Breath</em> you perform a splash fire attack. If performed directly after a Jump you instead hit all enemies.</p>",
+    "description": "<p>While under the effects of <em>Dragon Breath</em> you perform a splash fire attack. While <em>jumping</em> you instead hit all enemies.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

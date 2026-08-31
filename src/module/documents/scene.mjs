@@ -13,3 +13,11 @@ export class AHScene extends foundry.documents.Scene {
     Hooks.callAll("AH.prepareSceneData", this);
   }
 }
+
+Hooks.on("preCreateScene", (document, data) => {
+  const update = {
+    "grid.alpha": 0,
+    tokenVision: false,
+  };
+  document.updateSource(update);
+});

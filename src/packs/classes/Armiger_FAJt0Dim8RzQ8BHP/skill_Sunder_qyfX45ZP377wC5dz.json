@@ -74,7 +74,8 @@
       "damage": true,
       "power": "low"
     },
-    "class": "armiger"
+    "class": "armiger",
+    "power": "low"
   },
   "effects": [],
   "sort": 0,

@@ -64,6 +64,9 @@ img: /assets/icons/classes/animist/animist.png
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/nature/leaf-flower-wreath-glow-green-blue.webp"><span>Natural Medicine</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Activity</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>

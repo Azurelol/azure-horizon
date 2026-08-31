@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "brawler-martial-arts",
-    "description": "<p>You acquire one martial art and a combination for each point invested in this skill. Each time you perform one of your brawling arts you gain 2 combo sequence inputs depending on the result of the check.</p><table><tbody><tr><td data-colwidth=\"162\"><p></p></td><td><p><strong>Even</strong></p></td><td><p><strong>Odd</strong></p></td></tr><tr><td data-colwidth=\"162\"><p><strong>High Roll</strong></p></td><td><p>▲</p></td><td><p>▼</p></td></tr><tr><td data-colwidth=\"162\"><p><strong>Total</strong></p></td><td><p>◀</p></td><td><p>▶</p></td></tr></tbody></table>",
+    "description": "<p>You acquire one martial art and a finisher for each point invested in this skill. Each time you perform one of your brawl skills you gain a distinct combo sequence input.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

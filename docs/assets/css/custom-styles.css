@@ -29,6 +29,16 @@
   /*--header-font: Pixeloid, 'Open Sans', serif;*/
 }
 
+li {
+  p {
+    margin: 0.25rem;
+  }
+}
+
+p {
+  margin: 1rem;
+}
+
 i {
   color: var(--ah-icon-color);
 }
