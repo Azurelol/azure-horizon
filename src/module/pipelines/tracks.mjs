@@ -44,8 +44,8 @@ async function updateAtIndexForDocument(document, propertyPath, index, increment
  */
 async function updateForDocument(document, propertyPath, increment, useMultiplier) {
   /** @type TrackerDataModel **/
-  const progress = ObjectUtils.getProperty(document, propertyPath);
-  const updatedValue = progress.calculateUpdatedValue(increment, useMultiplier);
+  const tracker = ObjectUtils.getProperty(document, propertyPath);
+  const updatedValue = tracker.calculateUpdatedValue(increment, useMultiplier);
   const currentPropertyPath = `${propertyPath}.current`;
   await document.update({ [currentPropertyPath]: updatedValue });
 }
@@ -81,16 +81,16 @@ async function sendToChat(actor, track, message = undefined) {
 }
 
 /**
- * @param {TrackerDataModel} track
+ * @param {TrackerDataModel} tracker
  * @param {String} message
  * @param {Boolean} displayName
  * @param {String} img
  * @returns {Promise<String>}
  */
-async function renderDetails(track, message = undefined, displayName = true, img = undefined) {
+async function renderDetails(tracker, message = undefined, displayName = true, img = undefined) {
   return renderTemplate("chat/chat-tracker-details", {
-    track: track,
-    segments: track.segments,
+    tracker: tracker,
+    segments: tracker.segments,
     message: message,
     img: img,
     displayName: displayName,
@@ -100,6 +100,7 @@ async function renderDetails(track, message = undefined, displayName = true, img
 const Tracks = Object.freeze({
   updateAtIndexForDocument,
   updateForDocument,
+  sendToChat,
 });
 
 export default Tracks;

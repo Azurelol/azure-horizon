@@ -166,14 +166,9 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
     // Search items
     const items = this.items.values();
     for (const item of items) {
-      const tracker = item.resolveProgress();
-      if (tracker) {
-        if ((id === item.system.slug) || (id === tracker.id)) {
-          return {
-            document: item,
-            tracker: tracker,
-          };
-        }
+      const lookup = item.resolveTracker(id);
+      if (lookup) {
+        return lookup;
       }
     }
     // Search active effects: match the id on the progress track

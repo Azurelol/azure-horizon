@@ -48,6 +48,12 @@
     }
   }
 
+  &.--large {
+    .ah-tracker__segments {
+      --size: 80px;
+    }
+  }
+
   /* Segment clip-paths */
   .ah-tracker__segments[data-segments='1'] .divider {
     display: none;
@@ -172,90 +178,7 @@
   gap: 8px;
 }
 
-.ah-chat-tracker {
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 10px;
-  padding: 10px 20px;
-  width: 100%;
-  font-size: 20px;
-  font-weight: bold;
-  box-sizing: border-box;
-  white-space: nowrap;
-  text-transform: uppercase;
-  align-content: center;
-  line-height: 1.2;
-}
-
-.ah-chat-tracker__container {
-  position: relative;
-  padding: 5px;
-  background-color: #e1e5d1;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-
-.ah-chat-tracker__container__segments {
-  --size: 50px;
-  --border-width: 2px;
-  width: var(--size);
-  height: var(--size);
-  position: relative;
-
-  .foreground {
-    pointer-events: none;
-    position: absolute;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    border: var(--ah-tracker-border);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-    z-index: 2;
-  }
-
-  .divider {
-    pointer-events: none;
-    position: absolute;
-    width: var(--border-width);
-    height: calc(50% - 0.5 * var(--border-width));
-    top: calc(0.5 * var(--border-width));
-    right: calc(50% - var(--border-width) / 2);
-    background: var(--ah-tracker-divider-background);
-    transform-origin: center bottom;
-    transform: rotate(calc(var(--index) * 1turn / var(--segments)));
-    z-index: 2;
-  }
-
-  input[type='radio'].pie {
-    position: absolute;
-    top: 0;
-    margin: 0;
-    appearance: none;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    transform: rotate(calc((var(--index) - 1) * 1turn / var(--segments)));
-    z-index: 1;
-  }
-  .pie:hover {
-    cursor: pointer;
-  }
-  .pie:checked,
-  .pie:checked ~ .pie {
-    background-color: var(--ah-tracker-background-active);
-  }
-  .pie:hover,
-  .pie:hover ~ .pie {
-    background-color: var(--ah-tracker-background-hover);
-  }
-}
-
-.ah-chat-tracker__details {
+.ah-tracker__details {
   display: flex;
   flex-grow: 1;
   flex-direction: column;

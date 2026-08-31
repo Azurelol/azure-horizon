@@ -5,6 +5,7 @@ import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { Dialogs, Migrations } from "../../helpers/_module.mjs";
 import { CompendiumIndex } from "../../data/compendium/_module.mjs";
+import { DocumentSheetMixin } from "../api/document-sheet.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -12,7 +13,7 @@ const { api, sheets } = foundry.applications;
  * Extend the basic ItemSheet with some very simple modifications.
  * @property {AHItem} item
  */
-export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet) {
+export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMixin(sheets.ItemSheet)) {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
@@ -55,9 +56,6 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
       createDoc: this.#createEffect,
       deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
-
-      addArrayElement: AHItemSheet.#addArrayElement,
-      removeArrayElement: AHItemSheet.#removeArrayElement,
 
       pushUpdate: AHItemSheet.#pushUpdate,
       pullUpdate: AHItemSheet.#pullUpdate,
@@ -237,46 +235,6 @@ export class AHItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet
   /* -------------------------------------------------- */
   /*   Event handlers                                   */
   /* -------------------------------------------------- */
-
-  /**
-   * @this AHItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @returns {Promise<void>}
-   */
-  static async #addArrayElement(event, target) {
-    const path = target.dataset.path;
-    if (path) {
-      const array = ObjectUtils.getProperty(this.item, path);
-      if (array) {
-        array.push(null);
-        await this.item.update({
-          [`${path}`]: array,
-        });
-      }
-    }
-  }
-
-  /**
-   * @this AHItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @returns {Promise<void>}
-   */
-  static async #removeArrayElement(event, target) {
-    const path = target.dataset.path;
-    const index = Number.parseInt(target.dataset.index);
-    if (path) {
-      /** @type [] **/
-      const array = ObjectUtils.getProperty(this.item, path);
-      if (array && (index !== undefined)) {
-        array.splice(index, 1);
-        await this.item.update({
-          [`${path}`]: array,
-        });
-      }
-    }
-  }
 
   /**
    * @this AHItemSheet

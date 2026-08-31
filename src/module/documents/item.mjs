@@ -23,17 +23,23 @@ export class AHItem extends DocumentMixin(foundry.documents.Item) {
   }
 
   /**
-   * @returns {TrackerDataModel}
+   * @returns {TrackerLookup}
    * @remarks Returns the first tracker in the item.
    */
-  resolveProgress() {
+  resolveTracker(id) {
     // Search among active effects in the item
     for (const effect of this.effects.values()) {
       if (effect.system.tracker?.enabled) {
-        return effect.system.tracker;
+        const tracker = effect.system.tracker;
+        if ((id === this.system.slug) || (id === tracker.id)) {
+          return {
+            document: this,
+            tracker: tracker,
+          };
+        }
       }
     }
-    return null;
+    return undefined;
   }
 
   /**

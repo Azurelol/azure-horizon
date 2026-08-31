@@ -3,40 +3,45 @@
 		{{{message}}}
 	</section>
 {{/if}}
-<div class="ah-grid">
-	<div class="ah-progress__chat gap-10">
-		<div class="ah-chat-tracker__container">
-			<div class="ah-chat-tracker__container__segments" style="--segments: {{tracker.max}};" data-segments="{{tracker.max}}"
-				 data-tooltip="{{localize 'AH.FIELD.Tracker'}}">
-				<div class="foreground"></div>
-				{{#each segments as |obj key|}}
-					<input disabled="" class="pie slice{{obj.id}}" type="radio" value="{{obj.id}}" style="--index: {{obj.id}}"
-						{{checked obj.checked}} />
-					<div class="divider" style="--index: {{obj.id}}"></div>
-				{{/each}}
-			</div>
-		</div>
-		<div class="details">
-			{{#if displayName}}
-				<div class="name">
-					{{#if tracker.parent.parent.img}}
-						<img class="ah-icon --m" alt="icon" src="{{{tracker.parent.parent.img}}}" />
-					{{/if}}
-					<span>{{localize tracker.name}}</span>
-				</div>
-			{{/if}}
+<div class="ah-tracker --medium">
+  <div class="ah-tracker__segments__container" data-tooltip="{{tracker.current}}/{{tracker.max}}">
+    <div class="ah-tracker__segments" style="--segments: {{tracker.max}};" data-segments="{{tracker.max}}" data-index="{{index}}"
+         data-action="{{action}}"
+         data-id="{{id}}"
+         data-index="{{index}}"
+         data-update-amount="1"
+         data-alternate="true"
+         data-tooltip="{{localize 'AH.FIELD.Tracker'}}"
+         {{#if path}}data-path="{{path}}"{{/if}}>
 
-			<div class="divider">
-				<div class="divider-line"></div>
-				<i class="fas fa-diamond"></i>
-				<div class="divider-line"></div>
-			</div>
+      <div class="foreground"></div>
+      {{#each segments as |obj key|}}
+        <input class="pie slice{{obj.id}}" type="radio" value="{{obj.id}}" style="--index: {{obj.id}}" {{checked obj.checked}} />
+        <div class="divider" style="--index: {{obj.id}}"></div>
+      {{/each}}
+    </div>
+  </div>
 
-			<div class="counter">
-				<span class="current">{{tracker.current}}</span>
-				<span class="">/</span>
-				<span class="max">{{tracker.max}}</span>
-			</div>
-		</div>
-	</div>
+  <div class="ah-tracker__details">
+    {{#if displayName}}
+      <div class="name">
+        {{#if tracker.parent.parent.img}}
+          <img class="ah-icon --m" alt="icon" src="{{{tracker.parent.parent.img}}}" />
+        {{/if}}
+        <span>{{localize tracker.name}}</span>
+      </div>
+    {{/if}}
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <i class="fas fa-diamond"></i>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="counter">
+      <span class="current">{{tracker.current}}</span>
+      <span class="">/</span>
+      <span class="max">{{tracker.max}}</span>
+    </div>
+  </div>
 </div>

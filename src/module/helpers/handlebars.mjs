@@ -1005,11 +1005,11 @@ function renderProgress(tracker, document, path, options, index = undefined) {
   const html =
     typeof template === "function"
       ? template({
-        arr: tracker.segments,
+        segments: tracker.segments,
         id: document._id,
         index: index,
         isCollection: index !== undefined,
-        data: tracker,
+        tracker: tracker,
         path: path,
         controls: controls,
         action: action,

@@ -1,7 +1,7 @@
 <div class="ah-tracker {{classes}}" data-item-id="{{id}}">
 
-	<div class="ah-tracker__segments__container" data-tooltip="{{data.current}}/{{data.max}}">
-		<div class="ah-tracker__segments" style="--segments: {{data.max}};" data-segments="{{data.max}}" data-index="{{index}}"
+	<div class="ah-tracker__segments__container" data-tooltip="{{tracker.current}}/{{tracker.max}}">
+		<div class="ah-tracker__segments" style="--segments: {{tracker.max}};" data-segments="{{tracker.max}}" data-index="{{index}}"
 			 data-action="{{action}}"
 			 data-id="{{id}}"
 			 data-index="{{index}}"
@@ -11,7 +11,7 @@
 			 {{#if path}}data-path="{{path}}"{{/if}}>
 
 			<div class="foreground"></div>
-			{{#each arr as |obj key|}}
+			{{#each segments as |obj key|}}
 				<input class="pie slice{{obj.id}}" type="radio" value="{{obj.id}}" style="--index: {{obj.id}}" {{checked obj.checked}} />
 				<div class="divider" style="--index: {{obj.id}}"></div>
 			{{/each}}

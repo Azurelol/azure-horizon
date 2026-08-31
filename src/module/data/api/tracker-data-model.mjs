@@ -61,7 +61,7 @@ export default class TrackerDataModel extends VersionedDataModel {
    * @returns {number}
    */
   calculateUpdatedValue(increment, useMultiplier = false) {
-    const maxProgress = this.max;
+    const max = this.max;
     let result;
     if (useMultiplier) {
       const stepMultiplier = this.step || 1;
@@ -69,8 +69,8 @@ export default class TrackerDataModel extends VersionedDataModel {
     } else {
       result = this.current + increment;
     }
-    if (maxProgress !== 0) {
-      result = Math.min(result, maxProgress);
+    if (max !== 0) {
+      result = Math.min(result, max);
     }
     return result;
   }

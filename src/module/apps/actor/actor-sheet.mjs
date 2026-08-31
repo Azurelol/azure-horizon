@@ -7,6 +7,7 @@ import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 import { ActionHandler, CompendiumBrowser } from "../ui/_module.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
 import Tracks from "../../pipelines/tracks.mjs";
+import { DocumentSheetMixin } from "../api/document-sheet.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -29,7 +30,7 @@ const { api, sheets } = foundry.applications;
  * Extend the basic ActorSheet with some very simple modifications.
  * @property {AHActor} actor
  */
-export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
+export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMixin(sheets.ActorSheet)) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["ah-application", "ah-sheet"],
@@ -57,10 +58,6 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
       createDoc: this.#createDoc,
       deleteDoc: this.#deleteDoc,
       toggleEffect: this.#toggleEffect,
-
-      addArrayElement: this.#addArrayElement,
-      removeArrayElement: this.#removeArrayElement,
-      updateTrack: this.#updateTrack,
 
       browseCompendium: this.#browseCompendium,
       migrateItems: this.#migrateItems,
@@ -410,74 +407,6 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
   static async #toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
     effect.update({ disabled: !effect.disabled });
-  }
-
-  /**
-   * @this AHActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @returns {Promise<void>}
-   */
-  static async #addArrayElement(event, target) {
-    const path = target.dataset.path;
-    if (path) {
-      const array = ObjectUtils.getProperty(this.actor, path);
-      if (array) {
-        array.push(null);
-        await this.actor.update({
-          [`${path}`]: array,
-        });
-      }
-    }
-  }
-
-  /**
-   * @this AHActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @returns {Promise<void>}
-   */
-  static async #removeArrayElement(event, target) {
-    const { path, prompt, label } = target.dataset;
-    const index = Number.parseInt(target.dataset.index);
-    if (path) {
-      if (prompt) {
-        const options = {
-          title: StringUtils.localize("AH.COMMON.Remove"),
-          message: StringUtils.localize("AH.DIALOG.RemoveMessage", { label: label ?? "AH.COMMON.Entry" }),
-        };
-        const confirm = await Dialogs.confirm (options);
-        if (!confirm) {
-          return;
-        }
-      }
-      /** @type [] **/
-      const array = ObjectUtils.getProperty(this.actor, path);
-      if (array && (index !== undefined)) {
-        array.splice(index, 1);
-        await this.actor.update({
-          [`${path}`]: array,
-        });
-      }
-    }
-  }
-
-  /**
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @returns {Promise<void>}
-   */
-  static async #updateTrack(event, target) {
-    const { updateAmount, id, path, alternate } = target.dataset;
-    let increment = parseInt(updateAmount);
-    if (alternate && (event.button === 2)) {
-      increment = -increment;
-    }
-
-    const lookup = this.actor.resolveTracker(id);
-    if (lookup) {
-      return Tracks.updateForDocument(lookup.document, path, increment);
-    }
   }
 
   /**
