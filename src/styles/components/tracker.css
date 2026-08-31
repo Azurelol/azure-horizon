@@ -27,11 +27,23 @@
   }
 
   .ah-tracker__segments {
-    --size: 50px;
+    --size: 40px;
     --border-width: 2px;
     width: var(--size);
     height: var(--size);
     position: relative;
+  }
+
+  &.--small {
+    .ah-tracker__segments {
+      --size: 40px;
+    }
+  }
+
+  &.--medium {
+    .ah-tracker__segments {
+      --size: 60px;
+    }
   }
 
   /* Segment clip-paths */
@@ -90,7 +102,7 @@
     height: calc(50% - 0.5 * var(--border-width));
     top: calc(0.5 * var(--border-width));
     right: calc(50% - var(--border-width) / 2);
-    background: var(--ah-tracker-background);
+    background: var(--ah-tracker-divider-background);
     transform-origin: center bottom;
     transform: rotate(calc(var(--index) * 1turn / var(--segments)));
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
@@ -99,6 +111,7 @@
 
   /* Pie slice inputs */
   .ah-tracker__segments input[type='radio'].pie {
+    background: var(--ah-tracker-pie-background);
     position: absolute;
     top: 0;
     left: 0;
@@ -117,23 +130,14 @@
 
   .ah-tracker__segments .pie:checked,
   .ah-tracker__segments .pie:checked ~ .pie {
-    background-color: var(--ah-tracker-background);
+    background-color: var(--ah-tracker-pie-checked-background);
   }
 
   .ah-tracker__segments .pie:hover,
   .ah-tracker__segments .pie:hover ~ .pie {
-    background-color: var(--ah-tracker-background-active);
+    background-color: var(--ah-tracker-pie-hover-background);
   }
 
-  /* Checked + hover interactions */
-  .ah-tracker__segments .pie:checked:hover,
-  .ah-tracker__segments .pie:checked:hover ~ .pie,
-  .ah-tracker__segments .pie:checked ~ .pie:hover,
-  .ah-tracker__segments .pie:checked ~ .pie:hover ~ .pie,
-  .ah-tracker__segments .pie:hover ~ .pie:checked,
-  .ah-tracker__segments .pie:hover ~ .pie:checked ~ .pie {
-    background-color: var(--ah-tracker-background);
-  }
 
   .ah-tracker__controls {
     display: flex;
@@ -247,14 +251,6 @@
   .pie:hover,
   .pie:hover ~ .pie {
     background-color: var(--ah-tracker-background-hover);
-  }
-  .pie:checked:hover,
-  .pie:checked:hover ~ .pie,
-  .pie:checked ~ .pie:hover,
-  .pie:checked ~ .pie:hover ~ .pie,
-  .pie:hover ~ .pie:checked,
-  .pie:hover ~ .pie:checked ~ .pie {
-    background-color: var(--ah-tracker-background);
   }
 }
 
