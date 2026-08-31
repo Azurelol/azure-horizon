@@ -37,6 +37,21 @@ async function updateAtIndexForDocument(document, propertyPath, index, increment
 
 /**
  * @param {Document} document
+ * @param {String} propertyPath
+ * @param {Number} increment
+ * @param {Boolean} useMultiplier
+ * @returns {Promise<void>}
+ */
+async function updateForDocument(document, propertyPath, increment, useMultiplier) {
+  /** @type TrackerDataModel **/
+  const progress = ObjectUtils.getProperty(document, propertyPath);
+  const updatedValue = progress.calculateUpdatedValue(increment, useMultiplier);
+  const currentPropertyPath = `${propertyPath}.current`;
+  await document.update({ [currentPropertyPath]: updatedValue });
+}
+
+/**
+ * @param {Document} document
  * @param {TrackerDataModel} progress
  * @param {Number} increment
  * @param {AHActor|AHItem|String} source
@@ -84,6 +99,7 @@ async function renderDetails(track, message = undefined, displayName = true, img
 
 const Tracks = Object.freeze({
   updateAtIndexForDocument,
+  updateForDocument,
 });
 
 export default Tracks;

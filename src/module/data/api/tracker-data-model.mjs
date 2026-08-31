@@ -55,4 +55,24 @@ export default class TrackerDataModel extends VersionedDataModel {
     })).reverse();
   }
 
+  /**
+   * @param {Number} increment
+   * @param {Boolean} useMultiplier
+   * @returns {number}
+   */
+  calculateUpdatedValue(increment, useMultiplier = false) {
+    const maxProgress = this.max;
+    let result;
+    if (useMultiplier) {
+      const stepMultiplier = this.step || 1;
+      result = this.current + increment * stepMultiplier;
+    } else {
+      result = this.current + increment;
+    }
+    if (maxProgress !== 0) {
+      result = Math.min(result, maxProgress);
+    }
+    return result;
+  }
+
 }

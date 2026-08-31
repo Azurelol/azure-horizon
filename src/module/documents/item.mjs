@@ -23,6 +23,20 @@ export class AHItem extends DocumentMixin(foundry.documents.Item) {
   }
 
   /**
+   * @returns {TrackerDataModel}
+   * @remarks Returns the first tracker in the item.
+   */
+  resolveProgress() {
+    // Search among active effects in the item
+    for (const effect of this.effects.values()) {
+      if (effect.system.tracker?.enabled) {
+        return effect.system.tracker;
+      }
+    }
+    return null;
+  }
+
+  /**
    * @param {KeyboardModifiers} modifiers
    * @returns {Promise<void>}
    */

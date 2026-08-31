@@ -182,7 +182,7 @@ function evaluateMacros(expression, context) {
       case "pg": {
         const actor = context.resolveActorOrSource(match, redirect);
         const id = parseIdentifier(splitArgs[0]);
-        const clock = actor.resolveTracker(id);
+        const clock = actor.resolveTracker(id).tracker;
         if (!clock) {
           ui.notifications.warn(`${StringUtils.localize("AH.CHAT.EvaluateNoProgress")}: '${id}'`, { localize: true });
           throw new Error(`The progress track with id ${id} was not found`);

@@ -6,6 +6,7 @@ import AH from "../../config.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 import { ActionHandler, CompendiumBrowser } from "../ui/_module.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
+import Tracks from "../../pipelines/tracks.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -59,6 +60,7 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
 
       addArrayElement: this.#addArrayElement,
       removeArrayElement: this.#removeArrayElement,
+      updateTrack: this.#updateTrack,
 
       browseCompendium: this.#browseCompendium,
       migrateItems: this.#migrateItems,
@@ -457,6 +459,24 @@ export class AHActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorShe
           [`${path}`]: array,
         });
       }
+    }
+  }
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #updateTrack(event, target) {
+    const { updateAmount, id, path, alternate } = target.dataset;
+    let increment = parseInt(updateAmount);
+    if (alternate && (event.button === 2)) {
+      increment = -increment;
+    }
+
+    const lookup = this.actor.resolveTracker(id);
+    if (lookup) {
+      return Tracks.updateForDocument(lookup.document, path, increment);
     }
   }
 

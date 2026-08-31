@@ -983,8 +983,8 @@ const TRACKER_TEMPLATES = {
  * @returns {String}
  */
 function tracker(document, path, options) {
-  const progress = foundry.utils.getProperty(document, path);
-  return renderProgress(progress, document, path, options.hash);
+  const tracker = foundry.utils.getProperty(document, path);
+  return renderProgress(tracker, document, path, options.hash);
 }
 
 /**

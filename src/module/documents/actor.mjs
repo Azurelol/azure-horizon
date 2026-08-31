@@ -127,8 +127,8 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
   /**
    * Get all ActiveEffects that may apply to this Actor, filtered to exclude [whatever].
    * @override
-   * @yields {ActiveEffect}
-   * @returns {Generator<ActiveEffect, void, void>}
+   * @yields {AHActiveEffect}
+   * @returns {Generator<AHActiveEffect, void, void>}
    * @remarks Filters out [specific reason] from the base implementation
    */
   *allApplicableEffects() {
@@ -152,21 +152,51 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
   }
 
   /**
+   * @typedef TrackerLookup
+   * @property {AHActor|AHItem} document
+   * @property {TrackerDataModel} tracker
+   */
+
+  /**
    * @description Resolves a tracker with the given id among the actor's items and effects.
    * @param {String} id
-   * @returns {TrackerDataModel}
+   * @returns {TrackerLookup}
    */
   resolveTracker(id) {
+    // Search items
+    const items = this.items.values();
+    for (const item of items) {
+      const tracker = item.resolveProgress();
+      if (tracker) {
+        if ((id === item.system.slug) || (id === tracker.id)) {
+          return {
+            document: item,
+            tracker: tracker,
+          };
+        }
+      }
+    }
     // Search active effects: match the id on the progress track
     for (const effect of this.allApplicableEffects()) {
       if (effect.system.tracker?.enabled) {
         const tracker = effect.system.tracker;
-        if (tracker.id === id) {
-          return tracker;
+        if ((tracker.id === id) || (tracker.parent.parent.id === id)) {
+          return {
+            document: effect,
+            tracker: tracker,
+          };
         }
       }
     }
-    return null;
+    return undefined;
+  }
+
+  /**
+   * @param {String} id
+   * @returns {AHItem}
+   */
+  resolveItem(id) {
+    return this.items.filter((i) => i.id === id)[0];
   }
 
   /**
