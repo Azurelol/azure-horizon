@@ -111,8 +111,7 @@
     z-index: 2;
   }
 
-  /* Pie slice inputs */
-  .ah-tracker__segments input[type='radio'].pie {
+  .ah-tracker__segments .pie {
     background: var(--ah-tracker-pie-background);
     position: absolute;
     top: 0;
