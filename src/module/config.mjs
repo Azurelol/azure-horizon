@@ -573,6 +573,15 @@ AH.effectTracking = {
 };
 
 /**
+ * @typedef {'bar'|'clock'} AH_TrackerStyle
+ */
+
+AH.trackerStyles = {
+  clock: "AH.COMMON.Clock",
+  bar: "AH.COMMON.Bar",
+};
+
+/**
  * @typedef {"custom", "harrier", "brute", "defender", "artillery", "saboteur", "controller", "supporter", "leader"} AH_RoleType
  */
 
@@ -1267,6 +1276,8 @@ AH.icons = {
   bookmark: "fa fa-bookmark-o",
   add: "fa fa-plus",
   remove: "fa fa-minus",
+  plus: "fa fa-plus",
+  minus: "fa fa-minus",
   edit: "fa fa-pencil",
   undo: "fa fa-undo",
   redo: "fa fa-redo",
@@ -1277,6 +1288,13 @@ AH.icons = {
   broken: "fas fa-chain-broken",
   type: "fa-solid fa-shapes",
   amount: "fa-solid fa-calculator",
+  duration: "fa fa-stopwatch",
+  origin: "fa fa-map-marker-alt",
+  properties: "fa fa-tags",
+  message: "fas fa-message",
+  dice: "ra ra-perspective-dice-six",
+  open: "fas fa-open",
+  close: "fas fa-close",
 
   roll: "ah-icon-check-roll",
   hr: "ah-icon-check-hr",

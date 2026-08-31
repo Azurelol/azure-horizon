@@ -738,6 +738,8 @@
       "Entry": "Entry",
       "Name": "Name",
       "Add": "Add",
+      "Increase": "Increase",
+      "Decrease": "Decrease",
       "Hidden": "Hidden",
       "Tags": "Tags",
       "Remove": "Remove",
@@ -790,7 +792,9 @@
       "MigrateActor": "Migrate Actor",
       "MigrateItems": "Migrate Items",
       "PushUpdate": "Push Update",
-      "PullUpdate": "Pull Update"
+      "PullUpdate": "Pull Update",
+      "Bar": "Bar",
+      "Clock": "Clock"
     },
     "EQUIPMENT": {
       "Rarity": "Rarity",

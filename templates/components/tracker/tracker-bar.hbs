@@ -1,0 +1,28 @@
+<div class="ah-tracker {{classes}}">
+
+	<div class="ah-tracker__bar frame" data-tooltip="{{data.current}}/{{data.max}}">
+		<div class="bar"
+			 style="width: {{ahPercentage data.current data.max}};">
+		</div>
+	</div>
+
+		{{#if displayName}}
+		<div class="ah-tracker__name__container">
+			{{#if compact}}
+				<a data-action="openTrackMenu" data-id="{{id}}"
+				   {{#if dataPath}}data-data-path="{{dataPath}}"{{/if}}
+				   data-index="{{index}}">
+					<span>{{localize displayName}}</span>
+				</a>
+			{{else}}
+				<label>
+					<span>{{localize displayName}}</span>
+				</label>
+			{{/if}}
+		</div>
+		{{/if}}
+
+	{{#unless compact}}
+		{{> 'systems/azure-horizon/templates/components/tracker/tracker-controls.hbs'}}
+	{{/unless}}
+</div>

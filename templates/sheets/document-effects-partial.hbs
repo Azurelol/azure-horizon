@@ -1,13 +1,23 @@
 <ul class="effects-list">
   {{#each effects as |section sid|}}
     <li class="effects-header flexrow draggable" data-effect-type="{{section.type}}">
+      <!-- LABEL -->
       <div class="effect-label flexrow">
         {{localize section.label}}
       </div>
-      <div class="effect-source">
-        {{localize "AH.FIELD.Origin"}}
+      <!-- PROPERTIES -->
+      <div class="effect-properties" data-tooltip="{{localize "AH.COMMON.Properties"}}">
+        <i class="{{ahIconClass 'properties'}}"></i>
       </div>
-      <div class="effect-duration">{{localize "EFFECT.TABS.duration"}}</div>
+      <!-- ORIGIN -->
+      <div class="effect-source" data-tooltip="{{localize "AH.FIELD.Origin"}}">
+        <i class="{{ahIconClass 'origin'}}"></i>
+      </div>
+      <!-- DURATION -->
+      <div class="effect-duration" data-tooltip="{{localize "EFFECT.TABS.duration"}}">
+        <i class="{{ahIconClass 'duration'}}"></i>
+      </div>
+      <!-- CONTROLS -->
       <div class="document-controls flexrow">
         <a class="effect-controls"
            data-tooltip="{{localize "DOCUMENT.New" type=(localize "AH.Effect.Label")}}"
@@ -18,7 +28,7 @@
            data-origin="{{@root.document.uuid}}"
            title="{{localize 'DOCUMENT.Create' type=(localize 'DOCUMENT.ActiveEffect')}}"
            data-img="icons/svg/aura.svg">
-          <i class="fas fa-plus"></i>
+          <i class="{{ahIconClass 'add'}}"></i>
         </a>
       </div>
     </li>
@@ -27,12 +37,22 @@
       {{#each section.effects as |effect|}}
         <li class="effect flexrow draggable" data-effect-id="{{effect.id}}" data-parent-id="{{effect.parent.id}}"
             data-document-class="ActiveEffect">
+          <!-- LABEL -->
           <div class="effect-label">
             <img class="effect-image" src="{{effect.img}}" alt="{{effect.name}}" height="24" width="24">
             <div class="effect-name">{{effect.name}}</div>
           </div>
+          <!-- PROPERTIES -->
+          <div class="effect-properties">
+            {{#if effect.system.tracker.enabled}}
+              {{ahTracker effect 'system.tracker'}}
+            {{/if}}
+          </div>
+          <!-- ORIGIN -->
           <div class="effect-source">{{effect.sourceName}}</div>
+          <!-- DURATION -->
           <div class="effect-duration">{{effect.duration.label}}</div>
+          <!-- CONTROLS -->
           <div class="document-controls">
             {{#if @root.editable}}
               <a class="effect-control" data-action="toggleEffect" title="{{localize 'AH.Effect.Toggle'}}">

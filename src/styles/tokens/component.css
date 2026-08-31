@@ -113,6 +113,8 @@
   --ah-badge-color: var(--ah-content-primary);
   --ah-badge-bonus-color: #7aec76;
   --ah-tracker-background: var(--ah-surface-action);
+  --ah-tracker-divider-background: var(--ah-surface-action-hover);
+  --ah-tracker-border: 2px solid var(--ah-surface-action);
   --ah-tracker-background-active: var(--ah-surface-action-active);
   --ah-tracker-background-hover: var(--ah-surface-action-hover);
 

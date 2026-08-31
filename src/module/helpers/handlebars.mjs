@@ -28,6 +28,10 @@ const COMPONENT_TEMPLATES = Object.freeze({
   fieldset: systemTemplatePath("components/fieldset"),
   optionalFieldset: systemTemplatePath("components/fieldset-optional-v2"),
 
+  tracker_clock: systemTemplatePath("components/tracker/tracker-clock"),
+  tracker_bar: systemTemplatePath("components/tracker/tracker-bar"),
+  tracker_controls: systemTemplatePath("components/tracker/tracker-controls"),
+
   inlineProperty: systemTemplatePath("components/inline-property"),
   resourceBar: systemTemplatePath("components/resource-bar"),
 
@@ -315,6 +319,7 @@ export default Object.freeze({
       return scaleValue(value);
     });
     Handlebars.registerHelper("ahDocumentCarousel", documentCarousel);
+    Handlebars.registerHelper("ahTracker", tracker);
     Handlebars.registerHelper("ahCheckOutcome",
       /**
        * @param {CheckResult} result
@@ -951,5 +956,70 @@ function traitsFieldset(model, path, options) {
         showLabel: options.showLabel ?? false,
       })
       : "";
+  return new Handlebars.SafeString(html);
+}
+
+/**
+ * @typedef TrackerRenderOptions
+ * @property {Boolean} displayName
+ * @property {Boolean} prompt Whether to support prompting a dialog to request a roll to affect this track
+ * @property {Boolean} event Whether to dispatch an event on a change
+ * @property {Boolean} controls
+ * @property {Boolean} compact If true, will present the controls in a more compact way.
+ * @property action
+ * @property {"clock"|"bar"} style
+ * @property {String} classes
+ */
+
+const TRACKER_TEMPLATES = {
+  clock: COMPONENT_TEMPLATES.tracker_clock,
+  bar: COMPONENT_TEMPLATES.tracker_bar,
+};
+
+/**
+ * @param {AHActor|AHItem} document
+ * @param {String} path
+ * @param {TrackerRenderOptions} options
+ * @returns {String}
+ */
+function tracker(document, path, options) {
+  const progress = foundry.utils.getProperty(document, path);
+  return renderProgress(progress, document, path, options.hash);
+}
+
+/**
+ * @param {TrackerDataModel} tracker
+ * @param {AHActor|AHItem} document
+ * @param {String} path
+ * @param {int} index
+ * @param {TrackerRenderOptions} options
+ * @returns {String}
+ */
+function renderProgress(tracker, document, path, options, index = undefined) {
+  const style = options.style ?? tracker.style ?? "clock";
+  const action = options.action ?? "updateTrack";
+  const controls = options.controls ?? true;
+
+  // Render the partial directly using Handlebars
+  const template = Handlebars.partials[TRACKER_TEMPLATES[style]];
+  const html =
+    typeof template === "function"
+      ? template({
+        arr: tracker.segments,
+        id: document._id,
+        index: index,
+        isCollection: index !== undefined,
+        data: tracker,
+        path: path,
+        controls: controls,
+        action: action,
+        prompt: options.prompt,
+        classes: options.classes ?? "",
+        compact: options.compact,
+        displayName: options.displayName && (tracker.name || document.name),
+      })
+      : "";
+
+  // Begin constructing HTML
   return new Handlebars.SafeString(html);
 }

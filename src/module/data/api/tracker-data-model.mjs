@@ -20,7 +20,7 @@ import VersionedDataModel from "./versioned-data-model.mjs";
  * @property {string} name A label, used for user-facing displays.
  * @property {number} current The current value
  * @property {number} max The maximum value
- * @property {string} style An optional style to use for this track
+ * @property {AH_TrackerStyle} style An optional style to use for this track
  * @property {Boolean} enabled Whether this tracker should be used
  * @property {string} id Optionally, a unique identifier for internal lookups.
  */

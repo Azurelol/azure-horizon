@@ -1,3 +1,172 @@
+.ah-tracker {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: auto 1fr;
+
+  span,
+  i {
+    color: var(--ah-content-action);
+  }
+
+  &.--stack {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :is(.desc) & span,
+  :is(.desc) & i {
+    color: unset;
+  }
+
+  .ah-tracker__segments__container {
+    grid-row: 1 / span 2;
+    display: flex;
+    padding: 2px;
+    justify-content: space-evenly;
+    gap: 2em;
+  }
+
+  .ah-tracker__segments {
+    --size: 50px;
+    --border-width: 2px;
+    width: var(--size);
+    height: var(--size);
+    position: relative;
+  }
+
+  /* Segment clip-paths */
+  .ah-tracker__segments[data-segments='1'] .divider {
+    display: none;
+  }
+  .ah-tracker__segments[data-segments='2'] .pie {
+    clip-path: polygon(50% -25%, 50% 125%, 120% 50%);
+  }
+  .ah-tracker__segments[data-segments='3'] .pie {
+    clip-path: polygon(50% -50%, 50% 50%, 140% 100%);
+  }
+  .ah-tracker__segments[data-segments='4'] .pie {
+    clip-path: polygon(50% -25%, 50% 50%, 120% 50%);
+  }
+  .ah-tracker__segments[data-segments='5'] .pie {
+    clip-path: polygon(50% -10%, 50% 50%, 110% 30%);
+  }
+  .ah-tracker__segments[data-segments='6'] .pie {
+    clip-path: polygon(50% -10%, 50% 50%, 100% 20%);
+  }
+  .ah-tracker__segments[data-segments='7'] .pie {
+    clip-path: polygon(50% 0, 50% 50%, 110% 0);
+  }
+  .ah-tracker__segments[data-segments='8'] .pie {
+    clip-path: polygon(50% 0, 50% 50%, 100% 0);
+  }
+  .ah-tracker__segments[data-segments='9'] .pie {
+    clip-path: polygon(50% 0, 50% 50%, 95% 0);
+  }
+  .ah-tracker__segments[data-segments='10'] .pie {
+    clip-path: polygon(50% 0, 50% 50%, 85% 0);
+  }
+  .ah-tracker__segments[data-segments='11'] .pie {
+    clip-path: polygon(50% 0, 50% 50%, 85% 0);
+  }
+  .ah-tracker__segments[data-segments='12'] .pie {
+    clip-path: polygon(50% 0, 50% 50%, 80% 0);
+  }
+
+  .ah-tracker__segments .foreground {
+    pointer-events: none;
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    border: var(--ah-tracker-border);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+
+  .ah-tracker__segments .divider {
+    pointer-events: none;
+    position: absolute;
+    width: var(--border-width);
+    height: calc(50% - 0.5 * var(--border-width));
+    top: calc(0.5 * var(--border-width));
+    right: calc(50% - var(--border-width) / 2);
+    background: var(--ah-tracker-background);
+    transform-origin: center bottom;
+    transform: rotate(calc(var(--index) * 1turn / var(--segments)));
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+
+  /* Pie slice inputs */
+  .ah-tracker__segments input[type='radio'].pie {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    appearance: none;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    transform: rotate(calc((var(--index) - 1) * 1turn / var(--segments)));
+    z-index: 1;
+  }
+
+  .ah-tracker__segments .pie:hover {
+    cursor: pointer;
+  }
+
+  .ah-tracker__segments .pie:checked,
+  .ah-tracker__segments .pie:checked ~ .pie {
+    background-color: var(--ah-tracker-background);
+  }
+
+  .ah-tracker__segments .pie:hover,
+  .ah-tracker__segments .pie:hover ~ .pie {
+    background-color: var(--ah-tracker-background-active);
+  }
+
+  /* Checked + hover interactions */
+  .ah-tracker__segments .pie:checked:hover,
+  .ah-tracker__segments .pie:checked:hover ~ .pie,
+  .ah-tracker__segments .pie:checked ~ .pie:hover,
+  .ah-tracker__segments .pie:checked ~ .pie:hover ~ .pie,
+  .ah-tracker__segments .pie:hover ~ .pie:checked,
+  .ah-tracker__segments .pie:hover ~ .pie:checked ~ .pie {
+    background-color: var(--ah-tracker-background);
+  }
+
+  .ah-tracker__controls {
+    display: flex;
+    gap: 2px;
+    justify-content: space-evenly;
+
+    a {
+      border-radius: 30%;
+      width: 1lh;
+      height: 1lh;
+      padding: 1px;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+
+  .ah-tracker__name__container {
+    display: flex;
+    flex-direction: column;
+    flex: 0;
+    label {
+      vertical-align: middle;
+    }
+  }
+}
+
+.ah-tracker__collection {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  gap: 8px;
+}
+
 .ah-chat-tracker {
   display: flex;
   gap: 10px;
@@ -39,7 +208,7 @@
     width: var(--size);
     height: var(--size);
     border-radius: 50%;
-    border: var(--border-width) solid #2b4a42;
+    border: var(--ah-tracker-border);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     z-index: 2;
   }
@@ -51,7 +220,7 @@
     height: calc(50% - 0.5 * var(--border-width));
     top: calc(0.5 * var(--border-width));
     right: calc(50% - var(--border-width) / 2);
-    background: #3d665a;
+    background: var(--ah-tracker-divider-background);
     transform-origin: center bottom;
     transform: rotate(calc(var(--index) * 1turn / var(--segments)));
     z-index: 2;
