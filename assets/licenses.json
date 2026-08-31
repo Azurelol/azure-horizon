@@ -44,9 +44,10 @@
     "url": "https://nikoichu.itch.io/pixel-icons",
     "license": "CC0 1.0"
   },
-  "craftpix": {
-    "author": "Craftpix Community",
-    "url": "https://free-game-assets.itch.io/",
-    "license": "free"
+  "mega-tiles": {
+    "author": "Mega Tiles",
+    "url": "https://megatiles.itch.io/",
+    "license": "PURCHASED ALL-IN-ONE BUNDLE",
+    "remark": "These will be used for the demo and the sample adversaries."
   }
 }
