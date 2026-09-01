@@ -42,7 +42,7 @@ export class EffectsDataModel extends OptionalFieldsetDataModel {
    * @return {Promise}
    */
   configureAction(config) {
-    if (this.enabled) {
+    if (this.active) {
       if (this.entries.length > 0) {
         config.setEffects(this);
       }

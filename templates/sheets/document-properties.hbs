@@ -3,7 +3,9 @@
   <div class="ah-field__settings">
     {{#each fieldsets as |field|}}
       {{#if field.optional}}
-        {{ahBooleanField path=(ahConcat field.path '.enabled') icon=(ahIconClass field.name) style='compact' label=field.label value=field.value.enabled }}
+        {{#unless field.active}}
+          {{ahBooleanField path=(ahConcat field.path '.enabled') icon=(ahIconClass field.name) style='compact' label=field.label value=field.value.enabled }}
+        {{/unless}}
       {{/if}}
     {{/each}}
     {{#if templates.settings}}

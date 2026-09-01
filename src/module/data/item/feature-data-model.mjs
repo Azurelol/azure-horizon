@@ -18,8 +18,7 @@ export default class FeatureDataModel extends ItemDataModel {
   static defineSchema() {
     const { SchemaField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      attributes: new EmbeddedDataField(ActionAttributesDataModel, {}),
-      check: new EmbeddedDataField(CheckDataModel, { }),
+
     });
   }
 

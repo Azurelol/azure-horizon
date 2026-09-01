@@ -334,6 +334,7 @@ export default class FoundryUtils {
       model: value,
       value: value,
       optional: field.fields?.enabled !== undefined,
+      active: value.enabled || value.required,
     };
     if (field.model?.template) {
       data.template = field.model.template;

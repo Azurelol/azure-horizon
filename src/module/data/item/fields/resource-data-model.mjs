@@ -20,7 +20,7 @@ export default class ResourceDataModel extends OptionalFieldsetDataModel {
    * @return {Promise}
    */
   configureAction(config) {
-    if (this.enabled) {
+    if (this.active) {
       config.setResource(this.type, this.amount);
     }
   }

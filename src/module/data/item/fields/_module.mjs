@@ -9,6 +9,7 @@ import { ActionCostDataModel } from "./action-cost-data-model.mjs";
 import { ActionDataModel } from "./action-data-model.mjs";
 import { ActionAttributesDataModel } from "./action-attributes-data-model.mjs";
 import EngramSlotsDataModel from "./engram-slots-data-model.mjs";
+import { WeaponOptionsDataModel } from "./weapon-options-data-model.mjs";
 
 const dataModels = Object.freeze({
   attributes: ActionAttributesDataModel,
@@ -18,10 +19,11 @@ const dataModels = Object.freeze({
   effects: EffectsDataModel,
   traits: TraitsField,
   benefits: ClassBenefitsDataModel,
-  advancement: WeaponUsageDataModel,
+  usage: WeaponUsageDataModel,
   action: ActionDataModel,
   cost: ActionCostDataModel,
   engramSlots: EngramSlotsDataModel,
+  weapon: WeaponOptionsDataModel,
 });
 
 /**

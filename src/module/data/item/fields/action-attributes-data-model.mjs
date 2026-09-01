@@ -26,7 +26,7 @@ export class ActionAttributesDataModel extends OptionalFieldsetDataModel {
    * @param options
    */
   configureAction(config, options = {}) {
-    if (this.enabled) {
+    if (this.active) {
       config.setAttributes(this.primary, this.secondary);
       config.setGrade(this.grade);
     }

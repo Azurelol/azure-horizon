@@ -42,7 +42,7 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
    */
   configureAction(config, options = {}) {
     const label = options.label ?? "AH.DAMAGE.Damage";
-    if (this.enabled) {
+    if (this.active) {
 
       config.addTraits(this.primary.type);
       const traits = this.traits.values();

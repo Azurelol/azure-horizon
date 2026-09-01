@@ -1,11 +1,12 @@
 import FeatureDataModel from "./feature-data-model.mjs";
-import { DamageDataModel } from "./fields/_module.mjs";
+import { CheckDataModel, DamageDataModel } from "./fields/_module.mjs";
 import { FoundryUtils } from "../../utils/_module.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ResourceDataModel from "./fields/resource-data-model.mjs";
 import { ActionCostDataModel } from "./fields/action-cost-data-model.mjs";
 import { ActionDataModel } from "./fields/action-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
+import { ActionAttributesDataModel } from "./fields/action-attributes-data-model.mjs";
 
 /**
  * Represents an action in the system.
@@ -22,8 +23,9 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
   static defineSchema() {
     const { SchemaField, StringField, HTMLField, NumberField, BooleanField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      attributes: new EmbeddedDataField(ActionAttributesDataModel, {}),
+      check: new EmbeddedDataField(CheckDataModel, { }),
       damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
-        enabled: true,
       })),
       resource: new EmbeddedDataField(ResourceDataModel, {}),
       cost: new EmbeddedDataField(ActionCostDataModel, {}),
