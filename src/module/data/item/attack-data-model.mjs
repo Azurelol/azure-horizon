@@ -42,6 +42,14 @@ export default class AttackDataModel extends FeatureDataModel {
     });
   }
 
+  /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    this.attributes.required = true;
+    this.check.required = true;
+    this.damage.required = true;
+  }
+
   async _initializeAction(config) {
     await super._initializeAction(config);
     config.addTraits(this.range);

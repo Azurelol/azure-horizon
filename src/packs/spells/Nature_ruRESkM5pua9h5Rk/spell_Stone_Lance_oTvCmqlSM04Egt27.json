@@ -1,0 +1,95 @@
+{
+  "folder": "ruRESkM5pua9h5Rk",
+  "name": "Stone Lance",
+  "type": "spell",
+  "_id": "oTvCmqlSM04Egt27",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "nature-stone-lance",
+    "description": "<p>You deal piercing and bludgeoning damage to the target.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "A"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "mdef",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "",
+        "type": "piercing"
+      },
+      "secondary": {
+        "amount": "",
+        "type": "bludgeoning"
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "mp",
+      "amount": "15",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "high",
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "ranged",
+      "targeting": "single",
+      "type": "action",
+      "points": 2,
+      "traits": []
+    },
+    "domain": "nature",
+    "speed": "instant"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788277930820,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!oTvCmqlSM04Egt27"
+}

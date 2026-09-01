@@ -15,7 +15,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<h2>Action Checks</h2><p>This type of Check is used when a character performs various actions such as attacks, skills and spells. Its result determines how potent the action was, in various tiers. Any actions that lead to this check cannot miss. Their consequences (such as taking damage) can only be avoided or diminished through the use of specific defensive actions.</p><p>Depending on the result of the check, the potency of the action varies.</p><div><table><tbody><tr><td><p>Failure</p></td><td><p>Reduced</p></td><td><p>Usually minimal damage with no extra effects.</p></td></tr><tr><td><p>Success</p></td><td><p>Standard</p></td><td><p>Average damage with default effects.</p></td></tr><tr><td><p>Critical</p></td><td><p>Powerful</p></td><td><p>Same as standard, provides an opportunity.</p></td></tr></tbody></table></div><h3>Examples</h3><p>Meravel attacks a Wolf which has 8 DEF.</p><div><table><tbody><tr><td><p>13</p></td><td><p>Success</p></td><td><p>The wolf suffers the sword’s (base bonus + high roll) in physical damage.</p></td></tr><tr><td><p>7</p></td><td><p>Failure</p></td><td><p>The wolf suffers (base bonus * 0.5) in physical damage.</p></td></tr><tr><td><p>16</p></td><td><p>Critical Success</p></td><td><p>The wolf suffers (base bonus + high roll) and the character gets an opportunity. CB is a valid opportunity option.</p></td></tr></tbody></table></div><p></p><h2>Opposed Checks</h2><p>This type of Check is performed when two characters oppose each other in an action.</p><h2>Recovery Checks</h2><p>Some harmful effects persist until a successful recovery check has been made.</p>"
+        "content": "<p>Whenever the players want their heroes to do something that is uncertain with a reasonable possibility of failure, then the director has a case to prompt the players for a check.</p><p>Since the heroes in the system do not have a prescribed list of skills, the players must leverage their heroes' attributes and traits and have a conversation with the director regarding what to use.</p><p>The director will usually be the one to prompt what attributes to use for a check</p>"
       },
       "video": {
         "controls": true,
@@ -42,7 +42,7 @@
       "_key": "!journal.pages!q2ktLJSOVTd2vnaY.bPan3oC7DHnhDKDH"
     },
     {
-      "sort": 200000,
+      "sort": 550000,
       "name": "Rest",
       "type": "text",
       "_id": "c4FqEIpusmCCtJ5Z",
@@ -93,7 +93,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>When the heroes are in settlement or exploring a location they may want to do certain actions whose resolution should be simple and painless.</p><p>These will be covered in this section.</p><h2>Gathering Information</h2><p>When the players want to spend time gaining information about people, places or things they can make a @CHECK[ins wlp].</p>"
+        "content": "<p>When the heroes are in settlement or exploring a location they may want to do certain actions whose resolution should be simple and painless.</p><p>These will be covered in this section.</p><h2>Gathering Information</h2><p>When the players want to spend time gaining information about people, places or things they can make a @CHECK[ins wlp]{Gather}.</p>"
       },
       "video": {
         "controls": true,
@@ -120,7 +120,7 @@
       "_key": "!journal.pages!q2ktLJSOVTd2vnaY.oy8DeXGI08o2lvOU"
     },
     {
-      "sort": 400000,
+      "sort": 600000,
       "name": "Journey",
       "type": "text",
       "_id": "grwdijSSodh2vpmO",
@@ -132,7 +132,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>We define a <em>Journey</em> in the system as the activity performed when the party travels from their current location to a distant one over the course of one day or more.</p><p>When there is risk involved, we call that a <em>journey</em> and make use of the rules in this section. Each journey will begin with a <em>travel check</em>.</p><p></p><h2>Travel Check</h2><p>Once the heroes have decided on a destination and have confirmed they are setting out, the party will make a travel check. A player can volunteer one of their heroes to make the check using the dice listed below.</p><table><tbody><tr><td><p>Location</p></td><td><p>Danger Level</p></td><td><p>Travel Check</p></td></tr><tr><td><p>Settlements</p></td><td><p>Low</p></td><td><p>D4</p></td></tr><tr><td><p>Road</p></td><td><p>Moderate</p></td><td><p>D6</p></td></tr><tr><td><p>Wilderness</p></td><td><p>High</p></td><td><p>D8</p></td></tr><tr><td><p>Remote Locale</p></td><td><p>Severe</p></td><td><p>D10</p></td></tr><tr><td><p>Hazardous Locale</p></td><td><p>Extreme</p></td><td><p>D12</p></td></tr></tbody></table><ul><li><p><strong>On a result of 6 or higher</strong>, the party encounters a danger.</p></li><li><p><strong>On a result of 1</strong>, the party makes a discovery.</p></li></ul><p>After the check and its resulting event is resolved, the party will enter a long rest scene at their <em>Camp</em>. Here the heroes can unwind, work on their downtime projects and deepen their relationships.</p><blockquote><p>Most journeys can be resolved with a single travel check. Refrain from making more than that unless it's a very long journey lest you bog down your session.</p></blockquote><h2>Dangers</h2><h3>Hazard</h3><p>The party can encounter a natural hazard, which will be taxing to traverse.</p><h3>Ambush</h3><p>The party can be beset upon by hostile creatures.</p><h3>Loss</h3><p>The party loses an important item or a piece of equipment. Let the players volunteer it.</p><h3>Villain</h3><p>The party can encounter a villain or one of their associates.</p><p></p><h2>Discoveries</h2><p>One of the most positive outcomes of a travel check is that of a discovery, which can be one of the following.</p><h3>Location</h3><p>An entrance to an abandoned keep. A waterfall with a hidden entrance behind it. All of these are locations where exciting developments can occur and where danger lurks. A chance for the heroes to test themselves and learn more about the world.</p><h3>Guests</h3><p>There are many individuals of an adventurous streak who make a living in the world. When you encounter one of them and yours goals align perhaps they can join your party for a time. Maybe they need help. Maybe you are the ones in need of help. (See the rules for <em>Guests</em>).</p><h3>Merchant</h3><p>It is not uncommon for enterprising merchants to travel the lands, especially while making use of roads or when traveling to settlements. In such encounters perhaps such merchants can offer the party some rare items or consumables?</p><h3>Treasure</h3><p>Heroes may uncover treasure by chance while traveling through an abandoned area. Such treasure can be a rare ingredient or material, a piece of equipment or perhaps a plot-relevant item that leads to heroes gathering more information.</p><h3>Vista</h3><p>During travel one of the possible discoveries is that of a vista. A breathtaking locale or solemn monument. In short, they are memorable places of your party's journey.</p><p>When encountering one, the players are incentivized to take the lead in describing it and how it fits with the setting.</p><p>If one of the players decides to contribute art for it, they get bonus points! You will want to save it in your <em>album.</em></p>"
+        "content": "<p>We define a <em>Journey</em> in the system as the activity performed when the party travels from their current location to a distant one over the course of one day or more.</p><p>When there is risk involved, we call that a <em>journey</em> and make use of the rules in this section. Each journey will begin with a <em>travel check</em>.</p><h2>Travel Check</h2><p>Once the heroes have decided on a destination and have confirmed they are setting out, the party will make a travel check. A player can volunteer one of their heroes to make the check using the dice listed below.</p><table><tbody><tr><td><p>Location</p></td><td><p>Danger Level</p></td><td><p>Travel Check</p></td></tr><tr><td><p>Settlements</p></td><td><p>Low</p></td><td><p>D4</p></td></tr><tr><td><p>Road</p></td><td><p>Moderate</p></td><td><p>D6</p></td></tr><tr><td><p>Wilderness</p></td><td><p>High</p></td><td><p>D8</p></td></tr><tr><td><p>Remote Locale</p></td><td><p>Severe</p></td><td><p>D10</p></td></tr><tr><td><p>Hazardous Locale</p></td><td><p>Extreme</p></td><td><p>D12</p></td></tr><tr><td><p>Outer Space</p></td><td><p></p></td><td><p>D20</p></td></tr></tbody></table><ul><li><p><strong>On a result of 6 or higher</strong>, the party encounters a danger.</p></li><li><p><strong>On a result of 1</strong>, the party makes a discovery.</p></li></ul><p>After the check and its resulting event is resolved, the party will enter a long rest scene at their <em>Camp</em>. Here the heroes can unwind, work on their downtime projects and deepen their relationships.</p><blockquote><p>Most journeys can be resolved with a single travel check. Refrain from making more than that unless it's a very long journey lest you bog down your session.</p></blockquote><h2>Dangers</h2><h3>Hazard</h3><p>The party can encounter a natural hazard, which will be taxing to traverse.</p><h3>Ambush</h3><p>The party can be beset upon by hostile creatures.</p><h3>Loss</h3><p>The party loses an important item or a piece of equipment. Let the players volunteer it.</p><h3>Villain</h3><p>The party can encounter a villain or one of their associates.</p><p></p><h2>Discoveries</h2><p>One of the most positive outcomes of a travel check is that of a discovery, which can be one of the following.</p><h3>Location</h3><p>An entrance to an abandoned keep. A waterfall with a hidden entrance behind it. All of these are locations where exciting developments can occur and where danger lurks. A chance for the heroes to test themselves and learn more about the world.</p><h3>Guests</h3><p>There are many individuals of an adventurous streak who make a living in the world. When you encounter one of them and yours goals align perhaps they can join your party for a time. Maybe they need help. Maybe you are the ones in need of help. (See the rules for <em>Guests</em>).</p><h3>Merchant</h3><p>It is not uncommon for enterprising merchants to travel the lands, especially while making use of roads or when traveling to settlements. In such encounters perhaps such merchants can offer the party some rare items or consumables?</p><h3>Treasure</h3><p>Heroes may uncover treasure by chance while traveling through an abandoned area. Such treasure can be a rare ingredient or material, a piece of equipment or perhaps a plot-relevant item that leads to heroes gathering more information.</p><h3>Vista</h3><p>During travel one of the possible discoveries is that of a vista. A breathtaking locale or solemn monument. In short, they are memorable places of your party's journey.</p><p>When encountering one, the players are incentivized to take the lead in describing it and how it fits with the setting.</p><p>If one of the players decides to contribute art for it, they get bonus points! You will want to save it in your <em>album.</em></p>"
       },
       "video": {
         "controls": true,
@@ -210,7 +210,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>In this chapter will cover the many kinds of checks you will make during exploration.</p>"
+        "content": "<p>In this chapter will cover the systems and mechanics that the system provides for the exploration phase of your episodes, where the heroes move about advancing the narrative. </p><p>They will be meeting people, traveling the world, learning new facts and potentially getting themselves into danger which can lead to <em>battles</em>.</p>"
       },
       "video": {
         "controls": true,
@@ -235,6 +235,200 @@
         "exportSource": null
       },
       "_key": "!journal.pages!q2ktLJSOVTd2vnaY.NpyrobnMgk9l56Oy"
+    },
+    {
+      "sort": 200000,
+      "name": "Montage",
+      "type": "text",
+      "_id": "L7E72mf2gwJ0MbSy",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A montage is a scene or a set of scenes where the party is trying to achieve something that is fairly complicated, involving more than one location and various adversaries and dangers.</p><p>The director makes the call of when to escalate something from a simple group check onto a montage and begin the procedure which involves a conversation with the players for setting up the stakes.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788277219919,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!q2ktLJSOVTd2vnaY.L7E72mf2gwJ0MbSy"
+    },
+    {
+      "sort": 150000,
+      "name": "Group Check",
+      "type": "text",
+      "_id": "9CwdgVnDBpDkecTv",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788277643577,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!q2ktLJSOVTd2vnaY.9CwdgVnDBpDkecTv"
+    },
+    {
+      "sort": 125000,
+      "name": "Skill Check",
+      "type": "text",
+      "_id": "KglSfkdB0aDueBmQ",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Whenever the players want their heroes to do something that is uncertain with a reasonable possibility of failure, then the director has a case to prompt the players for a check.</p><p>Since the heroes in the system do not have a prescribed list of skills, the players must leverage their heroes' attributes and traits and have a conversation with the director regarding what to use.</p><p>The director will usually be the one to prompt what attributes to use for a check</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788277855872,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!q2ktLJSOVTd2vnaY.KglSfkdB0aDueBmQ"
+    },
+    {
+      "sort": 112500,
+      "name": "Action Check",
+      "type": "text",
+      "_id": "txTYcc3awrLPwmAH",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>This type of Check is performed during battle and is used when a character performs various actions such as attacks, skills and spells. Its result determines how potent the action was, in various tiers. </p><p>Any actions that lead to this check <strong>cannot miss and achieve nothing</strong>. Their consequences (such as taking damage) can only be avoided or diminished through the use of specific defensive actions.</p><p>Depending on the result of the check, the potency of the action varies.</p><div><table><tbody><tr><td><p>Failure</p></td><td><p>Reduced</p></td><td><p>Usually minimal damage with no extra effects.</p></td></tr><tr><td><p>Success</p></td><td><p>Standard</p></td><td><p>Average damage with default effects.</p></td></tr><tr><td><p>Critical</p></td><td><p>Powerful</p></td><td><p>Same as standard, provides an opportunity.</p></td></tr></tbody></table></div><h3>Examples</h3><p>Meravel attacks a Wolf which has 8 DEF.</p><div><table><tbody><tr><td><p>13</p></td><td><p>Success</p></td><td><p>The wolf suffers the sword’s (base bonus + high roll) in physical damage.</p></td></tr><tr><td><p>7</p></td><td><p>Failure</p></td><td><p>The wolf suffers (base bonus * 0.5) in physical damage.</p></td></tr><tr><td><p>16</p></td><td><p>Critical Success</p></td><td><p>The wolf suffers (base bonus + high roll) and the character gets an opportunity. CB is a valid opportunity option.</p></td></tr></tbody></table><p></p></div>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788278600893,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!q2ktLJSOVTd2vnaY.txTYcc3awrLPwmAH"
+    },
+    {
+      "sort": 700000,
+      "name": "Opposed Checks",
+      "type": "text",
+      "_id": "QDpnPnfGqtrzVNKN",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>This type of Check is performed when two characters oppose each other in an action.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788278650611,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!q2ktLJSOVTd2vnaY.QDpnPnfGqtrzVNKN"
     }
   ],
   "folder": null,
