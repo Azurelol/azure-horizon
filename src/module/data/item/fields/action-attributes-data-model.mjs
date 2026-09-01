@@ -1,12 +1,13 @@
 import AH from "../../../config.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
 import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
+import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mjs";
 
 /**
  * @property {AH_Attribute} primary
  * @property {AH_Attribute} secondary
  */
-export class ActionAttributesDataModel extends FieldsetDataModel {
+export class ActionAttributesDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
     const { SchemaField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
@@ -25,7 +26,9 @@ export class ActionAttributesDataModel extends FieldsetDataModel {
    * @param options
    */
   configureAction(config, options = {}) {
-    config.setAttributes(this.primary, this.secondary);
-    config.setGrade(this.grade);
+    if (this.enabled) {
+      config.setAttributes(this.primary, this.secondary);
+      config.setGrade(this.grade);
+    }
   }
 }

@@ -1,5 +1,5 @@
-{{#> ahFieldset label='AH.CHARACTER.Attribute.plural' icon=(ahIconClass 'attributes') }}
-  {{ahStringField path=(ahConcat path '.primary') options=(ahFormOptions 'attributes') label="AH.COMMON.Primary" value=value.primary }}
-  {{ahStringField path=(ahConcat path '.secondary') options=(ahFormOptions 'attributes') label="AH.COMMON.Secondary" value=value.secondary }}
-  {{ahStringField path=(ahConcat path '.grade') label="AH.FIELD.Grade" value=value.grade options=(ahFormOptions 'grades')}}
+{{#> ahFieldset label='AH.CHARACTER.Attribute.plural' icon=(ahIconClass 'attributes') enabled=model.enabled name=(ahConcat path ".enabled") }}
+  {{ahStringField path=(ahConcat path '.primary') options=(ahFormOptions 'attributes') label="AH.COMMON.Primary" value=model.primary }}
+  {{ahStringField path=(ahConcat path '.secondary') options=(ahFormOptions 'attributes') label="AH.COMMON.Secondary" value=model.secondary }}
+  {{ahStringField path=(ahConcat path '.grade') label="AH.FIELD.Grade" value=model.grade options=(ahFormOptions 'grades')}}
 {{/ahFieldset}}

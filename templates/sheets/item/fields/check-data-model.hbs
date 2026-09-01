@@ -1,4 +1,4 @@
-{{#> ahOptionalFieldset label='AH.CHECK.Check' icon=(ahIconClass 'check') enabled=value.enabled name=(ahConcat path ".enabled")}}
-  {{ahStringField path=(ahConcat path '.defense') options=(ahFormOptions 'defenses') label="AH.COMMON.Defense" value=value.defense options=(ahFormOptions 'defenses') }}
-  {{ahStringField path=(ahConcat path '.bonus') label="AH.CHECK.Bonus.long" value=value.bonus }}
-{{/ahOptionalFieldset}}
+{{#> ahFieldset label='AH.CHECK.Check' icon=(ahIconClass 'check') enabled=model.enabled name=(ahConcat path ".enabled")}}
+  {{ahStringField path=(ahConcat path '.defense') options=(ahFormOptions 'defenses') label="AH.COMMON.Defense" value=model.defense options=(ahFormOptions 'defenses') }}
+  {{ahStringField path=(ahConcat path '.bonus') label="AH.CHECK.Bonus.long" value=model.bonus }}
+{{/ahFieldset}}

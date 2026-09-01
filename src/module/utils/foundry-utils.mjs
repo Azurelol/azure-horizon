@@ -331,6 +331,7 @@ export default class FoundryUtils {
       field: field,
       path: fieldPath,
       options: field.options,
+      model: value,
       value: value,
       optional: field.fields?.enabled !== undefined,
     };

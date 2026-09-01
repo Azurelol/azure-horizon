@@ -61,24 +61,7 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
     if (isActorType(actor)) {
       const attack = await this.resolveAttack();
       if (assertCondition(attack !== undefined, "An attack must be assigned for this ability.")) {
-        config.setItemReference(attack);
-        // Override check
-        if (this.isCheck && this.usage.check) {
-          config.setTargetedDefense(attack.system.check.defense);
-        }
-        // Override damage
-        if (this.usage.damage) {
-          attack.system.damage.configureAction(config, {
-            label: "AH.ITEM.Attack",
-          });
-        }
-        // Override attributes
-        if (this.usage.attributes) {
-          attack.system.attributes.configureAction(config, {});
-        }
-        // Use attack range
-        config.removeTraits("melee", "ranged");
-        config.addTraits(attack.system.range);
+        this.usage.setOverride(config, attack, this.isCheck);
       }
     }
   }

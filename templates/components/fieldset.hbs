@@ -1,11 +1,26 @@
-<fieldset class="ah-fieldset --grid  {{class}}">
-  <legend>
-    <label>
-      {{#if icon}}<i class="ah-icon --s {{icon}}"></i>{{/if}}
-      {{localize label}}
-    </label>
-  </legend>
-  <div class="ah-field-group">
-    {{> @partial-block}}
-  </div>
-</fieldset>
+{{#if optional}}
+  <fieldset id="{{ahDefault id (localize label)}}" class="ah-fieldset --grid --optional {{class}}">
+    <legend class="">
+      <label>
+        {{#if icon}}<i class="ah-icon --s {{icon}}"></i>{{/if}}
+        {{localize label}}
+      </label>
+    </legend>
+    <div class="ah-field-group">
+      {{> @partial-block}}
+    </div>
+  </fieldset>
+{{else}}
+  <fieldset id="{{ahDefault id (localize label)}}" class="ah-fieldset --grid  {{class}}">
+    <legend>
+      <label>
+        {{#if icon}}<i class="ah-icon --s {{icon}}"></i>{{/if}}
+        {{localize label}}
+      </label>
+    </legend>
+    <div class="ah-field-group">
+      {{> @partial-block}}
+    </div>
+  </fieldset>
+{{/if}}
+

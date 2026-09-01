@@ -1,5 +1,5 @@
-{{#> ahOptionalFieldset label='AH.FIELD.Cost' icon=(ahIconClass 'cost') enabled=value.enabled name=(ahConcat path ".enabled")}}
-  {{ahStringField path=(ahConcat path '.resource') label="AH.FIELD.Resource" value=value.resource options=(ahFormOptions 'resourceTypes')}}
-  {{ahStringField path=(ahConcat path '.amount') label="AH.FIELD.Amount" value=value.amount }}
-  {{ahBooleanField path=(ahConcat path '.perTarget') label="AH.FIELD.PerTarget" value=value.perTarget }}
-{{/ahOptionalFieldset}}
+{{#> ahFieldset label='AH.FIELD.Cost' icon=(ahIconClass 'cost') fieldset=model enabled=model.enabled name=(ahConcat path ".enabled")}}
+  {{ahStringField path=(ahConcat path '.resource') label="AH.FIELD.Resource" value=model.resource options=(ahFormOptions 'resourceTypes')}}
+  {{ahStringField path=(ahConcat path '.amount') label="AH.FIELD.Amount" value=model.amount }}
+  {{ahBooleanField path=(ahConcat path '.perTarget') label="AH.FIELD.PerTarget" value=model.perTarget }}
+{{/ahFieldset}}

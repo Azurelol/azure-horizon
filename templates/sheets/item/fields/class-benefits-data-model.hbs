@@ -1,5 +1,5 @@
 {{#> ahFieldset label='AH.FIELD.Benefits' icon=(ahIconClass 'class') }}
-  {{ahBooleanField path=(ahConcat path '.hp') label="AH.CHARACTER.HitPoint.short" value=value.hp }}
-  {{ahBooleanField path=(ahConcat path '.mp') label="AH.CHARACTER.MindPoint.short" value=value.mp }}
-  {{ahBooleanField path=(ahConcat path '.ip') label="AH.CHARACTER.InventoryPoint.short" value=value.ip }}
+  {{ahBooleanField path=(ahConcat path '.hp') label="AH.CHARACTER.HitPoint.short" value=model.hp }}
+  {{ahBooleanField path=(ahConcat path '.mp') label="AH.CHARACTER.MindPoint.short" value=model.mp }}
+  {{ahBooleanField path=(ahConcat path '.ip') label="AH.CHARACTER.InventoryPoint.short" value=model.ip }}
 {{/ahFieldset}}

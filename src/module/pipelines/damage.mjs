@@ -11,7 +11,7 @@ import {
   FlagBuilder,
 } from "../helpers/_module.mjs";
 import Flags from "../data/common/flags.mjs";
-import { systemID, systemTemplatePath } from "../constants.mjs";
+import { assertCondition, systemID, systemTemplatePath } from "../constants.mjs";
 import DamageData from "./damage-data.mjs";
 import Events from "./events.mjs";
 import { StringUtils, TokenUtils } from "../utils/_module.mjs";
@@ -327,15 +327,17 @@ const onProcessAction = async (config, actor, item) => {
       }
     }
 
-    // 3.) Evaluate any components that have expressions
+    // 2.) Evaluate any components that have expressions
     const context = new EvaluationContext(actor, item, config.getTargets());
+    let total = 0;
     for (const component of damage.components) {
       let amount = component.amount;
       amount = await Expressions.evaluateAsync(amount, context);
       component.amount = amount;
+      total += amount;
     }
 
-    // 4.) Add outgoing modifiers
+    // 3.) Add outgoing modifiers
     /** @type CharacterParametersDataModel **/
     const outgoing = actor?.system?.parameters;
     if (outgoing) {
@@ -349,7 +351,7 @@ const onProcessAction = async (config, actor, item) => {
       }
     }
 
-    // 3.2) Add power modifiers
+    // 4.) Add power modifiers
     if (config.power) {
       damage.modify("universal", {
         key: "skill",
@@ -357,7 +359,7 @@ const onProcessAction = async (config, actor, item) => {
       });
     }
 
-    // 4.) Set Potency
+    // 5.) Set Potency
     if (config.isCheck) {
       config.setPotency((tiers) => {
         // Standard

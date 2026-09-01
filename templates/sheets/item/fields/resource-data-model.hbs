@@ -1,4 +1,4 @@
-{{#> ahOptionalFieldset label='AH.FIELD.Resource' icon=(ahIconClass 'resource') enabled=value.enabled name=(ahConcat path ".enabled")}}
-  {{ahStringField path=(ahConcat path '.type') label="AH.FIELD.Type" value=value.type options=(ahFormOptions 'resourceTypes')}}
-  {{ahStringField path=(ahConcat path '.amount') label="AH.FIELD.Amount" value=value.amount }}
+{{#> ahOptionalFieldset label='AH.FIELD.Resource' icon=(ahIconClass 'resource') enabled=model.enabled name=(ahConcat path ".enabled")}}
+  {{ahStringField path=(ahConcat path '.type') label="AH.FIELD.Type" value=model.type options=(ahFormOptions 'resourceTypes')}}
+  {{ahStringField path=(ahConcat path '.amount') label="AH.FIELD.Amount" value=model.amount }}
 {{/ahOptionalFieldset}}

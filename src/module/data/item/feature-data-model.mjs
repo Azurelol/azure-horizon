@@ -5,6 +5,7 @@ import { ActionConfig } from "../../helpers/action-configuration.mjs";
 import { Actions } from "../../pipelines/_module.mjs";
 import { ActionAttributesDataModel } from "./fields/action-attributes-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
+import { assertCondition } from "../../constants.mjs";
 
 /**
  * A character-facing feature.
@@ -26,7 +27,11 @@ export default class FeatureDataModel extends ItemDataModel {
    * @returns {Boolean}
    */
   get isCheck() {
-    return this.check.enabled;
+    if (this.check.enabled) {
+      assertCondition(this.attributes.enabled, `The item ${this.parent.name} was set to perform a check but the attribute fields have not been enabled.`);
+      return true;
+    }
+    return false;
   }
 
   /**

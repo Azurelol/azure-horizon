@@ -41,6 +41,15 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
     return super.isCheck || this.usage.check;
   }
 
+  isVisible(key) {
+    switch (key) {
+      case "attributes":{
+        return !this.usage.attributes;
+      }
+    }
+    return super.isVisible(key);
+  }
+
   async _initializeAction(config, data) {
     await super._initializeAction(config);
     await this.action.configureAction(config);
@@ -50,24 +59,7 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
     if (isActorType(actor)) {
       const weapon = await this.resolveWeapon();
       if (assertCondition(weapon !== undefined, "A weapon must be assigned for this skill.")) {
-        config.setItemReference(weapon);
-        // Override check
-        if (this.isCheck && this.usage.check) {
-          config.setTargetedDefense(weapon.system.check.defense);
-        }
-        // Override damage
-        if (this.usage.damage) {
-          weapon.system.damage.configureAction(config, {
-            label: "AH.ITEM.Weapon",
-          });
-        }
-        // Override attributes
-        if (this.usage.attributes) {
-          weapon.system.attributes.configureAction(config, {});
-        }
-        // Use weapon range
-        config.removeTraits("melee", "ranged");
-        config.addTraits(weapon.system.range);
+        this.usage.setOverride(config, weapon, this.isCheck);
       }
     }
   }

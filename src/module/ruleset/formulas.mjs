@@ -94,8 +94,8 @@ export default class Formulas {
     else {
       const scale = AH.grades.E.scale;
       const attributes = actor.system.attributes;
-      const primary = attributes[config.check.primary].current * scale;
-      const secondary = attributes[config.check.secondary].current * scale;
+      const primary = config.check.primary ? attributes[config.check.primary].current * scale : undefined;
+      const secondary = config.check.secondary ? attributes[config.check.secondary].current * scale : undefined;
       return {
         primary: primary,
         secondary: secondary,

@@ -1308,6 +1308,7 @@ AH.icons = {
   action: "fas fa-hand-fist",
   attributes: "fas fa-sliders",
   weapon: "fas fa-gun",
+  usage: "fas fa-gun",
   damage: "fas fa-explosion",
   resource: "fas fa-battery-three-quarters",
   cost: "fas fa-tag",
