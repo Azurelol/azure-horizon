@@ -7,7 +7,7 @@ import {
   ChatSectionOrder,
   FlagBuilder,
 } from "../helpers/_module.mjs";
-import { ObjectUtils, StringUtils, TokenUtils } from "../utils/_module.mjs";
+import { MathUtils, ObjectUtils, StringUtils, TokenUtils } from "../utils/_module.mjs";
 import PipelineRequest from "./pipeline-request.mjs";
 import { EvaluationContext, ItemInfo, SourceInfo } from "../data/common/_module.mjs";
 import AH from "../config.mjs";
@@ -223,8 +223,12 @@ function getChatAction(request, options = {}) {
     resourceIcon = AH.resourceTypes[request.resource].icon;
   }
 
+  let _amount = request.data.toString();
+  if (Expressions.requiresContext(request.data.toString())) {
+    _amount = "AH.COMMON.Variable";
+  }
   const label = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainLabel" : "AH.CHAT.ResourceLossLabel", {
-    amount: request.data.toString(),
+    amount: _amount,
   });
   const tooltip = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainTooltip" : "AH.CHAT.ResourceLossTooltip", {
     amount: request.data.toString(),

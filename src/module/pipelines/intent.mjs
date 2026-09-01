@@ -139,10 +139,25 @@ function resolveIntents(system) {
     map = ROLE_ROUTINES.default;
   }
 
+  /** @type {RoleRoutine} **/
   const routine = map[system.profile.rank];
+
   // TODO: Pick variant based on status
   const variant = "default";
-  return routine[variant];
+
+  /** @type {AH_Intent[][]} The intents by round, looping around. **/
+  let intents = routine[variant];
+  // How many turns this adversary will take in a round.
+  const turns = system.profile.turns;
+  for (let round of intents) {
+    if (round.length < turns) {
+      const missing = turns - round.length;
+      for (let i = 0; i < missing.length; i++) {
+        round.push("unknown");
+      }
+    }
+  }
+  return intents;
 }
 
 /**
@@ -383,7 +398,7 @@ function initialize() {
 
 const Intent = Object.freeze({
   initialize,
-  getRoutine: resolveIntents,
+  resolveIntents,
 });
 
 export default Intent;

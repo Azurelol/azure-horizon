@@ -40,6 +40,9 @@
 
   --ah-surface-panel-block: #2f5085;
 
+  --ah-surface-item: color-mix(in srgb, var(--ah-surface-panel-nested) 100%, white 5%);
+  --ah-surface-item-alt: color-mix(in srgb, var(--ah-surface-panel-nested) 100%, white 10%);
+
   --ah-surface-table: linear-gradient(
     to bottom,
     var(--ah-surface-panel-nested) 0%,

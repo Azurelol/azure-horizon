@@ -36,13 +36,14 @@
 
   /* Lists */
   --ah-list-background: var(--ah-surface-panel);
-  --ah-list-header-background: var(--ah-surface-panel-nested);
   --ah-list-color: var(--ah-content-primary);
+  --ah-list-header-background: var(--ah-surface-panel-nested);
   --ah-list-header-color: var(--ah-content-secondary);
-  --ah-list-item-border: 1px solid var(--ah-surface-border);
   --ah-list-header-box-shadow: 0 1px 2px var(--ah-border-panel);
-  --ah-list-entry-background: var(--ah-surface-entry-gradient);
-  --ah-list-entry-name-font-family: 'CreditValleybold';
+  --ah-list-item-border: 1px solid var(--ah-surface-border);
+  --ah-list-item-background: var(--ah-surface-item);
+  --ah-list-item-background-alt: var(--ah-surface-item-alt);
+  --ah-list-item-name-font-family: 'CreditValleybold';
 
   /* Tables */
   --ah-table-background: var(--ah-surface-table);

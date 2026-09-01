@@ -59,7 +59,7 @@
   .name {
     font-size: 32px;
     text-align: center;
-    font-family: var(--ah-list-entry-name-font-family), serif;
+    font-family: var(--ah-list-item-name-font-family), serif;
     margin: 1rem;
     --shadow-color: var(--ah-fieldset-header-box-shadow);
     text-shadow: 0 0 2px var(--ah-inline-color-text-shadow);

@@ -63,6 +63,24 @@ ol.acc-list li {
   &.--split {
     flex: 2;
   }
+
+  &.--background {
+    --ah-list-item-gap: 0.25rem;
+    gap: var(--ah-list-item-gap);
+    li {
+      position: relative;
+      align-items: center;
+    }
+    li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: calc(var(--ah-list-item-gap) / -2 - 3px);
+      height: 1px;
+      background: var(--ah-table-row-divider);
+    }
+  }
 }
 
 .ah-list__header {
@@ -73,12 +91,11 @@ ol.acc-list li {
 .ah-list__entry {
   color: var(--ah-list-color);
   border: var(--ah-border);
-  background: var(--ah-list-entry-background);
+  background: var(--ah-list-item-background);
   background-blend-mode: multiply;
   background-position: right top;
 
   &.--compact {
-
     display: flex;
     flex-direction: row;
     width: 100%;

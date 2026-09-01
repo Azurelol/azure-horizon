@@ -3,6 +3,7 @@ import { systemTemplatePath } from "../../constants.mjs";
 import { ActionTableRenderer, AttackTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
 import { CharacterSheet } from "./character-sheet.mjs";
 import { Migrations } from "../../helpers/_module.mjs";
+import Intent from "../../pipelines/intent.mjs";
 
 /**
  * @extends AHActorSheet
@@ -70,6 +71,11 @@ export class AdversarySheet extends CharacterSheet {
           await this.#abilityTableRenderer.render(this.actor.getItemsByType("ability")),
         ];
         break;
+
+      case "profile":{
+        context.intents = Intent.resolveIntents(this.actor.system);
+        break;
+      }
 
       case "assembly":{
         context.assembly = this.actor.system.profile.prepareAssemblyData();

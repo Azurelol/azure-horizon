@@ -104,7 +104,6 @@
   }
 
   .ah-character__parameters {
-
   }
 
   .ah-character__equipment {
@@ -160,4 +159,17 @@
     }
   }
 
+  .ah-character__intents {
+    .ah-character__intents__round {
+      label {
+        font-size: var(--ah-font-size-xl);
+      }
+
+      span {
+        border: var(--ah-border);
+        background: var(--ah-surface-entry-gradient);
+        padding: 0.5rem;
+      }
+    }
+  }
 }

@@ -255,7 +255,10 @@
         "Elemental": "Elemental",
         "Plant": "Plant"
       },
-      "Intent": "Intent",
+      "Intent": {
+        "long": "Intent",
+        "plural": "Intents"
+      },
       "Weight": "Weight",
       "INTENT": {
         "Unknown": "Unknown",

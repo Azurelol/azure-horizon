@@ -19,8 +19,30 @@
       {{/if}}
       {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role' options=(ahFormOptions 'role')}}
       {{ahStringField path="system.profile.slug" value=system.profile.slug label='AH.DOCUMENT.Slug'}}
-
     </div>
+
+  <fieldset>
+    <legend>
+      <label>
+        {{localize 'AH.ADVERSARY.Intent.plural'}}
+      </label>
+    </legend>
+
+    <ol class="ah-list --background ah-character__intents">
+      {{#each intents as |round|}}
+        <li class="ah-character__intents__round">
+          <label>
+            {{@index}}
+          </label>
+          {{#each round as |intent|}}
+            <span>
+              {{ahCapitalize intent}}
+            </span>
+          {{/each}}
+        </li>
+      {{/each}}
+    </ol>
+  </fieldset>
   {{/if}}
 
   <div class="ah-flex-col" style="margin-top:8px;">
