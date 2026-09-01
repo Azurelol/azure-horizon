@@ -43,7 +43,6 @@ export default class ItemDataModel extends VersionedDataModel {
    */
   async perform(modifiers) {
     return false;
-
   }
 
   /**
@@ -65,5 +64,12 @@ export default class ItemDataModel extends VersionedDataModel {
    */
   get retainedFieldPaths() {
     return [];
+  }
+
+  /**
+   * @param {String} key
+   */
+  isVisible(key) {
+    return true;
   }
 }

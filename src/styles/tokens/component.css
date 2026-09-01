@@ -76,11 +76,12 @@
   --ah-fieldset-border-color: var(--ah-border-panel);
   --ah-fieldset-header-box-shadow: 0 1px 2px var(--ah-surface-accent);
   --ah-fieldset-fields-gap: 8px;
+  --ah-fieldset-legend-font-size: 1.2em;
 
   /* Labels — sizing only, no color family involved, unchanged */
   --ah-badge-font-size: 1.1em;
   --ah-badge-font-size-lg: 1.2em;
-  --ah-label-font-size: 1.2em;
+  --ah-label-font-size: 1em;
   --ah-label-font-size-icon: 1.5em;
 
   /* Inputs */

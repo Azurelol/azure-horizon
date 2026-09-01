@@ -92,12 +92,12 @@
       text-align: center;
       width: auto;
 
-
       label {
         justify-content: center;
         display: flex;
         align-items: center;
-        gap: 0.1rem;
+        font-size: var(--ah-fieldset-legend-font-size);
+        gap: 0.5rem;
       }
     }
 

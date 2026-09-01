@@ -178,6 +178,14 @@ export default Object.freeze({
       }
       return false;
     });
+    Handlebars.registerHelper("ahInvoke", function (object, func, ...rest) {
+      rest.pop(); // drop the Handlebars options object
+      const fn = object[func];
+      if (typeof fn !== "function") {
+        throw new Error(`ahInvoke: ${func} is not a function on the given object`);
+      }
+      return fn.apply(object, rest);
+    });
     Handlebars.registerHelper("ahPercent", function (value, max) {
       value = parseFloat(value);
       max = parseFloat(max);

@@ -111,7 +111,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.25rem;
-  --property-label-width: 80px;
+  --property-label-width: 100px;
 
   .form-group {
     label {
@@ -127,7 +127,7 @@
   }
 
   span {
-    width: var(--property-label-width);
+    min-width: var(--property-label-width);
     font-size: var(--ah-label-font-size);
     font-weight: bold;
   }

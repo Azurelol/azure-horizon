@@ -107,7 +107,7 @@ img {
 
   &.--nested {
     .document-trait {
-      font-size: medium;
+      font-size: small;
     }
   }
 }

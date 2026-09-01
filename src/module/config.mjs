@@ -1304,11 +1304,15 @@ AH.icons = {
   result: "ah-icon-check-result",
   target: "ah-icon-target",
 
-  damage: "ah-icon-damage",
-  resource: "ah-icon-resource",
-  cost: "ah-icon-cost",
-  effects: "ra ra-acid",
-  check: "ah-icon-check-roll",
+  // Field Types
+  action: "fas fa-hand-fist",
+  attributes: "fas fa-sliders",
+  weapon: "fas fa-gun",
+  damage: "fas fa-explosion",
+  resource: "fas fa-battery-three-quarters",
+  cost: "fas fa-tag",
+  effects: "fas fa-wand-magic-sparkles",
+  check: "fas fa-dice-d20",
 
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",
