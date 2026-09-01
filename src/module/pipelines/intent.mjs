@@ -92,6 +92,28 @@ const ROLE_ROUTINES = Object.freeze({
     },
   },
 
+  // Defender, protects allies
+  defender: {
+    standard: {
+      default: [
+        ["attack"],
+        ["block"],
+      ],
+    },
+    elite: {
+      default: [
+        ["attack", "block"],
+        ["fortify", "attack"],
+      ],
+    },
+    champion: {
+      default: [
+        ["attack", "damage"],
+        ["empower", "damage"],
+      ],
+    },
+  },
+
 });
 
 /**
