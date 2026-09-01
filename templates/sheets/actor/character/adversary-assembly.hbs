@@ -16,7 +16,7 @@
         <legend>{{localize 'AH.ADVERSARY.Ability.plural'}} [{{assembly.abilities.current}}/{{assembly.abilities.available}}]</legend>
         <ul class="ah-list">
           {{#each assembly.abilities.entries as |item|}}
-            <li>{{ahDocumentAnchor item}} {{item.name}}</li>
+            <li>{{ahDocumentAnchor item}} {{item.name}} {{#if item.system.intent}}[{{ahCapitalize item.system.intent}}]{{/if}} </li>
           {{/each}}
         </ul>
       </fieldset>

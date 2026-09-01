@@ -157,6 +157,14 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
     data.abilities.current = abilityItems.length;
     const level = system.level;
     data.abilities.available += data.abilities.sources.level = Math.round(level / 10);
+    switch (this.rank) {
+      case "elite":
+        data.abilities.available += 1;
+        break;
+      case "champion":
+        data.abilities.available += 2;
+        break;
+    }
 
     // Affinities
     const affinities = system.affinities.entries.filter(af => af.preset || af.amount);

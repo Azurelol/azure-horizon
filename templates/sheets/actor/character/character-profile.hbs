@@ -45,10 +45,18 @@
   </fieldset>
   {{/if}}
 
-  <div class="ah-flex-col" style="margin-top:8px;">
+  <fieldset>
+    <legend>
+      <label>
+        {{localize 'AH.FIELD.Summary'}}
+      </label>
+    </legend>
+
     <prose-mirror name="system.profile.summary" value="{{system.profile.summary}}" toggled>
       {{{lookup enriched 'system.profile.summary'}}}
     </prose-mirror>
-  </div>
+
+  </fieldset>
+
 
 </section>

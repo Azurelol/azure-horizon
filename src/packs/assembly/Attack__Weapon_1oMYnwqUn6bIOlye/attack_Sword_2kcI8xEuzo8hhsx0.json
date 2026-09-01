@@ -31,6 +31,9 @@
       },
       "traits": [],
       "inplace": false
+    },
+    "attributes": {
+      "enabled": true
     }
   },
   "effects": [],

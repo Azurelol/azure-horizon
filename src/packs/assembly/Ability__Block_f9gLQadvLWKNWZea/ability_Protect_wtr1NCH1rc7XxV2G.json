@@ -1,16 +1,17 @@
 {
-  "folder": "xJDqS1SeQo6c2Mme",
-  "name": "Guard",
+  "folder": "f9gLQadvLWKNWZea",
+  "name": "Protect",
   "type": "ability",
-  "_id": "Zh10ESATUJZjeJCa",
-  "img": "icons/skills/melee/hand-grip-staff-blue.webp",
+  "_id": "wtr1NCH1rc7XxV2G",
+  "img": "icons/magic/defensive/shield-barrier-blue.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ability-riposte",
-    "description": "<p>You gain a minor amount of <strong>Block</strong> and <strong>Riposte</strong>.</p>",
+    "slug": "ability-protect",
+    "description": "<p>You give block to yourself and an adjacent ally.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -38,9 +39,9 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "hp",
-      "amount": ""
+      "enabled": true,
+      "type": "thp",
+      "amount": "&hp(0.15)"
     },
     "cost": {
       "schemaVersion": 1,
@@ -51,38 +52,36 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": true,
-      "selector": "buff",
-      "entries": [
-        "riposte"
-      ],
+      "enabled": false,
+      "selector": "",
+      "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
     "power": "",
-    "intent": "fortify",
-    "weight": "",
+    "intent": "block",
+    "weight": "normal",
     "action": {
       "schemaVersion": 1,
-      "range": "",
+      "enabled": true,
+      "range": "melee",
+      "targeting": "self",
       "type": "action",
       "points": 2,
-      "traits": [
-        "cooldown"
-      ],
-      "targeting": "self"
+      "traits": []
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
       "attributes": false,
       "check": false,
       "damage": false
     }
   },
   "effects": [],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -91,12 +90,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787649820560,
+    "createdTime": 1788281324827,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Zh10ESATUJZjeJCa"
+  "_key": "!items!wtr1NCH1rc7XxV2G"
 }

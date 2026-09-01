@@ -225,7 +225,7 @@ function getChatAction(request, options = {}) {
 
   let _amount = request.data.toString();
   if (Expressions.requiresContext(request.data.toString())) {
-    _amount = "AH.COMMON.Variable";
+    _amount = StringUtils.localize("AH.COMMON.Variable");
   }
   const label = StringUtils.localize(request.gain ? "AH.CHAT.ResourceGainLabel" : "AH.CHAT.ResourceLossLabel", {
     amount: _amount,

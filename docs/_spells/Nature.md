@@ -26,6 +26,17 @@ img: /assets/icons/spells/nature.png
 <p>You grant a party member with the <em>Rejuvenation</em> effect, which heals them at the start of their turns for the next 3 turns.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Stone Lance</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Instant</span>
+</div>
+</div>
+</div>
+
+<p>You deal piercing and bludgeoning damage to the target.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/magic/nature/root-vine-thorned-fire-purple.webp"><span>Thorns</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">

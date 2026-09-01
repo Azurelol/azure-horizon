@@ -27,7 +27,7 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
         formOptions: getFormSelectOptions(AH.intents),
         blank: true,
         nullable: false,
-        label: "AH.ADVERSARY.Intent",
+        label: "AH.ADVERSARY.Intent.long",
         _part: "header",
       }),
       weight: new StringField({

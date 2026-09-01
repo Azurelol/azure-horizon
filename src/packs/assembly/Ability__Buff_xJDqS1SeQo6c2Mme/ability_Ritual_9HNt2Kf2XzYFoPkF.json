@@ -1,0 +1,101 @@
+{
+  "folder": "xJDqS1SeQo6c2Mme",
+  "name": "Ritual",
+  "type": "ability",
+  "_id": "9HNt2Kf2XzYFoPkF",
+  "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "ability-ritual",
+    "description": "<p>You gain the <em>Ritual</em> effect, which gives you a status bonus to your damage that increases each round.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "intent": "empower",
+    "weight": "normal",
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "",
+      "targeting": "",
+      "type": "action",
+      "points": 2,
+      "traits": []
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788280909402,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!9HNt2Kf2XzYFoPkF"
+}

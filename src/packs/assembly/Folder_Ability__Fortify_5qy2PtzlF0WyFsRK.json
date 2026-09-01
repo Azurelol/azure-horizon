@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": null,
+  "name": "Ability: Fortify",
+  "color": "#4d4dff",
+  "sorting": "a",
+  "_id": "5qy2PtzlF0WyFsRK",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788281308168,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!5qy2PtzlF0WyFsRK"
+}
