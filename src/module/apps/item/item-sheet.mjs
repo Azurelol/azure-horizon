@@ -1,6 +1,7 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { isCompendiumEntry, systemTemplatePath } from "../../constants.mjs";
 import * as fields from "../../data/item/fields/_module.mjs";
+import { features } from "../../data/item/_module.mjs";
 import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { Dialogs, Migrations } from "../../helpers/_module.mjs";
@@ -107,7 +108,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
     },
     properties: {
       template: systemTemplatePath("sheets/document-properties"),
-      templates: fields.templates,
+      templates: fields.templates.concat(Object.values(features).map(ft => ft.template)),
       scrollable: [""],
     },
     effects: {
@@ -184,6 +185,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
           if (featureClass.TYPE !== "emptyClassFeature") {
             context.featureData = {
               template: featureClass.template,
+              label: featureClass.localization,
             };
           }
         }

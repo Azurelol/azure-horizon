@@ -8,6 +8,7 @@ import ClassFeatureDataModel from "./class-feature-data-model.mjs";
 import ConsumableDataModel from "./consumable-data-model.mjs";
 
 import * as fields from "./fields/_module.mjs";
+import * as features from "./classFeatures/_module.mjs";
 import ArmorDataModel from "./armor-data-model.mjs";
 import AccessoryDataModel from "./accessory-data-model.mjs";
 import AbilityDataModel from "./ability-data-model.mjs";
@@ -36,4 +37,4 @@ const dataModels = Object.freeze({
   engram: EngramDataModel,
 });
 
-export { dataModels, fields, ClassFeatureRegistry };
+export { dataModels, fields, features, ClassFeatureRegistry };

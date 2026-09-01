@@ -1,12 +1,11 @@
-<label class="ah-flex-center">
+<label class="ah-item__feature" data-tooltip="{{featureData.label}}">
   {{#if (ahNotEquals system.feature.localization "-")}}
     <span>
       {{localize system.feature.localization}}
     </span>
   {{else}}
-
   {{/if}}
-  <a data-action="changeType">
-    <i class="ah-icon --s {{ahIconClass 'edit'}}"></i>
+  <a data-action="changeType" data-tooltip="{{localize 'AH.COMMON.Change'}}">
+    <i class="ah-icon --xs {{ahIconClass 'feature'}}"></i>
   </a>
 </label>
