@@ -70,7 +70,7 @@
 
   /* Field Sets */
   --ah-fieldgroup-background: var(--ah-surface-base);
-  --ah-fieldset-background: var(--ah-surface-panel);
+  --ah-fieldset-background: var(--ah-surface-panel-gradient);
   --ah-fieldset-header-background: var(--ah-surface-panel-nested);
   --ah-fieldset-color: var(--ah-content-primary);
   --ah-fieldset-header-color: var(--ah-content-primary);

@@ -1,5 +1,5 @@
 import AH from "../config.mjs";
-import { MathUtils } from "../utils/_module.mjs";
+import { MathUtils, ObjectUtils } from "../utils/_module.mjs";
 
 /**
  * An intent is an action planned out by an adversary against a specific target.
@@ -146,13 +146,11 @@ function resolveIntents(system) {
   const variant = "default";
 
   /** @type {AH_Intent[][]} The intents by round, looping around. **/
-  let intents = routine[variant];
-  // How many turns this adversary will take in a round.
+  let intents = ObjectUtils.duplicate(routine[variant]);
   const turns = system.profile.turns;
   for (let round of intents) {
     if (round.length < turns) {
-      const missing = turns - round.length;
-      for (let i = 0; i < missing.length; i++) {
+      for (let i = 0; i <= (turns - round.length); i++) {
         round.push("unknown");
       }
     }

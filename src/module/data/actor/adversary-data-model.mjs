@@ -52,19 +52,6 @@ export default class AdversaryDataModel extends CharacterDataModel {
    */
   prepareBaseData() {
     super.prepareBaseData();
-    switch (this.profile.rank) {
-      case "minion":
-        this.profile.turns = 0;
-        break;
-      case "standard":
-        this.profile.turns = 1;
-        break;
-      case "elite":
-        this.profile.turns = 2;
-        break;
-      case "champion":
-        break;
-    }
   }
 
   _prepareParameters() {
@@ -81,33 +68,57 @@ export default class AdversaryDataModel extends CharacterDataModel {
 }
 
 /**
+ * @typedef AdversaryAssemblyFields
+ * @property {AH_RoleType} role
+ * @property {Number} level
+ * @property {AH_Rank} rank
+ */
+
+/**
  * Applies the role's attributes and adjustments to the adversary.
  * @param {AHActor} actor
- * @param {AH_RoleType} newRole
- * @param {Number} newLevel
+ * @param {AdversaryAssemblyFields} fields
  * @returns
  */
-async function assemble(actor, newRole, newLevel) {
+async function assemble(actor, fields) {
   /** @type AH_RoleType **/
-  const role = newRole ?? actor.system.role;
+  const role = fields.role ?? actor.system.role;
   if (role === "custom") {
     return;
   }
 
-  const level = newLevel ?? actor.system.level;
+  const level = fields.level ?? actor.system.level;
   const updates = {};
 
-  const assembly = Assembly.resolve(role, level);
-  if (!assembly) {
-    return;
+  // Update turns based on rank
+  if (fields.rank) {
+    let turns = 1;
+    switch (fields.rank) {
+      case "minion":
+        turns = 0;
+        break;
+      case "standard":
+        turns = 1;
+        break;
+      case "elite":
+        turns = 2;
+        break;
+      case "champion":
+        turns = 4;
+        break;
+    }
+    updates["system.profile.turns"] = turns;
   }
 
-  // 1. Apply check and damage bonuses based on level ??
-  // 2. Apply attribute array based on role (except baseline)
-  updates["system.attributes.mig.base"] = assembly.attributes.mig;
-  updates["system.attributes.dex.base"] = assembly.attributes.dex;
-  updates["system.attributes.ins.base"] = assembly.attributes.ins;
-  updates["system.attributes.wlp.base"] = assembly.attributes.wlp;
+  const assembly = Assembly.resolve(role, level);
+  if (assembly) {
+    // 1. Apply check and damage bonuses based on level ??
+    // 2. Apply attribute array based on role (except baseline)
+    updates["system.attributes.mig.base"] = assembly.attributes.mig;
+    updates["system.attributes.dex.base"] = assembly.attributes.dex;
+    updates["system.attributes.ins.base"] = assembly.attributes.ins;
+    updates["system.attributes.wlp.base"] = assembly.attributes.wlp;
+  }
 
   if (Object.keys(updates).length > 0) {
     actor.update(updates);
@@ -118,9 +129,9 @@ Hooks.on("preUpdateActor", async (document, changed) => {
   if (document.system instanceof AdversaryDataModel) {
 
     // If rank changed
-    const newRank = ObjectUtils.getProperty(changed, "system.rank");
+    const newRank = ObjectUtils.getProperty(changed, "system.profile.rank");
     if (newRank) {
-      assemble(document, document.system.role, undefined);
+      assemble(document, { rank: newRank });
       return;
     }
 
@@ -130,7 +141,10 @@ Hooks.on("preUpdateActor", async (document, changed) => {
     const newLevel = ObjectUtils.getProperty(changed, "system.level");
     let levelChanged = (newLevel !== undefined) && (newLevel !== document.system.level);
     if (roleChanged || levelChanged) {
-      assemble(document, newRole, newLevel);
+      assemble(document, {
+        role: newRole,
+        level: newLevel,
+      });
     }
   }
 });
