@@ -34,7 +34,6 @@ const dataModels = Object.freeze({
   accessory: AccessoryDataModel,
   consumable: ConsumableDataModel,
   engram: EngramDataModel,
-
 });
 
 export { dataModels, fields, ClassFeatureRegistry };

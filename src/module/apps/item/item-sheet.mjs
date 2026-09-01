@@ -6,6 +6,7 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
 import { Dialogs, Migrations } from "../../helpers/_module.mjs";
 import { CompendiumIndex } from "../../data/compendium/_module.mjs";
 import { DocumentSheetMixin } from "../api/document-sheet.mjs";
+import { ClassFeatureRegistry } from "../../data/item/class-feature-registry.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -178,6 +179,15 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
       }
       case "properties":
         context.fieldsets = await this._getFieldsets();
+        if (this.item.type === "classFeature") {
+          const featureClass = this.item.system.feature.constructor;
+          if (featureClass.TYPE !== "emptyClassFeature") {
+            context.featureData = {
+              template: featureClass.template,
+            };
+          }
+        }
+
         break;
     }
     return context;
@@ -244,7 +254,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
    */
   static async #changeType(event, target) {
     if (this.item.type === "classFeature") {
-      const subTypes = AH.dataModelRegistries.classFeature.entries;
+      const subTypes = AH.dataModelRegistries.classFeature.localizedEntries;
       const options = getFormSelectOptions(subTypes);
       const selectedType = await Dialogs.select("Change Type", options, this.item.system.feature.type);
       if (selectedType != null) {

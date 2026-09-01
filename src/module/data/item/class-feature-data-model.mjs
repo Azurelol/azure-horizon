@@ -46,9 +46,17 @@ export default class ClassFeatureDataModel extends ActiveFeatureDataModel {
       return;
     }
     const model = AH.dataModelRegistries.classFeature.types[type];
-    const feature = new model();
-    if (feature) {
-      await this.update({ "==feature": feature });
+    if (model) {
+      const feature = new model();
+      if (feature) {
+        await this.parent.update({ "system.feature": foundry.data.operators.ForcedReplacement.create({
+          type: type,
+          // ...rest of the new type's schema data
+        }) });
+      }
+    }
+    else {
+      ui.notifications.warn(`Failed to retrieve data model for type ${type}`);
     }
   }
 
@@ -56,5 +64,12 @@ export default class ClassFeatureDataModel extends ActiveFeatureDataModel {
     return {
       header: systemTemplatePath("sheets/item/item-class-feature"),
     };
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get hasFeature() {
+    return !(this.feature instanceof EmptyClassFeature);
   }
 }

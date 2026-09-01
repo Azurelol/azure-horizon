@@ -1,11 +1,12 @@
-<div>
-  <label class="ah-field">
-    <span>{{localize 'AH.FIELD.Type'}}</span>
+<label class="ah-flex-center">
+  {{#if (ahNotEquals system.feature.localization "-")}}
     <span>
       {{localize system.feature.localization}}
     </span>
-    <a data-action="changeType">
-      <i class="ah-icon --s fa fa-pencil-square"></i>
-    </a>
-  </label>
-</div>
+  {{else}}
+
+  {{/if}}
+  <a data-action="changeType">
+    <i class="ah-icon --s {{ahIconClass 'edit'}}"></i>
+  </a>
+</label>

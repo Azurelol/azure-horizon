@@ -20,6 +20,13 @@ export default class DataModelRegistry {
   }
 
   /**
+   * @returns {DataModel[]}
+   */
+  get models() {
+    return Object.values(this.types);
+  }
+
+  /**
 	 * @returns {Object<String, DataModel>}
    * @remarks Types without prefixes.
 	 */
@@ -75,15 +82,16 @@ export default class DataModelRegistry {
   }
 
   /**
-	 * @returns {Record<string, string>}
-	 * @remarks Fully qualified
+	 * @returns {Record<string, string>} Qualified Name : Localization
+	 * @remarks Fully qualified with the namespace such as "azure-horizon.dataModelType".
 	 */
-  get entries() {
+  get qualifiedEntries() {
     return Object.entries(this.qualifiedTypes).reduce((agg, [key, value]) => (agg[key] = value.localization) && agg, {});
   }
 
   /**
-	 * @returns {Record<string, string>} The type to its localization.
+	 * @returns {Record<string, string>} Name : Localization
+   * @remarks In the format of having the simple data model name such as  "dataModelType".
 	 */
   get localizedEntries() {
     return Object.entries(this.types).reduce((agg, [key, value]) => (agg[key] = value.localization) && agg, {});

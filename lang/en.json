@@ -198,6 +198,11 @@
         "Block": "Block Ratio"
       }
     },
+    "CLASS": {
+      "FEATURE": {
+        "Song": "Song"
+      }
+    },
     "FOLLOWER": {
       "Kind": "Kind",
       "Guest": "Guest",

@@ -35,5 +35,9 @@
         }}
       {{/if}}
     {{/each}}
+
+    {{#if featureData}}
+      {{> (lookup featureData 'template') }}
+    {{/if}}
   </div>
 </section>
