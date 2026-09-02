@@ -205,7 +205,7 @@ export class AHCombat extends foundry.documents.Combat {
 
   /** @inheritdoc */
   async nextRound() {
-    await this.#rollFactionInitiative([], true);
+    await this.#rollFactionInitiative(this.combatants.contents, true);
     await super.nextRound();
     return this;
   }
@@ -222,6 +222,7 @@ export class AHCombat extends foundry.documents.Combat {
       if (!combatant?.isOwner) continue;
       const roll = combatant.getInitiativeRoll();
       await roll.evaluate();
+      combatant.initiative = roll._total;
       changed = true;
     }
 
@@ -232,7 +233,7 @@ export class AHCombat extends foundry.documents.Combat {
     updateOptions.combatTurn = this.turn;
 
     // Now do a re-sort for all combatants
-    const sorted = this.#zipCombatants(this.combatants.contents);
+    const sorted = this.#zipCombatants(combatants);
     const updates = sorted.map(c => ({ _id: c.id, initiative: c.initiative }));
     await this.updateEmbeddedDocuments("Combatant", updates);
   }
@@ -261,16 +262,16 @@ export class AHCombat extends foundry.documents.Combat {
 
     // Zip the two sides together by index - no per-step initiative comparison
     const maxLength = Math.max(leading.length, trailing.length);
-    let initiative = 1;
+    let initiative = maxLength;
     for (let i = 0; i < maxLength; i++) {
       if (leading[i]) {
         let lead = leading[i];
-        lead.initiative = initiative++;
+        lead.initiative = initiative--;
         alternatingTurns.push(lead);
       }
       if (trailing[i]) {
         let trail = trailing[i];
-        trail.initiative = initiative++;
+        trail.initiative = initiative--;
         alternatingTurns.push(trail);
       }
     }
@@ -278,39 +279,39 @@ export class AHCombat extends foundry.documents.Combat {
     return alternatingTurns;
   }
 
-  /**
-   * Return the Array of combatants sorted into initiative order, breaking ties alphabetically by name.
-   * @override
-   * @returns {AHCombatant[]}
-   */
-  setupTurns() {
-    this.turns ||= [];
-
-    // Determine the turn order and the current turn
-    /** @type AHCombatant[] **/
-    let turns = this.combatants.contents.sort(this._sortCombatants);
-    // Then sort again by faction
-    //turns = this.#sortFactions(turns);
-
-    if (this.turn !== null) {
-      if (this.turn < 0) this.turn = 0;
-      else if (this.turn >= turns.length) {
-        this.turn = 0;
-        this.round++;
-      }
-      turns.forEach((c, i) => c.turnNumber = i);
-    }
-
-    // Update state tracking
-    const c = turns[this.turn];
-    this.current = this._getCurrentState(c);
-
-    // One-time initialization of the previous state
-    if (!this.previous) this.previous = this.current;
-
-    // Return the array of prepared turns
-    return this.turns = turns;
-  }
+  // /**
+  //  * Return the Array of combatants sorted into initiative order, breaking ties alphabetically by name.
+  //  * @override
+  //  * @returns {AHCombatant[]}
+  //  */
+  // setupTurns() {
+  //   this.turns ||= [];
+  //
+  //   // Determine the turn order and the current turn
+  //   /** @type AHCombatant[] **/
+  //   let turns = this.combatants.contents.sort(this._sortCombatants);
+  //   // Then sort again by faction
+  //   //turns = this.#sortFactions(turns);
+  //
+  //   if (this.turn !== null) {
+  //     if (this.turn < 0) this.turn = 0;
+  //     else if (this.turn >= turns.length) {
+  //       this.turn = 0;
+  //       this.round++;
+  //     }
+  //     turns.forEach((c, i) => c.turnNumber = i);
+  //   }
+  //
+  //   // Update state tracking
+  //   const c = turns[this.turn];
+  //   this.current = this._getCurrentState(c);
+  //
+  //   // One-time initialization of the previous state
+  //   if (!this.previous) this.previous = this.current;
+  //
+  //   // Return the array of prepared turns
+  //   return this.turns = turns;
+  // }
 
   /* -------------------------------------------------- */
   /**
