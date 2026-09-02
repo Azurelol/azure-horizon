@@ -420,6 +420,8 @@
       "Primary": "Primary Damage",
       "Secondary": "Secondary Damage",
       "Bonus": "Bonus Damage",
+      "Pressure": "Pressure",
+      "Stagger": "Stagger",
       "AFFINITY": {
         "Vulnerability":  {
           "long": "Vulnerability",

@@ -5,6 +5,8 @@ import { CharacterParametersDataModel } from "./character-parameters-data-model.
 import { ActorResourceDataModel, AdversaryProfileDataModel } from "./system/_module.mjs";
 import { ObjectUtils } from "../../utils/_module.mjs";
 import Assembly from "../../ruleset/assembly.mjs";
+import { TraitsField } from "../item/fields/_module.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -17,6 +19,18 @@ class AdversaryResourcesDataModel extends CharacterResourcesDataModel {
     return Object.assign(super.defineSchema(), {
       ip: new EmbeddedDataField(ActorResourceDataModel, {}),
       tp: new EmbeddedDataField(ActorResourceDataModel, {}),
+    });
+  }
+}
+
+/**
+ * @property {ParameterDataModel} def
+ * @property {ParameterDataModel} mdef
+ */
+class AdversaryParametersDataModel extends CharacterParametersDataModel {
+  static defineSchema() {
+    return Object.assign(super.defineSchema(), {
+
     });
   }
 }
@@ -37,7 +51,7 @@ export default class AdversaryDataModel extends CharacterDataModel {
   static defineSchema() {
     const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      parameters: new EmbeddedDataField(CharacterParametersDataModel, {}),
+      parameters: new EmbeddedDataField(AdversaryParametersDataModel, {}),
       resources: new EmbeddedDataField(AdversaryResourcesDataModel, {}),
       profile: new EmbeddedDataField(AdversaryProfileDataModel, {}),
     });

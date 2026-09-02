@@ -23,7 +23,7 @@
     </div>
 
     <fieldset>
-      <legend>{{localize 'AH.CHARACTER.Affinity.plural'}} [{{assembly.affinities.current}}/{{assembly.affinities.available}}]</legend>
+      <legend>{{localize 'AH.CHARACTER.Affinity.plural'}} [{{assembly.affinities.current}}{{#if assembly.affinities.pressureTriggers}}+{{assembly.affinities.pressureTriggers.length}}{{/if}}/{{assembly.affinities.available}}]</legend>
       <table class="ah-table">
         <thead>
         <tr>

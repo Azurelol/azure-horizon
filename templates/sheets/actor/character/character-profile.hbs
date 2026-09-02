@@ -19,6 +19,7 @@
       {{/if}}
       {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role' options=(ahFormOptions 'role')}}
       {{ahStringField path="system.profile.slug" value=system.profile.slug label='AH.DOCUMENT.Slug'}}
+      {{ahTraitsField schema=systemFields.profile.fields.pressure path='system.profile.pressure' label="AH.DAMAGE.Pressure" value=system.profile.pressure options=(ahFormOptions 'traits.pressure')}}
     </div>
 
   <fieldset>

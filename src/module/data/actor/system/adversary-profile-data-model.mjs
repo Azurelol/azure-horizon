@@ -23,6 +23,7 @@ class AdversaryModifiersDataModel extends VersionedDataModel {
  * @property {Boolean} villain If the adversary is a villain.
  * @property {Number} turns For champion-level adversaries, how many turns should they get.
  * @property {String} summary
+ * @property {String[]} pressure Traits that add pressure to this adversary.
  */
 export default class AdversaryProfileDataModel extends VersionedDataModel {
   static defineSchema() {
@@ -36,6 +37,11 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
       villain: new BooleanField(),
       rank: new StringField({ initial: "standard", choices: Object.keys(AH.rank) }),
       turns: new NumberField({ initial: 1, min: 0, max: 6 }),
+      pressure: new TraitsField({
+        label: "AH.DAMAGE.Pressure",
+        _part: "header",
+        formOptions: getFormSelectOptions(AH.traits.pressure),
+      }),
       summary: new HTMLField(),
       revision: new NumberField({
         required: true,
@@ -91,6 +97,7 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
    * @typedef {object} AH_AffinityAssemblyData
    * @property {AH_AssemblyBudget} resistances - Budget for assigned resistances.
    * @property {AH_AssemblyBudget} vulnerabilities - Budget for assigned vulnerabilities.
+   * @property {String[]} pressureTriggers
    */
 
   /**
@@ -166,9 +173,11 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
         break;
     }
 
-    // Affinities
+    // Affinities + Pressure
     const affinities = system.affinities.entries.filter(af => af.preset || af.amount);
     data.affinities.current = affinities.length;
+    data.affinities.pressureTriggers = Array.from(system.profile.pressure);
+
     let availableAffinities = 0;
     switch (this.rank) {
       case "standard":

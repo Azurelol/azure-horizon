@@ -1082,6 +1082,7 @@ AH.traits = {
     free: { label: "AH.TRAIT.Free", tooltip: "AH.FreeHint" },
   },
 
+  // Damage, Resource
   resource: {
     gain: { label: "AH.TRAIT.Gain", tooltip: "AH.TRAIT.GainHint" },
     loss: { label: "AH.TRAIT.Loss", tooltip: "AH.TRAIT.LossHint" },
@@ -1099,9 +1100,19 @@ AH.traits = {
     nonLethal: { label: "AH.TRAIT.NonLethal", tooltip: "AH.TRAIT.NonLethalHint" },
   },
 
+  // Pressure
+  pressure: {
+    shift: { label: "AH.TRAIT.Shift", tooltip: "AH.TRAIT.ShiftHint" },
+  },
+
+  // Attack
   attack: {
     stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
     reach: { label: "AH.TRAIT.Reach", tooltip: "AH.TRAIT.ReachHint" },
+  },
+  range: {
+    melee: { label: "AH.TRAIT.Melee" },
+    ranged: { label: "AH.TRAIT.Ranged" },
   },
   defense: {
     deflection: { label: "AH.TRAIT.Deflection", tooltip: "AH.TRAIT.DeflectionHint" }, // Heavy
@@ -1147,11 +1158,7 @@ AH.traits = {
     splash: { label: "AH.TRAIT.Splash", tooltip: "AH.TRAIT.SplashHint" },
   },
 
-  range: {
-    melee: { label: "AH.TRAIT.Melee" },
-    ranged: { label: "AH.TRAIT.Ranged" },
-  },
-
+  // Equipment
   weapon: {
     reach: { label: "AH.TRAIT.Reach", tooltip: "AH.TRAIT.ReachHint" },
     projectile: { label: "AH.TRAIT.Projectile", tooltip: "AH.TRAIT.ProjectileHint" },
