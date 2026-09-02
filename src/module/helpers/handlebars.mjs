@@ -349,7 +349,7 @@ export default Object.freeze({
  */
 
 /**
- * @typedef {"long", "short", "plural"} AH_LocalizationFormat
+ * @typedef {"long", "short", "plural", "tooltip"} AH_LocalizationFormat
  */
 
 /**

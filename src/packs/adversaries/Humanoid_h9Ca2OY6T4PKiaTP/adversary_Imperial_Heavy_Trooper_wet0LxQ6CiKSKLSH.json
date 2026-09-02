@@ -5,18 +5,18 @@
   "_id": "wet0LxQ6CiKSKLSH",
   "img": "systems/azure-horizon/assets/characters/adversaries/empire_heavy.png",
   "system": {
-    "level": 10,
+    "level": 15,
     "resources": {
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 90,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 35,
         "bonus": 0,
         "temporary": 0
       },
@@ -397,7 +397,7 @@
       "role": "brute",
       "villain": false,
       "rank": "elite",
-      "turns": 1,
+      "turns": 2,
       "summary": "",
       "revision": 1,
       "slug": "adversary-imperial-heavy-trooper",
@@ -427,12 +427,12 @@
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 30,
     "bar1": {
-      "attribute": null
+      "attribute": "resources.hp"
     },
     "bar2": {
-      "attribute": null
+      "attribute": "resources.mp"
     },
     "light": {
       "negative": false,

@@ -616,23 +616,23 @@ AH.weights = Object.freeze({
  */
 
 AH.intents = Object.freeze({
-  unknown: { label: "AH.ACTION.Intent.Unknown", icon: "ra ra-uncertainty" },
-  attack: { label: "AH.ADVERSARY.INTENT.Attack", icon: "ra ra-sword" }, // Base attack
+  unknown: { label: "AH.ADVERSARY.INTENT.Unknown", icon: "ra ra-uncertainty", tooltip: "AH.ADVERSARY.INTENT.UnknownHint" },
+  attack: { label: "AH.ADVERSARY.INTENT.Attack", icon: "ra ra-sword", tooltip: "AH.ADVERSARY.INTENT.AttackHint" },
 
-  damage: { label: "AH.ADVERSARY.INTENT.Damage", icon: "ra ra-all-for-one" }, // Damaging ability
-  empower: { label: "AH.ADVERSARY.INTENT.Empower", icon: "ra ra-fire-symbol" }, // Offensive buff
-  weaken: { label: "AH.ADVERSARY.INTENT.Weaken", icon: "ra ra-cracked-shield" }, // Offensive debuff
-  fortify: { label: "AH.ADVERSARY.INTENT.Fortify", icon: "ra ra-bolt-shield" }, // Defensive buff
-  breach: { label: "AH.ADVERSARY.INTENT.Breach", icon: "ra ra-cracked-shield" }, // Defensive debuff
-  status: { label: "AH.ADVERSARY.INTENT.Status", icon: "ra ra-poison-bottle" }, // Status effect
-  control: { label: "AH.ADVERSARY.INTENT.Control", icon: "ra ra-hypnotized-eye" }, // Controlling ability
+  damage: { label: "AH.ADVERSARY.INTENT.Damage", icon: "ra ra-all-for-one", tooltip: "AH.ADVERSARY.INTENT.DamageHint" }, // Damaging ability
+  empower: { label: "AH.ADVERSARY.INTENT.Empower", icon: "ra ra-fire-symbol", tooltip: "AH.ADVERSARY.INTENT.EmpowerHint" }, // Offensive buff
+  weaken: { label: "AH.ADVERSARY.INTENT.Weaken", icon: "ra ra-cracked-shield", tooltip: "AH.ADVERSARY.INTENT.WeakenHint" }, // Offensive debuff
+  fortify: { label: "AH.ADVERSARY.INTENT.Fortify", icon: "ra ra-bolt-shield", tooltip: "AH.ADVERSARY.INTENT.FortifyHint" }, // Defensive buff
+  breach: { label: "AH.ADVERSARY.INTENT.Breach", icon: "ra ra-cracked-shield", tooltip: "AH.ADVERSARY.INTENT.BreachHint" }, // Defensive debuff
+  status: { label: "AH.ADVERSARY.INTENT.Status", icon: "ra ra-poison-bottle", tooltip: "AH.ADVERSARY.INTENT.StatusHint" }, // Status effect
+  control: { label: "AH.ADVERSARY.INTENT.Control", icon: "ra ra-hypnotized-eye", tooltip: "AH.ADVERSARY.INTENT.ControlHint" }, // Controlling ability
 
-  prepare: { label: "AH.ADVERSARY.INTENT.Prepare", icon: "ra ra-hourglass" }, // Prepare an action
+  prepare: { label: "AH.ADVERSARY.INTENT.Prepare", icon: "ra ra-hourglass", tooltip: "AH.ADVERSARY.INTENT.PrepareHint" }, // Prepare an action
 
-  block: { label: "AH.ADVERSARY.INTENT.Block", icon: "ra ra-shield" }, // Heal self
-  heal: { label: "AH.ADVERSARY.INTENT.Heal", icon: "ra ra-heart-plus" }, // Heal self
-  escape: { label: "AH.ADVERSARY.INTENT.Escape", icon: "ra ra-run" }, // Escape combat
-  summon: { label: "AH.ADVERSARY.INTENT.Summon", icon: "ra ra-summon" }, // Summon minion
+  block: { label: "AH.ADVERSARY.INTENT.Block", icon: "ra ra-shield", tooltip: "AH.ADVERSARY.INTENT.BlockHint" }, // Heal self
+  recovery: { label: "AH.ADVERSARY.INTENT.Recovery", icon: "ra ra-heart-plus", tooltip: "AH.ADVERSARY.INTENT.RecoveryHint" }, // Heal self
+  escape: { label: "AH.ADVERSARY.INTENT.Escape", icon: "ra ra-run", tooltip: "AH.ADVERSARY.INTENT.EscapeHint" }, // Escape combat
+  summon: { label: "AH.ADVERSARY.INTENT.Summon", icon: "ra ra-summon", tooltip: "AH.ADVERSARY.INTENT.SummonHint" }, // Summon minion
 });
 
 /**

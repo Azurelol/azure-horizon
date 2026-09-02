@@ -1,23 +1,23 @@
 {
   "type": "Item",
   "folder": null,
-  "name": "Ability: Ranged",
+  "name": "Ability: Prepare",
   "color": "#4d4dff",
   "sorting": "a",
-  "_id": "dqZj0s5AOvWpGbEl",
+  "_id": "VxfouSCvmBieccNO",
   "description": "",
-  "sort": 1000000,
+  "sort": 900000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786633808882,
+    "createdTime": 1786633840392,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!dqZj0s5AOvWpGbEl"
+  "_key": "!folders!VxfouSCvmBieccNO"
 }

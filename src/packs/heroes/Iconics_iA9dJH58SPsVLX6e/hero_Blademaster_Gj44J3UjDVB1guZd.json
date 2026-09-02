@@ -391,7 +391,7 @@
   },
   "prototypeToken": {
     "name": "Blademaster",
-    "displayName": 0,
+    "displayName": 30,
     "actorLink": true,
     "width": 1,
     "height": 1,
@@ -410,12 +410,12 @@
     "rotation": 0,
     "alpha": 1,
     "disposition": 1,
-    "displayBars": 0,
+    "displayBars": 30,
     "bar1": {
-      "attribute": null
+      "attribute": "resources.hp"
     },
     "bar2": {
-      "attribute": null
+      "attribute": "resources.mp"
     },
     "light": {
       "negative": false,

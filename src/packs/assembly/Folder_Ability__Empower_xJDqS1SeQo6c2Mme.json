@@ -1,23 +1,23 @@
 {
   "type": "Item",
   "folder": null,
-  "name": "Ability: Preparation",
+  "name": "Ability: Empower",
   "color": "#4d4dff",
   "sorting": "a",
-  "_id": "VxfouSCvmBieccNO",
+  "_id": "xJDqS1SeQo6c2Mme",
   "description": "",
-  "sort": 900000,
+  "sort": 0,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786633840392,
+    "createdTime": 1787649679897,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!VxfouSCvmBieccNO"
+  "_key": "!folders!xJDqS1SeQo6c2Mme"
 }

@@ -114,6 +114,28 @@ const ROLE_ROUTINES = Object.freeze({
     },
   },
 
+  // Artillery, focuses on heavy damage at range
+  artillery: {
+    standard: {
+      default: [
+        ["attack"],
+        ["damage"],
+      ],
+    },
+    elite: {
+      default: [
+        ["attack", "damage"],
+        ["prepare", "damage"],
+      ],
+    },
+    champion: {
+      default: [
+        ["attack", "damage", "prepare", "damage"],
+        ["attack", "empower", "prepare", "damage"],
+      ],
+    },
+  },
+
 });
 
 /**

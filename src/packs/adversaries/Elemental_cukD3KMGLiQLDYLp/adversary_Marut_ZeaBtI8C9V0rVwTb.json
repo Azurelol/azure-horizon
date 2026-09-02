@@ -79,12 +79,12 @@
         "amount": null
       },
       "fire": {
-        "preset": "",
+        "preset": "resistance",
         "type": "additive",
         "amount": null
       },
       "cold": {
-        "preset": "",
+        "preset": "vulnerability",
         "type": "additive",
         "amount": null
       },
@@ -396,7 +396,7 @@
         "elemental"
       ],
       "family": "standard",
-      "role": "harrier",
+      "role": "artillery",
       "villain": false,
       "rank": "champion",
       "turns": 4,
@@ -429,12 +429,12 @@
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 30,
     "bar1": {
-      "attribute": null
+      "attribute": "resources.hp"
     },
     "bar2": {
-      "attribute": null
+      "attribute": "resources.mp"
     },
     "light": {
       "negative": false,
@@ -500,7 +500,272 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Fire Bolt",
+      "type": "attack",
+      "_id": "P9e4VHiZ49MTgN1n",
+      "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "attack-fire-bolt",
+        "description": "",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "ins",
+          "secondary": "wlp",
+          "defense": "mdef",
+          "bonus": ""
+        },
+        "range": "ranged",
+        "traits": [],
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "",
+            "type": "fire"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788332165672,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.P9e4VHiZ49MTgN1n",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!ZeaBtI8C9V0rVwTb.P9e4VHiZ49MTgN1n"
+    },
+    {
+      "name": "Heavy Blow",
+      "type": "ability",
+      "_id": "PjB3UyI3B4cUnuf6",
+      "img": "icons/skills/melee/strike-flail-destructive-yellow.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "ability-heavy-blow",
+        "description": "<p>You deal high damage to the target.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "high",
+        "intent": "damage",
+        "action": {
+          "schemaVersion": 1,
+          "range": "",
+          "type": "action",
+          "points": 2,
+          "traits": [],
+          "enabled": false,
+          "targeting": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": true,
+          "damage": true,
+          "enabled": false
+        },
+        "weight": "normal"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788332176771,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.PjB3UyI3B4cUnuf6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!ZeaBtI8C9V0rVwTb.PjB3UyI3B4cUnuf6"
+    },
+    {
+      "name": "Throw",
+      "type": "ability",
+      "_id": "rZF62qlaLtYRjtqw",
+      "img": "icons/magic/control/encase-creature-monster-hold.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "ability-throw",
+        "description": "<p>While you have a creature grabbed you push it, dealing physical damage.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "range": "",
+          "type": "action",
+          "points": 1,
+          "traits": [],
+          "enabled": false,
+          "targeting": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "",
+            "type": "bludgeoning"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "intent": "",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "power": "",
+        "weight": "normal",
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788332322438,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.rZF62qlaLtYRjtqw",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!ZeaBtI8C9V0rVwTb.rZF62qlaLtYRjtqw"
+    }
+  ],
   "effects": [],
   "sort": 0,
   "ownership": {

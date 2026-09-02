@@ -1,4 +1,8 @@
 /**
+ * @typedef {'crisis'|'ko'|'stealth'|'charge'|'concentrate'|'sunder'|'breach'} AH_StatusEffect
+ */
+
+/**
  * System-specific status effects.
  * @type {Record<string, ActiveEffectData>}
  */
@@ -15,11 +19,137 @@ const STATUS_EFFECTS = Object.freeze({
     img: "systems/azure-horizon/assets/icons/statuses/ko.png",
   },
 
+  // CONTROL
+  // - can't use skills
+  seal: {
+    id: "seal",
+    name: "AH.STATUS.Seal",
+    img: "systems/azure-horizon/assets/icons/statuses/seal.png",
+  },
+  // - can't use spells
+  mute: {
+    id: "mute",
+    name: "AH.STATUS.Mute",
+    img: "systems/azure-horizon/assets/icons/statuses/mute.png",
+  },
+
   // TARGETING
+  taunt: {
+    id: "taunt",
+    name: "AH.STATUS.Taunt",
+    img: "systems/azure-horizon/assets/icons/statuses/taunt.png",
+  },
   stealth: {
     id: "stealth",
     name: "AH.STATUS.Stealth",
     img: "systems/azure-horizon/assets/icons/statuses/stealth.png",
+  },
+
+  // BUFFS
+  // - increased physical damage dealt
+  charge: {
+    id: "charge",
+    name: "AH.STATUS.Charge",
+    img: "systems/azure-horizon/assets/icons/statuses/charge.png",
+    changes: [
+      {
+        key: "system.parameters.damage.physical.outgoing.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "5",
+      },
+    ],
+  },
+  // - increased magical damage dealt
+  concentration: {
+    id: "concentration",
+    name: "AH.STATUS.Concentration",
+    img: "systems/azure-horizon/assets/icons/statuses/concentration.png",
+    changes: [
+      {
+        key: "system.parameters.damage.elemental.outgoing.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "5",
+      },
+    ],
+  },
+
+  // DEBUFFS
+  // - increased all damage taken
+  vulnerable: {
+    id: "vulnerable",
+    name: "AH.STATUS.Vulnerable",
+    img: "systems/azure-horizon/assets/icons/statuses/vulnerable.png",
+    changes: [
+      {
+        key: "system.parameters.damage.universal.incoming.status.multiplicative",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "1.25",
+      },
+    ],
+    system: {
+    },
+  },
+  // - increased physical damage taken
+  sunder: {
+    id: "sunder",
+    name: "AH.STATUS.Sunder",
+    img: "systems/azure-horizon/assets/icons/statuses/sunder.png",
+    changes: [
+      {
+        key: "system.parameters.damage.physical.incoming.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "5",
+      },
+    ],
+    system: {
+    },
+  },
+  // - increased magical damage taken
+  breach: {
+    id: "breach",
+    name: "AH.STATUS.Breach",
+    img: "systems/azure-horizon/assets/icons/statuses/breach.png",
+    changes: [
+      {
+        key: "system.parameters.damage.elemental.incoming.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "5",
+      },
+      {
+        key: "system.parameters.damage.spiritual.incoming.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "5",
+      },
+    ],
+  },
+  // - reduced damage dealt
+  weak: {
+    id: "weak",
+    name: "AH.STATUS.Weak",
+    img: "systems/azure-horizon/assets/icons/statuses/weak.png",
+    changes: [
+      {
+        key: "system.parameters.damage.universal.outgoing.status.multiplicative",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "0.75",
+      },
+    ],
+  },
+
+  // - reduced block
+  frail: {
+    id: "frail",
+    name: "AH.STATUS.Frail",
+    img: "systems/azure-horizon/assets/icons/statuses/frail.png",
+    changes: [
+      {
+        key: "system.parameters.block.bonus",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "-5",
+      },
+    ],
+    system: {
+    },
   },
 
   // AFFINITY-BASED

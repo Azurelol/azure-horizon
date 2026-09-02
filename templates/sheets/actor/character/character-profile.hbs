@@ -35,8 +35,8 @@
             {{@index}}
           </label>
           {{#each round as |intent|}}
-            <span>
-              {{ahCapitalize intent}}
+            <span data-tooltip="{{localize (ahLocaleKey 'intents' intent format='tooltip')}}">
+              {{localize (ahLocaleKey 'intents' intent)}}
             </span>
           {{/each}}
         </li>
