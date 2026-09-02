@@ -4,6 +4,7 @@ import * as data from "./src/module/data/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
 import * as pipelines from "./src/module/pipelines/_module.mjs";
+import * as canvas from "./src/module/canvas/_module.mjs";
 import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/utils/utils.mjs";
 import { systemID } from "./src/module/constants.mjs";
@@ -45,7 +46,8 @@ function bindDataModels() {
   CONFIG.Token.hudClass = apps.HUD.AHTokenHUD;
   CONFIG.statusEffects = data.ActiveEffect.statusEffects.values;
   CONFIG.specialStatusEffects.DEFEATED = "ko";
-
+  // Assign canvas-related classes
+  CONFIG.Token.objectClass = canvas.AHToken;
 }
 
 /**
