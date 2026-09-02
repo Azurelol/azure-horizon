@@ -268,7 +268,7 @@ async function applyActorMigrations(resolved) {
     if (effectUpdates.length) actorLevelOps.push(actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates));
     if (effectCreates.length) actorLevelOps.push(actor.createEmbeddedDocuments("ActiveEffect", effectCreates));
 
-    if (itemMigrations.length) {
+    if (itemMigrations?.length) {
       const itemPayloads = itemMigrations.map(({ item, updateData }) => ({ _id: item.id, ...updateData }));
       actorLevelOps.push(actor.updateEmbeddedDocuments("Item", itemPayloads, { diff: false }));
     }
@@ -556,6 +556,8 @@ async function updateTokens() {
       updateData: data,
       effectUpdates: [],
       effectCreates: [],
+      itemCreates: [],
+      itemMigrations: [],
     };
   });
 

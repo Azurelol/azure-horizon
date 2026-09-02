@@ -124,6 +124,7 @@ function initializeSystems() {
   apps.UI.CompendiumBrowser.initialize();
   apps.UI.Manual.initialize();
   helpers.Themes.initialize();
+  canvas.AHTextures.preload();
 
   // We initialize hotkeys && controls last as they will call a registration hook
   initializeApps();

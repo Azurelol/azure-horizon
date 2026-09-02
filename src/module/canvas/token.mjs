@@ -1,4 +1,7 @@
-import { systemAssetPath } from "../constants.mjs";
+import { AHTextures } from "./_module.mjs";
+
+const BAR_HEIGHT = 16; // pixels
+const MARGIN = 4;
 
 /**
  * A Placeable Object subclass adding system-specific behavior and registered in CONFIG.Token.objectClass.
@@ -6,26 +9,37 @@ import { systemAssetPath } from "../constants.mjs";
 export class AHToken extends foundry.canvas.placeables.Token {
   /** @override */
   _drawBar(number, bar, data) {
-    if (data.attribute !== "resources.hp") return super._drawBar(number, bar, data);
     const { value, max } = data;
     if (number === 0) {
-      // Example: use a texture instead of Graphics.beginFill()
-      bar.removeChildren();
-
-      const bg = PIXI.Sprite.from(systemAssetPath("bars/bar-bg.png"));
-      const fill = PIXI.Sprite.from(systemAssetPath("bars/bar-fill.png"));
-
-      // Foundry passes bar as a Graphics container positioned/sized for you;
-      // read its computed width/height off `data` or the token's dimensions
-      const pct = Math.clamp(value, 0, max) / max;
-      fill.width = bar.width * pct;
-      fill.height = bar.height;
-      bg.width = bar.width;
-      bg.height = bar.height;
-
-      bar.addChild(bg, fill);
+      switch (data.attribute) {
+        case "resources.hp":
+          this.createHitPointBar(value, max, bar);
+          return;
+      }
       return;
     }
     return super._drawBar(number, bar, data);
+  }
+
+  createHitPointBar(value, max, bar) {
+    bar.removeChildren();
+    const bw = this.w; // token width in pixels
+    const bh = BAR_HEIGHT;
+    const bg = new PIXI.Sprite(AHTextures.get("frame"));
+    const fill = new PIXI.Sprite(AHTextures.get("fill"));
+    const pct = Math.clamp(value, 0, max) / max;
+    bg.width = bw;
+    bg.height = bh;
+    fill.width = bw * pct;
+    fill.height = bh;
+    bar.addChild(bg, fill);
+
+    // Get the mesh's bounds in world space, then convert into the token's
+    // own local coordinate frame — this correctly accounts for the mesh's
+    // anchor, position, and scale, unlike getLocalBounds() alone.
+    const worldBounds = this.mesh.getBounds();
+    const topLeftLocal = this.toLocal(new PIXI.Point(worldBounds.x, worldBounds.y));
+
+    bar.position.set((this.w - bw) / 2, topLeftLocal.y - bh - MARGIN);
   }
 }
