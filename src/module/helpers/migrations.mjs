@@ -32,7 +32,7 @@ async function resolveMigrationData({ item: targetItem, compendiumItem }) {
 
   // Merge retained fields into the clone up front — single final state, single write
   const clonedSystem = foundry.utils.deepClone(sourceItem.system);
-  for (const fieldPath of targetItem.system.retainedFieldPaths) {
+  for (const fieldPath of (targetItem.system.retainedFieldPaths ?? [])) {
     const currentValue = ObjectUtils.getProperty(targetItem, `system.${fieldPath}`);
     if (currentValue !== undefined) {
       foundry.utils.setProperty(clonedSystem, fieldPath, currentValue);
@@ -374,7 +374,7 @@ async function pullItemUpdate(item) {
  * Prompts the user to migrate all actors and items from the compendium to the latest.
  * @returns {Promise<void>}
  */
-async function migrateAll() {
+async function migrateAllItems() {
   let updates = [];
   const itemsByType = await CompendiumIndex.instance.getItems();
   /** @type AHItem **/
@@ -389,11 +389,12 @@ async function migrateAll() {
 }
 
 /**
- * @param world
- * @param compendium
+ * @param {Boolean} world
+ * @param {Boolean} compendium
+ * @param {AH_ActorType} type
  * @returns {Promise<AHActor[]>}
  */
-async function selectActors(world = true, compendium = false) {
+async function selectActors(world = true, compendium = false, type = undefined) {
   let actors = [];
   if (world) {
     actors.push(...game.actors.contents);
@@ -403,6 +404,10 @@ async function selectActors(world = true, compendium = false) {
   /** @type CompendiumIndexEntry[] **/
   const compendiumActors = [...actorEntries.hero, ...actorEntries.adversary, ...actorEntries.follower];
   actors.push(...compendiumActors);
+
+  if (type) {
+    actors = actors.filter((actor) => actor.type === type);
+  }
 
   if (!actors.length) {
     return undefined;
@@ -454,16 +459,63 @@ async function updateTokens() {
 /**
  * @returns {Promise<void>}
  */
+async function migrateAdversaries() {
+  const actorEntries = await CompendiumIndex.instance.getActorEntries();
+  /** @type AHActor[] **/
+  const worldAdversaries = game.actors.contents.filter(a => a.type === "adversary");
+  const compendiumAdversaries = [...actorEntries.adversary];
+
+  let migrations = [];
+
+  for (const adversary of compendiumAdversaries) {
+    const copies = worldAdversaries.filter(actor => actor.system.profile.slug === adversary.system.profile.slug);
+    for (const copy of copies) {
+
+      const data = await resolveMigrationData({
+        item: copy,
+        compendiumItem: adversary,
+      });
+
+      migrations.push({
+        actor: copy,
+        updateData: {},
+        effectUpdates: [],
+        effectCreates: [],
+      });
+    }
+  }
+
+  /** @type ItemSelectionData **/
+  const dialogData = {
+    title: "AH.DIALOG.MigrateAdversaries",
+    style: "list",
+    items: migrations.map(m => m.actor),
+    payload: migrations,
+    getDescription: async (item) => {
+      const text = item.name ?? "";
+      return text;
+    },
+  };
+  const selected = await Dialogs.itemSelect(dialogData);
+  if (selected.length > 0) {
+    await applyActorMigrations(selected);
+    ui.notifications.info(`Updated ${selected.length} actors.`);
+  }
+}
+
+/**
+ * @returns {Promise<void>}
+ */
 async function openMenu() {
-  const choice = await Dialogs.choice({
+  await Dialogs.choice({
     title: "AH.DIALOG.MigrationTools",
     content: StringUtils.localize("AH.DIALOG.MigrationToolsHint"),
     buttons: [
       {
-        action: "migrateAll",
-        label: "AH.DIALOG.MigrateAll",
+        action: "migrateItems",
+        label: "AH.DIALOG.MigrateItems",
         callback: async (event, button, dialog) => {
-          await migrateAll();
+          await migrateAllItems();
           await dialog.close({ animate: false });
           return true;
         },
@@ -477,11 +529,17 @@ async function openMenu() {
           return true;
         },
       },
+      {
+        action: "migrateAdversaries",
+        label: "AH.DIALOG.MigrateAdversaries",
+        callback: async (event, button, dialog) => {
+          await migrateAdversaries();
+          await dialog.close({ animate: false });
+          return true;
+        },
+      },
     ],
   });
-  if (choice) {
-
-  }
 }
 
 function initialize() {

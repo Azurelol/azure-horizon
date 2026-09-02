@@ -106,6 +106,7 @@ export default class CompendiumIndex {
   static npcFields = Object.freeze({
     rank: "system.profile.rank",
     role: "system.profile.role",
+    adversarySlug: "system.profile.slug",
   });
 
   /**

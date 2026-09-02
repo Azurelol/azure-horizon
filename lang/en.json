@@ -569,7 +569,10 @@
       "UpdateTokens": "Update Tokens",
       "UpdateTokensHint": "Update all actor tokens to use latest system defaults.",
       "MigrateAll": "Migrate All",
+      "MigrateItems": "Migrate Items",
       "MigrateAllHint": "Migrate all actors and items to the latest entries in the system compendiums?",
+      "MigrateAdversaries": "Migrate Adversaries",
+      "MigrateAdversariesHint": "Migrate all adversaries in the world to their latest versions from the compendiums?",
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",
