@@ -25,15 +25,15 @@ import AH from "../config.mjs";
  * @param {ItemMigrationAction} action
  * @returns {Promise<ItemMigration>}
  */
-async function resolveMigrationData({ item: targetItem, compendiumItem }) {
+async function resolveItemMigrationData({ item, compendiumItem }) {
   const sourceItem = isCompendiumEntry(compendiumItem)
     ? await fromUuid(compendiumItem.uuid)
     : compendiumItem;
 
   // Merge retained fields into the clone up front — single final state, single write
   const clonedSystem = foundry.utils.deepClone(sourceItem.system);
-  for (const fieldPath of (targetItem.system.retainedFieldPaths ?? [])) {
-    const currentValue = ObjectUtils.getProperty(targetItem, `system.${fieldPath}`);
+  for (const fieldPath of (item.system.retainedFieldPaths ?? [])) {
+    const currentValue = ObjectUtils.getProperty(item, `system.${fieldPath}`);
     if (currentValue !== undefined) {
       foundry.utils.setProperty(clonedSystem, fieldPath, currentValue);
     }
@@ -49,7 +49,7 @@ async function resolveMigrationData({ item: targetItem, compendiumItem }) {
   // Effects — still per-item, but computed here rather than written here
   const effectUpdates = [];
   const effectCreates = [];
-  const targetEffectsByLabel = new Map(targetItem.effects.map((e) => [e.label, e]));
+  const targetEffectsByLabel = new Map(item.effects.map((e) => [e.label, e]));
 
   for (const sourceEffect of sourceItem.effects) {
     const data = foundry.utils.deepClone(sourceEffect.toObject());
@@ -71,7 +71,95 @@ async function resolveMigrationData({ item: targetItem, compendiumItem }) {
     }
   }
 
-  return { item: targetItem, updateData, effectUpdates, effectCreates };
+  return { item, updateData, effectUpdates, effectCreates };
+}
+
+/**
+ * @typedef {Object} ActorMigrationAction
+ * @property {AHActor} actor — the actor being migrated onto (world, embedded, or compendium)
+ * @property {AHActor|CompendiumIndexEntry} compendiumActor — the compendium source (possibly unresolved)
+ */
+
+/**
+ * Resolves the actual diff for one actor migration action: loads the source actor if needed,
+ * computes the merged system data (with retained fields applied), separates effect changes
+ * into updates vs. creates, and resolves migrations for each of the actor's embedded items
+ * (matched to the source actor's items by name) using the same per-item logic as
+ * resolveMigrationData. Does not write anything.
+ * @param {ActorMigrationAction} action
+ * @returns {Promise<ActorMigration>}
+ */
+async function resolveActorMigrationData({ actor, compendiumActor }) {
+  const sourceActor = isCompendiumEntry(compendiumActor)
+    ? await fromUuid(compendiumActor.uuid)
+    : compendiumActor;
+
+  // Merge retained fields into the clone up front — single final state, single write
+  const clonedSystem = foundry.utils.deepClone(sourceActor.system);
+  for (const fieldPath of (actor.system.retainedFieldPaths ?? [])) {
+    const currentValue = ObjectUtils.getProperty(actor, `system.${fieldPath}`);
+    if (currentValue !== undefined) {
+      foundry.utils.setProperty(clonedSystem, fieldPath, currentValue);
+    }
+  }
+
+  const updateData = {
+    name: sourceActor.name,
+    img: sourceActor.img,
+    system: clonedSystem,
+    flags: foundry.utils.deepClone(sourceActor.flags),
+  };
+
+  // Effects — directly on the actor
+  const effectUpdates = [];
+  const effectCreates = [];
+  const targetEffectsByLabel = new Map(actor.effects.map((e) => [e.label, e]));
+
+  for (const sourceEffect of sourceActor.effects) {
+    const data = foundry.utils.deepClone(sourceEffect.toObject());
+    delete data._id;
+    delete data.origin;
+
+    const targetEffect = targetEffectsByLabel.get(sourceEffect.label);
+    if (targetEffect) {
+      effectUpdates.push({
+        _id: targetEffect.id,
+        changes: data.changes,
+        duration: data.duration,
+        flags: data.flags,
+        disabled: data.disabled,
+        system: foundry.utils.deepClone(sourceEffect.system),
+      });
+    } else {
+      effectCreates.push(data);
+    }
+  }
+
+  // Items — matched to the source actor's items by name. Matched items get run through
+  // resolveMigrationData so they retain fields / diff their own effects exactly like a
+  // standalone item migration; unmatched source items are created fresh on the actor.
+  const itemMigrations = [];
+  const itemCreates = [];
+  const sourceItemsByName = new Map(sourceActor.items.map((i) => [i.name, i]));
+
+  for (const targetItem of actor.items) {
+    const sourceItem = sourceItemsByName.get(targetItem.name);
+    if (sourceItem) {
+      itemMigrations.push(
+        await resolveItemMigrationData({ item: targetItem, compendiumItem: sourceItem }),
+      );
+    }
+  }
+
+  for (const sourceItem of sourceActor.items) {
+    if (!actor.items.some((i) => i.name === sourceItem.name)) {
+      const data = foundry.utils.deepClone(sourceItem.toObject());
+      delete data._id;
+      itemCreates.push(data);
+    }
+  }
+
+  return { actor, updateData, effectUpdates, effectCreates, itemMigrations, itemCreates };
 }
 
 /**
@@ -139,6 +227,8 @@ async function applyItemMigrations(resolved) {
  * @property {object} updateData — the {name, img, system, flags} payload to apply to the item
  * @property {object[]} effectUpdates — ActiveEffect update payloads, keyed by existing effect _id
  * @property {object[]} effectCreates — ActiveEffect creation payloads for effects with no target match
+ * @property {object[]} itemMigrations
+ * @property {object[]} itemCreates
  */
 
 /**
@@ -171,14 +261,32 @@ async function applyActorMigrations(resolved) {
   }
   await Promise.all(ops);
 
-  // Effects can't be batched across different parent actors, but each actor's
-  // pair of calls is independent of every other actor's, so run them all in parallel.
-  const effectOps = [];
-  for (const { actor, effectUpdates, effectCreates } of resolved) {
-    if (effectUpdates.length) effectOps.push(actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates));
-    if (effectCreates.length) effectOps.push(actor.createEmbeddedDocuments("ActiveEffect", effectCreates));
+  // Actor-level effects, and the actor's owned-item updates/creates, can all run in
+  // parallel per actor — each actor's set of calls is independent of every other actor's.
+  const actorLevelOps = [];
+  for (const { actor, effectUpdates, effectCreates, itemMigrations, itemCreates } of resolved) {
+    if (effectUpdates.length) actorLevelOps.push(actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates));
+    if (effectCreates.length) actorLevelOps.push(actor.createEmbeddedDocuments("ActiveEffect", effectCreates));
+
+    if (itemMigrations.length) {
+      const itemPayloads = itemMigrations.map(({ item, updateData }) => ({ _id: item.id, ...updateData }));
+      actorLevelOps.push(actor.updateEmbeddedDocuments("Item", itemPayloads, { diff: false }));
+    }
+    if (itemCreates.length) actorLevelOps.push(actor.createEmbeddedDocuments("Item", itemCreates));
   }
-  await Promise.all(effectOps);
+  await Promise.all(actorLevelOps);
+
+  // Item-level effects (on items belonging to migrated actors) can't be batched across
+  // different parent items, but each item's pair of calls is independent of every
+  // other item's, so run them all in parallel.
+  const itemEffectOps = [];
+  for (const { itemMigrations } of resolved) {
+    for (const { item, effectUpdates, effectCreates } of itemMigrations) {
+      if (effectUpdates.length) itemEffectOps.push(item.updateEmbeddedDocuments("ActiveEffect", effectUpdates));
+      if (effectCreates.length) itemEffectOps.push(item.createEmbeddedDocuments("ActiveEffect", effectCreates));
+    }
+  }
+  await Promise.all(itemEffectOps);
 }
 
 /**
@@ -219,7 +327,7 @@ async function promptMigration(messageStr, updates, options = {}) {
     if (result && (result.length > 0)) {
       const uuids = new Set(result.map((item) => item.uuid));
       const selectedActions = updates.filter((u) => uuids.has(u.item.uuid));
-      const resolved = await Promise.all(selectedActions.map(resolveMigrationData));
+      const resolved = await Promise.all(selectedActions.map(resolveItemMigrationData));
       await applyItemMigrations(resolved);
       ui.notifications.info(StringUtils.localize("AH.DIALOG.CompendiumMigrateSuccess", { count: selectedActions.length }));
     }
@@ -471,17 +579,11 @@ async function migrateAdversaries() {
     const copies = worldAdversaries.filter(actor => actor.system.profile.slug === adversary.system.profile.slug);
     for (const copy of copies) {
 
-      const data = await resolveMigrationData({
-        item: copy,
-        compendiumItem: adversary,
-      });
-
-      migrations.push({
+      const data = await resolveActorMigrationData({
         actor: copy,
-        updateData: {},
-        effectUpdates: [],
-        effectCreates: [],
+        compendiumActor: adversary,
       });
+      migrations.push(data);
     }
   }
 
