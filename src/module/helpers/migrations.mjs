@@ -427,6 +427,9 @@ async function selectActors(world = true, compendium = false) {
  */
 async function updateTokens() {
   let actors = await selectActors(true, true);
+  if (actors.length === 0) {
+    return;
+  }
 
   const data = {
     ["prototypeToken.bar1.attribute"]: "resources.hp",
@@ -454,6 +457,7 @@ async function updateTokens() {
 async function openMenu() {
   const choice = await Dialogs.choice({
     title: "AH.DIALOG.MigrationTools",
+    content: StringUtils.localize("AH.DIALOG.MigrationToolsHint"),
     buttons: [
       {
         action: "migrateAll",

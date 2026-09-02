@@ -565,6 +565,7 @@
       "CompendiumMigrateSuccess": "Successfully migrated {count} compendium items!",
       "CompendiumMigrateFailure": "Failed to migrate the given items.",
       "MigrationTools": "Migration Tools",
+      "MigrationToolsHint": "In this dialog you can find various procedures you can execute to migrate documents.",
       "UpdateTokens": "Update Tokens",
       "UpdateTokensHint": "Update all actor tokens to use latest system defaults.",
       "MigrateAll": "Migrate All",

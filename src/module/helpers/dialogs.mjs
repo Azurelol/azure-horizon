@@ -271,6 +271,7 @@ export default class Dialogs {
    * @property {Number} max
    * @property {(item: AHItem) => Promise<string>} getDescription
    * @property {String} okLabel
+   * @property {Boolean} throw If no selection was made, whether to throw an error.
    */
 
   /**
@@ -525,7 +526,10 @@ export default class Dialogs {
         return selectedItems;
       }
     } else {
-      throw Error(StringUtils.localize("AH.COMMON.CanceledByUser"));
+      if (data.throw) {
+        throw Error(StringUtils.localize("AH.COMMON.CanceledByUser"));
+      }
+      return [];
     }
 
   }
