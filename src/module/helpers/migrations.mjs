@@ -11,7 +11,7 @@ import AH from "../config.mjs";
  */
 
 /**
- * @typedef {Object} ResolvedMigration
+ * @typedef {Object} ItemMigration
  * @property {AHItem} item — the item being migrated onto
  * @property {object} updateData — the {name, img, system, flags} payload to apply to the item
  * @property {object[]} effectUpdates — ActiveEffect update payloads, keyed by existing effect _id
@@ -23,7 +23,7 @@ import AH from "../config.mjs";
  * computes the merged system data (with retained fields applied), and separates
  * effect changes into updates vs. creates. Does not write anything.
  * @param {ItemMigrationAction} action
- * @returns {Promise<ResolvedMigration>}
+ * @returns {Promise<ItemMigration>}
  */
 async function resolveMigrationData({ item: targetItem, compendiumItem }) {
   const sourceItem = isCompendiumEntry(compendiumItem)
@@ -76,7 +76,7 @@ async function resolveMigrationData({ item: targetItem, compendiumItem }) {
 
 /**
  * Applies a batch of resolved migrations, grouped by target collection.
- * @param {ResolvedMigration[]} resolved
+ * @param {ItemMigration[]} resolved
  * @returns {Promise<void>}
  */
 async function applyItemMigrations(resolved) {
@@ -129,6 +129,54 @@ async function applyItemMigrations(resolved) {
   for (const { item, effectUpdates, effectCreates } of resolved) {
     if (effectUpdates.length) effectOps.push(item.updateEmbeddedDocuments("ActiveEffect", effectUpdates));
     if (effectCreates.length) effectOps.push(item.createEmbeddedDocuments("ActiveEffect", effectCreates));
+  }
+  await Promise.all(effectOps);
+}
+
+/**
+ * @typedef {Object} ActorMigration
+ * @property {AHActor} actor — the actor being migrated onto
+ * @property {object} updateData — the {name, img, system, flags} payload to apply to the item
+ * @property {object[]} effectUpdates — ActiveEffect update payloads, keyed by existing effect _id
+ * @property {object[]} effectCreates — ActiveEffect creation payloads for effects with no target match
+ */
+
+/**
+ * Applies a batch of resolved migrations, grouped by target collection.
+ * @param {ActorMigration[]} resolved
+ * @returns {Promise<void>}
+ */
+async function applyActorMigrations(resolved) {
+  const worldUpdates = [];
+  const packActorUpdates = new Map();
+
+  for (const { actor, updateData } of resolved) {
+    const payload = { _id: actor.id ?? actor._id, ...updateData };
+    if (actor.pack) {
+      if (!packActorUpdates.has(actor.pack)) packActorUpdates.set(actor.pack, []);
+      packActorUpdates.get(actor.pack).push(payload);
+    } else {
+      worldUpdates.push(payload);
+    }
+  }
+
+  const ops = [];
+  // WORLD ACTORS
+  if (worldUpdates.length) {
+    ops.push(Actor.updateDocuments(worldUpdates, { diff: false }));
+  }
+  // PACK ACTORS
+  for (const [packId, updates] of packActorUpdates) {
+    ops.push(Actor.updateDocuments(updates, { pack: packId, diff: false }));
+  }
+  await Promise.all(ops);
+
+  // Effects can't be batched across different parent actors, but each actor's
+  // pair of calls is independent of every other actor's, so run them all in parallel.
+  const effectOps = [];
+  for (const { actor, effectUpdates, effectCreates } of resolved) {
+    if (effectUpdates.length) effectOps.push(actor.updateEmbeddedDocuments("ActiveEffect", effectUpdates));
+    if (effectCreates.length) effectOps.push(actor.createEmbeddedDocuments("ActiveEffect", effectCreates));
   }
   await Promise.all(effectOps);
 }
@@ -380,6 +428,24 @@ async function selectActors(world = true, compendium = false) {
 async function updateTokens() {
   let actors = await selectActors(true, true);
 
+  const data = {
+    ["prototypeToken.bar1.attribute"]: "resources.hp",
+    ["prototypeToken.bar2.attribute"]: "resources.mp",
+    ["prototypeToken.displayBars"]: foundry.CONST.TOKEN_DISPLAY_MODES.HOVER,
+  };
+
+  /** @type ActorMigration[] **/
+  const migrations = actors.map(actor => {
+    return {
+      actor: actor,
+      updateData: data,
+      effectUpdates: [],
+      effectCreates: [],
+    };
+  });
+
+  await applyActorMigrations(migrations);
+  ui.notifications.info(`Updated ${actors.length} actors.`);
 }
 
 /**
@@ -392,15 +458,19 @@ async function openMenu() {
       {
         action: "migrateAll",
         label: "AH.DIALOG.MigrateAll",
-        callback: async (event) => {
-          return migrateAll();
+        callback: async (event, button, dialog) => {
+          await migrateAll();
+          await dialog.close({ animate: false });
+          return true;
         },
       },
       {
         action: "updateTokens",
         label: "AH.DIALOG.UpdateTokens",
-        callback: async (event) => {
-          return updateTokens();
+        callback: async (event, button, dialog) => {
+          await updateTokens();
+          await dialog.close({ animate: false });
+          return true;
         },
       },
     ],
