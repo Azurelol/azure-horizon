@@ -546,6 +546,7 @@ async function updateTokens() {
 
   const data = {
     ["prototypeToken.bar1.attribute"]: "resources.hp",
+    ["prototypeToken.bar2.attribute"]: "",
     ["prototypeToken.displayBars"]: foundry.CONST.TOKEN_DISPLAY_MODES.HOVER,
   };
 

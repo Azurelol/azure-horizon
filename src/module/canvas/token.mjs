@@ -16,7 +16,6 @@ export class AHToken extends foundry.canvas.placeables.Token {
           this.createHitPointBar(value, max, bar);
           return;
       }
-      return;
     }
     return super._drawBar(number, bar, data);
   }

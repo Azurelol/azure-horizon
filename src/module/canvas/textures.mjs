@@ -7,7 +7,7 @@ async function preload() {
   BAR_TEXTURES.fill = await loadTexture(systemAssetPath("ui//bars/bar-fill.png"));
 }
 
-export function get(key) {
+function get(key) {
   return BAR_TEXTURES[key];
 }
 
