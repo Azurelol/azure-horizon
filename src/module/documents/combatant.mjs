@@ -10,8 +10,17 @@ import Pressure from "../pipelines/pressure.mjs";
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {AHActor} actor
+ * @property {String} actorId
+ * @property {Boolean} defeated
  */
 export class AHCombatant extends foundry.documents.Combatant {
+
+  /** @inheritdoc */
+  static defineSchema() {
+    const { NumberField } = foundry.data.fields;
+    return Object.assign(super.defineSchema(), {
+    });
+  }
 
   /** @inheritdoc */
   prepareDerivedData() {

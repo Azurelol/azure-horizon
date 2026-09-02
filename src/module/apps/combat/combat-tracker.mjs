@@ -33,7 +33,7 @@ export class AHCombatTracker extends foundry.applications.sidebar.tabs.CombatTra
 
   /**
    * Prepare render context for a single entry in the combat tracker.
-   * @param {Combat} combat        The active combat.
+   * @param {AHCombat} combat        The active combat.
    * @param {AHCombatant} combatant  The Combatant whose turn is being prepared.
    * @param {number} index         The index of this entry in the turn order.
    * @returns {Promise<object>}
@@ -50,6 +50,9 @@ export class AHCombatTracker extends foundry.applications.sidebar.tabs.CombatTra
       const profile = combatant.actor.system.profile;
       if (profile) {
         turn.profile = profile;
+      }
+      if (profile.turns > 1) {
+        turn.hidden = !combat.isFirstTurn(combatant, turn);
       }
     }
     return turn;

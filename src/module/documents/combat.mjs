@@ -69,6 +69,22 @@ export class AHCombat extends foundry.documents.Combat {
   }
 
   /**
+   * @param {AHCombatant} combatant
+   * @param turn
+   * @return {Boolean}
+   */
+  isFirstTurn(combatant, turn) {
+    // Get the other turns for the same actor
+    let turns = this.turns.filter(t => (t.actorId === combatant.actorId) && (t._id !== turn.id));
+    if (turns.length === 0) {
+      return true;
+    }
+
+    // Lowest initiative among this actor's turns goes first
+    return turns.every(t => turn.initiative >= t.initiative);
+  }
+
+  /**
    * @returns {Boolean}
    */
   static get hasActiveEncounter() {

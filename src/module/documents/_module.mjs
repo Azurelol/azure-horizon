@@ -8,4 +8,5 @@ export { AHCombatant } from "./combatant.mjs";
 export { AHItem } from "./item.mjs";
 export { AHScene } from "./scene.mjs";
 export { AHUser } from "./user.mjs";
-export { AHTokenDocument } from "./token.mjs";
+export { AHTokenDocument } from "./token-document.mjs";
+export { AHToken } from "./token.mjs";
