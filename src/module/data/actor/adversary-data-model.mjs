@@ -7,6 +7,7 @@ import { ObjectUtils } from "../../utils/_module.mjs";
 import Assembly from "../../ruleset/assembly.mjs";
 import { TraitsField } from "../item/fields/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
+import { VersionedDataModel } from "../api/_module.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -24,13 +25,35 @@ class AdversaryResourcesDataModel extends CharacterResourcesDataModel {
 }
 
 /**
+ * Represents pressure on a higher rank adversary.
+ * @property {Number} value
+ * @property {Number} max
+ */
+class PressureDataModel extends VersionedDataModel {
+  static defineSchema() {
+    return Object.assign(super.defineSchema(), {
+      value: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
+      max: new NumberField({ initial: 4 }),
+    });
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get full() {
+    return this.value === this.max;
+  }
+}
+
+/**
  * @property {ParameterDataModel} def
  * @property {ParameterDataModel} mdef
+ * @property {PressureDataModel} pressure
  */
 class AdversaryParametersDataModel extends CharacterParametersDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-
+      pressure: new EmbeddedDataField(PressureDataModel, {}),
     });
   }
 }

@@ -98,7 +98,6 @@
   "download": "AUTOMATIC",
   "background": "",
   "primaryTokenAttribute": "resources.hp",
-  "secondaryTokenAttribute": "resources.mp",
   "documentTypes": {
     "Actor": {
       "hero": {},

@@ -118,6 +118,7 @@ function initializeSystems() {
   pipelines.Rules.initialize();
   pipelines.Actions.initialize();
   pipelines.Intent.initialize();
+  pipelines.Pressure.initialize();
   apps.UI.CompendiumBrowser.initialize();
   apps.UI.Manual.initialize();
   helpers.Themes.initialize();
@@ -155,11 +156,21 @@ function registerDataModels() {
 /**
  * Registers to combat hooks sent by Foundry's Combat class.
  */
-function bindCombatEvents() {
+function setupCombat() {
 
-  Hooks.on(AH.hooks.foundry.combat.combatTurn, (data) => {
-
-  });
+  // CONFIG.Actor.trackableAttributes = {
+  //   character: {
+  //     bar: ["resources.hp", "resources.mp", "resources.ip"],
+  //     value: ["resources.tp", "resources.hp.temporary"],
+  //   },
+  //   adversary: {
+  //     bar: ["resources.hp", "resources.mp", "trackers.pressure"],
+  //   },
+  // };
+  //
+  // Hooks.on(AH.hooks.foundry.combat.combatTurn, (data) => {
+  //
+  // });
 
 }
 
@@ -194,7 +205,7 @@ Hooks.once("init", function() {
   bindSheets();
   initializeSystems();
   registerFonts();
-  bindCombatEvents();
+  setupCombat();
 
   // Sidebar tabs
   CONFIG.ui.combat = apps.Combat.AHCombatTracker;

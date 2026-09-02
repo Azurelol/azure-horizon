@@ -122,6 +122,13 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
   }
 
   /**
+   * @returns {SourceInfo} If present, information about the actor/item that was the source of this effect
+   */
+  get sourceInfo() {
+    return this.getFlag(systemID, AH.flags.ActiveEffect.Source);
+  }
+
+  /**
    * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check.
    * @inheritdoc
    */
@@ -132,6 +139,33 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
     return this.system._isTemporary ?? super.isTemporary;
   }
 
+  /**
+   * @param {String} id
+   */
+  matches(id) {
+    if (this.name.toLowerCase() === id) {
+      return true;
+    }
+    if (this.statuses.has(id)) {
+      return true;
+    }
+    if (this.identifier === id) {
+      return true;
+    }
+    if (this.sourceInfo) {
+      if (this.sourceInfo.slug === id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Evaluates an expression.
+   * @param targetDoc
+   * @param change
+   * @returns {{}}
+   */
   static evaluateExpression(targetDoc, change) {
     if (change.value && (typeof change.value === "string")) {
       try {

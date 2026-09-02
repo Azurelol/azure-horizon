@@ -75,6 +75,9 @@ AH.defaults = {
   damage: {
     bonus: 5,
   },
+  analysis: {
+    max: 3,
+  },
   check: {
     type: "attribute",
     criticalThreshold: 8,
@@ -723,6 +726,16 @@ AH.eventRelation = Object.freeze({
 });
 
 /**
+ * @typedef {'basic'|'detailed'|'complete'} AH_Analysis
+ */
+
+AH.analysis = Object.freeze({
+  basic: "AH.ADVERSARY.ANALYSIS.Basic",
+  detailed: "AH.ADVERSARY.ANALYSIS.Detailed",
+  complete: "AH.ADVERSARY.ANALYSIS.Complete",
+});
+
+/**
  * @typedef {'startOfCombat' | 'startOfTurn' | 'endOfTurn' | 'startOfRound' | 'endOfRound' | 'endOfCombat'} AH_CombatEvent
  */
 
@@ -740,6 +753,7 @@ AH.combat = Object.freeze({
   },
   /**
    * @description Events dispatched during battle scenes.
+   * @remarks Uses {@linkcode CombatEvent}
    */
   event: {
     startOfCombat: "AH.COMBAT.Start",

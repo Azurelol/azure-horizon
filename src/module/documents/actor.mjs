@@ -153,7 +153,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
   /**
    * @typedef TrackerLookup
-   * @property {AHActor|AHItem} document
+   * @property {AHActor|AHItem|AHActiveEffect} document
    * @property {TrackerDataModel} tracker
    */
 
@@ -192,6 +192,17 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
    */
   resolveItem(id) {
     return this.items.filter((i) => i.id === id)[0];
+  }
+
+  /**
+   * @param {String} id The name of the effect, one of its statuses, or its slug.
+   * @returns {AHActiveEffect}
+   */
+  resolveEffect(id) {
+    id = id.toLowerCase();
+    return Array.from(this.allApplicableEffects()).find((effect) => {
+      return effect.matches(id);
+    });
   }
 
   /**

@@ -1,7 +1,8 @@
 import { Player } from "../data/combatant/player.mjs";
 import { systemID, systemPath } from "../constants.mjs";
 import AH, { getFormSelectOptions } from "../config.mjs";
-import { Dialogs } from "../helpers/_module.mjs";
+import { AsyncHooks, Dialogs } from "../helpers/_module.mjs";
+import { CombatEvent } from "../data/common/combat-event.mjs";
 
 /**
  * @typedef CombatUpdateData
@@ -18,6 +19,7 @@ import { Dialogs } from "../helpers/_module.mjs";
  * @property {CombatHistoryData} current  Record the current round, turn, and tokenId to understand changes in the encounter state
  * @property {CombatHistoryData} previous Track the previous round, turn, and tokenId to understand changes in the encounter state
  * @property {Boolean} started
+ * @property {Number} round
  * @property {Boolean} isActive Is this combat active in the current scene?
  * @property {Function<Promise>} startCombat Begin the combat encounter, advancing to round 1 and turn 1
  * @property {Function<Promise>} endCombat Display a dialog querying the GM whether they wish to end the combat encounter and empty the tracker
@@ -47,7 +49,7 @@ export class AHCombat extends foundry.documents.Combat {
    * @returns {AHActor[]}
    */
   get actors() {
-    return Array.from(this.combatants.map((c) => c.actor));
+    return Array.from(new Set(this.combatants.map((c) => c.actor)));
   }
 
   /**
@@ -92,7 +94,8 @@ export class AHCombat extends foundry.documents.Combat {
     await this.setCurrentTurn(selectedFaction);
     console.debug(`Combat started for ${this.combatants.length} combatants`);
     await this.#sortFactions();
-    return super.startCombat();
+    await super.startCombat();
+    await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("startOfCombat", this.round, this.combatants.contents));
   }
 
   async #sortFactions() {
@@ -109,6 +112,7 @@ export class AHCombat extends foundry.documents.Combat {
     const end = await super.endCombat();
     if (end) {
       console.debug(`Combat ended for ${this.combatants.length} combatants`);
+      await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("endOfCombat", this.round, this.combatants.contents));
     }
     return end;
   }

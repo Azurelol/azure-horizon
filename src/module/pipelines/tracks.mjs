@@ -101,6 +101,7 @@ const Tracks = Object.freeze({
   updateAtIndexForDocument,
   updateForDocument,
   sendToChat,
+  renderDetails,
 });
 
 export default Tracks;

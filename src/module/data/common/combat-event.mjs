@@ -1,6 +1,6 @@
 /**
  * @description Dispatched by the combat during its lifetime
- * @property {String} type The type of event
+ * @property {AH_CombatEvent} type The type of event
  * @property {Number} round The round the event is taking place in
  * @property {AHCombatant} combatant The current combatant taking a turn, which can be null.
  * @property {AHActor|*} actor The actor involved in the event, which can be null.
@@ -11,6 +11,12 @@
  * Combat and round events will include all combatants, whereas turn events are relegated to the single combatant.
  */
 export class CombatEvent {
+
+  /**
+   * @param {AH_CombatEvent} type
+   * @param {Number} round
+   * @param {AHCombatant[]} combatants
+   */
   constructor(type, round, combatants) {
     this.type = type;
     this.round = round;
@@ -40,7 +46,7 @@ export class CombatEvent {
 	 * @returns {AHActor[]}
 	 */
   get actors() {
-    return Array.from(this.combatants.filter((c) => !!c.actor).map((c) => c.actor));
+    return Array.from(new Set(this.combatants.map((c) => c.actor)));
   }
 
   /**

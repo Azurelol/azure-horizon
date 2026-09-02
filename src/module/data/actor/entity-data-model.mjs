@@ -18,6 +18,15 @@ export class EntityResourcesDataModel extends VersionedDataModel {
   }
 }
 
+/**
+ * @typedef TrackedResource
+ * @property {Number} value
+ * @property {Number} max
+ */
+
+/**
+ * @property {Record<String, TrackedResource>} trackers
+ */
 export class BaseEntityDataModel extends ActorDataModel {
   static defineSchema() {
     const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
@@ -42,6 +51,40 @@ export class BaseEntityDataModel extends ActorDataModel {
 
   _prepareResources() {
     this.resources.hp.defineMaximumProperty(() => Formulas.calculateHitPoints(this));
+    this.addTracker("pressure", "pressure");
+  }
+
+  /**
+   * Adds a trackable resource.
+   * @param {String} key
+   * @param {String} slug
+   */
+  addTracker(key, slug) {
+    this.trackers ??= {};
+    this.trackers[key] ??= {};
+
+    /** @type AHActor **/
+    const actor = this.parent;
+
+    Object.defineProperty(this.trackers[key], "value", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        const lookup = actor?.resolveTracker(slug);
+        if (!lookup) return 0;
+        return lookup.tracker.current;
+      },
+    });
+
+    Object.defineProperty(this.trackers[key], "max", {
+      configurable: true,
+      enumerable: true,
+      get() {
+        const lookup = actor?.resolveTracker(slug);
+        if (!lookup) return 0;
+        return lookup.tracker.max;
+      },
+    });
   }
 }
 

@@ -379,7 +379,7 @@ function process(combat, round) {
  * @param {AHCombat} combat
  * @param {CombatUpdateData} updateData
  */
-function onCombatChange(combat, updateData, updateOptions) {
+function onCombatStart(combat, updateData, updateOptions) {
   if (updateData.round === 1) {
     process(combat, updateData.round);
   }
@@ -410,7 +410,7 @@ function onTurnChange(combat, updateData, updateOptions) {
 
 function initialize() {
 
-  Hooks.on(AH.hooks.foundry.combat.combatStart, onCombatChange);
+  Hooks.on(AH.hooks.foundry.combat.combatStart, onCombatStart);
   Hooks.on(AH.hooks.foundry.combat.combatRound, onRoundChange);
   Hooks.on(AH.hooks.foundry.combat.combatTurn, onTurnChange);
 

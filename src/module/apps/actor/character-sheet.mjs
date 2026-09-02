@@ -1,8 +1,6 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
-import { systemPath, systemTemplatePath } from "../../constants.mjs";
-import { ActionHandler, CompendiumBrowser } from "../ui/_module.mjs";
-import AH from "../../config.mjs";
-import { ChatAction } from "../../helpers/_module.mjs";
+import { systemTemplatePath } from "../../constants.mjs";
+import { ActionHandler } from "../ui/_module.mjs";
 
 /**
  * @extends AHActorSheet

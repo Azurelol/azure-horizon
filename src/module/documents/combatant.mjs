@@ -1,5 +1,7 @@
 import AH from "../config.mjs";
 import { systemID } from "../constants.mjs";
+import { PartySheet } from "../apps/actor/_module.mjs";
+import Pressure from "../pipelines/pressure.mjs";
 
 /**
  * @typedef {'hero'|'adversary'} AH_Faction
@@ -19,6 +21,14 @@ export class AHCombatant extends foundry.documents.Combatant {
      * @param {AHCombatant} combatant      The combatant preparing derived data.
      */
     Hooks.callAll("AH.prepareCombatantData", this);
+  }
+
+  /**
+   * @override
+   */
+  async _onCreate(createData, options, userId) {
+    if (userId !== game.user.id) return;
+
   }
 
   /**

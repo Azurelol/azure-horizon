@@ -43,9 +43,9 @@ export class PartySheet extends AHActorSheet {
   }
 
   /**
-   * @returns {Promise<AHActor>}
+   * @returns {AHActor|undefined}
    */
-  static async getActiveActor() {
+  static getActiveActor() {
     const activePartyUuid = getSystemSetting("activeParty");
     if (activePartyUuid) {
       const party = fromUuidSync(`Actor.${activePartyUuid}`);
@@ -53,11 +53,14 @@ export class PartySheet extends AHActorSheet {
         return party;
       }
     }
-    return null;
+    return undefined;
   }
 
+  /**
+   * @returns {Promise<void>}
+   */
   static async toggleActive() {
-    const party = await PartySheet.getActiveActor();
+    const party = PartySheet.getActiveActor();
     if (party) {
       const sheet = party.sheet;
       if (sheet.rendered) {
@@ -368,6 +371,24 @@ export class PartySheet extends AHActorSheet {
   }
 
   static initialize() {
+
+    /**
+     * @param {AHCombat} combat
+     * @param {CombatUpdateData} updateData
+     * @param updateOptions
+     */
+    const onCombatStart = (combat, updateData, updateOptions) => {
+      const actors = combat.actors;
+      const party = PartySheet.getActiveActor();
+      if (party) {
+        for (const actor of actors.filter((a) => a.type === "adversary")) {
+          party.system.addOrUpdateAdversary(actor, 0);
+        }
+      }
+    };
+
+    Hooks.on(AH.hooks.foundry.combat.combatStart, onCombatStart);
+
     /**
      * @type {RegisterKeybindings}
      */
