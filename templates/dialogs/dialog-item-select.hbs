@@ -125,8 +125,12 @@
                 {{/if}}
                 {{ahDocumentAnchor item}}
                 <span data-tooltip="{{lookup ../descriptions @index}}">{{item.name}}</span>
+                {{#if item.pack}}
+                  <i class="ah-icon --xs {{ahIconClass 'compendium'}}"></i>
+                {{/if}}
               </div>
             </td>
+
             {{#if @root.compendiumItems}}
               {{#with (lookup ../compendiumItems @index) as |item|}}
                 <td>
@@ -135,6 +139,7 @@
                 </td>
               {{/with}}
             {{/if}}
+
             {{#each @root.columns as |col|}}
               <td>
 									<span>

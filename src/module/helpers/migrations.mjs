@@ -79,7 +79,7 @@ async function resolveMigrationData({ item: targetItem, compendiumItem }) {
  * @param {ResolvedMigration[]} resolved
  * @returns {Promise<void>}
  */
-async function applyMigrations(resolved) {
+async function applyItemMigrations(resolved) {
   const worldUpdates = [];
   const embeddedByActor = new Map();
   const packItemUpdates = new Map();
@@ -172,7 +172,7 @@ async function promptMigration(messageStr, updates, options = {}) {
       const uuids = new Set(result.map((item) => item.uuid));
       const selectedActions = updates.filter((u) => uuids.has(u.item.uuid));
       const resolved = await Promise.all(selectedActions.map(resolveMigrationData));
-      await applyMigrations(resolved);
+      await applyItemMigrations(resolved);
       ui.notifications.info(StringUtils.localize("AH.DIALOG.CompendiumMigrateSuccess", { count: selectedActions.length }));
     }
     else {
@@ -262,7 +262,7 @@ async function findItemsBySlug(slug, compendiumActor) {
 
   // Compendium-Actor items
   if (compendiumActor) {
-    const actorEntries = await CompendiumIndex.instance.getActorEntries("adversary");
+    const actorEntries = await CompendiumIndex.instance.getActorEntries();
     /** @type CompendiumIndexEntry[] **/
     const actors = [...actorEntries.adversary, ...actorEntries.follower];
 
@@ -338,7 +338,76 @@ async function migrateAll() {
   return promptMigration("AH.DIALOG.MigrateAllHint", updates, {
     showActor: true,
   });
+}
 
+/**
+ * @param world
+ * @param compendium
+ * @returns {Promise<AHActor[]>}
+ */
+async function selectActors(world = true, compendium = false) {
+  let actors = [];
+  if (world) {
+    actors.push(...game.actors.contents);
+  }
+
+  const actorEntries = await CompendiumIndex.instance.getActorEntries();
+  /** @type CompendiumIndexEntry[] **/
+  const compendiumActors = [...actorEntries.hero, ...actorEntries.adversary, ...actorEntries.follower];
+  actors.push(...compendiumActors);
+
+  if (!actors.length) {
+    return undefined;
+  }
+  const title = `${StringUtils.localize("CONTROLS.CommonSelect")} ${StringUtils.localize("DOCUMENT.Actor")}`;
+
+  const data = {
+    title: title,
+    style: "list",
+    items: actors,
+    getDescription: async (item) => {
+      const text = item.name ?? "";
+      return text;
+    },
+  };
+  const selected = await Dialogs.itemSelect(data);
+  return selected;
+}
+
+/**
+ * @returns {Promise<void>}
+ */
+async function updateTokens() {
+  let actors = await selectActors(true, true);
+
+}
+
+/**
+ * @returns {Promise<void>}
+ */
+async function openMenu() {
+  const choice = await Dialogs.choice({
+    title: "AH.DIALOG.MigrationTools",
+    buttons: [
+      {
+        action: "migrateAll",
+        label: "AH.DIALOG.MigrateAll",
+        callback: async (event) => {
+          return migrateAll();
+        },
+      },
+      {
+        action: "updateTokens",
+        label: "AH.DIALOG.UpdateTokens",
+        callback: async (event) => {
+          return updateTokens();
+        },
+      },
+    ],
+  });
+  if (choice) {
+
+  }
 }
 
 function initialize() {
@@ -347,7 +416,7 @@ function initialize() {
     button.type = "button";
     button.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> ${StringUtils.localize("AH.DIALOG.MigrationTools")}`;
     button.addEventListener("click", async () => {
-      return migrateAll();
+      return openMenu();
     });
     buttons.push(button);
   });

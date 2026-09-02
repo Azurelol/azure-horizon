@@ -13,6 +13,7 @@ export default class ActorResourceDataModel extends VersionedDataModel {
       value: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
       bonus: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
       temporary: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
+      max: new NumberField({ persisted: false }),
     });
   }
 
@@ -21,20 +22,9 @@ export default class ActorResourceDataModel extends VersionedDataModel {
    * @returns {void}
    */
   defineMaximumProperty(computeMaximum) {
-    const property = this;
-    Object.defineProperty(property, "max", {
-      configurable: true,
-      enumerable: true,
-      get() {
-        const computed = computeMaximum();
-        const bonus = property.bonus;
-        return computed + bonus;
-      },
-      set(newValue) {
-        delete this.max;
-        this.max = newValue;
-      },
-    });
+    const computed = computeMaximum();
+    const bonus = this.bonus;
+    this.max = computed + bonus;
   }
 
   /**

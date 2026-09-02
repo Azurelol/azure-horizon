@@ -4,6 +4,13 @@ import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 const { api, fields, handlebars } = foundry.applications;
 
 /**
+ * @typedef AH_DialogAction
+ * @property {String} name
+ * @property {String} action
+ * @property {String} icon
+ */
+
+/**
  * @typedef FormSelectOption
  * @property {string} [value]
  * @property {string} [label]
@@ -208,6 +215,29 @@ export default class Dialogs {
       content: content,
     });
     return data?.option ?? null;
+  }
+
+  /**
+   * @param {Object} options
+   * @param {string} options.title
+   * @param {string} options.content
+   * @param {DialogV2Button[]} options.buttons
+   * @returns {Promise<string|null>}
+   */
+  static async choice({ title, content, buttons }) {
+    const result = await foundry.applications.api.DialogV2.wait({
+      window: {
+        title,
+        icon: "fas fa-square-up-right",
+      },
+      position: {
+        width: 500,
+      },
+      classes: DIALOG_CLASSES,
+      content,
+      buttons,
+    });
+    return result ?? null;
   }
 
   /**

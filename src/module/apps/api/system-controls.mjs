@@ -70,6 +70,22 @@ function initialize() {
       }
     });
 
+    Hooks.on("renderActors", (app, html, context) => {
+
+      ui.notifications.info("boop");
+      const searchBar = html.querySelector("section header search");
+      if (searchBar) {
+        let buttons = [];
+        Hooks.callAll(AH.hooks.REGISTER_SYSTEM_SETTINGS_BUTTON, buttons);
+        const span = document.createElement("span");
+        span.textContent = "BOF";
+        searchBar.appendChild(span);
+        for (const button of buttons) {
+          searchBar.appendChild(button);
+        }
+      }
+    });
+
   }
 }
 
