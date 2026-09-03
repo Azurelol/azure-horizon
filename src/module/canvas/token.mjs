@@ -8,10 +8,16 @@ const MAX_BAR_SCALE = 2; // don't scale bar textures beyond 4x their native size
 const FILL_PADDING = 1; // px, at native texture resolution — scales with the bar
 
 /**
+ * @typedef Size
+ * @property width
+ * @property height
+ */
+
+/**
  * Size and position a bar's background/fill sprites, clamping width so
  * the texture never stretches beyond MAX_BAR_SCALE, and centering the
  * (possibly narrower-than-token) bar horizontally.
- * @returns {number} bw - the resolved bar width, in case the caller needs it
+ * @returns {Size} bw - the resolved bar width, in case the caller needs it
  */
 function sizeBar(bg, fill, bh, tokenWidth, pct) {
   const nativeWidth = bg.texture.width;
@@ -26,7 +32,7 @@ function sizeBar(bg, fill, bh, tokenWidth, pct) {
   fill.width = Math.max((bw - pad * 2) * pct, 0);
   fill.height = bh - pad * 2;
 
-  return bw;
+  return { width: bg.width, height: bg.height };
 }
 
 /**
@@ -47,6 +53,28 @@ export class AHToken extends foundry.canvas.placeables.Token {
     return super._drawBar(number, bar, data);
   }
 
+  /**
+   * @param bar
+   * @param size
+   * @param {'top'|'bottom'} position
+   */
+  translateBar(bar, size, position) {
+    const worldBounds = this.mesh.getBounds();
+    switch (position) {
+      case "top":{
+        const topLeftLocal = this.toLocal(new PIXI.Point(worldBounds.x, worldBounds.y));
+        bar.position.set((this.w - size.width) / 2, topLeftLocal.y - size.height - MARGIN);
+        break;
+      }
+
+      case "bottom":{
+        const bottomLeftLocal = this.toLocal(new PIXI.Point(worldBounds.x, worldBounds.y + worldBounds.height));
+        bar.position.set((this.w - size.width) / 2, bottomLeftLocal.y + MARGIN);
+        break;
+      }
+    }
+  }
+
   createHitPointBar(value, max, bar) {
     bar.removeChildren();
     const bh = HP_BAR_HEIGHT;
@@ -54,16 +82,10 @@ export class AHToken extends foundry.canvas.placeables.Token {
     const fill = new PIXI.Sprite(AHTextures.get("hpFill"));
     const pct = Math.clamp(value, 0, max) / max;
 
-    const bw = sizeBar(bg, fill, bh, this.w, pct);
+    const size = sizeBar(bg, fill, bh, this.w, pct);
     bar.addChild(bg, fill);
 
-    // Get the mesh's bounds in world space, then convert into the token's
-    // own local coordinate frame — this correctly accounts for the mesh's
-    // anchor, position, and scale, unlike getLocalBounds() alone.
-    const worldBounds = this.mesh.getBounds();
-    const topLeftLocal = this.toLocal(new PIXI.Point(worldBounds.x, worldBounds.y));
-
-    bar.position.set((this.w - bw) / 2, topLeftLocal.y - bh - MARGIN);
+    this.translateBar(bar, size, "top");
   }
 
   createPressureBar(value, max, bar) {
@@ -73,12 +95,9 @@ export class AHToken extends foundry.canvas.placeables.Token {
     const fill = new PIXI.Sprite(AHTextures.get("pressureFill"));
     const pct = Math.clamp(value, 0, max) / max;
 
-    const bw = sizeBar(bg, fill, bh, this.w, pct);
+    const size = sizeBar(bg, fill, bh, this.w, pct);
     bar.addChild(bg, fill);
 
-    const worldBounds = this.mesh.getBounds();
-    const bottomLeftLocal = this.toLocal(new PIXI.Point(worldBounds.x, worldBounds.y + worldBounds.height));
-
-    bar.position.set((this.w - bw) / 2, bottomLeftLocal.y + MARGIN);
+    this.translateBar(bar, size, "bottom");
   }
 }
