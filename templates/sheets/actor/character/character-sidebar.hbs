@@ -26,7 +26,12 @@
     {{/if}}
   </div>
 
+
+
   <div class="ah-character__sidebar__section">
+
+    {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-effects.hbs"}}
+
     {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
     {{ahResourceBar 'system.resources.mp.value' system.resources.mp.value system.resources.mp.max label='AH.CHARACTER.MindPoint.short' icon=(ahIconClass 'mp') colorClass="--ah-color-mp" }}
       {{#if (eq actorType 'hero')}}
@@ -44,7 +49,6 @@
     {{/if}}
   </div>
 
-  {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-effects.hbs"}}
   {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
 
 </aside>

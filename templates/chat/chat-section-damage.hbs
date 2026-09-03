@@ -17,10 +17,10 @@
             <div class="ah-chat-section__damage__component" data-tooltip="{{mod.key}}">
               {{ahInlineProperty 'damageTypes' mod.key }}
               {{#if mod.additive}}
-                <span>{{numberFormat mod.additive sign=true}}</span>
+                <span class="ah-inline-property__value">{{numberFormat mod.additive sign=true}}</span>
               {{/if}}
               {{#if (ahNotEquals mod.multiplicative 1)}}
-                <span>{{ahPercentModifier mod.multiplicative}}</span>
+                <span class="ah-inline-property__value">{{ahPercentModifier mod.multiplicative}}</span>
               {{/if}}
             </div>
           {{/each}}

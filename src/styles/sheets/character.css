@@ -78,7 +78,9 @@
   }
 
   .ah-character__widgets__effects {
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     padding: 0;
   }
 
@@ -87,7 +89,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    flex: 0;
+    border: var(--ah-border-muted);
 
     a {
       flex: 0 1 max-content;

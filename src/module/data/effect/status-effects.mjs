@@ -223,6 +223,13 @@ const STATUS_EFFECTS = Object.freeze({
     id: "stagger",
     name: "AH.STATUS.Stagger",
     img: "systems/azure-horizon/assets/icons/statuses/stagger.png",
+    changes: [
+      {
+        key: "system.parameters.damage.universal.incoming.situational.multiplicative",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "1.5",
+      },
+    ],
   },
 });
 
