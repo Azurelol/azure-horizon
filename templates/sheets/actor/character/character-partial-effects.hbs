@@ -1,0 +1,10 @@
+<div class="ah-character__widgets__effects">
+  {{#each temporaryEffects as |effect|}}
+    <a class="ah-character__widgets__effects__entry"
+         data-tooltip="{{effect.name}} {{localize 'AH.SHEET.MESSAGE.TemporaryEffectHint'}}"
+         data-action="handleTempEffect"
+         data-effect-id="{{effect.id}}">
+      <img src="{{effect.img}}" class="item-img ah-icon --sm" alt="{{effect.name}}">
+    </a>
+  {{/each}}
+</div>

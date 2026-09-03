@@ -77,6 +77,29 @@
     }
   }
 
+  .ah-character__widgets__effects {
+    display: grid;
+    padding: 0;
+  }
+
+  .ah-character__widgets__effects__entry {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0;
+
+    a {
+      flex: 0 1 max-content;
+    }
+    .effect-name {
+      max-width: 8ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
   .ah-character__sidebar__section {
     padding: var(--ah-application-fields-padding);
     gap: var(--ah-fieldset-fields-gap);
@@ -117,6 +140,7 @@
 
     .ah-character__equipment__slot {
       border: 1px solid var(--ah-control-border);
+      background: #2d6895;
       width: 40px;
       height: 40px;
       display: flex;

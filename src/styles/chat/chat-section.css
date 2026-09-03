@@ -47,7 +47,7 @@
   color: var(--ah-primitive-color-white);
   font-size: var(--ah-font-size-m);
   text-shadow: var( --ah-text-shadow-outline);
-  background: var(--ah-surface-entry);
+  background: var(--ah-chat-message-component-background);
 }
 
 .ah-chat-section__check__components {

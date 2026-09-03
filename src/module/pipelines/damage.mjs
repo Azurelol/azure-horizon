@@ -226,7 +226,7 @@ async function process(request) {
  * @returns {ChatAction}
  */
 function getChatAction(damageData, sourceInfo, traits, options = { potency: undefined }) {
-  const icon = AH.icons.damage;
+  const icon = AH.icons.applyDamage;
   const resolved = damageData.resolved;
   const tooltip = StringUtils.localize("AH.CHAT.ACTION.ApplyDamageTooltip", {
     amount: resolved.total,

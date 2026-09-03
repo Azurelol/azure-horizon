@@ -55,6 +55,7 @@
         "Settings": "Settings"
       },
       "MESSAGE": {
+        "TemporaryEffectHint": "[Right-click to remove]",
         "NoDataAvailable": "No data is available.",
         "NoModifiersSet": "No modifiers are currently affecting this character."
       }

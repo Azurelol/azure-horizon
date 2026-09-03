@@ -99,7 +99,7 @@ export default class CharacterDataModel extends BaseEntityDataModel {
    * @returns {boolean} Whether the character is in crisis
    */
   get crisis() {
-    return this.resources.hp.half <= this.resources.hp.max;
+    return this.resources.hp.value <= this.resources.hp.half;
   }
 
   /**

@@ -126,6 +126,16 @@ export default Object.freeze({
       args.pop();
       return args.join("");
     });
+    Handlebars.registerHelper("ahAcronym", (str, threshold) => {
+      if (str.length <= threshold) {
+        return str;
+      }
+      const split = str.trim().split(" ");
+      if (split.length > 1) {
+        return split.map((word) => word[0].toUpperCase()).join(".");
+      }
+      return split[0];
+    });
     Handlebars.registerHelper("ahNotEmpty", val => {
       if (!val) return false;
       if (Array.isArray(val)) return val.length > 0;

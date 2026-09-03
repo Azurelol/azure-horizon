@@ -135,6 +135,7 @@
   --ah-inline-background: var(--ah-surface-action);
   --ah-inline-font-size: var(--ah-font-size-m);
   --ah-inline-value-background: var(--ah-surface-value);
+  --ah-chat-message-component-background: #FCFCFC;
 
   /* 2.1 Controls */
   --ah-control-color: var(--ah-content-action);

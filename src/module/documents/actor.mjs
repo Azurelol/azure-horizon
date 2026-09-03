@@ -85,27 +85,9 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
    */
   async _onUpdate(changed, options, userId) {
     if (this.isCharacterType) {
-      const { hp } = this.system?.parameters || {};
-
+      const { hp } = this.system?.resources || {};
       if (hp && (userId === game.userId)) {
-
-        // Apply the crisis effect
-        await this.applyCrisis();
-
-        // Handle KO status
-        const shouldBeKO = hp.value === 0;
-        const isKO = this.statuses.has("ko");
-        if (shouldBeKO !== isKO) {
-          Hooks.call(
-            AH.hooks.DEFEAT_EVENT,
-            /** @type DefeatEvent **/
-            {
-              actor: this,
-              token: this.resolveToken(),
-            },
-          );
-          //await Effects.toggleStatusEffect(this, "ko", InlineSourceInfo.fromInstance(this));
-        }
+        await this.onHitPointChange();
       }
     }
     super._onUpdate(changed, options, userId);
@@ -302,10 +284,25 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
    * Applies crisis to the character.
    * @returns {Promise<void>}
    */
-  async applyCrisis() {
+  async onHitPointChange() {
     if (this.isCharacterType) {
-      const { hp } = this.system?.parameters || {};
+      const { hp } = this.system?.resources || {};
       if (hp) {
+        // Check KO
+        const shouldBeKO = hp.value === 0;
+        const isKO = this.statuses.has("ko");
+        if (shouldBeKO !== isKO) {
+          Hooks.call(
+            AH.hooks.DEFEAT_EVENT,
+            /** @type DefeatEvent **/
+            {
+              actor: this,
+              token: this.resolveToken(),
+            },
+          );
+          await this.toggleStatusEffect("ko", SourceInfo.fromInstance(this));
+        }
+        // Check CRISIS status
         if (this.system.crisis !== this.statuses.has("crisis")) {
           Hooks.call(
             AH.hooks.CRISIS_EVENT,
@@ -315,11 +312,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
               token: this.resolveToken(),
             },
           );
-          try {
-            await this.toggleStatusEffect("crisis", SourceInfo.fromInstance(this));
-          } catch (err) {
-            console.warn(`Failed to apply crisis effect: ${err}`);
-          }
+          await this.toggleStatusEffect("crisis", SourceInfo.fromInstance(this));
         }
       }
     }

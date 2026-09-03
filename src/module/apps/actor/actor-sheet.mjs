@@ -58,6 +58,7 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
       createDoc: this.#createDoc,
       deleteDoc: this.#deleteDoc,
       toggleEffect: this.#toggleEffect,
+      handleTempEffect: { handler: this.#handleTempEffect, buttons: [0, 2] },
 
       browseCompendium: this.#browseCompendium,
       migrateItems: this.#migrateItems,
@@ -407,6 +408,30 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
   static async #toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
     effect.update({ disabled: !effect.disabled });
+  }
+
+  /**
+   * Determines effect parent to pass to helper.
+   *
+   * @this AHActorSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #handleTempEffect(event, target) {
+    const { effectId } = target.dataset;
+    if (effectId) {
+      const effect = this.actor.effects.get(effectId);
+      if (effect) {
+        const rightClick = event.button === 2;
+        if (rightClick) {
+          effect.delete();
+        }
+        else {
+          effect.sheet.render({ force: true });
+        }
+      }
+    }
   }
 
   /**

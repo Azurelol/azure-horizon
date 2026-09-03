@@ -25,12 +25,15 @@ export class CharacterSheet extends AHActorSheet {
   static PARTS = {
     header: {
       template: systemTemplatePath("sheets/actor/character/character-header"),
+      templates: [
+        systemTemplatePath("sheets/actor/character/character-partial-inventory"),
+      ],
     },
     sidebar: {
       template: systemTemplatePath("sheets/actor/character/character-sidebar"),
       templates: [
         systemTemplatePath("sheets/actor/character/character-partial-actions"),
-        systemTemplatePath("sheets/actor/character/character-partial-inventory"),
+        systemTemplatePath("sheets/actor/character/character-partial-effects"),
       ],
     },
     tabs: {
@@ -70,6 +73,7 @@ export class CharacterSheet extends AHActorSheet {
     await super._preparePartContext(partId, context);
     switch (partId) {
       case "sidebar": {
+        context.temporaryEffects = this.actor.temporaryEffects;
         context.actions = this.actionHandler.getMenuActions();
         break;
       }
@@ -89,6 +93,7 @@ export class CharacterSheet extends AHActorSheet {
   _attachPartListeners(partId, html, options) {
     super._attachPartListeners(partId, html, options);
     switch (partId) {
+      case "header":
       case "sidebar":
       {
         this.actionHandler.setupMenu(html);
