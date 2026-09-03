@@ -121,7 +121,8 @@ export default class Formulas {
     else {
       let base = 0;
       for (const inst of instances) {
-        base += Formulas.calculateDamageInstance(inst.amount, inst.modifiers);
+        inst.amount = Formulas.calculateDamageInstance(inst.base, inst.modifiers);
+        base += inst.amount;
       }
       total = base;
       formula = `${base}`;

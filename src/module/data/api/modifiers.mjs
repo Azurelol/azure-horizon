@@ -1,5 +1,4 @@
 import AH from "../../config.mjs";
-import { FoundryUtils } from "../../utils/_module.mjs";
 import VersionedDataModel from "./versioned-data-model.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 

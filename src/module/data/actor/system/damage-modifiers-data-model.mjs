@@ -1,4 +1,4 @@
-import { VersionedDataModel } from "../../api/_module.mjs";
+import { Modifiers, VersionedDataModel } from "../../api/_module.mjs";
 import { ExchangeModifiersDataModel } from "../../api/modifiers.mjs";
 import AH from "../../../config.mjs";
 
@@ -28,6 +28,7 @@ export default class DamageModifiersDataModel extends VersionedDataModel {
       elemental: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
       fire: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
       cold: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
+      electric: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
     });
   }
 
@@ -51,5 +52,12 @@ export default class DamageModifiersDataModel extends VersionedDataModel {
     }
 
     return modifiers;
+  }
+
+  /**
+   * @return {ModifierEntry[]}
+   */
+  get modifiers() {
+    return Modifiers.resolveFromModel(this).filter(m => (m.additive !== 0) || (m.multiplicative !== 1));
   }
 }

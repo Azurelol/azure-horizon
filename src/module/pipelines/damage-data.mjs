@@ -28,7 +28,8 @@
 /**
  * @typedef DamageInstance The combined damage from all components of the same type.
  * @property {AH_DamageType} type
- * @property {Number} amount The sum total of addends
+ * @property {Number} base The base amount before any modifiers.
+ * @property {Number} amount The sum total of addends.
  * @property {Number[]} addends
  * @property {ParameterModifier[]} modifiers
  * @property {String} tooltip
@@ -161,7 +162,7 @@ export default class DamageData {
   /**
    * @return {DamageInstance[]}
    */
-  get instances() {
+  resolveInstances() {
     /** @type {Map<AH_DamageType, DamageInstance>} **/
     const _instances = new Map();
 
@@ -173,7 +174,7 @@ export default class DamageData {
 
       if (!_instances.has(component.type)) {
         _instances.set(component.type, {
-          amount,
+          base: amount,
           addends: amount ? [amount] : [],
           type: component.type,
           traits: [...traits],
@@ -182,7 +183,7 @@ export default class DamageData {
       }
 
       const existing = _instances.get(component.type);
-      existing.amount += amount;
+      existing.base += amount;
       existing.addends.push(amount);
       existing.traits.push(...traits);
     }
@@ -212,7 +213,7 @@ export default class DamageData {
    * @remark Resolves outgoing damage according to the current difficulty setting.
    */
   get resolved() {
-    const active = this.instances;
+    const active = this.resolveInstances();
     const calculation = Formulas.calculateDamage(active, this.fixed);
     return {
       ...calculation,

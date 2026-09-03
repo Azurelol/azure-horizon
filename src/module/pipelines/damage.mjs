@@ -27,7 +27,7 @@ import Expressions from "./expressions.mjs";
  * @property {DamageResolution} result Calculated during processing.
  * @property {Record<AH_DamageType, ParameterModifier>} modifiers Gathered during processing.
  * @property {Boolean} pressured Whether the actor was pressured by the damage they took.
- * @property {String} pressureTrigger The pressure trigger (weapon group, affinity)
+ * @property {String[]} pressureTriggers The pressure triggers (weapon group, affinity, traits)
  */
 class DamageContext extends PipelineContext {
   constructor(request, actor) {
@@ -67,6 +67,10 @@ function calculateResult(context) {
   if (resolved.total === undefined) {
     throw Error("Failed to calculate the damage result.");
   }
+
+  // TODO: Check vulnerabilities
+  let pressurePoints;
+  const modifiers = context.subject.system.parameters.damage.modifiers;
 
   context.result = resolved;
   context.message = "AH.CHAT.ApplyDamage";

@@ -31,6 +31,7 @@ export class CharacterParametersDataModel extends VersionedDataModel {
    */
   summarizeModifiers() {
     let result = [];
+    const mods = Modifiers.resolveFromModel(this);
 
     result.push({
       key: AH.defenses.def.long,
