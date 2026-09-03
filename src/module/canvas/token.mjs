@@ -1,6 +1,6 @@
 import { AHTextures } from "./_module.mjs";
 
-const HP_BAR_HEIGHT = 16; // pixels
+const HP_BAR_HEIGHT = 12; // pixels
 const PRESSURE_BAR_HEIGHT = 12; // pixels
 const MARGIN = 4;
 
@@ -55,21 +55,22 @@ export class AHToken extends foundry.canvas.placeables.Token {
 
   /**
    * @param bar
-   * @param size
+   * @param {Size} size
    * @param {'top'|'bottom'} position
+   * @param {Number} offset
    */
-  translateBar(bar, size, position) {
+  translateBar(bar, size, position, offset = 0) {
     const worldBounds = this.mesh.getBounds();
     switch (position) {
       case "top":{
         const topLeftLocal = this.toLocal(new PIXI.Point(worldBounds.x, worldBounds.y));
-        bar.position.set((this.w - size.width) / 2, topLeftLocal.y - size.height - MARGIN);
+        bar.position.set((this.w - size.width) / 2, topLeftLocal.y - size.height - MARGIN - offset);
         break;
       }
 
       case "bottom":{
         const bottomLeftLocal = this.toLocal(new PIXI.Point(worldBounds.x, worldBounds.y + worldBounds.height));
-        bar.position.set((this.w - size.width) / 2, bottomLeftLocal.y + MARGIN);
+        bar.position.set((this.w - size.width) / 2, bottomLeftLocal.y + MARGIN + offset);
         break;
       }
     }
@@ -85,7 +86,7 @@ export class AHToken extends foundry.canvas.placeables.Token {
     const size = sizeBar(bg, fill, bh, this.w, pct);
     bar.addChild(bg, fill);
 
-    this.translateBar(bar, size, "top");
+    this.translateBar(bar, size, "bottom");
   }
 
   createPressureBar(value, max, bar) {
@@ -98,6 +99,6 @@ export class AHToken extends foundry.canvas.placeables.Token {
     const size = sizeBar(bg, fill, bh, this.w, pct);
     bar.addChild(bg, fill);
 
-    this.translateBar(bar, size, "bottom");
+    this.translateBar(bar, size, "bottom", HP_BAR_HEIGHT + MARGIN);
   }
 }

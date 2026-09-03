@@ -233,8 +233,13 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculatePressurePoints(system) {
-    return system.profile.rank === "champion"
-      ? 2 + system.profile.turns * 2 : 4;
+    switch (system.profile.rank) {
+      case "elite":
+        return 4;
+      case "champion":
+        return 2 + system.profile.turns * 2;
+    }
+    return 0;
   }
 
   /**

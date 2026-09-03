@@ -469,5 +469,17 @@ Hooks.on("preCreateActor", (actor, data) => {
     "prototypeToken.actorLink": shouldLink,
     "prototypeToken.texture.fit": "cover",
   };
+  switch (actor.type) {
+    case "hero": {
+      update["prototypeToken.displayBars"] = foundry.CONST.TOKEN_DISPLAY_MODES.HOVER;
+      break;
+    }
+
+    case "adversary":
+      update["prototypeToken.bar2.attribute"] = "resources.pp";
+      update["prototypeToken.displayBars"] = foundry.CONST.TOKEN_DISPLAY_MODES.ALWAYS;
+      break;
+  }
+
   actor.updateSource(update);
 });

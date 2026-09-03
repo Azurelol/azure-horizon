@@ -544,14 +544,25 @@ async function updateTokens() {
     return;
   }
 
-  const data = {
-    ["prototypeToken.bar1.attribute"]: "resources.hp",
-    ["prototypeToken.bar2.attribute"]: "",
-    ["prototypeToken.displayBars"]: foundry.CONST.TOKEN_DISPLAY_MODES.HOVER,
-  };
-
   /** @type ActorMigration[] **/
   const migrations = actors.map(actor => {
+
+    let data = {
+      "prototypeToken.texture.fit": "cover",
+    };
+
+    switch (actor.type) {
+      case "hero":
+        data["prototypeToken.bar2.attribute"] = "";
+        data["prototypeToken.displayBars"] = foundry.CONST.TOKEN_DISPLAY_MODES.HOVER;
+        break;
+
+      case "adversary":
+        data["prototypeToken.bar2.attribute"] = "resources.pp";
+        data["prototypeToken.displayBars"] = foundry.CONST.TOKEN_DISPLAY_MODES.ALWAYS;
+        break;
+    }
+
     return {
       actor: actor,
       updateData: data,
