@@ -1,0 +1,23 @@
+<main class="ah-chat-section__stagger">
+  <section class="ah-flex-center">
+    {{#with sourceActor}}
+      <a data-link data-uuid="{{uuid}}"
+         data-type="Actor" data-tooltip="{{name}}">
+        <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}" class="profile-img">
+      </a>
+    {{/with}}
+
+    <i class="ah-icon--m fa fa-chevron-right"></i>
+
+    {{#with actor}}
+      <a data-link data-uuid="{{uuid}}"
+         data-type="Actor" data-tooltip="{{name}}">
+        <img src="{{img}}" alt="{{name}}" data-item-id="{{id}}" class="profile-img">
+      </a>
+    {{/with}}
+  </section>
+
+  <section class="ah-flex-center">
+    <span>{{localize 'AH.DAMAGE.Stagger'}}!</span>
+  </section>
+</main>

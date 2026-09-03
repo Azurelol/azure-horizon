@@ -87,6 +87,14 @@ function calculateResult(context) {
   if (context.traits.has("pressure")) {
     pressure.trait = true;
   }
+  pressure.valid = pressure.trait || (pressure.affinities.length > 0);
+  if (pressure.valid) {
+    let components = [...pressure.affinities];
+    if (pressure.trait) {
+      components = ["trait"];
+    }
+    pressure.message = components.join(", ");
+  }
 
   context.pressure = pressure;
   context.result = resolved;
@@ -173,19 +181,17 @@ async function process(request) {
       continue;
     }
 
-    let content = [];
-    // If the target was pressured (elites/solos)
-    if (context.pressure.trait || (context.pressure.affinities.length > 0)) {
-      console.debug("Pressuring");
-      const ps = Pressure.process(context);
-      if (ps.staggered) {
-        content.push(ps.content);
-      }
+    let pressure;
+    if (context.pressure.valid) {
+      pressure = await Pressure.process(context);
     }
 
     // Create the update
     updates.push(
       subject.modifyTokenAttribute(`resources.${resource}`, -damageTaken, true).then(async (result) => {
+
+        // If the target was pressured (elites/solos)
+        let content = [];
 
         /** @type ChatMessageBuilderData **/
         let renderData = {
@@ -222,6 +228,7 @@ async function process(request) {
             rootUuid: subject.resolveUuid(),
             amount: damageTaken,
             content: content,
+            pressure: pressure,
             amountBlocked: amountBlocked,
             result: context.result,
             from: StringUtils.localize(request.sourceInfo.name),
@@ -235,6 +242,12 @@ async function process(request) {
         await chat.create();
 
         return result; // keep the result from modifyTokenAttribute if needed
+      }).then(async (result) => {
+        // OPTIONAL: If staggered
+        if (pressure?.staggered) {
+          updates.push(Pressure.createStaggerChatMessage(context));
+        }
+        return result;
       }),
     );
 

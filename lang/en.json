@@ -951,6 +951,7 @@
       },
       "RollCheck": "Roll Check [Shift-Click to Configure]",
       "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
+      "DamagePressure": "It was also pressured by <strong>{reason}</strong>.",
       "DamagePartialBlock": "<strong>{amount}</strong> was blocked.",
       "DamageFullBlock": "<strong>{actor}</strong> fully blocked an attack from <strong>{from}</strong> for <strong>{amount}</strong> damage!",
       "ResourceGain": "<strong>{actor}</strong> gained <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",

@@ -3,11 +3,24 @@
     {{{localize message actor=actor damage=damage amount=amount from=from resource=resource}}}
   </span>
 
+  {{#if pressure.valid}}
+    <div class="ah-flex-center">
+      <span>{{{ localize 'AH.CHAT.DamagePressure' reason=pressure.message}}}</span>
+      {{ahTracker pressure.effect 'system.tracker' compact=true classes='--small'}}
+    </div>
+  {{/if}}
+
   {{#if amountBlocked}}
     <span>
       {{{ localize 'AH.CHAT.DamagePartialBlock' amount=amountBlocked}}}
     </span>
   {{/if}}
+
+  {{#each content as |section|}}
+    <article>
+      {{{section}}}
+    </article>
+  {{/each}}
 
   <div class="ah-chat-section__damage__box">
     {{#each result.instances}}
@@ -17,12 +30,6 @@
       </label>
     {{/each}}
   </div>
-
-  {{#each content as |section|}}
-    <article>
-      {{{section}}}
-    </article>
-  {{/each}}
 
   <div class="ah-chat-section__damage__actions">
     <a data-action="revertDamage" data-uuid="{{uuid}}"

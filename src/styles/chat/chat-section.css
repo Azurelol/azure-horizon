@@ -377,3 +377,25 @@
     }
   }
 }
+
+.ah-chat-section__stagger {
+  background: var(--ah-background-critical);
+  color: #ffffff;
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 0.8),
+    0 2px 4px rgba(0, 0, 0, 0.6);
+
+  img {
+    height: 128px;
+    width: auto;
+  }
+
+  padding: 8px;
+  border-radius: 10px;
+  border-top: 1px solid #c9c7b8;
+  -webkit-box-shadow: 1px 2px var(--ah-border-electric);
+
+  font-size: x-large;
+  font-weight: bolder;
+  text-transform: uppercase;
+}

@@ -57,15 +57,14 @@ export default class TrackerDataModel extends VersionedDataModel {
 
   /**
    * @param {Number} increment
-   * @param {Boolean} useMultiplier
+   * @param {Number} step
    * @returns {number}
    */
-  calculateUpdatedValue(increment, useMultiplier = false) {
+  calculateUpdatedValue(increment, step = undefined) {
     const max = this.max;
     let result;
-    if (useMultiplier) {
-      const stepMultiplier = this.step || 1;
-      result = this.current + increment * stepMultiplier;
+    if (step) {
+      result = this.current + increment * step;
     } else {
       result = this.current + increment;
     }

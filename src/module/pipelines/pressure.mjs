@@ -9,17 +9,19 @@ import Tracks from "./tracks.mjs";
  * @typedef PressureData
  * @property {String[]} affinities
  * @property {Boolean} trait If the damaging action added additional pressure.
+ * @property {Boolean} valid
+ * @property {String} message
  */
 
 /**
- * @typedef PressureProcessResult
+ * @typedef {PressureData} PressureProcessResult
+ * @property {AHActiveEffect} effect
  * @property {Boolean} staggered
- * @property {String} content To be rendered in the chat damage message.
  */
 
 /**
  * @param {DamageContext} context
- * @return {PressureProcessResult}
+ * @return {Promise<PressureProcessResult>}
  */
 async function process(context) {
   if (context.subject.type !== "adversary") {
@@ -40,11 +42,11 @@ async function process(context) {
     increase += 1;
   }
   await pressureEffect.update({
-    ["system.tracker.current"]: pressureEffect.system.tracker.current + increase,
+    ["system.tracker.current"]: pressureEffect.system.tracker.calculateUpdatedValue(increase),
   });
 
-  let staggered = false;
   // If now at max, apply stagger
+  let staggered = false;
   if (pressureEffect.system.tracker.isMaximum) {
     await context.subject.toggleStatusEffect("stagger", SourceInfo.scene);
     const stagger = context.subject.resolveEffect("stagger");
@@ -52,10 +54,11 @@ async function process(context) {
       staggered = true;
     }
   }
-  const content = await Tracks.renderDetails(pressureEffect.system.tracker, null, true);
+
   return {
-    content,
-    staggered,
+    ...context.pressure,
+    effect: pressureEffect,
+    staggered: staggered,
   };
 }
 
@@ -66,8 +69,8 @@ async function process(context) {
 async function createStaggerChatMessage(context) {
   let builder = new ChatMessageBuilder(context.actor, context.item);
   let content = await renderTemplate("chat/chat-stagger-message", {
-    sourceActor: context.sourceActor,
-    actor: context.actor,
+    sourceActor: context.actor,
+    actor: context.subject,
   });
   builder.text(content);
   return builder.create();
