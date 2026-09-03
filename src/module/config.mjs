@@ -1087,11 +1087,11 @@ AH.traits = {
     press: { label: "AH.TRAIT.Press", tooltip: "AH.TRAIT.PressHint" },
     opener: { label: "AH.TRAIT.Opener", tooltip: "AH.TRAIT.OpenerHint" },
     closer: { label: "AH.TRAIT.Closer", tooltip: "AH.TRAIT.CloserHint" },
-    finisher: { label: "AH.TRAIT.Finisher", tooltip: "AH.TRAIT.FinisherHint" },
     exhaust: { label: "AH.TRAIT.Exhaust", tooltip: "AH.TRAIT.ExhaustHint" },
     shift: { label: "AH.TRAIT.Shift", tooltip: "AH.TRAIT.ShiftHint" },
-    performance: { label: "AH.TRAIT.Performance", tooltip: "AH.TRAIT.PerformanceHint" },
-    stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
+
+    tension: { label: "AH.TRAIT.Tension", tooltip: "AH.TRAIT.TensionHint" },
+    pressure: { label: "AH.TRAIT.Pressure", tooltip: "AH.TRAIT.PressureHint" },
     interrupt: { label: "AH.TRAIT.Interrupt", tooltip: "AH.TRAIT.InterruptHint" },
     free: { label: "AH.TRAIT.Free", tooltip: "AH.FreeHint" },
   },
@@ -1160,9 +1160,13 @@ AH.traits = {
   },
   // Class feature traits
   feature: {
+    performance: { label: "AH.TRAIT.Performance", tooltip: "AH.TRAIT.PerformanceHint" },
     dance: { label: "AH.TRAIT.Dance", tooltip: "AH.TRAIT.DanceHint" },
     song: { label: "AH.TRAIT.Song", tooltip: "AH.TRAIT.SongHint" },
     brawl: { label: "AH.TRAIT.Brawl", tooltip: "AH.TRAIT.BrawlHint" },
+    combo: { label: "AH.TRAIT.Combo", tooltip: "AH.TRAIT.ComboHint" },
+    finisher: { label: "AH.TRAIT.Finisher", tooltip: "AH.TRAIT.FinisherHint" },
+    chain: { label: "AH.TRAIT.Chain", tooltip: "AH.TRAIT.ChainHint" },
   },
 
   // Targeting trait

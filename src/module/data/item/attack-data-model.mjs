@@ -19,15 +19,15 @@ export default class AttackDataModel extends FeatureDataModel {
   static defineSchema() {
     const { SchemaField, StringField, HTMLField, NumberField, BooleanField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      attributes: new EmbeddedDataField(ActionAttributesDataModel, FoundryUtils.configureInitial(ActionAttributesDataModel, {
+      attributes: new EmbeddedDataField(ActionAttributesDataModel, {
         required: true,
-      })),
-      check: new EmbeddedDataField(CheckDataModel, FoundryUtils.configureInitial(CheckDataModel, {
+      }),
+      check: new EmbeddedDataField(CheckDataModel, {
         required: true,
-      })),
-      damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
+      }),
+      damage: new EmbeddedDataField(DamageDataModel, {
         required: true,
-      })),
+      }),
       range: new StringField({
         initial: "melee",
         blank: false,
@@ -49,6 +49,19 @@ export default class AttackDataModel extends FeatureDataModel {
         formOptions: getFormSelectOptions(AH.traits.attack),
       }),
     });
+  }
+
+  static migrateData(source) {
+    if (!source.attributes.enabled) {
+      source.attributes.enabled = true;
+    }
+    if (!source.check.enabled) {
+      source.check.enabled = true;
+    }
+    if (!source.damage.enabled) {
+      source.damage.enabled = true;
+    }
+    return super.migrateData(source);
   }
 
   /** @inheritdoc */
