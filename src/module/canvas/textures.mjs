@@ -3,10 +3,10 @@ import { systemAssetPath } from "../constants.mjs";
 const BAR_TEXTURES = {};
 
 async function preload() {
-  BAR_TEXTURES.frame = await loadTexture(systemAssetPath("ui//bars/bar-frame.png"));
-  BAR_TEXTURES.fill = await loadTexture(systemAssetPath("ui//bars/bar-fill.png"));
-  BAR_TEXTURES.yellowFill = await loadTexture(systemAssetPath("ui//bars/bar-yellow-fill.png"));
-  BAR_TEXTURES.yellowFrame = await loadTexture(systemAssetPath("ui//bars/bar-yellow-frame.png"));
+  BAR_TEXTURES.hpFrame = await loadTexture(systemAssetPath("ui//bars/bar-hp-frame.png"));
+  BAR_TEXTURES.hpFill = await loadTexture(systemAssetPath("ui//bars/bar-hp-fill.png"));
+  BAR_TEXTURES.pressureFill = await loadTexture(systemAssetPath("ui//bars/bar-pressure-fill.png"));
+  BAR_TEXTURES.pressureFrame = await loadTexture(systemAssetPath("ui//bars/bar-pressure-frame.png"));
 
   BAR_TEXTURES.yellowFill = await loadTexture(systemAssetPath("ui//bars/bar-yellow-fill.png"));
   BAR_TEXTURES.redFill = await loadTexture(systemAssetPath("ui//bars/bar-red-fill.png"));
