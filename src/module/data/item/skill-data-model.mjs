@@ -57,9 +57,11 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
 
     const actor = this.parent.actor;
     if (isActorType(actor)) {
-      const weapon = await this.resolveWeapon();
-      if (assertCondition(weapon !== undefined, "A weapon must be assigned for this skill.")) {
-        this.usage.setOverride(config, weapon, this.isCheck);
+      if (this.usage.active) {
+        const weapon = await this.resolveWeapon();
+        if (assertCondition(weapon !== undefined, "A weapon must be assigned for this skill.")) {
+          this.usage.setOverride(config, weapon, this.isCheck);
+        }
       }
     }
   }

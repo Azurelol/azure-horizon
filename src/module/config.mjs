@@ -1111,7 +1111,7 @@ AH.traits = {
     pressure: { label: "AH.TRAIT.Pressure", tooltip: "AH.TRAIT.PressureHint" },
     fixed: { label: "AH.TRAIT.Fixed", tooltip: "AH.TRAIT.FixedHint" },
     poison: { label: "AH.TRAIT.Poison", tooltip: "AH.TRAIT.PoisonHint" },
-    nonLethal: { label: "AH.TRAIT.NonLethal", tooltip: "AH.TRAIT.NonLethalHint" },
+    mercy: { label: "AH.TRAIT.Mercy", tooltip: "AH.TRAIT.MercyHint" },
   },
 
   // Pressure

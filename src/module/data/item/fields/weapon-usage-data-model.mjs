@@ -42,6 +42,13 @@ export default class WeaponUsageDataModel extends OptionalFieldsetDataModel {
   }
 
   /**
+   * @returns {Boolean} If a weapon or attack is needed at all.
+   */
+  get active() {
+    return this.attributes || this.damage || this.check;
+  }
+
+  /**
    * @param {ActionConfig} config
    * @param {AHItem} attack
    * @param isCheck

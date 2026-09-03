@@ -57,9 +57,10 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
     await super._initializeAction(config);
     await this.action.configureAction(config);
     this.usage.configureAction(config);
+
     const actor = this.parent.actor;
     if (isActorType(actor)) {
-      if (this.damage.enabled) {
+      if (this.usage.active) {
         const attack = await this.resolveAttack();
         if (assertCondition(attack !== undefined, "An attack must be assigned for this ability.")) {
           this.usage.setOverride(config, attack, this.isCheck);
