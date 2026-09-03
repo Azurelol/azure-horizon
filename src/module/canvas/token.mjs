@@ -1,6 +1,7 @@
 import { AHTextures } from "./_module.mjs";
 
-const BAR_HEIGHT = 16; // pixels
+const HP_BAR_HEIGHT = 16; // pixels
+const PRESSURE_BAR_HEIGHT = 12; // pixels
 const MARGIN = 4;
 
 /**
@@ -10,12 +11,13 @@ export class AHToken extends foundry.canvas.placeables.Token {
   /** @override */
   _drawBar(number, bar, data) {
     const { value, max } = data;
-    if (number === 0) {
-      switch (data.attribute) {
-        case "resources.hp":
-          this.createHitPointBar(value, max, bar);
-          return;
-      }
+    switch (data.attribute) {
+      case "resources.hp":
+        this.createHitPointBar(value, max, bar);
+        return;
+      case "resources.pp":
+        this.createPressureBar(value, max, bar);
+        return;
     }
     return super._drawBar(number, bar, data);
   }
@@ -23,7 +25,7 @@ export class AHToken extends foundry.canvas.placeables.Token {
   createHitPointBar(value, max, bar) {
     bar.removeChildren();
     const bw = this.w; // token width in pixels
-    const bh = BAR_HEIGHT;
+    const bh = HP_BAR_HEIGHT;
     const bg = new PIXI.Sprite(AHTextures.get("frame"));
     const fill = new PIXI.Sprite(AHTextures.get("fill"));
     const pct = Math.clamp(value, 0, max) / max;
@@ -40,5 +42,24 @@ export class AHToken extends foundry.canvas.placeables.Token {
     const topLeftLocal = this.toLocal(new PIXI.Point(worldBounds.x, worldBounds.y));
 
     bar.position.set((this.w - bw) / 2, topLeftLocal.y - bh - MARGIN);
+  }
+
+  createPressureBar(value, max, bar) {
+    bar.removeChildren();
+    const bw = this.w;
+    const bh = PRESSURE_BAR_HEIGHT;
+    const bg = new PIXI.Sprite(AHTextures.get("yellowFrame"));
+    const fill = new PIXI.Sprite(AHTextures.get("yellowFill"));
+    const pct = Math.clamp(value, 0, max) / max;
+    bg.width = bw;
+    bg.height = bh;
+    fill.width = bw * pct;
+    fill.height = bh;
+    bar.addChild(bg, fill);
+
+    const worldBounds = this.mesh.getBounds();
+    const bottomLeftLocal = this.toLocal(new PIXI.Point(worldBounds.x, worldBounds.y + worldBounds.height));
+
+    bar.position.set((this.w - bw) / 2, bottomLeftLocal.y + (MARGIN * 2));
   }
 }

@@ -6,7 +6,7 @@
   {{#if pressure.valid}}
     <div class="ah-flex-center">
       <span>{{{ localize 'AH.CHAT.DamagePressure' reason=pressure.message}}}</span>
-      {{ahTracker pressure.effect 'system.tracker' compact=true classes='--small'}}
+      {{ahResourceBar '' pressure.resource.value pressure.resource.max tooltip='AH.CHARACTER.PressurePoint.long' colorClass="--ah-color-pp" }}
     </div>
   {{/if}}
 

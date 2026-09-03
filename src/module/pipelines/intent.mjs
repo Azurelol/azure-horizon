@@ -161,14 +161,19 @@ function resolveIntents(system) {
     map = ROLE_ROUTINES.default;
   }
 
+  /** @type {AH_Intent[][]} The intents by round, looping around. **/
+  let intents;
+
   /** @type {RoleRoutine} **/
   const routine = map[system.profile.rank];
+  if (routine) {
+    const variant = "default";
+    intents = ObjectUtils.duplicate(routine[variant]);
+  }
+  else {
+    intents = [];
+  }
 
-  // TODO: Pick variant based on status
-  const variant = "default";
-
-  /** @type {AH_Intent[][]} The intents by round, looping around. **/
-  let intents = ObjectUtils.duplicate(routine[variant]);
   const turns = system.profile.turns;
   for (let round of intents) {
     if (round.length < turns) {

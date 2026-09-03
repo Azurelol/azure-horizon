@@ -51,7 +51,6 @@ export class BaseEntityDataModel extends ActorDataModel {
 
   _prepareResources() {
     this.resources.hp.defineMaximumProperty(() => Formulas.calculateHitPoints(this));
-    this.addTracker("pressure", "pressure");
   }
 
   /**

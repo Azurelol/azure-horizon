@@ -28,12 +28,6 @@ async function process(context) {
     return null;
   }
 
-  // Resolve the pressure effect on the actor
-  let pressureEffect = context.subject.resolveEffect("pressure");
-  if (!pressureEffect) {
-    return null;
-  }
-
   // If this NPC is pressured because they are VU to the damage type,
   // AND the amount of HP loss is equal to or higher than 10 + half their level,
   // fill the clock by 2
@@ -41,13 +35,15 @@ async function process(context) {
   if (context.result.total >= 10 + Math.floor(context.subject.system.level / 2)) {
     increase += 1;
   }
-  await pressureEffect.update({
-    ["system.tracker.current"]: pressureEffect.system.tracker.calculateUpdatedValue(increase),
-  });
+
+  // Reset pressure
+  /** @type ActorResourceDataModel **/
+  const pressure = context.subject.system.resources.pp;
+  await context.subject.modifyTokenAttribute("resources.pp", increase, true);
 
   // If now at max, apply stagger
   let staggered = false;
-  if (pressureEffect.system.tracker.isMaximum) {
+  if (pressure.full) {
     await context.subject.toggleStatusEffect("stagger", SourceInfo.scene);
     const stagger = context.subject.resolveEffect("stagger");
     if (stagger) {
@@ -57,7 +53,7 @@ async function process(context) {
 
   return {
     ...context.pressure,
-    effect: pressureEffect,
+    resource: pressure,
     staggered: staggered,
   };
 }
@@ -86,18 +82,15 @@ async function initializeActors(actors) {
   console.debug("Initialzing pressure for adversaries");
   for (const actor of actors.filter((a) => a.type === "adversary")) {
 
-    // Add pressure effect
-    await Pressure.applyPressureEffect(actor);
+    // Reset pressure
+    await actor.update({
+      ["system.resources.pp.value"]: 0,
+    });
 
     // Remove stagger
     const stagger = actor.resolveEffect("stagger");
     if (stagger) {
       stagger.delete();
-      const lookup = actor.resolveTracker("pressure");
-      lookup.document.update({
-        current: 0,
-        max: lookup.tracker.max + PRESSURE_MAX_INCREASE,
-      });
     }
   }
 
@@ -139,39 +132,39 @@ async function onCombatEvent(event) {
   }
 }
 
-/**
- * @param {AHActor} actor
- * @returns {Promise<void>}
- */
-async function applyPressureEffect(actor) {
-  /** @type AdversaryProfileDataModel **/
-  const profile = actor.system.profile;
-  const rank = profile.rank;
-  switch (rank) {
-    case "champion":
-    case "elite":
-      {
-      // If they somehow already have the pressure effect
-        const pressure = actor.resolveEffect("pressure");
-        if (pressure) {
-          await pressure.delete();
-        }
-        // TODO: Increase if setting after a stagger
-        // Toggle it on
-        const segments = rank === "champion" ? 2 + profile.turns * 2 : 4;
-        const updates = {
-          ["system.tracker.max"]: segments,
-        };
-        await actor.createStatusEffect("pressure", SourceInfo.scene, {
-          updates: updates,
-        });
-      }
-      break;
-
-    default:
-      break;
-  }
-}
+// /**
+//  * @param {AHActor} actor
+//  * @returns {Promise<void>}
+//  */
+// async function applyPressureEffect(actor) {
+//   /** @type AdversaryProfileDataModel **/
+//   const profile = actor.system.profile;
+//   const rank = profile.rank;
+//   switch (rank) {
+//     case "champion":
+//     case "elite":
+//       {
+//       // If they somehow already have the pressure effect
+//         const pressure = actor.resolveEffect("pressure");
+//         if (pressure) {
+//           await pressure.delete();
+//         }
+//         // TODO: Increase if setting after a stagger
+//         // Toggle it on
+//         const segments = rank === "champion" ? 2 + profile.turns * 2 : 4;
+//         const updates = {
+//           ["system.tracker.max"]: segments,
+//         };
+//         await actor.createStatusEffect("pressure", SourceInfo.scene, {
+//           updates: updates,
+//         });
+//       }
+//       break;
+//
+//     default:
+//       break;
+//   }
+// }
 
 /**
  * @param {AHActor} actor
@@ -183,10 +176,10 @@ async function removePressureEffect(actor) {
     case "champion":
     case "elite":
       {
-        const pi = actor.resolveEffect("pressure");
-        if (pi) {
-          pi.delete();
-        }
+        await actor.update({
+          ["system.resources.pp.value"]: 0,
+        });
+
         const stagger = actor.resolveEffect("stagger");
         if (stagger) {
           stagger.delete();
@@ -208,8 +201,6 @@ function initialize() {
 const Pressure = Object.freeze({
   initialize,
   process,
-  applyPressureEffect,
-  removePressureEffect,
   createStaggerChatMessage,
 });
 

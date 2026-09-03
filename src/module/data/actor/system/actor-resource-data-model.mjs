@@ -13,7 +13,7 @@ export default class ActorResourceDataModel extends VersionedDataModel {
       value: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
       bonus: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
       temporary: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
-      max: new NumberField({ persisted: false }),
+      max: new NumberField(),
     });
   }
 
@@ -32,5 +32,12 @@ export default class ActorResourceDataModel extends VersionedDataModel {
    */
   get half() {
     return Math.floor(this.max / 2);
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get full() {
+    return this.value === this.max;
   }
 }

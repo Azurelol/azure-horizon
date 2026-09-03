@@ -41,11 +41,11 @@
           {{ahBadge path='system.resources.hp.temporary' classes='--row' value=system.resources.hp.temporary type='number' min=0 label='AH.CHARACTER.Block.long' icon=(ahIconClass 'block') size='s' }}
         </div>
       {{/if}}
-
     {{#if (eq actorType 'adversary')}}
       <div class="ah-flex-center" style="margin-top: 8px;">
         {{ahBadge path='system.resources.hp.temporary' classes='--row' value=system.resources.hp.temporary type='number' min=0 label='AH.CHARACTER.Block.long' icon=(ahIconClass 'block') size='s' }}
       </div>
+      {{ahResourceBar 'system.resources.pp.value' system.resources.pp.value system.resources.pp.max tooltip='AH.CHARACTER.PressurePoint.long' icon=(ahIconClass 'pp') colorClass="--ah-color-pp" }}
     {{/if}}
   </div>
 

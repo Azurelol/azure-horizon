@@ -9,6 +9,7 @@
   --ah-color-mp: linear-gradient(90deg, #232d50 0%, #587fab 100%);
   --ah-color-ip: linear-gradient(90deg, #8f8352 0%, #d8cf78 100%);
   --ah-color-tp: linear-gradient(90deg, darkgoldenrod 0%, orange 100%);
+  --ah-color-pp: linear-gradient(90deg, #f3c720 0%, #bd7412 100%);
 
   /* Check Difficulty */
   --ah-color-difficulty-easy: #3d6b3d;

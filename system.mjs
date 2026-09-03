@@ -161,6 +161,8 @@ function registerDataModels() {
  */
 function setupCombat() {
 
+  //CONFIG.Actor.trackableAttributes.adversary.push("trackers.pressure");
+
   // CONFIG.Actor.trackableAttributes = {
   //   character: {
   //     bar: ["resources.hp", "resources.mp", "resources.ip"],

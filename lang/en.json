@@ -169,6 +169,12 @@
         "long": "Block",
         "short": "BLK"
       },
+      "PressurePoint": {
+        "long": "Pressure",
+        "plural": "Pressure",
+        "short": "PP"
+      },
+
       "Defense": {
         "long": "Defense",
         "short": "DEF"

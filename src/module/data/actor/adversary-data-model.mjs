@@ -8,52 +8,32 @@ import Assembly from "../../ruleset/assembly.mjs";
 import { TraitsField } from "../item/fields/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { VersionedDataModel } from "../api/_module.mjs";
+import { Formulas } from "../../ruleset/_module.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
 /**
  * @property {ActorResourceDataModel} hp
  * @property {ActorResourceDataModel} mp
+ * @property {ActorResourceDataModel} pp
  */
 class AdversaryResourcesDataModel extends CharacterResourcesDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       ip: new EmbeddedDataField(ActorResourceDataModel, {}),
       tp: new EmbeddedDataField(ActorResourceDataModel, {}),
+      pp: new EmbeddedDataField(ActorResourceDataModel, {}),
     });
-  }
-}
-
-/**
- * Represents pressure on a higher rank adversary.
- * @property {Number} value
- * @property {Number} max
- */
-class PressureDataModel extends VersionedDataModel {
-  static defineSchema() {
-    return Object.assign(super.defineSchema(), {
-      value: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
-      max: new NumberField({ initial: 4 }),
-    });
-  }
-
-  /**
-   * @returns {boolean}
-   */
-  get full() {
-    return this.value === this.max;
   }
 }
 
 /**
  * @property {ParameterDataModel} def
  * @property {ParameterDataModel} mdef
- * @property {PressureDataModel} pressure
  */
 class AdversaryParametersDataModel extends CharacterParametersDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      pressure: new EmbeddedDataField(PressureDataModel, {}),
     });
   }
 }
@@ -95,8 +75,14 @@ export default class AdversaryDataModel extends CharacterDataModel {
     super.prepareBaseData();
   }
 
+  _prepareResources() {
+    super._prepareResources();
+    this.resources.pp.defineMaximumProperty(() => Formulas.calculatePressurePoints(this));
+  }
+
   _prepareParameters() {
     super._prepareParameters();
+    this.addTracker("pressure", "pressure");
   }
 
   /**

@@ -229,6 +229,15 @@ export default class Formulas {
   }
 
   /**
+   * @param {AdversaryDataModel} system
+   * @returns {Number}
+   */
+  static calculatePressurePoints(system) {
+    return system.profile.rank === "champion"
+      ? 2 + system.profile.turns * 2 : 4;
+  }
+
+  /**
    * @param {AttributesDataModel} attributes
    * @returns {Number}
    */

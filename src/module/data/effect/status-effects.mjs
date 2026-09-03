@@ -208,6 +208,7 @@ const STATUS_EFFECTS = Object.freeze({
     id: "pressure",
     name: "AH.STATUS.Pressure",
     img: "systems/azure-horizon/assets/icons/statuses/pressure.png",
+    showIcon: false,
     system: {
       tracker: {
         enabled: true,

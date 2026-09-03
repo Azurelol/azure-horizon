@@ -28,6 +28,7 @@
   --ah-icon-mp: url("../../../../assets/icons/parameters/mp.png");
   --ah-icon-ip: url("../../../../assets/icons/parameters/ip.png");
   --ah-icon-tp: url("../../../../assets/icons/parameters/tp.png");
+  --ah-icon-pp: url("../../../../assets/icons/parameters/pp.png");
 
   .ah-icon-hp {
     background-image: var(--ah-icon-hp);
@@ -47,6 +48,10 @@
 
   .ah-icon-tp {
     background-image: var(--ah-icon-tp);
+  }
+
+  .ah-icon-pp {
+    background-image: var(--ah-icon-pp);
   }
 
   /* Parameters */
