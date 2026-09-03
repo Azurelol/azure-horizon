@@ -298,7 +298,8 @@
       "Ability": {
         "long": "Ability",
         "plural": "Abilities"
-      }
+      },
+      "AttackHint": "The primary attack the adversary uses for attack-enhancing abilities."
     },
     "CHECK": {
       "Check": "Check",

@@ -63,6 +63,7 @@ class AdversaryParametersDataModel extends CharacterParametersDataModel {
  * @property {CharacterParametersDataModel} parameters
  * @property {AdversaryResourcesDataModel} resources
  * @property {AdversaryProfileDataModel} profile
+ * @property {String} assembly.attack The adversary's main attack, assigned for abilities that use it.
  */
 export default class AdversaryDataModel extends CharacterDataModel {
 
@@ -77,6 +78,9 @@ export default class AdversaryDataModel extends CharacterDataModel {
       parameters: new EmbeddedDataField(AdversaryParametersDataModel, {}),
       resources: new EmbeddedDataField(AdversaryResourcesDataModel, {}),
       profile: new EmbeddedDataField(AdversaryProfileDataModel, {}),
+      assembly: new SchemaField({
+        attack: new StringField({ nullable: true }),
+      }),
     });
   }
 
@@ -93,7 +97,6 @@ export default class AdversaryDataModel extends CharacterDataModel {
 
   _prepareParameters() {
     super._prepareParameters();
-    // Let's add adversary affinities when they are present
   }
 
   /**
@@ -101,6 +104,31 @@ export default class AdversaryDataModel extends CharacterDataModel {
    */
   get assembled() {
     return this.profile.role !== "custom";
+  }
+
+  /**
+   * @param {AHItem} item
+   */
+  async setAttack(item) {
+    const data = {
+      ...this.assembly,
+    };
+    if (data.attack === item.id) {
+      data.attack = null;
+    } else {
+      data.attack = item.id;
+    }
+    await this.parent.update({ "system.assembly": data });
+  }
+
+  /**
+   * @return {AHItem}
+   */
+  getAttack() {
+    if (this.assembly.attack) {
+      return this.parent.items.get(this.assembly.attack);
+    }
+    return undefined;
   }
 }
 

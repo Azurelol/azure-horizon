@@ -77,7 +77,7 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
     const actor = this.parent.actor;
     const attacks = actor.getItemsByType("attack");
     // TODO: Selector?
-    const attack = attacks[0];
+    const attack = actor.system.getAttack() ?? attacks[0];
     return attack;
   }
 }

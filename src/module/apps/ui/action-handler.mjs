@@ -259,6 +259,7 @@ export default class ActionHandler {
     // ATTACKS
     const attacks = WeaponResolver.getEquippedWeapons(this.actor);
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"attack\"]", attacks, undefined, true);
+
     // SPELLS
     const spells = ["spell"].map((t) => this.actor.getItemsByType(t)).flat();
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"spell\"]", spells);
@@ -296,6 +297,10 @@ export default class ActionHandler {
       FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
     }
     else if (this.actor.type === "adversary") {
+      // ATTACK TOGGLE
+      FoundryUtils.itemContextMenu(element, "[data-slot=\"attack\"]", attacks, async item => {
+        this.actor.system.setAttack(item);
+      });
       // ABILITIES
       let abilities = this.actor.getItemsByType("ability").filter(a => a.system.action.type === "action");
       FoundryUtils.itemContextMenu(element, "[data-context-menu=\"ability\"]", abilities);

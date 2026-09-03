@@ -140,41 +140,6 @@
     justify-content: center;
     align-items: center;
 
-    .ah-character__equipment__slot {
-      border: 1px solid var(--ah-control-border);
-      background: #2d6895;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      &:has(img[src=""]),
-      &:has(img:not([src])) {
-        background: var(--ah-surface-entry-gradient);
-      }
-
-      img {
-        object-fit: fill;
-        width: 100%;
-        height: auto;
-      }
-
-      &.--mainHand {
-        grid-area: mainHand;
-      }
-
-      &.--armor {
-        grid-area: armor;
-        width: 60px;
-        height: 60px;
-      }
-
-      &.--offHand {
-        grid-area: offHand;
-      }
-
-    }
 
     .ah-character__equipment__accessories {
       grid-area: acc;
@@ -183,6 +148,42 @@
       justify-content: center;
       gap: 8px;
     }
+  }
+
+  .ah-character__equipment__slot {
+    border: 1px solid var(--ah-control-border);
+    background: #2d6895;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:has(img[src=""]),
+    &:has(img:not([src])) {
+      background: var(--ah-surface-entry-gradient);
+    }
+
+    img {
+      object-fit: fill;
+      width: 100%;
+      height: auto;
+    }
+
+    &.--mainHand {
+      grid-area: mainHand;
+    }
+
+    &.--armor {
+      grid-area: armor;
+      width: 60px;
+      height: 60px;
+    }
+
+    &.--offHand {
+      grid-area: offHand;
+    }
+
   }
 
   .ah-character__intents {

@@ -27,6 +27,7 @@ export class AdversarySheet extends CharacterSheet {
     },
     actions: {
       migrateActor: this.#migrateActor,
+      setAttack: this.#setAttack,
     },
   };
 
@@ -65,6 +66,12 @@ export class AdversarySheet extends CharacterSheet {
   async _preparePartContext(partId, context) {
     await super._preparePartContext(partId, context);
     switch (partId) {
+
+      case "header":{
+        context.attack = this.actor.system.getAttack();
+        break;
+      }
+
       case "features":
         context.tables = [
           await this.#attackTableRenderer.render(this.actor.getItemsByType("attack")),
@@ -97,6 +104,19 @@ export class AdversarySheet extends CharacterSheet {
    */
   static async #migrateActor(event, target) {
     return Migrations.migrateActor(this.actor);
+  }
+  /**
+   * @this AdversarySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #setAttack(event, target) {
+    const { id } = target.dataset;
+    const item = this.actor.items.get(id);
+    if (item) {
+      await this.actor.system.setAttack(item);
+    }
   }
 
 }

@@ -42,6 +42,14 @@
     {{#if (eq actorType 'hero')}}
       {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-inventory.hbs"}}
     {{/if}}
+
+    {{#if (eq actorType 'adversary')}}
+      <a class="ah-character__equipment__slot" data-slot="attack" data-tooltip="{{localize 'AH.ADVERSARY.AttackHint'}}">
+        {{#if attack}}
+          <img src="{{attack.img}}" alt="{{attack.name}}">
+        {{/if}}
+      </a>
+    {{/if}}
   </div>
 
 </header>
