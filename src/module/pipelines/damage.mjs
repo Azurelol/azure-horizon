@@ -19,6 +19,7 @@ import { DamageRequest } from "./_module.mjs";
 import PipelineContext from "./pipeline-context.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 import Expressions from "./expressions.mjs";
+import Pressure from "./pressure.mjs";
 
 /**
  * @property {DamageData} damageData
@@ -26,8 +27,7 @@ import Expressions from "./expressions.mjs";
  * @property {DamageInstance[]} instances Combined from the input damage data.
  * @property {DamageResolution} result Calculated during processing.
  * @property {Record<AH_DamageType, ParameterModifier>} modifiers Gathered during processing.
- * @property {Boolean} pressured Whether the actor was pressured by the damage they took.
- * @property {String[]} pressureTriggers The pressure triggers (weapon group, affinity, traits)
+ * @property {PressureData} pressure
  */
 class DamageContext extends PipelineContext {
   constructor(request, actor) {
@@ -68,10 +68,27 @@ function calculateResult(context) {
     throw Error("Failed to calculate the damage result.");
   }
 
-  // TODO: Check vulnerabilities
-  let pressurePoints;
+  /** @type PressureData **/
+  let pressure = {
+    affinities: [],
+    trait: false,
+  };
   const modifiers = context.subject.system.parameters.damage.modifiers;
+  for (const inst of resolved.instances) {
+    const key = `${inst.type}.incoming`;
+    /** @type ModifierEntry **/
+    const mod = modifiers.find(m => m.key === key);
+    if (mod) {
+      if ((mod.additive > 0) || (mod.multiplicative > 1)) {
+        pressure.affinities.push(inst.type);
+      }
+    }
+  }
+  if (context.traits.has("pressure")) {
+    pressure.trait = true;
+  }
 
+  context.pressure = pressure;
   context.result = resolved;
   context.message = "AH.CHAT.ApplyDamage";
 }
@@ -158,8 +175,12 @@ async function process(request) {
 
     let content = [];
     // If the target was pressured (elites/solos)
-    if (context.pressured) {
+    if (context.pressure.trait || (context.pressure.affinities.length > 0)) {
       console.debug("Pressuring");
+      const ps = Pressure.process(context);
+      if (ps.staggered) {
+        content.push(ps.content);
+      }
     }
 
     // Create the update

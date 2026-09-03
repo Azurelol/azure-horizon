@@ -6,22 +6,28 @@ import { renderTemplate } from "../constants.mjs";
 import Tracks from "./tracks.mjs";
 
 /**
+ * @typedef PressureData
+ * @property {String[]} affinities
+ * @property {Boolean} trait If the damaging action added additional pressure.
+ */
+
+/**
  * @typedef PressureProcessResult
- * @property {String} content
  * @property {Boolean} staggered
+ * @property {String} content To be rendered in the chat damage message.
  */
 
 /**
  * @param {DamageContext} context
  * @return {PressureProcessResult}
  */
-async function processVulnerability(context) {
-  if (context.actor.type !== "adversary") {
+async function process(context) {
+  if (context.subject.type !== "adversary") {
     return null;
   }
 
   // Resolve the pressure effect on the actor
-  let pressureEffect = context.actor.resolveEffect("pressure");
+  let pressureEffect = context.subject.resolveEffect("pressure");
   if (!pressureEffect) {
     return null;
   }
@@ -30,18 +36,18 @@ async function processVulnerability(context) {
   // AND the amount of HP loss is equal to or higher than 10 + half their level,
   // fill the clock by 2
   let increase = 1;
-  if (context.result.total >= 10 + Math.floor(context.actor.system.level / 2)) {
+  if (context.result.total >= 10 + Math.floor(context.subject.system.level / 2)) {
     increase += 1;
   }
   await pressureEffect.update({
-    current: pressureEffect.system.tracker.current + increase,
+    ["system.tracker.current"]: pressureEffect.system.tracker.current + increase,
   });
 
   let staggered = false;
   // If now at max, apply stagger
   if (pressureEffect.system.tracker.isMaximum) {
-    await context.actor.toggleStatusEffect("stagger", SourceInfo.scene);
-    const stagger = context.actor.resolveEffect("stagger");
+    await context.subject.toggleStatusEffect("stagger", SourceInfo.scene);
+    const stagger = context.subject.resolveEffect("stagger");
     if (stagger) {
       staggered = true;
     }
@@ -198,7 +204,7 @@ function initialize() {
 
 const Pressure = Object.freeze({
   initialize,
-  processVulnerability,
+  process,
   applyPressureEffect,
   removePressureEffect,
   createStaggerChatMessage,
