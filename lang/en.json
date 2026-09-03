@@ -659,6 +659,8 @@
       "LessThan": "Less Than",
       "Local": "Local",
       "Handedness": "Handedness",
+      "ActionCost": "Action Cost",
+      "ActionPoints": "Action Points",
       "Trigger": "Trigger",
       "CheckType": {
         "long": "Check Type",

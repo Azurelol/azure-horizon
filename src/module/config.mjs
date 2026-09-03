@@ -1336,6 +1336,7 @@ AH.icons = {
   cost: "fas fa-tag",
   effects: "fas fa-wand-magic-sparkles",
   check: "fas fa-dice-d20",
+  options: "fas fa-gear",
 
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",

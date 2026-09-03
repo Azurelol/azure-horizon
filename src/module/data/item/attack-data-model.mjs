@@ -11,6 +11,7 @@ import { ActionAttributesDataModel } from "./fields/action-attributes-data-model
  * @property {CheckDataModel} check
  * @property {DamageDataModel} damage
  * @property {TraitsField} traits
+ * @property {Number} actionCost
  * @remarks This simpler model is used for adversaries.
  */
 export default class AttackDataModel extends FeatureDataModel {
@@ -34,6 +35,14 @@ export default class AttackDataModel extends FeatureDataModel {
         _part: "header",
         choices: () => AH.traits.range,
       }),
+      actionCost: new NumberField({
+        label: "AH.FIELD.ActionCost",
+        initial: 2,
+        min: 1,
+        max: 2,
+        _classes: "ah-flex-shrink",
+        _part: "header",
+      }),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
         _part: "header",
@@ -48,10 +57,6 @@ export default class AttackDataModel extends FeatureDataModel {
     this.attributes.required = true;
     this.check.required = true;
     this.damage.required = true;
-  }
-
-  get actionCost() {
-    return AH.defaults.action.attack.cost;
   }
 
   async _initializeAction(config) {

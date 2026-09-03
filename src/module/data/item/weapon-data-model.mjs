@@ -27,14 +27,8 @@ export default class WeaponDataModel extends AttackDataModel {
     });
   }
 
-  get actionCost() {
-    if (this.options.traits.has("draw")) {
-      return 1;
-    }
-    return super.actionCost;
-  }
-
   async _initializeAction(config) {
     await super._initializeAction(config);
+    await this.options.configureAction(config);
   }
 }
