@@ -36,6 +36,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 0.2rem;
   font-size: var(--ah-inline-font-size);
 
   i {
@@ -46,7 +47,5 @@
 }
 
 .ah-inline-property__value {
-  border-radius: 3px;
-  font-size: var(--ah-font-size-m);
   font-variant-numeric: tabular-nums;
 }

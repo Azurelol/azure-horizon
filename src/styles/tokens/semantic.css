@@ -70,6 +70,7 @@
 
   /* ---------- CONTENT ---------- */
   --ah-content-primary: var(--ah-primitive-color-white-100);
+  --ah-content-primary-invert: #000;
   --ah-content-secondary: var(--ah-primitive-color-white-90);
   --ah-content-muted: var(--ah-primitive-color-white-70);
   --ah-content-disabled: var(--ah-primitive-color-white-50);

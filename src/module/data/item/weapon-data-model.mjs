@@ -27,13 +27,14 @@ export default class WeaponDataModel extends AttackDataModel {
     });
   }
 
+  get actionCost() {
+    if (this.options.traits.has("draw")) {
+      return 1;
+    }
+    return super.actionCost;
+  }
+
   async _initializeAction(config) {
     await super._initializeAction(config);
-    config.addTags({
-      tag: AH.actionTypes.action.label,
-      value: AH.defaults.action.attack.cost,
-    });
-    config.addTraits(this.range);
-    await this.damage.configureAction(config);
   }
 }

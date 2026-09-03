@@ -133,7 +133,7 @@
   --ah-inline-color-box-shadow: var(--ah-border-accent);
   --ah-inline-color-text-shadow: var(--ah-border-accent);
   --ah-inline-background: var(--ah-surface-action);
-  --ah-inline-font-size: var(--ah-font-size-m);
+  --ah-inline-font-size: var(--ah-font-size-md);
   --ah-inline-value-background: var(--ah-surface-value);
   --ah-chat-message-component-background: #FCFCFC;
 
