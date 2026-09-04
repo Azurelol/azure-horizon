@@ -9,7 +9,7 @@ tokenImg: /assets/characters/heroes/gunner_token.png
 <span class="document-trait">Perception</span>
 </div>
 
-![](/assets/characters/heroes/gunner_token.png)
+![](/assets/characters/heroes/gunner_token.png){: .profile }
 
 
 

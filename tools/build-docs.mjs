@@ -248,7 +248,7 @@ for (const entry of classes) {
   if (classDocument.system.traits) {
     md.traits(classDocument.system.traits, "--center");
   }
-  md.img("", tokenImg);
+  md.img("", tokenImg, undefined, "profile");
   md.p(classDocument.system.description);
 
   // Triggers

@@ -9,7 +9,7 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 <span class="document-trait">Mobility</span>
 </div>
 
-![](/assets/characters/heroes/brawler_token.png)
+![](/assets/characters/heroes/brawler_token.png){: .profile }
 
 <p>A practitioner of the martial arts. They could be a disciple of a traveling master, a hotblooded youth or a student of a martial arts school. They excel in pressuring their foes in close quarters combat, building up their momentum before unleashing powerful combination attacks.</p><blockquote><p>The Brawler is a class for those who wish to reliable pressure their opponents while steadily building up their combination for a big payoff.</p></blockquote>
 

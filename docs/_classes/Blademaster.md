@@ -10,7 +10,7 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 <span class="document-trait">Defense</span>
 </div>
 
-![](/assets/characters/heroes/blademaster_token.png)
+![](/assets/characters/heroes/blademaster_token.png){: .profile }
 
 <p>A fighter who specializes in fighting opponent with their blade. They are often lone wanderers who have their own reasons for doing so. They specialize in dueling single targets and in defending against melee attacks before unleashing powerful counters.</p><blockquote><p>The Blademaster is a good choice for those who wish to specialize in fighting single opponents and in <em>parrying,</em> which is their primary defensive tool against melee attacks. Their skills have temporal activation conditions which rewards players who can plan ahead.</p></blockquote>
 

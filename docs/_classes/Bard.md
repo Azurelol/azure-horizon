@@ -10,7 +10,7 @@ tokenImg: /assets/characters/heroes/bard_token.png
 <span class="document-trait">Tension</span>
 </div>
 
-![](/assets/characters/heroes/bard_token.png)
+![](/assets/characters/heroes/bard_token.png){: .profile }
 
 <p>A person with great musical talent, which they can use to rally their allies to great deeds. Whether they be lone performers, career musicians or outright celebrities, they all share a love of music in common and believe it has a power of its own.</p><blockquote><p>The Bard is a rather interesting class for those want to be creative in crafting their own songs and engage with its performance mechanics which usually disallow them from taking offensive actions and instead have them prioritize selectively enhancing certain party members. </p></blockquote>
 

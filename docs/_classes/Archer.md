@@ -10,7 +10,7 @@ tokenImg: /assets/characters/heroes/archer_token.png
 <span class="document-trait">Perception</span>
 </div>
 
-![](/assets/characters/heroes/archer_token.png)
+![](/assets/characters/heroes/archer_token.png){: .profile }
 
 
 

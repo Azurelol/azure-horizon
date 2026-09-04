@@ -94,8 +94,12 @@ export class MarkdownBuilder {
   }
 
   // ---- Images ----
-  img(alt, url, title) {
-    return this._push(MarkdownBuilder.image(alt, url, title));
+  img(alt, url, title, className) {
+    let markdown = MarkdownBuilder.image(alt, url, title);
+    if (className) {
+      markdown += `{: .${className} }`;
+    }
+    return this._push(markdown);
   }
 
   // ---- Lists ----

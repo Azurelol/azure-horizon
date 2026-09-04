@@ -10,7 +10,7 @@ tokenImg: /assets/characters/heroes/fencer_token.png
 <span class="document-trait">Shift</span>
 </div>
 
-![](/assets/characters/heroes/fencer_token.png)
+![](/assets/characters/heroes/fencer_token.png){: .profile }
 
 <p>A disciplined warrior who fights with style and grace. They could be a daring swashbuckler or a noble practicing an established style. They specialize in darting among their foes with flair, waiting for the right chance to take them down.</p><blockquote><p>The Fencer is a great class for those who prize mobility. Most of their skills have them shift around the battlefield and sometimes require them to be in specific rows before activating powerful effects.</p></blockquote>
 

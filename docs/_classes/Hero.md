@@ -6,7 +6,7 @@ tokenImg: /assets/characters/heroes/hero_token.png
 
 
 
-![](/assets/characters/heroes/hero_token.png)
+![](/assets/characters/heroes/hero_token.png){: .profile }
 
 <p>A person who has transcended their limits.</p><blockquote><p><em>Available only once a character has reached Level 60.</em></p></blockquote>
 

@@ -10,7 +10,7 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 <span class="document-trait">Stealth</span>
 </div>
 
-![](/assets/characters/heroes/rogue_token.png)
+![](/assets/characters/heroes/rogue_token.png){: .profile }
 
 
 

@@ -8,7 +8,7 @@ tokenImg: /assets/characters/heroes/mechanist_token.png
 <span class="document-trait">Support</span>
 </div>
 
-![](/assets/characters/heroes/mechanist_token.png)
+![](/assets/characters/heroes/mechanist_token.png){: .profile }
 
 
 

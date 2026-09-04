@@ -9,7 +9,7 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 <span class="document-trait">Offense</span>
 </div>
 
-![](/assets/characters/heroes/ritualist_token.png)
+![](/assets/characters/heroes/ritualist_token.png){: .profile }
 
 <p>A practitioner of powerful, dark magic that is often at odds with other more established forms of magical practice. They can be those who call upon patrons for power or who have learned to manipulate the darkness in their hearts.</p><blockquote><p>The Ritualist is the class for those who want their characters to employ debilitating offensive skills and spells by paying the corresponding costs. They are a good choice for those wishing to augment the offensive capabilities they established with their other classes.</p></blockquote>
 

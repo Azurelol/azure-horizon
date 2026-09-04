@@ -10,7 +10,7 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <span class="document-trait">Shift</span>
 </div>
 
-![](/assets/characters/heroes/dancer_token.png)
+![](/assets/characters/heroes/dancer_token.png){: .profile }
 
 <p>An acrobatic performer who relies on their quick feet and graceful movements to get them by in life.  Behind their elegant movements belies a martial discipline that is both flexible and strong when it needs to be.</p><blockquote><p>The Dancer is a class that excels in providing options to easily reposition not only their party but also their foes, all while steadily building up their tempo to increase their damage.</p></blockquote>
 

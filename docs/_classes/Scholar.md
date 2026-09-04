@@ -10,7 +10,7 @@ tokenImg: /assets/characters/heroes/scholar_token.png
 <span class="document-trait">Perception</span>
 </div>
 
-![](/assets/characters/heroes/scholar_token.png)
+![](/assets/characters/heroes/scholar_token.png){: .profile }
 
 <p>An individual who seeks to learn about the world or a particular subject, who values the preservation and sharing of knowledge. They excel at gathering information more quickly and effectively than the average person and can support their allies with it.</p><blockquote><p>The Scholar is a class for those who value gathering knowledge effectively and supporting their allies with it through effective buffs and debuffs.</p></blockquote>
 

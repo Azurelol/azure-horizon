@@ -10,7 +10,7 @@ tokenImg: /assets/characters/heroes/lancer_token.png
 <span class="document-trait">Mobility</span>
 </div>
 
-![](/assets/characters/heroes/lancer_token.png)
+![](/assets/characters/heroes/lancer_token.png){: .profile }
 
 <p>An acrobatic warrior who specializes in fighting at range with a long spear. They could be the elites of military organizations or disciples of renowned martial masters. They specialize in getting past defenses to directly deal with dangerous opponents.</p><blockquote><p>The Lancer should be a fun class for those wishing to engage with the fantasy of the fighter who leaps around the battlefield. Their iconic Jump skill allows them to avoid being targeted and unleash more powerful versions of their main skills.</p></blockquote>
 

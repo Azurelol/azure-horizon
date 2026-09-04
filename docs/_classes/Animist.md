@@ -9,7 +9,7 @@ tokenImg: /assets/characters/heroes/animist_token.png
 <span class="document-trait">Support</span>
 </div>
 
-![](/assets/characters/heroes/animist_token.png)
+![](/assets/characters/heroes/animist_token.png){: .profile }
 
 <p>A person who heeds the power of nature. They could be a warden of the wilds or a shaman. They call upon the forces of nature to support their allies and hinder their enemies.</p><blockquote><p>The Animist can be considered a mechanical counterpart to the Spiritist as many of their spells and skills take effect over time and have instant cast times, allowing them to take part in a more reactive playstyle.</p></blockquote>
 

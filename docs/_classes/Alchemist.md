@@ -9,7 +9,7 @@ tokenImg: /assets/characters/heroes/alchemist_token.png
 <span class="document-trait">Alchemy</span>
 </div>
 
-![](/assets/characters/heroes/alchemist_token.png)
+![](/assets/characters/heroes/alchemist_token.png){: .profile }
 
 <p>An enterprising individual who has taken it upon themselves to brew potions, elixirs and all kinds of concoctions. They can be found traveling the world, plying their services or as residents in settlements where they usually become a backbone of the community.</p><blockquote><p>The Alchemist is an excellent class for providing general resource support to a party lacking in those means while also boasting moderate offensive capabilities with their bombs.</p></blockquote><p></p>
 

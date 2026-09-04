@@ -10,7 +10,7 @@ tokenImg: /assets/characters/heroes/spiritist_token.png
 <span class="document-trait">Defense</span>
 </div>
 
-![](/assets/characters/heroes/spiritist_token.png)
+![](/assets/characters/heroes/spiritist_token.png){: .profile }
 
 <p>A practitioner with close ties to the spirits that inhabit the world. They are often healers in their communities, priests and acolytes of religious organizations or temples. They are capable of great feats in manipulating light energy for offense, defense, safeguarding their allies and judging their enemies.</p><blockquote><p>The Spiritist is a reliable class for those that want to support their party with skills particularly effective for mitigating damage and cleansing status effects. Their seals allow them to take a more offensive approach and can be used in conjunction with other more offensive classes.</p></blockquote>
 
