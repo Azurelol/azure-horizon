@@ -35,7 +35,8 @@ navbar-links:
   Manual: "manual"
   Classes: "classes"
   Spells: "spells"
-  About: "aboutme"
+  Gallery: "gallery"
+  About: "about"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Itch.io: "https://itch.io/"
