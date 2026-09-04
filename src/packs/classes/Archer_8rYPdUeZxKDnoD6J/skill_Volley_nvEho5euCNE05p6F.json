@@ -7,7 +7,7 @@
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "archer-draw",
+    "slug": "archer-volley",
     "description": "<p>You deal damage to the target and those around it.</p>",
     "check": {
       "schemaVersion": 1,
@@ -66,13 +66,15 @@
       "traits": [
         "cooldown"
       ],
-      "targeting": "multiple"
+      "targeting": "multiple",
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
       "check": true,
       "damage": true,
-      "attributes": true
+      "attributes": true,
+      "enabled": true
     },
     "class": "archer"
   },

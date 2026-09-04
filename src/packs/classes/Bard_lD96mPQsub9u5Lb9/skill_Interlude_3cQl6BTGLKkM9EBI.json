@@ -3,7 +3,7 @@
   "name": "Interlude",
   "type": "skill",
   "_id": "3cQl6BTGLKkM9EBI",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

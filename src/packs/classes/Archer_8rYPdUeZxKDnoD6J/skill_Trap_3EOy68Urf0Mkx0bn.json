@@ -3,12 +3,12 @@
   "name": "Trap",
   "type": "skill",
   "_id": "3EOy68Urf0Mkx0bn",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS57.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "archer-trap",
-    "description": "",
+    "description": "<p>For each skill point invested into this skill you gain the use of an Archer <em>Trap, an object </em>which can be placed on a space in the dividing line between heroes and adversaries.</p><p>When an adversary crosses that space to make a melee attack, they will <em>trigger</em> the trap.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -62,7 +62,7 @@
     "power": "",
     "level": {
       "current": 1,
-      "max": 1
+      "max": 5
     },
     "action": {
       "schemaVersion": 1,

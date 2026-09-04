@@ -3,7 +3,7 @@
   "name": "Spinning Heel",
   "type": "classFeature",
   "_id": "a5U3vGdTVMlIib4W",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "hp",
+      "amount": "&hp(0.1)",
       "perTarget": false
     },
     "effects": {
@@ -66,22 +66,26 @@
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
+      "range": "melee",
       "targeting": "single",
-      "type": "",
-      "points": 1,
+      "type": "action",
+      "points": 2,
       "traits": [
-        "finisher"
-      ]
+        "finisher",
+        "shift"
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false
+      "attributes": true,
+      "check": true,
+      "damage": true,
+      "enabled": true
     },
     "class": "brawler",
-    "skill": "brawler-martial-arts"
+    "skill": "brawler-martial-arts",
+    "trait": "brawl"
   },
   "effects": [],
   "sort": 200000,

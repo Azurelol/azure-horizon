@@ -93,6 +93,11 @@ export class MarkdownBuilder {
     return title ? `![${alt}](${url} "${title}")` : `![${alt}](${url})`;
   }
 
+  // ---- Images ----
+  img(alt, url, title) {
+    return this._push(MarkdownBuilder.image(alt, url, title));
+  }
+
   // ---- Lists ----
   list(items, ordered = false) {
     const lines = items.map((item, i) =>

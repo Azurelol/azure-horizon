@@ -3,11 +3,11 @@
   "name": "Rapid Reload",
   "type": "skill",
   "_id": "B6eBuqIW5UqG8LTy",
-  "img": "icons/weapons/guns/pistol-handgun-large.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "rapid-reload",
+    "slug": "gunner-rapid-reload",
     "description": "<p>If the result of your your last attack was an even check, next time you reload you gain a damage bonus to your next attack.</p>",
     "attributes": {
       "schemaVersion": 1,

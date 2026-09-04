@@ -3,7 +3,7 @@
   "name": "Focused Shot",
   "type": "skill",
   "_id": "amEsSw3SmCIid4Cz",
-  "img": "icons/skills/ranged/cannon-barrel-firing-white-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

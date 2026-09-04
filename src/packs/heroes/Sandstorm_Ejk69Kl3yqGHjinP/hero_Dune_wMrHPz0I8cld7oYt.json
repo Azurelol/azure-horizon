@@ -350,7 +350,7 @@
       "src": "icons/svg/mystery-man.svg",
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "fit": "contain",
+      "fit": "cover",
       "scaleX": 1,
       "scaleY": 1,
       "tint": "#ffffff",
@@ -365,7 +365,7 @@
       "attribute": "resources.hp"
     },
     "bar2": {
-      "attribute": "resources.mp"
+      "attribute": null
     },
     "light": {
       "negative": false,

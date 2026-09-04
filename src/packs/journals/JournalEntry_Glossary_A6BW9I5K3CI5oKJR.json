@@ -54,7 +54,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>Tension is the character resource which relates to their current mental health and stress levels. It will usually increase during battles and must be actively managed through skills, activities and other features.</p>"
+        "content": "<p>Tension is the character resource which relates to their current mental health and stress levels. It will usually increase during battles and must be actively managed through skills, activities and other features.</p><p>Once a character is at maximum tension, the next time they increase their tension they will need to make a Resolve Check, otherwise they will suffer a PENALTY.</p>"
       },
       "video": {
         "controls": true,
@@ -664,6 +664,45 @@
         "exportSource": null
       },
       "_key": "!journal.pages!A6BW9I5K3CI5oKJR.exaOot3GG3KwAcS8"
+    },
+    {
+      "sort": 1700000,
+      "name": "Healing",
+      "type": "text",
+      "_id": "SQAGxmITXr06K7zy",
+      "system": {},
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Healing is defined as the recovery of hit points (HP), which are a character's capacity to keep fighting. Practically, it's their plot armor.</p><blockquote><p>Unlike other systems you may be familiar with, in this system hit point recovery is not as efficient and characters cannot so easily shrug off damage taken. Healing is generally both less efficient and takes longer than mitigating the damage through <em>blocking</em>.</p><p>Thus, the intent is for players to use their heroes' tools to avoid taking damage and minimize their expenditures lest they run out of resources.</p></blockquote>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "B84lnG927FT7kWX1": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788428180699,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.journals.JournalEntry.wGofzufKl6yJsZ40.JournalEntryPage.SQAGxmITXr06K7zy",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!journal.pages!A6BW9I5K3CI5oKJR.SQAGxmITXr06K7zy"
     }
   ],
   "folder": null,

@@ -1,6 +1,7 @@
 ---
 title: Fencer
 img: /assets/icons/classes/fencer/fencer.png
+tokenImg: /assets/characters/heroes/fencer_token.png
 ---
 
 <div class="document-traits --center">
@@ -8,6 +9,8 @@ img: /assets/icons/classes/fencer/fencer.png
 <span class="document-trait">Offense</span>
 <span class="document-trait">Shift</span>
 </div>
+
+![](/assets/characters/heroes/fencer_token.png)
 
 <p>A disciplined warrior who fights with style and grace. They could be a daring swashbuckler or a noble practicing an established style. They specialize in darting among their foes with flair, waiting for the right chance to take them down.</p><blockquote><p>The Fencer is a great class for those who prize mobility. Most of their skills have them shift around the battlefield and sometimes require them to be in specific rows before activating powerful effects.</p></blockquote>
 
@@ -33,7 +36,7 @@ img: /assets/icons/classes/fencer/fencer.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Antagonize</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Antagonize</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 2
 </div>
@@ -42,7 +45,7 @@ img: /assets/icons/classes/fencer/fencer.png
 <p>You gain SL stacks of <em>Taunt</em>.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Bravado</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Bravado</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -51,7 +54,7 @@ img: /assets/icons/classes/fencer/fencer.png
 <p>Once per round whenever you shift you reduce 1 TP.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/melee/weapons-crossed-swords-black-gray.webp"><span>En Garde</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>En Garde</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 1</span>
@@ -63,7 +66,7 @@ img: /assets/icons/classes/fencer/fencer.png
 <p>You immediately adopt your offensive stance or defensive stance.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/melee/hand-grip-sword-white-brown.webp"><span>Riposte</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Riposte</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Reaction</span>
@@ -75,7 +78,7 @@ img: /assets/icons/classes/fencer/fencer.png
 <p>When you are attacked in melee and the result of the check was an even number you can immediately perform a free attack against the attacker.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/melee/weapons-crossed-swords-black.webp"><span>Technique</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Technique</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -88,7 +91,7 @@ img: /assets/icons/classes/fencer/fencer.png
 ## Features
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Coup de Grace</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Coup de Grace</span></div>
 <div class='document-header__properties'>
 </div>
 </div>
@@ -107,7 +110,7 @@ img: /assets/icons/classes/fencer/fencer.png
 <p>You make an attack with your melee weapon.</p><ul><li><p><strong>Offensive Stance</strong>: You push a target in the front row.</p></li><li><p><strong>Defensive Stance:</strong> You pull a target in the back row.</p></li></ul>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Fleche</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Fleche</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 2</span>
@@ -118,7 +121,7 @@ img: /assets/icons/classes/fencer/fencer.png
 <p>While in the back row you make a powerful lunging attack with your melee weapon. You enter offensive stance after the attack is resolved.</p><ul><li><p><strong>Offensive Stance</strong>: You deal increased damage.</p></li></ul>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Flick</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Flick</span></div>
 <div class='document-header__properties'>
 </div>
 </div>
@@ -126,7 +129,7 @@ img: /assets/icons/classes/fencer/fencer.png
 <p>You make an attack with your melee weapon.</p><ul><li><p><strong>Offensive Stance</strong>: You ignore block.</p></li><li><p><strong>Defensive Stance:</strong> You ignore reactions.</p></li></ul>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Touche</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Touche</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 2</span>

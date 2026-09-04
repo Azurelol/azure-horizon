@@ -1,13 +1,13 @@
 {
   "folder": "VhlcaMe6gctxzSqF",
-  "name": "Acid Spit",
+  "name": "Icicle",
   "type": "attack",
-  "_id": "IvSsoEJ9CwwAhCxj",
-  "img": "icons/magic/acid/projectile-smoke-glowing.webp",
+  "_id": "NDnqf5B9BpVJWl2c",
+  "img": "icons/magic/water/projectile-icecicle-glowing.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "attack-acid-spit",
+    "slug": "attack-icicle",
     "description": "",
     "check": {
       "schemaVersion": 1,
@@ -24,14 +24,20 @@
       "enabled": true,
       "primary": {
         "amount": "",
-        "type": "acid"
+        "type": "cold"
       },
       "secondary": {
         "amount": "",
-        "type": ""
+        "type": "piercing"
       },
       "traits": [],
       "inplace": false
+    },
+    "attributes": {
+      "enabled": true,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "C"
     }
   },
   "effects": [],
@@ -44,12 +50,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786632482538,
+    "createdTime": 1786632578836,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!IvSsoEJ9CwwAhCxj"
+  "_key": "!items!NDnqf5B9BpVJWl2c"
 }

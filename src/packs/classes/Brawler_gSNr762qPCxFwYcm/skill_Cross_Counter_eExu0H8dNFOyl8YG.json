@@ -3,7 +3,7 @@
   "name": "Cross Counter",
   "type": "skill",
   "_id": "eExu0H8dNFOyl8YG",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -38,15 +38,15 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "type": "hp",
-      "amount": ""
+      "amount": "30"
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -63,12 +63,14 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "type": "action",
+      "points": 2,
+      "traits": [],
+      "enabled": true,
+      "targeting": "single"
     },
     "domain": "light",
-    "speed": "instant"
+    "speed": "fast"
   },
   "effects": [],
   "sort": 500000,

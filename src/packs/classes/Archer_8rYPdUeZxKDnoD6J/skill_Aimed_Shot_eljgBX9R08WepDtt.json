@@ -3,12 +3,12 @@
   "name": "Aimed Shot",
   "type": "skill",
   "_id": "eljgBX9R08WepDtt",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS46.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "aimed-shot",
-    "description": "<p>Depending on the result of the check the target suffers a different debuff.</p>",
+    "slug": "archer-aimed-shot",
+    "description": "<p>When your bow is fully drawn, you perform a powerful attack at a single target within line of sight. If the check result is even you hit a vital area.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -59,26 +59,28 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "severe",
     "level": {
       "current": 1,
       "max": 1
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "targeting": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "range": "ranged",
+      "targeting": "single",
+      "type": "action",
+      "points": 2,
+      "traits": [],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false
+      "attributes": true,
+      "check": true,
+      "damage": true,
+      "enabled": true
     },
-    "class": ""
+    "class": "archer"
   },
   "effects": [],
   "sort": 0,

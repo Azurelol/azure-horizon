@@ -1,0 +1,109 @@
+{
+  "folder": "8rYPdUeZxKDnoD6J",
+  "name": "Feign Death",
+  "type": "skill",
+  "_id": "JdqnbguuQcMq93u9",
+  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS91.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "archer-feign-death",
+    "description": "<p>You gain <em>Stealth</em> until your next action. Your party's TP is increased by 1.</p><ul><li><p><strong>Party</strong>: @GAIN[1 tp]</p></li></ul>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "mp",
+      "amount": "5",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "stealth"
+      ],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "",
+      "targeting": "",
+      "type": "action",
+      "points": 1,
+      "traits": [
+        "exhaust",
+        "tension"
+      ]
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "archer"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788451122795,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!JdqnbguuQcMq93u9"
+}

@@ -1,0 +1,34 @@
+{
+  "folder": "iH9OyoAoizAPCpjW",
+  "name": "Light Plate",
+  "type": "armor",
+  "_id": "wDzfZ3v9nVzKORjN",
+  "img": "systems/azure-horizon/assets/icons/equipment/armor/light_plate.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-light-plate",
+    "description": "",
+    "rarity": "common",
+    "category": "light",
+    "traits": []
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788337743124,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!wDzfZ3v9nVzKORjN"
+}

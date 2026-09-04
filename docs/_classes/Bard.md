@@ -1,6 +1,7 @@
 ---
 title: Bard
 img: /assets/icons/classes/bard/bard.png
+tokenImg: /assets/characters/heroes/bard_token.png
 ---
 
 <div class="document-traits --center">
@@ -8,6 +9,8 @@ img: /assets/icons/classes/bard/bard.png
 <span class="document-trait">Music</span>
 <span class="document-trait">Tension</span>
 </div>
+
+![](/assets/characters/heroes/bard_token.png)
 
 <p>A person with great musical talent, which they can use to rally their allies to great deeds. Whether they be lone performers, career musicians or outright celebrities, they all share a love of music in common and believe it has a power of its own.</p><blockquote><p>The Bard is a rather interesting class for those want to be creative in crafting their own songs and engage with its performance mechanics which usually disallow them from taking offensive actions and instead have them prioritize selectively enhancing certain party members. </p></blockquote>
 
@@ -34,7 +37,7 @@ img: /assets/icons/classes/bard/bard.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Accompany</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Accompany</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -43,7 +46,7 @@ img: /assets/icons/classes/bard/bard.png
 <p>You add your voice to that of an ongoing <em>performance</em>, boosting its strength.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Dedicate</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Dedicate</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Stress</span>
@@ -57,7 +60,7 @@ img: /assets/icons/classes/bard/bard.png
 <p>You cam briefly direct your performance at a party member, greatly amplifying their abilities for a short time. They gain the <em>resonance</em> effect.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Encore</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_item.png"><span>Encore</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -66,7 +69,7 @@ img: /assets/icons/classes/bard/bard.png
 <p>After you end a song, you may repeat it again on the next turn at 1 less AP.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Finale</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Finale</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -93,7 +96,7 @@ img: /assets/icons/classes/bard/bard.png
 <p>When an adversary enters crisis in a combat scene you gain SL * 5 mind points.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Interlude</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Interlude</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Stress</span>
@@ -118,7 +121,7 @@ img: /assets/icons/classes/bard/bard.png
 <p>During a long rest your interpersonal relationship drama may come to the front at the prompt of the director. Once it's resolved the party gains 5 XP.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Perform</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Perform</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 2</span>

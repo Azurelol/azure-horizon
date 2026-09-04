@@ -3,7 +3,7 @@
   "name": "Gambit",
   "type": "skill",
   "_id": "1b5ExN9nWWGV5dwZ",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

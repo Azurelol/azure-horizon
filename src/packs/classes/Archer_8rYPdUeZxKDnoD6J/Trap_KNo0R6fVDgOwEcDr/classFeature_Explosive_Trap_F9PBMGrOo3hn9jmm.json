@@ -3,7 +3,7 @@
   "name": "Explosive Trap",
   "type": "classFeature",
   "_id": "F9PBMGrOo3hn9jmm",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -1,0 +1,36 @@
+{
+  "folder": "iH9OyoAoizAPCpjW",
+  "name": "Elven Leather",
+  "type": "armor",
+  "_id": "w1CojZKSQOAmtMGI",
+  "img": "systems/azure-horizon/assets/icons/equipment/armor/elf_leather_armor.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-elven-leather",
+    "description": "",
+    "rarity": "common",
+    "category": "light",
+    "traits": [
+      "fleet"
+    ]
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788447132743,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!w1CojZKSQOAmtMGI"
+}

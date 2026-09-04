@@ -3,7 +3,7 @@
   "name": "Freezing Trap",
   "type": "classFeature",
   "_id": "dqRNlKErXG3k7xpC",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

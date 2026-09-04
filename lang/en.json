@@ -288,6 +288,10 @@
         "ControlHint": "The adversary intends to use a controlling ability.",
         "Prepare": "Prepare",
         "PrepareHint": "The adversary is preparing for a powerful action.",
+        "Cast": "Cast",
+        "CastHint": "The adversary is preparing to cast a spell.",
+        "Channel": "Channel",
+        "ChannelHint": "The adversary is channeling a powerful ability until the end of the round.",
         "Block": "Block",
         "BlockHint": "The adversary intends to defend against incoming attacks.",
         "Recovery": "Recovery",
@@ -521,6 +525,7 @@
       "Projectile": "Projectile",
       "Reload": "Reload",
       "Thrown": "Thrown",
+      "Mercy": "Mercy",
       "Shield": "Shield",
       "Melee": "Melee",
       "Ranged": "Ranged",
@@ -564,7 +569,10 @@
       "Mechanism": "Mechanism",
       "Perception": "Perception",
       "Sniper": "Sniper",
-      "Block": "Block"
+      "Block": "Block",
+      "Cast": "Cast",
+      "Channel": "Channel",
+      "Charge": "Charge"
     },
     "DOMAIN": {
       "Light": "Light",

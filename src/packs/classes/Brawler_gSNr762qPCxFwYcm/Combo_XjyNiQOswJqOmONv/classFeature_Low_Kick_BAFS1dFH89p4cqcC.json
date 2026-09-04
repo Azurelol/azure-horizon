@@ -3,7 +3,7 @@
   "name": "Low Kick",
   "type": "classFeature",
   "_id": "BAFS1dFH89p4cqcC",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "hp",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
@@ -78,7 +78,8 @@
       "schemaVersion": 1,
       "attributes": true,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true
     },
     "trait": "brawl",
     "class": "brawler",

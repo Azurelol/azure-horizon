@@ -93,6 +93,13 @@ export default class AdversaryDataModel extends CharacterDataModel {
   }
 
   /**
+   * @returns {boolean} True if the rank is elite or above
+   */
+  get ranked() {
+    return (this.profile.rank === "elite") || (this.profile.rank === "champion");
+  }
+
+  /**
    * @param {AHItem} item
    */
   async setAttack(item) {
@@ -140,10 +147,11 @@ async function assemble(actor, fields) {
 
   const level = fields.level ?? actor.system.level;
   const updates = {};
+  let turns;
 
   // Update turns based on rank
   if (fields.rank) {
-    let turns = 1;
+    turns = 1;
     switch (fields.rank) {
       case "minion":
         turns = 0;
@@ -170,6 +178,12 @@ async function assemble(actor, fields) {
     updates["system.attributes.ins.base"] = assembly.attributes.ins;
     updates["system.attributes.wlp.base"] = assembly.attributes.wlp;
   }
+
+  // Update hp
+  updates["system.resources.hp.value"] = Formulas.calculateHitPoints(actor.system, {
+    level: level,
+    turns: turns,
+  });
 
   if (Object.keys(updates).length > 0) {
     actor.update(updates);

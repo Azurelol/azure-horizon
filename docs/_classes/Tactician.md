@@ -1,12 +1,15 @@
 ---
 title: Tactician
 img: /assets/icons/classes/tactician/tactician.png
+tokenImg: /assets/characters/heroes/tactician_token.png
 ---
 
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
 <span class="document-trait">Tactics</span>
 </div>
+
+![](/assets/characters/heroes/tactician_token.png)
 
 <p>An individual who prefers to rely on tactics and strategy rather than pure strength when it comes to winning conflicts. They are often military commanders, squad leaders and those with natural leadership abilities.</p><blockquote><p>The Tactician is the class for those who wish to coordinate and directly lead their allies in battle, as their <em>formation</em> skills allow them to directly manipulate their party members positioning and actions.</p></blockquote>
 
@@ -89,7 +92,7 @@ img: /assets/icons/classes/tactician/tactician.png
 <p>You gain the use of a <em>tactician formation</em> for each invested skill point. A formation is a party-wide command that action. All formations share a cooldown.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Gambit</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Gambit</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -119,7 +122,7 @@ img: /assets/icons/classes/tactician/tactician.png
 ## Features
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Advance</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Advance</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -131,7 +134,7 @@ img: /assets/icons/classes/tactician/tactician.png
 <p>All party members shift to the front row and perform a free attack.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Retreat</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Retreat</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -143,7 +146,7 @@ img: /assets/icons/classes/tactician/tactician.png
 <p>All party members move to the back row and immediately defend.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Scatter</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Scatter</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -155,7 +158,7 @@ img: /assets/icons/classes/tactician/tactician.png
 <p>All party members can immediately perform a <em>free shift</em>.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Shields Up</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Shields Up</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -167,7 +170,7 @@ img: /assets/icons/classes/tactician/tactician.png
 <p>All party members in the front row immediately <em>defend</em>.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Volley</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Volley</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 2</span>

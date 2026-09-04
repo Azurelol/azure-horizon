@@ -3,7 +3,7 @@
   "name": "Unload",
   "type": "skill",
   "_id": "h4GQVuKN5nTvMbny",
-  "img": "icons/skills/ranged/blast-energy-plating-orange.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -429,12 +429,12 @@
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 30,
+    "displayBars": 50,
     "bar1": {
       "attribute": "resources.hp"
     },
     "bar2": {
-      "attribute": "resources.mp"
+      "attribute": "resources.pp"
     },
     "light": {
       "negative": false,
@@ -577,7 +577,7 @@
           "schemaVersion": 1,
           "primary": "dex",
           "secondary": "mig",
-          "grade": "C",
+          "grade": "B",
           "enabled": false
         },
         "check": {
@@ -585,7 +585,8 @@
           "enabled": false,
           "primary": "dex",
           "secondary": "mig",
-          "defense": "def"
+          "defense": "def",
+          "bonus": ""
         },
         "damage": {
           "schemaVersion": 1,
@@ -627,19 +628,19 @@
         "intent": "damage",
         "action": {
           "schemaVersion": 1,
-          "range": "",
+          "range": "melee",
           "type": "action",
           "points": 2,
           "traits": [],
-          "enabled": false,
-          "targeting": ""
+          "enabled": true,
+          "targeting": "single"
         },
         "usage": {
           "schemaVersion": 1,
-          "attributes": false,
+          "attributes": true,
           "check": true,
           "damage": true,
-          "enabled": false
+          "enabled": true
         },
         "weight": "normal"
       },

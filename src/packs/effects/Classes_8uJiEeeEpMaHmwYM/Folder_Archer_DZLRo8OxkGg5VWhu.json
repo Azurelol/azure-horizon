@@ -1,0 +1,23 @@
+{
+  "type": "ActiveEffect",
+  "folder": "8uJiEeeEpMaHmwYM",
+  "name": "Archer",
+  "color": null,
+  "sorting": "a",
+  "_id": "DZLRo8OxkGg5VWhu",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788450873176,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!DZLRo8OxkGg5VWhu"
+}

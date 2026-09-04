@@ -3,7 +3,7 @@
   "name": "Enrage",
   "type": "skill",
   "_id": "zw7ER2A4XdT2qIro",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

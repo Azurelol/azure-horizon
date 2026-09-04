@@ -3,7 +3,7 @@
   "name": "Advance",
   "type": "classFeature",
   "_id": "fkaX8MgygOxQhMnF",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

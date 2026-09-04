@@ -19,9 +19,7 @@
     },
     "range": "ranged",
     "handedness": "two",
-    "traits": [
-      "draw"
-    ],
+    "traits": [],
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
@@ -39,7 +37,16 @@
     "attributes": {
       "primary": "dex",
       "secondary": "mig",
-      "grade": "B"
+      "grade": "B",
+      "enabled": true
+    },
+    "actionCost": 1,
+    "options": {
+      "enabled": true,
+      "traits": [
+        "draw",
+        "projectile"
+      ]
     }
   },
   "effects": [],

@@ -119,13 +119,14 @@ const ROLE_ROUTINES = Object.freeze({
     standard: {
       default: [
         ["attack"],
+        ["cast"],
         ["damage"],
       ],
     },
     elite: {
       default: [
         ["attack", "damage"],
-        ["prepare", "damage"],
+        ["cast", "damage"],
       ],
     },
     champion: {

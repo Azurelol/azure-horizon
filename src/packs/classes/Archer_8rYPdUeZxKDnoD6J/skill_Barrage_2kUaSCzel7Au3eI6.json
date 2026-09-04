@@ -69,16 +69,18 @@
       "range": "ranged",
       "targeting": "multiple",
       "type": "action",
-      "points": 2,
+      "points": 3,
       "traits": [
         "cooldown"
-      ]
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": true,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true
     },
     "class": "archer"
   },

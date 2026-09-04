@@ -3,7 +3,7 @@
   "name": "Wyrm Fang",
   "type": "skill",
   "_id": "FEeq6919mGOEGWU0",
-  "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -18,10 +18,12 @@
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "range": "melee",
+      "type": "action",
+      "points": 2,
+      "traits": [],
+      "enabled": true,
+      "targeting": "single"
     },
     "damage": {
       "schemaVersion": 1,
@@ -45,16 +47,18 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "sunder"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -68,9 +72,18 @@
       "schemaVersion": 1,
       "check": true,
       "damage": true,
-      "power": "low"
+      "power": "low",
+      "enabled": true,
+      "attributes": true
     },
-    "class": "lancer"
+    "class": "lancer",
+    "attributes": {
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "power": "moderate"
   },
   "effects": [],
   "sort": 0,

@@ -3,7 +3,7 @@
   "name": "Research",
   "type": "skill",
   "_id": "DQIJLyf69jvW9LxC",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

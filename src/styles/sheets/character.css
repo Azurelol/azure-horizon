@@ -152,17 +152,29 @@
 
   .ah-character__equipment__slot {
     border: 1px solid var(--ah-control-border);
-    background: #2d6895;
+    background: color-mix(in srgb, var(--ah-surface-item) 40%, transparent);
     width: 40px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    &:has(img[src=""]),
-    &:has(img:not([src])) {
-      background: var(--ah-surface-entry-gradient);
+    &.--hero {
+      background: #2d6895;
     }
+
+    &.--adversary {
+      background: #352c31;
+    }
+
+    :hover {
+      background: color-mix(in srgb, var(--ah-surface-action-active) 75%, transparent);
+    }
+
+    /*&:has(img[src=""]),*/
+    /*&:has(img:not([src])) {*/
+    /*  background: var(--ah-surface-entry-gradient);*/
+    /*}*/
 
     img {
       object-fit: fill;

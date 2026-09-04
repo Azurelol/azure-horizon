@@ -3,11 +3,11 @@
   "name": "Point Blank",
   "type": "skill",
   "_id": "sIcqToxcZw5b0mj6",
-  "img": "icons/skills/ranged/cannon-barrel-firing-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "point-blank",
+    "slug": "gunner-point-blank",
     "description": "<p>While in the front row you can rush forwards and blast an enemy within reach, dealing significant damage. At SL2 you shift backwards.</p>",
     "attributes": {
       "schemaVersion": 1,

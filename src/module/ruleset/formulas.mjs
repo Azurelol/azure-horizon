@@ -136,21 +136,27 @@ export default class Formulas {
   }
 
   /**
+   * @typedef HitPointFactors
+   * @property level A level different from the serialized one.
+   * @property turns
+   */
+
+  /**
    * @param {EntityDataModel|HeroDataModel|AdversaryDataModel|FollowerDataModel} system
-   * @param {Number} level A level different from the serialized one.
+   * @param {HitPointFactors} factors A level different from the serialized one.
    * @returns {Number}
    */
-  static calculateHitPoints(system, level = undefined) {
+  static calculateHitPoints(system, factors = {}) {
     /** @type AHActor **/
     const actor = system.parent;
-    level ??= system.level;
+    factors.level ??= system.level;
     let hp = 0;
     switch (actor.type) {
 
       case "hero": {
         /** @type AttributesDataModel **/
         const attributes = system.attributes;
-        hp += level + (attributes.mig.base * HP_MIGHT_FACTOR);
+        hp += factors.level + (attributes.mig.base * HP_MIGHT_FACTOR);
         forClassBenefits(actor, (benefits) => {
           if (benefits.hp) {
             hp += CLASS_BENEFIT_HP;
@@ -164,25 +170,25 @@ export default class Formulas {
         const attributes = system.attributes;
         /** @type AdversaryProfileDataModel **/
         const profile = system.profile;
-        const rankMultiplier = profile.turns;
-        hp = (level + (attributes.mig.base * HP_MIGHT_FACTOR)) * rankMultiplier;
+        const turns = factors.turns ?? profile.turns;
+        hp = (factors.level + (attributes.mig.base * HP_MIGHT_FACTOR)) * turns;
         break;
       }
 
       case "follower": {
-        hp = level;
+        hp = factors.level;
         const potential = system.potential;
         hp += (HP_POTENTIAL_FACTOR * potential);
       }
         break;
 
       case "entity": {
-        hp = level;
+        hp = factors.level;
       }
         break;
 
       case "unit":
-        hp = level;
+        hp = factors.level;
         break;
     }
     hp = scaleValue(hp);

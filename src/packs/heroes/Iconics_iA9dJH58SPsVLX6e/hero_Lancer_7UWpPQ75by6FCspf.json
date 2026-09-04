@@ -10,13 +10,13 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 40,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
@@ -98,7 +98,11 @@
         "type": "additive"
       }
     },
-    "equipment": {},
+    "equipment": {
+      "mainHand": "aBIYcSB3nwbHlC0n",
+      "offHand": "aBIYcSB3nwbHlC0n",
+      "armor": "wDzfZ3v9nVzKORjN"
+    },
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -415,7 +419,7 @@
       "attribute": "resources.hp"
     },
     "bar2": {
-      "attribute": "resources.mp"
+      "attribute": null
     },
     "light": {
       "negative": false,
@@ -481,7 +485,384 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Spear",
+      "type": "weapon",
+      "_id": "aBIYcSB3nwbHlC0n",
+      "img": "systems/azure-horizon/assets/icons/equipment/weapons/spear.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-spear",
+        "description": "",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "range": "melee",
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "",
+            "type": "piercing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "handedness": "two",
+        "traits": [
+          "reach"
+        ],
+        "attributes": {
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "B",
+          "schemaVersion": 1,
+          "enabled": false
+        },
+        "options": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788337642322,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.aBIYcSB3nwbHlC0n",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.aBIYcSB3nwbHlC0n"
+    },
+    {
+      "name": "Light Plate",
+      "type": "armor",
+      "_id": "wDzfZ3v9nVzKORjN",
+      "img": "systems/azure-horizon/assets/icons/equipment/armor/light_plate.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-light-plate",
+        "description": "",
+        "rarity": "common",
+        "category": "light",
+        "traits": []
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788338592572,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.wDzfZ3v9nVzKORjN",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.wDzfZ3v9nVzKORjN"
+    },
+    {
+      "name": "Lancer",
+      "type": "class",
+      "_id": "0ogZm1r46mKL5P3W",
+      "img": "systems/azure-horizon/assets/icons/classes/lancer/lancer.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "lancer",
+        "description": "<p>An acrobatic warrior who specializes in fighting at range with a long spear. They could be the elites of military organizations or disciples of renowned martial masters. They specialize in getting past defenses to directly deal with dangerous opponents.</p><blockquote><p>The Lancer should be a fun class for those wishing to engage with the fantasy of the fighter who leaps around the battlefield. Their iconic Jump skill allows them to avoid being targeted and unleash more powerful versions of their main skills.</p></blockquote>",
+        "traits": [
+          "warrior",
+          "offense",
+          "mobility"
+        ],
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": true,
+          "mp": false,
+          "ip": false
+        },
+        "triggers": [
+          "You liberate someone.",
+          "You jump from a great height and land in a dramatic pose.",
+          "You defeat an enemy with a Jump."
+        ],
+        "complications": [
+          "A rival lancer has been possessed by an evil dragon spirit.",
+          "Your romantic rival wins the heart of the object of your affection.",
+          "You realize those you once served were wrong all along."
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788338688388,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.0ogZm1r46mKL5P3W",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.0ogZm1r46mKL5P3W"
+    },
+    {
+      "name": "Jump",
+      "type": "skill",
+      "_id": "I1w5OaDxd0fdZeA6",
+      "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "lancer-jump",
+        "description": "<p>You leap into the air, immediately ending your turn and gaining the <em>Jump </em>effect. It will end immediately as you land after your first action on your next turn.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "range": "",
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "cooldown",
+            "closer"
+          ],
+          "enabled": false,
+          "targeting": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "lancer",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "power": ""
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788338730926,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.I1w5OaDxd0fdZeA6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.I1w5OaDxd0fdZeA6"
+    },
+    {
+      "name": "Drake Thrust",
+      "type": "skill",
+      "_id": "iv1oW3BnPuObbQjS",
+      "img": "icons/skills/melee/spear-tips-double-purple.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "lancer-drake-thrust",
+        "description": "<p>You perform a melee attack with increased potency. On an even check you gain <em>Fangs Bared</em>, otherwise <em>Coiled Tail</em>. On a critical you instead gain <em>Dragon Breath.</em></p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 2,
+          "traits": [
+            "opener"
+          ],
+          "enabled": true,
+          "range": "melee",
+          "targeting": "single"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "5",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "entries": [
+            "lancer-fangs-bared",
+            "lancer-coiled-tail",
+            "lancer-dragon-breath"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          },
+          "selector": "buff"
+        },
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": true,
+          "damage": true,
+          "enabled": true,
+          "attributes": true
+        },
+        "class": "lancer",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "power": "low"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788338895842,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.iv1oW3BnPuObbQjS",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.iv1oW3BnPuObbQjS"
+    }
+  ],
   "effects": [],
   "sort": 0,
   "ownership": {

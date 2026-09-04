@@ -3,7 +3,7 @@
   "name": "High Kick",
   "type": "classFeature",
   "_id": "I98D5GFLiqDBbsqZ",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -13,14 +13,16 @@
       "schemaVersion": 1,
       "primary": "dex",
       "secondary": "mig",
-      "grade": "C"
+      "grade": "C",
+      "enabled": false
     },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -40,13 +42,13 @@
       "schemaVersion": 1,
       "enabled": false,
       "type": "hp",
-      "amount": ""
+      "amount": "5"
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "hp",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
@@ -72,13 +74,15 @@
       "targeting": "single",
       "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": false
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": true,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true
     },
     "class": "brawler",
     "skill": "brawler-martial-arts",

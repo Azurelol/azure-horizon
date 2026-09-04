@@ -3,7 +3,7 @@
   "name": "Jump",
   "type": "skill",
   "_id": "I1w5OaDxd0fdZeA6",
-  "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_shift.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -24,7 +24,9 @@
       "traits": [
         "cooldown",
         "closer"
-      ]
+      ],
+      "enabled": true,
+      "targeting": "self"
     },
     "damage": {
       "schemaVersion": 1,
@@ -48,9 +50,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {

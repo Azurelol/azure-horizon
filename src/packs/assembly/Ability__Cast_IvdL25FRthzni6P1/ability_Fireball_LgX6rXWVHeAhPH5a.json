@@ -1,27 +1,35 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Lance Charge",
-  "type": "skill",
-  "_id": "WoRVtl6fopiH3jp4",
-  "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
+  "folder": "IvdL25FRthzni6P1",
+  "name": "Fireball",
+  "type": "ability",
+  "_id": "LgX6rXWVHeAhPH5a",
+  "img": "icons/magic/fire/explosion-fireball-large-orange.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-lance-charge",
-    "description": "<p>Your next attack gains 50% of its damage converted to block.</p>",
+    "slug": "ability-fireball",
+    "description": "<p>You deal fire damage to the target and those around it.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "mdef",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "untyped"
+        "amount": "15",
+        "type": "fire"
       },
       "secondary": {
         "amount": "",
@@ -38,9 +46,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "15",
       "perTarget": false
     },
     "effects": {
@@ -53,24 +61,27 @@
         "tracking": ""
       }
     },
-    "power": "",
-    "level": {
-      "current": 1,
-      "max": 1
-    },
+    "power": "moderate",
+    "intent": "damage",
+    "weight": "normal",
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "enabled": true,
+      "range": "ranged",
+      "targeting": "multiple",
+      "type": "action",
+      "points": 3,
+      "traits": [
+        "cast"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
       "check": false,
       "damage": false
-    },
-    "class": "lancer"
+    }
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +93,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787215451917,
+    "createdTime": 1788505214532,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!WoRVtl6fopiH3jp4"
+  "_key": "!items!LgX6rXWVHeAhPH5a"
 }

@@ -3,7 +3,7 @@
   "name": "Flash of Insight",
   "type": "skill",
   "_id": "mLB6Q1Mr0Ocspmjo",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

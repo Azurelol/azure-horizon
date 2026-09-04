@@ -1,12 +1,15 @@
 ---
 title: Armiger
 img: /assets/icons/classes/armiger/armiger.png
+tokenImg: /assets/characters/heroes/armiger_token.png
 ---
 
 <div class="document-traits --center">
 <span class="document-trait">Warrior</span>
 <span class="document-trait">Offense</span>
 </div>
+
+![](/assets/characters/heroes/armiger_token.png)
 
 <p>A versatile warrior that values tactical flexibility over the study of a single weapon. They are often mercenaries; veterans that have tried many weapons over their careers and are capable of competently using any of them at their disposal.</p><blockquote><p>The Armiger is a great class for newcomers due to their relatively simple and effective skills which can easily complement other classes.</p></blockquote>
 

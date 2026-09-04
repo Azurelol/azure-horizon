@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "archer-viper-sting",
-    "description": "",
+    "description": "<p>You deal damage to the target and inflict it with the <em>Viper Sting</em> effect, a poison that deals damage to it over the next several turns.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,39 +44,43 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "archer-viper-sting"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "low",
     "level": {
       "current": 1,
       "max": 1
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "targeting": "",
-      "type": "",
+      "range": "ranged",
+      "targeting": "single",
+      "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false
+      "attributes": true,
+      "check": true,
+      "damage": true,
+      "enabled": true
     },
     "class": "archer"
   },

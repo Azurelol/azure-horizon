@@ -3,7 +3,7 @@
   "name": "Riposte",
   "type": "skill",
   "_id": "fknoUegy1VmEJ5Hm",
-  "img": "icons/skills/melee/hand-grip-sword-white-brown.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

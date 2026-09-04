@@ -155,5 +155,25 @@ img {
   }
 }
 
-.class__skills {
+
+.gallery {
+  column-count: 3;
+  column-gap: 1rem;
+  margin: 2rem 0;
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  break-inside: avoid;
+}
+
+@media (max-width: 700px) {
+  .gallery { column-count: 2; }
+}
+
+@media (max-width: 480px) {
+  .gallery { column-count: 1; }
 }

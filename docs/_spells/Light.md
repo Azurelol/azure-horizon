@@ -40,7 +40,7 @@ img: /assets/icons/spells/light.png
 <div class="document-header__name"><img src="icons/magic/light/beams-rays-orange-purple-large.webp"><span>Holy Light</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Instant</span>
+<span class="document-trait">Fast</span>
 </div>
 </div>
 </div>

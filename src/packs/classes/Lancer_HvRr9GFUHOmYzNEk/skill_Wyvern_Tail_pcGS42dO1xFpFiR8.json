@@ -3,7 +3,7 @@
   "name": "Wyvern Tail",
   "type": "skill",
   "_id": "pcGS42dO1xFpFiR8",
-  "img": "icons/skills/melee/spear-tips-three-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -71,7 +71,7 @@
       "power": "moderate",
       "attributes": false
     },
-    "class": "lancer-dragon-tail",
+    "class": "lancer",
     "power": "moderate"
   },
   "effects": [],

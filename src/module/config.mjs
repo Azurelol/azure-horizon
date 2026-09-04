@@ -631,6 +631,8 @@ AH.intents = Object.freeze({
   control: { label: "AH.ADVERSARY.INTENT.Control", icon: "ra ra-hypnotized-eye", tooltip: "AH.ADVERSARY.INTENT.ControlHint" }, // Controlling ability
 
   prepare: { label: "AH.ADVERSARY.INTENT.Prepare", icon: "ra ra-hourglass", tooltip: "AH.ADVERSARY.INTENT.PrepareHint" }, // Prepare an action
+  cast: { label: "AH.ADVERSARY.INTENT.Cast", icon: "ra ra-crystal-wand", tooltip: "AH.ADVERSARY.INTENT.CastHint" }, // Prepare an action
+  channel: { label: "AH.ADVERSARY.INTENT.Channel", icon: "ra ra-sunbeams", tooltip: "AH.ADVERSARY.INTENT.Channel" }, // Prepare an action
 
   block: { label: "AH.ADVERSARY.INTENT.Block", icon: "ra ra-shield", tooltip: "AH.ADVERSARY.INTENT.BlockHint" }, // Heal self
   recovery: { label: "AH.ADVERSARY.INTENT.Recovery", icon: "ra ra-heart-plus", tooltip: "AH.ADVERSARY.INTENT.RecoveryHint" }, // Heal self
@@ -1089,6 +1091,10 @@ AH.traits = {
     closer: { label: "AH.TRAIT.Closer", tooltip: "AH.TRAIT.CloserHint" },
     exhaust: { label: "AH.TRAIT.Exhaust", tooltip: "AH.TRAIT.ExhaustHint" },
     shift: { label: "AH.TRAIT.Shift", tooltip: "AH.TRAIT.ShiftHint" },
+
+    charge: { label: "AH.TRAIT.Charge", tooltip: "AH.TRAIT.ChargeHint" },
+    channel: { label: "AH.TRAIT.Channel", tooltip: "AH.TRAIT.ChannelHint" },
+    cast: { label: "AH.TRAIT.Cast", tooltip: "AH.TRAIT.CastHint" },
 
     tension: { label: "AH.TRAIT.Tension", tooltip: "AH.TRAIT.TensionHint" },
     pressure: { label: "AH.TRAIT.Pressure", tooltip: "AH.TRAIT.PressureHint" },

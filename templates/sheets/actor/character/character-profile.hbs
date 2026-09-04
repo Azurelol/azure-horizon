@@ -12,40 +12,10 @@
   {{#if (eq actor.type 'adversary')}}
     <div class="ah-field-grid">
       {{ahTraitsField schema=systemFields.profile.fields.traits path='system.profile.traits' label="AH.COMMON.Traits" value=system.profile.traits options=(ahFormOptions 'traits.family')}}
-      {{ahStringField path="system.profile.rank" value=system.profile.rank label='AH.FIELD.Rank' options=(ahFormOptions 'rank')}}
-      {{#if (eq system.profile.rank 'champion')}}
-        {{ahStringField path="system.profile.turns" value=system.profile.turns label='AH.FIELD.Turns' type='Number'}}
-        {{ahBooleanField path="system.profile.villain" value=system.profile.villain label='AH.FIELD.Villain'}}
-      {{/if}}
-      {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role' options=(ahFormOptions 'role')}}
+
       {{ahStringField path="system.profile.slug" value=system.profile.slug label='AH.DOCUMENT.Slug'}}
-      {{ahTraitsField schema=systemFields.profile.fields.pressure path='system.profile.pressure' label="AH.DAMAGE.Pressure" value=system.profile.pressure options=(ahFormOptions 'traits.pressure')}}
     </div>
-
-  <fieldset>
-    <legend>
-      <label>
-        {{localize 'AH.ADVERSARY.Intent.plural'}}
-      </label>
-    </legend>
-
-    <ol class="ah-list --background ah-character__intents">
-      {{#each intents as |round|}}
-        <li class="ah-character__intents__round">
-          <label>
-            {{@index}}
-          </label>
-          {{#each round as |intent|}}
-            <span data-tooltip="{{localize (ahLocaleKey 'intents' intent format='tooltip')}}">
-              {{localize (ahLocaleKey 'intents' intent)}}
-            </span>
-          {{/each}}
-        </li>
-      {{/each}}
-    </ol>
-  </fieldset>
   {{/if}}
-
   <fieldset>
     <legend>
       <label>

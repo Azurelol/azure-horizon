@@ -1,12 +1,15 @@
 ---
 title: Elementalist
 img: /assets/icons/classes/elementalist/elementalist.png
+tokenImg: /assets/characters/heroes/elementalist_token.png
 ---
 
 <div class="document-traits --center">
 <span class="document-trait">Mage</span>
 <span class="document-trait">Offense</span>
 </div>
+
+![](/assets/characters/heroes/elementalist_token.png)
 
 <p>A caster in certain control of the primal elements that govern the world. They can be found in distinguished magical or military academies and can be found adventurers, soldiers and many other positions where their destructive talents can be put to use.</p><blockquote><p>The Elementalist is the recommended class for those who want their character to unleash their magical arsenal on their foes, target elemental weaknesses and generally prioritize offense and not much else.</p></blockquote>
 
@@ -42,7 +45,7 @@ img: /assets/icons/classes/elementalist/elementalist.png
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Elemental </em>domain.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Ember</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Ember</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -51,7 +54,7 @@ img: /assets/icons/classes/elementalist/elementalist.png
 <p>After you cast a spell if you cast the same spell as your next action you gain a damage bonus.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Enchant</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Enchant</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -60,7 +63,7 @@ img: /assets/icons/classes/elementalist/elementalist.png
 <p>When a party member performs a physical attack you can enchant it before it resolves to deal additional elemental damage of your choice.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Ice Block</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Ice Block</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
@@ -86,7 +89,7 @@ img: /assets/icons/classes/elementalist/elementalist.png
 <p>You gain the <em>Meltdown</em> effect for this turn and the next. It greatly increases your elemental damage but causes you to suffer heavy damage and gain tension.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Prism</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Prism</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>

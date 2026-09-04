@@ -3,7 +3,7 @@
   "name": "Left Hook",
   "type": "classFeature",
   "_id": "QrEJmMOgM6Poz86d",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -40,13 +40,13 @@
       "schemaVersion": 1,
       "enabled": false,
       "type": "hp",
-      "amount": ""
+      "amount": "5"
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
@@ -72,13 +72,15 @@
       "targeting": "single",
       "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": false
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": true,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true
     },
     "trait": "brawl",
     "class": "brawler",

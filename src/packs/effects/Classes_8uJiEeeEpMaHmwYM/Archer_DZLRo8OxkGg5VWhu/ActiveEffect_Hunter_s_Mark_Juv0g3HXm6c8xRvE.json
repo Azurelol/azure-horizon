@@ -1,0 +1,56 @@
+{
+  "folder": "DZLRo8OxkGg5VWhu",
+  "name": "Hunter's Mark",
+  "_id": "Juv0g3HXm6c8xRvE",
+  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS63.png",
+  "type": "base",
+  "system": {
+    "changes": [
+      {
+        "key": "system.parameters.damage.universal.incoming.status.additive",
+        "type": "add",
+        "value": 2,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "slug": "archer-hunter-mark",
+    "rules": {},
+    "tracker": {
+      "enabled": false,
+      "name": "",
+      "id": "",
+      "style": "clock",
+      "current": 0,
+      "max": 6
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>You take increased damage and cannot gain <em>Stealth</em>.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788451604404,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!Juv0g3HXm6c8xRvE"
+}

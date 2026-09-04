@@ -9,7 +9,7 @@ icon: fa-solid fa-book
 
 # Tension
 
-<p>Tension is the character resource which relates to their current mental health and stress levels. It will usually increase during battles and must be actively managed through skills, activities and other features.</p>
+<p>Tension is the character resource which relates to their current mental health and stress levels. It will usually increase during battles and must be actively managed through skills, activities and other features.</p><p>Once a character is at maximum tension, the next time they increase their tension they will need to make a Resolve Check, otherwise they will suffer a PENALTY.</p>
 
 # Director
 
@@ -70,3 +70,7 @@ icon: fa-solid fa-book
 # Free Attack
 
 <p>An attack with this descriptor requires no check and always does a fixed amount of damage based on the attacker's weapon or attack.</p>
+
+# Healing
+
+<p>Healing is defined as the recovery of hit points (HP), which are a character's capacity to keep fighting. Practically, it's their plot armor.</p><blockquote><p>Unlike other systems you may be familiar with, in this system hit point recovery is not as efficient and characters cannot so easily shrug off damage taken. Healing is generally both less efficient and takes longer than mitigating the damage through <em>blocking</em>.</p><p>Thus, the intent is for players to use their heroes' tools to avoid taking damage and minimize their expenditures lest they run out of resources.</p></blockquote>

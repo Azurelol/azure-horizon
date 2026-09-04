@@ -13,14 +13,16 @@
       "schemaVersion": 1,
       "primary": "dex",
       "secondary": "mig",
-      "grade": "C"
+      "grade": "B",
+      "enabled": false
     },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -63,20 +65,23 @@
     "intent": "damage",
     "action": {
       "schemaVersion": 1,
-      "range": "",
+      "range": "melee",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "enabled": true,
+      "targeting": "single"
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
+      "attributes": true,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true
     }
   },
   "effects": [],
-  "sort": 0,
+  "sort": 600000,
   "ownership": {
     "default": 0
   },

@@ -39,6 +39,10 @@
       "primary": "mig",
       "secondary": "wlp",
       "grade": "B"
+    },
+    "options": {
+      "enabled": false,
+      "traits": []
     }
   },
   "effects": [],

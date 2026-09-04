@@ -1,11 +1,14 @@
 ---
 title: Mechanist
 img: /assets/icons/classes/mechanist/mechanist.png
+tokenImg: /assets/characters/heroes/mechanist_token.png
 ---
 
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
 </div>
+
+![](/assets/characters/heroes/mechanist_token.png)
 
 
 
@@ -32,7 +35,7 @@ img: /assets/icons/classes/mechanist/mechanist.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Overload</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Overload</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>

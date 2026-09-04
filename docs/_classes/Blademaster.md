@@ -1,6 +1,7 @@
 ---
 title: Blademaster
 img: /assets/icons/classes/blademaster/blademaster.png
+tokenImg: /assets/characters/heroes/blademaster_token.png
 ---
 
 <div class="document-traits --center">
@@ -8,6 +9,8 @@ img: /assets/icons/classes/blademaster/blademaster.png
 <span class="document-trait">Offense</span>
 <span class="document-trait">Defense</span>
 </div>
+
+![](/assets/characters/heroes/blademaster_token.png)
 
 <p>A fighter who specializes in fighting opponent with their blade. They are often lone wanderers who have their own reasons for doing so. They specialize in dueling single targets and in defending against melee attacks before unleashing powerful counters.</p><blockquote><p>The Blademaster is a good choice for those who wish to specialize in fighting single opponents and in <em>parrying,</em> which is their primary defensive tool against melee attacks. Their skills have temporal activation conditions which rewards players who can plan ahead.</p></blockquote>
 
@@ -99,7 +102,7 @@ img: /assets/icons/classes/blademaster/blademaster.png
 <p>You deal damage to the closest row. Can only be executed during an even turn.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Full Moon</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Full Moon</span></div>
 <div class='document-header__properties'>
 </div>
 </div>
@@ -115,7 +118,7 @@ img: /assets/icons/classes/blademaster/blademaster.png
 <p>You deal damage to a target. Can only be executed during an odd turn.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Quarter Moon</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Quarter Moon</span></div>
 <div class='document-header__properties'>
 </div>
 </div>
@@ -123,7 +126,7 @@ img: /assets/icons/classes/blademaster/blademaster.png
 <p>You deal damage to a column. Can only be executed during an odd turn.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Waxing Moon</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Waxing Moon</span></div>
 <div class='document-header__properties'>
 </div>
 </div>

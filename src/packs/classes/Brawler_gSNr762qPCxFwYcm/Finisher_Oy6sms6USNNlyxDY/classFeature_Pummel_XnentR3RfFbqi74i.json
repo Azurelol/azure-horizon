@@ -3,7 +3,7 @@
   "name": "Pummel",
   "type": "classFeature",
   "_id": "XnentR3RfFbqi74i",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -71,14 +71,17 @@
       "type": "action",
       "points": 3,
       "traits": [
-        "finisher"
-      ]
+        "finisher",
+        "pressure"
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
+      "attributes": true,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true
     },
     "class": "brawler",
     "skill": "brawler-martial-arts"

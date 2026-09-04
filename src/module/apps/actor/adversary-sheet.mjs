@@ -36,8 +36,8 @@ export class AdversarySheet extends CharacterSheet {
     primary: {
       tabs: [
         { id: "features", label: "AH.SHEET.Tabs.Features", icon: "ra ra-fluffy-swirl" },
-        { id: "profile", label: "AH.SHEET.Tabs.Profile", icon: "ra ra-campfire" },
         { id: "assembly", label: "AH.SHEET.Tabs.Assembly", icon: "ra ra-monster-skull" },
+        { id: "profile", label: "AH.SHEET.Tabs.Profile", icon: "ra ra-campfire" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
       ],
       initial: "features",
@@ -80,12 +80,13 @@ export class AdversarySheet extends CharacterSheet {
         break;
 
       case "profile":{
-        context.intents = Intent.resolveIntents(this.actor.system);
+
         break;
       }
 
       case "assembly":{
         context.assembly = this.actor.system.profile.prepareAssemblyData();
+        context.intents = Intent.resolveIntents(this.actor.system);
         break;
       }
 

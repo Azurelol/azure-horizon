@@ -3,7 +3,7 @@
   "name": "Technique",
   "type": "skill",
   "_id": "pxEtUsleFjMc71At",
-  "img": "icons/skills/melee/weapons-crossed-swords-black.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

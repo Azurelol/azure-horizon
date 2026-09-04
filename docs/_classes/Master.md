@@ -1,12 +1,15 @@
 ---
 title: Master
 img: /assets/icons/classes/master/master.png
+tokenImg: /assets/characters/heroes/master_token.png
 ---
 
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
 <span class="document-trait">Companion</span>
 </div>
+
+![](/assets/characters/heroes/master_token.png)
 
 <p>A person who travels with their trusty companion, a being they trust above all others with their life. They have long experience or the training to maximize the talents of their companion and together they are a force to be reckoned with.</p><blockquote><p>The Master is the class for those who wish to fulfill the fantasy of fighting alongside a companion of their choice. As the companion can be built flexibly through skill investment, it can fulfill a variety of roles.</p></blockquote>
 

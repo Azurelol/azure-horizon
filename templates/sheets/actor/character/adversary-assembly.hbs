@@ -1,6 +1,15 @@
 <section class="tab assembly {{tab.cssClass}}" data-tab="assembly" data-group="primary">
 
-  <div class="ah-flex-col">
+  <div class="ah-flex-col ah-gap-s">
+
+    <div class="ah-field-grid">
+      {{ahStringField path="system.profile.rank" value=system.profile.rank label='AH.FIELD.Rank' options=(ahFormOptions 'rank')}}
+      {{#if (eq system.profile.rank 'champion')}}
+        {{ahStringField path="system.profile.turns" value=system.profile.turns label='AH.FIELD.Turns' type='Number'}}
+      {{/if}}
+      {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role' options=(ahFormOptions 'role')}}
+      {{ahTraitsField schema=systemFields.profile.fields.pressure path='system.profile.pressure' label="AH.DAMAGE.Pressure" value=system.profile.pressure options=(ahFormOptions 'traits.pressure')}}
+    </div>
 
     <div class="ah-grid-2">
       <fieldset>
@@ -21,6 +30,30 @@
         </ul>
       </fieldset>
     </div>
+
+    <fieldset>
+      <legend>
+        <label>
+          {{localize 'AH.ADVERSARY.Intent.plural'}}
+        </label>
+      </legend>
+
+      <ol class="ah-list --background ah-character__intents">
+        {{#each intents as |round|}}
+          <li class="ah-character__intents__round">
+            <label>
+              {{@index}}
+            </label>
+            {{#each round as |intent|}}
+              <span data-tooltip="{{localize (ahLocaleKey 'intents' intent format='tooltip')}}">
+              <i class="ah-icon --xs {{ahLocaleKey 'intents' intent format='icon'}}"></i>
+                {{localize (ahLocaleKey 'intents' intent)}}
+            </span>
+            {{/each}}
+          </li>
+        {{/each}}
+      </ol>
+    </fieldset>
 
     <fieldset>
       <legend>{{localize 'AH.CHARACTER.Affinity.plural'}} [{{assembly.affinities.current}}{{#if assembly.affinities.pressureTriggers}}+{{assembly.affinities.pressureTriggers.length}}{{/if}}/{{assembly.affinities.available}}]</legend>

@@ -3,7 +3,7 @@
   "name": "Dedicate",
   "type": "skill",
   "_id": "zYoD5oNs35qln2EA",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_support.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

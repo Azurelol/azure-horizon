@@ -3,7 +3,7 @@
   "name": "Sacrifice",
   "type": "skill",
   "_id": "89QvQaHbG6WgV8JJ",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -1,30 +1,37 @@
 {
-  "folder": "VhlcaMe6gctxzSqF",
-  "name": "Lightning Lance",
-  "type": "attack",
-  "_id": "gzcbZYdsheA97V2X",
-  "img": "icons/magic/lightning/bolt-strike-beam-yellow.webp",
+  "folder": "3sQ3f1YlSwrp6Jhj",
+  "name": "Magic Staff",
+  "type": "weapon",
+  "_id": "NrckamGaCwOgRiTs",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/staff1.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "attack-lightning-lance",
+    "slug": "equipment-magic-staff",
     "description": "",
-    "check": {
+    "attributes": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": "ins",
       "secondary": "wlp",
+      "grade": "C",
+      "inplace": false
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
       "defense": "mdef",
+      "inplace": false,
       "bonus": ""
     },
-    "range": "ranged",
-    "traits": [],
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
         "amount": "",
-        "type": "electric"
+        "type": "untyped"
       },
       "secondary": {
         "amount": "",
@@ -32,6 +39,15 @@
       },
       "traits": [],
       "inplace": false
+    },
+    "range": "ranged",
+    "actionCost": 2,
+    "traits": [],
+    "handedness": "two",
+    "options": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "traits": []
     }
   },
   "effects": [],
@@ -44,12 +60,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787195163871,
+    "createdTime": 1788419817260,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!gzcbZYdsheA97V2X"
+  "_key": "!items!NrckamGaCwOgRiTs"
 }

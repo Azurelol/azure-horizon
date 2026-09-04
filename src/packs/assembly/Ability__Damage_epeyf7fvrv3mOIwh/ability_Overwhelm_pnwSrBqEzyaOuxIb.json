@@ -21,7 +21,9 @@
       "range": "",
       "type": "",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": false,
+      "targeting": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -63,7 +65,7 @@
     "intent": ""
   },
   "effects": [],
-  "sort": 0,
+  "sort": 700000,
   "ownership": {
     "default": 0
   },

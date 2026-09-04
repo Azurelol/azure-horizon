@@ -237,12 +237,18 @@ for (const entry of classes) {
   const classDocument = await deserializeDocument(entry.file);
   const entryFileName = PATH.join(DST_CLASSES_DIR_PATH, `${classDocument.name}.${FILE_EXTENSION}`);
   const className = classDocument.name.toLowerCase();
+  const tokenImg = `${ASSETS_DIRECTORY}/characters/heroes/${className}_token.png`;
 
   let md = new DocBuilder();
-  md.frontMatter({ title: classDocument.name, img: `${ASSETS_DIRECTORY}/icons/classes/${className}/${className}.png` });
+  md.frontMatter({
+    title: classDocument.name,
+    img: `${ASSETS_DIRECTORY}/icons/classes/${className}/${className}.png`,
+    tokenImg: tokenImg,
+  });
   if (classDocument.system.traits) {
     md.traits(classDocument.system.traits, "--center");
   }
+  md.img("", tokenImg);
   md.p(classDocument.system.description);
 
   // Triggers

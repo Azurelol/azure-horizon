@@ -49,6 +49,10 @@
   }
 }
 
+.ah-gap-s {
+  gap: 0.25rem;
+}
+
 .ah-gap-1 {
   gap: 1rem;
 }

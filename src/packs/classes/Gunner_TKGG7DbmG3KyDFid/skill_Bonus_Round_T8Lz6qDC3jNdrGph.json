@@ -3,11 +3,11 @@
   "name": "Bonus Round",
   "type": "skill",
   "_id": "T8Lz6qDC3jNdrGph",
-  "img": "icons/magic/fire/flame-burning-embers-orange.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "bonus-round",
+    "slug": "gunner-bonus-round",
     "description": "<p>Whenever you empty your ammunition you deal an additional free attack.</p>",
     "attributes": {
       "schemaVersion": 1,

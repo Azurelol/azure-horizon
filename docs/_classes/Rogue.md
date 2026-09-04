@@ -1,6 +1,7 @@
 ---
 title: Rogue
 img: /assets/icons/classes/rogue/rogue.png
+tokenImg: /assets/characters/heroes/rogue_token.png
 ---
 
 <div class="document-traits --center">
@@ -8,6 +9,8 @@ img: /assets/icons/classes/rogue/rogue.png
 <span class="document-trait">Mobility</span>
 <span class="document-trait">Stealth</span>
 </div>
+
+![](/assets/characters/heroes/rogue_token.png)
 
 
 
@@ -25,7 +28,7 @@ img: /assets/icons/classes/rogue/rogue.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Counteraction</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Counteraction</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -47,7 +50,7 @@ img: /assets/icons/classes/rogue/rogue.png
 <p>While targeting an enemy that cannot perform actions you can perform a powerful attack to it.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Cripple</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Cripple</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>

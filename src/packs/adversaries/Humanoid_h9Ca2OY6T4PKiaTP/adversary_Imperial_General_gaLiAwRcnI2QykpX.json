@@ -427,12 +427,12 @@
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 30,
+    "displayBars": 50,
     "bar1": {
       "attribute": "resources.hp"
     },
     "bar2": {
-      "attribute": "resources.mp"
+      "attribute": "resources.pp"
     },
     "light": {
       "negative": false,
@@ -499,7 +499,63 @@
     "prependAdjective": false
   },
   "items": [],
-  "effects": [],
+  "effects": [
+    {
+      "name": "Crisis",
+      "img": "systems/azure-horizon/assets/icons/statuses/crisis.png",
+      "statuses": [
+        "crisis"
+      ],
+      "flags": {
+        "azure-horizon": {
+          "Temporary": true,
+          "Source": {},
+          "Identifier": "crisis"
+        }
+      },
+      "_id": "7ZUXmehZXIVUoTZ6",
+      "type": "base",
+      "system": {
+        "changes": [],
+        "slug": "",
+        "rules": {}
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788446668042,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!gaLiAwRcnI2QykpX.7ZUXmehZXIVUoTZ6"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

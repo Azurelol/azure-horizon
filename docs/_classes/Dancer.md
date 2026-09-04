@@ -1,6 +1,7 @@
 ---
 title: Dancer
 img: /assets/icons/classes/dancer/dancer.png
+tokenImg: /assets/characters/heroes/dancer_token.png
 ---
 
 <div class="document-traits --center">
@@ -8,6 +9,8 @@ img: /assets/icons/classes/dancer/dancer.png
 <span class="document-trait">Dance</span>
 <span class="document-trait">Shift</span>
 </div>
+
+![](/assets/characters/heroes/dancer_token.png)
 
 <p>An acrobatic performer who relies on their quick feet and graceful movements to get them by in life.  Behind their elegant movements belies a martial discipline that is both flexible and strong when it needs to be.</p><blockquote><p>The Dancer is a class that excels in providing options to easily reposition not only their party but also their foes, all while steadily building up their tempo to increase their damage.</p></blockquote>
 
@@ -30,6 +33,18 @@ img: /assets/icons/classes/dancer/dancer.png
 ---
 
 <h1 id="skills" class="class__skills">Skills</h1>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Calisthenics</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Activity</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>During a long rest, as an activity the dancer can recover the party's physical injuries.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/skills/movement/feet-winged-boots-brown.webp"><span>Dance</span></div>

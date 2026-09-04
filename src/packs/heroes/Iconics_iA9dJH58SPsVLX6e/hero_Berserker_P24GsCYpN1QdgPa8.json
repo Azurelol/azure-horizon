@@ -415,7 +415,7 @@
       "attribute": "resources.hp"
     },
     "bar2": {
-      "attribute": "resources.mp"
+      "attribute": null
     },
     "light": {
       "negative": false,
@@ -482,7 +482,118 @@
     "prependAdjective": false
   },
   "items": [],
-  "effects": [],
+  "effects": [
+    {
+      "name": "KO",
+      "img": "systems/azure-horizon/assets/icons/statuses/ko.png",
+      "statuses": [
+        "ko"
+      ],
+      "flags": {
+        "azure-horizon": {
+          "Temporary": true,
+          "Source": {},
+          "Identifier": "ko"
+        }
+      },
+      "_id": "EVTHyEokvkcTKsEq",
+      "type": "base",
+      "system": {
+        "changes": [],
+        "slug": "",
+        "rules": {}
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788446668021,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!P24GsCYpN1QdgPa8.EVTHyEokvkcTKsEq"
+    },
+    {
+      "name": "Crisis",
+      "img": "systems/azure-horizon/assets/icons/statuses/crisis.png",
+      "statuses": [
+        "crisis"
+      ],
+      "flags": {
+        "azure-horizon": {
+          "Temporary": true,
+          "Source": {},
+          "Identifier": "crisis"
+        }
+      },
+      "_id": "wxbP0QC8hMXWAFF1",
+      "type": "base",
+      "system": {
+        "changes": [],
+        "slug": "",
+        "rules": {}
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788446668075,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!P24GsCYpN1QdgPa8.wxbP0QC8hMXWAFF1"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

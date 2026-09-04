@@ -3,7 +3,7 @@
   "name": "Drake Thrust",
   "type": "skill",
   "_id": "iv1oW3BnPuObbQjS",
-  "img": "icons/skills/melee/spear-tips-double-purple.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -20,10 +20,13 @@
     "action": {
       "schemaVersion": 1,
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": [
         "opener"
-      ]
+      ],
+      "enabled": true,
+      "range": "melee",
+      "targeting": "single"
     },
     "damage": {
       "schemaVersion": 1,
@@ -47,9 +50,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
@@ -74,9 +77,12 @@
       "schemaVersion": 1,
       "check": true,
       "damage": true,
-      "power": "low"
+      "power": "low",
+      "enabled": true,
+      "attributes": true
     },
-    "class": "lancer"
+    "class": "lancer",
+    "power": "low"
   },
   "effects": [],
   "sort": 0,

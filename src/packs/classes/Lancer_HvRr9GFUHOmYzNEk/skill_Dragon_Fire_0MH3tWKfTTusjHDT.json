@@ -3,7 +3,7 @@
   "name": "Dragon Fire",
   "type": "skill",
   "_id": "0MH3tWKfTTusjHDT",
-  "img": "icons/magic/fire/projectile-wave-arrow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

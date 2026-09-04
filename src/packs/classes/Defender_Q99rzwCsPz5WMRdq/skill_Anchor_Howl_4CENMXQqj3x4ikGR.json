@@ -3,7 +3,7 @@
   "name": "Anchor Howl",
   "type": "skill",
   "_id": "4CENMXQqj3x4ikGR",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

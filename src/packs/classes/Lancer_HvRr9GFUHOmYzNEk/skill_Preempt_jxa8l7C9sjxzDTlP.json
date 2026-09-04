@@ -3,7 +3,7 @@
   "name": "Preempt",
   "type": "skill",
   "_id": "jxa8l7C9sjxzDTlP",
-  "img": "icons/weapons/polearms/spear-flared-silver-pink.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -60,17 +60,29 @@
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
+      "range": "melee",
       "type": "reaction",
       "points": 1,
-      "traits": []
+      "traits": [
+        "interrupt"
+      ],
+      "enabled": true,
+      "targeting": "single"
     },
     "usage": {
       "schemaVersion": 1,
       "check": false,
-      "damage": true
+      "damage": true,
+      "enabled": true,
+      "attributes": true
     },
-    "class": "lancer"
+    "class": "lancer",
+    "attributes": {
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    }
   },
   "effects": [],
   "sort": 0,

@@ -51,9 +51,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "draw"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -67,10 +69,11 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "targeting": "",
-      "type": "",
+      "targeting": "self",
+      "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
@@ -78,7 +81,7 @@
       "check": false,
       "damage": false
     },
-    "class": ""
+    "class": "archer"
   },
   "effects": [],
   "sort": 0,

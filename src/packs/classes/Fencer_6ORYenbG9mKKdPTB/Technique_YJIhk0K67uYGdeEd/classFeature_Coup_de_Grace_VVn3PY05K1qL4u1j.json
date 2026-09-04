@@ -3,7 +3,7 @@
   "name": "Coup de Grace",
   "type": "classFeature",
   "_id": "VVn3PY05K1qL4u1j",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

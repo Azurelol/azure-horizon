@@ -47,9 +47,9 @@ const STATUS_EFFECTS = Object.freeze({
 
   // BUFFS
   // - increased physical damage dealt
-  charge: {
+  strength: {
     id: "charge",
-    name: "AH.STATUS.Charge",
+    name: "AH.STATUS.Strength",
     img: "systems/azure-horizon/assets/icons/statuses/charge.png",
     changes: [
       {
@@ -67,6 +67,11 @@ const STATUS_EFFECTS = Object.freeze({
     changes: [
       {
         key: "system.parameters.damage.elemental.outgoing.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "5",
+      },
+      {
+        key: "system.parameters.damage.spiritual.outgoing.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "5",
       },

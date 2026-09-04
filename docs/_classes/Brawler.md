@@ -1,12 +1,15 @@
 ---
 title: Brawler
 img: /assets/icons/classes/brawler/brawler.png
+tokenImg: /assets/characters/heroes/brawler_token.png
 ---
 
 <div class="document-traits --center">
 <span class="document-trait">Warrior</span>
 <span class="document-trait">Mobility</span>
 </div>
+
+![](/assets/characters/heroes/brawler_token.png)
 
 <p>A practitioner of the martial arts. They could be a disciple of a traveling master, a hotblooded youth or a student of a martial arts school. They excel in pressuring their foes in close quarters combat, building up their momentum before unleashing powerful combination attacks.</p><blockquote><p>The Brawler is a class for those who wish to reliable pressure their opponents while steadily building up their combination for a big payoff.</p></blockquote>
 
@@ -31,7 +34,16 @@ img: /assets/icons/classes/brawler/brawler.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Chakra</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Centering</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You adopt a stance where you gain block, increase your resistances and absorb all <em>elemental</em> damage directed at the party until the start of your next turn.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Chakra</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -44,7 +56,7 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>You recover a minor amount of hit points while recovering from a single negative status effect.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Combination</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Combination</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -53,7 +65,7 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>Each turn you can perform two <em>combo </em>actions in sequence for 2 AP or one <em>combo</em> action followed up by a <em>finisher</em> for 3AP.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Cross Counter</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Cross Counter</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Closer</span>
@@ -66,6 +78,15 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>You prepare to counter an incoming melee attack. The next time you are attacked before the start of your next turn you can perform one of your brawl actions followed up by a combination.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Mantra</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+
+
+<div class="document-header">
 <div class="document-header__name"><img src="icons/skills/melee/unarmed-punch-fist-yellow-red.webp"><span>Martial Arts</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
@@ -75,7 +96,7 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>You acquire one martial art and a finisher for each point invested in this skill. Each time you perform one of your brawl skills you gain a distinct combo sequence input.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Snap Kick</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Snap Kick</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Free</span>
@@ -92,7 +113,7 @@ img: /assets/icons/classes/brawler/brawler.png
 ## Features
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>High Kick</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>High Kick</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 1</span>
@@ -103,7 +124,7 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>You deal damage to the target and gain an <em>up</em> sequence input.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Left Hook</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Left Hook</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 1</span>
@@ -114,7 +135,7 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>You deal damage to the target and gain a <em>left </em>sequence input.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Low Kick</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Low Kick</span></div>
 <div class='document-header__properties'>
 </div>
 </div>
@@ -133,7 +154,7 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>You deal damage to the target and gain a <em>right</em> sequence input.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Meteor Drive</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Meteor Drive</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Finisher</span>
@@ -145,10 +166,11 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>Once you have a ◀▶▼▲ <em>combo</em> <em>sequence</em>, you can deal a powerful attack to the target.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Pummel</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Pummel</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Finisher</span>
+<span class="document-trait">Pressure</span>
 <span class="document-trait">Action 3</span>
 </div>
 </div>
@@ -157,10 +179,12 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>When you have a full combo sequence, you can deal a powerful attack to the target and pressure it.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Spinning Heel</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Spinning Heel</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Finisher</span>
+<span class="document-trait">Shift</span>
+<span class="document-trait">Action 2</span>
 </div>
 </div>
 </div>
@@ -168,11 +192,11 @@ img: /assets/icons/classes/brawler/brawler.png
 <p>When you have a ◀▼▶▲ <em>combo</em> <em>sequence</em>, you can deal damage to your target and those adjacent to it in the same row while shifting each of them away.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Suplex</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Suplex</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Exhaust</span>
 <span class="document-trait">Finisher</span>
+<span class="document-trait">Exhaust</span>
 <span class="document-trait">Action 3</span>
 </div>
 </div>

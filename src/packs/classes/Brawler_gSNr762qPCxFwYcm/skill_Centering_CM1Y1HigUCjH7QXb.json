@@ -1,0 +1,104 @@
+{
+  "folder": "gSNr762qPCxFwYcm",
+  "name": "Centering",
+  "type": "skill",
+  "_id": "CM1Y1HigUCjH7QXb",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "brawler-centering",
+    "description": "<p>You adopt a stance where you gain block, increase your resistances and absorb all <em>elemental</em> damage directed at the party until the start of your next turn.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def"
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "thp",
+      "amount": "&hp(0.2)"
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "tp",
+      "amount": "4",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "targeting": "",
+      "type": "",
+      "points": 1,
+      "traits": []
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "brawler"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788426674779,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!CM1Y1HigUCjH7QXb"
+}

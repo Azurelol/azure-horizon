@@ -1,13 +1,13 @@
 {
   "folder": "VhlcaMe6gctxzSqF",
-  "name": "Water Spout",
+  "name": "Acid Spit",
   "type": "attack",
-  "_id": "LKpVr2iDYaS9qQPJ",
-  "img": "icons/magic/water/orb-water-bubbles.webp",
+  "_id": "IvSsoEJ9CwwAhCxj",
+  "img": "icons/magic/acid/projectile-smoke-glowing.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "attack-water-spout",
+    "slug": "attack-acid-spit",
     "description": "",
     "check": {
       "schemaVersion": 1,
@@ -24,7 +24,7 @@
       "enabled": true,
       "primary": {
         "amount": "",
-        "type": "cold"
+        "type": "acid"
       },
       "secondary": {
         "amount": "",
@@ -32,6 +32,12 @@
       },
       "traits": [],
       "inplace": false
+    },
+    "attributes": {
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "ins",
+      "grade": "C"
     }
   },
   "effects": [],
@@ -44,12 +50,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787195246623,
+    "createdTime": 1786632482538,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!LKpVr2iDYaS9qQPJ"
+  "_key": "!items!IvSsoEJ9CwwAhCxj"
 }
