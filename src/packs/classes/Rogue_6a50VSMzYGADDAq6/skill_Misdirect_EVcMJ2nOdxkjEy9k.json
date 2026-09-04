@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "rogue-misdirect",
-    "description": "<p>When you would be attacked, an adjacent party member is attacked instead and you gain a stack of <em>Adrenaline</em>.</p>",
+    "description": "<p>When you would be attacked, an adjacent party member is attacked instead.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "4",
       "perTarget": false
     },
     "effects": {
@@ -61,9 +61,11 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
+      "type": "reaction",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true,
+      "targeting": ""
     },
     "usage": {
       "schemaVersion": 1,

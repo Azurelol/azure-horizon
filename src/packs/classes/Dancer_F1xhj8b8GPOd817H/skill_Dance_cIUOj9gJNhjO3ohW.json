@@ -3,7 +3,7 @@
   "name": "Dance",
   "type": "skill",
   "_id": "cIUOj9gJNhjO3ohW",
-  "img": "icons/skills/movement/feet-winged-boots-brown.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

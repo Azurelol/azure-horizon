@@ -2,11 +2,11 @@
   "type": "ActiveEffect",
   "folder": null,
   "name": "Debuffs",
-  "color": "#ff8040",
+  "color": "#c8c800",
   "sorting": "a",
   "_id": "Ii65Q4K5Ui2HBAec",
   "description": "",
-  "sort": 200000,
+  "sort": 100000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

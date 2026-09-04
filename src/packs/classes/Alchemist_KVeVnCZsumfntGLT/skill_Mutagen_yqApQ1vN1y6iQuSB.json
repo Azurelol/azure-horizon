@@ -3,7 +3,7 @@
   "name": "Mutagen",
   "type": "skill",
   "_id": "yqApQ1vN1y6iQuSB",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_item.png",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_support.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

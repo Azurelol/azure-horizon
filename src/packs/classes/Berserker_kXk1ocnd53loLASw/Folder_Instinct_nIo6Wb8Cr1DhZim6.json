@@ -1,23 +1,23 @@
 {
-  "type": "ActiveEffect",
-  "folder": null,
-  "name": "Affinities",
-  "color": "#400080",
+  "type": "Item",
+  "folder": "kXk1ocnd53loLASw",
+  "name": "Instinct",
+  "color": null,
   "sorting": "a",
-  "_id": "2kNbeGkNaSVz8UVG",
+  "_id": "nIo6Wb8Cr1DhZim6",
   "description": "",
-  "sort": 100000,
+  "sort": 0,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786721678894,
+    "createdTime": 1788533872829,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!2kNbeGkNaSVz8UVG"
+  "_key": "!folders!nIo6Wb8Cr1DhZim6"
 }

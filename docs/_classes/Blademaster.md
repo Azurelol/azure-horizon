@@ -34,10 +34,12 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 
 ---
 
+![](/assets/characters/heroes/blademaster_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/melee/maneuver-sword-katana-yellow.webp"><span>Blade Study</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Blade Study</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -46,7 +48,7 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 <p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Call Out</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Call Out</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 2
 </div>
@@ -91,6 +93,18 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 </div>
 
 <p>You adopt your stance, gaining the <em>Sheathed Blade</em> effect. When you perform your  next <em>Blademaster</em> skill under this effect it gains additional effects.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Sword Practice</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Activity</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>During a rest scene the blademaster can reduce their TP by SL x 2.</p>
 
 ---
 

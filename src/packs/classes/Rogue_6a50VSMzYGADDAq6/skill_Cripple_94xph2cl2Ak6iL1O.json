@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "rogue-cripple",
-    "description": "<p>You deal damage and inflict <em>Weak</em> to it.</p>",
+    "description": "<p>You deal damage and apply <em>Weak</em> to it.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -66,17 +66,21 @@
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "targeting": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "range": "melee",
+      "targeting": "single",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "cooldown"
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false
+      "attributes": true,
+      "check": true,
+      "damage": true,
+      "enabled": true
     },
     "class": "rogue"
   },

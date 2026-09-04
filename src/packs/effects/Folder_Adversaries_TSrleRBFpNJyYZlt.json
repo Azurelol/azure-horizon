@@ -2,11 +2,11 @@
   "type": "ActiveEffect",
   "folder": null,
   "name": "Adversaries",
-  "color": "#ff4a4a",
+  "color": "#ff3e3e",
   "sorting": "a",
   "_id": "TSrleRBFpNJyYZlt",
   "description": "",
-  "sort": 300000,
+  "sort": 0,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

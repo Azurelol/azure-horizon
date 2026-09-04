@@ -71,7 +71,6 @@
       "type": "action",
       "points": 3,
       "traits": [
-        "finisher",
         "pressure"
       ],
       "enabled": true
@@ -84,7 +83,8 @@
       "enabled": true
     },
     "class": "brawler",
-    "skill": "brawler-martial-arts"
+    "skill": "brawler-martial-arts",
+    "trait": "finisher"
   },
   "effects": [],
   "sort": 300000,

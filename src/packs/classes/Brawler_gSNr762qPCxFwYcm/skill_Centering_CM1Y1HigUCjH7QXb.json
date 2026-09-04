@@ -3,12 +3,12 @@
   "name": "Centering",
   "type": "skill",
   "_id": "CM1Y1HigUCjH7QXb",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_defense.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "brawler-centering",
-    "description": "<p>You adopt a stance where you gain block, increase your resistances and absorb all <em>elemental</em> damage directed at the party until the start of your next turn.</p>",
+    "description": "<p>You adopt a stance where you gain block, increase your resistances and suffer all <em>elemental</em> damage directed at the party until the start of your next turn.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,

@@ -33,7 +33,18 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 
 ---
 
+![](/assets/characters/heroes/ritualist_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Addle</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>When you deal dark damage a target you apply <em>Breach</em>.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Aura</span></div>
@@ -50,7 +61,7 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 <p>You gather dark energy within yourself. Your next attack will deal additional dark damage.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Bargain</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Bargain</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>

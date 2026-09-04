@@ -3,12 +3,12 @@
   "name": "Tempo",
   "type": "skill",
   "_id": "exhHTmHNG6CUQJKl",
-  "img": "icons/skills/movement/arrow-upward-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dancer-tempo",
-    "description": "<p>While dancing you gain the Tempo status which grants you stacking skill bonuses to various parameters. It can increase and decrease based on certain combat events:</p><ul><li><p>Round Starts: +1</p></li><li><p>Adversary enters crisis or is defeated: +1</p></li><li><p>Hero enters crisis or is defeated: -1</p></li></ul>",
+    "description": "<p>While dancing you gain the Tempo status which grants you stacking skill bonuses to various parameters.</p><ul><li><p>Whenever the round ends without you having suffered damage, increase by one.</p></li><li><p>When an adversary enters crisis or is defeated, increase by one.</p></li><li><p>When you enter crisis, decrease by two.</p></li></ul>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -79,7 +79,56 @@
     },
     "class": "dancer"
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Tempo",
+      "origin": "Compendium.azure-horizon.classes.Item.exhHTmHNG6CUQJKl",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "_id": "FapfsLRzHH9ZBN4K",
+      "type": "base",
+      "system": {
+        "changes": [],
+        "slug": "dancer-tempo",
+        "rules": {},
+        "tracker": {
+          "enabled": false,
+          "name": "",
+          "id": "tempo",
+          "style": "clock",
+          "current": 0,
+          "max": 4
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788530972275,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!exhHTmHNG6CUQJKl.FapfsLRzHH9ZBN4K"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

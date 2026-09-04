@@ -7,8 +7,8 @@
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "darl-fetters",
-    "description": "",
+    "slug": "dark-fetters",
+    "description": "<p>You apply <em>Bind</em> to the target.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -64,12 +64,21 @@
       "schemaVersion": 1,
       "range": "",
       "targeting": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "exhaust"
+      ],
+      "enabled": true
     },
     "domain": "dark",
-    "speed": "instant"
+    "speed": "instant",
+    "targeting": {
+      "enabled": true,
+      "rule": "",
+      "range": "ranged",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,

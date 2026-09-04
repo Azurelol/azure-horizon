@@ -31,6 +31,8 @@ tokenImg: /assets/characters/heroes/archer_token.png
 
 ---
 
+![](/assets/characters/heroes/archer_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
@@ -124,7 +126,7 @@ tokenImg: /assets/characters/heroes/archer_token.png
 <p>You can make a @CHECK[dex ins normal]{Track} check to reveal an adversary that has the <em>Stealth</em> effect.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS57.png"><span>Trap</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Trap</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>

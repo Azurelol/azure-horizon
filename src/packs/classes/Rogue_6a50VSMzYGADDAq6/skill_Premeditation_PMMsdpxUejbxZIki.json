@@ -44,16 +44,18 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "rogue-premeditation"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -69,7 +71,11 @@
       "range": "",
       "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [
+        "cooldown"
+      ],
+      "enabled": true,
+      "targeting": "self"
     },
     "usage": {
       "schemaVersion": 1,

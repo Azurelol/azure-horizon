@@ -32,6 +32,8 @@ tokenImg: /assets/characters/heroes/lancer_token.png
 
 ---
 
+![](/assets/characters/heroes/lancer_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
@@ -75,7 +77,7 @@ tokenImg: /assets/characters/heroes/lancer_token.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_shift.png"><span>Glide</span></div>
 <div class='document-header__properties'>
-<i class="fa-solid fa-star"></i> 1
+<i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 

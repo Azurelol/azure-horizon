@@ -1,16 +1,17 @@
 {
-  "folder": "6a50VSMzYGADDAq6",
-  "name": "Coup de Grace",
+  "folder": "kXk1ocnd53loLASw",
+  "name": "Second Wind",
   "type": "skill",
-  "_id": "a7MjVYpTDheC9qhh",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "_id": "BB0WuaB6rGYQ4aHZ",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "rogue-coup-de-grace",
-    "description": "<p>While targeting an enemy that cannot perform actions you can perform a powerful attack to it.</p>",
+    "slug": "berserker-second-wind",
+    "description": "<p>When you enter <em>Crisis</em> you can immediately perform a <em>Recovery.</em></p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -44,7 +45,7 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
       "amount": "",
       "perTarget": false
@@ -59,27 +60,28 @@
         "tracking": ""
       }
     },
-    "power": "severe",
+    "power": "",
     "level": {
       "current": 1,
       "max": 1
     },
     "action": {
       "schemaVersion": 1,
-      "range": "melee",
+      "enabled": true,
+      "range": "",
+      "targeting": "",
       "type": "action",
-      "points": 2,
-      "traits": [
-        "cooldown"
-      ]
+      "points": 1,
+      "traits": []
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
       "attributes": false,
-      "check": true,
-      "damage": true
+      "check": false,
+      "damage": false
     },
-    "class": "rogue"
+    "class": "berserker"
   },
   "effects": [],
   "sort": 0,
@@ -91,12 +93,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787574503414,
+    "createdTime": 1788533564392,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!a7MjVYpTDheC9qhh"
+  "_key": "!items!BB0WuaB6rGYQ4aHZ"
 }

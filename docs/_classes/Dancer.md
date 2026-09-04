@@ -32,10 +32,12 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 
 ---
 
+![](/assets/characters/heroes/dancer_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Calisthenics</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Calisthenics</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>
@@ -47,7 +49,7 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <p>During a long rest, as an activity the dancer can recover the party's physical injuries.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/movement/feet-winged-boots-brown.webp"><span>Dance</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Dance</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 1</span>
@@ -59,7 +61,7 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <p>You gain the use of a <em>Dance </em>for each point invested into this skill.</p><ul><li><p>You can perform dances while wearing light armor and a light weapon.</p></li></ul>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/social/diplomacy-handshake.webp"><span>Dance Partner</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Dance Partner</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 1</span>
@@ -71,7 +73,7 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <p>You designate an adjacent party member as your dance partner, which grants them certain benefits of your dances.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/movement/feet-winged-sandals-tan.webp"><span>Footwork</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Footwork</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -80,7 +82,7 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <p>While dancing, you can perform <em>Shift</em> as a free action once per turn.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/control/debuff-energy-hold-levitate-pink.webp"><span>Mesmerize</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Sway</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 2
 </div>
@@ -89,7 +91,7 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <p>Whenever you deal damage while dancing, one of your allies reduces their TP by SL.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/control/energy-stream-link-orange.webp"><span>Take the Lead</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Take the Lead</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Reaction</span>
@@ -101,20 +103,31 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <p>When you or adjacent party member is targeted by an action you or them may swap positions and become the target instead.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/movement/arrow-upward-yellow.webp"><span>Tempo</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Tempo</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
-<p>While dancing you gain the Tempo status which grants you stacking skill bonuses to various parameters. It can increase and decrease based on certain combat events:</p><ul><li><p>Round Starts: +1</p></li><li><p>Adversary enters crisis or is defeated: +1</p></li><li><p>Hero enters crisis or is defeated: -1</p></li></ul>
+<p>While dancing you gain the Tempo status which grants you stacking skill bonuses to various parameters.</p><ul><li><p>Whenever the round ends without you having suffered damage, increase by one.</p></li><li><p>When an adversary enters crisis or is defeated, increase by one.</p></li><li><p>When you enter crisis, decrease by two.</p></li></ul>
 
 ---
 
 ## Features
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/movement/ball-spinning-blue.webp"><span>Immelmann Dance</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Fox Fire Trot</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 1</span>
+</div>
+</div>
+</div>
+
+<p>Each round while you dance, you grant a party member the <em>Foxfire</em> effect.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Immelmann Dance</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
@@ -124,3 +137,19 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 </div>
 
 <p>You grant a party member 2 AP which they can use to perform one of their actions immediately.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Paso Doble</span></div>
+<div class='document-header__properties'>
+</div>
+</div>
+
+
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Skylarks Take Flight</span></div>
+<div class='document-header__properties'>
+</div>
+</div>
+
+

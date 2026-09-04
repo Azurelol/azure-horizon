@@ -1,25 +1,26 @@
 {
-  "folder": "xrjqcoHJwquhJNXo",
-  "name": "Wet",
-  "_id": "oL3gFwwGbNfDy8Cl",
-  "img": "icons/svg/aura.svg",
+  "folder": "cVLIB6gv68M37QcB",
+  "name": "Effect: Foxfire",
+  "_id": "UtUJ0FEjp6ma7eMR",
+  "img": "icons/magic/fire/flame-burning-embers-orange.webp",
   "type": "base",
   "system": {
     "changes": [
       {
-        "key": "",
+        "key": "system.parameters.damage.universal.outgoing.status.additive",
         "type": "add",
-        "value": "",
+        "value": 5,
         "phase": "initial",
         "priority": null
       }
     ],
-    "slug": "wet",
+    "slug": "",
     "rules": {},
     "tracker": {
       "enabled": false,
       "name": "",
       "id": "",
+      "style": "clock",
       "current": 0,
       "max": 6
     }
@@ -32,7 +33,7 @@
     "expiry": null,
     "expired": false
   },
-  "description": "<p>You gain a vulnerability to electric and cold</p>",
+  "description": "<p>Your next attack deals increased damage and also deals fire.</p>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,
@@ -44,12 +45,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787236642588,
+    "createdTime": 1788536117312,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!oL3gFwwGbNfDy8Cl"
+  "_key": "!effects!UtUJ0FEjp6ma7eMR"
 }

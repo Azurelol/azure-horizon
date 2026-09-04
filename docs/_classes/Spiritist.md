@@ -22,6 +22,7 @@ tokenImg: /assets/characters/heroes/spiritist_token.png
 - You help a spirit pass on.
 - You cleanse a location of the undead or spirits.
 - You deescalated a violent conflict.
+- You discuss philosophy with someone.
 
 ---
 
@@ -34,10 +35,12 @@ tokenImg: /assets/characters/heroes/spiritist_token.png
 
 ---
 
+![](/assets/characters/heroes/spiritist_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/spiritist/sprite-1-9.png"><span>Light Spell</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Light Spell</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -46,7 +49,7 @@ tokenImg: /assets/characters/heroes/spiritist_token.png
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Light </em>domain.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/spiritist/sprite-1-7.png"><span>Prayer</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Prayer</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>

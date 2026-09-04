@@ -31,19 +31,21 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 
 ---
 
+![](/assets/characters/heroes/brawler_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Centering</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_defense.png"><span>Centering</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
-<p>You adopt a stance where you gain block, increase your resistances and absorb all <em>elemental</em> damage directed at the party until the start of your next turn.</p>
+<p>You adopt a stance where you gain block, increase your resistances and suffer all <em>elemental</em> damage directed at the party until the start of your next turn.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Chakra</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_action.png"><span>Chakra</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -65,7 +67,7 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 <p>Each turn you can perform two <em>combo </em>actions in sequence for 2 AP or one <em>combo</em> action followed up by a <em>finisher</em> for 3AP.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Cross Counter</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_defense.png"><span>Cross Counter</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Closer</span>
@@ -87,7 +89,7 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/melee/unarmed-punch-fist-yellow-red.webp"><span>Martial Arts</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Martial Arts</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -143,7 +145,7 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 <p>You deal damage to the target and gain an <em>down </em>sequence input.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/commodities/metal/plating-metal-steel.webp"><span>Straight Punch</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Straight Punch</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 1</span>
@@ -169,7 +171,6 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Pummel</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Finisher</span>
 <span class="document-trait">Pressure</span>
 <span class="document-trait">Action 3</span>
 </div>
@@ -182,7 +183,6 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Spinning Heel</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Finisher</span>
 <span class="document-trait">Shift</span>
 <span class="document-trait">Action 2</span>
 </div>
@@ -195,7 +195,6 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Suplex</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Finisher</span>
 <span class="document-trait">Exhaust</span>
 <span class="document-trait">Action 3</span>
 </div>

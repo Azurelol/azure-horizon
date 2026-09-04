@@ -3,7 +3,7 @@
   "name": "Straight Punch",
   "type": "classFeature",
   "_id": "xLnuWrW8vZYn39M7",
-  "img": "icons/commodities/metal/plating-metal-steel.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -22,7 +22,8 @@
       "type": "action",
       "points": 1,
       "traits": [],
-      "targeting": "single"
+      "targeting": "single",
+      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
@@ -47,8 +48,8 @@
     "cost": {
       "schemaVersion": 1,
       "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "resource": "hp",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
@@ -73,10 +74,11 @@
       "check": true,
       "damage": true,
       "power": "low",
-      "attributes": true
+      "attributes": true,
+      "enabled": true
     },
     "power": "",
-    "trait": "brawl"
+    "trait": "combo"
   },
   "effects": [],
   "sort": 0,

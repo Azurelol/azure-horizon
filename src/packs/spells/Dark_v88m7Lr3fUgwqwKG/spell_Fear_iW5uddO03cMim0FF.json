@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-fear",
-    "description": "<p>You inflict Fear to the target.</p>",
+    "description": "<p>You apply Fear to up to 3 targets.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -46,8 +46,8 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "10",
-      "perTarget": false
+      "amount": "5",
+      "perTarget": true
     },
     "effects": {
       "schemaVersion": 1,
@@ -65,8 +65,9 @@
       "range": "",
       "targeting": "single",
       "type": "action",
-      "points": 2,
-      "traits": []
+      "points": 3,
+      "traits": [],
+      "enabled": true
     },
     "domain": "dark",
     "speed": "instant"

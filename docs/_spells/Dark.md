@@ -45,7 +45,7 @@ img: /assets/icons/spells/dark.png
 </div>
 </div>
 
-<p>You inflict Fear to the target.</p>
+<p>You apply Fear to up to 3 targets.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Fetters</span></div>
@@ -56,7 +56,7 @@ img: /assets/icons/spells/dark.png
 </div>
 </div>
 
-
+<p>You apply <em>Bind</em> to the target.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/svg/item-bag.svg"><span>Phantom</span></div>
@@ -73,12 +73,12 @@ img: /assets/icons/spells/dark.png
 <div class="document-header__name"><img src="icons/magic/unholy/barrier-shield-glowing-pink.webp"><span>Shadow Cloak</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Instant</span>
+<span class="document-trait">Fast</span>
 </div>
 </div>
 </div>
 
-<p>You give each targeted party member <em>Stealth</em>.</p>
+<p>You give each party member <em>Stealth</em>.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/unholy/beam-ringed-impact-purple.webp"><span>Shadow Spear</span></div>
@@ -100,4 +100,4 @@ img: /assets/icons/spells/dark.png
 </div>
 </div>
 
-<p>You inflict the target with <em>Slow.</em></p>
+<p>You apply <em>Slow</em> to the target.</p>

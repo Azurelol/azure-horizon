@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "armiger-sunder",
-    "description": "<p>You perform an attack that lowers the target's defenses against physical attacks.</p>",
+    "description": "<p>You can follow up an earlier attack and apply <em>Sunder</em> to the same target.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -20,10 +20,13 @@
       "schemaVersion": 1,
       "range": "melee",
       "type": "action",
-      "points": 2,
+      "points": 1,
       "traits": [
-        "cooldown"
-      ]
+        "cooldown",
+        "press"
+      ],
+      "enabled": true,
+      "targeting": "single"
     },
     "damage": {
       "schemaVersion": 1,
@@ -57,7 +60,7 @@
       "enabled": true,
       "selector": "",
       "entries": [
-        "armiger-effect-sunder"
+        "sunder"
       ],
       "duration": {
         "event": "",
@@ -75,7 +78,7 @@
       "power": "low"
     },
     "class": "armiger",
-    "power": "low"
+    "power": ""
   },
   "effects": [],
   "sort": 0,

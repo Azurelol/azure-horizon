@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -67,16 +67,18 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "targeting": "",
-      "type": "",
+      "targeting": "single",
+      "type": "reaction",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": false,
       "check": false,
-      "damage": false
+      "damage": false,
+      "enabled": false
     },
     "class": "elementalist"
   },

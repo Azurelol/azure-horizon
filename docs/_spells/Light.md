@@ -12,7 +12,7 @@ img: /assets/icons/spells/light.png
 </div>
 </div>
 
-<p>You grant a target party member a stack of…</p>
+<p>The target gains <em>Block</em>.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/light/beam-horizon-strike-yellow.webp"><span>Bless Weapon</span></div>

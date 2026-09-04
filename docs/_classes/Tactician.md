@@ -32,6 +32,8 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 
 ---
 
+![](/assets/characters/heroes/tactician_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">

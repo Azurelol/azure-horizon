@@ -2,11 +2,11 @@
   "type": "ActiveEffect",
   "folder": null,
   "name": "Buffs",
-  "color": "#80ff00",
+  "color": "#00b000",
   "sorting": "a",
   "_id": "OtxZvoEHMa1DI0rI",
   "description": "",
-  "sort": 900000,
+  "sort": 75000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

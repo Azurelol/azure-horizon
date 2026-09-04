@@ -15,7 +15,7 @@ img: /assets/icons/spells/elemental.png
 
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/water/barrier-ice-crystal-wall-jagged.webp"><span>Cone of Cold</span></div>
+<div class="document-header__name"><img src="icons/magic/water/barrier-ice-crystal-wall-jagged.webp"><span>Cold Stream</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Fast</span>
@@ -45,7 +45,7 @@ img: /assets/icons/spells/elemental.png
 </div>
 </div>
 
-<p>You let loose a fierce gust of wind that deals bludgeoning damage to an enemy and has a chance to push them back.</p>
+<p>You let loose a fierce gust of wind that deals bludgeoning damage to an enemy and will push them if the check result is even.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="icons/magic/fire/blast-jet-stream-embers-red.webp"><span>Ignition</span></div>
@@ -56,4 +56,4 @@ img: /assets/icons/spells/elemental.png
 </div>
 </div>
 
-<p>You deal fire damage to enemy in close range.</p>
+<p>You deal fire damage to a target in close range.</p>

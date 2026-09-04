@@ -3,7 +3,7 @@
   "name": "Calisthenics",
   "type": "skill",
   "_id": "ENAp1FcdFELrZOjH",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_support.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

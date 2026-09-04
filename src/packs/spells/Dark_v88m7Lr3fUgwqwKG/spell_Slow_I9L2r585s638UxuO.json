@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-slow",
-    "description": "<p>You inflict the target with <em>Slow.</em></p>",
+    "description": "<p>You apply <em>Slow</em> to the target.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -51,9 +51,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "slow"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -66,10 +68,19 @@
       "targeting": "single",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [
+        "exhaust"
+      ],
+      "enabled": true
     },
     "domain": "dark",
-    "speed": "fast"
+    "speed": "fast",
+    "targeting": {
+      "enabled": false,
+      "rule": "",
+      "range": "",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,

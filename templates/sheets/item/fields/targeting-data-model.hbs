@@ -1,5 +1,5 @@
 {{#> ahFieldset label='AH.FIELD.Targeting' icon=(ahIconClass 'cost') fieldset=model enabled=model.enabled name=(ahConcat path ".enabled")}}
-  {{ahStringField path=(ahConcat path '.rule') label="AH.FIELD.Targeting" value=model.targeting blank=true options=(ahFormOptions 'targetingRule')}}
+  {{ahStringField path=(ahConcat path '.rule') label="AH.FIELD.Rule" value=model.rule blank=true options=(ahFormOptions 'targetingRule')}}
   {{ahStringField path=(ahConcat path '.range') label="AH.FIELD.Range" value=model.range blank=true options=(ahFormOptions 'traits.range')}}
   {{ahTraitsField schema=field.fields.traits path=(ahConcat path '.traits') label="AH.COMMON.Traits" value=model.traits options=(ahFormOptions 'traits.target')}}
 {{/ahFieldset}}

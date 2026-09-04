@@ -31,6 +31,8 @@ tokenImg: /assets/characters/heroes/animist_token.png
 
 ---
 
+![](/assets/characters/heroes/animist_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
@@ -65,7 +67,7 @@ tokenImg: /assets/characters/heroes/animist_token.png
 <p>The next spell cast of the target party member with a cost of SL * 10 MP or less is instead cast freely.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Natural Medicine</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Natural Medicine</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>

@@ -3,7 +3,7 @@
   "name": "Meltdown",
   "type": "skill",
   "_id": "FbIvBciRmgGXoW9J",
-  "img": "icons/magic/fire/elemental-fire-humanoid.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -45,8 +45,8 @@
     "cost": {
       "schemaVersion": 1,
       "enabled": true,
-      "resource": "mp",
-      "amount": "10",
+      "resource": "hp",
+      "amount": "&hp(0.4)",
       "perTarget": false
     },
     "effects": {
@@ -73,8 +73,9 @@
       "type": "action",
       "points": 1,
       "traits": [
-        "stress"
-      ]
+        "tension"
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,

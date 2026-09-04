@@ -7,8 +7,8 @@
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "light-safeguard",
-    "description": "<p>You grant a target party member a stack of…</p>",
+    "slug": "light-barrier",
+    "description": "<p>The target gains <em>Block</em>.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -38,9 +38,9 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "hp",
-      "amount": ""
+      "enabled": true,
+      "type": "thp",
+      "amount": "&hp(0.2)"
     },
     "cost": {
       "schemaVersion": 1,
@@ -69,7 +69,13 @@
       "traits": []
     },
     "domain": "light",
-    "speed": "instant"
+    "speed": "instant",
+    "targeting": {
+      "enabled": true,
+      "rule": "single",
+      "range": "",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 600000,

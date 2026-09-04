@@ -33,11 +33,17 @@ tokenImg: /assets/characters/heroes/fencer_token.png
 
 ---
 
+![](/assets/characters/heroes/fencer_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Antagonize</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Action 2</span>
+</div>
 <i class="fa-solid fa-star"></i> 2
 </div>
 </div>
@@ -45,7 +51,7 @@ tokenImg: /assets/characters/heroes/fencer_token.png
 <p>You gain SL stacks of <em>Taunt</em>.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Bravado</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Bravado</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -78,7 +84,7 @@ tokenImg: /assets/characters/heroes/fencer_token.png
 <p>When you are attacked in melee and the result of the check was an even number you can immediately perform a free attack against the attacker.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Technique</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Technique</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -99,7 +105,7 @@ tokenImg: /assets/characters/heroes/fencer_token.png
 <p>You deliver a finishing blow with your melee weapon.</p><ul><li><p><strong>Offensive Stance</strong>: On defeat of an enemy you clear all cooldowns.</p></li><li><p><strong>Defensive Stance:</strong> On defeat of an enemy you immediately defend.</p></li></ul>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/melee/strike-sword-gray.webp"><span>Disengage</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Disengage</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 2</span>

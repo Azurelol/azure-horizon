@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "armiger-all-or-nothing",
-    "description": "<p>After you have performed the check for your next action and before the damage is resolved, if the result of the check was even you gain <em>Empower</em>, otherwise <em>Vulnerable.</em></p>",
+    "description": "<p>After you have performed the check for your next action and before the damage is resolved, if the result of the check was even you gain <em>Empower</em>, otherwise <em>Vulnerable.</em></p><p>At SL2 you gain both effects.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -62,7 +62,7 @@
     "power": "",
     "level": {
       "current": 1,
-      "max": 1
+      "max": 2
     },
     "action": {
       "schemaVersion": 1,

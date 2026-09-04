@@ -31,6 +31,8 @@ tokenImg: /assets/characters/heroes/armiger_token.png
 
 ---
 
+![](/assets/characters/heroes/armiger_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
@@ -40,11 +42,11 @@ tokenImg: /assets/characters/heroes/armiger_token.png
 <span class="document-trait">Exhaust</span>
 <span class="document-trait">Action 1</span>
 </div>
-<i class="fa-solid fa-star"></i> 1
+<i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
-<p>After you have performed the check for your next action and before the damage is resolved, if the result of the check was even you gain <em>Empower</em>, otherwise <em>Vulnerable.</em></p>
+<p>After you have performed the check for your next action and before the damage is resolved, if the result of the check was even you gain <em>Empower</em>, otherwise <em>Vulnerable.</em></p><p>At SL2 you gain both effects.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/arsenal.png"><span>Arsenal</span></div>
@@ -60,7 +62,7 @@ tokenImg: /assets/characters/heroes/armiger_token.png
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
-<span class="document-trait">Action 1</span>
+<span class="document-trait">Action 2</span>
 </div>
 <i class="fa-solid fa-star"></i> 2
 </div>
@@ -111,10 +113,11 @@ tokenImg: /assets/characters/heroes/armiger_token.png
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
-<span class="document-trait">Action 2</span>
+<span class="document-trait">Press</span>
+<span class="document-trait">Action 1</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
-<p>You perform an attack that lowers the target's defenses against physical attacks.</p>
+<p>You can follow up an earlier attack and apply <em>Sunder</em> to the same target.</p>

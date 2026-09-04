@@ -3,7 +3,7 @@
   "name": "Rapid Reload",
   "type": "skill",
   "_id": "B6eBuqIW5UqG8LTy",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

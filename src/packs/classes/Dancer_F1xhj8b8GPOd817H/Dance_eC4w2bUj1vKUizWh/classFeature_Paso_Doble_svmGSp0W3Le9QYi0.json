@@ -1,14 +1,21 @@
 {
-  "folder": "DIcQgSswuHz1Mh9b",
-  "name": "Heal Companion",
-  "type": "skill",
-  "_id": "bbTFmEykzlObxUIP",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
+  "folder": "eC4w2bUj1vKUizWh",
+  "name": "Paso Doble",
+  "type": "classFeature",
+  "_id": "svmGSp0W3Le9QYi0",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "master-heal-companion",
-    "description": "<p>Your companion recovers hit points.</p>",
+    "slug": "dancer-paso-doble",
+    "description": "",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -43,6 +50,13 @@
       "amount": "",
       "perTarget": false
     },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
+    },
     "effects": {
       "schemaVersion": 1,
       "enabled": false,
@@ -54,23 +68,27 @@
       }
     },
     "power": "",
-    "level": {
-      "current": 1,
-      "max": 1
+    "feature": {
+      "_id": "HhOoL6nFUNtNVYUO",
+      "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "action",
+      "enabled": false,
+      "type": "",
       "points": 1,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
       "check": false,
       "damage": false
     },
-    "class": "master"
+    "trait": "",
+    "class": "",
+    "skill": ""
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +100,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787238735551,
+    "createdTime": 1788542788676,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!bbTFmEykzlObxUIP"
+  "_key": "!items!svmGSp0W3Le9QYi0"
 }

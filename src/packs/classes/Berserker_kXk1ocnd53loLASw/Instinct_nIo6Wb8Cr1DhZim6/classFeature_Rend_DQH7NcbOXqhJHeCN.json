@@ -1,34 +1,34 @@
 {
-  "folder": "OkTmivfii1s2NxeJ",
-  "name": "Cone of Cold",
-  "type": "spell",
-  "_id": "rg7vsubXh2eXQUGp",
-  "img": "icons/magic/water/barrier-ice-crystal-wall-jagged.webp",
+  "folder": "nIo6Wb8Cr1DhZim6",
+  "name": "Rend",
+  "type": "classFeature",
+  "_id": "DQH7NcbOXqhJHeCN",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "elemental-cone-of-cold",
-    "description": "<p>You deal cold damage to the closest enemy row.</p>",
+    "slug": "berserker-rend",
+    "description": "",
     "attributes": {
       "schemaVersion": 1,
-      "primary": "ins",
-      "secondary": "wlp",
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
       "grade": "C"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def",
-      "bonus": ""
+      "defense": "def"
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
         "amount": "",
-        "type": "cold"
+        "type": "untyped"
       },
       "secondary": {
         "amount": "",
@@ -46,30 +46,51 @@
     "cost": {
       "schemaVersion": 1,
       "enabled": true,
-      "resource": "mp",
-      "amount": "15",
+      "resource": "tp",
+      "amount": "2",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "bleed"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "moderate",
+    "power": "low",
+    "feature": {
+      "_id": "4hCwBm7SEvO4uQM5",
+      "type": "emptyClassFeature"
+    },
     "action": {
       "schemaVersion": 1,
-      "range": "ranged",
+      "enabled": true,
       "type": "action",
       "points": 2,
       "traits": []
     },
-    "domain": "elemental",
-    "speed": "fast"
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "attributes": true,
+      "check": true,
+      "damage": true
+    },
+    "trait": "",
+    "class": "berserker",
+    "skill": "berserker-instinct"
   },
   "effects": [],
   "sort": 0,
@@ -81,12 +102,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787425976250,
+    "createdTime": 1788546421890,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!rg7vsubXh2eXQUGp"
+  "_key": "!items!DQH7NcbOXqhJHeCN"
 }

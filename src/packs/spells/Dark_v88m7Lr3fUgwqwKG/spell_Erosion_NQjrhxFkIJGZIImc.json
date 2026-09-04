@@ -51,9 +51,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "effect-erosion"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -66,12 +68,14 @@
       "targeting": "single",
       "type": "action",
       "points": 1,
-      "traits": [
-        "opener"
-      ]
+      "traits": [],
+      "enabled": true
     },
     "domain": "dark",
-    "speed": "instant"
+    "speed": "instant",
+    "targeting": {
+      "enabled": true
+    }
   },
   "effects": [],
   "sort": 0,

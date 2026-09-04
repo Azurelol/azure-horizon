@@ -30,6 +30,8 @@ tokenImg: /assets/characters/heroes/master_token.png
 
 ---
 
+![](/assets/characters/heroes/master_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
@@ -51,21 +53,9 @@ tokenImg: /assets/characters/heroes/master_token.png
 <p>Your companion gains a move for each point invested into this skill. It also increases its potential by 1 (up to 5 maximum) each time you do so.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_action.png"><span>Heal Companion</span></div>
-<div class='document-header__properties'>
-<div class="document-traits --nested">
-<span class="document-trait">Action 1</span>
-</div>
-<i class="fa-solid fa-star"></i> 1
-</div>
-</div>
-
-<p>Your companion recovers hit points.</p>
-
-<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Mascot</span></div>
 <div class='document-header__properties'>
-<i class="fa-solid fa-star"></i> 1
+<i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
@@ -78,4 +68,4 @@ tokenImg: /assets/characters/heroes/master_token.png
 </div>
 </div>
 
-<p>Your companion can use its reactions on another party member of your choice. This can be changed during long rest scenes.</p>
+<p>Your companion can use its moves on another party member of your choice. This can be changed during long rest scenes.</p>

@@ -3,7 +3,7 @@
   "name": "Martial Arts",
   "type": "skill",
   "_id": "e3khzqXCgFFgqwdJ",
-  "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -1,0 +1,100 @@
+{
+  "folder": "OkTmivfii1s2NxeJ",
+  "name": "Cold Stream",
+  "type": "spell",
+  "_id": "rg7vsubXh2eXQUGp",
+  "img": "icons/magic/water/barrier-ice-crystal-wall-jagged.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "elemental-cold-stream",
+    "description": "<p>You deal cold damage to the closest enemy row.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "mdef",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "5",
+        "type": "cold"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "resource": "mp",
+      "amount": "15",
+      "perTarget": false
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "moderate",
+    "action": {
+      "schemaVersion": 1,
+      "range": "ranged",
+      "type": "action",
+      "points": 2,
+      "traits": []
+    },
+    "domain": "elemental",
+    "speed": "fast",
+    "targeting": {
+      "enabled": true,
+      "rule": "",
+      "range": "ranged",
+      "traits": [
+        "cleave"
+      ]
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787425976250,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!rg7vsubXh2eXQUGp"
+}

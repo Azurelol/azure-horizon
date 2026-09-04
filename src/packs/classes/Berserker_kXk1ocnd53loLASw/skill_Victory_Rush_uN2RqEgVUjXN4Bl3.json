@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "berserker-victory-rush",
-    "description": "<p>When you defeat an enemy you gain block and an ally of your choice gains <em>encourage</em>.</p>",
+    "description": "<p>When you defeat an enemy you gain block and an ally of your choice gains <em>Strength </em>or <em>Concentration.</em></p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -32,9 +32,9 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "hp",
-      "amount": ""
+      "enabled": true,
+      "type": "thp",
+      "amount": "$blk"
     },
     "cost": {
       "schemaVersion": 1,
@@ -45,9 +45,12 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "strength",
+        "concentration"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -63,7 +66,9 @@
       "range": "",
       "type": "",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": false,
+      "targeting": ""
     },
     "usage": {
       "schemaVersion": 1,

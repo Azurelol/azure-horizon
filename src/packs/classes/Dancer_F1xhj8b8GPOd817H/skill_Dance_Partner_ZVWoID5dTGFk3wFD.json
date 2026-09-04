@@ -3,7 +3,7 @@
   "name": "Dance Partner",
   "type": "skill",
   "_id": "ZVWoID5dTGFk3wFD",
-  "img": "icons/skills/social/diplomacy-handshake.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

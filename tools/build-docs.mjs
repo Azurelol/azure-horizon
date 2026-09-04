@@ -217,6 +217,11 @@ for (const classDir of SRC_CLASS_DIRECTORIES) {
 const DST_CLASSES_DIR_PATH = PATH.join(ROOT_DIRECTORY, "docs", "_classes");
 await cleanDirectory(DST_CLASSES_DIR_PATH);
 
+// TODO: Implement and use for extra images
+function assetExists(path) {
+
+}
+
 function getFeatureTraits(entry) {
   let traits = [];
   if (entry.system.action?.traits) {

@@ -3,7 +3,7 @@
   "name": "Chakra",
   "type": "skill",
   "_id": "Z5zkjBy29CVrf5rn",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

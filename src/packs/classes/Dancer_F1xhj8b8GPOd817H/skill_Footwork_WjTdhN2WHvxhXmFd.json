@@ -3,7 +3,7 @@
   "name": "Footwork",
   "type": "skill",
   "_id": "WjTdhN2WHvxhXmFd",
-  "img": "icons/skills/movement/feet-winged-sandals-tan.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

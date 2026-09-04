@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "gunner-cover-fire",
-    "description": "<p>When an ally triggers a reaction during a melee attack you may perform a free attack and downgrade the attack.</p>",
+    "description": "<p>You perform an attack that disables the next enemy reaction.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -59,7 +59,7 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "low",
     "level": {
       "current": 1,
       "max": 1
@@ -68,15 +68,20 @@
       "schemaVersion": 1,
       "range": "ranged",
       "targeting": "single",
-      "type": "reaction",
+      "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [
+        "interrupt",
+        "cooldown"
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": false,
       "check": false,
-      "damage": false
+      "damage": false,
+      "enabled": true
     },
     "class": "gunner"
   },

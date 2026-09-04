@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "elemental-gale-blast",
-    "description": "<p>You let loose a fierce gust of wind that deals bludgeoning damage to an enemy and has a chance to push them back.</p>",
+    "description": "<p>You let loose a fierce gust of wind that deals bludgeoning damage to an enemy and will push them if the check result is even.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "ins",
@@ -66,10 +66,17 @@
       "range": "",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "domain": "elemental",
-    "speed": "instant"
+    "speed": "instant",
+    "targeting": {
+      "enabled": true,
+      "rule": "multiple",
+      "range": "ranged",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,

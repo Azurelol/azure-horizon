@@ -25,6 +25,8 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 
 ---
 
+![](/assets/characters/heroes/rogue_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
@@ -37,7 +39,7 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Coup de Grace</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Cripple</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -47,30 +49,38 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 </div>
 </div>
 
-<p>While targeting an enemy that cannot perform actions you can perform a powerful attack to it.</p>
+<p>You deal damage and apply <em>Weak</em> to it.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Cripple</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Dispatch</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Cooldown</span>
+<span class="document-trait">Action 2</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
-<p>You deal damage and inflict <em>Weak</em> to it.</p>
+<p>You perform a powerful attack to an incapacitated enemy.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/rogue/surprise-attack.png"><span>Misdirect</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Reaction</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
-<p>When you would be attacked, an adjacent party member is attacked instead and you gain a stack of <em>Adrenaline</em>.</p>
+<p>When you would be attacked, an adjacent party member is attacked instead.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Premeditation</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
+<span class="document-trait">Cooldown</span>
 <span class="document-trait">Action 1</span>
 </div>
 <i class="fa-solid fa-star"></i> 1

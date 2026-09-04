@@ -44,7 +44,7 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "hp",
       "amount": "5",
       "perTarget": false

@@ -46,7 +46,7 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "hp",
       "amount": "5",
       "perTarget": false
@@ -75,7 +75,7 @@
       "type": "action",
       "points": 1,
       "traits": [],
-      "enabled": false
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
@@ -86,7 +86,7 @@
     },
     "class": "brawler",
     "skill": "brawler-martial-arts",
-    "trait": "brawl"
+    "trait": "combo"
   },
   "effects": [],
   "sort": 0,

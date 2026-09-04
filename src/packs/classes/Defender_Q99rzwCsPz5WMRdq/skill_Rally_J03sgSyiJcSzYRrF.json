@@ -72,7 +72,8 @@
       "points": 2,
       "traits": [
         "cooldown"
-      ]
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,

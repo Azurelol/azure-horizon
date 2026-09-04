@@ -38,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "2",
       "perTarget": false
     },
     "effects": {
@@ -63,12 +63,15 @@
       "range": "melee",
       "type": "reaction",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
       "check": false,
-      "damage": true
+      "damage": true,
+      "enabled": true,
+      "attributes": false
     },
     "class": "fencer"
   },

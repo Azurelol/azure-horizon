@@ -69,13 +69,18 @@
       "range": "ranged",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [
+        "pressure"
+      ],
+      "enabled": true,
+      "targeting": "single"
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": true,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true
     },
     "class": "gunner"
   },

@@ -1,16 +1,17 @@
 {
-  "folder": "F1xhj8b8GPOd817H",
-  "name": "Mesmerize",
+  "folder": "noX8U4rDGOGl3U1F",
+  "name": "Addle",
   "type": "skill",
-  "_id": "ORlMbouX9T5NKO7A",
-  "img": "icons/magic/control/debuff-energy-hold-levitate-pink.webp",
+  "_id": "5QNsz6BsLD11fWp1",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dancer-mesmerize",
-    "description": "<p>Whenever you deal damage while dancing, one of your allies reduces their TP by SL.</p>",
+    "slug": "ritualist-addle",
+    "description": "<p>When you deal dark damage a target you apply <em>Breach</em>.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -49,6 +50,13 @@
       "amount": "",
       "perTarget": false
     },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
+    },
     "effects": {
       "schemaVersion": 1,
       "enabled": false,
@@ -62,22 +70,23 @@
     "power": "",
     "level": {
       "current": 1,
-      "max": 2
+      "max": 1
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
+      "enabled": false,
       "type": "",
       "points": 1,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
       "attributes": false,
       "check": false,
       "damage": false
     },
-    "class": "dancer"
+    "class": "ritualist"
   },
   "effects": [],
   "sort": 0,
@@ -89,12 +98,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787396911762,
+    "createdTime": 1788544952069,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!ORlMbouX9T5NKO7A"
+  "_key": "!items!5QNsz6BsLD11fWp1"
 }

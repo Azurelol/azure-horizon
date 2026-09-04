@@ -3,7 +3,7 @@
   "name": "Elemental Spell",
   "type": "skill",
   "_id": "9D70AgF7EfFC8FGy",
-  "img": "icons/magic/fire/beam-jet-stream-trails-orange.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

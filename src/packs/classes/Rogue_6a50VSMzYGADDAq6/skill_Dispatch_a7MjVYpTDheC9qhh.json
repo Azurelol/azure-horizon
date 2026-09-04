@@ -1,14 +1,14 @@
 {
-  "folder": "65O9HLDE83Ghggk2",
-  "name": "Sword Practice",
+  "folder": "6a50VSMzYGADDAq6",
+  "name": "Dispatch",
   "type": "skill",
-  "_id": "X763bDJwdoMCSYNc",
+  "_id": "a7MjVYpTDheC9qhh",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-sword-practice",
-    "description": "<p>During a rest scene the blademaster can reduce their TP by SL x 2.</p>",
+    "slug": "rogue-dispatch",
+    "description": "<p>You perform a powerful attack to an incapacitated enemy.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -59,26 +59,30 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "severe",
     "level": {
       "current": 1,
       "max": 1
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "targeting": "",
-      "type": "activity",
-      "points": 1,
-      "traits": []
+      "range": "melee",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "cooldown"
+      ],
+      "enabled": true,
+      "targeting": "single"
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false
+      "attributes": true,
+      "check": true,
+      "damage": true,
+      "enabled": true
     },
-    "class": "blademaster"
+    "class": "rogue"
   },
   "effects": [],
   "sort": 0,
@@ -90,12 +94,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788097473066,
+    "createdTime": 1787574503414,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!X763bDJwdoMCSYNc"
+  "_key": "!items!a7MjVYpTDheC9qhh"
 }

@@ -3,7 +3,7 @@
   "name": "Natural Medicine",
   "type": "skill",
   "_id": "W165y78p0mdPvJux",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_support.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

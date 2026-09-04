@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-shadow-cloak",
-    "description": "<p>You give each targeted party member <em>Stealth</em>.</p>",
+    "description": "<p>You give each party member <em>Stealth</em>.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -65,10 +65,13 @@
       "range": "",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [
+        "exhaust"
+      ],
+      "enabled": true
     },
     "domain": "dark",
-    "speed": "instant"
+    "speed": "fast"
   },
   "effects": [],
   "sort": 0,

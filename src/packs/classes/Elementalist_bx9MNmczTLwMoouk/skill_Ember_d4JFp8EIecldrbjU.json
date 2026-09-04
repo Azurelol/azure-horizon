@@ -3,7 +3,7 @@
   "name": "Ember",
   "type": "skill",
   "_id": "d4JFp8EIecldrbjU",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

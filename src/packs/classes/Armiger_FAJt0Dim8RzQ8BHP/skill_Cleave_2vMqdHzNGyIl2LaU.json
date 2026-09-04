@@ -14,15 +14,19 @@
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "bonus": ""
     },
     "action": {
       "schemaVersion": 1,
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": [
         "cooldown"
-      ]
+      ],
+      "enabled": true,
+      "range": "",
+      "targeting": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -48,7 +52,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "5",
+      "amount": "10",
       "perTarget": true
     },
     "effects": {
@@ -68,10 +72,18 @@
       "schemaVersion": 1,
       "check": true,
       "damage": true,
-      "power": "low"
+      "power": "low",
+      "enabled": true,
+      "attributes": true
     },
     "class": "armiger",
-    "power": "low"
+    "power": "low",
+    "attributes": {
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    }
   },
   "effects": [],
   "sort": 0,

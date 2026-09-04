@@ -8,12 +8,13 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "elemental-ignition",
-    "description": "<p>You deal fire damage to enemy in close range.</p>",
+    "description": "<p>You deal fire damage to a target in close range.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "ins",
       "secondary": "wlp",
-      "grade": "B"
+      "grade": "B",
+      "enabled": true
     },
     "check": {
       "schemaVersion": 1,
@@ -27,7 +28,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "",
+        "amount": "10",
         "type": "fire"
       },
       "secondary": {
@@ -45,9 +46,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "15",
       "perTarget": false
     },
     "effects": {
@@ -66,10 +67,17 @@
       "range": "melee",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "domain": "elemental",
-    "speed": "instant"
+    "speed": "instant",
+    "targeting": {
+      "enabled": true,
+      "rule": "",
+      "range": "melee",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,

@@ -3,7 +3,7 @@
   "name": "Immelmann Dance",
   "type": "classFeature",
   "_id": "xTm8gXtivkjLW3HC",
-  "img": "icons/skills/movement/ball-spinning-blue.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -71,7 +71,8 @@
       "points": 2,
       "traits": [
         "exhaust"
-      ]
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
@@ -80,7 +81,8 @@
       "damage": false
     },
     "class": "dancer",
-    "skill": "dancer-dance"
+    "skill": "dancer-dance",
+    "trait": "dance"
   },
   "effects": [],
   "sort": 100000,

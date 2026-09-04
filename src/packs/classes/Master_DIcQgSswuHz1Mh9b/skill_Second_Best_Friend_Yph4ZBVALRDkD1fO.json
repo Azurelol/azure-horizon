@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "master-second-best-friend",
-    "description": "<p>Your companion can use its reactions on another party member of your choice. This can be changed during long rest scenes.</p>",
+    "description": "<p>Your companion can use its moves on another party member of your choice. This can be changed during long rest scenes.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "berserker-enrage",
-    "description": "<p>When you are damaged you gain Power.</p>",
+    "description": "<p>You can react when you are damaged to gain <em>Strength.</em></p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,16 +38,18 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "4",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "strength"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -63,14 +65,16 @@
       "range": "",
       "type": "reaction",
       "points": 1,
-      "traits": [
-        "stress"
-      ]
+      "traits": [],
+      "enabled": true,
+      "targeting": "self"
     },
     "usage": {
       "schemaVersion": 1,
       "check": false,
-      "damage": false
+      "damage": false,
+      "enabled": false,
+      "attributes": false
     },
     "class": "berserker"
   },

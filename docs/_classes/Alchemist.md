@@ -31,6 +31,8 @@ tokenImg: /assets/characters/heroes/alchemist_token.png
 
 ---
 
+![](/assets/characters/heroes/alchemist_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
@@ -70,7 +72,7 @@ tokenImg: /assets/characters/heroes/alchemist_token.png
 <p>You begin mixinig up a potion with SL number of effects and administer it to a party member at the start of your next turn.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_item.png"><span>Mutagen</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Mutagen</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>

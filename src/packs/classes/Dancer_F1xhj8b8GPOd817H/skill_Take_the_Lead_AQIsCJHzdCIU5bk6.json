@@ -3,7 +3,7 @@
   "name": "Take the Lead",
   "type": "skill",
   "_id": "AQIsCJHzdCIU5bk6",
-  "img": "icons/magic/control/energy-stream-link-orange.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

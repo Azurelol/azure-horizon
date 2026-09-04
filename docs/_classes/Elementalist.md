@@ -33,10 +33,12 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 
 ---
 
+![](/assets/characters/heroes/elementalist_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/fire/beam-jet-stream-trails-orange.webp"><span>Elemental Spell</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Elemental Spell</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -45,7 +47,7 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Elemental </em>domain.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Ember</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Ember</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -56,6 +58,9 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Enchant</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Reaction</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
@@ -63,7 +68,7 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 <p>When a party member performs a physical attack you can enchant it before it resolves to deal additional elemental damage of your choice.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Ice Block</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_defense.png"><span>Ice Block</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
@@ -76,10 +81,32 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 <p>As a reaction you can gain <em>Stasis</em> and become immune to all damage and effects.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/fire/elemental-fire-humanoid.webp"><span>Meltdown</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Ley Lines</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You create a circle of power directly in your space. As long as you stand under it you gain.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Manafont</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Stress</span>
+<span class="document-trait">Cooldown</span>
+<span class="document-trait">Action 1</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>Your next spell cast costs no mind points.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Meltdown</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Tension</span>
 <span class="document-trait">Action 1</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -89,7 +116,7 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 <p>You gain the <em>Meltdown</em> effect for this turn and the next. It greatly increases your elemental damage but causes you to suffer heavy damage and gain tension.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Prism</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Prism</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>

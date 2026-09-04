@@ -37,6 +37,18 @@ const STATUS_EFFECTS = Object.freeze({
     id: "berserk",
     name: "AH.STATUS.Berserk",
     img: "systems/azure-horizon/assets/icons/statuses/berserk.png",
+    changes: [
+      {
+        key: "system.parameters.damage.physical.outgoing.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "5",
+      },
+      {
+        key: "system.parameters.damage.universal.incoming.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "10",
+      },
+    ],
   },
 
   // TARGETING

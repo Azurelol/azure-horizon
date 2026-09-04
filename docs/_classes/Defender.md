@@ -32,6 +32,8 @@ tokenImg: /assets/characters/heroes/defender_token.png
 
 ---
 
+![](/assets/characters/heroes/defender_token_2.png){: .profile }
+
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">

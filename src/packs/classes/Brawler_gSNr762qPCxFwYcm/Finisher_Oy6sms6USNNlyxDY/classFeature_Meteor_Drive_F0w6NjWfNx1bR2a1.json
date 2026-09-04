@@ -83,7 +83,7 @@
     },
     "class": "brawler",
     "skill": "brawler-martial-arts",
-    "trait": ""
+    "trait": "finisher"
   },
   "effects": [],
   "sort": 100000,

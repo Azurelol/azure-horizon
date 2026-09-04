@@ -1,12 +1,12 @@
 {
   "type": "ActiveEffect",
-  "folder": null,
+  "folder": "Ii65Q4K5Ui2HBAec",
   "name": "Terrain",
-  "color": "#888800",
+  "color": "#000000",
   "sorting": "a",
   "_id": "xrjqcoHJwquhJNXo",
   "description": "",
-  "sort": 700000,
+  "sort": 100000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
