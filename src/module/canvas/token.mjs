@@ -76,11 +76,15 @@ export class AHToken extends foundry.canvas.placeables.Token {
     }
   }
 
+  // TODO: Use a green bar for heroes
   createHitPointBar(value, max, bar) {
     bar.removeChildren();
+
+    const hero = this.actor.type === "hero";
+
     const bh = HP_BAR_HEIGHT;
-    const bg = new PIXI.Sprite(AHTextures.get("hpFrame"));
-    const fill = new PIXI.Sprite(AHTextures.get("hpFill"));
+    const bg = new PIXI.Sprite(AHTextures.get(hero ? "hpPartyFrame" : "hpFrame"));
+    const fill = new PIXI.Sprite(AHTextures.get(hero ? "hpPartyFill" : "hpFill"));
     const pct = Math.clamp(value, 0, max) / max;
 
     const size = sizeBar(bg, fill, bh, this.w, pct);

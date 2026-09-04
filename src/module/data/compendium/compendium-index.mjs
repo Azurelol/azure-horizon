@@ -156,6 +156,15 @@ export default class CompendiumIndex {
   }
 
   /**
+   * @param {Boolean} force
+   * @returns {Promise<CompendiumIndexEntry[]>}
+   */
+  async getAllItems(force = false) {
+    const items = await this.getItems(force);
+    return Object.values(items).flat(Infinity);
+  }
+
+  /**
 	 * @param {String} slug An unique identifier used by the system.
 	 * @returns {Promise<CompendiumIndexEntry>} A compendium index entry.
 	 */

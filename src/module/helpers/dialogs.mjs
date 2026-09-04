@@ -224,7 +224,7 @@ export default class Dialogs {
    * @param {DialogV2Button[]} options.buttons
    * @returns {Promise<string|null>}
    */
-  static async choice({ title, content, buttons }) {
+  static async choice({ title, content, buttons, classes }) {
     const result = await foundry.applications.api.DialogV2.wait({
       window: {
         title,
@@ -233,7 +233,7 @@ export default class Dialogs {
       position: {
         width: 500,
       },
-      classes: DIALOG_CLASSES,
+      classes: DIALOG_CLASSES.concat(classes),
       content,
       buttons,
     });

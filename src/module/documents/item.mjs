@@ -1,15 +1,18 @@
 import { ChatMessageBuilder, ChatMessageSections } from "../helpers/_module.mjs";
 import DocumentMixin from "./document-mixin.mjs";
 import { StringUtils } from "../utils/_module.mjs";
-import { isActorType } from "../constants.mjs";
+import { isActorType, systemAssetPath } from "../constants.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
  * @property {String} id
+ * @property {String} img
  * @property {AH_ItemType} type
  * @property {ItemDataModel} system
  */
 export class AHItem extends DocumentMixin(foundry.documents.Item) {
+
+  static DEFAULT_ITEM_IMG = "icons/svg/item-bag.svg";
 
   /** @inheritdoc */
   prepareDerivedData() {
@@ -74,6 +77,22 @@ Hooks.on("preCreateItem", (item, options, userId) => {
     if (!actor.supportsItemType(item.type)) {
       ui.notifications.error("AH.DIALOG.WARNING.ItemNotSupported", { localize: true });
       return false;
+    }
+  }
+
+  // TODO: Do the others too.
+  // Use a default img for certain item types
+  if (item.img === AHItem.DEFAULT_ITEM_IMG) {
+    let img;
+    switch (item.type) {
+      case "skill":
+      case "classFeature":
+        img = systemAssetPath("icons/classes/skill_attack.png");
+        break;
+    }
+    if (img) {
+      item.updateSource({ img: img });
+
     }
   }
 

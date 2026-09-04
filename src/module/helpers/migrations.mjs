@@ -1,8 +1,9 @@
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { CompendiumIndex } from "../data/compendium/_module.mjs";
 import Dialogs from "./dialogs.mjs";
-import { isCompendiumEntry, isItemType } from "../constants.mjs";
+import { isCompendiumEntry, isItemType, systemAssetPath } from "../constants.mjs";
 import AH from "../config.mjs";
+import { AHItem } from "../documents/item.mjs";
 
 /**
  * @typedef {Object} ItemMigrationAction
@@ -174,7 +175,7 @@ async function applyItemMigrations(resolved) {
   const packActorUpdates = new Map();
 
   for (const { item, updateData } of resolved) {
-    const payload = { _id: item.id, ...updateData };
+    const payload = { _id: item.id ?? item._id, ...updateData };
     if (item.pack) {
       if (item.parent) {
         if (!packActorUpdates.has(item.parent)) packActorUpdates.set(item.parent, []);
@@ -508,10 +509,12 @@ async function selectActors(world = true, compendium = false, type = undefined) 
     actors.push(...game.actors.contents);
   }
 
-  const actorEntries = await CompendiumIndex.instance.getActorEntries();
-  /** @type CompendiumIndexEntry[] **/
-  const compendiumActors = [...actorEntries.hero, ...actorEntries.adversary, ...actorEntries.follower];
-  actors.push(...compendiumActors);
+  if (compendium) {
+    const actorEntries = await CompendiumIndex.instance.getActorEntries();
+    /** @type CompendiumIndexEntry[] **/
+    const compendiumActors = [...actorEntries.hero, ...actorEntries.adversary, ...actorEntries.follower];
+    actors.push(...compendiumActors);
+  }
 
   if (type) {
     actors = actors.filter((actor) => actor.type === type);
@@ -526,6 +529,51 @@ async function selectActors(world = true, compendium = false, type = undefined) 
     title: title,
     style: "list",
     items: actors,
+    getDescription: async (item) => {
+      const text = item.name ?? "";
+      return text;
+    },
+  };
+  const selected = await Dialogs.itemSelect(data);
+  return selected;
+}
+
+/**
+ * @param {Boolean} world
+ * @param {Boolean} compendium
+ * @param {AH_ItemType} type
+ * @param {(AHItem) => Boolean} filter
+ * @returns {Promise<AHItem[]>}
+ */
+async function selectItems(world = true, compendium = false, type = undefined, filter = undefined) {
+  let items = [];
+
+  if (world) {
+    items.push(...game.items.contents);
+  }
+
+  if (compendium) {
+    const itemEntries = await CompendiumIndex.instance.getAllItems();
+    items.push(...itemEntries);
+  }
+
+  if (type) {
+    items = items.filter((item) => item.type === type);
+  }
+
+  if (filter) {
+    items = items.filter((item) => filter(item));
+  }
+
+  if (!items.length) {
+    return undefined;
+  }
+  const title = `${StringUtils.localize("CONTROLS.CommonSelect")} ${StringUtils.localize("DOCUMENT.Item")}`;
+
+  const data = {
+    title: title,
+    style: "list",
+    items: items,
     getDescription: async (item) => {
       const text = item.name ?? "";
       return text;
@@ -580,6 +628,41 @@ async function updateTokens() {
 /**
  * @returns {Promise<void>}
  */
+async function updateCompendiumItems() {
+  const items = await selectItems(false,
+    true, undefined, item => item.img === AHItem.DEFAULT_ITEM_IMG);
+
+  /** @type ItemMigration[] **/
+  const migrations = items.map(item => {
+    let data = {
+    };
+
+    let img;
+    switch (item.type) {
+      case "skill":
+      case "classFeature":
+        img = systemAssetPath("icons/classes/skill_attack.png");
+        break;
+    }
+    if (img) {
+      data["img"] = img;
+    }
+
+    return {
+      item: item,
+      updateData: data,
+      effectUpdates: [],
+      effectCreates: [],
+    };
+  });
+
+  await applyItemMigrations(migrations);
+  ui.notifications.info(`Updated ${items.length} items.`);
+}
+
+/**
+ * @returns {Promise<void>}
+ */
 async function migrateAdversaries() {
   const actorEntries = await CompendiumIndex.instance.getActorEntries();
   /** @type AHActor[] **/
@@ -625,6 +708,7 @@ async function openMenu() {
   await Dialogs.choice({
     title: "AH.DIALOG.MigrationTools",
     content: StringUtils.localize("AH.DIALOG.MigrationToolsHint"),
+    classes: "--grid",
     buttons: [
       {
         action: "migrateItems",
@@ -640,6 +724,15 @@ async function openMenu() {
         label: "AH.DIALOG.UpdateTokens",
         callback: async (event, button, dialog) => {
           await updateTokens();
+          await dialog.close({ animate: false });
+          return true;
+        },
+      },
+      {
+        action: "updateCompendiumItemImages",
+        label: "Set default images on compendium items.",
+        callback: async (event, button, dialog) => {
+          await updateCompendiumItems();
           await dialog.close({ animate: false });
           return true;
         },
