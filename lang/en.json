@@ -723,7 +723,8 @@
       "Points": "Points",
       "Summary": "Summary",
       "Buff": "Buff",
-      "Debuff": "Debuff"
+      "Debuff": "Debuff",
+      "SkillLevel": "Skill Level"
     },
     "RULE": {
       "Element": {
@@ -854,9 +855,16 @@
       }
     },
     "TARGETING": {
-      "Self": "Self",
-      "Single": "Single",
-      "Multiple": "Multiple"
+      "RULE": {
+        "Self": "Self",
+        "Single": "Single",
+        "Multiple": "Multiple"
+      },
+      "AREA": {
+        "Splash": "Splash",
+        "Cleave": "Cleave",
+        "Pierce": "Pierce"
+      }
     },
     "STATUS": {
       "Modifier": "Modifier",

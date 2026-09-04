@@ -20,6 +20,10 @@ export class SkillTableRenderer extends ItemTableRenderer {
         header: "AH.FIELD.Class",
         getText: (entry) => StringUtils.capitalize(entry.system.class),
       }),
+      TableColumns.textColumn({
+        header: "AH.FIELD.SkillLevel",
+        getText: (entry) => StringUtils.capitalize(entry.system.level.max),
+      }),
       TableColumns.itemProperties(),
     ];
   }

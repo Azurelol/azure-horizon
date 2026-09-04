@@ -6,8 +6,6 @@ import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mj
 
 /**
  * @property {AH_ActionType} type The type of action, if it's one.
- * @property {AH_TargetingRule} targeting
- * @property {AH_ActionRange} range
  * @property {Number} points How many action points the action costs.
  * @property {TraitsField} traits
  */
@@ -15,18 +13,6 @@ export class ActionDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
     const { StringField, BooleanField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      range: new StringField({
-        initial: "",
-        blank: true,
-        label: "AH.FIELD.Range",
-        choices: () => AH.traits.range,
-      }),
-      targeting: new StringField({
-        initial: "",
-        blank: true,
-        label: "AH.FIELD.Targeting",
-        choices: () => AH.targetingRule,
-      }),
       type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.actionTypes), required: true }),
       points: new NumberField({ initial: 1, max: 3 }),
       traits: new TraitsField({
@@ -54,12 +40,6 @@ export class ActionDataModel extends OptionalFieldsetDataModel {
           });
           break;
       }
-    }
-    if (this.targeting) {
-      config.setTargeting(this.targeting);
-    }
-    if (this.range) {
-      config.addTraits(this.range);
     }
     config.addTraits(Array.from(this.traits));
   }

@@ -133,6 +133,7 @@ export default class CompendiumIndex {
     traits: "system.traits",
     classRef: "system.class",
     skillRef: "system.skill",
+    skillLevel: "system.level",
   });
 
   /**

@@ -32,6 +32,12 @@ const STATUS_EFFECTS = Object.freeze({
     name: "AH.STATUS.Mute",
     img: "systems/azure-horizon/assets/icons/statuses/mute.png",
   },
+  // - can only attack, damage dealt/received up
+  berserk: {
+    id: "berserk",
+    name: "AH.STATUS.Berserk",
+    img: "systems/azure-horizon/assets/icons/statuses/berserk.png",
+  },
 
   // TARGETING
   taunt: {
@@ -43,6 +49,11 @@ const STATUS_EFFECTS = Object.freeze({
     id: "stealth",
     name: "AH.STATUS.Stealth",
     img: "systems/azure-horizon/assets/icons/statuses/stealth.png",
+  },
+  stasis: {
+    id: "stasis",
+    name: "AH.STATUS.Stasis",
+    img: "systems/azure-horizon/assets/icons/statuses/stasis.png",
   },
 
   // BUFFS

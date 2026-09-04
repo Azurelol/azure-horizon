@@ -7,6 +7,7 @@ import { ActionCostDataModel } from "./fields/action-cost-data-model.mjs";
 import { ActionDataModel } from "./fields/action-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { ActionAttributesDataModel } from "./fields/action-attributes-data-model.mjs";
+import { TargetingDataModel } from "./fields/targeting-data-model.mjs";
 
 /**
  * Represents an action in the system.
@@ -16,6 +17,7 @@ import { ActionAttributesDataModel } from "./fields/action-attributes-data-model
  * @property {ResourceDataModel} resource
  * @property {EffectsDataModel} effects
  * @property {ActionCostDataModel} cost
+ * @property {TargetingDataModel} targeting
  * @remarks This simpler model is used for adversaries.
  */
 export default class ActiveFeatureDataModel extends FeatureDataModel {
@@ -29,6 +31,7 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
       })),
       resource: new EmbeddedDataField(ResourceDataModel, {}),
       cost: new EmbeddedDataField(ActionCostDataModel, {}),
+      targeting: new EmbeddedDataField(TargetingDataModel, {}),
       effects: new EmbeddedDataField(EffectsDataModel, {}),
       power: new StringField({
         initial: "",
@@ -48,6 +51,7 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     await this.resource.configureAction(config);
     await this.effects.configureAction(config);
     await this.cost.configureAction(config);
+    await this.targeting.configureAction(config);
     if (this.power) {
       config.setPower(this.power);
     }

@@ -238,6 +238,7 @@ for (const entry of classes) {
   const entryFileName = PATH.join(DST_CLASSES_DIR_PATH, `${classDocument.name}.${FILE_EXTENSION}`);
   const className = classDocument.name.toLowerCase();
   const tokenImg = `${ASSETS_DIRECTORY}/characters/heroes/${className}_token.png`;
+  const tokenImg2 = `${ASSETS_DIRECTORY}/characters/heroes/${className}_token_2.png`;
 
   let md = new DocBuilder();
   md.frontMatter({
@@ -266,6 +267,7 @@ for (const entry of classes) {
 
   // Skills
   md.hr();
+  md.img("", tokenImg2, undefined, "profile");
   md.customHeading(1, "Skills", "class__skills");
   for (const skillEntry of entry.skills) {
     const skill = await deserializeDocument(skillEntry);

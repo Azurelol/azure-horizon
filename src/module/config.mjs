@@ -710,9 +710,9 @@ AH.comparisonOperator = {
  * @typedef {"self", "single", "multiple"} AH_TargetingRule
  */
 AH.targetingRule = {
-  self: "AH.TARGETING.Self",
-  single: "AH.TARGETING.Single",
-  multiple: "AH.TARGETING.Multiple",
+  self: "AH.TARGETING.RULE.Self",
+  single: "AH.TARGETING.RULE.Single",
+  multiple: "AH.TARGETING.RULE.Multiple",
 };
 
 /**
@@ -1169,7 +1169,6 @@ AH.traits = {
     performance: { label: "AH.TRAIT.Performance", tooltip: "AH.TRAIT.PerformanceHint" },
     dance: { label: "AH.TRAIT.Dance", tooltip: "AH.TRAIT.DanceHint" },
     song: { label: "AH.TRAIT.Song", tooltip: "AH.TRAIT.SongHint" },
-    brawl: { label: "AH.TRAIT.Brawl", tooltip: "AH.TRAIT.BrawlHint" },
     combo: { label: "AH.TRAIT.Combo", tooltip: "AH.TRAIT.ComboHint" },
     finisher: { label: "AH.TRAIT.Finisher", tooltip: "AH.TRAIT.FinisherHint" },
     chain: { label: "AH.TRAIT.Chain", tooltip: "AH.TRAIT.ChainHint" },
@@ -1177,9 +1176,9 @@ AH.traits = {
 
   // Targeting trait
   target: {
-    cleave: { label: "AH.TRAIT.Cleave", tooltip: "AH.TRAIT.CleaveHint" },
-    pierce: { label: "AH.TRAIT.Pierce", tooltip: "AH.TRAIT.PierceHint" },
-    splash: { label: "AH.TRAIT.Splash", tooltip: "AH.TRAIT.SplashHint" },
+    cleave: { label: "AH.TARGETING.AREA.Cleave", tooltip: "AH.TRAIT.CleaveHint" },
+    pierce: { label: "AH.TARGETING.AREA.Pierce", tooltip: "AH.TRAIT.PierceHint" },
+    splash: { label: "AH.TARGETING.AREA.Splash", tooltip: "AH.TRAIT.SplashHint" },
   },
 
   // Equipment
@@ -1232,6 +1231,7 @@ AH.traits.all = Object.freeze({
   ...AH.traits.range,
   ...AH.traits.weapon,
   ...AH.traits.armor,
+  ...AH.traits.target,
   ...AH.domains,
   ...AH.damageTypes,
   ...AH.speed,
@@ -1348,6 +1348,7 @@ AH.icons = {
   effects: "fas fa-wand-magic-sparkles",
   check: "fas fa-dice-d20",
   options: "fas fa-gear",
+  targeting: "fas fa-bullseye",
 
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",
