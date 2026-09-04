@@ -3,7 +3,7 @@
   "name": "Vanish",
   "type": "skill",
   "_id": "3rgGG7qnTixM0ic7",
-  "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_defense.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

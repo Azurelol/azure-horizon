@@ -3,7 +3,7 @@
   "name": "Defend",
   "type": "move",
   "_id": "Y2yn9p8RnlayikgF",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

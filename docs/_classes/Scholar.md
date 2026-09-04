@@ -36,7 +36,7 @@ tokenImg: /assets/characters/heroes/scholar_token.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Database</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Database</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 3
 </div>
@@ -45,7 +45,7 @@ tokenImg: /assets/characters/heroes/scholar_token.png
 <p>For each point invested in this skill you learn one of your unique spells.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Fast Learner</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Fast Learner</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -54,7 +54,7 @@ tokenImg: /assets/characters/heroes/scholar_token.png
 <p>Once per battle you can freely perform the Analyze action.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Flash of Insight</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Flash of Insight</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -63,7 +63,7 @@ tokenImg: /assets/characters/heroes/scholar_token.png
 
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Mimic</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Mimic</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 3
 </div>
@@ -81,7 +81,7 @@ tokenImg: /assets/characters/heroes/scholar_token.png
 <p>At the start of a battle when you encounter an enemy you have previously encountered you can immediately…</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Research</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Research</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>

@@ -2,7 +2,7 @@
   "folder": "iaJ4VXZEyynWIQe3",
   "name": "Alchemist Fire",
   "type": "classFeature",
-  "img": "icons/magic/fire/projectile-smoke-swirl-red.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -3,7 +3,7 @@
   "name": "Perfect Parry",
   "type": "skill",
   "_id": "FJOXZx5Cvxgt7FUE",
-  "img": "icons/skills/melee/swords-parry-block-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -21,7 +21,11 @@
       "range": "",
       "type": "",
       "points": 1,
-      "traits": []
+      "traits": [
+        "exhaust"
+      ],
+      "enabled": true,
+      "targeting": ""
     },
     "damage": {
       "schemaVersion": 1,

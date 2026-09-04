@@ -62,7 +62,7 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 <p>During a rest scene you make a devil's bargain with a spirit and ask for their assistance. They help you as requested but it comes with a consequence decided by the director.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/unholy/energy-smoke-pink.webp"><span>Dark Spell</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Dark Spell</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -83,7 +83,7 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 <p>You advance the current casting of a party member one step.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Misery</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Misery</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 2
 </div>

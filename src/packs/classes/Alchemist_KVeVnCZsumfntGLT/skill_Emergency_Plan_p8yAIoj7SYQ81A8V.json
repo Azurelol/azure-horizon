@@ -3,7 +3,7 @@
   "name": "Emergency Plan",
   "type": "skill",
   "_id": "p8yAIoj7SYQ81A8V",
-  "img": "icons/sundries/survival/tape-duct.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_item.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

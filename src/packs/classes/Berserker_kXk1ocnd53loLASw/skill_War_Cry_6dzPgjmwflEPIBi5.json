@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "berserker-war-cry",
-    "description": "<p>Your party gains 1 stack of DAMAGE BUFF.</p>",
+    "description": "<p>Your party gains <em>Strength</em>.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -45,9 +45,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "strength"
+      ],
       "duration": {
         "event": "",
         "tracking": ""

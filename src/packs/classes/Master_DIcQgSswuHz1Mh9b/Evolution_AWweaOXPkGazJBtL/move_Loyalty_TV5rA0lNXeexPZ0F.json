@@ -3,7 +3,7 @@
   "name": "Loyalty",
   "type": "move",
   "_id": "TV5rA0lNXeexPZ0F",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -3,12 +3,12 @@
   "name": "Tag Team",
   "type": "move",
   "_id": "OhZ9WHUbCKRYg7eB",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "master-tag-team",
-    "description": "<p>The companion follows up an attack made by their master with one of their own.</p>",
+    "description": "",
     "trigger": "reaction",
     "power": "",
     "damage": {

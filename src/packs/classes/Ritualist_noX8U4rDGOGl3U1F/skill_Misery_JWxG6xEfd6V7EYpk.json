@@ -3,7 +3,7 @@
   "name": "Misery",
   "type": "skill",
   "_id": "JWxG6xEfd6V7EYpk",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

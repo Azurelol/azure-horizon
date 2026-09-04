@@ -35,7 +35,7 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/sundries/flags/banner-sword-blue.webp"><span>Battle Standard</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Battle Standard</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Closer</span>
@@ -49,7 +49,7 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <p>You brandish your battle standard, inspiring your allies.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/sundries/gaming/chess-knight-white.webp"><span>Countergambit</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Countergambit</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -62,7 +62,7 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <p>Any party member gains the immediate use of a single action that costs 1 AP.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/targeting/target-glowing-yellow.webp"><span>Draw In</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Draw In</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Reaction</span>
@@ -74,7 +74,7 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <p>You immediately gain <em>Taunt</em>. If you are attacked before your next turn starts, a party member can perform a free attack against your attacker.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/sundries/documents/blueprint-magical-brown.webp"><span>Emergency Dispatch</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_action.png"><span>Emergency Dispatch</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -83,7 +83,7 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <p>You can ignore the cooldown on your formations once per battle.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/environment/people/infantry-army.webp"><span>Formation</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Formation</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -105,7 +105,7 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <p>You give your ally an extra reaction which allows them to perform one of their actions on a specific trigger before the start of their next turn.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/sundries/gaming/chess-pawn-white-pink.webp"><span>Pawn Break</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Pawn Break</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>

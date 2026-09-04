@@ -1,14 +1,14 @@
 {
   "folder": "cFbfdJxdSSKxQ4Eb",
-  "name": "Sheathe",
+  "name": "Posture",
   "type": "skill",
   "_id": "DoSC99JjJntmPD0Q",
-  "img": "icons/weapons/swords/sword-katana.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-sheathe",
-    "description": "<p>You sheathe your blade, gaining the <em>Sheathed Blade</em> effect. When you execute a blademaster skill under this effect it gains additional effects.</p>",
+    "slug": "blademaster-posture",
+    "description": "<p>You adopt your stance, gaining the <em>Sheathed Blade</em> effect. When you perform your  next <em>Blademaster</em> skill under this effect it gains additional effects.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

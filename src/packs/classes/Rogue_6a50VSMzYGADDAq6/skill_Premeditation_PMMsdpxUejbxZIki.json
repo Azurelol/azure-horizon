@@ -3,7 +3,7 @@
   "name": "Premeditation",
   "type": "skill",
   "_id": "PMMsdpxUejbxZIki",
-  "img": "icons/skills/melee/strike-dagger-skull-white.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

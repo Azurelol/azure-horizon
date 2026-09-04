@@ -3,7 +3,7 @@
   "name": "Fast Learner",
   "type": "skill",
   "_id": "0CsE4SvKWBi5rHSz",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

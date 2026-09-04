@@ -3,7 +3,7 @@
   "name": "Cycle of Life",
   "type": "skill",
   "_id": "gvMx2zKFZQLLN5WR",
-  "img": "icons/magic/nature/leaf-oak-glow-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

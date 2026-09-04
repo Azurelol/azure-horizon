@@ -3,7 +3,7 @@
   "name": "Call Out",
   "type": "skill",
   "_id": "6IiOxoN9s6YJhrrS",
-  "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

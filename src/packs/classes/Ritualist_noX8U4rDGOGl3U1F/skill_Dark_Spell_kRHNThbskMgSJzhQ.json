@@ -3,7 +3,7 @@
   "name": "Dark Spell",
   "type": "skill",
   "_id": "kRHNThbskMgSJzhQ",
-  "img": "icons/magic/unholy/energy-smoke-pink.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

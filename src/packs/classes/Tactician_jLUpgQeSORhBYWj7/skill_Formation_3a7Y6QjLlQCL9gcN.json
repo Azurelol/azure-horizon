@@ -3,7 +3,7 @@
   "name": "Formation",
   "type": "skill",
   "_id": "3a7Y6QjLlQCL9gcN",
-  "img": "icons/environment/people/infantry-army.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -57,7 +57,7 @@ tokenImg: /assets/characters/heroes/berserker_token.png
 <p>You gain the use of a <em>berserker instinct</em> for each point invested into this skill.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/social/intimidation-impressing.webp"><span>Rage</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Rage</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -85,4 +85,4 @@ tokenImg: /assets/characters/heroes/berserker_token.png
 </div>
 </div>
 
-<p>Your party gains 1 stack of DAMAGE BUFF.</p>
+<p>Your party gains <em>Strength</em>.</p>

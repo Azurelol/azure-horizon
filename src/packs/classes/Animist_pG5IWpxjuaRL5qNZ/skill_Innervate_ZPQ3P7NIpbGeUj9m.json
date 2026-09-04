@@ -3,7 +3,7 @@
   "name": "Innervate",
   "type": "skill",
   "_id": "ZPQ3P7NIpbGeUj9m",
-  "img": "icons/magic/nature/beam-hand-leaves-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

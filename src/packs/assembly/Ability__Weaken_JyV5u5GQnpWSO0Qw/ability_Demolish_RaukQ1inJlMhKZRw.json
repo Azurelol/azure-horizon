@@ -1,16 +1,17 @@
 {
-  "folder": "pG5IWpxjuaRL5qNZ",
-  "name": "Harmony",
-  "type": "skill",
-  "_id": "k22m0IrtLUrj6XH4",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
+  "folder": "JyV5u5GQnpWSO0Qw",
+  "name": "Demolish",
+  "type": "ability",
+  "_id": "RaukQ1inJlMhKZRw",
+  "img": "icons/skills/melee/hand-grip-hammer-spiked-blue.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "animist-harmony",
-    "description": "<p>When you cast a Nature spell you reduce your TP by SL.</p>",
+    "slug": "ability-demolish",
+    "description": "<p>You deal damage to the target and apply <em>Sunder</em>.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -51,33 +52,35 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "sunder"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "",
-    "level": {
-      "current": 1,
-      "max": 2
-    },
+    "power": "low",
+    "intent": "weaken",
+    "weight": "normal",
     "action": {
       "schemaVersion": 1,
+      "enabled": true,
       "range": "",
-      "type": "",
-      "points": 1,
+      "targeting": "",
+      "type": "action",
+      "points": 2,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false
-    },
-    "class": "animist"
+      "enabled": true,
+      "attributes": true,
+      "check": true,
+      "damage": true
+    }
   },
   "effects": [],
   "sort": 0,
@@ -89,12 +92,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787426949315,
+    "createdTime": 1788512630568,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!k22m0IrtLUrj6XH4"
+  "_key": "!items!RaukQ1inJlMhKZRw"
 }

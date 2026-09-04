@@ -3,7 +3,7 @@
   "name": "Brave the Darkness",
   "type": "skill",
   "_id": "K940lm3MCJG6fcHp",
-  "img": "icons/magic/light/beam-strike-village-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

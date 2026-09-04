@@ -3,7 +3,7 @@
   "name": "Companion",
   "type": "skill",
   "_id": "uXx5O5EbktdJd3ny",
-  "img": "icons/creatures/mammals/dog-husky-white-blue.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

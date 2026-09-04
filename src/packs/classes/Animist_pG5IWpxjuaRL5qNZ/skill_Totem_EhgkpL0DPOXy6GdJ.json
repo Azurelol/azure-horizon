@@ -3,7 +3,7 @@
   "name": "Totem",
   "type": "skill",
   "_id": "EhgkpL0DPOXy6GdJ",
-  "img": "icons/magic/nature/tree-animated-stump-mushrooms-teal.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

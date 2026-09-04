@@ -3,7 +3,7 @@
   "name": "Countergambit",
   "type": "skill",
   "_id": "Hm3j2pbRvaVb9SbN",
-  "img": "icons/sundries/gaming/chess-knight-white.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

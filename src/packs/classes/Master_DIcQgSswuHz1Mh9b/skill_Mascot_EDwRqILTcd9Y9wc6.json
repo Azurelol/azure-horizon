@@ -3,7 +3,7 @@
   "name": "Mascot",
   "type": "skill",
   "_id": "EDwRqILTcd9Y9wc6",
-  "img": "icons/creatures/mammals/rabbit-movement-glowing-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

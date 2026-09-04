@@ -3,7 +3,7 @@
   "name": "Heartbreak",
   "type": "skill",
   "_id": "yeQoi0Cp5epREgZX",
-  "img": "icons/skills/wounds/anatomy-organ-heart-red.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

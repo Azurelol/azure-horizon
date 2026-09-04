@@ -3,7 +3,7 @@
   "name": "Attack",
   "type": "move",
   "_id": "nTph3E3lZdM2SYAf",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -3,7 +3,7 @@
   "name": "Poison Tolerance",
   "type": "skill",
   "_id": "Ylqlj8CgkTGqteZP",
-  "img": "icons/skills/toxins/cup-glass-poisoned-held.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_item.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

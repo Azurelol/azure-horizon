@@ -3,7 +3,7 @@
   "name": "Protect",
   "type": "move",
   "_id": "HJCx9j0m5EPks2lL",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

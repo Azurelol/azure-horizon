@@ -1,33 +1,35 @@
 {
-  "folder": "pG5IWpxjuaRL5qNZ",
-  "name": "Harmony",
-  "type": "skill",
-  "_id": "k22m0IrtLUrj6XH4",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
+  "folder": "epeyf7fvrv3mOIwh",
+  "name": "Sear",
+  "type": "ability",
+  "_id": "8rhzh1L1Y5AASgoo",
+  "img": "icons/magic/fire/blast-jet-stream-splash.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "animist-harmony",
-    "description": "<p>When you cast a Nature spell you reduce your TP by SL.</p>",
+    "slug": "ability-sear",
+    "description": "<p>You deal fire damage to the target and apply <em>Burn</em>.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": true,
       "primary": "dex",
-      "secondary": "mig",
-      "grade": "C"
+      "secondary": "ins",
+      "grade": "B"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "mdef",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "untyped"
+        "amount": "5",
+        "type": "fire"
       },
       "secondary": {
         "amount": "",
@@ -44,40 +46,42 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "sear"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "",
-    "level": {
-      "current": 1,
-      "max": 2
-    },
+    "power": "low",
+    "intent": "status",
+    "weight": "normal",
     "action": {
       "schemaVersion": 1,
+      "enabled": true,
       "range": "",
-      "type": "",
-      "points": 1,
+      "targeting": "",
+      "type": "action",
+      "points": 2,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": true,
       "attributes": false,
       "check": false,
       "damage": false
-    },
-    "class": "animist"
+    }
   },
   "effects": [],
   "sort": 0,
@@ -89,12 +93,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787426949315,
+    "createdTime": 1788513735838,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!k22m0IrtLUrj6XH4"
+  "_key": "!items!8rhzh1L1Y5AASgoo"
 }

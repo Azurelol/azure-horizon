@@ -3,7 +3,7 @@
   "name": "Heal Companion",
   "type": "skill",
   "_id": "bbTFmEykzlObxUIP",
-  "img": "icons/magic/life/heart-hand-gold-green-light.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

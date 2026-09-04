@@ -3,7 +3,7 @@
   "name": "Hidden Flask",
   "type": "skill",
   "_id": "GD5wRtjLCVDUZNqe",
-  "img": "icons/sundries/survival/flask-hip-drinking-aluminum.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_item.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -3,7 +3,7 @@
   "name": "Nature Spell",
   "type": "skill",
   "_id": "85PxrGilSxTyJs6R",
-  "img": "icons/magic/nature/leaf-rune-glow-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

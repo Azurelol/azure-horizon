@@ -3,7 +3,7 @@
   "name": "Draw In",
   "type": "skill",
   "_id": "Ya2GzUdQxZ2slLyS",
-  "img": "icons/skills/targeting/target-glowing-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

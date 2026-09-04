@@ -3,7 +3,7 @@
   "name": "Swiftmend",
   "type": "skill",
   "_id": "aO2PlPm1zEvEtvts",
-  "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

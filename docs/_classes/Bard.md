@@ -78,7 +78,7 @@ tokenImg: /assets/characters/heroes/bard_token.png
 <p>When your performance has lasted 2 rounds or more you may end your current song and gain the Finale buff, which increases the damage of your next action by SL.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/tools/instruments/harp-gold-glowing.webp"><span>Harmony</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Harmony</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 2
 </div>
@@ -87,7 +87,7 @@ tokenImg: /assets/characters/heroes/bard_token.png
 <p>While performing you can spend an action to reduce your party's TP by SL.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/wounds/anatomy-organ-heart-red.webp"><span>Heartbreak</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Heartbreak</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 2
 </div>
@@ -109,7 +109,7 @@ tokenImg: /assets/characters/heroes/bard_token.png
 <p>You momentarily stop performing until the end of this turn, releasing you from the usual <em>performance</em> action restrictions.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/life/heart-shadow-red.webp"><span>Love Polygon</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Love Polygon</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>

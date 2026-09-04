@@ -3,7 +3,7 @@
   "name": "Rage",
   "type": "skill",
   "_id": "U2Ctjl0EPeHrARQx",
-  "img": "icons/skills/social/intimidation-impressing.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -3,7 +3,7 @@
   "name": "Potion Rain",
   "type": "skill",
   "_id": "ETGAsRz1B641qv2o",
-  "img": "icons/consumables/potions/bottle-round-corked-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_item.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

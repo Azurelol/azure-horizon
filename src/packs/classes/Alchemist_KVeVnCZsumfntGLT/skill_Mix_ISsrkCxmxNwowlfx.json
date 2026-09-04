@@ -3,7 +3,7 @@
   "name": "Mix",
   "type": "skill",
   "_id": "ISsrkCxmxNwowlfx",
-  "img": "icons/skills/toxins/cauldron-pot-bubbles-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_item.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

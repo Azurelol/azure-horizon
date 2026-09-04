@@ -3,7 +3,7 @@
   "name": "Parry",
   "type": "skill",
   "_id": "0TObl0ThML5gZYGn",
-  "img": "icons/skills/melee/swords-parry-block-blue.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -3,7 +3,7 @@
   "name": "Emergency Dispatch",
   "type": "skill",
   "_id": "tcia2AzT7LMrRVTE",
-  "img": "icons/sundries/documents/blueprint-magical-brown.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

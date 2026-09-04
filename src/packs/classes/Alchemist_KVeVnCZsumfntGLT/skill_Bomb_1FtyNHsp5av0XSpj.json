@@ -3,7 +3,7 @@
   "name": "Bomb",
   "type": "skill",
   "_id": "1FtyNHsp5av0XSpj",
-  "img": "icons/skills/ranged/bomb-grenade-thrown-gray.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

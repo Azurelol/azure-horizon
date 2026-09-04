@@ -1,16 +1,17 @@
 {
-  "folder": "pG5IWpxjuaRL5qNZ",
-  "name": "Harmony",
-  "type": "skill",
-  "_id": "k22m0IrtLUrj6XH4",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
+  "folder": "xJDqS1SeQo6c2Mme",
+  "name": "Bellow",
+  "type": "ability",
+  "_id": "L1d7m3OxtoKXKukt",
+  "img": "icons/skills/social/intimidation-impressing.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "animist-harmony",
-    "description": "<p>When you cast a Nature spell you reduce your TP by SL.</p>",
+    "slug": "ability-bellow",
+    "description": "<p>You gain the <em>Enrage</em> status, which increases your damage dealt whenever you suffer damage.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -51,33 +52,35 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "enrage"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
     "power": "",
-    "level": {
-      "current": 1,
-      "max": 2
-    },
+    "intent": "empower",
+    "weight": "normal",
     "action": {
       "schemaVersion": 1,
+      "enabled": true,
       "range": "",
-      "type": "",
-      "points": 1,
+      "targeting": "",
+      "type": "action",
+      "points": 2,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
       "attributes": false,
       "check": false,
       "damage": false
-    },
-    "class": "animist"
+    }
   },
   "effects": [],
   "sort": 0,
@@ -89,12 +92,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787426949315,
+    "createdTime": 1788512715748,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!k22m0IrtLUrj6XH4"
+  "_key": "!items!L1d7m3OxtoKXKukt"
 }

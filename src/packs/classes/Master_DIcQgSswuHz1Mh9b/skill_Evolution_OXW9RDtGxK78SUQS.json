@@ -3,7 +3,7 @@
   "name": "Evolution",
   "type": "skill",
   "_id": "OXW9RDtGxK78SUQS",
-  "img": "icons/creatures/mammals/humanoid-wolf-dog-blue.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

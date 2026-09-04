@@ -37,7 +37,7 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/melee/blade-tip-chipped-blood-red.webp"><span>Coup de Grace</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Coup de Grace</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -68,7 +68,7 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 <p>When you would be attacked, an adjacent party member is attacked instead and you gain a stack of <em>Adrenaline</em>.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/melee/strike-dagger-skull-white.webp"><span>Premeditation</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Premeditation</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Action 1</span>
@@ -80,6 +80,19 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 <p>Your next attack inflicts an ailment on the target.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_defense.png"><span>Roll</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Cooldown</span>
+<span class="document-trait">Reaction</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You shift to an adjacent space.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/rogue/throw.png"><span>Surprise Attack</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
@@ -89,7 +102,7 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 <p>During initiative you gain <em>Stealth</em>.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/skills/social/theft-pickpocket-bribery-brown.webp"><span>Underworld Connections</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Underworld Connections</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>
@@ -101,7 +114,7 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 <p>While in a settlement, any exploration actions that deal with the underworld elements of society require no checks. You can also invite a guest at your discretion's and the GM.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/perception/shadow-stealth-eyes-purple.webp"><span>Vanish</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_defense.png"><span>Vanish</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>

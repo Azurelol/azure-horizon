@@ -1,16 +1,17 @@
 {
-  "folder": "pG5IWpxjuaRL5qNZ",
-  "name": "Harmony",
+  "folder": "6a50VSMzYGADDAq6",
+  "name": "Roll",
   "type": "skill",
-  "_id": "k22m0IrtLUrj6XH4",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
+  "_id": "7ZAxaZHUC3NDdcEz",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_defense.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "animist-harmony",
-    "description": "<p>When you cast a Nature spell you reduce your TP by SL.</p>",
+    "slug": "rogue-roll",
+    "description": "<p>You shift to an adjacent space.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -44,9 +45,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "2",
       "perTarget": false
     },
     "effects": {
@@ -62,22 +63,27 @@
     "power": "",
     "level": {
       "current": 1,
-      "max": 2
+      "max": 1
     },
     "action": {
       "schemaVersion": 1,
+      "enabled": true,
       "range": "",
-      "type": "",
+      "targeting": "",
+      "type": "reaction",
       "points": 1,
-      "traits": []
+      "traits": [
+        "cooldown"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
       "attributes": false,
       "check": false,
       "damage": false
     },
-    "class": "animist"
+    "class": "rogue"
   },
   "effects": [],
   "sort": 0,
@@ -89,12 +95,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787426949315,
+    "createdTime": 1788512140211,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!k22m0IrtLUrj6XH4"
+  "_key": "!items!7ZAxaZHUC3NDdcEz"
 }

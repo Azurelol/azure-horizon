@@ -140,7 +140,6 @@ const STATUS_EFFECTS = Object.freeze({
       },
     ],
   },
-
   // - reduced block
   frail: {
     id: "frail",

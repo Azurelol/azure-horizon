@@ -34,7 +34,7 @@ tokenImg: /assets/characters/heroes/animist_token.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/nature/leaf-oak-glow-green.webp"><span>Cycle of Life</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Cycle of Life</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>
@@ -43,7 +43,7 @@ tokenImg: /assets/characters/heroes/animist_token.png
 
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/nature/instrument-recorder-leaves.webp"><span>Harmony</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Harmony</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 2
 </div>
@@ -52,7 +52,7 @@ tokenImg: /assets/characters/heroes/animist_token.png
 <p>When you cast a Nature spell you reduce your TP by SL.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/nature/beam-hand-leaves-green.webp"><span>Innervate</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Innervate</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
@@ -65,7 +65,7 @@ tokenImg: /assets/characters/heroes/animist_token.png
 <p>The next spell cast of the target party member with a cost of SL * 10 MP or less is instead cast freely.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/nature/leaf-flower-wreath-glow-green-blue.webp"><span>Natural Medicine</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Natural Medicine</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>
@@ -77,7 +77,7 @@ tokenImg: /assets/characters/heroes/animist_token.png
 <p>During a rest scene in a natural environment, you and your allies can each recover from negative status effect.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/nature/leaf-rune-glow-green.webp"><span>Nature Spell</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Nature Spell</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 5
 </div>
@@ -86,7 +86,7 @@ tokenImg: /assets/characters/heroes/animist_token.png
 <p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Nature </em>domain.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/nature/leaf-juggle-humanoid-green.webp"><span>Swiftmend</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Swiftmend</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
@@ -99,7 +99,7 @@ tokenImg: /assets/characters/heroes/animist_token.png
 <p>Your next <em>healing</em> spell of the Nature domain costs 1 less AP and is cast instantly.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="icons/magic/nature/tree-animated-stump-mushrooms-teal.webp"><span>Totem</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Totem</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1
 </div>

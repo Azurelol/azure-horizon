@@ -1,33 +1,35 @@
 {
-  "folder": "pG5IWpxjuaRL5qNZ",
-  "name": "Harmony",
-  "type": "skill",
-  "_id": "k22m0IrtLUrj6XH4",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
+  "folder": "SMkvBfZbUFJku1OT",
+  "name": "Shove",
+  "type": "ability",
+  "_id": "kxj8j1D5v92SAezu",
+  "img": "icons/magic/movement/abstract-ribbons-red-orange.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "animist-harmony",
-    "description": "<p>When you cast a Nature spell you reduce your TP by SL.</p>",
+    "slug": "ability-tackle",
+    "description": "<p>You deal damage to the target and <em>push</em> it.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "grade": "C"
+      "grade": "B"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "mig",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
         "amount": "",
-        "type": "untyped"
+        "type": "bludgeoning"
       },
       "secondary": {
         "amount": "",
@@ -59,25 +61,27 @@
         "tracking": ""
       }
     },
-    "power": "",
-    "level": {
-      "current": 1,
-      "max": 2
-    },
+    "power": "low",
+    "intent": "control",
+    "weight": "normal",
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "enabled": true,
+      "range": "melee",
+      "targeting": "single",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "shift"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
       "attributes": false,
       "check": false,
       "damage": false
-    },
-    "class": "animist"
+    }
   },
   "effects": [],
   "sort": 0,
@@ -89,12 +93,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787426949315,
+    "createdTime": 1788513891996,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!k22m0IrtLUrj6XH4"
+  "_key": "!items!kxj8j1D5v92SAezu"
 }
