@@ -11,7 +11,10 @@
   </button>
 
   <div class="collapse navbar-collapse" id="main-navbar">
-    <audio controls src="{{ site.baseurl }}/assets/audio/theme.ogg"></audio>
+    <audio id="bgm" controls src="{{ site.baseurl }}/assets/audio/theme.ogg"></audio>
+    <script>
+      document.getElementById('bgm').volume = 0.1;
+    </script>
     <ul class="navbar-nav ml-auto">
       {%- for link in site.navbar-links -%}
         {%- if link[1].first %}
