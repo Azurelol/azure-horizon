@@ -14,7 +14,7 @@ import AH from "../../config.mjs";
 import { Campaign } from "../../pipelines/_module.mjs";
 import { ExperienceTableRenderer } from "../campaign/_module.mjs";
 import { ChatAction, ChatMessageBuilder } from "../../helpers/_module.mjs";
-import { Formulas } from '../../ruleset/_module.mjs';
+import { Formulas } from "../../ruleset/_module.mjs";
 
 export class PartySheet extends AHActorSheet {
 
@@ -36,7 +36,7 @@ export class PartySheet extends AHActorSheet {
       revealActor: this.#revealActor,
 
       triggerExperience: this.#triggerExperience,
-      levelUp: this.#levelUp
+      levelUp: this.#levelUp,
 
       addCodexEntry: this.#addCodexEntry,
       onCodexEntry: this.#onCodexEntry,
@@ -447,24 +447,22 @@ export class PartySheet extends AHActorSheet {
     const total = this.actor.system.resources.xp;
     const lc = Formulas.calculateLevelsGained(total);
     if (lc.levelsGained === 0) {
+      ui.notifications.warn("The party does not have enough experience to level up!");
       return;
     }
 
     const heroes = await this.system.getHeroes();
     for (const hero of heroes) {
-      // TODO: Apply levels
-
+      const hl = hero.actor.system.level;
+      await hero.actor.update({
+        ["system.level"]: hl + lc.levelsGained,
+      });
     }
 
     const builder = new ChatMessageBuilder(this.actor, null);
-    builder.template("chat/chat-section-experience-trigger", {
-      text: text,
-      name: "Party",
-      amount: amount,
-    });
-
+    builder.text(`The party gained ${lc.levelsGained} levels!`);
     this.actor.update({
-      ["system.resources.xp"]: current + Number(amount),
+      ["system.resources.xp"]: lc.remainingExperience,
     });
     return builder.create();
   }
