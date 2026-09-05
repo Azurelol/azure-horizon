@@ -34,6 +34,8 @@
   /*Override*/
   /*--body-font: PressStart2P, 'Times New Roman', serif;*/
   --ah-font-primary: Pixeloid, 'Open Sans', serif;
+  --ah-divider-scene-margin: 640px;
+  --ah-page-background-color: #141445;
 }
 
 
@@ -83,16 +85,21 @@ body {
 }
 
 .ah-divider-scene {
-  background: url("/assets/img/background_scene.webp")
+  background: url("/assets/img/background_scene.webp");
   background-position-x: 0%;
   background-position-y: 0%;
   width: 100%;
   height: 541px;
-  margin-top: -280px;
+  margin-top: var(--ah-divider-scene-margin);
 }
 
 .ah-default {
-  background: url("/assets/img/background_3.webp") no-repeat fixed center center / cover;;
+  background-color: var(--ah-page-background-color);
+  background-image: url("/assets/img/background_3.webp");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+
   main {
     color: var(--ah-content-color);
   }

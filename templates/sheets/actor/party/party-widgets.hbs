@@ -9,9 +9,9 @@
 
 	<!-- RESOURCES -->
 	<div class="resources">
-    <a class="">
-
+    <a data-action="levelUp" data-tooltip="{{localize 'AH.EXPERIENCE.LevelUp'}}">
+      <i class="ah-icon --m {{ahIconClass 'xp'}}"></i>
     </a>
-    {{ahInput 'system.resources.xp' system.resources.xp size ='l' type='number' icon=(ahIconClass 'xp') tooltip='AH.CHARACTER.ExperiencePoint.plural' classes='--transparent ah-flex-shrink' }}
+    {{ahInput 'system.resources.xp' system.resources.xp size ='l' type='number' tooltip='AH.CHARACTER.ExperiencePoint.plural' classes='--transparent ah-flex-shrink' }}
   </div>
 </section>

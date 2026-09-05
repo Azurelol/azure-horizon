@@ -34,6 +34,7 @@ export class PartySheet extends AHActorSheet {
       activate: this.#activate,
 
       revealActor: this.#revealActor,
+      inspectCharacter: this.#inspectCharacter,
 
       triggerExperience: this.#triggerExperience,
       levelUp: this.#levelUp,
@@ -414,6 +415,28 @@ export class PartySheet extends AHActorSheet {
           break;
       }
     }
+  }
+
+  /**
+   * @this PartySheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #inspectCharacter(event, target) {
+    const uuid = target.dataset.actor;
+    const actor = fromUuidSync(uuid);
+    if (actor) {
+      actor.sheet.render(true);
+    }
+    // TODO: Add character-only tab
+    // const character = this.system.constructCharacterData(actor);
+    // if (character) {
+    //   this.inspectedCharacter = character;
+    //   this.render(true, {
+    //     tab: 'character',
+    //   });
+    // }
   }
 
   /**

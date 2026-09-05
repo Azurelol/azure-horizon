@@ -71,7 +71,7 @@ export default class Formulas {
    * @returns LevelCalculation
    */
   static calculateLevelsGained(xp) {
-    const levels = xp / XP_PER_LEVEL;
+    const levels = Math.round(xp / XP_PER_LEVEL);
     const remaining = xp % XP_PER_LEVEL;
     return {
       levelsGained: levels,

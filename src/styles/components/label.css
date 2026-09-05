@@ -17,6 +17,7 @@
   input {
     font-size: var(--ah-input-font-size);
     color: var(--ah-content-primary);
+    min-width: 48px;
   }
 
   &.--transparent {
