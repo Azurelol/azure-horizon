@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: collection
 title: Gallery
 permalink: /gallery/
 ---

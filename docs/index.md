@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-<h1 class="index-title">{{ "Azure Horizon" }}</h1>
+<h1 class="index-title">{{ "A new adventure begins" }}</h1>
 <h6 class="index-subtitle">A searchable reference website for the Azure Horizon TTRPG.</h6>
 
 <hr>

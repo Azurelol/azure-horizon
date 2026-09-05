@@ -27,12 +27,13 @@
     var( --ah-document-header-background) 0%,
     var( --ah-entry-background) 100%
   );
-  --ah-entry-icon-color: #354564;
+  --ah-entry-icon-color: #eed796;
+  --ah-filter-drop-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
 
   /*Override*/
   /*--body-font: PressStart2P, 'Times New Roman', serif;*/
-  /*--header-font: Pixeloid, 'Open Sans', serif;*/
+  --ah-font-primary: Pixeloid, 'Open Sans', serif;
 }
 
 
@@ -78,8 +79,26 @@ body {
   }
 }
 
+.ah-title {
+  font-family: var(--ah-font-primary);
+}
+
+.ah-default {
+  background: url("/assets/img/background_3.webp") no-repeat fixed center center / cover;;
+  main {
+    .divider {
+      background: url("/assets/img/background_scene.webp")
+      background-position-x: 0%;
+      background-position-y: 0%;
+      width: 100%;
+      height: 541px;
+      margin-top: -280px;
+    }
+  }
+}
+
 .ah-page {
-  background: url("/assets/img/background_1.webp") no-repeat fixed center center / cover;;
+  background: url("/assets/img/background_2.webp") no-repeat fixed center center / cover;;
   main {
     background: #FFF;
     border: 4px solid var(--ah-entry-background);
@@ -189,6 +208,7 @@ body {
         text-transform: uppercase;
         font-weight: 800;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+        /*filter: var(--ah-filter-glow);*/
       }
 
       img, i {
@@ -196,9 +216,8 @@ body {
         width: var(--icon-size);
         height: var(--icon-size);
         font-size: var(--icon-size);
-        /*filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));*/
+        filter: var(--ah-filter-drop-shadow);
 
-        filter: var(--ah-filter-glow);
       }
 
       &:hover,
