@@ -22,6 +22,11 @@
   --ah-trait-color: #f4f0f0;
   --ah-document-header-background: #354564;
   --ah-entry-background: #4f5e8c;
+  --ah-entry-gradient: linear-gradient(
+    to right,
+    var( --ah-document-header-background) 0%,
+    var( --ah-entry-background) 100%
+  );
   --ah-entry-icon-color: #354564;
 
   /*Override*/
@@ -52,7 +57,10 @@ header {
   .intro-header {
     color: var(--ah-content-header);
     h1  {
-      text-shadow: -2px -1px 0 #000, 2px -1px 0 #000, -2px 10px 0 #000, 1px 1px 0 #000;
+      text-shadow: -2px -1px 0 #000,
+      2px -1px 0 #000,
+      -2px 5px 0 #000,
+      1px 1px 0 #000;
     }
   }
 }
@@ -172,10 +180,13 @@ body {
       justify-content: center;
       text-align: center;
       gap: 0.5rem;
+      color: var(--ah-content-color);
 
       span {
-        font-size: large;
+        font-size: 20px;
         text-transform: uppercase;
+        font-weight: 800;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
       }
 
       img, i {
@@ -183,6 +194,7 @@ body {
         width: var(--icon-size);
         height: var(--icon-size);
         font-size: var(--icon-size);
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
       }
     }
   }
