@@ -317,6 +317,12 @@ export default Object.freeze({
         ...options.hash,
       });
     });
+    Handlebars.registerHelper("ahTabs", function (tabs, options) {
+      return getTemplateString(COMPONENT_TEMPLATES.tabs, {
+        tabs,
+        ...options.hash,
+      });
+    });
     Handlebars.registerHelper("ahValue", function (value, reference) {
       return (value instanceof Function ? value(reference) : value);
     });

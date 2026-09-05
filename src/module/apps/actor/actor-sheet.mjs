@@ -143,6 +143,7 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
       systemFields: this.actor.system.schema.fields,
       flags: this.actor.flags,
       config: CONFIG,
+      user: game.user,
       AH: AH,
       enriched: await FoundryUtils.getEnriched(this.actor, "Actor", {
         rollData: rollData,

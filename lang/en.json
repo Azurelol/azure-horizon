@@ -51,6 +51,8 @@
         "Effects": "Effects",
         "Assembly": "Assembly",
         "Campaign": "Campaign",
+        "Opening": "Opening",
+        "Ending": "Ending",
         "Advancement": "Advancement",
         "Codex": "Codex",
         "Settings": "Settings"

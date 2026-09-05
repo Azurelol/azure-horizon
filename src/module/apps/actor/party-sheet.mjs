@@ -83,10 +83,17 @@ export class PartySheet extends AHActorSheet {
         { id: "overview", label: "AH.SHEET.Tabs.Overview", icon: "ra ra-double-team" },
         { id: "inventory", label: "AH.SHEET.Tabs.Inventory", icon: "ra ra-ammo-bag" },
         { id: "codex", label: "AH.SHEET.Tabs.Codex", icon: "ra ra-book" },
-        { id: "campaign", label: "AH.SHEET.Tabs.Campaign", icon: "ra ra-wooden-sign" },
+        { id: "campaign", label: "AH.SHEET.Tabs.Campaign", icon: "ra ra-wooden-sign", gm: true },
         { id: "settings", label: "AH.SHEET.Tabs.Settings", icon: "ra ra-candle" },
       ],
       initial: "overview",
+    },
+    campaign: {
+      tabs: [
+        { id: "opening", label: "AH.SHEET.Tabs.Opening", icon: "ra ra-double-team" },
+        { id: "ending", label: "AH.SHEET.Tabs.Ending", icon: "ra ra-double-team" },
+      ],
+      initial: "opening",
     },
   };
 
@@ -168,6 +175,7 @@ export class PartySheet extends AHActorSheet {
   /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    context.tabs = this._prepareTabs("primary");
     return context;
   }
 
@@ -176,12 +184,10 @@ export class PartySheet extends AHActorSheet {
   /** @inheritdoc */
   async _preparePartContext(partId, ctx, options) {
     const context = await super._preparePartContext(partId, ctx, options);
-    const data = this.system;
     // IMPORTANT: Set the active tab
     if (partId in context.tabs) context.tab = context.tabs[partId];
     switch (partId) {
       case "tabs":
-        context.tabs = this._prepareTabs("primary");
         break;
       case "overview":
         context.characters = await this.system.getHeroes();
@@ -189,7 +195,9 @@ export class PartySheet extends AHActorSheet {
         break;
       case "character":
         break;
-
+      case "campaign":
+        context.campaignTabs = this._prepareTabs("campaign");
+        break;
       case "inventory": {
         context.tables = [
           await this.#equipmentTableRenderer.render(this.actor.getItemsByType("weapon", "armor", "accessory", "consumable")),
