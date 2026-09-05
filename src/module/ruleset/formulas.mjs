@@ -23,6 +23,8 @@ const BLOCK_RATIO_LIGHT_ARMOR = 0.5;
 const BLOCK_RATIO_HEAVY_ARMOR = 0.1;
 const BLOCK_TP_GAINED = 1;
 
+const XP_PER_LEVEL = 10;
+
 /**
  * @typedef Modifier
  * @property {Number} additive Should default to 0.
@@ -56,6 +58,26 @@ export default class Formulas {
    */
   static calculateProficiencyBonus(level) {
     return level / 5;
+  }
+
+  /**
+   * @typedef LevelCalculation
+   * @property levelsGained
+   * @property remainingExperience
+   */
+
+  /**
+   * @param xp
+   * @returns LevelCalculation
+   */
+  static calculateLevelsGained(xp) {
+    const levels = xp / XP_PER_LEVEL;
+    const remaining = xp % XP_PER_LEVEL;
+    return {
+      levelsGained: levels,
+      remainingExperience: remaining,
+    };
+
   }
 
   /**

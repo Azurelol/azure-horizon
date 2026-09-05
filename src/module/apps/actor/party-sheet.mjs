@@ -1,5 +1,11 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
-import { getSystemSetting, renderTemplate, setSystemSetting, systemTemplatePath } from "../../constants.mjs";
+import {
+  getSystemSetting,
+  renderTemplate,
+  setSystemSetting,
+  systemPath,
+  systemTemplatePath,
+} from "../../constants.mjs";
 import { CodexBrowser } from "../ui/_module.mjs";
 import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
 import { CharacterSheet } from "./character-sheet.mjs";
@@ -7,7 +13,8 @@ import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 import { Campaign } from "../../pipelines/_module.mjs";
 import { ExperienceTableRenderer } from "../campaign/_module.mjs";
-import { ChatAction } from "../../helpers/_module.mjs";
+import { ChatAction, ChatMessageBuilder } from "../../helpers/_module.mjs";
+import { Formulas } from '../../ruleset/_module.mjs';
 
 export class PartySheet extends AHActorSheet {
 
@@ -27,6 +34,10 @@ export class PartySheet extends AHActorSheet {
       activate: this.#activate,
 
       revealActor: this.#revealActor,
+
+      triggerExperience: this.#triggerExperience,
+      levelUp: this.#levelUp
+
       addCodexEntry: this.#addCodexEntry,
       onCodexEntry: this.#onCodexEntry,
       importCodexActorEntry: this.#onImportCodexActorEntry,
@@ -212,7 +223,10 @@ export class PartySheet extends AHActorSheet {
               return new ChatAction("revealActor", null, hero.name).withImage(hero.actor.img);
             });
           }
-          const tr = new ExperienceTableRenderer({ title: group.label, actions: actions });
+          //TODO: Add hero imgs
+          const tr = new ExperienceTableRenderer({ title: group.label, actions: actions,
+            data: {
+            } });
           const tb = await tr.render(group.triggers);
           tables.push(tb);
         }
@@ -400,6 +414,59 @@ export class PartySheet extends AHActorSheet {
           break;
       }
     }
+  }
+
+  /**
+   * @this PartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #triggerExperience(event, target) {
+    const { text, amount } = target.dataset;
+    const builder = new ChatMessageBuilder(this.actor, null);
+    builder.template("chat/chat-section-experience-trigger", {
+      text: text,
+      name: "Party",
+      amount: amount,
+    });
+    const current = this.actor.system.resources.xp;
+    this.actor.update({
+      ["system.resources.xp"]: current + Number(amount),
+    });
+    return builder.create();
+  }
+
+  /**
+   * @this PartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #levelUp(event, target) {
+    const total = this.actor.system.resources.xp;
+    const lc = Formulas.calculateLevelsGained(total);
+    if (lc.levelsGained === 0) {
+      return;
+    }
+
+    const heroes = await this.system.getHeroes();
+    for (const hero of heroes) {
+      // TODO: Apply levels
+
+    }
+
+    const builder = new ChatMessageBuilder(this.actor, null);
+    builder.template("chat/chat-section-experience-trigger", {
+      text: text,
+      name: "Party",
+      amount: amount,
+    });
+
+    this.actor.update({
+      ["system.resources.xp"]: current + Number(amount),
+    });
+    return builder.create();
   }
 
   static initialize() {

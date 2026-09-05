@@ -4,6 +4,13 @@ blockquote{
   font-size: var(--ah-blockquote-font-size);
   font-family: var(--ah-font-family-application);
   font-style: normal;
+
+  &.--default {
+    background: unset;
+    border: unset;
+    font-style: italic;
+    font-size: unset;
+  }
 }
 
 table {

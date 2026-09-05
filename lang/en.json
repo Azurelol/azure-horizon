@@ -214,6 +214,8 @@
     },
     "EXPERIENCE": {
       "Trigger": "Experience Trigger",
+      "TriggerMessage": "The party has met an experience trigger and earned {amount} XP.",
+      "GainMessage": "The party earns {amount} XP.",
       "GROUP": {
         "Base": "Base"
       },
@@ -813,6 +815,7 @@
       "Hidden": "Hidden",
       "Tags": "Tags",
       "Remove": "Remove",
+      "Trigger": "Trigger",
       "Theme": "Theme",
       "Preview": "Preview",
       "Perform": "Perform",

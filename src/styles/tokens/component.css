@@ -152,5 +152,5 @@
   /*Blockquote*/
   --ah-blockquote-background: var(--ah-surface-panel-block);
   --ah-blockquote-border: var(--ah-border-thick);
-  --ah-blockquote-font-size: var(--ah-font-size-lg);
+  --ah-blockquote-font-size: var(--ah-font-size-md);
 }

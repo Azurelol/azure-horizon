@@ -25,6 +25,7 @@ import { renderTemplate } from "../../constants.mjs";
  * @property {(T) => Boolean} isVisible
  * @property {Boolean} preview Whether the table is set to preview-mode
  * @property {Boolean} hideIfEmpty
+ * @property {Record<string, Object>} data Additional top-level data that can be reused throughout cells.
  */
 
 /**
