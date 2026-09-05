@@ -50,6 +50,7 @@
         "Profile": "Profile",
         "Effects": "Effects",
         "Assembly": "Assembly",
+        "Campaign": "Campaign",
         "Advancement": "Advancement",
         "Codex": "Codex",
         "Settings": "Settings"
@@ -509,6 +510,7 @@
       "Gain": "Gain",
       "Song": "Song",
       "Tension": "Tension",
+      "Sustain": "Sustain",
       "Draw": "Draw",
       "Loss": "Loss",
       "Chain": "Chain",

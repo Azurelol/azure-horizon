@@ -1090,13 +1090,14 @@ AH.traits = {
     opener: { label: "AH.TRAIT.Opener", tooltip: "AH.TRAIT.OpenerHint" },
     closer: { label: "AH.TRAIT.Closer", tooltip: "AH.TRAIT.CloserHint" },
     exhaust: { label: "AH.TRAIT.Exhaust", tooltip: "AH.TRAIT.ExhaustHint" },
-    shift: { label: "AH.TRAIT.Shift", tooltip: "AH.TRAIT.ShiftHint" },
 
     charge: { label: "AH.TRAIT.Charge", tooltip: "AH.TRAIT.ChargeHint" },
     channel: { label: "AH.TRAIT.Channel", tooltip: "AH.TRAIT.ChannelHint" },
     cast: { label: "AH.TRAIT.Cast", tooltip: "AH.TRAIT.CastHint" },
 
+    shift: { label: "AH.TRAIT.Shift", tooltip: "AH.TRAIT.ShiftHint" },
     tension: { label: "AH.TRAIT.Tension", tooltip: "AH.TRAIT.TensionHint" },
+    sustain: { label: "AH.TRAIT.Sustain", tooltip: "AH.TRAIT.SustainHint" },
     pressure: { label: "AH.TRAIT.Pressure", tooltip: "AH.TRAIT.PressureHint" },
     interrupt: { label: "AH.TRAIT.Interrupt", tooltip: "AH.TRAIT.InterruptHint" },
     free: { label: "AH.TRAIT.Free", tooltip: "AH.FreeHint" },

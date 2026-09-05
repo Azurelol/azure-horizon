@@ -84,6 +84,7 @@
     }
 
     .overview {
+      overflow: clip;
       .bars {
         padding-left: 34px;
       }

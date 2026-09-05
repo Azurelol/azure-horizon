@@ -87,7 +87,12 @@ Hooks.on("preCreateItem", (item, options, userId) => {
     switch (item.type) {
       case "skill":
       case "classFeature":
+      case "move":
         img = systemAssetPath("icons/classes/skill_attack.png");
+        break;
+
+      case "spell":
+        img = systemAssetPath("icons/classes/skill_spell.png");
         break;
     }
     if (img) {

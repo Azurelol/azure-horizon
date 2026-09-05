@@ -120,7 +120,7 @@ ol.acc-list li {
     position: relative;
     height: 180px;
     gap: 16px;
-    color: var(--ah-color-primary);
+    background: var(--ah-surface-entry-gradient);
 
     .ah-list__entry__left {
       display: flex;

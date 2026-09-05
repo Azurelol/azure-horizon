@@ -83,6 +83,7 @@ export class PartySheet extends AHActorSheet {
         { id: "overview", label: "AH.SHEET.Tabs.Overview", icon: "ra ra-double-team" },
         { id: "inventory", label: "AH.SHEET.Tabs.Inventory", icon: "ra ra-ammo-bag" },
         { id: "codex", label: "AH.SHEET.Tabs.Codex", icon: "ra ra-book" },
+        { id: "campaign", label: "AH.SHEET.Tabs.Campaign", icon: "ra ra-wooden-sign" },
         { id: "settings", label: "AH.SHEET.Tabs.Settings", icon: "ra ra-candle" },
       ],
       initial: "overview",
@@ -109,6 +110,9 @@ export class PartySheet extends AHActorSheet {
     },
     codex: {
       template: systemTemplatePath("sheets/actor/party/party-codex"),
+    },
+    campaign: {
+      template: systemTemplatePath("sheets/actor/party/party-campaign"),
     },
     settings: {
       template: systemTemplatePath("sheets/actor/party/party-settings"),
