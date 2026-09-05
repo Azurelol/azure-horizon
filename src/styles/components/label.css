@@ -18,6 +18,14 @@
     font-size: var(--ah-input-font-size);
     color: var(--ah-content-primary);
   }
+
+  &.--transparent {
+    input {
+      background: transparent;
+      text-align: center;
+      border: none;
+    }
+  }
 }
 
 .ah-selector {
