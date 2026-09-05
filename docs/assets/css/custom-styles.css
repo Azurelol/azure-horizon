@@ -82,10 +82,6 @@ header {
     }
 
 
-    .page-heading {
-      margin-top: var(--ah-title-margin);
-      margin-bottom: var(--ah-content-margin);
-    }
   }
 }
 
@@ -148,9 +144,13 @@ body {
 }
 
 .ah-collection {
+  header {
+    .page-heading {
+      margin-top: var(--ah-title-margin);
+      margin-bottom: var(--ah-content-margin);
+    }
+  }
 }
-
-
 
 .index-subtitle {
   font-style: italic;
