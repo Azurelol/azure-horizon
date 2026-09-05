@@ -1,6 +1,7 @@
 ---
 layout: collection
 title: Spells
+bodyClass: ah-collection-alt
 permalink: /spells/
 ---
 

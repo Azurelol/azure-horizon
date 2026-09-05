@@ -112,6 +112,10 @@ body {
   background: url("/assets/img/background_2.webp") no-repeat fixed center center / cover;;
 }
 
+.ah-collection-alt {
+  background: url("/assets/img/background_1.webp") no-repeat fixed center center / cover;;
+}
+
 .index-title {
   font-size: 4em;
   text-transform: uppercase;
