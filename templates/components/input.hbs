@@ -1,5 +1,9 @@
 <label class="ah-input {{classes}}" data-tooltip="{{localize tooltip}}" aria-describedby="tooltip">
-  <i class="ah-icon --{{size}} {{icon}}"></i>
-  <span class="ah-input__label">{{localize label}}</span>
+  {{#if icon}}
+    <i class="ah-icon --{{size}} {{icon}}"></i>
+  {{/if}}
+  {{#if label}}
+    <span class="ah-input__label">{{localize label}}</span>
+  {{/if}}
   <input class="ah__input__control" name="{{path}}" value="{{ value }}" type="{{type}}" />
 </label>

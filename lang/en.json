@@ -208,6 +208,14 @@
         "Block": "Block Ratio"
       }
     },
+    "EXPERIENCE": {
+      "GROUP": {
+        "Base": "Base"
+      },
+      "TRIGGERS": {
+        "Defeat"
+      }
+    },
     "CLASS": {
       "FEATURE": {
         "Song": "Song"

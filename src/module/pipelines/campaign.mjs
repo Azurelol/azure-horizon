@@ -10,6 +10,10 @@ async function prepareOpeningData(party) {
 
 }
 
+const BASE_TRIGGERS = [
+
+];
+
 /**
  * @typedef ExperienceTriggerGroup
  * @property {String} text
@@ -18,8 +22,7 @@ async function prepareOpeningData(party) {
 
 /**
  * @typedef EpisodeEndingData
- * @property {ExperienceTriggerGroup} base
- * @property {ExperienceTriggerGroup[]} characters
+ * @property {Record<string, ExperienceTriggerGroup>} groups
  */
 
 /**
@@ -30,7 +33,11 @@ async function prepareEndingData(party) {
   const heroes = await party.getHeroes();
   /** @type EpisodeEndingData **/
   let data = {};
+  data.groups = {
+    "AH.EXPERIENCE.GROUP.Base": BASE_TRIGGER,
+  };
   for (const hero of heroes) {
+
   }
   return data;
 }

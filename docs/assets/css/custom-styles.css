@@ -47,16 +47,18 @@ img {
 }
 
 body {
-  background: url("assets/img/background_1.webp");
+  background: url("/assets/img/background_1.webp") no-repeat fixed center center / cover;;
 }
 
-.container-md {
+main.container-md {
   background: #FFF3CC;
   border: 4px solid var(--ah-entry-background);
   padding: 1rem;
   border-radius: 4px;
+}
 
-  .page-heading {
+header {
+  .intro-header {
     color: var(--ah-content-color);
   }
 }
