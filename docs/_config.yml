@@ -148,7 +148,7 @@ page-col: "#FFFFFF"
 text-col: "#1A2233"        # navy, for body text
 link-col: "#0072CE"        # azure
 hover-col: "#004C99"       # darker azure on hover
-navbar-col: "#1A2233"      # navy
+navbar-col: rgba(26, 34, 51, 0.5); # navy
 navbar-text-col: "#FFFFFF"
 navbar-border-col: "#2C3A5C"  # lighter navy border
 footer-col: "#1A2233"      # navy

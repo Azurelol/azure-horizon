@@ -86,6 +86,7 @@ body {
 .ah-default {
   background: url("/assets/img/background_3.webp") no-repeat fixed center center / cover;;
   main {
+    color: var(--ah-content-color);
     .divider {
       background: url("/assets/img/background_scene.webp")
       background-position-x: 0%;
