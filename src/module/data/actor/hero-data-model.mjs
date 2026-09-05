@@ -60,7 +60,7 @@ export default class HeroDataModel extends CharacterDataModel {
   /**
    * @type {Set<AH_ItemType>}
    */
-  static ITEM_TYPES = new Set(["class", "skill", "armor", "weapon", "accessory", "consumable", "spell"]);
+  static ITEM_TYPES = new Set(["class", "skill", "classFeature", "armor", "weapon", "accessory", "consumable", "engram", "spell"]);
 
   static defineSchema() {
     return Object.assign(super.defineSchema(), {

@@ -16,6 +16,7 @@
 .ah-table__collection {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 
   table {
     margin-top: 0;

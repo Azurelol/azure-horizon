@@ -11,14 +11,38 @@ async function prepareOpeningData(party) {
 }
 
 /**
- * @typedef ExperienceTriggerGroup
+ * @typedef ExperienceTrigger
  * @property {String} text
- * @property {Number} points
+ * @property {Number} amount
  */
 
-const BASE_TRIGGERS = [
-  "AH.EXPERIENCE.TRIGGERS",
-];
+/**
+ * @typedef ExperienceTriggerGroup
+ * @property {PartyHeroData[]} heroes The heroes that can make use of this trigger.
+ * @property {String} label
+ * @property {ExperienceTrigger[]} triggers
+ */
+
+/**
+ * @type {ExperienceTriggerGroup}
+ */
+const BASE_TRIGGERS = {
+  label: "AH.EXPERIENCE.GROUP.Base",
+  triggers: [
+    {
+      text: "AH.EXPERIENCE.TRIGGERS.Scheduling",
+      amount: 5,
+    },
+    {
+      text: "AH.EXPERIENCE.TRIGGERS.Location",
+      amount: 1,
+    },
+    {
+      text: "AH.EXPERIENCE.TRIGGERS.Adversary",
+      amount: 1,
+    },
+  ],
+};
 
 /**
  * @typedef EpisodeEndingData
@@ -35,15 +59,25 @@ async function prepareEndingData(party) {
   let data = {};
   // Add the base set of triggers
   data.groups = {
-    "AH.EXPERIENCE.GROUP.Base": BASE_TRIGGERS,
+    base: BASE_TRIGGERS,
   };
   // For each hero class
   for (const hero of heroes) {
     for (const classItem of hero.actor.getItemsByType("class")) {
       /** @type ClassDataModel **/
       const classData = classItem.system;
-      if (!data.groups[classData.slug]) {
-        data.groups[classData.slug] = Array.from(classData.triggers);
+      const key = classData.slug;
+      if (!data.groups[key]) {
+        data.groups[key] = {
+          label: key,
+          heroes: [hero],
+          triggers: Array.from(classData.triggers).map((t) => {
+            return { text: t, amount: 1 };
+          }),
+        };
+      }
+      else {
+        data.groups[key].heroes.push(hero);
       }
     }
 

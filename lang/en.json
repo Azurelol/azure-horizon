@@ -177,7 +177,11 @@
         "plural": "Pressure",
         "short": "PP"
       },
-
+      "ExperiencePoint": {
+        "long": "Experience Point",
+        "plural": "Experience Points",
+        "short": "XP"
+      },
       "Defense": {
         "long": "Defense",
         "short": "DEF"
@@ -209,11 +213,15 @@
       }
     },
     "EXPERIENCE": {
+      "Trigger": "Experience Trigger",
       "GROUP": {
         "Base": "Base"
       },
       "TRIGGERS": {
-        "": ""
+        "Scheduling": "The episode has ended.",
+        "Location": "The party explored a new location.",
+        "Adversary": "The party defeated a dangerous adversary.",
+        "Obstacle": "The party overcame an obstacle without violence."
       }
     },
     "CLASS": {

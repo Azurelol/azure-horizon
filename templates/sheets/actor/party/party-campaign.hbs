@@ -7,9 +7,11 @@
   </section>
 
   <section class="tab campaign" data-tab="ending" data-group="campaign">
-    {{#each}}
-
-    {{/each}}
+    <div class="ah-table__collection">
+      {{#each experienceTables as |table|}}
+        {{{table}}}
+      {{/each}}
+    </div>
   </section>
 
 </section>

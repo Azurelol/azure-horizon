@@ -6,6 +6,8 @@ import { CharacterSheet } from "./character-sheet.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 import { Campaign } from "../../pipelines/_module.mjs";
+import { ExperienceTableRenderer } from "../campaign/_module.mjs";
+import { ChatAction } from "../../helpers/_module.mjs";
 
 export class PartySheet extends AHActorSheet {
 
@@ -181,6 +183,7 @@ export class PartySheet extends AHActorSheet {
   }
 
   #equipmentTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Equipment", actions: AHActorSheet.getCompendiumTableActions("equipment"), preview: true, stash: true });
+  #experienceTableRenderer = new ExperienceTableRenderer({ title: "AH.EXPERIENCE.Triggers" });
 
   /** @inheritdoc */
   async _preparePartContext(partId, ctx, options) {
@@ -196,11 +199,26 @@ export class PartySheet extends AHActorSheet {
         break;
       case "character":
         break;
-      case "campaign":
+      case "campaign": {
         context.campaignTabs = this._prepareTabs("campaign");
         context.opening = Campaign.prepareOpeningData(this.system);
-        context.ending = Campaign.prepareEndingData(this.system);
+        const ending = await Campaign.prepareEndingData(this.system);
+        context.ending = ending;
+        let tables = [];
+        for (const group of Object.values(ending.groups)) {
+          let actions;
+          if (group.heroes) {
+            actions = group.heroes.map(hero => {
+              return new ChatAction("revealActor", null, hero.name).withImage(hero.actor.img);
+            });
+          }
+          const tr = new ExperienceTableRenderer({ title: group.label, actions: actions });
+          const tb = await tr.render(group.triggers);
+          tables.push(tb);
+        }
+        context.experienceTables = tables;
         break;
+      }
       case "inventory": {
         context.tables = [
           await this.#equipmentTableRenderer.render(this.actor.getItemsByType("weapon", "armor", "accessory", "consumable")),
@@ -252,7 +270,7 @@ export class PartySheet extends AHActorSheet {
     // Initialize the context menu options
     let contextMenuOptions = [
       {
-        name: StringUtils.localize("AH.COMMON.Delete"),
+        name: StringUtils.localize("AH.COMMON.Remove"),
         icon: "<i class=\"fas fa-trash\"></i>",
         callback: (el) => {
           const id = el.dataset.uuid;
@@ -299,7 +317,6 @@ export class PartySheet extends AHActorSheet {
    */
   async _onDropActor(event, actor) {
     if (actor.type === "hero") {
-      ui.notifications.info(`Dropped ${actor.name}`);
       await this.system.addHero(actor);
     }
     return null;
