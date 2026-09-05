@@ -36,7 +36,7 @@
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
 
   --ah-title-margin: 240px;
-  --ah-content-margin: 300x;
+  --ah-content-margin: 325px;
   --ah-divider-scene-margin: 425px;
   --ah-page-background-color: #141445;
 
@@ -84,7 +84,7 @@ header {
 
 body {
   background-color: var(--ah-page-background-color);
-  background-image: url("/assets/img/background_3.webp");
+  background-image: url("/assets/img/background_1.webp");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
@@ -104,16 +104,17 @@ body {
 
 .ah-divider-scene {
   background: url("/assets/img/background_scene.webp");
-  background-position-x: 0%;
-  background-position-y: 0%;
-  width: 100%;
-  height: 541px;
-  margin-top: var(--ah-divider-scene-margin);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
 }
 
 .ah-default {
   main {
     color: var(--ah-content-color);
+  }
+  footer {
+    margin-top: 0;
   }
 }
 
@@ -135,10 +136,11 @@ body {
   text-align: center;
   text-transform: uppercase;
   margin-top: var(--ah-title-margin);
+  margin-bottom: var(--ah-content-margin);
 }
 
 .index-content {
-  margin-top: var(--ah-content-margin);
+
 }
 
 .index-subtitle {
