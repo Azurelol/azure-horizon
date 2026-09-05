@@ -49,5 +49,11 @@
     "url": "https://megatiles.itch.io/",
     "license": "PURCHASED ALL-IN-ONE BUNDLE",
     "remark": "These will be used for the demo and the sample adversaries."
+  },
+  "pixel-art-cloud-and-sky-backgrounds": {
+    "author": "Craftpix",
+    "url": "https://free-game-assets.itch.io/free-pixel-art-cloud-and-sky-backgrounds",
+    "license": "Free",
+    "remark": "Used for the website."
   }
 }

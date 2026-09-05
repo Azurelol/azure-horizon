@@ -28,11 +28,13 @@
     var( --ah-entry-background) 100%
   );
   --ah-entry-icon-color: #354564;
+  --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
 
   /*Override*/
   /*--body-font: PressStart2P, 'Times New Roman', serif;*/
   /*--header-font: Pixeloid, 'Open Sans', serif;*/
 }
+
 
 li {
   p {
@@ -194,12 +196,13 @@ body {
         width: var(--icon-size);
         height: var(--icon-size);
         font-size: var(--icon-size);
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+        /*filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));*/
+
+        filter: var(--ah-filter-glow);
       }
 
       &:hover,
       &:focus-visible {
-        background-color: color-mix(in srgb, var(--ah-entry-icon-color) 12%, transparent);
         transform: translateY(-2px);
       }
     }
