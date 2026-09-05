@@ -20,7 +20,7 @@
 
   --ah-border: 0.065rem solid #3d5f8f;
   --ah-trait-background: #e8681a;
-  --ah-icon-color: #fa8c49;
+  --ah-icon-color: #eaca6b;
 
   --ah-trait-border: black;
   --ah-trait-color: #f4f0f0;
@@ -92,12 +92,8 @@ body {
   background-position: top center;
   background-size: 100% auto;
 
-  nav {
-    border-bottom: var(--ah-border);
-
-    .nav-item {
-      font-size:1rem;
-    }
+  .navbar-custom .navbar-nav .nav-item {
+    font-size:1rem;
   }
 
   footer {
