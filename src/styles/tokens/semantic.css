@@ -54,7 +54,7 @@
   --ah-surface-tag: #5C5C5B;
   --ah-surface-tag-hover: var(--ah-primitive-color-grey-mid);
   --ah-surface-tag-active: var(--ah-primitive-color-grey-light);
-  --ah-surface-border: var(--ah-primitive-color-navy-500);
+  --ah-surface-border: var(--ah-primitive-color-navy-600);
   --ah-border-panel: var(--ah-primitive-color-navy-600);
   --ah-surface-accent: var(--ah-primitive-color-brown-500);
 

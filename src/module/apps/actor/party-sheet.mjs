@@ -484,7 +484,7 @@ export class PartySheet extends AHActorSheet {
 
     const builder = new ChatMessageBuilder(this.actor, null);
     builder.text(`The party gained ${lc.levelsGained} levels!`);
-    this.actor.update({
+    await this.actor.update({
       ["system.resources.xp"]: lc.remainingExperience,
     });
     return builder.create();

@@ -8,6 +8,10 @@
   src: url('../fonts/PressStart2P-Regular.ttf');
 }
 
+/******************/
+/* VARIABLES      */
+/******************/
+
 :root{
   --ah-content-color: white;
   --ah-content-header: #eaca6b;
@@ -30,14 +34,20 @@
   --ah-entry-icon-color: #eed796;
   --ah-filter-drop-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
-
-  /*Override*/
-  /*--body-font: PressStart2P, 'Times New Roman', serif;*/
-  --ah-font-primary: Pixeloid, 'Open Sans', serif;
-  --ah-divider-scene-margin: 640px;
+  --ah-divider-scene-margin: 425px;
   --ah-page-background-color: #141445;
+
+  --ah-font-primary: Pixeloid, 'Open Sans', serif;
+  --ah-font-page: Pixeloid, 'Open Sans', serif;
+
+  /* Override */
+  --header-font: var(--ah-font-primary);
+  --body-font: var(--ah-font-primary);
 }
 
+/******************/
+/* GENERAL STYLES */
+/******************/
 
 li {
   p {
@@ -57,7 +67,6 @@ img {
   image-rendering: crisp-edges;
 }
 
-
 header {
   .intro-header {
     color: var(--ah-content-header);
@@ -71,6 +80,12 @@ header {
 }
 
 body {
+  background-color: var(--ah-page-background-color);
+  background-image: url("/assets/img/background_3.webp");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+
   nav {
     border-bottom: var(--ah-border);
   }
@@ -79,6 +94,10 @@ body {
     border-top: var(--ah-border);
   }
 }
+
+/******************/
+/* LAYOUTS        */
+/******************/
 
 .ah-title {
   font-family: var(--ah-font-primary);
@@ -94,19 +113,12 @@ body {
 }
 
 .ah-default {
-  background-color: var(--ah-page-background-color);
-  background-image: url("/assets/img/background_3.webp");
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: 100% auto;
-
   main {
     color: var(--ah-content-color);
   }
 }
 
 .ah-page {
-  background: url("/assets/img/background_2.webp") no-repeat fixed center center / cover;;
   main {
     background: #FFF;
     border: 4px solid var(--ah-entry-background);
@@ -116,11 +128,6 @@ body {
 }
 
 .ah-collection {
-  background: url("/assets/img/background_2.webp") no-repeat fixed center center / cover;;
-}
-
-.ah-collection-alt {
-  background: url("/assets/img/background_1.webp") no-repeat fixed center center / cover;;
 }
 
 .index-title {
@@ -133,9 +140,9 @@ body {
   text-transform: uppercase;
 }
 
-.index-banner {
-
-}
+/******************/
+/* PAGES          */
+/******************/
 
 .document-header {
   display: flex;
@@ -195,8 +202,8 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(var(--entry-size), 1fr));
 
   &.--large {
-    --entry-size: 300px;
-    --icon-size: 196px;
+    --entry-size: 240px;
+    --icon-size: 160px;
   }
 
   article {
