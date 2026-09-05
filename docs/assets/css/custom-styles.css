@@ -58,7 +58,6 @@ header {
 }
 
 body {
-  background: url("/assets/img/background_1.webp") no-repeat fixed center center / cover;;
 
   nav {
     border-bottom: var(--ah-border);
@@ -70,10 +69,17 @@ body {
 }
 
 .ah-page {
-  background: #FFF;
-  border: 4px solid var(--ah-entry-background);
-  padding: 1rem;
-  border-radius: 4px;
+  background: url("/assets/img/background_1.webp") no-repeat fixed center center / cover;;
+  main {
+    background: #FFF;
+    border: 4px solid var(--ah-entry-background);
+    padding: 1rem;
+    border-radius: 4px;
+  }
+}
+
+.ah-collection {
+  background: url("/assets/img/background_2.webp") no-repeat fixed center center / cover;;
 }
 
 .index-title {
