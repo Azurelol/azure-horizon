@@ -196,6 +196,12 @@ body {
         font-size: var(--icon-size);
         filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
       }
+
+      &:hover,
+      &:focus-visible {
+        background-color: color-mix(in srgb, var(--ah-entry-icon-color) 12%, transparent);
+        transform: translateY(-2px);
+      }
     }
   }
 }

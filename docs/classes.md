@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: collection
 title: Classes
 permalink: /classes/
 ---
