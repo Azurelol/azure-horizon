@@ -84,7 +84,7 @@ header {
 
 body {
   background-color: var(--ah-page-background-color);
-  background-image: url("/assets/img/background_1.webp");
+  background-image: url("/assets/img/background_3.webp");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
@@ -101,12 +101,17 @@ body {
 /******************/
 /* LAYOUTS        */
 /******************/
+.index-title {
+  font-size: 4em;
+  color: var(--ah-content-header);
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: var(--ah-title-margin);
+  margin-bottom: var(--ah-content-margin);
+}
 
-.ah-divider-scene {
-  background: url("/assets/img/background_scene.webp");
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: 100% auto;
+.index-content {
+
 }
 
 .ah-default {
@@ -116,6 +121,15 @@ body {
   footer {
     margin-top: 0;
   }
+}
+
+.ah-divider-scene {
+  background: url("/assets/img/background_scene.webp");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+  width: 100%;
+  height: 600px;
 }
 
 .ah-page {
@@ -130,18 +144,7 @@ body {
 .ah-collection {
 }
 
-.index-title {
-  font-size: 4em;
-  color: var(--ah-content-header);
-  text-align: center;
-  text-transform: uppercase;
-  margin-top: var(--ah-title-margin);
-  margin-bottom: var(--ah-content-margin);
-}
 
-.index-content {
-
-}
 
 .index-subtitle {
   font-style: italic;
