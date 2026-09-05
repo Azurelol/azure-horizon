@@ -3,7 +3,7 @@
   "name": "Shadow Cloak",
   "type": "spell",
   "_id": "YslNlQaNapnHttAT",
-  "img": "icons/magic/unholy/barrier-shield-glowing-pink.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

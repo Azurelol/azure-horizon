@@ -3,7 +3,7 @@
   "name": "Slow",
   "type": "spell",
   "_id": "I9L2r585s638UxuO",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

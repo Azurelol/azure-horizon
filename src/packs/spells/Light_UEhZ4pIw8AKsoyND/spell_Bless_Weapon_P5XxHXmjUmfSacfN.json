@@ -3,7 +3,7 @@
   "name": "Bless Weapon",
   "type": "spell",
   "_id": "P5XxHXmjUmfSacfN",
-  "img": "icons/magic/light/beam-horizon-strike-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

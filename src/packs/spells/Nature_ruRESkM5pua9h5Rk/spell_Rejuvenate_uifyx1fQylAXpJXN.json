@@ -3,7 +3,7 @@
   "name": "Rejuvenate",
   "type": "spell",
   "_id": "uifyx1fQylAXpJXN",
-  "img": "icons/magic/nature/plant-sprout-snow-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

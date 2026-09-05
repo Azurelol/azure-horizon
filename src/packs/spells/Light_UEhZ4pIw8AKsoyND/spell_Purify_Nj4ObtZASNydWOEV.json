@@ -3,7 +3,7 @@
   "name": "Purify",
   "type": "spell",
   "_id": "Nj4ObtZASNydWOEV",
-  "img": "icons/magic/light/beam-strike-orange.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

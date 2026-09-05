@@ -3,7 +3,7 @@
   "name": "Holy Light",
   "type": "spell",
   "_id": "SRNF93ejpEnTb90N",
-  "img": "icons/magic/light/beams-rays-orange-purple-large.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

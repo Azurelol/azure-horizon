@@ -3,7 +3,7 @@
   "name": "Divine Shield",
   "type": "spell",
   "_id": "3JMalFHpG3HLs08w",
-  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue-yellow.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

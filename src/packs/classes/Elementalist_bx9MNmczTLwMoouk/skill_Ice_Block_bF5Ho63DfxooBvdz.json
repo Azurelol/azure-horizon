@@ -51,9 +51,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "stasis"
+      ],
       "duration": {
         "event": "",
         "tracking": ""

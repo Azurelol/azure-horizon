@@ -3,7 +3,7 @@
   "name": "Earth Guard",
   "type": "spell",
   "_id": "qWtKJqkAhlFl5Lge",
-  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

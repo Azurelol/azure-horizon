@@ -3,7 +3,7 @@
   "name": "Thorns",
   "type": "spell",
   "_id": "aWoyVnrrWrQslJLm",
-  "img": "icons/magic/nature/root-vine-thorned-fire-purple.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

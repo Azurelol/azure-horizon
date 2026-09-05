@@ -3,12 +3,12 @@
   "name": "Atrophy",
   "type": "spell",
   "_id": "QlVhRgEzEZo3dl8e",
-  "img": "icons/magic/unholy/hand-light-pink.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-atrophy",
-    "description": "<p>You inflict Weak on the target.</p>",
+    "description": "<p>You apply <em>Weak</em> to the target.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,16 +44,18 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "weak"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -64,9 +66,12 @@
       "schemaVersion": 1,
       "range": "",
       "type": "action",
-      "points": 2,
-      "traits": [],
-      "targeting": "single"
+      "points": 1,
+      "traits": [
+        "cooldown"
+      ],
+      "targeting": "single",
+      "enabled": true
     },
     "domain": "dark",
     "speed": "fast"

@@ -3,7 +3,7 @@
   "name": "Shadow Spear",
   "type": "spell",
   "_id": "rXhdxIQQbzW2VxNU",
-  "img": "icons/magic/unholy/beam-ringed-impact-purple.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

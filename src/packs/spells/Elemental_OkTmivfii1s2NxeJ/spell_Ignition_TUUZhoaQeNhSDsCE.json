@@ -3,7 +3,7 @@
   "name": "Ignition",
   "type": "spell",
   "_id": "TUUZhoaQeNhSDsCE",
-  "img": "icons/magic/fire/blast-jet-stream-embers-red.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

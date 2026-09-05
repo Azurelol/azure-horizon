@@ -3,7 +3,7 @@
   "name": "Wall of Stone",
   "type": "spell",
   "_id": "EcoyM40zzwYKBnaB",
-  "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

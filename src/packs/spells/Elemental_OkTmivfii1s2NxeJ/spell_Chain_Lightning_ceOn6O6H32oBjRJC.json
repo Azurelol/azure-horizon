@@ -3,7 +3,7 @@
   "name": "Chain Lightning",
   "type": "spell",
   "_id": "ceOn6O6H32oBjRJC",
-  "img": "icons/magic/lightning/bolt-strike-forked-blue.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

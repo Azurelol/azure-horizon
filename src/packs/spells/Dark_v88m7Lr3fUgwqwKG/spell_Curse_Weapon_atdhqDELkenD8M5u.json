@@ -3,7 +3,7 @@
   "name": "Curse Weapon",
   "type": "spell",
   "_id": "atdhqDELkenD8M5u",
-  "img": "icons/magic/unholy/hand-weapon-glow-black-green.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

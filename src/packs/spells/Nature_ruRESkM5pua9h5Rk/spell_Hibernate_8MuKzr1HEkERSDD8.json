@@ -3,7 +3,7 @@
   "name": "Hibernate",
   "type": "spell",
   "_id": "8MuKzr1HEkERSDD8",
-  "img": "icons/magic/nature/moon-crescent.webp",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
