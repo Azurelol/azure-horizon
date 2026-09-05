@@ -10,6 +10,7 @@
 
 :root{
   --ah-content-color: white;
+  --ah-content-header: #eaca6b;
   --ah-content-action-color: #e8681a;
   --ah-content-action-hover-color: #d69575;
 
@@ -46,21 +47,31 @@ img {
   image-rendering: crisp-edges;
 }
 
-body {
-  background: url("/assets/img/background_1.webp") no-repeat fixed center center / cover;;
-}
-
-main.container-md {
-  background: #FFF3CC;
-  border: 4px solid var(--ah-entry-background);
-  padding: 1rem;
-  border-radius: 4px;
-}
 
 header {
   .intro-header {
-    color: var(--ah-content-color);
+    color: var(--ah-content-header);
+    text-shadow: -2px -1px 0 #000, 2px -1px 0 #000, -2px 10px 0 #000, 1px 1px 0 #000;
   }
+}
+
+body {
+  background: url("/assets/img/background_1.webp") no-repeat fixed center center / cover;;
+
+  nav {
+    border-bottom: var(--ah-border);
+  }
+
+  footer {
+    border-top: var(--ah-border);
+  }
+}
+
+main.container-md {
+  background: #FFF;
+  border: 4px solid var(--ah-entry-background);
+  padding: 1rem;
+  border-radius: 4px;
 }
 
 .index-title {

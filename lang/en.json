@@ -213,7 +213,7 @@
         "Base": "Base"
       },
       "TRIGGERS": {
-        "Defeat"
+        "": ""
       }
     },
     "CLASS": {
