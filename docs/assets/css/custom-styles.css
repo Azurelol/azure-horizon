@@ -36,7 +36,7 @@
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
 
   --ah-title-margin: 240px;
-  --ah-content-margin: 325px;
+  --ah-content-margin: 350px;
   --ah-divider-scene-margin: 425px;
   --ah-page-background-color: #141445;
 
@@ -73,11 +73,18 @@ img {
 header {
   .intro-header {
     color: var(--ah-content-header);
+
     h1  {
       text-shadow: -2px -1px 0 #000,
       2px -1px 0 #000,
       -2px 5px 0 #000,
       1px 1px 0 #000;
+    }
+
+
+    .page-heading {
+      margin-top: var(--ah-title-margin);
+      margin-bottom: var(--ah-content-margin);
     }
   }
 }
@@ -102,7 +109,7 @@ body {
 /* LAYOUTS        */
 /******************/
 .index-title {
-  font-size: 4em;
+  font-size: 6em;
   color: var(--ah-content-header);
   text-align: center;
   text-transform: uppercase;
@@ -111,7 +118,6 @@ body {
 }
 
 .index-content {
-
 }
 
 .ah-default {
