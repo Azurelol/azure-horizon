@@ -214,6 +214,7 @@
     },
     "EXPERIENCE": {
       "Trigger": "Experience Trigger",
+      "LevelUp": "Level Up",
       "TriggerMessage": "The party has met an experience trigger and earned {amount} XP.",
       "GainMessage": "The party earns {amount} XP.",
       "GROUP": {

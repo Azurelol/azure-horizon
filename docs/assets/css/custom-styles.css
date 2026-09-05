@@ -34,6 +34,9 @@
   --ah-entry-icon-color: #eed796;
   --ah-filter-drop-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
+
+  --ah-title-margin: 240px;
+  --ah-content-margin: 300x;
   --ah-divider-scene-margin: 425px;
   --ah-page-background-color: #141445;
 
@@ -99,10 +102,6 @@ body {
 /* LAYOUTS        */
 /******************/
 
-.ah-title {
-  font-family: var(--ah-font-primary);
-}
-
 .ah-divider-scene {
   background: url("/assets/img/background_scene.webp");
   background-position-x: 0%;
@@ -132,7 +131,14 @@ body {
 
 .index-title {
   font-size: 4em;
+  color: var(--ah-content-header);
+  text-align: center;
   text-transform: uppercase;
+  margin-top: var(--ah-title-margin);
+}
+
+.index-content {
+  margin-top: var(--ah-content-margin);
 }
 
 .index-subtitle {

@@ -4,9 +4,7 @@ title: Home
 ---
 
 <h6 class="index-subtitle">A searchable reference website for the Azure Horizon TTRPG.</h6>
-
 <hr>
-
 <p>Welcome to the reference documentation page for Azure Horizon, a virtual tabletop role-playing game system (VTTRPG) that is being developed as a digital-first game experience.</p>
 
 ## Getting Started
