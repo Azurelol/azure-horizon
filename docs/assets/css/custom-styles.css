@@ -23,7 +23,6 @@
   --ah-entry-background: #4f5e8c;
   --ah-entry-icon-color: #354564;
 
-
   /*Override*/
   /*--body-font: PressStart2P, 'Times New Roman', serif;*/
   /*--header-font: Pixeloid, 'Open Sans', serif;*/
@@ -45,6 +44,21 @@ i {
 
 img {
   image-rendering: crisp-edges;
+}
+
+body {
+  background: url("assets/img/background_1.webp");
+}
+
+.container-md {
+  background: #FFF3CC;
+  border: 4px solid var(--ah-entry-background);
+  padding: 1rem;
+  border-radius: 4px;
+
+  .page-heading {
+    color: var(--ah-content-color);
+  }
 }
 
 .index-title {
@@ -151,6 +165,12 @@ img {
       }
     }
   }
+}
+
+.banner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profile {

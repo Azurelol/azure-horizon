@@ -13,3 +13,4 @@ export { default as Effects } from "./effects.mjs";
 export { default as Intent } from "./intent.mjs";
 export { default as Tracks } from "./tracks.mjs";
 export { default as Pressure } from "./pressure.mjs";
+export { default as Campaign } from "./campaign.mjs";
