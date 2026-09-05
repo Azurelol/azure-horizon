@@ -26,7 +26,8 @@ jobs:
       - name: Copy shared assets into Jekyll source
         run: |
           cp -r assets/. docs/assets/
-
+      - name: Update docs from pack sources.
+        run: npm run docs
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll

@@ -41,6 +41,9 @@ export default class PartyDataModel extends ActorDataModel {
         }),
       ),
       codex: new EmbeddedDataField(CodexDataModel, {}),
+      resources: new SchemaField({
+        xp: new NumberField({ initial: 0 }),
+      }),
     });
   }
 

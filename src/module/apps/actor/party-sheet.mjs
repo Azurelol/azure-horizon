@@ -5,6 +5,7 @@ import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs
 import { CharacterSheet } from "./character-sheet.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
+import { Campaign } from "../../pipelines/_module.mjs";
 
 export class PartySheet extends AHActorSheet {
 
@@ -197,6 +198,8 @@ export class PartySheet extends AHActorSheet {
         break;
       case "campaign":
         context.campaignTabs = this._prepareTabs("campaign");
+        context.opening = Campaign.prepareOpeningData(this.system);
+        context.ending = Campaign.prepareEndingData(this.system);
         break;
       case "inventory": {
         context.tables = [

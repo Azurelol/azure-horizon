@@ -1256,6 +1256,7 @@ AH.icons = {
   thp: "ah-icon-thp",
   block: "ah-icon-thp",
   pp: "ah-icon-pp",
+  xp: "ah-icon-xp",
 
   def: "ah-icon-def",
   mdef: "ah-icon-mdef",
