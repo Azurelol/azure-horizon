@@ -1,27 +1,20 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Wyvern Tail",
+  "folder": "jLUpgQeSORhBYWj7",
+  "name": "Counter Attack",
   "type": "skill",
-  "_id": "pcGS42dO1xFpFiR8",
+  "_id": "Hm3j2pbRvaVb9SbN",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-wyvern-tail",
-    "description": "<p>While under the effect of Coiled Tail, you can perform a cleaving melee attack. While <em>jumping</em> you also perform a <em>free</em> <em>attack</em> on any enemies hit.</p>",
+    "slug": "tactician-counterattack",
+    "description": "<p>Any party member gains the immediate use of a single action that costs 1 AP.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
-    },
-    "action": {
-      "schemaVersion": 1,
-      "range": "melee",
-      "type": "action",
-      "points": 1,
-      "traits": []
     },
     "damage": {
       "schemaVersion": 1,
@@ -45,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "4",
       "perTarget": false
     },
     "effects": {
@@ -60,22 +53,32 @@
         "tracking": ""
       }
     },
+    "power": "",
     "level": {
       "current": 1,
       "max": 1
     },
+    "action": {
+      "schemaVersion": 1,
+      "range": "",
+      "type": "reaction",
+      "points": 1,
+      "traits": [
+        "cooldown"
+      ],
+      "enabled": true
+    },
     "usage": {
       "schemaVersion": 1,
-      "check": true,
-      "damage": true,
-      "power": "moderate",
+      "check": false,
+      "damage": false,
+      "enabled": false,
       "attributes": false
     },
-    "class": "lancer",
-    "power": "moderate"
+    "class": "tactician"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 300000,
   "ownership": {
     "default": 0
   },
@@ -84,12 +87,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953748103,
+    "createdTime": 1787216597141,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!pcGS42dO1xFpFiR8"
+  "_key": "!items!Hm3j2pbRvaVb9SbN"
 }

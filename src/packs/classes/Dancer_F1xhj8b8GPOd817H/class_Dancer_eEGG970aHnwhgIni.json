@@ -18,12 +18,13 @@
     "triggers": [
       "You perform a dance for an audience.",
       "You dance with someone in a meaningful moment.",
-      "You prove every rose has its thorns."
+      "You prove every rose has its thorns.",
+      "You ask someone for a dance."
     ],
     "traits": [
       "support",
-      "dance",
-      "shift"
+      "shift",
+      "dance"
     ],
     "complications": [
       "An influential person requests a performance.",

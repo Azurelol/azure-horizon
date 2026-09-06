@@ -1,14 +1,14 @@
 {
-  "folder": "F1xhj8b8GPOd817H",
-  "name": "Calisthenics",
+  "folder": "HvRr9GFUHOmYzNEk",
+  "name": "Dragon School",
   "type": "skill",
-  "_id": "ENAp1FcdFELrZOjH",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_support.png",
+  "_id": "OirK28D6s93ujtsl",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dancer-calisthenics",
-    "description": "<p>During a long rest, as an activity the dancer can recover an injury from up to SL party members.</p>",
+    "slug": "lancer-dragon-school",
+    "description": "<p>You gain the use of two <em>lancer arts </em>for each point invested into this skill.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -50,6 +50,13 @@
       "amount": "",
       "perTarget": false
     },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
+    },
     "effects": {
       "schemaVersion": 1,
       "enabled": false,
@@ -67,10 +74,8 @@
     },
     "action": {
       "schemaVersion": 1,
-      "enabled": true,
-      "range": "",
-      "targeting": "",
-      "type": "activity",
+      "enabled": false,
+      "type": "",
       "points": 1,
       "traits": []
     },
@@ -81,7 +86,7 @@
       "check": false,
       "damage": false
     },
-    "class": "dancer"
+    "class": "lancer"
   },
   "effects": [],
   "sort": 0,
@@ -93,12 +98,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788355655816,
+    "createdTime": 1788718216386,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!ENAp1FcdFELrZOjH"
+  "_key": "!items!OirK28D6s93ujtsl"
 }

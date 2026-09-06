@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "HvRr9GFUHOmYzNEk",
+  "name": "Features",
+  "color": null,
+  "sorting": "a",
+  "_id": "2nM1GvHF40cRqS2Y",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788718242929,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!2nM1GvHF40cRqS2Y"
+}

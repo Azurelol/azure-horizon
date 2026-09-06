@@ -1,14 +1,21 @@
 {
-  "folder": "jLUpgQeSORhBYWj7",
-  "name": "Countergambit",
-  "type": "skill",
-  "_id": "Hm3j2pbRvaVb9SbN",
+  "folder": "2nM1GvHF40cRqS2Y",
+  "name": "Wyvern Tail",
+  "type": "classFeature",
+  "_id": "4Km84sxp0QD587HS",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "tactician-countergambit",
-    "description": "<p>Any party member gains the immediate use of a single action that costs 1 AP.</p>",
+    "slug": "lancer-wyvern-tail",
+    "description": "<p>While under the effect of Coiled Tail, you can perform a cleaving melee attack. While <em>jumping</em> you also perform a <em>free</em> <em>attack</em> on any enemies hit.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -39,9 +46,18 @@
     "cost": {
       "schemaVersion": 1,
       "enabled": true,
-      "resource": "tp",
-      "amount": "4",
+      "resource": "mp",
+      "amount": "10",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "melee",
+      "rule": "single",
+      "traits": [
+        "cleave"
+      ]
     },
     "effects": {
       "schemaVersion": 1,
@@ -53,29 +69,31 @@
         "tracking": ""
       }
     },
-    "power": "",
-    "level": {
-      "current": 1,
-      "max": 1
+    "power": "moderate",
+    "feature": {
+      "_id": "v2tE9nnqUkYU3NRB",
+      "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "reaction",
-      "points": 1,
-      "traits": [
-        "cooldown"
-      ]
+      "enabled": true,
+      "type": "action",
+      "points": 2,
+      "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "check": false,
-      "damage": false
+      "enabled": true,
+      "attributes": true,
+      "check": true,
+      "damage": true
     },
-    "class": "tactician"
+    "trait": "",
+    "class": "lancer",
+    "skill": "lancer-dragon-school"
   },
   "effects": [],
-  "sort": 300000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -84,12 +102,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787216597141,
+    "createdTime": 1788718566052,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Hm3j2pbRvaVb9SbN"
+  "_key": "!items!4Km84sxp0QD587HS"
 }

@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "lancer-preempt",
-    "description": "<p>When you are targeted by a melee attack you may perform a free attack before your attacker.</p>",
+    "description": "<p>When you are targeted by a melee attack you may perform a free attack before your attacker resolves their action.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

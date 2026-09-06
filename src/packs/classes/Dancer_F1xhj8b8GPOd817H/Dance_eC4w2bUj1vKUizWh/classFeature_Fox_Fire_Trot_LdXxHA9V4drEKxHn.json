@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dancer-fox-fire-trot",
-    "description": "<p>Each round while you dance, you grant a party member the <em>Foxfire</em> effect.</p>",
+    "description": "<p>Each round while you dance, you grant a party member the <em>Foxfire</em> effect, which increases their damage dealt and gives it a fire component.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -72,7 +72,9 @@
       "targeting": "",
       "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [
+        "sustain"
+      ]
     },
     "usage": {
       "schemaVersion": 1,

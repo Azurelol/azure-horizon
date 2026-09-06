@@ -1,14 +1,14 @@
 {
-  "folder": "F1xhj8b8GPOd817H",
-  "name": "Calisthenics",
-  "type": "skill",
-  "_id": "ENAp1FcdFELrZOjH",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_support.png",
+  "folder": "eC4w2bUj1vKUizWh",
+  "name": "Roseira",
+  "type": "classFeature",
+  "_id": "goNHiQaxlLpGEdhU",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dancer-calisthenics",
-    "description": "<p>During a long rest, as an activity the dancer can recover an injury from up to SL party members.</p>",
+    "slug": "dancer-roseira",
+    "description": "<p>You defend. Until the start of your next turn you can counter any attacks performed against you with a free attack.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -45,10 +45,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "4",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -61,18 +68,18 @@
       }
     },
     "power": "",
-    "level": {
-      "current": 1,
-      "max": 2
+    "feature": {
+      "_id": "v2tE9nnqUkYU3NRB",
+      "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
       "enabled": true,
-      "range": "",
-      "targeting": "",
-      "type": "activity",
-      "points": 1,
-      "traits": []
+      "type": "action",
+      "points": 3,
+      "traits": [
+        "exhaust"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
@@ -81,7 +88,9 @@
       "check": false,
       "damage": false
     },
-    "class": "dancer"
+    "trait": "dance",
+    "class": "dancer",
+    "skill": "dancer-dance"
   },
   "effects": [],
   "sort": 0,
@@ -93,12 +102,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788355655816,
+    "createdTime": 1788723739290,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!ENAp1FcdFELrZOjH"
+  "_key": "!items!goNHiQaxlLpGEdhU"
 }

@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "fencer-bravado",
-    "description": "<p>Once per round whenever you shift you reduce 1 TP.</p>",
+    "description": "<p>Once per round whenever you shift you reduce your TP by SL.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -32,9 +32,9 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "hp",
-      "amount": ""
+      "enabled": true,
+      "type": "tp",
+      "amount": "-$sl"
     },
     "cost": {
       "schemaVersion": 1,

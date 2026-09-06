@@ -1,14 +1,14 @@
 {
-  "folder": "F1xhj8b8GPOd817H",
-  "name": "Calisthenics",
-  "type": "skill",
-  "_id": "ENAp1FcdFELrZOjH",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_support.png",
+  "folder": "2nM1GvHF40cRqS2Y",
+  "name": "Dragon Fire",
+  "type": "classFeature",
+  "_id": "wcBTqDNH9skHzX9v",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dancer-calisthenics",
-    "description": "<p>During a long rest, as an activity the dancer can recover an injury from up to SL party members.</p>",
+    "slug": "lancer-dragon-fire",
+    "description": "<p>While under the effects of <em>Dragon Breath</em> you perform a splash fire attack. While <em>jumping</em> you instead hit all enemies.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -25,10 +25,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "untyped"
+        "amount": "10",
+        "type": "fire"
       },
       "secondary": {
         "amount": "",
@@ -45,14 +45,23 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "20",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "melee",
+      "rule": "single",
+      "traits": [
+        "splash"
+      ]
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "selector": "",
       "entries": [],
       "duration": {
@@ -60,28 +69,28 @@
         "tracking": ""
       }
     },
-    "power": "",
-    "level": {
-      "current": 1,
-      "max": 2
+    "power": "high",
+    "feature": {
+      "_id": "v2tE9nnqUkYU3NRB",
+      "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
       "enabled": true,
-      "range": "",
-      "targeting": "",
-      "type": "activity",
-      "points": 1,
+      "type": "action",
+      "points": 3,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "enabled": false,
-      "attributes": false,
-      "check": false,
+      "enabled": true,
+      "attributes": true,
+      "check": true,
       "damage": false
     },
-    "class": "dancer"
+    "trait": "",
+    "class": "lancer",
+    "skill": "lancer-dragon-school"
   },
   "effects": [],
   "sort": 0,
@@ -93,12 +102,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788355655816,
+    "createdTime": 1788718443788,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!ENAp1FcdFELrZOjH"
+  "_key": "!items!wcBTqDNH9skHzX9v"
 }

@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dancer-tempo",
-    "description": "<p>While dancing you gain the Tempo status which grants you stacking skill bonuses to various parameters.</p><ul><li><p>Whenever the round ends without you having suffered damage, increase by one.</p></li><li><p>When an adversary enters crisis or is defeated, increase by one.</p></li><li><p>When you enter crisis, decrease by two.</p></li></ul>",
+    "description": "<p>While dancing you gain the Tempo status which grants you stacking skill bonuses to various parameters.</p><ul><li><p>Whenever the round ends without you having suffered damage, increase by one.</p></li><li><p>When an adversary enters crisis or is defeated, increase by one.</p></li><li><p>When you are in peril, decrease by two.</p></li></ul>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

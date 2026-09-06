@@ -1,32 +1,27 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Drake Thrust",
-  "type": "skill",
-  "_id": "iv1oW3BnPuObbQjS",
+  "folder": "eC4w2bUj1vKUizWh",
+  "name": "Bhataranyan",
+  "type": "classFeature",
+  "_id": "PXtgeKeQx4Kf1ijB",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-drake-thrust",
-    "description": "<p>You perform a melee attack with increased potency. On an even check you gain <em>Fangs Bared</em>, otherwise <em>Coiled Tail</em>. On a critical you instead gain <em>Dragon Breath.</em></p>",
+    "slug": "dancer-bhataranyan",
+    "description": "<p>You clear a negative status effect.</p><p><em>Your dance partner can also benefit from this effect.</em></p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def",
-      "bonus": ""
-    },
-    "action": {
-      "schemaVersion": 1,
-      "type": "action",
-      "points": 2,
-      "traits": [
-        "opener"
-      ],
-      "enabled": true,
-      "range": "melee",
-      "targeting": "single"
+      "defense": "def"
     },
     "damage": {
       "schemaVersion": 1,
@@ -52,37 +47,50 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "5",
-      "perTarget": false
+      "amount": "10",
+      "perTarget": true
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": true,
-      "entries": [
-        "lancer-fangs-bared",
-        "lancer-coiled-tail",
-        "lancer-dragon-breath"
-      ],
+      "enabled": false,
+      "selector": "",
+      "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
-      },
-      "selector": "buff"
+      }
     },
-    "level": {
-      "current": 1,
-      "max": 1
+    "power": "",
+    "feature": {
+      "_id": "v2tE9nnqUkYU3NRB",
+      "type": "emptyClassFeature"
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "action",
+      "points": 1,
+      "traits": [
+        "cooldown"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
-      "check": true,
-      "damage": true,
-      "power": "low",
-      "enabled": true,
-      "attributes": true
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
     },
-    "class": "lancer",
-    "power": "low"
+    "trait": "dance",
+    "class": "dancer",
+    "skill": "dancer-dance"
   },
   "effects": [],
   "sort": 0,
@@ -94,12 +102,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786818365131,
+    "createdTime": 1788723418224,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!iv1oW3BnPuObbQjS"
+  "_key": "!items!PXtgeKeQx4Kf1ijB"
 }

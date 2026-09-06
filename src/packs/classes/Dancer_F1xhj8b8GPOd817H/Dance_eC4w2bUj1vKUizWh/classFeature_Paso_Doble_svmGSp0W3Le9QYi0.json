@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dancer-paso-doble",
-    "description": "",
+    "description": "<p>You pull a target. If they intend to attack you, you also perform a free attack against them.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -45,21 +45,21 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "2",
       "perTarget": false
     },
     "targeting": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "range": "",
-      "rule": "",
+      "rule": "single",
       "traits": []
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "selector": "",
       "entries": [],
       "duration": {
@@ -74,8 +74,8 @@
     },
     "action": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "",
+      "enabled": true,
+      "type": "action",
       "points": 1,
       "traits": []
     },
@@ -86,9 +86,9 @@
       "check": false,
       "damage": false
     },
-    "trait": "",
-    "class": "",
-    "skill": ""
+    "trait": "dance",
+    "class": "dancer",
+    "skill": "dancer-dance"
   },
   "effects": [],
   "sort": 0,

@@ -1,29 +1,27 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Wyrm Fang",
-  "type": "skill",
-  "_id": "FEeq6919mGOEGWU0",
+  "folder": "2nM1GvHF40cRqS2Y",
+  "name": "Drake Thrust",
+  "type": "classFeature",
+  "_id": "aWG9v7iaRsKEaeSR",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-wyrm-fang",
-    "description": "<p>While under the effects of Bared Fang you perform a piercing attack. While <em>jumping</em> you also apply <em>Sunder</em> to the target.</p>",
+    "slug": "lancer-drake-thrust",
+    "description": "<p>You perform a melee attack with increased potency. On an even check you gain <em>Fangs Bared</em>, otherwise <em>Coiled Tail</em>. On a critical you instead gain <em>Dragon Breath.</em></p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
-    },
-    "action": {
-      "schemaVersion": 1,
-      "range": "melee",
-      "type": "action",
-      "points": 2,
-      "traits": [],
-      "enabled": true,
-      "targeting": "single"
     },
     "damage": {
       "schemaVersion": 1,
@@ -47,43 +45,50 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "5",
+      "amount": "",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "",
+      "rule": "single",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": true,
-      "selector": "deuff",
-      "entries": [
-        "sunder"
-      ],
+      "enabled": false,
+      "selector": "",
+      "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 1
+    "power": "low",
+    "feature": {
+      "_id": "v2tE9nnqUkYU3NRB",
+      "type": "emptyClassFeature"
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "action",
+      "points": 2,
+      "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "check": true,
-      "damage": true,
-      "power": "low",
       "enabled": true,
-      "attributes": true
+      "attributes": true,
+      "check": true,
+      "damage": true
     },
+    "trait": "",
     "class": "lancer",
-    "attributes": {
-      "enabled": false,
-      "primary": "dex",
-      "secondary": "mig",
-      "grade": "C"
-    },
-    "power": "moderate"
+    "skill": "lancer-dragon-school"
   },
   "effects": [],
   "sort": 0,
@@ -95,12 +100,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786954279185,
+    "createdTime": 1788718386588,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!FEeq6919mGOEGWU0"
+  "_key": "!items!aWG9v7iaRsKEaeSR"
 }

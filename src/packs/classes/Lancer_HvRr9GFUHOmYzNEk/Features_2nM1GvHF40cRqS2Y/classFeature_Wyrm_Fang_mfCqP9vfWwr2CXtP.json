@@ -1,14 +1,14 @@
 {
-  "folder": "F1xhj8b8GPOd817H",
-  "name": "Calisthenics",
-  "type": "skill",
-  "_id": "ENAp1FcdFELrZOjH",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_support.png",
+  "folder": "2nM1GvHF40cRqS2Y",
+  "name": "Wyrm Fang",
+  "type": "classFeature",
+  "_id": "mfCqP9vfWwr2CXtP",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dancer-calisthenics",
-    "description": "<p>During a long rest, as an activity the dancer can recover an injury from up to SL party members.</p>",
+    "slug": "lancer-wyrm-fang",
+    "description": "<p>While under the effects of Bared Fang you perform a piercing attack. While <em>jumping</em> you also apply <em>Sunder</em> to the target.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -45,43 +45,54 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "",
+      "rule": "single",
+      "traits": [
+        "pierce"
+      ]
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "sunder"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "",
-    "level": {
-      "current": 1,
-      "max": 2
+    "power": "moderate",
+    "feature": {
+      "_id": "v2tE9nnqUkYU3NRB",
+      "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
       "enabled": true,
-      "range": "",
-      "targeting": "",
-      "type": "activity",
-      "points": 1,
+      "type": "action",
+      "points": 2,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "enabled": false,
-      "attributes": false,
-      "check": false,
-      "damage": false
+      "enabled": true,
+      "attributes": true,
+      "check": true,
+      "damage": true
     },
-    "class": "dancer"
+    "trait": "",
+    "class": "lancer",
+    "skill": "lancer-dragon-school"
   },
   "effects": [],
   "sort": 0,
@@ -93,12 +104,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788355655816,
+    "createdTime": 1788718626637,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!ENAp1FcdFELrZOjH"
+  "_key": "!items!mfCqP9vfWwr2CXtP"
 }

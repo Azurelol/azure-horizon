@@ -23,7 +23,8 @@
       "points": 1,
       "traits": [
         "closer"
-      ]
+      ],
+      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
@@ -47,9 +48,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "2",
       "perTarget": false
     },
     "effects": {

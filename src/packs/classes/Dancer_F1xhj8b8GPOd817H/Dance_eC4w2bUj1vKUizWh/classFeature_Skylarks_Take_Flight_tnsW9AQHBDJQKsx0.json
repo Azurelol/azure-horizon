@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dancer-skylarks-take-flight",
-    "description": "",
+    "description": "<p>Your next attack is able to hit an airborne target. </p><p><em>The dance partner can also benefit from this effect.</em></p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -45,10 +45,10 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
-      "perTarget": false
+      "amount": "5",
+      "perTarget": true
     },
     "targeting": {
       "schemaVersion": 1,
@@ -74,10 +74,12 @@
     },
     "action": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "",
+      "enabled": true,
+      "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [
+        "exhaust"
+      ]
     },
     "usage": {
       "schemaVersion": 1,
