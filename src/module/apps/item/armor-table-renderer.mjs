@@ -5,7 +5,7 @@ import TableColumns from "../api/table-columns.mjs";
 
 export default class ArmorTableRenderer extends ItemTableRenderer {
 
-  _getItemProperties() {
+  _getItemColumns() {
     return [
       TableColumns.itemProperties(),
     ];

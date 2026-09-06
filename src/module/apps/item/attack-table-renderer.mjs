@@ -3,7 +3,7 @@ import TableColumns from "../api/table-columns.mjs";
 
 export default class AttackTableRenderer extends ItemTableRenderer {
 
-  _getItemProperties() {
+  _getItemColumns() {
     return [
       TableColumns.itemProperties(),
     ];

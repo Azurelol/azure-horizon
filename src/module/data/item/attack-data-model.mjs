@@ -20,12 +20,15 @@ export default class AttackDataModel extends FeatureDataModel {
     const { SchemaField, StringField, HTMLField, NumberField, BooleanField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       attributes: new EmbeddedDataField(ActionAttributesDataModel, {
+        enabled: true,
         required: true,
       }),
       check: new EmbeddedDataField(CheckDataModel, {
+        enabled: true,
         required: true,
       }),
       damage: new EmbeddedDataField(DamageDataModel, {
+        enabled: true,
         required: true,
       }),
       range: new StringField({

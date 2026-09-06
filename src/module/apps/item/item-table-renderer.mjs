@@ -22,7 +22,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
    * @returns {AH_TableColumnConfig[]}
    * @private
    */
-  _getItemProperties() {
+  _getItemColumns() {
     return [];
   }
 
@@ -81,7 +81,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
         perform: !this.config.preview,
         type: "item",
       }));
-    columns.push(...this._getItemProperties());
+    columns.push(...this._getItemColumns());
     columns.push(this._getCommonActionOptions());
     return columns;
   }

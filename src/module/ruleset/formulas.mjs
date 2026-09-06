@@ -19,7 +19,7 @@ const RECOVERY_MP_SPENT = 0.2;
 const RECOVERY_TP_ADDED = 1;
 
 const BLOCK_RATIO_BASE = 0.05;
-const BLOCK_RATIO_LIGHT_ARMOR = 0.5;
+const BLOCK_RATIO_LIGHT_ARMOR = 0.05;
 const BLOCK_RATIO_HEAVY_ARMOR = 0.1;
 const BLOCK_TP_GAINED = 1;
 
@@ -453,6 +453,9 @@ export default class Formulas {
    */
   static calculatePotency(check, difficulty, defense = false) {
     const outcome = this.calculateOutcome(check, difficulty);
+    if (outcome === "default") {
+      return "standard";
+    }
     return this.#POTENCY_BY_OUTCOME[outcome][defense ? "defense" : "attacker"];
   }
 

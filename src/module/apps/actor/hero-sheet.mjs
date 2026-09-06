@@ -3,7 +3,7 @@ import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import { CharacterSheet } from "./character-sheet.mjs";
 import {
   AccessoryTableRenderer, ActionTableRenderer,
-  ArmorTableRenderer, ClassTableRenderer,
+  ArmorTableRenderer, ClassTableRenderer, SkillTableRenderer,
   WeaponTableRenderer,
 } from "../item/_module.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
@@ -60,7 +60,7 @@ export class HeroSheet extends CharacterSheet {
   /* -------------------------------------------------- */
 
   #classTableRenderer = new ClassTableRenderer({ title: "AH.ITEM.Class.long", actions: CharacterSheet.getCompendiumTableActions("classes", "class") });
-  #skillTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Skill", actions: CharacterSheet.getCompendiumTableActions("classes", "skill") });
+  #skillTableRenderer = new SkillTableRenderer({ title: "AH.ITEM.Skill", actions: CharacterSheet.getCompendiumTableActions("classes", "skill") }).withoutClassColumn();
   #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature", actions: CharacterSheet.getCompendiumTableActions("classes", "classFeature") });
   #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long", actions: CharacterSheet.getCompendiumTableActions("spells") });
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", actions: CharacterSheet.getCompendiumTableActions("equipment", "weapon") });

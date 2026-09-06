@@ -3,7 +3,7 @@ import TableColumns from "../api/table-columns.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
 
 export class ClassTableRenderer extends ItemTableRenderer {
-  _getItemProperties() {
+  _getItemColumns() {
     return [
       TableColumns.textColumn({
         header: "AH.FIELD.Traits",
@@ -14,23 +14,38 @@ export class ClassTableRenderer extends ItemTableRenderer {
 }
 
 export class SkillTableRenderer extends ItemTableRenderer {
-  _getItemProperties() {
-    return [
+
+  #renderClass = true;
+
+  /**
+   * @returns {SkillTableRenderer}
+   */
+  withoutClassColumn() {
+    this.#renderClass = false;
+    return this;
+  }
+
+  _getItemColumns() {
+    let columns = [];
+    if (this.#renderClass) {
       TableColumns.textColumn({
         header: "AH.FIELD.Class",
         getText: (entry) => StringUtils.capitalize(entry.system.class),
-      }),
-      TableColumns.textColumn({
-        header: "AH.FIELD.SkillLevel",
-        getText: (entry) => StringUtils.capitalize(entry.system.level.max),
-      }),
-      TableColumns.itemProperties(),
-    ];
+      });
+    }
+
+    columns.push(TableColumns.textColumn({
+      header: "AH.CHARACTER.SkillLevel.short",
+      tooltip: "AH.CHARACTER.SkillLevel.long",
+      getText: (entry) => StringUtils.capitalize(entry.system.level.max),
+    }));
+    columns.push(TableColumns.itemProperties());
+    return columns;
   }
 }
 
 export class ClassFeatureTableRenderer extends ItemTableRenderer {
-  _getItemProperties() {
+  _getItemColumns() {
     return [
       TableColumns.textColumn({
         header: "AH.FIELD.Class",

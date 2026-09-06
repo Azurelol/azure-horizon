@@ -8,6 +8,7 @@ table {
 
 .application {
   background: var(--ah-application-background);
+  color: var(--ah-application-color);
   font-family: var(--ah-font-family-application);
 
   .window-header {

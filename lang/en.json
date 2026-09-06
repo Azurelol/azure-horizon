@@ -207,9 +207,16 @@
         "long":  "Affinity",
         "plural": "Affinities"
       },
+      "SkillLevel": {
+        "long": "Skill Level",
+        "short": "SL"
+      },
       "PARAMETER": {
+        "Incoming": "Incoming",
+        "Outgoing": "Outgoing",
         "Initiative": "Initiative",
-        "Block": "Block Ratio"
+        "Block": "Block Value",
+        "Recovery": "Recovery Value"
       }
     },
     "EXPERIENCE": {
@@ -747,8 +754,7 @@
       "Points": "Points",
       "Summary": "Summary",
       "Buff": "Buff",
-      "Debuff": "Debuff",
-      "SkillLevel": "Skill Level"
+      "Debuff": "Debuff"
     },
     "RULE": {
       "Element": {

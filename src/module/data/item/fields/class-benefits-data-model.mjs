@@ -7,6 +7,7 @@ const { SchemaField, NumberField, BooleanField, StringField, EmbeddedDataField, 
  * @property {Boolean} hp
  * @property {Boolean} mp
  * @property {Boolean} ip
+ * @property {Boolean} tp
  */
 export default class ClassBenefitsDataModel extends FieldsetDataModel {
   static defineSchema() {
@@ -14,6 +15,7 @@ export default class ClassBenefitsDataModel extends FieldsetDataModel {
       hp: new BooleanField(),
       mp: new BooleanField(),
       ip: new BooleanField(),
+      tp: new BooleanField(),
     });
   }
 

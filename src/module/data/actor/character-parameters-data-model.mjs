@@ -1,13 +1,15 @@
-import { Modifiers, VersionedDataModel } from "../api/_module.mjs";
+import { ExchangeModifiersDataModel, Modifiers, VersionedDataModel } from "../api/_module.mjs";
 import { CheckModifiersDataModel, ParameterDataModel } from "./system/_module.mjs";
 import DamageModifiersDataModel from "./system/damage-modifiers-data-model.mjs";
 import AH from "../../config.mjs";
+import { Formulas } from "../../ruleset/_module.mjs";
 
 /**
  * @property {ParameterDataModel} def
  * @property {ParameterDataModel} mdef
  * @property {ParameterDataModel} init
- * @property {ParameterDataModel} block Bonus block generation as a percentage .
+ * @property {ParameterDataModel} block Bonus BLK generation. (As a percentage)
+ * @property {ExchangeModifiersDataModel} recovery Bonus HP recovery.
  * @property {DamageModifiersDataModel} damage
  * @property {CheckModifiersDataModel} check
  */
@@ -20,6 +22,7 @@ export class CharacterParametersDataModel extends VersionedDataModel {
       init: new EmbeddedDataField(ParameterDataModel, {}),
 
       block: new EmbeddedDataField(ParameterDataModel, {}),
+      recovery: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
 
       damage: new EmbeddedDataField(DamageModifiersDataModel, {}),
       check: new EmbeddedDataField(CheckModifiersDataModel, {}),
@@ -51,9 +54,21 @@ export class CharacterParametersDataModel extends VersionedDataModel {
       multiplicative: 1,
     });
 
+    const system = this.parent;
+
+    // // Recovery
+    // const recovery = Formulas.calculateRecovery(system);
+    // result.push({
+    //   key: "AH.CHARACTER.PARAMETER.Recovery",
+    //   additive: this.recovery.outgoing,
+    //   multiplicative: 1 + (this.block.current / 100),
+    // });
+
+    // Block
+    const block = Formulas.calculateBlock(system);
     result.push({
       key: "AH.CHARACTER.PARAMETER.Block",
-      additive: 0,
+      additive: block.hp,
       multiplicative: 1 + (this.block.current / 100),
     });
 
