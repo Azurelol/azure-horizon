@@ -3,12 +3,12 @@
   "name": "Thorns",
   "type": "spell",
   "_id": "aWoyVnrrWrQslJLm",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/nature/thorns.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "nature-thorns",
-    "description": "<p>The party member gains the Thorns effect until the end of the round.</p>",
+    "description": "<p>The target gains the <em>Thorns</em> effect, which deals piercing damage to attackers until the start of your next turn.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

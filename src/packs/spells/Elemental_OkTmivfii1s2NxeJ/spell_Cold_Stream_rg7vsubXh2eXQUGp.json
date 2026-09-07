@@ -3,12 +3,12 @@
   "name": "Cold Stream",
   "type": "spell",
   "_id": "rg7vsubXh2eXQUGp",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/elemental/cold_stream.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "elemental-cold-stream",
-    "description": "<p>You deal cold damage to the closest enemy row.</p>",
+    "description": "<p>You deal cold damage to a target those adjacent to it on the front row.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "ins",

@@ -229,7 +229,10 @@
       },
       "TRIGGERS": {
         "Scheduling": "The episode has ended.",
+        "Recollection": "The players recalled the events of last episode with minimal help.",
+        "AssetHelp": "The players helped the director procure assets for the episode.",
         "Location": "The party explored a new location.",
+        "CharacterMeet": "The party met an important character for the first time.",
         "Adversary": "The party defeated a dangerous adversary.",
         "Obstacle": "The party overcame an obstacle without violence."
       }

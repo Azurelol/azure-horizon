@@ -3,12 +3,12 @@
   "name": "Rejuvenate",
   "type": "spell",
   "_id": "uifyx1fQylAXpJXN",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/nature/rejuvenate.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "nature-rejuvenate",
-    "description": "<p>You grant a party member with the <em>Rejuvenation</em> effect, which heals them at the start of their turns for the next 3 turns.</p>",
+    "description": "<p>You grant a party member with the <em>Regen </em>effect, which heals them at the start of their turns for the next 3 turns.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -51,9 +51,12 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "regen",
+        ""
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -65,7 +68,8 @@
       "range": "",
       "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "domain": "nature",
     "speed": "instant"

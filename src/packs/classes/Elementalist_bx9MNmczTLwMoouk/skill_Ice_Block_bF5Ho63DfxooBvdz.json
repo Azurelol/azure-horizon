@@ -3,7 +3,7 @@
   "name": "Ice Block",
   "type": "skill",
   "_id": "bF5Ho63DfxooBvdz",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_defense.png",
+  "img": "systems/azure-horizon/assets/icons/classes/elementalist/ice_block.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

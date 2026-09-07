@@ -1,14 +1,14 @@
 {
-  "folder": "UEhZ4pIw8AKsoyND",
-  "name": "Purify",
+  "folder": "Tw1Y0NhNsYc2Pp8A",
+  "name": "Vorpal Edge",
   "type": "spell",
-  "_id": "Nj4ObtZASNydWOEV",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "_id": "KilqybsyKAwITxaC",
+  "img": "systems/azure-horizon/assets/icons/spells/arcane/vorpal_edge.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "light-purify",
-    "description": "<p>You dispel one magical effect from a party member.</p>",
+    "slug": "arcane-vorpal-edge",
+    "description": "<p>You give the target the <em>Vorpal Edge</em> effect, which enhances their physical attacks for the next 2 turns.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -63,15 +63,16 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
+      "targeting": "single",
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": []
     },
-    "domain": "light",
+    "domain": "arcane",
     "speed": "instant"
   },
   "effects": [],
-  "sort": 300000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -80,12 +81,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787423614965,
+    "createdTime": 1787925356247,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Nj4ObtZASNydWOEV"
+  "_key": "!items!KilqybsyKAwITxaC"
 }

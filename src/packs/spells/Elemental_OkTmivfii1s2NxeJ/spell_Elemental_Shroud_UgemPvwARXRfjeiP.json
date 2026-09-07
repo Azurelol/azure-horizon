@@ -3,7 +3,7 @@
   "name": "Elemental Shroud",
   "type": "spell",
   "_id": "UgemPvwARXRfjeiP",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/elemental/elemental_shroud.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -51,9 +51,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "elemental-shroud"
+      ],
       "duration": {
         "event": "",
         "tracking": ""

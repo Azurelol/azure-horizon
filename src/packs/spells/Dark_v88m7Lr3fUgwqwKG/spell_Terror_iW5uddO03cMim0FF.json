@@ -1,14 +1,14 @@
 {
-  "folder": "Tw1Y0NhNsYc2Pp8A",
-  "name": "Thorn Bind Hostage",
+  "folder": "v88m7Lr3fUgwqwKG",
+  "name": "Terror",
   "type": "spell",
-  "_id": "cCYK5HOjPGnwQqI0",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "_id": "iW5uddO03cMim0FF",
+  "img": "systems/azure-horizon/assets/icons/spells/dark/fear.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "thorn-bind-hostage",
-    "description": "<p>You inflict the target with a status that roots them in place and has them suffer additional magical damage each time they take damage.</p>",
+    "slug": "dark-terror",
+    "description": "<p>You apply <em>Fear</em> to up to 3 targets.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -46,14 +46,16 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "10",
-      "perTarget": false
+      "amount": "5",
+      "perTarget": true
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "fear"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -65,12 +67,11 @@
       "range": "",
       "targeting": "single",
       "type": "action",
-      "points": 2,
-      "traits": [
-        "exhaust"
-      ]
+      "points": 3,
+      "traits": [],
+      "enabled": true
     },
-    "domain": "",
+    "domain": "dark",
     "speed": "instant"
   },
   "effects": [],
@@ -83,12 +84,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787924593861,
+    "createdTime": 1787923658212,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!cCYK5HOjPGnwQqI0"
+  "_key": "!items!iW5uddO03cMim0FF"
 }

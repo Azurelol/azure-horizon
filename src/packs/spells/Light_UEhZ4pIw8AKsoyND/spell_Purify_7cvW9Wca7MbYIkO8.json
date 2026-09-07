@@ -1,19 +1,20 @@
 {
-  "folder": "Tw1Y0NhNsYc2Pp8A",
-  "name": "Astral Hypno",
+  "folder": "UEhZ4pIw8AKsoyND",
+  "name": "Purify",
   "type": "spell",
-  "_id": "43gLFvJLMLtwqica",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "_id": "7cvW9Wca7MbYIkO8",
+  "img": "systems/azure-horizon/assets/icons/spells/light/purify.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "astral-hypno",
-    "description": "<p>The target enemy suffers Sleep for their next turn.</p>",
+    "slug": "light-purify",
+    "description": "<p>You deal light damage to the target and remove one positive status effect.</p>",
     "attributes": {
       "schemaVersion": 1,
-      "primary": "dex",
-      "secondary": "mig",
-      "grade": "C"
+      "primary": "ins",
+      "secondary": "ins",
+      "grade": "B",
+      "enabled": true
     },
     "check": {
       "schemaVersion": 1,
@@ -24,10 +25,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "untyped"
+        "amount": "5",
+        "type": "light"
       },
       "secondary": {
         "amount": "",
@@ -46,7 +47,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "10",
+      "amount": "15",
       "perTarget": false
     },
     "effects": {
@@ -63,16 +64,17 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "targeting": "single",
+      "targeting": "",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
-    "domain": "",
+    "domain": "light",
     "speed": "instant"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 700000,
   "ownership": {
     "default": 0
   },
@@ -81,12 +83,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787925151615,
+    "createdTime": 1787924021632,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!43gLFvJLMLtwqica"
+  "_key": "!items!7cvW9Wca7MbYIkO8"
 }

@@ -3,7 +3,7 @@
   "name": "Ignition",
   "type": "spell",
   "_id": "TUUZhoaQeNhSDsCE",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/elemental/ignition.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

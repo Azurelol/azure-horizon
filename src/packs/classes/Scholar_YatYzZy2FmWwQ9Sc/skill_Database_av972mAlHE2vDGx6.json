@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "scholar-database",
-    "description": "<p>For each point invested in this skill you learn one of your unique spells.</p>",
+    "description": "<p>For each point invested in this skill you learn an arcane spell.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

@@ -3,12 +3,12 @@
   "name": "Curse Weapon",
   "type": "spell",
   "_id": "atdhqDELkenD8M5u",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/dark/curse_weapon.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-curse-weapon",
-    "description": "<p>You envelop your weapon in dark energies so that it also deals dark damage.</p>",
+    "description": "<p>Your weapon gains a status bonus to damage and gains a dark component.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

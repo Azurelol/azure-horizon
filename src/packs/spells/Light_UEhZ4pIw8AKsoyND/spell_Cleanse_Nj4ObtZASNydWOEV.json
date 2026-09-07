@@ -1,14 +1,14 @@
 {
-  "folder": "ruRESkM5pua9h5Rk",
-  "name": "Wall of Stone",
+  "folder": "UEhZ4pIw8AKsoyND",
+  "name": "Cleanse",
   "type": "spell",
-  "_id": "EcoyM40zzwYKBnaB",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "_id": "Nj4ObtZASNydWOEV",
+  "img": "systems/azure-horizon/assets/icons/spells/light/cleanse.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "nature-wall-of-stone",
-    "description": "<p>You summon a wall of stone from the ground, separating the battlefield between your party and your enemies. Until it is destroyed neither side can target each other.</p>",
+    "slug": "light-cleanse",
+    "description": "<p>You dispel one magical effect from up to two party members.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,10 +44,10 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
-      "perTarget": false
+      "amount": "10",
+      "perTarget": true
     },
     "effects": {
       "schemaVersion": 1,
@@ -65,13 +65,14 @@
       "range": "",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
-    "domain": "nature",
-    "speed": "slow"
+    "domain": "light",
+    "speed": "instant"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 300000,
   "ownership": {
     "default": 0
   },
@@ -80,12 +81,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787573263439,
+    "createdTime": 1787423614965,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!EcoyM40zzwYKBnaB"
+  "_key": "!items!Nj4ObtZASNydWOEV"
 }

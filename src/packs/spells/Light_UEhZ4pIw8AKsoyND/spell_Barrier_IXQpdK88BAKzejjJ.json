@@ -3,12 +3,12 @@
   "name": "Barrier",
   "type": "spell",
   "_id": "IXQpdK88BAKzejjJ",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/light/barrier.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "light-barrier",
-    "description": "<p>The target gains <em>Block</em>.</p>",
+    "description": "<p>The target gains <em>Block</em> and blocks the next negative status effect until the barrier ends.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

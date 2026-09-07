@@ -1,14 +1,14 @@
 {
   "folder": "v88m7Lr3fUgwqwKG",
-  "name": "Fear",
+  "name": "Umbral Chain",
   "type": "spell",
-  "_id": "iW5uddO03cMim0FF",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "_id": "I9L2r585s638UxuO",
+  "img": "systems/azure-horizon/assets/icons/spells/dark/umbral_chain.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dark-fear",
-    "description": "<p>You apply Fear to up to 3 targets.</p>",
+    "slug": "dark-umbral-chain",
+    "description": "<p>You deal dark damage and apply <em>Slow</em> to the target.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -46,14 +46,16 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "5",
-      "perTarget": true
+      "amount": "20",
+      "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "slow"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -65,12 +67,20 @@
       "range": "",
       "targeting": "single",
       "type": "action",
-      "points": 3,
-      "traits": [],
+      "points": 2,
+      "traits": [
+        "exhaust"
+      ],
       "enabled": true
     },
     "domain": "dark",
-    "speed": "instant"
+    "speed": "fast",
+    "targeting": {
+      "enabled": false,
+      "rule": "",
+      "range": "",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,
@@ -82,12 +92,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787923658212,
+    "createdTime": 1787921416936,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!iW5uddO03cMim0FF"
+  "_key": "!items!I9L2r585s638UxuO"
 }

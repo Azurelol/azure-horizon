@@ -1,33 +1,35 @@
 {
   "folder": "UEhZ4pIw8AKsoyND",
-  "name": "Divine Shield",
+  "name": "Lux",
   "type": "spell",
-  "_id": "3JMalFHpG3HLs08w",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "_id": "V2F237veEXUD1Ila",
+  "img": "systems/azure-horizon/assets/icons/spells/light/lux.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "light-divine-shield",
-    "description": "<p>You give the target <em>Block</em>.</p>",
+    "slug": "light-lux",
+    "description": "",
     "attributes": {
       "schemaVersion": 1,
-      "primary": "dex",
-      "secondary": "mig",
-      "grade": "C"
+      "enabled": true,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "A"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "mdef",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "untyped"
+        "amount": "10",
+        "type": "light"
       },
       "secondary": {
         "amount": "",
@@ -49,6 +51,13 @@
       "amount": "10",
       "perTarget": false
     },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
+    },
     "effects": {
       "schemaVersion": 1,
       "enabled": false,
@@ -59,19 +68,19 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "high",
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "action",
+      "enabled": false,
+      "type": "",
       "points": 1,
       "traits": []
     },
     "domain": "light",
-    "speed": "instant"
+    "speed": "fast"
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -80,12 +89,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787579337369,
+    "createdTime": 1788792448008,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!3JMalFHpG3HLs08w"
+  "_key": "!items!V2F237veEXUD1Ila"
 }

@@ -8,15 +8,30 @@
  */
 const STATUS_EFFECTS = Object.freeze({
   // HP
-  crisis: {
+  peril: { // <= 50%
+    id: "peril",
+    name: "AH.STATUS.Peril",
+    img: "systems/azure-horizon/assets/icons/statuses/peril.png",
+  },
+  crisis: { // <= 20%
     id: "crisis",
     name: "AH.STATUS.Crisis",
     img: "systems/azure-horizon/assets/icons/statuses/crisis.png",
   },
-  ko: {
+  ko: { // == 0%
     id: "ko",
     name: "AH.STATUS.KO",
     img: "systems/azure-horizon/assets/icons/statuses/ko.png",
+  },
+  defiance: { // Cannot go below 1 until start of next turn.
+    id: "defiance",
+    name: "AH.STATUS.Defiance",
+    img: "systems/azure-horizon/assets/icons/statuses/defiance.png",
+  },
+  reprieve: { // Cannot go below 1 until next attack then ends.
+    id: "reprieve",
+    name: "AH.STATUS.Reprieve",
+    img: "systems/azure-horizon/assets/icons/statuses/reprieve.png",
   },
 
   // CONTROL
@@ -154,12 +169,24 @@ const STATUS_EFFECTS = Object.freeze({
   weak: {
     id: "weak",
     name: "AH.STATUS.Weak",
-    img: "systems/azure-horizon/assets/icons/statuses/weak.png",
+    img: "systems/azure-horizon/assets/icons/statuses/weak+.png",
     changes: [
       {
         key: "system.parameters.damage.universal.outgoing.status.multiplicative",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "0.75",
+      },
+    ],
+  },
+  enfeeble: {
+    id: "enfeeble",
+    name: "AH.STATUS.Enfeeble",
+    img: "systems/azure-horizon/assets/icons/statuses/enfeeble.png",
+    changes: [
+      {
+        key: "system.parameters.damage.universal.outgoing.status.multiplicative",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "0.5",
       },
     ],
   },

@@ -3,12 +3,12 @@
   "name": "Holy Light",
   "type": "spell",
   "_id": "SRNF93ejpEnTb90N",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/light/holy_light.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "holy-light",
-    "description": "",
+    "description": "<p>You heal the target for a significant amount of hit points.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -40,13 +40,13 @@
       "schemaVersion": 1,
       "enabled": true,
       "type": "hp",
-      "amount": "30"
+      "amount": "&hp(0.8)"
     },
     "cost": {
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "10",
+      "amount": "30",
       "perTarget": false
     },
     "effects": {
@@ -70,7 +70,7 @@
       "targeting": "single"
     },
     "domain": "light",
-    "speed": "fast"
+    "speed": "slow"
   },
   "effects": [],
   "sort": 500000,

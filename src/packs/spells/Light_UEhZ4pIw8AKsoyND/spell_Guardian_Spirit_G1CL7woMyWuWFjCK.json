@@ -1,16 +1,17 @@
 {
-  "folder": "v88m7Lr3fUgwqwKG",
-  "name": "Fetters",
+  "folder": "UEhZ4pIw8AKsoyND",
+  "name": "Guardian Spirit",
   "type": "spell",
-  "_id": "n3wE6imZ0jsIK88z",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "_id": "G1CL7woMyWuWFjCK",
+  "img": "systems/azure-horizon/assets/icons/spells/light/guardian_spirit.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dark-fetters",
-    "description": "<p>You apply <em>Bind</em> to the target.</p>",
+    "slug": "light-guardian-spirit",
+    "description": "<p>You grant the target the <em>Reprieve</em> effect. When the target would be reduced below 1 Hit Points by an attack they instead stay at 1 Hit Point. Afterwards the effect ends.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -44,10 +45,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "10",
+      "amount": "",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -62,23 +70,13 @@
     "power": "",
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "targeting": "",
-      "type": "action",
-      "points": 2,
-      "traits": [
-        "exhaust"
-      ],
-      "enabled": true
-    },
-    "domain": "dark",
-    "speed": "instant",
-    "targeting": {
-      "enabled": true,
-      "rule": "",
-      "range": "ranged",
+      "enabled": false,
+      "type": "",
+      "points": 1,
       "traits": []
-    }
+    },
+    "domain": "light",
+    "speed": "fast"
   },
   "effects": [],
   "sort": 0,
@@ -90,12 +88,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787939940320,
+    "createdTime": 1788791398479,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!n3wE6imZ0jsIK88z"
+  "_key": "!items!G1CL7woMyWuWFjCK"
 }

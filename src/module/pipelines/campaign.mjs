@@ -31,7 +31,7 @@ const BASE_TRIGGERS = {
   triggers: [
     {
       text: "AH.EXPERIENCE.TRIGGERS.Scheduling",
-      amount: 5,
+      amount: 10,
     },
     {
       text: "AH.EXPERIENCE.TRIGGERS.Location",
@@ -39,6 +39,18 @@ const BASE_TRIGGERS = {
     },
     {
       text: "AH.EXPERIENCE.TRIGGERS.Adversary",
+      amount: 1,
+    },
+    {
+      text: "AH.EXPERIENCE.TRIGGERS.Recollection",
+      amount: 1,
+    },
+    {
+      text: "AH.EXPERIENCE.TRIGGERS.CharacterMeet",
+      amount: 1,
+    },
+    {
+      text: "AH.EXPERIENCE.TRIGGERS.AssetHelp",
       amount: 1,
     },
   ],

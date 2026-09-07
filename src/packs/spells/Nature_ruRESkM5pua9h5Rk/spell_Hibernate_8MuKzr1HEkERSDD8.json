@@ -3,12 +3,12 @@
   "name": "Hibernate",
   "type": "spell",
   "_id": "8MuKzr1HEkERSDD8",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/nature/hibernate.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "nature-hibernate",
-    "description": "<p>The target enemy suffers from the Sleep status for…</p>",
+    "description": "<p>You apply Sleep to the target, which prevents them from acting until the end of their next turn or until they suffer damage.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

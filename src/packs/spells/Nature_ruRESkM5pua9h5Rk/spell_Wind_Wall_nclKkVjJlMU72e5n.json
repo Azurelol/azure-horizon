@@ -3,7 +3,7 @@
   "name": "Wind Wall",
   "type": "spell",
   "_id": "nclKkVjJlMU72e5n",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/nature/wind_wall.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -68,7 +68,8 @@
       "points": 2,
       "traits": [
         "exhaust"
-      ]
+      ],
+      "enabled": true
     },
     "domain": "nature",
     "speed": "fast"

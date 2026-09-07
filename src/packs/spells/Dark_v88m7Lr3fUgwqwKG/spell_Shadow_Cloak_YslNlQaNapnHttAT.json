@@ -3,12 +3,12 @@
   "name": "Shadow Cloak",
   "type": "spell",
   "_id": "YslNlQaNapnHttAT",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/dark/shadow_cloak.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-shadow-cloak",
-    "description": "<p>You give each party member <em>Stealth</em>.</p>",
+    "description": "<p>You give each party member <em>Stealth</em>, an effect that prevents them from being targeted until their next turn ends.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

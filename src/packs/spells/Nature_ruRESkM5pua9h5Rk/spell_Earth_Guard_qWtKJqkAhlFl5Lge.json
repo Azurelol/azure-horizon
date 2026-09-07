@@ -3,7 +3,7 @@
   "name": "Earth Guard",
   "type": "spell",
   "_id": "qWtKJqkAhlFl5Lge",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/nature/earth_guard.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -38,9 +38,9 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "hp",
-      "amount": ""
+      "enabled": true,
+      "type": "thp",
+      "amount": "$blk"
     },
     "cost": {
       "schemaVersion": 1,

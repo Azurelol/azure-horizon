@@ -1,14 +1,14 @@
 {
-  "folder": "UEhZ4pIw8AKsoyND",
-  "name": "Revealing Light",
+  "folder": "Tw1Y0NhNsYc2Pp8A",
+  "name": "Thorn Bind Hostage",
   "type": "spell",
-  "_id": "7cvW9Wca7MbYIkO8",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "_id": "cCYK5HOjPGnwQqI0",
+  "img": "systems/azure-horizon/assets/icons/spells/arcane/thorn_bind_hostage.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "light-revealing-light",
-    "description": "",
+    "slug": "arcane-thorn-bind-hostage",
+    "description": "<p>You apply the Thorn Bind Hostage effect to the target, an effect  that roots them in place and has them suffer additional damage each time they take damage.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -63,16 +63,18 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "targeting": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "targeting": "single",
+      "type": "action",
+      "points": 2,
+      "traits": [
+        "exhaust"
+      ]
     },
-    "domain": "light",
+    "domain": "arcane",
     "speed": "instant"
   },
   "effects": [],
-  "sort": 700000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -81,12 +83,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787924021632,
+    "createdTime": 1787924593861,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!7cvW9Wca7MbYIkO8"
+  "_key": "!items!cCYK5HOjPGnwQqI0"
 }

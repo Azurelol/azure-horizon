@@ -3,12 +3,12 @@
   "name": "Atrophy",
   "type": "spell",
   "_id": "QlVhRgEzEZo3dl8e",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/dark/atrophy.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-atrophy",
-    "description": "<p>You apply <em>Weak</em> to the target.</p>",
+    "description": "<p>You apply <em>Enfeeble</em> to the target, which lowers their damage significantly.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -46,7 +46,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "5",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -54,7 +54,7 @@
       "enabled": true,
       "selector": "deuff",
       "entries": [
-        "weak"
+        "enfeeble"
       ],
       "duration": {
         "event": "",
@@ -66,7 +66,7 @@
       "schemaVersion": 1,
       "range": "",
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": [
         "cooldown"
       ],
@@ -74,7 +74,7 @@
       "enabled": true
     },
     "domain": "dark",
-    "speed": "fast"
+    "speed": "instant"
   },
   "effects": [],
   "sort": 0,

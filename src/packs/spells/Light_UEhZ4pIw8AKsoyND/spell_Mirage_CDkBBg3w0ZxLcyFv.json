@@ -3,7 +3,7 @@
   "name": "Mirage",
   "type": "spell",
   "_id": "CDkBBg3w0ZxLcyFv",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/light/mirage.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -44,9 +44,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -66,7 +66,8 @@
       "targeting": "",
       "type": "",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": false
     },
     "domain": "light",
     "speed": "instant"

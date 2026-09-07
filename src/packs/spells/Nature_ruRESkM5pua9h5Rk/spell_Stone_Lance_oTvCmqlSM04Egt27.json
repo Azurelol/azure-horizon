@@ -3,7 +3,7 @@
   "name": "Stone Lance",
   "type": "spell",
   "_id": "oTvCmqlSM04Egt27",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/nature/stone_lance.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -72,7 +72,7 @@
       "traits": []
     },
     "domain": "nature",
-    "speed": "instant"
+    "speed": "fast"
   },
   "effects": [],
   "sort": 0,

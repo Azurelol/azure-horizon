@@ -1,16 +1,17 @@
 {
-  "folder": "v88m7Lr3fUgwqwKG",
-  "name": "Slow",
+  "folder": "OkTmivfii1s2NxeJ",
+  "name": "Ice Lance",
   "type": "spell",
-  "_id": "I9L2r585s638UxuO",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "_id": "JSDD6q908ClXNy4h",
+  "img": "systems/azure-horizon/assets/icons/spells/elemental/ice_lance.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "dark-slow",
-    "description": "<p>You apply <em>Slow</em> to the target.</p>",
+    "slug": "elementalist-ice-lance",
+    "description": "<p>You deal cold damage to a target. The damage is doubled if the target is <em>frozen</em>.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -24,10 +25,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "untyped"
+        "amount": "5",
+        "type": "cold"
       },
       "secondary": {
         "amount": "",
@@ -46,16 +47,21 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "20",
+      "amount": "10",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "",
+      "rule": "single",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": true,
-      "selector": "deuff",
-      "entries": [
-        "slow"
-      ],
+      "enabled": false,
+      "selector": "",
+      "entries": [],
       "duration": {
         "event": "",
         "tracking": ""
@@ -64,23 +70,13 @@
     "power": "",
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "targeting": "single",
+      "enabled": true,
       "type": "action",
       "points": 2,
-      "traits": [
-        "exhaust"
-      ],
-      "enabled": true
-    },
-    "domain": "dark",
-    "speed": "fast",
-    "targeting": {
-      "enabled": false,
-      "rule": "",
-      "range": "",
       "traits": []
-    }
+    },
+    "domain": "elemental",
+    "speed": "instant"
   },
   "effects": [],
   "sort": 0,
@@ -92,12 +88,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787921416936,
+    "createdTime": 1788790354045,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!I9L2r585s638UxuO"
+  "_key": "!items!JSDD6q908ClXNy4h"
 }

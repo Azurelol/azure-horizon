@@ -437,6 +437,7 @@ AH.defenses = Object.freeze({
  */
 
 AH.domains = Object.freeze({
+  arcane: { label: "AH.DOMAIN.Arcane" },
   light: { label: "AH.DOMAIN.Light" },
   dark: { label: "AH.DOMAIN.Dark" },
   nature: { label: "AH.DOMAIN.Nature" },

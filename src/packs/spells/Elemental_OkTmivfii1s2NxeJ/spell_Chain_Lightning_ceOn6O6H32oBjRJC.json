@@ -3,12 +3,12 @@
   "name": "Chain Lightning",
   "type": "spell",
   "_id": "ceOn6O6H32oBjRJC",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/elemental/chain_lightning.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "elemental-chain-lightning",
-    "description": "",
+    "description": "<p>You deal electric damage to the target and 3 additionally connected ones.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "ins",
@@ -27,7 +27,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "",
+        "amount": "10",
         "type": "electric"
       },
       "secondary": {
@@ -45,9 +45,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "20",
       "perTarget": false
     },
     "effects": {
@@ -65,11 +65,18 @@
       "schemaVersion": 1,
       "range": "ranged",
       "type": "action",
-      "points": 2,
-      "traits": []
+      "points": 3,
+      "traits": [],
+      "enabled": true
     },
     "domain": "elemental",
-    "speed": "slow"
+    "speed": "slow",
+    "targeting": {
+      "enabled": true,
+      "rule": "single",
+      "range": "ranged",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,

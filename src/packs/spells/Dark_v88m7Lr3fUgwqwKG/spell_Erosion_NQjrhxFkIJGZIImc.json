@@ -3,12 +3,12 @@
   "name": "Erosion",
   "type": "spell",
   "_id": "NQjrhxFkIJGZIImc",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_spell.png",
+  "img": "systems/azure-horizon/assets/icons/spells/dark/erosion.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-erosion",
-    "description": "<p>You afflict the target with the Erosion effect, which deals dark damage to them for the next 3 turns.</p>",
+    "description": "<p>You apply Erosion to the target, which deals dark damage to them for the next 3 turns.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
