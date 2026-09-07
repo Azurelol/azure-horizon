@@ -44,6 +44,25 @@ export default class TextEditorUtils {
   }
 
   /**
+   * @returns {string} A regex group pattern that handles a type group and a variadic args group that needs to be parsed.
+   */
+  static typeArgsGroupPattern() {
+    return "(?<type>\\w+)(?<args>\\s+[a-zA-Z0]+(?:[,\\s]+[a-zA-Z0]+)*)\\s*";
+  }
+
+  /**
+   * @param {string} argsGroup - The raw "args" capture group from typeArgsGroupPattern().
+   * @returns {string[]} The individual argument names, trimmed and split on commas/whitespace.
+   */
+  static parseArgsGroup(argsGroup) {
+    if (!argsGroup) return [];
+    return argsGroup
+      .trim()
+      .split(/[,\s]+/)
+      .filter(Boolean);
+  }
+
+  /**
    * @param {String} name The name of the command
    * @param {String} required
    * @param {String[]|null} optional

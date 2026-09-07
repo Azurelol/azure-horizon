@@ -255,7 +255,7 @@ AH.attributeDice = {
  */
 
 /**
- * @typedef {"attribute"|"open"|'action'|'defense'|'ritual'} CheckType
+ * @typedef {"attribute"|"open"|'action'|'defense'|'ritual'|'travel'} CheckType
  */
 
 /**
@@ -1358,6 +1358,7 @@ AH.icons = {
   actionCheck: "ah-icon-check-action",
   defenseCheck: "ah-icon-check-defense",
   ritualCheck: "ah-icon-check-ritual",
+  travelCheck: "ah-icon-check-travel",
 
   reduced: "ra ra-level-two",
   standard: "ra ra-level-three",

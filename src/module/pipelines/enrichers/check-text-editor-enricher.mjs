@@ -14,13 +14,37 @@ import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 const ID = "CheckTextEditorEnricher";
 
 /**
- * @typedef {DOMStringMap} InlineCheckDataset
- * @inheritDoc
+ * @type TextEditorEnricherConfig
+ */
+const config = {
+  id: ID,
+  pattern: TextEditorUtils.pattern("CHECK",
+    TextEditorUtils.typeArgsGroupPattern(),
+    TextEditorUtils.documentPatternGroup.concat(
+      TextEditorUtils.propertyPattern("increment", "inc", "(true|false)", true),
+      TextEditorUtils.propertyPattern("modifier", "mod", "\\d+", true),
+      TextEditorUtils.propertyPattern("level", "lvl", "\\d+", true),
+    )),
+  enricher,
+  onRender,
+};
+
+/**
+ * @typedef {DOMStringMap} CheckDataset
  * @property {CheckType} type
+ * @property label
+ */
+
+/**
+ * @typedef {CheckDataset} TravelCheckDataset
+ * @property {String} dice
+ */
+
+/**
+ * @typedef {CheckDataset} AttributeCheckDataset
  * @property first
  * @property second
  * @property modifier
- * @property label
  * @property difficulty
  * @property document
  * @property propertyPath
@@ -28,13 +52,39 @@ const ID = "CheckTextEditorEnricher";
  * @property increment
  */
 
+/**
+ * @param {'attr'|'attribute'|'travel'} type
+ * @param {String} args
+ * @return {TravelCheckDataset|AttributeCheckDataset}
+ */
+function parseCheckArgs(type, args) {
+  let data;
+  let split = TextEditorUtils.parseArgsGroup(args);
+  switch (type) {
+    case "attribute":
+      data = {
+        type: type,
+        first: split[0],
+        second: split[1],
+      };
+      break;
+    case "travel":
+      data = {
+        type: type,
+        dice: split[0],
+      };
+      break;
+  }
+  return data;
+}
+
 /** *
  * @param {Number} value
  * @returns {AH_DifficultyLevel}
  */
 function fromValue(value) {
   if (value >= AH.difficultyLevel.impossible.value) {
-    return AH.difficultyLevel.veryHard.key;
+    return AH.difficultyLevel.impossible.key;
   } else if (value >= AH.difficultyLevel.hard.value) {
     return AH.difficultyLevel.hard.key;
   } else if (value >= AH.difficultyLevel.normal.value) {
@@ -77,26 +127,28 @@ function appendDifficulty(level, anchor, show) {
  * @returns A formatted html element
  */
 function enricher(match, options) {
-  let first = match[1];
-  let second = match[2];
+  let type = match.groups.type;
+  let args = match.groups.args;
   const label = match.groups.label;
-  const type = match.groups.type ?? AH.defaults.check.type;
 
-  if ((first in AH.attributes) && (second in AH.attributes)) {
-    const anchor = TextEditorUtils.anchor();
-    anchor.dataset.first = first;
-    anchor.dataset.second = second;
-    anchor.dataset.type = type;
+  const data = parseCheckArgs(type, args);
+  if (data === undefined) {
+    return null;
+  }
 
-    let tooltip = StringUtils.localize("AH.CHAT.RollCheck");
+  const anchor = TextEditorUtils.anchor();
+  let tooltip = StringUtils.localize("AH.CHAT.RollCheck");
+  Object.assign(anchor.dataset, data);
+  // ICON
+  TextEditorUtils.icon(anchor, `${type}Check`);
+  // LABEL
+  if (label) {
+    anchor.append(label);
+    anchor.dataset.label = label;
+  }
 
-    // ICON
-    TextEditorUtils.icon(anchor, `${type}Check`);
-
-    if (label) {
-      anchor.append(label);
-      anchor.dataset.label = label;
-    }
+  // ATTRIBUTE CHECK
+  if (data.type === "attribute" && (data.first in AH.attributes) && (data.second in AH.attributes)) {
     // [OPTIONAL] Modifier
     let modifier = (match.groups.modifier ?? "").slice(1, -1);
     if (modifier) {
@@ -126,11 +178,18 @@ function enricher(match, options) {
     anchor.dataset.increment = match.groups.increment;
     // Show attributes
     const span = document.createElement("span");
-    TextEditorUtils.icon(span, first);
-    TextEditorUtils.icon(span, second);
+    TextEditorUtils.icon(span, data.first);
+    TextEditorUtils.icon(span, data.second);
     anchor.append(span);
     return anchor;
   }
+  // TRAVEL
+  else if (data.type === "travel") {
+    const span = document.createElement("span");
+    span.textContent = data.dice;
+    return anchor;
+  }
+
   return null;
 }
 
@@ -259,18 +318,6 @@ async function onRender(element) {
     event.stopPropagation();
   });
 }
-
-/**
- * @type TextEditorEnricherConfig
- */
-const config = {
-  id: ID,
-  pattern: TextEditorUtils.pattern("CHECK",
-    "\\s*(?<first>\\w+)\\s*(?<second>\\w+)\\s*(?<modifier>\\(.*?\\))*\\s*(?<level>\\w+)?",
-    TextEditorUtils.documentPatternGroup.concat(TextEditorUtils.propertyPattern("increment", "increment", "(true|false)", true), TextEditorUtils.propertyPattern("type", "t", "\\w+"))),
-  enricher,
-  onRender,
-};
 
 async function onDropActor(actor, sheet, { type, damageType, amount, _sourceInfo, traits, ignore }) {
   if (type === ID) {
