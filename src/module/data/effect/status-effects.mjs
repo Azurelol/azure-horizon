@@ -169,7 +169,7 @@ const STATUS_EFFECTS = Object.freeze({
   weak: {
     id: "weak",
     name: "AH.STATUS.Weak",
-    img: "systems/azure-horizon/assets/icons/statuses/weak+.png",
+    img: "systems/azure-horizon/assets/icons/statuses/weak.png",
     changes: [
       {
         key: "system.parameters.damage.universal.outgoing.status.multiplicative",
@@ -255,6 +255,13 @@ const STATUS_EFFECTS = Object.freeze({
     id: "venom",
     name: "AH.STATUS.Venom",
     img: "systems/azure-horizon/assets/icons/statuses/venom.png",
+  },
+
+  // CHECKS
+  dazzle: {
+    id: "dazzle",
+    name: "AH.STATUS.Dazzle",
+    img: "systems/azure-horizon/assets/icons/statuses/dazzle.png",
   },
 
   // PRESSURE
