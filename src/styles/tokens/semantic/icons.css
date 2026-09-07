@@ -174,6 +174,10 @@
     background-image: var(--ah-icon-check-roll);
   }
 
+  .ah-icon-check-travel {
+    background-image: var(--ah-icon-check-travel);
+  }
+
   .ah-icon-check-ritual {
     background-image: var(--ah-icon-check-ritual);
   }

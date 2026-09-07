@@ -37,7 +37,7 @@ const config = {
 
 /**
  * @typedef {CheckDataset} TravelCheckDataset
- * @property {String} dice
+ * @property {AH_DangerLevel} level
  */
 
 /**
@@ -71,7 +71,7 @@ function parseCheckArgs(type, args) {
     case "travel":
       data = {
         type: type,
-        dice: split[0],
+        level: split[0],
       };
       break;
   }
@@ -184,9 +184,12 @@ function enricher(match, options) {
     return anchor;
   }
   // TRAVEL
-  else if (data.type === "travel") {
+  else if (data.type === "travel" && data.level in AH.dangerLevel) {
+    const danger = AH.dangerLevel[data.level];
     const span = document.createElement("span");
-    span.textContent = data.dice;
+    span.textContent = StringUtils.localize(danger.label);
+    anchor.append(span);
+    anchor.setAttribute("data-tooltip", "AH.CHECK.Travel");
     return anchor;
   }
 
@@ -200,106 +203,114 @@ function enricher(match, options) {
 async function onRender(element) {
   const renderContext = await TextEditorUtils.getRenderContext(element);
   element.addEventListener("click", async function(event) {
-    /** @type InlineCheckDataset **/
+    /** @type {AttributeCheckDataset|TravelCheckDataset} **/
     const dataset = renderContext.dataset;
-    const targets = await Targeting.getSelected();
 
-    if (targets.length === 0) return;
-    const first = dataset.first;
-    const second = dataset.second;
-    const difficulty = Number(dataset.difficulty);
+    if (dataset.type === "attribute") {
+      const targets = await Targeting.getSelected();
+      if (targets.length === 0) return;
+      const first = dataset.first;
+      const second = dataset.second;
+      const difficulty = Number(dataset.difficulty);
 
-    let type = dataset.type;
-    const prompt = event.shiftKey;
-    const attributes = { primary: first, secondary: second };
-    const item = renderContext.sourceInfo.resolveItem();
+      let type = dataset.type;
+      const prompt = event.shiftKey;
+      const attributes = { primary: first, secondary: second };
+      const item = renderContext.sourceInfo.resolveItem();
 
-    /** @type CheckResultCallback **/
-    const onResult = async (result) => {
-      if (difficulty && dataset.document) {
-        if (result.fumble || (result < difficulty)) {
-          return;
-        }
+      /** @type CheckResultCallback **/
+      const onResult = async (result) => {
+        if (difficulty && dataset.document) {
+          if (result.fumble || (result < difficulty)) {
+            return;
+          }
 
-        let increment = Formulas.calculateTrackChange(result.total, difficulty, result.critical);
-        if (dataset.increment === "false") {
-          increment = -increment;
-        }
+          let increment = Formulas.calculateTrackChange(result.total, difficulty, result.critical);
+          if (dataset.increment === "false") {
+            increment = -increment;
+          }
 
-        const document = await fromUuid(dataset.document);
-        // Yes it can be a string "undefined".
-        if (dataset.index && (dataset.index !== "undefined")) {
-          await Tracks.updateAtIndexForDocument(document, dataset.propertyPath, dataset.index, increment, {
-            source: targets[0],
-          });
-        }
-      }
-    };
-
-    for (const actor of targets) {
-      if (prompt) {
-        let modifier = 0;
-        if (dataset.modifier !== undefined) {
-          const context = EvaluationContext.fromSourceInfo(renderContext.sourceInfo, targets);
-          modifier = await Expressions.evaluateAsync(dataset.modifier, context);
-          if (isNaN(modifier)) {
-            modifier = 0;
+          const document = await fromUuid(dataset.document);
+          // Yes it can be a string "undefined".
+          if (dataset.index && (dataset.index !== "undefined")) {
+            await Tracks.updateAtIndexForDocument(document, dataset.propertyPath, dataset.index, increment, {
+              source: targets[0],
+            });
           }
         }
+      };
 
-        switch (type) {
-          case "attribute":
-            await CheckPrompt.attributeCheck(actor, {
-              initialConfig: {
-                primary: attributes.primary,
-                secondary: attributes.secondary,
-                difficulty: difficulty,
-                modifier: modifier,
-                label: dataset.label,
-              },
-              checkCallback: (check) => {
-                let config = new ActionConfig(check);
-                config.setLabel(dataset.label);
-              },
-              resultCallback: onResult,
-            });
-            break;
+      for (const actor of targets) {
+        if (prompt) {
+          let modifier = 0;
+          if (dataset.modifier !== undefined) {
+            const context = EvaluationContext.fromSourceInfo(renderContext.sourceInfo, targets);
+            modifier = await Expressions.evaluateAsync(dataset.modifier, context);
+            if (isNaN(modifier)) {
+              modifier = 0;
+            }
+          }
+
+          switch (type) {
+            case "attribute":
+              await CheckPrompt.attributeCheck(actor, {
+                initialConfig: {
+                  primary: attributes.primary,
+                  secondary: attributes.secondary,
+                  difficulty: difficulty,
+                  modifier: modifier,
+                  label: dataset.label,
+                },
+                checkCallback: (check) => {
+                  let config = new ActionConfig(check);
+                  config.setLabel(dataset.label);
+                },
+                resultCallback: onResult,
+              });
+              break;
+          }
+
         }
+        else {
+          switch (type) {
+            case "attribute":
+              await Checks.attributeCheck(
+                actor,
+                attributes,
+                null,
+                async (check) => {
+                  let config = new ActionConfig(check);
+                  config.setLabel(dataset.label);
+                  let modifier = 0;
 
+                  if (item) {
+                    config.setItemReference(item);
+                  }
+
+                  if (dataset.modifier !== undefined) {
+                    const context = EvaluationContext.fromSourceInfo(renderContext.sourceInfo, targets);
+                    modifier = await Expressions.evaluateAsync(dataset.modifier, context);
+                  }
+
+                  if (difficulty > 0) {
+                    config.setDifficulty(difficulty);
+                  }
+
+                  if (modifier !== 0) {
+                    config.addModifier("AH.CHECK.SituationalModifier", modifier);
+                  }
+                },
+                onResult,
+              );
+              break;
+          }
+        }
       }
-      else {
-        switch (type) {
-          case "attribute":
-            await Checks.attributeCheck(
-              actor,
-              attributes,
-              null,
-              async (check) => {
-                let config = new ActionConfig(check);
-                config.setLabel(dataset.label);
-                let modifier = 0;
-
-                if (item) {
-                  config.setItemReference(item);
-                }
-
-                if (dataset.modifier !== undefined) {
-                  const context = EvaluationContext.fromSourceInfo(renderContext.sourceInfo, targets);
-                  modifier = await Expressions.evaluateAsync(dataset.modifier, context);
-                }
-
-                if (difficulty > 0) {
-                  config.setDifficulty(difficulty);
-                }
-
-                if (modifier !== 0) {
-                  config.addModifier("AH.CHECK.SituationalModifier", modifier);
-                }
-              },
-              onResult,
-            );
-            break;
-        }
+    }
+    else if (dataset.type === "travel") {
+      const formula = AH.dangerLevel[dataset.level]?.formula;
+      if (formula) {
+        await Checks.travelCheck(formula);
       }
 
     }

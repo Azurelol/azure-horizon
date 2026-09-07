@@ -1,10 +1,38 @@
 {
-  "folder": "Ejk69Kl3yqGHjinP",
-  "name": "Eris",
+  "folder": "iA9dJH58SPsVLX6e",
+  "name": "Gunner",
   "type": "hero",
-  "_id": "ThDBZvIn90CTF3wA",
+  "_id": "5lEvMKd0Agyq0Cgx",
   "img": "icons/svg/mystery-man.svg",
   "system": {
+    "level": 10,
+    "resources": {
+      "schemaVersion": 1,
+      "hp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "mp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "ip": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "tp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      }
+    },
     "attributes": {
       "mig": {
         "base": 4,
@@ -24,9 +52,52 @@
       }
     },
     "affinities": {
-      "schemaVersion": 1
+      "schemaVersion": 1,
+      "physical": {
+        "preset": "",
+        "type": "additive"
+      },
+      "slashing": {
+        "preset": "",
+        "type": "additive"
+      },
+      "piercing": {
+        "preset": "",
+        "type": "additive"
+      },
+      "bludgeoning": {
+        "preset": "",
+        "type": "additive"
+      },
+      "elemental": {
+        "preset": "",
+        "type": "additive"
+      },
+      "fire": {
+        "preset": "",
+        "type": "additive"
+      },
+      "cold": {
+        "preset": "",
+        "type": "additive"
+      },
+      "electric": {
+        "preset": "",
+        "type": "additive"
+      },
+      "spiritual": {
+        "preset": "",
+        "type": "additive"
+      },
+      "light": {
+        "preset": "",
+        "type": "additive"
+      },
+      "dark": {
+        "preset": "",
+        "type": "additive"
+      }
     },
-    "level": 5,
     "equipment": {},
     "parameters": {
       "schemaVersion": 1,
@@ -41,6 +112,42 @@
       "init": {
         "schemaVersion": 1,
         "bonus": 0
+      },
+      "block": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "recovery": {
+        "incoming": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "outgoing": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
       },
       "damage": {
         "schemaVersion": 1,
@@ -299,45 +406,51 @@
               "multiplicative": []
             }
           }
+        },
+        "electric": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
         }
       },
       "check": {
         "schemaVersion": 1
       }
     },
-    "resources": {
-      "schemaVersion": 1,
-      "hp": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "mp": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "ip": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "tp": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      }
-    },
     "profile": {
-      "schemaVersion": 1
+      "schemaVersion": 1,
+      "summary": ""
     }
   },
   "prototypeToken": {
-    "name": "Eris",
+    "name": "Gunner",
     "displayName": 0,
     "actorLink": true,
     "width": 1,
@@ -429,119 +542,8 @@
     "prependAdjective": false
   },
   "items": [],
-  "effects": [
-    {
-      "name": "KO",
-      "img": "systems/azure-horizon/assets/icons/statuses/ko.png",
-      "statuses": [
-        "ko"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "ko"
-        }
-      },
-      "_id": "uVjK4T6H3Kd6Wzx5",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668024,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!ThDBZvIn90CTF3wA.uVjK4T6H3Kd6Wzx5"
-    },
-    {
-      "name": "Crisis",
-      "img": "systems/azure-horizon/assets/icons/statuses/crisis.png",
-      "statuses": [
-        "crisis"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "crisis"
-        }
-      },
-      "_id": "ckXNpojYfrmUqneO",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668080,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!ThDBZvIn90CTF3wA.ckXNpojYfrmUqneO"
-    }
-  ],
-  "sort": 300000,
+  "effects": [],
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -550,12 +552,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786646134734,
+    "createdTime": 1788800095046,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!ThDBZvIn90CTF3wA"
+  "_key": "!actors!5lEvMKd0Agyq0Cgx"
 }

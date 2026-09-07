@@ -97,9 +97,18 @@ async function prepareEndingData(party) {
   return data;
 }
 
+/**
+ * @param {Number} result
+ * @returns {Promise<void>}
+ */
+async function processTravelCheck(result) {
+
+}
+
 const Campaign = Object.freeze({
   prepareOpeningData,
   prepareEndingData,
+  processTravelCheck,
 });
 
 export default Campaign;

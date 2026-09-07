@@ -349,6 +349,7 @@
       "Attribute": "Attribute Check",
       "Defense": "Defense Check",
       "Ritual": "Ritual Check",
+      "Travel": "Travel Check",
       "Open": "Open Check",
       "Difficulty": "Difficulty",
       "Threshold": "Threshold",
@@ -940,6 +941,13 @@
       "Pressure": "Pressure",
       "Scorch": "Scorch",
       "Stagger": "Stagger"
+    },
+    "DANGER": {
+      "Low": "Low",
+      "Moderate": "Moderate",
+      "High": "High",
+      "Severe": "Severe",
+      "Extreme": "Extreme"
     },
     "ACTION": {
       "Action": "Action",

@@ -47,7 +47,7 @@ export default class TextEditorUtils {
    * @returns {string} A regex group pattern that handles a type group and a variadic args group that needs to be parsed.
    */
   static typeArgsGroupPattern() {
-    return "(?<type>\\w+)(?<args>\\s+[a-zA-Z0]+(?:[,\\s]+[a-zA-Z0]+)*)\\s*";
+    return "(?<type>\\w+)(?<args>\\s+[a-zA-Z0-9]+(?:[,\\s]+[a-zA-Z0]+)*)\\s*";
   }
 
   /**

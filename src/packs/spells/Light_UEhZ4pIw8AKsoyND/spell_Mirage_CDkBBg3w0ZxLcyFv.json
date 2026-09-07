@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "light-mirage",
-    "description": "",
+    "description": "<p>You gain the Mirage effect, which does something very useful.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

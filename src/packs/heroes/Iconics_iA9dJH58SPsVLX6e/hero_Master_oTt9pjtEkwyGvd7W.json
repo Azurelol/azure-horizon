@@ -1,10 +1,38 @@
 {
-  "folder": "Ejk69Kl3yqGHjinP",
-  "name": "Waleed",
+  "folder": "iA9dJH58SPsVLX6e",
+  "name": "Master",
   "type": "hero",
-  "_id": "U7lzQZHaPk0TnHST",
-  "img": "icons/svg/mystery-man.svg",
+  "_id": "oTt9pjtEkwyGvd7W",
+  "img": "systems/azure-horizon/assets/characters/heroes/master_profile.png",
   "system": {
+    "level": 10,
+    "resources": {
+      "schemaVersion": 1,
+      "hp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "mp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "ip": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "tp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      }
+    },
     "attributes": {
       "mig": {
         "base": 4,
@@ -24,9 +52,52 @@
       }
     },
     "affinities": {
-      "schemaVersion": 1
+      "schemaVersion": 1,
+      "physical": {
+        "preset": "",
+        "type": "additive"
+      },
+      "slashing": {
+        "preset": "",
+        "type": "additive"
+      },
+      "piercing": {
+        "preset": "",
+        "type": "additive"
+      },
+      "bludgeoning": {
+        "preset": "",
+        "type": "additive"
+      },
+      "elemental": {
+        "preset": "",
+        "type": "additive"
+      },
+      "fire": {
+        "preset": "",
+        "type": "additive"
+      },
+      "cold": {
+        "preset": "",
+        "type": "additive"
+      },
+      "electric": {
+        "preset": "",
+        "type": "additive"
+      },
+      "spiritual": {
+        "preset": "",
+        "type": "additive"
+      },
+      "light": {
+        "preset": "",
+        "type": "additive"
+      },
+      "dark": {
+        "preset": "",
+        "type": "additive"
+      }
     },
-    "level": 5,
     "equipment": {},
     "parameters": {
       "schemaVersion": 1,
@@ -41,6 +112,42 @@
       "init": {
         "schemaVersion": 1,
         "bonus": 0
+      },
+      "block": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "recovery": {
+        "incoming": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "outgoing": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
       },
       "damage": {
         "schemaVersion": 1,
@@ -299,57 +406,62 @@
               "multiplicative": []
             }
           }
+        },
+        "electric": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
         }
       },
       "check": {
         "schemaVersion": 1
       }
     },
-    "resources": {
-      "schemaVersion": 1,
-      "hp": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "mp": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "ip": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "tp": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      }
-    },
     "profile": {
       "schemaVersion": 1,
+      "summary": "",
       "identity": "",
       "theme": "",
       "origin": "",
-      "anchor": "",
-      "summary": ""
+      "anchor": ""
     }
   },
   "prototypeToken": {
-    "name": "Ballet",
+    "name": "Master",
     "displayName": 0,
     "actorLink": true,
     "width": 1,
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg",
+      "src": "systems/azure-horizon/assets/characters/heroes/master_token.png",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "cover",
@@ -415,7 +527,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 1,
+      "effects": 0,
       "subject": {
         "scale": 1,
         "texture": null
@@ -448,7 +560,7 @@
           "Identifier": "ko"
         }
       },
-      "_id": "NlMwBd24pXcnarbi",
+      "_id": "oMNNMYInEZwi68iA",
       "type": "base",
       "system": {
         "changes": [],
@@ -481,14 +593,14 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668025,
+        "createdTime": 1788800142077,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.effects!U7lzQZHaPk0TnHST.NlMwBd24pXcnarbi"
+      "_key": "!actors.effects!oTt9pjtEkwyGvd7W.oMNNMYInEZwi68iA"
     },
     {
       "name": "Crisis",
@@ -503,7 +615,7 @@
           "Identifier": "crisis"
         }
       },
-      "_id": "BKr2XNPdUNzKfnUX",
+      "_id": "bmAyTGvM17tTMGkm",
       "type": "base",
       "system": {
         "changes": [],
@@ -536,17 +648,17 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668082,
+        "createdTime": 1788800142086,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.effects!U7lzQZHaPk0TnHST.BKr2XNPdUNzKfnUX"
+      "_key": "!actors.effects!oTt9pjtEkwyGvd7W.bmAyTGvM17tTMGkm"
     }
   ],
-  "sort": 400000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -555,12 +667,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786646202088,
+    "createdTime": 1788800118381,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!U7lzQZHaPk0TnHST"
+  "_key": "!actors!oTt9pjtEkwyGvd7W"
 }

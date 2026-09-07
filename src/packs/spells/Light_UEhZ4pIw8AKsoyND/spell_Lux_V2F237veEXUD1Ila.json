@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "light-lux",
-    "description": "",
+    "description": "<p>You deal light damage to the target. On an even check result you also <em>dazzle</em> it until the end of their next turn.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": true,

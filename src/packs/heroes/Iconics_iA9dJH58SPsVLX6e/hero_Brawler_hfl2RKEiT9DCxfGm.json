@@ -1,9 +1,9 @@
 {
   "folder": "iA9dJH58SPsVLX6e",
-  "name": "Dancer",
+  "name": "Brawler",
   "type": "hero",
-  "_id": "9PlTvvHTZGiYpnyf",
-  "img": "systems/azure-horizon/assets/characters/heroes/dancer_profile.png",
+  "_id": "hfl2RKEiT9DCxfGm",
+  "img": "systems/azure-horizon/assets/characters/heroes/brawler_profile.png",
   "system": {
     "level": 10,
     "resources": {
@@ -116,6 +116,38 @@
       "block": {
         "schemaVersion": 1,
         "bonus": 0
+      },
+      "recovery": {
+        "incoming": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "outgoing": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
       },
       "damage": {
         "schemaVersion": 1,
@@ -374,6 +406,38 @@
               "multiplicative": []
             }
           }
+        },
+        "electric": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
         }
       },
       "check": {
@@ -390,14 +454,14 @@
     }
   },
   "prototypeToken": {
-    "name": "Dancer",
+    "name": "Brawler",
     "displayName": 0,
     "actorLink": true,
     "width": 1,
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "systems/azure-horizon/assets/characters/heroes/dancer_token.png",
+      "src": "systems/azure-horizon/assets/characters/heroes/brawler_token.png",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "cover",
@@ -481,7 +545,61 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Brawler",
+      "type": "class",
+      "_id": "H1gWaSP7iNsKBjVf",
+      "img": "systems/azure-horizon/assets/icons/classes/brawler/brawler.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "brawler",
+        "description": "<p>A practitioner of the martial arts. They could be a disciple of a traveling master, a hotblooded youth or a student of a martial arts school. They excel in pressuring their foes in close quarters combat, building up their momentum before unleashing powerful combination attacks.</p><blockquote><p>The Brawler is a class for those who wish to reliable pressure their opponents while steadily building up their combination for a big payoff.</p></blockquote>",
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": true,
+          "mp": false,
+          "ip": false,
+          "tp": false
+        },
+        "traits": [
+          "warrior",
+          "mobility"
+        ],
+        "triggers": [
+          "You take part in a brawl.",
+          "You speak truth to authority.",
+          "You punch someone who deserves it."
+        ],
+        "complications": [
+          "A former friend who was a bad influence appears.",
+          "Your master dies.",
+          "You get arrested."
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788799200516,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.H1gWaSP7iNsKBjVf",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!hfl2RKEiT9DCxfGm.H1gWaSP7iNsKBjVf"
+    }
+  ],
   "effects": [],
   "sort": 0,
   "ownership": {
@@ -492,12 +610,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788191154802,
+    "createdTime": 1788795972252,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!9PlTvvHTZGiYpnyf"
+  "_key": "!actors!hfl2RKEiT9DCxfGm"
 }

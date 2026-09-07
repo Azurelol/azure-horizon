@@ -473,4 +473,23 @@ export default class Checks {
     return Checks.performCheck(check, actor, config.armorData?.parent, onPrepare, onResult);
   }
 
+  /**
+   * @param {String} formula
+   * @remarks This is performed by party while on a journey.
+   */
+  static async travelCheck(formula) {
+
+    const roll = await new Roll(formula).roll();
+    if (game.dice3d) {
+      await game.dice3d.showForRoll(roll);
+    }
+
+    // TODO: Map result to different messages
+
+    const builder = new ChatMessageBuilder(null, null);
+    builder.text(`Rolled ${roll.total}`);
+
+    return builder.create();
+  }
+
 }

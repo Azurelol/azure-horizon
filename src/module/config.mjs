@@ -275,6 +275,18 @@ AH.checkTypes = {
  */
 
 /**
+ * @typedef {'low'|'moderate'|'high'|'severe'|'extreme'} AH_DangerLevel
+ */
+
+AH.dangerLevel = {
+  low: { label: "AH.DANGER.Low", formula: "d4" },
+  moderate: { label: "AH.DANGER.Moderate", formula: "d6" },
+  high: { label: "AH.DANGER.High", formula: "d8" },
+  severe: { label: "AH.DANGER.Severe", formula: "d10" },
+  extreme: { label: "AH.DANGER.Extreme", formula: "d12" },
+};
+
+/**
  * @type {Record<string, AH_Constant>}}
  */
 AH.resourceTypes = {

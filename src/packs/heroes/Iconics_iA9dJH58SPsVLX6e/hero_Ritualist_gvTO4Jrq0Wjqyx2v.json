@@ -1,10 +1,38 @@
 {
-  "folder": "Ejk69Kl3yqGHjinP",
-  "name": "Leefa",
+  "folder": "iA9dJH58SPsVLX6e",
+  "name": "Ritualist",
   "type": "hero",
-  "_id": "3YkhmlrgT9ptzWuq",
+  "_id": "gvTO4Jrq0Wjqyx2v",
   "img": "icons/svg/mystery-man.svg",
   "system": {
+    "level": 10,
+    "resources": {
+      "schemaVersion": 1,
+      "hp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "mp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "ip": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "tp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      }
+    },
     "attributes": {
       "mig": {
         "base": 4,
@@ -24,13 +52,53 @@
       }
     },
     "affinities": {
-      "schemaVersion": 1
+      "schemaVersion": 1,
+      "physical": {
+        "preset": "",
+        "type": "additive"
+      },
+      "slashing": {
+        "preset": "",
+        "type": "additive"
+      },
+      "piercing": {
+        "preset": "",
+        "type": "additive"
+      },
+      "bludgeoning": {
+        "preset": "",
+        "type": "additive"
+      },
+      "elemental": {
+        "preset": "",
+        "type": "additive"
+      },
+      "fire": {
+        "preset": "",
+        "type": "additive"
+      },
+      "cold": {
+        "preset": "",
+        "type": "additive"
+      },
+      "electric": {
+        "preset": "",
+        "type": "additive"
+      },
+      "spiritual": {
+        "preset": "",
+        "type": "additive"
+      },
+      "light": {
+        "preset": "",
+        "type": "additive"
+      },
+      "dark": {
+        "preset": "",
+        "type": "additive"
+      }
     },
-    "level": 10,
-    "equipment": {
-      "mainHand": "szOOL3tYm9lePH1i",
-      "offHand": "szOOL3tYm9lePH1i"
-    },
+    "equipment": {},
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -44,6 +112,42 @@
       "init": {
         "schemaVersion": 1,
         "bonus": 0
+      },
+      "block": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "recovery": {
+        "incoming": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "outgoing": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
       },
       "damage": {
         "schemaVersion": 1,
@@ -302,49 +406,51 @@
               "multiplicative": []
             }
           }
+        },
+        "electric": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
         }
       },
       "check": {
         "schemaVersion": 1
       }
     },
-    "resources": {
-      "schemaVersion": 1,
-      "hp": {
-        "schemaVersion": 1,
-        "value": 25,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "mp": {
-        "schemaVersion": 1,
-        "value": 25,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "ip": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      },
-      "tp": {
-        "schemaVersion": 1,
-        "value": 0,
-        "bonus": 0,
-        "temporary": 0
-      }
-    },
     "profile": {
       "schemaVersion": 1,
-      "identity": "",
-      "theme": "",
-      "origin": "",
-      "anchor": ""
+      "summary": ""
     }
   },
   "prototypeToken": {
-    "name": "Leefa",
+    "name": "Ritualist",
     "displayName": 0,
     "actorLink": true,
     "width": 1,
@@ -435,65 +541,9 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [
-    {
-      "name": "Leather Glove",
-      "type": "weapon",
-      "_id": "szOOL3tYm9lePH1i",
-      "img": "systems/azure-horizon/assets/icons/equipment/weapons/leather_glove.png",
-      "system": {
-        "schemaVersion": 1,
-        "revision": 1,
-        "slug": "equipment-leather-glove",
-        "description": "",
-        "check": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": "dex",
-          "secondary": "mig",
-          "defense": "def",
-          "bonus": ""
-        },
-        "handedness": "two",
-        "traits": [],
-        "damage": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": {
-            "amount": "",
-            "type": "bludgeoning"
-          },
-          "secondary": {
-            "amount": "",
-            "type": ""
-          },
-          "traits": []
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1786645883208,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.equipment.Item.szOOL3tYm9lePH1i",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "B84lnG927FT7kWX1": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!3YkhmlrgT9ptzWuq.szOOL3tYm9lePH1i"
-    }
-  ],
+  "items": [],
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -502,12 +552,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786645671842,
+    "createdTime": 1788800240045,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!3YkhmlrgT9ptzWuq"
+  "_key": "!actors!gvTO4Jrq0Wjqyx2v"
 }

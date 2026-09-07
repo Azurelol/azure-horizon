@@ -592,36 +592,92 @@
       "_key": "!actors.items!7UWpPQ75by6FCspf.wDzfZ3v9nVzKORjN"
     },
     {
-      "name": "Lancer",
-      "type": "class",
-      "_id": "0ogZm1r46mKL5P3W",
-      "img": "systems/azure-horizon/assets/icons/classes/lancer/lancer.png",
+      "name": "Dragon School",
+      "type": "skill",
+      "_id": "OirK28D6s93ujtsl",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "lancer",
-        "description": "<p>An acrobatic warrior who specializes in fighting at range with a long spear. They could be the elites of military organizations or disciples of renowned martial masters. They specialize in getting past defenses to directly deal with dangerous opponents.</p><blockquote><p>The Lancer should be a fun class for those wishing to engage with the fantasy of the fighter who leaps around the battlefield. Their iconic Jump skill allows them to avoid being targeted and unleash more powerful versions of their main skills.</p></blockquote>",
-        "traits": [
-          "warrior",
-          "offense",
-          "mobility"
-        ],
-        "benefits": {
+        "slug": "lancer-dragon-school",
+        "description": "<p>You gain the use of two <em>lancer arts </em>for each point invested into this skill.</p>",
+        "attributes": {
           "schemaVersion": 1,
-          "hp": true,
-          "mp": false,
-          "ip": false
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
         },
-        "triggers": [
-          "You liberate someone.",
-          "You jump from a great height and land in a dramatic pose.",
-          "You defeat an enemy with a Jump."
-        ],
-        "complications": [
-          "A rival lancer has been possessed by an evil dragon spirit.",
-          "Your romantic rival wins the heart of the object of your affection.",
-          "You realize those you once served were wrong all along."
-        ]
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 2
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "",
+          "points": 1,
+          "traits": []
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        },
+        "class": "lancer"
       },
       "effects": [],
       "flags": {},
@@ -629,10 +685,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788338688388,
+        "createdTime": 1788797420431,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.classes.Item.0ogZm1r46mKL5P3W",
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.OirK28D6s93ujtsl",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -642,13 +698,13 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!7UWpPQ75by6FCspf.0ogZm1r46mKL5P3W"
+      "_key": "!actors.items!7UWpPQ75by6FCspf.OirK28D6s93ujtsl"
     },
     {
       "name": "Jump",
       "type": "skill",
       "_id": "I1w5OaDxd0fdZeA6",
-      "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_shift.png",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
@@ -663,15 +719,567 @@
         },
         "action": {
           "schemaVersion": 1,
-          "range": "",
           "type": "action",
           "points": 1,
           "traits": [
             "cooldown",
             "closer"
           ],
+          "enabled": true
+        },
+        "damage": {
+          "schemaVersion": 1,
           "enabled": false,
-          "targeting": ""
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "5",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "lancer",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "power": ""
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788797428787,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.I1w5OaDxd0fdZeA6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.I1w5OaDxd0fdZeA6"
+    },
+    {
+      "name": "Drake Thrust",
+      "type": "classFeature",
+      "_id": "aWG9v7iaRsKEaeSR",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "lancer-drake-thrust",
+        "description": "<p>You perform a melee attack with increased potency. On an even check you gain <em>Fangs Bared</em>, otherwise <em>Coiled Tail</em>. On a critical you instead gain <em>Dragon Breath.</em></p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "range": "",
+          "rule": "single",
+          "traits": []
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "low",
+        "feature": {
+          "_id": "v2tE9nnqUkYU3NRB",
+          "type": "emptyClassFeature"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 2,
+          "traits": []
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "attributes": true,
+          "check": true,
+          "damage": true
+        },
+        "trait": "",
+        "class": "lancer",
+        "skill": "lancer-dragon-school"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788797432831,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.aWG9v7iaRsKEaeSR",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.aWG9v7iaRsKEaeSR"
+    },
+    {
+      "name": "Wyrm Fang",
+      "type": "classFeature",
+      "_id": "mfCqP9vfWwr2CXtP",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "lancer-wyrm-fang",
+        "description": "<p>While under the effects of Bared Fang you perform a piercing attack. While <em>jumping</em> you also apply <em>Sunder</em> to the target.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "range": "",
+          "rule": "single",
+          "traits": [
+            "pierce"
+          ]
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "deuff",
+          "entries": [
+            "sunder"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "moderate",
+        "feature": {
+          "_id": "v2tE9nnqUkYU3NRB",
+          "type": "emptyClassFeature"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 2,
+          "traits": []
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "attributes": true,
+          "check": true,
+          "damage": true
+        },
+        "trait": "",
+        "class": "lancer",
+        "skill": "lancer-dragon-school"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788797434390,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.mfCqP9vfWwr2CXtP",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.mfCqP9vfWwr2CXtP"
+    },
+    {
+      "name": "Wyvern Tail",
+      "type": "classFeature",
+      "_id": "4Km84sxp0QD587HS",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "lancer-wyvern-tail",
+        "description": "<p>While under the effect of Coiled Tail, you can perform a cleaving melee attack. While <em>jumping</em> you also perform a <em>free</em> <em>attack</em> on any enemies hit.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "range": "melee",
+          "rule": "single",
+          "traits": [
+            "cleave"
+          ]
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "moderate",
+        "feature": {
+          "_id": "v2tE9nnqUkYU3NRB",
+          "type": "emptyClassFeature"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 2,
+          "traits": []
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "attributes": true,
+          "check": true,
+          "damage": true
+        },
+        "trait": "",
+        "class": "lancer",
+        "skill": "lancer-dragon-school"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788797435427,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.4Km84sxp0QD587HS",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.4Km84sxp0QD587HS"
+    },
+    {
+      "name": "Dragon Fire",
+      "type": "classFeature",
+      "_id": "wcBTqDNH9skHzX9v",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "lancer-dragon-fire",
+        "description": "<p>While under the effects of <em>Dragon Breath</em> you perform a splash fire attack. While <em>jumping</em> you instead hit all enemies.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "10",
+            "type": "fire"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "20",
+          "perTarget": false
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "range": "melee",
+          "rule": "single",
+          "traits": [
+            "splash"
+          ]
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "high",
+        "feature": {
+          "_id": "v2tE9nnqUkYU3NRB",
+          "type": "emptyClassFeature"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 3,
+          "traits": []
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "attributes": true,
+          "check": true,
+          "damage": false
+        },
+        "trait": "",
+        "class": "lancer",
+        "skill": "lancer-dragon-school"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788797443900,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.wcBTqDNH9skHzX9v",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.wcBTqDNH9skHzX9v"
+    },
+    {
+      "name": "Preempt",
+      "type": "skill",
+      "_id": "jxa8l7C9sjxzDTlP",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "lancer-preempt",
+        "description": "<p>When you are targeted by a melee attack you may perform a free attack before your attacker resolves their action.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
         },
         "damage": {
           "schemaVersion": 1,
@@ -709,26 +1317,42 @@
             "tracking": ""
           }
         },
+        "power": "",
         "level": {
           "current": 1,
           "max": 1
         },
+        "action": {
+          "schemaVersion": 1,
+          "type": "reaction",
+          "points": 1,
+          "traits": [
+            "interrupt"
+          ],
+          "enabled": true
+        },
         "usage": {
           "schemaVersion": 1,
           "check": false,
-          "damage": false,
-          "enabled": false,
-          "attributes": false
+          "damage": true,
+          "enabled": true,
+          "attributes": true
         },
         "class": "lancer",
         "attributes": {
-          "schemaVersion": 1,
           "enabled": false,
           "primary": "dex",
           "secondary": "mig",
-          "grade": "C"
+          "grade": "C",
+          "schemaVersion": 1
         },
-        "power": ""
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
       },
       "effects": [],
       "flags": {},
@@ -736,10 +1360,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788338730926,
+        "createdTime": 1788797454482,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.classes.Item.I1w5OaDxd0fdZeA6",
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.jxa8l7C9sjxzDTlP",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -749,36 +1373,24 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!7UWpPQ75by6FCspf.I1w5OaDxd0fdZeA6"
+      "_key": "!actors.items!7UWpPQ75by6FCspf.jxa8l7C9sjxzDTlP"
     },
     {
-      "name": "Drake Thrust",
+      "name": "Litany",
       "type": "skill",
-      "_id": "iv1oW3BnPuObbQjS",
-      "img": "icons/skills/melee/spear-tips-double-purple.webp",
+      "_id": "WoRVtl6fopiH3jp4",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "lancer-drake-thrust",
-        "description": "<p>You perform a melee attack with increased potency. On an even check you gain <em>Fangs Bared</em>, otherwise <em>Coiled Tail</em>. On a critical you instead gain <em>Dragon Breath.</em></p>",
+        "slug": "lancer-litany",
+        "description": "<p>Your gain the <em>Litany</em> effect, which empowers your next attack to deal increased damage and pressure.</p>",
         "check": {
           "schemaVersion": 1,
           "enabled": false,
           "primary": "dex",
           "secondary": "mig",
-          "defense": "def",
-          "bonus": ""
-        },
-        "action": {
-          "schemaVersion": 1,
-          "type": "action",
-          "points": 2,
-          "traits": [
-            "opener"
-          ],
-          "enabled": true,
-          "range": "melee",
-          "targeting": "single"
+          "defense": "def"
         },
         "damage": {
           "schemaVersion": 1,
@@ -803,33 +1415,41 @@
           "schemaVersion": 1,
           "enabled": true,
           "resource": "mp",
-          "amount": "5",
+          "amount": "10",
           "perTarget": false
         },
         "effects": {
           "schemaVersion": 1,
           "enabled": true,
+          "selector": "buff",
           "entries": [
-            "lancer-fangs-bared",
-            "lancer-coiled-tail",
-            "lancer-dragon-breath"
+            "lancer-litany"
           ],
           "duration": {
             "event": "",
             "tracking": ""
-          },
-          "selector": "buff"
+          }
         },
+        "power": "",
         "level": {
           "current": 1,
           "max": 1
         },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "exhaust"
+          ],
+          "enabled": true
+        },
         "usage": {
           "schemaVersion": 1,
-          "check": true,
-          "damage": true,
-          "enabled": true,
-          "attributes": true
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
         },
         "class": "lancer",
         "attributes": {
@@ -839,7 +1459,13 @@
           "secondary": "mig",
           "grade": "C"
         },
-        "power": "low"
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
       },
       "effects": [],
       "flags": {},
@@ -847,10 +1473,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788338895842,
+        "createdTime": 1788797466876,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.classes.Item.iv1oW3BnPuObbQjS",
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.WoRVtl6fopiH3jp4",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -860,7 +1486,7 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!7UWpPQ75by6FCspf.iv1oW3BnPuObbQjS"
+      "_key": "!actors.items!7UWpPQ75by6FCspf.WoRVtl6fopiH3jp4"
     }
   ],
   "effects": [],

@@ -1,9 +1,9 @@
 {
   "folder": "iA9dJH58SPsVLX6e",
-  "name": "Berserker",
+  "name": "Scholar",
   "type": "hero",
-  "_id": "P24GsCYpN1QdgPa8",
-  "img": "systems/azure-horizon/assets/characters/heroes/berserker_profile.png",
+  "_id": "dkhlVcghIUdfAZqZ",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "level": 10,
     "resources": {
@@ -116,6 +116,38 @@
       "block": {
         "schemaVersion": 1,
         "bonus": 0
+      },
+      "recovery": {
+        "incoming": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "outgoing": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
       },
       "damage": {
         "schemaVersion": 1,
@@ -374,6 +406,38 @@
               "multiplicative": []
             }
           }
+        },
+        "electric": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
         }
       },
       "check": {
@@ -382,27 +446,23 @@
     },
     "profile": {
       "schemaVersion": 1,
-      "summary": "",
-      "identity": "",
-      "theme": "",
-      "origin": "",
-      "anchor": ""
+      "summary": ""
     }
   },
   "prototypeToken": {
-    "name": "Berserker",
+    "name": "Scholar",
     "displayName": 0,
     "actorLink": true,
     "width": 1,
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "systems/azure-horizon/assets/characters/heroes/berserker_token.png",
+      "src": "icons/svg/mystery-man.svg",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "cover",
-      "scaleX": 1.25,
-      "scaleY": 1.25,
+      "scaleX": 1,
+      "scaleY": 1,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -463,7 +523,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -482,118 +542,7 @@
     "prependAdjective": false
   },
   "items": [],
-  "effects": [
-    {
-      "name": "KO",
-      "img": "systems/azure-horizon/assets/icons/statuses/ko.png",
-      "statuses": [
-        "ko"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "ko"
-        }
-      },
-      "_id": "EVTHyEokvkcTKsEq",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668021,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!P24GsCYpN1QdgPa8.EVTHyEokvkcTKsEq"
-    },
-    {
-      "name": "Crisis",
-      "img": "systems/azure-horizon/assets/icons/statuses/crisis.png",
-      "statuses": [
-        "crisis"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "crisis"
-        }
-      },
-      "_id": "wxbP0QC8hMXWAFF1",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668075,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!P24GsCYpN1QdgPa8.wxbP0QC8hMXWAFF1"
-    }
-  ],
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -603,12 +552,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788191199982,
+    "createdTime": 1788800214172,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!P24GsCYpN1QdgPa8"
+  "_key": "!actors!dkhlVcghIUdfAZqZ"
 }
