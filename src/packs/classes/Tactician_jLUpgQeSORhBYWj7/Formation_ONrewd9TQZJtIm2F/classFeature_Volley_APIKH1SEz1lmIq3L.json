@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "tactician-volley",
-    "description": "<p>All party members in the back row perform a ranged attack, swapping to a ranged weapon if needed.</p>",
+    "description": "<p>All party members in the back row perform a free ranged attack, swapping to a ranged weapon if needed.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "3",
       "perTarget": false
     },
     "effects": {
@@ -63,7 +63,10 @@
       "range": "",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [
+        "cooldown"
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,

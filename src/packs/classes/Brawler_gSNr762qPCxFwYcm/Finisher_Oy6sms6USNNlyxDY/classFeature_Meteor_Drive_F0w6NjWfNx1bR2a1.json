@@ -72,7 +72,8 @@
       "points": 3,
       "traits": [
         "finisher"
-      ]
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,

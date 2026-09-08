@@ -68,7 +68,7 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 <p>When a party member performs a physical attack you can enchant it before it resolves to deal additional elemental damage of your choice.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_defense.png"><span>Ice Block</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/elementalist/ice_block.png"><span>Ice Block</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
@@ -93,7 +93,7 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Manafont</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Cooldown</span>
+<span class="document-trait">Exhaust</span>
 <span class="document-trait">Action 1</span>
 </div>
 <i class="fa-solid fa-star"></i> 1

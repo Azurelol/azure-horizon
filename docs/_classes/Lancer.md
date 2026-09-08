@@ -37,29 +37,13 @@ tokenImg: /assets/characters/heroes/lancer_token.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Dragon Fire</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Dragon School</span></div>
 <div class='document-header__properties'>
-<div class="document-traits --nested">
-<span class="document-trait">Action 2</span>
-</div>
-<i class="fa-solid fa-star"></i> 1
+<i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
-<p>While under the effects of <em>Dragon Breath</em> you perform a splash fire attack. While <em>jumping</em> you instead hit all enemies.</p>
-
-<div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Drake Thrust</span></div>
-<div class='document-header__properties'>
-<div class="document-traits --nested">
-<span class="document-trait">Opener</span>
-<span class="document-trait">Action 2</span>
-</div>
-<i class="fa-solid fa-star"></i> 1
-</div>
-</div>
-
-<p>You perform a melee attack with increased potency. On an even check you gain <em>Fangs Bared</em>, otherwise <em>Coiled Tail</em>. On a critical you instead gain <em>Dragon Breath.</em></p>
+<p>You gain the use of two <em>lancer arts </em>for each point invested into this skill.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_defense.png"><span>Elusive Jump</span></div>
@@ -121,7 +105,33 @@ tokenImg: /assets/characters/heroes/lancer_token.png
 </div>
 </div>
 
-<p>When you are targeted by a melee attack you may perform a free attack before your attacker.</p>
+<p>When you are targeted by a melee attack you may perform a free attack before your attacker resolves their action.</p>
+
+---
+
+## Features
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Dragon Fire</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 3</span>
+</div>
+</div>
+</div>
+
+<p>While under the effects of <em>Dragon Breath</em> you perform a splash fire attack. While <em>jumping</em> you instead hit all enemies.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Drake Thrust</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
+</div>
+</div>
+
+<p>You perform a melee attack with increased potency. On an even check you gain <em>Fangs Bared</em>, otherwise <em>Coiled Tail</em>. On a critical you instead gain <em>Dragon Breath.</em></p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Wyrm Fang</span></div>
@@ -129,7 +139,6 @@ tokenImg: /assets/characters/heroes/lancer_token.png
 <div class="document-traits --nested">
 <span class="document-trait">Action 2</span>
 </div>
-<i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
@@ -139,9 +148,8 @@ tokenImg: /assets/characters/heroes/lancer_token.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Wyvern Tail</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Action 1</span>
+<span class="document-trait">Action 2</span>
 </div>
-<i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 

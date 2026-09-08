@@ -18,7 +18,7 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 
 ### Experience Triggers
 
-- You have an encounter with a fated rival.
+- You have an encounter with a fated rival blademaster.
 - You perform a great feat then leave the scene without looking back.
 - You enlist the services of a bladesmith.
 - You stop the plot of a nefarious warmonger.
@@ -100,7 +100,7 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>
 </div>
-<i class="fa-solid fa-star"></i> 1
+<i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 

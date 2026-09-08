@@ -30,26 +30,17 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Counteraction</span></div>
-<div class='document-header__properties'>
-<i class="fa-solid fa-star"></i> 1
-</div>
-</div>
-
-
-
-<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Cripple</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Cooldown</span>
+<span class="document-trait">Exhaust</span>
 <span class="document-trait">Action 2</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
-<p>You deal damage and apply <em>Weak</em> to it.</p>
+<p>You deal damage and apply <em>Enfeeble </em>to the target.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Dispatch</span></div>
@@ -100,7 +91,19 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 </div>
 </div>
 
-<p>You shift to an adjacent space.</p>
+<p>You can <em>defend</em> and <em>shift</em> to an adjacent space.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Sneak Attack</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You perform an attack against a target that has been <em>previously</em> attacked this round.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/rogue/throw.png"><span>Surprise Attack</span></div>

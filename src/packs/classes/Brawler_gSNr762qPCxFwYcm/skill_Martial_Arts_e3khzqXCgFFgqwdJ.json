@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "brawler-martial-arts",
-    "description": "<p>You acquire one martial art and a finisher for each point invested in this skill. Each time you perform one of your brawl skills you gain a distinct combo sequence input.</p>",
+    "description": "<p>You acquire one martial art and a finisher for each point invested in this skill. Each time you perform one of your brawl skills you gain a distinct combo sequence input.</p><p>Whenever you have 4 sequence inputs, as a <em>reaction</em> you can immediately perform a finisher on the same target. Afterwards you suffer from <em>vulnerable</em> until your next turn starts.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -62,7 +62,7 @@
     },
     "level": {
       "current": 1,
-      "max": 5
+      "max": 4
     },
     "usage": {
       "schemaVersion": 1,

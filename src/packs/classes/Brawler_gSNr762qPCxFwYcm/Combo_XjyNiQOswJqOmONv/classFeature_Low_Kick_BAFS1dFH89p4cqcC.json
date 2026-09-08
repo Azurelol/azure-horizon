@@ -70,9 +70,10 @@
       "schemaVersion": 1,
       "range": "",
       "targeting": "",
-      "type": "",
+      "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
@@ -81,7 +82,7 @@
       "damage": true,
       "enabled": true
     },
-    "trait": "brawl",
+    "trait": "combo",
     "class": "brawler",
     "skill": "brawler-martial-arts"
   },

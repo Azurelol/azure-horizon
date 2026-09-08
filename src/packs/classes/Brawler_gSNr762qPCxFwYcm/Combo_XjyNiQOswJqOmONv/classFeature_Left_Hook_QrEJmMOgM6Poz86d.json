@@ -82,7 +82,7 @@
       "damage": true,
       "enabled": true
     },
-    "trait": "brawl",
+    "trait": "combo",
     "class": "brawler",
     "skill": "brawler-martial-arts"
   },

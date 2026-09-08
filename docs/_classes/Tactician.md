@@ -6,6 +6,7 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
+<span class="document-trait">Tension</span>
 <span class="document-trait">Tactics</span>
 </div>
 
@@ -51,7 +52,7 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <p>You brandish your battle standard, inspiring your allies.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Countergambit</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Counter Action</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -100,11 +101,11 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <span class="document-trait">Cooldown</span>
 <span class="document-trait">Action 2</span>
 </div>
-<i class="fa-solid fa-star"></i> 1
+<i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
-<p>You give your ally an extra reaction which allows them to perform one of their actions on a specific trigger before the start of their next turn.</p>
+<p>You give your ally an extra reaction which allows them to perform one of their actions that costs up to SL AP on a specific trigger before the start of their next turn.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Pawn Break</span></div>
@@ -128,7 +129,7 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
-<span class="document-trait">Action 2</span>
+<span class="document-trait">Action 3</span>
 </div>
 </div>
 </div>
@@ -140,12 +141,12 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
-<span class="document-trait">Action 2</span>
+<span class="document-trait">Action 3</span>
 </div>
 </div>
 </div>
 
-<p>All party members move to the back row and immediately defend.</p>
+<p>All party members move to the back row and then <em>defend</em>.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Scatter</span></div>
@@ -158,6 +159,17 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 </div>
 
 <p>All party members can immediately perform a <em>free shift</em>.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Scrimmage</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
+</div>
+</div>
+
+<p>All party members shift to the front row and push any targets within their range.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Shields Up</span></div>
@@ -175,9 +187,10 @@ tokenImg: /assets/characters/heroes/tactician_token.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Volley</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
+<span class="document-trait">Cooldown</span>
 <span class="document-trait">Action 2</span>
 </div>
 </div>
 </div>
 
-<p>All party members in the back row perform a ranged attack, swapping to a ranged weapon if needed.</p>
+<p>All party members in the back row perform a free ranged attack, swapping to a ranged weapon if needed.</p>

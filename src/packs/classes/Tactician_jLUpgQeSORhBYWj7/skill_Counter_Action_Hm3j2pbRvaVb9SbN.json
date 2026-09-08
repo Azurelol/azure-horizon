@@ -1,14 +1,14 @@
 {
-  "folder": "6a50VSMzYGADDAq6",
-  "name": "Misdirect",
+  "folder": "jLUpgQeSORhBYWj7",
+  "name": "Counter Action",
   "type": "skill",
-  "_id": "EVcMJ2nOdxkjEy9k",
-  "img": "systems/azure-horizon/assets/icons/classes/rogue/surprise-attack.png",
+  "_id": "Hm3j2pbRvaVb9SbN",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "rogue-misdirect",
-    "description": "<p>When you would be attacked, an adjacent party member is attacked instead.</p>",
+    "slug": "tactician-counter-action",
+    "description": "<p>Any party member gains the immediate use of a single action that costs 1 AP.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -40,7 +40,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "tp",
-      "amount": "2",
+      "amount": "4",
       "perTarget": false
     },
     "effects": {
@@ -63,19 +63,22 @@
       "range": "",
       "type": "reaction",
       "points": 1,
-      "traits": [],
-      "enabled": true,
-      "targeting": ""
+      "traits": [
+        "cooldown"
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
       "check": false,
-      "damage": false
+      "damage": false,
+      "enabled": false,
+      "attributes": false
     },
-    "class": "rogue"
+    "class": "tactician"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 300000,
   "ownership": {
     "default": 0
   },
@@ -84,12 +87,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787301843627,
+    "createdTime": 1787216597141,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!EVcMJ2nOdxkjEy9k"
+  "_key": "!items!Hm3j2pbRvaVb9SbN"
 }

@@ -44,7 +44,7 @@ tokenImg: /assets/characters/heroes/scholar_token.png
 </div>
 </div>
 
-<p>For each point invested in this skill you learn one of your unique spells.</p>
+<p>For each point invested in this skill you learn an arcane spell.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Fast Learner</span></div>

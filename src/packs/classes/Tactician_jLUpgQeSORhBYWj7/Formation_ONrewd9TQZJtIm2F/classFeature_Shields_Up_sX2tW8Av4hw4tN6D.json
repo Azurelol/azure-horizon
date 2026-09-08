@@ -38,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "3",
       "perTarget": false
     },
     "effects": {
@@ -65,7 +65,8 @@
       "points": 2,
       "traits": [
         "cooldown"
-      ]
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,

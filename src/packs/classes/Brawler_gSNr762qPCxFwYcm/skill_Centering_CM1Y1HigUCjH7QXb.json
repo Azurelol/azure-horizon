@@ -67,12 +67,14 @@
     },
     "action": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "range": "",
       "targeting": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "type": "action",
+      "points": 3,
+      "traits": [
+        "exhaust"
+      ]
     },
     "usage": {
       "schemaVersion": 1,

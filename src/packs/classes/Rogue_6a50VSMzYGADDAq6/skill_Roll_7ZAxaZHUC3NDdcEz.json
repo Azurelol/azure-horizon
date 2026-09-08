@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "rogue-roll",
-    "description": "<p>You shift to an adjacent space.</p>",
+    "description": "<p>You can <em>defend</em> and <em>shift</em> to an adjacent space.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -47,7 +47,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "tp",
-      "amount": "2",
+      "amount": "3",
       "perTarget": false
     },
     "effects": {

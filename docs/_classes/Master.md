@@ -41,7 +41,7 @@ tokenImg: /assets/characters/heroes/master_token.png
 </div>
 </div>
 
-<p>You gain a companion that follows you around.</p><ul><li><p>It starts play with the <em>Attack</em> move, an attack of an affinity of your choice.</p></li><li><p>You gain the <em>Command</em> action.</p></li></ul>
+<p>You gain a companion that follows you around.</p><ul><li><p>It starts play with the <em>Attack</em> move, an attack of an affinity of your choice. It can gain a <em>maximum</em> of two Attack moves of different types.</p></li><li><p>You gain the <em>Command</em> action, which allows you to command it to perform one of its moves.</p></li></ul>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Evolution</span></div>

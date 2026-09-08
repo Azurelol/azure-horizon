@@ -38,6 +38,10 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_defense.png"><span>Centering</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Action 3</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
@@ -64,38 +68,47 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 </div>
 </div>
 
-<p>Each turn you can perform two <em>combo </em>actions in sequence for 2 AP or one <em>combo</em> action followed up by a <em>finisher</em> for 3AP.</p>
+<p>Each turn you can perform two <em>combo </em>actions in sequence for 3 AP.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_defense.png"><span>Cross Counter</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Closer</span>
-<span class="document-trait">Action 3</span>
+<span class="document-trait">Action 1</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
-<p>You prepare to counter an incoming melee attack. The next time you are attacked before the start of your next turn you can perform one of your brawl actions followed up by a combination.</p>
+<p>You prepare to counter an incoming melee attack. As a reaction, the next time you are attacked before the start of your next turn you can perform one of your <em>combo</em> actions.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Mantra</span></div>
 <div class='document-header__properties'>
-<i class="fa-solid fa-star"></i> 1
+<i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
-
+<p>When you perform a <em>finisher</em>, you reduce your TP by SL.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Martial Arts</span></div>
 <div class='document-header__properties'>
-<i class="fa-solid fa-star"></i> 5
+<i class="fa-solid fa-star"></i> 4
 </div>
 </div>
 
-<p>You acquire one martial art and a finisher for each point invested in this skill. Each time you perform one of your brawl skills you gain a distinct combo sequence input.</p>
+<p>You acquire one martial art and a finisher for each point invested in this skill. Each time you perform one of your brawl skills you gain a distinct combo sequence input.</p><p>Whenever you have 4 sequence inputs, as a <em>reaction</em> you can immediately perform a finisher on the same target. Afterwards you suffer from <em>vulnerable</em> until your next turn starts.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Meditation</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>During rest scenes you can choose one per SL of the following:</p><ul><li><p>Recover 40% HP.</p></li><li><p>Recover 20% MP.</p></li><li><p>Lower your <em>Stress</em> level by one.</p></li></ul>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Snap Kick</span></div>
@@ -139,6 +152,9 @@ tokenImg: /assets/characters/heroes/brawler_token.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Low Kick</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 1</span>
+</div>
 </div>
 </div>
 

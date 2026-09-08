@@ -37,7 +37,7 @@ icon: fa-solid fa-map
 
 # Ending
 
-
+<p>At the end of a session the director will initiate a procedure and mark any of the base and character experience triggers the party has met.</p>
 
 # Scenes
 

@@ -1,14 +1,21 @@
 {
   "folder": "6a50VSMzYGADDAq6",
-  "name": "Misdirect",
+  "name": "Sneak Attack",
   "type": "skill",
-  "_id": "EVcMJ2nOdxkjEy9k",
-  "img": "systems/azure-horizon/assets/icons/classes/rogue/surprise-attack.png",
+  "_id": "GhN3ZaOrea4i7Jc0",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "rogue-misdirect",
-    "description": "<p>When you would be attacked, an adjacent party member is attacked instead.</p>",
+    "slug": "rogue-sneak-attack",
+    "description": "<p>You perform an attack against a target that has been <em>previously</em> attacked this round.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -39,9 +46,16 @@
     "cost": {
       "schemaVersion": 1,
       "enabled": true,
-      "resource": "tp",
-      "amount": "2",
+      "resource": "mp",
+      "amount": "5",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -53,24 +67,24 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "moderate",
     "level": {
       "current": 1,
       "max": 1
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "reaction",
-      "points": 1,
-      "traits": [],
       "enabled": true,
-      "targeting": ""
+      "type": "action",
+      "points": 2,
+      "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "check": false,
-      "damage": false
+      "enabled": true,
+      "attributes": true,
+      "check": true,
+      "damage": true
     },
     "class": "rogue"
   },
@@ -84,12 +98,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787301843627,
+    "createdTime": 1788870704873,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!EVcMJ2nOdxkjEy9k"
+  "_key": "!items!GhN3ZaOrea4i7Jc0"
 }

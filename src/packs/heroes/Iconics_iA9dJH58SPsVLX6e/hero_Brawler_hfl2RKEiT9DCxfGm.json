@@ -10,7 +10,7 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 30,
+        "value": 40,
         "bonus": 0,
         "temporary": 0
       },
@@ -22,7 +22,7 @@
       },
       "ip": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 6,
         "bonus": 0,
         "temporary": 0
       },

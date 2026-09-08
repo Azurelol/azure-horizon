@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "tactician-gambit",
-    "description": "<p>You give your ally an extra reaction which allows them to perform one of their actions on a specific trigger before the start of their next turn.</p>",
+    "description": "<p>You give your ally an extra reaction which allows them to perform one of their actions that costs up to SL AP on a specific trigger before the start of their next turn.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "4",
       "perTarget": false
     },
     "effects": {
@@ -56,7 +56,7 @@
     "power": "",
     "level": {
       "current": 1,
-      "max": 1
+      "max": 2
     },
     "action": {
       "schemaVersion": 1,
@@ -65,7 +65,8 @@
       "points": 2,
       "traits": [
         "cooldown"
-      ]
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,

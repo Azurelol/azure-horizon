@@ -1,14 +1,21 @@
 {
-  "folder": "jLUpgQeSORhBYWj7",
-  "name": "Counter Attack",
+  "folder": "gSNr762qPCxFwYcm",
+  "name": "Meditation",
   "type": "skill",
-  "_id": "Hm3j2pbRvaVb9SbN",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "_id": "AAjYJJZhdAtgmmcW",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_support.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "tactician-counterattack",
-    "description": "<p>Any party member gains the immediate use of a single action that costs 1 AP.</p>",
+    "slug": "brawler-meditation",
+    "description": "<p>During rest scenes you can choose one per SL of the following:</p><ul><li><p>Recover 40% HP.</p></li><li><p>Recover 20% MP.</p></li><li><p>Lower your <em>Stress</em> level by one.</p></li></ul>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,10 +45,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
-      "resource": "tp",
-      "amount": "4",
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -60,25 +74,22 @@
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "reaction",
+      "enabled": false,
+      "type": "",
       "points": 1,
-      "traits": [
-        "cooldown"
-      ],
-      "enabled": true
+      "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "check": false,
-      "damage": false,
       "enabled": false,
-      "attributes": false
+      "attributes": false,
+      "check": false,
+      "damage": false
     },
-    "class": "tactician"
+    "class": "brawler"
   },
   "effects": [],
-  "sort": 300000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -87,12 +98,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787216597141,
+    "createdTime": 1788869817215,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!Hm3j2pbRvaVb9SbN"
+  "_key": "!items!AAjYJJZhdAtgmmcW"
 }

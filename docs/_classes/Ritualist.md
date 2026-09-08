@@ -44,7 +44,7 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 </div>
 </div>
 
-<p>When you deal dark damage a target you apply <em>Breach</em>.</p>
+<p>When you deal dark damage a target you can increase your tension and apply <em>Breach</em>.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Aura</span></div>

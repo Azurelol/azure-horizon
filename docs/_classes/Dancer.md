@@ -6,8 +6,8 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
-<span class="document-trait">Dance</span>
 <span class="document-trait">Shift</span>
+<span class="document-trait">Dance</span>
 </div>
 
 ![](/assets/characters/heroes/dancer_token.png){: .profile }
@@ -21,6 +21,7 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 - You perform a dance for an audience.
 - You dance with someone in a meaningful moment.
 - You prove every rose has its thorns.
+- You ask someone for a dance.
 
 ---
 
@@ -42,11 +43,11 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>
 </div>
-<i class="fa-solid fa-star"></i> 1
+<i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
-<p>During a long rest, as an activity the dancer can recover the party's physical injuries.</p>
+<p>During a long rest, as an activity the dancer can recover an injury from up to SL party members.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Dance</span></div>
@@ -82,6 +83,18 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <p>While dancing, you can perform <em>Shift</em> as a free action once per turn.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Ole</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Reaction</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>When the check result of an attack that would shift you is even, you can instead increase your tension and shift the attacker instead.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Sway</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 2
@@ -109,22 +122,35 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 </div>
 </div>
 
-<p>While dancing you gain the Tempo status which grants you stacking skill bonuses to various parameters.</p><ul><li><p>Whenever the round ends without you having suffered damage, increase by one.</p></li><li><p>When an adversary enters crisis or is defeated, increase by one.</p></li><li><p>When you enter crisis, decrease by two.</p></li></ul>
+<p>While dancing you gain the Tempo status which grants you stacking skill bonuses to various parameters.</p><ul><li><p>Whenever the round ends without you having suffered damage, increase by one.</p></li><li><p>When an adversary enters crisis or is defeated, increase by one.</p></li><li><p>When you are in peril, decrease by two.</p></li></ul>
 
 ---
 
 ## Features
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Fox Fire Trot</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Bhataranyan</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
+<span class="document-trait">Cooldown</span>
 <span class="document-trait">Action 1</span>
 </div>
 </div>
 </div>
 
-<p>Each round while you dance, you grant a party member the <em>Foxfire</em> effect.</p>
+<p>You clear a negative status effect.</p><p><em>Your dance partner can also benefit from this effect.</em></p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Fox Fire Trot</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Sustain</span>
+<span class="document-trait">Action 1</span>
+</div>
+</div>
+</div>
+
+<p>Each round while you dance, you grant a party member the <em>Foxfire</em> effect, which increases their damage dealt and gives it a fire component.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Immelmann Dance</span></div>
@@ -139,17 +165,48 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 <p>You grant a party member 2 AP which they can use to perform one of their actions immediately.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Kanoot Shuffle</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Action 2</span>
+</div>
+</div>
+</div>
+
+<p>Everyone on the battlefield swaps positions with their closest ally.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Paso Doble</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 1</span>
+</div>
 </div>
 </div>
 
+<p>You pull a target. If they intend to attack you, you also perform a free attack against them.</p>
 
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Roseira</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Action 3</span>
+</div>
+</div>
+</div>
+
+<p>You defend. Until the start of your next turn you can counter any attacks performed against you with a free attack.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Skylarks Take Flight</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Action 1</span>
+</div>
 </div>
 </div>
 
-
+<p>Your next attack is able to hit an airborne target. </p><p><em>The dance partner can also benefit from this effect.</em></p>

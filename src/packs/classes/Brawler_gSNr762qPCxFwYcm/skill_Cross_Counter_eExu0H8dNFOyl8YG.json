@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "brawler-cross-counter",
-    "description": "<p>You prepare to counter an incoming melee attack. The next time you are attacked before the start of your next turn you can perform one of your brawl actions followed up by a combination.</p>",
+    "description": "<p>You prepare to counter an incoming melee attack. As a reaction, the next time you are attacked before the start of your next turn you can perform one of your <em>combo</em> actions.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -69,10 +69,11 @@
       "range": "",
       "targeting": "self",
       "type": "action",
-      "points": 3,
+      "points": 1,
       "traits": [
         "closer"
-      ]
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,

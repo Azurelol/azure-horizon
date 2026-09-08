@@ -1,16 +1,17 @@
 {
-  "folder": "6a50VSMzYGADDAq6",
-  "name": "Counteraction",
-  "type": "skill",
-  "_id": "DmBqKv4rP8sYwRbQ",
+  "folder": "ONrewd9TQZJtIm2F",
+  "name": "Scrimmage",
+  "type": "classFeature",
+  "_id": "3vmszDyGtyIqQVNL",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "rogue-counteraction",
-    "description": "",
+    "slug": "tactician-scrimmage",
+    "description": "<p>All party members shift to the front row and push any targets within their range.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -44,10 +45,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "4",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -60,25 +68,27 @@
       }
     },
     "power": "",
-    "level": {
-      "current": 1,
-      "max": 1
+    "feature": {
+      "_id": "HCpDFIgVdAjehApd",
+      "type": "emptyClassFeature"
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
-      "targeting": "",
-      "type": "",
-      "points": 1,
+      "enabled": true,
+      "type": "action",
+      "points": 2,
       "traits": []
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
       "attributes": false,
       "check": false,
       "damage": false
     },
-    "class": "rogue"
+    "trait": "",
+    "class": "tactician",
+    "skill": "tactician-formation"
   },
   "effects": [],
   "sort": 0,
@@ -90,12 +100,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787920633452,
+    "createdTime": 1788866639173,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!DmBqKv4rP8sYwRbQ"
+  "_key": "!items!3vmszDyGtyIqQVNL"
 }

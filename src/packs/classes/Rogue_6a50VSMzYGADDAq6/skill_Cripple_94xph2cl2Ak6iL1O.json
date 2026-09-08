@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "rogue-cripple",
-    "description": "<p>You deal damage and apply <em>Weak</em> to it.</p>",
+    "description": "<p>You deal damage and apply <em>Enfeeble </em>to the target.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,16 +44,18 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "enfeeble"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -71,7 +73,7 @@
       "type": "action",
       "points": 2,
       "traits": [
-        "cooldown"
+        "exhaust"
       ],
       "enabled": true
     },

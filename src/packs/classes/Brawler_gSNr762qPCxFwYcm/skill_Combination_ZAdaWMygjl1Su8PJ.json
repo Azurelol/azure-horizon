@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "brawler-combination",
-    "description": "<p>Each turn you can perform two <em>combo </em>actions in sequence for 2 AP or one <em>combo</em> action followed up by a <em>finisher</em> for 3AP.</p>",
+    "description": "<p>Each turn you can perform two <em>combo </em>actions in sequence for 3 AP.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

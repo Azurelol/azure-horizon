@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "master-command",
-    "description": "<p>You command your companion to perform an action.</p>",
+    "description": "<p>You command your companion to perform one of their <em>moves</em>.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "1",
       "perTarget": false
     },
     "effects": {
@@ -63,9 +63,8 @@
       "range": "",
       "type": "action",
       "points": 1,
-      "traits": [
-        "opener"
-      ]
+      "traits": [],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
