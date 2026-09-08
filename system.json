@@ -97,6 +97,7 @@
   "manifest": "https://github.com/Azurelol/azure-horizon/releases/latest/download/system.json",
   "download": "AUTOMATIC",
   "background": "",
+  "socket": true,
   "primaryTokenAttribute": "resources.hp",
   "documentTypes": {
     "Actor": {

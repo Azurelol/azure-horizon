@@ -226,7 +226,8 @@
       "TriggerMessage": "The party has met an experience trigger and earned {amount} XP.",
       "GainMessage": "The party earns {amount} XP.",
       "GROUP": {
-        "Base": "Base"
+        "Base": "Base",
+        "Campaign": "Campaign"
       },
       "TRIGGERS": {
         "Scheduling": "The episode has ended.",
@@ -235,7 +236,8 @@
         "Location": "The party explored a new location.",
         "CharacterMeet": "The party met an important character for the first time.",
         "Adversary": "The party defeated a dangerous adversary.",
-        "Obstacle": "The party overcame an obstacle without violence."
+        "Obstacle": "The party overcame an obstacle without using force.",
+        "Relationship": "A relationship has significantly changed."
       }
     },
     "CLASS": {

@@ -20,7 +20,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     position: {
-      width: 700,
+      width: 750,
       height: "auto",
     },
     window: {

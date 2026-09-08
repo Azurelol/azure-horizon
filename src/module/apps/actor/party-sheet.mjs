@@ -109,7 +109,7 @@ export class PartySheet extends AHActorSheet {
         { id: "episode", label: "AH.SHEET.Tabs.Episode", icon: "ra ra-speech-bubbles" },
         { id: "ending", label: "AH.SHEET.Tabs.Ending", icon: "ra ra-light-bulb" },
       ],
-      initial: "opening",
+      initial: "episode",
     },
   };
 

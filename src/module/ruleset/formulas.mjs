@@ -9,10 +9,12 @@ const MP_WILLPOWER_FACTOR = 5;
 const HP_POTENTIAL_FACTOR = 10;
 
 const IP_BASE = 6;
-const TP_BASE = 4;
+const TP_BASE = 2;
 
 const CLASS_BENEFIT_HP = 10;
 const CLASS_BENEFIT_MP = 10;
+const CLASS_BENEFIT_TP = 2;
+const CLASS_BENEFIT_IP = 2;
 
 const RECOVERY_HP_GAINED = 0.3;
 const RECOVERY_MP_SPENT = 0.2;
@@ -234,7 +236,7 @@ export default class Formulas {
     if (system.parent.type === "hero") {
       forClassBenefits(system.parent, benefits => {
         if (benefits.mp) {
-          mp += CLASS_BENEFIT_HP;
+          mp += CLASS_BENEFIT_MP;
         }
       });
     }
@@ -249,7 +251,7 @@ export default class Formulas {
     let ip = IP_BASE;
     forClassBenefits(system.parent, (benefits) => {
       if (benefits.ip) {
-        ip += CLASS_BENEFIT_HP;
+        ip += CLASS_BENEFIT_IP;
       }
     });
     return ip;
@@ -260,7 +262,16 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculateTensionPoints(system) {
-    return TP_BASE + system.attributes.wlp.current;
+    const wlp = system.attributes.wlp.current;
+    let tp = TP_BASE + system.attributes.wlp.current;
+    if (system.parent.type === "hero") {
+      forClassBenefits(system.parent, benefits => {
+        if (benefits.tp) {
+          tp += CLASS_BENEFIT_TP;
+        }
+      });
+    }
+    return tp;
   }
 
   /**

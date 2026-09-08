@@ -19,11 +19,18 @@ import AH from "../../config.mjs";
  */
 
 /**
+ * @typedef CampaignData
+ * @property {String} title
+ */
+
+/**
  * Represents a group of player characters.
  * @property {Set<String>} heroes The uuids of the characters in the party.
  * @property {Set<String>} followers
  * @property {AdversaryProfileData[]} adversaries
  * @property {CodexDataModel} codex
+ * @property {Number} resources.xp
+ * @property {CampaignData} campaign
  */
 export default class PartyDataModel extends ActorDataModel {
   static defineSchema() {
@@ -43,6 +50,9 @@ export default class PartyDataModel extends ActorDataModel {
       codex: new EmbeddedDataField(CodexDataModel, {}),
       resources: new SchemaField({
         xp: new NumberField({ initial: 0 }),
+      }),
+      campaign: new SchemaField({
+        title: new StringField(),
       }),
     });
   }

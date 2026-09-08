@@ -37,7 +37,7 @@ async function prepareOpeningData(party) {
  * @type {ExperienceTriggerGroup}
  */
 const BASE_TRIGGERS = {
-  label: "AH.EXPERIENCE.GROUP.Base",
+  label: "AH.EXPERIENCE.GROUP.Campaign",
   triggers: [
     {
       text: "AH.EXPERIENCE.TRIGGERS.Scheduling",
@@ -61,6 +61,10 @@ const BASE_TRIGGERS = {
     },
     {
       text: "AH.EXPERIENCE.TRIGGERS.AssetHelp",
+      amount: 1,
+    },
+    {
+      text: "AH.EXPERIENCE.TRIGGERS.Obstacle",
       amount: 1,
     },
   ],
