@@ -73,14 +73,10 @@ img {
 }
 
 nav, footer {
+  background-color: transparent;
   background-image: url('/assets/img/scroll_bg.png');
   background-repeat: no-repeat;
-  width: 100%;
-  image-rendering: pixelated; /* keeps upscaled pixels crisp, not blurry */
-  border: 4px solid #8b6f47;
-  box-shadow:
-    0 0 0 2px #5c4530,
-    inset 0 0 0 2px #d4c199;
+  background-size: 100% 100%;
 }
 
 header {
