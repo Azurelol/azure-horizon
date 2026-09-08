@@ -2,9 +2,15 @@
  * @typedef EpisodeOpeningData
  */
 
-import { ChatMessageBuilder } from "../helpers/_module.mjs";
+import { ChatAction, ChatMessageBuilder, ChatMessageHelper } from "../helpers/_module.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 import { StringUtils } from "../utils/_module.mjs";
+import AH from "../config.mjs";
+import { systemID } from "../constants.mjs";
+import { SourceInfo } from "../data/common/_module.mjs";
+import DamageData from "./damage-data.mjs";
+import { DamageRequest } from "./_module.mjs";
+import Checks from "./checks.mjs";
 
 /**
  * @param {PartyDataModel} party
@@ -121,11 +127,37 @@ async function processTravelCheck(value) {
   }
 
   const builder = new ChatMessageBuilder(null, null);
-  builder.text(`${StringUtils.localize("AH.TRAVEL.RollMessage", { result: value })}. ${StringUtils.localize(message)}`);
+  builder.text(`${StringUtils.localize("AH.TRAVEL.RollMessage", { result: value })} ${StringUtils.localize(message)}`);
   return builder.create();
 }
 
+/**
+ * @param {ChatMessage} message
+ * @param {HTMLElement} html
+ */
+function onRenderChatMessage(message, html) {
+  if (!message.getFlag(systemID, AH.flags.ChatMessage.Campaign)) {
+    return;
+  }
+
+  ChatMessageHelper.handleClick(message, html, "travelCheck", async (dataset) => {
+    const formula = AH.journey.dangers[dataset.level].formula;
+    const result = await Checks.travelCheck(formula);
+    if (result) {
+      return processTravelCheck(result);
+    }
+  });
+}
+
+/**
+ * Initialize callbacks.
+ */
+function initialize() {
+  Hooks.on("renderChatMessageHTML", onRenderChatMessage);
+}
+
 const Campaign = Object.freeze({
+  initialize,
   prepareOpeningData,
   prepareEndingData,
   processTravelCheck,

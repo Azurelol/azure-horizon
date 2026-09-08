@@ -414,8 +414,10 @@ function onTurnChange(combat, updateData, updateOptions) {
   }
 }
 
+/**
+ * Initialize the intent system.
+ */
 function initialize() {
-
   Hooks.on(AH.hooks.foundry.combat.combatStart, onCombatStart);
   Hooks.on(AH.hooks.foundry.combat.combatRound, onRoundChange);
   Hooks.on(AH.hooks.foundry.combat.combatTurn, onTurnChange);

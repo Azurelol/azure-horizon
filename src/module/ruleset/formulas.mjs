@@ -500,6 +500,6 @@ export default class Formulas {
     else if (result === TRAVEL_DISCOVERY_RESULT) {
       return "discovery";
     }
-    return "uneventful";
+    return "none";
   }
 }

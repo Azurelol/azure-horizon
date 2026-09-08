@@ -1060,7 +1060,10 @@
     },
     "EPISODE": {
       "Exploration": "Exploration",
-      "Battle": "Battle"
+      "Battle": "Battle",
+      "PromptTravelCheck": "The director has prompted the players for a <strong>{level} danger</strong> travel check.",
+      "SelectDifficulty": "Select Difficulty",
+      "PerformTravelCheck": "Perform Travel Check"
     },
     "COMBAT": {
       "FirstTurn": "First Turn",

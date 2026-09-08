@@ -50,6 +50,7 @@ export default class ChatMessageBuilder {
     this.#renderData = {
       tags: [],
       sections: [],
+      actions: [],
       postRenderActions: [],
       flags: [],
     };

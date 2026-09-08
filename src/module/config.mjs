@@ -918,6 +918,7 @@ AH.flags = Object.freeze({
     Resource: "Resource",
     RevertedAction: "RevertedAction",
     Targeting: "Targeting",
+    Campaign: "Campaign",
   }),
 });
 

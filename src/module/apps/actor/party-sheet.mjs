@@ -10,10 +10,10 @@ import { CodexBrowser } from "../ui/_module.mjs";
 import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
 import { CharacterSheet } from "./character-sheet.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
-import AH from "../../config.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
 import { Campaign } from "../../pipelines/_module.mjs";
 import { ExperienceTableRenderer } from "../campaign/_module.mjs";
-import { ChatAction, ChatMessageBuilder } from "../../helpers/_module.mjs";
+import { ChatAction, ChatMessageBuilder, ChatMessageSections, Dialogs } from "../../helpers/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 
 export class PartySheet extends AHActorSheet {
@@ -106,7 +106,6 @@ export class PartySheet extends AHActorSheet {
     },
     campaign: {
       tabs: [
-        { id: "opening", label: "AH.SHEET.Tabs.Opening", icon: "ra ra-radar-dish" },
         { id: "episode", label: "AH.SHEET.Tabs.Episode", icon: "ra ra-speech-bubbles" },
         { id: "ending", label: "AH.SHEET.Tabs.Ending", icon: "ra ra-light-bulb" },
       ],
@@ -448,10 +447,21 @@ export class PartySheet extends AHActorSheet {
    * @returns {Promise<void>}
    */
   static async #travelCheck(event, target) {
-    const builder = new ChatMessageBuilder(null, null);
-    builder.template("chat/chat-section-travel-check", {
-    });
-    return builder.create();
+    const options = getFormSelectOptions(AH.journey.dangers);
+    const selected = await Dialogs.select("AH.EPISODE.SelectDifficulty", options);
+    if (selected) {
+      let action = new ChatAction("travelCheck", AH.icons.travelCheck).withLabel("AH.EPISODE.PerformTravelCheck");
+      action.withDataset({
+        level: selected,
+      }).withSelected().setFlag(AH.flags.ChatMessage.Campaign);
+      const builder = new ChatMessageBuilder(null, null);
+      builder.text(StringUtils.localize("AH.EPISODE.PromptTravelCheck", {
+        level: selected,
+      }));
+      builder.renderData.actions.push(action);
+      return builder.create();
+    }
+
   }
 
   /**

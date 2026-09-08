@@ -479,7 +479,6 @@ export default class Checks {
    * @remarks This is performed by party while on a journey.
    */
   static async travelCheck(formula) {
-
     const roll = await new Roll(formula).roll();
     if (game.dice3d) {
       await game.dice3d.showForRoll(roll);

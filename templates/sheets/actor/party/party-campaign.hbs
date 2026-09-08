@@ -5,31 +5,31 @@
   <section class="tab {{campaignTabs.opening.cssClass}}" data-tab="opening" data-group="campaign">
   </section>
 
-  <section class="tab {{campaignTabs.episode.cssClass}}" data-tab="episode" data-group="campaign">
 
-    <div class="ah-grid-2 ah-gap-m">
-      <fieldset>
-        <legend>
-          <i class="ah-icon --xs {{ahIconClass 'exploration'}}"></i>
-          <label>{{localize 'AH.EPISODE.Exploration'}}</label>
-        </legend>
-        <div class="ah-button-group --column">
-          {{ahButton action='travelCheck' classes='--button' icon=(ahIconClass 'travelCheck') label='AH.CHECK.Travel' }}
-        </div>
-      </fieldset>
+  {{#if user.isGM}}
+    <section class="tab {{campaignTabs.episode.cssClass}}" data-tab="episode" data-group="campaign">
+      <div class="ah-grid-2 ah-gap-m">
+        <fieldset>
+          <legend>
+            <i class="ah-icon --xs {{ahIconClass 'exploration'}}"></i>
+            <label>{{localize 'AH.EPISODE.Exploration'}}</label>
+          </legend>
+          <div class="ah-button-group --column">
+            {{ahButton action='travelCheck' classes='--button' icon=(ahIconClass 'travelCheck') label='AH.CHECK.Travel' }}
+          </div>
+        </fieldset>
 
-      <fieldset>
-        <legend>
-          <i class="ah-icon --xs {{ahIconClass 'battle'}}"></i>
-          <label>{{localize 'AH.EPISODE.Battle'}}</label>
-        </legend>
-        <div class="ah-button-group">
-        </div>
-      </fieldset>
-    </div>
-
-
-  </section>
+        <fieldset>
+          <legend>
+            <i class="ah-icon --xs {{ahIconClass 'battle'}}"></i>
+            <label>{{localize 'AH.EPISODE.Battle'}}</label>
+          </legend>
+          <div class="ah-button-group">
+          </div>
+        </fieldset>
+      </div>
+    </section>
+  {{/if}}
 
   <section class="tab {{campaignTabs.ending.cssClass}}" data-tab="ending" data-group="campaign">
     <div class="ah-table__collection">
