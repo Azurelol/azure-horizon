@@ -75,7 +75,8 @@ img {
 }
 
 nav, footer {
-  background-color: transparent;
+  background-color: transparent !important;
+  border: none !important;
   background-image: url('/assets/img/scroll_bg.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -115,7 +116,6 @@ body {
   }
 
   footer {
-    border-top: var(--ah-border);
   }
 }
 
@@ -130,6 +130,7 @@ body {
 }
 
 .index-content {
+  margin-top: 2rem;
 }
 
 .index-img {
