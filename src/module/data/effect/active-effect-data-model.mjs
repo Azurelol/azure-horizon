@@ -9,8 +9,16 @@ import { RuleElementDataModel } from "./_module.mjs";
  */
 
 /**
+ * @typedef AH_EffectStacking
+ * @property {Boolean} progress Whether the tracker sections should stack, increasing it when re-applied.
+ * @property {Boolean} duration Whether the effect duration should stack, increasing it when re-applied.
+ * @property {Number} increment
+ */
+
+/**
  * A data model used by default effects with properties to control the expiration behavior.
  * @property {TrackerDataModel} tracker
+ * @property {AH_EffectStacking} stacking
  * @property {RuleElementDataModel[]} rules
  */
 export default class ActiveEffectDataModel extends foundry.data.ActiveEffectTypeDataModel {
@@ -27,7 +35,7 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
   }
 
   static defineSchema() {
-    const { EmbeddedDataField, StringField } = foundry.data.fields;
+    const { EmbeddedDataField, StringField, SchemaField, BooleanField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       slug: new StringField({
         required: false,
@@ -38,8 +46,20 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
         validate: (value) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value),
       }),
       tracker: new EmbeddedDataField(TrackerDataModel, { required: false }),
+      stacking: new SchemaField({
+        tracker: new BooleanField(),
+        duration: new BooleanField(),
+        increment: new NumberField({ initial: 1, nullable: false }),
+      }),
       rules: new SubDocumentCollectionField(RuleElementDataModel),
     });
+  }
+
+  /**
+   * @returns {Boolean} Whether this effect can stack.
+   */
+  get canStack() {
+    return (this.stacking.tracker || this.stacking.duration) && this.stacking.increment;
   }
 
   /**

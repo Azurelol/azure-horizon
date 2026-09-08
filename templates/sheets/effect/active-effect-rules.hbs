@@ -14,6 +14,16 @@
     </div>
   </fieldset>
 
+  {{!-- Tracker --}}
+  <fieldset>
+    <legend>{{localize 'AH.FIELD.Stacking'}} </legend>
+    <div class="ah-field-grid">
+      {{ahBooleanField path='system.stacking.tracker' label='AH.FIELD.Tracker' value=system.stacking.tracker}}
+      {{ahBooleanField path='system.stacking.duration' label='AH.FIELD.Duration' value=system.stacking.duration}}
+      {{ahNumberField path='system.stacking.increment' label='AH.FIELD.Increment' value=system.stacking.increment}}
+    </div>
+  </fieldset>
+
 	{{!-- Rule Elements --}}
 	<fieldset>
 		<legend>

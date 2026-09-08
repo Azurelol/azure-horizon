@@ -642,6 +642,8 @@
       "MigrateAllHint": "Migrate all actors and items to the latest entries in the system compendiums?",
       "MigrateAdversaries": "Migrate Adversaries",
       "MigrateAdversariesHint": "Migrate all adversaries in the world to their latest versions from the compendiums?",
+      "TrackerMaximum": "The {name} tracker is already at maximum.",
+      "EffectDurationIncrement": "The duration of {name} has been increased to {current}.",
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",
@@ -716,6 +718,8 @@
       "ActionCost": "Action Cost",
       "ActionPoints": "Action Points",
       "Trigger": "Trigger",
+      "Duration": "Duration",
+      "Stacking": "Stacking",
       "CheckType": {
         "long": "Check Type",
         "plural": "Check Types"

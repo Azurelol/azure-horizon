@@ -1,9 +1,10 @@
-
 import { isActorType, isItemType, systemID } from "../constants.mjs";
 import DocumentMixin from "./document-mixin.mjs";
 import AH from "../config.mjs";
 import { EvaluationContext } from "../data/common/_module.mjs";
 import { Expressions } from "../pipelines/_module.mjs";
+import { StringUtils } from "../utils/_module.mjs";
+import Tracks from "../pipelines/tracks.mjs";
 
 /**
  * @typedef EffectChangeData
@@ -140,6 +141,68 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
   }
 
   /**
+   * @returns {Boolean} Whether this effect is stackable
+   */
+  get stackable() {
+    return this.system?.canStack ?? false;
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  get hasDuration() {
+    return this.duration.expiry !== undefined;
+  }
+
+  /**
+   * @desc Apply one stack onto the effect, if stacking behaviour is enabled.
+   */
+  async addStack() {
+    if (this.stackable) {
+      console.debug(`Incrementing stack of ${this.name}`);
+      let changes = {};
+      const increment = this.system.stacking.increment;
+      let message;
+      let progressUpdated;
+
+      if (this.system.stacking.tracker) {
+        if (this.system.tracker.isMaximum) {
+          message = StringUtils.localize("AH.DIALOG.TrackerMaximum", {
+            name: this.system.tracker.name ?? this.name,
+          });
+        } else {
+          changes["system.tracker.current"] = this.system.tracker.calculateUpdatedValue(increment);
+          progressUpdated = true;
+        }
+      }
+
+      // TODO: Verify
+      if (this.system.stacking.duration && this.hasDuration) {
+        const remaining = this.duration?.remaining ?? 0;
+        changes["duration.remaining"] = remaining + 1;
+        message = StringUtils.localize("AH.DIALOG.EffectDurationIncrement", {
+          name: this.name,
+          current: this.duration.remaining + 1,
+        });
+      }
+
+      if (Object.keys(changes).length > 0) {
+        await this.update(changes);
+      }
+
+      if (progressUpdated) {
+        await Tracks.sendToChat(this.parent, this.system.tracker);
+      }
+      if (message) {
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this.parent }),
+          content: message,
+        });
+      }
+    }
+  }
+
+  /**
    * @param {String} id
    */
   matches(id) {
@@ -267,17 +330,32 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
 // }
 // Hooks.on("applyActiveEffect", onApplyActiveEffect);
 
-Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
+Hooks.on("preCreateActiveEffect",
+  /** @param {AHActiveEffect} effect **/
+  (effect, options, userId) => {
 
-  if (isActorType(effect.parent)) {
+    if (isActorType(effect.parent)) {
     /** @type AHActor **/
-    const actor = effect.parent;
-    // Prevent creation on non-character actor types
-    if (!actor.isCharacterType) {
-      ui.notifications.error("DIALOG.WARNING.EffectsNotSupported", { localize: true });
-      return false;
-    }
-  }
+      const actor = effect.parent;
+      // Prevent creation on non-character actor types
+      if (!actor.isCharacterType) {
+        ui.notifications.error("DIALOG.WARNING.EffectsNotSupported", { localize: true });
+        return false;
+      }
 
-  return true; // Allow the effect to be created
-});
+      // Check if there is an instance of this effect already
+      if (effect.system.slug) {
+        const matchingEffect = actor.resolveEffect(effect.system.slug);
+        if (matchingEffect) {
+          const stackable = matchingEffect.stackable;
+          if (stackable) {
+            // TODO: Add a stacking message
+            matchingEffect.addStack();
+            return false;
+          }
+        }
+      }
+    }
+
+    return true; // Allow the effect to be created
+  });
