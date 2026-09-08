@@ -18,7 +18,7 @@ I took an interest in the TTRPG hobby in 2021 throughout the height of COVID and
 ## Goals
 
 <p>
-I am highly motivated to develop a game I would like to play weekly with my now-established home group. I have tried quite a few over the years and the closest that came to matching my preferred game-mastery style was Fabula Ultima.
+I am driven to develop a game I would like to play weekly with my now-established home group. I have tried quite a few over the years and the closest that came to matching my preferred game-mastery style was Fabula Ultima.
 </p>
 <p>
 It is a fantastic game in the space and I have both ran it and developed for it over the past couple years. But there are many things I would like to do differently than it.

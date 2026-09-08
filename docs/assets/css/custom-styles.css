@@ -77,9 +77,13 @@ img {
 nav, footer {
   background-color: transparent !important;
   border: none !important;
-  /*background-image: url('/assets/img/scroll_bg.png');*/
-  /*background-repeat: no-repeat;*/
-  /*background-size: 100% 100%;*/
+
+}
+
+footer {
+  background-image: url('/assets/img/scroll_bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 header {
@@ -91,7 +95,6 @@ header {
 
     .page-heading {
       margin-top: var(--ah-title-margin);
-      margin-bottom: var(--ah-content-margin);
     }
 
     h1  {
@@ -143,9 +146,9 @@ body {
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100% auto;
+    width: 100%;
+    height: auto;
   }
-  width: 100%;
-  height: auto;
 }
 
 .ah-default {
@@ -169,7 +172,6 @@ body {
 .ah-collection {
   header {
     .page-heading {
-      margin-bottom: var(--ah-content-margin);
     }
   }
 }

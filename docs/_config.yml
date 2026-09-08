@@ -147,11 +147,11 @@ navbar-var-length: false
 page-col: "#FFFFFF"
 text-col: "#1A2233"        # navy, for body text
 link-col: "#0072CE"        # azure
-hover-col: "#004C99"       # darker azure on hover
+hover-col: "#85C2FF"       # darker azure on hover
 #navbar-col: rgba(26, 34, 51, 0.75)     # navy
-navbar-text-col: "#FFFFFF"
+navbar-text-col: "rgba(26, 34, 51, 0.75)"
 #navbar-border-col: "#2C3A5C"  # lighter navy border
-#footer-col: rgba(26, 34, 51, 0.75)      # navy
+#footer-col: rgba(26, 34, 51)      # navy
 footer-text-col: "#A9B4C9"    # muted navy-grey
 footer-link-col: "#FFFFFF"
 footer-hover-col: "#F2A93B"   # orange (actions) as an accent pop
