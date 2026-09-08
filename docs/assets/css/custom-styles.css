@@ -73,10 +73,10 @@ img {
 }
 
 nav, footer {
-  background-color: #e8dcc0;
-  background-image:
-    repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 4px),
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 4px);
+  background-image: url('/assets/img/scroll_bg.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  image-rendering: pixelated; /* keeps upscaled pixels crisp, not blurry */
   border: 4px solid #8b6f47;
   box-shadow:
     0 0 0 2px #5c4530,
@@ -84,12 +84,13 @@ nav, footer {
 }
 
 header {
+  background-image: url("/assets/img/background_3.webp");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+
   .intro-header {
     color: var(--ah-content-header);
-    background-image: url("/assets/img/background_3.webp");
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: 100% auto;
     margin-top: 0;
 
     .page-heading {
