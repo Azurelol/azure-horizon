@@ -29,15 +29,6 @@ import { renderTemplate } from "../../constants.mjs";
  */
 
 /**
- * @typedef AH_TableColumnConfig
- * @template {Object} T
- * @property {AH_Render<T>} renderHeader
- * @property {AH_Render<T>} renderCell
- * @property {Boolean} preview Whether this column can be rendered in preview mode.
- * @property {String} cssClass
- */
-
-/**
  * @typedef AH_TableColumnHeader
  * @property {String} text
  */
@@ -184,6 +175,10 @@ export default class AH_TableRenderer {
     const columns = this.getColumns().filter(c => {
       // If the table is set to preview mode and the colummn cannot be previewed
       if (config.preview && !c.preview) {
+        return false;
+      }
+      // If the table is set to render for GMs only
+      if (c.isGM && !game.user.isGM) {
         return false;
       }
       return true;

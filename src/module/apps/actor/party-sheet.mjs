@@ -36,6 +36,7 @@ export class PartySheet extends AHActorSheet {
       revealActor: this.#revealActor,
       inspectCharacter: this.#inspectCharacter,
 
+      travelCheck: this.#travelCheck,
       triggerExperience: this.#triggerExperience,
       levelUp: this.#levelUp,
 
@@ -438,6 +439,19 @@ export class PartySheet extends AHActorSheet {
     //     tab: 'character',
     //   });
     // }
+  }
+
+  /**
+   * @this PartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #travelCheck(event, target) {
+    const builder = new ChatMessageBuilder(null, null);
+    builder.template("chat/chat-section-travel-check", {
+    });
+    return builder.create();
   }
 
   /**

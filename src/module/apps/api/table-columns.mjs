@@ -1,6 +1,16 @@
 import { enrichHTML, renderTemplate, systemTemplatePath } from "../../constants.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
 
+/**
+ * @typedef AH_TableColumnConfig
+ * @template {Object} T
+ * @property {AH_Render<T>} renderHeader
+ * @property {AH_Render<T>} renderCell
+ * @property {Boolean} isGM Whether to render only for GMs.
+ * @property {Boolean} preview Whether this column can be rendered in preview mode.
+ * @property {String} cssClass
+ */
+
 const TEMPLATES = Object.freeze({
   documentName: systemTemplatePath("components/table/table-column-document-name"),
   text: systemTemplatePath("components/table/table-column-text"),
@@ -231,6 +241,7 @@ function resource(options = {}) {
  * @property {string} [cssClass]
  * @property {Boolean} preview Whether these actions can be shown in preview.
  * @property {(T) => Record<string, string>} dataset
+ * @property {Boolean} isGM
  * @property {AH_TableAction[]} actions
  */
 
@@ -245,6 +256,7 @@ function actions(options = {}) {
     renderHeader: () => StringUtils.localize(options.header),
     cssClass: options.cssClass,
     preview: options.preview,
+    isGM: options.isGM,
     renderCell: async (entry) => {
       return renderTemplate(TEMPLATES.actions, {
         entry,

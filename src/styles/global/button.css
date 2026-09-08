@@ -22,11 +22,18 @@ a.button, button {
 
   label {
     text-wrap: nowrap;
+    cursor: pointer;
   }
 
   &.--transparent {
     background-color: transparent;
     border: none;
+  }
+
+  &.--button {
+    background: var(--ah-surface-action);
+    border: var(--ah-border);
+    padding: 0.25rem;
   }
 }
 
@@ -36,4 +43,8 @@ a.button, button {
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+
+  &.--column {
+    flex-direction: column;
+  }
 }

@@ -1058,6 +1058,10 @@
       "ResourceGain": "Gain",
       "ResourceLoss": "Loss"
     },
+    "EPISODE": {
+      "Exploration": "Exploration",
+      "Battle": "Battle"
+    },
     "COMBAT": {
       "FirstTurn": "First Turn",
       "Start": "Battle Start",

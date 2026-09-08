@@ -19,6 +19,7 @@ export class ExperienceTableRenderer extends AH_TableRenderer {
       }),
       TableColumns.actions({
         header: "AH.COMMON.Actions",
+        isGM: true,
         cssClass: "ah-table__column__actions",
         dataset: (entry) => {
           return {

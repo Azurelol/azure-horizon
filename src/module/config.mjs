@@ -1329,6 +1329,9 @@ AH.icons = {
   longRest: "ah-icon-rest-long",
   resupply: "ah-icon-resupply",
 
+  exploration: "ra ra-wolf-head",
+  battle: "ra ra-crossed-axes",
+
   gain: "fa fa-chevron-circle-up",
   loss: "fa fa-chevron-circle-down",
   effect: "ah-icon-effect",
