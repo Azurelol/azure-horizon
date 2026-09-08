@@ -36,7 +36,7 @@
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
 
   --ah-title-margin: 240px;
-  --ah-content-margin: 350px;
+  --ah-default-content-margin: 500px;
   --ah-divider-scene-margin: 425px;
   --ah-page-background-color: #141445;
 
@@ -77,13 +77,18 @@ img {
 nav, footer {
   background-color: transparent !important;
   border: none !important;
+}
 
+nav {
+  .dropdown-item {
+
+  }
 }
 
 footer {
-  background-image: url('/assets/img/scroll_bg.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  /*background-image: url('/assets/img/scroll_bg.png');*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: 100% 100%;*/
 }
 
 header {
@@ -153,6 +158,7 @@ body {
 
 .ah-default {
   main {
+    margin-top: var(--ah-title-margin);
     color: var(--ah-content-color);
   }
   footer {

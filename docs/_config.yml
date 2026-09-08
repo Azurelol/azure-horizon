@@ -149,7 +149,7 @@ text-col: "#1A2233"        # navy, for body text
 link-col: "#0072CE"        # azure
 hover-col: "#85C2FF"       # darker azure on hover
 #navbar-col: rgba(26, 34, 51, 0.75)     # navy
-navbar-text-col: "rgba(26, 34, 51, 0.75)"
+#navbar-text-col: "rgba(26, 34, 51, 0.75)"
 #navbar-border-col: "#2C3A5C"  # lighter navy border
 #footer-col: rgba(26, 34, 51)      # navy
 footer-text-col: "#A9B4C9"    # muted navy-grey
