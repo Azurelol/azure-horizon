@@ -2,11 +2,13 @@
 
   {{ahTabs campaignTabs }}
 
-  <section class="tab campaign" data-tab="opening" data-group="campaign">
-
+  <section class="tab {{campaignTabs.opening.cssClass}}" data-tab="opening" data-group="campaign">
   </section>
 
-  <section class="tab campaign" data-tab="ending" data-group="campaign">
+  <section class="tab {{campaignTabs.episode.cssClass}}" data-tab="main" data-group="campaign">
+  </section>
+
+  <section class="tab {{campaignTabs.ending.cssClass}}" data-tab="ending" data-group="campaign">
     <div class="ah-table__collection">
       {{#each experienceTables as |table|}}
         {{{table}}}

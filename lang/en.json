@@ -52,6 +52,7 @@
         "Assembly": "Assembly",
         "Campaign": "Campaign",
         "Opening": "Opening",
+        "Episode": "Episode",
         "Ending": "Ending",
         "Advancement": "Advancement",
         "Codex": "Codex",
@@ -942,12 +943,28 @@
       "Scorch": "Scorch",
       "Stagger": "Stagger"
     },
-    "DANGER": {
-      "Low": "Low",
-      "Moderate": "Moderate",
-      "High": "High",
-      "Severe": "Severe",
-      "Extreme": "Extreme"
+    "TRAVEL": {
+      "RollMessage": "The party rolled a {result} on their travel check.",
+      "Discovery": "Discovery",
+      "DiscoveryMessage": "The party discovered something!",
+      "Danger": "Danger",
+      "DangerMessage": "The party encountered a danger!",
+      "None": "None",
+      "NoneMessage": "It was an uneventful journey.",
+      "DISCOVERY": {
+        "Location": "Location",
+        "Guest": "Guest",
+        "Merchant": "Merchant",
+        "Treasure": "Treasure",
+        "Vista": "Vista"
+      },
+      "DANGER": {
+        "Low": "Low",
+        "Moderate": "Moderate",
+        "High": "High",
+        "Severe": "Severe",
+        "Extreme": "Extreme"
+      }
     },
     "ACTION": {
       "Action": "Action",

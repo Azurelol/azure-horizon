@@ -105,8 +105,9 @@ export class PartySheet extends AHActorSheet {
     },
     campaign: {
       tabs: [
-        { id: "opening", label: "AH.SHEET.Tabs.Opening", icon: "ra ra-double-team" },
-        { id: "ending", label: "AH.SHEET.Tabs.Ending", icon: "ra ra-double-team" },
+        { id: "opening", label: "AH.SHEET.Tabs.Opening", icon: "ra ra-radar-dish" },
+        { id: "episode", label: "AH.SHEET.Tabs.Episode", icon: "ra ra-speech-bubbles" },
+        { id: "ending", label: "AH.SHEET.Tabs.Ending", icon: "ra ra-light-bulb" },
       ],
       initial: "opening",
     },
@@ -195,7 +196,6 @@ export class PartySheet extends AHActorSheet {
   }
 
   #equipmentTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Equipment", actions: AHActorSheet.getCompendiumTableActions("equipment"), preview: true, stash: true });
-  #experienceTableRenderer = new ExperienceTableRenderer({ title: "AH.EXPERIENCE.Triggers" });
 
   /** @inheritdoc */
   async _preparePartContext(partId, ctx, options) {
@@ -204,6 +204,7 @@ export class PartySheet extends AHActorSheet {
     if (partId in context.tabs) context.tab = context.tabs[partId];
     switch (partId) {
       case "tabs":
+
         break;
       case "overview":
         context.characters = await this.system.getHeroes();

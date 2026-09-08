@@ -475,6 +475,7 @@ export default class Checks {
 
   /**
    * @param {String} formula
+   * @return {Promise<Number>}
    * @remarks This is performed by party while on a journey.
    */
   static async travelCheck(formula) {
@@ -483,13 +484,7 @@ export default class Checks {
     if (game.dice3d) {
       await game.dice3d.showForRoll(roll);
     }
-
-    // TODO: Map result to different messages
-
-    const builder = new ChatMessageBuilder(null, null);
-    builder.text(`Rolled ${roll.total}`);
-
-    return builder.create();
+    const result = roll.total;
+    return result;
   }
-
 }

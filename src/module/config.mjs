@@ -275,18 +275,6 @@ AH.checkTypes = {
  */
 
 /**
- * @typedef {'low'|'moderate'|'high'|'severe'|'extreme'} AH_DangerLevel
- */
-
-AH.dangerLevel = {
-  low: { label: "AH.DANGER.Low", formula: "d4" },
-  moderate: { label: "AH.DANGER.Moderate", formula: "d6" },
-  high: { label: "AH.DANGER.High", formula: "d8" },
-  severe: { label: "AH.DANGER.Severe", formula: "d10" },
-  extreme: { label: "AH.DANGER.Extreme", formula: "d12" },
-};
-
-/**
  * @type {Record<string, AH_Constant>}}
  */
 AH.resourceTypes = {
@@ -295,6 +283,34 @@ AH.resourceTypes = {
   ip: { label: "AH.CHARACTER.InventoryPoint.short", icon: "ah-icon-ip" },
   tp: { label: "AH.CHARACTER.TensionPoint.short", icon: "ah-icon-tp" },
   thp: { label: "AH.CHARACTER.TemporaryHitPoint.short", icon: "ah-icon-thp" },
+};
+
+/**
+ * @typedef {'low'|'moderate'|'high'|'severe'|'extreme'} AH_DangerLevel
+ */
+
+/**
+ * @typedef {'danger'|'discovery'|'none'} AH_TravelResult
+ */
+
+AH.journey = {
+  danger: { label: "AH.TRAVEL.Danger" },
+  discovery: { label: "AH.TRAVEL.Discovery" },
+  none: { label: "AH.TRAVEL.None" },
+  dangers: {
+    low: { label: "AH.TRAVEL.DANGER.Low", formula: "d4" },
+    moderate: { label: "AH.TRAVEL.DANGER.Moderate", formula: "d6" },
+    high: { label: "AH.TRAVEL.DANGER.High", formula: "d8" },
+    severe: { label: "AH.TRAVEL.DANGER.Severe", formula: "d10" },
+    extreme: { label: "AH.TRAVEL.DANGER.Extreme", formula: "d12" },
+  },
+  discoveries: {
+    location: { label: "AH.TRAVEL.DISCOVERY.Location" },
+    guest: { label: "AH.TRAVEL.DISCOVERY.Guest" },
+    merchant: { label: "AH.TRAVEL.DISCOVERY.Merchant" },
+    treasure: { label: "AH.TRAVEL.DISCOVERY.Treasure" },
+    vista: { label: "AH.TRAVEL.DISCOVERY.Vista" },
+  },
 };
 
 /**

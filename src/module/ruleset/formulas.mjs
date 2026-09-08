@@ -25,6 +25,13 @@ const BLOCK_TP_GAINED = 1;
 
 const XP_PER_LEVEL = 10;
 
+const TRAVEL_DISCOVERY_RESULT = 1;
+const TRAVEL_DANGER_THRESHOLD = 6;
+
+/**
+ *
+ */
+
 /**
  * @typedef Modifier
  * @property {Number} additive Should default to 0.
@@ -482,4 +489,17 @@ export default class Formulas {
     return change;
   }
 
+  /**
+   * @param {Number} result
+   * @return AH_TravelResult
+   */
+  static resolveTravelCheck(result) {
+    if (result >= TRAVEL_DANGER_THRESHOLD) {
+      return "danger";
+    }
+    else if (result === TRAVEL_DISCOVERY_RESULT) {
+      return "discovery";
+    }
+    return "uneventful";
+  }
 }

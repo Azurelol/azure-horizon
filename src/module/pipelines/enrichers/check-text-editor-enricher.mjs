@@ -7,9 +7,10 @@ import Flags from "../../data/common/flags.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import Tracks from "../tracks.mjs";
 import Checks from "../checks.mjs";
-import { ActionConfig } from "../../helpers/_module.mjs";
+import { ActionConfig, ChatMessageBuilder } from "../../helpers/_module.mjs";
 import Expressions from "../expressions.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
+import Campaign from "../campaign.mjs";
 
 const ID = "CheckTextEditorEnricher";
 
@@ -184,8 +185,8 @@ function enricher(match, options) {
     return anchor;
   }
   // TRAVEL
-  else if (data.type === "travel" && data.level in AH.dangerLevel) {
-    const danger = AH.dangerLevel[data.level];
+  else if (data.type === "travel" && data.level in AH.journey.dangers) {
+    const danger = AH.journey.dangers[data.level];
     const span = document.createElement("span");
     span.textContent = StringUtils.localize(danger.label);
     anchor.append(span);
@@ -308,9 +309,10 @@ async function onRender(element) {
       }
     }
     else if (dataset.type === "travel") {
-      const formula = AH.dangerLevel[dataset.level]?.formula;
+      const formula = AH.journey.dangers[dataset.level]?.formula;
       if (formula) {
-        await Checks.travelCheck(formula);
+        const result = await Checks.travelCheck(formula);
+        await Campaign.processTravelCheck(result);
       }
 
     }

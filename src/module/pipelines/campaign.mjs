@@ -2,6 +2,10 @@
  * @typedef EpisodeOpeningData
  */
 
+import { ChatMessageBuilder } from "../helpers/_module.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
+import { StringUtils } from "../utils/_module.mjs";
+
 /**
  * @param {PartyDataModel} party
  * @returns {Promise<EpisodeOpeningData>}
@@ -98,11 +102,27 @@ async function prepareEndingData(party) {
 }
 
 /**
- * @param {Number} result
+ * @param {Number} value
  * @returns {Promise<void>}
  */
-async function processTravelCheck(result) {
+async function processTravelCheck(value) {
+  const travel = Formulas.resolveTravelCheck(value);
+  let message;
+  switch (travel) {
+    case "danger":
+      message = "AH.TRAVEL.DangerMessage";
+      break;
+    case "discovery":
+      message = "AH.TRAVEL.DiscoveryMessage";
+      break;
+    case "none":
+      message = "AH.TRAVEL.NoneMessage";
+      break;
+  }
 
+  const builder = new ChatMessageBuilder(null, null);
+  builder.text(`${StringUtils.localize("AH.TRAVEL.RollMessage", { result: value })}. ${StringUtils.localize(message)}`);
+  return builder.create();
 }
 
 const Campaign = Object.freeze({
