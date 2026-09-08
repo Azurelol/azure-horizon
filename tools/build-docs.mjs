@@ -224,6 +224,7 @@ function assetExists(path) {
 
 function getFeatureTraits(entry) {
   let traits = [];
+
   if (entry.system.action?.traits) {
     traits.push(...entry.system.action.traits);
   }
@@ -234,6 +235,9 @@ function getFeatureTraits(entry) {
     else {
       traits.push(entry.system.action.type);
     }
+  }
+  if (entry.system.traits) {
+    traits.push(...entry.system.traits);
   }
   return traits;
 }
