@@ -32,7 +32,16 @@ collections:
     permalink: /manual/:name/
 
 navbar-links:
-  Manual: "manual"
+  Manual:
+    - Introduction: "manual/1-introduction/"
+    - Campaign: "manual/2-campaign/"
+    - Heroes: "manual/3-heroes/"
+    - Exploration: "manual/4-exploration/"
+    - Battle: "manual/5-battle/"
+    - Adversaries: "manual/6-adversaries/"
+    - Glossary: "manual/7-glossary/"
+    - Player Guide: "manual/8-player-guide/"
+    - Director Guide: "manual/9-director-guide/"
   Classes: "classes"
   Spells: "spells"
   Gallery: "gallery"
@@ -168,8 +177,7 @@ footer-hover-col: "#F2A93B"   # orange (actions) as an accent pop
 
 # For any extra visual customization, you can include additional CSS files in every page on your site. List any custom CSS files here
 site-css:
-  - "/assets/css/custom-styles.css"
-  - "/assets/css/manual.css"
+  - "/assets/css/azure-horizon.css"
 
 # If you have common JavaScript files that should be included in every page, list them here
 #site-js:

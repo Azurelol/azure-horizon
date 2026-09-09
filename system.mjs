@@ -113,6 +113,7 @@ function initializeSystems() {
   helpers.AHHandlebars.registerHelpers();
   helpers.AHHandlebars.registerPartials();
   data.Compendium.CompendiumIndex.initialize();
+  data.Compendium.CompendiumIndex.instance.getEffects(); // Preload
   pipelines.Enrichers.initialize();
   pipelines.Damage.initialize();
   pipelines.Resources.initialize();

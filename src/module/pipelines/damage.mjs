@@ -347,6 +347,7 @@ const onProcessAction = async (config, actor, item) => {
     // We will begin modifying this before setting it back
     const damage = config.damage;
 
+    // TODO: Add the attribute scaling info....
     // 1.) Set attribute scaling
     const { primary, secondary } = Formulas.calculateAttributeInputs(config, actor);
     if (primary && secondary) {
