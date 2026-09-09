@@ -31,6 +31,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   tracker_clock: systemTemplatePath("components/tracker/tracker-clock"),
   tracker_bar: systemTemplatePath("components/tracker/tracker-bar"),
   tracker_controls: systemTemplatePath("components/tracker/tracker-controls"),
+  tracker_stack: systemTemplatePath("components/empty"),
 
   inlineProperty: systemTemplatePath("components/inline-property"),
   resourceBar: systemTemplatePath("components/resource-bar"),
@@ -988,16 +989,17 @@ function traitsFieldset(model, path, options) {
  * @property {Boolean} displayName
  * @property {Boolean} prompt Whether to support prompting a dialog to request a roll to affect this track
  * @property {Boolean} event Whether to dispatch an event on a change
- * @property {Boolean} controls
+ * @property {Boolean} controls Whether to render controls.
  * @property {Boolean} compact If true, will present the controls in a more compact way.
  * @property action
- * @property {"clock"|"bar"} style
+ * @property {"clock"|"bar"|'stack'} style
  * @property {String} classes
  */
 
 const TRACKER_TEMPLATES = {
   clock: COMPONENT_TEMPLATES.tracker_clock,
   bar: COMPONENT_TEMPLATES.tracker_bar,
+  stack: COMPONENT_TEMPLATES.tracker_stack,
 };
 
 /**

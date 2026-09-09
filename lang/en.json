@@ -690,6 +690,7 @@
       "Multiplier": "Multiplier",
       "Category": "Category",
       "Initial": "Initial",
+      "Increment": "Increment",
       "Grade": "Grade",
       "Offset": "Offset",
       "Allies": "Allies",
@@ -888,7 +889,8 @@
       "PushUpdate": "Push Update",
       "PullUpdate": "Pull Update",
       "Bar": "Bar",
-      "Clock": "Clock"
+      "Clock": "Clock",
+      "Stack": "Stack"
     },
     "EQUIPMENT": {
       "Rarity": "Rarity",

@@ -166,21 +166,6 @@
     }
   }
 
-  .ah-tracker__controls {
-    display: flex;
-    gap: 2px;
-    justify-content: space-evenly;
-
-    a {
-      border-radius: 30%;
-      width: 1lh;
-      height: 1lh;
-      padding: 1px;
-      text-align: center;
-      vertical-align: middle;
-    }
-  }
-
   .ah-tracker__name__container {
     display: flex;
     flex-direction: column;
@@ -188,6 +173,21 @@
     label {
       vertical-align: middle;
     }
+  }
+}
+
+.ah-tracker__controls {
+  display: flex;
+  gap: 2px;
+  justify-content: space-evenly;
+
+  a {
+    border-radius: 30%;
+    width: 1lh;
+    height: 1lh;
+    padding: 1px;
+    text-align: center;
+    vertical-align: middle;
   }
 }
 

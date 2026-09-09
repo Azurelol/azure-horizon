@@ -40,12 +40,17 @@
           <!-- LABEL -->
           <div class="effect-label">
             <img class="effect-image" src="{{effect.img}}" alt="{{effect.name}}" height="24" width="24">
-            <div class="effect-name">{{effect.name}}</div>
+            <div class="effect-name">
+              {{effect.name}}
+              {{#if (and (eq effect.system.tracker.style 'stack') (and effect.stackable effect.system.stacking.tracker))}}
+                <span>{{effect.system.tracker.current}}</span>
+              {{/if}}
+            </div>
           </div>
           <!-- PROPERTIES -->
           <div class="effect-properties">
             {{#if effect.system.tracker.enabled}}
-              {{ahTracker effect 'system.tracker' classes='--small'}}
+              {{ahTracker effect 'system.tracker' classes='--small' controls=false}}
             {{/if}}
           </div>
           <!-- ORIGIN -->
@@ -70,7 +75,9 @@
               </a>
             {{/if}}
             {{#if effect.system.tracker.enabled}}
-
+              {{#with effect.system.tracker }}
+                {{> 'systems/azure-horizon/templates/components/tracker/tracker-controls.hbs' action='updateTrack' controls=true path='system.tracker'}}
+              {{/with}}
             {{/if}}
           </div>
         </li>

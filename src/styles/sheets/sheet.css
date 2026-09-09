@@ -82,6 +82,7 @@
       --width: 80px;
       width: var(--width);
       max-width: var(--width);
+      flex-wrap: wrap;
 
       .effect-controls {
         display: flex;

@@ -611,6 +611,7 @@ AH.effectTracking = {
 AH.trackerStyles = {
   clock: "AH.COMMON.Clock",
   bar: "AH.COMMON.Bar",
+  stack: "AH.COMMON.Stack",
 };
 
 /**
