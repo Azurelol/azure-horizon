@@ -86,7 +86,7 @@ export default class EvaluationContext {
     }
 
     const context = new EvaluationContext(actor, item, [target]);
-    context.effect = this;
+    context.effect = effect;
     if (this.sourceInfo) {
       context.setSourceItem(this.sourceInfo.itemUuid);
     }
