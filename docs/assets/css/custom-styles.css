@@ -164,7 +164,9 @@ body {
 /* LAYOUTS        */
 /******************/
 .ah-default {
-  background-image:  var(--ah-background-day);
+  &:is(body) {
+    background-image:  var(--ah-background-day);
+  }
 
   main {
     color: var(--ah-content-color);
@@ -175,7 +177,9 @@ body {
 }
 
 .ah-page {
-  background-image:  var(--ah-background-night);
+  &:is(body) {
+    background-image:  var(--ah-background-night);
+  }
 
   main {
     background: #FFF;
@@ -186,7 +190,9 @@ body {
 }
 
 .ah-collection {
-  background-image:  var(--ah-background-evening);
+  &:is(body) {
+    background-image:  var(--ah-background-evening);
+  }
 }
 
 /******************/
