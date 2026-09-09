@@ -6,8 +6,12 @@ ext-js:
   - "/assets/js/manual.js"
 ---
 
+<button id="toc-toggle" class="toc-toggle" aria-label="Toggle table of contents">
+  <i class="fa fa-bars"></i> Contents
+</button>
+
 <div class="toc-layout">
-  <nav class="toc-sidebar">
+  <nav class="toc-sidebar" id="toc-sidebar">
     <h2>Contents</h2>
     <ul>
       {% for entry in site.manual %}
@@ -21,13 +25,13 @@ ext-js:
     </ul>
   </nav>
 
-  <main class="toc-content">
+  <div class="toc-content">
     {% for entry in site.manual %}
     <section id="{{ entry.slug }}">
       <h1><i class="{{ entry.icon }}"></i> {{ entry.title }}</h1>
       {{ entry.content }}
     </section>
     {% endfor %}
-  </main>
+  </div>
 </div>
 
