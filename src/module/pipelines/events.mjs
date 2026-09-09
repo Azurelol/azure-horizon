@@ -58,7 +58,7 @@ async function calculateExpense(actor, item, targetData, expense) {
  * @typedef DamageEvent
  * @property {CharacterInfo|null} source
  * @property {CharacterInfo} target
- * @property {DamageResult} damage
+ * @property {DamageData} damage
  * @property {SourceInfo} sourceInfo
  * @property {AHItem} item
  * @property {AH_ItemGroup} itemGroup
@@ -138,6 +138,39 @@ async function calculateResource(actor, item, config) {
     config: config,
   };
   await AsyncHooks.callSequential(AH.hooks.CALCULATE_RESOURCE_EVENT, event);
+}
+
+/**
+ * @description Dispatched when an actor updates its resources (such as HP, MP)
+ * @typedef UpdateResourceEvent
+ * @property {ResourceType} resource
+ * @property {Number} amount
+ * @property {CharacterInfo} source
+ * @property {CharacterInfo[]} targets
+ * @property {SourceInfo} sourceInfo
+ * @property {String} origin
+ * @property {AHItem} item
+ * @property {AH_ItemGroup} itemGroup
+ * @property {ChatMessageBuilderData} renderData
+ */
+
+async function updateResource(sourceActor, targetActors, sourceInfo, resource, amount, origin, renderData) {
+  const source = CharacterInfo.fromActor(sourceActor);
+  const targets = CharacterInfo.fromActors(targetActors);
+  const item = sourceInfo.resolveItem();
+  const itemGroup = ItemInfo.resolveItemGroup(item);
+  /** @type UpdateResourceEvent  **/
+  const event = {
+    amount: amount,
+    resource: resource,
+    source: source,
+    targets: targets,
+    origin: origin,
+    item: item,
+    itemGroup: itemGroup,
+    renderData: renderData,
+  };
+  return AsyncHooks.callSequential(AH.hooks.UPDATE_RESOURCE_EVENT, event);
 }
 
 /**
@@ -326,6 +359,7 @@ const Events = Object.freeze({
   calculateDamage,
   applyDamage,
   calculateResource,
+  updateResource,
   calculateExpense,
   status,
 

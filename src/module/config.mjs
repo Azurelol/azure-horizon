@@ -1036,6 +1036,12 @@ AH.hooks = Object.freeze({
    */
   CALCULATE_RESOURCE_EVENT: `${systemNS}.events.resource.calculate`,
   /**
+   * @description Dispatched after a resource update has been applied to an actor
+   * @example callback(event)
+   * @remarks Uses {@link UpdateResourceEvent}.
+   */
+  UPDATE_RESOURCE_EVENT: `${systemNS}.events.resource.update`,
+  /**
    * @description Invoked when there's a change in the combat state
    * @example callback(event)
    * @remarks Uses {@link CombatEvent}

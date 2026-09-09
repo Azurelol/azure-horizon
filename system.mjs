@@ -116,6 +116,7 @@ function initializeSystems() {
   pipelines.Enrichers.initialize();
   pipelines.Damage.initialize();
   pipelines.Resources.initialize();
+  pipelines.Tension.initialize();
   pipelines.Effects.initialize();
   pipelines.Rules.initialize();
   pipelines.Actions.initialize();
