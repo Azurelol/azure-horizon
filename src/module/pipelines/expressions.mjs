@@ -122,7 +122,7 @@ function evaluateVariables(expression, context) {
         return getHighRoll(context.check);
       }
       // Tracker (From effect)
-      case "ts":
+      case "tv":
       case "cs": {
         context.assertEffect(match);
         return context.effect.system.tracker.current;

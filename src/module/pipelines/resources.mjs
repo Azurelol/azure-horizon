@@ -122,7 +122,9 @@ async function process(request) {
       }
     }
 
-    // Create the resource update
+    //------------------
+    // CREATE THE UPDATE
+    //------------------
     const message = request.gain ? "AH.CHAT.ResourceGain" : "AH.CHAT.ResourceLoss";
     if (request.data.temp) {
       const previous = resource.temporary;
@@ -142,8 +144,9 @@ async function process(request) {
           },
           ChatSectionOrder.description,
         );
+        await Events.updateResource(request.actor, subject, request.sourceInfo, request.data.type, amount, request.origin, chatMessage.renderData);
         await chatMessage.create();
-        
+
       }));
     }
     else {
@@ -164,6 +167,7 @@ async function process(request) {
             ChatSectionOrder.description,
           );
           await chatMessage.create();
+          await Events.updateResource(request.actor, subject, request.sourceInfo, request.data.type, amount, request.origin, chatMessage.renderData);
           TokenUtils.showFloatyText(subject, `${amount} ${request.resource.toUpperCase()}`, "lightgreen");
           return actor;
         }),
@@ -376,6 +380,7 @@ function initialize() {
 const Resources = Object.freeze({
   initialize,
   process,
+  getChatAction,
 });
 
 export default Resources;

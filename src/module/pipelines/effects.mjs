@@ -339,6 +339,7 @@ const Effects = Object.freeze({
   applyEffect,
   removeEffect,
   disableStatusEffect,
+  getChatAction,
 });
 
 export default Effects;

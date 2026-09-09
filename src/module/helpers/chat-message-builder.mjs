@@ -285,4 +285,12 @@ export default class ChatMessageBuilder {
     ChatMessageSections.text(this.sections, text, order);
   }
 
+  /**
+   * @param {ChatAction} action
+   * @param {number} [order]
+   */
+  action(action, order) {
+    this.renderData.actions.push(action);
+  }
+
 }

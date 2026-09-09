@@ -34,6 +34,32 @@ const STATUS_EFFECTS = Object.freeze({
     img: "systems/azure-horizon/assets/icons/statuses/reprieve.png",
   },
 
+  // TENSION
+  stress: {
+    id: "stress",
+    name: "AH.STATUS.Stress",
+    img: "systems/azure-horizon/assets/icons/statuses/stress.png",
+    system: {
+      tracker: {
+        id: "stress",
+        enabled: true,
+        style: "bar",
+        current: 1,
+        max: 4,
+      },
+      stacking: {
+        tracker: true,
+      },
+    },
+    changes: [
+      {
+        key: "system.parameters.check.all.status",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "-$tv",
+      },
+    ],
+  },
+
   // CONTROL
   // - can't use skills
   seal: {
@@ -141,7 +167,7 @@ const STATUS_EFFECTS = Object.freeze({
       {
         key: "system.parameters.damage.physical.incoming.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-        value: "2*$cs",
+        value: "2*$tv",
       },
     ],
     system: {
@@ -163,16 +189,29 @@ const STATUS_EFFECTS = Object.freeze({
     id: "breach",
     name: "AH.STATUS.Breach",
     img: "systems/azure-horizon/assets/icons/statuses/breach.png",
+    system: {
+      tracker: {
+        id: "breach",
+        enabled: true,
+        style: "bar",
+        current: 1,
+        max: 3,
+      },
+      stacking: {
+        tracker: true,
+        increment: true,
+      },
+    },
     changes: [
       {
         key: "system.parameters.damage.elemental.incoming.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-        value: "5",
+        value: "2*$tv",
       },
       {
         key: "system.parameters.damage.spiritual.incoming.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-        value: "5",
+        value: "2*$tv",
       },
     ],
   },
@@ -276,22 +315,6 @@ const STATUS_EFFECTS = Object.freeze({
   },
 
   // PRESSURE
-  pressure: {
-    id: "pressure",
-    name: "AH.STATUS.Pressure",
-    img: "systems/azure-horizon/assets/icons/statuses/pressure.png",
-    showIcon: false,
-    system: {
-      tracker: {
-        enabled: true,
-        name: "pressure",
-        id: "pressure",
-        current: 0,
-        max: 4,
-        style: "clock",
-      },
-    },
-  },
   stagger: {
     id: "stagger",
     name: "AH.STATUS.Stagger",

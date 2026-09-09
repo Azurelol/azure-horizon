@@ -74,7 +74,7 @@ export default class ChatAction {
   }
 
   /**
-	 * @param {FUActor} actor
+	 * @param {AHActor} actor
 	 * @return {ChatAction}
 	 */
   forActor(actor) {

@@ -143,10 +143,10 @@ async function calculateResource(actor, item, config) {
 /**
  * @description Dispatched when an actor updates its resources (such as HP, MP)
  * @typedef UpdateResourceEvent
- * @property {ResourceType} resource
+ * @property {AH_Resource} resource
  * @property {Number} amount
  * @property {CharacterInfo} source
- * @property {CharacterInfo[]} targets
+ * @property {CharacterInfo} subject
  * @property {SourceInfo} sourceInfo
  * @property {String} origin
  * @property {AHItem} item
@@ -154,9 +154,9 @@ async function calculateResource(actor, item, config) {
  * @property {ChatMessageBuilderData} renderData
  */
 
-async function updateResource(sourceActor, targetActors, sourceInfo, resource, amount, origin, renderData) {
-  const source = CharacterInfo.fromActor(sourceActor);
-  const targets = CharacterInfo.fromActors(targetActors);
+async function updateResource(actor, target, sourceInfo, resource, amount, origin, renderData) {
+  const source = CharacterInfo.fromActor(actor);
+  const subject = CharacterInfo.fromActor(target);
   const item = sourceInfo.resolveItem();
   const itemGroup = ItemInfo.resolveItemGroup(item);
   /** @type UpdateResourceEvent  **/
@@ -164,7 +164,8 @@ async function updateResource(sourceActor, targetActors, sourceInfo, resource, a
     amount: amount,
     resource: resource,
     source: source,
-    targets: targets,
+    sourceInfo: sourceInfo,
+    subject: subject,
     origin: origin,
     item: item,
     itemGroup: itemGroup,

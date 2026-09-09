@@ -931,6 +931,7 @@
       "Freeze": "Freeze",
       "Delay": "Delay",
       "Daze": "Daze",
+      "Stress": "Stress",
       "Stun": "Stun",
       "Chill": "Chill",
       "Shock": "Shock",
@@ -1058,12 +1059,16 @@
       "DefenseCheckPotencyStandard": "{defender} fails to defend against {item} from {attacker}.",
       "DefenseCheckPotencyPowerful": "{attacker} strikes {defender} with {item} to devastating effect!",
       "EffectInvalid": "Invalid Effect",
-      "TemporaryResourceLess": "The given <strong>{resource}</strong> gain is less than the current for <strong>{actor}</strong>."
+      "TemporaryResourceLess": "The given <strong>{resource}</strong> gain is less than the current for <strong>{actor}</strong>.",
+      "GainStress": "Gain Stress",
+      "ClearTension": "Clear Tension",
+      "GainStressMessage": "<strong>{name}</strong> has reached their tension limit and snapped."
     },
     "PIPELINE": {
       "CriticalBonus": "Critical Bonus",
       "ResourceGain": "Gain",
-      "ResourceLoss": "Loss"
+      "ResourceLoss": "Loss",
+      "StressGain": "Suffer Stress"
     },
     "EPISODE": {
       "Exploration": "Exploration",

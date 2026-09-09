@@ -122,3 +122,12 @@ export function assertCondition(condition, message) {
   ui.notifications.error(message);
   throw Error(message);
 }
+
+/**
+ * @param {String} message
+ */
+export function notifyInfo(message) {
+  if (ui?.notifications) {
+    ui.notifications.info(message);
+  }
+}
