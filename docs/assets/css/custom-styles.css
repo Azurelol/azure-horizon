@@ -81,7 +81,7 @@ nav, footer {
 
 nav {
   .dropdown-item {
-    color: var(--ah-content-color-alt);
+    color: var(--ah-content-color-alt) !important;
   }
 }
 
@@ -125,7 +125,7 @@ body {
 }
 
 /******************/
-/* LAYOUTS        */
+/* INDEX/HOME PAGE*/
 /******************/
 .index-title {
   font-size: 6em;
@@ -143,6 +143,10 @@ body {
   height: auto;
 }
 
+
+/******************/
+/* LAYOUTS        */
+/******************/
 .ah-divider-scene {
   img {
     /*background: url("/assets/img/background_scene.webp");*/
@@ -173,6 +177,9 @@ body {
 }
 
 .ah-collection {
+  body {
+    background: url("/assets/img/background_5_crop.webp");
+  }
   header {
     .page-heading {
     }
