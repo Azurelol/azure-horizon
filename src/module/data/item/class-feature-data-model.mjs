@@ -1,7 +1,7 @@
 import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import EmptyClassFeature from "./classFeatures/empty-class-feature.mjs";
-import { systemTemplatePath } from "../../constants.mjs";
+import { assertCondition, isActorType, systemTemplatePath } from "../../constants.mjs";
 import WeaponUsageDataModel from "./fields/weapon-usage-data-model.mjs";
 import { ActionDataModel } from "./fields/action-data-model.mjs";
 import config from "../../config.mjs";
@@ -33,9 +33,36 @@ export default class ClassFeatureDataModel extends ActiveFeatureDataModel {
     });
   }
 
+  get isCheck() {
+    return super.isCheck || (this.usage.enabled && this.usage.check);
+  }
+
+  /**
+   * @returns {AHItem}
+   */
+  async resolveWeapon() {
+    const actor = this.parent.actor;
+    /** @type HeroDataModel **/
+    const heroData = actor.system;
+    const equipment = heroData.getEquippedItems();
+    return equipment.mainHand;
+  }
+
   async _initializeAction(config) {
     await super._initializeAction(config);
+    await this.usage.configureAction(config);
     await this.action.configureAction(config);
+    config.addTraits([this.trait]);
+
+    const actor = this.parent.actor;
+    if (isActorType(actor)) {
+      if (this.usage.active) {
+        const weapon = await this.resolveWeapon();
+        if (assertCondition(weapon !== undefined, "A weapon must be assigned for this skill.")) {
+          this.usage.setOverride(config, weapon, this.isCheck);
+        }
+      }
+    }
   }
 
   /**
