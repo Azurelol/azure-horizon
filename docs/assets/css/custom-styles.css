@@ -13,6 +13,18 @@
 /******************/
 
 :root{
+
+  --ah-document-header-background: #354564;
+  --ah-surface-entry: #4f5e8c;
+  --ah-surface-entry-gradient: linear-gradient(
+    to right,
+    var( --ah-document-header-background) 0%,
+    var( --ah-surface-entry) 100%
+  );
+  --ah-surface-gradient: linear-gradient( to right, #99acc6 0%, var( --ah-surface-entry) 100% );
+  --ah-surface-grid-entry: #456896;;
+  --ah-page-background-color: #141445;
+
   --ah-content-color: white;
   --ah-content-color-alt: #354564;
   --ah-content-header: #eaca6b;
@@ -25,21 +37,15 @@
 
   --ah-trait-border: black;
   --ah-trait-color: #f4f0f0;
-  --ah-document-header-background: #354564;
-  --ah-entry-background: #4f5e8c;
-  --ah-entry-gradient: linear-gradient(
-    to right,
-    var( --ah-document-header-background) 0%,
-    var( --ah-entry-background) 100%
-  );
+
+  --ah-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   --ah-entry-icon-color: #eed796;
   --ah-filter-drop-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
 
   --ah-title-margin: 225px;
   --ah-divider-scene-margin: 425px;
-  --ah-page-background-color: #141445;
-  --ah-grid-entry-background: #456896;;
+
 
   --ah-font-primary: Pixeloid, 'Open Sans', serif;
   --ah-font-page: Pixeloid, 'Open Sans', serif;
@@ -92,6 +98,7 @@ footer {
   /*background-image: url('/assets/img/scroll_bg.png');*/
   /*background-repeat: no-repeat;*/
   /*background-size: 100% 100%;*/
+  text-shadow: var(--ah-text-shadow);
 }
 
 header {
@@ -151,12 +158,14 @@ body {
 }
 
 .ah-divider-scene {
+  display: flex;
+  justify-content: center;
+
   img {
-    /*background: url("/assets/img/background_scene.webp");*/
+    border: 4px solid var(--ah-content-color-alt);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100% auto;
-    width: 100%;
     height: auto;
   }
 }
@@ -184,7 +193,7 @@ body {
 
   main {
     background: #FFF;
-    border: 4px solid var(--ah-entry-background);
+    border: 4px solid var(--ah-surface-entry);
     padding: 1rem;
     border-radius: 4px;
   }
@@ -281,9 +290,9 @@ body {
         font-size: 16px;
         text-transform: uppercase;
         font-weight: 800;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+        text-shadow: var(--ah-text-shadow);
         filter: var(--ah-filter-glow);
-        background: var(--ah-grid-entry-background);
+        background: var(--ah-surface-grid-entry);
         border: var(--ah-border);
         padding: 4px 8px 4px 8px;
         border-radius: 8px;
