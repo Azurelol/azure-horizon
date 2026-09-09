@@ -36,8 +36,7 @@
   --ah-filter-drop-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
 
-  --ah-title-margin: 350px;
-  --ah-default-content-margin: 500px;
+  --ah-title-margin: 225px;
   --ah-divider-scene-margin: 425px;
   --ah-page-background-color: #141445;
 
@@ -93,8 +92,6 @@ footer {
 }
 
 header {
-
-
   .intro-header {
     color: var(--ah-content-header);
     margin-top: 0;
@@ -114,7 +111,7 @@ header {
 
 body {
   background-color: var(--ah-page-background-color);
-  background-image: url("/assets/img/background_3.webp");
+  background-image: url("/assets/img/background_3_crop.webp");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
@@ -159,7 +156,6 @@ body {
 
 .ah-default {
   main {
-    margin-top: var(--ah-title-margin);
     color: var(--ah-content-color);
   }
   footer {
