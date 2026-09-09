@@ -14,6 +14,7 @@
 
 :root{
   --ah-content-color: white;
+  --ah-content-color-alt: #354564;
   --ah-content-header: #eaca6b;
   --ah-content-action-color: #e8681a;
   --ah-content-action-hover-color: #d69575;
@@ -81,7 +82,7 @@ nav, footer {
 
 nav {
   .dropdown-item {
-
+    color: var(--ah-content-color-alt);
   }
 }
 
