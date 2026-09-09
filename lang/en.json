@@ -237,7 +237,8 @@
         "CharacterMeet": "The party met an important character for the first time.",
         "Adversary": "The party defeated a dangerous adversary.",
         "Obstacle": "The party overcame an obstacle without using force.",
-        "Relationship": "A relationship has significantly changed."
+        "Relationship": "A relationship has significantly changed.",
+        "CutawayScene": "The players witnessed a cutaway scene."
       }
     },
     "CLASS": {

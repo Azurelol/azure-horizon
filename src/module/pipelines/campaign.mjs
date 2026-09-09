@@ -67,6 +67,10 @@ const BASE_TRIGGERS = {
       text: "AH.EXPERIENCE.TRIGGERS.Obstacle",
       amount: 1,
     },
+    {
+      text: "AH.EXPERIENCE.TRIGGERS.CutawayScene",
+      amount: 1,
+    },
   ],
 };
 
