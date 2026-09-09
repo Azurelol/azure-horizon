@@ -39,6 +39,7 @@
   --ah-title-margin: 225px;
   --ah-divider-scene-margin: 425px;
   --ah-page-background-color: #141445;
+  --ah-grid-entry-background: #456896;;
 
   --ah-font-primary: Pixeloid, 'Open Sans', serif;
   --ah-font-page: Pixeloid, 'Open Sans', serif;
@@ -277,11 +278,15 @@ body {
       color: var(--ah-content-color);
 
       span {
-        font-size: 20px;
+        font-size: 16px;
         text-transform: uppercase;
         font-weight: 800;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-        /*filter: var(--ah-filter-glow);*/
+        filter: var(--ah-filter-glow);
+        background: var(--ah-grid-entry-background);
+        border: var(--ah-border);
+        padding: 4px 8px 4px 8px;
+        border-radius: 8px;
       }
 
       img, i {
