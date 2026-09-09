@@ -527,13 +527,14 @@
           "secondary": "mig",
           "grade": "B",
           "schemaVersion": 1,
-          "enabled": false
+          "enabled": true
         },
         "options": {
           "schemaVersion": 1,
           "enabled": false,
           "traits": []
-        }
+        },
+        "actionCost": 2
       },
       "effects": [],
       "flags": {},
@@ -660,7 +661,7 @@
         },
         "power": "",
         "level": {
-          "current": 1,
+          "current": 2,
           "max": 2
         },
         "action": {

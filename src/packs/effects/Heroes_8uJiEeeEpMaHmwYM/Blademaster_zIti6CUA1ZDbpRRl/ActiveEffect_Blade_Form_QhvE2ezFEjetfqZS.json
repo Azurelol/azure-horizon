@@ -1,19 +1,20 @@
 {
   "folder": "zIti6CUA1ZDbpRRl",
-  "name": "Effect: Sheathed Blade",
+  "name": "Blade Form",
   "_id": "QhvE2ezFEjetfqZS",
   "img": "icons/weapons/swords/sword-katana.webp",
   "type": "base",
   "system": {
     "changes": [],
-    "slug": "effect-sheathed-blade",
+    "slug": "blade-form",
     "rules": {},
     "tracker": {
       "enabled": false,
       "name": "",
       "id": "",
       "current": 0,
-      "max": 6
+      "max": 6,
+      "style": "clock"
     }
   },
   "disabled": false,

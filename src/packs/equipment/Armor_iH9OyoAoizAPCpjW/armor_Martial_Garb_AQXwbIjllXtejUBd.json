@@ -1,0 +1,34 @@
+{
+  "folder": "iH9OyoAoizAPCpjW",
+  "name": "Martial Garb",
+  "type": "armor",
+  "_id": "AQXwbIjllXtejUBd",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-martial-garb",
+    "description": "",
+    "rarity": "common",
+    "category": "light",
+    "traits": []
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788988193454,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!AQXwbIjllXtejUBd"
+}

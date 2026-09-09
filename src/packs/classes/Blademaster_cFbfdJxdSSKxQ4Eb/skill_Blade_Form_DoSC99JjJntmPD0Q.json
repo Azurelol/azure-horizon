@@ -1,20 +1,14 @@
 {
-  "folder": "8rYPdUeZxKDnoD6J",
-  "name": "Take Aim",
+  "folder": "cFbfdJxdSSKxQ4Eb",
+  "name": "Blade Form",
   "type": "skill",
-  "_id": "ju1EUh8SmxOifWRB",
-  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS92.png",
+  "_id": "DoSC99JjJntmPD0Q",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "archer-draw",
-    "description": "<p>You take time to fully draw your bow, gaining the Draw status. and allowing you to fire off more powerful skills.</p>",
-    "attributes": {
-      "schemaVersion": 1,
-      "primary": "dex",
-      "secondary": "mig",
-      "grade": "C"
-    },
+    "slug": "blademaster-blade-form",
+    "description": "<p>You adopt your stance, gaining the <em>Blade Form </em>effect. When you perform your next <em>Blademaster</em> skill under this effect it gains additional effects.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -44,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "1",
       "perTarget": false
     },
     "effects": {
@@ -54,7 +48,7 @@
       "enabled": true,
       "selector": "buff",
       "entries": [
-        "draw"
+        "blade-form"
       ],
       "duration": {
         "event": "",
@@ -69,19 +63,19 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "targeting": "self",
       "type": "action",
       "points": 1,
-      "traits": [],
+      "traits": [
+        "closer"
+      ],
       "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
       "check": false,
       "damage": false
     },
-    "class": "archer"
+    "class": "blademaster"
   },
   "effects": [],
   "sort": 0,
@@ -93,12 +87,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787940081892,
+    "createdTime": 1787210893723,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!ju1EUh8SmxOifWRB"
+  "_key": "!items!DoSC99JjJntmPD0Q"
 }

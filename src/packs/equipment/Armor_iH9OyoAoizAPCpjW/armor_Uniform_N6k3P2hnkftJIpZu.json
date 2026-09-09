@@ -1,0 +1,36 @@
+{
+  "folder": "iH9OyoAoizAPCpjW",
+  "name": "Uniform",
+  "type": "armor",
+  "_id": "N6k3P2hnkftJIpZu",
+  "img": "systems/azure-horizon/assets/icons/equipment/armor/uniform_1.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-uniform",
+    "description": "",
+    "rarity": "common",
+    "category": "light",
+    "traits": [
+      "comfort"
+    ]
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788988829103,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!N6k3P2hnkftJIpZu"
+}

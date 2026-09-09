@@ -83,6 +83,14 @@
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
+    },
+    "targeting": {
+      "enabled": true,
+      "rule": "single",
+      "range": "melee",
+      "traits": [
+        "cleave"
+      ]
     }
   },
   "effects": [],

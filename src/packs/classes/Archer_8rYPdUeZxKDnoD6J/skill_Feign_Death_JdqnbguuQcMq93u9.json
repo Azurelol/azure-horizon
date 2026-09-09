@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "archer-feign-death",
-    "description": "<p>You gain <em>Stealth</em> until your next action. Your party's TP is increased by 1.</p><ul><li><p><strong>Party</strong>: @GAIN[1 tp]</p></li></ul>",
+    "description": "<p>You gain <em>Stealth</em> until your next action. Your party's tension is increased by one.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -39,9 +39,9 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "hp",
-      "amount": ""
+      "enabled": true,
+      "type": "tp",
+      "amount": "1"
     },
     "cost": {
       "schemaVersion": 1,

@@ -68,17 +68,27 @@
       "schemaVersion": 1,
       "range": "",
       "targeting": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "type": "action",
+      "points": 3,
+      "traits": [
+        "exhaust"
+      ],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": false,
       "check": false,
-      "damage": false
+      "damage": false,
+      "enabled": false
     },
-    "class": "archer"
+    "class": "archer",
+    "targeting": {
+      "enabled": false,
+      "rule": "",
+      "range": "",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,

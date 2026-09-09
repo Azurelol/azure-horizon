@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "archer-track",
-    "description": "<p>You can make a @CHECK[dex ins normal]{Track} check to reveal an adversary that has the <em>Stealth</em> effect.</p>",
+    "description": "<p>You can make a check to reveal an adversary that has the <em>Stealth</em> effect.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,

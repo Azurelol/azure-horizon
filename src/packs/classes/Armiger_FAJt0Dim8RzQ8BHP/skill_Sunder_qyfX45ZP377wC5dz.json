@@ -50,9 +50,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "4",
       "perTarget": false
     },
     "effects": {

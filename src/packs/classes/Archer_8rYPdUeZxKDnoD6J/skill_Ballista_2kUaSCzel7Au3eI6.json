@@ -1,17 +1,16 @@
 {
-  "folder": "OkTmivfii1s2NxeJ",
-  "name": "Supercharge",
-  "type": "spell",
-  "_id": "yCueuOjh03fiHApV",
-  "img": "systems/azure-horizon/assets/icons/spells/elemental/supercharge.png",
+  "folder": "8rYPdUeZxKDnoD6J",
+  "name": "Ballista",
+  "type": "skill",
+  "_id": "2kUaSCzel7Au3eI6",
+  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS35.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "elemental-supercharge",
-    "description": "<p>You immediately end your turn and gain 2 extra action points on your next turn.</p>",
+    "slug": "archer-ballista",
+    "description": "<p>When your bow is <em>fully drawn,</em> you deal damage to a target column.</p>",
     "attributes": {
       "schemaVersion": 1,
-      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -45,17 +44,10 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
-    },
-    "targeting": {
-      "schemaVersion": 1,
-      "enabled": false,
-      "range": "",
-      "rule": "",
-      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -67,18 +59,30 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "moderate",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
     "action": {
       "schemaVersion": 1,
-      "enabled": true,
+      "range": "ranged",
+      "targeting": "multiple",
       "type": "action",
-      "points": 2,
+      "points": 3,
       "traits": [
-        "closer"
-      ]
+        "cooldown"
+      ],
+      "enabled": true
     },
-    "domain": "elemental",
-    "speed": "fast"
+    "usage": {
+      "schemaVersion": 1,
+      "attributes": true,
+      "check": true,
+      "damage": true,
+      "enabled": true
+    },
+    "class": "archer"
   },
   "effects": [],
   "sort": 0,
@@ -90,12 +94,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788780275334,
+    "createdTime": 1787940449189,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!yCueuOjh03fiHApV"
+  "_key": "!items!2kUaSCzel7Au3eI6"
 }

@@ -1,14 +1,14 @@
 {
   "folder": "8rYPdUeZxKDnoD6J",
-  "name": "Barrage",
+  "name": "Full Draw",
   "type": "skill",
-  "_id": "2kUaSCzel7Au3eI6",
-  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS35.png",
+  "_id": "ju1EUh8SmxOifWRB",
+  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS92.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "archer-barrage",
-    "description": "<p>You deal damage to a column.</p>",
+    "slug": "archer-full-draw",
+    "description": "<p>You take time to fully draw your bow, gaining the Draw status. and allowing you to fire off more powerful skills.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -45,42 +45,41 @@
     "cost": {
       "schemaVersion": 1,
       "enabled": true,
-      "resource": "mp",
-      "amount": "10",
+      "resource": "tp",
+      "amount": "1",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "draw"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "moderate",
+    "power": "",
     "level": {
       "current": 1,
       "max": 1
     },
     "action": {
       "schemaVersion": 1,
-      "range": "ranged",
-      "targeting": "multiple",
+      "range": "",
+      "targeting": "self",
       "type": "action",
-      "points": 3,
-      "traits": [
-        "cooldown"
-      ],
+      "points": 1,
+      "traits": [],
       "enabled": true
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": true,
-      "check": true,
-      "damage": true,
-      "enabled": true
+      "attributes": false,
+      "check": false,
+      "damage": false
     },
     "class": "archer"
   },
@@ -94,12 +93,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787940449189,
+    "createdTime": 1787940081892,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!2kUaSCzel7Au3eI6"
+  "_key": "!items!ju1EUh8SmxOifWRB"
 }

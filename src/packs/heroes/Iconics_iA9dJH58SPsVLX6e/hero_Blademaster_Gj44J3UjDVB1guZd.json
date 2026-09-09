@@ -98,7 +98,11 @@
         "type": "additive"
       }
     },
-    "equipment": {},
+    "equipment": {
+      "mainHand": "LiYOcX3pWQ1gciRm",
+      "offHand": "LiYOcX3pWQ1gciRm",
+      "armor": "wdDrP8GR8xh9VzHi"
+    },
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -481,7 +485,838 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Blademaster",
+      "type": "class",
+      "_id": "AeRIq5387gZSSNE5",
+      "img": "systems/azure-horizon/assets/icons/classes/blademaster/blademaster.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "blademaster",
+        "description": "<p>A fighter who specializes in fighting opponent with their blade. They are often lone wanderers who have their own reasons for doing so. They specialize in dueling single targets and in defending against melee attacks before unleashing powerful counters.</p><blockquote><p>The Blademaster is a good choice for those who wish to specialize in fighting single opponents and in <em>parrying,</em> which is their primary defensive tool against melee attacks. Their skills have temporal activation conditions which rewards players who can plan ahead.</p></blockquote>",
+        "traits": [
+          "warrior",
+          "offense",
+          "defense"
+        ],
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": true,
+          "mp": false,
+          "ip": false,
+          "tp": false
+        },
+        "triggers": [
+          "You have an encounter with a fated rival.",
+          "You perform a great feat then leave the scene without looking back.",
+          "You enlist the services of a bladesmith.",
+          "You stop the plot of a nefarious warmonger.",
+          "You defeat an enemy in single combat."
+        ],
+        "complications": [
+          "The child of a warrior you once slew plots to take your life.",
+          "An orphan follows you around.",
+          "A new rival emerges."
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986479012,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.AeRIq5387gZSSNE5",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.AeRIq5387gZSSNE5"
+    },
+    {
+      "name": "Blade Study",
+      "type": "skill",
+      "_id": "8bhucsEryEuxRWiX",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "blademaster-blade-study",
+        "description": "<p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "level": {
+          "current": 2,
+          "max": 5
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "",
+          "points": 1,
+          "traits": [],
+          "enabled": false
+        },
+        "power": "",
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "blademaster",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986507401,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.8bhucsEryEuxRWiX",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.8bhucsEryEuxRWiX"
+    },
+    {
+      "name": "Call Out",
+      "type": "skill",
+      "_id": "6IiOxoN9s6YJhrrS",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "blademaster-call-out",
+        "description": "<p>During a combat scene when making an attack you may call it out in order to gain an SL bonus to the check. You may do this up to SL times.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "blademaster-call-out"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 2
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "",
+          "points": 1,
+          "traits": [],
+          "enabled": false
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "blademaster",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986509525,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.6IiOxoN9s6YJhrrS",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.6IiOxoN9s6YJhrrS"
+    },
+    {
+      "name": "Parry",
+      "type": "skill",
+      "_id": "0TObl0ThML5gZYGn",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "blademaster-parry",
+        "description": "<p>You adopt a defensive posture in order to parry the next melee attack performed against you. You gain the <em>Parry</em> effect and may perform a free attack against your attacker.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "closer"
+          ],
+          "enabled": true
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "tp",
+          "amount": "2",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": true,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "blademaster",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "power": ""
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986510796,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.0TObl0ThML5gZYGn",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.0TObl0ThML5gZYGn"
+    },
+    {
+      "name": "New Moon",
+      "type": "classFeature",
+      "_id": "q4MhVLUzDJJ4yr0e",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "blademaster-new-moon",
+        "description": "<p>You deal additional light damage to a target. Can only be executed during an odd turn.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "5",
+            "type": "light"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "feature": {
+          "_id": "zTjo9dSBqomKrWkO",
+          "type": "emptyClassFeature"
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": true,
+          "damage": true,
+          "enabled": true,
+          "attributes": true
+        },
+        "class": "blademaster",
+        "skill": "blademaster-blade-study",
+        "power": "high",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 2,
+          "traits": []
+        },
+        "trait": ""
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986890845,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.q4MhVLUzDJJ4yr0e",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.q4MhVLUzDJJ4yr0e"
+    },
+    {
+      "name": "Crescent Moon",
+      "type": "classFeature",
+      "_id": "w6Dj16Sd68Jcit7X",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "blademaster-crescent-moon",
+        "description": "<p>You perform a <em>cleave</em> attack on the target. Can only be executed during an even turn.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "mp",
+          "amount": "15"
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "15",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "feature": {
+          "_id": "zTjo9dSBqomKrWkO",
+          "type": "emptyClassFeature"
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": true,
+          "damage": true,
+          "enabled": true,
+          "attributes": true
+        },
+        "class": "blademaster",
+        "skill": "blademaster-blade-study",
+        "power": "low",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "range": "melee",
+          "rule": "single",
+          "traits": [
+            "cleave"
+          ]
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 2,
+          "traits": []
+        },
+        "trait": ""
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986904133,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.w6Dj16Sd68Jcit7X",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.w6Dj16Sd68Jcit7X"
+    },
+    {
+      "name": "Blade Form",
+      "type": "skill",
+      "_id": "DoSC99JjJntmPD0Q",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "blademaster-blade-form",
+        "description": "<p>You adopt your stance, gaining the <em>Blade Form </em>effect. When you perform your next <em>Blademaster</em> skill under this effect it gains additional effects.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "tp",
+          "amount": "1",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "blade-form"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "closer"
+          ],
+          "enabled": true
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "blademaster",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788988079890,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.DoSC99JjJntmPD0Q",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.DoSC99JjJntmPD0Q"
+    },
+    {
+      "name": "Outfit",
+      "type": "armor",
+      "_id": "wdDrP8GR8xh9VzHi",
+      "img": "icons/equipment/chest/shirt-collared-brown.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-outfit",
+        "description": "<p>A character's default outfit, what they are most comfortable wearing.</p>",
+        "category": "light",
+        "traits": [
+          "comfort"
+        ],
+        "rarity": "common"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788988287731,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.wdDrP8GR8xh9VzHi",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.wdDrP8GR8xh9VzHi"
+    },
+    {
+      "name": "Blade",
+      "type": "weapon",
+      "_id": "LiYOcX3pWQ1gciRm",
+      "img": "systems/azure-horizon/assets/icons/equipment/weapons/blade.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-blade",
+        "description": "",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "A"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "",
+            "type": "slashing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "range": "melee",
+        "actionCost": 2,
+        "traits": [],
+        "handedness": "two",
+        "options": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788988763945,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.LiYOcX3pWQ1gciRm",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.LiYOcX3pWQ1gciRm"
+    }
+  ],
   "effects": [
     {
       "name": "KO",

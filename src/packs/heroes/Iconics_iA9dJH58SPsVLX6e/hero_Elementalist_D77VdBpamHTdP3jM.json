@@ -481,7 +481,598 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Elementalist",
+      "type": "class",
+      "_id": "vPxlegSUy94bAx2V",
+      "img": "systems/azure-horizon/assets/icons/classes/elementalist/elementalist.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "elementalist",
+        "description": "<p>A caster in certain control of the primal elements that govern the world. They can be found in distinguished magical or military academies and can be found adventurers, soldiers and many other positions where their destructive talents can be put to use.</p><blockquote><p>The Elementalist is the recommended class for those who want their character to unleash their magical arsenal on their foes, target elemental weaknesses and generally prioritize offense and not much else.</p></blockquote>",
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": false,
+          "mp": true,
+          "ip": false,
+          "tp": false
+        },
+        "triggers": [
+          "You deal with a problem involving the prime elements.",
+          "You unleash your magical power in a grand fashion.",
+          "You meet a powerful elemental.",
+          "You acquire a large pointy hat."
+        ],
+        "traits": [
+          "mage",
+          "offense"
+        ],
+        "complications": [
+          "You lose control at a critical time.",
+          "An ensorcelled hatted doll appears.",
+          "An elemental conjunction appears.",
+          "A wild magic storm is imminent."
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986032654,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.vPxlegSUy94bAx2V",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!D77VdBpamHTdP3jM.vPxlegSUy94bAx2V"
+    },
+    {
+      "name": "Ice Block",
+      "type": "skill",
+      "_id": "bF5Ho63DfxooBvdz",
+      "img": "systems/azure-horizon/assets/icons/classes/elementalist/ice_block.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "elementalist-ice-block",
+        "description": "<p>As a reaction you can gain <em>Stasis</em> and become immune to all damage and effects.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "stasis"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "reaction",
+          "points": 1,
+          "traits": [
+            "exhaust"
+          ],
+          "enabled": true
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": false,
+          "damage": false,
+          "enabled": false
+        },
+        "class": "elementalist",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986034947,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.bF5Ho63DfxooBvdz",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!D77VdBpamHTdP3jM.bF5Ho63DfxooBvdz"
+    },
+    {
+      "name": "Elemental Spell",
+      "type": "skill",
+      "_id": "9D70AgF7EfFC8FGy",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "elementalist-elemental-spell",
+        "description": "<p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Elemental </em>domain.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 2,
+          "max": 5
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "",
+          "points": 1,
+          "traits": [],
+          "enabled": false
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": false,
+          "damage": false,
+          "enabled": false
+        },
+        "class": "elementalist",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986048715,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.9D70AgF7EfFC8FGy",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!D77VdBpamHTdP3jM.9D70AgF7EfFC8FGy"
+    },
+    {
+      "name": "Manafont",
+      "type": "skill",
+      "_id": "mpB0utIK1G0ZDOcm",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "elementalist-manafont",
+        "description": "<p>Your next spell cast costs no mind points.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "exhaust"
+          ]
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        },
+        "class": "elementalist",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986105591,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.mpB0utIK1G0ZDOcm",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!D77VdBpamHTdP3jM.mpB0utIK1G0ZDOcm"
+    },
+    {
+      "name": "Cold Stream",
+      "type": "spell",
+      "_id": "rg7vsubXh2eXQUGp",
+      "img": "systems/azure-horizon/assets/icons/spells/elemental/cold_stream.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "elemental-cold-stream",
+        "description": "<p>You deal cold damage to a target those adjacent to it on the front row.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "ins",
+          "secondary": "wlp",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "mdef",
+          "bonus": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "5",
+            "type": "cold"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "15",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "moderate",
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 2,
+          "traits": [],
+          "enabled": false
+        },
+        "domain": "elemental",
+        "speed": "fast",
+        "targeting": {
+          "enabled": true,
+          "rule": "",
+          "range": "ranged",
+          "traits": [
+            "cleave"
+          ],
+          "schemaVersion": 1
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986171313,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.spells.Item.rg7vsubXh2eXQUGp",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!D77VdBpamHTdP3jM.rg7vsubXh2eXQUGp"
+    },
+    {
+      "name": "Ignition",
+      "type": "spell",
+      "_id": "TUUZhoaQeNhSDsCE",
+      "img": "systems/azure-horizon/assets/icons/spells/elemental/ignition.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "elemental-ignition",
+        "description": "<p>You deal fire damage to a target in close range.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "ins",
+          "secondary": "wlp",
+          "grade": "B",
+          "enabled": true
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "mdef",
+          "bonus": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "10",
+            "type": "fire"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "15",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "high",
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 2,
+          "traits": [],
+          "enabled": true
+        },
+        "domain": "elemental",
+        "speed": "instant",
+        "targeting": {
+          "enabled": true,
+          "rule": "",
+          "range": "melee",
+          "traits": [],
+          "schemaVersion": 1
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788986186043,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.spells.Item.TUUZhoaQeNhSDsCE",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!D77VdBpamHTdP3jM.TUUZhoaQeNhSDsCE"
+    }
+  ],
   "effects": [
     {
       "name": "KO",

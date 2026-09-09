@@ -10,19 +10,19 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 40,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
       "ip": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 6,
         "bonus": 0,
         "temporary": 0
       },
@@ -39,11 +39,11 @@
         "bonus": 0
       },
       "dex": {
-        "base": 4,
+        "base": 8,
         "bonus": 0
       },
       "ins": {
-        "base": 4,
+        "base": 6,
         "bonus": 0
       },
       "wlp": {
@@ -98,7 +98,11 @@
         "type": "additive"
       }
     },
-    "equipment": {},
+    "equipment": {
+      "mainHand": "p27ZyQaRBLsGkCg6",
+      "offHand": "p27ZyQaRBLsGkCg6",
+      "armor": "w1CojZKSQOAmtMGI"
+    },
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -533,120 +537,674 @@
       "folder": null,
       "sort": 0,
       "_key": "!actors.items!KUhRJQwno4jWXr10.uNqGCOoSFCIEY6X4"
-    }
-  ],
-  "effects": [
-    {
-      "name": "KO",
-      "img": "systems/azure-horizon/assets/icons/statuses/ko.png",
-      "statuses": [
-        "ko"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "ko"
-        }
-      },
-      "_id": "0RIpitI7colRm5jN",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668020,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!KUhRJQwno4jWXr10.0RIpitI7colRm5jN"
     },
     {
-      "name": "Crisis",
-      "img": "systems/azure-horizon/assets/icons/statuses/crisis.png",
-      "statuses": [
-        "crisis"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "crisis"
+      "name": "Full Draw",
+      "type": "skill",
+      "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS92.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "archer-full-draw",
+        "description": "<p>You take time to fully draw your bow, gaining the Draw status. and allowing you to fire off more powerful skills.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "tp",
+          "amount": "1",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "draw"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [],
+          "enabled": true
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": false,
+          "damage": false,
+          "enabled": false
+        },
+        "class": "archer",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
         }
       },
-      "_id": "oucJZg7uMn0ypJY8",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
+      "effects": [],
+      "flags": {},
       "_stats": {
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668072,
+        "createdTime": 1788985350019,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.ju1EUh8SmxOifWRB",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.effects!KUhRJQwno4jWXr10.oucJZg7uMn0ypJY8"
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "_id": "4ZgxUBU6z1xhc2dm",
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KUhRJQwno4jWXr10.4ZgxUBU6z1xhc2dm"
+    },
+    {
+      "name": "Aimed Shot",
+      "type": "skill",
+      "_id": "eljgBX9R08WepDtt",
+      "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS46.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "archer-aimed-shot",
+        "description": "<p>When your bow is fully drawn, you perform a powerful attack at a single target within line of sight. If the check result is even you hit a vital area.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "severe",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 2,
+          "traits": [],
+          "enabled": true
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": true,
+          "check": true,
+          "damage": true,
+          "enabled": true
+        },
+        "class": "archer",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788985467254,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.eljgBX9R08WepDtt",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KUhRJQwno4jWXr10.eljgBX9R08WepDtt"
+    },
+    {
+      "name": "Mark",
+      "type": "skill",
+      "_id": "cqTkqmwd5bDd3g94",
+      "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS63.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "archer-mark",
+        "description": "<p>You inflict the target with <em>Hunter's Mark</em> until the start of your next turn. It cannot gain <em>Stealth</em> and takes increased damage.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "5",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "deuff",
+          "entries": [
+            "archer-hunter-mark"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 1,
+          "traits": []
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        },
+        "class": "archer",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788985529531,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.cqTkqmwd5bDd3g94",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KUhRJQwno4jWXr10.cqTkqmwd5bDd3g94"
+    },
+    {
+      "name": "Ballista",
+      "type": "skill",
+      "_id": "2kUaSCzel7Au3eI6",
+      "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS35.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "archer-ballista",
+        "description": "<p>When your bow is <em>fully drawn,</em> you deal damage to a target column.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "moderate",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 3,
+          "traits": [
+            "cooldown"
+          ],
+          "enabled": true
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": true,
+          "check": true,
+          "damage": true,
+          "enabled": true
+        },
+        "class": "archer",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788985689090,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.2kUaSCzel7Au3eI6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KUhRJQwno4jWXr10.2kUaSCzel7Au3eI6"
+    },
+    {
+      "name": "Feign Death",
+      "type": "skill",
+      "_id": "JdqnbguuQcMq93u9",
+      "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS91.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "archer-feign-death",
+        "description": "<p>You gain <em>Stealth</em> until your next action. Your party's tension is increased by one.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "tp",
+          "amount": "1"
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "5",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "stealth"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "exhaust",
+            "tension"
+          ]
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        },
+        "class": "archer",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788985782748,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.JdqnbguuQcMq93u9",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KUhRJQwno4jWXr10.JdqnbguuQcMq93u9"
+    },
+    {
+      "name": "Bow",
+      "type": "weapon",
+      "img": "systems/azure-horizon/assets/icons/equipment/weapons/bow.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-bow",
+        "description": "",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "ins",
+          "defense": "def",
+          "bonus": ""
+        },
+        "range": "ranged",
+        "handedness": "two",
+        "traits": [],
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "",
+            "type": "piercing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "attributes": {
+          "primary": "dex",
+          "secondary": "ins",
+          "grade": "B",
+          "enabled": true,
+          "schemaVersion": 1
+        },
+        "actionCost": 1,
+        "options": {
+          "enabled": true,
+          "traits": [
+            "projectile",
+            "draw"
+          ],
+          "schemaVersion": 1
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788985872175,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.XdOIhwCWxdOWmynZ",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "_id": "p27ZyQaRBLsGkCg6",
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KUhRJQwno4jWXr10.p27ZyQaRBLsGkCg6"
+    },
+    {
+      "name": "Elven Leather",
+      "type": "armor",
+      "_id": "w1CojZKSQOAmtMGI",
+      "img": "systems/azure-horizon/assets/icons/equipment/armor/elf_leather_armor.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-elven-leather",
+        "description": "",
+        "rarity": "common",
+        "category": "light",
+        "traits": [
+          "fleet"
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788985879961,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.w1CojZKSQOAmtMGI",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KUhRJQwno4jWXr10.w1CojZKSQOAmtMGI"
     }
   ],
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0

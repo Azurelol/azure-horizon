@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-new-moon",
-    "description": "<p>You deal damage to a target. Can only be executed during an odd turn.</p>",
+    "description": "<p>You deal additional light damage to a target. Can only be executed during an odd turn.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -60,11 +60,19 @@
     "usage": {
       "schemaVersion": 1,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true,
+      "attributes": true
     },
     "class": "blademaster",
     "skill": "blademaster-blade-study",
-    "power": "high"
+    "power": "high",
+    "action": {
+      "enabled": true,
+      "type": "action",
+      "traits": [],
+      "points": 2
+    }
   },
   "effects": [],
   "sort": 200000,

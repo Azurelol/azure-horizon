@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-crescent-moon",
-    "description": "<p>You deal damage to the closest row. Can only be executed during an even turn.</p>",
+    "description": "<p>You perform a <em>cleave</em> attack on the target. Can only be executed during an even turn.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -32,15 +32,15 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "type": "mp",
       "amount": "15"
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "15",
       "perTarget": false
     },
     "effects": {
@@ -60,11 +60,27 @@
     "usage": {
       "schemaVersion": 1,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true,
+      "attributes": true
     },
     "class": "blademaster",
     "skill": "blademaster-blade-study",
-    "power": "low"
+    "power": "low",
+    "action": {
+      "enabled": true,
+      "type": "action",
+      "traits": [],
+      "points": 2
+    },
+    "targeting": {
+      "enabled": true,
+      "rule": "single",
+      "range": "melee",
+      "traits": [
+        "cleave"
+      ]
+    }
   },
   "effects": [],
   "sort": 100000,

@@ -1,14 +1,21 @@
 {
-  "folder": "cFbfdJxdSSKxQ4Eb",
-  "name": "Posture",
+  "folder": "bx9MNmczTLwMoouk",
+  "name": "Supercharge",
   "type": "skill",
-  "_id": "DoSC99JjJntmPD0Q",
+  "_id": "vfw4lzCE8fhRukNk",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-posture",
-    "description": "<p>You adopt your stance, gaining the <em>Sheathed Blade</em> effect. When you perform your  next <em>Blademaster</em> skill under this effect it gains additional effects.</p>",
+    "slug": "elementalist-supercharge",
+    "description": "<p>You immediately end your turn and gain 2 extra action points on your next turn.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,10 +45,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -60,19 +74,21 @@
     },
     "action": {
       "schemaVersion": 1,
-      "range": "",
+      "enabled": true,
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": [
-        "closer"
+        "exhaust"
       ]
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
       "check": false,
       "damage": false
     },
-    "class": "blademaster"
+    "class": "elementalist"
   },
   "effects": [],
   "sort": 0,
@@ -84,12 +100,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787210893723,
+    "createdTime": 1788986251930,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!DoSC99JjJntmPD0Q"
+  "_key": "!items!vfw4lzCE8fhRukNk"
 }

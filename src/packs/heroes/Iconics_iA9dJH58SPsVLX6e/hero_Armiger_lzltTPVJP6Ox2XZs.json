@@ -10,13 +10,13 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 40,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
@@ -98,7 +98,11 @@
         "type": "additive"
       }
     },
-    "equipment": {},
+    "equipment": {
+      "mainHand": "KafQxWpBEbGWLKyW",
+      "offHand": "KafQxWpBEbGWLKyW",
+      "armor": "g7Civg5iIjMbA50R"
+    },
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -481,119 +485,731 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
-  "effects": [
+  "items": [
     {
-      "name": "KO",
-      "img": "systems/azure-horizon/assets/icons/statuses/ko.png",
-      "statuses": [
-        "ko"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "ko"
-        }
-      },
-      "_id": "rsSfBH3Oh4jCGPgf",
-      "type": "base",
+      "name": "Armiger",
+      "type": "class",
+      "_id": "gMn0yJrV0U7mRKOJ",
+      "img": "systems/azure-horizon/assets/icons/classes/armiger/armiger.png",
       "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "armiger",
+        "description": "<p>A versatile warrior that values tactical flexibility over the study of a single weapon. They are often mercenaries; veterans that have tried many weapons over their careers and are capable of competently using any of them at their disposal.</p><blockquote><p>The Armiger is a great class for newcomers due to their relatively simple and effective skills which can easily complement other classes.</p></blockquote>",
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": true,
+          "mp": false,
+          "ip": false,
+          "tp": false
+        },
+        "traits": [
+          "warrior",
+          "offense"
+        ],
+        "triggers": [
+          "You acquire a new weapon.",
+          "You mentor someone.",
+          "You learn a new technique."
+        ],
+        "complications": [
+          "Your favorite weapon breaks.",
+          "A fellow mercenary is at odds with you.",
+          "Problems from the aftermath of an old battle spark up again."
+        ]
       },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
+      "effects": [],
+      "flags": {},
       "_stats": {
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668026,
+        "createdTime": 1788983274753,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.gMn0yJrV0U7mRKOJ",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.effects!lzltTPVJP6Ox2XZs.rsSfBH3Oh4jCGPgf"
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!lzltTPVJP6Ox2XZs.gMn0yJrV0U7mRKOJ"
     },
     {
-      "name": "Crisis",
-      "img": "systems/azure-horizon/assets/icons/statuses/crisis.png",
-      "statuses": [
-        "crisis"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "crisis"
+      "name": "Power Strike",
+      "type": "skill",
+      "_id": "Vr4OV4fATDqDW33a",
+      "img": "systems/azure-horizon/assets/icons/classes/armiger/power-strike.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "armiger-power-strike",
+        "description": "<p>You unleash a powerful attack with your equipped weapon.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "0",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "15",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          },
+          "enabled": false,
+          "selector": ""
+        },
+        "level": {
+          "current": 1,
+          "max": 2
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": true,
+          "damage": true,
+          "attributes": true,
+          "enabled": true
+        },
+        "class": "armiger",
+        "action": {
+          "type": "action",
+          "points": 2,
+          "traits": [
+            "cooldown"
+          ],
+          "schemaVersion": 1,
+          "enabled": true
+        },
+        "power": "moderate",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "range": "",
+          "rule": "single",
+          "traits": []
         }
       },
-      "_id": "fII0RCwyW8iEkfl6",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
+      "effects": [],
+      "flags": {},
       "_stats": {
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668085,
+        "createdTime": 1788983282992,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.Vr4OV4fATDqDW33a",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.effects!lzltTPVJP6Ox2XZs.fII0RCwyW8iEkfl6"
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!lzltTPVJP6Ox2XZs.Vr4OV4fATDqDW33a"
+    },
+    {
+      "name": "Follow Through",
+      "type": "skill",
+      "_id": "kok6FsiBHrU0R6dB",
+      "img": "systems/azure-horizon/assets/icons/classes/armiger/follow-through.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "armiger-follow-through",
+        "description": "<p>When a party member attacks a target you may follow up with a free attack of your own.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "reaction",
+          "points": 1,
+          "traits": [
+            "free"
+          ],
+          "enabled": false
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          },
+          "selector": ""
+        },
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": true,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "armiger",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "power": ""
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788983285532,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.kok6FsiBHrU0R6dB",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!lzltTPVJP6Ox2XZs.kok6FsiBHrU0R6dB"
+    },
+    {
+      "name": "Sunder",
+      "type": "skill",
+      "_id": "qyfX45ZP377wC5dz",
+      "img": "systems/azure-horizon/assets/icons/classes/armiger/sunder.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "armiger-sunder",
+        "description": "<p>You can follow up an earlier attack and apply <em>Sunder</em> to the same target.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "cooldown",
+            "press"
+          ],
+          "enabled": true
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "tp",
+          "amount": "4",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "",
+          "entries": [
+            "sunder"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": true,
+          "damage": true,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "armiger",
+        "power": "",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788983288299,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.qyfX45ZP377wC5dz",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!lzltTPVJP6Ox2XZs.qyfX45ZP377wC5dz"
+    },
+    {
+      "name": "Arsenal",
+      "type": "skill",
+      "_id": "kJGAKUMekVLPcwuy",
+      "img": "systems/azure-horizon/assets/icons/classes/armiger/arsenal.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "armiger-arsenal",
+        "description": "<p>Whenever you swap weapons you gain a <em>physical damage bonus</em> to your next attack.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "",
+          "points": 1,
+          "traits": [],
+          "enabled": false
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "entries": [
+            "armiger-arsenal-effect"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          },
+          "selector": ""
+        },
+        "level": {
+          "current": 1,
+          "max": 2
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "armiger",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "power": ""
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788983311195,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.kJGAKUMekVLPcwuy",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!lzltTPVJP6Ox2XZs.kJGAKUMekVLPcwuy"
+    },
+    {
+      "name": "All or Nothing",
+      "type": "skill",
+      "_id": "9zuHaM2TWa1WA3Xs",
+      "img": "systems/azure-horizon/assets/icons/classes/armiger/all-or-nothing.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "armiger-all-or-nothing",
+        "description": "<p>After you have performed the check for your next action and before the damage is resolved, if the result of the check was even you gain <em>Strength</em>, otherwise <em>Vulnerable.</em></p><p>At SL2 you gain both effects.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "strength",
+            "vulnerable"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 2
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "cooldown"
+          ],
+          "enabled": true
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": false,
+          "damage": false,
+          "enabled": false
+        },
+        "class": "armiger",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788983424634,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.9zuHaM2TWa1WA3Xs",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!lzltTPVJP6Ox2XZs.9zuHaM2TWa1WA3Xs"
+    },
+    {
+      "name": "Greatsword",
+      "type": "weapon",
+      "_id": "KafQxWpBEbGWLKyW",
+      "img": "systems/azure-horizon/assets/icons/equipment/weapons/greatsword.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-greatsword",
+        "description": "",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "range": "melee",
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "",
+            "type": "slashing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "handedness": "two",
+        "traits": [],
+        "attributes": {
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "A",
+          "enabled": true,
+          "schemaVersion": 1
+        },
+        "actionCost": 2,
+        "options": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788983469517,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.KafQxWpBEbGWLKyW",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!lzltTPVJP6Ox2XZs.KafQxWpBEbGWLKyW"
+    },
+    {
+      "name": "Plate Armor",
+      "type": "armor",
+      "_id": "g7Civg5iIjMbA50R",
+      "img": "systems/azure-horizon/assets/icons/equipment/armor/plate.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-plate-armor",
+        "description": "",
+        "category": "heavy",
+        "traits": [
+          "stable"
+        ],
+        "rarity": "common"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1788983485225,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.g7Civg5iIjMbA50R",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!lzltTPVJP6Ox2XZs.g7Civg5iIjMbA50R"
     }
   ],
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0
