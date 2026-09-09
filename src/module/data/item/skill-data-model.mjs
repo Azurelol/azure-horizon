@@ -38,7 +38,7 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
   }
 
   get isCheck() {
-    return super.isCheck || this.usage.check;
+    return super.isCheck || (this.usage.enabled && this.usage.check);
   }
 
   isVisible(key) {

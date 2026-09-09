@@ -226,6 +226,7 @@ function onRenderChatMessage(message, html) {
     const targets = await ChatAction.getTargetsFromAction(dataset);
     console.debug(`Applying effect ${effectId} to ${targets}`);
 
+    // If it's a toggleable status
     if (isStatus) {
       for (const target of targets) {
         if (!target.isOwner) {

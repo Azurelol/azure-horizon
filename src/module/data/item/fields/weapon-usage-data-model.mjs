@@ -45,7 +45,7 @@ export default class WeaponUsageDataModel extends OptionalFieldsetDataModel {
    * @returns {Boolean} If a weapon or attack is needed at all.
    */
   get active() {
-    return this.attributes || this.damage || this.check;
+    return this.enabled && (this.attributes || this.damage || this.check);
   }
 
   /**
@@ -54,24 +54,25 @@ export default class WeaponUsageDataModel extends OptionalFieldsetDataModel {
    * @param isCheck
    */
   setOverride(config, attack, isCheck) {
-    config.setItemReference(attack);
-    // Override check
-    if (isCheck && this.check) {
-      config.setTargetedDefense(attack.system.check.defense);
+    if (this.enabled) {
+      config.setItemReference(attack);
+      // Override check
+      if (isCheck && this.check) {
+        config.setTargetedDefense(attack.system.check.defense);
+      }
+      // Override damage
+      if (this.damage) {
+        attack.system.damage.configureAction(config, {
+          label: "AH.ITEM.Weapon",
+        });
+      }
+      // Override attributes
+      if (this.attributes) {
+        attack.system.attributes.configureAction(config, {});
+      }
+      // Use attack range
+      config.removeTraits("melee", "ranged");
+      config.addTraits(attack.system.range);
     }
-    // Override damage
-    if (this.damage) {
-      attack.system.damage.configureAction(config, {
-        label: "AH.ITEM.Weapon",
-      });
-    }
-    // Override attributes
-    if (this.attributes) {
-      attack.system.attributes.configureAction(config, {});
-    }
-    // Use attack range
-    config.removeTraits("melee", "ranged");
-    config.addTraits(attack.system.range);
   }
-
 }

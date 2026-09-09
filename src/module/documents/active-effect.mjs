@@ -162,17 +162,23 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
       console.debug(`Incrementing stack of ${this.name}`);
       let changes = {};
       const increment = this.system.stacking.increment;
+      const name = this.system.tracker.name || this.name;
       let message;
-      let progressUpdated;
+      let trackerUpdated;
 
       if (this.system.stacking.tracker) {
         if (this.system.tracker.isMaximum) {
           message = StringUtils.localize("AH.DIALOG.TrackerMaximum", {
-            name: this.system.tracker.name ?? this.name,
+            name: name,
           });
         } else {
-          changes["system.tracker.current"] = this.system.tracker.calculateUpdatedValue(increment);
-          progressUpdated = true;
+          const newValue = this.system.tracker.calculateUpdatedValue(increment);
+          changes["system.tracker.current"] = newValue;
+          message = StringUtils.localize("AH.DIALOG.TrackerIncrease", {
+            name: name,
+            value: newValue,
+          });
+          trackerUpdated = true;
         }
       }
 
@@ -181,7 +187,7 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
         const remaining = this.duration?.remaining ?? 0;
         changes["duration.remaining"] = remaining + 1;
         message = StringUtils.localize("AH.DIALOG.EffectDurationIncrement", {
-          name: this.name,
+          name: name,
           current: this.duration.remaining + 1,
         });
       }
@@ -190,9 +196,10 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
         await this.update(changes);
       }
 
-      if (progressUpdated) {
-        await Tracks.sendToChat(this.parent, this.system.tracker);
-      }
+      // if (trackerUpdated) {
+      //   await Tracks.sendToChat(this.parent, this.system.tracker, message);
+      // }
+
       if (message) {
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: this.parent }),

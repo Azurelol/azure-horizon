@@ -141,10 +141,21 @@ const STATUS_EFFECTS = Object.freeze({
       {
         key: "system.parameters.damage.physical.incoming.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-        value: "5",
+        value: "2*$cs",
       },
     ],
     system: {
+      tracker: {
+        id: "sunder",
+        enabled: true,
+        style: "bar",
+        current: 1,
+        max: 3,
+      },
+      stacking: {
+        tracker: true,
+        increment: true,
+      },
     },
   },
   // - increased magical damage taken

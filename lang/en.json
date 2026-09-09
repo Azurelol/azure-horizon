@@ -642,7 +642,8 @@
       "MigrateAllHint": "Migrate all actors and items to the latest entries in the system compendiums?",
       "MigrateAdversaries": "Migrate Adversaries",
       "MigrateAdversariesHint": "Migrate all adversaries in the world to their latest versions from the compendiums?",
-      "TrackerMaximum": "The {name} tracker is already at maximum.",
+      "TrackerMaximum": "{name} is already at maximum stacks.",
+      "TrackerIncrease": "{name} has increased to {value} stacks.",
       "EffectDurationIncrement": "The duration of {name} has been increased to {current}.",
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",

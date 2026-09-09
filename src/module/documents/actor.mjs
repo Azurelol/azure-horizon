@@ -188,6 +188,14 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
   }
 
   /**
+   * @param {String} id The status effect id.
+   * @return {AHActiveEffect[]}
+   */
+  resolveStatusEffect(id) {
+    return this.effects.filter((effect) => AHActor.isStatusEffect(effect, id));
+  }
+
+  /**
    * A helper function to toggle a status effect on an Actor.
    * Designed based off TokenDocument#toggleActiveEffect to properly interact with token hud.
    * @param {string} statusEffectId The status effect id based on CONFIG.statusEffects
@@ -200,16 +208,26 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
       ui.notifications.error("AH.DIALOG.WARNING.EffectsNotSupported", { localize: true });
       return false;
     }
-    const existing = this.effects.filter((effect) => AHActor.isStatusEffect(effect, statusEffectId));
+
+    const existing = this.resolveStatusEffect(statusEffectId);
     if (existing.length > 0) {
-      await Promise.all(
-        existing.map((e) => {
-          Events.status(this, statusEffectId, false);
-          //sendToChatEffectRemoved(e, this);
-          return e.delete();
-        }),
-      );
-      return false;
+      // If it's stacking
+      const stack = (existing.length === 1) && existing[0].stackable;
+      if (stack) {
+        const current = existing[0];
+        await current.addStack();
+        return true;
+      }
+      else {
+        await Promise.all(
+          existing.map((e) => {
+            Events.status(this, statusEffectId, false);
+            //sendToChatEffectRemoved(e, this);
+            return e.delete();
+          }),
+        );
+        return false;
+      }
     } else {
       await this.createStatusEffect(statusEffectId, sourceInfo, config);
       return true;
