@@ -1,14 +1,21 @@
 {
-  "folder": "65O9HLDE83Ghggk2",
-  "name": "Quarter Moon",
+  "folder": "cFbfdJxdSSKxQ4Eb",
+  "name": "Blade Form",
   "type": "classFeature",
-  "_id": "BYbuMvuA9EoQR6zO",
+  "_id": "cvkJmNgSjvYTk4SE",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-quarter-moon",
-    "description": "<p>You deal damage to a column. Can only be executed during an odd turn.</p>",
+    "slug": "blade-form",
+    "description": "<p>You adopt your stance, gaining the <em>Blade Form </em>effect which allows you to perform <em>blademaster</em> weapon arts.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,31 +45,50 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "1",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "blademaster-blade-form"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "power": "moderate",
+    "power": "",
     "feature": {
-      "_id": "BIfYP3alvA3tjhi8",
+      "_id": "roufppp2GdIu7OJV",
       "type": "emptyClassFeature"
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "action",
+      "points": 1,
+      "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "check": true,
-      "damage": true
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
     },
+    "trait": "",
     "class": "blademaster",
     "skill": "blademaster-blade-study"
   },
@@ -76,12 +102,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787210336029,
+    "createdTime": 1789027345359,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!BYbuMvuA9EoQR6zO"
+  "_key": "!items!cvkJmNgSjvYTk4SE"
 }

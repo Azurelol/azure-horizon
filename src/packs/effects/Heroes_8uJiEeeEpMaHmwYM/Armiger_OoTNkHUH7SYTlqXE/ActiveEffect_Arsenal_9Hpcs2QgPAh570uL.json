@@ -1,21 +1,29 @@
 {
-  "folder": "TSrleRBFpNJyYZlt",
-  "name": "Grudge",
-  "_id": "PpgaeDHpb8tXHC5I",
-  "img": "icons/svg/aura.svg",
+  "folder": "OoTNkHUH7SYTlqXE",
+  "name": "Arsenal",
+  "_id": "9Hpcs2QgPAh570uL",
+  "img": "systems/azure-horizon/assets/icons/classes/armiger/arsenal.png",
   "type": "base",
   "system": {
-    "changes": [],
-    "slug": "grudge",
+    "changes": [
+      {
+        "key": "system.parameters.damage.physical.outgoing.skill.additive",
+        "type": "add",
+        "value": "&sl('armiger-arsenal')*5",
+        "phase": "initial",
+        "priority": null
+      }
+    ],
     "rules": {},
     "tracker": {
       "enabled": false,
       "name": "",
       "id": "",
-      "style": "clock",
       "current": 0,
-      "max": 6
-    }
+      "max": 6,
+      "style": "clock"
+    },
+    "slug": "armiger-arsenal"
   },
   "disabled": false,
   "start": null,
@@ -37,12 +45,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787237070984,
+    "createdTime": 1786805415428,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!PpgaeDHpb8tXHC5I"
+  "_key": "!effects!9Hpcs2QgPAh570uL"
 }

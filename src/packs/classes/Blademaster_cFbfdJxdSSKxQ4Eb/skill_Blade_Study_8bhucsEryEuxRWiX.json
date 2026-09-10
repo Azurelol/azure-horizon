@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-blade-study",
-    "description": "<p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>",
+    "description": "<p>You gain the Blade Form feature. Each point invested in this skill grants a Blademaster weapon skill.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

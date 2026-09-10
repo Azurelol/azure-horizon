@@ -57,8 +57,6 @@
   /* Override */
   --header-font: var(--ah-font-primary);
   --body-font: var(--ah-font-primary);
-
-  --navbar-col: transparent;
 }
 
 /******************/
@@ -83,18 +81,19 @@ img {
   image-rendering: crisp-edges;
 }
 
-nav, footer {
-  background-color: transparent !important;
-  border: none !important;
-}
-
 nav {
   .dropdown-item {
     color: var(--ah-content-color-alt) !important;
   }
 }
 
+.navbar-custom {
+  background: var(--ah-surface-entry-gradient) !important;
+}
+
 footer {
+  background-color: transparent !important;
+  border: none !important;
   /*background-image: url('/assets/img/scroll_bg.png');*/
   /*background-repeat: no-repeat;*/
   /*background-size: 100% 100%;*/

@@ -1,23 +1,23 @@
 {
-  "type": "ActiveEffect",
-  "folder": null,
-  "name": "Buffs",
-  "color": "#00b000",
+  "type": "Item",
+  "folder": "cFbfdJxdSSKxQ4Eb",
+  "name": "Moonlight",
+  "color": null,
   "sorting": "a",
-  "_id": "OtxZvoEHMa1DI0rI",
+  "_id": "65O9HLDE83Ghggk2",
   "description": "",
-  "sort": 300000,
+  "sort": 0,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786738932980,
+    "createdTime": 1787210228079,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!OtxZvoEHMa1DI0rI"
+  "_key": "!folders!65O9HLDE83Ghggk2"
 }

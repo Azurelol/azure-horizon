@@ -1,17 +1,26 @@
 {
   "folder": "cVLIB6gv68M37QcB",
-  "name": "Effect: Tempo",
-  "_id": "L2eRRaBjL9JfrJp8",
-  "img": "icons/skills/movement/arrow-upward-yellow.webp",
+  "name": "Foxfire",
+  "_id": "UtUJ0FEjp6ma7eMR",
+  "img": "icons/magic/fire/flame-burning-embers-orange.webp",
   "type": "base",
   "system": {
-    "changes": [],
-    "slug": "dancer-tempo",
+    "changes": [
+      {
+        "key": "system.parameters.damage.universal.outgoing.status.additive",
+        "type": "add",
+        "value": 5,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "slug": "",
     "rules": {},
     "tracker": {
       "enabled": false,
       "name": "",
       "id": "",
+      "style": "clock",
       "current": 0,
       "max": 6
     }
@@ -24,7 +33,7 @@
     "expiry": null,
     "expired": false
   },
-  "description": "",
+  "description": "<p>Your next attack deals increased damage and also gains a fire component.</p>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,
@@ -36,12 +45,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787399504666,
+    "createdTime": 1788536117312,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!L2eRRaBjL9JfrJp8"
+  "_key": "!effects!UtUJ0FEjp6ma7eMR"
 }

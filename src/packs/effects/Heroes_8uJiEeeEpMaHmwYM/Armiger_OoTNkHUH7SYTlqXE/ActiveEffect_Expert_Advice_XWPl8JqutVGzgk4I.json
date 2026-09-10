@@ -1,27 +1,20 @@
 {
-  "folder": "LG8ANAZZOfjsZcTT",
-  "name": "Effect: Steel Skin",
-  "_id": "hnAQ3XXjQ4MRMMR5",
-  "img": "systems/azure-horizon/assets/icons/classes/defender/iron-skin.png",
+  "folder": "OoTNkHUH7SYTlqXE",
+  "name": "Expert Advice",
+  "_id": "XWPl8JqutVGzgk4I",
+  "img": "icons/skills/social/thumbsup-approval-like.webp",
   "type": "base",
   "system": {
-    "changes": [
-      {
-        "key": "system.parameters.damage.universal.incoming.skill.multiplicative",
-        "type": "add",
-        "value": 0.5,
-        "phase": "initial",
-        "priority": null
-      }
-    ],
-    "slug": "defender-steel-skin",
+    "changes": [],
+    "slug": "armiger-expert-advice",
     "rules": {},
     "tracker": {
       "enabled": false,
       "name": "",
       "id": "",
       "current": 0,
-      "max": 6
+      "max": 6,
+      "style": "clock"
     }
   },
   "disabled": false,
@@ -32,7 +25,7 @@
     "expiry": null,
     "expired": false
   },
-  "description": "",
+  "description": "<p>When your check would fail by 2 or less, you can recall someone's advice and make it succeed instead.</p>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,
@@ -44,12 +37,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787901954899,
+    "createdTime": 1786818204849,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!hnAQ3XXjQ4MRMMR5"
+  "_key": "!effects!XWPl8JqutVGzgk4I"
 }

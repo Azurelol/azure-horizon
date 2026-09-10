@@ -13,7 +13,8 @@
       "schemaVersion": 1,
       "primary": "ins",
       "secondary": "wlp",
-      "grade": "C"
+      "grade": "C",
+      "enabled": true
     },
     "check": {
       "schemaVersion": 1,

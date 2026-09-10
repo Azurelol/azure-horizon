@@ -33,13 +33,13 @@
     "expiry": null,
     "expired": false
   },
-  "description": "<p>You gain elemental resistance.</p>",
+  "description": "<p>You reduce incoming elemental damage by 50% until the caster's next turn.</p>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,
   "statuses": [],
   "showIcon": 1,
-  "sort": 0,
+  "sort": 100000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

@@ -67,7 +67,7 @@
         "tracking": ""
       }
     },
-    "power": "",
+    "power": "moderate",
     "action": {
       "schemaVersion": 1,
       "enabled": true,

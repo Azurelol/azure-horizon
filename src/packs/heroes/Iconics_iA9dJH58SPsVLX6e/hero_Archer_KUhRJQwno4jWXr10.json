@@ -500,7 +500,8 @@
           "schemaVersion": 1,
           "hp": true,
           "mp": false,
-          "ip": false
+          "ip": false,
+          "tp": false
         },
         "triggers": [
           "You scout a location.",
@@ -546,7 +547,7 @@
         "schemaVersion": 1,
         "revision": 1,
         "slug": "archer-full-draw",
-        "description": "<p>You take time to fully draw your bow, gaining the Draw status. and allowing you to fire off more powerful skills.</p>",
+        "description": "<p>You take time to fully draw your bow, gaining the <em>Full Draw</em> status. and allowing you to fire off more powerful skills.</p>",
         "attributes": {
           "schemaVersion": 1,
           "primary": "dex",
@@ -592,7 +593,7 @@
           "enabled": true,
           "selector": "buff",
           "entries": [
-            "draw"
+            "full-draw"
           ],
           "duration": {
             "event": "",

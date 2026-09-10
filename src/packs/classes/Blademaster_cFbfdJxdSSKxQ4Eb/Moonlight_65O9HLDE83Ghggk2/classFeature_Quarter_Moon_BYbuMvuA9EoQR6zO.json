@@ -1,14 +1,14 @@
 {
   "folder": "65O9HLDE83Ghggk2",
-  "name": "Full Moon",
+  "name": "Quarter Moon",
   "type": "classFeature",
-  "_id": "2S56t0MCLVoEFbWC",
+  "_id": "BYbuMvuA9EoQR6zO",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-full-moon",
-    "description": "<p>You deal powerful damage to a target. Can only be executed on the 5th turn and every 5 turns after that.</p>",
+    "slug": "blademaster-quarter-moon",
+    "description": "<p>You deal damage to a column. Can only be executed during an odd turn.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -32,15 +32,15 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": true,
-      "type": "mp",
-      "amount": "30"
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "15",
       "perTarget": false
     },
     "effects": {
@@ -53,7 +53,7 @@
         "tracking": ""
       }
     },
-    "power": "extreme",
+    "power": "moderate",
     "feature": {
       "_id": "BIfYP3alvA3tjhi8",
       "type": "emptyClassFeature"
@@ -61,10 +61,18 @@
     "usage": {
       "schemaVersion": 1,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true,
+      "attributes": true
     },
     "class": "blademaster",
-    "skill": "blademaster-blade-study"
+    "skill": "blademaster-blade-study",
+    "action": {
+      "enabled": true,
+      "type": "action",
+      "traits": [],
+      "points": 2
+    }
   },
   "effects": [],
   "sort": 0,
@@ -76,12 +84,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787210350111,
+    "createdTime": 1787210336029,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!2S56t0MCLVoEFbWC"
+  "_key": "!items!BYbuMvuA9EoQR6zO"
 }

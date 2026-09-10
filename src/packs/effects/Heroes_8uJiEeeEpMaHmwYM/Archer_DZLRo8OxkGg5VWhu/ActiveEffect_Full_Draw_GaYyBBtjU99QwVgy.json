@@ -1,17 +1,23 @@
 {
-  "folder": "cVLIB6gv68M37QcB",
-  "name": "Effect: Dance Partner",
-  "_id": "TLOJc3u2i8pNGmGW",
-  "img": "icons/skills/social/diplomacy-handshake.webp",
+  "folder": "DZLRo8OxkGg5VWhu",
+  "name": "Full Draw",
+  "_id": "GaYyBBtjU99QwVgy",
+  "img": "systems/azure-horizon/assets/icons/classes/archer/RFAS92.png",
   "type": "base",
   "system": {
     "changes": [],
-    "slug": "dancer-dance-partner",
+    "slug": "archer-full-draw",
+    "stacking": {
+      "tracker": false,
+      "duration": false,
+      "increment": 1
+    },
     "rules": {},
     "tracker": {
       "enabled": false,
       "name": "",
       "id": "",
+      "style": "clock",
       "current": 0,
       "max": 6
     }
@@ -24,7 +30,7 @@
     "expiry": null,
     "expired": false
   },
-  "description": "<p>You share certain benefits of the Dancer's skills.</p><ul><li><p>When the Dancer shifts, you can also perform a Shift.</p></li><li><p>When the Dancer makes use of <strong>Take The Lead</strong> and swaps with you, you can perform a free attack against the attacker if possible.</p></li></ul>",
+  "description": "<p>You have fully drawn your bow and perform your most powerful skills.</p>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,
@@ -36,12 +42,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787398965349,
+    "createdTime": 1789038055137,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!TLOJc3u2i8pNGmGW"
+  "_key": "!effects!GaYyBBtjU99QwVgy"
 }

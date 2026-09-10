@@ -1,35 +1,34 @@
 {
-  "folder": "OkTmivfii1s2NxeJ",
-  "name": "Chain Lightning",
-  "type": "spell",
-  "_id": "ceOn6O6H32oBjRJC",
-  "img": "systems/azure-horizon/assets/icons/spells/elemental/chain_lightning.png",
+  "folder": "L6d5qTnwiju9atkR",
+  "name": "Day Break",
+  "type": "classFeature",
+  "_id": "UCEwmQrODnnBtgCh",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "elemental-chain-lightning",
-    "description": "<p>You deal electric damage to the target and 3 additionally connected ones.</p>",
+    "slug": "blademaster-day-break",
+    "description": "<p>You deal powerful damage with a fire component to a target. Can only be executed on the 5th turn and every 5 turns after that.</p>",
     "attributes": {
       "schemaVersion": 1,
-      "primary": "ins",
-      "secondary": "wlp",
-      "grade": "C",
-      "enabled": true
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "mdef",
-      "bonus": ""
+      "defense": "def"
     },
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "10",
-        "type": "electric"
+        "amount": "",
+        "type": "fire"
       },
       "secondary": {
         "amount": "",
@@ -48,8 +47,15 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "20",
+      "amount": "30",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -61,23 +67,28 @@
         "tracking": ""
       }
     },
-    "power": "low",
+    "power": "extreme",
+    "feature": {
+      "_id": "roufppp2GdIu7OJV",
+      "type": "emptyClassFeature"
+    },
     "action": {
       "schemaVersion": 1,
-      "range": "ranged",
+      "enabled": true,
       "type": "action",
       "points": 3,
-      "traits": [],
-      "enabled": true
-    },
-    "domain": "elemental",
-    "speed": "slow",
-    "targeting": {
-      "enabled": true,
-      "rule": "single",
-      "range": "ranged",
       "traits": []
-    }
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "attributes": true,
+      "check": true,
+      "damage": true
+    },
+    "trait": "",
+    "class": "blademaster",
+    "skill": "blademaster-blade-study"
   },
   "effects": [],
   "sort": 0,
@@ -89,12 +100,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787573111049,
+    "createdTime": 1789025543146,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!ceOn6O6H32oBjRJC"
+  "_key": "!items!UCEwmQrODnnBtgCh"
 }

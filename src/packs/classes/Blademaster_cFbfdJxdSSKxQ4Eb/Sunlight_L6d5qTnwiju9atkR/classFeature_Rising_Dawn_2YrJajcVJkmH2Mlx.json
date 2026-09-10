@@ -1,14 +1,21 @@
 {
-  "folder": "65O9HLDE83Ghggk2",
-  "name": "Waxing Moon",
+  "folder": "L6d5qTnwiju9atkR",
+  "name": "Rising Dawn",
   "type": "classFeature",
-  "_id": "lN5xDvNLw3e7RDLp",
+  "_id": "2YrJajcVJkmH2Mlx",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "blademaster-waxing-moon",
-    "description": "<p>You deal damage to two different targets in the same row. Can only be executed during an even turn.</p>",
+    "slug": "blademaster-rising-dawn",
+    "description": "<p>You perform a pierce attack on the target. Can only be executed during an even turn.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,10 +45,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "15",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -53,21 +67,31 @@
         "tracking": ""
       }
     },
-    "power": "moderate",
+    "power": "low",
     "feature": {
-      "_id": "BIfYP3alvA3tjhi8",
+      "_id": "roufppp2GdIu7OJV",
       "type": "emptyClassFeature"
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "action",
+      "points": 2,
+      "traits": []
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": true,
+      "attributes": true,
       "check": true,
       "damage": true
     },
+    "trait": "",
     "class": "blademaster",
     "skill": "blademaster-blade-study"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -76,12 +100,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787210344127,
+    "createdTime": 1789025208543,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!lN5xDvNLw3e7RDLp"
+  "_key": "!items!2YrJajcVJkmH2Mlx"
 }

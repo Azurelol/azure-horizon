@@ -1,19 +1,20 @@
 {
-  "folder": "OoTNkHUH7SYTlqXE",
-  "name": "Effect: Expert Advice",
-  "_id": "XWPl8JqutVGzgk4I",
-  "img": "icons/skills/social/thumbsup-approval-like.webp",
+  "folder": "cVLIB6gv68M37QcB",
+  "name": "Dance Partner",
+  "_id": "TLOJc3u2i8pNGmGW",
+  "img": "icons/skills/social/diplomacy-handshake.webp",
   "type": "base",
   "system": {
     "changes": [],
-    "slug": "armiger-expert-advice",
+    "slug": "dancer-dance-partner",
     "rules": {},
     "tracker": {
       "enabled": false,
       "name": "",
       "id": "",
       "current": 0,
-      "max": 6
+      "max": 6,
+      "style": "clock"
     }
   },
   "disabled": false,
@@ -24,7 +25,7 @@
     "expiry": null,
     "expired": false
   },
-  "description": "<p>When your check would fail by 2 or less, you can recall someone's advice and make it succeed instead.</p>",
+  "description": "<p>You share certain benefits of the Dancer's skills.</p><ul><li><p>When the Dancer shifts, you can also perform a Shift.</p></li><li><p>When the Dancer makes use of <strong>Take The Lead</strong> and swaps with you, you can perform a free attack against the attacker if possible.</p></li></ul>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,
@@ -36,12 +37,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786818204849,
+    "createdTime": 1787398965349,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!XWPl8JqutVGzgk4I"
+  "_key": "!effects!TLOJc3u2i8pNGmGW"
 }

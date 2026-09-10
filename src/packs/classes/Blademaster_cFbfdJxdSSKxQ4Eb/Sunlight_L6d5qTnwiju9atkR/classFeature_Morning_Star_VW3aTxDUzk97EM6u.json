@@ -1,32 +1,27 @@
 {
-  "folder": "HvRr9GFUHOmYzNEk",
-  "name": "Jump",
-  "type": "skill",
-  "_id": "I1w5OaDxd0fdZeA6",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_shift.png",
+  "folder": "L6d5qTnwiju9atkR",
+  "name": "Morning Star",
+  "type": "classFeature",
+  "_id": "VW3aTxDUzk97EM6u",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "lancer-jump",
-    "description": "<p>You leap into the air, immediately ending your turn and gaining the <em>Jump </em>effect. It will end immediately as you land after your first action on your next turn.</p>",
+    "slug": "blademaster-morning-star",
+    "description": "<p>You deal damage to a target and apply <em>Burn</em>. Can only be executed during an even turn.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
-    },
-    "action": {
-      "schemaVersion": 1,
-      "range": "",
-      "type": "action",
-      "points": 1,
-      "traits": [
-        "cooldown",
-        "closer"
-      ],
-      "enabled": true,
-      "targeting": "self"
     },
     "damage": {
       "schemaVersion": 1,
@@ -52,36 +47,50 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "5",
+      "amount": "10",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "burn"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "level": {
-      "current": 1,
-      "max": 1
+    "power": "moderate",
+    "feature": {
+      "_id": "roufppp2GdIu7OJV",
+      "type": "emptyClassFeature"
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "action",
+      "points": 2,
+      "traits": []
     },
     "usage": {
       "schemaVersion": 1,
-      "check": false,
-      "damage": false,
-      "power": ""
-    },
-    "class": "lancer",
-    "targeting": {
       "enabled": true,
-      "rule": "self",
-      "range": "",
-      "traits": []
-    }
+      "attributes": true,
+      "check": true,
+      "damage": true
+    },
+    "trait": "",
+    "class": "blademaster",
+    "skill": "blademaster-blade-study"
   },
   "effects": [],
   "sort": 0,
@@ -93,12 +102,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786953476142,
+    "createdTime": 1789025931398,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!I1w5OaDxd0fdZeA6"
+  "_key": "!items!VW3aTxDUzk97EM6u"
 }

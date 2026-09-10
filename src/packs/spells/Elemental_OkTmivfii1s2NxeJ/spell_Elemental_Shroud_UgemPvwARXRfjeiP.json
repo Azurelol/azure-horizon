@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "elemental-shroud",
-    "description": "<p>You grant your party resistance against one of the elemental types you control.</p>",
+    "description": "<p>You grant your party resistance against elemental damage until your next turn.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

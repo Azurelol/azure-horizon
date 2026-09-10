@@ -661,7 +661,7 @@
         },
         "power": "",
         "level": {
-          "current": 2,
+          "current": 1,
           "max": 2
         },
         "action": {
@@ -785,9 +785,9 @@
         },
         "targeting": {
           "schemaVersion": 1,
-          "enabled": false,
+          "enabled": true,
           "range": "",
-          "rule": "",
+          "rule": "self",
           "traits": []
         },
         "power": ""
@@ -1488,6 +1488,60 @@
       "folder": null,
       "sort": 0,
       "_key": "!actors.items!7UWpPQ75by6FCspf.WoRVtl6fopiH3jp4"
+    },
+    {
+      "name": "Lancer",
+      "type": "class",
+      "_id": "0ogZm1r46mKL5P3W",
+      "img": "systems/azure-horizon/assets/icons/classes/lancer/lancer.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "lancer",
+        "description": "<p>An acrobatic warrior who specializes in fighting at range with a long spear. They could be the elites of military organizations or disciples of renowned martial masters. They specialize in getting past defenses to directly deal with dangerous opponents.</p><blockquote><p>The Lancer should be a fun class for those wishing to engage with the fantasy of the fighter who leaps around the battlefield. Their iconic Jump skill allows them to avoid being targeted and unleash more powerful versions of their main skills.</p></blockquote>",
+        "traits": [
+          "warrior",
+          "offense",
+          "mobility"
+        ],
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": true,
+          "mp": false,
+          "ip": false,
+          "tp": false
+        },
+        "triggers": [
+          "You liberate someone.",
+          "You jump from a great height and land in a dramatic pose.",
+          "You defeat an enemy with a Jump."
+        ],
+        "complications": [
+          "A rival lancer has been possessed by an evil dragon spirit.",
+          "Your romantic rival wins the heart of the object of your affection.",
+          "You realize those you once served were wrong all along."
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1789037819056,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.0ogZm1r46mKL5P3W",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!7UWpPQ75by6FCspf.0ogZm1r46mKL5P3W"
     }
   ],
   "effects": [],

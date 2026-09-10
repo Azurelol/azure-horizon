@@ -1,28 +1,29 @@
 {
-  "folder": "OoTNkHUH7SYTlqXE",
-  "name": "Effect: Arsenal",
-  "_id": "9Hpcs2QgPAh570uL",
-  "img": "systems/azure-horizon/assets/icons/classes/armiger/arsenal.png",
+  "folder": "LG8ANAZZOfjsZcTT",
+  "name": "Steel Skin",
+  "_id": "hnAQ3XXjQ4MRMMR5",
+  "img": "systems/azure-horizon/assets/icons/classes/defender/iron-skin.png",
   "type": "base",
   "system": {
     "changes": [
       {
-        "key": "system.parameters.damage.physical.outgoing.skill.additive",
+        "key": "system.parameters.damage.universal.incoming.skill.multiplicative",
         "type": "add",
-        "value": "&sl('armiger-arsenal')*5",
+        "value": 0.5,
         "phase": "initial",
         "priority": null
       }
     ],
+    "slug": "defender-steel-skin",
     "rules": {},
     "tracker": {
       "enabled": false,
       "name": "",
       "id": "",
       "current": 0,
-      "max": 6
-    },
-    "slug": "armiger-arsenal"
+      "max": 6,
+      "style": "clock"
+    }
   },
   "disabled": false,
   "start": null,
@@ -44,12 +45,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786805415428,
+    "createdTime": 1787901954899,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!9Hpcs2QgPAh570uL"
+  "_key": "!effects!hnAQ3XXjQ4MRMMR5"
 }

@@ -1,35 +1,27 @@
 {
-  "folder": "OkTmivfii1s2NxeJ",
-  "name": "Chain Lightning",
-  "type": "spell",
-  "_id": "ceOn6O6H32oBjRJC",
-  "img": "systems/azure-horizon/assets/icons/spells/elemental/chain_lightning.png",
+  "folder": "65O9HLDE83Ghggk2",
+  "name": "Full Moon",
+  "type": "classFeature",
+  "_id": "2S56t0MCLVoEFbWC",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "elemental-chain-lightning",
-    "description": "<p>You deal electric damage to the target and 3 additionally connected ones.</p>",
-    "attributes": {
-      "schemaVersion": 1,
-      "primary": "ins",
-      "secondary": "wlp",
-      "grade": "C",
-      "enabled": true
-    },
+    "slug": "blademaster-full-moon",
+    "description": "<p>You deal powerful damage with a cold component to a target. Can only be executed on the 5th turn and every 5 turns after that.</p>",
     "check": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "mdef",
-      "bonus": ""
+      "defense": "def"
     },
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "10",
-        "type": "electric"
+        "amount": "",
+        "type": "cold"
       },
       "secondary": {
         "amount": "",
@@ -41,14 +33,14 @@
     "resource": {
       "schemaVersion": 1,
       "enabled": false,
-      "type": "hp",
-      "amount": ""
+      "type": "mp",
+      "amount": "30"
     },
     "cost": {
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "20",
+      "amount": "30",
       "perTarget": false
     },
     "effects": {
@@ -61,22 +53,25 @@
         "tracking": ""
       }
     },
-    "power": "low",
-    "action": {
-      "schemaVersion": 1,
-      "range": "ranged",
-      "type": "action",
-      "points": 3,
-      "traits": [],
-      "enabled": true
+    "power": "extreme",
+    "feature": {
+      "_id": "BIfYP3alvA3tjhi8",
+      "type": "emptyClassFeature"
     },
-    "domain": "elemental",
-    "speed": "slow",
-    "targeting": {
+    "usage": {
+      "schemaVersion": 1,
+      "check": true,
+      "damage": true,
       "enabled": true,
-      "rule": "single",
-      "range": "ranged",
-      "traits": []
+      "attributes": true
+    },
+    "class": "blademaster",
+    "skill": "blademaster-blade-study",
+    "action": {
+      "enabled": true,
+      "type": "action",
+      "traits": [],
+      "points": 3
     }
   },
   "effects": [],
@@ -89,12 +84,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787573111049,
+    "createdTime": 1787210350111,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!ceOn6O6H32oBjRJC"
+  "_key": "!items!2S56t0MCLVoEFbWC"
 }
