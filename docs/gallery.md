@@ -1,6 +1,7 @@
 ---
 layout: collection
 title: Gallery
+bodyClass: ah-gallery
 permalink: /gallery/
 ext-css:
   - https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css

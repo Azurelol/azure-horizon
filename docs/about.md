@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About Me
+bodyClass: ah-about
 subtitle: Why you should trust me with your time.
 ---
 

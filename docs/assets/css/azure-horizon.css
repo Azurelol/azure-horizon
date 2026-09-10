@@ -43,7 +43,7 @@
   --ah-filter-drop-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));
 
-  --ah-title-margin: 225px;
+  --ah-title-margin: 100;
   --ah-divider-scene-margin: 425px;
 
 
@@ -192,7 +192,7 @@ body {
 
 .ah-page {
   &:is(body) {
-    background-image:  var(--ah-background-night);
+    background-image:  var(--ah-background-evening);
   }
 
   main {
@@ -206,6 +206,12 @@ body {
 .ah-collection {
   &:is(body) {
     background-image:  var(--ah-background-evening);
+  }
+}
+
+.ah-gallery, .ah-about {
+  &:is(body) {
+    background-image:  var(--ah-background-night);
   }
 }
 
