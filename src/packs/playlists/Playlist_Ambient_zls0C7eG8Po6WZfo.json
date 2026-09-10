@@ -1,0 +1,30 @@
+{
+  "name": "Ambient",
+  "_id": "zls0C7eG8Po6WZfo",
+  "sounds": [],
+  "channel": "environment",
+  "mode": 2,
+  "playing": false,
+  "folder": null,
+  "sorting": "a",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789039024496,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "description": "<p>Used for ambient music.</p>",
+  "fade": null,
+  "seed": 480,
+  "_key": "!playlists!zls0C7eG8Po6WZfo"
+}

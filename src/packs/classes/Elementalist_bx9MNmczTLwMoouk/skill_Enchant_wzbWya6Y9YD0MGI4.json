@@ -3,12 +3,12 @@
   "name": "Enchant",
   "type": "skill",
   "_id": "wzbWya6Y9YD0MGI4",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/elementalist/enchant.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "elementalist-enchant",
-    "description": "<p>When a party member performs a physical attack you can enchant it before it resolves to deal additional elemental damage of your choice.</p>",
+    "description": "<p>When a party member performs an attack you can enchant their weapon to deal elemental damage for their next two turns before their action resolves.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -46,14 +46,18 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "10",
+      "amount": "15",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "fire-weapon",
+        "cold-weapon",
+        "electric-weapon"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -80,7 +84,13 @@
       "damage": false,
       "enabled": false
     },
-    "class": "elementalist"
+    "class": "elementalist",
+    "targeting": {
+      "enabled": true,
+      "rule": "single",
+      "range": "",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,

@@ -3,7 +3,7 @@
   "name": "Supercharge",
   "type": "skill",
   "_id": "vfw4lzCE8fhRukNk",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/elementalist/supercharge.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

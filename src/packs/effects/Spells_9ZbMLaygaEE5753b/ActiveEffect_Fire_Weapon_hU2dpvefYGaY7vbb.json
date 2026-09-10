@@ -1,0 +1,68 @@
+{
+  "folder": "9ZbMLaygaEE5753b",
+  "name": "Fire Weapon",
+  "_id": "hU2dpvefYGaY7vbb",
+  "img": "systems/azure-horizon/assets/icons/affinities/fire.png",
+  "type": "base",
+  "system": {
+    "changes": [
+      {
+        "key": "system.parameters.overrides.weapon.type",
+        "type": "override",
+        "value": "fire",
+        "phase": "initial",
+        "priority": null
+      },
+      {
+        "key": "system.parameters.overrides.weapon.amount",
+        "type": "override",
+        "value": 5,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "slug": "fire-weapon",
+    "stacking": {
+      "tracker": false,
+      "duration": false,
+      "increment": 1
+    },
+    "rules": {},
+    "tracker": {
+      "enabled": false,
+      "name": "",
+      "id": "",
+      "style": "clock",
+      "current": 0,
+      "max": 6
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": 2,
+    "units": "turns",
+    "expiry": "turnEnd",
+    "expired": false
+  },
+  "description": "<p>Your weapon gains a secondary fire damage component.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 106250,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789050573250,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!hU2dpvefYGaY7vbb"
+}

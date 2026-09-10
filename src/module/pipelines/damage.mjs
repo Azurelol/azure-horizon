@@ -347,11 +347,24 @@ const onProcessAction = async (config, actor, item) => {
     // We will begin modifying this before setting it back
     const damage = config.damage;
 
-    // TODO: Add the attribute scaling info....
+    // TODO: Replace?
+    // Check for a damage component override
+    const weaponOverride = actor.system.parameters.overrides.weapon;
+    if (weaponOverride.type) {
+      config.modifyDamage(d => {
+        d.addOrUpdate("AH.DAMAGE.Secondary", {
+          type: weaponOverride.type,
+          amount: weaponOverride.amount ?? 0,
+        });
+      });
+    }
+
     // 1.) Set attribute scaling
     const calc = Formulas.calculateAttributeBonus(config, actor);
     if (calc) {
+      /** @type DamageComponent **/
       const secondaryDamage = damage.components[1];
+
       // Add high roll to primary damage
       damage.add("AH.CHECK.PrimaryAttribute", {
         type: damage.type,

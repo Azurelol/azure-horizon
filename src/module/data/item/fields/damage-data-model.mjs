@@ -12,6 +12,10 @@ import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mj
  * @property {AH_Grade} grade
  */
 export default class DamageDataModel extends OptionalFieldsetDataModel {
+
+  static PRIMARY_DAMAGE_LABEL = "AH.DAMAGE.Damage";
+  static SECONDARY_DAMAGE_LABEL = "AH.DAMAGE.Secondary";
+
   static defineSchema() {
     const { BooleanField, SchemaField, NumberField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
@@ -41,13 +45,14 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
    * @param options
    */
   configureAction(config, options = {}) {
-    const label = options.label ?? "AH.DAMAGE.Damage";
+    const label = options.label ?? DamageDataModel.PRIMARY_DAMAGE_LABEL;
     if (this.active) {
 
       config.addTraits(this.primary.type);
       const traits = this.traits.values();
       config.addTraits(...traits);
 
+      // If there's
       if (config.hasDamage) {
         config.modifyDamage(dmg => {
           dmg.add(label, this.primary);
@@ -57,11 +62,12 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
           }
         });
       }
+      // Adding damage
       else {
         config.setDamage(this.primary, this.grade);
         if (this.secondary.type) {
           config.modifyDamage(d => {
-            d.add("AH.DAMAGE.Secondary", this.secondary);
+            d.add(DamageDataModel.SECONDARY_DAMAGE_LABEL, this.secondary);
           });
           if (this.secondary.type !== this.primary.type) {
             config.addTraits(this.secondary.type);

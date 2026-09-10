@@ -12,7 +12,8 @@
       "effects": "Effects",
       "assembly": "Assembly",
       "followers": "Followers",
-      "entities": "Entities"
+      "entities": "Entities",
+      "playlists": "Playlists"
     },
     "APPLICATION": {
       "CompendiumBrowser": "Compendium Browser",

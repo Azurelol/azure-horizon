@@ -146,7 +146,7 @@ export default class Formulas {
         },
         secondary: {
           base: config.check.lr.result,
-          bonus: Math.floor((config.check.lr?.result * grade) - config.check.lr?.result),
+          bonus: 0, // Math.floor((config.check.lr?.result * grade) - config.check.lr?.result),
         },
       };
     }

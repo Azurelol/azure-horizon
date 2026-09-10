@@ -84,14 +84,18 @@
       "name": "adversaries",
       "label": "AH.COMPENDIUM.adversaries",
       "type": "Actor"
+    },
+    {
+      "name": "playlists",
+      "label": "AH.COMPENDIUM.playlists",
+      "type": "Playlist"
     }
-
   ],
   "packFolders": [
     {
       "name": "Azure Horizon System",
       "color": "#3d598b",
-      "packs": ["classes", "equipment", "spells", "effects", "journals", "tables", "assembly", "adversaries", "heroes" ]
+      "packs": ["classes", "equipment", "spells", "effects", "journals", "tables", "assembly", "adversaries", "heroes", "playlists" ]
     }
   ],
   "manifest": "https://github.com/Azurelol/azure-horizon/releases/latest/download/system.json",

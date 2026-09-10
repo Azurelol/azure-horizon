@@ -3,7 +3,7 @@
   "name": "Meltdown",
   "type": "skill",
   "_id": "FbIvBciRmgGXoW9J",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "img": "systems/azure-horizon/assets/icons/classes/elementalist/meltdown.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

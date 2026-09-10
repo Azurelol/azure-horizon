@@ -106,6 +106,27 @@ export default class DamageData {
   }
 
   /**
+   * @param {String} label
+   * @param {DamageUnit} unit
+   * @returns DamageData
+   */
+  addOrUpdate(label, unit) {
+    const existing = this.components.find(c => c.label === label);
+    if (existing) {
+      existing.type = unit.type;
+      existing.amount = unit.amount;
+    }
+    else {
+      this.custom({
+        label: label,
+        ...unit,
+        enabled: true,
+      });
+    }
+    return this;
+  }
+
+  /**
    * Clear all components
    * @returns DamageData
    */

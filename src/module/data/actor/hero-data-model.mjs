@@ -18,16 +18,25 @@ const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } =
  */
 
 /**
- * @typedef CharacterAttributes
+ * @typedef HeroOverrideData
+ * @property {AH_DamageType} weapon.type Assigned to add damage component.
+ * @property {AH_DamageType} weapon.amount Assigned to add damage component.
  */
 
 /**
  * @property {ParameterDataModel} def
  * @property {ParameterDataModel} mdef
+ * @property {HeroOverrideData} overrides
  */
 class HeroParametersDataModel extends CharacterParametersDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
+      overrides: new SchemaField({
+        weapon: new SchemaField({
+          type: new StringField(),
+          amount: new StringField(),
+        }),
+      }),
     });
   }
 }
