@@ -131,3 +131,12 @@ export function notifyInfo(message) {
     ui.notifications.info(message);
   }
 }
+
+/**
+ * @param {String} message
+ */
+export function notifyWarn(message) {
+  if (ui?.notifications) {
+    ui.notifications.warn(message);
+  }
+}

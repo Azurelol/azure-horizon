@@ -84,6 +84,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
    * @override
    */
   async _onUpdate(changed, options, userId) {
+    await super._onUpdate(changed, options, userId);
     if (this.isCharacterType) {
       if (this.isCharacterType && (userId === game.userId)) {
         if (ObjectUtils.hasProperty(changed, "system.resources.hp")) {
@@ -91,7 +92,6 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
         }
       }
     }
-    super._onUpdate(changed, options, userId);
   }
 
   /**

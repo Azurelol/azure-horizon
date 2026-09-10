@@ -148,6 +148,13 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
   }
 
   /**
+   * @returns {Boolean} True if this effect can not be removed by the system.
+   */
+  get removable() {
+    return !["peril", "crisis", "ko"].some((el) => this.statuses.has(el));
+  }
+
+  /**
    * @returns {boolean}
    */
   get hasDuration() {
@@ -322,20 +329,6 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
     }
   }
 }
-
-// /**
-//  * @param {AHActor} actor
-//  * @param {EffectChangeData} change
-//  * @param current
-//  */
-// function onApplyActiveEffect(actor, change, current) {
-//   if (change.key.startsWith("system.") && (current instanceof foundry.abstract.DataModel && Object.hasOwn(current, change.value) && current[change.value] instanceof Function) {
-//     console.debug(`Applying change ${change.value} to ${change.key}`);
-//     current[change.value]();
-//     return false;
-//   }
-// }
-// Hooks.on("applyActiveEffect", onApplyActiveEffect);
 
 Hooks.on("preCreateActiveEffect",
   /** @param {AHActiveEffect} effect **/

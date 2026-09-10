@@ -1,5 +1,5 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
-import { systemPath, systemTemplatePath } from "../../constants.mjs";
+import { notifyInfo, notifyWarn, systemPath, systemTemplatePath } from "../../constants.mjs";
 import { FoundryUtils, HTMLUtils, ObjectUtils, StringUtils } from "../../utils/_module.mjs";
 import { ChatAction, Dialogs, Migrations } from "../../helpers/_module.mjs";
 import AH from "../../config.mjs";
@@ -426,7 +426,13 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
       if (effect) {
         const rightClick = event.button === 2;
         if (rightClick) {
-          effect.delete();
+          if (effect.removable) {
+            effect.delete();
+          }
+          else {
+            notifyWarn("This special status is managed by the system.");
+          }
+
         }
         else {
           effect.sheet.render({ force: true });
