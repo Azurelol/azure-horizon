@@ -192,6 +192,7 @@ body {
 
 .ah-page {
   &:is(body) {
+    background-color: #a1816c;
     background-image:  var(--ah-background-evening);
   }
 
