@@ -129,10 +129,10 @@ AH.grades = Object.freeze({
 /** @typedef {'easy'|'normal'|'hard'|'impossible'} AH_DifficultyLevel **/
 
 AH.difficultyLevel = Object.freeze({
-  easy: { label: "AH.DIFFICULTY.Easy", value: 7 },
-  normal: { label: "AH.DIFFICULTY.Normal", value: 10 },
-  hard: { label: "AH.DIFFICULTY.Hard", value: 13 },
-  impossible: { label: "AH.DIFFICULTY.Impossible", value: 16 },
+  easy: { label: "AH.CHECK.Easy", value: 6 },
+  normal: { label: "AH.CHECK.Normal", value: 9 },
+  hard: { label: "AH.CHECK.Hard", value: 12 },
+  impossible: { label: "AH.CHECK.Impossible", value: 13 },
 });
 
 /**
@@ -310,6 +310,24 @@ AH.journey = {
     merchant: { label: "AH.TRAVEL.DISCOVERY.Merchant" },
     treasure: { label: "AH.TRAVEL.DISCOVERY.Treasure" },
     vista: { label: "AH.TRAVEL.DISCOVERY.Vista" },
+  },
+};
+
+AH.exploration = {
+  checks: {
+    perception: { label: "AH.EXPLORATION.CHECKS.Perception", primary: "dex", secondary: "ins" },
+    stealth: { label: "AH.EXPLORATION.CHECKS.Stealth", primary: "dex", secondary: "dex" },
+    evasion: { label: "AH.EXPLORATION.CHECKS.Evasion", primary: "dex", secondary: "ins" },
+    ambush: { label: "AH.EXPLORATION.CHECKS.Ambush", primary: "dex", secondary: "ins" },
+    craft: { label: "AH.EXPLORATION.CHECKS.Craft", primary: "dex", secondary: "ins" },
+    allure: { label: "AH.EXPLORATION.CHECKS.Allure", primary: "dex", secondary: "wlp" },
+    strength: { label: "AH.EXPLORATION.CHECKS.Strength", primary: "mig", secondary: "mig" },
+    investigation: { label: "AH.EXPLORATION.CHECKS.Investigation", primary: "ins", secondary: "ins" },
+    recall: { label: "AH.EXPLORATION.CHECKS.Recall", primary: "ins", secondary: "ins" },
+    insight: { label: "AH.EXPLORATION.CHECKS.Insight", primary: "ins", secondary: "wlp" },
+    persuasion: { label: "AH.EXPLORATION.CHECKS.Persuasion", primary: "ins", secondary: "wlp" },
+    endurance: { label: "AH.EXPLORATION.CHECKS.Endurance", primary: "mig", secondary: "wlp" },
+    intimidation: { label: "AH.EXPLORATION.CHECKS.Intimidation", primary: "mig", secondary: "wlp" },
   },
 };
 

@@ -383,6 +383,7 @@
       "Easy": "Easy",
       "Normal": "Normal",
       "Hard": "Hard",
+      "Impossible": "Impossible",
       "VeryHard": "Very Hard",
       "TargetDefense": "{result} VS {defense}",
       "TargetResource": "{result} VS {resource}",
@@ -390,6 +391,7 @@
       "Hit": "Hit",
       "Miss": "Miss",
       "PrimaryAttribute": "Primary Attribute",
+      "ScalingBonus": "Scaling Bonus",
       "SecondaryAttribute": "Secondary Attribute",
       "RITUAL": {
         "OUTCOME": {
@@ -1079,6 +1081,26 @@
       "PromptTravelCheck": "The director has prompted the players for a <strong>{level} danger</strong> travel check.",
       "SelectDifficulty": "Select Difficulty",
       "PerformTravelCheck": "Perform Travel Check"
+    },
+    "EXPLORATION": {
+      "SelectCheck": "Select Check",
+      "PerformCheck": "Perform Attribute Check",
+      "PromptCheck": "The director has prompted the players for a {label} attribute check of <strong>{difficulty} difficulty</strong>.",
+      "CHECKS": {
+        "Perception": "Perception",
+        "Stealth": "Stealth",
+        "Evasion": "Evasion",
+        "Ambush": "Ambush",
+        "Strength": "Strength",
+        "Craft": "Craft",
+        "Allure": "Allure",
+        "Investigation": "Investigation",
+        "Recall": "Recall",
+        "Insight": "Insight",
+        "Persuasion": "Persuasion",
+        "Endurance": "Endurance",
+        "Intimidation": "Intimidation"
+      }
     },
     "COMBAT": {
       "FirstTurn": "First Turn",

@@ -37,6 +37,7 @@ export class PartySheet extends AHActorSheet {
       inspectCharacter: this.#inspectCharacter,
 
       travelCheck: this.#travelCheck,
+      attributeCheck: this.#attributeCheck,
       triggerExperience: this.#triggerExperience,
       levelUp: this.#levelUp,
 
@@ -457,6 +458,44 @@ export class PartySheet extends AHActorSheet {
       const builder = new ChatMessageBuilder(null, null);
       builder.text(StringUtils.localize("AH.EPISODE.PromptTravelCheck", {
         level: selected,
+      }));
+      builder.renderData.actions.push(action);
+      return builder.create();
+    }
+
+  }
+
+  /**
+   * @this PartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #attributeCheck(event, target) {
+    const checkOptions = getFormSelectOptions(AH.exploration.checks);
+    const diffOptions = getFormSelectOptions(AH.difficultyLevel);
+    const selected = await Dialogs.selectGroups("AH.EXPLORATION.SelectCheck", [
+      {
+        name: "check", label: StringUtils.localize("AH.CHECK.Check"), options: checkOptions,
+      },
+      {
+        name: "difficulty", label: StringUtils.localize("AH.CHECK.DifficultyLevel.long"), options: diffOptions,
+      },
+    ]);
+    if (selected) {
+      let action = new ChatAction("attributeCheck", AH.icons.attributeCheck).withLabel("AH.EXPLORATION.PerformCheck");
+      const check = AH.exploration.checks[selected.check];
+      const diff = AH.difficultyLevel[selected.difficulty];
+      action.withDataset({
+        label: StringUtils.localize(check.label),
+        primary: check.primary,
+        secondary: check.secondary,
+        difficulty: diff.value,
+      }).withSelected().setFlag(AH.flags.ChatMessage.Campaign);
+      const builder = new ChatMessageBuilder(null, null);
+      builder.text(StringUtils.localize("AH.EXPLORATION.PromptCheck", {
+        label: StringUtils.localize(check.label),
+        difficulty: StringUtils.localize(diff.label),
       }));
       builder.renderData.actions.push(action);
       return builder.create();

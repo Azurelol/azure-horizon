@@ -2,7 +2,7 @@
  * @typedef EpisodeOpeningData
  */
 
-import { ChatAction, ChatMessageBuilder, ChatMessageHelper } from "../helpers/_module.mjs";
+import { ActionConfig, ChatAction, ChatMessageBuilder, ChatMessageHelper } from "../helpers/_module.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 import AH from "../config.mjs";
@@ -153,6 +153,21 @@ function onRenderChatMessage(message, html) {
     const result = await Checks.travelCheck(formula);
     if (result) {
       return processTravelCheck(result);
+    }
+  });
+
+  ChatMessageHelper.handleClick(message, html, "attributeCheck", async (dataset) => {
+    const { primary, secondary, label, difficulty } = dataset;
+    const targets = await ChatAction.getTargetsFromAction(dataset);
+    for (const target of targets) {
+      await Checks.attributeCheck(target, {
+        primary: primary,
+        secondary: secondary,
+      }, null, async (check) => {
+        let config = new ActionConfig(check);
+        config.setLabel(label);
+        config.setDifficulty(difficulty);
+      });
     }
   });
 }

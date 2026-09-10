@@ -183,8 +183,11 @@ export default class DamageData {
       }
 
       const existing = _instances.get(component.type);
-      existing.base += amount;
-      existing.addends.push(amount);
+      if (amount > 0) {
+        existing.base += amount;
+        existing.addends.push(amount);
+      }
+
       existing.traits.push(...traits);
     }
 

@@ -251,6 +251,10 @@ export default Object.freeze({
 
       return `${sign}${value.toFixed(decimals)}%`;
     });
+    Handlebars.registerHelper("ahJoin", function(array, separator) {
+      if (!Array.isArray(array)) return "";
+      return array.join(typeof separator === "string" ? separator : ", ");
+    });
     Handlebars.registerHelper("ahImage", (src, classes, label) => {
       // eslint-disable-next-line no-undef
       if (VideoHelper.hasVideoExtension(src)) {

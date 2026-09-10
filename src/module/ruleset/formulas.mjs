@@ -105,21 +105,34 @@ export default class Formulas {
   }
 
   /**
+   * @typedef AttributeCalculation
+   * @property primary.base
+   * @property primary.bonus
+   * @property secondary.base
+   * @property secondary.bonus
+   */
+
+  /**
    * @param {ActionConfig} config
    * @param {AHActor} actor
+   * @return {AttributeCalculation}
    */
-  static calculateAttributeInputs(config, actor) {
+  static calculateAttributeBonus(config, actor) {
     if (!actor.isCharacterType) {
-      return {
-        primary: undefined,
-        secondary: undefined,
-      };
+      return undefined;
     }
     if (config.isCheck) {
-      const grade = AH.grades[config.grade].scale;
+      let grade = AH.grades[config.grade].scale;
+
       return {
-        primary: config.check.hr?.result * grade,
-        secondary: config.check.lr?.result * grade,
+        primary: {
+          base: config.check.hr.result,
+          bonus: Math.floor ((config.check.hr?.result * grade) - config.check.hr.result),
+        },
+        secondary: {
+          base: config.check.lr.result,
+          bonus: Math.floor((config.check.lr?.result * grade) - config.check.lr?.result),
+        },
       };
     }
     else {
@@ -128,8 +141,14 @@ export default class Formulas {
       const primary = config.check.primary ? attributes[config.check.primary].current * scale : undefined;
       const secondary = config.check.secondary ? attributes[config.check.secondary].current * scale : undefined;
       return {
-        primary: primary,
-        secondary: secondary,
+        primary: {
+          base: primary,
+          bonus: 0,
+        },
+        secondary: {
+          base: secondary,
+          bonus: 0,
+        },
       };
     }
   }

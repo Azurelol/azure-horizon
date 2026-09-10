@@ -349,19 +349,27 @@ const onProcessAction = async (config, actor, item) => {
 
     // TODO: Add the attribute scaling info....
     // 1.) Set attribute scaling
-    const { primary, secondary } = Formulas.calculateAttributeInputs(config, actor);
-    if (primary && secondary) {
+    const calc = Formulas.calculateAttributeBonus(config, actor);
+    if (calc) {
       const secondaryDamage = damage.components[1];
       // Add high roll to primary damage
       damage.add("AH.CHECK.PrimaryAttribute", {
         type: damage.type,
-        amount: primary,
+        amount: calc.primary.base,
+      });
+      damage.add("AH.CHECK.ScalingBonus", {
+        type: damage.type,
+        amount: calc.primary.bonus,
       });
       // Add low roll to secondary damage
       if (secondaryDamage) {
         damage.add("AH.CHECK.SecondaryAttribute", {
           type: secondaryDamage.type,
-          amount: secondary,
+          amount: calc.secondary.base,
+        });
+        damage.add("AH.CHECK.ScalingBonus", {
+          type: secondaryDamage.type,
+          amount: calc.secondary.bonus,
         });
       }
     }
@@ -429,7 +437,7 @@ const onProcessAction = async (config, actor, item) => {
         const powerfulDamage = standardDamage.duplicate(d => {
           d.add("AH.PIPELINE.CriticalBonus", {
             type: "untyped",
-            amount: primary,
+            amount: calc.primary.base,
           });
         });
         const powerful = getChatAction(powerfulDamage, sourceInfo, traits, {

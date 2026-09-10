@@ -218,6 +218,46 @@ export default class Dialogs {
   }
 
   /**
+   * @typedef {Object} AH_SelectGroup
+   * @property {string} name - unique key for this group, used in the returned data
+   * @property {string} label - label shown above the input
+   * @property {FormSelectOption[]} options
+   * @property {string} [selected] - the default selected value
+   */
+
+  /**
+   * @param {String} title
+   * @param {AH_SelectGroup[]} groups
+   * @returns {Promise<Record<string, string>|null>} Map of group name to selected value
+   */
+  static async selectGroups(title, groups) {
+    const content = groups
+      .map((group) => {
+        const selectInput = fields.createSelectInput({
+          options: group.options,
+          name: group.name,
+          value: group.selected,
+        });
+
+        const selectGroup = fields.createFormGroup({
+          input: selectInput,
+          label: group.label,
+        });
+
+        return selectGroup.outerHTML;
+      })
+      .join("");
+
+    const data = await api.DialogV2.input({
+      window: { title: title, icon: "fas fa-comment" },
+      classes: ["ah-application"],
+      content: content,
+    });
+
+    return data ?? null;
+  }
+
+  /**
    * @param {Object} options
    * @param {string} options.title
    * @param {string} options.content
