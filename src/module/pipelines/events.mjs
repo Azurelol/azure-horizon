@@ -336,8 +336,15 @@ function opportunity(renderData, actor, type, item, fumble) {
 }
 
 /**
- * @description Dispatched when an actor enters crisis
+ * @description Dispatched when an actor enters crisis, at 20% HP.
  * @typedef CrisisEvent
+ * @property {AHActor} actor
+ * @property {Token} token
+ */
+
+/**
+ * @description Dispatched when an actor enters peril, at 50% HP.
+ * @typedef PerilEvent
  * @property {AHActor} actor
  * @property {Token} token
  */

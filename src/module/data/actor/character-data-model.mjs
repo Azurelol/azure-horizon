@@ -56,7 +56,6 @@ export default class CharacterDataModel extends BaseEntityDataModel {
    */
   _prepareResources() {
     super._prepareResources();
-    const data = this;
     this.resources.mp.defineMaximumProperty(() => Formulas.calculateMindPoints(this));
   }
 
@@ -96,10 +95,17 @@ export default class CharacterDataModel extends BaseEntityDataModel {
   }
 
   /**
-   * @returns {boolean} Whether the character is in crisis
+   * @returns {boolean} Whether the character is in crisis (at 20% HP).
    */
   get crisis() {
-    return this.resources.hp.value <= this.resources.hp.half;
+    return Formulas.inCrisis(this.resources.hp);
+  }
+
+  /**
+   * @returns {boolean} Whether the character is in peril (at 50% HP).
+   */
+  get peril() {
+    return Formulas.inPeril(this.resources.hp);
   }
 
   /**

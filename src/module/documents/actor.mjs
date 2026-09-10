@@ -85,9 +85,10 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
    */
   async _onUpdate(changed, options, userId) {
     if (this.isCharacterType) {
-      const { hp } = this.system?.resources || {};
-      if (hp && (userId === game.userId)) {
-        await this.onHitPointChange();
+      if (this.isCharacterType && (userId === game.userId)) {
+        if (ObjectUtils.hasProperty(changed, "system.resources.hp")) {
+          await this.onHitPointChange();
+        }
       }
     }
     super._onUpdate(changed, options, userId);
@@ -320,6 +321,18 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
           );
           await this.toggleStatusEffect("ko", SourceInfo.fromInstance(this));
         }
+        // Check PERIL status
+        if (this.system.peril !== this.statuses.has("peril")) {
+          Hooks.call(
+            AH.hooks.PERIL_EVENT,
+            /** @type PerilEvent **/
+            {
+              actor: this,
+              token: this.resolveToken(),
+            },
+          );
+          await this.toggleStatusEffect("peril", SourceInfo.fromInstance(this));
+        }
         // Check CRISIS status
         if (this.system.crisis !== this.statuses.has("crisis")) {
           Hooks.call(
@@ -332,6 +345,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
           );
           await this.toggleStatusEffect("crisis", SourceInfo.fromInstance(this));
         }
+
       }
     }
   }

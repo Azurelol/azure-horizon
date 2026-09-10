@@ -30,9 +30,8 @@ const XP_PER_LEVEL = 10;
 const TRAVEL_DISCOVERY_RESULT = 1;
 const TRAVEL_DANGER_THRESHOLD = 6;
 
-/**
- *
- */
+const PERIL_THRESHOLD = 0.5;
+const CRISIS_THRESHOLD = 0.2;
 
 /**
  * @typedef Modifier
@@ -59,6 +58,22 @@ function forClassBenefits(actor, onBenefits) {
 }
 
 export default class Formulas {
+
+  /**
+   * @param {ActorResourceDataModel} hp
+   */
+  static inCrisis(hp) {
+    const percent = hp.value / hp.max;
+    return percent <= CRISIS_THRESHOLD;
+  }
+
+  /**
+   * @param {ActorResourceDataModel} hp
+   */
+  static inPeril(hp) {
+    const percent = hp.value / hp.max;
+    return percent <= PERIL_THRESHOLD;
+  }
 
   // TODO: Use for checks???
   /**

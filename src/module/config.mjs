@@ -1086,6 +1086,12 @@ AH.hooks = Object.freeze({
    */
   STATUS_EVENT: `${systemNS}.events.status`,
   /**
+   * @description Dispatched after an actor enters peril.
+   * @example callback(event)
+   * @remarks Uses {@link PerilEvent}. This can happen after a {@link DAMAGE_EVENT}.
+   */
+  PERIL_EVENT: `${systemNS}.events.peril`,
+  /**
    * @description Dispatched after an actor enters crisis.
    * @example callback(event)
    * @remarks Uses {@link CrisisEvent}. This can happen after a {@link DAMAGE_EVENT}.

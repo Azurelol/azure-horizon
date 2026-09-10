@@ -28,14 +28,14 @@ export default class ActorResourceDataModel extends VersionedDataModel {
   }
 
   /**
-   * @returns {number}
+   * @returns {number} The value at half.
    */
   get half() {
     return Math.floor(this.max / 2);
   }
 
   /**
-   * @returns {boolean}
+   * @returns {boolean} Whether this resource is currently full.
    */
   get full() {
     return this.value === this.max;

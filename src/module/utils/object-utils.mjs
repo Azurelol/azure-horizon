@@ -55,6 +55,15 @@ export default class ObjectUtils {
   }
 
   /**
+   * @param {Object} obj The object to resolve the property from.
+   * @param {String} path The path to the property, in dot notation.
+   * @returns {Boolean}
+   */
+  static hasProperty(obj, path) {
+    return foundry.utils.hasProperty(obj, path);
+  }
+
+  /**
    * @param {Object} obj The object to set the property on.
    * @param {String} path The path to the property, in dot notation.
    * @param {*} value The value to set on the property.
