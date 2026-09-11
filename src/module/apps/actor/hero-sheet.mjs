@@ -112,6 +112,17 @@ export class HeroSheet extends CharacterSheet {
     return context;
   }
 
+  _attachPartListeners(partId, html, options) {
+    super._attachPartListeners(partId, html, options);
+    switch (partId) {
+      case "equipment":
+      {
+        this.actionHandler.setupEngrams(html);
+        break;
+      }
+    }
+  }
+
   /* -------------------------------------------------- */
 
   /**

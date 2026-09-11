@@ -1,6 +1,6 @@
 <td class="ah-table-column__engrams">
   {{#each system.slots.entries}}
-    <div class="ah-table-column__engrams__slot">
+    <div class="ah-table-column__engrams__slot" data-item-id="{{@root.entry.id}}" data-slot="engram" data-index="{{@index}}">
       {{#if entry.item}}
       {{else}}
 

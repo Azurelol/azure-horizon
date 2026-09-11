@@ -6,6 +6,7 @@ import Actions from "../../pipelines/actions.mjs";
 import Checks from "../../pipelines/checks.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 import AH from "../../config.mjs";
+import { notifyInfo } from "../../constants.mjs";
 
 /**
  * @desc Encapsulates basic character actions.
@@ -259,13 +260,40 @@ export default class ActionHandler {
     // ATTACKS
     const attacks = WeaponResolver.getEquippedWeapons(this.actor);
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"attack\"]", attacks, undefined, true);
-
     // SPELLS
     const spells = ["spell"].map((t) => this.actor.getItemsByType(t)).flat();
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"spell\"]", spells);
     // INVENTORY
     const consumables = this.actor.getItemsByType("consumable");
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"item\"]", consumables);
+    if (this.actor.type === "hero") {
+      // SKILLS
+      /** @type {AHItem[]} **/
+      let skills = ["skill"]
+        .map((t) => this.actor.getItemsByType(t))
+        .flat()
+        .filter((s) => {
+          return s.system.action.type === "action";
+        });
+      FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
+    }
+    else if (this.actor.type === "adversary") {
+      // ABILITIES
+      let abilities = this.actor.getItemsByType("ability").filter(a => a.system.action.type === "action");
+      FoundryUtils.itemContextMenu(element, "[data-context-menu=\"ability\"]", abilities);
+    }
+    // MANEUVER
+    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
+    // CHECKS
+    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"check\"]", this.getChecks(), undefined);
+    // REST
+    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"rest\"]", this.getRestActions(), undefined);
+  }
+
+  /**
+   * @param {HTMLElement} element
+   */
+  setupEquipment(element) {
     if (this.actor.type === "hero") {
       // EQUIPMENT
       const weapons = this.actor.getItemsByType("weapon");
@@ -286,30 +314,25 @@ export default class ActionHandler {
       FoundryUtils.itemContextMenu(element, "[data-slot=\"accessory2\"]", accessories, async item => {
         this.actor.system.equipItem(item, "accessory2");
       });
-      // SKILLS
-      /** @type {AHItem[]} **/
-      let skills = ["skill"]
-        .map((t) => this.actor.getItemsByType(t))
-        .flat()
-        .filter((s) => {
-          return s.system.action.type === "action";
-        });
-      FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
     }
     else if (this.actor.type === "adversary") {
       // ATTACK TOGGLE
+      const attacks = WeaponResolver.getEquippedWeapons(this.actor);
       FoundryUtils.itemContextMenu(element, "[data-slot=\"attack\"]", attacks, async item => {
         this.actor.system.setAttack(item);
       });
-      // ABILITIES
-      let abilities = this.actor.getItemsByType("ability").filter(a => a.system.action.type === "action");
-      FoundryUtils.itemContextMenu(element, "[data-context-menu=\"ability\"]", abilities);
     }
-    // MANEUVER
-    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
-    // CHECKS
-    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"check\"]", this.getChecks(), undefined);
-    // REST
-    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"rest\"]", this.getRestActions(), undefined);
+  }
+
+  /**
+   * @param {HTMLElement} element
+   */
+  setupEngrams(element) {
+    const engrams = this.actor.getItemsByType("engram");
+    FoundryUtils.itemContextMenu(element, "[data-slot=\"engram\"]", engrams, async (item, dataset) => {
+      const { itemId, index } = dataset;
+      notifyInfo(`Equipping ${item.name} as an engram to accessory ${itemId} at index ${index}`);
+      //this.actor.system.equipItem(item, "accessory1");
+    });
   }
 }

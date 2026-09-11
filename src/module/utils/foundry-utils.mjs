@@ -235,7 +235,7 @@ export default class FoundryUtils {
    * @param {HTMLElement} html
    * @param {String} className
    * @param {(AHItem|AH_ContextMenuItem)[]} items
-   * @param {function(AHItem): Promise<void>} [action]
+   * @param {function(AHItem, DOMStringMap): Promise<void>} [action]
    * @param {Boolean} quick
    * @remarks {Boolean} True if the context menu was set.
    */
@@ -247,11 +247,11 @@ export default class FoundryUtils {
           label: item.name,
           icon: item.img ? `<img class="ah-icon --xs" src="${item.img}" alt="${item.name}"/>`
             : `<i class='ah-icon --xs ${item.icon}'></i>`,
-          onClick: async (html) => {
+          onClick: async (html, target) => {
             if (action) {
-              return action(item);
+              return action(item, target.dataset);
             }
-            if (item.perform) {
+            else if (item.perform) {
               return item.perform();
             }
           },
