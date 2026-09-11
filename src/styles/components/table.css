@@ -178,38 +178,3 @@
   align-items: center;
 }
 
-.ah-table-column__engrams__slot {
-  --slot-width: 24px;
-  position: relative;
-  width: var(--slot-width);
-  height: var(--slot-width);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border: 2px solid var(--ah-control-border);
-  background:
-    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.25), transparent 60%),
-    color-mix(in srgb, var(--ah-primitive-color-grey-mid) 60%, black 10%);
-
-  box-shadow:
-    inset 0 2px 3px rgba(0, 0, 0, 0.6),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.15),
-    0 1px 1px rgba(255, 255, 255, 0.1);
-
-  img {
-    object-fit: contain;
-    width: 78%;
-    height: 78%;
-    border-radius: 50%;
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
-  }
-
-  &:empty,
-  &:has(img[src=""]) {
-    background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.05), transparent 60%),
-    color-mix(in srgb, var(--ah-surface-item) 30%, black 20%);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.75);
-  }
-}
