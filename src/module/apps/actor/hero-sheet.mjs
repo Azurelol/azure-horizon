@@ -117,6 +117,7 @@ export class HeroSheet extends CharacterSheet {
     switch (partId) {
       case "equipment":
       {
+        this.actionHandler.setupEquipment(html);
         this.actionHandler.setupEngrams(html);
         break;
       }

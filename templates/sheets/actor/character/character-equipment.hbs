@@ -1,5 +1,11 @@
 <section class="tab equipment {{tab.cssClass}}" data-tab="equipment" data-group="primary">
 
+  {{#if (eq actorType 'hero')}}
+    <div>
+      {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-inventory.hbs"}}
+    </div>
+  {{/if}}
+
   <div class="ah-table__collection">
     {{#each tables as |table|}}
       {{{table}}}

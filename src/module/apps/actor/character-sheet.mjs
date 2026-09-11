@@ -93,11 +93,6 @@ export class CharacterSheet extends AHActorSheet {
   _attachPartListeners(partId, html, options) {
     super._attachPartListeners(partId, html, options);
     switch (partId) {
-      case "header":
-      {
-        this.actionHandler.setupEquipment(html);
-        break;
-      }
       case "sidebar":
       {
         this.actionHandler.setupMenu(html);

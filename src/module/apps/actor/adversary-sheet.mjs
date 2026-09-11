@@ -97,6 +97,17 @@ export class AdversarySheet extends CharacterSheet {
     return context;
   }
 
+  _attachPartListeners(partId, html, options) {
+    super._attachPartListeners(partId, html, options);
+    switch (partId) {
+      case "features":
+      {
+        this.actionHandler.setupAttacks(html);
+        break;
+      }
+    }
+  }
+
   /**
    * @this AHActorSheet
    * @param {PointerEvent} event   The originating click event

@@ -130,7 +130,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   gap: 1rem;
 }
@@ -142,13 +142,3 @@
   height: 100%;
 }
 
-.ah-character__level {
-  span, i {
-  }
-  input {
-    font-size: 28px;
-    background: transparent;
-    width: 60px;
-    text-align: center;
-  }
-}

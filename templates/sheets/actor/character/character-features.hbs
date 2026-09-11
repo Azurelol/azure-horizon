@@ -1,5 +1,15 @@
 <section class="tab features {{tab.cssClass}}" data-tab="features" data-group="primary">
 
+  {{#if (eq actorType 'adversary')}}
+    <div class="ah-flex-row --center" style="margin-bottom: 1rem;">
+      <a class="ah-character__equipment__slot" data-slot="attack" data-tooltip="{{localize 'AH.ADVERSARY.AttackHint'}}">
+        {{#if attack}}
+          <img src="{{attack.img}}" alt="{{attack.name}}">
+        {{/if}}
+      </a>
+    </div>
+  {{/if}}
+
   <div class="ah-table__collection">
   {{#each tables as |table|}}
     {{{table}}}

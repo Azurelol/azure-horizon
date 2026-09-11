@@ -315,13 +315,17 @@ export default class ActionHandler {
         this.actor.system.equipItem(item, "accessory2");
       });
     }
-    else if (this.actor.type === "adversary") {
-      // ATTACK TOGGLE
-      const attacks = WeaponResolver.getEquippedWeapons(this.actor);
-      FoundryUtils.itemContextMenu(element, "[data-slot=\"attack\"]", attacks, async item => {
-        this.actor.system.setAttack(item);
-      });
-    }
+  }
+
+  /**
+   * @param {HTMLElement} element
+   */
+  setupAttacks(element) {
+    // ATTACK TOGGLE
+    const attacks = WeaponResolver.getEquippedWeapons(this.actor);
+    FoundryUtils.itemContextMenu(element, "[data-slot=\"attack\"]", attacks, async item => {
+      this.actor.system.setAttack(item);
+    });
   }
 
   /**
@@ -332,6 +336,10 @@ export default class ActionHandler {
     FoundryUtils.itemContextMenu(element, "[data-slot=\"engram\"]", engrams, async (item, dataset) => {
       const { itemId, index } = dataset;
       notifyInfo(`Equipping ${item.name} as an engram to accessory ${itemId} at index ${index}`);
+      const accessory = this.actor.items.get(itemId);
+      if (accessory) {
+
+      }
       //this.actor.system.equipItem(item, "accessory1");
     });
   }

@@ -10,9 +10,8 @@
       {{/if}}
       data-tooltip="{{actor.name}}"
       height="100" width="100">
-  </div>
+    {{formInput actorFields.name value=actor.name classes="ah-sheet__name ah-character__name"}}
 
-  <div class="ah-character__sidebar__section">
     {{#if (eq actorType 'adversary') }}
       <div class="ah-character__title {{system.profile.rank}}">
         <span>{{localize (ahLocaleKey 'rank' system.profile.rank)}}</span>
@@ -26,12 +25,7 @@
     {{/if}}
   </div>
 
-
-
   <div class="ah-character__sidebar__section">
-
-    {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-effects.hbs"}}
-
     {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
     {{ahResourceBar 'system.resources.mp.value' system.resources.mp.value system.resources.mp.max label='AH.CHARACTER.MindPoint.short' icon=(ahIconClass 'mp') colorClass="--ah-color-mp" }}
       {{#if (eq actorType 'hero')}}
@@ -48,8 +42,9 @@
       <div class="ah-flex-center" style="margin-top: 8px;">
         {{ahBadge path='system.resources.hp.temporary' classes='--row' value=system.resources.hp.temporary type='number' min=0 label='AH.CHARACTER.Block.long' icon=(ahIconClass 'block') size='s' }}
       </div>
-
     {{/if}}
+
+    {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-effects.hbs"}}
   </div>
 
   {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
