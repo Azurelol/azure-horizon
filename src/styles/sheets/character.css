@@ -71,10 +71,11 @@
     span, i {
     }
     input {
-      font-size: 24px;
-      background: transparent;
-      width: 60px;
-      text-align: center;
+      color: var(--ah-content-primary-invert);
+      font-size: 28px;
+      font-weight: 500;
+      font-family: Comic Sans MS;
+      font-variant-numeric: tabular-nums;
     }
   }
 

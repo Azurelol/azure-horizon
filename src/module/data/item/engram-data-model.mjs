@@ -15,7 +15,10 @@ export default class EngramDataModel extends EquipmentDataModel {
   }
 
   // TODO: Optimize
-  get transferEffects() {
+  /**
+   * @returns {boolean} Whether this engram is currently slotted into a character's equipment.
+   */
+  get slotted() {
     if (this.parent.actor && (this.parent.actor.type === "hero")) {
       const system = this.parent.actor.system;
       const equipped = system.getEquippedItems();
@@ -24,5 +27,9 @@ export default class EngramDataModel extends EquipmentDataModel {
       }
     }
     return false;
+  }
+
+  get transferEffects() {
+    return this.slotted;
   }
 }

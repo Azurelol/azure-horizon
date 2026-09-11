@@ -98,16 +98,18 @@ export class HeroSheet extends CharacterSheet {
 
         break;
       }
-      case "equipment":
+      case "equipment": {
+        const engrams = this.actor.getItemsByType("engram").filter(e => !e.system.slotted);
         context.tables = [
           await this.#weaponTableRenderer.render(this.actor.getItemsByType("weapon")),
           await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
           await this.#accessoryTableRenderer.render(this.actor.getItemsByType("accessory")),
           await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),
-          await this.#treasureTableRenderer.render(this.actor.getItemsByType("treasure", "engram")),
+
+          await this.#treasureTableRenderer.render([...engrams, ...this.actor.getItemsByType("treasure")]),
         ];
         break;
-
+      }
     }
     return context;
   }
