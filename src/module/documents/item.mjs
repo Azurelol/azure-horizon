@@ -58,6 +58,16 @@ export class AHItem extends DocumentMixin(foundry.documents.Item) {
   }
 
   /**
+   * @return {Boolean}
+   */
+  get transferEffects() {
+    if (this.system.transferEffects !== undefined) {
+      return this.system.transferEffects;
+    }
+    return true;
+  }
+
+  /**
    * Renders the item's description to HTML.
    */
   async sendToChat() {

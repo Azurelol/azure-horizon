@@ -131,8 +131,8 @@ body {
   }
 }
 
-@media (max-width: 720px) {
-  .body {
+@media (orientation: portrait) {
+  body {
     background-size: auto 100%;
   }
 }

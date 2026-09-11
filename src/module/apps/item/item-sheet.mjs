@@ -96,7 +96,10 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
   static PARTS = {
     header: {
       template: systemTemplatePath("sheets/item/item-header"),
-      templates: [systemTemplatePath("sheets/item/item-class-feature")],
+      templates: [
+        systemTemplatePath("sheets/item/item-class-feature"),
+        systemTemplatePath("sheets/item/item-engram-slots"),
+      ],
     },
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),

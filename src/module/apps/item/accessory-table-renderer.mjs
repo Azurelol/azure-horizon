@@ -1,6 +1,7 @@
 import AH from "../../config.mjs";
 import { isActorType } from "../../constants.mjs";
 import ItemTableRenderer from "./item-table-renderer.mjs";
+import TableColumns from "../api/table-columns.mjs";
 
 export default class AccessoryTableRenderer extends ItemTableRenderer {
 
@@ -21,5 +22,17 @@ export default class AccessoryTableRenderer extends ItemTableRenderer {
         keys: ["id", "type"],
       },
     ];
+  }
+
+  _getItemColumns() {
+    let columns = super._getItemColumns();
+    columns.push(TableColumns.engrams({
+      header: "AH.ITEM.Engram.plural",
+    }));
+    return columns;
+  }
+
+  get previewActions() {
+    return false;
   }
 }

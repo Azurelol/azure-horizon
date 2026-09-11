@@ -131,6 +131,31 @@
   .ah-character__parameters {
   }
 
+  .ah-character__engrams {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ah-character__engrams__slot {
+    border: 1px solid var(--ah-control-border);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--ah-surface-item) 40%, transparent);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      object-fit: fill;
+      width: 100%;
+      height: auto;
+    }
+  }
+
   .ah-character__equipment {
     display: grid;
     grid-template-areas:

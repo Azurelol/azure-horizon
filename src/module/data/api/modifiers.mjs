@@ -14,13 +14,6 @@ export class ModifierDataField extends SchemaField {
       multiplicative: new NumberField({ blank: true, nullable: true }),
     }, options);
   }
-
-  /**
-   * @returns {boolean}
-   */
-  get valid() {
-    return (this.additive !== 0) && (this.multiplicative !== undefined);
-  }
 }
 
 /**

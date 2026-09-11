@@ -13,8 +13,8 @@
     {{/if}}
   </div>
 
-  {{#if propertiesTemplate}}
-    {{> propertiesTemplate}}
+  {{#if templates.properties}}
+    {{> (lookup templates 'properties') }}
   {{/if}}
 
   <div class="ah-field-grid">

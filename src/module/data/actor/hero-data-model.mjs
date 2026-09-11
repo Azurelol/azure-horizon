@@ -125,7 +125,10 @@ export default class HeroDataModel extends CharacterDataModel {
         case "armor": {
           return !this.equipment.has(item);
         }
+        default:
+          return !item.transferEffects;
       }
+
     }
     return false;
   }

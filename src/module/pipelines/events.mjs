@@ -297,7 +297,6 @@ function resolveAction(action, actor, item) {
 
 async function renderAction(renderData, config, actor, item) {
   const sourceInfo = SourceInfo.fromInstance(actor, item);
-  const check = config.check;
   const source = CharacterInfo.fromActor(actor);
 
   /** @type RenderActionEvent  **/

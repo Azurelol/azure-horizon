@@ -46,9 +46,17 @@ export default class ItemDataModel extends VersionedDataModel {
   }
 
   /**
+   * Whether active effects in this item should be transferred to an actor.
+   * @returns {boolean}
+   */
+  get transferEffects() {
+    return true;
+  }
+
+  /**
    * @typedef AH_ItemTemplateParts
-   * @property header
-   * @property properties
+   * @property {String} header A system template path.
+   * @property {String} properties A system template path.
    */
 
   /**

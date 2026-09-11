@@ -20,6 +20,7 @@ const TEMPLATES = Object.freeze({
   resource: systemTemplatePath("components/table/table-column-resource"),
   itemProperties: systemTemplatePath("components/table/table-column-item-properties"),
   itemCost: systemTemplatePath("components/table/table-column-item-cost"),
+  engrams: systemTemplatePath("components/table/table-column-engrams"),
 });
 
 /**
@@ -304,6 +305,27 @@ function property(options = {}) {
   };
 }
 
+/**
+ * @template {Object} T
+ * @param {AH_ActionColumnOptions} options
+ * @returns {AH_TableColumnConfig<T>}
+ */
+function engrams(options = {}) {
+  return {
+    hideHeader: !options.header,
+    renderHeader: () => StringUtils.localize(options.header),
+    cssClass: options.cssClass,
+    preview: options.preview,
+    isGM: options.isGM,
+    renderCell: async (entry) => {
+      return renderTemplate(TEMPLATES.engrams, {
+        entry,
+        system: entry.system,
+      }, false);
+    },
+  };
+}
+
 const TableColumns = Object.freeze({
   documentName,
   textColumn,
@@ -315,6 +337,7 @@ const TableColumns = Object.freeze({
   damage,
   resource,
   check,
+  engrams,
 
   TEMPLATES,
 });

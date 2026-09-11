@@ -9,6 +9,7 @@ import {
 import { StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
+import EquipmentTableRenderer from "../item/equipment-table-renderer.mjs";
 
 /**
  * @extends AHActorSheet
@@ -30,7 +31,7 @@ export class HeroSheet extends CharacterSheet {
     primary: {
       tabs: [
         { id: "features", label: "AH.SHEET.Tabs.Features", icon: "ra ra-fluffy-swirl" },
-        { id: "equipment", label: "AH.SHEET.Tabs.Equipment", icon: "ra ra-double-team" },
+        { id: "equipment", label: "AH.SHEET.Tabs.Equipment", icon: "ra ra-jigsaw-piece" },
         { id: "profile", label: "AH.SHEET.Tabs.Profile", icon: "ra ra-campfire" },
         { id: "advancement", label: "AH.SHEET.Tabs.Advancement", icon: "ra ra-player-lift" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
@@ -65,8 +66,9 @@ export class HeroSheet extends CharacterSheet {
   #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long", actions: CharacterSheet.getCompendiumTableActions("spells") });
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", actions: CharacterSheet.getCompendiumTableActions("equipment", "weapon") });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor", actions: CharacterSheet.getCompendiumTableActions("equipment", "armor") });
-  #accessoryTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Accessory", actions: CharacterSheet.getCompendiumTableActions("equipment", "accessory") });
+  #accessoryTableRenderer = new AccessoryTableRenderer({ title: "AH.ITEM.Accessory", actions: CharacterSheet.getCompendiumTableActions("equipment", "accessory") });
   #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") });
+  #treasureTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Treasure" });
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
@@ -102,6 +104,7 @@ export class HeroSheet extends CharacterSheet {
           await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
           await this.#accessoryTableRenderer.render(this.actor.getItemsByType("accessory")),
           await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),
+          await this.#treasureTableRenderer.render(this.actor.getItemsByType("treasure", "engram")),
         ];
         break;
 

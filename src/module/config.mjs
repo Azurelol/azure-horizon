@@ -543,7 +543,7 @@ AH.triggers = Object.freeze({
 });
 
 /**
- * @typedef {'weapon'|'armor'|'accessory'|'skill'|'classFeature'|'spell'|'consumable'|'attack'|'ability'|'class'|'move'} AH_ItemType
+ * @typedef {'weapon'|'armor'|'accessory'|'skill'|'classFeature'|'spell'|'consumable'|'attack'|'engram'|'treasure'|'ability'|'class'|'move'} AH_ItemType
  */
 
 AH.itemTypes = {
@@ -566,6 +566,14 @@ AH.itemGroups = {
 /**
  * @typedef {"one-handed", "two-handed"} AH_Handedness
  */
+
+/**
+ * @typedef {'magic'|'command'} AH_EngramType
+ */
+
+AH.engramTypes = {
+
+};
 
 /**
  * @type {Record<AH_Handedness, string>}
@@ -1415,6 +1423,7 @@ AH.icons = {
   check: "fas fa-dice-d20",
   options: "fas fa-gear",
   targeting: "fas fa-bullseye",
+  engram: "ra ra-ball",
 
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",

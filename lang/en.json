@@ -80,6 +80,7 @@
       "Accessory": "Accessory",
       "Consumable": "Consumable",
       "Equipment": "Equipment",
+      "Treasure": "Treasure",
       "Engram": {
         "long": "Engram",
         "plural": "Engrams"
