@@ -52,13 +52,10 @@
       <div class="ah-character__engrams__container__entries">
         {{#if equipment.accessory1}}
           {{#with equipment.accessory1}}
-            {{#each system.slots.entries}}
+            {{#each system.slots.entries as |entry|}}
               <a class="ah-character__engrams__slot" data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
                 {{#if entry.item}}
-                  {{#with (ahActorItem @root.actor entry.item)}}
-                    <img src="{{img}}">
-                  {{/with}}
-                {{else}}
+                  <img src="{{entry.item.img}}" data-tooltip="{{entry.item.name}}">
                 {{/if}}
               </a>
             {{/each}}
@@ -77,10 +74,10 @@
       <div class="ah-character__engrams__container__entries">
         {{#if equipment.accessory2}}
           {{#with equipment.accessory2}}
-            {{#each system.slots.entries}}
+            {{#each system.slots.entries as |entry|}}
               <a class="ah-character__engrams__slot" data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
                 {{#if entry.item}}
-                {{else}}
+                  <img src="{{entry.item.img}}" data-tooltip="{{entry.item.name}}">
                 {{/if}}
               </a>
             {{/each}}

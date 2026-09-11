@@ -186,7 +186,7 @@
   }
 
   .ah-character__engrams__slot {
-    --slot-width: 24px;
+    --slot-width: 30px;
     position: relative;
     width: var(--slot-width);
     height: var(--slot-width);

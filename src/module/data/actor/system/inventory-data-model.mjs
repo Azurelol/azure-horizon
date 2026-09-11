@@ -144,17 +144,18 @@ export default class InventoryDataModel extends VersionedDataModel {
    * @param index
    */
   async toggleEngram(accessory, engram, index) {
-    notifyInfo(`Equipping ${engram.name} as an engram to accessory ${accessory.name} at index ${index}`);
     /** @type AccessoryDataModel **/
     const system = accessory.system;
     const entries = ObjectUtils.safeClone(
       system.slots.entries.map(e => (e.toObject ? e.toObject() : e)),
     );
-    const existingIndex = entries.findIndex(e => e.item === engram.id);
+    const existingIndex = entries.findIndex(e => e.item?._id === engram.id);
     if (existingIndex !== -1) {
+      notifyInfo(`Unequipped ${engram.name} from accessory ${accessory.name} at index ${index}`);
       entries[existingIndex].item = null;
     }
     if (index !== existingIndex) {
+      notifyInfo(`Equipping ${engram.name} as an engram to accessory ${accessory.name} at index ${index}`);
       entries[index].item = engram.id;
     }
     await accessory.update({
