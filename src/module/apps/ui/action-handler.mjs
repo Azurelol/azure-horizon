@@ -335,12 +335,10 @@ export default class ActionHandler {
     const engrams = this.actor.getItemsByType("engram");
     FoundryUtils.itemContextMenu(element, "[data-slot=\"engram\"]", engrams, async (item, dataset) => {
       const { itemId, index } = dataset;
-      notifyInfo(`Equipping ${item.name} as an engram to accessory ${itemId} at index ${index}`);
       const accessory = this.actor.items.get(itemId);
       if (accessory) {
-
+        this.actor.system.equipment.toggleEngram(accessory, item, index);
       }
-      //this.actor.system.equipItem(item, "accessory1");
     });
   }
 }

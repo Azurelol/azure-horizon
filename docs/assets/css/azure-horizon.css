@@ -131,7 +131,7 @@ body {
   }
 }
 
-@media (width: 300px) {
+@media (min-width: 300px) {
   body {
     background-size: auto 100%;
   }

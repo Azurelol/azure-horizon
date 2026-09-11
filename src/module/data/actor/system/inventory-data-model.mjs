@@ -1,4 +1,5 @@
 import { VersionedDataModel } from "../../api/_module.mjs";
+import { notifyInfo } from "../../../constants.mjs";
 
 /**
  * @typedef {'mainHand'|'offHand'|'armor'|'accessory1'|'accessory2'} AH_InventorySlot
@@ -133,7 +134,15 @@ export default class InventoryDataModel extends VersionedDataModel {
         }
         break;
     }
-
     return data;
+  }
+
+  /**
+   * @param accessory
+   * @param engram
+   * @param index
+   */
+  toggleEngram(accessory, engram, index) {
+    notifyInfo(`Equipping ${engram.name} as an engram to accessory ${accessory.name} at index ${index}`);
   }
 }
