@@ -12,7 +12,7 @@
         data-tooltip="{{actor.name}}">
       {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
       {{ahStringField path='system.kind' value=system.kind icon=(ahIconClass 'follower') options=(ahFormOptions 'followerTypes') classes="ah-width-50" tooltip='AH.FIELD.Kind' }}
-      {{ahInput 'system.level' system.level size ='l' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="ah-character__level" }}
+      {{ahInput 'system.level' system.level size ='xl' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="--badge ah-character__level" iconClasses="--glow" }}
     </div>
 
     <div class="ah-sheet-header__row">
