@@ -20,19 +20,7 @@
     </a>
 
     <div class="ah-character__equipment__accessories">
-      <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory1.name}}" data-action="swapEquipment" data-slot="accessory1">
-        {{#if equipment.accessory1}}
-          <img src="{{equipment.accessory1.img}}" alt="{{equipment.accessory1.name}}">
-        {{else}}
 
-        {{/if}}
-      </a>
-
-      <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory2.name}}" data-action="swapEquipment" data-slot="accessory2">
-        {{#if equipment.accessory2}}
-          <img src="{{equipment.accessory2.img}}" alt="{{equipment.accessory2.name}}">
-        {{/if}}
-      </a>
 
       {{#if equipment.unlocked3}}
         <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory3.name}}" data-action="swapEquipment" data-slot="accessory3">
@@ -54,40 +42,49 @@
 
   <div class="ah-character__engrams">
 
-    {{#if equipment.accessory1}}
-      {{#with equipment.accessory1}}
-        <div class="ah-character__engrams__container">
-          <img src="{{img}}" alt="{{name}}">
-          <div class="ah-character__engrams__container__entries">
+    <div class="ah-character__engrams__container">
+      <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory1.name}}" data-action="swapEquipment" data-slot="accessory1">
+        {{#if equipment.accessory1}}
+          <img src="{{equipment.accessory1.img}}" alt="{{equipment.accessory1.name}}">
+        {{/if}}
+      </a>
+
+      <div class="ah-character__engrams__container__entries">
+        {{#if equipment.accessory1}}
+          {{#with equipment.accessory1}}
             {{#each system.slots.entries}}
-              <a class="ah-character__engrams__slot" data-item-id="{{@root.entry.id}}" data-slot="engram" data-index="{{@index}}">
+              <a class="ah-character__engrams__slot" data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
                 {{#if entry.item}}
                 {{else}}
                 {{/if}}
               </a>
             {{/each}}
-          </div>
-        </div>
-      {{/with}}
-    {{/if}}
+          {{/with}}
+        {{/if}}
+      </div>
+    </div>
 
-    {{#if equipment.accessory2}}
-      {{#with equipment.accessory2}}
-        <div class="ah-character__engrams__container">
-          <img src="{{img}}" alt="{{name}}">
-          <div class="ah-character__engrams__container__entries">
+    <div class="ah-character__engrams__container">
+      <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory2.name}}" data-action="swapEquipment" data-slot="accessory2">
+        {{#if equipment.accessory2}}
+          <img src="{{equipment.accessory2.img}}" alt="{{equipment.accessory2.name}}">
+        {{/if}}
+      </a>
+
+      <div class="ah-character__engrams__container__entries">
+        {{#if equipment.accessory2}}
+          {{#with equipment.accessory2}}
             {{#each system.slots.entries}}
-              <a class="ah-character__engrams__slot" data-item-id="{{@root.entry.id}}" data-slot="engram" data-index="{{@index}}">
+              <a class="ah-character__engrams__slot" data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
                 {{#if entry.item}}
                 {{else}}
                 {{/if}}
               </a>
             {{/each}}
-          </div>
-        </div>
-      {{/with}}
-    {{/if}}
-
+          {{/with}}
+        {{/if}}
+      </div>
+    </div>
   </div>
 </div>
 

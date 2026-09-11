@@ -25,6 +25,12 @@
     var(--ah-surface-panel) 10%,
     var(--ah-surface-panel-nested) 100%
   );
+  --ah-surface-panel-gradient-deep:  linear-gradient(
+    to bottom,
+    #2a3f7a 0%,
+    #1a2856 40%,
+    #0f1a3d 100%
+  );
 
   --ah-surface-entry: #CACACA;
   --ah-surface-entry-gradient: linear-gradient(
@@ -57,6 +63,8 @@
   --ah-surface-border: var(--ah-primitive-color-navy-600);
   --ah-border-panel: var(--ah-primitive-color-navy-600);
   --ah-surface-accent: var(--ah-primitive-color-brown-500);
+
+
 
   --ah-surface-tab: var(--ah-surface-panel-nested);
   --ah-surface-tab-active: var(--ah-surface-hover);
@@ -101,6 +109,13 @@
   --ah-text-shadow: 1px 1px var(--ah-primitive-color-warm-brown);
   --ah-text-shadow-outline: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   --ah-text-shadow-outline-thin: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
+
+  --ah-box-shadow-bevel:
+    inset 0 2px 4px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 4px 10px rgba(0, 0, 0, 0.5);
+
   /* Font weights */
   --ah-font-weight-normal: 400;
   --ah-font-weight-medium: 500;
