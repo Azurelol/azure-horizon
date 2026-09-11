@@ -22,8 +22,7 @@
     var( --ah-surface-entry) 100%
   );
   --ah-surface-gradient: linear-gradient( to right, #99acc6 0%, var( --ah-surface-entry) 100% );
-  --ah-surface-grid-entry: #456896;;
-  --ah-page-background-color: #141445;
+  --ah-surface-grid-entry: #456896;
 
   --ah-content-color: white;
   --ah-content-color-alt: #354564;
@@ -51,8 +50,11 @@
   --ah-font-page: Pixeloid, 'Open Sans', serif;
 
   --ah-background-day: url("/assets/img/background_day_crop.webp");
+  --ah-background-color-day: #5b6a99;
   --ah-background-evening: url("/assets/img/background_evening_crop.webp");
+  --ah-background-color-evening: #a1816c;
   --ah-background-night: url("/assets/img/background_night_crop.webp");
+  --ah-background-color-night: #141445;
 
   /* Override */
   --header-font: var(--ah-font-primary);
@@ -119,7 +121,6 @@ header {
 }
 
 body {
-  background-color: var(--ah-page-background-color);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
@@ -179,6 +180,7 @@ body {
 .ah-default {
   &:is(body) {
     background-image:  var(--ah-background-day);
+    background-color: var(--ah-background-color-day);
   }
 
   main {
@@ -191,7 +193,7 @@ body {
 
 .ah-page {
   &:is(body) {
-    background-color: #a1816c;
+    background-color: var(--ah-background-color-evening);
     background-image:  var(--ah-background-evening);
   }
 
@@ -205,12 +207,14 @@ body {
 
 .ah-collection {
   &:is(body) {
+    background-color: var(--ah-background-color-evening);
     background-image:  var(--ah-background-evening);
   }
 }
 
 .ah-gallery, .ah-about {
   &:is(body) {
+    background-color: var(--ah-background-color-night);
     background-image:  var(--ah-background-night);
   }
 }
