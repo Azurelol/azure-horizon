@@ -55,6 +55,9 @@
             {{#each system.slots.entries}}
               <a class="ah-character__engrams__slot" data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
                 {{#if entry.item}}
+                  {{#with (ahActorItem @root.actor entry.item)}}
+                    <img src="{{img}}">
+                  {{/with}}
                 {{else}}
                 {{/if}}
               </a>

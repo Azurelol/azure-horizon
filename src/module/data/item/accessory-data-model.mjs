@@ -1,5 +1,6 @@
 import EquipmentDataModel from "./equipment-data-model.mjs";
 import { isActorType, systemTemplatePath } from "../../constants.mjs";
+import { ObjectUtils } from "../../utils/_module.mjs";
 
 const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField, ForeignDocumentField } = foundry.data.fields;
 
@@ -45,6 +46,34 @@ export default class AccessoryDataModel extends EquipmentDataModel {
       }
     }
     return super.migrateData(source);
+  }
+
+  /** @inheritdoc */
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
+    const newMax = ObjectUtils.getProperty(changes, "system.slots.max");
+    if (newMax !== undefined) {
+      const incomingEntries = ObjectUtils.getProperty(changes, "system.slots.entries");
+      const baseEntries = incomingEntries ?? this.slots.entries;
+
+      const entries = ObjectUtils.safeClone(
+        baseEntries.map(e => (e.toObject ? e.toObject() : e)),
+      );
+
+      if (entries.length < newMax) {
+        while (entries.length < newMax) {
+          entries.push({});
+        }
+      } else if (entries.length > newMax) {
+        entries.length = newMax;
+      }
+
+      foundry.utils.setProperty(changes, "system.slots.entries", entries);
+    }
+
+    return true;
   }
 
   static get templates() {

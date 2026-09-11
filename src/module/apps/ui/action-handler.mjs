@@ -337,7 +337,7 @@ export default class ActionHandler {
       const { itemId, index } = dataset;
       const accessory = this.actor.items.get(itemId);
       if (accessory) {
-        this.actor.system.equipment.toggleEngram(accessory, item, index);
+        await this.actor.system.equipment.toggleEngram(accessory, item, index);
       }
     });
   }

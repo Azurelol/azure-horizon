@@ -349,8 +349,8 @@ const onProcessAction = async (config, actor, item) => {
 
     // TODO: Replace?
     // Check for a damage component override
-    const weaponOverride = actor.system.parameters.overrides.weapon;
-    if (weaponOverride.type) {
+    const weaponOverride = actor.system.parameters.overrides?.weapon;
+    if (weaponOverride?.type) {
       config.modifyDamage(d => {
         d.addOrUpdate("AH.DAMAGE.Secondary", {
           type: weaponOverride.type,

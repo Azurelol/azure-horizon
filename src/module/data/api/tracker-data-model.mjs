@@ -13,7 +13,7 @@
  * @property {Number|undefined} index If it's an array, the index of the element
  */
 
-import VersionedDataModel from "./versioned-data-model.mjs";
+import { VersionedDataModel } from "./versioned-data-model.mjs";
 
 /**
  * @description Models the tracking whether that be clocks, resources, etc.

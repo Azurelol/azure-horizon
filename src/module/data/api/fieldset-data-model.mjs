@@ -1,4 +1,4 @@
-import VersionedDataModel from "./versioned-data-model.mjs";
+import { VersionedDataModel } from "./versioned-data-model.mjs";
 
 /**
  * @inheritDoc VersionedDataModel

@@ -1,6 +1,6 @@
 import AH from "../../config.mjs";
-import VersionedDataModel from "./versioned-data-model.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
+import { VersionedDataModel } from "./versioned-data-model.mjs";
 
 const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField } = foundry.data.fields;
 

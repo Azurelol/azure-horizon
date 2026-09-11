@@ -101,6 +101,10 @@ export default Object.freeze({
     });
     Handlebars.registerHelper("ahFormOptions", formOptions);
     Handlebars.registerHelper("ahDocumentAnchor", documentAnchor);
+    Handlebars.registerHelper("ahActorItem", function (actor, id, options) {
+      const item = actor.items.get(id);
+      return item;
+    });
     Handlebars.registerHelper("ahIconClass", function (icon, options) {
       if (!icon) {
         return "";

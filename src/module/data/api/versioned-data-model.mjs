@@ -3,62 +3,78 @@ import { systemID } from "../../constants.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Base class that adds versioning support to any DataModel.
+ * Mixin that adds versioning support to any DataModel-derived base class.
+ * @param {typeof foundry.abstract.DataModel} Base - The base class to extend
+ *   (e.g. foundry.abstract.DataModel or foundry.abstract.TypeDataModel).
  */
-export default class VersionedDataModel extends foundry.abstract.DataModel {
-  /**
-   * Overridden in derived classes.
-   * @type {number}
-   */
-  static CURRENT_VERSION = 1;
+function Versioned(Base) {
+  return class extends Base {
+    /**
+     * Overridden in derived classes.
+     * @type {number}
+     */
+    static CURRENT_VERSION = 1;
 
-  static defineSchema() {
-    return {
-      schemaVersion: new fields.NumberField({
-        required: true,
-        nullable: false,
-        initial: this.CURRENT_VERSION,
-        integer: true,
-        label: "AH.ITEM.SchemaVersion",
-        config: false,
-      }),
-    };
-  }
+    static defineSchema() {
+      return {
+        schemaVersion: new fields.NumberField({
+          required: true,
+          nullable: false,
+          initial: this.CURRENT_VERSION,
+          integer: true,
+          label: "AH.ITEM.SchemaVersion",
+          config: false,
+        }),
+      };
+    }
 
-  /**
+    /**
      * Called by Foundry before validation. Perfect place to migrate.
      */
-  static migrateData(source) {
-    source = super.migrateData(source);
+    static migrateData(source) {
+      source = super.migrateData(source);
 
-    const version = source.schemaVersion ?? 0;
-    if (version < this.CURRENT_VERSION) {
-      source = this._runMigrations(source, version);
+      const version = source.schemaVersion ?? 0;
+      if (version < this.CURRENT_VERSION) {
+        source = this._runMigrations(source, version);
+      }
+
+      return source;
     }
 
-    return source;
-  }
-
-  /**
+    /**
      * Run each migration step in sequence.
      */
-  static _runMigrations(source, fromVersion) {
-    let data = foundry.utils.deepClone(source);
+    static _runMigrations(source, fromVersion) {
+      let data = foundry.utils.deepClone(source);
 
-    for (let v = fromVersion; v < this.CURRENT_VERSION; v++) {
-      const migrateFn = this.MIGRATIONS[v];
-      if (migrateFn) {
-        console.log(`[${systemID}] Migrating from v${v} → v${v + 1}`);
-        data = migrateFn(data);
+      for (let v = fromVersion; v < this.CURRENT_VERSION; v++) {
+        const migrateFn = this.MIGRATIONS[v];
+        if (migrateFn) {
+          console.log(`[${systemID}] Migrating from v${v} → v${v + 1}`);
+          data = migrateFn(data);
+        }
+        data.schemaVersion = v + 1;
       }
-      data.schemaVersion = v + 1;
+
+      return data;
     }
 
-    return data;
-  }
-
-  /**
+    /**
      * Override in subclasses: { [fromVersion]: (source) => migratedSource }.
      */
-  static MIGRATIONS = {};
+    static MIGRATIONS = {};
+  };
+}
+
+/**
+ * Base class that adds versioning support to any DataModel.
+ */
+export class VersionedDataModel extends Versioned(foundry.abstract.DataModel) {
+}
+
+/**
+ * Base class that adds versioning support to any DataModel.
+ */
+export class VersionedTypeDataModel extends Versioned(foundry.abstract.TypeDataModel) {
 }
