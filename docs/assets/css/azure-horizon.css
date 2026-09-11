@@ -49,6 +49,7 @@
   --ah-font-primary: Pixeloid, 'Open Sans', serif;
   --ah-font-page: Pixeloid, 'Open Sans', serif;
 
+  --ah-background-image-width: 720px;
   --ah-background-day: url("/assets/img/background_day_crop.webp");
   --ah-background-color-day: #5b6a99;
   --ah-background-evening: url("/assets/img/background_evening_crop.webp");
@@ -96,9 +97,6 @@ nav {
 footer {
   background-color: transparent !important;
   border: none !important;
-  /*background-image: url('/assets/img/scroll_bg.png');*/
-  /*background-repeat: no-repeat;*/
-  /*background-size: 100% 100%;*/
   text-shadow: var(--ah-text-shadow);
 }
 
@@ -130,6 +128,12 @@ body {
   }
 
   footer {
+  }
+}
+
+@media (max-width: 720px) {
+  .body {
+    background-size: auto 100%;
   }
 }
 
