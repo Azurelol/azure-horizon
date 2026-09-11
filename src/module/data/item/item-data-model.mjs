@@ -9,6 +9,7 @@ const fields = foundry.data.fields;
  * @property {String} schemaVersion The data model version.
  * @property {String} revision The published revision of this item. Used to detect and prompt updates when newer errata versions are available.
  * @property {String} slug An unique human-readable identifier, used to reference the item programmatically.
+ * @property {AHItem} parent
  */
 export default class ItemDataModel extends VersionedTypeDataModel {
   /** @inheritdoc */

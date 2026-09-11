@@ -8,6 +8,7 @@ import { isActorType, systemAssetPath } from "../constants.mjs";
  * @property {String} id
  * @property {String} img
  * @property {AH_ItemType} type
+ * @property {AHActor} actor If part of an actor's item collection.
  * @property {ItemDataModel} system
  */
 export class AHItem extends DocumentMixin(foundry.documents.Item) {

@@ -1,4 +1,3 @@
-import ItemDataModel from "./item-data-model.mjs";
 import EquipmentDataModel from "./equipment-data-model.mjs";
 
 /**
@@ -15,4 +14,15 @@ export default class EngramDataModel extends EquipmentDataModel {
     });
   }
 
+  // TODO: Optimize
+  get transferEffects() {
+    if (this.parent.actor && (this.parent.actor.type === "hero")) {
+      const system = this.parent.actor.system;
+      const equipped = system.getEquippedItems();
+      if (equipped.engrams.find(e => e.id === this.parent.id)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

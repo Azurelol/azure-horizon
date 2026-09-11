@@ -6,10 +6,7 @@ const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField, Fo
 
 /**
  * A reference to an engram item.
- * @property {String} name The name of the item.
- * @property {String} img The image of the item.
- * @property {String} item The reference to the item.
-
+ * @property {AHItem} item The reference to the item.
  */
 export class EngramDataField extends SchemaField {
   constructor(options = {}) {
