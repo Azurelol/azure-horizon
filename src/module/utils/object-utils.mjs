@@ -46,6 +46,16 @@ export default class ObjectUtils {
   }
 
   /**
+   * @param {[]} array
+   * @returns {Object}
+   */
+  static cloneArray(array) {
+    return ObjectUtils.safeClone(
+      array.map(e => (e.toObject ? e.toObject() : e)),
+    );
+  }
+
+  /**
    * @param {Object} obj The object to resolve the property from.
    * @param {String} path The path to the property, in dot notation.
    * @returns {undefined|*} The value of the property.

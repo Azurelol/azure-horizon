@@ -5,6 +5,7 @@ import { isActorType, systemAssetPath } from "../constants.mjs";
 
 /**
  * A simple extension that adds a hook at the end of data prep.
+ * @property {String} name
  * @property {String} id
  * @property {String} img
  * @property {AH_ItemType} type

@@ -53,9 +53,9 @@
         {{#if equipment.accessory1}}
           {{#with equipment.accessory1}}
             {{#each system.slots.entries as |entry|}}
-              <a class="ah-character__engrams__slot" data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
+              <a class="ah-character__engrams__slot" data-tooltip="{{entry.item.name}}" data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
                 {{#if entry.item}}
-                  <img src="{{entry.item.img}}" data-tooltip="{{entry.item.name}}">
+                  <img src="{{entry.item.img}}">
                 {{/if}}
               </a>
             {{/each}}
@@ -70,14 +70,13 @@
           <img src="{{equipment.accessory2.img}}" alt="{{equipment.accessory2.name}}">
         {{/if}}
       </a>
-
       <div class="ah-character__engrams__container__entries">
         {{#if equipment.accessory2}}
           {{#with equipment.accessory2}}
             {{#each system.slots.entries as |entry|}}
-              <a class="ah-character__engrams__slot" data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
+              <a class="ah-character__engrams__slot" data-tooltip="{{entry.item.name}}" data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
                 {{#if entry.item}}
-                  <img src="{{entry.item.img}}" data-tooltip="{{entry.item.name}}">
+                  <img src="{{entry.item.img}}">
                 {{/if}}
               </a>
             {{/each}}

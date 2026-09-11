@@ -19,7 +19,7 @@ export default class EngramDataModel extends EquipmentDataModel {
     if (this.parent.actor && (this.parent.actor.type === "hero")) {
       const system = this.parent.actor.system;
       const equipped = system.getEquippedItems();
-      if (equipped.engrams.find(e => e.id === this.parent.id)) {
+      if (equipped?.engrams?.find(e => e.id === this.parent.id)) {
         return true;
       }
     }

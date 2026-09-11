@@ -1,5 +1,5 @@
 import { VersionedDataModel } from "../../api/_module.mjs";
-import { notifyInfo } from "../../../constants.mjs";
+import { isActorType, notifyInfo } from "../../../constants.mjs";
 import { ObjectUtils } from "../../../utils/_module.mjs";
 
 /**
@@ -37,6 +37,57 @@ export default class InventoryDataModel extends VersionedDataModel {
    */
   has(item) {
     return item && Object.values(this).includes(item?.id);
+  }
+
+  /**
+   * @returns {AHActor}
+   */
+  get actor() {
+    return this.parent.parent;
+  }
+
+  /**
+   * @typedef EquippedItems
+   * @property {AHItem} mainHand
+   * @property {AHItem} offHand
+   * @property {AHItem} armor
+   * @property {AHItem} accessory1
+   * @property {AHItem} accessory2
+   * @property {AHItem[]} engrams
+   */
+
+  /**
+   * @returns {EquippedItems}
+   */
+  get equipped() {
+    const actor = this.actor;
+    if (isActorType(actor)) {
+      let equipped = {
+        mainHand: actor.items.get(this.mainHand),
+        offHand: actor.items.get(this.offHand),
+        armor: actor.items.get(this.armor),
+        accessory1: actor.items.get(this.accessory1),
+        accessory2: actor.items.get(this.accessory2),
+        engrams: [],
+      };
+      for (const acc of this.accessories) {
+        for (const entry of acc.system.slots.entries) {
+          if (entry.item) {
+            equipped.engrams.push(entry.item);
+          }
+        }
+      }
+      return equipped;
+    }
+    return undefined;
+  }
+
+  /**
+   * @returns {AHItem[]}
+   */
+  get accessories() {
+    const accessories = [this.accessory1, this.accessory2].filter(Boolean);
+    return accessories.map(id => this.actor.items.get(id));
   }
 
   /**
@@ -144,22 +195,44 @@ export default class InventoryDataModel extends VersionedDataModel {
    * @param index
    */
   async toggleEngram(accessory, engram, index) {
-    /** @type AccessoryDataModel **/
-    const system = accessory.system;
-    const entries = ObjectUtils.safeClone(
-      system.slots.entries.map(e => (e.toObject ? e.toObject() : e)),
-    );
+    const updates = [];
+
+    const entries = ObjectUtils.cloneArray(accessory.system.slots.entries);
     const existingIndex = entries.findIndex(e => e.item?._id === engram.id);
+
     if (existingIndex !== -1) {
-      notifyInfo(`Unequipped ${engram.name} from accessory ${accessory.name} at index ${index}`);
       entries[existingIndex].item = null;
     }
     if (index !== existingIndex) {
-      notifyInfo(`Equipping ${engram.name} as an engram to accessory ${accessory.name} at index ${index}`);
       entries[index].item = engram.id;
     }
-    await accessory.update({
-      "system.slots.entries": entries,
-    });
+    updates.push({ _id: accessory.id, "system.slots.entries": entries });
+
+    // Remove the entry from any other accessory currently holding this engram —
+    // an engram can only be slotted in one place at a time.
+    const others = this.accessories.filter(acc => acc.id !== accessory.id);
+    for (const other of others) {
+      const update = this._buildClearEngramUpdate(other, engram);
+      if (update) updates.push(update);
+    }
+
+    await this.actor.updateEmbeddedDocuments("Item", updates);
   }
+
+  /**
+   * Builds an update payload clearing the given engram out of an accessory's
+   * slots, or null if the accessory doesn't hold it.
+   * @param {AHItem} accessory
+   * @param {AHItem} engram
+   * @returns {object|null}
+   */
+  _buildClearEngramUpdate(accessory, engram) {
+    const entries = ObjectUtils.cloneArray(accessory.system.slots.entries);
+    const index = entries.findIndex(e => e.item?._id === engram.id);
+    if (index === -1) return null;
+
+    entries[index].item = null;
+    return { _id: accessory.id, "system.slots.entries": entries };
+  }
+
 }

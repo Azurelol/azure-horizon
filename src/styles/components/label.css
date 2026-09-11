@@ -28,6 +28,35 @@
       border: none;
     }
   }
+
+  &.--badge {
+    display: grid;
+    grid-template-areas: "stack";
+    place-items: center;
+    padding: 0;
+    gap: 0;
+    position: relative;
+
+    i {
+      grid-area: stack;
+      color: var(--ah-content-secondary);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    input,
+    span {
+      grid-area: stack;
+      font-size: var(--ah-font-size-xxl);
+      z-index: 1;
+      position: relative;
+      min-width: unset;
+      width: 50%;
+      text-align: center;
+      background: transparent;
+      border: none;
+    }
+  }
 }
 
 .ah-selector {

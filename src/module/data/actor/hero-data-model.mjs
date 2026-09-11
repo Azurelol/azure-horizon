@@ -134,37 +134,10 @@ export default class HeroDataModel extends CharacterDataModel {
   }
 
   /**
-   * @typedef EquippedItems
-   * @property {AHItem} mainHand
-   * @property {AHItem} offHand
-   * @property {AHItem} armor
-   * @property {AHItem} accessory1
-   * @property {AHItem} accessory2
-   * @property {AHItem[]} engrams
-   */
-
-  /**
    * @returns {EquippedItems}
    */
   getEquippedItems() {
-    const actor = this.parent;
-    let equipped = {
-      mainHand: actor.items.get(this.equipment.mainHand),
-      offHand: actor.items.get(this.equipment.offHand),
-      armor: actor.items.get(this.equipment.armor),
-      accessory1: actor.items.get(this.equipment.accessory1),
-      accessory2: actor.items.get(this.equipment.accessory2),
-      engrams: [],
-    };
-    const accessories = [equipped.accessory1, equipped.accessory2].filter(Boolean);
-    for (const acc of accessories) {
-      for (const entry of acc.system.slots.entries) {
-        if (entry.item) {
-          equipped.engrams.push(entry.item);
-        }
-      }
-    }
-    return equipped;
+    return this.equipment.equipped;
   }
 
   /**
