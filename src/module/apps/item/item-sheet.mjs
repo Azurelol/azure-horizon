@@ -90,6 +90,14 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
       ],
       initial: "description",
     },
+    engram: {
+      tabs: [
+        { id: "first", label: "AH.SHEET.Tabs.First" },
+        { id: "second", label: "AH.SHEET.Tabs.Second" },
+        { id: "third", label: "AH.SHEET.Tabs.Third" },
+      ],
+      initial: "first",
+    },
   };
 
   /** @inheritdoc */
@@ -155,6 +163,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
       flags: this.item.flags,
       templates: this.item.system.constructor.templates,
       config: CONFIG,
+      tabs: this._prepareTabs("primary"),
     });
 
     return context;
@@ -168,6 +177,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
     if (context.tabs && (partId in context.tabs)) {
       context.tab = context.tabs[partId];
     }
+    await this.item.system.preparePartContext(this, partId, context);
     switch (partId) {
       case "effects":
         context.effects = prepareActiveEffectCategories(this.item.effects);

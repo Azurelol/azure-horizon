@@ -204,6 +204,12 @@ function registerFonts() {
       { urls: ["systems/azure-horizon/assets/fonts/PixeloidSans.woff2"] },
     ],
   };
+  CONFIG.fontDefinitions["GeistPixel"] = {
+    editor: true,
+    fonts: [
+      { urls: ["systems/azure-horizon/assets/fonts/GeistPixel-Regular-VariableFont_ELSH.ttf"] },
+    ],
+  };
 }
 
 Hooks.once("init", function() {

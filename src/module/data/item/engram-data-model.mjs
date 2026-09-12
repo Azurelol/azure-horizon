@@ -7,6 +7,7 @@ import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ResourceDataModel from "./fields/resource-data-model.mjs";
 import { DamageDataModel } from "./fields/_module.mjs";
 import { systemTemplatePath } from "../../constants.mjs";
+import { FoundryUtils } from "../../utils/_module.mjs";
 
 const { SchemaField, StringField, EmbeddedDataField, ForeignDocumentField, NumberField } = foundry.data.fields;
 
@@ -57,6 +58,16 @@ export default class EngramDataModel extends EquipmentDataModel {
         config: false,
       }),
     });
+  }
+
+  async preparePartContext(sheet, partId, context) {
+    await super.preparePartContext(sheet, partId, context);
+    switch (partId) {
+      case "properties": {
+        context.levelTabs = sheet._prepareTabs("engram");
+      }
+        break;
+    }
   }
 
   // TODO: Optimize

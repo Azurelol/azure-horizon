@@ -205,7 +205,6 @@ export class PartySheet extends AHActorSheet {
     if (partId in context.tabs) context.tab = context.tabs[partId];
     switch (partId) {
       case "tabs":
-
         break;
       case "overview":
         context.characters = await this.system.getHeroes();

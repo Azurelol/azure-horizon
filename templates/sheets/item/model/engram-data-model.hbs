@@ -1,9 +1,15 @@
 
+{{ahTabs levelTabs }}
 
-<div class="ah-grid-3">
-  {{#each (ahArray system.first system.second system.third) as |level|}}
-    <div>
-      {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=level path='system.first'}}
-    </div>
-  {{/each}}
-</div>
+<section class="tab {{levelTabs.first.cssClass}}" data-tab="first" data-group="engram">
+  {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=system.first path='system.first'}}
+</section>
+
+<section class="tab {{levelTabs.second.cssClass}}" data-tab="second" data-group="engram">
+  {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=system.second path='system.second'}}
+</section>
+
+<section class="tab {{levelTabs.third.cssClass}}" data-tab="third" data-group="engram">
+  {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=system.third path='system.third'}}
+
+</section>

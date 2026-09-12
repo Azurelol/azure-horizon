@@ -56,6 +56,16 @@ export default class ItemDataModel extends VersionedTypeDataModel {
   }
 
   /**
+   * Invoked by the item sheet.
+   * @param {AHItemSheet} sheet
+   * @param {String} partId
+   * @param {Object} context
+   * @returns {Promise<void>}
+   */
+  async preparePartContext(sheet, partId, context) {
+  }
+
+  /**
    * @typedef AH_ItemTemplateParts
    * @property {String[]} header A system template path.
    * @property {String[]} properties A system template path.

@@ -57,7 +57,10 @@
         "Ending": "Ending",
         "Advancement": "Advancement",
         "Codex": "Codex",
-        "Settings": "Settings"
+        "Settings": "Settings",
+        "First": "First",
+        "Second": "Second",
+        "Third": "Third"
       },
       "MESSAGE": {
         "TemporaryEffectHint": "[Right-click to remove]",
