@@ -8,6 +8,11 @@
   src: url('../fonts/PressStart2P-Regular.ttf');
 }
 
+@font-face {
+  font-family: 'GeistPixel';
+  src: url('../fonts/GeistPixel-Regular-VariableFont_ELSH.ttf');
+}
+
 /******************/
 /* VARIABLES      */
 /******************/
@@ -47,7 +52,7 @@
 
 
   --ah-font-primary: Pixeloid, 'Open Sans', serif;
-  --ah-font-page: Pixeloid, 'Open Sans', serif;
+  --ah-font-page: GeistPixel, 'Open Sans', serif;
 
   --ah-background-image-width: 720px;
   --ah-background-day: url("/assets/img/background_day_crop.webp");
