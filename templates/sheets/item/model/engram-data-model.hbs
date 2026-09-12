@@ -5,11 +5,15 @@
   {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=system.first path='system.first'}}
 </section>
 
-<section class="tab {{levelTabs.second.cssClass}}" data-tab="second" data-group="engram">
-  {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=system.second path='system.second'}}
-</section>
+{{#if (gte system.level.max 2)}}
+  <section class="tab {{levelTabs.second.cssClass}}" data-tab="second" data-group="engram">
+    {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=system.second path='system.second'}}
+  </section>
+{{/if}}
 
-<section class="tab {{levelTabs.third.cssClass}}" data-tab="third" data-group="engram">
-  {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=system.third path='system.third'}}
+{{#if (gte system.level.max 3)}}
+  <section class="tab {{levelTabs.third.cssClass}}" data-tab="third" data-group="engram">
+    {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=system.third path='system.third'}}
+  </section>
+{{/if}}
 
-</section>

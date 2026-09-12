@@ -65,6 +65,12 @@ export default class EngramDataModel extends EquipmentDataModel {
     switch (partId) {
       case "properties": {
         context.levelTabs = sheet._prepareTabs("engram");
+        if (this.level.max < 3) {
+          delete context.levelTabs.third;
+        }
+        if (this.level.max < 2) {
+          delete context.levelTabs.second;
+        }
       }
         break;
     }
