@@ -1,2 +1,15 @@
-{{ahStringField path=(ahConcat path '.name') label='AH.FIELD.Name' value=field.name}}
-{{> "systems/azure-horizon/templates/sheets/item/fields/action-cost-data-model.hbs" model=field.cost path=(ahConcat path '.cost')}}
+<div class="ah-field__settings">
+  {{ahBooleanField path='system.action.enabled' icon=(ahIconClass 'action') style='compact' label='AH.Item.Action' value=model.action.enabled }}
+</div>
+
+{{ahStringField path=(ahConcat path '.name') label='AH.FIELD.Name' value=model.name}}
+<div class="ah-grid-2 ah-gap-1">
+  {{> "systems/azure-horizon/templates/sheets/item/fields/action-cost-data-model.hbs" model=model.cost path=(ahConcat path '.cost')}}
+  {{> "systems/azure-horizon/templates/sheets/item/fields/action-data-model.hbs" field=field.fields.action model=model.action path=(ahConcat path '.action')}}
+  {{> "systems/azure-horizon/templates/sheets/item/fields/damage-data-model.hbs" field=field.fields.damage model=model.damage path=(ahConcat path '.damage')}}
+  {{> "systems/azure-horizon/templates/sheets/item/fields/resource-data-model.hbs" field=field.fields.resource model=model.resource path=(ahConcat path '.resource')}}
+  {{> "systems/azure-horizon/templates/sheets/item/fields/effects-data-model.hbs" field=field.fields.effects model=model.effects path=(ahConcat path '.effects')}}
+  {{> "systems/azure-horizon/templates/sheets/item/fields/effects-data-model.hbs" model=model.effects path=(ahConcat path '.effects')}}
+</div>
+
+

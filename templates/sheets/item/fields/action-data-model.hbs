@@ -1,6 +1,6 @@
 {{#> ahFieldset label='AH.FIELD.Action' icon=(ahIconClass 'action') enabled=model.enabled name=(ahConcat path ".enabled")}}
   {{ahStringField path=(ahConcat path '.type') label="AH.FIELD.Type" value=model.type blank=true classes='--flex2' options=(ahFormOptions 'actionTypes')}}
-  {{#if (eq value.type 'action')}}
+  {{#if (eq model.type 'action')}}
     {{ahStringField path=(ahConcat path '.points') label="AH.FIELD.Points" value=model.points }}
   {{/if}}
   {{ahTraitsField schema=field.fields.traits path=(ahConcat path '.traits') label="AH.COMMON.Traits" value=model.traits options=(ahFormOptions 'traits.action')}}
