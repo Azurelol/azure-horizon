@@ -7,5 +7,6 @@ export { default as WeaponTableRenderer } from "./weapon-table-renderer.mjs";
 export { default as ArmorTableRenderer } from "./armor-table-renderer.mjs";
 export { default as AccessoryTableRenderer } from "./accessory-table-renderer.mjs";
 export { ActionTableRenderer } from "./action-table-renderer.mjs";
+export { EngramTableRenderer } from "./engram-table-renderer.mjs";
 
 export { ClassTableRenderer, ClassFeatureTableRenderer, SkillTableRenderer } from "./class-table-renderers.mjs";

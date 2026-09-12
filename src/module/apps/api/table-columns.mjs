@@ -13,6 +13,7 @@ import { StringUtils } from "../../utils/_module.mjs";
 
 const TEMPLATES = Object.freeze({
   documentName: systemTemplatePath("components/table/table-column-document-name"),
+  name: systemTemplatePath("components/table/table-column-name"),
   text: systemTemplatePath("components/table/table-column-text"),
   actions: systemTemplatePath("components/table/table-column-actions"),
   check: systemTemplatePath("components/table/table-column-check"),
@@ -27,6 +28,7 @@ const TEMPLATES = Object.freeze({
  * @typedef AH_DocumentNameColumnOptions
  * @template {Object} T
  * @property {string, (() => string)} header
+ * @property {T, (() => T)} getEntry
  * @property {number} [headerSpan]
  * @property {(T) => string|Promise<string>} [renderCaption]
  * @property {string, ((T) => string)} cssClass
@@ -47,6 +49,9 @@ function documentName(options) {
     preview: true,
     renderHeader: options.header instanceof Function ? options.header : () => StringUtils.localize(options.header || "AH.COMMON.Name"),
     renderCell: async(entry) => {
+      if (options.getEntry) {
+        entry = options.getEntry(entry);
+      }
       return renderTemplate(TEMPLATES.documentName, {
         name: entry.name,
         img: entry.img,
@@ -54,6 +59,46 @@ function documentName(options) {
         pack: entry.pack,
         uuid: entry.uuid,
         type: options.type ?? entry.type,
+        perform: options.perform,
+      }, false);
+    },
+  };
+}
+
+/**
+ * @typedef AH_NameColumnOptions
+ * @template {Object} T
+ * @property {string, (() => string)} header
+ * @property {string, ((T) => string)} name
+ * @property {string, ((T) => string)} img
+ * @property {string, ((T) => string)} id
+ * @property {(T) => Record<string, string>} dataset
+ * @property {number} [headerSpan]
+ * @property {(T) => string|Promise<string>} [renderCaption]
+ * @property {string, ((T) => string)} cssClass
+ * @property {Boolean} perform Whether the document can perform an action
+ * @property {String} type The document type
+ */
+
+/**
+ * @template {Object} T
+ * @param {AH_NameColumnOptions} options
+ * @return {AH_TableColumnConfig<T>}
+ */
+function name(options) {
+  return {
+    headerAlignment: "start",
+    headerSpan: options.headerSpan,
+    cssClass: "ah-table__column__primary",
+    preview: true,
+    renderHeader: options.header instanceof Function ? options.header : () => StringUtils.localize(options.header || "AH.COMMON.Name"),
+    renderCell: async(entry) => {
+      return renderTemplate(TEMPLATES.name, {
+        name: options.name(entry),
+        img: options.img(entry),
+        id: options.id(entry),
+        type: options.type,
+        dataset: options.dataset instanceof Function ? options.dataset(entry) : options.dataset,
         perform: options.perform,
       }, false);
     },
@@ -128,8 +173,20 @@ function check(options = {}) {
 }
 
 /**
+ * @typedef AH_PropertyColumnOptions
  * @template {Object} T
- * @param {AH_TextColumnOptions} [options]
+ * @property {string} header
+ * @property {string} [cssClass]
+ * @property {(T) => object} getData
+ * @property {"start", "center", "end"} [alignment="center"]
+ * @property {"low", "normal", "high"} [importance="normal"]
+ * @property {(T) => string|number|Promise<string|number>} getText result will be translated
+ * @property {string|((T) => string|number|Promise<string|number>)} [tooltip]
+ */
+
+/**
+ * @template {Object} T
+ * @param {AH_PropertyColumnOptions} [options]
  * @return {AH_TableColumnConfig}
  */
 function itemProperties(options = {}) {
@@ -140,10 +197,8 @@ function itemProperties(options = {}) {
     preview: true,
 
     renderCell: async (entry) => {
-      /** @type ActiveFeatureDataModel **/
-      const system = entry.system;
       return renderTemplate(TEMPLATES.itemProperties, {
-        system: system,
+        model: options.getData ? await options.getData(entry) : entry.system,
         cssClass: options.cssClass,
       }, false);
     },
@@ -152,7 +207,7 @@ function itemProperties(options = {}) {
 
 /**
  * @template {Object} T
- * @param {AH_TextColumnOptions} [options]
+ * @param {AH_PropertyColumnOptions} [options]
  * @return {AH_TableColumnConfig}
  */
 function itemCost(options = {}) {
@@ -163,10 +218,8 @@ function itemCost(options = {}) {
     preview: true,
 
     renderCell: async (entry) => {
-      /** @type ActiveFeatureDataModel **/
-      const system = entry.system;
       return renderTemplate(TEMPLATES.itemCost, {
-        system: system,
+        model: await options.getData(entry),
         cssClass: options.cssClass,
       }, false);
     },
@@ -328,6 +381,7 @@ function engrams(options = {}) {
 
 const TableColumns = Object.freeze({
   documentName,
+  name,
   textColumn,
   actions,
   property,

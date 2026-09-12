@@ -198,6 +198,7 @@ async function addSections(builderData, config, actor, item) {
     }
     flavor = await renderTemplate("chat/chat-section-flavor-item", {
       item: item,
+      label: config.getLabel(),
       linked: linked,
     });
   } else {

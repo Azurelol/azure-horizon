@@ -521,6 +521,16 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
         await item.perform(modifiers);
       }
         break;
+
+      case "engram":{
+        const { level } = target.dataset;
+        const item = await this.actor.items.get(id);
+        const engram = item.system[level];
+        if (engram) {
+          engram.perform(modifiers);
+        }
+        break;
+      }
     }
   }
 

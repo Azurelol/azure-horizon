@@ -73,6 +73,7 @@ export class EngramActionDataModel extends VersionedDataModel {
   async _initializeAction(config) {
     this.attributes.configureAction(config);
     config.setDefaultTargets();
+    config.setLabel(this.name);
     config.addDescription(this.description);
     await this.damage.configureAction(config);
     await this.resource.configureAction(config);
@@ -84,6 +85,7 @@ export class EngramActionDataModel extends VersionedDataModel {
 
 /**
  * An engram is an item that allows the user to cast magic or perform certain abilities they could not otherwise.
+ * @property {AH_EngramKind} kind
  * @property {Number} level.current
  * @property {Number} level.max
  * @property {EngramActionDataModel} first
@@ -94,6 +96,7 @@ export default class EngramDataModel extends EquipmentDataModel {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
+      kind: new StringField({ initial: "magic", blank: true, choices: () => AH.engrams, _part: "header", label: "AH.FIELD.Kind" }),
       level: new SchemaField({
         current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "header" }),
         max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header" }),
@@ -124,6 +127,20 @@ export default class EngramDataModel extends EquipmentDataModel {
       }
         break;
     }
+  }
+
+  /**
+   * @return {EngramActionDataModel[]}
+   */
+  get available() {
+    let result = [this.first];
+    if (this.level.max >= 3) {
+      result.push(this.third);
+    }
+    if (this.level.max >= 2) {
+      result.push(this.second);
+    }
+    return result;
   }
 
   // TODO: Optimize

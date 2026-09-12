@@ -1,7 +1,7 @@
 <header class="ah-chat-section__flavor">
   <div>
     {{ahDocumentAnchor item}}
-    <span class="ah-chat-section__flavor__name">{{item.name}}</span>
+    <span class="ah-chat-section__flavor__name">{{ahDefault label item.name}}</span>
   </div>
   <div class="ah-flex-center">
     {{#each linked as |li|}}

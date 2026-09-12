@@ -717,7 +717,7 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
-   * @desc Set a custom label for the check
+   * @desc Set a custom label for the action.
    * @param {String} label
    */
   setLabel(label) {

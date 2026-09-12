@@ -3,7 +3,7 @@ import { systemPath, systemTemplatePath } from "../../constants.mjs";
 import { CharacterSheet } from "./character-sheet.mjs";
 import {
   AccessoryTableRenderer, ActionTableRenderer,
-  ArmorTableRenderer, ClassTableRenderer, SkillTableRenderer,
+  ArmorTableRenderer, ClassTableRenderer, EngramTableRenderer, SkillTableRenderer,
   WeaponTableRenderer,
 } from "../item/_module.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
@@ -58,6 +58,13 @@ export class HeroSheet extends CharacterSheet {
     },
   };
 
+  /**
+   * @returns {HeroDataModel}
+   */
+  get system() {
+    return this.actor.system;
+  }
+
   /* -------------------------------------------------- */
 
   #classTableRenderer = new ClassTableRenderer({ title: "AH.ITEM.Class.long", actions: CharacterSheet.getCompendiumTableActions("classes", "class") });
@@ -69,6 +76,7 @@ export class HeroSheet extends CharacterSheet {
   #accessoryTableRenderer = new AccessoryTableRenderer({ title: "AH.ITEM.Accessory", actions: CharacterSheet.getCompendiumTableActions("equipment", "accessory") });
   #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") });
   #treasureTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Treasure" });
+  #engramTableRenderer = new EngramTableRenderer({ title: "AH.ITEM.Engram.plural" });
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
@@ -85,12 +93,24 @@ export class HeroSheet extends CharacterSheet {
       }
 
       case "features": {
+        let spells = this.actor.getItemsByType("spell");
+
         context.tables = [
           await this.#skillTableRenderer.render(this.actor.getItemsByType("skill")),
           await this.#classFeatureTableRenderer.render(this.actor.getItemsByType("classFeature")),
-          await this.#spellTableRenderer.render(this.actor.getItemsByType("spell")),
+          await this.#spellTableRenderer.render(spells),
           await this.#classTableRenderer.render(this.actor.getItemsByType("class")),
         ];
+
+        const equipped = this.actor.system.getEquippedItems();
+        const magicEngrams = equipped.engrams.filter(e => e.system.kind === "magic");
+        const availableEngramSpells = magicEngrams.map(e => e.system.available).flat();
+        spells.push(...availableEngramSpells);
+        if (availableEngramSpells.length > 0) {
+          context.tables.push(await this.#engramTableRenderer.render(availableEngramSpells));
+
+        }
+
         break;
       }
 
@@ -105,7 +125,6 @@ export class HeroSheet extends CharacterSheet {
           await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
           await this.#accessoryTableRenderer.render(this.actor.getItemsByType("accessory")),
           await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),
-
           await this.#treasureTableRenderer.render([...engrams, ...this.actor.getItemsByType("treasure")]),
         ];
         break;

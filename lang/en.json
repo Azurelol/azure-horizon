@@ -692,6 +692,7 @@
       "Tracker": "Tracker",
       "Style": "Style",
       "Rule": "Rule",
+      "Kind": "Kind",
       "Action": "Action",
       "Damage": "Damage",
       "Effects": "Effects",
@@ -903,6 +904,11 @@
     },
     "EQUIPMENT": {
       "Rarity": "Rarity",
+      "Engram": "Engram",
+      "ENGRAM": {
+        "Magic": "Magic",
+        "Support": "Support"
+      },
       "RARITY": {
         "Common": "Common",
         "Rare": "Rare"

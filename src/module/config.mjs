@@ -568,11 +568,12 @@ AH.itemGroups = {
  */
 
 /**
- * @typedef {'magic'|'command'} AH_EngramType
+ * @typedef {'magic'|'support'} AH_EngramKind
  */
 
-AH.engramTypes = {
-
+AH.engrams = {
+  magic: { label: "AH.EQUIPMENT.ENGRAM.Magic" },
+  support: { label: "AH.EQUIPMENT.ENGRAM.Support" },
 };
 
 /**
