@@ -21,6 +21,7 @@ export class EngramActionDataModel extends VersionedDataModel {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
+      name: new StringField({}),
       action: new EmbeddedDataField(ActionDataModel, {}),
       cost: new EmbeddedDataField(ActionCostDataModel, {}),
       effects: new EmbeddedDataField(EffectsDataModel, {}),
@@ -46,9 +47,15 @@ export default class EngramDataModel extends EquipmentDataModel {
         current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "header" }),
         max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header" }),
       }),
-      first: new EmbeddedDataField(EngramActionDataModel, {}),
-      second: new EmbeddedDataField(EngramActionDataModel, {}),
-      third: new EmbeddedDataField(EngramActionDataModel, {}),
+      first: new EmbeddedDataField(EngramActionDataModel, {
+        config: false,
+      }),
+      second: new EmbeddedDataField(EngramActionDataModel, {
+        config: false,
+      }),
+      third: new EmbeddedDataField(EngramActionDataModel, {
+        config: false,
+      }),
     });
   }
 
