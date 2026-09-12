@@ -183,7 +183,7 @@
   .ah-character__engrams__container__entries {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 0.25rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -201,13 +201,9 @@
 
     border: 2px solid var(--ah-control-border);
     background:
-      radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.25), transparent 60%),
-      color-mix(in srgb, var(--ah-primitive-color-grey-mid) 60%, black 10%);
-
-    box-shadow:
-      inset 0 2px 3px rgba(0, 0, 0, 0.6),
-      inset 0 -1px 1px rgba(255, 255, 255, 0.15),
-      0 1px 1px rgba(255, 255, 255, 0.1);
+      radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.08), transparent 55%),
+      color-mix(in srgb, var(--ah-surface-item) 15%, black 85%);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.85);
 
     img {
       object-fit: contain;
@@ -215,13 +211,6 @@
       height: 78%;
       border-radius: 50%;
       filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
-    }
-
-    &:empty,
-    &:has(img[src=""]) {
-      background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.05), transparent 60%),
-      color-mix(in srgb, var(--ah-surface-item) 30%, black 20%);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.75);
     }
   }
 
