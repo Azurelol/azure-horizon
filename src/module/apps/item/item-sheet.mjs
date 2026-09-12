@@ -1,13 +1,13 @@
 import { prepareActiveEffectCategories } from "../../utils/utils.mjs";
 import { isCompendiumEntry, systemTemplatePath } from "../../constants.mjs";
 import * as fields from "../../data/item/fields/_module.mjs";
+import * as data from "../../data/item/_module.mjs";
 import { features } from "../../data/item/_module.mjs";
 import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { Dialogs, Migrations } from "../../helpers/_module.mjs";
 import { CompendiumIndex } from "../../data/compendium/_module.mjs";
 import { DocumentSheetMixin } from "../api/document-sheet.mjs";
-import { ClassFeatureRegistry } from "../../data/item/class-feature-registry.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -98,20 +98,21 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
       template: systemTemplatePath("sheets/item/item-header"),
       templates: [
         systemTemplatePath("sheets/item/item-class-feature"),
-        systemTemplatePath("sheets/item/item-engram-slots"),
       ],
     },
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),
     },
-
     description: {
       template: systemTemplatePath("sheets/item/item-description"),
       scrollable: [""],
     },
     properties: {
       template: systemTemplatePath("sheets/document-properties"),
-      templates: fields.templates.concat(Object.values(features).map(ft => ft.template)),
+      templates: fields.templates
+        .concat(Object.values(features).map(ft => ft.template))
+        .concat(Object.values(data.dataModels).map(dm => dm.templates?.properties)
+          .filter(Boolean)),
       scrollable: [""],
     },
     effects: {

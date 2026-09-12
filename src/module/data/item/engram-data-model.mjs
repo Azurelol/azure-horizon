@@ -1,16 +1,54 @@
 import EquipmentDataModel from "./equipment-data-model.mjs";
+import { VersionedDataModel } from "../api/versioned-data-model.mjs";
+import AH from "../../config.mjs";
+import { ActionDataModel } from "./fields/action-data-model.mjs";
+import { ActionCostDataModel } from "./fields/action-cost-data-model.mjs";
+import { EffectsDataModel } from "./fields/effects-data-model.mjs";
+import ResourceDataModel from "./fields/resource-data-model.mjs";
+import { DamageDataModel } from "./fields/_module.mjs";
+import { systemTemplatePath } from "../../constants.mjs";
+
+const { SchemaField, StringField, EmbeddedDataField, ForeignDocumentField, NumberField } = foundry.data.fields;
+
+/**
+ * @property {ActionDataModel} action
+ * @property {DamageDataModel} damage
+ * @property {ResourceDataModel} resource
+ * @property {EffectsDataModel} effects
+ * @property {ActionCostDataModel} cost
+ */
+export class EngramActionDataModel extends VersionedDataModel {
+  /** @inheritdoc */
+  static defineSchema() {
+    return Object.assign(super.defineSchema(), {
+      action: new EmbeddedDataField(ActionDataModel, {}),
+      cost: new EmbeddedDataField(ActionCostDataModel, {}),
+      effects: new EmbeddedDataField(EffectsDataModel, {}),
+      damage: new EmbeddedDataField(DamageDataModel, {}),
+      resource: new EmbeddedDataField(ResourceDataModel, {}),
+    });
+  }
+}
 
 /**
  * An engram is an item that allows the user to cast magic or perform certain abilities they could not otherwise.
- * @property {AHItem} item The item this engram is slotted into.
+ * @property {Number} level.current
+ * @property {Number} level.max
+ * @property {EngramActionDataModel} first
+ * @property {EngramActionDataModel} second
+ * @property {EngramActionDataModel} third
  */
 export default class EngramDataModel extends EquipmentDataModel {
   /** @inheritdoc */
   static defineSchema() {
-    const { SchemaField, StringField, ForeignDocumentField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      // eslint-disable-next-line no-undef
-      item: new ForeignDocumentField(Item, { nullable: true }),
+      level: new SchemaField({
+        current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "header" }),
+        max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header" }),
+      }),
+      first: new EmbeddedDataField(EngramActionDataModel, {}),
+      second: new EmbeddedDataField(EngramActionDataModel, {}),
+      third: new EmbeddedDataField(EngramActionDataModel, {}),
     });
   }
 
@@ -27,6 +65,12 @@ export default class EngramDataModel extends EquipmentDataModel {
       }
     }
     return false;
+  }
+
+  static get templates() {
+    return {
+      properties: systemTemplatePath("sheets/item/model/engram-data-model"),
+    };
   }
 
   get transferEffects() {

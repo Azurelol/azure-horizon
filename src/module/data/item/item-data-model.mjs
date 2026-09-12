@@ -66,7 +66,10 @@ export default class ItemDataModel extends VersionedTypeDataModel {
    * @returns {AH_ItemTemplateParts} The system template path to the partial used by this item.
    */
   static get templates() {
-    return {};
+    return {
+      header: undefined,
+      properties: undefined,
+    };
   }
 
   /**

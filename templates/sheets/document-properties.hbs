@@ -19,8 +19,10 @@
 
   <div class="ah-field-grid">
     {{#each fieldsets as |field|}}
-      {{#if (or (not field.optional) field.value.enabled)}}
-        {{> (lookup field 'template') }}
+      {{#if field.template}}
+        {{#if (or (not field.optional) field.value.enabled)}}
+          {{> (lookup field 'template') }}
+        {{/if}}
       {{/if}}
     {{/each}}
 
