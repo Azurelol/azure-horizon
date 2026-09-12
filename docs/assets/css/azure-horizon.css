@@ -64,7 +64,7 @@
 
   /* Override */
   --header-font: var(--ah-font-primary);
-  --body-font: var(--ah-font-primary);
+  --body-font: var(--ah-font-page);
 }
 
 /******************/
