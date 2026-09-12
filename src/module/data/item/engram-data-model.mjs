@@ -5,13 +5,19 @@ import { ActionDataModel } from "./fields/action-data-model.mjs";
 import { ActionCostDataModel } from "./fields/action-cost-data-model.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ResourceDataModel from "./fields/resource-data-model.mjs";
-import { DamageDataModel } from "./fields/_module.mjs";
-import { systemTemplatePath } from "../../constants.mjs";
+import { CheckDataModel, DamageDataModel } from "./fields/_module.mjs";
+import { isActorType, systemTemplatePath } from "../../constants.mjs";
 import { FoundryUtils } from "../../utils/_module.mjs";
+import { Actions } from "../../pipelines/_module.mjs";
+import { ActionAttributesDataModel } from "./fields/action-attributes-data-model.mjs";
+import Checks from "../../pipelines/checks.mjs";
+import { ActionConfig } from "../../helpers/action-configuration.mjs";
 
-const { SchemaField, StringField, EmbeddedDataField, ForeignDocumentField, NumberField } = foundry.data.fields;
+const { SchemaField, StringField, EmbeddedDataField, HTMLField, NumberField } = foundry.data.fields;
 
 /**
+ * @property {ActionAttributesDataModel} attributes
+ * @property {CheckDataModel} check
  * @property {ActionDataModel} action
  * @property {DamageDataModel} damage
  * @property {ResourceDataModel} resource
@@ -23,12 +29,56 @@ export class EngramActionDataModel extends VersionedDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       name: new StringField({}),
+      description: new HTMLField({
+        label: "AH.ITEM.Description",
+      }),
+      attributes: new EmbeddedDataField(ActionAttributesDataModel, {}),
+      check: new EmbeddedDataField(CheckDataModel, { }),
       action: new EmbeddedDataField(ActionDataModel, {}),
       cost: new EmbeddedDataField(ActionCostDataModel, {}),
       effects: new EmbeddedDataField(EffectsDataModel, {}),
       damage: new EmbeddedDataField(DamageDataModel, {}),
       resource: new EmbeddedDataField(ResourceDataModel, {}),
     });
+  }
+
+  /**
+   * @param {KeyboardModifiers} modifiers
+   * @returns {Promise<boolean>}
+   */
+  async perform(modifiers) {
+    const actor = this.parent.parent.actor;
+    const item = this.parent.parent;
+    if (isActorType(actor)) {
+      if (this.check.enabled) {
+        await Checks.actionCheck(actor, item, async (check, actor, item) => {
+          const config = new ActionConfig(check);
+          config.setTargetedDefense(this.check.defense);
+          await this._initializeAction(config);
+        });
+      }
+      else {
+        await Actions.perform(actor, item, async (config, actor, item) => {
+          await this._initializeAction(config);
+        });
+      }
+    }
+  }
+
+  /**
+   * @param {ActionConfig} config
+   * @protected
+   * @return {Promise}
+   */
+  async _initializeAction(config) {
+    this.attributes.configureAction(config);
+    config.setDefaultTargets();
+    config.addDescription(this.description);
+    await this.damage.configureAction(config);
+    await this.resource.configureAction(config);
+    await this.effects.configureAction(config);
+    await this.cost.configureAction(config);
+    await this.action.configureAction(config);
   }
 }
 

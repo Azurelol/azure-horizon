@@ -1,4 +1,6 @@
 <div class="ah-field__settings">
+  {{ahBooleanField path=(ahConcat path '.attributes.enabled') icon=(ahIconClass 'attributes') style='compact' label='AH.FIELD.Attributes' value=model.attributes.enabled }}
+  {{ahBooleanField path=(ahConcat path '.check.enabled') icon=(ahIconClass 'check') style='compact' label='AH.FIELD.Check' value=model.check.enabled }}
   {{ahBooleanField path=(ahConcat path '.action.enabled') icon=(ahIconClass 'action') style='compact' label='AH.FIELD.Action' value=model.action.enabled }}
   {{ahBooleanField path=(ahConcat path '.cost.enabled') icon=(ahIconClass 'cost') style='compact' label='AH.FIELD.Cost' value=model.cost.enabled }}
   {{ahBooleanField path=(ahConcat path '.damage.enabled') icon=(ahIconClass 'damage') style='compact' label='AH.FIELD.Damage' value=model.damage.enabled }}
@@ -8,6 +10,12 @@
 
 {{ahStringField path=(ahConcat path '.name') label='AH.FIELD.Name' value=model.name}}
 <div class="ah-grid-2 ah-gap-1">
+  {{#if model.attributes.enabled}}
+    {{> "systems/azure-horizon/templates/sheets/item/fields/attributes-data-model.hbs" model=model.attributes path=(ahConcat path '.attributes')}}
+  {{/if}}
+  {{#if model.check.enabled}}
+    {{> "systems/azure-horizon/templates/sheets/item/fields/check-data-model.hbs" model=model.check path=(ahConcat path '.check')}}
+  {{/if}}
   {{#if model.cost.enabled}}
     {{> "systems/azure-horizon/templates/sheets/item/fields/action-cost-data-model.hbs" model=model.cost path=(ahConcat path '.cost')}}
   {{/if}}
