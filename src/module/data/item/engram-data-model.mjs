@@ -76,7 +76,10 @@ export default class EngramDataModel extends EquipmentDataModel {
 
   static get templates() {
     return {
-      properties: systemTemplatePath("sheets/item/model/engram-data-model"),
+      properties: [
+        systemTemplatePath("sheets/item/model/engram-data-model"),
+        systemTemplatePath("sheets/item/model/engram-level-partial"),
+      ],
     };
   }
 

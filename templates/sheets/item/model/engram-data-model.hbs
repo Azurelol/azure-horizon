@@ -3,7 +3,7 @@
 <div class="ah-grid-3">
   {{#each (ahArray system.first system.second system.third) as |level|}}
     <div>
-      Boop
+      {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=level path='system.first'}}
     </div>
   {{/each}}
 </div>

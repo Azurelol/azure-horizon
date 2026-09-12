@@ -75,7 +75,7 @@ export default class AccessoryDataModel extends EquipmentDataModel {
 
   static get templates() {
     return {
-      properties: systemTemplatePath("sheets/item/item-engram-slots"),
+      properties: [systemTemplatePath("sheets/item/item-engram-slots")],
     };
   }
 

@@ -89,7 +89,9 @@ export default class ClassFeatureDataModel extends ActiveFeatureDataModel {
 
   static get templates() {
     return {
-      header: systemTemplatePath("sheets/item/item-class-feature"),
+      header: [
+        systemTemplatePath("sheets/item/item-class-feature"),
+      ],
     };
   }
 

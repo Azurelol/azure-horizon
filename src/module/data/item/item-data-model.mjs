@@ -57,8 +57,8 @@ export default class ItemDataModel extends VersionedTypeDataModel {
 
   /**
    * @typedef AH_ItemTemplateParts
-   * @property {String} header A system template path.
-   * @property {String} properties A system template path.
+   * @property {String[]} header A system template path.
+   * @property {String[]} properties A system template path.
    */
 
   /**
@@ -67,8 +67,6 @@ export default class ItemDataModel extends VersionedTypeDataModel {
    */
   static get templates() {
     return {
-      header: undefined,
-      properties: undefined,
     };
   }
 

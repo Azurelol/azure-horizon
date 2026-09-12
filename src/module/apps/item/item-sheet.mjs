@@ -96,9 +96,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
   static PARTS = {
     header: {
       template: systemTemplatePath("sheets/item/item-header"),
-      templates: [
-        systemTemplatePath("sheets/item/item-class-feature"),
-      ],
+      templates: Object.values(data.dataModels).flatMap(dm => dm.templates?.header ?? []).filter(Boolean),
     },
     tabs: {
       template: systemTemplatePath("sheets/document-tabs"),
@@ -111,8 +109,8 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
       template: systemTemplatePath("sheets/document-properties"),
       templates: fields.templates
         .concat(Object.values(features).map(ft => ft.template))
-        .concat(Object.values(data.dataModels).map(dm => dm.templates?.properties)
-          .filter(Boolean)),
+        .concat(Object.values(data.dataModels)
+          .flatMap(dm => dm.templates?.properties ?? []).filter(Boolean)),
       scrollable: [""],
     },
     effects: {
