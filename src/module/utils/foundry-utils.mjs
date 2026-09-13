@@ -248,10 +248,10 @@ export default class FoundryUtils {
           label: item.name,
           icon: item.img ? `<img class="ah-icon --xs" src="${item.img}" alt="${item.name}"/>`
             : `<i class='ah-icon --xs ${item.icon}'></i>`,
-          onClick: async (html, event) => {
+          onClick: async (event, target) => {
             const modifiers = HTMLUtils.getKeyboardModifiers(event);
             if (action) {
-              return action(item, html.dataset);
+              return action(item, target.dataset);
             }
             else if (item.perform) {
               return item.perform(modifiers);
@@ -265,7 +265,7 @@ export default class FoundryUtils {
         el.addEventListener(
           "click",
           (evt) => {
-            return entries[0].onClick(el, evt);
+            return entries[0].onClick(evt, el);
           },
         );
       });
@@ -293,20 +293,6 @@ export default class FoundryUtils {
 
     }
     return true;
-  }
-
-  /**
-   * Recursively add system model fields to the fieldset.
-   */
-  static async #addSystemFields(fieldset, schema, source, _path = "system") {
-    for (const field of Object.values(schema)) {
-      const path = `${_path}.${field.name}`;
-      if (field instanceof foundry.data.fields.SchemaField) {
-        this.#addSystemFields(fieldset, field.fields, source, path);
-      } else if (field.constructor.hasFormSupport) {
-        fieldset.fields.push({ field, value: foundry.utils.getProperty(source, path) });
-      }
-    }
   }
 
   /**
