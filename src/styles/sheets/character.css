@@ -161,8 +161,6 @@
     padding: 1rem;
     justify-content: center;
     align-items: center;
-    flex: 1;
-    box-shadow: var(--ah-box-shadow-bevel);
   }
 
   .ah-character__engrams__container {
@@ -221,6 +219,7 @@
     justify-content: center;
     align-items: center;
     margin:1rem;
+    box-shadow: var(--ah-box-shadow-bevel);
   }
 
   .ah-character__equipment {
@@ -230,7 +229,6 @@
     gap: 8px;
     justify-content: center;
     align-items: center;
-
 
     .ah-character__equipment__accessories {
       grid-area: acc;

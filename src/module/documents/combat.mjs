@@ -1,5 +1,5 @@
 import { Player } from "../data/combatant/player.mjs";
-import { systemID, systemPath } from "../constants.mjs";
+import { notifyInfo, systemID, systemPath } from "../constants.mjs";
 import AH, { getFormSelectOptions } from "../config.mjs";
 import { AsyncHooks, Dialogs } from "../helpers/_module.mjs";
 import { CombatEvent } from "../data/common/combat-event.mjs";
@@ -162,6 +162,22 @@ export class AHCombat extends foundry.documents.Combat {
     return this.getFlag(systemID, AH.flags.Combat.CurrentTurn);
   }
 
+  /**
+   * A workflow that occurs at the start of each Combat Turn.
+   * This workflow occurs after the Combat document update.
+   * This can be overridden to implement system-specific combat tracking behaviors.
+   * The default implementation of this function does nothing.
+   * This method only executes for one designated GM user. If no GM users are present this method will not be called.
+   * @param {AHCombatant} combatant               The Combatant whose turn just started
+   * @param {CombatTurnEventContext} context    The context of the turn that just started
+   * @returns {Promise<void>}
+   * @protected
+   */
+  async _onStartTurn(combatant, context) {
+    await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("startOfTurn", this.round, this.combatants.contents));
+    await combatant.onCombatChange("startOfTurn");
+  }
+
   /* -------------------------------------------------- */
 
   /**
@@ -277,85 +293,6 @@ export class AHCombat extends foundry.documents.Combat {
     }
 
     return alternatingTurns;
-  }
-
-  // /**
-  //  * Return the Array of combatants sorted into initiative order, breaking ties alphabetically by name.
-  //  * @override
-  //  * @returns {AHCombatant[]}
-  //  */
-  // setupTurns() {
-  //   this.turns ||= [];
-  //
-  //   // Determine the turn order and the current turn
-  //   /** @type AHCombatant[] **/
-  //   let turns = this.combatants.contents.sort(this._sortCombatants);
-  //   // Then sort again by faction
-  //   //turns = this.#sortFactions(turns);
-  //
-  //   if (this.turn !== null) {
-  //     if (this.turn < 0) this.turn = 0;
-  //     else if (this.turn >= turns.length) {
-  //       this.turn = 0;
-  //       this.round++;
-  //     }
-  //     turns.forEach((c, i) => c.turnNumber = i);
-  //   }
-  //
-  //   // Update state tracking
-  //   const c = turns[this.turn];
-  //   this.current = this._getCurrentState(c);
-  //
-  //   // One-time initialization of the previous state
-  //   if (!this.previous) this.previous = this.current;
-  //
-  //   // Return the array of prepared turns
-  //   return this.turns = turns;
-  // }
-
-  /* -------------------------------------------------- */
-  /**
-   * @typedef CombatRenderData
-   * @description Used by component rendering (such as the combat tracker, combat hud)
-   * @property {Boolean} turnStarted
-   * @property {AHCombatant} combatant
-   * @property {Boolean} hasCombatStarted
-   * @property turnsLeft
-   * @property totalTurns
-   * @property factions
-   * @property currentTurn The faction whose turn it is
-   * @property isGM
-   * @property icons
-   * @property showNpcTurns
-   */
-
-  /**
-   * @param {CombatRenderData} data Used by the rendering components
-   */
-  populateData(data) {
-    // Whether combat has started
-    data.hasCombatStarted = this.started;
-    // What faction's turn it is
-    data.currentTurn = this.getCurrentTurn();
-    // Combatant.ID : Total Turns
-    data.totalTurns = this.combatants.reduce((agg, combatant) => {
-      agg[combatant.id] = combatant.totalTurns;
-      return agg;
-    }, {});
-    // Combatant ID : Turns Left
-    data.turnsLeft = this.countTurnsLeft();
-    // Whether an actor has started their turn
-    data.turnStarted = this.isTurnStarted;
-    // The current combatant, if any
-    data.combatant = this.combatant;
-    // Whether the user is a GM
-    data.isGM = game.user?.isGM;
-    // Icons
-    data.icons = {
-      active: game.settings.get(systemID, "play_circle"),
-      outOfTurns: game.settings.get(systemID, "check_circle"),
-      hiddenTurns: game.settings.get(systemID, "help"),
-    };
   }
 
   /* -------------------------------------------------- */

@@ -112,4 +112,32 @@ export class AHCombatant extends foundry.documents.Combatant {
     return intent;
   }
 
+  /**
+   * @param {AH_CombatEvent} event
+   * @returns {Promise<void>}
+   */
+  async onCombatChange(event) {
+    let updateData = {};
+    switch (event) {
+      case "startOfCombat":
+        break;
+      case "startOfTurn": {
+        if (this.actor.system.resources.hp.temporary > 0) {
+          updateData["system.resources.hp.temporary"] = 0;
+        }
+      }
+        break;
+      case "endOfTurn":
+        break;
+      case "startOfRound":
+        break;
+      case "endOfRound":
+        break;
+      case "endOfCombat":
+        break;
+    }
+    if (updateData) {
+      await this.actor.update(updateData);
+    }
+  }
 }

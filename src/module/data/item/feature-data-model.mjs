@@ -37,7 +37,8 @@ export default class FeatureDataModel extends ItemDataModel {
    * @returns {Promise<boolean>}
    */
   async perform(modifiers) {
-    if (this.isCheck) {
+    const free = modifiers?.shift;
+    if (this.isCheck && !free) {
       await Checks.actionCheck(this.parent.actor, this.parent, async (check, actor, item) => {
         const config = new ActionConfig(check);
         config.setKeyboardModifiers(modifiers);
@@ -48,6 +49,9 @@ export default class FeatureDataModel extends ItemDataModel {
     else {
       await Actions.perform(this.parent.actor, this.parent, async (config, actor, item) => {
         config.setKeyboardModifiers(modifiers);
+        if (free) {
+          config.addTraits("free");
+        }
         /** @type CharacterDataModel **/
         await this._initializeAction(config);
       });
