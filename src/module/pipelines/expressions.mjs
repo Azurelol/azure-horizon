@@ -104,6 +104,11 @@ function evaluateVariables(expression, context) {
       case "sl":
         context.assertItem(match);
         return context.item.system.level.current;
+        // Potential Level
+      case "pl":{
+        context.assertActor(match);
+        return context.actor.system.potential;
+      }
       // Check Result
       case "chk": {
         if (context.check) {

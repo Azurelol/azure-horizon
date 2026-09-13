@@ -1055,7 +1055,9 @@
       "Inventory": "Inventory",
       "Check": "Check",
       "Equip": "Equip",
-      "Unequip": "Unequip"
+      "Unequip": "Unequip",
+      "Engram": "Engram",
+      "EngramHint": ""
     },
     "CHAT": {
       "ACTION": {

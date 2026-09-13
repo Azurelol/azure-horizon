@@ -117,6 +117,9 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
     if (isItemType(this.parent) && (this.img === defaultImage)) {
       changes.img = this.parent.img;
     }
+    if (isItemType(this.parent)) {
+      changes.name = this.parent.name;
+    }
 
     this.updateSource(changes);
     return super._preCreate(data, options, user);

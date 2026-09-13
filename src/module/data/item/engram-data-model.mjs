@@ -42,6 +42,10 @@ export class EngramActionDataModel extends VersionedDataModel {
     });
   }
 
+  get img() {
+    return this.parent.parent.img;
+  }
+
   /**
    * @param {KeyboardModifiers} modifiers
    * @returns {Promise<boolean>}

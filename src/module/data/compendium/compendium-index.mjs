@@ -134,6 +134,7 @@ export default class CompendiumIndex {
     classRef: "system.class",
     skillRef: "system.skill",
     skillLevel: "system.level",
+    intent: "system.intent",
   });
 
   /**

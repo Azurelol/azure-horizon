@@ -132,10 +132,6 @@ export default class InventoryDataModel extends VersionedDataModel {
     return data;
   }
 
-  get unlocked2() {
-    return this.parent.level >= 20;
-  }
-
   get unlocked3() {
     return this.parent.level >= 40;
   }
@@ -233,6 +229,16 @@ export default class InventoryDataModel extends VersionedDataModel {
 
     entries[index].item = null;
     return { _id: accessory.id, "system.slots.entries": entries };
+  }
+
+  /**
+   * @returns {EngramActionDataModel[]}
+   */
+  getEngramSpells() {
+    const equipped = this.equipped;
+    const magicEngrams = equipped.engrams.filter(e => e.system.kind === "magic");
+    const availableEngramSpells = magicEngrams.map(e => e.system.available).flat();
+    return availableEngramSpells;
   }
 
 }

@@ -9,6 +9,8 @@
 </div>
 
 {{ahStringField path=(ahConcat path '.name') label='AH.FIELD.Name' value=model.name}}
+
+
 <div class="ah-grid-2 ah-gap-1">
   {{#if model.attributes.enabled}}
     {{> "systems/azure-horizon/templates/sheets/item/fields/attributes-data-model.hbs" model=model.attributes path=(ahConcat path '.attributes')}}
@@ -31,11 +33,6 @@
     {{#if model.effects.enabled}}
       {{> "systems/azure-horizon/templates/sheets/item/fields/effects-data-model.hbs" field=field.fields.effects model=model.effects path=(ahConcat path '.effects')}}
     {{/if}}
-
-
-
-
-
 </div>
 
 

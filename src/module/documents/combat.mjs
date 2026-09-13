@@ -178,6 +178,22 @@ export class AHCombat extends foundry.documents.Combat {
     await combatant.onCombatChange("startOfTurn");
   }
 
+  /**
+   * A workflow that occurs at the end of each Combat Turn.
+   * This workflow occurs after the Combat document update.
+   * This can be overridden to implement system-specific combat tracking behaviors.
+   * The default implementation of this function does nothing.
+   * This method only executes for one designated GM user. If no GM users are present this method will not be called.
+   * @param {Combatant} combatant               The Combatant whose turn just ended
+   * @param {CombatTurnEventContext} context    The context of the turn that just ended
+   * @returns {Promise<void>}
+   * @protected
+   */
+  async _onEndTurn(combatant, context) {
+    await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("endOfTurn", this.round, this.combatants.contents));
+    await combatant.onCombatChange("endOfTurn");
+  }
+
   /* -------------------------------------------------- */
 
   /**

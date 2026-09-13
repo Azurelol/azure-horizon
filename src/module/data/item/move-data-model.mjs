@@ -1,6 +1,6 @@
 import ItemDataModel from "./item-data-model.mjs";
 import { Actions } from "../../pipelines/_module.mjs";
-import { DamageDataModel } from "./fields/_module.mjs";
+import { DamageDataModel, TraitsField } from "./fields/_module.mjs";
 import ResourceDataModel from "./fields/resource-data-model.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
@@ -12,17 +12,23 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
  * @property {EffectsDataModel} effects
  * @property {AH_TriggerType} trigger
  * @property {AH_Power} power
+ * @property {TraitsField} traits
  */
 export default class MoveDataModel extends ItemDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      trigger: new StringField({ initial: "", blank: true, label: "AH.FIELD.Trigger", choices: Object.keys(AH.triggers), formOptions: getFormSelectOptions(AH.triggers), nullable: false }),
-      power: new StringField({ initial: "", blank: true, label: "AH.FIELD.Power", choices: Object.keys(AH.power), formOptions: getFormSelectOptions(AH.power), nullable: false }),
+      trigger: new StringField({ initial: "", blank: true, label: "AH.FIELD.Trigger", choices: Object.keys(AH.triggers), formOptions: getFormSelectOptions(AH.triggers), nullable: false, _part: "header" }),
+      power: new StringField({ initial: "", blank: true, label: "AH.FIELD.Power", choices: Object.keys(AH.power), formOptions: getFormSelectOptions(AH.power), nullable: false, _part: "header" }),
       damage: new EmbeddedDataField(DamageDataModel, {}),
       resource: new EmbeddedDataField(ResourceDataModel, {}),
       effects: new EmbeddedDataField(EffectsDataModel, {}),
+      traits: new TraitsField({
+        label: "AH.FIELD.Traits",
+        _part: "header",
+        formOptions: getFormSelectOptions(AH.traits.action),
+      }),
     });
   }
 

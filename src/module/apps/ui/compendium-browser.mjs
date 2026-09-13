@@ -5,6 +5,7 @@ import { systemTemplatePath } from "../../constants.mjs";
 import { CompendiumFilter } from "./compendium-filter.mjs";
 import { HTMLUtils } from "../../utils/_module.mjs";
 import {
+  AbilityTableRenderer,
   ActionTableRenderer,
   ArmorTableRenderer,
   AttackTableRenderer, ClassFeatureTableRenderer, ClassTableRenderer,
@@ -556,7 +557,7 @@ export default class CompendiumBrowser extends AHApplication {
   #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable", preview: true });
   // Adversaries
   #attackTableRenderer = new AttackTableRenderer({ title: "AH.ADVERSARY.Attack.plural", preview: true });
-  #abilityTableRenderer = new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural", preview: true });
+  #abilityTableRenderer = new AbilityTableRenderer({ title: "AH.ADVERSARY.Ability.plural", preview: true });
   #adversaryTableRenderer = new AdversaryTableRenderer({ title: "AH.COMPENDIUM.adversaries", preview: true });
   // Followers
   #moveTableRenderer = new AttackTableRenderer({ title: "AH.FOLLOWER.Move.plural", preview: true });

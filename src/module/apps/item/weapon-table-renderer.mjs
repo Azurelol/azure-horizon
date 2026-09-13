@@ -1,6 +1,6 @@
-import AttackTableRenderer from "./attack-table-renderer.mjs";
 import AH from "../../config.mjs";
 import { isActorType } from "../../constants.mjs";
+import { AttackTableRenderer } from "./attack-table-renderer.mjs";
 
 export default class WeaponTableRenderer extends AttackTableRenderer {
 
