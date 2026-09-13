@@ -51,8 +51,8 @@ export class EngramActionDataModel extends VersionedDataModel {
    * @returns {Promise<boolean>}
    */
   async perform(modifiers) {
-    const actor = this.parent.parent.actor;
     const item = this.parent.parent;
+    const actor = item.actor;
     if (isActorType(actor)) {
       if (this.check.enabled) {
         await Checks.actionCheck(actor, item, async (check, actor, item) => {

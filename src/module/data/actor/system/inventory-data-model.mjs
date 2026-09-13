@@ -73,7 +73,7 @@ export default class InventoryDataModel extends VersionedDataModel {
       for (const acc of this.accessories) {
         for (const entry of acc.system.slots.entries) {
           if (entry.item) {
-            equipped.engrams.push(entry.item);
+            equipped.engrams.push(actor.items.get(entry.item.id));
           }
         }
       }
