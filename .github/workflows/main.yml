@@ -29,6 +29,25 @@ jobs:
           version: ${{steps.get_version.outputs.version-without-v}}
           download: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/system.zip
 
+      # Set up our some variables for future use
+      # Adapted from https://github.community/t/how-to-get-just-the-tag-name/16241/7
+      # Tag name: ${{ env.TAG_NAME }}
+      # Zip name: ${{ env.ZIP_NAME }}
+      # Expected Release Download URL: ${{ env.RELEASE_DOWNLOAD_URL }}
+      # Expected Release system.json URL: ${{ env.RELEASE_INSTALL_URL }}
+      - name: Set up variables
+        id: get_vars
+        run: |
+          TAG=${GITHUB_REF/refs\/tags\//}
+          PACKAGE_ID=${{ steps.manifest.outputs.id }}
+          PACKAGE_TYPE="system"
+          echo "TAG_NAME=$TAG" >> $GITHUB_ENV
+          echo "PACKAGE_ID=$PACKAGE_ID" >> $GITHUB_ENV
+          echo "PACKAGE_TYPE=$PACKAGE_TYPE" >> $GITHUB_ENV
+          echo "ZIP_NAME=$PACKAGE_ID-$TAG.zip" >> $GITHUB_ENV
+          echo "RELEASE_DOWNLOAD_URL=https://github.com/${{ github.repository }}/releases/download/$TAG/$PACKAGE_ID-$TAG.zip" >> $GITHUB_ENV
+          echo "RELEASE_INSTALL_URL=https://github.com/${{ github.repository }}/releases/download/$TAG/$PACKAGE_TYPE.json" >> $GITHUB_ENV
+
       # Set up Node
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
