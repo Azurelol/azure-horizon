@@ -54,7 +54,6 @@ export class AHCombatant extends foundry.documents.Combatant {
       this.token?.disposition ??
       this.actor?.prototypeToken.disposition ??
       -2;
-    if ((disposition === CONST.TOKEN_DISPOSITIONS.FRIENDLY) && this.hasPlayerOwner) return 2;
     return disposition;
   }
 
