@@ -1,5 +1,6 @@
 import { enrichHTML } from "../constants.mjs";
 import StringUtils from "./string-utils.mjs";
+import { HTMLUtils } from "./_module.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
 const { SchemaField, ArrayField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
@@ -247,12 +248,13 @@ export default class FoundryUtils {
           label: item.name,
           icon: item.img ? `<img class="ah-icon --xs" src="${item.img}" alt="${item.name}"/>`
             : `<i class='ah-icon --xs ${item.icon}'></i>`,
-          onClick: async (html, target) => {
+          onClick: async (html, event) => {
+            const modifiers = HTMLUtils.getKeyboardModifiers(event);
             if (action) {
-              return action(item, target.dataset);
+              return action(item, html.dataset);
             }
             else if (item.perform) {
-              return item.perform();
+              return item.perform(modifiers);
             }
           },
         };
@@ -262,8 +264,8 @@ export default class FoundryUtils {
       html.querySelectorAll(className).forEach((el) => {
         el.addEventListener(
           "click",
-          () => {
-            return entries[0].onClick(el);
+          (evt) => {
+            return entries[0].onClick(el, evt);
           },
         );
       });

@@ -84,5 +84,8 @@ export default class AttackDataModel extends FeatureDataModel {
       value: this.actionCost,
     });
     await this.damage.configureAction(config);
+    if (config.keyboardModifiers?.shift) {
+      config.addTraits("free");
+    }
   }
 }

@@ -178,6 +178,10 @@
         "long": "Block",
         "short": "BLK"
       },
+      "Recovery": {
+        "long": "Recovery",
+        "short": "REC"
+      },
       "PressurePoint": {
         "long": "Pressure",
         "plural": "Pressure",
@@ -1034,7 +1038,9 @@
         "Slow": "Slow"
       },
       "Attack": "Attack",
+      "AttackHint": "Attack with one of the equipped weapons. Holding [Shift] will perform a free attack instead.",
       "Skill": "Skill",
+      "SkillHint": "Perform one of the characters' skills.",
       "Spell": "Spell",
       "Feature": "Feature",
       "Ability": "Ability",

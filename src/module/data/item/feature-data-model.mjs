@@ -40,12 +40,14 @@ export default class FeatureDataModel extends ItemDataModel {
     if (this.isCheck) {
       await Checks.actionCheck(this.parent.actor, this.parent, async (check, actor, item) => {
         const config = new ActionConfig(check);
+        config.setKeyboardModifiers(modifiers);
         await this._initializeCheck(config);
         await this._initializeAction(config);
       });
     }
     else {
       await Actions.perform(this.parent.actor, this.parent, async (config, actor, item) => {
+        config.setKeyboardModifiers(modifiers);
         /** @type CharacterDataModel **/
         await this._initializeAction(config);
       });

@@ -420,7 +420,7 @@ const onProcessAction = async (config, actor, item) => {
     }
 
     // 5.) Set Potency
-    if (config.isCheck) {
+    if (config.isCheck || config.hasTrait("free")) {
       config.setPotency((tiers) => {
         // Standard
         const standardDamage = new DamageData(damage);

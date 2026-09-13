@@ -236,7 +236,9 @@ export default class ActionHandler {
         resource: "mp",
         amount: recovery.mp,
       });
-      config.addTraits("stress"); // setResource("tp", recovery.tp);
+      if (this.actor.type === "hero") {
+        config.addTraits("stress"); // setResource("tp", recovery.tp);
+      }
     });
   }
 

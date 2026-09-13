@@ -23,6 +23,7 @@ const RECOVERY_TP_ADDED = 1;
 const BLOCK_RATIO_BASE = 0.05;
 const BLOCK_RATIO_LIGHT_ARMOR = 0.05;
 const BLOCK_RATIO_HEAVY_ARMOR = 0.1;
+const BLOCK_RATIO_ADVERSARY = 0.1;
 const BLOCK_TP_GAINED = 1;
 
 const XP_PER_LEVEL = 10;
@@ -418,6 +419,7 @@ export default class Formulas {
       tp = BLOCK_TP_GAINED;
     }
     else if (system.parent.type === "adversary") {
+      ratio += BLOCK_RATIO_ADVERSARY;
     }
 
     const hp = this.round(maxHP * ratio);

@@ -1,6 +1,7 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemTemplatePath } from "../../constants.mjs";
 import { ActionHandler } from "../ui/_module.mjs";
+import { Formulas } from "../../ruleset/_module.mjs";
 
 /**
  * @extends AHActorSheet
@@ -72,6 +73,12 @@ export class CharacterSheet extends AHActorSheet {
   async _preparePartContext(partId, context) {
     await super._preparePartContext(partId, context);
     switch (partId) {
+
+      case "header": {
+        context.blk = Formulas.calculateBlock(this.actor.system).hp;
+        context.rec = Formulas.calculateRecovery(this.actor.system).hp;
+        break;
+      }
       case "sidebar": {
         context.temporaryEffects = this.actor.temporaryEffects;
         context.actions = this.actionHandler.getMenuActions();

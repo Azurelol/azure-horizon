@@ -10,6 +10,7 @@ import { StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
 import EquipmentTableRenderer from "../item/equipment-table-renderer.mjs";
+import { Formulas } from "../../ruleset/_module.mjs";
 
 /**
  * @extends AHActorSheet
@@ -89,6 +90,7 @@ export class HeroSheet extends CharacterSheet {
         context.def = `${StringUtils.localize(AH.attributes[defConfig.primary].short)} + ${StringUtils.localize(AH.attributes[defConfig.secondary].short)}`;
         const mdefConfig = this.actor.system.getDefense("mdef");
         context.mdef = `${StringUtils.localize(AH.attributes[mdefConfig.primary].short)} + ${StringUtils.localize(AH.attributes[mdefConfig.secondary].short)}`;
+
         break;
       }
 

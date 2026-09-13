@@ -114,6 +114,13 @@ export class ActionInspector {
   }
 
   /**
+   * @returns {KeyboardModifiers}
+   */
+  get keyboardModifiers() {
+    return this.data[KEYBOARD_MODIFIERS];
+  }
+
+  /**
    * @returns {DamageData}
    */
   get damage() {
@@ -755,6 +762,7 @@ export class ActionConfig extends ActionInspector {
    */
   setGrade(grade) {
     this.check.data[GRADE] = grade;
+    return this;
   }
 
   /**
@@ -762,5 +770,14 @@ export class ActionConfig extends ActionInspector {
    */
   setTargeting(rule) {
     this.check.data[TARGETING] = rule;
+    return this;
+  }
+
+  /**
+   * @param {KeyboardModifiers} modifiers
+   */
+  setKeyboardModifiers(modifiers) {
+    this.data[KEYBOARD_MODIFIERS] = modifiers;
+    return this;
   }
 }
