@@ -64,9 +64,9 @@ export default class CharacterDataModel extends BaseEntityDataModel {
    */
   _prepareParameters() {
     const data = this;
-    this.parameters.def.defineCurrentProperty(() => Formulas.calculateDefense(data.attributes));
-    this.parameters.mdef.defineCurrentProperty(() => Formulas.calculateMagicDefense(data.attributes));
-    this.parameters.init.defineCurrentProperty(() => Formulas.calculateInitiative(data.attributes));
+    this.parameters.def.defineCurrentProperty(() => Formulas.calculateDefense(data));
+    this.parameters.mdef.defineCurrentProperty(() => Formulas.calculateMagicDefense(data));
+    this.parameters.init.defineCurrentProperty(() => Formulas.calculateInitiative(data));
     this.parameters.block.defineCurrentProperty(() => Formulas.calculateBlockParameter(data));
 
     // Add entries from affinities
@@ -92,6 +92,13 @@ export default class CharacterDataModel extends BaseEntityDataModel {
         }
       }
     }
+  }
+
+  /**
+   * @returns {Number}
+   */
+  get proficiency() {
+    return Formulas.calculateProficiencyBonus(this.level);
   }
 
   /**

@@ -145,6 +145,27 @@ async function prepareCheck(check, actor, item, onPrepare) {
   // ObjectUtils.lockAndValidateProperty(check, "type");
   // ObjectUtils.lockAndValidateProperty(check, "id", false);
 
+  // Collect bonuses
+  let modifiers = actor.system.parameters.checks.resolve(check.type);
+  for (const modifier of modifiers) {
+    check.modifiers.push({
+      label: modifier.key,
+      value: modifier.additive,
+    });
+  }
+
+  // Add proficiency bonus
+  switch (check.type) {
+    case "action":
+      {
+        check.modifiers.push({
+          label: "AH.CHECK.ProficiencyBonus",
+          value: actor.system.proficiency,
+        });
+      }
+      break;
+  }
+
   await AsyncHooks.invokeWithCallbacks(AH.hooks.PREPARE_CHECK, check, actor, item);
   await Events.prepareCheck(check, actor, item);
 

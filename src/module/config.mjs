@@ -680,6 +680,8 @@ AH.intents = Object.freeze({
   attack: { label: "AH.ADVERSARY.INTENT.Attack", icon: "ra ra-sword", tooltip: "AH.ADVERSARY.INTENT.AttackHint" },
 
   damage: { label: "AH.ADVERSARY.INTENT.Damage", icon: "ra ra-all-for-one", tooltip: "AH.ADVERSARY.INTENT.DamageHint" }, // Damaging ability
+  burst: { label: "AH.ADVERSARY.INTENT.Burst", icon: "ra ra-burst-blob", tooltip: "AH.ADVERSARY.INTENT.BurstHint" }, // Powerful damaging ability
+
   empower: { label: "AH.ADVERSARY.INTENT.Empower", icon: "ra ra-fire-symbol", tooltip: "AH.ADVERSARY.INTENT.EmpowerHint" }, // Offensive buff
   weaken: { label: "AH.ADVERSARY.INTENT.Weaken", icon: "ra ra-cracked-shield", tooltip: "AH.ADVERSARY.INTENT.WeakenHint" }, // Offensive debuff
   fortify: { label: "AH.ADVERSARY.INTENT.Fortify", icon: "ra ra-bolt-shield", tooltip: "AH.ADVERSARY.INTENT.FortifyHint" }, // Defensive buff

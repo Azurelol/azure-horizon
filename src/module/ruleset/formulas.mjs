@@ -82,7 +82,7 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculateProficiencyBonus(level) {
-    return level / 5;
+    return Math.round(level / 10);
   }
 
   /**
@@ -324,27 +324,33 @@ export default class Formulas {
   }
 
   /**
-   * @param {AttributesDataModel} attributes
+   * @param {CharacterDataModel} system
    * @returns {Number}
    */
-  static calculateDefense(attributes) {
-    return this.round((attributes.dex.current + attributes.mig.current) / 2);
+  static calculateDefense(system) {
+    const attributes = system.attributes;
+    const bonus = Formulas.calculateProficiencyBonus(system.level);
+    return this.round((attributes.dex.current + attributes.mig.current) / 2) + bonus;
   }
 
   /**
-   * @param {AttributesDataModel} attributes
+   * @param {CharacterDataModel} system
    * @returns {Number}
    */
-  static calculateMagicDefense(attributes) {
-    return this.round((attributes.wlp.current + attributes.ins.current) / 2);
+  static calculateMagicDefense(system) {
+    const attributes = system.attributes;
+    const bonus = Formulas.calculateProficiencyBonus(system.level);
+    return this.round((attributes.wlp.current + attributes.ins.current) / 2) + bonus;
   }
 
   /**
-   * @param {AttributesDataModel} attributes
+   * @param {CharacterDataModel} system
    * @returns {Number}
    */
-  static calculateInitiative(attributes) {
-    return this.round((attributes.dex.current + attributes.ins.current) / 2);
+  static calculateInitiative(system) {
+    const attributes = system.attributes;
+    const bonus = Formulas.calculateProficiencyBonus(system.level);
+    return this.round((attributes.dex.current + attributes.ins.current) / 2) + bonus;
   }
 
   /**

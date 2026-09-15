@@ -225,6 +225,7 @@
         "Incoming": "Incoming",
         "Outgoing": "Outgoing",
         "Initiative": "Initiative",
+        "Proficiency": "Proficiency",
         "Block": "Block Value",
         "Recovery": "Recovery Value"
       }
@@ -319,6 +320,8 @@
         "AttackHint": "The adversary intends to perform one of their basic attacks.",
         "Damage": "Damage",
         "DamageHint": "The adversary intends to use a damaging ability.",
+        "Burst": "Burst",
+        "BurstHint": "The adversary intends to use a powerful damaging ability.",
         "Empower": "Empower",
         "EmpowerHint": "The adversary intends to boost their own offensive power.",
         "Weaken": "Weaken",
@@ -401,6 +404,7 @@
       "Miss": "Miss",
       "PrimaryAttribute": "Primary Attribute",
       "ScalingBonus": "Scaling Bonus",
+      "ProficiencyBonus": "ProficiencyBonus",
       "SecondaryAttribute": "Secondary Attribute",
       "RITUAL": {
         "OUTCOME": {

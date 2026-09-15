@@ -54,6 +54,18 @@ export default class AttackDataModel extends FeatureDataModel {
     });
   }
 
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    const updates = {
+      ["system.check.enabled"]: true,
+      ["system.damage.enabled"]: true,
+      ["system.attributes.enabled"]: true,
+    };
+    this.parent.updateSource(updates);
+  }
+
   static migrateData(source) {
     if (!source.attributes.enabled) {
       source.attributes.enabled = true;

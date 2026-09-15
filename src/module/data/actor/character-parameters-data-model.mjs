@@ -11,7 +11,7 @@ import { Formulas } from "../../ruleset/_module.mjs";
  * @property {ParameterDataModel} block Bonus BLK generation. (As a percentage)
  * @property {ExchangeModifiersDataModel} recovery Bonus HP recovery.
  * @property {DamageModifiersDataModel} damage
- * @property {CheckModifiersDataModel} check
+ * @property {CheckModifiersDataModel} checks
  */
 export class CharacterParametersDataModel extends VersionedDataModel {
   static defineSchema() {
@@ -25,7 +25,7 @@ export class CharacterParametersDataModel extends VersionedDataModel {
       recovery: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
 
       damage: new EmbeddedDataField(DamageModifiersDataModel, {}),
-      check: new EmbeddedDataField(CheckModifiersDataModel, {}),
+      checks: new EmbeddedDataField(CheckModifiersDataModel, {}),
     });
   }
 
@@ -56,13 +56,13 @@ export class CharacterParametersDataModel extends VersionedDataModel {
 
     const system = this.parent;
 
-    // // Recovery
-    // const recovery = Formulas.calculateRecovery(system);
-    // result.push({
-    //   key: "AH.CHARACTER.PARAMETER.Recovery",
-    //   additive: this.recovery.outgoing,
-    //   multiplicative: 1 + (this.block.current / 100),
-    // });
+    result.push({
+      key: "AH.CHARACTER.PARAMETER.Proficiency",
+      additive: this.parent.proficiency,
+      multiplicative: 1,
+    });
+
+    result.push(...Modifiers.resolveFromModel(this.checks));
 
     // Block
     const block = Formulas.calculateBlock(system);

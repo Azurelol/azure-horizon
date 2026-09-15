@@ -16,6 +16,7 @@ import { ActionConfig } from "../../helpers/action-configuration.mjs";
 const { SchemaField, StringField, EmbeddedDataField, HTMLField, NumberField } = foundry.data.fields;
 
 /**
+ * @property {String} name
  * @property {ActionAttributesDataModel} attributes
  * @property {CheckDataModel} check
  * @property {ActionDataModel} action
@@ -173,5 +174,16 @@ export default class EngramDataModel extends EquipmentDataModel {
 
   get transferEffects() {
     return this.slotted;
+  }
+
+  /**
+   * @return {String}
+   */
+  get tooltip() {
+    let tt = `${this.parent.name}`;
+    for (const engram of this.available) {
+      tt += `<br> -${engram.name}`;
+    }
+    return tt;
   }
 }

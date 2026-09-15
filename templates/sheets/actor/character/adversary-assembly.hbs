@@ -8,7 +8,9 @@
         {{ahStringField path="system.profile.turns" value=system.profile.turns label='AH.FIELD.Turns' type='Number'}}
       {{/if}}
       {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role' options=(ahFormOptions 'role')}}
-      {{ahTraitsField schema=systemFields.profile.fields.pressure path='system.profile.pressure' label="AH.DAMAGE.Pressure" value=system.profile.pressure options=(ahFormOptions 'traits.pressure')}}
+        {{#if system.ranked}}
+          {{ahTraitsField schema=systemFields.profile.fields.pressure path='system.profile.pressure' label="AH.DAMAGE.Pressure" value=system.profile.pressure options=(ahFormOptions 'traits.pressure')}}
+        {{/if}}
     </div>
 
     <div class="ah-grid-2">

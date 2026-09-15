@@ -20,10 +20,7 @@
       {{ahInlineProperty 'attributes' result.primary.attribute value=result.primary.result }}
       {{ahInlineProperty 'attributes' result.secondary.attribute value=result.secondary.result }}
       {{#if result.modifierTotal}}
-        <span data-tooltip="{{localize 'AH.CHARACTER.Modifier.long'}}">
-            <i class="ah-icon --s {{ahIconClass 'modifier'}}"></i>
-          {{result.modifierTotal}}
-          </span>
+        {{ahInlineProperty 'icons' 'modifier' value=result.modifierTotal tooltip='AH.CHARACTER.Modifier.long' }}
       {{/if}}
     </div>
   </div>

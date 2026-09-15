@@ -60,12 +60,13 @@ const ROLE_ROUTINES = Object.freeze({
       default: [
         ["attack", "damage"],
         ["empower", "damage"],
+        ["prepare", "burst"],
       ],
     },
     champion: {
       default: [
-        ["attack", "damage"],
-        ["empower", "damage"],
+        ["attack", "damage", "empower", "damage"],
+        ["empower", "damage", "prepare", "burst"],
       ],
     },
   },
@@ -114,7 +115,7 @@ const ROLE_ROUTINES = Object.freeze({
     },
   },
 
-  // Artillery, focuses on heavy damage at range
+  // Focuses on heavy damage at range
   artillery: {
     standard: {
       default: [
@@ -131,8 +132,97 @@ const ROLE_ROUTINES = Object.freeze({
     },
     champion: {
       default: [
-        ["attack", "damage", "prepare", "damage"],
+        ["attack", "damage", "prepare", "burst"],
+        ["attack", "empower", "prepare", "burst"],
+      ],
+    },
+  },
+
+  // Lowers enemy effectiveness
+  saboteur: {
+    standard: {
+      default: [
+        ["attack"],
+        ["weaken"],
+        ["status"],
+      ],
+    },
+    elite: {
+      default: [
+        ["attack", "weaken", "status"],
+        ["damage", "prepare", "control"],
+      ],
+    },
+    champion: {
+      default: [
+        ["attack", "damage", "prepare", "status"],
         ["attack", "empower", "prepare", "damage"],
+      ],
+    },
+  },
+
+  // Changes the battlefield
+  controller: {
+    standard: {
+      default: [
+        ["attack"],
+        ["control"],
+      ],
+    },
+    elite: {
+      default: [
+        ["attack", "control", "status"],
+        ["attack", "prepare", "control"],
+      ],
+    },
+    champion: {
+      default: [
+        ["attack", "damage", "prepare", "control"],
+        ["damage", "prepare", "control", "damage"],
+      ],
+    },
+  },
+
+  // Enhances allies
+  supporter: {
+    standard: {
+      default: [
+        ["attack"],
+        ["empower"],
+      ],
+    },
+    elite: {
+      default: [
+        ["attack", "empower", "damage"],
+        ["empower", "fortify", "damage"],
+      ],
+    },
+    champion: {
+      default: [
+        ["attack", "fortify", "damage", "empower"],
+        ["empower", "prepare", "damage", "empower"],
+      ],
+    },
+  },
+
+  // Commands allies
+  leader: {
+    standard: {
+      default: [
+        ["attack"],
+        ["empower"],
+      ],
+    },
+    elite: {
+      default: [
+        ["attack", "empower", "damage"],
+        ["empower", "fortify", "damage"],
+      ],
+    },
+    champion: {
+      default: [
+        ["attack", "fortify", "damage", "empower"],
+        ["empower", "prepare", "damage", "empower"],
       ],
     },
   },

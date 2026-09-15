@@ -18,7 +18,7 @@ export class ActionDataModel extends OptionalFieldsetDataModel {
       speed: new StringField({
         blank: true,
         label: "AH.ACTION.Speed",
-        initial: "instant",
+        initial: "",
         formOptions: getFormSelectOptions(AH.speed),
         choices: () => AH.speed,
         required: true }),

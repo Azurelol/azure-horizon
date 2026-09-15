@@ -1,6 +1,7 @@
 import AttackDataModel from "./attack-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { WeaponOptionsDataModel } from "./fields/weapon-options-data-model.mjs";
+import { EquipmentDataMixin } from "./equipment-data-model.mjs";
 
 /**
  * Represents a hero's weapon, used for performing basic attacks and with some skills.
@@ -11,7 +12,7 @@ import { WeaponOptionsDataModel } from "./fields/weapon-options-data-model.mjs";
  * @property {AH_WeaponTrait[]} traits
  * @property {WeaponOptionsDataModel} options
  */
-export default class WeaponDataModel extends AttackDataModel {
+export default class WeaponDataModel extends EquipmentDataMixin(AttackDataModel) {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField } = foundry.data.fields;

@@ -13,7 +13,11 @@
         <tr>
           <td>{{localize entry.key}}</td>
           <td>{{numberFormat entry.additive decimals=0 sign=true}}</td>
-          <td>{{ahPercentModifier entry.multiplicative}}</td>
+          <td>
+            {{#unless (eq entry.multiplicative 1)}}
+              {{ahPercentModifier entry.multiplicative}}
+            {{/unless}}
+          </td>
         </tr>
       {{/if}}
     {{else}}
