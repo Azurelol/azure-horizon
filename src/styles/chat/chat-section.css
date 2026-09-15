@@ -241,6 +241,7 @@
   text-transform: uppercase;
   font-weight: bolder;
   justify-content: center;
+  gap: 0.25rem;
   align-items: center;
   color: var(--ah-content-primary);
 }
