@@ -145,14 +145,16 @@ export const ChatMessageSections = Object.freeze({
 
   /**
    * @param {ChatMessageSectionCollection} sections
+   * @param {AH_Defense} targetDefense
    * @param {TargetData[]} targets
    * @param {ChatAction[]} actions
    * @param {number} [order]
    */
-  targets: (sections, targets, actions, order = ChatSectionOrder.targets) => {
+  targets: (sections, targetDefense, targets, actions, order = ChatSectionOrder.targets) => {
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.targets,
       data: {
+        targetDefense,
         targets,
         actions,
       },

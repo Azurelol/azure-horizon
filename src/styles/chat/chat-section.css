@@ -203,6 +203,7 @@
   border: var(--ah-border);
   padding-left: 8px;
   color: var(--ah-content-primary);
+  gap: 0.5rem;
   background: var(--ah-potency-unknown-surface);
 
   &.reduced {
@@ -233,6 +234,15 @@
 .ah-chat-section__target__name {
   flex: 2;
   gap: 0.5rem;
+}
+
+.ah-chat-section__defense {
+  display: flex;
+  text-transform: uppercase;
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
+  color: var(--ah-content-primary);
 }
 
 .ah-chat-section__potency {

@@ -126,7 +126,7 @@ async function addSections(builderData, config, actor, item) {
         builderData.actions.push(...config.potencies.standard.components.flatMap(c => c.actions));
         builderData.actions.push(...config.potencies.powerful.components.flatMap(c => c.actions));
       }
-      ChatMessageSections.targets(builderData.sections, targets, builderData.actions);
+      ChatMessageSections.targets(builderData.sections, config.getTargetedDefense(), targets, builderData.actions);
     }
   }
 

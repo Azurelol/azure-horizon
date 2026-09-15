@@ -9,6 +9,12 @@
             {{ahAcronym target.name 14}}
           </span>
         </div>
+        <!-- Defense -->
+        <span class="ah-chat-section__defense">
+          {{log 'def' ../targetDefense}}
+          <i class="ah-icon --xs {{ahIconClass ../targetDefense}}"></i>
+          {{target.difficulty}}
+        </span>
         <!-- Potency -->
         <span class="ah-chat-section__potency">
           {{localize (ahLocaleKey 'potencies' target.potency)}}

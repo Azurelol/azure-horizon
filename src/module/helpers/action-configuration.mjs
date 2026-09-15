@@ -619,6 +619,7 @@ export class ActionConfig extends ActionInspector {
         // Character types
         if (target.defenses) {
           const difficulty = target.defenses[targetedDefense];
+          this.check.data[TARGETS][t].difficulty = difficulty;
           this.check.data[TARGETS][t].potency = Formulas.calculatePotency(this.check, difficulty);
         }
         // Entity types (always hit)
