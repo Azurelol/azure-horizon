@@ -1,6 +1,6 @@
 import EquipmentDataModel from "./equipment-data-model.mjs";
 import { VersionedDataModel } from "../api/versioned-data-model.mjs";
-import AH from "../../config.mjs";
+import AH, { getFormSelectOptions } from "../../config.mjs";
 import { ActionDataModel } from "./fields/action-data-model.mjs";
 import { ActionCostDataModel } from "./fields/action-cost-data-model.mjs";
 import { EffectsDataModel } from "./fields/effects-data-model.mjs";
@@ -144,7 +144,7 @@ export default class EngramDataModel extends EquipmentDataModel {
     if (this.level.max >= 2) {
       result.push(this.second);
     }
-    return result;
+    return result.filter(e => e.action.enabled);
   }
 
   // TODO: Optimize

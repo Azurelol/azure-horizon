@@ -3,5 +3,6 @@
   {{#if (eq model.type 'action')}}
     {{ahStringField path=(ahConcat path '.points') label="AH.FIELD.Points" value=model.points }}
   {{/if}}
+  {{ahStringField path=(ahConcat path '.speed') label="AH.ACTION.Speed" value=model.speed blank=true options=(ahFormOptions 'speed')}}
   {{ahTraitsField schema=field.fields.traits path=(ahConcat path '.traits') label="AH.COMMON.Traits" value=model.traits options=(ahFormOptions 'traits.action')}}
 {{/ahFieldset}}

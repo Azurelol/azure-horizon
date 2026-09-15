@@ -5,7 +5,7 @@ import { ActionDataModel } from "./fields/action-data-model.mjs";
 /**
  * A spell is a feature tied to a magical domain.
  * @property {AH_Domain} domain Can also be empty for non-domain spells.
- * @property {AH_Speed} speed
+
  */
 export default class SpellDataModel extends ActiveFeatureDataModel {
   /** @inheritdoc */
@@ -19,14 +19,6 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
         formOptions: getFormSelectOptions(AH.domains),
         _part: "header",
         choices: () => AH.domains }),
-      speed: new StringField({
-        blank: true,
-        label: "AH.ACTION.Speed",
-        initial: "instant",
-        formOptions: getFormSelectOptions(AH.speed),
-        _part: "header",
-        choices: () => AH.speed,
-        required: true }),
     });
   }
 
@@ -37,6 +29,5 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
     if (this.domain) {
       config.addTraits(this.domain);
     }
-    config.addTraits(this.speed);
   }
 }

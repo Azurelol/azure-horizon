@@ -232,13 +232,14 @@ export default class InventoryDataModel extends VersionedDataModel {
   }
 
   /**
+   * @param {AH_EngramKind} kind
    * @returns {EngramActionDataModel[]}
    */
-  getEngramSpells() {
+  getEngramsOfKind(kind = "magic") {
     const equipped = this.equipped;
-    const magicEngrams = equipped.engrams.filter(e => e.system.kind === "magic");
-    const availableEngramSpells = magicEngrams.map(e => e.system.available).flat();
-    return availableEngramSpells;
+    const engrams = equipped.engrams.filter(e => e.system.kind === kind);
+    const available = engrams.map(e => e.system.available).flat();
+    return available;
   }
 
 }

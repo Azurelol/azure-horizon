@@ -104,7 +104,7 @@ export class HeroSheet extends CharacterSheet {
           await this.#classTableRenderer.render(this.actor.getItemsByType("class")),
         ];
 
-        const availableEngramSpells = this.system.equipment.getEngramSpells();
+        const availableEngramSpells = this.system.equipment.getEngramsOfKind();
         if (availableEngramSpells.length > 0) {
           context.tables.push(await this.#engramTableRenderer.render(availableEngramSpells));
 

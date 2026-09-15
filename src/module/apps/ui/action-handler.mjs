@@ -264,8 +264,10 @@ export default class ActionHandler {
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"attack\"]", attacks, undefined, true);
     // SPELLS
     const spells = ["spell"].map((t) => this.actor.getItemsByType(t)).flat();
-    const magicEngrams = this.actor.system.equipment.getEngramSpells();
-    spells.push(...magicEngrams);
+    if (this.actor.type === "hero") {
+      const magicEngrams = this.actor.system.equipment.getEngramsOfKind();
+      spells.push(...magicEngrams);
+    }
     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"spell\"]", spells);
     // INVENTORY
     const consumables = this.actor.getItemsByType("consumable");

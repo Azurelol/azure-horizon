@@ -1,12 +1,12 @@
 import AH, { getFormSelectOptions } from "../../../config.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
-import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 import { TraitsField } from "./_module.mjs";
 import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mjs";
 
 /**
  * @property {AH_ActionType} type The type of action, if it's one.
  * @property {Number} points How many action points the action costs.
+ * @property {AH_Speed} speed
  * @property {TraitsField} traits
  */
 export class ActionDataModel extends OptionalFieldsetDataModel {
@@ -15,6 +15,13 @@ export class ActionDataModel extends OptionalFieldsetDataModel {
     return Object.assign(super.defineSchema(), {
       type: new StringField({ initial: "", blank: true, choices: Object.keys(AH.actionTypes), required: true }),
       points: new NumberField({ initial: 1, max: 3 }),
+      speed: new StringField({
+        blank: true,
+        label: "AH.ACTION.Speed",
+        initial: "instant",
+        formOptions: getFormSelectOptions(AH.speed),
+        choices: () => AH.speed,
+        required: true }),
       traits: new TraitsField({
         options: getFormSelectOptions(AH.traits.action),
       }),
@@ -42,6 +49,7 @@ export class ActionDataModel extends OptionalFieldsetDataModel {
       }
     }
     config.addTraits(Array.from(this.traits));
+    config.addTraits(this.speed);
   }
 
   static get template() {
