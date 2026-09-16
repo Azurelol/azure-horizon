@@ -13,13 +13,16 @@ import { systemID } from "./src/module/constants.mjs";
  * Exports the API so that it can be used at runtime
  */
 function exportAPI() {
-  globalThis.azureHorizon = {
+  const api = {
     data,
     helpers,
     documents,
+    hooks: AH.hooks,
     index: data.Compendium.CompendiumIndex.instance,
     registries: AH.dataModelRegistries,
   };
+  globalThis.azureHorizon = api;
+  game.system.api = api;
 }
 
 /**
