@@ -1,0 +1,95 @@
+{"frames": {
+
+"piercing-0.png":
+{
+	"frame": {"x":1,"y":329,"w":105,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":77,"y":56,"w":105,"h":70},
+	"sourceSize": {"w":192,"h":192}
+},
+"piercing-1.png":
+{
+	"frame": {"x":108,"y":329,"w":90,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":65,"w":90,"h":58},
+	"sourceSize": {"w":192,"h":192}
+},
+"piercing-2.png":
+{
+	"frame": {"x":154,"y":164,"w":147,"h":149},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":22,"w":147,"h":149},
+	"sourceSize": {"w":192,"h":192}
+},
+"piercing-3.png":
+{
+	"frame": {"x":310,"y":288,"w":124,"h":124},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":34,"w":124,"h":124},
+	"sourceSize": {"w":192,"h":192}
+},
+"piercing-4.png":
+{
+	"frame": {"x":200,"y":315,"w":108,"h":98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":43,"w":108,"h":98},
+	"sourceSize": {"w":192,"h":192}
+},
+"piercing-5.png":
+{
+	"frame": {"x":303,"y":154,"w":132,"h":119},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":32,"w":132,"h":119},
+	"sourceSize": {"w":192,"h":192}
+},
+"piercing-6.png":
+{
+	"frame": {"x":293,"y":1,"w":151,"h":131},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":25,"w":151,"h":131},
+	"sourceSize": {"w":192,"h":192}
+},
+"piercing-7.png":
+{
+	"frame": {"x":150,"y":1,"w":161,"h":141},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":20,"w":161,"h":141},
+	"sourceSize": {"w":192,"h":192}
+},
+"piercing-8.png":
+{
+	"frame": {"x":1,"y":1,"w":169,"h":147},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":17,"w":169,"h":147},
+	"sourceSize": {"w":192,"h":192}
+},
+"piercing-9.png":
+{
+	"frame": {"x":1,"y":172,"w":155,"h":151},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":15,"w":155,"h":151},
+	"sourceSize": {"w":192,"h":192}
+}},
+"animations": {
+	"piercing": ["piercing-0.png","piercing-1.png","piercing-2.png","piercing-3.png","piercing-4.png","piercing-5.png","piercing-6.png","piercing-7.png","piercing-8.png","piercing-9.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "piercing_1.png",
+	"format": "RGBA8888",
+	"size": {"w":435,"h":414},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d9238ca5a30025840e228c2792c3b0a9:08875595d238d728ecd33e1a0d3111e9:cd1a4c843533e6b0046572b801dd6b3c$"
+}
+}

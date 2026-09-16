@@ -1,0 +1,20 @@
+{"frames": {
+
+"impact_1.png":
+{
+	"frame": {"x":1,"y":1,"w":640,"h":96},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":0,"w":640,"h":96},
+	"sourceSize": {"w":672,"h":96}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "impact_1.png",
+	"format": "RGBA8888",
+	"size": {"w":642,"h":98},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d13035784360d67604049641051529e6:4e1d44f26a2071a1b0b6f67cd0c5d2e0:4ae28b37cef7ca5c3bf90fae4338aa6d$"
+}
+}

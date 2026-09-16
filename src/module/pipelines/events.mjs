@@ -58,7 +58,7 @@ async function calculateExpense(actor, item, targetData, expense) {
  * @typedef DamageEvent
  * @property {CharacterInfo|null} source
  * @property {CharacterInfo} target
- * @property {DamageData} damage
+ * @property {DamageResolution} damage
  * @property {SourceInfo} sourceInfo
  * @property {AHItem} item
  * @property {AH_ItemGroup} itemGroup
@@ -66,7 +66,7 @@ async function calculateExpense(actor, item, targetData, expense) {
  * @property {String} origin An id used to prevent cascading.
  */
 
-async function applyDamage(damage, item, sourceInfo, sourceActor, targetActor, origin, renderData) {
+async function applyDamage(sourceInfo, damage, item, sourceActor, targetActor, origin, renderData) {
   const source = CharacterInfo.fromActor(sourceActor);
   const target = CharacterInfo.fromActor(targetActor);
   const itemGroup = ItemInfo.resolveItemGroup(item);
@@ -76,9 +76,9 @@ async function applyDamage(damage, item, sourceInfo, sourceActor, targetActor, o
     damage: damage,
     item: item,
     source: source,
-    sourceActor: sourceInfo,
-    itemGroup: itemGroup,
     target: target,
+    sourceInfo: sourceInfo,
+    itemGroup: itemGroup,
     origin: origin,
     renderData: renderData,
   };
@@ -230,7 +230,7 @@ async function prepareCheck(check, actor, item) {
  * @property {CharacterInfo} source
  * @property {SourceInfo} sourceInfo
  * @property {CharacterInfo[]} targets
- * @property {AHItem} item
+ * @property {AH_ItemReference} item
  * @property {AH_ItemGroup} itemGroup
  * @remarks Emitted when a check is about to be performed
  */
@@ -246,7 +246,7 @@ async function performAction(config, actor, item) {
   const event = {
     config: config,
     source: source,
-    item: item,
+    item: ItemInfo.toItemReference(item),
     itemGroup: ItemInfo.resolveItemGroup(item),
     sourceInfo: sourceInfo,
     targets: targets,

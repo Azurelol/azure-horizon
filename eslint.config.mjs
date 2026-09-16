@@ -56,6 +56,9 @@ export default defineConfig([
         _del: "readonly",
         _replace: "readonly",
         _loc: "readonly",
+        // Modules
+        Sequencer: "readonly",
+        Sequence: "readonly",
       },
 
       ecmaVersion: "latest",

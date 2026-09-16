@@ -67,5 +67,16 @@
     "url": "https://alkakrab.itch.io/270bundle",
     "license": "PAID",
     "remark": "Will use to start with!"
+  },
+  "unTiedGames": {
+    "author": "UnTied Games",
+    "url": "https://untiedgames.itch.io/",
+    "license": "FREE, PAID",
+    "remark": "Testing with the free assets, may try the paid packs."
+  },
+  "dreamCircle": {
+    "author": "Dream Circle",
+    "url": "https://dreams-circle.itch.io/",
+    "license": "Free, Paid"
   }
 }

@@ -5,6 +5,7 @@ import * as documents from "./src/module/documents/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
 import * as pipelines from "./src/module/pipelines/_module.mjs";
 import * as canvas from "./src/module/canvas/_module.mjs";
+import * as fx from "./src/module/fx/_module.mjs";
 import AH from "./src/module/config.mjs";
 import { localizeHelper } from "./src/module/utils/utils.mjs";
 import { systemID } from "./src/module/constants.mjs";
@@ -131,6 +132,7 @@ function initializeSystems() {
   apps.UI.Manual.initialize();
   helpers.Themes.initialize();
   canvas.AHTextures.preload();
+  fx.FX.initialize();
 
   // We initialize hotkeys && controls last as they will call a registration hook
   initializeApps();

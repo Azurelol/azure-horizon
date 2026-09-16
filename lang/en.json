@@ -537,7 +537,13 @@
       "Scale": "Scale",
       "ScaleHint": "The scale affects how HP/DMG are scaled. Should numbers go up?",
       "ActiveParty": "Active Party",
-      "ActivePartyHint": "The campaign's current party. Make sure to set it for various automation features."
+      "ActivePartyHint": "The campaign's current party. Make sure to set it for various automation features.",
+      "SFX": "Sound Effects",
+      "SFXHint": "Whether to play system-native sound effects.",
+      "VFX": "Visual Effects",
+      "VFXHint": "Whether to play system-native visual effects.",
+      "Volume": "Volume",
+      "VolumeHint": "Affects the volume of all playback sounds."
     },
     "DIFFICULTY": {
       "Horizon": "Horizon",

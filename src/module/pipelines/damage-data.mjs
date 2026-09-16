@@ -22,6 +22,8 @@
 /**
  * @typedef DamageResolution
  * @property {Number} total
+ * @property modifiers
+ * @property types
  * @property {DamageInstance[]} instances
  */
 
@@ -243,6 +245,7 @@ export default class DamageData {
       ...calculation,
       modifiers: active.map(a => a.modifiers).flat(),
       instances: active,
+      types: active.map(a => a.type).flat(),
     };
   }
 

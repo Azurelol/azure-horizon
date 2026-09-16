@@ -257,6 +257,13 @@ export class ActionInspector {
   }
 
   /**
+   * @return {String[]}
+   */
+  get traits() {
+    return this.data[TRAITS] ?? [];
+  }
+
+  /**
    * @param trait
    * @returns {Boolean}
    */

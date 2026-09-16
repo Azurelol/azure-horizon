@@ -1,5 +1,24 @@
 
+/**
+ * @typedef AH_ItemReference
+ * @property {String} name
+ * @property {String} slug
+ * @property {String} uuid
+ */
+
 export default class ItemInfo {
+
+  /**
+   * @param {AHItem} item
+   * @returns {AH_ItemReference}
+   */
+  static toItemReference(item) {
+    return {
+      name: item.name,
+      slug: item.system.slug,
+      uuid: item.uuid,
+    };
+  }
 
   /**
    * @param {AHItem} item

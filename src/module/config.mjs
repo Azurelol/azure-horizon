@@ -897,6 +897,15 @@ AH.settings = Object.freeze({
     type: String,
     filePicker: "folder",
   },
+  sfx: {
+    name: "AH.SETTING.SFX",
+    hint: "AH.SETTING.SFXHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    requiresReload: false,
+    default: true,
+  },
   activeParty: {
     name: "AH.SETTING.ActiveParty",
     hint: "AH.SETTING.ActivePartyHint",
