@@ -1,6 +1,7 @@
 import EquipmentDataModel from "./equipment-data-model.mjs";
 import { isActorType, systemTemplatePath } from "../../constants.mjs";
 import { ObjectUtils } from "../../utils/_module.mjs";
+import { PotentialsDataModel } from "./fields/potentials-data-model.mjs";
 
 const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField, ForeignDocumentField } = foundry.data.fields;
 
@@ -29,6 +30,7 @@ export default class AccessoryDataModel extends EquipmentDataModel {
   static defineSchema() {
     const { SchemaField, StringField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      potentials: new EmbeddedDataField(PotentialsDataModel),
       slots: new SchemaField({
         entries: new ArrayField(new EngramDataField(), {}),
         max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.ITEM.Engram.plural", _part: "header", _classes: "ah-flex-shrink" }),

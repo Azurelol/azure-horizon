@@ -1438,6 +1438,7 @@ AH.icons = {
   options: "fas fa-gear",
   targeting: "fas fa-bullseye",
   engram: "ra ra-ball",
+  potential: "ra ra-ball",
 
   openCheck: "ah-icon-check-open",
   attributeCheck: "ah-icon-check-attribute",

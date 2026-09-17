@@ -28,10 +28,10 @@ export function DocumentSheetMixin(ContainerClass) {
     static async #addArrayElement(event, target) {
       const path = target.dataset.path;
       if (path) {
-        const array = ObjectUtils.getProperty(this.item, path);
+        const array = ObjectUtils.getProperty(this.document, path);
         if (array) {
           array.push(null);
-          await this.item.update({
+          await this.document.update({
             [`${path}`]: array,
           });
         }
@@ -59,10 +59,10 @@ export function DocumentSheetMixin(ContainerClass) {
           }
         }
         /** @type [] **/
-        const array = ObjectUtils.getProperty(this.actor, path);
+        const array = ObjectUtils.getProperty(this.document, path);
         if (array && (index !== undefined)) {
           array.splice(index, 1);
-          await this.actor.update({
+          await this.document.update({
             [`${path}`]: array,
           });
         }
@@ -81,7 +81,7 @@ export function DocumentSheetMixin(ContainerClass) {
         increment = -increment;
       }
 
-      const lookup = this.actor.resolveTracker(id);
+      const lookup = this.document.resolveTracker(id);
       if (lookup) {
         return Tracks.updateForDocument(lookup.document, path, increment);
       }

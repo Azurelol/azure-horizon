@@ -1,15 +1,13 @@
 import ItemDataModel from "./item-data-model.mjs";
-import { TraitsField } from "./fields/_module.mjs";
-import AH, { getFormSelectOptions } from "../../config.mjs";
-import { systemTemplatePath } from "../../constants.mjs";
+import AH from "../../config.mjs";
+import { PotentialsDataModel } from "./fields/potentials-data-model.mjs";
 
-const { StringField, NumberField, SchemaField } = foundry.data.fields;
+const { StringField, ArrayField, NumberField, SchemaField, EmbeddedDataField } = foundry.data.fields;
 
 export default class EquipmentDataModel extends EquipmentDataMixin(ItemDataModel) {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      // equipment-specific fields go here
     });
   }
 }
@@ -21,8 +19,6 @@ export default class EquipmentDataModel extends EquipmentDataMixin(ItemDataModel
 export function EquipmentDataMixin(Base) {
   /**
    * @property {AH_Rarity} rarity
-   * @property {Number} level.current
-   * @property {Number} level.max
    */
   return class EquipmentData extends Base {
     /** @inheritdoc */

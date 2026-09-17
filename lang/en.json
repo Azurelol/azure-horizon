@@ -732,7 +732,10 @@
       "Skill": "Skill",
       "Domain": "Domain",
       "None": "None",
-      "Potential": "Potential",
+      "Potential":  {
+        "long": "Potential",
+        "plural": "Potentials"
+      },
       "PotentialMaximum": "PL. MAX",
       "Self": "Self",
       "Scene": "Scene",

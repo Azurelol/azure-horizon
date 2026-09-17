@@ -15,6 +15,6 @@ export default class FieldsetDataModel extends VersionedDataModel {
    * @returns {string} The system template path to the partial.
    */
   static get template() {
-    throw Error("Template not implemented.");
+    throw Error("Template not implemented for a fieldset data model.");
   }
 }
