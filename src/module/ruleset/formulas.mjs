@@ -16,13 +16,14 @@ const CLASS_BENEFIT_MP = 10;
 const CLASS_BENEFIT_TP = 2;
 const CLASS_BENEFIT_IP = 2;
 
-const RECOVERY_HP_GAINED = 0.3;
-const RECOVERY_MP_SPENT = 0.2;
-const RECOVERY_TP_ADDED = 1;
+const RECOVERY_HP_GAINED_BASE = 0.2;
+const RECOVERY_MP_SPENT_BASE = 0.2;
+const RECOVERY_TP_ADDED_BASE = 1;
 
 const BLOCK_RATIO_BASE = 0.05;
-const BLOCK_RATIO_LIGHT_ARMOR = 0.05;
-const BLOCK_RATIO_HEAVY_ARMOR = 0.1;
+const BLOCK_RATIO_LIGHT = 0.05;
+const BLOCK_RATIO_HEAVY = 0.1;
+const MOVEMENT_MIN = 1;
 const BLOCK_RATIO_ADVERSARY = 0.1;
 const BLOCK_TP_GAINED = 1;
 
@@ -33,8 +34,6 @@ const TRAVEL_DANGER_THRESHOLD = 6;
 
 const PERIL_THRESHOLD = 0.5;
 const CRISIS_THRESHOLD = 0.2;
-
-const MIN_MOVEMENT = 1;
 
 /**
  * @typedef Modifier
@@ -379,9 +378,27 @@ export default class Formulas {
     const maxHP = system.resources.hp.max;
     const maxMP = system.resources.mp.max;
 
-    const hp = this.round(maxHP * RECOVERY_HP_GAINED);
-    const mp = this.round(maxMP * RECOVERY_MP_SPENT);
-    const tp = RECOVERY_TP_ADDED;
+    let hpFactor = RECOVERY_HP_GAINED_BASE;
+    let mpFactor = RECOVERY_MP_SPENT_BASE;
+    let tpAdded = RECOVERY_TP_ADDED_BASE;
+
+    if (system.parent.type === "hero") {
+      const equipment = system.equipment.equipped;
+      const weights = [equipment.armor?.system.weight,
+        equipment.mainHand?.system.weight].filter(Boolean);
+      for (const weight of weights) {
+        if (weight === "light") {
+          hpFactor += 0.05;
+        }
+        else if (weight === "heavy") {
+          tpAdded += 1;
+        }
+      }
+    }
+
+    let hp = this.round(maxHP * hpFactor);
+    let mp = this.round(maxMP * mpFactor);
+    let tp = tpAdded;
 
     return {
       hp,
@@ -411,17 +428,15 @@ export default class Formulas {
     }
 
     if (system.parent.type === "hero") {
-      const equippedItems = system.getEquippedItems();
-      if (equippedItems.armor) {
-        /** @type ArmorDataModel **/
-        const armorData = equippedItems.armor.system;
-        switch (armorData.weight) {
-          case "heavy":
-            ratio += BLOCK_RATIO_HEAVY_ARMOR;
-            break;
-          case "light":
-            ratio += BLOCK_RATIO_LIGHT_ARMOR;
-            break;
+      const equipment = system.equipment.equipped;
+      const weights = [equipment.armor?.system.weight,
+        equipment.mainHand?.system.weight].filter(Boolean);
+      for (const weight of weights) {
+        if (weight === "light") {
+          ratio += BLOCK_RATIO_LIGHT;
+        }
+        else if (weight === "heavy") {
+          ratio += BLOCK_RATIO_HEAVY;
         }
       }
       tp = BLOCK_TP_GAINED;
@@ -457,7 +472,7 @@ export default class Formulas {
         }
       }
     }
-    return Math.max(MIN_MOVEMENT, result);
+    return Math.max(MOVEMENT_MIN, result);
   }
 
   /**
