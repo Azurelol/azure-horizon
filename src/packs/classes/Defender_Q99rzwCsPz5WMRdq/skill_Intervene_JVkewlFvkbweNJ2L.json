@@ -70,7 +70,11 @@
       "targeting": "single",
       "type": "reaction",
       "points": 1,
-      "traits": []
+      "traits": [
+        "cooldown"
+      ],
+      "enabled": true,
+      "speed": ""
     },
     "usage": {
       "schemaVersion": 1,

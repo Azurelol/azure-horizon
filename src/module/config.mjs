@@ -1262,6 +1262,7 @@ AH.traits = {
     cleave: { label: "AH.TARGETING.AREA.Cleave", tooltip: "AH.TRAIT.CleaveHint" },
     pierce: { label: "AH.TARGETING.AREA.Pierce", tooltip: "AH.TRAIT.PierceHint" },
     splash: { label: "AH.TARGETING.AREA.Splash", tooltip: "AH.TRAIT.SplashHint" },
+    chain: { label: "AH.TARGETING.AREA.Chain", tooltip: "AH.TRAIT.ChainHint" },
   },
 
   // Equipment
@@ -1396,8 +1397,8 @@ AH.icons = {
   popout: "fa fa-external-link",
   pin: "fa fa-thumb-tack",
   bookmark: "fa fa-bookmark-o",
-  add: "fa fa-plus",
-  remove: "fa fa-minus",
+  add: "fa fa-plus-circle",
+  remove: "fa fa-minus-circle",
   plus: "fa fa-plus",
   minus: "fa fa-minus",
   edit: "fa fa-pencil",

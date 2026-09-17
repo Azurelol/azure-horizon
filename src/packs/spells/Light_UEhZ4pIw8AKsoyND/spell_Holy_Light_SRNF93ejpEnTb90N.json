@@ -67,7 +67,8 @@
       "points": 2,
       "traits": [],
       "enabled": true,
-      "targeting": "single"
+      "targeting": "single",
+      "speed": "slow"
     },
     "domain": "light",
     "speed": "slow"

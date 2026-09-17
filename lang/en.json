@@ -947,7 +947,8 @@
       "AREA": {
         "Splash": "Splash",
         "Cleave": "Cleave",
-        "Pierce": "Pierce"
+        "Pierce": "Pierce",
+        "Chain": "Chain"
       }
     },
     "STATUS": {
