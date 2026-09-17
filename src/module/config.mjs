@@ -84,7 +84,8 @@ AH.defaults = {
   },
   potential: {
     min: 0,
-    max: 5,
+    equipmentMax: 3,
+    followerMax: 5,
   },
 };
 

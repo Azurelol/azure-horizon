@@ -1,18 +1,17 @@
-
 {{ahTabs levelTabs }}
 
-<section class="tab {{levelTabs.first.cssClass}}" data-tab="first" data-group="engram">
+<section class="tab {{levelTabs.first.cssClass}}" data-tab="first" data-group="equipment">
   {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=systemFields.first model=system.first path='system.first'}}
 </section>
 
 {{#if (gte system.level.max 2)}}
-  <section class="tab {{levelTabs.second.cssClass}}" data-tab="second" data-group="engram">
+  <section class="tab {{levelTabs.second.cssClass}}" data-tab="second" data-group="equipment">
     {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=systemFields.second model=system.second path='system.second'}}
   </section>
 {{/if}}
 
 {{#if (gte system.level.max 3)}}
-  <section class="tab {{levelTabs.third.cssClass}}" data-tab="third" data-group="engram">
+  <section class="tab {{levelTabs.third.cssClass}}" data-tab="third" data-group="equipment">
     {{> "systems/azure-horizon/templates/sheets/item/model/engram-level-partial.hbs" field=systemFields.third model=system.third path='system.third'}}
   </section>
 {{/if}}

@@ -1,0 +1,18 @@
+{{ahTabs levelTabs }}
+
+<section class="tab {{levelTabs.first.cssClass}}" data-tab="first" data-group="equipment">
+
+</section>
+
+{{#if (gte system.level.max 2)}}
+  <section class="tab {{levelTabs.second.cssClass}}" data-tab="second" data-group="equipment">
+
+  </section>
+{{/if}}
+
+{{#if (gte system.level.max 3)}}
+  <section class="tab {{levelTabs.third.cssClass}}" data-tab="third" data-group="equipment">
+
+  </section>
+{{/if}}
+

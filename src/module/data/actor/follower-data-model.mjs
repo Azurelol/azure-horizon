@@ -13,7 +13,7 @@ export default class FollowerDataModel extends BaseEntityDataModel {
     const { SchemaField, EmbeddedDataField, StringField, ForeignDocumentField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       kind: new StringField({ initial: "guest", blank: true, label: "AH.FOLLOWER.Kind", choices: Object.keys(AH.followerTypes), formOptions: getFormSelectOptions(AH.followerTypes), required: true }),
-      potential: new NumberField({ initial: 0, max: AH.defaults.potential.max }),
+      potential: new NumberField({ initial: 0, max: AH.defaults.potential.followerMax }),
       profile: new EmbeddedDataField(FollowerProfileDataModel, {}),
       references: new SchemaField({
         // eslint-disable-next-line no-undef

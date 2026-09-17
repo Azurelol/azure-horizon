@@ -732,6 +732,8 @@
       "Skill": "Skill",
       "Domain": "Domain",
       "None": "None",
+      "Potential": "Potential",
+      "PotentialMaximum": "PL. MAX",
       "Self": "Self",
       "Scene": "Scene",
       "Cost": "Cost",

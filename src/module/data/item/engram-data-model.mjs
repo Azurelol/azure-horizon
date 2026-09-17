@@ -12,6 +12,7 @@ import { Actions } from "../../pipelines/_module.mjs";
 import { ActionAttributesDataModel } from "./fields/action-attributes-data-model.mjs";
 import Checks from "../../pipelines/checks.mjs";
 import { ActionConfig } from "../../helpers/action-configuration.mjs";
+import { TargetingDataModel } from "./fields/targeting-data-model.mjs";
 
 const { SchemaField, StringField, EmbeddedDataField, HTMLField, NumberField } = foundry.data.fields;
 
@@ -24,6 +25,7 @@ const { SchemaField, StringField, EmbeddedDataField, HTMLField, NumberField } = 
  * @property {ResourceDataModel} resource
  * @property {EffectsDataModel} effects
  * @property {ActionCostDataModel} cost
+ * @property {TargetingDataModel} targeting
  */
 export class EngramActionDataModel extends VersionedDataModel {
   /** @inheritdoc */
@@ -40,6 +42,7 @@ export class EngramActionDataModel extends VersionedDataModel {
       effects: new EmbeddedDataField(EffectsDataModel, {}),
       damage: new EmbeddedDataField(DamageDataModel, {}),
       resource: new EmbeddedDataField(ResourceDataModel, {}),
+      targeting: new EmbeddedDataField(TargetingDataModel, {}),
     });
   }
 
@@ -85,6 +88,7 @@ export class EngramActionDataModel extends VersionedDataModel {
     await this.effects.configureAction(config);
     await this.cost.configureAction(config);
     await this.action.configureAction(config);
+    await this.targeting.configureAction(config);
   }
 }
 
@@ -101,11 +105,11 @@ export default class EngramDataModel extends EquipmentDataModel {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      kind: new StringField({ initial: "magic", blank: true, choices: () => AH.engrams, _part: "header", label: "AH.FIELD.Kind" }),
       level: new SchemaField({
-        current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "header" }),
-        max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header" }),
+        current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "header", _classes: "ah-flex-shrink" }),
+        max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header", _classes: "ah-flex-shrink" }),
       }),
+      kind: new StringField({ initial: "magic", blank: true, choices: () => AH.engrams, _part: "header", label: "AH.FIELD.Kind" }),
       first: new EmbeddedDataField(EngramActionDataModel, {
         config: false,
       }),
@@ -122,7 +126,7 @@ export default class EngramDataModel extends EquipmentDataModel {
     await super.preparePartContext(sheet, partId, context);
     switch (partId) {
       case "properties": {
-        context.levelTabs = sheet._prepareTabs("engram");
+        context.levelTabs = sheet._prepareTabs("equipment");
         if (this.level.max < 3) {
           delete context.levelTabs.third;
         }

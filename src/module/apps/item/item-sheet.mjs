@@ -90,7 +90,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
       ],
       initial: "description",
     },
-    engram: {
+    equipment: {
       tabs: [
         { id: "first", label: "AH.SHEET.Tabs.First" },
         { id: "second", label: "AH.SHEET.Tabs.Second" },
@@ -192,6 +192,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
       }
       case "properties":
         context.fieldsets = await this._getFieldsets();
+        context.classData = this.item.system.constructor;
         if (this.item.type === "classFeature") {
           const featureClass = this.item.system.feature.constructor;
           if (featureClass.TYPE !== "emptyClassFeature") {
