@@ -60,6 +60,7 @@ export const ChatMessageSectionTemplate = Object.freeze({
   text: systemTemplatePath("chat/chat-section-text"),
   actions: systemTemplatePath("chat/chat-section-actions"),
   potencies: systemTemplatePath("chat/chat-section-potencies"),
+  potentials: systemTemplatePath("chat/chat-section-potentials"),
 });
 
 /**
@@ -169,7 +170,6 @@ export const ChatMessageSections = Object.freeze({
    * @param {number} [order]
    */
   targetsDefend: (sections, targets, actions, order = ChatSectionOrder.targets) => {
-
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.targetsDefend,
       data: {
@@ -195,4 +195,18 @@ export const ChatMessageSections = Object.freeze({
     }));
   },
 
+  /**
+   * @param {ChatMessageSectionCollection} sections
+   * @param {PotentialField[]} potentials
+   * @param {number} [order]
+   */
+  potentials: (sections, potentials, order = ChatSectionOrder.outcome) => {
+    sections.push(async () => ({
+      partial: ChatMessageSectionTemplate.potentials,
+      data: {
+        potentials,
+      },
+      order,
+    }));
+  },
 });

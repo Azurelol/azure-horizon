@@ -48,6 +48,14 @@ export default class ItemDataModel extends VersionedTypeDataModel {
   }
 
   /**
+   *
+   * @param {ChatMessageBuilder} builder
+   * @returns {Promise<void>}
+   */
+  async prepareChatMessage(builder) {
+  }
+
+  /**
    * Whether active effects in this item should be transferred to an actor.
    * @returns {boolean}
    */

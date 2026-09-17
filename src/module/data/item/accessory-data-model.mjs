@@ -2,6 +2,7 @@ import EquipmentDataModel from "./equipment-data-model.mjs";
 import { isActorType, systemTemplatePath } from "../../constants.mjs";
 import { ObjectUtils } from "../../utils/_module.mjs";
 import { PotentialsDataModel } from "./fields/potentials-data-model.mjs";
+import { ChatMessageSections } from "../../helpers/_module.mjs";
 
 const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField, ForeignDocumentField } = foundry.data.fields;
 
@@ -21,6 +22,7 @@ export class EngramDataField extends SchemaField {
 /**
  * Represents a hero's accessory, which can grant them small benefits.
  * @property {AH_Rarity} rarity
+ * @property {PotentialsDataModel} potentials
  * @property {EngramDataField[]} slots.entries
  * @property {Number} slots.max
  */
@@ -73,6 +75,14 @@ export default class AccessoryDataModel extends EquipmentDataModel {
     }
 
     return true;
+  }
+
+  /**
+   * @param {ChatMessageBuilder} builder
+   * @returns {Promise<void>}
+   */
+  async prepareChatMessage(builder) {
+    ChatMessageSections.potentials(builder.sections, this.potentials.entries);
   }
 
   static get templates() {

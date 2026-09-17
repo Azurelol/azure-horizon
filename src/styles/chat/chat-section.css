@@ -411,3 +411,32 @@
   font-weight: bolder;
   text-transform: uppercase;
 }
+
+.ah-chat-section__potentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ah-chat-section__potential {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ah-chat-section__potential__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--ah-font-size-lg);
+  font-weight: 600;
+}
+
+.ah-chat-section__potential__text {
+  font-size:  var(--ah-font-size-m);
+  background: var(--ah-surface-tag);
+  border: var(--ah-border-muted);
+  line-height: 1.2;
+  text-align: center;
+}

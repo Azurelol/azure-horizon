@@ -1,0 +1,8 @@
+<section class="ah-chat-section__potentials">
+  {{#each potentials as |pot|}}
+    <div class="ah-chat-section__potential">
+      <span class="ah-chat-section__potential__number">{{ahRomanNumeral (ahMath @index '+' 1)}}</span>
+      <span class="ah-chat-section__potential__text">{{{pot.text}}}</span>
+    </div>
+  {{/each}}
+</section>

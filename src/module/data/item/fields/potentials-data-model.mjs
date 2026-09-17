@@ -3,6 +3,10 @@ import { systemTemplatePath } from "../../../constants.mjs";
 
 const { StringField, HTMLField, ArrayField, NumberField, SchemaField, EmbeddedDataField } = foundry.data.fields;
 
+/**
+ * Represents an equipment's potential.
+ * @property {String} text
+ */
 export class PotentialField extends SchemaField {
   constructor(options = {}) {
     super({
@@ -35,7 +39,7 @@ export class PotentialField extends SchemaField {
 }
 
 /**
- * @property {String[]} entries
+ * @property {PotentialField[]} entries
  */
 export class PotentialsDataModel extends FieldsetDataModel {
   /** @inheritdoc */

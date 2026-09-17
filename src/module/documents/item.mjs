@@ -77,6 +77,7 @@ export class AHItem extends DocumentMixin(foundry.documents.Item) {
     if (this.system.description) {
       builder.text(this.system.description);
     }
+    await this.system.prepareChatMessage(builder);
     return builder.create();
   }
 }
