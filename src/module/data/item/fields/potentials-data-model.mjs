@@ -1,13 +1,36 @@
 import FieldsetDataModel from "../../api/fieldset-data-model.mjs";
 import { systemTemplatePath } from "../../../constants.mjs";
 
-const { StringField, ArrayField, NumberField, SchemaField, EmbeddedDataField } = foundry.data.fields;
+const { StringField, HTMLField, ArrayField, NumberField, SchemaField, EmbeddedDataField } = foundry.data.fields;
 
 export class PotentialField extends SchemaField {
   constructor(options = {}) {
     super({
-      text: new StringField(),
+      text: new HTMLField(),
     }, options);
+  }
+
+  /** @override */
+  _toInput(config) {
+    const container = document.createElement("div");
+    container.classList.add("ah-field__potential");
+
+    const textField = this.fields.text;
+    const textInput = textField.toInput({
+      ...config,
+      name: `${config.name}.text`,
+      value: config.value?.text ?? "",
+    });
+
+    container.append(textInput);
+    return container;
+  }
+
+  /** @override */
+  toFormGroup(groupConfig = {}, inputConfig = {}) {
+    const group = super.toFormGroup(groupConfig, inputConfig);
+    group.classList.add("ah-potential-form-group");
+    return group;
   }
 }
 

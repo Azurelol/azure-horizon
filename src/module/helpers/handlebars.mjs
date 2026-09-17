@@ -584,6 +584,7 @@ function documentAnchor(document, options) {
  * @property {String} label
  * @property {String} path
  * @property {'string'} type
+ * @property {DataField} field
  * @property {String[]|undefined} options
  */
 
@@ -602,6 +603,7 @@ function arrayField(options) {
         path: options.path,
         type: options.type,
         options: options.options,
+        field: options.field,
       })
       : "";
   return new Handlebars.SafeString(html);

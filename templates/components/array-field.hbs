@@ -21,6 +21,14 @@
                    placeholder="..." />
           {{/if}}
           <!-- Handle custom fields -->
+          {{#if ../field}}
+            {{formGroup
+              ../field
+              value=entry
+              name=(ahConcat ../path '.' index)
+              localize=true
+            }}
+          {{/if}}
         </label>
         <a data-path="{{../path}}" data-index="{{ index }}" data-action="removeArrayElement">
           <i class="ah-icon--xs {{ahIconClass 'remove'}}"></i>
