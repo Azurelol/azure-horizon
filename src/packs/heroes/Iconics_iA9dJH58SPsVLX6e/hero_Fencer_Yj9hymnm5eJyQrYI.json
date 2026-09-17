@@ -1,16 +1,16 @@
 {
   "folder": "iA9dJH58SPsVLX6e",
-  "name": "Brawler",
+  "name": "Fencer",
   "type": "hero",
-  "_id": "hfl2RKEiT9DCxfGm",
-  "img": "systems/azure-horizon/assets/characters/heroes/brawler_profile.png",
+  "_id": "Yj9hymnm5eJyQrYI",
+  "img": "systems/azure-horizon/assets/characters/heroes/fencer_profile.png",
   "system": {
     "level": 10,
     "resources": {
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 40,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
@@ -22,7 +22,7 @@
       },
       "ip": {
         "schemaVersion": 1,
-        "value": 6,
+        "value": 0,
         "bonus": 0,
         "temporary": 0
       },
@@ -441,7 +441,25 @@
         }
       },
       "check": {
-        "schemaVersion": 1
+        "schemaVersion": 1,
+        "all": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
+      },
+      "overrides": {
+        "weapon": {}
       }
     },
     "profile": {
@@ -454,14 +472,14 @@
     }
   },
   "prototypeToken": {
-    "name": "Brawler",
+    "name": "Fencer",
     "displayName": 0,
     "actorLink": true,
     "width": 1,
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "systems/azure-horizon/assets/characters/heroes/brawler_token.png",
+      "src": "systems/azure-horizon/assets/characters/heroes/fencer_token.png",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "cover",
@@ -527,7 +545,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -547,15 +565,20 @@
   },
   "items": [
     {
-      "name": "Brawler",
+      "name": "Fencer",
       "type": "class",
-      "_id": "H1gWaSP7iNsKBjVf",
-      "img": "systems/azure-horizon/assets/icons/classes/brawler/brawler.png",
+      "_id": "YbQ0gFCjgYyBUWwQ",
+      "img": "systems/azure-horizon/assets/icons/classes/fencer/fencer.png",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "brawler",
-        "description": "<p>A practitioner of the martial arts. They could be a disciple of a traveling master, a hotblooded youth or a student of a martial arts school. They excel in pressuring their foes in close quarters combat, building up their momentum before unleashing powerful combination attacks.</p><blockquote><p>The Brawler is a class for those who wish to reliable pressure their opponents while steadily building up their combination for a big payoff.</p></blockquote>",
+        "slug": "fencer",
+        "description": "<p>A disciplined warrior who fights with style and grace. They could be a daring swashbuckler or a noble practicing an established style. They specialize in darting among their foes with flair, waiting for the right chance to take them down.</p><blockquote><p>The Fencer is a great class for those who prize mobility. Most of their skills have them shift around the battlefield and sometimes require them to be in specific rows before activating powerful effects.</p></blockquote>",
+        "traits": [
+          "warrior",
+          "offense",
+          "shift"
+        ],
         "benefits": {
           "schemaVersion": 1,
           "hp": true,
@@ -563,19 +586,16 @@
           "ip": false,
           "tp": false
         },
-        "traits": [
-          "warrior",
-          "mobility"
-        ],
         "triggers": [
-          "You take part in a brawl.",
-          "You speak truth to authority.",
-          "You punch someone who deserves it."
+          "You prove your skill to an audience.",
+          "You challenge someone to a duel.",
+          "You spare your defeated opponent in a duel.",
+          "You defend your honor."
         ],
         "complications": [
-          "A former friend who was a bad influence appears.",
-          "Your master dies.",
-          "You get arrested."
+          "You are challenged to a duel you can't refuse.",
+          "Your honor is questioned.",
+          "Someone important asks you to be their champion."
         ]
       },
       "effects": [],
@@ -584,10 +604,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788799200516,
+        "createdTime": 1789322332179,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.classes.Item.H1gWaSP7iNsKBjVf",
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.YbQ0gFCjgYyBUWwQ",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -597,7 +617,337 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!hfl2RKEiT9DCxfGm.H1gWaSP7iNsKBjVf"
+      "_key": "!actors.items!Yj9hymnm5eJyQrYI.YbQ0gFCjgYyBUWwQ"
+    },
+    {
+      "name": "En Garde",
+      "type": "skill",
+      "_id": "2hylt5U5VgGuoCRC",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "fencer-en-garde",
+        "description": "<p>You immediately adopt your offensive stance or defensive stance.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "fencer-offensive-stance",
+            "fencer-defensive-stance"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [],
+          "enabled": false
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "fencer",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1789322346789,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.2hylt5U5VgGuoCRC",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Yj9hymnm5eJyQrYI.2hylt5U5VgGuoCRC"
+    },
+    {
+      "name": "Riposte",
+      "type": "skill",
+      "_id": "fknoUegy1VmEJ5Hm",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "fencer-riposte",
+        "description": "<p>When you are attacked in melee and the result of the check was an even number you can immediately perform a free attack against the target with an additional effect:</p><ul><li><p><strong>Offensive Stance</strong>: You shift the attacker 1 space..</p></li><li><p><strong>Defensive Stance</strong>: You shift yourself 1 space.</p></li></ul>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "tp",
+          "amount": "2",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "reaction",
+          "points": 1,
+          "traits": [],
+          "enabled": true
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": true,
+          "enabled": true,
+          "attributes": false
+        },
+        "class": "fencer",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1789322397252,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.fknoUegy1VmEJ5Hm",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Yj9hymnm5eJyQrYI.fknoUegy1VmEJ5Hm"
+    },
+    {
+      "name": "Technique",
+      "type": "skill",
+      "_id": "pxEtUsleFjMc71At",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "fencer-technique",
+        "description": "<p>You gain the use of a <em>fencer</em> <em>technique </em>for each point invested into this skill.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 5
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "",
+          "points": 1,
+          "traits": [],
+          "enabled": false
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "fencer",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1789322403712,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.pxEtUsleFjMc71At",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Yj9hymnm5eJyQrYI.pxEtUsleFjMc71At"
     }
   ],
   "effects": [],
@@ -610,12 +960,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788795972252,
+    "createdTime": 1789322296417,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!hfl2RKEiT9DCxfGm"
+  "_key": "!actors!Yj9hymnm5eJyQrYI"
 }

@@ -10,13 +10,13 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
@@ -546,118 +546,7 @@
     "prependAdjective": false
   },
   "items": [],
-  "effects": [
-    {
-      "name": "KO",
-      "img": "systems/azure-horizon/assets/icons/statuses/ko.png",
-      "statuses": [
-        "ko"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "ko"
-        }
-      },
-      "_id": "oMNNMYInEZwi68iA",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788800142077,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!oTt9pjtEkwyGvd7W.oMNNMYInEZwi68iA"
-    },
-    {
-      "name": "Crisis",
-      "img": "systems/azure-horizon/assets/icons/statuses/crisis.png",
-      "statuses": [
-        "crisis"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "crisis"
-        }
-      },
-      "_id": "bmAyTGvM17tTMGkm",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788800142086,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!oTt9pjtEkwyGvd7W.bmAyTGvM17tTMGkm"
-    }
-  ],
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0

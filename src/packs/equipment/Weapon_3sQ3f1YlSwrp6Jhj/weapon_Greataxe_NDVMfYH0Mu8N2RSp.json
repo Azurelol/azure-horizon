@@ -1,14 +1,21 @@
 {
   "folder": "3sQ3f1YlSwrp6Jhj",
-  "name": "Leather Glove",
+  "name": "Greataxe",
   "type": "weapon",
-  "_id": "szOOL3tYm9lePH1i",
-  "img": "systems/azure-horizon/assets/icons/equipment/weapons/leather_glove.png",
+  "_id": "NDVMfYH0Mu8N2RSp",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/greataxe.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-leather-glove",
+    "slug": "equipment-greataxe",
     "description": "",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "A"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": true,
@@ -17,23 +24,28 @@
       "defense": "def",
       "bonus": ""
     },
-    "handedness": "two",
-    "traits": [
-      "brawl"
-    ],
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
         "amount": "",
-        "type": "bludgeoning"
+        "type": "slashing"
       },
       "secondary": {
         "amount": "",
         "type": ""
       },
-      "traits": [],
-      "inplace": false
+      "traits": []
+    },
+    "range": "melee",
+    "actionCost": 2,
+    "traits": [],
+    "rarity": "common",
+    "handedness": "two",
+    "options": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "traits": []
     }
   },
   "effects": [],
@@ -46,12 +58,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786645740832,
+    "createdTime": 1789638977254,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!szOOL3tYm9lePH1i"
+  "_key": "!items!NDVMfYH0Mu8N2RSp"
 }

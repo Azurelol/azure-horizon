@@ -1,19 +1,23 @@
 {
-  "folder": "iH9OyoAoizAPCpjW",
-  "name": "Plate Armor",
-  "type": "armor",
-  "_id": "g7Civg5iIjMbA50R",
-  "img": "systems/azure-horizon/assets/icons/equipment/armor/plate.png",
+  "folder": "jzViv3njjLI5tH7C",
+  "name": "Artisan Brush",
+  "type": "accessory",
+  "_id": "tBWW1EVMfdIyFk33",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-plate-armor",
+    "slug": "equipment-artisan-brush",
     "description": "",
-    "category": "heavy",
-    "traits": [
-      "stable"
-    ],
-    "weight": "heavy"
+    "rarity": "rare",
+    "slots": {
+      "entries": [
+        {
+          "item": null
+        }
+      ],
+      "max": 1
+    }
   },
   "effects": [],
   "sort": 0,
@@ -25,12 +29,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786543210357,
+    "createdTime": 1789644198487,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!g7Civg5iIjMbA50R"
+  "_key": "!items!tBWW1EVMfdIyFk33"
 }

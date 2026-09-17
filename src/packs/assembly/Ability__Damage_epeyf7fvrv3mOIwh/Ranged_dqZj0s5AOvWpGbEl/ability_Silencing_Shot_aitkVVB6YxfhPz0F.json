@@ -8,13 +8,14 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "ability-silencing-shot",
-    "description": "<p>You perform an attack against the target. On a standard or greater potency it is silenced.</p>",
+    "description": "<p>You perform an attack against the target, which can <em>mute</em> it.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "bonus": ""
     },
     "action": {
       "schemaVersion": 1,
@@ -23,7 +24,8 @@
       "points": 2,
       "traits": [
         "cooldown"
-      ]
+      ],
+      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
@@ -47,22 +49,42 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "mute"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "intent": ""
+    "intent": "weaken",
+    "usage": {
+      "enabled": true,
+      "check": true,
+      "damage": true,
+      "attributes": true
+    },
+    "targeting": {
+      "enabled": false,
+      "rule": "",
+      "range": "",
+      "traits": []
+    },
+    "attributes": {
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    }
   },
   "effects": [],
   "sort": 0,

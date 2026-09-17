@@ -19,9 +19,10 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "type": "action",
+      "points": 2,
+      "traits": [],
+      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
@@ -60,7 +61,20 @@
         "tracking": ""
       }
     },
-    "intent": ""
+    "intent": "damage",
+    "power": "moderate",
+    "usage": {
+      "enabled": true,
+      "check": true,
+      "damage": true,
+      "attributes": true
+    },
+    "targeting": {
+      "enabled": true,
+      "rule": "multiple",
+      "range": "ranged",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,

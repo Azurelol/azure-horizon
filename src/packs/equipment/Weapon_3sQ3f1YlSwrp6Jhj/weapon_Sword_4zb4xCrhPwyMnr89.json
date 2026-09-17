@@ -2,7 +2,7 @@
   "name": "Sword",
   "type": "weapon",
   "_id": "4zb4xCrhPwyMnr89",
-  "img": "systems/azure-horizon/assets/icons/equipment/weapons/weapon_sword.png",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/longsword.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -39,7 +39,7 @@
   },
   "effects": [],
   "folder": "3sQ3f1YlSwrp6Jhj",
-  "sort": 100000,
+  "sort": 1000000,
   "ownership": {
     "default": 0
   },

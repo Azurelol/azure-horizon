@@ -21,7 +21,8 @@
       "range": "",
       "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
@@ -60,7 +61,7 @@
         "tracking": ""
       }
     },
-    "intent": ""
+    "intent": "prepare"
   },
   "effects": [],
   "sort": 0,

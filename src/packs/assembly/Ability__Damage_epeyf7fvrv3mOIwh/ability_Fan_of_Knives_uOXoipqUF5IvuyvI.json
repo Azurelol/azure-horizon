@@ -14,7 +14,7 @@
       "enabled": true,
       "primary": "dex",
       "secondary": "ins",
-      "defense": "def",
+      "defense": "dex",
       "bonus": ""
     },
     "action": {
@@ -22,13 +22,14 @@
       "range": "ranged",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "",
+        "amount": "5",
         "type": "piercing"
       },
       "secondary": {
@@ -61,7 +62,11 @@
         "tracking": ""
       }
     },
-    "intent": ""
+    "intent": "damage",
+    "power": "low",
+    "attributes": {
+      "enabled": true
+    }
   },
   "effects": [],
   "sort": 0,

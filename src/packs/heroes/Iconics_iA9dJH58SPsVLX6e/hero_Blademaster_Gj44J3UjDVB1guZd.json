@@ -35,11 +35,11 @@
     },
     "attributes": {
       "mig": {
-        "base": 4,
+        "base": 6,
         "bonus": 0
       },
       "dex": {
-        "base": 4,
+        "base": 8,
         "bonus": 0
       },
       "ins": {

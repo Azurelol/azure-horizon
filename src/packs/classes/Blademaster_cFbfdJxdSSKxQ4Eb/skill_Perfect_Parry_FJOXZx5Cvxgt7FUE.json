@@ -25,7 +25,8 @@
         "exhaust"
       ],
       "enabled": true,
-      "targeting": ""
+      "targeting": "",
+      "speed": ""
     },
     "damage": {
       "schemaVersion": 1,

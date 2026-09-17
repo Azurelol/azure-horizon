@@ -1,0 +1,40 @@
+{
+  "folder": "ivGIDK1pbY7LbfHe",
+  "name": "Billowing Cape",
+  "type": "accessory",
+  "_id": "3Getld4u4w2EZgeK",
+  "img": "systems/azure-horizon/assets/icons/equipment/accessories/billowing_cape.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-billowing-cape",
+    "description": "<p>Once per long rest, the cape fills and ripples theatrically on cue, as though caught in an eerie gust.</p>",
+    "rarity": "rare",
+    "slots": {
+      "entries": [
+        {
+          "item": null
+        }
+      ],
+      "max": 1
+    }
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789636989220,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!3Getld4u4w2EZgeK"
+}

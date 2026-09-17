@@ -19,10 +19,10 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
-      "points": 1,
+      "type": "action",
+      "points": 3,
       "traits": [],
-      "enabled": false,
+      "enabled": true,
       "targeting": ""
     },
     "damage": {
@@ -47,9 +47,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -62,7 +62,20 @@
         "tracking": ""
       }
     },
-    "intent": ""
+    "intent": "damage",
+    "usage": {
+      "enabled": true,
+      "check": true,
+      "damage": true,
+      "attributes": true
+    },
+    "targeting": {
+      "enabled": true,
+      "rule": "single",
+      "range": "",
+      "traits": []
+    },
+    "power": "severe"
   },
   "effects": [],
   "sort": 700000,

@@ -1,9 +1,9 @@
 {
   "folder": "iA9dJH58SPsVLX6e",
-  "name": "Defender",
+  "name": "Brawler",
   "type": "hero",
-  "_id": "AyREuCRWN2Oxd7DP",
-  "img": "systems/azure-horizon/assets/characters/heroes/defender_profile.png",
+  "_id": "GXss2qeIt6M3dhMf",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "level": 10,
     "resources": {
@@ -35,11 +35,11 @@
     },
     "attributes": {
       "mig": {
-        "base": 4,
+        "base": 6,
         "bonus": 0
       },
       "dex": {
-        "base": 4,
+        "base": 8,
         "bonus": 0
       },
       "ins": {
@@ -116,6 +116,38 @@
       "block": {
         "schemaVersion": 1,
         "bonus": 0
+      },
+      "recovery": {
+        "incoming": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "outgoing": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
       },
       "damage": {
         "schemaVersion": 1,
@@ -374,10 +406,60 @@
               "multiplicative": []
             }
           }
+        },
+        "electric": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
         }
       },
       "check": {
-        "schemaVersion": 1
+        "schemaVersion": 1,
+        "all": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
+      },
+      "overrides": {
+        "weapon": {}
       }
     },
     "profile": {
@@ -390,19 +472,19 @@
     }
   },
   "prototypeToken": {
-    "name": "Defender",
+    "name": "Brawler",
     "displayName": 0,
     "actorLink": true,
     "width": 1,
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "systems/azure-horizon/assets/characters/heroes/defender_token.png",
+      "src": "icons/svg/mystery-man.svg",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "cover",
-      "scaleX": 1.25,
-      "scaleY": 1.25,
+      "scaleX": 1,
+      "scaleY": 1,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -463,7 +545,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -481,62 +563,7 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [
-    {
-      "name": "Defender",
-      "type": "class",
-      "_id": "fP687iMtF54hOFIG",
-      "img": "systems/azure-horizon/assets/icons/classes/defender/defender.png",
-      "system": {
-        "schemaVersion": 1,
-        "revision": 1,
-        "slug": "defender",
-        "description": "<p>A fighter who specializes in defending their party. They could be a veteran adventurer, a career soldier or a stalwart protector who puts their body on the line to protect those he deems worthy of protecting.</p><blockquote><p>The Defender is the class for those who are interested in actively defending their allies while consistently mitigating damage, no matter their weapon of choice.</p></blockquote>",
-        "benefits": {
-          "schemaVersion": 1,
-          "hp": true,
-          "mp": false,
-          "ip": false,
-          "tp": false
-        },
-        "triggers": [
-          "You rescue someone in need.",
-          "You endure something that would have laid anyone else low.",
-          "You refuse to back down."
-        ],
-        "traits": [
-          "warrior",
-          "defense",
-          "tension"
-        ],
-        "complications": [
-          "Your beliefs are shaken.",
-          "You back down.",
-          "Something you cherish is in great danger."
-        ]
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1789322497462,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.classes.Item.fP687iMtF54hOFIG",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "B84lnG927FT7kWX1": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!AyREuCRWN2Oxd7DP.fP687iMtF54hOFIG"
-    }
-  ],
+  "items": [],
   "effects": [],
   "sort": 0,
   "ownership": {
@@ -547,12 +574,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788189226979,
+    "createdTime": 1789482496776,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!AyREuCRWN2Oxd7DP"
+  "_key": "!actors!GXss2qeIt6M3dhMf"
 }
