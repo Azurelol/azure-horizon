@@ -70,19 +70,12 @@ const presets = Object.freeze({
 });
 
 /**
- * @typedef AH_ItemReference
- * @property {String} name
- * @property {String} slug
- * @property {String} uuid
- */
-
-/**
- * @param {AH_ItemReference} item
+ * @param {AHItem} item
  * @param {Set<String>} traits
  * @returns {Preset}
  */
 function resolve(item, traits) {
-  const slug = item.slug.replace("-", "_");
+  const slug = item.system.slug.replace("-", "_");
 
   // Exact match
   const exactMatch = presets[slug];

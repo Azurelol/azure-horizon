@@ -13,6 +13,9 @@ export default class ItemInfo {
    * @returns {AH_ItemReference}
    */
   static toItemReference(item) {
+    if (!item) {
+      return undefined;
+    }
     return {
       name: item.name,
       slug: item.system.slug,

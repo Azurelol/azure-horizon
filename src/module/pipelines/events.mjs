@@ -230,7 +230,7 @@ async function prepareCheck(check, actor, item) {
  * @property {CharacterInfo} source
  * @property {SourceInfo} sourceInfo
  * @property {CharacterInfo[]} targets
- * @property {AH_ItemReference} item
+ * @property {AHItem} item
  * @property {AH_ItemGroup} itemGroup
  * @remarks Emitted when a check is about to be performed
  */
@@ -246,7 +246,7 @@ async function performAction(config, actor, item) {
   const event = {
     config: config,
     source: source,
-    item: ItemInfo.toItemReference(item),
+    item: item,
     itemGroup: ItemInfo.resolveItemGroup(item),
     sourceInfo: sourceInfo,
     targets: targets,

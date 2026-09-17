@@ -182,6 +182,10 @@
         "long": "Recovery",
         "short": "REC"
       },
+      "Movement": {
+        "long": "Movement",
+        "short": "MOV"
+      },
       "PressurePoint": {
         "long": "Pressure",
         "plural": "Pressure",
@@ -707,6 +711,7 @@
       "Style": "Style",
       "Rule": "Rule",
       "Kind": "Kind",
+      "Weight": "Weight",
       "Action": "Action",
       "Damage": "Damage",
       "Effects": "Effects",

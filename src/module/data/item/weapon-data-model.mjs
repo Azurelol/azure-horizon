@@ -9,6 +9,7 @@ import { EquipmentDataMixin } from "./equipment-data-model.mjs";
  * @property {AH_ActionRange} range
  * @property {CheckDataModel} check
  * @property {AH_Handedness} handedness
+ * @property {AH_EquipmentWeight} weight
  * @property {AH_WeaponTrait[]} traits
  * @property {WeaponOptionsDataModel} options
  */
@@ -17,6 +18,13 @@ export default class WeaponDataModel extends EquipmentDataMixin(AttackDataModel)
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
+      weight: new StringField({
+        initial: "light",
+        blank: false,
+        _part: "header",
+        label: "AH.FIELD.Weight",
+        choices: () => AH.equipmentWeight,
+      }),
       handedness: new StringField({
         initial: "one",
         blank: false,

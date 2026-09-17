@@ -231,9 +231,14 @@
 
   --ah-icon-maneuver: url("../../../../assets/icons/actions/maneuver.png");
   --ah-icon-recover: url("../../../../assets/icons/actions/recover.png");
+  --ah-icon-movement: url("../../../../assets/icons/actions/movement.png");
 
   .ah-icon-recover {
     background-image: var(--ah-icon-recover);
+  }
+
+  .ah-icon-movement {
+    background-image: var(--ah-icon-movement);
   }
 
   .ah-icon-ability {

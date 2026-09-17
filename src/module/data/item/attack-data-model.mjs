@@ -46,11 +46,6 @@ export default class AttackDataModel extends FeatureDataModel {
         _classes: "ah-flex-shrink",
         _part: "header",
       }),
-      traits: new TraitsField({
-        label: "AH.FIELD.Traits",
-        _part: "header",
-        formOptions: getFormSelectOptions(AH.traits.attack),
-      }),
     });
   }
 
@@ -90,7 +85,6 @@ export default class AttackDataModel extends FeatureDataModel {
   async _initializeAction(config) {
     await super._initializeAction(config);
     config.addTraits(this.range);
-    config.addTraits(Array.from(this.traits));
     config.addTags({
       tag: AH.actionTypes.action.label,
       value: this.actionCost,

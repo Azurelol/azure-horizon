@@ -34,6 +34,8 @@ const TRAVEL_DANGER_THRESHOLD = 6;
 const PERIL_THRESHOLD = 0.5;
 const CRISIS_THRESHOLD = 0.2;
 
+const MIN_MOVEMENT = 1;
+
 /**
  * @typedef Modifier
  * @property {Number} additive Should default to 0.
@@ -413,7 +415,7 @@ export default class Formulas {
       if (equippedItems.armor) {
         /** @type ArmorDataModel **/
         const armorData = equippedItems.armor.system;
-        switch (armorData.category) {
+        switch (armorData.weight) {
           case "heavy":
             ratio += BLOCK_RATIO_HEAVY_ARMOR;
             break;
@@ -434,6 +436,28 @@ export default class Formulas {
       hp,
       tp,
     };
+  }
+
+  /**
+   * @param {HeroDataModel|AdversaryDataModel} system
+   * @returns {Number}
+   */
+  static calculateMovement(system) {
+    let result = 0;
+    if (system.parent.type === "hero") {
+      const equipment = system.equipment.equipped;
+      const weights = [equipment.armor?.system.weight,
+        equipment.mainHand?.system.weight].filter(Boolean);
+      for (const weight of weights) {
+        if (weight === "light") {
+          result += 1;
+        }
+        else if (weight === "heavy") {
+          result -= 1;
+        }
+      }
+    }
+    return Math.max(MIN_MOVEMENT, result);
   }
 
   /**

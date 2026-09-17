@@ -7,7 +7,7 @@ import EquipmentDataModel from "./equipment-data-model.mjs";
 /**
  * Represents a hero's armor, which alters how they defend themselves.
  * @property {AH_Rarity} rarity
- * @property {AH_ArmorCategory} category
+ * @property {AH_EquipmentWeight} weight
  * @property {Set<String>} traits
  */
 export default class ArmorDataModel extends EquipmentDataModel {
@@ -15,12 +15,12 @@ export default class ArmorDataModel extends EquipmentDataModel {
   static defineSchema() {
     const { SchemaField, StringField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      category: new StringField({
+      weight: new StringField({
         initial: "light",
         blank: false,
         _part: "header",
-        label: "AH.FIELD.Category",
-        choices: () => AH.armorCategories,
+        label: "AH.FIELD.Weight",
+        choices: () => AH.equipmentWeight,
       }),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",

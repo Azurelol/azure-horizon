@@ -594,13 +594,13 @@ AH.attackTypes = Object.freeze({
 });
 
 /**
- * @typedef {'light'|'heavy'} AH_ArmorCategory
+ * @typedef {'light'|'heavy'} AH_EquipmentWeight
  */
 
 /**
  * @type {Record<AH_Handedness, string>}
  */
-AH.armorCategories = {
+AH.equipmentWeight = {
   light: "AH.FIELD.Light",
   heavy: "AH.FIELD.Heavy",
 };
@@ -1200,6 +1200,7 @@ AH.traits = {
     fixed: { label: "AH.TRAIT.Fixed", tooltip: "AH.TRAIT.FixedHint" },
     poison: { label: "AH.TRAIT.Poison", tooltip: "AH.TRAIT.PoisonHint" },
     mercy: { label: "AH.TRAIT.Mercy", tooltip: "AH.TRAIT.MercyHint" },
+    stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
   },
 
   // Pressure
@@ -1209,7 +1210,6 @@ AH.traits = {
 
   // Attack
   attack: {
-    stress: { label: "AH.TRAIT.Stress", tooltip: "AH.TRAIT.StressHint" },
     reach: { label: "AH.TRAIT.Reach", tooltip: "AH.TRAIT.ReachHint" },
   },
   range: {
@@ -1376,6 +1376,7 @@ AH.icons = {
 
   maneuver: "ah-icon-maneuver",
   recover: "ah-icon-recover",
+  movement: "ah-icon-movement",
 
   shortRest: "ah-icon-rest-short",
   longRest: "ah-icon-rest-long",

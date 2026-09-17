@@ -186,7 +186,7 @@ export default class HeroDataModel extends CharacterDataModel {
         const equipped = this.getEquippedItems();
         if (equipped.armor) {
           armorData = equipped.armor.system;
-          switch (armorData.category) {
+          switch (armorData.weight) {
             case "light":
               primary = "dex";
               secondary = "ins";
