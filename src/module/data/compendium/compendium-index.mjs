@@ -475,6 +475,7 @@ export default class CompendiumIndex {
       armor: await this.getItemsOfType("armor"),
       accessory: await this.getItemsOfType("accessory"),
       consumable: await this.getItemsOfType("consumable"),
+      engram: await this.getItemsOfType("engram"),
     };
     return entries;
   }

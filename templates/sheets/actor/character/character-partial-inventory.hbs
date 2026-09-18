@@ -54,13 +54,18 @@
           {{#with equipment.accessory1}}
             {{#each system.slots.entries as |entry|}}
               <li>
-                <a class="ah-character__engrams__slot"
-                   data-tooltip="{{#if entry.item}}{{entry.item.system.tooltip}}{{else}}{{localize 'AH.ACTION.Engram'}}{{/if}} "
-                   data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
-                  {{#if entry.item}}
-                    <img src="{{entry.item.img}}">
-                  {{/if}}
-                </a>
+                {{#with (ahActorItem @root.actor entry.item) as |engram|}}
+                  <a class="ah-character__engrams__slot"
+                     data-tooltip="{{engram.system.tooltip}}"
+                     data-item-id="{{../../id}}" data-slot="engram" data-index="{{@index}}">
+                    <img src="{{engram.img}}">
+                  </a>
+                {{else}}
+                  <a class="ah-character__engrams__slot ah-character__engrams__slot--empty"
+                     data-tooltip="{{localize 'AH.ACTION.Engram'}}"
+                     data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
+                  </a>
+                {{/with}}
               </li>
             {{/each}}
           {{/with}}
@@ -80,13 +85,20 @@
         {{#if equipment.accessory2}}
           {{#with equipment.accessory2}}
             {{#each system.slots.entries as |entry|}}
-              <a class="ah-character__engrams__slot"
-                 data-tooltip="{{#if entry.item}}{{entry.item.system.tooltip}}{{else}}{{localize 'AH.ACTION.Engram'}}{{/if}} "
-                 data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
-                {{#if entry.item}}
-                  <img src="{{entry.item.img}}">
-                {{/if}}
-              </a>
+              <li>
+                {{#with (ahActorItem @root.actor entry.item) as |engram|}}
+                  <a class="ah-character__engrams__slot"
+                     data-tooltip="{{engram.system.tooltip}}"
+                     data-item-id="{{../../id}}" data-slot="engram" data-index="{{@index}}">
+                    <img src="{{engram.img}}">
+                  </a>
+                {{else}}
+                  <a class="ah-character__engrams__slot ah-character__engrams__slot--empty"
+                     data-tooltip="{{localize 'AH.ACTION.Engram'}}"
+                     data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
+                  </a>
+                {{/with}}
+              </li>
             {{/each}}
           {{/with}}
         {{/if}}

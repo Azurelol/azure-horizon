@@ -13,6 +13,7 @@ import { ActionAttributesDataModel } from "./fields/action-attributes-data-model
 import Checks from "../../pipelines/checks.mjs";
 import { ActionConfig } from "../../helpers/action-configuration.mjs";
 import { TargetingDataModel } from "./fields/targeting-data-model.mjs";
+import { TrackerField } from "../api/tracker-field.mjs";
 
 const { SchemaField, StringField, EmbeddedDataField, HTMLField, NumberField } = foundry.data.fields;
 
@@ -105,9 +106,11 @@ export default class EngramDataModel extends EquipmentDataModel {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      level: new SchemaField({
-        current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "header", _classes: "ah-flex-shrink" }),
-        max: new NumberField({ initial: 1, min: 1, max: 3, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header", _classes: "ah-flex-shrink" }),
+      level: new TrackerField({
+        min: 1,
+        max: 3,
+        label: "AH.FIELD.Level",
+        _part: "header",
       }),
       kind: new StringField({ initial: "magic", blank: true, choices: () => AH.engrams, _part: "header", label: "AH.FIELD.Kind" }),
       first: new EmbeddedDataField(EngramActionDataModel, {

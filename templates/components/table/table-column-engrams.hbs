@@ -1,10 +1,7 @@
 <td class="ah-table-column__engrams">
   <ul class="ah-character__engrams__container__entries">
     {{#each system.slots.entries as |entry|}}
-      <li class="ah-character__engrams__slot" data-tooltip="{{entry.item.name}}">
-        {{#if entry.item}}
-          <img src="{{entry.item.img}}">
-        {{/if}}
+      <li class="ah-character__engrams__slot" data-tooltip="{{localize 'AH.ACTION.Engram'}}">
       </li>
     {{/each}}
   </ul>

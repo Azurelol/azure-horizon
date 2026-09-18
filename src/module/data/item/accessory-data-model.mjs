@@ -4,17 +4,17 @@ import { ObjectUtils } from "../../utils/_module.mjs";
 import { PotentialsDataModel } from "./fields/potentials-data-model.mjs";
 import { ChatMessageSections } from "../../helpers/_module.mjs";
 
-const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField, ForeignDocumentField } = foundry.data.fields;
+const { SchemaField, NumberField, StringField, EmbeddedDataField, DocumentIdField, ArrayField, ForeignDocumentField } = foundry.data.fields;
 
 /**
  * A reference to an engram item.
- * @property {AHItem} item The reference to the item.
+ * @property {String} item The id of the item.
  */
 export class EngramDataField extends SchemaField {
   constructor(options = {}) {
     super({
       // eslint-disable-next-line no-undef
-      item: new ForeignDocumentField(Item, { nullable: true }),
+      item: new DocumentIdField(Item, { nullable: true, readonly: false }),
     }, options);
   }
 }

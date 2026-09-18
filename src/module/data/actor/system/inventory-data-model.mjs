@@ -73,7 +73,7 @@ export default class InventoryDataModel extends VersionedDataModel {
       for (const acc of this.accessories) {
         for (const entry of acc.system.slots.entries) {
           if (entry.item) {
-            equipped.engrams.push(actor.items.get(entry.item.id));
+            equipped.engrams.push(actor.items.get(entry.item));
           }
         }
       }
@@ -87,7 +87,7 @@ export default class InventoryDataModel extends VersionedDataModel {
    */
   get accessories() {
     const accessories = [this.accessory1, this.accessory2].filter(Boolean);
-    return accessories.map(id => this.actor.items.get(id));
+    return accessories.map(id => this.actor.items.get(id)).filter(Boolean);
   }
 
   /**
@@ -194,7 +194,7 @@ export default class InventoryDataModel extends VersionedDataModel {
     const updates = [];
 
     const entries = ObjectUtils.cloneArray(accessory.system.slots.entries);
-    const existingIndex = entries.findIndex(e => e.item?._id === engram.id);
+    const existingIndex = entries.findIndex(e => e.item === engram.id);
 
     if (existingIndex !== -1) {
       entries[existingIndex].item = null;
@@ -202,6 +202,7 @@ export default class InventoryDataModel extends VersionedDataModel {
     if (index !== existingIndex) {
       entries[index].item = engram.id;
     }
+
     updates.push({ _id: accessory.id, "system.slots.entries": entries });
 
     // Remove the entry from any other accessory currently holding this engram —
@@ -210,8 +211,8 @@ export default class InventoryDataModel extends VersionedDataModel {
     for (const other of others) {
       const update = this._buildClearEngramUpdate(other, engram);
       if (update) updates.push(update);
-    }
 
+    }
     await this.actor.updateEmbeddedDocuments("Item", updates);
   }
 

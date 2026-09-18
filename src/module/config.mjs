@@ -1278,7 +1278,6 @@ AH.traits = {
   armor: {
     stable: { label: "AH.TRAIT.Stable", tooltip: "AH.TRAIT.StableHint" }, // Shifting resistance
     fleet: { label: "AH.TRAIT.Fleet", tooltip: "AH.TRAIT.FleetHint" }, // Improved shifting
-    flexible: { label: "AH.TRAIT.Flexible", tooltip: "AH.TRAIT.FlexibleHint" }, //
     comfort: { label: "AH.TRAIT.Comfort", tooltip: "AH.TRAIT.ComfortHint" }, // Improves stress recovery
     storage: { label: "AH.TRAIT.Storage", tooltip: "AH.TRAIT.StorageHint" }, // Easy access to items
   },

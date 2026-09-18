@@ -554,6 +554,7 @@ export default class CompendiumBrowser extends AHApplication {
   #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", preview: true });
   #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor", preview: true });
   #accessoryTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Accessory", preview: true });
+  #engramTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Engram.long", preview: true });
   #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable", preview: true });
   // Adversaries
   #attackTableRenderer = new AttackTableRenderer({ title: "AH.ADVERSARY.Attack.plural", preview: true });
@@ -697,6 +698,10 @@ export default class CompendiumBrowser extends AHApplication {
                 renderer: this.#accessoryTableRenderer,
               },
               {
+                entries: equipment.engram,
+                renderer: this.#engramTableRenderer,
+              },
+              {
                 entries: equipment.consumable,
                 renderer: this.#consumableTableRenderer,
               },
@@ -717,6 +722,10 @@ export default class CompendiumBrowser extends AHApplication {
                   {
                     value: "accessory",
                     label: "AH.ITEM.Accessory",
+                  },
+                  {
+                    value: "engram",
+                    label: "AH.ITEM.Engram.long",
                   },
                   {
                     value: "consumable",
