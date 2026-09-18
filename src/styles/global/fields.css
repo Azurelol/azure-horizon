@@ -282,3 +282,15 @@
 .ah-field__settings:not(:has(*)) {
   display: none;
 }
+
+.ah-form-group {
+
+}
+
+.form-group {
+  .form-fields {
+    range-picker {
+      width: 160px;
+    }
+  }
+}

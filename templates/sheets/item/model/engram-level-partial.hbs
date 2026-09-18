@@ -1,3 +1,6 @@
+{{ahStringField path=(ahConcat path '.name') label='AH.FIELD.Name' value=model.name}}
+{{ahField schema=field.fields.description path=(ahConcat path ".description") value=model.description label='AH.FIELD.Description'}}
+
 <div class="ah-field__settings">
   {{ahBooleanField path=(ahConcat path '.attributes.enabled') icon=(ahIconClass 'attributes') style='compact'
                    label='AH.FIELD.Attributes' value=model.attributes.enabled }}
@@ -16,8 +19,6 @@
   {{ahBooleanField path=(ahConcat path '.targeting.enabled') icon=(ahIconClass 'targeting') style='compact'
                    label='AH.FIELD.Targeting' value=model.targeting.enabled }}
 </div>
-
-{{ahStringField path=(ahConcat path '.name') label='AH.FIELD.Name' value=model.name}}
 
 <div class="ah-grid-2 ah-gap-1">
   {{#if model.attributes.enabled}}

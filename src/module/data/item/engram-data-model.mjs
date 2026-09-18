@@ -107,7 +107,7 @@ export default class EngramDataModel extends EquipmentDataModel {
     return Object.assign(super.defineSchema(), {
       level: new SchemaField({
         current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "header", _classes: "ah-flex-shrink" }),
-        max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header", _classes: "ah-flex-shrink" }),
+        max: new NumberField({ initial: 1, min: 1, max: 3, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header", _classes: "ah-flex-shrink" }),
       }),
       kind: new StringField({ initial: "magic", blank: true, choices: () => AH.engrams, _part: "header", label: "AH.FIELD.Kind" }),
       first: new EmbeddedDataField(EngramActionDataModel, {
