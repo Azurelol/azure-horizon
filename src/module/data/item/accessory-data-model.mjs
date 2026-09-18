@@ -22,7 +22,6 @@ export class EngramDataField extends SchemaField {
 /**
  * Represents a hero's accessory, which can grant them small benefits.
  * @property {AH_Rarity} rarity
- * @property {PotentialsDataModel} potentials
  * @property {EngramDataField[]} slots.entries
  * @property {Number} slots.max
  */
@@ -32,7 +31,6 @@ export default class AccessoryDataModel extends EquipmentDataModel {
   static defineSchema() {
     const { SchemaField, StringField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      potentials: new EmbeddedDataField(PotentialsDataModel),
       slots: new SchemaField({
         entries: new ArrayField(new EngramDataField(), {}),
         max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.ITEM.Engram.plural", _part: "header", _classes: "ah-flex-shrink" }),
@@ -75,14 +73,6 @@ export default class AccessoryDataModel extends EquipmentDataModel {
     }
 
     return true;
-  }
-
-  /**
-   * @param {ChatMessageBuilder} builder
-   * @returns {Promise<void>}
-   */
-  async prepareChatMessage(builder) {
-    ChatMessageSections.potentials(builder.sections, this.potentials.entries);
   }
 
   static get templates() {

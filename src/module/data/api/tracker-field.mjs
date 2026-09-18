@@ -31,15 +31,16 @@ export class TrackerField extends SchemaField {
     const currentInput = currentField.toInput({
       ...config,
       name: `${config.name}.current`,
+      dataset: {
+        tooltip: "AH.FIELD.Current",
+      },
       classes: "ah-tracker-field__current",
       value: config.value?.current ?? "",
     });
     container.append(currentInput);
 
-    const divider = document.createElement("i");
+    const divider = document.createElement("span");
     divider.classList.add("ah-tracker-field__divider");
-    divider.classList.add("fa");
-    divider.classList.add("fa-ellipsis-v");
     container.append(divider);
 
     const maxField = this.fields.max;
@@ -47,6 +48,9 @@ export class TrackerField extends SchemaField {
       ...config,
       name: `${config.name}.max`,
       classes: "ah-tracker-field__max",
+      dataset: {
+        tooltip: "AH.FIELD.Maximum",
+      },
       value: config.value?.max ?? "",
     });
     container.append(maxInput);

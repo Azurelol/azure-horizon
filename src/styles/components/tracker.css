@@ -257,22 +257,24 @@
   align-items: center;
   justify-content: center;
   width: var(--ah-label-width-s);
-  gap: 0.25rem;
   text-align: center;
+  border: var(--ah-border-m);
 
   .ah-tracker-field__current {
     font-variant-numeric: tabular-nums;
-    background: #4a90d9;
-    color: white;
-    padding: 0.05rem 0.35rem;
-    border-radius: 0.25rem;
     font-weight: 600;
+    background-color: var(--ah-surface-tab-active);
   }
 
   .ah-tracker-field__divider {
+    background-color: var(--ah-surface-border);
+    flex: 0 0 4px; /* don't grow, don't shrink, base size 1px */
+    align-self: stretch; /* fills the flex container's cross-axis height */
   }
 
   .ah-tracker-field__max {
     font-variant-numeric: tabular-nums;
+    padding: 0 0.3rem;
+    background: var(--ah-surface-panel);
   }
 }
