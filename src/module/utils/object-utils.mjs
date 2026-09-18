@@ -46,6 +46,20 @@ export default class ObjectUtils {
   }
 
   /**
+   * @param {Object} instance
+   * @param {String} className
+   * @returns {boolean}
+   */
+  static extendsClass(instance, className) {
+    let proto = Object.getPrototypeOf(instance);
+    while (proto) {
+      if (proto.constructor.name === className) return true;
+      proto = Object.getPrototypeOf(proto);
+    }
+    return false;
+  }
+
+  /**
    * @param {[]} array
    * @returns {Object}
    */

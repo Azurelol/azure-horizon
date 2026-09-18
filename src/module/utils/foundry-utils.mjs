@@ -303,6 +303,8 @@ export default class FoundryUtils {
    * @property {String} template The partial template path.
    * @property {Boolean} optional If the field is optional.
    * @property {Boolean} isArray
+   * @property {'default'|'header'|'properties'} layout
+   * @property {String} _classes
    */
 
   /**
@@ -324,6 +326,7 @@ export default class FoundryUtils {
       classes: field.options._classes,
       optional: field.fields?.enabled !== undefined,
       required: field.options.required,
+      layout: field.options._part ?? "default",
       active: value ? (value.enabled || value.required) : undefined,
     };
     if (field.model?.template) {
@@ -405,6 +408,7 @@ export default class FoundryUtils {
     /** @type AH_FieldRenderMap **/
     const layout = {
       default: [],
+      properties: [],
       header: [],
     };
 
@@ -437,6 +441,10 @@ export default class FoundryUtils {
           fieldInfo.isArray = true;
           layout.default.push(fieldInfo);
         }
+      }
+      else if (fieldClass === "TrackerField") {
+        const fieldInfo = this.getDataFieldInfo(source, fieldPath, field);
+        layout[fieldInfo.layout].push(fieldInfo);
       }
       // Primitives
       else if (!field.recursive && (SUPPORTED_FIELD_NAMES.has(fieldClass) || SYSTEM_FIELD_NAMES.has(fieldClass))) {

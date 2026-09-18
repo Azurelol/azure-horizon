@@ -59,6 +59,21 @@ function forClassBenefits(actor, onBenefits) {
   }
 }
 
+/**
+ * @param {HeroDataModel} system
+ * @param {(AH_EquipmentWeight) => void} onEquipment
+ */
+function forEquipmentWeight(system, onEquipment) {
+  if (system.parent.type === "hero") {
+    const equipment = system.equipment.equipped;
+    const weights = [equipment.armor?.system.weight,
+      equipment.mainHand?.system.weight].filter(Boolean);
+    for (const weight of weights) {
+      onEquipment(weight);
+    }
+  }
+}
+
 export default class Formulas {
 
   /**
@@ -290,6 +305,13 @@ export default class Formulas {
         ip += CLASS_BENEFIT_IP;
       }
     });
+    forEquipmentWeight(system, weight => {
+      switch (weight) {
+        case "heavy":
+          ip--;
+          break;
+      }
+    });
     return ip;
   }
 
@@ -350,7 +372,14 @@ export default class Formulas {
    */
   static calculateInitiative(system) {
     const attributes = system.attributes;
-    const bonus = Formulas.calculateProficiencyBonus(system.level);
+    let bonus = Formulas.calculateProficiencyBonus(system.level);
+    forEquipmentWeight(system, weight => {
+      switch (weight) {
+        case "heavy":
+          bonus--;
+          break;
+      }
+    });
     return this.round((attributes.dex.current + attributes.ins.current) / 2) + bonus;
   }
 

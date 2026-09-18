@@ -7,3 +7,4 @@ export { default as SubDocumentDataModel } from "./sub-document-data-model.mjs";
 export { default as SubDocumentCollectionField } from "./sub-document-collection-field.mjs";
 export { Modifiers, ExchangeModifiersDataModel, ModifierListDataField, ModifiersDataModel } from "./modifiers.mjs";
 export { default as TrackerDataModel } from "./tracker-data-model.mjs";
+export { TrackerField } from "./tracker-field.mjs";

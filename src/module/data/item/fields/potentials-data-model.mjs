@@ -30,12 +30,12 @@ export class PotentialField extends SchemaField {
     return container;
   }
 
-  /** @override */
-  toFormGroup(groupConfig = {}, inputConfig = {}) {
-    const group = super.toFormGroup(groupConfig, inputConfig);
-    group.classList.add("ah-potential-form-group");
-    return group;
-  }
+  // /** @override */
+  // toFormGroup(groupConfig = {}, inputConfig = {}) {
+  //   const group = super.toFormGroup(groupConfig, inputConfig);
+  //   group.classList.add("ah-potential-form-group");
+  //   return group;
+  // }
 }
 
 /**

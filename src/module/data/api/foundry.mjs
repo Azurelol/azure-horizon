@@ -147,3 +147,52 @@
  * @typedef ApplicationDragDropConfiguration
  * @property {DragDropConfiguration[]} dragDrop
  */
+
+/**
+ * @typedef FormGroupConfig
+ * @property {string} label                         A text label to apply to the form group
+ * @property {string} [units]                       An optional units string which is appended to the label
+ * @property {HTMLElement|HTMLCollection} input     An HTML element or collection of elements which provide the inputs
+ *                                                  for the group
+ * @property {string} [hint]                        Hint text displayed as part of the form group
+ * @property {string} [rootId]                      Some parent CSS id within which field names are unique. If provided,
+ *                                                  this root ID is used to automatically assign "id" attributes to
+ *                                                  input elements and "for" attributes to corresponding labels.
+ * @property {string[]} [classes]                   An array of CSS classes applied to the form group element
+ * @property {boolean} [stacked=false]              Is the "stacked" class applied to the form group
+ * @property {boolean} [localize=false]             Should labels or other elements within this form group be
+ *                                                  automatically localized?
+ * @property {boolean|"until-found"} [hidden=false] The value of the form group's hidden attribute
+ * @property {CustomFormGroup} [widget]             A custom form group widget function which replaces the default
+ *                                                  group HTML generation
+ */
+
+/**
+ * @template [FormInputValue=unknown]
+ * @typedef FormInputConfig
+ * @property {string} name                        The name of the form element
+ * @property {boolean} [named=true]               Whether the element should be named in the form. If false, the element
+ *                                                will be given a name via data attribute only.
+ * @property {FormInputValue} [value]             The current value of the form element
+ * @property {string} [id]                        An id to assign to the element
+ * @property {boolean} [required=false]           Is the field required?
+ * @property {boolean} [disabled=false]           Is the field disabled?
+ * @property {boolean} [readonly=false]           Is the field readonly?
+ * @property {boolean} [autofocus=false]          Is the field autofocused?
+ * @property {boolean} [localize=false]           Localize values of this field?
+ * @property {Record<string, string>} [dataset]   Additional dataset attributes to assign to the input
+ * @property {Record<string, string>} [aria]      Aria attributes to assign to the input
+ * @property {string} [placeholder]               A placeholder value, if supported by the element type
+ * @property {string} [classes]                   Space-delimited class names to apply to the input.
+ * @property {string} [rootId]                    Some parent CSS id within which field names are unique. If provided,
+ *                                                this root ID is used to automatically assign "id" attributes to
+ *                                                input elements and "for" attributes to corresponding labels.
+ * @property {CustomFormInput} [input]
+ * @property {DataModel} [model]                  The DataModel instance the field belongs to
+ */
+
+/**
+ * @typedef StringFieldInputConfig
+ * @property {"input"|"textarea"|"prose-mirror"|"code-mirror"} [elementType="input"] The element to create for this
+ *                                                                                   form field
+ */

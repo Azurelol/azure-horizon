@@ -116,6 +116,11 @@
     0 0 0 1px rgba(0, 0, 0, 0.4),
     0 4px 10px rgba(0, 0, 0, 0.5);
 
+  /* Labels  */
+  --ah-label-width-s: 80px;
+  --ah-label-width-m: 120px;
+  --ah-label-width-l: 160px;
+
   /* Font weights */
   --ah-font-weight-normal: 400;
   --ah-font-weight-medium: 500;
@@ -136,6 +141,8 @@
   --ah-font-family-tag: Pixeloid;
   --ah-font-family-chat: Pixeloid;
   --ah-font-family-journal: Pixeloid2;
+
+
 
   /* Filters */
   --ah-filter-glow: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75));

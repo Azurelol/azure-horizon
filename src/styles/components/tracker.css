@@ -250,3 +250,29 @@
     }
   }
 }
+
+.ah-tracker-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: var(--ah-label-width-s);
+  gap: 0.25rem;
+  text-align: center;
+
+  .ah-tracker-field__current {
+    font-variant-numeric: tabular-nums;
+    background: #4a90d9;
+    color: white;
+    padding: 0.05rem 0.35rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+  }
+
+  .ah-tracker-field__divider {
+  }
+
+  .ah-tracker-field__max {
+    font-variant-numeric: tabular-nums;
+  }
+}

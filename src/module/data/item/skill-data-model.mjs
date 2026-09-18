@@ -4,14 +4,14 @@ import ActiveFeatureDataModel from "./active-feature-data-model.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { assertCondition, isActorType } from "../../constants.mjs";
 import { ActionDataModel } from "./fields/action-data-model.mjs";
+import { TrackerField } from "../api/_module.mjs";
 
 /**
  * Skills belong to character classes and are selected and upgraded during a character's advancement
  * @inheritDoc
  * @extends ActiveFeatureDataModel
  * @property {String} class The slug of the class this skill belongs to.
- * @property {Number} level.current
- * @property {Number} level.max
+ * @property {TrackerField} level
  * @property {WeaponUsageDataModel} usage
  * @property {CheckDataModel} check
  * @property {DamageDataModel} damage
@@ -28,9 +28,10 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
         label: "AH.FIELD.Class",
         _part: "header",
       }),
-      level: new SchemaField({
-        current: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.CurrentLevel", icon: AH.icons.current, _part: "header" }),
-        max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.FIELD.MaximumLevel", icon: AH.icons.max, _part: "header" }),
+      level: new TrackerField({
+        min: 1,
+        label: "AH.FIELD.Level",
+        _part: "header",
       }),
       action: new EmbeddedDataField(ActionDataModel, {}),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
