@@ -1,0 +1,44 @@
+{
+  "folder": "ivGIDK1pbY7LbfHe",
+  "name": "Eye of Fury",
+  "type": "accessory",
+  "_id": "cEC7susTcV3KMPbf",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-eye-of-fury",
+    "description": "",
+    "rarity": "common",
+    "potentials": {
+      "schemaVersion": 1,
+      "entries": []
+    },
+    "slots": {
+      "entries": [
+        {
+          "item": null
+        }
+      ],
+      "max": 1
+    }
+  },
+  "effects": [],
+  "sort": 900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789734674362,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!cEC7susTcV3KMPbf"
+}

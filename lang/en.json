@@ -930,6 +930,8 @@
     "EQUIPMENT": {
       "Rarity": "Rarity",
       "Engram": "Engram",
+      "Weight": "Weight",
+      "Handedness": "Handedness",
       "ENGRAM": {
         "Magic": "Magic",
         "Support": "Support"

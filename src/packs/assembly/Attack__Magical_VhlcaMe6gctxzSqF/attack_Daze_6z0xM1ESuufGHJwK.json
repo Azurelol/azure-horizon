@@ -25,14 +25,16 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "dark"
+        "amount": "5",
+        "type": "mental"
       },
       "secondary": {
         "amount": "",
         "type": ""
       },
-      "traits": [],
+      "traits": [
+        "stress"
+      ],
       "inplace": false
     },
     "attributes": {

@@ -1,0 +1,38 @@
+{
+  "folder": "WZOiB9iBbutR1dvN",
+  "name": "Outfit",
+  "type": "armor",
+  "_id": "wdDrP8GR8xh9VzHi",
+  "img": "icons/equipment/chest/shirt-collared-brown.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-outfit",
+    "description": "<p>A character's default outfit, what they are most comfortable wearing.</p>",
+    "category": "light",
+    "traits": [
+      "comfort"
+    ],
+    "rarity": [
+      "common"
+    ]
+  },
+  "effects": [],
+  "sort": 150000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787464736415,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!wdDrP8GR8xh9VzHi"
+}

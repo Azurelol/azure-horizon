@@ -20,14 +20,12 @@ export default class WeaponDataModel extends EquipmentDataMixin(AttackDataModel)
     return Object.assign(super.defineSchema(), {
       weight: new StringField({
         initial: "light",
-        blank: false,
         _part: "header",
         label: "AH.FIELD.Weight",
         choices: () => AH.equipmentWeight,
       }),
       handedness: new StringField({
         initial: "one",
-        blank: false,
         label: "AH.FIELD.Handedness",
         _part: "header",
         choices: () => AH.handedness,

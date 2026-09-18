@@ -3,7 +3,7 @@
   "name": "Greatsword",
   "type": "attack",
   "_id": "pb2NglAGh5h49ftH",
-  "img": "icons/weapons/swords/greatsword-evil-green.webp",
+  "img": "icons/weapons/swords/greatsword-crossguard-flanged-red.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -13,7 +13,8 @@
       "schemaVersion": 1,
       "primary": "dex",
       "secondary": "mig",
-      "grade": "B"
+      "grade": "A",
+      "enabled": true
     },
     "check": {
       "schemaVersion": 1,
@@ -29,7 +30,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "",
+        "amount": "10",
         "type": "slashing"
       },
       "secondary": {

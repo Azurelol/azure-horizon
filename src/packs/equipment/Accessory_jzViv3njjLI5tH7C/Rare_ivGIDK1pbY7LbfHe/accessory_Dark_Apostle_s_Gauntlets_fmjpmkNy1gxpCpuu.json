@@ -1,0 +1,44 @@
+{
+  "folder": "ivGIDK1pbY7LbfHe",
+  "name": "Dark Apostle's Gauntlets",
+  "type": "accessory",
+  "_id": "fmjpmkNy1gxpCpuu",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "dark-apostle-gauntlets",
+    "description": "",
+    "rarity": "common",
+    "potentials": {
+      "schemaVersion": 1,
+      "entries": []
+    },
+    "slots": {
+      "entries": [
+        {
+          "item": null
+        }
+      ],
+      "max": 1
+    }
+  },
+  "effects": [],
+  "sort": 800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789734633622,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!fmjpmkNy1gxpCpuu"
+}

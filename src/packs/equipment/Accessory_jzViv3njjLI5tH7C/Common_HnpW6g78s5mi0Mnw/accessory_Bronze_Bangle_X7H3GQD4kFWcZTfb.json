@@ -1,0 +1,31 @@
+{
+  "folder": "HnpW6g78s5mi0Mnw",
+  "name": "Bronze Bangle",
+  "type": "accessory",
+  "_id": "X7H3GQD4kFWcZTfb",
+  "img": "icons/equipment/wrist/bracer-belted-leather-brown.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-bronze-bangle",
+    "description": ""
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787464604666,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!X7H3GQD4kFWcZTfb"
+}

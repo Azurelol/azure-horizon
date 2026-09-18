@@ -60,9 +60,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "dazzle"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -71,10 +73,11 @@
     "power": "high",
     "action": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "",
-      "points": 1,
-      "traits": []
+      "enabled": true,
+      "type": "action",
+      "points": 2,
+      "traits": [],
+      "speed": "fast"
     },
     "domain": "light",
     "speed": "fast"

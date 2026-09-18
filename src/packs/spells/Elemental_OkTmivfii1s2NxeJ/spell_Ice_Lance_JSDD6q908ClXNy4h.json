@@ -8,26 +8,27 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "elementalist-ice-lance",
-    "description": "<p>You deal cold damage to a target. The damage is doubled if the target is <em>frozen</em>.</p>",
+    "description": "<p>You deal cold damage to a target and apply chill on an even check result. The damage is doubled if the target is <em>frozen</em>.</p>",
     "attributes": {
       "schemaVersion": 1,
-      "enabled": false,
-      "primary": "dex",
-      "secondary": "mig",
-      "grade": "C"
+      "enabled": true,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "B"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "5",
+        "amount": "10",
         "type": "cold"
       },
       "secondary": {
@@ -53,15 +54,17 @@
     "targeting": {
       "schemaVersion": 1,
       "enabled": true,
-      "range": "",
+      "range": "ranged",
       "rule": "single",
       "traits": []
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "chill"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
@@ -73,7 +76,8 @@
       "enabled": true,
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "speed": "fast"
     },
     "domain": "elemental",
     "speed": "instant"

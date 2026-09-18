@@ -1,0 +1,44 @@
+{
+  "folder": "ivGIDK1pbY7LbfHe",
+  "name": "Cornucopia",
+  "type": "accessory",
+  "_id": "17YqjTYfL3Honbwn",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-cornucopia",
+    "description": "",
+    "rarity": "common",
+    "potentials": {
+      "schemaVersion": 1,
+      "entries": []
+    },
+    "slots": {
+      "entries": [
+        {
+          "item": null
+        }
+      ],
+      "max": 1
+    }
+  },
+  "effects": [],
+  "sort": 600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789734582929,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!17YqjTYfL3Honbwn"
+}

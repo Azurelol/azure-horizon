@@ -8,6 +8,12 @@ export default class ArmorTableRenderer extends ItemTableRenderer {
   _getItemColumns() {
     return [
       TableColumns.itemProperties(),
+      TableColumns.textColumn({
+        header: "AH.EQUIPMENT.Weight",
+        getText: entry => {
+          return AH.equipmentWeight[entry.system.weight] ?? "";
+        },
+      }),
     ];
   }
 

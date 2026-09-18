@@ -13,7 +13,7 @@
       "schemaVersion": 1,
       "primary": "ins",
       "secondary": "wlp",
-      "grade": "B",
+      "grade": "A",
       "enabled": true
     },
     "check": {
@@ -28,7 +28,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "10",
+        "amount": "15",
         "type": "fire"
       },
       "secondary": {

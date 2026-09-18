@@ -23,7 +23,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "",
+        "amount": "5",
         "type": "acid"
       },
       "secondary": {

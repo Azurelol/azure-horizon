@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dark-erosion",
-    "description": "<p>You apply Erosion to the target, which deals dark damage to them for the next 3 turns.</p>",
+    "description": "<p>You apply <em>Erosion</em> to the target, which deals dark damage to them for the next 3 turns.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

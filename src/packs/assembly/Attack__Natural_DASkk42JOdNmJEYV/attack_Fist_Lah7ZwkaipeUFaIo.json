@@ -23,16 +23,14 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "",
+        "amount": "5",
         "type": "bludgeoning"
       },
       "secondary": {
         "amount": "",
         "type": ""
       },
-      "traits": [
-        "nonLethal"
-      ],
+      "traits": [],
       "inplace": false
     }
   },

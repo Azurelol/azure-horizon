@@ -106,6 +106,7 @@ export default class CompendiumIndex {
   static npcFields = Object.freeze({
     rank: "system.profile.rank",
     role: "system.profile.role",
+    kind: "system.kind",
     adversarySlug: "system.profile.slug",
   });
 
@@ -135,6 +136,7 @@ export default class CompendiumIndex {
     skillRef: "system.skill",
     skillLevel: "system.level",
     intent: "system.intent",
+    weight: "system.weight",
   });
 
   /**

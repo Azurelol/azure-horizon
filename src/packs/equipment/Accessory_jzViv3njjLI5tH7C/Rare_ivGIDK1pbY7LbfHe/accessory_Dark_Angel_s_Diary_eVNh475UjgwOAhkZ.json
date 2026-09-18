@@ -1,0 +1,44 @@
+{
+  "folder": "ivGIDK1pbY7LbfHe",
+  "name": "Dark Angel's Diary",
+  "type": "accessory",
+  "_id": "eVNh475UjgwOAhkZ",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "dark-angel-diary",
+    "description": "",
+    "rarity": "common",
+    "potentials": {
+      "schemaVersion": 1,
+      "entries": []
+    },
+    "slots": {
+      "entries": [
+        {
+          "item": null
+        }
+      ],
+      "max": 1
+    }
+  },
+  "effects": [],
+  "sort": 700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789734619013,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!eVNh475UjgwOAhkZ"
+}

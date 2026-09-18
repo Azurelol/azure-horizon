@@ -173,7 +173,7 @@ export default class AH_TableRenderer {
      * @type {AH_TableColumnConfig[]}
      */
     const columns = this.getColumns().filter(c => {
-      // If the table is set to preview mode and the colummn cannot be previewed
+      // If the table is set to preview mode and the column cannot be previewed
       if (config.preview && !c.preview) {
         return false;
       }

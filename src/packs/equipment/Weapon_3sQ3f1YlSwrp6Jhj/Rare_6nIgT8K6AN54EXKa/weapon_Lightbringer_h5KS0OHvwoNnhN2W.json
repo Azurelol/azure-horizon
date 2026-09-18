@@ -1,0 +1,69 @@
+{
+  "folder": "6nIgT8K6AN54EXKa",
+  "name": "Lightbringer",
+  "type": "weapon",
+  "_id": "h5KS0OHvwoNnhN2W",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-lightbringer",
+    "description": "",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "A"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "5",
+        "type": "slashing"
+      },
+      "secondary": {
+        "amount": "5",
+        "type": "light"
+      },
+      "traits": []
+    },
+    "range": "melee",
+    "actionCost": 2,
+    "rarity": "rare",
+    "weight": "heavy",
+    "handedness": "two",
+    "options": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "traits": []
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789740129113,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!h5KS0OHvwoNnhN2W"
+}

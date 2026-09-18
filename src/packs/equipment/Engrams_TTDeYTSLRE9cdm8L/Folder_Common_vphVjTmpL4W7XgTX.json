@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "TTDeYTSLRE9cdm8L",
+  "name": "Common",
+  "color": "#008000",
+  "sorting": "a",
+  "_id": "vphVjTmpL4W7XgTX",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789735110817,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!vphVjTmpL4W7XgTX"
+}

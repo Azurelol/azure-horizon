@@ -1,0 +1,69 @@
+{
+  "folder": "6nIgT8K6AN54EXKa",
+  "name": "Ice Barbed Spear",
+  "type": "weapon",
+  "_id": "JSH7jG4Xr1ijYlUV",
+  "img": "icons/weapons/polearms/spear-ice-crystal-blue.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-ice-barbed-spear",
+    "description": "",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "B"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "5",
+        "type": "piercing"
+      },
+      "secondary": {
+        "amount": "5",
+        "type": "cold"
+      },
+      "traits": []
+    },
+    "range": "melee",
+    "actionCost": 2,
+    "rarity": "rare",
+    "weight": "light",
+    "handedness": "two",
+    "options": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "traits": []
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1789734719742,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!JSH7jG4Xr1ijYlUV"
+}

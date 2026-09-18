@@ -3,6 +3,7 @@ import AH, { scaleValue } from "../config.mjs";
 
 const MIN_ATTRIBUTE_DIE = 4;
 const MAX_ATTRIBUTE_DIE = 20; // L90
+const BASE_DAMAGE = 5;
 
 const HP_MIGHT_FACTOR = 5;
 const MP_WILLPOWER_FACTOR = 5;
@@ -20,6 +21,7 @@ const RECOVERY_HP_GAINED_BASE = 0.2;
 const RECOVERY_MP_SPENT_BASE = 0.2;
 const RECOVERY_TP_ADDED_BASE = 1;
 
+const BLOCK_BASE = BASE_DAMAGE;
 const BLOCK_RATIO_BASE = 0.05;
 const BLOCK_RATIO_LIGHT = 0.05;
 const BLOCK_RATIO_HEAVY = 0.1;
@@ -383,6 +385,7 @@ export default class Formulas {
     return this.round((attributes.dex.current + attributes.ins.current) / 2) + bonus;
   }
 
+  // TODO: Remove?
   /**
    * @param {HeroDataModel|AdversaryDataModel} system
    * @returns {Number}
@@ -474,7 +477,7 @@ export default class Formulas {
       ratio += BLOCK_RATIO_ADVERSARY;
     }
 
-    const hp = this.round(maxHP * ratio);
+    const hp = BLOCK_BASE + this.round(maxHP * ratio);
 
     return {
       hp,

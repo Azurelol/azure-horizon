@@ -1,0 +1,59 @@
+{
+  "name": "Sword",
+  "type": "weapon",
+  "_id": "4zb4xCrhPwyMnr89",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/longsword.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-sword",
+    "description": "",
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "defense": "def",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "5",
+        "type": "slashing"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "handedness": "one",
+    "attributes": {
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "B"
+    }
+  },
+  "effects": [],
+  "folder": "p34NvCVUkuzxmfGU",
+  "sort": 175000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1786474033819,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!4zb4xCrhPwyMnr89"
+}
