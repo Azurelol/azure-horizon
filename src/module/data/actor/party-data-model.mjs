@@ -1,21 +1,14 @@
 import { CodexDataModel } from "../ui/_module.mjs";
 import ActorDataModel from "./actor-data-model.mjs";
 import AH from "../../config.mjs";
+import { ObjectUtils } from "../../utils/_module.mjs";
+import { Analysis } from "../../pipelines/_module.mjs";
 
 /**
  * @typedef PartyHeroData
  * @property {AHActor} actor
  * @property {String} name
  * @property {Number} level
- */
-
-/**
- * @typedef AdversaryProfileData
- * @property {String} uuid
- * @property {String} name
- * @property {String} img
- * @property {String} rank
- * @property {Number} analysis The analysis level from 1-3.
  */
 
 /**
@@ -44,7 +37,9 @@ export default class PartyDataModel extends ActorDataModel {
           name: new StringField(),
           img: new StringField(),
           rank: new StringField(),
+          role: new StringField(),
           analysis: new StringField(),
+          revealed: new ObjectField(),
         }),
       ),
       codex: new EmbeddedDataField(CodexDataModel, {}),
@@ -200,13 +195,8 @@ export default class PartyDataModel extends ActorDataModel {
       return entry;
     }
 
-    entry = /** @type AdversaryProfileData **/ {
-      uuid: uuid,
-      name: actor.name,
-      img: actor.img,
-      rank: actor.system.profile.rank,
-    };
-    const adversaries = this.adversaries;
+    entry = Analysis.constructData(actor);
+    const adversaries = ObjectUtils.cloneArray(this.adversaries);
     adversaries.push(entry);
     await this.parent.update({ ["system.adversaries"]: adversaries });
     console.debug(`${actor.name} was registered as an adversary`);
@@ -247,12 +237,12 @@ export default class PartyDataModel extends ActorDataModel {
     let current = this.adversaries;
     let result = [];
     for (const adversary of current) {
-      const uuid = adversary.uuid.replace("Actor.", "");
-      const actor = await fromUuid(uuid);
       let percent = Math.round(Math.min(1, adversary.analysis / AH.defaults.analysis.max) * 100);
+      let traits = [];
       result.push({
         ...adversary,
-        traits: actor ? Array.from(actor.system.profile.traits) : [],
+        traits: traits,
+        role: AH.role[adversary.role],
         rank: AH.rank[adversary.rank],
         studyPercent: percent,
       });

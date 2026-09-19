@@ -15,7 +15,7 @@
            data-uuid="{{entry.uuid}}" data-type="adversary">
 
         <div class="ah-list__entry__left">
-          <a data-action="revealNpc"
+          <a data-action="revealAdversary"
              data-actor="{{entry.uuid}}">
             <img src="{{ entry.img }}" data-tooltip="{{ entry.name }}" />
           </a>
@@ -27,15 +27,19 @@
                 {{entry.name}}
               </span>
             <div class="ah-tags">
+              <div class="ah-tag">{{localize entry.role}}</div>
+              <div class="ah-tag">{{localize entry.rank}}</div>
               {{#each entry.traits as |tag|}}
                 <div class="ah-tag">{{ahHumanize tag}}</div>
               {{/each}}
-              {{#if entry.hidden}}
-                <div class="ah-tag"><i class="fa fa-eye-slash "></i></div>
-              {{/if}}
+            </div>
+
+            <div class="ah-flex-center ah-gap-s" data-tooltip="{{AH.ADVERSARY.AnalysisHint}}">
+              <i class="ah-icon --xs {{ahIconClass 'analysis'}} "></i>
+              {{entry.analysis}}
             </div>
           </div>
-          <span class="description">
+          <span class="ah-list__entry__description">
              {{#if this.isRevealed }}
                <i data-tooltip="FU.StudyRevealed" class="ra ra-light-bulb"></i>
              {{/if}}

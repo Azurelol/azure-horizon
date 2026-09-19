@@ -15,3 +15,4 @@ export { default as Tracks } from "./tracks.mjs";
 export { default as Pressure } from "./pressure.mjs";
 export { default as Campaign } from "./campaign.mjs";
 export { default as Tension } from "./tension.mjs";
+export { default as Analysis } from "./analysis.mjs";

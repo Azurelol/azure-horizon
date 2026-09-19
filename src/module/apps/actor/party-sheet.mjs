@@ -11,7 +11,7 @@ import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs
 import { CharacterSheet } from "./character-sheet.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
-import { Campaign } from "../../pipelines/_module.mjs";
+import { Analysis, Campaign } from "../../pipelines/_module.mjs";
 import { ExperienceTableRenderer } from "../campaign/_module.mjs";
 import { ChatAction, ChatMessageBuilder, ChatMessageSections, Dialogs } from "../../helpers/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
@@ -35,7 +35,7 @@ export class PartySheet extends AHActorSheet {
       activate: this.#activate,
 
       revealActor: this.#revealActor,
-      revealNpc: this.#revealNpc,
+      revealAdversary: this.#revealAdversary,
       inspectCharacter: this.#inspectCharacter,
 
       travelCheck: this.#travelCheck,
@@ -315,6 +315,24 @@ export class PartySheet extends AHActorSheet {
           }
         },
       },
+      {
+        name: StringUtils.localize("AH.COMMON.Refresh"),
+        icon: "<i class=\"fa fa-refresh\"></i>",
+        callback: (el) => {
+          const id = el.dataset.uuid;
+          return Analysis.updateProfile(this.system, id, false);
+        },
+        condition: (el) => el.dataset.type === "adversary",
+      },
+      {
+        name: StringUtils.localize("AH.COMMON.Edit"),
+        icon: "<i class=\"fa fa-pencil\"></i>",
+        callback: (el) => {
+          const id = el.dataset.uuid;
+          return Analysis.updateProfile(this.system, id, true);
+        },
+        condition: (el) => el.dataset.type === "adversary",
+      },
     ];
 
     FoundryUtils.contextMenu(html, ".character-option", contextMenuOptions, "contextmenu");
@@ -462,17 +480,17 @@ export class PartySheet extends AHActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise<void>}
    */
-  static async #revealNpc(event, target) {
+  static async #revealAdversary(event, target) {
     const uuid = target.dataset.actor;
-    await this._revealNpc(uuid);
+    await this._revealAdversary(uuid);
   }
 
   /**
    * @param uuid
    * @returns {Promise<void>}
    */
-  async _revealNpc(uuid) {
-    const data = this.party.getAdversary(uuid);
+  async _revealAdversary(uuid) {
+    const data = this.system.getAdversary(uuid);
     if (data) {
       // new NpcProfileWindow(data, {
       //   title: data.name,
@@ -629,6 +647,7 @@ export class PartySheet extends AHActorSheet {
       const party = PartySheet.getActiveActor();
       if (party) {
         for (const actor of actors.filter((a) => a.type === "adversary")) {
+          // TODO: Make a chat prompt instead?
           party.system.addOrUpdateAdversary(actor, 0);
         }
       }

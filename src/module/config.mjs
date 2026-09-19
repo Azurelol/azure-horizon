@@ -76,6 +76,7 @@ AH.defaults = {
     bonus: 5,
   },
   analysis: {
+    min: 1,
     max: 3,
   },
   check: {
@@ -1373,6 +1374,7 @@ AH.icons = {
   item: "ah-icon-inventory",
   equipment: "ah-icon-equipment",
   objective: "ah-icon-objective",
+  analysis: "fa fa-magnifying-glass",
   rest: "ah-icon-rest-long",
 
   maneuver: "ah-icon-maneuver",

@@ -317,6 +317,7 @@
         "long": "Intent",
         "plural": "Intents"
       },
+      "AnalysisHint": "The analysis level of the adversary.",
       "Weight": "Weight",
       "INTENT": {
         "Unknown": "Unknown",
@@ -871,6 +872,7 @@
       "Hidden": "Hidden",
       "Tags": "Tags",
       "Remove": "Remove",
+      "Refresh": "Refresh",
       "Trigger": "Trigger",
       "Theme": "Theme",
       "Preview": "Preview",

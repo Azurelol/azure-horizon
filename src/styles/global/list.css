@@ -156,7 +156,6 @@ ol.acc-list li {
     height: 100%;
   }
 
-  .description,
   .ah-list__entry__description {
     overflow-y: auto;
     user-select: text;
@@ -174,10 +173,6 @@ ol.acc-list li {
     .ah-list__entry__left {
       flex-direction: row;
     }
-
-    .ah-list__entry__header {
-      display: block;
-    }
   }
 
   &.--m {
@@ -188,10 +183,6 @@ ol.acc-list li {
     --entry-bg: var(--ah-surface-panel-gradient);
     align-items: center;
     border: none;
-
-    .ah-list__entry__header {
-      display: block;
-    }
   }
 
   &.--l {
