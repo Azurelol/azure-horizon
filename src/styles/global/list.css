@@ -89,112 +89,117 @@ ol.acc-list li {
 }
 
 .ah-list__entry {
+  --entry-height: auto;
+  --entry-left-width: 128px;
+  --entry-img-width: 120px;
+  --entry-img-height: 120px;
+  --entry-padding: 0;
+  --entry-bg: var(--ah-list-item-background);
+  --name-size: 16px;
+  --name-weight: 400;
+  --entry-img-bg: var(--ah-surface-panel);
+
+  display: flex;
+  height: var(--entry-height);
+  flex-direction: row;
+  width: 100%;
+  gap: 1rem;
+  padding: var(--entry-padding);
   color: var(--ah-list-color);
   border: var(--ah-border);
-  background: var(--ah-list-item-background);
+  background: var(--entry-bg);
   background-blend-mode: multiply;
   background-position: right top;
 
-  &.--compact {
+  .ah-list__entry__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    min-width: var(--entry-left-width);
+    max-width: var(--entry-left-width);
+
+    img {
+      object-fit: cover;
+      width: var(--entry-img-width);
+      height: var(--entry-img-height);
+      background: var(--entry-img-bg);
+      padding: 0;
+      border: var(--ah-border);
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 1px;
+    }
+  }
+
+  .ah-list__entry__header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     width: 100%;
-    gap: 1rem;
-    padding: 2px;
+
+    .ah-list__entry__name {
+      font-size: var(--name-size);
+      font-weight: var(--name-weight);
+    }
+  }
+
+  .ah-list__entry__right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .description,
+  .ah-list__entry__description {
+    overflow-y: auto;
+    user-select: text;
+  }
+
+  &.--compact {
+    --entry-height: 120px;
+    --entry-img-width: 90px;
+    --entry-img-height: 90px;
+    --entry-padding: 1rem;
+    --entry-bg: var(--ah-surface-panel-gradient);
     align-items: center;
-    background: none;
     border: none;
 
     .ah-list__entry__header {
-      .ah-list__entry__name {
-        font-size: 16px;
-        font-weight: 400;
-      }
+      display: block;
     }
   }
 
   &.--full {
-    display: flex;
-    flex-direction: row;
-    padding: 0.5rem 1rem;
+    --entry-padding: 0.5rem 1rem;
+    --entry-bg: var(--ah-surface-panel-gradient);
+    --name-size: xx-large;
+    --name-weight: 700;
+    --entry-height: 180px;
+    --entry-img-width: 120px;
+    --entry-img-height: 120px;
+    background-position: 0 0;
     position: relative;
-    height: 180px;
-    gap: 16px;
-    background: var(--ah-surface-entry-gradient);
-
-    .ah-list__entry__left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 8px;
-      min-width: 128px;
-      max-width: 128px;
-
-      img {
-        object-fit: cover;
-        width: 160px;
-        height: 120px;
-        padding: 0;
-        border: 2px solid var(--ah-color-border-list);
-      }
-
-      .controls {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: center;
-        gap: 1px;
-      }
-    }
-
-    .ah-list__entry__header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      .ah-list__entry__name {
-        font-size: xx-large;
-        font-weight: 700;
-      }
-    }
-
-    .ah-list__entry__right {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-
-      .description {
-        overflow-y: auto;
-        user-select: text;
-      }
-    }
   }
 
   &.--basic {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 1rem;
-    padding-left: 1rem;
+    --entry-padding: 0 0 0 1rem;
+    --name-size: 20px;
+    --name-weight: 700;
     justify-content: space-between;
 
     .ah-list__entry__header {
-      display: flex;
-      flex-direction: row;
       gap: 1rem;
-      justify-content: space-between;
-      width: 100%;
-
-      .ah-list__entry__name {
-        font-size: 20px;
-        font-weight: 700;
-        text-wrap: nowrap;
-      }
     }
 
-    .ah-list__entry__description {
-      overflow-y: auto;
-      user-select: text;
+    .ah-list__entry__name {
+      text-wrap: nowrap;
     }
   }
 }

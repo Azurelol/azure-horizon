@@ -10,7 +10,8 @@
 
     <ul class="ah-list">
     {{#each (ahSort adversaries 'name') as |entry|}}
-      <li class="ah-list__entry --full {{#if this.active}}active{{/if}}"
+      <li class="ah-list__entry --compact {{#if this.active}}active{{/if}}"
+          style="--entry-img-bg: var(--ah-adversary-background-gradient)"
            data-uuid="{{entry.uuid}}" data-type="npc">
 
         <div class="ah-list__entry__left">
