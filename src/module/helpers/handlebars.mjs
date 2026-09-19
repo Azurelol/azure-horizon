@@ -131,6 +131,9 @@ export default Object.freeze({
       args.pop();
       return args.join("");
     });
+    Handlebars.registerHelper("ahSort", (array, key) => {
+      return [...array].sort((a, b) => (a[key] > b[key] ? 1 : -1));
+    });
     Handlebars.registerHelper("ahAcronym", (str, threshold) => {
       if (str.length <= threshold) {
         return str;

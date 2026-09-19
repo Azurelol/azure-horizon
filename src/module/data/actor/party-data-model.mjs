@@ -247,11 +247,13 @@ export default class PartyDataModel extends ActorDataModel {
     let current = this.adversaries;
     let result = [];
     for (const adversary of current) {
+      const uuid = adversary.uuid.replace("Actor.", "");
+      const actor = await fromUuid(uuid);
       let percent = Math.round(Math.min(1, adversary.analysis / AH.defaults.analysis.max) * 100);
       result.push({
         ...adversary,
+        traits: actor ? Array.from(actor.system.profile.traits) : [],
         rank: AH.rank[adversary.rank],
-        _rank: adversary.rank,
         studyPercent: percent,
       });
     }

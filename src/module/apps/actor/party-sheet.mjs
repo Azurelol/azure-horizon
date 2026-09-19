@@ -15,6 +15,7 @@ import { Campaign } from "../../pipelines/_module.mjs";
 import { ExperienceTableRenderer } from "../campaign/_module.mjs";
 import { ChatAction, ChatMessageBuilder, ChatMessageSections, Dialogs } from "../../helpers/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
+import { AHCombat } from "../../documents/combat.mjs";
 
 export class PartySheet extends AHActorSheet {
 
@@ -34,6 +35,7 @@ export class PartySheet extends AHActorSheet {
       activate: this.#activate,
 
       revealActor: this.#revealActor,
+      revealNpc: this.#revealNpc,
       inspectCharacter: this.#inspectCharacter,
 
       travelCheck: this.#travelCheck,
@@ -99,6 +101,7 @@ export class PartySheet extends AHActorSheet {
       tabs: [
         { id: "overview", label: "AH.SHEET.Tabs.Overview", icon: "ra ra-double-team" },
         { id: "inventory", label: "AH.SHEET.Tabs.Inventory", icon: "ra ra-ammo-bag" },
+        { id: "adversaries", label: "AH.SHEET.Tabs.Adversaries", icon: "ra ra-sea-serpent" },
         { id: "codex", label: "AH.SHEET.Tabs.Codex", icon: "ra ra-book" },
         { id: "campaign", label: "AH.SHEET.Tabs.Campaign", icon: "ra ra-wooden-sign", gm: true },
         { id: "settings", label: "AH.SHEET.Tabs.Settings", icon: "ra ra-candle" },
@@ -131,6 +134,9 @@ export class PartySheet extends AHActorSheet {
     },
     inventory: {
       template: systemTemplatePath("sheets/actor/actor-inventory"),
+    },
+    adversaries: {
+      template: systemTemplatePath("sheets/actor/party/party-adversaries"),
     },
     codex: {
       template: systemTemplatePath("sheets/actor/party/party-codex"),
@@ -212,6 +218,12 @@ export class PartySheet extends AHActorSheet {
         break;
       case "character":
         break;
+      case "adversaries":
+      {
+        const adversaries = await this.system.getAdversaryData();
+        context.adversaries = PartySheet.sortAdversaryData(adversaries);
+        break;
+      }
       case "campaign": {
         context.campaignTabs = this._prepareTabs("campaign");
         context.opening = Campaign.prepareOpeningData(this.system);
@@ -301,6 +313,27 @@ export class PartySheet extends AHActorSheet {
     ];
 
     FoundryUtils.contextMenu(html, ".character-option", contextMenuOptions, "contextmenu");
+  }
+
+  /**
+   * @param {AdversaryProfileData[]} data
+   * @returns {AdversaryProfileData[]}
+   */
+  static sortAdversaryData(data) {
+    let result = data.reverse();
+    if (AHCombat.hasActiveEncounter) {
+      const combat = AHCombat.activeEncounter;
+      result = result.sort((a, b) => {
+        const aInSet = combat.hasInstancedActor(a.uuid);
+        a.active = aInSet;
+        const bInSet = combat.hasInstancedActor(b.uuid);
+        b.active = bInSet;
+        if (aInSet && !bInSet) return -1;
+        if (!aInSet && bInSet) return 1;
+        return 0;
+      });
+    }
+    return result;
   }
 
   // TODO: Provide setting
@@ -415,6 +448,32 @@ export class PartySheet extends AHActorSheet {
           this.system.removeHero(uuid);
           break;
       }
+    }
+  }
+
+  /**
+   * @this PartySheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #revealNpc(event, target) {
+    const uuid = target.dataset.actor;
+    await this._revealNpc(uuid);
+  }
+
+  /**
+   * @param uuid
+   * @returns {Promise<void>}
+   */
+  async _revealNpc(uuid) {
+    const data = this.party.getAdversary(uuid);
+    if (data) {
+      // new NpcProfileWindow(data, {
+      //   title: data.name,
+      // }).render(true);
+    } else {
+      ui.notifications.warn(`Did not find an adversary profile for ${uuid}`);
     }
   }
 

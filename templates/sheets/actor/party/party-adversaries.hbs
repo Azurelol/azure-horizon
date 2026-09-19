@@ -1,0 +1,50 @@
+<section class="tab adversaries {{tab.cssClass}}" data-tab="adversaries" data-group="primary">
+  <div class="adversaries content">
+    {{#unless (gt adversaries.length 0)}}
+      <div class="ah-message --banner">
+      <span>
+        {{localize 'AH.SHEET.MESSAGE.NoDataAvailable'}}
+      </span>
+      </div>
+    {{/unless}}
+
+    <ul class="ah-list">
+    {{#each (ahSort adversaries 'name') as |entry|}}
+      <li class="ah-list__entry --full {{#if this.active}}active{{/if}}"
+           data-uuid="{{entry.uuid}}" data-type="npc">
+
+        <div class="ah-list__entry__left">
+          <a data-action="revealNpc"
+             data-actor="{{entry.uuid}}">
+            <img src="{{ entry.img }}" data-tooltip="{{ entry.name }}" />
+          </a>
+        </div>
+
+        <div class="ah-list__entry__right">
+          <div class="ah-list__entry__header">
+              <span class="ah-list__entry__name">
+                {{entry.name}}
+              </span>
+            <div class="ah-tags">
+              {{#each entry.traits as |tag|}}
+                <div class="ah-tag">{{ahHumanize tag}}</div>
+              {{/each}}
+              {{#if entry.hidden}}
+                <div class="ah-tag"><i class="fa fa-eye-slash "></i></div>
+              {{/if}}
+            </div>
+          </div>
+          <span class="description">
+             {{#if this.isRevealed }}
+               <i data-tooltip="FU.StudyRevealed" class="ra ra-light-bulb"></i>
+             {{/if}}
+            {{#if (gt this.study 0)}}
+              <span data-tooltip="{{this.study}}">{{this.studyPercent}}%</span>
+            {{/if}}
+          </span>
+        </div>
+      </li>
+    {{/each}}
+    </ul>
+  </div>
+</section>

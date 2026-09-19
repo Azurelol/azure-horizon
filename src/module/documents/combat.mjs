@@ -46,6 +46,14 @@ export class AHCombat extends foundry.documents.Combat {
   }
 
   /**
+   * @param {String} uuid
+   * @returns True if the actor is present in the combat
+   */
+  hasInstancedActor(uuid) {
+    return this.actors.find((a) => a.resolveUuid() === uuid);
+  }
+
+  /**
    * @returns {AHActor[]}
    */
   get actors() {
