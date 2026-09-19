@@ -272,7 +272,9 @@ export class PartySheet extends AHActorSheet {
   _attachPartListeners(partId, html, options) {
     super._attachPartListeners(partId, html, options);
     switch (partId) {
-      case "overview": {
+      case "overview":
+      case "adversaries":
+      {
         this.setupCharacterContextMenu(html);
         break;
       }
@@ -306,6 +308,9 @@ export class PartySheet extends AHActorSheet {
           switch (type) {
             case "character":
               this.system.removeHero(id);
+              break;
+            case "adversary":
+              this.system.removeAdversary(id);
               break;
           }
         },

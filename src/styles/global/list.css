@@ -164,11 +164,16 @@ ol.acc-list li {
 
   &.--s {
     --entry-height: 80px;
+    --entry-left-width: 60px;
     --entry-img-width: 60px;
     --entry-img-height: 60px;
     --entry-padding: 1rem;
     --entry-bg: var(--ah-surface-panel-gradient);
     align-items: center;
+
+    .ah-list__entry__left {
+      flex-direction: row;
+    }
 
     .ah-list__entry__header {
       display: block;
