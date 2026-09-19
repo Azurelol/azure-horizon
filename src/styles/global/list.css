@@ -162,7 +162,20 @@ ol.acc-list li {
     user-select: text;
   }
 
-  &.--compact {
+  &.--s {
+    --entry-height: 80px;
+    --entry-img-width: 60px;
+    --entry-img-height: 60px;
+    --entry-padding: 1rem;
+    --entry-bg: var(--ah-surface-panel-gradient);
+    align-items: center;
+
+    .ah-list__entry__header {
+      display: block;
+    }
+  }
+
+  &.--m {
     --entry-height: 120px;
     --entry-img-width: 90px;
     --entry-img-height: 90px;
@@ -176,7 +189,7 @@ ol.acc-list li {
     }
   }
 
-  &.--full {
+  &.--l {
     --entry-padding: 0.5rem 1rem;
     --entry-bg: var(--ah-surface-panel-gradient);
     --name-size: xx-large;

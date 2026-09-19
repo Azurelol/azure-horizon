@@ -38,7 +38,7 @@
 
     <ul class="ah-browser__content ah-list" data-codex-drop-root data-codex-dropzone="entry">
       {{#each system.codex.entries as |entry index|}}
-        <li class="ah-list__entry --full {{#if (and entry.hidden (not @root.user.isGM))}}hidden{{/if}} "
+        <li class="ah-list__entry --l {{#if (and entry.hidden (not @root.user.isGM))}}hidden{{/if}} "
             data-index="{{index}}" data-name="{{entry.name}}">
           <div class="ah-list__entry__left">
             <a data-action="onCodexEntry"
