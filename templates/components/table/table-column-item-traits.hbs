@@ -1,0 +1,9 @@
+<td class="ah-table__column__item__properties">
+  {{#if traits}}
+    <div class="ah-tags">
+      {{#each traits as |tag|}}
+        <div class="ah-tag">{{ahHumanize tag}}</div>
+      {{/each}}
+    </div>
+  {{/if}}
+</td>

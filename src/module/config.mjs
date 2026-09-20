@@ -142,11 +142,11 @@ AH.difficultyLevel = Object.freeze({
  */
 
 AH.power = Object.freeze({
-  low: { label: "AH.ACTION.POWER.Low", multiplicative: 1.2 },
-  moderate: { label: "AH.ACTION.POWER.Moderate", multiplicative: 1.4 },
-  high: { label: "AH.ACTION.POWER.High", multiplicative: 1.6, difficulty: 13 },
-  severe: { label: "AH.ACTION.POWER.Severe", multiplicative: 1.8 },
-  extreme: { label: "AH.ACTION.POWER.Extreme", multiplicative: 2 },
+  low: { label: "AH.ACTION.POWER.Low", multiplicative: 1.1 },
+  moderate: { label: "AH.ACTION.POWER.Moderate", multiplicative: 1.2 },
+  high: { label: "AH.ACTION.POWER.High", multiplicative: 1.3, difficulty: 13 },
+  severe: { label: "AH.ACTION.POWER.Severe", multiplicative: 1.4 },
+  extreme: { label: "AH.ACTION.POWER.Extreme", multiplicative: 1.5 },
 });
 
 /**
@@ -582,8 +582,8 @@ AH.engrams = {
  * @type {Record<AH_Handedness, string>}
  */
 AH.handedness = {
-  one: "AH.FIELD.OneHanded",
-  two: "AH.FIELD.TwoHanded",
+  one: { long: "AH.EQUIPMENT.OneHanded.long", short: "AH.EQUIPMENT.OneHanded.short" },
+  two: { long: "AH.EQUIPMENT.TwoHanded.long", short: "AH.EQUIPMENT.TwoHanded.short" },
 };
 
 /**

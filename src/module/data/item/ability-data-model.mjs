@@ -39,7 +39,6 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
         label: "AH.ADVERSARY.Weight",
         _part: "header",
       }),
-      action: new EmbeddedDataField(ActionDataModel, {}),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
     });
   }
@@ -55,7 +54,6 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
    */
   async _initializeAction(config) {
     await super._initializeAction(config);
-    await this.action.configureAction(config);
     this.usage.configureAction(config);
 
     const actor = this.parent.actor;

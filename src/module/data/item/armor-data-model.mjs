@@ -34,6 +34,14 @@ export default class ArmorDataModel extends EquipmentDataModel {
     });
   }
 
+  *allApplicableTraits() {
+    yield* super.allApplicableTraits();
+    yield this.weight;
+    for (const trait of this.traits) {
+      yield trait;
+    }
+  }
+
   /**
    * @param {ChatMessageBuilder} builder
    * @returns {Promise<void>}

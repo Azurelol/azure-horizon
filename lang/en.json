@@ -934,7 +934,16 @@
       "Rarity": "Rarity",
       "Engram": "Engram",
       "Weight": "Weight",
+      "Range": "Range",
       "Handedness": "Handedness",
+      "OneHanded": {
+        "long": "One-Handed",
+        "short": "1H"
+      },
+      "TwoHanded": {
+        "long": "Two-Handed",
+        "short": "2H"
+      },
       "ENGRAM": {
         "Magic": "Magic",
         "Support": "Support"

@@ -12,15 +12,9 @@ export default class WeaponTableRenderer extends AttackTableRenderer {
   _getItemColumns() {
     let columns = super._getItemColumns();
     columns.push(TableColumns.textColumn({
-      header: "AH.EQUIPMENT.Weight",
-      getText: entry => {
-        return AH.equipmentWeight[entry.system.weight] ?? "";
-      },
-    }));
-    columns.push(TableColumns.textColumn({
       header: "AH.EQUIPMENT.Handedness",
       getText: entry => {
-        return AH.handedness[entry.system.handedness] ?? "";
+        return AH.handedness[entry.system.handedness].short ?? "";
       },
     }));
     return columns;

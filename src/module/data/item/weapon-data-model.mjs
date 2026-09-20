@@ -41,6 +41,14 @@ export default class WeaponDataModel extends EquipmentDataMixin(AttackDataModel)
     });
   }
 
+  *allApplicableTraits() {
+    yield* super.allApplicableTraits();
+    yield this.weight;
+    for (const trait of this.traits) {
+      yield trait;
+    }
+  }
+
   async _initializeAction(config) {
     await super._initializeAction(config);
     await this.options.configureAction(config);

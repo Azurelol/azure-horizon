@@ -20,6 +20,7 @@ const TEMPLATES = Object.freeze({
   damage: systemTemplatePath("components/table/table-column-damage"),
   resource: systemTemplatePath("components/table/table-column-resource"),
   itemProperties: systemTemplatePath("components/table/table-column-item-properties"),
+  itemTraits: systemTemplatePath("components/table/table-column-item-traits"),
   itemCost: systemTemplatePath("components/table/table-column-item-cost"),
   engrams: systemTemplatePath("components/table/table-column-engrams"),
 });
@@ -197,8 +198,32 @@ function itemProperties(options = {}) {
     preview: true,
 
     renderCell: async (entry) => {
+      const model = options.getData ? await options.getData(entry) : entry.system;
       return renderTemplate(TEMPLATES.itemProperties, {
-        model: options.getData ? await options.getData(entry) : entry.system,
+        model: model,
+        cssClass: options.cssClass,
+      }, false);
+    },
+  };
+}
+
+/**
+ * @template {Object} T
+ * @param {AH_PropertyColumnOptions} [options]
+ * @return {AH_TableColumnConfig}
+ */
+function itemTraits(options = {}) {
+  return {
+    hideHeader: !options.header,
+    renderHeader: () => StringUtils.localize(options.header ?? "AH.FIELD.Traits"),
+    headerAlignment: options.alignment,
+    preview: true,
+
+    renderCell: async (entry) => {
+      const model = options.getData ? await options.getData(entry) : entry.system;
+      const traits = model.allApplicableTraits();
+      return renderTemplate(TEMPLATES.itemTraits, {
+        traits: traits,
         cssClass: options.cssClass,
       }, false);
     },
@@ -388,6 +413,7 @@ const TableColumns = Object.freeze({
 
   itemProperties,
   itemCost,
+  itemTraits,
   damage,
   resource,
   check,

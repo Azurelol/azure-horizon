@@ -28,4 +28,11 @@ export default class ClassDataModel extends ItemDataModel {
       }),
     });
   }
+
+  *allApplicableTraits() {
+    yield* super.allApplicableTraits();
+    for (const trait of this.traits) {
+      yield trait;
+    }
+  }
 }

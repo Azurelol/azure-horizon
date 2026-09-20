@@ -82,6 +82,11 @@ export default class AttackDataModel extends FeatureDataModel {
     this.damage.required = true;
   }
 
+  *allApplicableTraits() {
+    yield* super.allApplicableTraits();
+    yield this.range;
+  }
+
   async _initializeAction(config) {
     await super._initializeAction(config);
     config.addTraits(this.range);

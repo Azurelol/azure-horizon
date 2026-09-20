@@ -29,6 +29,7 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
       check: new EmbeddedDataField(CheckDataModel, { }),
       damage: new EmbeddedDataField(DamageDataModel, FoundryUtils.configureInitial(DamageDataModel, {
       })),
+      action: new EmbeddedDataField(ActionDataModel, {}),
       resource: new EmbeddedDataField(ResourceDataModel, {}),
       cost: new EmbeddedDataField(ActionCostDataModel, {}),
       targeting: new EmbeddedDataField(TargetingDataModel, {}),
@@ -45,8 +46,22 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     });
   }
 
+  *allApplicableTraits() {
+    yield* super.allApplicableTraits();
+    for (const trait of this.action.traits) {
+      yield trait;
+    }
+    for (const trait of this.targeting.traits) {
+      yield trait;
+    }
+    for (const trait of this.damage.traits) {
+      yield trait;
+    }
+  }
+
   async _initializeAction(config) {
     await super._initializeAction(config);
+    await this.action.configureAction(config);
     await this.damage.configureAction(config);
     await this.resource.configureAction(config);
     await this.effects.configureAction(config);

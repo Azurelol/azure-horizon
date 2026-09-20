@@ -12,7 +12,6 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
   static defineSchema() {
     const { SchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      action: new EmbeddedDataField(ActionDataModel, {}),
       domain: new StringField({ initial: "",
         blank: true,
         label: "AH.FIELD.Domain",
@@ -24,7 +23,6 @@ export default class SpellDataModel extends ActiveFeatureDataModel {
 
   async _initializeAction(config) {
     await super._initializeAction(config);
-    await this.action.configureAction(config);
     config.addTraits("spell");
     if (this.domain) {
       config.addTraits(this.domain);

@@ -607,7 +607,7 @@ async function updateTokens() {
 
       case "adversary":
         data["prototypeToken.bar2.attribute"] = "resources.pp";
-        data["prototypeToken.displayBars"] = foundry.CONST.TOKEN_DISPLAY_MODES.ALWAYS;
+        data["prototypeToken.displayBars"] = foundry.CONST.TOKEN_DISPLAY_MODES.HOVER;
         break;
     }
 

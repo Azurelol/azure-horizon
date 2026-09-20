@@ -33,7 +33,6 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
         label: "AH.FIELD.Level",
         _part: "header",
       }),
-      action: new EmbeddedDataField(ActionDataModel, {}),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
     });
   }
@@ -53,7 +52,7 @@ export default class SkillDataModel extends ActiveFeatureDataModel {
 
   async _initializeAction(config, data) {
     await super._initializeAction(config);
-    await this.action.configureAction(config);
+
     this.usage.configureAction(config);
 
     const actor = this.parent.actor;

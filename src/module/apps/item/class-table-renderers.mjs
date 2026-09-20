@@ -5,10 +5,6 @@ import { StringUtils } from "../../utils/_module.mjs";
 export class ClassTableRenderer extends ItemTableRenderer {
   _getItemColumns() {
     return [
-      TableColumns.textColumn({
-        header: "AH.FIELD.Traits",
-        getText: (entry) => Array.from(entry.system.traits).map(t => StringUtils.capitalize(t)).join(", "),
-      }),
     ];
   }
 }
@@ -47,6 +43,9 @@ export class SkillTableRenderer extends ItemTableRenderer {
       },
     }));
     columns.push(TableColumns.itemProperties());
+    columns.push(TableColumns.itemCost({
+      getData: (entry) => entry.system,
+    }));
     return columns;
   }
 }

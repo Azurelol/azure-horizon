@@ -64,6 +64,14 @@ export default class ItemDataModel extends VersionedTypeDataModel {
   }
 
   /**
+   * @yields {string}
+   * @returns {Generator<string, void, void>}
+   */
+  *allApplicableTraits() {
+    yield* []; // yields nothing; delegating to an empty iterable satisfies linters
+  }
+
+  /**
    * Invoked by the item sheet.
    * @param {AHItemSheet} sheet
    * @param {String} partId

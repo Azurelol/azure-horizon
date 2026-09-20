@@ -23,7 +23,6 @@ export default class ClassFeatureDataModel extends ActiveFeatureDataModel {
       feature: new TypedSchemaField(AH.dataModelRegistries.classFeature.types, {
         initial: new EmptyClassFeature(),
       }),
-      action: new EmbeddedDataField(ActionDataModel, {}),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
       trait: new StringField({ initial: "",
         blank: true,
@@ -51,7 +50,6 @@ export default class ClassFeatureDataModel extends ActiveFeatureDataModel {
   async _initializeAction(config) {
     await super._initializeAction(config);
     await this.usage.configureAction(config);
-    await this.action.configureAction(config);
     config.addTraits([this.trait]);
 
     const actor = this.parent.actor;

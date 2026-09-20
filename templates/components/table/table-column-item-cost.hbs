@@ -5,6 +5,12 @@
     </span>
   {{/if}}
 
+  {{#if model.action.enabled}}
+    <span>
+      <i class="ah-icon --s {{ahIconClass 'action'}}"></i> {{model.action.points}}
+    </span>
+  {{/if}}
+
   {{#if (eq model.type 'consumable')}}
     <span>
       <i class="ah-icon --s {{ahIconClass 'ip'}}"></i> {{model.cost.amount}}

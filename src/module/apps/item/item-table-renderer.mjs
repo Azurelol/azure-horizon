@@ -82,6 +82,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
         type: "item",
       }));
     columns.push(...this._getItemColumns());
+    columns.push(TableColumns.itemTraits());
     columns.push(this._getCommonActionOptions());
     return columns;
   }
