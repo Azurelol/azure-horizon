@@ -1,19 +1,21 @@
 <td class="ah-table__column__item__cost">
-  {{#if model.cost.enabled}}
-    <span>
+  <div class="ah-table__cell --center">
+    {{#if model.cost.enabled}}
+      <span>
       <i class="ah-icon --s {{ahIconClass model.cost.resource}}"></i> {{model.cost.amount}}
     </span>
-  {{/if}}
+    {{/if}}
 
-  {{#if model.action.enabled}}
-    <span>
-      <i class="ah-icon --s {{ahIconClass 'action'}}"></i> {{model.action.points}}
+    {{#if model.action.enabled}}
+      <span>
+      <i class="ah-icon --xs {{ahIconClass 'ap'}}"></i> {{model.action.points}}
     </span>
-  {{/if}}
+    {{/if}}
 
-  {{#if (eq model.type 'consumable')}}
-    <span>
+    {{#if (eq model.type 'consumable')}}
+      <span>
       <i class="ah-icon --s {{ahIconClass 'ip'}}"></i> {{model.cost.amount}}
     </span>
-  {{/if}}
+    {{/if}}
+  </div>
 </td>

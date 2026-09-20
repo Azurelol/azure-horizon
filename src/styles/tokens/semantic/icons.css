@@ -30,9 +30,14 @@
   --ah-icon-tp: url("../../../../assets/icons/parameters/tp.png");
   --ah-icon-pp: url("../../../../assets/icons/parameters/pp.png");
   --ah-icon-xp: url("../../../../assets/icons/parameters/xp.png");
+  --ah-icon-ap: url("../../../../assets/icons/parameters/ap.png");
 
   .ah-icon-hp {
     background-image: var(--ah-icon-hp);
+  }
+
+  .ah-icon-ap {
+    background-image: var(--ah-icon-ap);
   }
 
   .ah-icon-thp {
