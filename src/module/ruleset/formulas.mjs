@@ -17,16 +17,24 @@ const CLASS_BENEFIT_MP = 10;
 const CLASS_BENEFIT_TP = 2;
 const CLASS_BENEFIT_IP = 2;
 
-const RECOVERY_HP_GAINED_BASE = 0.2;
+const RECOVERY_HP_BASE = 5;
+const RECOVERY_HP_BONUS_LIGHT = 2;
+const RECOVERY_HP_GAINED_BASE = 0.1;
 const RECOVERY_MP_SPENT_BASE = 0.2;
 const RECOVERY_TP_ADDED_BASE = 1;
 
 const BLOCK_BASE = BASE_DAMAGE;
+
 const BLOCK_RATIO_BASE = 0.05;
 const BLOCK_RATIO_LIGHT = 0.05;
 const BLOCK_RATIO_HEAVY = 0.1;
-const MOVEMENT_MIN = 1;
 const BLOCK_RATIO_ADVERSARY = 0.1;
+
+const BLOCK_BONUS_HEAVY = 2;
+const BLOCK_BONUS_ARMOR_HEAVY = 4;
+const BLOCK_BONUS_SHIELD = 4;
+const BLOCK_BONUS_ADVERSARY = 5;
+const MOVEMENT_MIN = 1;
 const BLOCK_TP_GAINED = 1;
 
 const XP_PER_LEVEL = 10;
@@ -309,8 +317,7 @@ export default class Formulas {
     });
     forEquipmentWeight(system, weight => {
       switch (weight) {
-        case "heavy":
-          ip--;
+        case "light":
           break;
       }
     });
@@ -410,9 +417,11 @@ export default class Formulas {
     const maxHP = system.resources.hp.max;
     const maxMP = system.resources.mp.max;
 
-    let hpFactor = RECOVERY_HP_GAINED_BASE;
     let mpFactor = RECOVERY_MP_SPENT_BASE;
     let tpAdded = RECOVERY_TP_ADDED_BASE;
+
+    let base = RECOVERY_HP_BASE;
+    let bonus = 0;
 
     if (system.parent.type === "hero") {
       const equipment = system.equipment.equipped;
@@ -420,7 +429,7 @@ export default class Formulas {
         equipment.mainHand?.system.weight].filter(Boolean);
       for (const weight of weights) {
         if (weight === "light") {
-          hpFactor += 0.05;
+          bonus += RECOVERY_HP_BONUS_LIGHT;
         }
         else if (weight === "heavy") {
           tpAdded += 1;
@@ -428,7 +437,9 @@ export default class Formulas {
       }
     }
 
-    let hp = this.round(maxHP * hpFactor);
+    bonus += (maxHP * RECOVERY_HP_GAINED_BASE);
+
+    const hp = base + bonus + system.proficiency;
     let mp = this.round(maxMP * mpFactor);
     let tp = tpAdded;
 
@@ -450,34 +461,38 @@ export default class Formulas {
    * @returns {AH_BlockData}
    */
   static calculateBlock(system) {
-    const maxHP = system.resources.hp.max;
+    const base = BLOCK_BASE;
+    let bonus = 0;
 
-    let ratio = BLOCK_RATIO_BASE;
+    //let ratio = BLOCK_RATIO_BASE;
     let tp;
 
     if (system.parameters.block.current) {
-      ratio += (system.parameters.block.current / 100);
+      bonus += system.parameters.block.current;
+      //ratio += (system.parameters.block.current / 100);
     }
 
     if (system.parent.type === "hero") {
       const equipment = system.equipment.equipped;
-      const weights = [equipment.armor?.system.weight,
-        equipment.mainHand?.system.weight].filter(Boolean);
-      for (const weight of weights) {
-        if (weight === "light") {
-          ratio += BLOCK_RATIO_LIGHT;
+      if (equipment.armor?.system.weight === "heavy") {
+        bonus += BLOCK_BONUS_ARMOR_HEAVY;
+      }
+      const weapons = new Set([equipment.mainHand, equipment.offHand].filter(Boolean));
+      for (const weapon of weapons) {
+        if (weapon.system.weight === "heavy") {
+          bonus += BLOCK_BONUS_HEAVY;
         }
-        else if (weight === "heavy") {
-          ratio += BLOCK_RATIO_HEAVY;
+        if (weapon.system.traits.has("shield")) {
+          bonus += BLOCK_BONUS_SHIELD;
         }
       }
       tp = BLOCK_TP_GAINED;
     }
     else if (system.parent.type === "adversary") {
-      ratio += BLOCK_RATIO_ADVERSARY;
+      bonus += BLOCK_BONUS_ADVERSARY;
     }
 
-    const hp = BLOCK_BASE + this.round(maxHP * ratio);
+    const hp = base + bonus + system.proficiency;
 
     return {
       hp,
@@ -490,7 +505,7 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculateMovement(system) {
-    let result = 0;
+    let result = 1;
     if (system.parent.type === "hero") {
       const equipment = system.equipment.equipped;
       const weights = [equipment.armor?.system.weight,
@@ -498,9 +513,6 @@ export default class Formulas {
       for (const weight of weights) {
         if (weight === "light") {
           result += 1;
-        }
-        else if (weight === "heavy") {
-          result -= 1;
         }
       }
     }

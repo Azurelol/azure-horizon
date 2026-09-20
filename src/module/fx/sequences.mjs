@@ -15,7 +15,7 @@ function getVolume() {
  * @param {Preset} preset
  */
 function playSoundEffect(sequence, preset) {
-  if (!preset.sound) {
+  if (!preset?.sound) {
     return;
   }
   if (

@@ -56,8 +56,6 @@ export class CharacterParametersDataModel extends VersionedDataModel {
       multiplicative: 1,
     });
 
-    const system = this.parent;
-
     result.push({
       key: "AH.CHARACTER.PARAMETER.Proficiency",
       additive: this.parent.proficiency,
@@ -67,11 +65,10 @@ export class CharacterParametersDataModel extends VersionedDataModel {
     result.push(...Modifiers.resolveFromModel(this.checks));
 
     // Block
-    const block = Formulas.calculateBlock(system);
     result.push({
       key: "AH.CHARACTER.PARAMETER.Block",
-      additive: block.hp,
-      multiplicative: 1 + (this.block.current / 100),
+      additive: this.block.current,
+      multiplicative: 1,
     });
 
     result.push(...Modifiers.resolveFromModel(this.damage));
