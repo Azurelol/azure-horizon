@@ -14,7 +14,7 @@ export default class WeaponTableRenderer extends AttackTableRenderer {
     columns.push(TableColumns.textColumn({
       header: "AH.EQUIPMENT.Handedness",
       getText: entry => {
-        return AH.handedness[entry.system.handedness].short ?? "";
+        return AH.handedness[entry.system?.handedness].short ?? "";
       },
     }));
     return columns;

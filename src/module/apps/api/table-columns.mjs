@@ -1,10 +1,13 @@
 import { enrichHTML, renderTemplate, systemTemplatePath } from "../../constants.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
+import AH from "../../config.mjs";
 
 /**
  * @typedef AH_TableColumnConfig
  * @template {Object} T
  * @property {AH_Render<T>} renderHeader
+ * @property {String} headerTooltip A tooltip to use for the header.
+ * @property {String} headerIcon An icon to use for the header.
  * @property {AH_Render<T>} renderCell
  * @property {Boolean} isGM Whether to render only for GMs.
  * @property {Boolean} preview Whether this column can be rendered in preview mode.
@@ -193,7 +196,9 @@ function check(options = {}) {
 function itemProperties(options = {}) {
   return {
     hideHeader: !options.header,
-    renderHeader: () => StringUtils.localize(options.header ?? "AH.FIELD.Properties"),
+    renderHeader: () => "",
+    headerIcon: AH.icons.properties,
+    headerTooltip: StringUtils.localize("AH.FIELD.Properties"),
     headerAlignment: options.alignment,
     preview: true,
 
@@ -221,7 +226,7 @@ function itemTraits(options = {}) {
 
     renderCell: async (entry) => {
       const model = options.getData ? await options.getData(entry) : entry.system;
-      const traits = model.allApplicableTraits();
+      const traits = model.allApplicableTraits ? model.allApplicableTraits() : [];
       return renderTemplate(TEMPLATES.itemTraits, {
         traits: traits,
         cssClass: options.cssClass,

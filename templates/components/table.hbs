@@ -16,6 +16,9 @@
       {{#each columns as |column|}}
         <th class="{{column.cssClass}}">
           {{lookup (lookup @root.headers @index) "text"}}
+          {{#with (lookup (lookup @root.headers @index) "icon") as |icon|}}
+            <i class="ah-icon --xs {{icon}}"></i>
+          {{/with}}
         </th>
       {{/each}}
     </tr>

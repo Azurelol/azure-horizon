@@ -196,6 +196,7 @@ export default class AH_TableRenderer {
       const text = await column.renderHeader();
       headers.push({
         text: text,
+        icon: column.headerIcon,
       });
     }
 
