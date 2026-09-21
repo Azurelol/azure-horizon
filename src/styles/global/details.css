@@ -1,0 +1,17 @@
+.ah-details {
+
+  display: flex;
+  flex-direction: column;
+  font-size: var(--ah-font-size-m);
+  background: var(--ah-chat-message-component-background);
+
+  summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px;
+    width: 100%;
+  }
+
+}

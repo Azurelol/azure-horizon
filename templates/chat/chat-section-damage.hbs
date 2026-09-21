@@ -1,46 +1,55 @@
 <section class="ah-chat-section">
   <div class="ah-chat-section__check__details__group">
-    <div class="ah-chat-section__check__total --damage">
-      <i class="ah-icon --s {{ahIconClass 'applyDamage'}}"></i>
-      <span>{{localize 'AH.CHECK.TargetResource' result=damage.resolved.total resource='HP'}}</span>
-    </div>
 
     {{#with damage.resolved}}
-    <div class='ah-chat-section__check__components'>
-        {{#each instances as |component|}}
-          <div class="ah-chat-section__damage__component">
-            {{ahInlineProperty 'damageTypes' component.type }}
-            <div class="ah-chat-section__damage__component__addends">
-              {{#each component.addends as |addend|}}
-                <span data-tooltip="{{localize addend.source.label}}">
+    <details>
+      <summary class="ah-chat-section__check__total --damage">
+        <span>
+          {{#each instances as |component|}}
+            <i class="ah-icon --s {{ahIconClass component.type}}"></i>
+          {{/each}}
+        </span>
+        <span>{{localize 'AH.CHECK.TargetResource' result=total resource='HP'}}</span>
+      </summary>
+
+        <div class='ah-chat-section__check__components'>
+          {{#each instances as |component|}}
+            <div class="ah-chat-section__damage__component">
+              {{ahInlineProperty 'damageTypes' component.type }}
+              <div class="ah-chat-section__damage__component__addends">
+                {{#each component.addends as |addend|}}
+                  <span data-tooltip="{{localize addend.source.label}}">
                 {{#if addend.source}}
-                  <i class="ah-icon --s {{ahIconClass addend.source.icon}}"></i>
+                  <i class="ah-icon --xs {{ahIconClass addend.source.icon}}"></i>
                 {{/if}}
-                  {{addend.amount}}
+                    {{addend.amount}}
               </span>
-              {{/each}}
-            </div>
-          </div>
-        {{/each}}
-        {{#if modifiers}}
-          <div class="ah-chat-section__damage__component__addends">
-          {{#each modifiers as |mod|}}
-            <div class="ah-chat-section__damage__component" data-tooltip="{{mod.source.label}}">
-              {{log 'mod' mod}}
-              {{#if mod.source}}
-                <i class="ah-icon --s {{ahIconClass mod.source.icon}}"></i>
-              {{/if}}
-              {{#if mod.additive}}
-                <span class="ah-inline-property__value">{{numberFormat mod.additive sign=true}}</span>
-              {{/if}}
-              {{#if (ahNotEquals mod.multiplicative 1)}}
-                <span class="ah-inline-property__value">{{ahPercentModifier mod.multiplicative}}</span>
-              {{/if}}
+                {{/each}}
+              </div>
             </div>
           {{/each}}
-          </div>
-        {{/if}}
-    </div>
+          {{#if modifiers}}
+            <div class="ah-chat-section__damage__component__addends">
+              {{#each modifiers as |mod|}}
+                <div class="ah-chat-section__damage__component" data-tooltip="{{mod.source.label}}">
+                  {{log 'mod' mod}}
+                  {{#if mod.source}}
+                    <i class="ah-icon --xs {{ahIconClass mod.source.icon}}"></i>
+                  {{/if}}
+                  {{#if mod.additive}}
+                    <span class="ah-inline-property__value">{{numberFormat mod.additive sign=true}}</span>
+                  {{/if}}
+                  {{#if (ahNotEquals mod.multiplicative 1)}}
+                    <span class="ah-inline-property__value">{{ahPercentModifier mod.multiplicative}}</span>
+                  {{/if}}
+                </div>
+              {{/each}}
+            </div>
+          {{/if}}
+        </div>
+
+    </details>
     {{/with}}
+
   </div>
 </section>
