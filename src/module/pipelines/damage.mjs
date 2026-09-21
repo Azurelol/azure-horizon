@@ -426,15 +426,24 @@ const onProcessAction = async (config, actor, item) => {
 
     // 4.) Add power modifiers
     if (config.power) {
-      damage.modify("universal", {
-        key: "skill",
-        additive: AH.power[config.power].additive,
-        multiplicative: 1,
+      damage.add({
+        type: damage.type,
+        amount: AH.power[config.power].additive,
         source: {
           label: "AH.DAMAGE.Power",
           icon: "power",
         },
       });
+
+      // damage.modify("universal", {
+      //   key: "skill",
+      //   additive: AH.power[config.power].additive,
+      //   multiplicative: 1,
+      //   source: {
+      //     label: "AH.DAMAGE.Power",
+      //     icon: "power",
+      //   },
+      // });
     }
 
     // 5.) Set Potency

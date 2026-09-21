@@ -107,8 +107,8 @@
   --ah-icon-poison: url("../../../../assets/icons/affinities/poison.png");
 
   --ah-icon-power: url("../../../../assets/icons/checks/power.png");
-  --ah-icon-damage-primary: url("../../../../assets/icons/checks/primaryDamage.png");
-  --ah-icon-damage-secondary: url("../../../../assets/icons/checks/secondaryDamage.png");
+  --ah-icon-damage-primary: url("../../../../assets/icons/checks/base.png");
+  --ah-icon-damage-secondary: url("../../../../assets/icons/checks/base.png");
 
 
   .ah-icon-elemental {
