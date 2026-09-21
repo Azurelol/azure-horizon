@@ -8,6 +8,7 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
 import { Dialogs, Migrations } from "../../helpers/_module.mjs";
 import { CompendiumIndex } from "../../data/compendium/_module.mjs";
 import { DocumentSheetMixin } from "../api/document-sheet.mjs";
+import { Assembly } from "../../ruleset/_module.mjs";
 
 const { api, sheets } = foundry.applications;
 
@@ -50,6 +51,12 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
           label: "AH.COMMON.OpenCompendiumEntry",
           ownership: "OWNER",
         },
+        {
+          action: "applyPreset",
+          icon: "fa-solid fa-bookmark",
+          label: "AH.DIALOG.ApplyPreset",
+          ownership: "OWNER",
+        },
       ],
     },
     classes: ["ah-application", "ah-sheet", "ah-item"],
@@ -61,6 +68,7 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
 
       pushUpdate: AHItemSheet.#pushUpdate,
       pullUpdate: AHItemSheet.#pullUpdate,
+      applyPreset: AHItemSheet.#applyPreset,
       openCompendiumEntry: AHItemSheet.#openCompendiumEntry,
 
       changeType: AHItemSheet.#changeType,
@@ -306,6 +314,16 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
       return;
     }
     return Migrations.pullItemUpdate(this.item);
+  }
+
+  /**
+   * @this AHItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #applyPreset(event, target) {
+    return Assembly.promptPreset(this.item);
   }
 
   /**

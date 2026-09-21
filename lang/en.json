@@ -657,6 +657,7 @@
       "RemoveObject": "Are you sure you would like to remove {label}?",
       "ClearObjects": "Are you sure you would ike to clear all items?",
       "ImportThemeTitle": "Import Theme",
+      "ApplyPreset": "Apply Preset",
       "SelectAttackTitle": "Select Attack",
       "CompendiumMigrateActorItemsMessage": "Would you like to migrate the data in the selected items of the actor to that of the compendiums?",
       "CompendiumPushItemUpdate": "Would you like to push an item update to the following items among the world and compendiums?",

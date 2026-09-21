@@ -1264,6 +1264,7 @@ AH.traits = {
     pierce: { label: "AH.TARGETING.AREA.Pierce", tooltip: "AH.TRAIT.PierceHint" },
     splash: { label: "AH.TARGETING.AREA.Splash", tooltip: "AH.TRAIT.SplashHint" },
     chain: { label: "AH.TARGETING.AREA.Chain", tooltip: "AH.TRAIT.ChainHint" },
+    row: { label: "AH.TARGETING.AREA.Row", tooltip: "AH.TRAIT.RowHint" },
   },
 
   // Equipment

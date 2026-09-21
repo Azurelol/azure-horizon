@@ -103,6 +103,10 @@ const ROLES = Object.freeze({
   leader: new Role(buildProgression("wlp", "mig", "ins")),
 });
 
+const ABILITY_PRESETS = Object.freeze({
+
+});
+
 /**
  * @typedef AssemblyData
  * @property {Number} level
@@ -136,5 +140,15 @@ export default class Assembly {
     };
 
     return data;
+  }
+
+  /**
+   * @param {AHItem} item
+   * @returns {Promise<void>}
+   */
+  static async promptPreset(item) {
+    if (item.type === "ability") {
+
+    }
   }
 }

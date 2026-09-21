@@ -11,6 +11,14 @@ import { MathUtils, ObjectUtils } from "../utils/_module.mjs";
  */
 
 /**
+ * An intent is an action planned out by an adversary against a specific target.
+ * @typedef IntentData
+ * @property {IntentAction} primary
+ * @property {IntentAction} secondary
+ * @property {DocumentReference[]} targets The ids of the targets of the action.
+ */
+
+/**
  * @typedef RoleRoutine
  * The actions to take during that turn.
  * @property {AH_Intent[][]} default The default  cycle of intents for the adversary.
