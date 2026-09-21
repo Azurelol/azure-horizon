@@ -492,6 +492,8 @@
       "Bonus": "Bonus Damage",
       "Pressure": "Pressure",
       "Stagger": "Stagger",
+      "Power": "Power",
+      "Grade": "Grade",
       "AFFINITY": {
         "Vulnerability":  {
           "long": "Vulnerability",

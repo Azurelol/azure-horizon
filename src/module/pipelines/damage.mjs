@@ -352,9 +352,12 @@ const onProcessAction = async (config, actor, item) => {
     const weaponOverride = actor.system.parameters.overrides?.weapon;
     if (weaponOverride?.type) {
       config.modifyDamage(d => {
-        d.addOrUpdate("AH.DAMAGE.Secondary", {
+        d.addOrUpdate({
           type: weaponOverride.type,
           amount: weaponOverride.amount ?? 0,
+          source: {
+            label: "AH.DAMAGE.Secondary",
+          },
         });
       });
     }
@@ -366,25 +369,34 @@ const onProcessAction = async (config, actor, item) => {
       const secondaryDamage = damage.components[1];
 
       // Add high roll to primary damage
-      damage.add("AH.CHECK.PrimaryAttribute", {
+      damage.add({
         type: damage.type,
         amount: calc.primary.base,
+        source: {
+          label: "AH.CHECK.HighRoll.short",
+          icon: "hr",
+        },
       });
-      damage.add("AH.CHECK.ScalingBonus", {
+      damage.add({
         type: damage.type,
         amount: calc.primary.bonus,
+        source: {
+          label: "AH.DAMAGE.Grade",
+          icon: "grade",
+        },
       });
       // Add low roll to secondary damage
-      if (secondaryDamage) {
-        damage.add("AH.CHECK.SecondaryAttribute", {
-          type: secondaryDamage.type,
-          amount: calc.secondary.base,
-        });
-        damage.add("AH.CHECK.ScalingBonus", {
-          type: secondaryDamage.type,
-          amount: calc.secondary.bonus,
-        });
-      }
+      // if (secondaryDamage) {
+      //   damage.add("AH.CHECK.SecondaryAttribute", {
+      //     type: secondaryDamage.type,
+      //     amount: calc.secondary.base,
+      //   });
+      //   damage.add("AH.CHECK.ScalingBonus", {
+      //     type: secondaryDamage.type,
+      //     amount: calc.secondary.bonus,
+      //     label: "AH.DAMAGE.Grade",
+      //   });
+      // }
     }
 
     // 2.) Evaluate any components that have expressions
@@ -415,7 +427,9 @@ const onProcessAction = async (config, actor, item) => {
     if (config.power) {
       damage.modify("universal", {
         key: "skill",
-        multiplicative: AH.power[config.power].multiplicative,
+        additive: AH.power[config.power].additive,
+        multiplicative: 1,
+        label: "AH.DAMAGE.Power",
       });
     }
 

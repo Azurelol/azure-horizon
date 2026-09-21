@@ -9,7 +9,15 @@
     <div class='ah-chat-section__check__components'>
         {{#each instances as |component|}}
           <div class="ah-chat-section__damage__component" data-tooltip="{{localize component.tooltip}}">
-            {{ahInlineProperty 'damageTypes' component.type value=(ahJoin component.addends ' + ') }}
+            {{ahInlineProperty 'damageTypes' component.type }}
+            {{#each component.addends as |addend|}}
+              <span data-tooltip="{{localize addend.source.label}}">
+                {{#if addend.source}}
+                  <i class="ah-icon --xs {{ahIconClass addend.source.icon}}"></i>
+                {{/if}}
+                {{addend.amount}}
+              </span>
+            {{/each}}
           </div>
         {{/each}}
         {{#if modifiers}}

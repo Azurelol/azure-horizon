@@ -69,7 +69,12 @@ export default class ChatAction {
 	 * @return {ChatAction}
 	 */
   withDataset(dataset) {
-    this.dataset = dataset;
+    if (this.dataset) {
+      Object.assign(this.dataset, dataset);
+    }
+    else {
+      this.dataset = dataset;
+    }
     return this;
   }
 

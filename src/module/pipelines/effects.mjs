@@ -150,10 +150,10 @@ async function disableStatusEffect(actor, statusEffectId) {
  * @param {String} id An uuid or slug.
  * @param {SourceInfo} sourceInfo
  * @param {AH_ActiveEffectDuration} duration
- * @param includeLabel
+ * @param {PotencyActionOptions} options
  * @returns {Promise<ChatAction>}
  */
-async function getChatAction(id, sourceInfo, duration = undefined, includeLabel = true) {
+async function getChatAction(id, sourceInfo, duration = undefined, options = { potency: undefined }) {
   const effectData = await getEffectData(id);
   let name;
   let icon;
@@ -181,12 +181,21 @@ async function getChatAction(id, sourceInfo, duration = undefined, includeLabel 
   })
     .requiresOwner()
     .setFlag(AH.flags.ChatMessage.Effect)
-    .withSelected()
     .withImage(img)
     .withDataset({
       ["effect-id"]: id,
     });
-  if (includeLabel) {
+
+  if (options.potency) {
+    action.withDataset({
+      potency: options.potency,
+    });
+  }
+  else {
+    action.withSelected();
+  }
+
+  if (options.label) {
     action.withLabel(tooltip);
   }
   return action;
@@ -282,10 +291,16 @@ async function getPotencyActions(potency, effectData, sourceInfo) {
       actions = [];
       break;
     case "standard":
-      actions = await Promise.all(effectData.entries.map(async e => await getChatAction(e, sourceInfo, effectData.duration, false)));
+      actions = await Promise.all(effectData.entries.map(async e => await getChatAction(e, sourceInfo, effectData.duration, {
+        label: false,
+        potency: "standard",
+      })));
       break;
     case "powerful":
-      actions = await Promise.all(effectData.entries.map(async e => await getChatAction(e, sourceInfo, effectData.duration, false)));
+      actions = await Promise.all(effectData.entries.map(async e => await getChatAction(e, sourceInfo, effectData.duration, {
+        label: false,
+        potency: "powerful",
+      })));
       break;
   }
   return actions;

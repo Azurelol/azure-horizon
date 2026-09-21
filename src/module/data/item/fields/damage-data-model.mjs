@@ -55,10 +55,20 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
       // If there's
       if (config.hasDamage) {
         config.modifyDamage(dmg => {
-          dmg.add(label, this.primary);
+          dmg.add({
+            ...this.primary,
+            source: {
+              label: label,
+            },
+          });
           if (this.secondary.type) {
             config.addTraits(this.secondary.type);
-            dmg.add(label, this.secondary);
+            dmg.add({
+              ...this.secondary,
+              source: {
+                label: label,
+              },
+            });
           }
         });
       }
@@ -67,7 +77,13 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
         config.setDamage(this.primary, this.grade);
         if (this.secondary.type) {
           config.modifyDamage(d => {
-            d.add(DamageDataModel.SECONDARY_DAMAGE_LABEL, this.secondary);
+            d.add(
+              {
+                ...this.secondary,
+                source: {
+                  label: DamageDataModel.SECONDARY_DAMAGE_LABEL,
+                },
+              });
           });
           if (this.secondary.type !== this.primary.type) {
             config.addTraits(this.secondary.type);

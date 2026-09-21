@@ -1,3 +1,8 @@
+
+import { ObjectUtils } from "../utils/_module.mjs";
+import AH, { scaleValue } from "../config.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
+
 /**
  * @typedef ScalarModifier
  * @property {Boolean} enabled
@@ -6,15 +11,21 @@
  */
 
 /**
+ * @typedef ModifierSource
+ * @property {String} label
+ * @property {String} icon
+ * @property {String} tooltip
+ */
+
+/**
  * @typedef DamageUnit
  * @property {String|Number} amount
  * @property {AH_DamageType} type
- * @property {String} tooltip
- *
+ * @property {ModifierSource} source
+ */
 
 /**
  * @typedef {DamageUnit} DamageComponent
- * @property {string} label
  * @property {Boolean} enabled
  * @property {String[]} traits These get concatenated.
  */
@@ -28,20 +39,22 @@
  */
 
 /**
+ * @typedef DamageAddend
+ * @property {Number} amount
+ * @property {ModifierSource} source
+ */
+
+/**
  * @typedef DamageInstance The combined damage from all components of the same type.
  * @property {AH_DamageType} type
  * @property {Number} base The base amount before any modifiers.
  * @property {Number} amount The sum total of addends.
- * @property {Number[]} addends
+ * @property {DamageAddend[]} addends
  * @property {ParameterModifier[]} modifiers
  * @property {String} tooltip
  * @property {String[]} traits
  * @remarks The modifiers are not evaluated yet, and are done at the end.
  */
-
-import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
-import AH, { scaleValue } from "../config.mjs";
-import { Formulas } from "../ruleset/_module.mjs";
 
 /**
  * Contains damage data used in pipelines.
@@ -64,7 +77,12 @@ export default class DamageData {
    */
   static initialize(unit) {
     const data = new DamageData();
-    data.add("AH.DAMAGE.Primary", unit);
+    data.add({
+      ...unit,
+      source: {
+        label: "AH.DAMAGE.Primary",
+      },
+    });
     data.type = unit.type;
     return data;
   }
@@ -94,13 +112,11 @@ export default class DamageData {
   }
 
   /**
-   * @param {String} label
    * @param {DamageUnit} unit
    * @returns DamageData
    */
-  add(label, unit) {
+  add(unit) {
     this.custom({
-      label: label,
       ...unit,
       enabled: true,
     });
@@ -108,11 +124,10 @@ export default class DamageData {
   }
 
   /**
-   * @param {String} label
    * @param {DamageUnit} unit
    * @returns DamageData
    */
-  addOrUpdate(label, unit) {
+  addOrUpdate(unit) {
     const existing = this.components.find(c => c.label === label);
     if (existing) {
       existing.type = unit.type;
@@ -120,7 +135,6 @@ export default class DamageData {
     }
     else {
       this.custom({
-        label: label,
         ...unit,
         enabled: true,
       });
@@ -198,7 +212,12 @@ export default class DamageData {
       if (!_instances.has(component.type)) {
         _instances.set(component.type, {
           base: amount,
-          addends: amount ? [amount] : [],
+          addends: amount ? [
+            {
+              amount: amount,
+              source: component.source,
+            },
+          ] : [],
           type: component.type,
           traits: [...traits],
         });
@@ -208,7 +227,10 @@ export default class DamageData {
       const existing = _instances.get(component.type);
       if (amount > 0) {
         existing.base += amount;
-        existing.addends.push(amount);
+        existing.addends.push({
+          amount: amount,
+          source: component.source,
+        });
       }
 
       existing.traits.push(...traits);

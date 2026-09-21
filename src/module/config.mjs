@@ -142,11 +142,11 @@ AH.difficultyLevel = Object.freeze({
  */
 
 AH.power = Object.freeze({
-  low: { label: "AH.ACTION.POWER.Low", multiplicative: 1.1 },
-  moderate: { label: "AH.ACTION.POWER.Moderate", multiplicative: 1.2 },
-  high: { label: "AH.ACTION.POWER.High", multiplicative: 1.3, difficulty: 13 },
-  severe: { label: "AH.ACTION.POWER.Severe", multiplicative: 1.4 },
-  extreme: { label: "AH.ACTION.POWER.Extreme", multiplicative: 1.5 },
+  low: { label: "AH.ACTION.POWER.Low", additive: 2, multiplicative: 1.1 },
+  moderate: { label: "AH.ACTION.POWER.Moderate", additive: 4, multiplicative: 1.2 },
+  high: { label: "AH.ACTION.POWER.High", additive: 6, multiplicative: 1.3 },
+  severe: { label: "AH.ACTION.POWER.Severe", additive: 8, multiplicative: 1.4 },
+  extreme: { label: "AH.ACTION.POWER.Extreme", additive: 10, multiplicative: 1.5 },
 });
 
 /**
@@ -1427,6 +1427,7 @@ AH.icons = {
   difficulty: "ah-icon-check-difficulty",
   result: "ah-icon-check-result",
   target: "ah-icon-target",
+  grade: "fa fa-medal",
 
   // Field Types
   action: "fas fa-hand-fist",
