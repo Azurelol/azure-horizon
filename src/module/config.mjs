@@ -1427,7 +1427,10 @@ AH.icons = {
   difficulty: "ah-icon-check-difficulty",
   result: "ah-icon-check-result",
   target: "ah-icon-target",
-  grade: "fa fa-medal",
+  grade: "ah-icon-grade",
+  primaryDamage: "ah-icon-damage-primary",
+  secondaryDamage: "ah-icon-damage-secondary",
+  targetDefense: "ra ra-shield",
 
   // Field Types
   action: "fas fa-hand-fist",

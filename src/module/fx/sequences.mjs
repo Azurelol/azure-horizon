@@ -101,6 +101,7 @@ async function animateAction(event) {
   }
   else {
     console.debug("Did not resolve a preset.");
+    return;
   }
 
   for (const target of event.targets) {

@@ -207,6 +207,7 @@ async function rollCheck(check, actor) {
 const extractDieResults = (term, actor) => {
   if (term instanceof DiceTerm) {
     return {
+      attribute: term.options.flavor,
       dice: term.faces,
       result: term.total,
     };

@@ -357,6 +357,7 @@ const onProcessAction = async (config, actor, item) => {
           amount: weaponOverride.amount ?? 0,
           source: {
             label: "AH.DAMAGE.Secondary",
+            icon: "secondaryDamage",
           },
         });
       });
@@ -374,7 +375,7 @@ const onProcessAction = async (config, actor, item) => {
         amount: calc.primary.base,
         source: {
           label: "AH.CHECK.HighRoll.short",
-          icon: "hr",
+          icon: config.check.hr.attribute,
         },
       });
       damage.add({

@@ -1,7 +1,7 @@
 :root {
 
   /*Attributes*/
-  --ah-icon-might: url("../../../../assets/icons/attributes/might.png");
+  --ah-icon-might: url("../../../../assets/icons/attributes/might_2.png");
   --ah-icon-dexterity: url("../../../../assets/icons/attributes/dexterity.png");
   --ah-icon-insight: url("../../../../assets/icons/attributes/insight.png");
   --ah-icon-willpower: url("../../../../assets/icons/attributes/willpower.png");
@@ -106,6 +106,9 @@
 
   --ah-icon-poison: url("../../../../assets/icons/affinities/poison.png");
 
+  --ah-icon-damage-primary: url("../../../../assets/icons/checks/primaryDamage.png");
+  --ah-icon-damage-secondary: url("../../../../assets/icons/checks/secondaryDamage.png");
+
 
   .ah-icon-elemental {
     background-image: var(--ah-icon-elemental);
@@ -163,6 +166,14 @@
     background-image: var(--ah-icon-untyped);
   }
 
+  .ah-icon-damage-primary {
+    background-image: var(--ah-icon-damage-primary);
+  }
+
+  .ah-icon-damage-secondary {
+    background-image: var(--ah-icon-damage-secondary);
+  }
+
   /*Checks*/
   --ah-icon-check-defense: url("../../../../assets/icons/checks/check-defense.svg");
   --ah-icon-check-attribute: url("../../../../assets/icons/checks/attribute_check.png");
@@ -174,6 +185,7 @@
   --ah-icon-check-roll: url("../../../../assets/icons/checks/dice-target.svg");
   --ah-icon-check-result: url("../../../../assets/icons/checks/check-result.png");
   --ah-icon-check-hr: url("../../../../assets/icons/checks/hr.png");
+  --ah-icon-check-grade: url("../../../../assets/icons/checks/grade.png");
 
   .ah-icon-check-roll {
     background-image: var(--ah-icon-check-roll);
@@ -181,6 +193,10 @@
 
   .ah-icon-check-travel {
     background-image: var(--ah-icon-check-travel);
+  }
+
+  .ah-icon-grade {
+    background-image: var(--ah-icon-check-grade);
   }
 
   .ah-icon-check-ritual {

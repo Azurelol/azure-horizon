@@ -81,6 +81,7 @@ export default class DamageData {
       ...unit,
       source: {
         label: "AH.DAMAGE.Primary",
+        icon: "primaryDamage",
       },
     });
     data.type = unit.type;

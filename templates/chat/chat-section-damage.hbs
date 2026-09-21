@@ -8,16 +8,18 @@
     {{#with damage.resolved}}
     <div class='ah-chat-section__check__components'>
         {{#each instances as |component|}}
-          <div class="ah-chat-section__damage__component" data-tooltip="{{localize component.tooltip}}">
+          <div class="ah-chat-section__damage__component">
             {{ahInlineProperty 'damageTypes' component.type }}
-            {{#each component.addends as |addend|}}
-              <span data-tooltip="{{localize addend.source.label}}">
+            <div class="ah-chat-section__damage__component__addends">
+              {{#each component.addends as |addend|}}
+                <span data-tooltip="{{localize addend.source.label}}">
                 {{#if addend.source}}
                   <i class="ah-icon --xs {{ahIconClass addend.source.icon}}"></i>
                 {{/if}}
-                {{addend.amount}}
+                  {{addend.amount}}
               </span>
-            {{/each}}
+              {{/each}}
+            </div>
           </div>
         {{/each}}
         {{#if modifiers}}
