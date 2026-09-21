@@ -39,6 +39,12 @@
   gap: 0.2rem;
   i {
   }
+
+  &.--bevel {
+    border: var(--ah-border-m);
+    border-radius: 8px;
+    background: var(--ah-surface-item);
+  }
 }
 
 .ah-inline-property__name {

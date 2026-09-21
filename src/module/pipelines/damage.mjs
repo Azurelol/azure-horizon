@@ -430,7 +430,10 @@ const onProcessAction = async (config, actor, item) => {
         key: "skill",
         additive: AH.power[config.power].additive,
         multiplicative: 1,
-        label: "AH.DAMAGE.Power",
+        source: {
+          label: "AH.DAMAGE.Power",
+          icon: "power",
+        },
       });
     }
 
@@ -451,6 +454,10 @@ const onProcessAction = async (config, actor, item) => {
         const reducedDamage = standardDamage.duplicate(d => {
           d.modify("universal", {
             multiplicative: 0.5,
+            source: {
+              label: "AH.DAMAGE.ACTION.Reduced",
+              icon: "reduced",
+            },
           });
         });
         const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, {

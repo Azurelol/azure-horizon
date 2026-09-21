@@ -140,9 +140,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
   gap: 0.25rem;
+  padding: 2px;
 }
 
 .ah-chat-section__damage__component__addends {

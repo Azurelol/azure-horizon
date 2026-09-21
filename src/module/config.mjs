@@ -1431,6 +1431,7 @@ AH.icons = {
   primaryDamage: "ah-icon-damage-primary",
   secondaryDamage: "ah-icon-damage-secondary",
   targetDefense: "ra ra-shield",
+  power: "ah-icon-power",
 
   // Field Types
   action: "fas fa-hand-fist",

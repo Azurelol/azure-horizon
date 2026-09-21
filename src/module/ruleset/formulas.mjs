@@ -55,7 +55,7 @@ const CRISIS_THRESHOLD = 0.2;
 /**
  * @typedef {Modifier} ParameterModifier
  * @property {AH_Modifier} key
- * @property {String} label
+ * @property {ModifierSource} source
  */
 
 /**

@@ -14,7 +14,7 @@
               {{#each component.addends as |addend|}}
                 <span data-tooltip="{{localize addend.source.label}}">
                 {{#if addend.source}}
-                  <i class="ah-icon --xs {{ahIconClass addend.source.icon}}"></i>
+                  <i class="ah-icon --s {{ahIconClass addend.source.icon}}"></i>
                 {{/if}}
                   {{addend.amount}}
               </span>
@@ -23,9 +23,13 @@
           </div>
         {{/each}}
         {{#if modifiers}}
+          <div class="ah-chat-section__damage__component__addends">
           {{#each modifiers as |mod|}}
-            <div class="ah-chat-section__damage__component" data-tooltip="{{mod.key}}">
-              {{ahInlineProperty 'damageTypes' mod.key }}
+            <div class="ah-chat-section__damage__component" data-tooltip="{{mod.source.label}}">
+              {{log 'mod' mod}}
+              {{#if mod.source}}
+                <i class="ah-icon --s {{ahIconClass mod.source.icon}}"></i>
+              {{/if}}
               {{#if mod.additive}}
                 <span class="ah-inline-property__value">{{numberFormat mod.additive sign=true}}</span>
               {{/if}}
@@ -34,6 +38,7 @@
               {{/if}}
             </div>
           {{/each}}
+          </div>
         {{/if}}
     </div>
     {{/with}}

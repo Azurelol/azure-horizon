@@ -121,6 +121,7 @@ export default Object.freeze({
         record: record,
         key: key,
         value: options.hash?.value,
+        ...options.hash,
       });
     });
     Handlebars.registerHelper("ahNotEquals", function (a, b) {
