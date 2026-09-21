@@ -1,29 +1,29 @@
 <section class="ah-chat-section">
 
-  <div class="ah-chat-section__check__details__group">
-    {{#if result.data.targetedDefense}}
-      <div class="ah-chat-section__check__total">
+  <details>
+    <summary class="ah-chat-section__check__total">
+      {{#if result.data.targetedDefense}}
         <i class="ah-icon --s {{ahIconClass 'result'}}"></i>
         <span>{{localize 'AH.CHECK.TargetDefense' result=result.total defense=(ahUpperCase result.data.targetedDefense)}}</span>
-      </div>
-
-    {{else}}
-      {{#if (gt difficultyLevel 0)}}
-        <div class="ah-chat-section__check__total" data-tooltip="{{localize 'AH.CHECK.DifficultyLevel.long'}}">
+      {{else}}
+        {{#if (gt difficultyLevel 0)}}
           <i class="ah-icon --s {{ahIconClass 'difficulty'}}"></i>
           <span>{{difficultyLevel}}</span>
-        </div>
+        {{/if}}
       {{/if}}
-    {{/if}}
+    </summary>
 
-    <div class='ah-chat-section__check__components'>
-      {{ahInlineProperty 'attributes' result.primary.attribute value=result.primary.result }}
-      {{ahInlineProperty 'attributes' result.secondary.attribute value=result.secondary.result }}
-      {{#if result.modifierTotal}}
-        {{ahInlineProperty 'icons' 'modifier' value=result.modifierTotal tooltip='AH.CHARACTER.Modifier.long' }}
-      {{/if}}
+    <div class="ah-chat-section__check__details__group">
+      <div class='ah-chat-section__check__components'>
+        {{ahInlineProperty 'attributes' result.primary.attribute value=result.primary.result }}
+        {{ahInlineProperty 'attributes' result.secondary.attribute value=result.secondary.result }}
+        {{#if result.modifierTotal}}
+          {{ahInlineProperty 'icons' 'modifier' value=result.modifierTotal tooltip='AH.CHARACTER.Modifier.long' }}
+        {{/if}}
+      </div>
     </div>
-  </div>
+
+  </details>
 
   {{#if (or (gt difficultyLevel 0) result.crit result.fumble)}}
       <div class='ah-chat-section__check__outcome {{outcome}}'>

@@ -12,6 +12,7 @@
         <span>{{localize 'AH.CHECK.TargetResource' result=total resource='HP'}}</span>
       </summary>
 
+      <div class="ah-chat-section__check__details__group">
         <div class='ah-chat-section__check__components'>
           {{#each instances as |component|}}
             <div class="ah-chat-section__damage__component">
@@ -47,6 +48,7 @@
             </div>
           {{/if}}
         </div>
+      </div>
 
     </details>
     {{/with}}
