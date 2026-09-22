@@ -388,10 +388,9 @@ function generateIntents(adversary, combatants, heroes, history) {
     switch (action.primary.type) {
       case "unknown":
         break;
-      case "attack":{
+      case "attack":
         primaryItem = selectAbility(attackItems);
         targeted = true;
-      }
         break;
       case "damage":
       case "burst":
@@ -429,6 +428,9 @@ function generateIntents(adversary, combatants, heroes, history) {
 
     if (targeted) {
       action.target = selectTarget(targetHistory);
+    }
+    else {
+      action.target = null;
     }
 
     actions.push(action);

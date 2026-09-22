@@ -47,7 +47,7 @@
       {{/if}}
 
       {{!-- Initiative / Intents --}}
-      <div class="token-initiative" {{#if intent}} data-tooltip="{{ahCapitalize intent.primary.type}} {{intent.primary.item.name}}"{{/if}} >
+      <div class="token-initiative" {{#if intent}} data-tooltip="{{intent.primary.item.name}} [{{ahCapitalize intent.primary.type}}]"{{/if}} >
         {{!-- Display Initiative --}}
         {{#if initiative}}
           <div class="ah-flex-center --col">
