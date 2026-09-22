@@ -6,7 +6,7 @@ import { MathUtils, ObjectUtils } from "../utils/_module.mjs";
  * @typedef IntentAction
  * @property {AH_Intent} type
  * @property {String} icon The intent icon. Assigned later.
- * @property {DocumentReference[]} targets The ids of the targets of the action.
+ * @property {Boolean} targeted
  * @property {DocumentReference} item The id of the ability or attack to be used (an Item)
  */
 
@@ -15,7 +15,7 @@ import { MathUtils, ObjectUtils } from "../utils/_module.mjs";
  * @typedef IntentData
  * @property {IntentAction} primary
  * @property {IntentAction} secondary
- * @property {DocumentReference[]} targets The ids of the targets of the action.
+ * @property {DocumentReference} target The ids of the targets of the action.
  */
 
 /**
@@ -286,27 +286,34 @@ function resolveIntents(system) {
 
 /**
  * Picks the hero to target.
- * @param {AbilityDataModel|AttackDataModel} item
- * @param {HeroDataModel[]} heroes
- * @returns {DocumentReference[]}
+ * @param {Map<HeroDataModel, Number>} history
+ * @returns {DocumentReference}
  */
-function selectTargets(item, heroes) {
+function selectTarget(history) {
+  const heroes = history.keys().toArray();
   if (heroes.length === 0) {
     return [];
   }
-  let targets = Array.from(heroes.map(h => h.parent));
-  for (let i = targets.length - 1; i > 0; i--) {
-    const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
-    [targets[i], targets[j]] = [targets[j], targets[i]];
-  }
-  // TODO: If there's more space in the tracker..
-  return targets.slice(0, 1).map(t => {
-    return {
-      name: t.name,
-      img: t.img,
-      uuid: t.uuid,
-    };
-  });
+
+  // The more times a target is picked, teh less likely it will be next time
+  /** @type Number[] **/
+  const weights = Array.from(history.values()).map(w => 1 / w);
+  const index = MathUtils.weightedRandomIndex(weights);
+  const target = heroes[index].parent;
+  // Update the history
+  heroes[target]++;
+
+  return {
+    name: target.name,
+    img: target.img,
+    uuid: target.uuid,
+  };
+
+  // let targets = Array.from(heroes.map(h => h.parent));
+  // for (let i = targets.length - 1; i > 0; i--) {
+  //   const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
+  //   [targets[i], targets[j]] = [targets[j], targets[i]];
+  // }
 }
 
 /**
@@ -327,7 +334,7 @@ function selectAbility(abilities) {
  * @param {AHCombatant[]} combatants
  * @param {HeroDataModel[]} heroes
  * @param {CombatRoundHistory} history
- * @return {IntentAction[]}
+ * @return {IntentData[]}
  */
 function generateIntents(adversary, combatants, heroes, history) {
 
@@ -361,52 +368,67 @@ function generateIntents(adversary, combatants, heroes, history) {
 
   /** @type AH_Intent[] **/
   const cycle = intents[Math.min(intents.length - 1, cycleIndex)];
+  /** @type {Map<HeroDataModel,Number>} **/
+  let targetHistory = new Map(heroes.map(key => [key, 0]));
 
-  /** @type IntentAction[] **/
+  /** @type IntentData[] **/
   let actions = [];
   for (let t = 0; t < combatants.length; t++) {
-    /** @type IntentAction **/
+    /** @type IntentData **/
     let action = {
-      type: cycle[t],
+      primary: {
+        type: cycle[t],
+      },
+      secondary: {},
     };
     /** @type {AttackDataModel|AbilityDataModel} **/
-    let item;
-    /** @type DocumentReference[] **/
-    let targets;
+    let primaryItem;
+    let targeted = false;
 
-    switch (action.type) {
+    switch (action.primary.type) {
       case "unknown":
         break;
       case "attack":{
-        item = selectAbility(attackItems);
-        targets = selectTargets(item, heroes);
+        primaryItem = selectAbility(attackItems);
+        targeted = true;
       }
         break;
       case "damage":
-        item = selectAbility(abilityMap.damage);
-        targets = selectTargets(item, heroes);
-        break;
+      case "burst":
+      case "weaken":
+      case "empower":
       case "control":
-        break;
-      case "heal":
-        item = selectAbility(abilityMap.heal);
-        break;
-      case "block":
-        item = selectAbility(abilityMap.block);
-        break;
-      case "prepare":
-        break;
+      case "breach":
       case "status":
+        primaryItem = selectAbility(abilityMap[action.primary.type]);
+        targeted = true;
+        break;
+      case "fortify":
+      case "block":
+      case "recovery":
+        primaryItem = selectAbility(abilityMap[action.primary.type]);
+        break;
+      case "cast":
+      case "channel":
+      case "prepare":
+        primaryItem = selectAbility(abilityMap[action.primary.type]);
+        break;
+      case "escape":
+      case "summon":
+        primaryItem = selectAbility(abilityMap[action.primary.type]);
         break;
     }
 
-    if (item) {
-      action.item = {
-        img: item.parent.img,
-        name: item.parent.name,
-        uuid: item.parent.uuid,
+    if (primaryItem) {
+      action.primary.item = {
+        img: primaryItem.parent.img,
+        name: primaryItem.parent.name,
+        uuid: primaryItem.parent.uuid,
       };
-      action.targets = targets;
+    }
+
+    if (targeted) {
+      action.target = selectTarget(targetHistory);
     }
 
     actions.push(action);

@@ -87,27 +87,26 @@ export class AHCombatant extends foundry.documents.Combatant {
   }
 
   /**
-   * @param {IntentAction} intent
+   * @param {IntentData} intent
    */
   setIntent(intent) {
     this.setFlag(systemID, AH.flags.Combatant.Intent, intent);
   }
 
   /**
-   * @returns {IntentAction|undefined}
+   * @returns {IntentData|undefined}
    * @remarks Fetched by the combat tracker.
    */
   get intent() {
-    /** @type IntentAction **/
+    /** @type IntentData **/
     let intent = this.getFlag(systemID, AH.flags.Combatant.Intent);
     if (intent === undefined) {
       intent = {
-        type: "unknown",
-        item: "",
-        targets: "",
+        primary: {
+          type: "unknown",
+        },
       };
     }
-    intent.icon = AH.intents[intent.type].icon;
     return intent;
   }
 

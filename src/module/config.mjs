@@ -674,7 +674,7 @@ AH.weights = Object.freeze({
 });
 
 /**
- * @typedef {'unknown'|'attack'|'damage'|'control'|'heal'|'block'|'prepare'|'status'} AH_Intent
+ * @typedef {'unknown'|'attack'|'damage'|'burst'|'weaken'|'empower'|'fortify'|'control'|'breach'|'block'|'control'|'cast'|'channel'|'status'|'prepare'|'recovery'|'escape'|'summon'} AH_Intent
  */
 
 AH.intents = Object.freeze({

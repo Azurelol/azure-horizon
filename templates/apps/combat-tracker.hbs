@@ -6,7 +6,6 @@
         <img class="token-image {{ profile.rank }}" src="{{ img }}" alt="{{ name }}" loading="lazy">
       </div>
 
-
       {{!-- Name & Controls --}}
       <div class="token-name">
         <strong class="name">{{ name }}</strong>
@@ -48,21 +47,31 @@
       {{/if}}
 
       {{!-- Initiative / Intents --}}
-      <div class="token-initiative" {{#if intent}} data-tooltip="{{ahCapitalize intent.type}} {{intent.item.name}}"{{/if}} >
+      <div class="token-initiative" {{#if intent}} data-tooltip="{{ahCapitalize intent.primary.type}} {{intent.primary.item.name}}"{{/if}} >
         {{!-- Display Initiative --}}
         {{#if initiative}}
           <div class="ah-flex-center --col">
-            {{#if (and isOwner intent.item)}}
-              <img class="intent-item" src="{{ intent.item.img }}" alt="{{ intent.item.name }}" loading="lazy">
-              <span>{{ahCapitalize intent.type}}</span>
+            <!--Primary Action-->
+            {{#if (and intent (and isOwner intent.primary.item))}}
+              <img class="intent-item" src="{{ intent.primary.item.img }}" alt="{{ intent.primary.item.name }}" loading="lazy">
+              <span>{{ahCapitalize intent.primary.type}}</span>
             {{else}}
-              <i class="ah-icon --sm {{ahIconClass intent.type record="intents"}}"></i>
+              <i class="ah-icon --sm {{ahIconClass intent.primary.type record="intents"}}"></i>
             {{/if}}
           </div>
-          {{#if intent.targets}}
-            {{#each intent.targets}}
-              <img data-tooltip="{{name}}" class="intent-target" src="{{ img }}" alt="{{ name }}" loading="lazy">
-            {{/each}}
+            <!--Secondary Action-->
+            {{#if intent.secondary}}
+            <div class="ah-flex-center --col">
+              {{#if (and isOwner intent.secondary.item)}}
+                <img class="intent-item" src="{{ intent.secondary.item.img }}" alt="{{ intent.secondary.item.name }}" loading="lazy">
+                <span>{{ahCapitalize intent.secondary.type}}</span>
+              {{else}}
+                <i class="ah-icon --sm {{ahIconClass intent.secondary.type record="intents"}}"></i>
+              {{/if}}
+            </div>
+            {{/if}}
+          {{#if intent.target}}
+            <img data-tooltip="{{intent.target.name}}" class="intent-target" src="{{ intent.target.img }}" alt="{{ intent.target.name }}" loading="lazy">
           {{/if}}
         {{!-- Roll Initiative --}}
         {{else if isOwner}}
