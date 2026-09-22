@@ -692,7 +692,7 @@ AH.intents = Object.freeze({
   block: { label: "AH.ADVERSARY.INTENT.Block", icon: "ra ra-shield", tooltip: "AH.ADVERSARY.INTENT.BlockHint" }, // Heal self
   recovery: { label: "AH.ADVERSARY.INTENT.Recovery", icon: "ra ra-heart-plus", tooltip: "AH.ADVERSARY.INTENT.RecoveryHint" }, // Heal self
   escape: { label: "AH.ADVERSARY.INTENT.Escape", icon: "ra ra-run", tooltip: "AH.ADVERSARY.INTENT.EscapeHint" }, // Escape combat
-  summon: { label: "AH.ADVERSARY.INTENT.Summon", icon: "ra ra-summon", tooltip: "AH.ADVERSARY.INTENT.SummonHint" }, // Summon minion
+  summon: { label: "AH.ADVERSARY.INTENT.Summon", icon: "ra ra-octopus", tooltip: "AH.ADVERSARY.INTENT.SummonHint" }, // Summon minion
 });
 
 /**

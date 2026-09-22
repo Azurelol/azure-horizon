@@ -1,22 +1,22 @@
 {
   "folder": "h9Ca2OY6T4PKiaTP",
-  "name": "Imperial General",
+  "name": "Imperial Conscript",
   "type": "adversary",
-  "_id": "gaLiAwRcnI2QykpX",
-  "img": "systems/azure-horizon/assets/characters/adversaries/empire_general.png",
+  "_id": "745fB41zujTHYOPu",
+  "img": "systems/azure-horizon/assets/characters/adversaries/empire_conscript.png",
   "system": {
-    "level": 20,
+    "level": 10,
     "resources": {
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 240,
+        "value": 2,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 60,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
@@ -31,11 +31,17 @@
         "value": 0,
         "bonus": 0,
         "temporary": 0
+      },
+      "pp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
       }
     },
     "attributes": {
       "mig": {
-        "base": 8,
+        "base": 6,
         "bonus": 0
       },
       "dex": {
@@ -47,7 +53,7 @@
         "bonus": 0
       },
       "wlp": {
-        "base": 8,
+        "base": 4,
         "bonus": 0
       }
     },
@@ -124,6 +130,79 @@
         "bonus": 0
       },
       "block": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "resource": {
+        "gain": {},
+        "loss": {
+          "hp": {
+            "incoming": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            },
+            "outgoing": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            }
+          },
+          "mp": {
+            "incoming": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            },
+            "outgoing": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            }
+          }
+        }
+      },
+      "movement": {
         "schemaVersion": 1,
         "bonus": 0
       },
@@ -384,42 +463,153 @@
               "multiplicative": []
             }
           }
+        },
+        "electric": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
         }
       },
-      "check": {
-        "schemaVersion": 1
+      "checks": {
+        "schemaVersion": 1,
+        "universal": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "action": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "attribute": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "defense": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "ritual": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
       }
     },
     "profile": {
       "schemaVersion": 1,
       "traits": [],
       "family": "standard",
-      "role": "leader",
+      "role": "harrier",
       "villain": false,
-      "rank": "elite",
-      "turns": 4,
+      "rank": "minion",
+      "turns": 0,
+      "pressure": [],
       "summary": "",
       "revision": 1,
-      "slug": "adversary-imperial-general",
+      "slug": "",
       "modifiers": {
         "schemaVersion": 1
       }
+    },
+    "assembly": {
+      "attack": "2kcI8xEuzo8hhsx0"
     }
   },
   "prototypeToken": {
-    "name": "Imperial General",
+    "name": "Imperial Conscript",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "systems/azure-horizon/assets/characters/adversaries/empire_general.png",
+      "src": "systems/azure-horizon/assets/characters/adversaries/empire_conscript.png",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "cover",
-      "scaleX": 2,
-      "scaleY": 2,
+      "scaleX": 1,
+      "scaleY": 1,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -427,7 +617,7 @@
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 50,
+    "displayBars": 30,
     "bar1": {
       "attribute": "resources.hp"
     },
@@ -480,7 +670,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -498,7 +688,70 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Sword",
+      "type": "attack",
+      "_id": "2kcI8xEuzo8hhsx0",
+      "img": "icons/weapons/swords/greatsword-crossguard-curved.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "attack-sword",
+        "description": "",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "range": "melee",
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "5",
+            "type": "slashing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "attributes": {
+          "enabled": true,
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "actionCost": 2
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790101171992,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.2kcI8xEuzo8hhsx0",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!745fB41zujTHYOPu.2kcI8xEuzo8hhsx0"
+    }
+  ],
   "effects": [],
   "sort": 0,
   "ownership": {
@@ -509,12 +762,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788204201337,
+    "createdTime": 1790099976258,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!gaLiAwRcnI2QykpX"
+  "_key": "!actors!745fB41zujTHYOPu"
 }

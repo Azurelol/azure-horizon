@@ -140,7 +140,7 @@ export default class AdversaryDataModel extends CharacterDataModel {
  */
 async function assemble(actor, fields) {
   /** @type AH_RoleType **/
-  const role = fields.role ?? actor.system.role;
+  const role = fields.role ?? actor.system.profile.role;
   if (role === "custom") {
     return;
   }
@@ -191,25 +191,26 @@ async function assemble(actor, fields) {
 }
 
 Hooks.on("preUpdateActor", async (document, changed) => {
-  if (document.system instanceof AdversaryDataModel) {
+  if (!(document.system instanceof AdversaryDataModel)) return;
 
-    // If rank changed
-    const newRank = ObjectUtils.getProperty(changed, "system.profile.rank");
-    if (newRank) {
-      assemble(document, { rank: newRank });
-      return;
-    }
+  const updates = {};
 
-    // If role or level changed
-    const newRole = ObjectUtils.getProperty(changed, "system.profile.role");
-    let roleChanged = (newRole !== undefined) && (newRole !== document.system.role);
-    const newLevel = ObjectUtils.getProperty(changed, "system.level");
-    let levelChanged = (newLevel !== undefined) && (newLevel !== document.system.level);
-    if (roleChanged || levelChanged) {
-      assemble(document, {
-        role: newRole,
-        level: newLevel,
-      });
-    }
+  const newRank = ObjectUtils.getProperty(changed, "system.profile.rank");
+  if (newRank !== undefined && newRank !== document.system.rank) {
+    updates.rank = newRank;
+  }
+
+  const newRole = ObjectUtils.getProperty(changed, "system.profile.role");
+  if (newRole !== undefined && newRole !== document.system.role) {
+    updates.role = newRole;
+  }
+
+  const newLevel = ObjectUtils.getProperty(changed, "system.level");
+  if (newLevel !== undefined && newLevel !== document.system.level) {
+    updates.level = newLevel;
+  }
+
+  if (Object.keys(updates).length > 0) {
+    await assemble(document, updates);
   }
 });

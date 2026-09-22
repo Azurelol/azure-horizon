@@ -1,12 +1,17 @@
 {
   "folder": "TSrleRBFpNJyYZlt",
-  "name": "Grudge",
-  "_id": "PpgaeDHpb8tXHC5I",
-  "img": "icons/svg/aura.svg",
+  "name": "Mark",
+  "_id": "SG78L4ESIudE97nR",
+  "img": "icons/skills/targeting/crosshair-bars-yellow.webp",
   "type": "base",
   "system": {
     "changes": [],
-    "slug": "grudge",
+    "slug": "mark",
+    "stacking": {
+      "tracker": false,
+      "duration": false,
+      "increment": 1
+    },
     "rules": {},
     "tracker": {
       "enabled": false,
@@ -25,24 +30,24 @@
     "expiry": null,
     "expired": false
   },
-  "description": "",
+  "description": "<p>You have been marked for a powerful offensive action.</p>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,
   "statuses": [],
   "showIcon": 1,
-  "sort": 0,
+  "sort": 300000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787237070984,
+    "createdTime": 1790101317336,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!PpgaeDHpb8tXHC5I"
+  "_key": "!effects!SG78L4ESIudE97nR"
 }

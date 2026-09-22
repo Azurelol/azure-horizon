@@ -101,24 +101,24 @@ export default defineConfig([
       "@stylistic/arrow-spacing": 2,
       "@stylistic/eol-last": ["error", "always"],
 
-      "@stylistic/no-mixed-operators": ["error", {
-        allowSamePrecedence: true,
-
-        groups: [[
-          "==",
-          "!=",
-          "===",
-          "!==",
-          ">",
-          ">=",
-          "<",
-          "<=",
-          "&&",
-          "||",
-          "in",
-          "instanceof",
-        ]],
-      }],
+      // "@stylistic/no-mixed-operators": ["error", {
+      //   allowSamePrecedence: true,
+      //
+      //   groups: [[
+      //     "==",
+      //     "!=",
+      //     "===",
+      //     "!==",
+      //     ">",
+      //     ">=",
+      //     "<",
+      //     "<=",
+      //     "&&",
+      //     "||",
+      //     "in",
+      //     "instanceof",
+      //   ]],
+      // }],
 
       "@jsdoc/require-jsdoc": ["warn", {
         require: { ClassExpression: true, FunctionDeclaration: true, MethodDefinition: true },

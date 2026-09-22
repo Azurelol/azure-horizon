@@ -966,7 +966,8 @@
         "Splash": "Splash",
         "Cleave": "Cleave",
         "Pierce": "Pierce",
-        "Chain": "Chain"
+        "Chain": "Chain",
+        "Row": "Row"
       }
     },
     "STATUS": {

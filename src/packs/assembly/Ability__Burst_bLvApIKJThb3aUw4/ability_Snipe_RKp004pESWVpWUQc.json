@@ -1,19 +1,20 @@
 {
-  "folder": "epeyf7fvrv3mOIwh",
-  "name": "Shadow Strike",
+  "folder": "bLvApIKJThb3aUw4",
+  "name": "Snipe",
   "type": "ability",
-  "_id": "PBzIlccVjMPROeaz",
-  "img": "icons/magic/unholy/hand-weapon-glow-black-green.webp",
+  "_id": "RKp004pESWVpWUQc",
+  "img": "icons/skills/ranged/rifle-scoped-firing-yellow-green.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "shadow-strike",
-    "description": "<p>You deal a high amount of physical damage to the target.</p>",
+    "slug": "ability-snipe",
+    "description": "<p>You deal powerful damage to the target.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "grade": "B"
+      "grade": "C"
     },
     "check": {
       "schemaVersion": 1,
@@ -24,10 +25,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
-        "amount": "5",
-        "type": "dark"
+        "amount": "",
+        "type": "untyped"
       },
       "secondary": {
         "amount": "",
@@ -35,6 +36,14 @@
       },
       "traits": [],
       "inplace": false
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "action",
+      "points": 2,
+      "speed": "",
+      "traits": []
     },
     "resource": {
       "schemaVersion": 1,
@@ -44,10 +53,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "10",
+      "amount": "",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "ranged",
+      "rule": "single",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -59,27 +75,19 @@
         "tracking": ""
       }
     },
-    "power": "high",
-    "intent": "damage",
-    "weight": "",
-    "action": {
-      "schemaVersion": 1,
-      "range": "",
-      "type": "",
-      "points": 1,
-      "traits": [
-        "stress"
-      ]
-    },
+    "power": "severe",
+    "intent": "burst",
+    "weight": "normal",
     "usage": {
       "schemaVersion": 1,
+      "enabled": true,
       "attributes": true,
       "check": true,
       "damage": true
     }
   },
   "effects": [],
-  "sort": 700000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -88,12 +96,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787648623230,
+    "createdTime": 1790101507485,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!PBzIlccVjMPROeaz"
+  "_key": "!items!RKp004pESWVpWUQc"
 }

@@ -1,22 +1,22 @@
 {
   "folder": "h9Ca2OY6T4PKiaTP",
-  "name": "Imperial Caster",
+  "name": "Imperial Captain",
   "type": "adversary",
-  "_id": "BIFuwJwnaWebhavL",
-  "img": "systems/azure-horizon/assets/characters/adversaries/empire_caster.png",
+  "_id": "gaLiAwRcnI2QykpX",
+  "img": "systems/azure-horizon/assets/characters/adversaries/empire_general.png",
   "system": {
-    "level": 15,
+    "level": 10,
     "resources": {
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 35,
+        "value": 100,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 35,
+        "value": 70,
         "bonus": 0,
         "temporary": 0
       },
@@ -31,23 +31,26 @@
         "value": 0,
         "bonus": 0,
         "temporary": 0
+      },
+      "pp": {
+        "value": 0
       }
     },
     "attributes": {
       "mig": {
-        "base": 4,
-        "bonus": 0
-      },
-      "dex": {
         "base": 6,
         "bonus": 0
       },
+      "dex": {
+        "base": 4,
+        "bonus": 0
+      },
       "ins": {
-        "base": 8,
+        "base": 4,
         "bonus": 0
       },
       "wlp": {
-        "base": 4,
+        "base": 8,
         "bonus": 0
       }
     },
@@ -394,35 +397,36 @@
       "schemaVersion": 1,
       "traits": [],
       "family": "standard",
-      "role": "artillery",
+      "role": "leader",
       "villain": false,
-      "rank": "standard",
-      "turns": 1,
+      "rank": "elite",
+      "turns": 2,
       "summary": "",
       "revision": 1,
-      "slug": "adversary-imperial-caster",
+      "slug": "adversary-imperial-captain",
       "modifiers": {
         "schemaVersion": 1
-      }
+      },
+      "pressure": []
     },
     "assembly": {
-      "attack": "P9e4VHiZ49MTgN1n"
+      "attack": "pb2NglAGh5h49ftH"
     }
   },
   "prototypeToken": {
-    "name": "Imperial Caster",
+    "name": "Imperial Captain",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "systems/azure-horizon/assets/characters/adversaries/empire_caster.png",
+      "src": "systems/azure-horizon/assets/characters/adversaries/empire_general.png",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "cover",
-      "scaleX": 1,
-      "scaleY": 1,
+      "scaleX": 2,
+      "scaleY": 2,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -483,7 +487,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 1,
+      "effects": 0,
       "subject": {
         "scale": 1,
         "texture": null
@@ -503,15 +507,77 @@
   },
   "items": [
     {
-      "name": "Cast",
-      "type": "ability",
-      "_id": "dW1OZErLVFwLsvFg",
-      "img": "icons/magic/symbols/runes-star-blue.webp",
+      "name": "Greatsword",
+      "type": "attack",
+      "_id": "pb2NglAGh5h49ftH",
+      "img": "icons/weapons/swords/greatsword-crossguard-flanged-red.webp",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "ability-cast",
-        "description": "<p>You begin chanting a spell to be cast at the end of your next turn.</p>",
+        "slug": "attack-greatsword",
+        "description": "",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "A",
+          "enabled": true
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "range": "melee",
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "10",
+            "type": "slashing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "actionCost": 2
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790102339403,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.pb2NglAGh5h49ftH",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!gaLiAwRcnI2QykpX.pb2NglAGh5h49ftH"
+    },
+    {
+      "name": "Command",
+      "type": "ability",
+      "_id": "UPbSB64NxeyYzeRK",
+      "img": "icons/skills/targeting/crosshair-hex-red.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "ability-command",
+        "description": "<p>You summon an additional minion (up to your rank) then immediately command all your minions to <em>attack</em>.</p>",
         "attributes": {
           "schemaVersion": 1,
           "enabled": false,
@@ -541,8 +607,8 @@
         },
         "action": {
           "schemaVersion": 1,
-          "enabled": true,
-          "type": "action",
+          "enabled": false,
+          "type": "",
           "points": 1,
           "speed": "",
           "traits": []
@@ -578,7 +644,7 @@
           }
         },
         "power": "",
-        "intent": "prepare",
+        "intent": "summon",
         "weight": "normal",
         "usage": {
           "schemaVersion": 1,
@@ -594,10 +660,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1790105441391,
+        "createdTime": 1790104063656,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.dW1OZErLVFwLsvFg",
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.UPbSB64NxeyYzeRK",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -607,39 +673,147 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!BIFuwJwnaWebhavL.dW1OZErLVFwLsvFg"
+      "_key": "!actors.items!gaLiAwRcnI2QykpX.UPbSB64NxeyYzeRK"
     },
     {
-      "name": "Fireball",
+      "name": "Lashing",
       "type": "ability",
-      "_id": "LgX6rXWVHeAhPH5a",
-      "img": "icons/magic/fire/explosion-fireball-large-orange.webp",
+      "_id": "De1vDm1m9Up9qH77",
+      "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "ability-fireball",
-        "description": "<p>You deal fire damage to the target and those around it.</p>",
+        "slug": "ability-lashing",
+        "description": "<p>You grant the <em>Fervor</em> effect to all your minions, which increases their damage.</p>",
         "attributes": {
           "schemaVersion": 1,
-          "enabled": true,
-          "primary": "ins",
-          "secondary": "wlp",
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
           "grade": "C"
         },
         "check": {
           "schemaVersion": 1,
-          "enabled": true,
+          "enabled": false,
           "primary": "dex",
           "secondary": "mig",
-          "defense": "mdef",
-          "bonus": ""
+          "defense": "def"
         },
         "damage": {
           "schemaVersion": 1,
-          "enabled": true,
+          "enabled": false,
           "primary": {
-            "amount": "10",
-            "type": "fire"
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "",
+          "points": 1,
+          "speed": "",
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "fervor"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "intent": "empower",
+        "weight": "normal",
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790104808140,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.De1vDm1m9Up9qH77",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!gaLiAwRcnI2QykpX.De1vDm1m9Up9qH77"
+    },
+    {
+      "name": "Guard",
+      "type": "ability",
+      "_id": "Zh10ESATUJZjeJCa",
+      "img": "icons/skills/melee/hand-grip-staff-blue.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "ability-guard",
+        "description": "<p>You <em>defend</em> and gain stacks of <strong>Riposte</strong> equal to your rank.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
           },
           "secondary": {
             "amount": "",
@@ -655,40 +829,40 @@
         },
         "cost": {
           "schemaVersion": 1,
-          "enabled": true,
+          "enabled": false,
           "resource": "mp",
-          "amount": "15",
+          "amount": "",
           "perTarget": false
         },
         "effects": {
           "schemaVersion": 1,
-          "enabled": false,
-          "selector": "",
-          "entries": [],
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "riposte"
+          ],
           "duration": {
             "event": "",
             "tracking": ""
           }
         },
         "power": "",
-        "intent": "burst",
-        "weight": "normal",
+        "intent": "fortify",
+        "weight": "",
         "action": {
           "schemaVersion": 1,
-          "enabled": true,
           "type": "action",
-          "points": 3,
-          "traits": [
-            "cast"
-          ],
+          "points": 2,
+          "traits": [],
+          "enabled": true,
           "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
-          "enabled": false,
           "attributes": false,
           "check": false,
-          "damage": false
+          "damage": false,
+          "enabled": false
         },
         "targeting": {
           "schemaVersion": 1,
@@ -704,10 +878,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1790105502466,
+        "createdTime": 1790105222630,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.LgX6rXWVHeAhPH5a",
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.Zh10ESATUJZjeJCa",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -717,33 +891,40 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!BIFuwJwnaWebhavL.LgX6rXWVHeAhPH5a"
+      "_key": "!actors.items!gaLiAwRcnI2QykpX.Zh10ESATUJZjeJCa"
     },
     {
-      "name": "Fire Bolt",
-      "type": "attack",
-      "_id": "P9e4VHiZ49MTgN1n",
-      "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp",
+      "name": "Whirlwind",
+      "type": "ability",
+      "_id": "AtQb4SFwDfh54PYf",
+      "img": "icons/skills/melee/strike-sword-slashing-red.webp",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "attack-fire-bolt",
-        "description": "",
+        "slug": "ability-whirlwind",
+        "description": "<p>You unleash a wide-reaching attack against the closest row.</p>",
         "check": {
           "schemaVersion": 1,
-          "enabled": true,
-          "primary": "ins",
-          "secondary": "wlp",
-          "defense": "mdef",
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
           "bonus": ""
         },
-        "range": "ranged",
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 2,
+          "traits": [],
+          "enabled": false,
+          "speed": ""
+        },
         "damage": {
           "schemaVersion": 1,
-          "enabled": true,
+          "enabled": false,
           "primary": {
-            "amount": "5",
-            "type": "fire"
+            "amount": "",
+            "type": "slashing"
           },
           "secondary": {
             "amount": "",
@@ -751,14 +932,55 @@
           },
           "traits": []
         },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "intent": "damage",
         "attributes": {
           "schemaVersion": 1,
-          "enabled": true,
+          "enabled": false,
           "primary": "dex",
           "secondary": "mig",
           "grade": "C"
         },
-        "actionCost": 2
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "range": "",
+          "rule": "multiple",
+          "traits": [
+            "row"
+          ]
+        },
+        "power": "low",
+        "weight": "normal",
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "attributes": true,
+          "check": true,
+          "damage": true
+        }
       },
       "effects": [],
       "flags": {},
@@ -766,10 +988,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1790105510291,
+        "createdTime": 1790105323782,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.P9e4VHiZ49MTgN1n",
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.AtQb4SFwDfh54PYf",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -779,7 +1001,7 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!BIFuwJwnaWebhavL.P9e4VHiZ49MTgN1n"
+      "_key": "!actors.items!gaLiAwRcnI2QykpX.AtQb4SFwDfh54PYf"
     }
   ],
   "effects": [],
@@ -792,12 +1014,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788204181512,
+    "createdTime": 1788204201337,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!BIFuwJwnaWebhavL"
+  "_key": "!actors!gaLiAwRcnI2QykpX"
 }

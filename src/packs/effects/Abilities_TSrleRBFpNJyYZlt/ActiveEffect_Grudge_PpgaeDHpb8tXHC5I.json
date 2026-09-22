@@ -1,17 +1,18 @@
 {
-  "folder": "OtxZvoEHMa1DI0rI",
-  "name": "Riposte",
-  "_id": "Q6GLM09WvirCZUe7",
-  "img": "icons/skills/melee/swords-parry-block-blue.webp",
+  "folder": "TSrleRBFpNJyYZlt",
+  "name": "Grudge",
+  "_id": "PpgaeDHpb8tXHC5I",
+  "img": "icons/svg/aura.svg",
   "type": "base",
   "system": {
     "changes": [],
-    "slug": "riposte",
+    "slug": "grudge",
     "rules": {},
     "tracker": {
       "enabled": false,
       "name": "",
       "id": "",
+      "style": "clock",
       "current": 0,
       "max": 6
     }
@@ -24,24 +25,24 @@
     "expiry": null,
     "expired": false
   },
-  "description": "<p>Next time you are attacked in melee you perform a free attack against the attacker, then a stack of this effect is lost.</p>",
+  "description": "",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,
   "statuses": [],
   "showIcon": 1,
-  "sort": 0,
+  "sort": 100000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787650068417,
+    "createdTime": 1787237070984,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!Q6GLM09WvirCZUe7"
+  "_key": "!effects!PpgaeDHpb8tXHC5I"
 }

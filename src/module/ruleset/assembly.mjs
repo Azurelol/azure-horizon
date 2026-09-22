@@ -23,7 +23,10 @@ class Role {
 
   constructor(attributeSteps) {
     this.attributes = attributeSteps.map(arr => ({
-      mig: arr[0], dex: arr[1], ins: arr[2], wlp: arr[3],
+      mig: arr[0],
+      dex: arr[1],
+      ins: arr[2],
+      wlp: arr[3],
     }));
 
     // Precompute running totals so getAttributesForLevel is O(1)
@@ -66,7 +69,6 @@ const ATTRS = ["mig", "dex", "ins", "wlp"];
  * Rows 1-8: cycle [secondary, tertiary, primary] +1 each, grouped
  * into three tiers of three (D8, D10, D12).
  * The 4th, unlisted attribute is always 0.
- *
  * @param {AH_Attribute} primary
  * @param {AH_Attribute} secondary
  * @param {AH_Attribute} tertiary
@@ -79,7 +81,7 @@ function buildProgression(primary, secondary, tertiary) {
 
   const rows = [makeRow({ [primary]: 2, [secondary]: 1 })];
 
-  for (let i = 1; i < 9; i++) {
+  for (let i = 1; i < 10; i++) {
     const attr = cycle[(i - 1) % 3];
     rows.push(makeRow({ [attr]: 1 }));
   }
@@ -91,9 +93,9 @@ function buildProgression(primary, secondary, tertiary) {
  * @type {Record<AH_RoleType, Number[][]>}>}
  */
 const ROLES = Object.freeze({
-  brute: new Role(buildProgression("mig", "mig", "ins")),
+  brute: new Role(buildProgression("mig", "dex", "ins")),
   harrier: new Role(buildProgression("dex", "mig", "ins")),
-  defender: new Role(buildProgression("mig", "mig", "ins")),
+  defender: new Role(buildProgression("mig", "ins", "wlp")),
 
   artillery: new Role(buildProgression("ins", "dex", "wlp")),
   controller: new Role(buildProgression("ins", "wlp", "dex")),

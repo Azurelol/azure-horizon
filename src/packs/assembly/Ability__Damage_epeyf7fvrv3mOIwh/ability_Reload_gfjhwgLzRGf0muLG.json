@@ -1,14 +1,14 @@
 {
-  "folder": "dqZj0s5AOvWpGbEl",
-  "name": "Multi Shot",
+  "folder": "epeyf7fvrv3mOIwh",
+  "name": "Reload",
   "type": "ability",
-  "_id": "zvlbQY8SgiL7aWFp",
-  "img": "icons/skills/ranged/arrows-flying-salvo-yellow.webp",
+  "_id": "gfjhwgLzRGf0muLG",
+  "img": "icons/skills/ranged/bullet-sparks-yellow.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ability-multi-shot",
-    "description": "<p>You perform a ranged attack against two adjacent targets.</p>",
+    "slug": "ability-reload",
+    "description": "<p>You reload your ranged weapon and can use it again.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -20,7 +20,7 @@
       "schemaVersion": 1,
       "range": "",
       "type": "action",
-      "points": 2,
+      "points": 1,
       "traits": [],
       "enabled": true
     },
@@ -61,23 +61,10 @@
         "tracking": ""
       }
     },
-    "intent": "damage",
-    "power": "moderate",
-    "usage": {
-      "enabled": true,
-      "check": true,
-      "damage": true,
-      "attributes": true
-    },
-    "targeting": {
-      "enabled": true,
-      "rule": "multiple",
-      "range": "ranged",
-      "traits": []
-    }
+    "intent": "prepare"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 1000000,
   "ownership": {
     "default": 0
   },
@@ -86,12 +73,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787197039825,
+    "createdTime": 1787197607529,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!zvlbQY8SgiL7aWFp"
+  "_key": "!items!gfjhwgLzRGf0muLG"
 }

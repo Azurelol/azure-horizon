@@ -78,7 +78,7 @@
     "power": "severe"
   },
   "effects": [],
-  "sort": 700000,
+  "sort": 900000,
   "ownership": {
     "default": 0
   },

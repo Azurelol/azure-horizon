@@ -1,25 +1,30 @@
 {
   "folder": "TSrleRBFpNJyYZlt",
-  "name": "Enrage",
-  "_id": "SmpYLFfwcpepez8L",
-  "img": "icons/skills/social/intimidation-impressing.webp",
+  "name": "Fervor",
+  "_id": "X4wBlpgkojWDJOOf",
+  "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
   "type": "base",
   "system": {
     "changes": [
       {
         "key": "system.parameters.damage.universal.outgoing.status.additive",
         "type": "add",
-        "value": "2*$tv",
+        "value": "$tv*2",
         "phase": "initial",
         "priority": null
       }
     ],
-    "slug": "enrage",
+    "slug": "fervor",
+    "stacking": {
+      "tracker": true,
+      "duration": false,
+      "increment": 1
+    },
     "rules": {},
     "tracker": {
-      "enabled": true,
-      "name": "Enrage",
-      "id": "enrage",
+      "enabled": false,
+      "name": "Fervor",
+      "id": "fervor",
       "style": "clock",
       "current": 1,
       "max": 5
@@ -30,27 +35,27 @@
   "duration": {
     "value": null,
     "units": "seconds",
-    "expiry": "combatEnd",
+    "expiry": null,
     "expired": false
   },
-  "description": "<p>Your damage dealt is increased whenever you suffer damage.</p>",
+  "description": "<p>You gain a stacking status bonus to damage.</p>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,
   "statuses": [],
   "showIcon": 1,
-  "sort": 0,
+  "sort": 500000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788512403150,
+    "createdTime": 1790104529323,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!effects!SmpYLFfwcpepez8L"
+  "_key": "!effects!X4wBlpgkojWDJOOf"
 }

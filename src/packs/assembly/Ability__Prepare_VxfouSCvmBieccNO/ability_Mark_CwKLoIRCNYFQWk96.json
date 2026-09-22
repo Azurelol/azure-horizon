@@ -3,7 +3,7 @@
   "name": "Mark",
   "type": "ability",
   "_id": "CwKLoIRCNYFQWk96",
-  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
+  "img": "icons/skills/targeting/crosshair-bars-yellow.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
@@ -56,9 +56,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "deuff",
+      "entries": [
+        "mark"
+      ],
       "duration": {
         "event": "",
         "tracking": ""

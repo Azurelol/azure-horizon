@@ -264,7 +264,16 @@ export default class Formulas {
         /** @type AdversaryProfileDataModel **/
         const profile = system.profile;
         const turns = factors.turns ?? profile.turns;
-        hp = (factors.level + (attributes.mig.base * HP_MIGHT_FACTOR)) * turns;
+        switch (profile.rank) {
+          case "minion":
+            hp = Math.round(factors.level / 5);
+            break;
+
+          default:
+            hp = (factors.level + (attributes.mig.base * HP_MIGHT_FACTOR)) * turns;
+            break;
+        }
+
         break;
       }
 

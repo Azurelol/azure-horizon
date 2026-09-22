@@ -8,10 +8,10 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "ability-whirlwind",
-    "description": "<p>You unleash a wide-reaching attack against the front row.</p>",
+    "description": "<p>You unleash a wide-reaching attack against the closest row.</p>",
     "check": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def",
@@ -27,7 +27,7 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
         "amount": "",
         "type": "slashing"
@@ -62,10 +62,25 @@
         "tracking": ""
       }
     },
-    "intent": "damage"
+    "intent": "damage",
+    "power": "low",
+    "usage": {
+      "enabled": true,
+      "check": true,
+      "damage": true,
+      "attributes": true
+    },
+    "targeting": {
+      "enabled": true,
+      "rule": "multiple",
+      "range": "",
+      "traits": [
+        "row"
+      ]
+    }
   },
   "effects": [],
-  "sort": 200000,
+  "sort": 1200000,
   "ownership": {
     "default": 0
   },

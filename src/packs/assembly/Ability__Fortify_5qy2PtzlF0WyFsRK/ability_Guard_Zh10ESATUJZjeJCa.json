@@ -7,8 +7,8 @@
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ability-riposte",
-    "description": "<p>You <em>defend</em> and gain <strong>Riposte</strong>.</p>",
+    "slug": "ability-guard",
+    "description": "<p>You <em>defend</em> and gain stacks of <strong>Riposte</strong> equal to your rank.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

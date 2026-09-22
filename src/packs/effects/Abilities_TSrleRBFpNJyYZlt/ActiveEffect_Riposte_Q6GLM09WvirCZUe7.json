@@ -1,0 +1,51 @@
+{
+  "folder": "TSrleRBFpNJyYZlt",
+  "name": "Riposte",
+  "_id": "Q6GLM09WvirCZUe7",
+  "img": "icons/skills/melee/swords-parry-block-blue.webp",
+  "type": "base",
+  "system": {
+    "changes": [],
+    "slug": "riposte",
+    "rules": {},
+    "tracker": {
+      "enabled": false,
+      "name": "Riposte",
+      "id": "riposte",
+      "current": 1,
+      "max": 3,
+      "style": "clock"
+    },
+    "stacking": {
+      "tracker": true
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Next time you are attacked in melee you perform a free attack against the attacker, then a stack of this effect is lost.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 150000,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1787650068417,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!Q6GLM09WvirCZUe7"
+}

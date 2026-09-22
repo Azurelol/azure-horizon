@@ -1,33 +1,35 @@
 {
-  "folder": "epeyf7fvrv3mOIwh",
-  "name": "Shadow Strike",
+  "folder": "bLvApIKJThb3aUw4",
+  "name": "Ice Liner",
   "type": "ability",
-  "_id": "PBzIlccVjMPROeaz",
-  "img": "icons/magic/unholy/hand-weapon-glow-black-green.webp",
+  "_id": "9y2tWG8xozJUm8g4",
+  "img": "icons/magic/water/beam-ice-impact.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "shadow-strike",
-    "description": "<p>You deal a high amount of physical damage to the target.</p>",
+    "slug": "ability-ice-liner",
+    "description": "<p>You deal cold damage to the closest enemy row.</p>",
     "attributes": {
       "schemaVersion": 1,
-      "primary": "dex",
-      "secondary": "mig",
-      "grade": "B"
+      "enabled": true,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "C"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "mdef",
+      "bonus": ""
     },
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "5",
-        "type": "dark"
+        "amount": "10",
+        "type": "cold"
       },
       "secondary": {
         "amount": "",
@@ -35,6 +37,16 @@
       },
       "traits": [],
       "inplace": false
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "action",
+      "points": 3,
+      "speed": "slow",
+      "traits": [
+        "cast"
+      ]
     },
     "resource": {
       "schemaVersion": 1,
@@ -44,10 +56,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "10",
+      "amount": "",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "ranged",
+      "rule": "multiple",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -59,27 +78,19 @@
         "tracking": ""
       }
     },
-    "power": "high",
-    "intent": "damage",
-    "weight": "",
-    "action": {
-      "schemaVersion": 1,
-      "range": "",
-      "type": "",
-      "points": 1,
-      "traits": [
-        "stress"
-      ]
-    },
+    "power": "",
+    "intent": "burst",
+    "weight": "normal",
     "usage": {
       "schemaVersion": 1,
-      "attributes": true,
-      "check": true,
-      "damage": true
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
     }
   },
   "effects": [],
-  "sort": 700000,
+  "sort": 50000,
   "ownership": {
     "default": 0
   },
@@ -88,12 +99,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787648623230,
+    "createdTime": 1790017109022,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!PBzIlccVjMPROeaz"
+  "_key": "!items!9y2tWG8xozJUm8g4"
 }

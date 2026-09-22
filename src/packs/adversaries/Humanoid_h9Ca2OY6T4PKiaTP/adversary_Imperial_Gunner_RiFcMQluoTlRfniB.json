@@ -1,22 +1,22 @@
 {
   "folder": "h9Ca2OY6T4PKiaTP",
-  "name": "Imperial Caster",
+  "name": "Imperial Gunner",
   "type": "adversary",
-  "_id": "BIFuwJwnaWebhavL",
-  "img": "systems/azure-horizon/assets/characters/adversaries/empire_caster.png",
+  "_id": "RiFcMQluoTlRfniB",
+  "img": "systems/azure-horizon/assets/characters/adversaries/empire_gunner.png",
   "system": {
-    "level": 15,
+    "level": 10,
     "resources": {
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 35,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 35,
+        "value": 60,
         "bonus": 0,
         "temporary": 0
       },
@@ -27,6 +27,12 @@
         "temporary": 0
       },
       "tp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "pp": {
         "schemaVersion": 1,
         "value": 0,
         "bonus": 0,
@@ -124,6 +130,79 @@
         "bonus": 0
       },
       "block": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "resource": {
+        "gain": {},
+        "loss": {
+          "hp": {
+            "incoming": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            },
+            "outgoing": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            }
+          },
+          "mp": {
+            "incoming": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            },
+            "outgoing": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            }
+          }
+        }
+      },
+      "movement": {
         "schemaVersion": 1,
         "bonus": 0
       },
@@ -384,10 +463,117 @@
               "multiplicative": []
             }
           }
+        },
+        "electric": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
         }
       },
-      "check": {
-        "schemaVersion": 1
+      "checks": {
+        "schemaVersion": 1,
+        "universal": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "action": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "attribute": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "defense": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "ritual": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
       }
     },
     "profile": {
@@ -398,26 +584,27 @@
       "villain": false,
       "rank": "standard",
       "turns": 1,
+      "pressure": [],
       "summary": "",
       "revision": 1,
-      "slug": "adversary-imperial-caster",
+      "slug": "imperial-gunner",
       "modifiers": {
         "schemaVersion": 1
       }
     },
     "assembly": {
-      "attack": "P9e4VHiZ49MTgN1n"
+      "attack": "TMVVgtbA8MLTeQLv"
     }
   },
   "prototypeToken": {
-    "name": "Imperial Caster",
+    "name": "Imperial Gunner",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "systems/azure-horizon/assets/characters/adversaries/empire_caster.png",
+      "src": "systems/azure-horizon/assets/characters/adversaries/empire_gunner.png",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "cover",
@@ -430,7 +617,7 @@
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 50,
+    "displayBars": 30,
     "bar1": {
       "attribute": "resources.hp"
     },
@@ -503,15 +690,188 @@
   },
   "items": [
     {
-      "name": "Cast",
+      "name": "Mark",
       "type": "ability",
-      "_id": "dW1OZErLVFwLsvFg",
-      "img": "icons/magic/symbols/runes-star-blue.webp",
+      "_id": "CwKLoIRCNYFQWk96",
+      "img": "icons/skills/targeting/crosshair-bars-yellow.webp",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "ability-cast",
-        "description": "<p>You begin chanting a spell to be cast at the end of your next turn.</p>",
+        "slug": "ability-mark",
+        "description": "<p>You mark a target for your next action.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "closer"
+          ],
+          "enabled": true,
+          "speed": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "deuff",
+          "entries": [
+            "mark"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "intent": "prepare",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "power": "",
+        "weight": "normal",
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790101373330,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.CwKLoIRCNYFQWk96",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!RiFcMQluoTlRfniB.CwKLoIRCNYFQWk96"
+    },
+    {
+      "name": "Rifle",
+      "type": "attack",
+      "_id": "TMVVgtbA8MLTeQLv",
+      "img": "icons/weapons/guns/rifle-brown.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "attack-rifle",
+        "description": "",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "ins",
+          "defense": "def",
+          "bonus": ""
+        },
+        "range": "ranged",
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "10",
+            "type": "piercing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "actionCost": 2
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790103793420,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.TMVVgtbA8MLTeQLv",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!RiFcMQluoTlRfniB.TMVVgtbA8MLTeQLv"
+    },
+    {
+      "name": "Snipe",
+      "type": "ability",
+      "_id": "RKp004pESWVpWUQc",
+      "img": "icons/skills/ranged/rifle-scoped-firing-yellow-green.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "ability-snipe",
+        "description": "<p>You deal powerful damage to the target.</p>",
         "attributes": {
           "schemaVersion": 1,
           "enabled": false,
@@ -543,7 +903,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "type": "action",
-          "points": 1,
+          "points": 2,
           "speed": "",
           "traits": []
         },
@@ -562,9 +922,9 @@
         },
         "targeting": {
           "schemaVersion": 1,
-          "enabled": false,
-          "range": "",
-          "rule": "",
+          "enabled": true,
+          "range": "ranged",
+          "rule": "single",
           "traits": []
         },
         "effects": {
@@ -577,125 +937,15 @@
             "tracking": ""
           }
         },
-        "power": "",
-        "intent": "prepare",
-        "weight": "normal",
-        "usage": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "attributes": false,
-          "check": false,
-          "damage": false
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1790105441391,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.dW1OZErLVFwLsvFg",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "B84lnG927FT7kWX1": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!BIFuwJwnaWebhavL.dW1OZErLVFwLsvFg"
-    },
-    {
-      "name": "Fireball",
-      "type": "ability",
-      "_id": "LgX6rXWVHeAhPH5a",
-      "img": "icons/magic/fire/explosion-fireball-large-orange.webp",
-      "system": {
-        "schemaVersion": 1,
-        "revision": 1,
-        "slug": "ability-fireball",
-        "description": "<p>You deal fire damage to the target and those around it.</p>",
-        "attributes": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": "ins",
-          "secondary": "wlp",
-          "grade": "C"
-        },
-        "check": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": "dex",
-          "secondary": "mig",
-          "defense": "mdef",
-          "bonus": ""
-        },
-        "damage": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": {
-            "amount": "10",
-            "type": "fire"
-          },
-          "secondary": {
-            "amount": "",
-            "type": ""
-          },
-          "traits": []
-        },
-        "resource": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "type": "hp",
-          "amount": ""
-        },
-        "cost": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "resource": "mp",
-          "amount": "15",
-          "perTarget": false
-        },
-        "effects": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "selector": "",
-          "entries": [],
-          "duration": {
-            "event": "",
-            "tracking": ""
-          }
-        },
-        "power": "",
+        "power": "severe",
         "intent": "burst",
         "weight": "normal",
-        "action": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "type": "action",
-          "points": 3,
-          "traits": [
-            "cast"
-          ],
-          "speed": ""
-        },
         "usage": {
           "schemaVersion": 1,
-          "enabled": false,
-          "attributes": false,
-          "check": false,
-          "damage": false
-        },
-        "targeting": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "range": "",
-          "rule": "",
-          "traits": []
+          "enabled": true,
+          "attributes": true,
+          "check": true,
+          "damage": true
         }
       },
       "effects": [],
@@ -704,10 +954,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1790105502466,
+        "createdTime": 1790103840548,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.LgX6rXWVHeAhPH5a",
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.RKp004pESWVpWUQc",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -717,69 +967,7 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!BIFuwJwnaWebhavL.LgX6rXWVHeAhPH5a"
-    },
-    {
-      "name": "Fire Bolt",
-      "type": "attack",
-      "_id": "P9e4VHiZ49MTgN1n",
-      "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp",
-      "system": {
-        "schemaVersion": 1,
-        "revision": 1,
-        "slug": "attack-fire-bolt",
-        "description": "",
-        "check": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": "ins",
-          "secondary": "wlp",
-          "defense": "mdef",
-          "bonus": ""
-        },
-        "range": "ranged",
-        "damage": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": {
-            "amount": "5",
-            "type": "fire"
-          },
-          "secondary": {
-            "amount": "",
-            "type": ""
-          },
-          "traits": []
-        },
-        "attributes": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": "dex",
-          "secondary": "mig",
-          "grade": "C"
-        },
-        "actionCost": 2
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1790105510291,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.P9e4VHiZ49MTgN1n",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "B84lnG927FT7kWX1": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!BIFuwJwnaWebhavL.P9e4VHiZ49MTgN1n"
+      "_key": "!actors.items!RiFcMQluoTlRfniB.RKp004pESWVpWUQc"
     }
   ],
   "effects": [],
@@ -792,12 +980,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788204181512,
+    "createdTime": 1790101210842,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!BIFuwJwnaWebhavL"
+  "_key": "!actors!RiFcMQluoTlRfniB"
 }

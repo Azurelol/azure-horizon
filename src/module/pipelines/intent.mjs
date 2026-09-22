@@ -6,7 +6,6 @@ import { MathUtils, ObjectUtils } from "../utils/_module.mjs";
  * @typedef IntentAction
  * @property {AH_Intent} type
  * @property {String} icon The intent icon. Assigned later.
- * @property {Boolean} targeted
  * @property {DocumentReference} item The id of the ability or attack to be used (an Item)
  */
 
@@ -38,6 +37,7 @@ import { MathUtils, ObjectUtils } from "../utils/_module.mjs";
  */
 const ROLE_ROUTINES = Object.freeze({
 
+  // TODO: Update so that intent choices can be used [single/array]
   default: {
     standard: {
       default: [
@@ -128,14 +128,14 @@ const ROLE_ROUTINES = Object.freeze({
     standard: {
       default: [
         ["attack"],
-        ["cast"],
-        ["damage"],
+        ["prepare"],
+        ["burst"],
       ],
     },
     elite: {
       default: [
         ["attack", "damage"],
-        ["cast", "damage"],
+        ["prepare", "burst"],
       ],
     },
     champion: {
@@ -218,12 +218,11 @@ const ROLE_ROUTINES = Object.freeze({
     standard: {
       default: [
         ["attack"],
-        ["empower"],
       ],
     },
     elite: {
       default: [
-        ["attack", "empower", "damage"],
+        ["attack", "summon", "damage"],
         ["empower", "fortify", "damage"],
       ],
     },
@@ -236,6 +235,16 @@ const ROLE_ROUTINES = Object.freeze({
   },
 
 });
+
+/**
+ * @param {AH_Intent | AH_Intent[]} value
+ * @returns {AH_Intent}
+ */
+function chooseIntent(value) {
+  return Array.isArray(value)
+    ? value[Math.floor(Math.random() * value.length)]
+    : value;
+}
 
 /**
  * @typedef IntentAbilityTable
@@ -284,6 +293,8 @@ function resolveIntents(system) {
   return intents;
 }
 
+//TODO: FIx selection; change history to actor/combatant uuid, save on combat document
+
 /**
  * Picks the hero to target.
  * @param {Map<HeroDataModel, Number>} history
@@ -300,20 +311,15 @@ function selectTarget(history) {
   const weights = Array.from(history.values()).map(w => 1 / w);
   const index = MathUtils.weightedRandomIndex(weights);
   const target = heroes[index].parent;
+
   // Update the history
-  heroes[target]++;
+  history[heroes[index]]++;
 
   return {
     name: target.name,
     img: target.img,
     uuid: target.uuid,
   };
-
-  // let targets = Array.from(heroes.map(h => h.parent));
-  // for (let i = targets.length - 1; i > 0; i--) {
-  //   const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
-  //   [targets[i], targets[j]] = [targets[j], targets[i]];
-  // }
 }
 
 /**
@@ -369,22 +375,24 @@ function generateIntents(adversary, combatants, heroes, history) {
   /** @type AH_Intent[] **/
   const cycle = intents[Math.min(intents.length - 1, cycleIndex)];
   /** @type {Map<HeroDataModel,Number>} **/
-  let targetHistory = new Map(heroes.map(key => [key, 0]));
-
+  let targetHistory = new Map(heroes.map(key => [key, 1]));
   /** @type IntentData[] **/
   let actions = [];
   for (let t = 0; t < combatants.length; t++) {
+    /** @type AH_Intent **/
+    const intent = chooseIntent(cycle[t]);
     /** @type IntentData **/
     let action = {
       primary: {
-        type: cycle[t],
+        type: intent,
       },
     };
     /** @type {AttackDataModel|AbilityDataModel} **/
     let primaryItem;
     let targeted = false;
+    let alsoAttack = false;
 
-    switch (action.primary.type) {
+    switch (intent) {
       case "unknown":
         break;
       case "attack":
@@ -392,7 +400,6 @@ function generateIntents(adversary, combatants, heroes, history) {
         targeted = true;
         break;
       case "damage":
-      case "burst":
       case "weaken":
       case "empower":
       case "control":
@@ -400,6 +407,10 @@ function generateIntents(adversary, combatants, heroes, history) {
       case "status":
         primaryItem = selectAbility(abilityMap[action.primary.type]);
         targeted = true;
+        break;
+      case "burst":
+        primaryItem = selectAbility(abilityMap[action.primary.type]);
+        targeted = false;
         break;
       case "fortify":
       case "block":
@@ -410,10 +421,14 @@ function generateIntents(adversary, combatants, heroes, history) {
       case "channel":
       case "prepare":
         primaryItem = selectAbility(abilityMap[action.primary.type]);
+        targeted = true;
         break;
       case "escape":
+        primaryItem = selectAbility(abilityMap[action.primary.type]);
+        break;
       case "summon":
         primaryItem = selectAbility(abilityMap[action.primary.type]);
+        alsoAttack = true;
         break;
     }
 
@@ -423,6 +438,19 @@ function generateIntents(adversary, combatants, heroes, history) {
         name: primaryItem.parent.name,
         uuid: primaryItem.parent.uuid,
       };
+    }
+
+    if (alsoAttack) {
+      const secondaryItem = selectAbility(attackItems);
+      action.secondary = {
+        type: "attack",
+        item: {
+          img: secondaryItem.parent.img,
+          name: secondaryItem.parent.name,
+          uuid: secondaryItem.parent.uuid,
+        },
+      };
+      targeted = true;
     }
 
     if (targeted) {
