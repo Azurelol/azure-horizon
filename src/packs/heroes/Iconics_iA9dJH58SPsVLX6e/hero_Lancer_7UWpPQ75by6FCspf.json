@@ -35,11 +35,11 @@
     },
     "attributes": {
       "mig": {
-        "base": 4,
+        "base": 8,
         "bonus": 0
       },
       "dex": {
-        "base": 4,
+        "base": 6,
         "bonus": 0
       },
       "ins": {
@@ -487,77 +487,6 @@
   },
   "items": [
     {
-      "name": "Spear",
-      "type": "weapon",
-      "_id": "aBIYcSB3nwbHlC0n",
-      "img": "systems/azure-horizon/assets/icons/equipment/weapons/spear.png",
-      "system": {
-        "schemaVersion": 1,
-        "revision": 1,
-        "slug": "equipment-spear",
-        "description": "",
-        "check": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": "dex",
-          "secondary": "mig",
-          "defense": "def",
-          "bonus": ""
-        },
-        "range": "melee",
-        "damage": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": {
-            "amount": "",
-            "type": "piercing"
-          },
-          "secondary": {
-            "amount": "",
-            "type": ""
-          },
-          "traits": []
-        },
-        "handedness": "two",
-        "traits": [
-          "reach"
-        ],
-        "attributes": {
-          "primary": "dex",
-          "secondary": "mig",
-          "grade": "B",
-          "schemaVersion": 1,
-          "enabled": true
-        },
-        "options": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "traits": []
-        },
-        "actionCost": 2
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788337642322,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.equipment.Item.aBIYcSB3nwbHlC0n",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "B84lnG927FT7kWX1": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!7UWpPQ75by6FCspf.aBIYcSB3nwbHlC0n"
-    },
-    {
       "name": "Light Plate",
       "type": "armor",
       "_id": "wDzfZ3v9nVzKORjN",
@@ -569,7 +498,12 @@
         "description": "",
         "rarity": "common",
         "category": "light",
-        "traits": []
+        "traits": [],
+        "potentials": {
+          "schemaVersion": 1,
+          "entries": []
+        },
+        "weight": "light"
       },
       "effects": [],
       "flags": {},
@@ -669,7 +603,8 @@
           "enabled": false,
           "type": "",
           "points": 1,
-          "traits": []
+          "traits": [],
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -726,7 +661,8 @@
             "cooldown",
             "closer"
           ],
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "damage": {
           "schemaVersion": 1,
@@ -890,7 +826,8 @@
           "enabled": true,
           "type": "action",
           "points": 2,
-          "traits": []
+          "traits": [],
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -1005,7 +942,8 @@
           "enabled": true,
           "type": "action",
           "points": 2,
-          "traits": []
+          "traits": [],
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -1118,7 +1056,8 @@
           "enabled": true,
           "type": "action",
           "points": 2,
-          "traits": []
+          "traits": [],
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -1231,7 +1170,8 @@
           "enabled": true,
           "type": "action",
           "points": 3,
-          "traits": []
+          "traits": [],
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -1330,7 +1270,8 @@
           "traits": [
             "interrupt"
           ],
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -1443,7 +1384,8 @@
           "traits": [
             "exhaust"
           ],
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,

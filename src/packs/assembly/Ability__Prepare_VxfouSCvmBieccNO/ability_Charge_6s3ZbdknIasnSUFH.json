@@ -19,10 +19,14 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
+      "type": "action",
       "points": 1,
-      "traits": [],
-      "targeting": "self"
+      "traits": [
+        "closer"
+      ],
+      "targeting": "self",
+      "enabled": true,
+      "speed": ""
     },
     "damage": {
       "schemaVersion": 1,

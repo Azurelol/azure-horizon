@@ -15,6 +15,8 @@ import Events from "./events.mjs";
 import { Expressions } from "./_module.mjs";
 import Targeting from "../helpers/targeting.mjs";
 import ResourceData from "./resource-data.mjs";
+import { ModifiersDataModel } from "../data/api/modifiers.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
 
 /**
  * @property {AH_Resource} resource
@@ -116,8 +118,17 @@ async function process(request) {
       // LOSS
       else {
         // Apply modifiers from the character's parameters
-        const incomingLossBonus = 0; // actor.system.bonuses.incomingLoss[request.resourceType] || 0;
-        const incomingLossMultiplier = 1; // actor.system.multipliers.incomingLoss[request.resourceType] || 1;
+        let incomingLossBonus = 0;
+        let incomingLossMultiplier = 1;
+        /** @type ModifiersDataModel **/
+        const incomingLoss = subject.system.parameters.resource.loss[request.data.type]?.incoming;
+        if (incomingLoss) {
+          const mods = incomingLoss.resolveModifiers();
+          const mod = Formulas.joinModifiers(mods);
+          incomingLossBonus += mod.additive;
+          incomingLossMultiplier = mod.multiplicative;
+        }
+
         amount = -Math.max(0, Math.floor((Math.abs(amount) + incomingLossBonus) * incomingLossMultiplier));
       }
     }

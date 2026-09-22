@@ -57,9 +57,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "lancer-jump"
+      ],
       "duration": {
         "event": "",
         "tracking": ""

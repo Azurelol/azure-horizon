@@ -9,7 +9,7 @@
       {
         "key": "system.parameters.damage.physical.outgoing.skill.additive",
         "type": "add",
-        "value": "&sl('armiger-arsenal')*5",
+        "value": "&sl('armiger-arsenal')*2",
         "phase": "initial",
         "priority": null
       }
@@ -33,7 +33,7 @@
     "expiry": null,
     "expired": false
   },
-  "description": "",
+  "description": "<p>Your next attack deals SL * 2 bonus damage.</p>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,

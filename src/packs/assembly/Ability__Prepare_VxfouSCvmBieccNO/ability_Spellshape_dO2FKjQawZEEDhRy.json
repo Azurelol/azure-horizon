@@ -21,7 +21,8 @@
       "range": "",
       "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,

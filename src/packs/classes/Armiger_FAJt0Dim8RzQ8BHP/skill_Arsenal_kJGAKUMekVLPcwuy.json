@@ -53,12 +53,13 @@
       "schemaVersion": 1,
       "enabled": true,
       "entries": [
-        "armiger-arsenal-effect"
+        "armiger-arsenal"
       ],
       "duration": {
         "event": "",
         "tracking": ""
-      }
+      },
+      "selector": "buff"
     },
     "level": {
       "current": 1,
@@ -70,7 +71,13 @@
       "damage": false,
       "power": ""
     },
-    "class": "armiger"
+    "class": "armiger",
+    "targeting": {
+      "enabled": true,
+      "rule": "self",
+      "range": "",
+      "traits": []
+    }
   },
   "effects": [],
   "sort": 0,

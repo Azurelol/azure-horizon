@@ -11,14 +11,14 @@
     "description": "<p>You deal fire damage to the target and those around it.</p>",
     "attributes": {
       "schemaVersion": 1,
-      "enabled": false,
-      "primary": "dex",
-      "secondary": "mig",
+      "enabled": true,
+      "primary": "ins",
+      "secondary": "wlp",
       "grade": "C"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": "dex",
       "secondary": "mig",
       "defense": "mdef",
@@ -28,7 +28,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "15",
+        "amount": "10",
         "type": "fire"
       },
       "secondary": {
@@ -61,7 +61,7 @@
         "tracking": ""
       }
     },
-    "power": "moderate",
+    "power": "",
     "intent": "damage",
     "weight": "normal",
     "action": {

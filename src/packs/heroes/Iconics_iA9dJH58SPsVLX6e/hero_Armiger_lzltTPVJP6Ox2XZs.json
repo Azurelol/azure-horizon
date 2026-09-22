@@ -580,7 +580,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "resource": "mp",
-          "amount": "15",
+          "amount": "10",
           "perTarget": false
         },
         "effects": {
@@ -595,7 +595,7 @@
         },
         "level": {
           "current": 1,
-          "max": 2
+          "max": 1
         },
         "usage": {
           "schemaVersion": 1,
@@ -612,7 +612,8 @@
             "cooldown"
           ],
           "schemaVersion": 1,
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "power": "moderate",
         "attributes": {
@@ -676,7 +677,8 @@
           "traits": [
             "free"
           ],
-          "enabled": false
+          "enabled": false,
+          "speed": ""
         },
         "damage": {
           "schemaVersion": 1,
@@ -788,7 +790,8 @@
             "cooldown",
             "press"
           ],
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "damage": {
           "schemaVersion": 1,
@@ -899,7 +902,8 @@
           "type": "",
           "points": 1,
           "traits": [],
-          "enabled": false
+          "enabled": false,
+          "speed": ""
         },
         "damage": {
           "schemaVersion": 1,
@@ -931,13 +935,13 @@
           "schemaVersion": 1,
           "enabled": true,
           "entries": [
-            "armiger-arsenal-effect"
+            "armiger-arsenal"
           ],
           "duration": {
             "event": "",
             "tracking": ""
           },
-          "selector": ""
+          "selector": "buff"
         },
         "level": {
           "current": 1,
@@ -1035,7 +1039,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "resource": "mp",
-          "amount": "10",
+          "amount": "5",
           "perTarget": false
         },
         "effects": {
@@ -1063,7 +1067,8 @@
           "traits": [
             "cooldown"
           ],
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -1125,7 +1130,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "primary": {
-            "amount": "",
+            "amount": "10",
             "type": "slashing"
           },
           "secondary": {
@@ -1148,7 +1153,9 @@
           "schemaVersion": 1,
           "enabled": false,
           "traits": []
-        }
+        },
+        "weight": "heavy",
+        "rarity": "common"
       },
       "effects": [],
       "flags": {},
@@ -1185,7 +1192,12 @@
         "traits": [
           "stable"
         ],
-        "rarity": "common"
+        "rarity": "common",
+        "weight": "heavy",
+        "potentials": {
+          "schemaVersion": 1,
+          "entries": []
+        }
       },
       "effects": [],
       "flags": {},

@@ -323,7 +323,9 @@ async function _onProcessAction(config, actor, item) {
     }
     else {
       for (const id of effectData.entries) {
-        config.addAction(getChatAction(id, config.sourceInfo, effectData.duration));
+        config.addAction(getChatAction(id, config.sourceInfo, effectData.duration, {
+          label: true,
+        }));
       }
     }
   }

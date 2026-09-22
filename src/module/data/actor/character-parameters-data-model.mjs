@@ -9,7 +9,8 @@ import { Formulas } from "../../ruleset/_module.mjs";
  * @property {ParameterDataModel} mdef
  * @property {ParameterDataModel} init
  * @property {ParameterDataModel} block Bonus BLK generation. (As a percentage)
- * @property {ExchangeModifiersDataModel} recovery Bonus HP recovery.
+ * @property {ExchangeModifiersDataModel} resource.hp
+ * @property {ExchangeModifiersDataModel} resource.mp
  * @property {ParameterDataModel} movement How many spaces a character can shift.
  * @property {DamageModifiersDataModel} damage
  * @property {CheckModifiersDataModel} checks
@@ -23,9 +24,16 @@ export class CharacterParametersDataModel extends VersionedDataModel {
       init: new EmbeddedDataField(ParameterDataModel, {}),
 
       block: new EmbeddedDataField(ParameterDataModel, {}),
-      recovery: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
-      movement: new EmbeddedDataField(ParameterDataModel, {}),
+      resource: new SchemaField({
+        gain: new SchemaField({
 
+        }),
+        loss: new SchemaField({
+          hp: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
+          mp: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
+        }),
+      }),
+      movement: new EmbeddedDataField(ParameterDataModel, {}),
       damage: new EmbeddedDataField(DamageModifiersDataModel, {}),
       checks: new EmbeddedDataField(CheckModifiersDataModel, {}),
     });

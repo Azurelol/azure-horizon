@@ -1,30 +1,27 @@
 {
-  "folder": "VxfouSCvmBieccNO",
-  "name": "Take Aim",
-  "type": "ability",
-  "_id": "CNf4w5sIpNfxZMqV",
-  "img": "icons/skills/ranged/person-archery-bow-attack-orange.webp",
+  "folder": "FAJt0Dim8RzQ8BHP",
+  "name": "Payday",
+  "type": "skill",
+  "_id": "ua8mCzDLV2BgP0Ma",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ability-take-aim",
-    "description": "",
+    "slug": "armiger-payday",
+    "description": "<p>When you perform a basic attack you gain the <em>Payday</em> effect, which lowers the cost of your next skill.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "def"
-    },
-    "action": {
-      "schemaVersion": 1,
-      "range": "",
-      "type": "action",
-      "points": 1,
-      "traits": [
-        "closer"
-      ],
-      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
@@ -40,6 +37,14 @@
       "traits": [],
       "inplace": false
     },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "",
+      "points": 1,
+      "speed": "",
+      "traits": []
+    },
     "resource": {
       "schemaVersion": 1,
       "enabled": false,
@@ -53,17 +58,38 @@
       "amount": "",
       "perTarget": false
     },
-    "effects": {
+    "targeting": {
       "schemaVersion": 1,
       "enabled": false,
-      "selector": "",
-      "entries": [],
+      "range": "",
+      "rule": "",
+      "traits": []
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "armiger-payday"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
-    "intent": "prepare"
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "armiger"
   },
   "effects": [],
   "sort": 0,
@@ -75,12 +101,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787196993448,
+    "createdTime": 1790098124675,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!CNf4w5sIpNfxZMqV"
+  "_key": "!items!ua8mCzDLV2BgP0Ma"
 }

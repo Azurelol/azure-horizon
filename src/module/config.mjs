@@ -165,12 +165,6 @@ AH.potency = Object.freeze({
  * @typedef {'reduced'|'standard'|'powerful'} AH_ActionPotency
  */
 
-AH.potencies = Object.freeze({
-  reduced: { label: "AH.ACTION.POTENCY.Reduced", icon: "ah-icon-potency-reduced" },
-  standard: { label: "AH.ACTION.POTENCY.Standard", icon: "ah-icon-potency-standard" },
-  powerful: { label: "AH.ACTION.POTENCY.Powerful", icon: "ah-icon-potency-powerful" },
-});
-
 /**
  * @typedef {'entity'|'small'|'large'|'huge'} AH_Area
  */

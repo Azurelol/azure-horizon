@@ -1,36 +1,35 @@
 {
-  "folder": "epeyf7fvrv3mOIwh",
-  "name": "Trample",
+  "folder": "IvdL25FRthzni6P1",
+  "name": "Ice Liner",
   "type": "ability",
-  "_id": "8VhWXYL2WmSc2knn",
-  "img": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp",
+  "_id": "9y2tWG8xozJUm8g4",
+  "img": "icons/magic/water/beam-ice-impact.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ability-trample",
-    "description": "<p>You rush forward and attempt to trample all your enemies in the field. Each of them must make a defense check or be trampled underfoot, suffering damage.</p><p>Any one of your targets may attempt to stop you with an <strong>opposed</strong> <strong>[MIG + MIG]</strong> check If they succeed the action is disrupted, otherwise they are stunned until the end of their next turn and take the brunt of the damage, leaving other targets unaffected.</p>",
+    "slug": "ability-ice-liner",
+    "description": "<p>You deal cold damage to the closest enemy row.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "ins",
+      "secondary": "wlp",
+      "grade": "C"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "dex",
+      "defense": "mdef",
       "bonus": ""
-    },
-    "action": {
-      "schemaVersion": 1,
-      "range": "melee",
-      "type": "action",
-      "points": 2,
-      "traits": [],
-      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "bludgeoning"
+        "amount": "10",
+        "type": "cold"
       },
       "secondary": {
         "amount": "",
@@ -38,6 +37,16 @@
       },
       "traits": [],
       "inplace": false
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "action",
+      "points": 3,
+      "speed": "slow",
+      "traits": [
+        "cast"
+      ]
     },
     "resource": {
       "schemaVersion": 1,
@@ -52,6 +61,13 @@
       "amount": "",
       "perTarget": false
     },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "ranged",
+      "rule": "multiple",
+      "traits": []
+    },
     "effects": {
       "schemaVersion": 1,
       "enabled": false,
@@ -62,13 +78,19 @@
         "tracking": ""
       }
     },
-    "intent": "damage",
-    "attributes": {
-      "enabled": true
+    "power": "",
+    "intent": "cast",
+    "weight": "normal",
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
     }
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -77,12 +99,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787195640619,
+    "createdTime": 1790017109022,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!8VhWXYL2WmSc2knn"
+  "_key": "!items!9y2tWG8xozJUm8g4"
 }

@@ -59,8 +59,8 @@
               <i class="ah-icon --sm {{ahIconClass intent.primary.type record="intents"}}"></i>
             {{/if}}
           </div>
-            <!--Secondary Action-->
-            {{#if intent.secondary}}
+          <!--Secondary Action-->
+          {{#if intent.secondary}}
             <div class="ah-flex-center --col">
               {{#if (and isOwner intent.secondary.item)}}
                 <img class="intent-item" src="{{ intent.secondary.item.img }}" alt="{{ intent.secondary.item.name }}" loading="lazy">

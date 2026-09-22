@@ -47,7 +47,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "10",
+      "amount": "5",
       "perTarget": false
     },
     "targeting": {

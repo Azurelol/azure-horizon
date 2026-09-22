@@ -479,9 +479,13 @@ const onProcessAction = async (config, actor, item) => {
 
         // Powerful
         const powerfulDamage = standardDamage.duplicate(d => {
-          d.add("AH.PIPELINE.CriticalBonus", {
-            type: "untyped",
+          d.add({
+            type: damage.type,
             amount: calc.primary.base,
+            source: {
+              label: "AH.PIPELINE.CriticalBonus",
+              icon: "critical",
+            },
           });
         });
         const powerful = getChatAction(powerfulDamage, sourceInfo, traits, {

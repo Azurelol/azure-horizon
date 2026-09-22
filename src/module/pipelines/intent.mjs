@@ -379,7 +379,6 @@ function generateIntents(adversary, combatants, heroes, history) {
       primary: {
         type: cycle[t],
       },
-      secondary: {},
     };
     /** @type {AttackDataModel|AbilityDataModel} **/
     let primaryItem;

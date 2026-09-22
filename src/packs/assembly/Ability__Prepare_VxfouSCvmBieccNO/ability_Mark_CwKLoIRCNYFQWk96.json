@@ -21,7 +21,11 @@
       "range": "",
       "type": "action",
       "points": 1,
-      "traits": []
+      "traits": [
+        "closer"
+      ],
+      "enabled": true,
+      "speed": ""
     },
     "damage": {
       "schemaVersion": 1,
