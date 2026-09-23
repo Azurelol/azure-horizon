@@ -52,9 +52,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "dancer-foxfire"
+      ],
       "duration": {
         "event": "",
         "tracking": ""

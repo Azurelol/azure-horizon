@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dancer-dance",
-    "description": "<p>You gain the use of a <em>Dance </em>for each point invested into this skill.</p><ul><li><p>You can perform dances while wearing light armor and a light weapon.</p></li></ul>",
+    "description": "<p>You gain the use of a <em>Dance </em>for each point invested into this skill. You can only perform dances while wearing light equipment.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",

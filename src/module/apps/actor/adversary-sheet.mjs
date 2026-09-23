@@ -105,6 +105,7 @@ export class AdversarySheet extends CharacterSheet {
       case "features":
       {
         this.actionHandler.setupAttacks(html);
+        this.#tableRenderers.invokeAll("attachListeners", this, html);
         break;
       }
     }

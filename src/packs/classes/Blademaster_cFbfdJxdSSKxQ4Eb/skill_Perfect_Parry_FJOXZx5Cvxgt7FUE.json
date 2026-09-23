@@ -19,7 +19,7 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
+      "type": "reaction",
       "points": 1,
       "traits": [
         "exhaust"

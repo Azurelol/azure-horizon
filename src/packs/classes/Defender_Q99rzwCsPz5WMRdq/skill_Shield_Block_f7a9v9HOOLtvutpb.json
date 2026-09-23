@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "defender-shield-block",
-    "description": "<p>When you are attacked while equipped with a <em>shield</em> you can immediately gain <em>Block</em> before the attack resolves.</p>",
+    "description": "<p>When you are attacked while equipped with a <em>shield</em> you can immediately <em>Defend</em> before the attack resolves.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -38,7 +38,7 @@
     },
     "resource": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "type": "hp",
       "amount": ""
     },
@@ -70,7 +70,8 @@
       "targeting": "self",
       "type": "reaction",
       "points": 1,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "usage": {
       "schemaVersion": 1,

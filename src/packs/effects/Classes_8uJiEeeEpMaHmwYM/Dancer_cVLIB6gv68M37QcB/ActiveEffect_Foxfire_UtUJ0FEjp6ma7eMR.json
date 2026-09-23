@@ -9,12 +9,12 @@
       {
         "key": "system.parameters.damage.universal.outgoing.status.additive",
         "type": "add",
-        "value": 5,
+        "value": 2,
         "phase": "initial",
         "priority": null
       }
     ],
-    "slug": "",
+    "slug": "dancer-foxfire",
     "rules": {},
     "tracker": {
       "enabled": false,

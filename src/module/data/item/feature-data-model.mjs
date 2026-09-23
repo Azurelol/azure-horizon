@@ -34,10 +34,17 @@ export default class FeatureDataModel extends ItemDataModel {
 
   /**
    * @param {KeyboardModifiers} modifiers
+   */
+  isFreeAction(modifiers) {
+    return modifiers?.shift;
+  }
+
+  /**
+   * @param {KeyboardModifiers} modifiers
    * @returns {Promise<boolean>}
    */
   async perform(modifiers) {
-    const free = modifiers?.shift;
+    const free = this.isFreeAction(modifiers);
     if (this.isCheck && !free) {
       await Checks.actionCheck(this.parent.actor, this.parent, async (check, actor, item) => {
         const config = new ActionConfig(check);

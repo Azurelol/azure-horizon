@@ -1,14 +1,21 @@
 {
   "folder": "p34NvCVUkuzxmfGU",
-  "name": "Short Spear",
+  "name": "Dagger",
   "type": "weapon",
-  "_id": "aBIYcSB3nwbHlC0n",
-  "img": "systems/azure-horizon/assets/icons/equipment/weapons/spear.png",
+  "_id": "8izjNnJu3IO3cVpR",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/dagger.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-short-spear",
+    "slug": "equipment-dagger",
     "description": "",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "B"
+    },
     "check": {
       "schemaVersion": 1,
       "enabled": true,
@@ -17,33 +24,32 @@
       "defense": "def",
       "bonus": ""
     },
-    "range": "melee",
     "damage": {
       "schemaVersion": 1,
       "enabled": true,
       "primary": {
-        "amount": "6",
-        "type": "piercing"
+        "amount": "5",
+        "type": "slashing"
       },
       "secondary": {
         "amount": "",
         "type": ""
       },
-      "traits": [],
-      "inplace": false
+      "traits": []
     },
+    "range": "melee",
+    "actionCost": 2,
+    "rarity": "common",
+    "weight": "light",
     "handedness": "one",
-    "traits": [
-      "reach"
-    ],
-    "attributes": {
-      "primary": "dex",
-      "secondary": "mig",
-      "grade": "B"
+    "traits": [],
+    "options": {
+      "schemaVersion": 1,
+      "enabled": false
     }
   },
   "effects": [],
-  "sort": -100000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -52,12 +58,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786542881185,
+    "createdTime": 1790168068194,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!aBIYcSB3nwbHlC0n"
+  "_key": "!items!8izjNnJu3IO3cVpR"
 }

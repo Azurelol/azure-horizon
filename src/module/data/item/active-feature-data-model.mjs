@@ -46,6 +46,13 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     });
   }
 
+  isFreeAction(modifiers) {
+    if (this.action.traits.has("free")) {
+      return true;
+    }
+    return super.isFreeAction(modifiers);
+  }
+
   *allApplicableTraits() {
     yield* super.allApplicableTraits();
     for (const trait of this.action.traits) {

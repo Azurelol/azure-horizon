@@ -370,14 +370,16 @@ const onProcessAction = async (config, actor, item) => {
       const secondaryDamage = damage.components[1];
 
       // Add high roll to primary damage
-      damage.add({
-        type: damage.type,
-        amount: calc.primary.base,
-        source: {
-          label: "AH.CHECK.HighRoll.short",
-          icon: config.check.hr.attribute,
-        },
-      });
+      if (config.check?.hr) {
+        damage.add({
+          type: damage.type,
+          amount: calc.primary.base,
+          source: {
+            label: "AH.CHECK.HighRoll.short",
+            icon: config.check.hr.attribute,
+          },
+        });
+      }
       damage.add({
         type: damage.type,
         amount: calc.primary.bonus,
@@ -434,16 +436,6 @@ const onProcessAction = async (config, actor, item) => {
           icon: "power",
         },
       });
-
-      // damage.modify("universal", {
-      //   key: "skill",
-      //   additive: AH.power[config.power].additive,
-      //   multiplicative: 1,
-      //   source: {
-      //     label: "AH.DAMAGE.Power",
-      //     icon: "power",
-      //   },
-      // });
     }
 
     // 5.) Set Potency

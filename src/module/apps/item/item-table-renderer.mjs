@@ -43,7 +43,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
           icon: AH.icons.send,
           keys: ["id", "type"],
           callback: (target, event) => {
-            return application.constructor._sendItem.call(application, event, target);
+            return application.constructor._sendItem?.call(application, event, target);
           },
         },
         {
@@ -52,7 +52,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
           icon: AH.icons.edit,
           keys: ["id", "type"],
           callback: (target, event) => {
-            return application.constructor._editDocument.call(application, event, target);
+            return application.constructor._editDocument?.call(application, event, target);
           },
         },
         {
@@ -61,7 +61,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
           icon: AH.icons.remove,
           keys: ["id", "type"],
           callback: (target, event) => {
-            return application.constructor._deleteDocument.call(application, event, target);
+            return application.constructor._deleteDocument?.call(application, event, target);
           },
         },
         ...this._getItemActions(),

@@ -25,7 +25,8 @@
         "free"
       ],
       "range": "melee",
-      "targeting": "single"
+      "targeting": "single",
+      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
@@ -49,9 +50,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "1",
       "perTarget": false
     },
     "effects": {
@@ -69,9 +70,11 @@
     },
     "usage": {
       "schemaVersion": 1,
-      "check": false,
+      "check": true,
       "damage": true,
-      "power": ""
+      "power": "",
+      "enabled": true,
+      "attributes": true
     },
     "class": "armiger"
   },

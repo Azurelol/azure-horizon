@@ -22,7 +22,7 @@
     },
     "rules": {},
     "tracker": {
-      "enabled": false,
+      "enabled": true,
       "name": "Fervor",
       "id": "fervor",
       "style": "clock",

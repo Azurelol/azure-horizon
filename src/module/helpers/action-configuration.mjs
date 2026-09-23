@@ -511,7 +511,9 @@ export class ActionConfig extends ActionInspector {
       if (t == null) return;
       const trait = String(t).toLowerCase().trim();
       if (trait !== "") {
-        this.check.data[TRAITS].push(trait);
+        if (this.check.data[TRAITS].find(t => t === trait) === undefined) {
+          this.check.data[TRAITS].push(trait);
+        }
       }
     });
     return this;

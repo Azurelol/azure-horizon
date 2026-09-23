@@ -10,7 +10,7 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 30,
+        "value": 40,
         "bonus": 0,
         "temporary": 0
       },
@@ -39,11 +39,11 @@
         "bonus": 0
       },
       "dex": {
-        "base": 4,
+        "base": 8,
         "bonus": 0
       },
       "ins": {
-        "base": 4,
+        "base": 6,
         "bonus": 0
       },
       "wlp": {
@@ -98,7 +98,10 @@
         "type": "additive"
       }
     },
-    "equipment": {},
+    "equipment": {
+      "armor": "wdDrP8GR8xh9VzHi",
+      "mainHand": "8izjNnJu3IO3cVpR"
+    },
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -481,7 +484,508 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Dancer",
+      "type": "class",
+      "_id": "eEGG970aHnwhgIni",
+      "img": "systems/azure-horizon/assets/icons/classes/dancer/dancer.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "dancer",
+        "description": "<p>An acrobatic performer who relies on their quick feet and graceful movements to get them by in life.  Behind their elegant movements belies a martial discipline that is both flexible and strong when it needs to be.</p><blockquote><p>The Dancer is a class that excels in providing options to easily reposition not only their party but also their foes, all while steadily building up their tempo to increase their damage.</p></blockquote>",
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": true,
+          "mp": false,
+          "ip": false,
+          "tp": false
+        },
+        "triggers": [
+          "You perform a dance for an audience.",
+          "You dance with someone in a meaningful moment.",
+          "You prove every rose has its thorns.",
+          "You ask someone for a dance."
+        ],
+        "traits": [
+          "support",
+          "shift",
+          "dance"
+        ],
+        "complications": [
+          "An influential person requests a performance.",
+          "A rival dancer challenges you... to a dance off.",
+          "You learn a forbidden dance."
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790170655719,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.eEGG970aHnwhgIni",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!9PlTvvHTZGiYpnyf.eEGG970aHnwhgIni"
+    },
+    {
+      "name": "Dance",
+      "type": "skill",
+      "_id": "cIUOj9gJNhjO3ohW",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "dancer-dance",
+        "description": "<p>You gain the use of a <em>Dance </em>for each point invested into this skill.</p><ul><li><p>You can perform dances while wearing light armor and a light weapon.</p></li></ul>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 5
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [],
+          "enabled": false,
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": false,
+          "damage": false,
+          "enabled": false
+        },
+        "class": "dancer",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790170674336,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.cIUOj9gJNhjO3ohW",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!9PlTvvHTZGiYpnyf.cIUOj9gJNhjO3ohW"
+    },
+    {
+      "name": "Take the Lead",
+      "type": "skill",
+      "_id": "AQIsCJHzdCIU5bk6",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "dancer-take-the-lead",
+        "description": "<p>When you or adjacent party member is targeted by an action you or them may swap positions and become the target instead.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "tp",
+          "amount": "2",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "reaction",
+          "points": 1,
+          "traits": [],
+          "enabled": false,
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": false,
+          "check": false,
+          "damage": false,
+          "enabled": false
+        },
+        "class": "dancer",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790170686777,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.AQIsCJHzdCIU5bk6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!9PlTvvHTZGiYpnyf.AQIsCJHzdCIU5bk6"
+    },
+    {
+      "name": "Fox Fire Trot",
+      "type": "classFeature",
+      "_id": "LdXxHA9V4drEKxHn",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "dancer-fox-fire-trot",
+        "description": "<p>Each round while you dance, you grant a party member the <em>Foxfire</em> effect, which increases their damage dealt and gives it a fire component.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def"
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "5",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "feature": {
+          "_id": "IKX9BmHMJDbofFY5",
+          "type": "emptyClassFeature"
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "sustain"
+          ],
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        },
+        "trait": "dance",
+        "class": "dancer",
+        "skill": "dancer-dance",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790170705945,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.LdXxHA9V4drEKxHn",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!9PlTvvHTZGiYpnyf.LdXxHA9V4drEKxHn"
+    },
+    {
+      "name": "Dagger",
+      "type": "weapon",
+      "_id": "8izjNnJu3IO3cVpR",
+      "img": "systems/azure-horizon/assets/icons/equipment/weapons/dagger.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-dagger",
+        "description": "",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "B"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "defense": "def",
+          "bonus": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "5",
+            "type": "slashing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "range": "melee",
+        "actionCost": 2,
+        "rarity": "common",
+        "weight": "light",
+        "handedness": "one",
+        "traits": [],
+        "options": {
+          "schemaVersion": 1,
+          "enabled": false
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790171210557,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.8izjNnJu3IO3cVpR",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!9PlTvvHTZGiYpnyf.8izjNnJu3IO3cVpR"
+    },
+    {
+      "name": "Outfit",
+      "type": "armor",
+      "_id": "wdDrP8GR8xh9VzHi",
+      "img": "systems/azure-horizon/assets/icons/equipment/armor/cloak_2.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-outfit",
+        "description": "<p>A character's default outfit, what they are most comfortable wearing.</p>",
+        "traits": [
+          "comfort"
+        ],
+        "rarity": "common",
+        "potentials": {
+          "schemaVersion": 1,
+          "entries": []
+        },
+        "weight": "light"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790171234177,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.wdDrP8GR8xh9VzHi",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!9PlTvvHTZGiYpnyf.wdDrP8GR8xh9VzHi"
+    }
+  ],
   "effects": [],
   "sort": 0,
   "ownership": {

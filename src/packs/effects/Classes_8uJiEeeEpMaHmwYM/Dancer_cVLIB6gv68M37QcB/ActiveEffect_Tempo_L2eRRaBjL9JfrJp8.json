@@ -9,11 +9,11 @@
     "slug": "dancer-tempo",
     "rules": {},
     "tracker": {
-      "enabled": false,
-      "name": "",
-      "id": "",
-      "current": 0,
-      "max": 6,
+      "enabled": true,
+      "name": "Tempo",
+      "id": "tempo",
+      "current": 1,
+      "max": 4,
       "style": "clock"
     }
   },

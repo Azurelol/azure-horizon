@@ -9,7 +9,7 @@
     "slug": "riposte",
     "rules": {},
     "tracker": {
-      "enabled": false,
+      "enabled": true,
       "name": "Riposte",
       "id": "riposte",
       "current": 1,

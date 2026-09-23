@@ -593,7 +593,7 @@
           "enabled": true,
           "selector": "buff",
           "entries": [
-            "full-draw"
+            "archer-full-draw"
           ],
           "duration": {
             "event": "",
@@ -610,7 +610,8 @@
           "type": "action",
           "points": 1,
           "traits": [],
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -720,7 +721,8 @@
           "type": "action",
           "points": 2,
           "traits": [],
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -831,7 +833,8 @@
           "enabled": true,
           "type": "action",
           "points": 1,
-          "traits": []
+          "traits": [],
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -942,7 +945,8 @@
           "traits": [
             "cooldown"
           ],
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -1056,7 +1060,8 @@
           "traits": [
             "exhaust",
             "tension"
-          ]
+          ],
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -1119,7 +1124,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "primary": {
-            "amount": "",
+            "amount": "7",
             "type": "piercing"
           },
           "secondary": {
@@ -1143,7 +1148,9 @@
             "draw"
           ],
           "schemaVersion": 1
-        }
+        },
+        "rarity": "common",
+        "weight": "light"
       },
       "effects": [],
       "flags": {},
@@ -1181,7 +1188,12 @@
         "category": "light",
         "traits": [
           "fleet"
-        ]
+        ],
+        "potentials": {
+          "schemaVersion": 1,
+          "entries": []
+        },
+        "weight": "light"
       },
       "effects": [],
       "flags": {},

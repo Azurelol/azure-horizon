@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "lancer-preempt",
-    "description": "<p>When you are targeted by a melee attack you may perform a free attack before your attacker resolves their action.</p>",
+    "description": "<p>When you are targeted by a melee attack and the check result was even you may perform a free attack before your attacker resolves their action.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -38,9 +38,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "tp",
+      "amount": "1",
       "perTarget": false
     },
     "effects": {
