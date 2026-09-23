@@ -297,23 +297,23 @@ function resolveIntents(system) {
 
 /**
  * Picks the hero to target.
+ * @param {AHCombatant[]} heroes
  * @param {Map<HeroDataModel, Number>} history
  * @returns {DocumentReference}
  */
-function selectTarget(history) {
-  const heroes = history.keys().toArray();
+function selectTarget(heroes, history) {
   if (heroes.length === 0) {
     return [];
   }
 
   // The more times a target is picked, teh less likely it will be next time
   /** @type Number[] **/
-  const weights = Array.from(history.values()).map(w => 1 / w);
+  const weights = Object.values(history).map(w => 1 / w);
   const index = MathUtils.weightedRandomIndex(weights);
-  const target = heroes[index].parent;
+  const target = heroes[index];
 
   // Update the history
-  history[heroes[index]]++;
+  history[target.actorId]++;
 
   return {
     name: target.name,
@@ -337,12 +337,12 @@ function selectAbility(abilities) {
 
 /**
  * @param {AdversaryDataModel} adversary
- * @param {AHCombatant[]} combatants
- * @param {HeroDataModel[]} heroes
+ * @param {AHCombatant[]} adversaries
+ * @param {AHCombatant[]} heroes
  * @param {CombatRoundHistory} history
  * @return {IntentData[]}
  */
-function generateIntents(adversary, combatants, heroes, history) {
+function generateIntents(adversary, adversaries, heroes, history) {
 
   const profile = adversary.profile;
   const assembly = profile.prepareAssemblyData();
@@ -374,11 +374,11 @@ function generateIntents(adversary, combatants, heroes, history) {
 
   /** @type AH_Intent[] **/
   const cycle = intents[Math.min(intents.length - 1, cycleIndex)];
-  /** @type {Map<HeroDataModel,Number>} **/
-  let targetHistory = new Map(heroes.map(key => [key, 1]));
+  /** @type {Record<String,Number>} **/
+  let targetHistory = Object.fromEntries(heroes.map(hero => [hero.actorId, 1]));
   /** @type IntentData[] **/
   let actions = [];
-  for (let t = 0; t < combatants.length; t++) {
+  for (let t = 0; t < adversaries.length; t++) {
     /** @type AH_Intent **/
     const intent = chooseIntent(cycle[t]);
     /** @type IntentData **/
@@ -454,7 +454,7 @@ function generateIntents(adversary, combatants, heroes, history) {
     }
 
     if (targeted) {
-      action.target = selectTarget(targetHistory);
+      action.target = selectTarget(heroes, targetHistory);
     }
     else {
       action.target = null;
@@ -499,7 +499,7 @@ function process(combat, round) {
     adversaries.get(actor).push(combatant);
   }
 
-  const heroes = combat.getHeroes().map(h => h.actor.system);
+  const heroes = combat.getHeroes();
 
   let history;
   if (round !== 1) {
