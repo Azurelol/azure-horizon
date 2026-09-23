@@ -272,6 +272,10 @@
       height: auto;
     }
 
+    i {
+      opacity: 0.25;
+    }
+
     &.--armor {
       --armor-size: 80px;
       grid-area: armor;

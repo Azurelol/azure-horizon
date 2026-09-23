@@ -39,9 +39,9 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
    * @private
    */
   _getCommonActionOptions() {
-    return TableColumns.actions({
-      header: "AH.COMMON.Actions",
-      cssClass: "ah-table__column__actions",
+    return TableColumns.contextMenu({
+      header: "",
+      cssClass: "item-context-menu",
       preview: this.previewActions,
       dataset: (entry) => {
         return {
@@ -49,28 +49,63 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
           type: "Item",
         };
       },
-      actions: [
+      entries: [
         {
           action: "sendItem",
-          tooltip: "AH.COMMON.Send",
+          name: "AH.COMMON.Send",
           icon: AH.icons.send,
-          keys: ["id"],
+          keys: ["id", "type"],
+          callback: (event, target) => {
+
+          },
         },
         {
           action: "editDocument",
-          tooltip: "AH.COMMON.Edit",
+          name: "AH.COMMON.Edit",
           icon: AH.icons.edit,
           keys: ["id", "type"],
         },
         {
           action: "deleteDocument",
-          tooltip: "AH.COMMON.Remove",
+          name: "AH.COMMON.Remove",
           icon: AH.icons.remove,
           keys: ["id", "type"],
         },
         ...this._getItemActions(),
       ],
     });
+
+    // return TableColumns.actions({
+    //   header: "AH.COMMON.Actions",
+    //   preview: this.previewActions,
+    //   dataset: (entry) => {
+    //     return {
+    //       id: entry.id,
+    //       type: "Item",
+    //     };
+    //   },
+    //   actions: [
+    //     {
+    //       action: "sendItem",
+    //       tooltip: "AH.COMMON.Send",
+    //       icon: AH.icons.send,
+    //       keys: ["id"],
+    //     },
+    //     {
+    //       action: "editDocument",
+    //       tooltip: "AH.COMMON.Edit",
+    //       icon: AH.icons.edit,
+    //       keys: ["id", "type"],
+    //     },
+    //     {
+    //       action: "deleteDocument",
+    //       tooltip: "AH.COMMON.Remove",
+    //       icon: AH.icons.remove,
+    //       keys: ["id", "type"],
+    //     },
+    //     ...this._getItemActions(),
+    //   ],
+    // });
   }
 
   getColumns() {

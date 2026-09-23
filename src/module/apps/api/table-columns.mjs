@@ -3,6 +3,13 @@ import { StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 
 /**
+ * @typedef AH_TableContextMenu
+ * @property {String} className
+ * @property {ContextMenuEventName} eventName
+ * @property {ContextMenuEntry[]} entries
+ */
+
+/**
  * @typedef AH_TableColumnConfig
  * @template {Object} T
  * @property {AH_Render<T>} renderHeader
@@ -12,6 +19,7 @@ import AH from "../../config.mjs";
  * @property {Boolean} isGM Whether to render only for GMs.
  * @property {Boolean} preview Whether this column can be rendered in preview mode.
  * @property {String} cssClass
+ * @property {AH_TableContextMenu} contextMenu
  */
 
 const TEMPLATES = Object.freeze({
@@ -19,6 +27,7 @@ const TEMPLATES = Object.freeze({
   name: systemTemplatePath("components/table/table-column-name"),
   text: systemTemplatePath("components/table/table-column-text"),
   actions: systemTemplatePath("components/table/table-column-actions"),
+  contextMenu: systemTemplatePath("components/table/table-column-context-menu"),
   check: systemTemplatePath("components/table/table-column-check"),
   damage: systemTemplatePath("components/table/table-column-damage"),
   resource: systemTemplatePath("components/table/table-column-resource"),
@@ -338,7 +347,7 @@ function actions(options = {}) {
   return {
     hideHeader: !options.header,
     renderHeader: () => StringUtils.localize(options.header),
-    cssClass: options.cssClass,
+    cssClass: options.cssClass ?? "ah-table__column__actions",
     preview: options.preview,
     isGM: options.isGM,
     renderCell: async (entry) => {
@@ -346,6 +355,43 @@ function actions(options = {}) {
         entry,
         dataset: options.dataset instanceof Function ? options.dataset(entry) : options.dataset,
         actions: options.actions,
+      }, false);
+    },
+  };
+}
+
+/**
+ * @typedef AH_TableContextMenuColumnOptions
+ * @template {Object} T
+ * @property {string} header
+ * @property {string} cssClass
+ * @property {Boolean} preview
+ * @property {Boolean} isGM
+ * @property {(T) => Record<string, string>} dataset
+ * @property {ContextMenuEntry[]} entries
+ */
+
+/**
+ * @template {Object} T
+ * @param {AH_TableContextMenuColumnOptions} options
+ * @returns {AH_TableColumnConfig<T>}
+ */
+function contextMenu(options = {}) {
+  return {
+    hideHeader: !options.header,
+    renderHeader: () => StringUtils.localize(options.header),
+    cssClass: options.cssClass,
+    preview: options.preview,
+    isGM: options.isGM,
+    contextMenu: {
+      className: options.cssClass,
+      entries: options.entries,
+    },
+    renderCell: async (entry) => {
+      return renderTemplate(TEMPLATES.contextMenu, {
+        entry,
+        dataset: options.dataset instanceof Function ? options.dataset(entry) : options.dataset,
+        cssClass: options.cssClass,
       }, false);
     },
   };
@@ -414,6 +460,7 @@ const TableColumns = Object.freeze({
   name,
   textColumn,
   actions,
+  contextMenu,
   property,
 
   itemProperties,

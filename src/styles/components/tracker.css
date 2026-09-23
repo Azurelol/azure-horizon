@@ -259,10 +259,12 @@
   width: var(--ah-label-width-s);
   text-align: center;
   border: var(--ah-border-m);
+  border-radius: var(--ah-border-radius);
 
   .ah-tracker-field__current {
     font-variant-numeric: tabular-nums;
     font-weight: 600;
+    text-align: center;
     background-color: var(--ah-surface-tab-active);
   }
 
@@ -275,6 +277,7 @@
   .ah-tracker-field__max {
     font-variant-numeric: tabular-nums;
     padding: 0 0.3rem;
+    text-align: center;
     background: var(--ah-surface-panel);
   }
 }

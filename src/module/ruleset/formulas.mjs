@@ -30,6 +30,8 @@ const BLOCK_RATIO_LIGHT = 0.05;
 const BLOCK_RATIO_HEAVY = 0.1;
 const BLOCK_RATIO_ADVERSARY = 0.1;
 
+const EQUIPMENT_IP_BONUS = 2;
+
 const BLOCK_BONUS_HEAVY = 2;
 const BLOCK_BONUS_ARMOR_HEAVY = 4;
 const BLOCK_BONUS_SHIELD = 4;
@@ -67,6 +69,17 @@ function forClassBenefits(actor, onBenefits) {
   for (const ci of classItems) {
     const benefits = ci.system.benefits;
     onBenefits(benefits);
+  }
+}
+
+/**
+ * @param {HeroDataModel} system
+ * @param {(EquippedItems) => void} onEquipment
+ */
+function forEquipment(system, onEquipment) {
+  if (system.parent.type === "hero") {
+    const equipment = system.equipment.equipped;
+    onEquipment(equipment);
   }
 }
 
@@ -325,10 +338,9 @@ export default class Formulas {
         ip += CLASS_BENEFIT_IP;
       }
     });
-    forEquipmentWeight(system, weight => {
-      switch (weight) {
-        case "light":
-          break;
+    forEquipment(system, equipped => {
+      if (equipped.armor?.system.weight === "light") {
+        ip += EQUIPMENT_IP_BONUS;
       }
     });
     return ip;
@@ -518,8 +530,7 @@ export default class Formulas {
     let result = 1;
     if (system.parent.type === "hero") {
       const equipment = system.equipment.equipped;
-      const weights = [equipment.armor?.system.weight,
-        equipment.mainHand?.system.weight].filter(Boolean);
+      const weights = [equipment.armor?.system.weight].filter(Boolean);
       for (const weight of weights) {
         if (weight === "light") {
           result += 1;

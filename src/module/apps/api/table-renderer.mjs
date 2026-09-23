@@ -101,13 +101,13 @@ export default class AH_TableRenderer {
       cls = Object.getPrototypeOf(cls);
     }
 
+    /** @type AH_TableConfig **/
     const _config = {};
     configurations.forEach((configuration) => foundry.utils.mergeObject(_config, foundry.utils.deepClone(configuration), { performDeletions: true }));
     Object.assign(_config, overrides);
     if (!_config.id) {
       _config.id = foundry.utils.randomID();
     }
-
     _config.dragDrop = (_config.dragDrop ?? []).map((dragDropConfig) => {
       dragDropConfig.permissions ??= {};
       for (let key in dragDropConfig.permissions) {
@@ -125,29 +125,46 @@ export default class AH_TableRenderer {
     this.#config = foundry.utils.deepFreeze(_config);
   }
 
+  // /**
+  //  * @param {foundry.applications.api.Application} application
+  //  */
+  // attachListeners(application) {
+  //   this.#application = application;
+  //
+  //   const renderHookId = Hooks.on("renderApplicationV2", (application, element) => {
+  //     if (application === this.application) {
+  //       const tables = element.querySelectorAll(`.ah-table[data-table-id="${this.id}"]`);
+  //       tables.forEach((table) => {
+  //         table.addEventListener("click", this.#clickHandler);
+  //         table.addEventListener("contextmenu", this.#clickHandler);
+  //         this.config.dragDrop.forEach((dragDrop) => dragDrop.bind(table));
+  //       });
+  //     }
+  //   });
+  //
+  //   const closeHookId = Hooks.on("closeApplicationV2", (application) => {
+  //     if (application === this.application) {
+  //       Hooks.off("renderApplicationV2", renderHookId);
+  //       Hooks.off("closeApplicationV2", closeHookId);
+  //     }
+  //   });
+  //
+  //   // TODO: Handle context menus
+  //   if (application.element) {
+  //
+  //   }
+  // }
+
   /**
-   * @param {foundry.applications.api.Application} application
+   * @param {HTMLElement} html
    */
-  attachListeners(application) {
-    this.#application = application;
+  attachListeners(html) {
+  }
 
-    const renderHookId = Hooks.on("renderApplicationV2", (application, element) => {
-      if (application === this.application) {
-        const tables = element.querySelectorAll(`.ah-table[data-table-id="${this.id}"]`);
-        tables.forEach((table) => {
-          table.addEventListener("click", this.#clickHandler);
-          table.addEventListener("contextmenu", this.#clickHandler);
-          this.config.dragDrop.forEach((dragDrop) => dragDrop.bind(table));
-        });
-      }
-    });
-
-    const closeHookId = Hooks.on("closeApplicationV2", (application) => {
-      if (application === this.application) {
-        Hooks.off("renderApplicationV2", renderHookId);
-        Hooks.off("closeApplicationV2", closeHookId);
-      }
-    });
+  /**
+   * @param {api.HandlebarsApplicationMixin} application
+   */
+  static attachListeners(application) {
   }
 
   #onClick(event) {
@@ -172,21 +189,21 @@ export default class AH_TableRenderer {
     /**
      * @type {AH_TableColumnConfig[]}
      */
-    const columns = this.getColumns().filter(c => {
+    const columns = this.getColumns().filter(col => {
       // If the table is set to preview mode and the column cannot be previewed
-      if (config.preview && !c.preview) {
+      if (config.preview && !col.preview) {
         return false;
       }
       // If the table is set to render for GMs only
-      if (c.isGM && !game.user.isGM) {
+      if (col.isGM && !game.user.isGM) {
         return false;
+      }
+      // If this column requests the setup for a context menu
+      if (col.contextMenu) {
+        //config.contextMenus.push(col.contextMenu);
       }
       return true;
     });
-
-    if (config.hideIfEmpty) {
-      return "";
-    }
 
     /**
      * @type {AH_TableColumnHeader[]}
@@ -226,6 +243,11 @@ export default class AH_TableRenderer {
         visible: visible,
         cells: cells,
       });
+    }
+
+    // If no rows are present
+    if (config.hideIfEmpty && rows.length === 0) {
+      return "";
     }
 
     return renderTemplate("components/table", {

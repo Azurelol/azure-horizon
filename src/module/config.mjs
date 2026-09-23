@@ -1273,7 +1273,6 @@ AH.traits = {
   },
   armor: {
     stable: { label: "AH.TRAIT.Stable", tooltip: "AH.TRAIT.StableHint" }, // Shifting resistance
-    fleet: { label: "AH.TRAIT.Fleet", tooltip: "AH.TRAIT.FleetHint" }, // Improved shifting
     comfort: { label: "AH.TRAIT.Comfort", tooltip: "AH.TRAIT.ComfortHint" }, // Improves stress recovery
     storage: { label: "AH.TRAIT.Storage", tooltip: "AH.TRAIT.StorageHint" }, // Easy access to items
   },
@@ -1384,6 +1383,11 @@ AH.icons = {
   exploration: "ra ra-wolf-head",
   battle: "ra ra-crossed-axes",
 
+  placeholderArmor: "ra ra-vest",
+  placeholderWeapon: "ra ra-sword",
+  placeholderAccessory: "ra ra-slash-ring",
+  placeholderEngram: "ra ra-rune-stone",
+
   gain: "fa fa-chevron-circle-up",
   loss: "fa fa-chevron-circle-down",
   effect: "ah-icon-effect",
@@ -1415,6 +1419,7 @@ AH.icons = {
   dice: "ra ra-perspective-dice-six",
   open: "fas fa-open",
   close: "fas fa-close",
+  menu: "fa-solid fa-bars",
 
   roll: "ah-icon-check-roll",
   hr: "ah-icon-check-hr",

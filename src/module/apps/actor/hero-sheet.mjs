@@ -142,6 +142,10 @@ export class HeroSheet extends CharacterSheet {
         this.actionHandler.setupEngrams(html);
         break;
       }
+
+      case "features":
+        this.#skillTableRenderer.attachListeners(html);
+        break;
     }
   }
 

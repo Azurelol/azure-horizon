@@ -568,8 +568,8 @@ export default class CompendiumBrowser extends AHApplication {
 
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
-    this.#attackTableRenderer.attachListeners(this);
-    this.#abilityTableRenderer.attachListeners(this);
+    // this.#attackTableRenderer.attachListeners(this);
+    // this.#abilityTableRenderer.attachListeners(this);
     await this.renderTables(this.activeTabId, true);
   }
 

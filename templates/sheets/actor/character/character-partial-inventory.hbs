@@ -4,24 +4,28 @@
     <a class="ah-character__equipment__slot --mainHand" data-tooltip="{{equipment.mainHand.name}}" data-action="swapEquipment" data-slot="mainHand">
       {{#if equipment.mainHand}}
         <img src="{{equipment.mainHand.img}}" alt="{{equipment.mainHand.name}}">
+      {{else}}
+        <i class="ah-icon --sm {{ahIconClass 'placeholderWeapon'}}"></i>
       {{/if}}
     </a>
 
     <a class="ah-character__equipment__slot --armor" data-tooltip="{{equipment.armor.name}}" data-action="swapEquipment" data-slot="armor">
       {{#if equipment.armor}}
         <img src="{{equipment.armor.img}}" alt="{{equipment.armor.name}}">
+      {{else}}
+          <i class="ah-icon --m {{ahIconClass 'placeholderArmor'}}"></i>
       {{/if}}
     </a>
 
     <a class="ah-character__equipment__slot --offHand" data-tooltip="{{equipment.offHand.name}}" data-action="swapEquipment" data-slot="offHand">
       {{#if equipment.offHand}}
         <img src="{{equipment.offHand.img}}" alt="{{equipment.offHand.name}}">
+      {{else}}
+        <i class="ah-icon --sm {{ahIconClass 'placeholderWeapon'}}"></i>
       {{/if}}
     </a>
 
     <div class="ah-character__equipment__accessories">
-
-
       {{#if equipment.unlocked3}}
         <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory3.name}}" data-action="swapEquipment" data-slot="accessory3">
           {{#if equipment.accessory3}}
@@ -46,6 +50,8 @@
       <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory1.name}}" data-action="swapEquipment" data-slot="accessory1">
         {{#if equipment.accessory1}}
           <img src="{{equipment.accessory1.img}}" alt="{{equipment.accessory1.name}}">
+        {{else}}
+          <i class="ah-icon --s {{ahIconClass 'placeholderAccessory'}}"></i>
         {{/if}}
       </a>
 
@@ -64,6 +70,7 @@
                   <a class="ah-character__engrams__slot ah-character__engrams__slot--empty"
                      data-tooltip="{{localize 'AH.ACTION.Engram'}}"
                      data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
+                    <i class="ah-icon --s {{ahIconClass 'placeholderEngram'}}"></i>
                   </a>
                 {{/with}}
               </li>
@@ -79,6 +86,8 @@
          data-action="swapEquipment" data-slot="accessory2">
         {{#if equipment.accessory2}}
           <img src="{{equipment.accessory2.img}}" alt="{{equipment.accessory2.name}}">
+        {{else}}
+          <i class="ah-icon --s {{ahIconClass 'placeholderAccessory'}}"></i>
         {{/if}}
       </a>
       <ul class="ah-character__engrams__container__entries">
@@ -96,6 +105,7 @@
                   <a class="ah-character__engrams__slot ah-character__engrams__slot--empty"
                      data-tooltip="{{localize 'AH.ACTION.Engram'}}"
                      data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
+                      <i class="ah-icon --s {{ahIconClass 'placeholderEngram'}}"></i>
                   </a>
                 {{/with}}
               </li>

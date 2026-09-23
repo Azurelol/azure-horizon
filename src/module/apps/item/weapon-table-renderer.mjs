@@ -14,7 +14,7 @@ export default class WeaponTableRenderer extends AttackTableRenderer {
     columns.push(TableColumns.textColumn({
       header: "AH.EQUIPMENT.Handedness",
       getText: entry => {
-        return AH.handedness[entry.system?.handedness].short ?? "";
+        return AH.handedness[entry.system?.handedness]?.short ?? "";
       },
     }));
     return columns;
@@ -22,20 +22,20 @@ export default class WeaponTableRenderer extends AttackTableRenderer {
 
   _getItemActions() {
     return [
-      {
-        action: "equipItem",
-        tooltip: "AH.ACTION.Swap",
-        icon: (entry) => {
-          if (isActorType(entry.parent)) {
-            const hero = entry.parent;
-            if (hero.system.equipment.has(entry)) {
-              return AH.icons.unequip;
-            }
-          }
-          return AH.icons.equip;
-        },
-        keys: ["id", "type"],
-      },
+      // {
+      //   action: "equipItem",
+      //   tooltip: "AH.ACTION.Swap",
+      //   icon: (entry) => {
+      //     if (isActorType(entry.parent)) {
+      //       const hero = entry.parent;
+      //       if (hero.system.equipment.has(entry)) {
+      //         return AH.icons.unequip;
+      //       }
+      //     }
+      //     return AH.icons.equip;
+      //   },
+      //   keys: ["id", "type"],
+      // },
     ];
   }
 }
