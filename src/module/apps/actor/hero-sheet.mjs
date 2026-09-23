@@ -11,6 +11,7 @@ import AH from "../../config.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
 import EquipmentTableRenderer from "../item/equipment-table-renderer.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
+import { TableRendererRegistry } from "../api/table-renderer.mjs";
 
 /**
  * @extends AHActorSheet
@@ -67,18 +68,18 @@ export class HeroSheet extends CharacterSheet {
   }
 
   /* -------------------------------------------------- */
-
-  #classTableRenderer = new ClassTableRenderer({ title: "AH.ITEM.Class.long", actions: CharacterSheet.getCompendiumTableActions("classes", "class") });
-  #skillTableRenderer = new SkillTableRenderer({ title: "AH.ITEM.Skill", actions: CharacterSheet.getCompendiumTableActions("classes", "skill") }).withoutClassColumn();
-  #classFeatureTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.ClassFeature", actions: CharacterSheet.getCompendiumTableActions("classes", "classFeature") });
-  #spellTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Spell.long", actions: CharacterSheet.getCompendiumTableActions("spells") });
-  #weaponTableRenderer = new WeaponTableRenderer({ title: "AH.ITEM.Weapon", actions: CharacterSheet.getCompendiumTableActions("equipment", "weapon") });
-  #armorTableRenderer = new ArmorTableRenderer({ title: "AH.ITEM.Armor", actions: CharacterSheet.getCompendiumTableActions("equipment", "armor") });
-  #accessoryTableRenderer = new AccessoryTableRenderer({ title: "AH.ITEM.Accessory", actions: CharacterSheet.getCompendiumTableActions("equipment", "accessory") });
-  #engramTableRenderer = new AccessoryTableRenderer({ title: "AH.ITEM.Engram.long", actions: CharacterSheet.getCompendiumTableActions("equipment", "engram") });
-  #consumableTableRenderer = new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") });
-  #treasureTableRenderer = new EquipmentTableRenderer({ title: "AH.ITEM.Treasure" });
-  #engramSpellTableRenderer = new EngramActionTableRenderer({ title: "AH.ITEM.Engram.plural" });
+  #tableRenderers = new TableRendererRegistry();
+  #classTableRenderer = this.#tableRenderers.register("class", new ClassTableRenderer({ title: "AH.ITEM.Class.long", actions: CharacterSheet.getCompendiumTableActions("classes", "class") }));
+  #skillTableRenderer = this.#tableRenderers.register("skill", new SkillTableRenderer({ title: "AH.ITEM.Skill", actions: CharacterSheet.getCompendiumTableActions("classes", "skill") }).withoutClassColumn());
+  #classFeatureTableRenderer = this.#tableRenderers.register("classFeature", new ActionTableRenderer({ title: "AH.ITEM.ClassFeature", actions: CharacterSheet.getCompendiumTableActions("classes", "classFeature") }));
+  #spellTableRenderer = this.#tableRenderers.register("spell", new ActionTableRenderer({ title: "AH.ITEM.Spell.long", actions: CharacterSheet.getCompendiumTableActions("spells") }));
+  #weaponTableRenderer = this.#tableRenderers.register("weapon", new WeaponTableRenderer({ title: "AH.ITEM.Weapon", actions: CharacterSheet.getCompendiumTableActions("equipment", "weapon") }));
+  #armorTableRenderer = this.#tableRenderers.register("armor", new ArmorTableRenderer({ title: "AH.ITEM.Armor", actions: CharacterSheet.getCompendiumTableActions("equipment", "armor") }));
+  #accessoryTableRenderer = this.#tableRenderers.register("accessory", new AccessoryTableRenderer({ title: "AH.ITEM.Accessory", actions: CharacterSheet.getCompendiumTableActions("equipment", "accessory") }));
+  #engramTableRenderer = this.#tableRenderers.register("engram", new AccessoryTableRenderer({ title: "AH.ITEM.Engram.long", actions: CharacterSheet.getCompendiumTableActions("equipment", "engram") }));
+  #consumableTableRenderer = this.#tableRenderers.register("consumable", new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") }));
+  #treasureTableRenderer = this.#tableRenderers.register("treasure", new EquipmentTableRenderer({ title: "AH.ITEM.Treasure" }));
+  #engramSpellTableRenderer = this.#tableRenderers.register("engramSpell", new EngramActionTableRenderer({ title: "AH.ITEM.Engram.plural" }));
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
@@ -91,7 +92,6 @@ export class HeroSheet extends CharacterSheet {
         context.def = `${StringUtils.localize(AH.attributes[defConfig.primary].short)} + ${StringUtils.localize(AH.attributes[defConfig.secondary].short)}`;
         const mdefConfig = this.actor.system.getDefense("mdef");
         context.mdef = `${StringUtils.localize(AH.attributes[mdefConfig.primary].short)} + ${StringUtils.localize(AH.attributes[mdefConfig.secondary].short)}`;
-
         break;
       }
 
@@ -124,7 +124,7 @@ export class HeroSheet extends CharacterSheet {
           await this.#armorTableRenderer.render(this.actor.getItemsByType("armor")),
           await this.#accessoryTableRenderer.render(this.actor.getItemsByType("accessory")),
           await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),
-          await this.#engramTableRenderer.render(this.actor.getItemsByType("engram")),
+          await this.#engramTableRenderer.render(engrams),
           await this.#treasureTableRenderer.render(this.actor.getItemsByType("treasure")),
         ];
         break;
@@ -140,11 +140,12 @@ export class HeroSheet extends CharacterSheet {
       {
         this.actionHandler.setupEquipment(html);
         this.actionHandler.setupEngrams(html);
+        this.#tableRenderers.invokeAll("attachListeners", html);
         break;
       }
 
       case "features":
-        this.#skillTableRenderer.attachListeners(html);
+        this.#tableRenderers.invokeAll("attachListeners", html);
         break;
     }
   }

@@ -3,11 +3,6 @@ import TableColumns from "../api/table-columns.mjs";
 import AH from "../../config.mjs";
 import { DocumentTableRenderer } from "./_module.mjs";
 
-const itemFields = Object.freeze({
-  slug: "AH.ITEM.Slug",
-  revision: "AH.ITEM.Revision",
-});
-
 export default class ItemTableRenderer extends DocumentTableRenderer {
 
   /**
@@ -34,21 +29,13 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
     return false;
   }
 
-  /**
-   * @returns {AH_TableColumnConfig}}
-   * @private
-   */
-  _getCommonActionOptions() {
-    return TableColumns.contextMenu({
-      header: "",
-      cssClass: "item-context-menu",
-      preview: this.previewActions,
-      dataset: (entry) => {
-        return {
-          id: entry.id,
-          type: "Item",
-        };
-      },
+  static TABLE_CONTEXT_MENU_CLASS = "item-table-context-menu";
+
+  *contextMenus() {
+    yield* super.contextMenus();
+    yield {
+      className: `.${ItemTableRenderer.TABLE_CONTEXT_MENU_CLASS}`,
+      eventName: "click",
       entries: [
         {
           action: "sendItem",
@@ -56,7 +43,6 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
           icon: AH.icons.send,
           keys: ["id", "type"],
           callback: (event, target) => {
-
           },
         },
         {
@@ -73,6 +59,24 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
         },
         ...this._getItemActions(),
       ],
+    };
+  }
+
+  /**
+   * @returns {AH_TableColumnConfig}}
+   * @private
+   */
+  _getCommonActionOptions() {
+    return TableColumns.contextMenu({
+      header: "",
+      cssClass: ItemTableRenderer.TABLE_CONTEXT_MENU_CLASS,
+      preview: this.previewActions,
+      dataset: (entry) => {
+        return {
+          id: entry.id,
+          type: "Item",
+        };
+      },
     });
 
     // return TableColumns.actions({

@@ -1,4 +1,5 @@
 import { renderTemplate } from "../../constants.mjs";
+import { FoundryUtils } from "../../utils/_module.mjs";
 
 /**
  * @template T
@@ -125,46 +126,13 @@ export default class AH_TableRenderer {
     this.#config = foundry.utils.deepFreeze(_config);
   }
 
-  // /**
-  //  * @param {foundry.applications.api.Application} application
-  //  */
-  // attachListeners(application) {
-  //   this.#application = application;
-  //
-  //   const renderHookId = Hooks.on("renderApplicationV2", (application, element) => {
-  //     if (application === this.application) {
-  //       const tables = element.querySelectorAll(`.ah-table[data-table-id="${this.id}"]`);
-  //       tables.forEach((table) => {
-  //         table.addEventListener("click", this.#clickHandler);
-  //         table.addEventListener("contextmenu", this.#clickHandler);
-  //         this.config.dragDrop.forEach((dragDrop) => dragDrop.bind(table));
-  //       });
-  //     }
-  //   });
-  //
-  //   const closeHookId = Hooks.on("closeApplicationV2", (application) => {
-  //     if (application === this.application) {
-  //       Hooks.off("renderApplicationV2", renderHookId);
-  //       Hooks.off("closeApplicationV2", closeHookId);
-  //     }
-  //   });
-  //
-  //   // TODO: Handle context menus
-  //   if (application.element) {
-  //
-  //   }
-  // }
-
   /**
    * @param {HTMLElement} html
    */
   attachListeners(html) {
-  }
-
-  /**
-   * @param {api.HandlebarsApplicationMixin} application
-   */
-  static attachListeners(application) {
+    for (const menu of this.contextMenus()) {
+      FoundryUtils.contextMenu(html, menu.className, menu.entries, menu.eventName);
+    }
   }
 
   #onClick(event) {
@@ -282,5 +250,50 @@ export default class AH_TableRenderer {
    */
   getColumns() {
     throw Error("Not implemented");
+  }
+
+  /**
+   * @returns {Generator<AH_TableContextMenu, void, *>}
+   */
+  *contextMenus() {
+    yield* [];
+  }
+}
+
+/**
+ * Manages tables for a class.
+ */
+export class TableRendererRegistry {
+  #renderers = new Map();
+
+  /** Registers a renderer under a key and returns it (so you can assign inline). */
+  register(key, renderer) {
+    this.#renderers.set(key, renderer);
+    return renderer;
+  }
+
+  get(key) {
+    return this.#renderers.get(key);
+  }
+
+  get all() {
+    return [...this.#renderers.values()];
+  }
+
+  /** Calls `methodName` on every renderer that has it, passing along args. */
+  invokeAll(methodName, ...args) {
+    for (const renderer of this.#renderers.values()) {
+      renderer[methodName]?.(...args);
+    }
+  }
+
+  /** Runs an arbitrary callback against every (renderer, key) pair. */
+  forEach(fn) {
+    for (const [key, renderer] of this.#renderers) fn(renderer, key);
+  }
+
+  /** Returns just the renderers matching a given class. */
+  ofType(type) {
+    return this.all.filter(r => r instanceof type);
   }
 }

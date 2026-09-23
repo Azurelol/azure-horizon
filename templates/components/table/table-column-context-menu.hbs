@@ -1,11 +1,10 @@
 <td class="ah-table__column__actions">
   <div class="ah-table__cell --center">
-    <button class="ah-button --transparent"
+    <button class="ah-button --transparent {{cssClass}}"
             data-id="{{entry.id}}"
             {{#each keys as |key|}}
               data-{{key}}="{{lookup @root.dataset key}}"
             {{/each}}
-            data-context-menu="{{cssClass}}"
             data-tooltip="{{localize 'AH.COMMON.ContextMenu'}}">
       <i class="ah-icon --xs {{ahIconClass 'menu'}}"></i>
     </button>
