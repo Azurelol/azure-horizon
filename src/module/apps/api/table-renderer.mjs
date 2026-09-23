@@ -127,10 +127,11 @@ export default class AH_TableRenderer {
   }
 
   /**
+   * @param application
    * @param {HTMLElement} html
    */
-  attachListeners(html) {
-    for (const menu of this.contextMenus()) {
+  attachListeners(application, html) {
+    for (const menu of this.contextMenus(application)) {
       FoundryUtils.contextMenu(html, menu.className, menu.entries, menu.eventName);
     }
   }
@@ -253,9 +254,10 @@ export default class AH_TableRenderer {
   }
 
   /**
+   * @param {api.HandlebarsApplicationMixin} application
    * @returns {Generator<AH_TableContextMenu, void, *>}
    */
-  *contextMenus() {
+  *contextMenus(application) {
     yield* [];
   }
 }

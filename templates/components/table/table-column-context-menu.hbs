@@ -2,8 +2,8 @@
   <div class="ah-table__cell --center">
     <button class="ah-button --transparent {{cssClass}}"
             data-id="{{entry.id}}"
-            {{#each keys as |key|}}
-              data-{{key}}="{{lookup @root.dataset key}}"
+            {{#each dataset as |value key|}}
+                  data-{{key}}="{{value}}"
             {{/each}}
             data-tooltip="{{localize 'AH.COMMON.ContextMenu'}}">
       <i class="ah-icon --xs {{ahIconClass 'menu'}}"></i>

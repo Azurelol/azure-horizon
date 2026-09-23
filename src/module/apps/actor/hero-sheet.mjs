@@ -140,12 +140,12 @@ export class HeroSheet extends CharacterSheet {
       {
         this.actionHandler.setupEquipment(html);
         this.actionHandler.setupEngrams(html);
-        this.#tableRenderers.invokeAll("attachListeners", html);
+        this.#tableRenderers.invokeAll("attachListeners", this, html);
         break;
       }
 
       case "features":
-        this.#tableRenderers.invokeAll("attachListeners", html);
+        this.#tableRenderers.invokeAll("attachListeners", this, html);
         break;
     }
   }

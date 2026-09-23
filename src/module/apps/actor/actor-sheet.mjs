@@ -64,9 +64,9 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
       migrateItems: this.#migrateItems,
 
       performAction: this.#performAction,
-      sendItem: this.#sendItem,
-      editDocument: this.#editDocument,
-      deleteDocument: this.#deleteDocument,
+      sendItem: this._sendItem,
+      editDocument: this._editDocument,
+      deleteDocument: this._deleteDocument,
     },
     form: {
       submitOnChange: true,
@@ -550,7 +550,7 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise<void>}
    */
-  static async #sendItem(event, target) {
+  static async _sendItem(event, target) {
     event.preventDefault();
     const { id } = target.dataset;
     const modifiers = HTMLUtils.getKeyboardModifiers(event);
@@ -566,7 +566,7 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise<void>}
    */
-  static async #editDocument(event, target) {
+  static async _editDocument(event, target) {
     event.preventDefault();
     const { id, type } = target.dataset;
     switch (type) {
@@ -586,7 +586,7 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise<void>}
    */
-  static async #deleteDocument(event, target) {
+  static async _deleteDocument(event, target) {
     event.preventDefault();
     const { id, type } = target.dataset;
     switch (type) {

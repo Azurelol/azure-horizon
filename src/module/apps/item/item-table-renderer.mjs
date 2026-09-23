@@ -31,7 +31,7 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
 
   static TABLE_CONTEXT_MENU_CLASS = "item-table-context-menu";
 
-  *contextMenus() {
+  *contextMenus(application) {
     yield* super.contextMenus();
     yield {
       className: `.${ItemTableRenderer.TABLE_CONTEXT_MENU_CLASS}`,
@@ -42,7 +42,8 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
           name: "AH.COMMON.Send",
           icon: AH.icons.send,
           keys: ["id", "type"],
-          callback: (event, target) => {
+          callback: (target, event) => {
+            return application.constructor._sendItem.call(application, event, target);
           },
         },
         {
@@ -50,12 +51,18 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
           name: "AH.COMMON.Edit",
           icon: AH.icons.edit,
           keys: ["id", "type"],
+          callback: (target, event) => {
+            return application.constructor._editDocument.call(application, event, target);
+          },
         },
         {
           action: "deleteDocument",
           name: "AH.COMMON.Remove",
           icon: AH.icons.remove,
           keys: ["id", "type"],
+          callback: (target, event) => {
+            return application.constructor._deleteDocument.call(application, event, target);
+          },
         },
         ...this._getItemActions(),
       ],
@@ -73,43 +80,10 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
       preview: this.previewActions,
       dataset: (entry) => {
         return {
-          id: entry.id,
           type: "Item",
         };
       },
     });
-
-    // return TableColumns.actions({
-    //   header: "AH.COMMON.Actions",
-    //   preview: this.previewActions,
-    //   dataset: (entry) => {
-    //     return {
-    //       id: entry.id,
-    //       type: "Item",
-    //     };
-    //   },
-    //   actions: [
-    //     {
-    //       action: "sendItem",
-    //       tooltip: "AH.COMMON.Send",
-    //       icon: AH.icons.send,
-    //       keys: ["id"],
-    //     },
-    //     {
-    //       action: "editDocument",
-    //       tooltip: "AH.COMMON.Edit",
-    //       icon: AH.icons.edit,
-    //       keys: ["id", "type"],
-    //     },
-    //     {
-    //       action: "deleteDocument",
-    //       tooltip: "AH.COMMON.Remove",
-    //       icon: AH.icons.remove,
-    //       keys: ["id", "type"],
-    //     },
-    //     ...this._getItemActions(),
-    //   ],
-    // });
   }
 
   getColumns() {
