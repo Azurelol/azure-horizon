@@ -43,7 +43,7 @@ export default class ChatMessageBuilder {
    * @param {AHActor} actor
    * @param {AHItem} item
    */
-  constructor(actor, item) {
+  constructor(actor, item = undefined) {
     this.#actor = actor;
     this.#item = item;
     this.#flags = [];

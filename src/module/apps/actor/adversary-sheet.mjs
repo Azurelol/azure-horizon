@@ -1,6 +1,11 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemTemplatePath } from "../../constants.mjs";
-import { ActionTableRenderer, AttackTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs";
+import {
+  AbilityTableRenderer,
+  ActionTableRenderer,
+  AttackTableRenderer,
+  EquipmentTableRenderer,
+} from "../item/_module.mjs";
 import { CharacterSheet } from "./character-sheet.mjs";
 import { Migrations } from "../../helpers/_module.mjs";
 import Intent from "../../pipelines/intent.mjs";
@@ -62,7 +67,7 @@ export class AdversarySheet extends CharacterSheet {
   /* -------------------------------------------------- */
   #tableRenderers = new TableRendererRegistry();
   #attackTableRenderer = this.#tableRenderers.register("attack", new AttackTableRenderer({ title: "AH.ADVERSARY.Attack.plural", actions: CharacterSheet.getCompendiumTableActions("assembly", "attack") }));
-  #abilityTableRenderer = this.#tableRenderers.register("ability", new ActionTableRenderer({ title: "AH.ADVERSARY.Ability.plural", actions: CharacterSheet.getCompendiumTableActions("assembly", "ability") }));
+  #abilityTableRenderer = this.#tableRenderers.register("ability", new AbilityTableRenderer({ title: "AH.ADVERSARY.Ability.plural", actions: CharacterSheet.getCompendiumTableActions("assembly", "ability") }));
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {

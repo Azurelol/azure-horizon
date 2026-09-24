@@ -101,15 +101,6 @@ AH.modifiers = Object.freeze({
   situation: { label: "AH.STATUS.MODIFIER.Situation" },
 });
 
-/**
- * @typedef {'crisis'} AH_StatusEffect
- * System-specific status effects.
- */
-
-AH.statusEffects = Object.freeze({
-  crisis: "AH.STATUS.Crisis",
-});
-
 AH.difficulties = Object.freeze({
   classic: "AH.DIFFICULTY.Classic",
   horizon: "AH.DIFFICULTY.Horizon",

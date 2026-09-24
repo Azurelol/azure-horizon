@@ -182,7 +182,7 @@ export class AHCombat extends foundry.documents.Combat {
    * @protected
    */
   async _onStartTurn(combatant, context) {
-    await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("startOfTurn", this.round, this.combatants.contents));
+    await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("startOfTurn", this.round, this.combatants.contents).forCombatant(combatant));
     await combatant.onCombatChange("startOfTurn");
   }
 
@@ -198,7 +198,7 @@ export class AHCombat extends foundry.documents.Combat {
    * @protected
    */
   async _onEndTurn(combatant, context) {
-    await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("endOfTurn", this.round, this.combatants.contents));
+    await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("endOfTurn", this.round, this.combatants.contents).forCombatant(combatant));
     await combatant.onCombatChange("endOfTurn");
   }
 

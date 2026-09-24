@@ -1,11 +1,12 @@
 import AH from "../config.mjs";
 import { isActorType, isItemType, systemID } from "../constants.mjs";
-import { ChatAction, ChatMessageHelper, FlagBuilder } from "../helpers/_module.mjs";
+import { AsyncHooks, ChatAction, ChatMessageBuilder, ChatMessageHelper, FlagBuilder } from "../helpers/_module.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import statusEffects from "../data/effect/status-effects.mjs";
 import { CompendiumIndex } from "../data/compendium/_module.mjs";
 import Events from "./events.mjs";
+import { Formulas } from "../ruleset/_module.mjs";
 
 /** *
  * @param {String} id An uuid or slug
@@ -338,8 +339,66 @@ const processAction = (config, actor, item, registerCallback) => {
 
 /** @type ActionRenderCallback **/
 const onRenderAction = (config, data, actor, item, registerCallback) => {
-
 };
+
+/**
+ * @typedef ManagedEffectData
+ * @property {String} name
+ * @property {String} img
+ * @property {String} id
+ * @property {String} actorName
+ * @property {String} actorId
+ * @property {Number} remaining
+ * @property {String} description
+ */
+
+/**
+ * @param {AHActor} actor
+ * @returns {Promise<void>}
+ */
+async function processStatusEffects(actor) {
+  for (const effect of actor.temporaryEffects) {
+    if (effect.statuses.size > 0) {
+      const status = effect.status;
+      let damageData;
+      switch (status) {
+        case "burn":
+        case "scorch":
+        case "chill":
+        case "freeze":
+        case "poison":
+        case "venom":
+          damageData = Formulas.calculateStatusDamage(actor, status);
+          break;
+      }
+      // TODO: Send chat message
+      if (damageData) {
+        const cm = new ChatMessageBuilder(actor);
+
+      }
+    }
+  }
+}
+
+/**
+ * @param {CombatEvent} event
+ */
+async function onCombatEvent(event) {
+  switch (event.type) {
+    case "startOfCombat":
+      break;
+    case "startOfTurn":
+    case "endOfTurn":
+      await processStatusEffects(event.actor);
+      break;
+    case "startOfRound":
+      break;
+    case "endOfRound":
+      break;
+    case "endOfCombat":
+      break;
+  }
+}
 
 /**
  * Initializes the callback handlers for this pipeline.
@@ -348,6 +407,7 @@ function initialize() {
   Hooks.on("renderChatMessageHTML", onRenderChatMessage);
   Hooks.on(AH.hooks.PROCESS_ACTION, processAction);
   Hooks.on(AH.hooks.RENDER_ACTION, onRenderAction);
+  AsyncHooks.on(AH.hooks.COMBAT_EVENT, onCombatEvent);
 }
 
 const Effects = Object.freeze({

@@ -659,4 +659,20 @@ export default class Formulas {
     }
     return "none";
   }
+
+  /**
+   * @typedef StatusDamageData
+   * @property hp
+   * @property mp
+   * @property tp
+   */
+
+  /**
+   * @param {AHActor} actor
+   * @param {AH_StatusEffect} status
+   * @return {StatusDamageData}
+   */
+  static calculateStatusDamage(actor, status) {
+
+  }
 }

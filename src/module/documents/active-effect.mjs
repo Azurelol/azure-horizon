@@ -165,6 +165,13 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
   }
 
   /**
+   * @returns {AH_StatusEffect|undefined}
+   */
+  get status() {
+    return [...this.statuses][0];
+  }
+
+  /**
    * @desc Apply one stack onto the effect, if stacking behaviour is enabled.
    */
   async addStack() {
