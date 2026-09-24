@@ -1,6 +1,18 @@
 /**
- * @typedef {'crisis'|'ko'|'stealth'|'charge'|'concentrate'|'sunder'|'breach'} AH_StatusEffect
+ * @typedef {'crisis'|'ko'|'stealth'|'charge'|'concentrate'|'sunder'|'breach'|'burn'|'scorch'|'chill'|'freeze'|'poison'|'venom'|'miasma'} AH_StatusEffect
  */
+
+import { systemAssetPath } from "../../constants.mjs";
+
+// TODO: Implement then use here due to needing to handle stacking, etc...
+
+class StatusDataBuilder {
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+    this.img = systemAssetPath(`icons/statuses/${id}.png`);
+  }
+}
 
 /**
  * System-specific status effects.
@@ -272,6 +284,19 @@ const STATUS_EFFECTS = Object.freeze({
     id: "burn",
     name: "AH.STATUS.Burn",
     img: "systems/azure-horizon/assets/icons/statuses/burn.png",
+    system: {
+      tracker: {
+        id: "burn",
+        enabled: true,
+        style: "stack",
+        current: 1,
+        max: 3,
+      },
+      stacking: {
+        tracker: true,
+        increment: true,
+      },
+    },
   },
   scorch: {
     id: "scorch",

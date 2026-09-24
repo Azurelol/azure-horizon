@@ -530,6 +530,7 @@ function initialize() {
 const Damage = Object.freeze({
   initialize,
   process,
+  getChatAction,
 });
 
 export default Damage;

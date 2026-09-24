@@ -12,40 +12,43 @@ const HP_POTENTIAL_FACTOR = 10;
 const IP_BASE = 6;
 const TP_BASE = 2;
 
+// CLASS BENEFITS
 const CLASS_BENEFIT_HP = 10;
 const CLASS_BENEFIT_MP = 10;
 const CLASS_BENEFIT_TP = 2;
 const CLASS_BENEFIT_IP = 2;
 
+// RECOVERY
 const RECOVERY_HP_BASE = 5;
 const RECOVERY_HP_BONUS_LIGHT = 2;
 const RECOVERY_HP_GAINED_BASE = 0.1;
 const RECOVERY_MP_SPENT_BASE = 0.2;
 const RECOVERY_TP_ADDED_BASE = 1;
 
+// BLOCK
 const BLOCK_BASE = BASE_DAMAGE;
-
-const BLOCK_RATIO_BASE = 0.05;
-const BLOCK_RATIO_LIGHT = 0.05;
-const BLOCK_RATIO_HEAVY = 0.1;
-const BLOCK_RATIO_ADVERSARY = 0.1;
-
-const EQUIPMENT_IP_BONUS = 2;
-
 const BLOCK_BONUS_HEAVY = 2;
 const BLOCK_BONUS_ARMOR_HEAVY = 4;
 const BLOCK_BONUS_SHIELD = 4;
 const BLOCK_BONUS_ADVERSARY = 5;
-const MOVEMENT_MIN = 1;
 const BLOCK_TP_GAINED = 1;
 
+const MOVEMENT_MIN = 1;
+const EQUIPMENT_IP_BONUS = 2;
 const XP_PER_LEVEL = 10;
 
+// TRAVEL
 const TRAVEL_DISCOVERY_RESULT = 1;
 const TRAVEL_DANGER_THRESHOLD = 6;
 
+// HP THRESHOLDS
 const PERIL_THRESHOLD = 0.5;
 const CRISIS_THRESHOLD = 0.2;
+
+// STATUS EFFECTS
+const STATUS_CHAMPION_MODIFIER = 0.5;
+const STATUS_BURN_RATIO = 0.1;
+const STATUS_MIASMA_RATIO = 0.1;
 
 /**
  * @typedef Modifier
@@ -661,8 +664,9 @@ export default class Formulas {
   }
 
   /**
-   * @typedef StatusDamageData
+   * @typedef StatusResourceChange
    * @property hp
+   * @property {AH_DamageType} type
    * @property mp
    * @property tp
    */
@@ -670,9 +674,39 @@ export default class Formulas {
   /**
    * @param {AHActor} actor
    * @param {AH_StatusEffect} status
-   * @return {StatusDamageData}
+   * @return {StatusResourceChange}
    */
   static calculateStatusDamage(actor, status) {
+    // Higher ranks don't suffer as much
+    let rankModifier = 1;
+    if (actor.type === "adversary") {
+      rankModifier = 1 / actor.system.profile.turns;
+    }
 
+    const maxHP = actor.system.resources.hp.max;
+    const maxMP = actor.system.resources.mp.max;
+    let hp, mp, tp;
+    let type;
+
+    switch (status) {
+      case "burn":
+        hp = maxHP * STATUS_BURN_RATIO * rankModifier;
+        type = "fire";
+        break;
+
+      case "miasma":
+        mp = maxMP * STATUS_MIASMA_RATIO * rankModifier;
+        break;
+    }
+
+    if (hp || mp || tp) {
+      return {
+        hp,
+        mp,
+        tp,
+        type,
+      };
+    }
+    return undefined;
   }
 }

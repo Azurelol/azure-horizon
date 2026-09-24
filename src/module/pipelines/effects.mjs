@@ -7,6 +7,8 @@ import statusEffects from "../data/effect/status-effects.mjs";
 import { CompendiumIndex } from "../data/compendium/_module.mjs";
 import Events from "./events.mjs";
 import { Formulas } from "../ruleset/_module.mjs";
+import Damage from "./damage.mjs";
+import DamageData from "./damage-data.mjs";
 
 /** *
  * @param {String} id An uuid or slug
@@ -354,13 +356,14 @@ const onRenderAction = (config, data, actor, item, registerCallback) => {
 
 /**
  * @param {AHActor} actor
+ * @param {AH_CombatEvent} event
  * @returns {Promise<void>}
  */
-async function processStatusEffects(actor) {
+async function processStatusEffects(actor, event) {
   for (const effect of actor.temporaryEffects) {
     if (effect.statuses.size > 0) {
       const status = effect.status;
-      let damageData;
+      let sdd;
       switch (status) {
         case "burn":
         case "scorch":
@@ -368,13 +371,32 @@ async function processStatusEffects(actor) {
         case "freeze":
         case "poison":
         case "venom":
-          damageData = Formulas.calculateStatusDamage(actor, status);
+        case "miasma":
+          if (event === "endOfTurn") {
+            sdd = Formulas.calculateStatusDamage(actor, status);
+          }
           break;
       }
       // TODO: Send chat message
-      if (damageData) {
+      if (sdd) {
         const cm = new ChatMessageBuilder(actor);
-
+        cm.text(StringUtils.localize("AH.CHAT.StatusEffectTick", {
+          name: actor.name,
+          effect: effect.name,
+        }));
+        if (sdd.hp) {
+          const damage = DamageData.initialize({
+            source: {
+              label: effect.name,
+              img: effect.img,
+            },
+            amount: sdd.hp,
+            type: sdd.type,
+          });
+          const da = Damage.getChatAction(damage, SourceInfo.fromInstance(actor), []);
+          cm.action(da);
+        }
+        await cm.create();
       }
     }
   }
@@ -389,7 +411,7 @@ async function onCombatEvent(event) {
       break;
     case "startOfTurn":
     case "endOfTurn":
-      await processStatusEffects(event.actor);
+      await processStatusEffects(event.actor, event.type);
       break;
     case "startOfRound":
       break;

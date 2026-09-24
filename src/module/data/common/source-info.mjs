@@ -169,7 +169,7 @@ export default class SourceInfo {
    * @param {String} name
    * @return {SourceInfo}
    */
-  static fromInstance(actor, item, name = undefined) {
+  static fromInstance(actor, item = undefined, name = undefined) {
     if (actor) {
       if (item) {
         return new SourceInfo(name ?? item.name, actor.uuid, item.uuid);

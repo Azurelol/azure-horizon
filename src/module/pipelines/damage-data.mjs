@@ -14,6 +14,7 @@ import { Formulas } from "../ruleset/_module.mjs";
  * @typedef ModifierSource
  * @property {String} label
  * @property {String} icon
+ * @property {String} img
  * @property {String} tooltip
  */
 

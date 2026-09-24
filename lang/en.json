@@ -997,7 +997,9 @@
       "Stress": "Stress",
       "Stun": "Stun",
       "Chill": "Chill",
+      "Burn": "Burn",
       "Shock": "Shock",
+      "Miasma": "Miasma",
       "Venom": "Venom",
       "Sunder": "Sunder",
       "Breach": "Breach",
@@ -1129,6 +1131,7 @@
       "TemporaryResourceLess": "The given <strong>{resource}</strong> gain is less than the current for <strong>{actor}</strong>.",
       "GainStress": "Gain Stress",
       "ClearTension": "Clear Tension",
+      "StatusEffectTick": "<strong>{name}</strong> is suffering from <strong>{effect}</strong>.",
       "GainStressMessage": "<strong>{name}</strong> has reached their tension limit and snapped."
     },
     "PIPELINE": {
