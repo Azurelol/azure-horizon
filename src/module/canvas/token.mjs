@@ -8,6 +8,8 @@ const MARGIN = 4;
 const MAX_BAR_SCALE = 2; // don't scale bar textures beyond 4x their native size
 const FILL_PADDING = 1; // px, at native texture resolution — scales with the bar
 
+const { Sprite } = PIXI;
+
 /**
  * @typedef Size
  * @property width
@@ -62,6 +64,7 @@ const TARGET_MARKERS = Object.freeze({
  */
 export class AHToken extends foundry.canvas.placeables.Token {
 
+  /** @type {Record<String,Sprite>} **/
   #effectMarkers;
 
   /** @override */
@@ -81,9 +84,24 @@ export class AHToken extends foundry.canvas.placeables.Token {
   /** @override */
   _refreshEffects() {
     super._refreshEffects();
+    const drawnEffects = new Set();
+    // For every effect
     for (const effect of this.actor?.effects ?? []) {
-      if (effect.statuses.has("mark")) {
-        this._drawEffectMarker(effect, TARGET_MARKERS.mark);
+      // If it has a status
+      if (effect.statuses.size > 0) {
+        const status = Array.from(effect.statuses)[0];
+        if (status in TARGET_MARKERS) {
+          drawnEffects.add(effect.id);
+          const data = TARGET_MARKERS[status];
+          this._drawEffectMarker(effect, data);
+        }
+      }
+    }
+    // Remove markers for effects that were removed
+    for (const [id, sprite] of Object.entries(this.#effectMarkers ?? {})) {
+      if (!drawnEffects.has(id)) {
+        sprite.destroy();
+        delete this.#effectMarkers[id];
       }
     }
   }
@@ -101,19 +119,18 @@ export class AHToken extends foundry.canvas.placeables.Token {
   _drawEffectMarker(effect, data) {
     if (this.#effectMarkers?.[effect.id]) return; // already drawn
     const texture = AHTextures.get(data.key);
-    const sprite = new PIXI.Sprite(texture);
+    const sprite = new Sprite(texture);
     sprite.anchor.set(0.5);
     sprite.width = data.size.width;
     sprite.height = data.size.height;
+    sprite.zIndex = 1000;
     switch (data.position) {
       case "center":
         sprite.position.set(this.w / 2, this.h / 2);
         break;
-
       case "above":
-        this.translateImage(sprite, data.size, "top", 0);
+        this.translateImage(sprite, data.size, "top", -10);
         break;
-
       case "below":
         this.translateImage(sprite, data.size, "bottom", 0);
         break;
