@@ -97,7 +97,7 @@ async function animateAction(event) {
   const traits = new Set(event.config.traits);
   const preset = Presets.resolve(event.item, traits);
   if (preset) {
-    ui.notifications.info(`Performing action for ${event.source.actor.name}`);
+    // ui.notifications.info(`Performing action for ${event.source.actor.name}`);
   }
   else {
     console.debug("Did not resolve a preset.");

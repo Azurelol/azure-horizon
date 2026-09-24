@@ -770,6 +770,10 @@ AH.targetingRule = {
   multiple: "AH.TARGETING.RULE.Multiple",
 };
 
+AH.marker = {
+
+};
+
 /**
  * @typedef {"source" | "target"} AH_EventRelationKey
  */

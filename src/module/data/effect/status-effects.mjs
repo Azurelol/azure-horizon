@@ -334,6 +334,12 @@ const STATUS_EFFECTS = Object.freeze({
     name: "AH.STATUS.Mark",
     img: "systems/azure-horizon/assets/icons/statuses/mark.png",
   },
+  crossMarker: {
+    id: "crossMarker",
+    name: "AH.STATUS.CrossMarker",
+    img: "systems/azure-horizon/assets/icons/statuses/mark.png",
+  },
+
 });
 
 const statusEffects = Object.freeze({

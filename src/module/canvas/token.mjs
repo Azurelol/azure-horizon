@@ -9,6 +9,7 @@ const MAX_BAR_SCALE = 2; // don't scale bar textures beyond 4x their native size
 const FILL_PADDING = 1; // px, at native texture resolution — scales with the bar
 
 const { Sprite } = PIXI;
+const { RegionDocument } = foundry.documents;
 
 /**
  * @typedef Size
@@ -42,7 +43,10 @@ function sizeBar(bg, fill, bh, tokenWidth, pct) {
  * @typedef TargetMarkerData
  * @property {String} key
  * @property {'center'|'above'|'below'} position
+ * @property {'circle'|'rectangle'} shape.type
+ * @property {Number} shape.radius
  * @property {Size} size
+ * @property {Number} radius
  */
 
 /**
@@ -52,12 +56,19 @@ const TARGET_MARKERS = Object.freeze({
   mark: {
     key: "markImage",
     position: "above",
+    shape: {
+      type: "circle",
+      radius: 0.5,
+    },
     size: {
       width: 64,
       height: 64,
     },
   },
+
 });
+
+const USE_REGIONS = true;
 
 /**
  * A Placeable Object subclass adding system-specific behavior and registered in CONFIG.Token.objectClass.
@@ -66,6 +77,9 @@ export class AHToken extends foundry.canvas.placeables.Token {
 
   /** @type {Record<String,Sprite>} **/
   #effectMarkers;
+
+  /** @type {Record<String,Region>} **/
+  #tokenRegions;
 
   /** @override */
   _drawBar(number, bar, data) {
@@ -93,15 +107,30 @@ export class AHToken extends foundry.canvas.placeables.Token {
         if (status in TARGET_MARKERS) {
           drawnEffects.add(effect.id);
           const data = TARGET_MARKERS[status];
-          this._drawEffectMarker(effect, data);
+          if (USE_REGIONS) {
+            this._drawEffectRegion(effect, data);
+          }
+          else {
+            this._drawEffectMarker(effect, data);
+          }
         }
       }
     }
-    // Remove markers for effects that were removed
-    for (const [id, sprite] of Object.entries(this.#effectMarkers ?? {})) {
-      if (!drawnEffects.has(id)) {
-        sprite.destroy();
-        delete this.#effectMarkers[id];
+
+    if (USE_REGIONS) {
+      for (const id of Object.keys(this.#tokenRegions ?? {})) {
+        if (!drawnEffects.has(id)) {
+          this._clearTokenRegions(id);
+        }
+      }
+    }
+    else {
+      // Remove markers for effects that were removed
+      for (const [id, sprite] of Object.entries(this.#effectMarkers ?? {})) {
+        if (!drawnEffects.has(id)) {
+          sprite.destroy();
+          delete this.#effectMarkers[id];
+        }
       }
     }
   }
@@ -112,7 +141,7 @@ export class AHToken extends foundry.canvas.placeables.Token {
   }
 
   /**
-   * @param effect
+   * @param {AHActiveEffect} effect
    * @param {TargetMarkerData} data
    * @private
    */
@@ -138,6 +167,54 @@ export class AHToken extends foundry.canvas.placeables.Token {
 
     this.addChildAt(sprite, 0);
     (this.#effectMarkers ??= {})[effect.id] = sprite;
+  }
+
+  /**
+   * @param {AHActiveEffect} effect
+   * @param {TargetMarkerData} data
+   * @private
+   */
+  async _drawEffectRegion(effect, data) {
+    this.#tokenRegions ??= this._getAttachedTokenRegions();
+    if (this.#tokenRegions?.[effect.id]) return; // already created
+
+    const pixelsPerUnit = canvas.grid.size / canvas.grid.distance; // e.g. 100px / 5ft = 20 px-per-foot
+    const center = this.center; // Token#center — {x, y} in scene coordinates
+    const regionDoc = await RegionDocument.create({
+      shapes: [{
+        type: data.shape.type,
+        x: center.x,
+        y: center.y,
+        radius: data.shape.radius * pixelsPerUnit,
+      }],
+      attachment: { token: this.document.id },
+      color: data.color ?? "#ff0000",
+      visibility: CONST.REGION_VISIBILITY.ALWAYS,
+      name: `${effect.name} Telegraph`,
+      flags: {
+        [systemID]: { effectId: effect.id },
+      },
+    }, { parent: canvas.scene });
+
+    (this.#tokenRegions ??= {})[effect.id] = regionDoc.id;
+  }
+
+  _getAttachedTokenRegions() {
+    const map = {};
+    for (const region of canvas.scene.regions) {
+      if (region.attachment?.token._id !== this.document.id) continue;
+      const effectId = region.getFlag(systemID, "effectId");
+      if (effectId) map[effectId] = region.id;
+    }
+    return map;
+  }
+
+  async _clearTokenRegions(effectId) {
+    this.#tokenRegions ??= this._getAttachedTokenRegions();
+    const regionId = this.#tokenRegions?.[effectId];
+    if (!regionId) return;
+    await canvas.scene.deleteEmbeddedDocuments("Region", [regionId]);
+    delete this.#tokenRegions[effectId];
   }
 
   /**
