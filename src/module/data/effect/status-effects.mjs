@@ -327,6 +327,13 @@ const STATUS_EFFECTS = Object.freeze({
       },
     ],
   },
+
+  // TARGETING
+  mark: {
+    id: "mark",
+    name: "AH.STATUS.Mark",
+    img: "systems/azure-horizon/assets/icons/statuses/mark.png",
+  },
 });
 
 const statusEffects = Object.freeze({
