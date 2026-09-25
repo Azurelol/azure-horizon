@@ -247,6 +247,7 @@ export class AHCombat extends foundry.documents.Combat {
   async nextRound() {
     await this.#rollFactionInitiative(this.combatants.contents, true);
     await super.nextRound();
+    await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("endOfRound", this.round, this.combatants.contents));
     return this;
   }
 

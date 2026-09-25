@@ -84,19 +84,24 @@ function calculateResult(context) {
       }
     }
   }
-  if (context.traits.has("pressure")) {
-    pressure.trait = true;
-  }
-  pressure.valid = pressure.trait || (pressure.affinities.length > 0);
-  if (pressure.valid) {
-    let components = [...pressure.affinities];
-    if (pressure.trait) {
-      components = ["trait"];
+  const canPressure = context.subject.type === "adversary"
+    && context.subject.system.ranked
+    && !context.subject.resolveEffect("stagger");
+  if (canPressure) {
+    if (context.traits.has("pressure")) {
+      pressure.trait = true;
     }
-    pressure.message = components.join(", ");
+    pressure.major = pressure.trait || (pressure.affinities.length > 0);
+    if (pressure.major) {
+      let components = [...pressure.affinities];
+      if (pressure.trait) {
+        components = ["trait"];
+      }
+      pressure.message = components.join(", ");
+    }
+    context.pressure = pressure;
   }
 
-  context.pressure = pressure;
   context.result = resolved;
   context.message = "AH.CHAT.ApplyDamage";
 }
@@ -182,7 +187,7 @@ async function process(request) {
     }
 
     let pressure;
-    if (context.pressure.valid) {
+    if (context.pressure) {
       pressure = await Pressure.process(context);
     }
 

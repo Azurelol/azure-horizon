@@ -6,8 +6,10 @@ import { systemAssetPath } from "../../constants.mjs";
 
 // TODO: Implement then use here due to needing to handle stacking, etc...
 
+// NOTE: Duration is offset by 1, for SOT/EOT events.
+
 const CONTROL_BUFF_DURATION = 1;
-const DOT_DURATION = 3;
+const DOT_DURATION = 2;
 const SOFT_CONTROL_DURATION = 2;
 const HARD_CONTROL_DURATION = 1;
 
@@ -62,6 +64,11 @@ class StatusDataBuilder {
     return this;
   }
 
+  hideIcon() {
+    this.#data.showIcon = CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER;
+    return this;
+  }
+
   endOfRound(rounds) {
     this.#data.duration = {
       expiry: "roundEnd",
@@ -74,6 +81,7 @@ class StatusDataBuilder {
   endOfCombat() {
     this.#data.duration = {
       expiry: "combatEnd",
+      units: "rounds",
     };
     return this;
   }
@@ -345,9 +353,13 @@ const STATUS_EFFECTS = Object.freeze({
         value: "1.5",
       },
     ])
-    .endOfRound(1)
     .build(),
-
+  staggerResistance: new StatusDataBuilder("stagger-resistance", "AH.STATUS.StaggerResistance")
+    .endOfCombat()
+    .track("stack", 1, 3)
+    .stack(true, true)
+    .hideIcon()
+    .build(),
   // TARGETING
   mark: new StatusDataBuilder("mark", "AH.STATUS.Mark").build(),
 

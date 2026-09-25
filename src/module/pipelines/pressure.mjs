@@ -3,12 +3,12 @@ import AH from "../config.mjs";
 import { SourceInfo } from "../data/common/_module.mjs";
 import { AsyncHooks, ChatMessageBuilder } from "../helpers/_module.mjs";
 import { renderTemplate } from "../constants.mjs";
-import Tracks from "./tracks.mjs";
 
 /**
  * @typedef PressureData
  * @property {String[]} affinities
  * @property {Boolean} trait If the damaging action added additional pressure.
+ * @property {Boolean} major Whether significant pressure was applied.
  * @property {Boolean} valid
  * @property {String} message
  */
@@ -24,22 +24,28 @@ import Tracks from "./tracks.mjs";
  * @return {Promise<PressureProcessResult>}
  */
 async function process(context) {
-  if (context.subject.type !== "adversary") {
+  if (context.subject.type !== "adversary" || !context.subject.system.ranked) {
     return null;
   }
 
-  // If this NPC is pressured because they are VU to the damage type,
-  // AND the amount of HP loss is equal to or higher than 10 + half their level,
-  // fill the clock by 2
+  // If this NPC is pressured because they are VU to the damage type
   let increase = 1;
-  if (context.result.total >= 10 + Math.floor(context.subject.system.level / 2)) {
+  if (context.pressure.affinities.length > 0) {
+    increase += 1;
+  }
+  // // If they took more than 1/4 of their HP in damage
+  // if (context.result.total >= context.subject.resources.hp.quarter) {
+  //   increase += 1;
+  // }
+  // If there was a trait, also increase
+  if (context.pressure.trait) {
     increase += 1;
   }
 
-  // Reset pressure
+  // Update pressure
+  await context.subject.modifyTokenAttribute("resources.pp", increase, true);
   /** @type ActorResourceDataModel **/
   const pressure = context.subject.system.resources.pp;
-  await context.subject.modifyTokenAttribute("resources.pp", increase, true);
 
   // If now at max, apply stagger
   let staggered = false;
@@ -71,8 +77,6 @@ async function createStaggerChatMessage(context) {
   builder.text(content);
   return builder.create();
 }
-
-const PRESSURE_MAX_INCREASE = 4;
 
 /**
  * @param {AHActor[]} actors
@@ -113,7 +117,6 @@ function onCombatStart(combat, updateData, updateOptions) {
  */
 function onRoundChange(combat, updateData, updateOptions) {
   const actors = combat.actors;
-
 }
 
 /**
@@ -129,42 +132,18 @@ async function onCombatEvent(event) {
         await removePressureEffect(actor);
       }
       break;
+    case "endOfRound":
+      for (const actor of event.actors.filter((a) => a.type === "adversary")) {
+        const stagger = actor.resolveEffect("stagger");
+        if (stagger) {
+          stagger.delete();
+          await actor.toggleStatusEffect("staggerResistance");
+          await actor.modifyTokenAttribute("resources.pp", 0, false);
+        }
+      }
+      break;
   }
 }
-
-// /**
-//  * @param {AHActor} actor
-//  * @returns {Promise<void>}
-//  */
-// async function applyPressureEffect(actor) {
-//   /** @type AdversaryProfileDataModel **/
-//   const profile = actor.system.profile;
-//   const rank = profile.rank;
-//   switch (rank) {
-//     case "champion":
-//     case "elite":
-//       {
-//       // If they somehow already have the pressure effect
-//         const pressure = actor.resolveEffect("pressure");
-//         if (pressure) {
-//           await pressure.delete();
-//         }
-//         // TODO: Increase if setting after a stagger
-//         // Toggle it on
-//         const segments = rank === "champion" ? 2 + profile.turns * 2 : 4;
-//         const updates = {
-//           ["system.tracker.max"]: segments,
-//         };
-//         await actor.createStatusEffect("pressure", SourceInfo.scene, {
-//           updates: updates,
-//         });
-//       }
-//       break;
-//
-//     default:
-//       break;
-//   }
-// }
 
 /**
  * @param {AHActor} actor

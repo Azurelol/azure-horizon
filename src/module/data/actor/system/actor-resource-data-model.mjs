@@ -40,4 +40,11 @@ export default class ActorResourceDataModel extends VersionedDataModel {
   get full() {
     return this.value === this.max;
   }
+
+  /**
+   * @returns {number} The value at a quarter.
+   */
+  get quarter() {
+    return Math.floor(this.max / 4);
+  }
 }

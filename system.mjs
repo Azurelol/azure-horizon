@@ -52,6 +52,8 @@ function bindDataModels() {
   CONFIG.specialStatusEffects.DEFEATED = "ko";
   // Assign canvas-related classes
   CONFIG.Token.objectClass = canvas.AHToken;
+  // Delete expired AEs
+  CONFIG.ActiveEffect.expiryAction = "delete";
 }
 
 /**

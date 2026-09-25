@@ -1,9 +1,11 @@
 <div class="ah-resource-bar {{classes}}">
   <!--Label-->
-  <div class="ah-resource-bar__label" data-tooltip="{{localize tooltip}}">
-    <i class="ah-icon --s {{icon}}"></i>
-    <span>{{localize label}}</span>
-  </div>
+  {{#if (or label icon)}}
+    <div class="ah-resource-bar__label" data-tooltip="{{localize tooltip}}">
+      <i class="ah-icon --s {{icon}}"></i>
+      <span>{{localize label}}</span>
+    </div>
+  {{/if}}
   <!--Bar-->
   <div class="ah-resource-bar__control" data-path="{{path}}" data-current="{{value}}" data-max="{{max}}">
     <div class="ah-resource-bar__control__fill" style="width: {{ahPercent value max}}; --ah-resource-bar-color: {{color}} {{#if colorClass}}var({{colorClass}}) {{/if}};"></div>

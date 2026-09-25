@@ -50,6 +50,10 @@ const STATUS_CHAMPION_MODIFIER = 0.5;
 const STATUS_BURN_RATIO = 0.1;
 const STATUS_MIASMA_RATIO = 0.1;
 
+// PRESSURE
+const PP_BASE = 8;
+const PRESSURE_RESISTANCE_FACTOR = 6;
+
 /**
  * @typedef Modifier
  * @property {Number} additive Should default to 0.
@@ -371,13 +375,22 @@ export default class Formulas {
    * @returns {Number}
    */
   static calculatePressurePoints(system) {
+    if (!system.ranked) {
+      return 0;
+    }
+    // TODO: Successive staggers will increase the value
+    let resistanceAddend = 0;
+    const staggerResistance = system.parent.resolveEffect("stagger-resistance");
+    if (staggerResistance) {
+      resistanceAddend += PRESSURE_RESISTANCE_FACTOR * staggerResistance.system.tracker.current;
+    }
+
     switch (system.profile.rank) {
       case "elite":
-        return 4;
+        return PP_BASE + resistanceAddend;
       case "champion":
-        return 2 + system.profile.turns * 2;
+        return PP_BASE + (system.profile.turns * 2) + resistanceAddend;
     }
-    return 0;
   }
 
   /**
