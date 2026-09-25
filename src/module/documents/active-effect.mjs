@@ -183,7 +183,7 @@ export class AHActiveEffect extends DocumentMixin(foundry.documents.ActiveEffect
       let message;
       let trackerUpdated;
 
-      if (this.system.stacking.tracker) {
+      if (this.system.stacking.track) {
         if (this.system.tracker.isMaximum) {
           message = StringUtils.localize("AH.DIALOG.TrackerMaximum", {
             name: name,

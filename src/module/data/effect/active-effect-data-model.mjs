@@ -10,7 +10,7 @@ import { RuleElementDataModel } from "./_module.mjs";
 
 /**
  * @typedef AH_EffectStacking
- * @property {Boolean} progress Whether the tracker sections should stack, increasing it when re-applied.
+ * @property {Boolean} stack Whether the tracker sections should stack, increasing it when re-applied.
  * @property {Boolean} duration Whether the effect duration should stack, increasing it when re-applied.
  * @property {Number} increment
  */
@@ -47,7 +47,7 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
       }),
       tracker: new EmbeddedDataField(TrackerDataModel, { required: false }),
       stacking: new SchemaField({
-        tracker: new BooleanField(),
+        track: new BooleanField(),
         duration: new BooleanField(),
         increment: new NumberField({ initial: 1, nullable: false }),
       }),
@@ -59,7 +59,7 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
    * @returns {Boolean} Whether this effect can stack.
    */
   get canStack() {
-    return (this.stacking.tracker || this.stacking.duration) && this.stacking.increment;
+    return (this.stacking.track || this.stacking.duration) && this.stacking.increment;
   }
 
   /**

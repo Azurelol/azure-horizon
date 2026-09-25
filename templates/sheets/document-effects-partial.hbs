@@ -42,7 +42,7 @@
             <img class="effect-image" src="{{effect.img}}" alt="{{effect.name}}" height="24" width="24">
             <div class="effect-name">
               {{effect.name}}
-              {{#if (and (eq effect.system.tracker.style 'stack') (and effect.stackable effect.system.stacking.tracker))}}
+              {{#if (and (eq effect.system.tracker.style 'stack') (and effect.stackable effect.system.stacking.track))}}
                 <span>{{effect.system.tracker.current}}</span>
               {{/if}}
             </div>

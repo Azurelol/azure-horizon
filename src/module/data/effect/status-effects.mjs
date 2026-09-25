@@ -7,10 +7,51 @@ import { systemAssetPath } from "../../constants.mjs";
 // TODO: Implement then use here due to needing to handle stacking, etc...
 
 class StatusDataBuilder {
+
+  /** @type ActiveEffectData **/
+  #data;
+
   constructor(id, name) {
-    this.id = id;
-    this.name = name;
-    this.img = systemAssetPath(`icons/statuses/${id}.png`);
+    this.#data = {
+      id: id,
+      name: name,
+      img: systemAssetPath(`icons/statuses/${id}.png`),
+      system: {
+        slug: id,
+      },
+    };
+  }
+
+  track(style, current, max) {
+    this.#data.system.tracker = {
+      id: this.#data.id,
+      name: this.#data.name,
+      style: style,
+      enabled: true,
+      current: current,
+      max: max,
+    };
+    return this;
+  }
+
+  stack(track, duration) {
+    this.#data.system.stacking = {
+      track: track,
+      duration: duration,
+    };
+    return this;
+  }
+
+  changes(entries) {
+    this.#data.changes = entries;
+    return this;
+  }
+
+  /**
+   * @returns {ActiveEffectData}
+   */
+  build() {
+    return this.#data;
   }
 }
 
@@ -20,77 +61,27 @@ class StatusDataBuilder {
  */
 const STATUS_EFFECTS = Object.freeze({
   // HP
-  peril: { // <= 50%
-    id: "peril",
-    name: "AH.STATUS.Peril",
-    img: "systems/azure-horizon/assets/icons/statuses/peril.png",
-  },
-  crisis: { // <= 20%
-    id: "crisis",
-    name: "AH.STATUS.Crisis",
-    img: "systems/azure-horizon/assets/icons/statuses/crisis.png",
-  },
-  ko: { // == 0%
-    id: "ko",
-    name: "AH.STATUS.KO",
-    img: "systems/azure-horizon/assets/icons/statuses/ko.png",
-  },
-  defiance: { // Cannot go below 1 until start of next turn.
-    id: "defiance",
-    name: "AH.STATUS.Defiance",
-    img: "systems/azure-horizon/assets/icons/statuses/defiance.png",
-  },
-  reprieve: { // Cannot go below 1 until next attack then ends.
-    id: "reprieve",
-    name: "AH.STATUS.Reprieve",
-    img: "systems/azure-horizon/assets/icons/statuses/reprieve.png",
-  },
-
+  peril: new StatusDataBuilder("peril", "AH.STATUS.PERIL").build(),
+  crisis: new StatusDataBuilder("crisis", "AH.STATUS.Crisis").build(),
+  ko: new StatusDataBuilder("ko", "AH.STATUS.KO").build(),
+  defiance: new StatusDataBuilder("defiance", "AH.STATUS.Defiance").build(),
+  reprieve: new StatusDataBuilder("reprieve", "AH.STATUS.Reprieve").build(),
   // TENSION
-  stress: {
-    id: "stress",
-    name: "AH.STATUS.Stress",
-    img: "systems/azure-horizon/assets/icons/statuses/stress.png",
-    system: {
-      tracker: {
-        id: "stress",
-        enabled: true,
-        style: "bar",
-        current: 1,
-        max: 4,
-      },
-      stacking: {
-        tracker: true,
-      },
+  stress: new StatusDataBuilder("stress", "AH.STATUS.Stress").track("stack", 1, 4).changes([
+    {
+      key: "system.parameters.check.all.status",
+      mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+      value: "-$tv",
     },
-    changes: [
-      {
-        key: "system.parameters.check.all.status",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-        value: "-$tv",
-      },
-    ],
-  },
-
+  ]).build(),
   // CONTROL
   // - can't use skills
-  seal: {
-    id: "seal",
-    name: "AH.STATUS.Seal",
-    img: "systems/azure-horizon/assets/icons/statuses/seal.png",
-  },
+  seal: new StatusDataBuilder("seal", "AH.STATUS.Seal").build(),
   // - can't use spells
-  mute: {
-    id: "mute",
-    name: "AH.STATUS.Mute",
-    img: "systems/azure-horizon/assets/icons/statuses/mute.png",
-  },
+  mute: new StatusDataBuilder("mute", "AH.STATUS.Mute").build(),
   // - can only attack, damage dealt/received up
-  berserk: {
-    id: "berserk",
-    name: "AH.STATUS.Berserk",
-    img: "systems/azure-horizon/assets/icons/statuses/berserk.png",
-    changes: [
+  berserk: new StatusDataBuilder("berserk", "AH.STATUS.Berserk")
+    .changes([
       {
         key: "system.parameters.damage.physical.outgoing.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
@@ -101,46 +92,27 @@ const STATUS_EFFECTS = Object.freeze({
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "10",
       },
-    ],
-  },
-
+    ])
+    .build(),
   // TARGETING
-  taunt: {
-    id: "taunt",
-    name: "AH.STATUS.Taunt",
-    img: "systems/azure-horizon/assets/icons/statuses/taunt.png",
-  },
-  stealth: {
-    id: "stealth",
-    name: "AH.STATUS.Stealth",
-    img: "systems/azure-horizon/assets/icons/statuses/stealth.png",
-  },
-  stasis: {
-    id: "stasis",
-    name: "AH.STATUS.Stasis",
-    img: "systems/azure-horizon/assets/icons/statuses/stasis.png",
-  },
+  taunt: new StatusDataBuilder("taunt", "AH.STATUS.Taunt").build(),
+  stealth: new StatusDataBuilder("stealth", "AH.STATUS.Stealth").build(),
+  stasis: new StatusDataBuilder("stasis", "AH.STATUS.Stasis").build(),
 
   // BUFFS
   // - increased physical damage dealt
-  strength: {
-    id: "charge",
-    name: "AH.STATUS.Strength",
-    img: "systems/azure-horizon/assets/icons/statuses/charge.png",
-    changes: [
+  strength: new StatusDataBuilder("strength", "AH.STATUS.Strength")
+    .changes([
       {
         key: "system.parameters.damage.physical.outgoing.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "5",
       },
-    ],
-  },
+    ])
+    .build(),
   // - increased magical damage dealt
-  concentration: {
-    id: "concentration",
-    name: "AH.STATUS.Concentration",
-    img: "systems/azure-horizon/assets/icons/statuses/concentration.png",
-    changes: [
+  concentration: new StatusDataBuilder("concentration", "AH.STATUS.Concentration")
+    .changes([
       {
         key: "system.parameters.damage.elemental.outgoing.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
@@ -151,70 +123,35 @@ const STATUS_EFFECTS = Object.freeze({
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "5",
       },
-    ],
-  },
+    ])
+    .build(),
 
   // DEBUFFS
   // - increased all damage taken
-  vulnerable: {
-    id: "vulnerable",
-    name: "AH.STATUS.Vulnerable",
-    img: "systems/azure-horizon/assets/icons/statuses/vulnerable.png",
-    changes: [
+  vulnerable: new StatusDataBuilder("vulnerable", "AH.STATUS.Vulnerable")
+    .changes([
       {
         key: "system.parameters.damage.universal.incoming.status.multiplicative",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "1.25",
       },
-    ],
-    system: {
-    },
-  },
+    ])
+    .build(),
   // - increased physical damage taken
-  sunder: {
-    id: "sunder",
-    name: "AH.STATUS.Sunder",
-    img: "systems/azure-horizon/assets/icons/statuses/sunder.png",
-    changes: [
+  sunder: new StatusDataBuilder("sunder", "AH.STATUS.Sunder")
+    .changes([
       {
         key: "system.parameters.damage.physical.incoming.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "2*$tv",
       },
-    ],
-    system: {
-      tracker: {
-        id: "sunder",
-        enabled: true,
-        style: "bar",
-        current: 1,
-        max: 3,
-      },
-      stacking: {
-        tracker: true,
-        increment: true,
-      },
-    },
-  },
+    ])
+    .track("bar", 1, 3)
+    .stack(true, true)
+    .build(),
   // - increased magical damage taken
-  breach: {
-    id: "breach",
-    name: "AH.STATUS.Breach",
-    img: "systems/azure-horizon/assets/icons/statuses/breach.png",
-    system: {
-      tracker: {
-        id: "breach",
-        enabled: true,
-        style: "bar",
-        current: 1,
-        max: 3,
-      },
-      stacking: {
-        tracker: true,
-        increment: true,
-      },
-    },
-    changes: [
+  breach: new StatusDataBuilder("breach", "AH.STATUS.Breach")
+    .changes([
       {
         key: "system.parameters.damage.elemental.incoming.status.additive",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
@@ -225,145 +162,86 @@ const STATUS_EFFECTS = Object.freeze({
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "2*$tv",
       },
-    ],
-  },
+    ])
+    .track("bar", 1, 3)
+    .stack(true, true)
+    .build(),
   // - reduced damage dealt
-  weak: {
-    id: "weak",
-    name: "AH.STATUS.Weak",
-    img: "systems/azure-horizon/assets/icons/statuses/weak.png",
-    changes: [
+  weak: new StatusDataBuilder("weak", "AH.STATUS.Weak")
+    .changes([
       {
         key: "system.parameters.damage.universal.outgoing.status.multiplicative",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "0.75",
       },
-    ],
-  },
-  enfeeble: {
-    id: "enfeeble",
-    name: "AH.STATUS.Enfeeble",
-    img: "systems/azure-horizon/assets/icons/statuses/enfeeble.png",
-    changes: [
+    ])
+    .build(),
+  enfeeble: new StatusDataBuilder("enfeeble", "AH.STATUS.Enfeeble")
+    .changes([
       {
         key: "system.parameters.damage.universal.outgoing.status.multiplicative",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "0.5",
       },
-    ],
-  },
+    ])
+    .build(),
   // - reduced block
-  frail: {
-    id: "frail",
-    name: "AH.STATUS.Frail",
-    img: "systems/azure-horizon/assets/icons/statuses/frail.png",
-    changes: [
+  frail: new StatusDataBuilder("frail", "AH.STATUS.Frail")
+    .changes([
       {
         key: "system.parameters.block.bonus",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "-5",
       },
-    ],
-    system: {
-    },
-  },
+    ])
+    .build(),
 
   // AFFINITY-BASED
-  bleed: {
-    id: "bleed",
-    name: "AH.STATUS.Bleed",
-    img: "systems/azure-horizon/assets/icons/statuses/bleed.png",
-  },
-  fracture: {
-    id: "fracture",
-    name: "AH.STATUS.Fracture",
-    img: "systems/azure-horizon/assets/icons/statuses/fracture.png",
-  },
+  bleed: new StatusDataBuilder("bleed", "AH.STATUS.Bleed").build(),
+  fracture: new StatusDataBuilder("fracture", "AH.STATUS.Fracture").build(),
 
-  burn: {
-    id: "burn",
-    name: "AH.STATUS.Burn",
-    img: "systems/azure-horizon/assets/icons/statuses/burn.png",
-    system: {
-      tracker: {
-        id: "burn",
-        enabled: true,
-        style: "stack",
-        current: 1,
-        max: 3,
+  burn: new StatusDataBuilder("burn", "AH.STATUS.Burn")
+    .track("stack", 1, 3)
+    .stack(true, true)
+    .build(),
+  scorch: new StatusDataBuilder("scorch", "AH.STATUS.Scorch")
+    .changes([
+      {
+        key: "system.parameters.damage.fire.incoming.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "2*$tv",
       },
-      stacking: {
-        tracker: true,
-        increment: true,
-      },
-    },
-  },
-  scorch: {
-    id: "scorch",
-    name: "AH.STATUS.Scorch",
-    img: "systems/azure-horizon/assets/icons/statuses/scorch.png",
-  },
+    ])
+    .track("stack", 1, 3)
+    .stack(true)
+    .build(),
 
-  chill: {
-    id: "chill",
-    name: "AH.STATUS.Chill",
-    img: "systems/azure-horizon/assets/icons/statuses/chill.png",
-  },
-  freeze: {
-    id: "freeze",
-    name: "AH.STATUS.Freeze",
-    img: "systems/azure-horizon/assets/icons/statuses/freeze.png",
-  },
+  chill: new StatusDataBuilder("chill", "AH.STATUS.Chill")
+    .build(),
+  freeze: new StatusDataBuilder("freeze", "AH.STATUS.Freeze")
+    .build(),
 
-  shock: {
-    id: "shock",
-    name: "AH.STATUS.Shock",
-    img: "systems/azure-horizon/assets/icons/statuses/shock.png",
-  },
+  shock: new StatusDataBuilder("shock", "AH.STATUS.Shock").build(),
+  paralysis: new StatusDataBuilder("paralysis", "AH.STATUS.Paralysis").build(),
 
-  poison: {
-    id: "poison",
-    name: "AH.STATUS.Poison",
-    img: "systems/azure-horizon/assets/icons/statuses/poison.png",
-  },
-  venom: {
-    id: "venom",
-    name: "AH.STATUS.Venom",
-    img: "systems/azure-horizon/assets/icons/statuses/venom.png",
-  },
+  poison: new StatusDataBuilder("poison", "AH.STATUS.Poison").build(),
+  venom: new StatusDataBuilder("venom", "AH.STATUS.Venom").build(),
 
-  // CHECKS
-  dazzle: {
-    id: "dazzle",
-    name: "AH.STATUS.Dazzle",
-    img: "systems/azure-horizon/assets/icons/statuses/dazzle.png",
-  },
+  dazzle: new StatusDataBuilder("dazzle", "AH.STATUS.Dazzle").build(),
 
   // PRESSURE
-  stagger: {
-    id: "stagger",
-    name: "AH.STATUS.Stagger",
-    img: "systems/azure-horizon/assets/icons/statuses/stagger.png",
-    changes: [
+  stagger: new StatusDataBuilder("stagger", "AH.STATUS.Stagger")
+    .changes([
       {
         key: "system.parameters.damage.universal.incoming.situational.multiplicative",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: "1.5",
       },
-    ],
-  },
+    ])
+    .build(),
 
   // TARGETING
-  mark: {
-    id: "mark",
-    name: "AH.STATUS.Mark",
-    img: "systems/azure-horizon/assets/icons/statuses/mark.png",
-  },
-  crossMarker: {
-    id: "crossMarker",
-    name: "AH.STATUS.CrossMarker",
-    img: "systems/azure-horizon/assets/icons/statuses/mark.png",
-  },
+  mark: new StatusDataBuilder("mark", "AH.STATUS.Mark").build(),
 
 });
 
