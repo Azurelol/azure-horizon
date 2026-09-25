@@ -1,4 +1,4 @@
-import { SubDocumentCollectionField, TrackerDataModel } from "../api/_module.mjs";
+import { SubDocumentCollectionField, TrackerDataModel, VersionedDataModel } from "../api/_module.mjs";
 import { RuleElementDataModel } from "./_module.mjs";
 
 /**
@@ -18,6 +18,7 @@ import { RuleElementDataModel } from "./_module.mjs";
 /**
  * A data model used by default effects with properties to control the expiration behavior.
  * @property {TrackerDataModel} tracker
+ * @property {EffectPredicatesDataModel} predicates
  * @property {AH_EffectStacking} stacking
  * @property {RuleElementDataModel[]} rules
  */
@@ -51,6 +52,7 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
         duration: new BooleanField(),
         increment: new NumberField({ initial: 1, nullable: false }),
       }),
+      predicates: new EmbeddedDataField(EffectPredicatesDataModel, {}),
       rules: new SubDocumentCollectionField(RuleElementDataModel),
     });
   }
@@ -70,4 +72,34 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
   get _isTemporary() {
     return false;
   }
+
+  /**
+   * Is there some system logic (or, absent that, an expired status) that makes this Active Effect ineligible for
+   * application?
+   * @type {boolean}
+   * @remarks Invoked by the active effect document.
+   */
+  get isSuppressed() {
+    if (!this.predicates.validate(this.parent.actor)) {
+      return false;
+    }
+    return false;
+  }
+}
+
+class EffectPredicatesDataModel extends VersionedDataModel {
+  static defineSchema() {
+    return Object.assign(super.defineSchema(), {
+
+    });
+  }
+
+  /**
+   * @param {AHActor} actor
+   * @returns {boolean}
+   */
+  validate(actor) {
+    return true;
+  }
+
 }

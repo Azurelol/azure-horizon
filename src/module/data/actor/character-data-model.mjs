@@ -110,8 +110,12 @@ export default class CharacterDataModel extends BaseEntityDataModel {
 
   /**
    * @returns {boolean} Whether the character is in peril (at 50% HP).
+   * @remarks Also true if the character is in crisis.
    */
   get peril() {
+    if (this.crisis) {
+      return true;
+    }
     return Formulas.inPeril(this.resources.hp);
   }
 

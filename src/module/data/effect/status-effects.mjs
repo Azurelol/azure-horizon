@@ -6,6 +6,16 @@ import { systemAssetPath } from "../../constants.mjs";
 
 // TODO: Implement then use here due to needing to handle stacking, etc...
 
+const CONTROL_BUFF_DURATION = 1;
+const DOT_DURATION = 3;
+const SOFT_CONTROL_DURATION = 2;
+const HARD_CONTROL_DURATION = 1;
+
+const HARD_DEBUFF_DURATION = 1;
+const PARAM_DEBUFF_DURATION = 1;
+const STACK_DEBUFF_DURATION = 3;
+const DAMAGE_BUFF_DURATION = 1;
+
 class StatusDataBuilder {
 
   /** @type ActiveEffectData **/
@@ -30,6 +40,40 @@ class StatusDataBuilder {
       enabled: true,
       current: current,
       max: max,
+    };
+    return this;
+  }
+
+  endOfTurn(turns) {
+    this.#data.duration = {
+      expiry: "turnEnd",
+      units: "turns",
+      value: turns,
+    };
+    return this;
+  }
+
+  startOfTurn(turns) {
+    this.#data.duration = {
+      expiry: "turnStart",
+      units: "turns",
+      value: turns,
+    };
+    return this;
+  }
+
+  endOfRound(rounds) {
+    this.#data.duration = {
+      expiry: "roundEnd",
+      units: "rounds",
+      value: rounds,
+    };
+    return this;
+  }
+
+  endOfCombat() {
+    this.#data.duration = {
+      expiry: "combatEnd",
     };
     return this;
   }
@@ -64,8 +108,12 @@ const STATUS_EFFECTS = Object.freeze({
   peril: new StatusDataBuilder("peril", "AH.STATUS.PERIL").build(),
   crisis: new StatusDataBuilder("crisis", "AH.STATUS.Crisis").build(),
   ko: new StatusDataBuilder("ko", "AH.STATUS.KO").build(),
-  defiance: new StatusDataBuilder("defiance", "AH.STATUS.Defiance").build(),
-  reprieve: new StatusDataBuilder("reprieve", "AH.STATUS.Reprieve").build(),
+  defiance: new StatusDataBuilder("defiance", "AH.STATUS.Defiance")
+    .startOfTurn(1)
+    .build(),
+  reprieve: new StatusDataBuilder("reprieve", "AH.STATUS.Reprieve")
+    .build(),
+
   // TENSION
   stress: new StatusDataBuilder("stress", "AH.STATUS.Stress").track("stack", 1, 4).changes([
     {
@@ -73,12 +121,18 @@ const STATUS_EFFECTS = Object.freeze({
       mode: CONST.ACTIVE_EFFECT_MODES.ADD,
       value: "-$tv",
     },
-  ]).build(),
+  ])
+    .build(),
+
   // CONTROL
   // - can't use skills
-  seal: new StatusDataBuilder("seal", "AH.STATUS.Seal").build(),
+  seal: new StatusDataBuilder("seal", "AH.STATUS.Seal")
+    .endOfTurn(SOFT_CONTROL_DURATION)
+    .build(),
   // - can't use spells
-  mute: new StatusDataBuilder("mute", "AH.STATUS.Mute").build(),
+  mute: new StatusDataBuilder("mute", "AH.STATUS.Mute")
+    .endOfTurn(SOFT_CONTROL_DURATION)
+    .build(),
   // - can only attack, damage dealt/received up
   berserk: new StatusDataBuilder("berserk", "AH.STATUS.Berserk")
     .changes([
@@ -93,11 +147,18 @@ const STATUS_EFFECTS = Object.freeze({
         value: "10",
       },
     ])
+    .endOfTurn(HARD_CONTROL_DURATION)
     .build(),
   // TARGETING
-  taunt: new StatusDataBuilder("taunt", "AH.STATUS.Taunt").build(),
-  stealth: new StatusDataBuilder("stealth", "AH.STATUS.Stealth").build(),
-  stasis: new StatusDataBuilder("stasis", "AH.STATUS.Stasis").build(),
+  taunt: new StatusDataBuilder("taunt", "AH.STATUS.Taunt")
+    .startOfTurn(CONTROL_BUFF_DURATION)
+    .build(),
+  stealth: new StatusDataBuilder("stealth", "AH.STATUS.Stealth")
+    .startOfTurn(CONTROL_BUFF_DURATION)
+    .build(),
+  stasis: new StatusDataBuilder("stasis", "AH.STATUS.Stasis")
+    .startOfTurn(CONTROL_BUFF_DURATION)
+    .build(),
 
   // BUFFS
   // - increased physical damage dealt
@@ -109,6 +170,7 @@ const STATUS_EFFECTS = Object.freeze({
         value: "5",
       },
     ])
+    .endOfTurn(DAMAGE_BUFF_DURATION)
     .build(),
   // - increased magical damage dealt
   concentration: new StatusDataBuilder("concentration", "AH.STATUS.Concentration")
@@ -124,6 +186,7 @@ const STATUS_EFFECTS = Object.freeze({
         value: "5",
       },
     ])
+    .endOfTurn(DAMAGE_BUFF_DURATION)
     .build(),
 
   // DEBUFFS
@@ -136,7 +199,9 @@ const STATUS_EFFECTS = Object.freeze({
         value: "1.25",
       },
     ])
+    .endOfTurn(HARD_DEBUFF_DURATION)
     .build(),
+
   // - increased physical damage taken
   sunder: new StatusDataBuilder("sunder", "AH.STATUS.Sunder")
     .changes([
@@ -148,6 +213,7 @@ const STATUS_EFFECTS = Object.freeze({
     ])
     .track("bar", 1, 3)
     .stack(true, true)
+    .endOfTurn(STACK_DEBUFF_DURATION)
     .build(),
   // - increased magical damage taken
   breach: new StatusDataBuilder("breach", "AH.STATUS.Breach")
@@ -165,6 +231,7 @@ const STATUS_EFFECTS = Object.freeze({
     ])
     .track("bar", 1, 3)
     .stack(true, true)
+    .endOfTurn(STACK_DEBUFF_DURATION)
     .build(),
   // - reduced damage dealt
   weak: new StatusDataBuilder("weak", "AH.STATUS.Weak")
@@ -175,6 +242,7 @@ const STATUS_EFFECTS = Object.freeze({
         value: "0.75",
       },
     ])
+    .endOfTurn(PARAM_DEBUFF_DURATION)
     .build(),
   enfeeble: new StatusDataBuilder("enfeeble", "AH.STATUS.Enfeeble")
     .changes([
@@ -184,6 +252,7 @@ const STATUS_EFFECTS = Object.freeze({
         value: "0.5",
       },
     ])
+    .endOfTurn(HARD_DEBUFF_DURATION)
     .build(),
   // - reduced block
   frail: new StatusDataBuilder("frail", "AH.STATUS.Frail")
@@ -191,18 +260,23 @@ const STATUS_EFFECTS = Object.freeze({
       {
         key: "system.parameters.block.bonus",
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-        value: "-5",
+        value: "-3*$tv",
       },
     ])
+    .endOfTurn(PARAM_DEBUFF_DURATION)
     .build(),
 
   // AFFINITY-BASED
-  bleed: new StatusDataBuilder("bleed", "AH.STATUS.Bleed").build(),
-  fracture: new StatusDataBuilder("fracture", "AH.STATUS.Fracture").build(),
+  bleed: new StatusDataBuilder("bleed", "AH.STATUS.Bleed")
+    .endOfTurn(DOT_DURATION)
+    .build(),
+  fracture: new StatusDataBuilder("fracture", "AH.STATUS.Fracture")
+    .build(),
 
   burn: new StatusDataBuilder("burn", "AH.STATUS.Burn")
     .track("stack", 1, 3)
     .stack(true, true)
+    .endOfTurn(DOT_DURATION)
     .build(),
   scorch: new StatusDataBuilder("scorch", "AH.STATUS.Scorch")
     .changes([
@@ -217,17 +291,50 @@ const STATUS_EFFECTS = Object.freeze({
     .build(),
 
   chill: new StatusDataBuilder("chill", "AH.STATUS.Chill")
+    .endOfTurn(DOT_DURATION)
+    .changes([
+      {
+        key: "system.parameters.damage.cold.incoming.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "2*$tv",
+      },
+    ])
+    .track("stack", 1, 3)
+    .stack(true, true)
     .build(),
   freeze: new StatusDataBuilder("freeze", "AH.STATUS.Freeze")
+    .endOfTurn(HARD_CONTROL_DURATION)
     .build(),
 
-  shock: new StatusDataBuilder("shock", "AH.STATUS.Shock").build(),
-  paralysis: new StatusDataBuilder("paralysis", "AH.STATUS.Paralysis").build(),
+  shock: new StatusDataBuilder("shock", "AH.STATUS.Shock")
+    .changes([
+      {
+        key: "system.parameters.checks.universal.status.additive",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "-$tv",
+      },
+    ])
+    .track("stack", 1, 3)
+    .stack(true, true)
+    .endOfTurn(DOT_DURATION)
+    .build(),
+  paralysis: new StatusDataBuilder("paralysis", "AH.STATUS.Paralysis")
+    .endOfTurn(HARD_CONTROL_DURATION)
+    .build(),
 
-  poison: new StatusDataBuilder("poison", "AH.STATUS.Poison").build(),
-  venom: new StatusDataBuilder("venom", "AH.STATUS.Venom").build(),
+  poison: new StatusDataBuilder("poison", "AH.STATUS.Poison")
+    .endOfTurn(DOT_DURATION)
+    .build(),
+  venom: new StatusDataBuilder("venom", "AH.STATUS.Venom")
+    .endOfTurn(DOT_DURATION)
+    .build(),
 
-  dazzle: new StatusDataBuilder("dazzle", "AH.STATUS.Dazzle").build(),
+  dazzle: new StatusDataBuilder("dazzle", "AH.STATUS.Dazzle")
+    .endOfTurn(SOFT_CONTROL_DURATION)
+    .build(),
+  disjoint: new StatusDataBuilder("disjoint", "AH.STATUS.Disjoint")
+    .endOfTurn(HARD_CONTROL_DURATION)
+    .build(),
 
   // PRESSURE
   stagger: new StatusDataBuilder("stagger", "AH.STATUS.Stagger")
@@ -238,6 +345,7 @@ const STATUS_EFFECTS = Object.freeze({
         value: "1.5",
       },
     ])
+    .endOfRound(1)
     .build(),
 
   // TARGETING
