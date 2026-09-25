@@ -60,7 +60,7 @@ export default class CodexEntryDataModel extends foundry.abstract.DataModel {
       // eslint-disable-next-line no-undef
       sound = await PlaylistSound.create(
         {
-          name: this.name, // this.path.split('/').pop(), // filename as name
+          name: this.name, // filename as name
           path: this.audio.path,
           volume: this.audio.volume,
           repeat: this.audio.repeat,

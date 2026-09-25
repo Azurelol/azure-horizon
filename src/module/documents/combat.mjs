@@ -120,6 +120,9 @@ export class AHCombat extends foundry.documents.Combat {
     await this.#sortFactions();
     await super.startCombat();
     await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("startOfCombat", this.round, this.combatants.contents));
+    Hooks.call(AH.hooks.INITIATIVE, {
+      round: this.round,
+    });
   }
 
   async #sortFactions() {
@@ -248,6 +251,9 @@ export class AHCombat extends foundry.documents.Combat {
     await this.#rollFactionInitiative(this.combatants.contents, true);
     await super.nextRound();
     await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("endOfRound", this.round, this.combatants.contents));
+    Hooks.call(AH.hooks.INITIATIVE, {
+      round: this.round,
+    });
     return this;
   }
 

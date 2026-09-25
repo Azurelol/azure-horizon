@@ -134,6 +134,8 @@ function initializeSystems() {
   apps.UI.Manual.initialize();
   helpers.Themes.initialize();
   canvas.AHTextures.preload();
+  canvas.Canvas.initialize();
+
   fx.FX.initialize();
 
   // We initialize hotkeys && controls last as they will call a registration hook
@@ -170,23 +172,6 @@ function registerDataModels() {
  * Registers to combat hooks sent by Foundry's Combat class.
  */
 function setupCombat() {
-
-  //CONFIG.Actor.trackableAttributes.adversary.push("trackers.pressure");
-
-  // CONFIG.Actor.trackableAttributes = {
-  //   character: {
-  //     bar: ["resources.hp", "resources.mp", "resources.ip"],
-  //     value: ["resources.tp", "resources.hp.temporary"],
-  //   },
-  //   adversary: {
-  //     bar: ["resources.hp", "resources.mp", "trackers.pressure"],
-  //   },
-  // };
-  //
-  // Hooks.on(AH.hooks.foundry.combat.combatTurn, (data) => {
-  //
-  // });
-
 }
 
 /**

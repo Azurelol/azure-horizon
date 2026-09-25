@@ -11,6 +11,12 @@ export const systemID = "azure-horizon";
 export const systemNS = "ah";
 
 /**
+ * The system namespace, used as a prefix for hooks and the like.
+ * @type {string}
+ */
+export const systemSCK = "system.azure-horizon";
+
+/**
  * Translates repository paths to Foundry Data paths.
  * @param {string} path - A path relative to the root of this repository.
  * @returns {string} The path relative to the Foundry data folder.
@@ -139,4 +145,27 @@ export function notifyWarn(message) {
   if (ui?.notifications) {
     ui.notifications.warn(message);
   }
+}
+
+/**
+ * @param {AH_SocketEvent} event
+ * @param {AH_SocketEventData} data
+ */
+export function sendSocketEvent(event, data) {
+  if (game.user.isGM) {
+    game.socket.emit(systemSCK, {
+      type: event,
+      data: data,
+    });
+  }
+}
+
+/**
+ * @param {AH_SocketEvent} event
+ * @param {function(AH_SocketEventData): void} callback
+ */
+export function receiveSocketEvent(event, callback) {
+  game.socket.on(systemSCK, (message) => {
+    if (message?.type === event) callback(message.data);
+  });
 }

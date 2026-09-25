@@ -1177,7 +1177,8 @@
       "TurnEnd": "Turn End",
       "RoundEnd": "Round End",
       "End": "Battle End",
-      "InitiativeHint": "Initiative will be rolled for all characters at the start of the round."
+      "InitiativeHint": "Initiative will be rolled for all characters at the start of the round.",
+      "InitiativeRoll": "ROUND {round}"
     },
     "Combat": {
       "AddPlayer": "Add Player",

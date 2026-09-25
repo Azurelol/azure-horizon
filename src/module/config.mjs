@@ -1,5 +1,5 @@
 // NOTE: This file should have no other dependencies
-import { getSystemSetting, systemAssetPath, systemID, systemNS } from "./constants.mjs";
+import { getSystemSetting, systemAssetPath, systemID, systemNS, systemSCK } from "./constants.mjs";
 import StringUtils from "./utils/string-utils.mjs";
 
 const AH = {};
@@ -1078,6 +1078,11 @@ AH.hooks = Object.freeze({
    */
   COMBAT_EVENT: `${systemNS}.events.combat`,
   /**
+   * @description Invoked when initiative is rolled during combat.
+   * @example callback(event)
+   */
+  INITIATIVE: `${systemNS}.events.initiative`,
+  /**
    * @description Dispatched after a progress tracker has been updated.
    * @example callback(event)
    * @remarks Uses {@link TrackEvent}
@@ -1114,6 +1119,21 @@ AH.hooks = Object.freeze({
    * @remarks Uses {@link DefeatEvent}. This can happen after a {@link DAMAGE_EVENT}.
    */
   DEFEAT_EVENT: `${systemNS}.events.defeat`,
+});
+
+/**
+ * @typedef {String} AH_SocketEvent A system-supported socket event, which is dispatched to all connected clients.
+ */
+
+/**
+ * @typedef {Object} AH_SocketEventData
+ */
+
+/**
+ * @desc Dispatched socket messages by the system.
+ */
+AH.sockets = Object.freeze({
+  SCROLLING_TEXT: "canvas.scrollingText",
 });
 
 /**
