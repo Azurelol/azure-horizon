@@ -42,6 +42,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     },
     details: { template: "templates/sheets/active-effect/details.hbs", scrollable: [""] },
     duration: { template: "templates/sheets/active-effect/duration.hbs" },
+    tracker: { template: systemTemplatePath("sheets/effect/active-effect-tracker") },
     predicates: { template: systemTemplatePath("sheets/effect/active-effect-predicates") },
     rules: {
       template: systemTemplatePath("sheets/effect/active-effect-rules"),
@@ -61,7 +62,8 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
       tabs: [
         { id: "details", label: "AH.SHEET.Tabs.Details", icon: "fa-solid fa-book" },
         { id: "duration", label: "AH.SHEET.Tabs.Duration", icon: "fa-solid fa-clock" },
-        { id: "predicates", label: "AH.SHEET.Tabs.Predicates", icon: "" },
+        { id: "predicates", label: "AH.SHEET.Tabs.Predicates", icon: "fa fa-filter" },
+        { id: "tracker", label: "AH.SHEET.Tabs.Tracker", icon: "fa fa-gauge" },
         { id: "rules", label: "AH.SHEET.Tabs.Rules", icon: "fa-solid fa-list", cssClass: "scrollable" },
         { id: "changes", label: "AH.SHEET.Tabs.Changes", icon: "fa-solid fa-gears" },
       ],
@@ -142,6 +144,10 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
   async _onRender(context, options) {
     await super._onRender(context, options);
     const html = this.element;
+
+    // TABS
+    const tabsNav = this.element.querySelector(".sheet-tabs");
+    tabsNav?.classList.add("--grid");
 
     // CHANGES Tab
     const effectKeyOptions = html.querySelector("#effect-key-options");

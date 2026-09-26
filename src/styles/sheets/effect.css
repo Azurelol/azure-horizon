@@ -1,10 +1,16 @@
 .ah-effect {
 
+  .sheet-header {
+    height: 80px;
+  }
+
   .window-content {
     padding: 0;
+    gap:0;
   }
 
   .ah-effect__header {
+    background: var(--ah-surface-entry-gradient);
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -22,6 +28,7 @@
 
     input[name='name'] {
       width: 240px;
+      font-size: var(--ah-font-size-xl);
     }
 
     img {
