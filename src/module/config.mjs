@@ -1285,6 +1285,7 @@ AH.traits = {
     thrown: { label: "AH.TRAIT.Thrown", tooltip: "AH.TRAIT.ThrownHint" },
     shield: { label: "AH.TRAIT.Shield", tooltip: "AH.TRAIT.ShieldHint" },
     brawl: { label: "AH.TRAIT.Brawl", tooltip: "AH.TRAIT.BrawlHint" },
+    keen: { label: "AH.TRAIT.Keen", tooltip: "AH.TRAIT.KeenHint" },
   },
   armor: {
     stable: { label: "AH.TRAIT.Stable", tooltip: "AH.TRAIT.StableHint" }, // Shifting resistance

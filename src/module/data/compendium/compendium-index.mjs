@@ -130,6 +130,10 @@ export default class CompendiumIndex {
     damageSecondaryType: "system.damage.secondary.type",
     damageSecondaryAmount: "system.damage.secondary.amount",
     costAmount: "system.cost.amount",
+    costResource: "system.cost.resource",
+    costEnabled: "system.cost.enabled",
+    actionEnabled: "system.action.enabled",
+    actionPoints: "system.action.points",
     spellDomain: "system.domain",
     traits: "system.traits",
     classRef: "system.class",
@@ -137,6 +141,7 @@ export default class CompendiumIndex {
     skillLevel: "system.level",
     intent: "system.intent",
     weight: "system.weight",
+    handedness: "system.handedness",
   });
 
   /**

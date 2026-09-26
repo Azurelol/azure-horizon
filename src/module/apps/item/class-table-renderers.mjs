@@ -57,6 +57,9 @@ export class ClassFeatureTableRenderer extends ItemTableRenderer {
         header: "AH.FIELD.Class",
         getText: (entry) => StringUtils.capitalize(entry.system.class),
       }),
+      TableColumns.itemCost({
+        getData: (entry) => entry.system,
+      }),
     ];
   }
 }

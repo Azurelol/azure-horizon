@@ -576,6 +576,8 @@
       "Song": "Song",
       "Tension": "Tension",
       "Sustain": "Sustain",
+      "Keen": "Keen",
+      "KeenHint": "Has a reduced critical threshold.",
       "Draw": "Draw",
       "Loss": "Loss",
       "Chain": "Chain",
