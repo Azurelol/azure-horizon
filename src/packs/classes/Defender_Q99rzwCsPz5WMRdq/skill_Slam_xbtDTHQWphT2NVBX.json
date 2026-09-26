@@ -8,12 +8,13 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "defender-slam",
-    "description": "<p>You deal damage to the target with your <em>equipped</em> <em>shield</em> and push it back.</p>",
+    "description": "<p>You deal damage to the target with your s<em>hield</em> and push it back.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
       "secondary": "mig",
-      "grade": "B"
+      "grade": "B",
+      "enabled": true
     },
     "check": {
       "schemaVersion": 1,
@@ -24,10 +25,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
-        "amount": "",
-        "type": "untyped"
+        "amount": "5",
+        "type": "bludgeoning"
       },
       "secondary": {
         "amount": "",
@@ -44,9 +45,9 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "resource": "mp",
-      "amount": "",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
@@ -70,7 +71,11 @@
       "targeting": "single",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [
+        "shift"
+      ],
+      "enabled": true,
+      "speed": ""
     },
     "usage": {
       "schemaVersion": 1,

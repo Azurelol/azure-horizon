@@ -3,7 +3,7 @@
   "name": "Martial Garb",
   "type": "armor",
   "_id": "AQXwbIjllXtejUBd",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/equipment/armor/robe_white.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

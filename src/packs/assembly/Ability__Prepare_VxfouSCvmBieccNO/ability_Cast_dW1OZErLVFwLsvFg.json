@@ -43,7 +43,9 @@
       "type": "action",
       "points": 1,
       "speed": "",
-      "traits": []
+      "traits": [
+        "closer"
+      ]
     },
     "resource": {
       "schemaVersion": 1,
@@ -67,9 +69,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "cast"
+      ],
       "duration": {
         "event": "",
         "tracking": ""

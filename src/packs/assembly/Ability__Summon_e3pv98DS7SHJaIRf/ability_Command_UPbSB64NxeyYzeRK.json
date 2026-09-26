@@ -39,8 +39,8 @@
     },
     "action": {
       "schemaVersion": 1,
-      "enabled": false,
-      "type": "",
+      "enabled": true,
+      "type": "action",
       "points": 1,
       "speed": "",
       "traits": []

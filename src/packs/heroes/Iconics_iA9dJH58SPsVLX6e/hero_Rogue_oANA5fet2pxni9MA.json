@@ -481,7 +481,59 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Rogue",
+      "type": "class",
+      "_id": "ntJko8cNKrWr6cpn",
+      "img": "systems/azure-horizon/assets/icons/classes/rogue/rogue.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "rogue",
+        "description": "",
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": false,
+          "mp": false,
+          "ip": true,
+          "tp": false
+        },
+        "triggers": [
+          "You commit an act of espionage or sabotage.",
+          "You infiltrate a location without being discovered.",
+          "You disable or help your party by a trap or hazzard.",
+          "You spot a trap or ambush."
+        ],
+        "traits": [
+          "offense",
+          "mobility",
+          "stealth"
+        ],
+        "complications": []
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790441274649,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.ntJko8cNKrWr6cpn",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oANA5fet2pxni9MA.ntJko8cNKrWr6cpn"
+    }
+  ],
   "effects": [
     {
       "name": "KO",

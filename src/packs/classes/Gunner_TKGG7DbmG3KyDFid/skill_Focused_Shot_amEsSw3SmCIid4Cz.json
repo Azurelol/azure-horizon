@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "focused-shot",
-    "description": "<p>You perform a strong attack that pressures the enemy.</p>",
+    "description": "<p>You perform a strong attack that significantly pressures the enemy.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -59,7 +59,7 @@
         "tracking": ""
       }
     },
-    "power": "moderate",
+    "power": "low",
     "level": {
       "current": 1,
       "max": 1

@@ -69,18 +69,19 @@
       "range": "ranged",
       "targeting": "single",
       "type": "action",
-      "points": 1,
+      "points": 2,
       "traits": [
-        "interrupt",
-        "cooldown"
+        "cooldown",
+        "interrupt"
       ],
-      "enabled": true
+      "enabled": true,
+      "speed": ""
     },
     "usage": {
       "schemaVersion": 1,
-      "attributes": false,
-      "check": false,
-      "damage": false,
+      "attributes": true,
+      "check": true,
+      "damage": true,
       "enabled": true
     },
     "class": "gunner"

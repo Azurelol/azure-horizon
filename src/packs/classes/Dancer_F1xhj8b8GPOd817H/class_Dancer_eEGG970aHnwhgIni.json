@@ -11,9 +11,11 @@
     "description": "<p>An acrobatic performer who relies on their quick feet and graceful movements to get them by in life.  Behind their elegant movements belies a martial discipline that is both flexible and strong when it needs to be.</p><blockquote><p>The Dancer is a class that excels in providing options to easily reposition not only their party but also their foes, all while steadily building up their tempo to increase their damage.</p></blockquote>",
     "benefits": {
       "schemaVersion": 1,
-      "hp": true,
+      "hp": false,
       "mp": false,
-      "ip": false
+      "ip": false,
+      "tp": false,
+      "mov": true
     },
     "triggers": [
       "You perform a dance for an audience.",

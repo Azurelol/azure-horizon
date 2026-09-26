@@ -10,13 +10,13 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 50,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
@@ -99,9 +99,9 @@
       }
     },
     "equipment": {
-      "mainHand": "LiYOcX3pWQ1gciRm",
-      "offHand": "LiYOcX3pWQ1gciRm",
-      "armor": "wdDrP8GR8xh9VzHi"
+      "mainHand": "ARVFp3xXvfHZkXc2",
+      "offHand": "ARVFp3xXvfHZkXc2",
+      "armor": "AQXwbIjllXtejUBd"
     },
     "parameters": {
       "schemaVersion": 1,
@@ -551,7 +551,7 @@
         "schemaVersion": 1,
         "revision": 1,
         "slug": "blademaster-blade-study",
-        "description": "<p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>",
+        "description": "<p>You gain the Blade Form feature. Each point invested in this skill grants a Blademaster weapon skill.</p>",
         "check": {
           "schemaVersion": 1,
           "enabled": false,
@@ -596,7 +596,7 @@
           }
         },
         "level": {
-          "current": 2,
+          "current": 1,
           "max": 5
         },
         "action": {
@@ -604,7 +604,8 @@
           "type": "",
           "points": 1,
           "traits": [],
-          "enabled": false
+          "enabled": false,
+          "speed": ""
         },
         "power": "",
         "usage": {
@@ -716,7 +717,8 @@
           "type": "",
           "points": 1,
           "traits": [],
-          "enabled": false
+          "enabled": false,
+          "speed": ""
         },
         "usage": {
           "schemaVersion": 1,
@@ -786,7 +788,8 @@
           "traits": [
             "closer"
           ],
-          "enabled": true
+          "enabled": true,
+          "speed": ""
         },
         "damage": {
           "schemaVersion": 1,
@@ -816,9 +819,11 @@
         },
         "effects": {
           "schemaVersion": 1,
-          "enabled": false,
-          "selector": "",
-          "entries": [],
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "blademaster-parry"
+          ],
           "duration": {
             "event": "",
             "tracking": ""
@@ -959,7 +964,8 @@
           "enabled": true,
           "type": "action",
           "points": 2,
-          "traits": []
+          "traits": [],
+          "speed": ""
         },
         "trait": ""
       },
@@ -1072,7 +1078,8 @@
           "enabled": true,
           "type": "action",
           "points": 2,
-          "traits": []
+          "traits": [],
+          "speed": ""
         },
         "trait": ""
       },
@@ -1211,20 +1218,22 @@
       "_key": "!actors.items!Gj44J3UjDVB1guZd.DoSC99JjJntmPD0Q"
     },
     {
-      "name": "Outfit",
+      "name": "Martial Garb",
       "type": "armor",
-      "_id": "wdDrP8GR8xh9VzHi",
-      "img": "icons/equipment/chest/shirt-collared-brown.webp",
+      "_id": "AQXwbIjllXtejUBd",
+      "img": "systems/azure-horizon/assets/icons/equipment/armor/robe_white.png",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "equipment-outfit",
-        "description": "<p>A character's default outfit, what they are most comfortable wearing.</p>",
-        "category": "light",
-        "traits": [
-          "comfort"
-        ],
-        "rarity": "common"
+        "slug": "equipment-martial-garb",
+        "description": "",
+        "rarity": "common",
+        "traits": [],
+        "potentials": {
+          "schemaVersion": 1,
+          "entries": []
+        },
+        "weight": "light"
       },
       "effects": [],
       "flags": {},
@@ -1232,10 +1241,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788988287731,
+        "createdTime": 1790442914183,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.equipment.Item.wdDrP8GR8xh9VzHi",
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.AQXwbIjllXtejUBd",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -1245,17 +1254,17 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!Gj44J3UjDVB1guZd.wdDrP8GR8xh9VzHi"
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.AQXwbIjllXtejUBd"
     },
     {
-      "name": "Blade",
+      "name": "Katana",
       "type": "weapon",
-      "_id": "LiYOcX3pWQ1gciRm",
-      "img": "systems/azure-horizon/assets/icons/equipment/weapons/blade.png",
+      "_id": "ARVFp3xXvfHZkXc2",
+      "img": "systems/azure-horizon/assets/icons/equipment/weapons/katana.png",
       "system": {
         "schemaVersion": 1,
         "revision": 1,
-        "slug": "equipment-blade",
+        "slug": "equipment-katana",
         "description": "",
         "attributes": {
           "schemaVersion": 1,
@@ -1276,7 +1285,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "primary": {
-            "amount": "",
+            "amount": "8",
             "type": "slashing"
           },
           "secondary": {
@@ -1287,12 +1296,15 @@
         },
         "range": "melee",
         "actionCost": 2,
-        "traits": [],
+        "rarity": "common",
+        "weight": "light",
         "handedness": "two",
+        "traits": [
+          "keen"
+        ],
         "options": {
           "schemaVersion": 1,
-          "enabled": false,
-          "traits": []
+          "enabled": false
         }
       },
       "effects": [],
@@ -1301,10 +1313,10 @@
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788988763945,
+        "createdTime": 1790443360648,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.equipment.Item.LiYOcX3pWQ1gciRm",
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.ARVFp3xXvfHZkXc2",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -1314,121 +1326,10 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!Gj44J3UjDVB1guZd.LiYOcX3pWQ1gciRm"
+      "_key": "!actors.items!Gj44J3UjDVB1guZd.ARVFp3xXvfHZkXc2"
     }
   ],
-  "effects": [
-    {
-      "name": "KO",
-      "img": "systems/azure-horizon/assets/icons/statuses/ko.png",
-      "statuses": [
-        "ko"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "ko"
-        }
-      },
-      "_id": "E8To9Nm1Fi3Mnkcs",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668019,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!Gj44J3UjDVB1guZd.E8To9Nm1Fi3Mnkcs"
-    },
-    {
-      "name": "Crisis",
-      "img": "systems/azure-horizon/assets/icons/statuses/crisis.png",
-      "statuses": [
-        "crisis"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "crisis"
-        }
-      },
-      "_id": "1la5FsbYBpmPJakA",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668070,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!Gj44J3UjDVB1guZd.1la5FsbYBpmPJakA"
-    }
-  ],
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0

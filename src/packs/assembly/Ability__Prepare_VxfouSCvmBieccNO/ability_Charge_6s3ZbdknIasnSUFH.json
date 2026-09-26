@@ -57,9 +57,11 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "charge"
+      ],
       "duration": {
         "event": "",
         "tracking": ""

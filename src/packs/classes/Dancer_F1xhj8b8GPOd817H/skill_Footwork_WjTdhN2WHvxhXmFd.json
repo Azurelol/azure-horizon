@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "dancer-footwork",
-    "description": "<p>While dancing, you can perform <em>Shift</em> as a free action once per turn.</p>",
+    "description": "<p>While dancing, you can <em>shift</em> one space as a free action once per turn.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

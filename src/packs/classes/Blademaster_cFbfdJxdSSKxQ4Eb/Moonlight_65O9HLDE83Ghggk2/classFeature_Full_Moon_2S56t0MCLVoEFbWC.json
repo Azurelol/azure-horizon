@@ -40,7 +40,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "30",
+      "amount": "20",
       "perTarget": false
     },
     "effects": {
