@@ -3,6 +3,7 @@
 @import "tokens/semantic/colors.css";
 @import "tokens/semantic/text.css";
 @import "tokens/semantic/icons.css";
+@import "tokens/semantic/textures.css";
 @import "tokens/component.css";
 
 @import "chat/chat-message.css";

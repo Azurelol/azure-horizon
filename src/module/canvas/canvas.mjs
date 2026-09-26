@@ -89,7 +89,7 @@ export class Canvas {
   /**
    * @param {AH_ScrollingTextData} data
    */
-  static broadcastScrollingText(data) {
+  static ScrollingText(data) {
     onScrollingText(data);
     sendSocketEvent(AH.sockets.SCROLLING_TEXT, data);
   }

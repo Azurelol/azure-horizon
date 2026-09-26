@@ -6,6 +6,7 @@ import { Sequences } from "./sequences.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 import { Canvas } from "../canvas/_module.mjs";
 
+const { FillGradient, Graphics } = PIXI;
 /**
  * @description Subscribes to the system combat events
  */
@@ -18,7 +19,7 @@ function subscribe() {
   AsyncHooks.on(AH.hooks.PERFORM_ACTION_EVENT, Sequences.animateAction);
   AsyncHooks.on(AH.hooks.APPLY_DAMAGE_EVENT, Sequences.animateDamage);
   Hooks.on(AH.hooks.INITIATIVE, (data) => {
-    Canvas.broadcastScrollingText({
+    Canvas.ScrollingText({
       origin: Canvas.center,
       content: StringUtils.localize("AH.COMBAT.InitiativeRoll", {
         round: data.round,
@@ -26,7 +27,27 @@ function subscribe() {
       options: {
         duration: 3000,
         anchor: Canvas.textAnchorPoints.CENTER,
-        textStyle: { fill: "#ffffff", fontSize: 32, stroke: "#000000", strokeThickness: 5 },
+        textStyle:
+          {
+            fill: new FillGradient({
+              type: "linear",
+              colorStops: [
+                { offset: 0, color: "yellow" },
+                { offset: 1, color: "green" },
+              ],
+            }),
+            fontFamily: "Pixeloid",
+            fontSize: 32,
+            stroke: "#000000",
+            strokeThickness: 5,
+            dropShadow: {
+              color: "#000000",
+              blur: 5,
+              distance: 4,
+              angle: Math.PI / 4,
+              alpha: 0.5,
+            },
+          },
       },
     });
   },

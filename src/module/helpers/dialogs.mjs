@@ -300,10 +300,12 @@ export default class Dialogs {
    * @typedef ItemSelectionData
    * @property {String} title
    * @property {String} message
+   * @property {Object} position
    * @property {ItemSelectionEntry[]} items
    * @property {Object[]} payload Associated data returned instead of the item reference.
    * @property {AHItem[]} compendiumItems If assigned, will be used to compare to the original items.
    * @property {Object[]} initial
+   * @property {String[]} classes
    * @property {Boolean} quick If set, the selection will be confirmed on a single click.
    * @property {{name: string, items: Object[]}[]} groups
    * @property {ItemSelectionColumn[]} columns Additional columns for the dialog.
@@ -374,7 +376,7 @@ export default class Dialogs {
       window: {
         title: data.title,
       },
-      position: {
+      position: data.position ?? {
         width: 600,
       },
       actions: {
@@ -412,7 +414,7 @@ export default class Dialogs {
           return false;
         },
       },
-      classes: data.quick ? DIALOG_CLASSES.concat("--quick") : DIALOG_CLASSES,
+      classes: data.classes ? DIALOG_CLASSES.concat(data.classes) : DIALOG_CLASSES,
       content: await renderTemplate("dialogs/dialog-item-select", context),
       rejectClose: false,
       ok: {

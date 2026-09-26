@@ -21,6 +21,36 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+
+  &.--pixel {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    .window-content {
+      background-image: var(--ah-texture-pixel-map);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      backdrop-filter: none;
+      opacity: 1;
+      .dialog-form {
+        height: 100%;
+        .dialog-content {
+          height: 100%;
+          .ah-dialog-item-grid {
+            height: 100%;
+            color: var(--ah-color-warm-brown-700);
+            font-size: var(--ah-font-size-xl);
+            font-weight: bold;
+          }
+        }
+      }
+
+    }
+    header, footer {
+      display: none;
+    }
+  }
 }
 
 .ah-dialog__table__wrapper {

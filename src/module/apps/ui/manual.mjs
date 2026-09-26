@@ -11,8 +11,12 @@ async function openManual() {
       {
         title: title,
         style: "grid",
+        position: {
+          width: "auto",
+          height: 420,
+        },
         max: 1,
-        classes: "--text",
+        classes: [ "--pixel"],
         quick: true,
         items: Object.values(manual),
         getDescription: async (item) => {

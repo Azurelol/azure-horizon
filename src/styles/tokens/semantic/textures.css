@@ -1,0 +1,11 @@
+
+:root {
+  --ah-texture-pixel-book: url("/systems/azure-horizon/assets/ui/textures/pixel_book.png");
+  --ah-texture-pixel-map: url("/systems/azure-horizon/assets/ui/textures/pixel_map.png");
+
+  .ah-texture-book {
+    background-image: var(--ah-texture-book);
+  }
+
+}
+
