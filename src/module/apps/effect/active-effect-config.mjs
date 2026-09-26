@@ -17,7 +17,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["ah-application"],
+    classes: ["ah-application", "ah-sheet", "ah-effect"],
     actions: {
       addRuleElement: this.#addRuleElement,
       deleteRuleElement: this.#deleteRuleElement,
@@ -35,13 +35,14 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: "templates/sheets/active-effect/header.hbs",
+      template: systemTemplatePath("sheets/effect/active-effect-header"),
     },
     tabs: {
       template: "templates/generic/tab-navigation.hbs",
     },
     details: { template: "templates/sheets/active-effect/details.hbs", scrollable: [""] },
     duration: { template: "templates/sheets/active-effect/duration.hbs" },
+    predicates: { template: systemTemplatePath("sheets/effect/active-effect-predicates") },
     rules: {
       template: systemTemplatePath("sheets/effect/active-effect-rules"),
       templates: ruleTemplates,
@@ -58,13 +59,13 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
   static TABS = {
     sheet: {
       tabs: [
-        { id: "details", icon: "fa-solid fa-book" },
-        { id: "duration", icon: "fa-solid fa-clock" },
-        { id: "rules", label: "AH.RULE.Rule.plural", icon: "fa-solid fa-list", cssClass: "scrollable" },
-        { id: "changes", icon: "fa-solid fa-gears" },
+        { id: "details", label: "AH.SHEET.Tabs.Details", icon: "fa-solid fa-book" },
+        { id: "duration", label: "AH.SHEET.Tabs.Duration", icon: "fa-solid fa-clock" },
+        { id: "predicates", label: "AH.SHEET.Tabs.Predicates", icon: "" },
+        { id: "rules", label: "AH.SHEET.Tabs.Rules", icon: "fa-solid fa-list", cssClass: "scrollable" },
+        { id: "changes", label: "AH.SHEET.Tabs.Changes", icon: "fa-solid fa-gears" },
       ],
       initial: "details",
-      labelPrefix: "EFFECT.TABS",
     },
   };
 

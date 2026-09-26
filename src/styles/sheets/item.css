@@ -17,7 +17,7 @@
     gap: 0.25rem;
   }
 
-  .ah-item-header__name {
+  .ah-item__header__name {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,8 +37,6 @@
     align-items: flex-end;
     gap: 1rem;
   }
-
-
 }
 
 .ah-item__name {

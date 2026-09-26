@@ -119,6 +119,11 @@
       display: none;
     }
     width: 100%;
+    .form-fields {
+      input {
+        font-size: var(--ah-font-size-m);
+      }
+    }
   }
 
   &.--stack {

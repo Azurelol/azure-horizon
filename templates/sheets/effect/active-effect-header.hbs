@@ -1,0 +1,10 @@
+<header class="sheet-header">
+  <div class="ah-effect__header">
+    <div class="ah-effect__header__name">
+      <img src="{{source.img}}" data-action="editImage" data-edit="img" alt="{{localize "EFFECT.FIELDS.img.label"}}">
+      <input name="name" type="text" value="{{source.name}}" placeholder="{{localize "EFFECT.FIELDS.name.label"}}"
+             aria-label="{{localize "EFFECT.FIELDS.name.label"}}">
+      {{formGroup systemFields.slug value=system.slug name='system.slug' localize=true classes='ah-field'}}
+    </div>
+  </div>
+</header>
