@@ -65,13 +65,13 @@
   "alkakrab": {
     "author": "alkakrab",
     "url": "https://alkakrab.itch.io/270bundle",
-    "license": "PAID",
+    "license": "Paid",
     "remark": "Will use to start with!"
   },
   "unTiedGames": {
     "author": "UnTied Games",
     "url": "https://untiedgames.itch.io/",
-    "license": "FREE, PAID",
+    "license": "Free, Paid",
     "remark": "Testing with the free assets, may try the paid packs."
   },
   "dreamCircle": {
@@ -83,5 +83,14 @@
     "author": "ansimuz",
     "url": "https://ansimuz.itch.io/",
     "license": "CC0 1.0"
+  },
+  "Pixel RPG UI Pack": {
+    "license": "Free",
+    "url": "https://immunitys.itch.io/pixel-ui-pack"
+  },
+  "Jingles and Fanfares": {
+    "url": "https://leohpaz.itch.io/rpg-jingles-and-fanfares",
+    "author": "Leohpaz",
+    "license": "Paid"
   }
 }

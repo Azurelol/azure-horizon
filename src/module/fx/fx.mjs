@@ -5,8 +5,9 @@ import { AsyncHooks } from "../helpers/_module.mjs";
 import { Sequences } from "./sequences.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 import { Canvas } from "../canvas/_module.mjs";
+import { Sounds } from "./sounds.mjs";
 
-const { FillGradient, Graphics } = PIXI;
+const { Graphics } = PIXI;
 /**
  * @description Subscribes to the system combat events
  */
@@ -19,6 +20,7 @@ function subscribe() {
   AsyncHooks.on(AH.hooks.PERFORM_ACTION_EVENT, Sequences.animateAction);
   AsyncHooks.on(AH.hooks.APPLY_DAMAGE_EVENT, Sequences.animateDamage);
   Hooks.on(AH.hooks.INITIATIVE, (data) => {
+    Sounds.playInterface(Database.entries.sfx.ui.combat.initiative);
     Canvas.ScrollingText({
       origin: Canvas.center,
       content: StringUtils.localize("AH.COMBAT.InitiativeRoll", {
@@ -29,13 +31,6 @@ function subscribe() {
         anchor: Canvas.textAnchorPoints.CENTER,
         textStyle:
           {
-            fill: new FillGradient({
-              type: "linear",
-              colorStops: [
-                { offset: 0, color: "yellow" },
-                { offset: 1, color: "green" },
-              ],
-            }),
             fontFamily: "Pixeloid",
             fontSize: 32,
             stroke: "#000000",

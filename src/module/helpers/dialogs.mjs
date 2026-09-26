@@ -306,10 +306,10 @@ export default class Dialogs {
    * @property {AHItem[]} compendiumItems If assigned, will be used to compare to the original items.
    * @property {Object[]} initial
    * @property {String[]} classes
-   * @property {Boolean} quick If set, the selection will be confirmed on a single click.
    * @property {{name: string, items: Object[]}[]} groups
    * @property {ItemSelectionColumn[]} columns Additional columns for the dialog.
    * @property {ItemSelectStyle} style
+   * @property {Boolean} showIcon
    * @property {Number} max
    * @property {(item: AHItem) => Promise<string>} getDescription
    * @property {String} okLabel

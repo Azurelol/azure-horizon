@@ -25,10 +25,8 @@ async function openManual() {
       },
     );
     const option = result[0];
-    //const option = await Dialogs.select(title, formOptions);
 
     if (option) {
-      //const entry = manual[option];
       const journal = await fromUuid(option.uuid);
       journal?.sheet.render({ force: true });
     }

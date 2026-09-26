@@ -39,6 +39,16 @@ const entries = {
         sfx("sword_3"),
       ],
     },
+    ui: {
+      combat: {
+        start: [
+          sfx("battle_start"),
+        ],
+        initiative: [
+          sfx("round_start"),
+        ],
+      },
+    },
   },
 };
 

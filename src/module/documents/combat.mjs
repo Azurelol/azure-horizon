@@ -136,7 +136,14 @@ export class AHCombat extends foundry.documents.Combat {
    * @override
    */
   async endCombat() {
-    const end = await super.endCombat();
+    // TODO: Set outcome
+    // Default end combat is just a prompt
+    const end = await foundry.applications.api.DialogV2.confirm({
+      window: { icon: "fa-solid fa-xmark", title: "COMBAT.EndTitle" },
+      content: `<p>${_loc("COMBAT.EndConfirmation")}</p>`,
+      yes: { callback: () => this.delete() },
+      modal: true,
+    });
     if (end) {
       console.debug(`Combat ended for ${this.combatants.length} combatants`);
       await AsyncHooks.callSequential(AH.hooks.COMBAT_EVENT, new CombatEvent("endOfCombat", this.round, this.combatants.contents));

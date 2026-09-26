@@ -163,4 +163,15 @@ export default class ObjectUtils {
   static sortArray(array, property) {
     return [...array].sort((a, b) => (a[property] > b[property] ? 1 : -1));
   }
+
+  /**
+   * @param {* | *[]} value
+   * @returns {*}
+   */
+  static randomArrayElement(value) {
+    return Array.isArray(value)
+      ? value[Math.floor(Math.random() * value.length)]
+      : value;
+  }
+
 }

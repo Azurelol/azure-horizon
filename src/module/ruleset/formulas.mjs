@@ -544,15 +544,17 @@ export default class Formulas {
    */
   static calculateMovement(system) {
     let result = 1;
-    if (system.parent.type === "hero") {
-      const equipment = system.equipment.equipped;
-      const weights = [equipment.armor?.system.weight].filter(Boolean);
-      for (const weight of weights) {
-        if (weight === "light") {
+    forEquipment(system, equipped => {
+      if (equipped.armor) {
+        if (equipped.armor?.system.weight === "light") {
           result += 1;
         }
       }
-    }
+      else {
+        result += 1;
+      }
+
+    });
     return Math.max(MOVEMENT_MIN, result);
   }
 

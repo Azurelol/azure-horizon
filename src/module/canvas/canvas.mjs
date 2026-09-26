@@ -2,6 +2,8 @@ import { receiveSocketEvent, sendSocketEvent } from "../constants.mjs";
 import AH from "../config.mjs";
 import { StringUtils } from "../utils/_module.mjs";
 
+const { Graphics, Texture } = PIXI;
+
 /**
  * Define the valid anchor locations for a Tooltip displayed on a Placeable Object
  * @see {@link foundry.helpers.interaction.TooltipManager}
