@@ -1,4 +1,4 @@
-import { enrichHTML, renderTemplate, systemTemplatePath } from "../../constants.mjs";
+import { enrichHTML, localize, renderTemplate, systemTemplatePath } from "../../constants.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 
@@ -60,7 +60,7 @@ function documentName(options) {
     headerSpan: options.headerSpan,
     cssClass: "ah-table__column__primary",
     preview: true,
-    renderHeader: options.header instanceof Function ? options.header : () => StringUtils.localize(options.header || "AH.COMMON.Name"),
+    renderHeader: options.header instanceof Function ? options.header : () => localize(options.header || "AH.COMMON.Name"),
     renderCell: async(entry) => {
       if (options.getEntry) {
         entry = options.getEntry(entry);

@@ -1,8 +1,11 @@
 import { DataModelRegistry, SubDocumentDataModel } from "../api/_module.mjs";
 import { isActorType, systemID, systemTemplatePath } from "../../constants.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
+import AH from "../../config.mjs";
 
 const fields = foundry.data.fields;
+
+const { SchemaField, StringField, HTMLField, NumberField, BooleanField, EmbeddedDataField } = foundry.data.fields;
 
 /**
  * @description Defines a predicate for an active effect.
@@ -39,11 +42,15 @@ export class EffectPredicateDataModel extends SubDocumentDataModel {
    * @param {AHActor|AHItem} document
    * @returns {boolean}
    */
-  validate(document) {
-    return true;
+  validateEffect(document) {
+    throw new Error("Not implemented");
   }
 }
 
+/**
+ * @property {AH_StatusEffect} effect
+ * @property {Boolean} active Whether the effect needs to be active.
+ */
 export class StatusEffectPredicateDataModel extends EffectPredicateDataModel {
 
   static {
@@ -52,9 +59,10 @@ export class StatusEffectPredicateDataModel extends EffectPredicateDataModel {
 
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      status: new fields.StringField({
+      effect: new StringField({
         initial: "",
       }),
+      active: new BooleanField({ initial: true }),
     });
   }
 
@@ -67,10 +75,20 @@ export class StatusEffectPredicateDataModel extends EffectPredicateDataModel {
     return "AH.EFFECT.PREDICATES.Status";
   }
 
-  validate(document) {
+  validateEffect(document) {
     if (isActorType(document)) {
       /** @type AHActor **/
       const actor = document;
+      const instance = actor.resolveEffect(this.effect);
+
+      // Check whether effect must be active
+      const active = !!instance;
+      if (this.active !== active) {
+        return false;
+      }
+      // TODO: Other conditions on this predicate...
+
+      return true;
     }
     return false;
   }

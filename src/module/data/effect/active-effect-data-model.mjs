@@ -84,8 +84,8 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
   get isSuppressed() {
     const document = this.parent.parent;
     for (const predicate of this.predicates) {
-      if (!predicate.validate(document)) {
-        return false;
+      if (!predicate.validateEffect(document)) {
+        return true;
       }
     }
     return false;

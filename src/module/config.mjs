@@ -761,6 +761,18 @@ AH.targetingRule = {
   multiple: "AH.TARGETING.RULE.Multiple",
 };
 
+/**
+ * @typedef {'true'|'false'} AH_BooleanOption
+ */
+
+/**
+ * @remarks Used in order to represent tri-state booleans using a StringField with a blank option
+ */
+AH.booleanOption = {
+  true: { label: "AH.COMMON.True" },
+  false: { label: "AH.COMMON.False" },
+};
+
 AH.marker = {
 
 };

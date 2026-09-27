@@ -723,6 +723,7 @@
       "Tracker": "Tracker",
       "Style": "Style",
       "Rule": "Rule",
+      "Active": "Active",
       "Level": "Level",
       "Kind": "Kind",
       "Weight": "Weight",
@@ -953,7 +954,9 @@
       "PullUpdate": "Pull Update",
       "Bar": "Bar",
       "Clock": "Clock",
-      "Stack": "Stack"
+      "Stack": "Stack",
+      "True": "True",
+      "False": "False"
     },
     "EQUIPMENT": {
       "Rarity": "Rarity",

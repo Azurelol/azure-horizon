@@ -95,6 +95,7 @@ export default class StringUtils {
    * @param {string} key - The localization key to look up.
    * @param {Object} [data] - Optional interpolation data for formatted strings.
    * @returns {string} The localized string, or an empty string if key is absent.
+   * @deprecated Now replaced by the one in `constants.mjs` due to how ubiquitous it is.
    */
   static localize(key, data) {
     if (!key) return "";

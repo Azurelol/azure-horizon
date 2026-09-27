@@ -71,6 +71,18 @@ export async function renderTemplate(templatePath, context, relative = true) {
 }
 
 /**
+ * Localizes a given key using the game's i18n system.
+ * @param {string} key - The localization key to look up.
+ * @param {Object} [data] - Optional interpolation data for formatted strings.
+ * @returns {string} The localized string, or an empty string if key is absent.
+ */
+export function localize(key, data) {
+  if (!key) return "";
+  if (data) return game.i18n.format(key, data);
+  return typeof key === "string" ? game.i18n.localize(key) : key.toString();
+}
+
+/**
  * Helper function that reduces path length for enrichment calls and improves default handling.
  * Enrich HTML content by replacing or augmenting components of it.
  * @param {string} content                  The original HTML content (as a string).
