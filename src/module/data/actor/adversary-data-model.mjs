@@ -75,6 +75,33 @@ export default class AdversaryDataModel extends CharacterDataModel {
     super.prepareBaseData();
   }
 
+  /** @inheritdoc */
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
+    const updates = {};
+
+    const newRank = ObjectUtils.getProperty(changes, "system.profile.rank");
+    if (newRank !== undefined && newRank !== this.profile.rank) {
+      updates.rank = newRank;
+    }
+
+    const newRole = ObjectUtils.getProperty(changes, "system.profile.role");
+    if (newRole !== undefined && newRole !== this.profile.role) {
+      updates.role = newRole;
+    }
+
+    const newLevel = ObjectUtils.getProperty(changes, "system.level");
+    if (newLevel !== undefined && newLevel !== this.level) {
+      updates.level = newLevel;
+    }
+
+    if (Object.keys(updates).length > 0) {
+      await assemble(this.parent, updates);
+    }
+  }
+
   _prepareResources() {
     super._prepareResources();
     this.resources.pp.defineMaximumProperty(() => Formulas.calculatePressurePoints(this));
@@ -189,28 +216,3 @@ async function assemble(actor, fields) {
     actor.update(updates);
   }
 }
-
-Hooks.on("preUpdateActor", async (document, changed) => {
-  if (!(document.system instanceof AdversaryDataModel)) return;
-
-  const updates = {};
-
-  const newRank = ObjectUtils.getProperty(changed, "system.profile.rank");
-  if (newRank !== undefined && newRank !== document.system.rank) {
-    updates.rank = newRank;
-  }
-
-  const newRole = ObjectUtils.getProperty(changed, "system.profile.role");
-  if (newRole !== undefined && newRole !== document.system.role) {
-    updates.role = newRole;
-  }
-
-  const newLevel = ObjectUtils.getProperty(changed, "system.level");
-  if (newLevel !== undefined && newLevel !== document.system.level) {
-    updates.level = newLevel;
-  }
-
-  if (Object.keys(updates).length > 0) {
-    await assemble(document, updates);
-  }
-});
