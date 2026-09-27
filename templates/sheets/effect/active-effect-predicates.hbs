@@ -1,3 +1,25 @@
 <section class="tab {{tab.cssClass}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+  <fieldset>
+    <legend>
+			<span>
+				<span>
+					<a data-action="addPredicate">
+						<i class="ah-icon--xs fas fa-circle-plus"></i>
+					</a>
+				</span>
+				<span>{{localize "AH.EFFECT.Predicate.plural"}}</span>
+				<span>
+					<a data-action="clearPredicates">
+						<i class="ah-icon--xs fas fa-circle-trash"></i>
+					</a>
+				</span>
+			</span>
+    </legend>
 
+    <div class="flexcol">
+      {{#each system.predicates as |predicate|}}
+        {{> (lookup (lookup (lookup element "schema") "model") "template") path=(concat "system.predicates." element.id) predicate=predicate options=../options expanded=(lookup ../expandedPredicates id)}}
+      {{/each}}
+    </div>
+  </fieldset>
 </section>

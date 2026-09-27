@@ -1,5 +1,6 @@
 import { SubDocumentCollectionField, TrackerDataModel, VersionedDataModel } from "../api/_module.mjs";
 import { RuleElementDataModel } from "./_module.mjs";
+import { EffectPredicateDataModel } from "./effect-predicate-data-model.mjs";
 
 /**
  * @typedef AH_ActiveEffectDuration
@@ -18,7 +19,7 @@ import { RuleElementDataModel } from "./_module.mjs";
 /**
  * A data model used by default effects with properties to control the expiration behavior.
  * @property {TrackerDataModel} tracker
- * @property {EffectPredicatesDataModel} predicates
+ * @property {EffectPredicateDataModel[]} predicates
  * @property {AH_EffectStacking} stacking
  * @property {RuleElementDataModel[]} rules
  */
@@ -52,7 +53,7 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
         duration: new BooleanField(),
         increment: new NumberField({ initial: 1, nullable: false }),
       }),
-      predicates: new EmbeddedDataField(EffectPredicatesDataModel, {}),
+      predicates: new SubDocumentCollectionField(EffectPredicateDataModel, {}),
       rules: new SubDocumentCollectionField(RuleElementDataModel),
     });
   }
@@ -80,26 +81,12 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
    * @remarks Invoked by the active effect document.
    */
   get isSuppressed() {
-    if (!this.predicates.validate(this.parent.actor)) {
-      return false;
+    const document = this.parent.parent;
+    for (const predicate of this.predicates) {
+      if (!predicate.validate(document)) {
+        return false;
+      }
     }
     return false;
   }
-}
-
-class EffectPredicatesDataModel extends VersionedDataModel {
-  static defineSchema() {
-    return Object.assign(super.defineSchema(), {
-
-    });
-  }
-
-  /**
-   * @param {AHActor} actor
-   * @returns {boolean}
-   */
-  validate(actor) {
-    return true;
-  }
-
 }

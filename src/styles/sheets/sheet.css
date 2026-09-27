@@ -113,7 +113,7 @@
 
 .ah-sheet__header {
   padding: 1rem;
-  box-shadow: var(--ah-box-shadow-bevel);
+  box-shadow: var(--ah-box-shadodsw-bevel);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

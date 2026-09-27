@@ -817,6 +817,19 @@
       "Buff": "Buff",
       "Debuff": "Debuff"
     },
+    "EFFECT": {
+      "Status": {
+        "long": "Status",
+        "plural": "Statuses"
+      },
+      "Predicate": {
+        "long": "Predicate",
+        "plural": "Predicates"
+      },
+      "PREDICATES": {
+        "Status": "Status"
+      }
+    },
     "RULE": {
       "Element": {
         "long": "Element",

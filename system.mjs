@@ -156,6 +156,7 @@ function registerDataModels() {
    * @property {RuleElementDataModel} ruleElement
    */
   AH.dataModelRegistries = {
+    effectPredicate: data.ActiveEffect.EffectPredicateRegistry.instance,
     ruleElement: data.ActiveEffect.Registries.RuleElementRegistry.instance,
     ruleAction: data.ActiveEffect.Registries.RuleActionRegistry.instance,
     ruleTrigger: data.ActiveEffect.Registries.RuleTriggerRegistry.instance,

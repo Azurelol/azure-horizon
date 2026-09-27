@@ -14,6 +14,7 @@ import { templates as ruleTemplates } from "../../data/effect/_module.mjs";
 export default class AHActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
 
   #expandedRules = {};
+  #expandedPredicates = {};
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
@@ -98,6 +99,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     }
 
     context.expandedRules = this.#expandedRules;
+    context.expandedPredicates = this.#expandedPredicates;
     return context;
   }
 

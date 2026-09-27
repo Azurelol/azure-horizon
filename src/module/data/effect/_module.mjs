@@ -2,6 +2,7 @@ import * as Actions from "./actions/_module.mjs";
 import * as Triggers from "./triggers/_module.mjs";
 import * as Predicates from "./predicates/_module.mjs";
 
+import { EffectPredicateDataModel, EffectPredicateRegistry } from "./effect-predicate-data-model.mjs";
 import ActiveEffectDataModel from "./active-effect-data-model.mjs";
 
 import { default as RuleElementDataModel } from "./rule-element-data-model.mjs";
@@ -28,6 +29,8 @@ const templates = ruleDataModels.map(field => {
 export
 {
   ActiveEffectDataModel,
+  EffectPredicateDataModel,
+  EffectPredicateRegistry,
   dataModels,
   templates,
   statusEffects,
