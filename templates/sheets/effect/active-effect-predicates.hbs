@@ -18,7 +18,20 @@
 
     <div class="flexcol">
       {{#each system.predicates as |predicate|}}
-        {{> (lookup (lookup (lookup element "schema") "model") "template") path=(concat "system.predicates." element.id) predicate=predicate options=../options expanded=(lookup ../expandedPredicates id)}}
+      <details class="ah-foldout" data-rule-element="{{predicate.id}}"{{#if expanded}} open{{/if}}>
+        <summary>
+          <span class="ah-flex-center">
+            <button class="ah-button --transparent" data-id="{{predicate.id}}" data-action="deletePredicate">
+              <i class="ah-icon --xs fas fa-circle-trash"></i>
+            </button>
+          </span>
+          <span>{{localize predicate.localization}}</span>
+        </summary>
+
+        <div class="ah-foldout__content">
+          {{> (lookup (lookup (lookup predicate "schema") "model") "template") path=(concat "system.predicates." predicate.id) predicate=predicate options=../options expanded=(lookup ../expandedPredicates id)}}
+        </div>
+      </details>
       {{/each}}
     </div>
   </fieldset>

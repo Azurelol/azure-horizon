@@ -1,5 +1,6 @@
 import { DataModelRegistry, SubDocumentDataModel } from "../api/_module.mjs";
 import { isActorType, systemID, systemTemplatePath } from "../../constants.mjs";
+import { StringUtils } from "../../utils/_module.mjs";
 
 const fields = foundry.data.fields;
 

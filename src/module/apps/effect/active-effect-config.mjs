@@ -1,5 +1,6 @@
 import { isActorType, systemTemplatePath } from "../../constants.mjs";
 import {
+  EffectPredicateRegistry,
   RuleElementDataModel,
 } from "../../data/effect/_module.mjs";
 import AH from "../../config.mjs";
@@ -20,6 +21,8 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
   static DEFAULT_OPTIONS = {
     classes: ["ah-application", "ah-sheet", "ah-effect"],
     actions: {
+      addPredicate: this.#addPredicate,
+      deletePredicate: this.#deletePredicate,
       addRuleElement: this.#addRuleElement,
       deleteRuleElement: this.#deleteRuleElement,
       clearRuleElements: this.#clearRuleElements,
@@ -44,7 +47,10 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     details: { template: "templates/sheets/active-effect/details.hbs", scrollable: [""] },
     duration: { template: "templates/sheets/active-effect/duration.hbs" },
     tracker: { template: systemTemplatePath("sheets/effect/active-effect-tracker") },
-    predicates: { template: systemTemplatePath("sheets/effect/active-effect-predicates") },
+    predicates: {
+      template: systemTemplatePath("sheets/effect/active-effect-predicates"),
+      templates: EffectPredicateRegistry.instance.models.map(m => m.template),
+    },
     rules: {
       template: systemTemplatePath("sheets/effect/active-effect-rules"),
       templates: ruleTemplates,
@@ -323,6 +329,55 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     });
     if (confirm) {
       await re.removeRulePredicate(predicateId);
+    }
+  }
+
+  /*--------------------------------------*/
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #addPredicate(event, target) {
+    const types = AH.dataModelRegistries.effectPredicate.localizedEntries;
+    const options = FoundryUtils.getFormSelectOptions(types);
+    const type = await Dialogs.select(
+      StringUtils.localize("AH.COMMON.Add", {
+        element: StringUtils.localize("AH.EFFECT.Predicate.long"),
+      }),
+      options,
+    );
+
+    if (type) {
+      //const model = AH.dataModelRegistries.effectPredicates.types[type];
+      const data = {
+        type: type,
+      };
+      await SubDocumentCollectionField.addDocumentModel(this.document, this.document.system.predicates, data);
+      console.debug(`Added rule element with trigger ${type}`);
+    }
+  }
+
+  /**
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise<void>}
+   */
+  static async #deletePredicate(event, target) {
+    const { id } = target.dataset;
+    console.debug(`Deleting effect predicate ${id}`);
+    /** @type EffectPredicateDataModel **/
+    const predicate = this.document.system.predicates.get(id);
+    if (predicate) {
+      const confirm = await Dialogs.confirm(
+        {
+          title: "AH.COMMON.Remove",
+          message: StringUtils.localize("AH.DIALOG.RemoveObject", { label: predicate.localization }),
+        });
+      if (confirm) {
+        await predicate.delete();
+      }
     }
   }
 

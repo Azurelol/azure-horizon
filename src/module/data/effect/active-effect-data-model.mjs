@@ -32,6 +32,7 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
     return {
       embedded: {
         ruleElement: "system.rules",
+        effectPredicate: "system.predicates",
       },
     };
   }
