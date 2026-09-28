@@ -31,6 +31,7 @@
     #1a2856 40%,
     #0f1a3d 100%
   );
+  --ah-surface-fill-gradient: linear-gradient(135deg, var(--ah-primitive-color-navy-900), var(--ah-primitive-color-burgundy-dark));
 
   --ah-surface-entry: #CACACA;
   --ah-surface-entry-gradient: linear-gradient(

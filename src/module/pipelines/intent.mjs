@@ -452,6 +452,9 @@ function generateIntents(adversary, adversaries, heroes, history) {
       };
       targeted = true;
     }
+    else {
+      action.secondary = null;
+    }
 
     if (targeted) {
       action.target = selectTarget(heroes, targetHistory);

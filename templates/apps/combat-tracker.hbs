@@ -71,7 +71,7 @@
             </div>
             {{/if}}
           {{#if intent.target}}
-            <img data-tooltip="{{intent.target.name}}" class="intent-target" src="{{ intent.target.img }}" alt="{{ intent.target.name }}" loading="lazy">
+            {{ahRing img=intent.target.img tooltip=intent.target.name name=intent.target.name}}
           {{/if}}
         {{!-- Roll Initiative --}}
         {{else if isOwner}}

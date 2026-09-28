@@ -162,6 +162,7 @@ export class AHToken extends foundry.canvas.placeables.Token {
   #badge = null;
   #targetImage = null;
   #targetUuid = null;
+  #intentIcon = null;
 
   async onCombatChange() {
     const uuid = this.combatant?.intent?.target?.uuid ?? null;
@@ -176,6 +177,7 @@ export class AHToken extends foundry.canvas.placeables.Token {
     if (this.#targetUuid !== uuid || this.destroyed) return;
     if (!tex) return this.#clearTargetImage();
 
+    this.#intentIcon = this.combatant.intent?.primary.icon;
     this.#ensureBadge();
     this.#targetImage.texture = tex;
     this.#layoutTargetImage();

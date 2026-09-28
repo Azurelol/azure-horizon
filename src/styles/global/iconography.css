@@ -166,3 +166,52 @@ a, button {
 .ah-icon__radio-group input:checked + label {
   filter: none;
 }
+
+
+.ah-ring {
+  --ah-ring-size: 3rem;
+  --ah-ring-width: 3px;
+  --ah-ring-gap: 1px;
+  --ah-ring-fill: var(--ah-surface-fill-gradient);
+  --ah-ring-background: rgb(0 0 0 / 0.35);
+
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: var(--ah-ring-size);
+  height: var(--ah-ring-size);
+  flex: none;
+  border-radius: 50%;
+  isolation: isolate;
+}
+
+.ah-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--ah-ring-fill);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--ah-ring-width) - 0.5px), #000 calc(100% - var(--ah-ring-width)));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ah-ring__img,
+.ah-ring__icon {
+  width: calc(100% - 2 * (var(--ah-ring-width) + var(--ah-ring-gap)));
+  height: calc(100% - 2 * (var(--ah-ring-width) + var(--ah-ring-gap)));
+  border-radius: 50%;
+  background: var(--ah-ring-background);
+}
+
+.ah-ring__img {
+  object-fit: cover;
+  border: none; /* Foundry's default img border */
+}
+
+.ah-ring__icon {
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--ah-ring-size) * 0.45);
+  line-height: 1;
+}

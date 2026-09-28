@@ -27,6 +27,7 @@ const COMPONENT_TEMPLATES = Object.freeze({
   tooltip: systemTemplatePath("components/tooltip"),
   fieldset: systemTemplatePath("components/fieldset"),
   optionalFieldset: systemTemplatePath("components/fieldset-optional-v2"),
+  ring: systemTemplatePath("components/ring"),
 
   tracker_clock: systemTemplatePath("components/tracker/tracker-clock"),
   tracker_bar: systemTemplatePath("components/tracker/tracker-bar"),
@@ -346,6 +347,11 @@ export default Object.freeze({
     });
     Handlebars.registerHelper("ahAutoComplete", autoComplete);
     Handlebars.registerHelper("ahBadge", badge);
+    Handlebars.registerHelper("ahRing", function (options) {
+      return getTemplateString(COMPONENT_TEMPLATES.ring, {
+        ...options.hash,
+      });
+    });
     Handlebars.registerHelper("ahButton", button);
     Handlebars.registerHelper("ahSelector", selector);
     Handlebars.registerHelper("ahTraitsFieldset", traitsFieldset);

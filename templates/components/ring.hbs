@@ -1,0 +1,7 @@
+<div class="ah-ring" {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+  {{#if img}}
+    <img class="ah-ring__img" src="{{img}}" alt="{{name}}" loading="lazy">
+  {{else if icon}}
+    <i class="ah-ring__icon ah-icon {{icon}}"></i>
+  {{/if}}
+</div>
