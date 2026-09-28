@@ -7,7 +7,6 @@ import { BaseEntityDataModel } from "./entity-data-model.mjs";
 
 /**
  * @property {ActorResourceDataModel} hp
- * @property {ActorResourceDataModel} mp
  */
 export class CharacterResourcesDataModel extends VersionedDataModel {
   static defineSchema() {
@@ -16,7 +15,6 @@ export class CharacterResourcesDataModel extends VersionedDataModel {
       hp: new EmbeddedDataField(ActorResourceDataModel, {
         trackedAttribute: true,
       }),
-      mp: new EmbeddedDataField(ActorResourceDataModel, {}),
     });
   }
 }
@@ -56,7 +54,6 @@ export default class CharacterDataModel extends BaseEntityDataModel {
    */
   _prepareResources() {
     super._prepareResources();
-    this.resources.mp.defineMaximumProperty(() => Formulas.calculateMindPoints(this));
   }
 
   /**

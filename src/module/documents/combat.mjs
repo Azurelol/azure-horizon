@@ -181,6 +181,13 @@ export class AHCombat extends foundry.documents.Combat {
   }
 
   /**
+   * Refresh all combatant tokeons.
+   */
+  refreshTokens() {
+    this.combatants.forEach(c => c.token?.object?.renderFlags.set({ refreshState: true }));
+  }
+
+  /**
    * A workflow that occurs at the start of each Combat Turn.
    * This workflow occurs after the Combat document update.
    * This can be overridden to implement system-specific combat tracking behaviors.

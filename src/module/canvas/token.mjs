@@ -72,6 +72,8 @@ const USE_REGIONS = true;
 
 /**
  * A Placeable Object subclass adding system-specific behavior and registered in CONFIG.Token.objectClass.
+ * @property {AHActor} actor
+ * @property {AHCombatant} combatant
  */
 export class AHToken extends foundry.canvas.placeables.Token {
 
@@ -138,6 +140,99 @@ export class AHToken extends foundry.canvas.placeables.Token {
   async _draw(options) {
     await super._draw(options);
     this.#effectMarkers = {};
+    await this.onCombatChange();
+  }
+
+  _refreshState() {
+    super._refreshState();
+    this.#layoutTargetImage();
+  }
+
+  static #BADGE = {
+    size: 0.4, // diameter as a fraction of token width
+    gap: 4, // px between badge and token top edge
+    bg: 0x1a1a2e, // background color
+    bgAlpha: 1,
+    ring: 0xffffff,
+    ringWidth: 2,
+    focusY: 0.35, // 0 = top of the portrait, 0.5 = center; faces sit high in portraits
+  };
+
+  #badge = null;
+  #targetImage = null;
+  #targetUuid = null;
+
+  async onCombatChange() {
+    const uuid = this.combatant?.intent?.target?.uuid ?? null;
+    if (uuid === this.#targetUuid) return;
+    this.#targetUuid = uuid;
+
+    if (!uuid) return this.#clearTargetImage();
+
+    const targetActor = await fromUuid(uuid);
+    const tex = targetActor && await foundry.canvas.loadTexture(targetActor.img);
+
+    if (this.#targetUuid !== uuid || this.destroyed) return;
+    if (!tex) return this.#clearTargetImage();
+
+    this.#ensureBadge();
+    this.#targetImage.texture = tex;
+    this.#layoutTargetImage();
+  }
+
+  #ensureBadge() {
+    if (this.#badge) return;
+    const badge = this.#badge = this.addChild(new PIXI.Container());
+
+    const bg = new PIXI.Graphics();
+    const sprite = this.#targetImage = new PIXI.Sprite();
+    const mask = new PIXI.Graphics();
+    const ring = new PIXI.Graphics();
+
+    // Add order = draw order: background, portrait, ring; the mask only clips
+    badge.addChild(bg, sprite, ring, mask);
+    sprite.mask = mask;
+    badge.bg = bg; badge.ring = ring; badge.maskShape = mask;
+  }
+
+  #layoutTargetImage() {
+    const badge = this.#badge;
+    const sprite = this.#targetImage;
+    if (!badge || !sprite?.texture?.valid) return;
+
+    const badgeData = AHToken.#BADGE;
+    const r = Math.round(this.w * badgeData.size / 2);
+
+    // Badge origin is the circle's center, sitting just above the token
+    badge.position.set(this.w / 2, -badgeData.gap - r);
+
+    badge.bg.clear()
+      .beginFill(badgeData.bg, badgeData.bgAlpha)
+      .drawCircle(0, 0, r)
+      .endFill();
+
+    badge.maskShape.clear()
+      .beginFill(0xffffff)
+      .drawCircle(0, 0, r)
+      .endFill();
+
+    // Cover fit: the shorter side fills the diameter, overflow is clipped by the mask
+    const { width: tw, height: th } = sprite.texture;
+    const k = (2 * r) / Math.min(tw, th);
+    sprite.scale.set(k);
+    sprite.anchor.set(0.5, badgeData.focusY);
+    sprite.position.set(0, (badgeData.focusY - 0.5) * 2 * r); // keeps the focus point centered in the circle
+
+    // Ring drawn inside the edge so it isn't clipped or spilling outward
+    badge.ring.clear()
+      .lineStyle(badgeData.ringWidth, badgeData.ring)
+      .drawCircle(0, 0, r - badgeData.ringWidth / 2);
+  }
+
+  #clearTargetImage() {
+    if (this.#targetImage) this.#targetImage.mask = null;
+    this.#badge?.destroy({ children: true }); // textures stay in the cache
+    this.#badge = this.#targetImage = null;
   }
 
   /**
@@ -281,3 +376,10 @@ export class AHToken extends foundry.canvas.placeables.Token {
     this.translateImage(bar, size, "bottomLeft", HP_BAR_HEIGHT + MARGIN);
   }
 }
+
+const sync = (combatant) => combatant.token?.object?.onCombatChange();
+
+Hooks.on("createCombatant", sync);
+Hooks.on("updateCombatant", sync);
+Hooks.on("deleteCombatant", sync);
+Hooks.on("deleteCombat", (combat) => combat.combatants.forEach(sync));

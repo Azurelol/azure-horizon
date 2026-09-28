@@ -231,11 +231,13 @@ export default class ActionHandler {
     Actions.perform(this.actor, null, (config, actor, item) => {
       config.setLabel("AH.ACTION.Recover");
       config.setResource("hp", recovery.hp);
-      config.addExpense({
-        source: "skill",
-        resource: "mp",
-        amount: recovery.mp,
-      });
+      if (recovery.mp) {
+        config.addExpense({
+          source: "skill",
+          resource: "mp",
+          amount: recovery.mp,
+        });
+      }
       if (this.actor.type === "hero") {
         config.addTraits("stress"); // setResource("tp", recovery.tp);
       }

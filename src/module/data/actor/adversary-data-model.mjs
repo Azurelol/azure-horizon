@@ -14,14 +14,11 @@ const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } =
 
 /**
  * @property {ActorResourceDataModel} hp
- * @property {ActorResourceDataModel} mp
  * @property {ActorResourceDataModel} pp
  */
 class AdversaryResourcesDataModel extends CharacterResourcesDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      ip: new EmbeddedDataField(ActorResourceDataModel, {}),
-      tp: new EmbeddedDataField(ActorResourceDataModel, {}),
       pp: new EmbeddedDataField(ActorResourceDataModel, {}),
     });
   }

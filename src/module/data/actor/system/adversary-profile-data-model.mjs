@@ -3,7 +3,7 @@ import AH, { getFormSelectOptions } from "../../../config.mjs";
 import { TraitsField } from "../../item/fields/_module.mjs";
 import { ModifierDataField } from "../../api/modifiers.mjs";
 
-const { SchemaField, StringField, BooleanField, NumberField, HTMLField, EmbeddedDataField } = foundry.data.fields;
+const { SchemaField, StringField, BooleanField, NumberField, HTMLField, EmbeddedDataField, ForeignDocumentField } = foundry.data.fields;
 
 /**
  * All modifiers that adversaries have configured during their assembly.
@@ -23,6 +23,7 @@ class AdversaryModifiersDataModel extends VersionedDataModel {
  * @property {Boolean} villain If the adversary is a villain.
  * @property {Number} turns For champion-level adversaries, how many turns should they get.
  * @property {String} summary
+ * @property {String} summary
  * @property {String[]} pressure Traits that add pressure to this adversary.
  */
 export default class AdversaryProfileDataModel extends VersionedDataModel {
@@ -36,6 +37,11 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
       role: new StringField({ initial: "custom", choices: Object.keys(AH.role) }),
       villain: new BooleanField(),
       rank: new StringField({ initial: "standard", choices: Object.keys(AH.rank) }),
+      // eslint-disable-next-line no-undef
+      minion: new ForeignDocumentField(Actor, {
+        nullable: true,
+        idOnly: true,
+      }),
       turns: new NumberField({ initial: 1, min: 0, max: 6 }),
       pressure: new TraitsField({
         label: "AH.DAMAGE.Pressure",

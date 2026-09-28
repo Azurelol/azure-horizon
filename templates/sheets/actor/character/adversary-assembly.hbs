@@ -3,19 +3,29 @@
   <div class="ah-flex-col ah-gap-s">
 
     <div class="ah-field-grid">
-      {{ahStringField path="system.profile.rank" value=system.profile.rank label='AH.FIELD.Rank' options=(ahFormOptions 'rank')}}
+      {{ahStringField path="system.profile.rank" value=system.profile.rank label='AH.FIELD.Rank'
+                      options=(ahFormOptions 'rank')}}
       {{#if (eq system.profile.rank 'champion')}}
         {{ahStringField path="system.profile.turns" value=system.profile.turns label='AH.FIELD.Turns' type='Number'}}
       {{/if}}
-      {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role' options=(ahFormOptions 'role')}}
-        {{#if system.ranked}}
-          {{ahTraitsField schema=systemFields.profile.fields.pressure path='system.profile.pressure' label="AH.DAMAGE.Pressure" value=system.profile.pressure options=(ahFormOptions 'traits.pressure')}}
-        {{/if}}
+      {{ahStringField path="system.profile.role" value=system.profile.role label='AH.FIELD.Role'
+                      options=(ahFormOptions 'role')}}
+      {{#if system.ranked}}
+        {{ahTraitsField schema=systemFields.profile.fields.pressure path='system.profile.pressure'
+                        label="AH.DAMAGE.Pressure" value=system.profile.pressure
+                        options=(ahFormOptions 'traits.pressure')}}
+      {{/if}}
+
+      {{#if (eq system.profile.role 'leader')}}
+
+      {{/if}}
     </div>
 
     <div class="ah-grid-2">
       <fieldset>
-        <legend>{{localize 'AH.ADVERSARY.Attack.plural'}} [{{assembly.attacks.current}}/{{assembly.attacks.available}}]</legend>
+        <legend>{{localize 'AH.ADVERSARY.Attack.plural'}} [{{assembly.attacks.current}}/{{assembly.attacks.available}}
+          ]
+        </legend>
         <ul class="ah-list">
           {{#each assembly.attacks.entries as |item|}}
             <li>{{ahDocumentAnchor item}} {{item.name}}</li>
@@ -24,10 +34,13 @@
       </fieldset>
 
       <fieldset>
-        <legend>{{localize 'AH.ADVERSARY.Ability.plural'}} [{{assembly.abilities.current}}/{{assembly.abilities.available}}]</legend>
+        <legend>{{localize 'AH.ADVERSARY.Ability.plural'}} [{{assembly.abilities.current}}
+          /{{assembly.abilities.available}}]
+        </legend>
         <ul class="ah-list">
           {{#each assembly.abilities.entries as |item|}}
-            <li>{{ahDocumentAnchor item}} {{item.name}} {{#if item.system.intent}}[{{ahCapitalize item.system.intent}}]{{/if}} </li>
+            <li>{{ahDocumentAnchor item}} {{item.name}} {{#if item.system.intent}}
+              [{{ahCapitalize item.system.intent}}]{{/if}} </li>
           {{/each}}
         </ul>
       </fieldset>
@@ -58,7 +71,10 @@
     </fieldset>
 
     <fieldset>
-      <legend>{{localize 'AH.CHARACTER.Affinity.plural'}} [{{assembly.affinities.current}}{{#if assembly.affinities.pressureTriggers}}+{{assembly.affinities.pressureTriggers.length}}{{/if}}/{{assembly.affinities.available}}]</legend>
+      <legend>{{localize 'AH.CHARACTER.Affinity.plural'}} [{{assembly.affinities.current}}{{#if
+        assembly.affinities.pressureTriggers}}
+        +{{assembly.affinities.pressureTriggers.length}}{{/if}}/{{assembly.affinities.available}}]
+      </legend>
       <table class="ah-table">
         <thead>
         <tr>
@@ -77,11 +93,13 @@
               </span>
             </td>
             <td>
-              {{ahStringField path=(ahConcat 'system.affinities.' key '.preset') value=aff.preset options=(ahFormOptions 'affinities' format='short') blank=true }}
+              {{ahStringField path=(ahConcat 'system.affinities.' key '.preset') value=aff.preset
+                              options=(ahFormOptions 'affinities' format='short') blank=true }}
             </td>
             <td>
               {{#unless aff.preset}}
-                {{ahStringField path=(ahConcat 'system.affinities.' key '.type') value=aff.preset options=(ahFormOptions 'modifier.type' format='long') }}
+                {{ahStringField path=(ahConcat 'system.affinities.' key '.type') value=aff.preset
+                                options=(ahFormOptions 'modifier.type' format='long') }}
               {{/unless}}
             </td>
             <td>
@@ -94,7 +112,6 @@
         </tbody>
       </table>
     </fieldset>
-
 
 
   </div>

@@ -549,6 +549,7 @@ function onRoundChange(combat, updateData, updateOptions) {
   if (updateData.round !== 1) {
     process(combat, updateData.round);
   }
+  combat.refreshTokens();
 }
 
 /**

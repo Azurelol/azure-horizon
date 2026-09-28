@@ -435,20 +435,20 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
   #calculateRest(type) {
     let hp, mp, tp, ip;
 
-    const mhp = this.system.resources.hp?.max;
-    const mmp = this.system.resources.mp?.max;
-    const mtp = this.system.resources.tp?.max;
-    const mip = this.system.resources.ip?.max;
+    const maxHP = this.system.resources.hp?.max;
+    const maxMP = this.system.resources.mp?.max;
+    const maxTP = this.system.resources.tp?.max;
+    const maxIP = this.system.resources.ip?.max;
     let thp = 0; // Always gets reset
 
     switch (type) {
       case "resupply":
-        ip = mip;
+        ip = maxIP;
         break;
 
       case "long":
-        hp = mhp;
-        mp = mmp;
+        hp = maxHP;
+        mp = maxMP;
         if (this.type === "hero") {
           tp = 0;
         }
@@ -456,10 +456,12 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
 
       case "short":
         hp = this.system.resources.hp.value;
-        hp = Math.min(hp + (mhp / 2), mhp);
+        hp = Math.min(hp + (maxHP / 2), maxHP);
 
-        mp = this.system.resources.mp.value;
-        mp = Math.min(mp + (mmp / 2), mmp);
+        if (maxMP) {
+          mp = this.system.resources.mp.value;
+          mp = Math.min(mp + (maxMP / 2), maxMP);
+        }
 
         if (this.type === "hero") {
           tp = this.system.resources.tp.value;

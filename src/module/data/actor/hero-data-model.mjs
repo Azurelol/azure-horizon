@@ -50,6 +50,7 @@ class HeroParametersDataModel extends CharacterParametersDataModel {
 class HeroResourcesDataModel extends CharacterResourcesDataModel {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
+      mp: new EmbeddedDataField(ActorResourceDataModel, {}),
       ip: new EmbeddedDataField(ActorResourceDataModel, {}),
       tp: new EmbeddedDataField(ActorResourceDataModel, {}),
     });
@@ -82,6 +83,7 @@ export default class HeroDataModel extends CharacterDataModel {
 
   _prepareResources() {
     super._prepareResources();
+    this.resources.mp.defineMaximumProperty(() => Formulas.calculateMindPoints(this));
     this.resources.ip.defineMaximumProperty(() => Formulas.calculateInventoryPoints(this));
     this.resources.tp.defineMaximumProperty(() => Formulas.calculateTensionPoints(this));
   }

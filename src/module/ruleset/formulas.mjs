@@ -453,9 +453,7 @@ export default class Formulas {
    */
   static calculateRecovery(system) {
     const maxHP = system.resources.hp.max;
-    const maxMP = system.resources.mp.max;
 
-    let mpFactor = RECOVERY_MP_SPENT_BASE;
     let tpAdded = RECOVERY_TP_ADDED_BASE;
 
     let base = RECOVERY_HP_BASE;
@@ -478,7 +476,11 @@ export default class Formulas {
     bonus += (maxHP * RECOVERY_HP_GAINED_BASE);
 
     const hp = base + bonus + system.proficiency;
-    let mp = this.round(maxMP * mpFactor);
+    const maxMP = system.resources.mp?.max;
+    let mp;
+    if (maxMP) {
+      mp = this.round(maxMP * RECOVERY_MP_SPENT_BASE);
+    }
     let tp = tpAdded;
 
     return {
