@@ -148,13 +148,13 @@ export class AHToken extends foundry.canvas.placeables.Token {
     this.#layoutTargetImage();
   }
 
-  static #BADGE = {
-    size: 0.4, // diameter as a fraction of token width
+  static #intentBadge = {
+    size: 0.15, // diameter as a fraction of token width
     gap: 4, // px between badge and token top edge
     bg: 0x1a1a2e, // background color
     bgAlpha: 1,
     ring: 0xffffff,
-    ringWidth: 2,
+    ringWidth: 0.5,
     focusY: 0.35, // 0 = top of the portrait, 0.5 = center; faces sit high in portraits
   };
 
@@ -200,7 +200,7 @@ export class AHToken extends foundry.canvas.placeables.Token {
     const sprite = this.#targetImage;
     if (!badge || !sprite?.texture?.valid) return;
 
-    const badgeData = AHToken.#BADGE;
+    const badgeData = AHToken.#intentBadge;
     const r = Math.round(this.w * badgeData.size / 2);
 
     // Badge origin is the circle's center, sitting just above the token
