@@ -360,8 +360,29 @@ const STATUS_EFFECTS = Object.freeze({
     .stack(true, true)
     .hideIcon()
     .build(),
+
   // TARGETING
-  mark: new StatusDataBuilder("mark", "AH.STATUS.Mark").build(),
+  mark: new StatusDataBuilder("mark", "AH.STATUS.Mark")
+    .hideIcon()
+    .build(),
+  cast: new StatusDataBuilder("cast", "AH.STATUS.Cast")
+    .changes([
+      {
+        key: "system.parameters.init.bonus",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "-10",
+      },
+    ])
+    .build(),
+  charge: new StatusDataBuilder("charge", "AH.STATUS.Charge")
+    .changes([
+      {
+        key: "system.parameters.init.bonus",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "-5",
+      },
+    ])
+    .build(),
 
 });
 

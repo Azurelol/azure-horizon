@@ -8,7 +8,7 @@ export default class ParameterDataModel extends VersionedDataModel {
   static defineSchema() {
     const { NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      bonus: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
+      bonus: new NumberField({ initial: 0, integer: true, nullable: false }),
     });
   }
 
