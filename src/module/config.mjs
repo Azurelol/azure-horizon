@@ -257,6 +257,15 @@ AH.checkTypes = {
 };
 
 /**
+ * @typedef {'opposed'|'defense'} AH_ActionCheckVariant
+ */
+
+AH.actionCheckVariant = {
+  opposed: "AH.CHECK.Opposed",
+  defense: "AH.CHECK.Defense",
+};
+
+/**
  * @desc The set of ability scores used for characters in the system.
  * @typedef {"hp"|"mp"|"tp"|"ip"|"thp"} AH_Resource
  */
