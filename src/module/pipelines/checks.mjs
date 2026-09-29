@@ -335,6 +335,8 @@ async function renderCheck(result, actor, item, flags = {}) {
           outcome: Formulas.calculateOutcome(result, config.getDifficulty()),
         },
       });
+
+    case "opposed":
       break;
 
     case "defense": {

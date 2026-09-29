@@ -62,7 +62,7 @@ import { CheckPrompt } from "../helpers/check-prompt.mjs";
  */
 
 /**
- * @typedef DefenseCheckSourceData
+ * @typedef {DOMStringMap} DefenseCheckSourceData
  * @property id The id of the source action.
  * @property uuid The actor whose defense is being prompted.
  * @property actor The uuid of the attacker.
@@ -89,8 +89,32 @@ function getDefenseCheckAction(config, actor, item) {
   defend.withFields({
     sourceInfo: config.sourceInfo,
   });
+  defend.withLabel("AH.CHAT.DefendCheck");
+  defend.withSelected();
   defend.setFlag(AH.flags.ChatMessage.DefenseCheck);
   return defend;
+}
+
+/**
+ * @param {ActionConfig} config
+ * @param {AHActor} actor
+ * @param {AHItem} item
+ * @returns {ChatAction}
+ */
+function getOpposedCheckAction(config, actor, item) {
+  const opposed = new ChatAction("opposedCheck", AH.icons.defenseCheck, "AH.CHECK.Opposed");
+  opposed.withDataset({
+    id: config.check.id,
+    actor: actor.uuid,
+    item: item.id,
+    difficulty: config.check.total,
+    defense: config.getTargetedDefense(),
+  });
+  opposed.withFields({
+    sourceInfo: config.sourceInfo,
+  });
+  opposed.setFlag(AH.flags.ChatMessage.DefenseCheck);
+  return opposed;
 }
 
 /**
@@ -111,22 +135,30 @@ async function addSections(builderData, config, actor, item) {
   // TODO: Should it be here or?
   // TARGETS
   const targets = config.getTargets();
-  const isTargeted = targets.length > 0;
-  const selfTargeted = config.getTargeting() === "self";
-  if (isTargeted && !selfTargeted) {
-    if (config.isDefenseCheck) {
-      const defendAction = getDefenseCheckAction(config, actor, item);
-      builderData.actions.push(defendAction);
-      ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
-    }
-    else {
-      // Add potency actions (will match targets by result)
-      if (config.potencies) {
-        builderData.actions.push(...config.potencies.reduced.components.flatMap(c => c.actions));
-        builderData.actions.push(...config.potencies.standard.components.flatMap(c => c.actions));
-        builderData.actions.push(...config.potencies.powerful.components.flatMap(c => c.actions));
+  const isTargeted = targets.length > 0 || config.getTargeting() !== "self";
+  if (isTargeted) {
+    switch (config.checkVariant) {
+      case "opposed":
+        builderData.actions.push(getOpposedCheckAction(config, actor, item));
+        break;
+      case "defense": {
+        const defendAction = getDefenseCheckAction(config, actor, item);
+        builderData.actions.push(defendAction);
+        ChatMessageSections.targetsDefend(builderData.sections, targets, [defendAction]);
       }
-      ChatMessageSections.targets(builderData.sections, config.getTargetedDefense(), targets, builderData.actions);
+        break;
+
+      default: {
+        // Add potency actions (will match targets by result)
+        if (config.potencies) {
+          builderData.actions.push(...config.potencies.reduced.components.flatMap(c => c.actions));
+          builderData.actions.push(...config.potencies.standard.components.flatMap(c => c.actions));
+          builderData.actions.push(...config.potencies.powerful.components.flatMap(c => c.actions));
+        }
+        ChatMessageSections.targets(builderData.sections, config.getTargetedDefense(), targets, builderData.actions);
+      }
+        break;
+
     }
   }
 
@@ -294,11 +326,12 @@ function onRenderChatMessage(message, html) {
 
         const fields = StringUtils.fromBase64(dataset.fields);
         const sourceInfo = SourceInfo.fromObject(fields.sourceInfo);
-        const actor = fromUuidSync(dataset.uuid);
-        if (!actor) {
+        const targets = await ChatAction.getTargetsFromAction(dataset);
+        if (!targets) {
           return;
         }
 
+        const actor = targets[0];
         await CheckPrompt.defenseCheck(actor, {
           initialConfig: {
             ...dataset,

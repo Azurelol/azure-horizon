@@ -74,6 +74,7 @@ export default class FeatureDataModel extends ItemDataModel {
    */
   async _initializeCheck(config) {
     config.setTargetedDefense(this.check.defense);
+    config.setCheckVariant(this.check.variant);
   }
 
   /**

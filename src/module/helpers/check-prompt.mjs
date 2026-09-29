@@ -405,8 +405,6 @@ async function defenseCheck(actor, options = {}) {
         winner,
         traits: [],
       });
-      ui.notifications.info(`Now updating potency result on message '${options.initialConfig.id}' for ${actor.uuid} to: ${potency}`);
-
     },
   );
 }

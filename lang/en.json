@@ -1139,6 +1139,7 @@
         "ApplyDamageTooltip": "Apply damage to selected tokens.",
         "ApplyEffect": "Apply {effect}"
       },
+      "DefendCheck": "Defend Check",
       "RollCheck": "Roll Check [Shift-Click to Configure]",
       "ApplyDamage": "<strong>{actor}</strong> was dealt damage and lost <strong>{amount} {resource}</strong> from <strong>{from}</strong>.",
       "DamagePressure": "It was also pressured by <strong>{reason}</strong>.",

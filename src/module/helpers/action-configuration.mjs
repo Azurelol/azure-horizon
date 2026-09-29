@@ -11,6 +11,7 @@ const ACTOR = "actor";
 const ITEM = "item";
 const TARGETS = "targets";
 const TARGETED_DEFENSE = "targetedDefense";
+const CHECK_VARIANT = "checkVariant";
 const DEFENSE_CHECK = "defenseCheck";
 const DEFENSE = "defense";
 const DIFFICULTY = "difficulty";
@@ -346,6 +347,13 @@ export class ActionInspector {
    */
   get power() {
     return this.data[POWER];
+  }
+
+  /**
+   * @returns {AH_ActionCheckVariant}
+   */
+  get checkVariant() {
+    return this.data[CHECK_VARIANT] ?? "";
   }
 }
 
@@ -788,6 +796,15 @@ export class ActionConfig extends ActionInspector {
    */
   setKeyboardModifiers(modifiers) {
     this.data[KEYBOARD_MODIFIERS] = modifiers;
+    return this;
+  }
+
+  /**
+   * @param {AH_ActionCheckVariant} variant
+   * @returns {ActionConfig}
+   */
+  setCheckVariant(variant) {
+    this.data[CHECK_VARIANT] = variant;
     return this;
   }
 }

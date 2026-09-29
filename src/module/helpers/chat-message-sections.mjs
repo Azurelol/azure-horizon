@@ -52,6 +52,7 @@ export const ChatMessageSectionTemplate = Object.freeze({
   defenseCheck: systemTemplatePath("chat/chat-section-check-defense"),
   targets: systemTemplatePath("chat/chat-section-targets"),
   targetsDefend: systemTemplatePath("chat/chat-section-targets-defend"),
+  opposedCheck: systemTemplatePath("chat/chat-section-check-opposed"),
   damage: systemTemplatePath("chat/chat-section-damage"),
   applyDamage: systemTemplatePath("chat/chat-section-apply-damage"),
   updateResource: systemTemplatePath("chat/chat-section-update-resource"),
@@ -170,6 +171,23 @@ export const ChatMessageSections = Object.freeze({
    * @param {number} [order]
    */
   targetsDefend: (sections, targets, actions, order = ChatSectionOrder.targets) => {
+    sections.push(async () => ({
+      partial: ChatMessageSectionTemplate.targetsDefend,
+      data: {
+        targets,
+        actions,
+      },
+      order,
+    }));
+  },
+
+  /**
+   * @param {ChatMessageSectionCollection} sections
+   * @param {TargetData[]} targets
+   * @param actions
+   * @param {number} [order]
+   */
+  opposedCheck: (sections, targets, actions, order = ChatSectionOrder.targets) => {
     sections.push(async () => ({
       partial: ChatMessageSectionTemplate.targetsDefend,
       data: {
