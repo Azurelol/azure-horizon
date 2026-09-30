@@ -32,6 +32,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
       removeRulePredicate: this.#removeRulePredicate,
     },
     form: {
+      submitOnChange: false,
       closeOnSubmit: false,
     },
   };
@@ -426,6 +427,14 @@ function getAttributeKeys(document) {
   return attributeKeys;
 }
 
-Hooks.once("preUpdateActiveEffect", (doc, changes, options) => {
-  console.log("changes:", foundry.utils.deepClone(changes));
-});
+// TESTING AE UPDATES
+// Hooks.on("preUpdateActiveEffect", (doc, changes) => {
+//   const captured = { doc, changes: foundry.utils.deepClone(changes) };
+//   console.log("pre:", captured.changes);
+// });
+//
+// Hooks.on("updateActiveEffect", (doc, changes) => {
+//   console.log("post:", foundry.utils.deepClone(changes));
+//   console.log("_source:", doc._source.system.predicates?.Ntlq82LFkswdE25b?.threshold?.amount);
+//   console.log("prepared:", doc.system.predicates?.Ntlq82LFkswdE25b?.threshold?.amount);
+// });

@@ -754,8 +754,8 @@ AH.predicateQuantifier = {
  */
 
 AH.numericKind = {
-  absolute: "AH.COMMON.Absolute",
-  percent: "AH.COMMON.Percent",
+  absolute: { label: "AH.COMMON.Absolute" },
+  percent: { label: "AH.COMMON.Percent" },
 };
 
 /**
@@ -766,18 +766,18 @@ AH.numericKind = {
  */
 
 AH.comparisonOperator = {
-  greaterThan: "AH.FIELD.GreaterThan",
-  lessThan: "AH.FIELD.LessThan",
-  equals: "AH.FIELD.Equals",
+  greaterThan: { label: "AH.FIELD.GreaterThan" },
+  lessThan: { label: "AH.FIELD.LessThan" },
+  equals: { label: "AH.FIELD.Equals" },
 };
 
 /**
  * @typedef {"self", "single", "multiple"} AH_TargetingRule
  */
 AH.targetingRule = {
-  self: "AH.TARGETING.RULE.Self",
-  single: "AH.TARGETING.RULE.Single",
-  multiple: "AH.TARGETING.RULE.Multiple",
+  self: { label: "AH.TARGETING.RULE.Self" },
+  single: { label: "AH.TARGETING.RULE.Single" },
+  multiple: { label: "AH.TARGETING.RULE.Multiple" },
 };
 
 /**

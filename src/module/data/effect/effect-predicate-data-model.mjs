@@ -108,8 +108,8 @@ export class ResourceEffectPredicateDataModel extends EffectPredicateDataModel {
     return Object.assign(super.defineSchema(), {
       resource: new StringField({ initial: "hp", choices: () => AH.resourceTypes, blank: true, nullable: false }),
       threshold: new SchemaField({
-        operator: new StringField({ initial: "", blank: true, choices: () => AH.comparisonOperator }),
-        kind: new StringField({ initial: "", blank: true, choices: () => AH.numericKind }),
+        operator: new StringField({ initial: "greaterThan", choices: () => AH.comparisonOperator }),
+        kind: new StringField({ initial: "absolute", choices: () => AH.numericKind }),
         amount: new NumberField({ initial: 0, integer: false }),
       }),
     });

@@ -2,6 +2,8 @@ import { systemAssetPath } from "../constants.mjs";
 
 const _TEXTURES = {};
 
+const { loadTexture } = foundry.canvas;
+
 async function preload() {
   _TEXTURES.hpFrame = await loadTexture(systemAssetPath("ui/bars/bar-hp-frame.png"));
   _TEXTURES.hpFill = await loadTexture(systemAssetPath("ui//bars/bar-hp-fill.png"));
