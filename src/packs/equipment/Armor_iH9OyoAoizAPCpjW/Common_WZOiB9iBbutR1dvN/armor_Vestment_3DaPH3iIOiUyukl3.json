@@ -1,24 +1,35 @@
 {
   "folder": "WZOiB9iBbutR1dvN",
-  "name": "Cloak",
+  "name": "Vestment",
   "type": "armor",
-  "_id": "us2Fk92cHNVE0tIK",
-  "img": "systems/azure-horizon/assets/icons/equipment/armor/cloak.png",
+  "_id": "3DaPH3iIOiUyukl3",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-cloak",
+    "slug": "equipment-vestment",
     "description": "",
-    "category": "light",
+    "rarity": "common",
+    "potentials": {
+      "schemaVersion": 1,
+      "entries": []
+    },
+    "weight": "light",
     "traits": [],
+    "def": 0,
+    "mdef": 1,
+    "init": 0,
     "advantage": [
-      "cold"
+      "dark",
+      "mental"
     ],
-    "disadvantage": "slashing",
-    "init": 2
+    "disadvantage": [
+      "slashing",
+      "piercing"
+    ]
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -27,12 +38,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786543234440,
+    "createdTime": 1790790942132,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!us2Fk92cHNVE0tIK"
+  "_key": "!items!3DaPH3iIOiUyukl3"
 }

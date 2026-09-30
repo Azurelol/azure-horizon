@@ -220,6 +220,24 @@
         "plural": "Modifiers",
         "short": "MOD"
       },
+      "Resistance": {
+        "long": "Resistance",
+        "short": "RS"
+      },
+      "Advantage": {
+        "long": "Advantage",
+        "plural": "Advantages",
+        "short": "ADV"
+      },
+      "Disadvantage": {
+        "long": "Disadvantage",
+        "plural": "Disadvantages",
+        "short": "DIS"
+      },
+      "Weakness": {
+        "long": "Weakness",
+        "short": "WK"
+      },
       "Bonus": {
         "long": "Bonus",
         "plural": "Bonuses"
@@ -689,7 +707,7 @@
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",
         "EffectChangeInvalidFormula": "The given formula while evaluating {key} of effect {effect} on {target} was invalid.",
-        "ApplyNoDamage": "No damage was applied onto {actor} by {source}.",
+        "ApplyNoDamage": "No damage was applied onto <strong>{actor}</strong> by <strong>{from}</strong>.",
         "MissingEffect": "Missing Effect",
         "MissingActor": "Missing Actor",
         "MissingItem": "Missing Item",

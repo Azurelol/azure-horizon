@@ -11,7 +11,14 @@
     "description": "",
     "rarity": "common",
     "category": "light",
-    "traits": []
+    "traits": [],
+    "init": 2,
+    "disadvantage": [
+      "slashing"
+    ],
+    "advantage": [
+      "fire"
+    ]
   },
   "effects": [],
   "sort": 103125,

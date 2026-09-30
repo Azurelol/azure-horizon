@@ -1,16 +1,17 @@
 {
   "folder": "6a50VSMzYGADDAq6",
-  "name": "Dispatch",
+  "name": "Borrow Time",
   "type": "skill",
-  "_id": "a7MjVYpTDheC9qhh",
+  "_id": "bzDJdxTr55rk6Smu",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "rogue-dispatch",
-    "description": "<p>You perform a powerful attack to an enemy that is currently <em>unable to take action.</em></p>",
+    "slug": "rogue-borrow-time",
+    "description": "<p>Once per battle during your turn, you can <em>borrow</em> 1 AP from a willing party member, which you can use for a maneuver.</p><p>On the next round you then return the AP back.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -18,9 +19,8 @@
     "check": {
       "schemaVersion": 1,
       "enabled": false,
-      "primary": "dex",
-      "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "variant": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -36,6 +36,16 @@
       "traits": [],
       "inplace": false
     },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "",
+      "points": 1,
+      "speed": "",
+      "traits": [
+        "exhaust"
+      ]
+    },
     "resource": {
       "schemaVersion": 1,
       "enabled": false,
@@ -44,10 +54,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "10",
+      "amount": "",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -59,28 +76,17 @@
         "tracking": ""
       }
     },
-    "power": "severe",
+    "power": "",
     "level": {
       "current": 1,
       "max": 1
     },
-    "action": {
-      "schemaVersion": 1,
-      "range": "melee",
-      "type": "action",
-      "points": 2,
-      "traits": [
-        "cooldown"
-      ],
-      "enabled": true,
-      "targeting": "single"
-    },
     "usage": {
       "schemaVersion": 1,
-      "attributes": true,
-      "check": true,
-      "damage": true,
-      "enabled": true
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
     },
     "class": "rogue"
   },
@@ -94,12 +100,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787574503414,
+    "createdTime": 1790769708656,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!a7MjVYpTDheC9qhh"
+  "_key": "!items!bzDJdxTr55rk6Smu"
 }

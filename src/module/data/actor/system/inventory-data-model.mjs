@@ -243,4 +243,16 @@ export default class InventoryDataModel extends VersionedDataModel {
     return available;
   }
 
+  /**
+   * @param {(ArmorDataModel) => void} onArmor
+   * @returns {InventoryDataModel}
+   */
+  withArmor(onArmor) {
+    const equipped = this.equipped;
+    if (equipped.armor) {
+      onArmor(equipped.armor.system);
+    }
+    return this;
+  }
+
 }

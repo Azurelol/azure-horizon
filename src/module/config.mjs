@@ -79,6 +79,12 @@ AH.defaults = {
     min: 1,
     max: 3,
   },
+  equipment: {
+    armor: {
+      advantage: -2,
+      disadvantage: 2,
+    },
+  },
   check: {
     type: "attribute",
     criticalThreshold: 8,
@@ -439,22 +445,22 @@ AH.damageGroups = Object.freeze({
  * @type {Record<String, AH_DamageTypeMetadata>}
  */
 AH.damageTypes = Object.freeze({
-  untyped: { long: "AH.DAMAGE.Untyped.long", short: "AH.DAMAGE.Untyped.short", group: null },
+  untyped: { label: "AH.DAMAGE.Untyped.long", short: "AH.DAMAGE.Untyped.short", group: null },
 
-  slashing: { long: "AH.DAMAGE.Slashing.long", short: "AH.DAMAGE.Slashing.short", group: "physical" },
-  piercing: { long: "AH.DAMAGE.Piercing.long", short: "AH.DAMAGE.Piercing.short", group: "physical" },
-  bludgeoning: { long: "AH.DAMAGE.Bludgeoning.long", short: "AH.DAMAGE.Bludgeoning.short", group: "physical" },
+  slashing: { label: "AH.DAMAGE.Slashing.long", short: "AH.DAMAGE.Slashing.short", group: "physical" },
+  piercing: { label: "AH.DAMAGE.Piercing.long", short: "AH.DAMAGE.Piercing.short", group: "physical" },
+  bludgeoning: { label: "AH.DAMAGE.Bludgeoning.long", short: "AH.DAMAGE.Bludgeoning.short", group: "physical" },
 
-  fire: { long: "AH.DAMAGE.Fire.long", short: "AH.DAMAGE.Fire.short", group: "elemental" },
-  cold: { long: "AH.DAMAGE.Cold.long", short: "AH.DAMAGE.Cold.short", group: "elemental" },
-  electric: { long: "AH.DAMAGE.Electric.long", short: "AH.DAMAGE.Electric.short", group: "elemental" },
-  acid: { long: "AH.DAMAGE.Acid.long", short: "AH.DAMAGE.Acid.short", group: "elemental" },
+  fire: { label: "AH.DAMAGE.Fire.long", short: "AH.DAMAGE.Fire.short", group: "elemental" },
+  cold: { label: "AH.DAMAGE.Cold.long", short: "AH.DAMAGE.Cold.short", group: "elemental" },
+  electric: { label: "AH.DAMAGE.Electric.long", short: "AH.DAMAGE.Electric.short", group: "elemental" },
+  acid: { label: "AH.DAMAGE.Acid.long", short: "AH.DAMAGE.Acid.short", group: "elemental" },
 
-  light: { long: "AH.DAMAGE.Light.long", short: "AH.DAMAGE.Light.short", group: "spiritual" },
-  dark: { long: "AH.DAMAGE.Dark.long", short: "AH.DAMAGE.Dark.short", group: "spiritual" },
+  light: { label: "AH.DAMAGE.Light.long", short: "AH.DAMAGE.Light.short", group: "spiritual" },
+  dark: { label: "AH.DAMAGE.Dark.long", short: "AH.DAMAGE.Dark.short", group: "spiritual" },
 
-  mental: { long: "AH.DAMAGE.Mental.long", short: "AH.DAMAGE.Mental.short", group: null },
-  poison: { long: "AH.DAMAGE.Poison.long", short: "AH.DAMAGE.Poison.short", group: null },
+  mental: { label: "AH.DAMAGE.Mental.long", short: "AH.DAMAGE.Mental.short", group: null },
+  poison: { label: "AH.DAMAGE.Poison.long", short: "AH.DAMAGE.Poison.short", group: null },
 });
 
 /**

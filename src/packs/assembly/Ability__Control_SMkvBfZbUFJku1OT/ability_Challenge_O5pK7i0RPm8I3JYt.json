@@ -60,7 +60,13 @@
         "tracking": ""
       }
     },
-    "intent": ""
+    "intent": "",
+    "attributes": {
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    }
   },
   "effects": [],
   "sort": 100000,

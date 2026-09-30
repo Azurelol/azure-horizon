@@ -65,7 +65,10 @@
     "intent": "damage",
     "power": "low",
     "attributes": {
-      "enabled": true
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "B"
     }
   },
   "effects": [],

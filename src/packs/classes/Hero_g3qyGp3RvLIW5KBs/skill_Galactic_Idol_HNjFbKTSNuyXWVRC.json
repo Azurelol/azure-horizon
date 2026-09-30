@@ -1,30 +1,26 @@
 {
-  "folder": "VxfouSCvmBieccNO",
-  "name": "Take Aim",
-  "type": "ability",
-  "_id": "CNf4w5sIpNfxZMqV",
-  "img": "icons/skills/ranged/person-archery-bow-attack-orange.webp",
+  "folder": "g3qyGp3RvLIW5KBs",
+  "name": "Galactic Idol",
+  "type": "skill",
+  "_id": "HNjFbKTSNuyXWVRC",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ability-take-aim",
+    "slug": "hero-galactic-idol",
     "description": "",
-    "check": {
+    "attributes": {
       "schemaVersion": 1,
       "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "grade": "C"
     },
-    "action": {
+    "check": {
       "schemaVersion": 1,
-      "range": "",
-      "type": "action",
-      "points": 1,
-      "traits": [
-        "closer"
-      ],
-      "enabled": true
+      "enabled": false,
+      "defense": "def",
+      "variant": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -40,6 +36,14 @@
       "traits": [],
       "inplace": false
     },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "",
+      "points": 1,
+      "speed": "",
+      "traits": []
+    },
     "resource": {
       "schemaVersion": 1,
       "enabled": false,
@@ -53,6 +57,13 @@
       "amount": "",
       "perTarget": false
     },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
+    },
     "effects": {
       "schemaVersion": 1,
       "enabled": false,
@@ -63,7 +74,19 @@
         "tracking": ""
       }
     },
-    "intent": "prepare"
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 1
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "hero"
   },
   "effects": [],
   "sort": 0,
@@ -75,12 +98,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787196993448,
+    "createdTime": 1790790789618,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!CNf4w5sIpNfxZMqV"
+  "_key": "!items!HNjFbKTSNuyXWVRC"
 }

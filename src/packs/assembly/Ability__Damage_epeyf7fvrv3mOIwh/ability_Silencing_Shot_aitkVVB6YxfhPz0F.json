@@ -49,7 +49,7 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
       "amount": "5",
       "perTarget": false

@@ -47,13 +47,7 @@ export default class CharacterDataModel extends BaseEntityDataModel {
   prepareDerivedData() {
     super.prepareDerivedData();
     this._prepareParameters();
-  }
-
-  /**
-   * @protected Prepares the character's resources such as HP.
-   */
-  _prepareResources() {
-    super._prepareResources();
+    this._prepareAffinities();
   }
 
   /**
@@ -65,7 +59,12 @@ export default class CharacterDataModel extends BaseEntityDataModel {
     this.parameters.mdef.defineCurrentProperty(() => Formulas.calculateMagicDefense(data));
     this.parameters.init.defineCurrentProperty(() => Formulas.calculateInitiative(data));
     this.parameters.block.defineCurrentProperty(() => Formulas.calculateBlockParameter(data));
+  }
 
+  /**
+   * @private Invoked before affinities are
+   */
+  _prepareAffinities() {
     // Add entries from affinities
     if (this.affinities) {
       for (const [key, aff] of Object.entries(this.affinities)) {

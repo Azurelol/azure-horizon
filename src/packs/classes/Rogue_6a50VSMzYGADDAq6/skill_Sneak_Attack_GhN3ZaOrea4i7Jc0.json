@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "rogue-sneak-attack",
-    "description": "<p>You perform an attack against a target that has been <em>previously</em> attacked this round.</p>",
+    "description": "<p>You perform an attack against a target that cannot detect you or that has been <em>previously</em> attacked this round.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,

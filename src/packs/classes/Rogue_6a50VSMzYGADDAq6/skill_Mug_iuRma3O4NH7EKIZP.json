@@ -1,16 +1,17 @@
 {
   "folder": "6a50VSMzYGADDAq6",
-  "name": "Dispatch",
+  "name": "Mug",
   "type": "skill",
-  "_id": "a7MjVYpTDheC9qhh",
+  "_id": "iuRma3O4NH7EKIZP",
   "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "rogue-dispatch",
-    "description": "<p>You perform a powerful attack to an enemy that is currently <em>unable to take action.</em></p>",
+    "slug": "rogue-mug",
+    "description": "<p>When you deal damage to a <em>ranked</em> enemy for the first time, if the result of the check was even you gain 1 IP.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -18,9 +19,8 @@
     "check": {
       "schemaVersion": 1,
       "enabled": false,
-      "primary": "dex",
-      "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "variant": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -36,6 +36,14 @@
       "traits": [],
       "inplace": false
     },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "",
+      "points": 1,
+      "speed": "",
+      "traits": []
+    },
     "resource": {
       "schemaVersion": 1,
       "enabled": false,
@@ -44,10 +52,17 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
-      "amount": "10",
+      "amount": "",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -59,28 +74,17 @@
         "tracking": ""
       }
     },
-    "power": "severe",
+    "power": "",
     "level": {
       "current": 1,
       "max": 1
     },
-    "action": {
-      "schemaVersion": 1,
-      "range": "melee",
-      "type": "action",
-      "points": 2,
-      "traits": [
-        "cooldown"
-      ],
-      "enabled": true,
-      "targeting": "single"
-    },
     "usage": {
       "schemaVersion": 1,
-      "attributes": true,
-      "check": true,
-      "damage": true,
-      "enabled": true
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
     },
     "class": "rogue"
   },
@@ -94,12 +98,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787574503414,
+    "createdTime": 1790770122586,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!a7MjVYpTDheC9qhh"
+  "_key": "!items!iuRma3O4NH7EKIZP"
 }

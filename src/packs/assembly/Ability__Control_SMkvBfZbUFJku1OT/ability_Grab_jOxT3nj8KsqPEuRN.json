@@ -11,7 +11,7 @@
     "description": "<p>You attack the target with the intent to grab them.</p>",
     "check": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "defense": "mig",
@@ -19,7 +19,7 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
         "amount": "",
         "type": "bludgeoning"
@@ -48,17 +48,27 @@
       "schemaVersion": 1,
       "enabled": true,
       "entries": [
-        "grabbed"
+        "grab"
       ],
       "duration": {
         "event": "",
         "tracking": ""
-      }
+      },
+      "selector": "deuff"
     },
-    "intent": "",
+    "intent": "control",
     "action": {
       "type": "action",
-      "points": 1
+      "points": 2,
+      "enabled": true,
+      "speed": "",
+      "traits": []
+    },
+    "usage": {
+      "enabled": true,
+      "check": true,
+      "damage": true,
+      "attributes": true
     }
   },
   "effects": [],

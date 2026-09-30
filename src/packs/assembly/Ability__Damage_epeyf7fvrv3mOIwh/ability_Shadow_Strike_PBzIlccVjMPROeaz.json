@@ -44,7 +44,7 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
       "amount": "10",
       "perTarget": false
@@ -65,17 +65,18 @@
     "action": {
       "schemaVersion": 1,
       "range": "",
-      "type": "",
-      "points": 1,
-      "traits": [
-        "stress"
-      ]
+      "type": "action",
+      "points": 2,
+      "traits": [],
+      "enabled": true,
+      "speed": ""
     },
     "usage": {
       "schemaVersion": 1,
       "attributes": true,
       "check": true,
-      "damage": true
+      "damage": true,
+      "enabled": true
     }
   },
   "effects": [],

@@ -1,0 +1,50 @@
+{
+  "folder": "eXjKploUFashXJNs",
+  "name": "Elven Leather",
+  "type": "armor",
+  "_id": "w1CojZKSQOAmtMGI",
+  "img": "systems/azure-horizon/assets/icons/equipment/armor/elf_leather_armor.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-elven-leather",
+    "description": "",
+    "rarity": "rare",
+    "category": "light",
+    "traits": [],
+    "advantage": [
+      "slashing",
+      "electric"
+    ],
+    "disadvantage": [
+      "piercing",
+      "fire"
+    ],
+    "mdef": 1,
+    "potentials": {
+      "entries": [
+        {
+          "text": "<p>At the start of a battle you may spend 5 MP and gain <em>Stealth</em>.</p>"
+        }
+      ]
+    }
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1788447132743,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!w1CojZKSQOAmtMGI"
+}

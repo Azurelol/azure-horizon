@@ -1,0 +1,49 @@
+{
+  "folder": "eXjKploUFashXJNs",
+  "name": "Arcanist Regalia",
+  "type": "armor",
+  "_id": "9dPPwmckIvOpOJ82",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-arcanist-regalia",
+    "description": "",
+    "rarity": "rare",
+    "potentials": {
+      "schemaVersion": 1,
+      "entries": []
+    },
+    "weight": "light",
+    "traits": [],
+    "def": 0,
+    "mdef": 2,
+    "init": 0,
+    "advantage": [
+      "fire",
+      "cold"
+    ],
+    "disadvantage": [
+      "slashing",
+      "piercing"
+    ]
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1790788922307,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!9dPPwmckIvOpOJ82"
+}

@@ -15,7 +15,8 @@
     ],
     "rarity": [
       "common"
-    ]
+    ],
+    "init": 2
   },
   "effects": [],
   "sort": 150000,

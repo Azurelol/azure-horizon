@@ -1,22 +1,28 @@
 {
   "folder": "WZOiB9iBbutR1dvN",
-  "name": "Elven Leather",
+  "name": "Leather Armor",
   "type": "armor",
-  "_id": "w1CojZKSQOAmtMGI",
-  "img": "systems/azure-horizon/assets/icons/equipment/armor/elf_leather_armor.png",
+  "_id": "lrnxKcU5Y9qhIHTx",
+  "img": "systems/azure-horizon/assets/icons/equipment/armor/leather_vest.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-elven-leather",
+    "slug": "equipment-leather-armor",
     "description": "",
     "rarity": "common",
-    "category": "light",
-    "traits": [
-      "fleet"
-    ]
+    "potentials": {
+      "schemaVersion": 1,
+      "entries": []
+    },
+    "weight": "light",
+    "traits": [],
+    "init": 0,
+    "def": 1,
+    "advantage": "slashing",
+    "disadvantage": "bludgeoning"
   },
   "effects": [],
-  "sort": 106250,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -25,12 +31,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788447132743,
+    "createdTime": 1790771981219,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!w1CojZKSQOAmtMGI"
+  "_key": "!items!lrnxKcU5Y9qhIHTx"
 }

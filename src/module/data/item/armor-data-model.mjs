@@ -12,11 +12,16 @@ import { ChatMessageSections } from "../../helpers/chat-message-sections.mjs";
  * @property {AH_EquipmentWeight} weight
  * @property {PotentialsDataModel} potentials
  * @property {Set<String>} traits
+ * @property {Number} def
+ * @property {Number} mdef
+ * @property {Number} init
+ * @property {AH_DamageType[]} advantage
+ * @property {AH_DamageType[]} disadvantage
  */
 export default class ArmorDataModel extends EquipmentDataModel {
   /** @inheritdoc */
   static defineSchema() {
-    const { SchemaField, StringField, EmbeddedDataField } = foundry.data.fields;
+    const { SchemaField, NumberField, StringField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       potentials: new EmbeddedDataField(PotentialsDataModel),
       weight: new StringField({
@@ -31,6 +36,26 @@ export default class ArmorDataModel extends EquipmentDataModel {
         _part: "header",
         formOptions: getFormSelectOptions(AH.traits.armor),
       }),
+      def: new NumberField({ initial: 0, _part: "header",
+        _classes: "ah-flex-shrink",
+        label: "AH.CHARACTER.Defense.short" }),
+      mdef: new NumberField({ initial: 0, _part: "header",
+        _classes: "ah-flex-shrink",
+        label: "AH.CHARACTER.MagicDefense.short" }),
+      init: new NumberField({ initial: 0, _part: "header",
+        _classes: "ah-flex-shrink",
+        label: "AH.CHARACTER.Initiative.short" }),
+      advantage: new TraitsField({
+        _part: "header",
+        label: "AH.CHARACTER.Advantage.short",
+        formOptions: getFormSelectOptions(AH.damageTypes),
+      }),
+      disadvantage: new TraitsField({
+        _part: "header",
+        label: "AH.CHARACTER.Disadvantage.short",
+        formOptions: getFormSelectOptions(AH.damageTypes),
+      }),
+
     });
   }
 

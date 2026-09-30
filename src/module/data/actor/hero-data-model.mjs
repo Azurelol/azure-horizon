@@ -7,6 +7,7 @@ import { CharacterParametersDataModel } from "./character-parameters-data-model.
 import { ActorResourceDataModel } from "./system/_module.mjs";
 import HeroProfileDataModel from "./system/hero-profile-data-model.mjs";
 import { isItemType } from "../../constants.mjs";
+import AH from "../../config.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -88,8 +89,16 @@ export default class HeroDataModel extends CharacterDataModel {
     this.resources.tp.defineMaximumProperty(() => Formulas.calculateTensionPoints(this));
   }
 
-  _prepareParameters() {
-    super._prepareParameters();
+  _prepareAffinities() {
+    super._prepareAffinities();
+    this.equipment.withArmor(armorData => {
+      for (const adv of armorData.advantage) {
+        this.parameters.damage[adv]?.incoming.equipment.additive.push(AH.defaults.equipment.armor.advantage);
+      }
+      for (const dis of armorData.disadvantage) {
+        this.parameters.damage[dis]?.incoming.equipment.additive.push(AH.defaults.equipment.armor.disadvantage);
+      }
+    });
   }
 
   /** @inheritdoc */

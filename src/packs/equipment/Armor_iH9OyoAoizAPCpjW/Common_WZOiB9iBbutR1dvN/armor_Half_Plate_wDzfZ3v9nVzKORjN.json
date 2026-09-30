@@ -1,17 +1,20 @@
 {
   "folder": "WZOiB9iBbutR1dvN",
-  "name": "Light Plate",
+  "name": "Half Plate",
   "type": "armor",
   "_id": "wDzfZ3v9nVzKORjN",
   "img": "systems/azure-horizon/assets/icons/equipment/armor/light_plate.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-light-plate",
+    "slug": "equipment-half-plate",
     "description": "",
     "rarity": "common",
     "category": "light",
-    "traits": []
+    "traits": [],
+    "def": 1,
+    "advantage": "slashing",
+    "disadvantage": "electric"
   },
   "effects": [],
   "sort": 200000,

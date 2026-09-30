@@ -3,12 +3,12 @@
   "name": "Desperate Measures",
   "type": "ability",
   "_id": "nC5xTbajOznPYqeh",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/fire/explosion-embers-evade-silhouette.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
     "slug": "ability-desperate-measures",
-    "description": "",
+    "description": "<p>The first time in a battle that you suffer from <em>crisis</em> you can immediately perform an action.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

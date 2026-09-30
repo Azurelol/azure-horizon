@@ -1,0 +1,190 @@
+{
+  "folder": "kXk1ocnd53loLASw",
+  "name": "Anger Management",
+  "type": "skill",
+  "_id": "FeGsV1LnvipuL7wW",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "berserker-anger-management",
+    "description": "<p>You gain an SL skill bonus to damage dealt and received when your tension is over half your maximum.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "defense": "def",
+      "variant": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "",
+      "points": 1,
+      "speed": "",
+      "traits": []
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "",
+    "level": {
+      "current": 1,
+      "max": 2
+    },
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    },
+    "class": "berserker"
+  },
+  "effects": [
+    {
+      "name": "Anger Management",
+      "origin": "Compendium.azure-horizon.classes.Item.FeGsV1LnvipuL7wW",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "_id": "pMjPn2VVteOSdjqi",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.parameters.damage.universal.outgoing.skill.additive",
+            "type": "add",
+            "value": "$sl",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.parameters.damage.universal.incoming.skill.additive",
+            "type": "add",
+            "value": "-$sl",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "slug": "",
+        "stacking": {
+          "track": false,
+          "duration": false,
+          "increment": 1
+        },
+        "predicates": {
+          "tr9LQ0wi81KtQvnq": {
+            "type": "resourceEffectPredicate",
+            "_id": "tr9LQ0wi81KtQvnq",
+            "resource": "tp",
+            "threshold": {
+              "operator": "greaterThan",
+              "kind": "percent",
+              "amount": 0.5
+            }
+          }
+        },
+        "rules": {},
+        "tracker": {
+          "enabled": false,
+          "name": "",
+          "id": "",
+          "style": "clock",
+          "current": 0,
+          "max": 6
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790773313740,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!FeGsV1LnvipuL7wW.pMjPn2VVteOSdjqi"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1790773019373,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!FeGsV1LnvipuL7wW"
+}

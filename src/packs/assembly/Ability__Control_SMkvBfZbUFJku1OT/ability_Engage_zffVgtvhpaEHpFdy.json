@@ -11,21 +11,23 @@
     "description": "<p>You perform an attack on the target. Until the start of you next turn if it shifts or performs any action on targets but you they trigger a free attack from you.</p>",
     "check": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "bonus": ""
     },
     "action": {
       "schemaVersion": 1,
       "range": "melee",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "enabled": true
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
         "amount": "",
         "type": "slashing"
@@ -60,7 +62,13 @@
         "tracking": ""
       }
     },
-    "intent": "control"
+    "intent": "control",
+    "usage": {
+      "enabled": true,
+      "check": true,
+      "damage": true,
+      "attributes": true
+    }
   },
   "effects": [],
   "sort": 300000,

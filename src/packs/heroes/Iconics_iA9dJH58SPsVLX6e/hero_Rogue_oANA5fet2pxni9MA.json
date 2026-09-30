@@ -10,13 +10,13 @@
       "schemaVersion": 1,
       "hp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
       "mp": {
         "schemaVersion": 1,
-        "value": 0,
+        "value": 30,
         "bonus": 0,
         "temporary": 0
       },
@@ -98,7 +98,9 @@
         "type": "additive"
       }
     },
-    "equipment": {},
+    "equipment": {
+      "mainHand": "8izjNnJu3IO3cVpR"
+    },
     "parameters": {
       "schemaVersion": 1,
       "def": {
@@ -532,120 +534,636 @@
       "folder": null,
       "sort": 0,
       "_key": "!actors.items!oANA5fet2pxni9MA.ntJko8cNKrWr6cpn"
-    }
-  ],
-  "effects": [
-    {
-      "name": "KO",
-      "img": "systems/azure-horizon/assets/icons/statuses/ko.png",
-      "statuses": [
-        "ko"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "ko"
-        }
-      },
-      "_id": "KU7HClU2xU7bfv2Z",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668027,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!oANA5fet2pxni9MA.KU7HClU2xU7bfv2Z"
     },
     {
-      "name": "Crisis",
-      "img": "systems/azure-horizon/assets/icons/statuses/crisis.png",
-      "statuses": [
-        "crisis"
-      ],
-      "flags": {
-        "azure-horizon": {
-          "Temporary": true,
-          "Source": {},
-          "Identifier": "crisis"
+      "name": "Roll",
+      "type": "skill",
+      "_id": "7ZAxaZHUC3NDdcEz",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_defense.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "rogue-roll",
+        "description": "<p>You can <em>defend</em> and <em>shift</em> to an adjacent space.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "defense": "def",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "tp",
+          "amount": "4",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "reaction",
+          "points": 1,
+          "traits": [
+            "cooldown"
+          ],
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        },
+        "class": "rogue",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
         }
       },
-      "_id": "iGyqxNVc7H10Lcs6",
-      "type": "base",
-      "system": {
-        "changes": [],
-        "slug": "",
-        "rules": {}
-      },
-      "disabled": false,
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
+      "effects": [],
+      "flags": {},
       "_stats": {
         "coreVersion": "14.365",
         "systemId": "azure-horizon",
         "systemVersion": "AUTOMATIC",
-        "createdTime": 1788446668087,
+        "createdTime": 1790770438681,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.7ZAxaZHUC3NDdcEz",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.effects!oANA5fet2pxni9MA.iGyqxNVc7H10Lcs6"
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oANA5fet2pxni9MA.7ZAxaZHUC3NDdcEz"
+    },
+    {
+      "name": "Cripple",
+      "type": "skill",
+      "_id": "94xph2cl2Ak6iL1O",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "rogue-cripple",
+        "description": "<p>You deal damage and apply <em>Enfeeble </em>to the target.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "defense": "def",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "10",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "deuff",
+          "entries": [
+            "enfeeble"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "low",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 2,
+          "traits": [
+            "exhaust"
+          ],
+          "enabled": true,
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": true,
+          "check": true,
+          "damage": true,
+          "enabled": true
+        },
+        "class": "rogue",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790770464694,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.94xph2cl2Ak6iL1O",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oANA5fet2pxni9MA.94xph2cl2Ak6iL1O"
+    },
+    {
+      "name": "Sneak Attack",
+      "type": "skill",
+      "_id": "GhN3ZaOrea4i7Jc0",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "rogue-sneak-attack",
+        "description": "<p>You perform an attack against a target that cannot detect you or that has been <em>previously</em> attacked this round.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "defense": "def",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "5",
+          "perTarget": false
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "moderate",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 2,
+          "traits": [],
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "attributes": true,
+          "check": true,
+          "damage": true
+        },
+        "class": "rogue"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790770536153,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.GhN3ZaOrea4i7Jc0",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oANA5fet2pxni9MA.GhN3ZaOrea4i7Jc0"
+    },
+    {
+      "name": "Vanish",
+      "type": "skill",
+      "_id": "3rgGG7qnTixM0ic7",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_defense.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "rogue-vanish",
+        "description": "<p>You gain <em>Stealth</em> until the start of your next turn.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "defense": "def",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "resource": "mp",
+          "amount": "5",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "stealth"
+          ],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 1,
+          "traits": [
+            "cooldown",
+            "closer"
+          ],
+          "enabled": true,
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "rogue",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790770553029,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.3rgGG7qnTixM0ic7",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oANA5fet2pxni9MA.3rgGG7qnTixM0ic7"
+    },
+    {
+      "name": "Borrow Time",
+      "type": "skill",
+      "_id": "bzDJdxTr55rk6Smu",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "rogue-borrow-time",
+        "description": "<p>Once per battle during your turn, you can <em>borrow</em> 1 AP from a willing party member, which you can use for a maneuver.</p><p>On the next round you then return the AP back.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "defense": "def",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "",
+          "points": 1,
+          "speed": "",
+          "traits": [
+            "exhaust"
+          ]
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        },
+        "class": "rogue"
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790770771311,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.bzDJdxTr55rk6Smu",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oANA5fet2pxni9MA.bzDJdxTr55rk6Smu"
+    },
+    {
+      "name": "Dagger",
+      "type": "weapon",
+      "_id": "8izjNnJu3IO3cVpR",
+      "img": "systems/azure-horizon/assets/icons/equipment/weapons/dagger.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-dagger",
+        "description": "",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "B"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "defense": "def",
+          "bonus": "",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "5",
+            "type": "slashing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "range": "melee",
+        "actionCost": 2,
+        "rarity": "common",
+        "weight": "light",
+        "handedness": "one",
+        "traits": [],
+        "options": {
+          "schemaVersion": 1,
+          "enabled": false
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1790770790633,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.8izjNnJu3IO3cVpR",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oANA5fet2pxni9MA.8izjNnJu3IO3cVpR"
     }
   ],
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0

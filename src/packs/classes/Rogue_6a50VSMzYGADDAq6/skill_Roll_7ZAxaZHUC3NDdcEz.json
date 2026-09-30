@@ -47,7 +47,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "tp",
-      "amount": "3",
+      "amount": "4",
       "perTarget": false
     },
     "effects": {
