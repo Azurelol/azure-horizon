@@ -1,5 +1,5 @@
 import { DataModelRegistry, SubDocumentDataModel } from "../api/_module.mjs";
-import { isActorType, systemID, systemTemplatePath } from "../../constants.mjs";
+import { isActorType, resolveActor, systemID, systemTemplatePath } from "../../constants.mjs";
 import { StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 
@@ -94,8 +94,87 @@ export class StatusEffectPredicateDataModel extends EffectPredicateDataModel {
   }
 }
 
+/**
+ * @property {AH_Resource} resource
+ * @property {AH_Threshold} threshold
+ */
+export class ResourceEffectPredicateDataModel extends EffectPredicateDataModel {
+
+  static {
+    Object.defineProperty(this, "TYPE", { value: "resourceEffectPredicate" });
+  }
+
+  static defineSchema() {
+    return Object.assign(super.defineSchema(), {
+      resource: new StringField({ initial: "hp", choices: () => AH.resourceTypes, blank: true, nullable: false }),
+      threshold: new SchemaField({
+        operator: new StringField({ initial: "", blank: true, choices: () => AH.comparisonOperator }),
+        kind: new StringField({ initial: "", blank: true, choices: () => AH.numericKind }),
+        amount: new NumberField({ initial: 0, integer: false }),
+      }),
+    });
+  }
+
+  static get template()
+  {
+    return systemTemplatePath("sheets/effect/predicates/resource-effect-predicate");
+  }
+
+  static get localization() {
+    return "AH.EFFECT.PREDICATES.Resource";
+  }
+
+  validateEffect(document) {
+    const actor = resolveActor(document);
+    if (actor) {
+      /** @type ActorResourceDataModel **/
+      const resource = actor.system.resources[this.resource];
+      if (resource) {
+        if (this.threshold.operator) {
+          if (Number.isInteger(resource.value)) {
+            switch (this.threshold.operator) {
+              case "greaterThan":
+                if (this.threshold.kind === "absolute") {
+                  if (resource.value >= this.threshold.amount) {
+                    return true;
+                  }
+                }
+                else {
+                  if (resource.percent >= this.threshold.amount) {
+                    return true;
+                  }
+                }
+                break;
+
+              case "lessThan":
+                if (this.threshold.kind === "absolute") {
+                  if (resource.value <= this.threshold.amount) {
+                    return true;
+                  }
+                }
+                else {
+                  if (resource.percent <= this.threshold.amount) {
+                    return true;
+                  }
+                }
+                break;
+            }
+            return false;
+          } else {
+            console.warn("The given amount in the event was not an integer.");
+          }
+        }
+        return true;
+      }
+
+    }
+    return false;
+  }
+}
+
 const PREDICATES = {
   status: StatusEffectPredicateDataModel,
+  resource: ResourceEffectPredicateDataModel,
 };
 
 /**

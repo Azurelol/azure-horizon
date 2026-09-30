@@ -1,0 +1,7 @@
+{{ahStringField path=(ahConcat path ".resource") value=predicate.resource label='AH.FIELD.Resource' options=(ahFormOptions 'resourceTypes')}}
+<div class="ah-field-group">
+  {{ahStringField path=(ahConcat path ".threshold.operator.") value=predicate.threshold.operator label='AH.FIELD.Operator' options=(ahFormOptions 'comparisonOperator')}}
+  {{ahStringField path=(ahConcat path ".threshold.kind") value=predicate.threshold.kind label='AH.FIELD.Kind' options=(ahFormOptions 'numericKind')}}
+  {{ahNumberField path=(ahConcat path ".threshold.amount") value=predicate.threshold.amount label='AH.FIELD.Amount'}}
+</div>
+

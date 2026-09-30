@@ -750,15 +750,25 @@ AH.predicateQuantifier = {
  */
 
 /**
+ * @typedef {'absolute'|'percent'} AH_NumericKind
+ */
+
+AH.numericKind = {
+  absolute: "AH.COMMON.Absolute",
+  percent: "AH.COMMON.Percent",
+};
+
+/**
  * @typedef AH_Threshold
  * @property {AH_ComparisonOperator} operator
+ * @property {AH_NumericKind} kind
  * @property {Number} amount
  */
 
 AH.comparisonOperator = {
   greaterThan: "AH.FIELD.GreaterThan",
-  equals: "AH.FIELD.Equals",
   lessThan: "AH.FIELD.LessThan",
+  equals: "AH.FIELD.Equals",
 };
 
 /**

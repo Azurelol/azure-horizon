@@ -42,6 +42,13 @@ export default class ActorResourceDataModel extends VersionedDataModel {
   }
 
   /**
+   * @returns {number} A value between 0 and 1.
+   */
+  get percent() {
+    return this.value / this.max;
+  }
+
+  /**
    * @returns {number} The value at a quarter.
    */
   get quarter() {

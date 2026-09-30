@@ -724,6 +724,7 @@
       "Tracker": "Tracker",
       "Style": "Style",
       "Rule": "Rule",
+      "Operator": "Operator",
       "Active": "Active",
       "Level": "Level",
       "Kind": "Kind",
@@ -829,7 +830,9 @@
         "plural": "Predicates"
       },
       "PREDICATES": {
-        "Status": "Status"
+        "Status": "Status",
+        "Resource": "Resource",
+        "Engram": "Engram"
       }
     },
     "RULE": {
@@ -919,6 +922,8 @@
       "Description": "Description",
       "Notes": "Notes",
       "Half": "Half",
+      "Absolute": "Absolute",
+      "Percent": "Percent",
       "Full": "Full",
       "Empty": "Empty",
       "Label": "Label",

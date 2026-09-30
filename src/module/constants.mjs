@@ -124,6 +124,22 @@ export function isEffectType(document) {
 }
 
 /**
+ * @param {DataModel} document
+ * @return {AHActor}
+ */
+export function resolveActor(document) {
+  if (isActorType(document)) {
+    return document;
+  }
+  else if (isItemType(document)) {
+    if (isActorType(document.parent)) {
+      return document.parent;
+    }
+  }
+  return undefined;
+}
+
+/**
  * @param document
  * @returns {Boolean} True if the given document is a compendium entry.
  */
