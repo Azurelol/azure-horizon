@@ -425,3 +425,7 @@ function getAttributeKeys(document) {
   attributeKeys.sort((a, b) => a.localeCompare(b));
   return attributeKeys;
 }
+
+Hooks.once("preUpdateActiveEffect", (doc, changes, options) => {
+  console.log("changes:", foundry.utils.deepClone(changes));
+});

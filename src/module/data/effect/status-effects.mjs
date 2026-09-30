@@ -18,6 +18,8 @@ const PARAM_DEBUFF_DURATION = 1;
 const STACK_DEBUFF_DURATION = 3;
 const DAMAGE_BUFF_DURATION = 1;
 
+const ADD_CHANGE_TYPE = CONST.ACTIVE_EFFECT_CHANGE_TYPES.add;
+
 class StatusDataBuilder {
 
   /** @type ActiveEffectData **/
@@ -126,7 +128,7 @@ const STATUS_EFFECTS = Object.freeze({
   stress: new StatusDataBuilder("stress", "AH.STATUS.Stress").track("stack", 1, 4).changes([
     {
       key: "system.parameters.check.all.status",
-      mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+      mode: ADD_CHANGE_TYPE,
       value: "-$tv",
     },
   ])
@@ -146,12 +148,12 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.physical.outgoing.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "5",
       },
       {
         key: "system.parameters.damage.universal.incoming.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "10",
       },
     ])
@@ -174,7 +176,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.physical.outgoing.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "5",
       },
     ])
@@ -185,12 +187,12 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.elemental.outgoing.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "5",
       },
       {
         key: "system.parameters.damage.spiritual.outgoing.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "5",
       },
     ])
@@ -203,7 +205,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.universal.incoming.status.multiplicative",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "1.25",
       },
     ])
@@ -215,7 +217,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.physical.incoming.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "2*$tv",
       },
     ])
@@ -228,12 +230,12 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.elemental.incoming.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "2*$tv",
       },
       {
         key: "system.parameters.damage.spiritual.incoming.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "2*$tv",
       },
     ])
@@ -246,7 +248,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.universal.outgoing.status.multiplicative",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "0.75",
       },
     ])
@@ -256,7 +258,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.universal.outgoing.status.multiplicative",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "0.5",
       },
     ])
@@ -267,7 +269,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.block.bonus",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "-3*$tv",
       },
     ])
@@ -290,7 +292,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.fire.incoming.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "2*$tv",
       },
     ])
@@ -303,7 +305,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.cold.incoming.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "2*$tv",
       },
     ])
@@ -318,7 +320,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.checks.universal.status.additive",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "-$tv",
       },
     ])
@@ -349,7 +351,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.damage.universal.incoming.situational.multiplicative",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "1.5",
       },
     ])
@@ -369,7 +371,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.init.bonus",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "-10",
       },
     ])
@@ -378,7 +380,7 @@ const STATUS_EFFECTS = Object.freeze({
     .changes([
       {
         key: "system.parameters.init.bonus",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        mode: ADD_CHANGE_TYPE,
         value: "-5",
       },
     ])
