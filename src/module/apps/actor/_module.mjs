@@ -4,6 +4,7 @@ export { PartySheet } from "./party-sheet.mjs";
 export { AdversarySheet } from "./adversary-sheet.mjs";
 export { FollowerSheet } from "./follower-sheet.mjs";
 export { EntitySheet } from "./entity-sheet.mjs";
+export { UnitSheet } from "./unit-sheet.mjs";
 
 export {
   ActorTableRenderer,

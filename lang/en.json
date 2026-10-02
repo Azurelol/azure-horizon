@@ -37,7 +37,9 @@
         "AdversarySheet": "Adversary Sheet",
         "PartySheet": "Party Sheet",
         "FollowerSheet": "Follower Sheet",
-        "EntitySheet": "Entity Sheet"
+        "EntitySheet": "Entity Sheet",
+        "UnitSheet": "Unit Sheet",
+        "ArmySheet": "Army Sheet"
       },
       "Tabs": {
         "Overview": "Overview",
@@ -63,6 +65,7 @@
         "Predicates": "Predicates",
         "Codex": "Codex",
         "Rules": "Rules",
+        "Status": "Status",
         "Changes": "Changes",
         "Settings": "Settings",
         "First": "First",
@@ -1264,6 +1267,7 @@
       "entity": "Entity"
     },
     "Item": {
+      "base": "Basic",
       "attack": "Attack",
       "weapon": "Weapon",
       "armor": "Armor",
@@ -1275,7 +1279,9 @@
       "spell": "Spell",
       "consumable": "Consumable",
       "ability": "Ability",
-      "move": "Move"
+      "move": "Move",
+      "tacticaEquipment": "Tactica Equipment",
+      "tacticaSkill": "Tactica Skill"
     },
     "Combatant": {
       "player": "Player"

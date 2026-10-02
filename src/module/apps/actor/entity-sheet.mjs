@@ -21,8 +21,8 @@ export class EntitySheet extends AHActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["ah-entity"],
     position: {
-      width: 600,
-      height: 350,
+      width: 640,
+      height: 400,
     },
     actions: {
     },

@@ -1,0 +1,40 @@
+<header class="sheet-header ah-sheet__header {{system.kind}}">
+  <div class="ah-entity__header">
+    <div class="ah-entity-header__name">
+      <img
+        class="profile-img"
+        src="{{actor.img}}"
+        alt="{{actor.name}}"
+        {{#if editable}}
+        data-action="editImage"
+        data-edit="img"
+        {{/if}}
+        data-tooltip="{{actor.name}}">
+      {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
+      <div class="ah-sheet__group ah-character__attributes">
+        {{#each system.attributes as |attribute key|}}
+          {{#if ../system.assembled}}
+            {{ahBadge size='sm' icon=(ahIconClass key)
+                      label=(ahLocaleKey 'attributes' key format='short')
+                      iconClasses='--glow'
+                      value=attribute.base }}
+          {{else}}
+            {{ahSelector size='sm' icon=(ahIconClass key)
+                         label=(ahLocaleKey 'attributes' key format='short')
+                         values=@root.AH.attributeDice value=attribute.base
+                         bonus=attribute.bonus
+                         iconClasses='--glow'
+                         path=(ahConcat 'system.attributes.' key '.base') }}
+          {{/if}}
+        {{/each}}
+      </div>
+      {{ahInput 'system.level' system.level size ='xl' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="--badge ah-character__level" iconClasses="--glow" }}
+    </div>
+
+    <div class="ah-sheet-header__row">
+      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+
+
+    </div>
+  </div>
+</header>

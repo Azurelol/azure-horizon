@@ -1,0 +1,82 @@
+.ah-character__inventory {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin:1rem;
+  box-shadow: var(--ah-box-shadow-bevel);
+}
+
+.ah-character__equipment {
+  display: grid;
+  grid-template-areas:
+    "mainHand armor armor offHand";
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+
+  .ah-character__equipment__accessories {
+    grid-area: acc;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+
+.ah-character__equipment__slot {
+  border: 1px solid var(--ah-control-border);
+  background: color-mix(in srgb, var(--ah-surface-item) 40%, transparent);
+  --slot-size: 40px;
+  width: var(--slot-size);
+  height: var(--slot-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.--hero {
+    background: #2d6895;
+  }
+
+  &.--adversary {
+    background: #352c31;
+  }
+
+  :hover {
+    background: color-mix(in srgb, var(--ah-surface-action-active) 75%, transparent);
+  }
+
+  /*&:has(img[src=""]),*/
+  /*&:has(img:not([src])) {*/
+  /*  background: var(--ah-surface-entry-gradient);*/
+  /*}*/
+
+  img {
+    object-fit: fill;
+    width: 100%;
+    height: auto;
+  }
+
+  i {
+    opacity: 0.25;
+  }
+
+  &.--armor {
+    --armor-size: 80px;
+    grid-area: armor;
+    width: var(--armor-size);
+    height: var(--armor-size);
+  }
+
+  &.--mainHand {
+    grid-area: mainHand;
+    --slot-size: 50px;
+  }
+
+  &.--offHand {
+    grid-area: offHand;
+    --slot-size: 50px;
+  }
+
+}

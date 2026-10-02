@@ -45,6 +45,7 @@ navbar-links:
   Classes: "classes"
   Spells: "spells"
   Gallery: "gallery"
+  Roadmap: "roadmap"
   About: "about"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"

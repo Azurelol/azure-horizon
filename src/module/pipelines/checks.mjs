@@ -182,7 +182,7 @@ async function prepareCheck(check, actor, item, onPrepare) {
 async function rollCheck(check, actor) {
   const { primary, secondary, modifiers } = check;
 
-  /** @type AttributesDataModel */
+  /** @type CharacterAttributesDataModel */
   const attributes = actor.system.attributes;
   let primaryDice = attributes[primary].current;
   let secondaryDice = attributes[secondary].current;

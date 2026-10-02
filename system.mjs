@@ -93,6 +93,11 @@ function bindSheets() {
     makeDefault: true,
     label: "AH.SHEET.Labels.EntitySheet",
   });
+  Actors.registerSheet("ah", apps.Actor.UnitSheet, {
+    types: ["unit"],
+    makeDefault: true,
+    label: "AH.SHEET.Labels.UnitSheet",
+  });
   Items.registerSheet("ah", apps.Item.AHItemSheet, {
     makeDefault: true, label: "AH.SHEET.Labels.ItemSheet",
   });

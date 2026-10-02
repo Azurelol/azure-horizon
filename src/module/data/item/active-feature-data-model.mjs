@@ -11,6 +11,7 @@ import { TargetingDataModel } from "./fields/targeting-data-model.mjs";
 
 /**
  * Represents an action in the system.
+ * @property {ActionAttributesDataModel} attributes
  * @property {ActionDataModel} action
  * @property {CheckDataModel} check
  * @property {DamageDataModel} damage

@@ -13,4 +13,4 @@ title: Home
 
 ## How To Play
 
-<p>The system is currently still being developed for Foundry VTT. While the repository is public and releases are available, it is not recommended to try it out at this time.</p>
+<p>The system is currently still being developed for Foundry VTT, with the intent of it being published a premium system on the [Foundry Marketplace](https://www.foundryvtt.store/).

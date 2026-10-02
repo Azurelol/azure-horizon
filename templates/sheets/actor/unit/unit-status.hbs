@@ -1,0 +1,18 @@
+<section class="tab status {{tab.cssClass}}" data-tab="status" data-group="primary">
+
+  <div class="ah-flex-row --center" style="margin-bottom: 1rem;">
+    <a class="ah-character__equipment__slot" data-slot="attack" data-tooltip="{{localize 'AH.UNIT.AttackHint'}}">
+      {{#if attack}}
+        <img src="{{attack.img}}" alt="{{attack.name}}">
+      {{else}}
+        <i class="ah-icon --m {{ahIconClass 'placeholderWeapon'}}"></i>
+      {{/if}}
+    </a>
+  </div>
+
+  <div class="ah-table__collection">
+    {{#each tables as |table|}}
+      {{{table}}}
+    {{/each}}
+  </div>
+</section>

@@ -5,15 +5,17 @@
       <a class="ah-character__equipment__slot" data-slot="attack" data-tooltip="{{localize 'AH.ADVERSARY.AttackHint'}}">
         {{#if attack}}
           <img src="{{attack.img}}" alt="{{attack.name}}">
+        {{else}}
+          <i class="ah-icon --m {{ahIconClass 'placeholderWeapon'}}"></i>
         {{/if}}
       </a>
     </div>
   {{/if}}
 
   <div class="ah-table__collection">
-  {{#each tables as |table|}}
-    {{{table}}}
-  {{/each}}
+    {{#each tables as |table|}}
+      {{{table}}}
+    {{/each}}
   </div>
 
 </section>

@@ -582,8 +582,8 @@ AH.engrams = {
  * @type {Record<AH_Handedness, string>}
  */
 AH.handedness = {
-  one: { long: "AH.EQUIPMENT.OneHanded.long", short: "AH.EQUIPMENT.OneHanded.short" },
-  two: { long: "AH.EQUIPMENT.TwoHanded.long", short: "AH.EQUIPMENT.TwoHanded.short" },
+  one: { label: "AH.EQUIPMENT.OneHanded.long", short: "AH.EQUIPMENT.OneHanded.short" },
+  two: { label: "AH.EQUIPMENT.TwoHanded.long", short: "AH.EQUIPMENT.TwoHanded.short" },
 };
 
 /**

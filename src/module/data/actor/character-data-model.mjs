@@ -1,16 +1,34 @@
 import AH from "../../config.mjs";
-import { ActorResourceDataModel, AffinitiesDataModel, AttributesDataModel } from "./system/_module.mjs";
+import { ActorResourceDataModel, AffinitiesDataModel, AttributeDataModel } from "./system/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
-import ActorDataModel from "./actor-data-model.mjs";
 import { VersionedDataModel } from "../api/_module.mjs";
 import { BaseEntityDataModel } from "./entity-data-model.mjs";
+
+const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
+
+/**
+ * The set of attributes for a character.
+ * @property {AttributeDataModel} mig
+ * @property {AttributeDataModel} dex
+ * @property {AttributeDataModel} ins
+ * @property {AttributeDataModel} wlp
+ */
+export class CharacterAttributesDataModel extends VersionedDataModel {
+  static defineSchema() {
+    return {
+      mig: new EmbeddedDataField(AttributeDataModel, {}),
+      dex: new EmbeddedDataField(AttributeDataModel, {}),
+      ins: new EmbeddedDataField(AttributeDataModel, {}),
+      wlp: new EmbeddedDataField(AttributeDataModel, {}),
+    };
+  }
+}
 
 /**
  * @property {ActorResourceDataModel} hp
  */
 export class CharacterResourcesDataModel extends VersionedDataModel {
   static defineSchema() {
-    const { EmbeddedDataField, SchemaField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       hp: new EmbeddedDataField(ActorResourceDataModel, {
         trackedAttribute: true,
@@ -23,16 +41,15 @@ export class CharacterResourcesDataModel extends VersionedDataModel {
  * Base model for characters.
  * @abstract
  * @property {Number} level
- * @property {AttributesDataModel} attributes
+ * @property {CharacterAttributesDataModel} attributes
  * @property {AffinitiesDataModel} affinities
  * @property {CharacterResourcesDataModel} resources
  * @property {CharacterParametersDataModel} parameters
  */
 export default class CharacterDataModel extends BaseEntityDataModel {
   static defineSchema() {
-    const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      attributes: new EmbeddedDataField(AttributesDataModel, {}),
+      attributes: new EmbeddedDataField(CharacterAttributesDataModel, {}),
       affinities: new EmbeddedDataField(AffinitiesDataModel, {}),
     });
   }

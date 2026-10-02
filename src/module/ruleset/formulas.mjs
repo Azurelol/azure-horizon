@@ -267,7 +267,7 @@ export default class Formulas {
     switch (actor.type) {
 
       case "hero": {
-        /** @type AttributesDataModel **/
+        /** @type CharacterAttributesDataModel **/
         const attributes = system.attributes;
         hp += factors.level + (attributes.mig.base * HP_MIGHT_FACTOR);
         forClassBenefits(actor, (benefits) => {
@@ -279,7 +279,7 @@ export default class Formulas {
       }
 
       case "adversary": {
-        /** @type AttributesDataModel **/
+        /** @type CharacterAttributesDataModel **/
         const attributes = system.attributes;
         /** @type AdversaryProfileDataModel **/
         const profile = system.profile;
