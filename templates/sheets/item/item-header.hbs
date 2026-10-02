@@ -14,6 +14,20 @@
       {{formInput fields.name value=item.name classes="ah-sheet__name ah-item__name"}}
       {{formGroup systemFields.revision value=system.revision name='system.revision' localize=true classes='ah-item__revision'}}
       {{formGroup systemFields.slug value=system.slug name='system.slug' localize=true classes='ah-item__slug'}}
+
+      {{#if typeData}}
+        <label class="ah-item__feature" data-tooltip="{{typeData.label}}">
+          {{#if (ahNotEquals typeData.label "-")}}
+            <span>
+              {{localize typeData.label}}
+            </span>
+          {{else}}
+          {{/if}}
+          <a data-action="changeType" data-tooltip="{{localize 'AH.COMMON.Change'}}">
+            <i class="ah-icon --xs {{ahIconClass 'type'}}"></i>
+          </a>
+        </label>
+      {{/if}}
     </div>
     <div class="ah-item__header__properties">
       {{#each fieldMap.header as |entry|}}

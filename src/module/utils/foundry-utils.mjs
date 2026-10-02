@@ -1,6 +1,7 @@
 import { enrichHTML } from "../constants.mjs";
 import StringUtils from "./string-utils.mjs";
 import { HTMLUtils } from "./_module.mjs";
+import ObjectUtils from "./object-utils.mjs";
 
 const { api, fields, handlebars } = foundry.applications;
 const { SchemaField, ArrayField, StringField, NumberField, EmbeddedDataField } = foundry.data.fields;
@@ -389,10 +390,34 @@ export default class FoundryUtils {
    */
 
   /**
+   * Collect field info for each field of a schema into the layout.
+   * @param {object} source                      The source data
+   * @param {SchemaField} schema                 The schema whose fields are collected
+   * @param {string} path                        The path of the schema within the source
+   * @param {object} layout                      The layout being built
+   * @param {object} [options]
+   * @param {Set<string>} [options.exclude]      Field names to skip
+   */
+  static #collectSchemaFields(source, schema, path, layout, { exclude = new Set() } = {}) {
+    for (const sf of Object.values(schema.fields)) {
+      if (sf.options?.config === false || exclude.has(sf.name)) continue;
+      const sfieldInfo = this.getDataFieldInfo(source, `${path}.${sf.name}`, sf);
+      switch (sf.options?._part) {
+        case "header":
+          layout.header.push(sfieldInfo);
+          break;
+        case "properties":
+          layout.properties.push(sfieldInfo);
+          break;
+      }
+    }
+  }
+
+  /**
    * @typedef AH_FieldRenderMap
    * @desc Used for figuring out where to render generic fields that need no custom rendering.
-   * @property {AH_DataFieldInfo[]} default
    * @property {AH_DataFieldInfo[]} header
+   * @property {AH_DataFieldInfo[]} properties
    */
 
   /**
@@ -407,7 +432,6 @@ export default class FoundryUtils {
 
     /** @type AH_FieldRenderMap **/
     const layout = {
-      default: [],
       properties: [],
       header: [],
     };
@@ -421,25 +445,24 @@ export default class FoundryUtils {
       let fieldClass = field.constructor.name;
       // Support 1-level nested schema fields (which are very common)
       if (fieldClass === "SchemaField") {
-        const schemaFields = Object.values(field.fields);
-        for (const sf of schemaFields) {
-          const sfieldInfo = this.getDataFieldInfo(source, `${fieldPath}.${sf.name}`, sf);
-          switch (sf.options?._part) {
-            case "header":
-              layout.header.push(sfieldInfo);
-              break;
-            case "properties":
-              layout.default.push(sfieldInfo);
-              break;
-          }
-        }
+        this.#collectSchemaFields(source, field, fieldPath, layout);
+      }
+      // Support TOF
+      else if (fieldClass === "TypedSchemaField") {
+        const activeType = ObjectUtils.getProperty(source, fieldPath)?.type;
+        const typeDef = field.types[activeType];
+        if (!typeDef) continue;
+
+        // Types may be a SchemaField or a DataModel class (which exposes its schema)
+        const schema = typeDef instanceof foundry.data.fields.SchemaField ? typeDef : typeDef.schema;
+        this.#collectSchemaFields(source, schema, fieldPath, layout, { exclude: new Set(["type"]) });
       }
       // Support array fields
       else if (fieldClass === "ArrayField") {
         if (field.element instanceof StringField) {
           const fieldInfo = this.getDataFieldInfo(source, fieldPath, field);
           fieldInfo.isArray = true;
-          layout.default.push(fieldInfo);
+          layout.properties.push(fieldInfo);
         }
       }
       else if (fieldClass === "TrackerField") {
@@ -454,7 +477,7 @@ export default class FoundryUtils {
           layout.header.push(fieldInfo);
         }
         else {
-          layout.default.push(fieldInfo);
+          layout.properties.push(fieldInfo);
         }
       }
 

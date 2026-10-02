@@ -82,19 +82,4 @@ export default class ClassFeatureDataModel extends ActiveFeatureDataModel {
       ui.notifications.warn(`Failed to retrieve data model for type ${type}`);
     }
   }
-
-  static get templates() {
-    return {
-      header: [
-        systemTemplatePath("sheets/item/item-class-feature"),
-      ],
-    };
-  }
-
-  /**
-   * @returns {boolean}
-   */
-  get hasFeature() {
-    return !(this.feature instanceof EmptyClassFeature);
-  }
 }

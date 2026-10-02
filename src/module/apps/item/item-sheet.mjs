@@ -193,31 +193,30 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
         break;
       case "header":{
         context.isCompendium = isCompendiumEntry(this.item);
-        if (this.item.system === "classFeature") {
-          context.classFeatureOptions = AH.dataModelRegistries.classFeature.localizedEntries;
+        if (this.item.type === "classFeature") {
+          const featureClass = this.item.system.feature.constructor;
+          if (featureClass.TYPE !== "emptyClassFeature") {
+            context.typeData = {
+              template: featureClass.template,
+              label: featureClass.localization,
+            };
+          }
+          else {
+            context.typeData = {};
+          }
+        }
+        else if (this.item.type === "tactica") {
+          const dataClass = this.item.system.data.constructor;
+          context.typeData = {
+            template: dataClass.template,
+            label: dataClass.localization,
+          };
         }
         break;
       }
       case "properties":
         context.fieldsets = await this._getFieldsets();
         context.classData = this.item.system.constructor;
-        if (this.item.type === "classFeature") {
-          const featureClass = this.item.system.feature.constructor;
-          if (featureClass.TYPE !== "emptyClassFeature") {
-            context.featureData = {
-              template: featureClass.template,
-              label: featureClass.localization,
-            };
-          }
-        }
-        else if (this.item.type === "tactica") {
-          const dataClass = this.item.system.data.constructor;
-          context.tacticaData = {
-            template: dataClass.template,
-            label: dataClass.localization,
-          };
-        }
-
         break;
     }
     return context;

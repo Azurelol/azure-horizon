@@ -812,7 +812,7 @@ AH.tactica = Object.freeze({
       flying: { label: "AH.UNIT.TYPE.Flying" },
       civilian: { label: "AH.UNIT.TYPE.Civilian" },
     },
-    equipment: {
+    weapon: {
       sword: { label: "AH.UNIT.EQUIPMENT.Sword" },
       axe: { label: "AH.UNIT.EQUIPMENT.Axe" },
       spear: { label: "AH.UNIT.EQUIPMENT.Spear" },

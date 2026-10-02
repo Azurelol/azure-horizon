@@ -14,6 +14,7 @@ export default class TacticaItemDataModel extends FeatureDataModel {
     return Object.assign(super.defineSchema(), {
       data: new TypedSchemaField(AH.dataModelRegistries.tacticaData.types, {
         initial: new TacticaWeaponData(),
+        _part: "default",
       }),
     });
   }
@@ -37,14 +38,6 @@ export default class TacticaItemDataModel extends FeatureDataModel {
     else {
       ui.notifications.warn(`Failed to retrieve data model for type ${type}`);
     }
-  }
-
-  static get templates() {
-    return {
-      header: [
-        systemTemplatePath("sheets/item/item-tactica-data"),
-      ],
-    };
   }
 
   /**
