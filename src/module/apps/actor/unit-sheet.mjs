@@ -51,7 +51,7 @@ export class UnitSheet extends AHActorSheet {
 
   #tableRenderers = new TableRendererRegistry();
   #consumableTableRenderer = this.#tableRenderers.register("consumable", new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") }));
-  #equipmentTableRenderer = this.#tableRenderers.register("tacticaEquipment", new ActionTableRenderer({ title: "AH.ITEM.Equipment", actions: CharacterSheet.getCompendiumTableActions("tactica", "equipment") }));
+  #equipmentTableRenderer = this.#tableRenderers.register("tactica", new ActionTableRenderer({ title: "AH.ITEM.Equipment", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
 
   /* -------------------------------------------------- */
   /** @inheritdoc */
@@ -61,7 +61,7 @@ export class UnitSheet extends AHActorSheet {
       case "status": {
         context.tables = [
           await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),
-          await this.#equipmentTableRenderer.render(this.actor.getItemsByType("tacticaEquipment")),
+          await this.#equipmentTableRenderer.render(this.actor.getItemsByType("tactica")),
         ];
         break;
       }

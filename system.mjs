@@ -167,6 +167,7 @@ function registerDataModels() {
     ruleTrigger: data.ActiveEffect.Registries.RuleTriggerRegistry.instance,
     rulePredicate: data.ActiveEffect.Registries.RulePredicateRegistry.instance,
     classFeature: data.Item.ClassFeatureRegistry.instance,
+    tacticaData: data.Item.TacticaDataRegistry.instance,
   };
   /**
    * @type {String[]}

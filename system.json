@@ -125,8 +125,7 @@
       "attack": {},
       "ability": {},
       "move": {},
-      "tacticaEquipment": {},
-      "tacticaSkill": {}
+      "tactica": {}
     }
   },
   "flags": {

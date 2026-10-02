@@ -802,6 +802,28 @@ AH.marker = {
 
 };
 
+AH.tactica = Object.freeze({
+  unit: {
+    type: {
+      phalanx: { label: "AH.UNIT.TYPE.Phalanx" },
+      cavalry: { label: "AH.UNIT.TYPE.Cavalry" },
+      armored: { label: "AH.UNIT.TYPE.Armored" },
+      covert: { label: "AH.UNIT.TYPE.Covert" },
+      flying: { label: "AH.UNIT.TYPE.Flying" },
+      civilian: { label: "AH.UNIT.TYPE.Civilian" },
+    },
+    equipment: {
+      sword: { label: "AH.UNIT.EQUIPMENT.Sword" },
+      axe: { label: "AH.UNIT.EQUIPMENT.Axe" },
+      spear: { label: "AH.UNIT.EQUIPMENT.Spear" },
+      bow: { label: "AH.UNIT.EQUIPMENT.Bow" },
+      dagger: { label: "AH.UNIT.EQUIPMENT.Dagger" },
+      tome: { label: "AH.UNIT.EQUIPMENT.Tome" },
+      staff: { label: "AH.UNIT.EQUIPMENT.Staff" },
+    },
+  },
+});
+
 /**
  * @typedef {"source" | "target"} AH_EventRelationKey
  */
@@ -1473,6 +1495,7 @@ AH.icons = {
   open: "fas fa-open",
   close: "fas fa-close",
   menu: "fa-solid fa-bars",
+  data: "fa fa-tags",
 
   roll: "ah-icon-check-roll",
   hr: "ah-icon-check-hr",

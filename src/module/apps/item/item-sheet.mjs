@@ -210,6 +210,13 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
             };
           }
         }
+        else if (this.item.type === "tactica") {
+          const dataClass = this.item.system.data.constructor;
+          context.tacticaData = {
+            template: dataClass.template,
+            label: dataClass.localization,
+          };
+        }
 
         break;
     }
@@ -270,22 +277,37 @@ export class AHItemSheet extends DocumentSheetMixin(api.HandlebarsApplicationMix
   /* -------------------------------------------------- */
 
   /**
+   * Item types that support changing their sub-type, keyed by item type.
+   * @type {Record<string, {registry: string, currentType: (system: object) => string}>}
+   */
+  static #TYPE_CHANGE_CONFIG = {
+    classFeature: {
+      registry: "classFeature",
+      currentType: system => system.feature.type,
+    },
+    tactica: {
+      registry: "tacticaData",
+      currentType: system => system.data.type,
+    },
+  };
+
+  /**
    * @this AHItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise<void>}
    */
   static async #changeType(event, target) {
-    if (this.item.type === "classFeature") {
-      const subTypes = AH.dataModelRegistries.classFeature.localizedEntries;
-      const options = getFormSelectOptions(subTypes);
-      const selectedType = await Dialogs.select("Change Type", options, this.item.system.feature.type);
-      if (selectedType != null) {
-        /** @type ClassFeatureDataModel **/
-        const system = this.item.system;
-        await system.changeFeature(selectedType);
-      }
-    }
+    const config = AHItemSheet.#TYPE_CHANGE_CONFIG[this.item.type];
+    if (!config) return;
+
+    const system = this.item.system;
+    const subTypes = AH.dataModelRegistries[config.registry].localizedEntries;
+    const options = getFormSelectOptions(subTypes);
+    const selectedType = await Dialogs.select("Change Type", options, config.currentType(system));
+    if (selectedType == null) return;
+
+    await system.changeType(selectedType);
   }
 
   /**

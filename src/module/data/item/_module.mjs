@@ -6,18 +6,18 @@ import SpellDataModel from "./spell-data-model.mjs";
 import ClassDataModel from "./class-data-model.mjs";
 import ClassFeatureDataModel from "./class-feature-data-model.mjs";
 import ConsumableDataModel from "./consumable-data-model.mjs";
-
-import * as fields from "./fields/_module.mjs";
-import * as features from "./classFeatures/_module.mjs";
 import ArmorDataModel from "./armor-data-model.mjs";
 import AccessoryDataModel from "./accessory-data-model.mjs";
 import AbilityDataModel from "./ability-data-model.mjs";
 import MoveDataModel from "./move-data-model.mjs";
-
-import { ClassFeatureRegistry } from "./class-feature-registry.mjs";
 import EngramDataModel from "./engram-data-model.mjs";
-import TacticaSkillDataModel from "./tactica-skill-data-model.mjs";
-import TacticaEquipmentDataModel from "./tactica-equipment-data-model.mjs";
+
+import * as fields from "./fields/_module.mjs";
+import * as features from "./classFeatures/_module.mjs";
+import { ClassFeatureRegistry } from "./class-feature-registry.mjs";
+
+import TacticaItemDataModel from "./tactica-item-data-model.mjs";
+import { TacticaDataRegistry } from "./tactica-data-registry.mjs";
 
 const dataModels = Object.freeze({
   base: ItemDataModel,
@@ -37,8 +37,7 @@ const dataModels = Object.freeze({
   consumable: ConsumableDataModel,
   engram: EngramDataModel,
   // Unit
-  tacticaEquipment: TacticaEquipmentDataModel,
-  tacticaSkill: TacticaSkillDataModel,
+  tactica: TacticaItemDataModel,
 });
 
-export { dataModels, fields, features, ClassFeatureRegistry };
+export { dataModels, fields, features, ClassFeatureRegistry, TacticaDataRegistry };

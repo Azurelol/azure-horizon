@@ -262,6 +262,32 @@
         "Recovery": "Recovery Value"
       }
     },
+    "UNIT": {
+      "Class": "Class",
+      "Skill": "Skill",
+      "Weapon": "Weapon",
+      "Accessory": "Accessory",
+      "Equipment": "Equipment",
+
+      "TYPE": {
+        "Phalanx": "Phalanx",
+        "Cavalry": "Cavalry",
+        "Armored": "Armored",
+        "Covert": "Covert",
+        "Flying": "Flying",
+        "Magical": "Magical",
+        "Civilian": "Civilian"
+      },
+      "EQUIPMENT": {
+        "Sword": "Sword",
+        "Axe": "Axe",
+        "Spear": "Spear",
+        "Bow": "Bow",
+        "Dagger": "Dagger",
+        "Staff": "Staff",
+        "Tome": "Tome"
+      }
+    },
     "EXPERIENCE": {
       "Trigger": "Experience Trigger",
       "LevelUp": "Level Up",
@@ -1280,8 +1306,7 @@
       "consumable": "Consumable",
       "ability": "Ability",
       "move": "Move",
-      "tacticaEquipment": "Tactica Equipment",
-      "tacticaSkill": "Tactica Skill"
+      "tactica": "Tactica"
     },
     "Combatant": {
       "player": "Player"
