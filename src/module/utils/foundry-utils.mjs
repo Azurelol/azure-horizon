@@ -447,7 +447,7 @@ export default class FoundryUtils {
       if (fieldClass === "SchemaField") {
         this.#collectSchemaFields(source, field, fieldPath, layout);
       }
-      // Support TOF
+      // Support Typed Schema Field
       else if (fieldClass === "TypedSchemaField") {
         const activeType = ObjectUtils.getProperty(source, fieldPath)?.type;
         const typeDef = field.types[activeType];

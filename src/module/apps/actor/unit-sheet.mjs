@@ -52,6 +52,7 @@ export class UnitSheet extends AHActorSheet {
   #tableRenderers = new TableRendererRegistry();
   #consumableTableRenderer = this.#tableRenderers.register("consumable", new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") }));
   #equipmentTableRenderer = this.#tableRenderers.register("tactica", new ActionTableRenderer({ title: "AH.ITEM.Equipment", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
+  #weaponsTableRenderer = this.#tableRenderers.register("tactica", new ActionTableRenderer({ title: "AH.ITEM.Equipment", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
 
   /* -------------------------------------------------- */
   /** @inheritdoc */
