@@ -13,7 +13,8 @@
       "assembly": "Assembly",
       "followers": "Followers",
       "entities": "Entities",
-      "playlists": "Playlists"
+      "playlists": "Playlists",
+      "tactica": "Tactica"
     },
     "APPLICATION": {
       "CompendiumBrowser": "Compendium Browser",
@@ -262,30 +263,56 @@
         "Recovery": "Recovery Value"
       }
     },
-    "UNIT": {
+    "TACTICA": {
       "Class": "Class",
       "Skill": "Skill",
       "Weapon": "Weapon",
       "Accessory": "Accessory",
       "Equipment": "Equipment",
-
-      "TYPE": {
-        "Phalanx": "Phalanx",
-        "Cavalry": "Cavalry",
-        "Armored": "Armored",
-        "Covert": "Covert",
-        "Flying": "Flying",
-        "Magical": "Magical",
-        "Civilian": "Civilian"
+      "Tier": "Tier",
+      "Weight": "Weight",
+      "Range": "Range",
+      "ACTION": {
+        "AttackHint": "The currently used weapon for performing attacks and defending."
       },
-      "EQUIPMENT": {
+      "Speed": "Speed",
+      "SPEED": {
+        "Fast": "Fast",
+        "Slow": "Slow"
+      },
+      "UNIT": {
+        "TRAITS": {
+          "Phalanx": "Phalanx",
+          "Cavalry": "Cavalry",
+          "Armored": "Armored",
+          "Mystical": "Mystical",
+          "Covert": "Covert",
+          "Flying": "Flying",
+          "Backup": "Backup",
+          "Civilian": "Civilian"
+        }
+      },
+      "WEAPON": {
         "Sword": "Sword",
         "Axe": "Axe",
         "Spear": "Spear",
         "Bow": "Bow",
         "Dagger": "Dagger",
         "Staff": "Staff",
-        "Tome": "Tome"
+        "Tome": "Tome",
+        "DAMAGE": {
+          "TYPE": {
+            "Physical": "Physical",
+            "Magical": "Magical"
+          }
+        },
+        "TRAITS": {
+          "Smash": "Smash",
+          "SmashHint": "If the attack hits the target it shifts it back one space. Cannot make follow-up attacks.",
+          "ArmorBane": "Armor Bane",
+          "RiderBane": "Rider Bane",
+          "WingBane": "Wing Bane"
+        }
       }
     },
     "EXPERIENCE": {

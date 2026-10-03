@@ -798,28 +798,64 @@ AH.booleanOption = {
   false: { label: "AH.COMMON.False" },
 };
 
-AH.marker = {
+/**
+ * @typedef {'cavalry'|'backup'|'armored'|'flying'} AH_Tactica_UnitTrait
+ */
 
-};
+/**
+ * @typedef {'sword'|'axe'|'spear'|'bow'|'dagger'|'tome'|'staff'} AH_Tactica_Weapon
+ */
+
+/**
+ * @typedef {'physical'|'magical'} AH_Tactica_DamageType
+ */
 
 AH.tactica = Object.freeze({
   unit: {
-    type: {
-      phalanx: { label: "AH.UNIT.TYPE.Phalanx" },
-      cavalry: { label: "AH.UNIT.TYPE.Cavalry" },
-      armored: { label: "AH.UNIT.TYPE.Armored" },
-      covert: { label: "AH.UNIT.TYPE.Covert" },
-      flying: { label: "AH.UNIT.TYPE.Flying" },
-      civilian: { label: "AH.UNIT.TYPE.Civilian" },
+    tier: {
+      min: 1,
+      default: 1,
+      max: 3,
     },
-    weapon: {
-      sword: { label: "AH.UNIT.EQUIPMENT.Sword" },
-      axe: { label: "AH.UNIT.EQUIPMENT.Axe" },
-      spear: { label: "AH.UNIT.EQUIPMENT.Spear" },
-      bow: { label: "AH.UNIT.EQUIPMENT.Bow" },
-      dagger: { label: "AH.UNIT.EQUIPMENT.Dagger" },
-      tome: { label: "AH.UNIT.EQUIPMENT.Tome" },
-      staff: { label: "AH.UNIT.EQUIPMENT.Staff" },
+    movement: {
+      min: 1,
+      default: 4,
+      max: 9,
+    },
+    traits: {
+      armored: { label: "AH.TACTICA.UNIT.TRAITS.Armored" },
+      cavalry: { label: "AH.TACTICA.UNIT.TRAITS.Cavalry" },
+      covert: { label: "AH.TACTICA.UNIT.TRAITS.Covert" },
+      mystical: { label: "AH.TACTICA.UNIT.TRAITS.Mystical" },
+      flying: { label: "AH.TACTICA.UNIT.TRAITS.Flying" },
+      backup: { label: "AH.TACTICA.UNIT.TRAITS.Backup" },
+    },
+  },
+  speed: {
+    fast: { label: "AH.TACTICA.SPEED.Fast" },
+    slow: { label: "AH.TACTICA.SPEED.Slow" },
+  },
+  weapon: {
+    damage: {
+      type: {
+        physical: { label: "AH.TACTICA.WEAPON.DAMAGE.TYPE.Physical" },
+        magical: { label: "AH.TACTICA.WEAPON.DAMAGE.TYPE.Magical" },
+      },
+    },
+    category: {
+      sword: { label: "AH.TACTICA.WEAPON.Sword" },
+      axe: { label: "AH.TACTICA.WEAPON.Axe" },
+      spear: { label: "AH.TACTICA.WEAPON.Spear" },
+      bow: { label: "AH.TACTICA.WEAPON.Bow" },
+      dagger: { label: "AH.TACTICA.WEAPON.Dagger" },
+      tome: { label: "AH.TACTICA.WEAPON.Tome" },
+      staff: { label: "AH.TACTICA.WEAPON.Staff" },
+    },
+    traits: {
+      armorBane: { label: "AH.TACTICA.WEAPON.TRAITS.ArmorBane" },
+      riderBane: { label: "AH.TACTICA.WEAPON.TRAITS.RiderBane" },
+      wingBane: { label: "AH.TACTICA.WEAPON.TRAITS.WingBane" },
+      smash: { label: "AH.TACTICA.WEAPON.TRAITS.Smash" },
     },
   },
 });

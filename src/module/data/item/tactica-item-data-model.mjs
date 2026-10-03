@@ -1,7 +1,6 @@
 import FeatureDataModel from "./feature-data-model.mjs";
 import AH from "../../config.mjs";
 import TacticaWeaponData from "./tactica/tactica-weapon-data.mjs";
-import { systemTemplatePath } from "../../constants.mjs";
 
 /**
  * Used by units in the tactica sub-system.

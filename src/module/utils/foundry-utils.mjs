@@ -407,6 +407,7 @@ export default class FoundryUtils {
           layout.header.push(sfieldInfo);
           break;
         case "properties":
+        default:
           layout.properties.push(sfieldInfo);
           break;
       }
@@ -455,7 +456,7 @@ export default class FoundryUtils {
 
         // Types may be a SchemaField or a DataModel class (which exposes its schema)
         const schema = typeDef instanceof foundry.data.fields.SchemaField ? typeDef : typeDef.schema;
-        this.#collectSchemaFields(source, schema, fieldPath, layout, { exclude: new Set(["type"]) });
+        this.#collectSchemaFields(source, schema, fieldPath, layout, { exclude: new Set(["type", "_id"]) });
       }
       // Support array fields
       else if (fieldClass === "ArrayField") {
