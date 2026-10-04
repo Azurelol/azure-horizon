@@ -14,6 +14,7 @@ import EngramDataModel from "./engram-data-model.mjs";
 
 import * as fields from "./fields/_module.mjs";
 import * as features from "./classFeatures/_module.mjs";
+import * as tactica from "./tactica/_module.mjs";
 import { ClassFeatureRegistry } from "./class-feature-registry.mjs";
 
 import TacticaItemDataModel from "./tactica-item-data-model.mjs";
@@ -40,4 +41,4 @@ const dataModels = Object.freeze({
   tactica: TacticaItemDataModel,
 });
 
-export { dataModels, fields, features, ClassFeatureRegistry, TacticaDataRegistry };
+export { dataModels, fields, features, tactica, ClassFeatureRegistry, TacticaDataRegistry };

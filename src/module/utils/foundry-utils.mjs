@@ -299,7 +299,8 @@ export default class FoundryUtils {
   /**
    * @typedef AH_DataFieldInfo
    * @property {String} path The path to the field.
-   * @property field The foundry data field.
+   * @property {foundry.data.fields.DataField} field The foundry data field.
+   * @property {String} className
    * @property {Object} value
    * @property {String} template The partial template path.
    * @property {Boolean} optional If the field is optional.
@@ -324,6 +325,7 @@ export default class FoundryUtils {
       options: field.options,
       model: value,
       value: value,
+      className: field.constructor.name,
       classes: field.options._classes,
       optional: field.fields?.enabled !== undefined,
       required: field.options.required,
@@ -401,15 +403,20 @@ export default class FoundryUtils {
   static #collectSchemaFields(source, schema, path, layout, { exclude = new Set() } = {}) {
     for (const sf of Object.values(schema.fields)) {
       if (sf.options?.config === false || exclude.has(sf.name)) continue;
-      const sfieldInfo = this.getDataFieldInfo(source, `${path}.${sf.name}`, sf);
-      switch (sf.options?._part) {
-        case "header":
-          layout.header.push(sfieldInfo);
-          break;
-        case "properties":
-        default:
-          layout.properties.push(sfieldInfo);
-          break;
+      const sfi = this.getDataFieldInfo(source, `${path}.${sf.name}`, sf);
+      if (sfi.className === "SchemaField") {
+        this.#collectSchemaFields(source, sf, sfi.path, layout);
+      }
+      else {
+        switch (sf.options?._part) {
+          case "header":
+            layout.header.push(sfi);
+            break;
+          case "properties":
+          default:
+            layout.properties.push(sfi);
+            break;
+        }
       }
     }
   }

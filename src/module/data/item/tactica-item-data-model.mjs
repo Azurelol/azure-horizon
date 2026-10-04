@@ -1,6 +1,6 @@
 import FeatureDataModel from "./feature-data-model.mjs";
 import AH from "../../config.mjs";
-import TacticaWeaponData from "./tactica/tactica-weapon-data.mjs";
+import { TacticaEmptyData } from "./tactica/_module.mjs";
 
 /**
  * Used by units in the tactica sub-system.
@@ -12,7 +12,7 @@ export default class TacticaItemDataModel extends FeatureDataModel {
     const { SchemaField, TypedSchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       data: new TypedSchemaField(AH.dataModelRegistries.tacticaData.types, {
-        initial: new TacticaWeaponData(),
+        initial: new TacticaEmptyData(),
         _part: "default",
       }),
     });

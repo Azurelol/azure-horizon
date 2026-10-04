@@ -41,8 +41,8 @@
       {{/if}}
     {{/each}}
 
-    {{#if featureData}}
-      {{> (lookup featureData 'template') }}
+    {{#if typeData.template}}
+      {{> (lookup typeData 'template') }}
     {{/if}}
   </div>
 </section>

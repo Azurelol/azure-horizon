@@ -272,6 +272,11 @@
       "Tier": "Tier",
       "Weight": "Weight",
       "Range": "Range",
+      "Consumable": "Consumable",
+      "RANGE": {
+        "Minimum": "MIN Range",
+        "Maximum": "MAX Range"
+      },
       "ACTION": {
         "AttackHint": "The currently used weapon for performing attacks and defending."
       },
@@ -292,13 +297,15 @@
           "Civilian": "Civilian"
         }
       },
+      "CONSUMABLE": {
+        "Staff": "Staff"
+      },
       "WEAPON": {
         "Sword": "Sword",
         "Axe": "Axe",
         "Spear": "Spear",
         "Bow": "Bow",
         "Dagger": "Dagger",
-        "Staff": "Staff",
         "Tome": "Tome",
         "DAMAGE": {
           "TYPE": {

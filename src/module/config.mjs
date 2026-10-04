@@ -835,13 +835,16 @@ AH.tactica = Object.freeze({
     fast: { label: "AH.TACTICA.SPEED.Fast" },
     slow: { label: "AH.TACTICA.SPEED.Slow" },
   },
+  damage: {
+    slashing: { label: "AH.DAMAGE.Slashing.long", short: "AH.DAMAGE.Slashing.short", group: "physical" },
+    piercing: { label: "AH.DAMAGE.Piercing.long", short: "AH.DAMAGE.Piercing.short", group: "physical" },
+    bludgeoning: { label: "AH.DAMAGE.Bludgeoning.long", short: "AH.DAMAGE.Bludgeoning.short", group: "physical" },
+
+    fire: { label: "AH.DAMAGE.Fire.long", short: "AH.DAMAGE.Fire.short", group: "elemental" },
+    cold: { label: "AH.DAMAGE.Cold.long", short: "AH.DAMAGE.Cold.short", group: "elemental" },
+    electric: { label: "AH.DAMAGE.Electric.long", short: "AH.DAMAGE.Electric.short", group: "elemental" },
+  },
   weapon: {
-    damage: {
-      type: {
-        physical: { label: "AH.TACTICA.WEAPON.DAMAGE.TYPE.Physical" },
-        magical: { label: "AH.TACTICA.WEAPON.DAMAGE.TYPE.Magical" },
-      },
-    },
     category: {
       sword: { label: "AH.TACTICA.WEAPON.Sword" },
       axe: { label: "AH.TACTICA.WEAPON.Axe" },
