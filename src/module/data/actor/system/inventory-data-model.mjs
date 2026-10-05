@@ -14,12 +14,6 @@ import { ObjectUtils } from "../../../utils/_module.mjs";
  * @property {String} accessory2
  */
 export default class InventoryDataModel extends VersionedDataModel {
-
-  /**
-   * @type {Set<AH_ItemType>}
-   */
-  static EQUIPMENT_TYPES = new Set(["accessory", "armor", "shield", "weapon"]);
-
   static defineSchema() {
     const { ArrayField, StringField } = foundry.data.fields;
     return {

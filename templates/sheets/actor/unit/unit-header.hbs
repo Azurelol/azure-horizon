@@ -11,6 +11,13 @@
         {{/if}}
         data-tooltip="{{actor.name}}">
       {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
+
+      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+
+    </div>
+
+    <div class="ah-sheet-header__row">
+
       <div class="ah-sheet__group ah-character__attributes">
         {{#each system.attributes as |attribute key|}}
           {{#if ../system.assembled}}
@@ -28,11 +35,39 @@
           {{/if}}
         {{/each}}
       </div>
-      {{ahInput 'system.level' system.level size ='xl' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="--badge ah-character__level" iconClasses="--glow" }}
-    </div>
 
-    <div class="ah-sheet-header__row">
-      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+      {{ahInput 'system.level' system.level size ='xl' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="--badge ah-character__level" iconClasses="--glow" }}
+
+
+      <div class="ah-sheet__group ah-character__parameters">
+        {{ahBadge size='sm' icon=(ahIconClass 'def')
+                  label='AH.CHARACTER.Defense.short'
+                  iconClasses='--glow'
+                  value= system.parameters.def.current }}
+        {{ahBadge size='sm' icon=(ahIconClass 'mdef')
+                  label='AH.CHARACTER.MagicDefense.short'
+                  iconClasses='--glow'
+                  value=system.parameters.mdef.current }}
+        {{ahBadge size='sm' icon=(ahIconClass 'init')
+                  label='AH.CHARACTER.Initiative.short'
+                  iconClasses='--glow'
+                  value=system.parameters.init.current }}
+        {{ahBadge size='sm' icon=(ahIconClass 'block')
+                  label='AH.CHARACTER.Block.short'
+                  tooltip='AH.CHARACTER.Block.long'
+                  iconClasses='--glow'
+                  value=blk }}
+        {{ahBadge size='sm' icon=(ahIconClass 'recover')
+                  label='AH.CHARACTER.Recovery.short'
+                  tooltip='AH.CHARACTER.Recovery.long'
+                  iconClasses='--glow'
+                  value=rec }}
+        {{ahBadge size='sm' icon=(ahIconClass 'movement')
+                  label='AH.CHARACTER.Movement.short'
+                  tooltip='AH.CHARACTER.Movement.long'
+                  iconClasses='--glow'
+                  value=mov }}
+      </div>
     </div>
   </div>
 </header>

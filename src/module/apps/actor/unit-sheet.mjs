@@ -1,24 +1,22 @@
 import { AHActorSheet } from "./actor-sheet.mjs";
 import { systemTemplatePath } from "../../constants.mjs";
-import { ActionTableRenderer, WeaponTableRenderer } from "../item/_module.mjs";
+import {
+  ActionTableRenderer,
+  TacticaTableRenderer,
+  TacticaWeaponTableRenderer,
+} from "../item/_module.mjs";
 import { CharacterSheet } from "./character-sheet.mjs";
 import { TableRendererRegistry } from "../api/table-renderer.mjs";
 
 /**
- * @extends AHActorSheet
  * @property {AHActor} actor
  * @property {UnitDataModel} system
  * @inheritDoc
  */
-export class UnitSheet extends AHActorSheet {
+export class UnitSheet extends CharacterSheet {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["ah-entity"],
-    position: {
-      width: 720,
-      height: 800,
-    },
     actions: {
     },
   };
@@ -30,29 +28,23 @@ export class UnitSheet extends AHActorSheet {
         { id: "status", label: "AH.SHEET.Tabs.Status", icon: "ra ra-fluffy-swirl" },
         { id: "effects", label: "AH.SHEET.Tabs.Effects", icon: "ra ra-book" },
       ],
-      initial: "overview",
+      initial: "status",
     },
   };
 
   /** @inheritdoc */
   static PARTS = {
     ...super.PARTS,
-
-    header: {
-      template: systemTemplatePath("sheets/actor/unit/unit-header"),
-    },
     status: {
       template: systemTemplatePath("sheets/actor/unit/unit-status"),
-    },
-    effects: {
-      template: systemTemplatePath("sheets/document-effects"),
     },
   };
 
   #tableRenderers = new TableRendererRegistry();
   #consumableTableRenderer = this.#tableRenderers.register("consumable", new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") }));
-  #equipmentTableRenderer = this.#tableRenderers.register("tactica", new ActionTableRenderer({ title: "AH.ITEM.Equipment", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
-  #weaponsTableRenderer = this.#tableRenderers.register("tactica", new ActionTableRenderer({ title: "AH.ITEM.Equipment", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
+  #classesTableRenderer = this.#tableRenderers.register("tactica", new TacticaTableRenderer({ title: "AH.ITEM.Class.long", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
+  #weaponsTableRenderer = this.#tableRenderers.register("tactica", new TacticaWeaponTableRenderer({ title: "AH.ITEM.Weapon", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
+  #skillsTableRenderer = this.#tableRenderers.register("tactica", new TacticaTableRenderer({ title: "AH.ITEM.Skill", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
 
   /* -------------------------------------------------- */
   /** @inheritdoc */
@@ -62,12 +54,26 @@ export class UnitSheet extends AHActorSheet {
       case "status": {
         context.tables = [
           await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),
-          await this.#equipmentTableRenderer.render(this.actor.getItemsByType("tactica")),
+          await this.#classesTableRenderer.render(this.actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaClassData")),
+          await this.#weaponsTableRenderer.render(this.actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaWeaponData")),
+          await this.#skillsTableRenderer.render(this.actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaSkillData")),
         ];
         break;
       }
     }
     return context;
+  }
+
+  _attachPartListeners(partId, html, options) {
+    super._attachPartListeners(partId, html, options);
+    switch (partId) {
+      case "status":
+      {
+        this.actionHandler.setupEquipment(html);
+        this.#tableRenderers.invokeAll("attachListeners", this, html);
+        break;
+      }
+    }
   }
 
   /* -------------------------------------------------- */

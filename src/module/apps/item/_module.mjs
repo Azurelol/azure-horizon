@@ -10,3 +10,4 @@ export { ActionTableRenderer } from "./action-table-renderer.mjs";
 export { EngramActionTableRenderer } from "./engram-action-table-renderer.mjs";
 
 export { ClassTableRenderer, ClassFeatureTableRenderer, SkillTableRenderer } from "./class-table-renderers.mjs";
+export { TacticaWeaponTableRenderer, TacticaTableRenderer } from "./tactica-table-renderer.mjs";

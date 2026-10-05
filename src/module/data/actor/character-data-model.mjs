@@ -79,7 +79,7 @@ export default class CharacterDataModel extends BaseEntityDataModel {
   }
 
   /**
-   * @private Invoked before affinities are
+   * @private Invoked before affinities are fully resolved.
    */
   _prepareAffinities() {
     // Add entries from affinities

@@ -40,12 +40,11 @@ export default class TacticaWeaponData extends TacticaTypeDataModel {
           label: "AH.TACTICA.RANGE.Maximum",
         }),
       }),
-      speed: new StringField({
-        initial: "",
-        label: "AH.TACTICA.Speed",
-        blank: true,
+      weight: new StringField({
+        initial: "light",
         _part: "header",
-        choices: () => AH.tactica.speed,
+        label: "AH.FIELD.Weight",
+        choices: () => AH.equipmentWeight,
       }),
       damage: new SchemaField({
         type: new StringField({
@@ -56,8 +55,14 @@ export default class TacticaWeaponData extends TacticaTypeDataModel {
           label: "AH.FIELD.DamageType.long",
           _part: "properties",
         }),
+        power: new StringField({
+          initial: "low",
+          label: "AH.FIELD.Power",
+          choices: Object.keys(AH.power),
+          formOptions: getFormSelectOptions(AH.power),
+          nullable: false,
+          _part: "properties" }),
       }),
-      effects: new EmbeddedDataField(EffectsDataModel, {}),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
         _part: "properties",

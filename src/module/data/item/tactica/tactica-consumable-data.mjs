@@ -36,7 +36,7 @@ export default class TacticaConsumableData extends TacticaTypeDataModel {
           initial: "hp",
           choices: () => AH.resourceTypes,
           blank: true,
-          label: "AH.FIELD.Type",
+          label: "AH.FIELD.Resource",
           nullable: false,
           _part: "properties",
         }),

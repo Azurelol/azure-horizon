@@ -101,18 +101,20 @@ export default class ActionHandler {
         ctx: "ability",
       });
     }
-    actions.push({
-      id: "maneuver",
-      label: "AH.ACTION.Maneuver",
-      tooltip: "AH.ACTION.ManeuverHint",
-      ctx: "maneuver",
-    });
-    actions.push({
-      id: "check",
-      label: "AH.ACTION.Check",
-      tooltip: "AH.ACTION.CheckHint",
-      ctx: "check",
-    });
+    if (this.actor.isCharacterType) {
+      actions.push({
+        id: "maneuver",
+        label: "AH.ACTION.Maneuver",
+        tooltip: "AH.ACTION.ManeuverHint",
+        ctx: "maneuver",
+      });
+      actions.push({
+        id: "check",
+        label: "AH.ACTION.Check",
+        tooltip: "AH.ACTION.CheckHint",
+        ctx: "check",
+      });
+    }
     if (this.actor.type === "hero") {
       actions.push({
         id: "item",
