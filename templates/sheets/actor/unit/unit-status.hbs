@@ -1,9 +1,9 @@
 <section class="tab status {{tab.cssClass}}" data-tab="status" data-group="primary">
 
   <div class="ah-flex-row --center" style="margin-bottom: 1rem;">
-    <a class="ah-character__equipment__slot" data-slot="attack" data-tooltip="{{localize 'AH.TACTICA.ACTION.AttackHint'}}">
-      {{#if attack}}
-        <img src="{{attack.img}}" alt="{{attack.name}}">
+    <a class="ah-character__equipment__slot" data-slot="weapon" data-tooltip="{{localize 'AH.TACTICA.ACTION.AttackHint'}}">
+      {{#if equipment.weapon}}
+        <img src="{{equipment.weapon.img}}" alt="{{equipment.weapon.name}}">
       {{else}}
         <i class="ah-icon --m {{ahIconClass 'placeholderWeapon'}}"></i>
       {{/if}}

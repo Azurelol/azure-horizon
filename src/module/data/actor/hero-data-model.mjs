@@ -2,9 +2,8 @@ import CharacterDataModel, {
   CharacterResourcesDataModel,
 } from "./character-data-model.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
-import InventoryDataModel from "./system/inventory-data-model.mjs";
-import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
-import { ActorResourceDataModel } from "./system/_module.mjs";
+import { CharacterParametersDataModel } from "./system/character-parameters-data-model.mjs";
+import { ActorResourceDataModel, HeroEquipmentDataModel } from "./system/_module.mjs";
 import HeroProfileDataModel from "./system/hero-profile-data-model.mjs";
 import { isItemType } from "../../constants.mjs";
 import AH from "../../config.mjs";
@@ -63,7 +62,7 @@ class HeroResourcesDataModel extends CharacterResourcesDataModel {
  * @property {AHActor} parent
  * @property {HeroResourcesDataModel} resources
  * @property {HeroParametersDataModel} parameters
- * @property {InventoryDataModel} equipment
+ * @property {HeroEquipmentDataModel} equipment
  * @property {HeroProfileDataModel} profile
  */
 export default class HeroDataModel extends CharacterDataModel {
@@ -75,7 +74,7 @@ export default class HeroDataModel extends CharacterDataModel {
 
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      equipment: new EmbeddedDataField(InventoryDataModel, {}),
+      equipment: new EmbeddedDataField(HeroEquipmentDataModel, {}),
       parameters: new EmbeddedDataField(HeroParametersDataModel, {}),
       resources: new EmbeddedDataField(HeroResourcesDataModel, {}),
       profile: new EmbeddedDataField(HeroProfileDataModel, {}),
@@ -145,13 +144,6 @@ export default class HeroDataModel extends CharacterDataModel {
   }
 
   /**
-   * @returns {EquippedItems}
-   */
-  getEquippedItems() {
-    return this.equipment.equipped;
-  }
-
-  /**
    * @param {AHItem} item
    * @param {AH_InventorySlot|Number} slot
    */
@@ -181,6 +173,13 @@ export default class HeroDataModel extends CharacterDataModel {
         break;
       }
     }
+  }
+
+  /**
+   * @returns {HeroEquipmentData}
+   */
+  getEquippedItems() {
+    return this.equipment.equipped;
   }
 
   /**

@@ -1,9 +1,8 @@
-import ActorDataModel from "./actor-data-model.mjs";
-import { BaseEntityDataModel } from "./entity-data-model.mjs";
 import CharacterDataModel, { CharacterAttributesDataModel, CharacterResourcesDataModel } from "./character-data-model.mjs";
-import InventoryDataModel from "./system/inventory-data-model.mjs";
+
+import { CharacterParametersDataModel } from "./system/character-parameters-data-model.mjs";
 import { ActorResourceDataModel } from "./system/_module.mjs";
-import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
+import CharacterEquipmentDataModel from "./system/character-equipment-data-model.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -32,6 +31,18 @@ class UnitParametersDataModel extends CharacterParametersDataModel {
 }
 
 /**
+ * @property {String} weapon
+ */
+class UnitEquipmentDataModel extends CharacterEquipmentDataModel {
+  static defineSchema() {
+    const { StringField } = foundry.data.fields;
+    return Object.assign(super.defineSchema(), {
+      weapon: new StringField({ nullable: true }),
+    });
+  }
+}
+
+/**
  * @property {Number} level
  * @property {CharacterAttributesDataModel} attributes
  * @property {EntityResourcesDataModel} resources
@@ -40,7 +51,7 @@ export default class UnitDataModel extends CharacterDataModel {
 
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      equipment: new EmbeddedDataField(InventoryDataModel, {}),
+      equipment: new EmbeddedDataField(UnitEquipmentDataModel, {}),
       resources: new EmbeddedDataField(UnitResourcesDataModel, {}),
       parameters: new EmbeddedDataField(UnitParametersDataModel, {}),
     });

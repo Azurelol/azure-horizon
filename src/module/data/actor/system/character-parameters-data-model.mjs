@@ -1,8 +1,8 @@
-import { ExchangeModifiersDataModel, Modifiers, VersionedDataModel } from "../api/_module.mjs";
-import { CheckModifiersDataModel, ParameterDataModel } from "./system/_module.mjs";
-import DamageModifiersDataModel from "./system/damage-modifiers-data-model.mjs";
-import AH from "../../config.mjs";
-import { Formulas } from "../../ruleset/_module.mjs";
+import { ExchangeModifiersDataModel, Modifiers, VersionedDataModel } from "../../api/_module.mjs";
+import { CheckModifiersDataModel, ParameterDataModel } from "./_module.mjs";
+import DamageModifiersDataModel from "./damage-modifiers-data-model.mjs";
+import AH from "../../../config.mjs";
+import { Formulas } from "../../../ruleset/_module.mjs";
 
 /**
  * @property {ParameterDataModel} def

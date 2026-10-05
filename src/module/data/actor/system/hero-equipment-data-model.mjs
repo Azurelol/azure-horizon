@@ -1,6 +1,6 @@
-import { VersionedDataModel } from "../../api/_module.mjs";
-import { isActorType, notifyInfo } from "../../../constants.mjs";
+import { isActorType } from "../../../constants.mjs";
 import { ObjectUtils } from "../../../utils/_module.mjs";
+import CharacterEquipmentDataModel from "./character-equipment-data-model.mjs";
 
 /**
  * @typedef {'mainHand'|'offHand'|'armor'|'accessory1'|'accessory2'} AH_InventorySlot
@@ -13,35 +13,20 @@ import { ObjectUtils } from "../../../utils/_module.mjs";
  * @property {String} accessory1
  * @property {String} accessory2
  */
-export default class InventoryDataModel extends VersionedDataModel {
+export default class HeroEquipmentDataModel extends CharacterEquipmentDataModel {
   static defineSchema() {
-    const { ArrayField, StringField } = foundry.data.fields;
-    return {
+    const { StringField } = foundry.data.fields;
+    return Object.assign(super.defineSchema(), {
       mainHand: new StringField({ nullable: true }),
       offHand: new StringField({ nullable: true }),
       armor: new StringField({ nullable: true }),
       accessory1: new StringField({ nullable: true }),
       accessory2: new StringField({ nullable: true }),
-    };
+    });
   }
 
   /**
-   * @param {AHItem} item
-   * @returns {boolean}
-   */
-  has(item) {
-    return item && Object.values(this).includes(item?.id);
-  }
-
-  /**
-   * @returns {AHActor}
-   */
-  get actor() {
-    return this.parent.parent;
-  }
-
-  /**
-   * @typedef EquippedItems
+   * @typedef HeroEquipmentData
    * @property {AHItem} mainHand
    * @property {AHItem} offHand
    * @property {AHItem} armor
@@ -51,7 +36,7 @@ export default class InventoryDataModel extends VersionedDataModel {
    */
 
   /**
-   * @returns {EquippedItems}
+   * @returns {HeroEquipmentData}
    */
   get equipped() {
     const actor = this.actor;
@@ -87,7 +72,7 @@ export default class InventoryDataModel extends VersionedDataModel {
   /**
    * @param {AHItem} item
    * @param {AH_InventorySlot} slot
-   * @returns {InventoryDataModel} The changed item
+   * @returns {HeroEquipmentDataModel} The changed item
    */
   toggleWeapon(item, slot) {
     const unequipped = [];
@@ -136,7 +121,7 @@ export default class InventoryDataModel extends VersionedDataModel {
 
   /**
    * @param {AHItem} item
-   * @return {InventoryDataModel}
+   * @return {HeroEquipmentDataModel}
    */
   toggleArmor(item) {
     const data = this.toObject();
@@ -151,7 +136,7 @@ export default class InventoryDataModel extends VersionedDataModel {
   /**
    * @param {AHItem} item
    * @param {'accessory1'|'accessory2'} slot
-   * @return {InventoryDataModel}
+   * @return {HeroEquipmentDataModel}
    */
   toggleAccessory(item, slot) {
     const data = this.toObject();
@@ -239,7 +224,7 @@ export default class InventoryDataModel extends VersionedDataModel {
 
   /**
    * @param {(ArmorDataModel) => void} onArmor
-   * @returns {InventoryDataModel}
+   * @returns {HeroEquipmentDataModel}
    */
   withArmor(onArmor) {
     const equipped = this.equipped;

@@ -24,7 +24,6 @@ export class HeroSheet extends CharacterSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     actions: {
-      equipItem: this.#equipItem,
     },
   };
 
@@ -151,19 +150,5 @@ export class HeroSheet extends CharacterSheet {
   }
 
   /* -------------------------------------------------- */
-
-  /**
-   * @this HeroSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
-   */
-  static async #equipItem(event, target) {
-    const { id, slot } = target.dataset;
-    const item = this.actor.items.get(id);
-    if (item) {
-      this.actor.system.equipItem(item, slot);
-    }
-  }
 
 }

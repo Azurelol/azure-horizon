@@ -167,15 +167,14 @@ export default class ActionHandler {
     /** @type AH_ContextMenuItem[] **/
     let items = [];
 
-    items.push({
-      name: "AH.INTERVAL.LongRest.long",
-      icon: AH.icons.longRest,
-      perform: async () => {
-        return this.actor.rest("long");
-      },
-    });
-
     if (this.actor.type === "hero") {
+      items.push({
+        name: "AH.INTERVAL.LongRest.long",
+        icon: AH.icons.longRest,
+        perform: async () => {
+          return this.actor.rest("long");
+        },
+      });
       items.push({
         name: "AH.INTERVAL.ShortRest.long",
         icon: AH.icons.shortRest,
@@ -191,7 +190,14 @@ export default class ActionHandler {
         },
       });
     }
-    else if (this.actor.type === "adversary") {
+    else if (this.actor.type === "adversary" || this.actor.type === "unit") {
+      items.push({
+        name: "AH.COMMON.Reset",
+        icon: AH.icons.longRest,
+        perform: async () => {
+          return this.actor.rest("long");
+        },
+      });
 
     }
     return items;

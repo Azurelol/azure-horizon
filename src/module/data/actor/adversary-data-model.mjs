@@ -1,7 +1,7 @@
 import CharacterDataModel, {
   CharacterResourcesDataModel,
 } from "./character-data-model.mjs";
-import { CharacterParametersDataModel } from "./character-parameters-data-model.mjs";
+import { CharacterParametersDataModel } from "./system/character-parameters-data-model.mjs";
 import { ActorResourceDataModel, AdversaryProfileDataModel } from "./system/_module.mjs";
 import { ObjectUtils } from "../../utils/_module.mjs";
 import Assembly from "../../ruleset/assembly.mjs";

@@ -45,6 +45,7 @@ export class CharacterResourcesDataModel extends VersionedDataModel {
  * @property {AffinitiesDataModel} affinities
  * @property {CharacterResourcesDataModel} resources
  * @property {CharacterParametersDataModel} parameters
+ * @property {CharacterEquipmentDataModel} equipment
  */
 export default class CharacterDataModel extends BaseEntityDataModel {
   static defineSchema() {
@@ -137,5 +138,13 @@ export default class CharacterDataModel extends BaseEntityDataModel {
    */
   get ko() {
     return this.resources.hp.value <= 0;
+  }
+
+  /**
+   * @param {AHItem} item
+   * @param {AH_InventorySlot|Number} slot
+   */
+  async equipItem(item, slot) {
+    return this.equipment.toggleSlot(item, slot);
   }
 }

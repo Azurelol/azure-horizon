@@ -51,6 +51,9 @@ function getEquippedWeapons(actor) {
   else if (actor.type === "adversary") {
     equippedWeapons.push(...actor.getItemsByType("attack"));
   }
+  else if (actor.type === "unit") {
+
+  }
 
   equippedWeapons = equippedWeapons.filter((value) => value != null);
   return equippedWeapons;

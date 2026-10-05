@@ -81,7 +81,7 @@ function forClassBenefits(actor, onBenefits) {
 
 /**
  * @param {HeroDataModel} system
- * @param {(EquippedItems) => void} onEquipment
+ * @param {(HeroEquipmentData) => void} onEquipment
  */
 function forEquipment(system, onEquipment) {
   if (system.parent.type === "hero") {

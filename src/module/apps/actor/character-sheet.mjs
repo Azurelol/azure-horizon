@@ -18,6 +18,7 @@ export class CharacterSheet extends AHActorSheet {
       height: 800,
     },
     actions: {
+      equipItem: this.#equipItem,
       rest: this.#rest,
     },
   };
@@ -111,6 +112,14 @@ export class CharacterSheet extends AHActorSheet {
 
   /* -------------------------------------------------- */
   /**
+   * @returns {CharacterDataModel}
+   */
+  get system() {
+    return this.actor.system;
+  }
+
+  /* -------------------------------------------------- */
+  /**
    * @this CharacterSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
@@ -119,6 +128,20 @@ export class CharacterSheet extends AHActorSheet {
   static async #rest(event, target) {
     const { type } = target.dataset;
     return this.actor.rest(type);
+  }
+
+  /**
+   * @this CharacterSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #equipItem(event, target) {
+    const { id, slot } = target.dataset;
+    const item = this.actor.items.get(id);
+    if (item) {
+      return this.system.equipItem(item, slot);
+    }
   }
 
 }
