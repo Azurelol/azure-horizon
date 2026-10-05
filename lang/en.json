@@ -729,7 +729,13 @@
       "Block": "Block",
       "Cast": "Cast",
       "Channel": "Channel",
-      "Charge": "Charge"
+      "Charge": "Charge",
+      "Axe": "Axe",
+      "Sword": "Sword",
+      "Spear": "Spear",
+      "Bow": "Bow",
+      "Dagger": "Dagger",
+      "Tome": "Tome"
     },
     "DOMAIN": {
       "Light": "Light",

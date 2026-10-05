@@ -86,7 +86,7 @@ export class HeroSheet extends CharacterSheet {
     switch (partId) {
       case "header":
       {
-        context.equipment = this.actor.system.getEquippedItems();
+        context.equipment = this.actor.system.equipment.equipped;
         const defConfig = this.actor.system.getDefense("def");
         context.def = `${StringUtils.localize(AH.attributes[defConfig.primary].short)} + ${StringUtils.localize(AH.attributes[defConfig.secondary].short)}`;
         const mdefConfig = this.actor.system.getDefense("mdef");

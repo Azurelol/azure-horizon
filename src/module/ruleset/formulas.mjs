@@ -181,7 +181,7 @@ export default class Formulas {
    * @return {AttributeCalculation}
    */
   static calculateAttributeBonus(config, actor) {
-    if (!actor.isCharacterType) {
+    if (!actor.isCharacterType && actor.type !== "unit") {
       return undefined;
     }
     if (config.isCheck) {

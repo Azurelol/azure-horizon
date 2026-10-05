@@ -52,7 +52,10 @@ function getEquippedWeapons(actor) {
     equippedWeapons.push(...actor.getItemsByType("attack"));
   }
   else if (actor.type === "unit") {
-
+    const weapon = actor.system.equipment.get("weapon");
+    if (weapon) {
+      equippedWeapons.push(weapon);
+    }
   }
 
   equippedWeapons = equippedWeapons.filter((value) => value != null);

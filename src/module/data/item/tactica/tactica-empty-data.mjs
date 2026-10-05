@@ -3,7 +3,7 @@ import TacticaTypeDataModel from "../tactica-type-data-model.mjs";
 
 export default class TacticaEmptyData extends TacticaTypeDataModel {
   static {
-    Object.defineProperty(this, "TYPE", { value: "tacticaEmptyData" });
+    Object.defineProperty(this, "TYPE", { value: "tacticaEmpty" });
   }
 
   /** @inheritdoc */

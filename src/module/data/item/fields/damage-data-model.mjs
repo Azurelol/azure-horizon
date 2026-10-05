@@ -37,6 +37,12 @@ export default class DamageDataModel extends OptionalFieldsetDataModel {
     if (!(source.power in AH.power)) {
       source.power = "";
     }
+    if (source.primary.type === "poison") {
+      source.primary.type = "untyped";
+    }
+    if (source.secondary.type === "poison") {
+      source.secondary.type = "untyped";
+    }
     return super.migrateData(source);
   }
 

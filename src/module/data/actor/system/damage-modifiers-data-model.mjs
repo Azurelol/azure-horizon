@@ -13,6 +13,8 @@ const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } =
  * @property {ExchangeModifiersDataModel} elemental
  * @property {ExchangeModifiersDataModel} fire
  * @property {ExchangeModifiersDataModel} cold
+ * @property {ExchangeModifiersDataModel} light
+ * @property {ExchangeModifiersDataModel} dark
  */
 export default class DamageModifiersDataModel extends VersionedDataModel {
 
@@ -29,6 +31,10 @@ export default class DamageModifiersDataModel extends VersionedDataModel {
       fire: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
       cold: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
       electric: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
+
+      spiritual: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
+      light: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
+      dark: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
     });
   }
 

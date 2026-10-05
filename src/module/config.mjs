@@ -433,7 +433,7 @@ AH.damageGroups = Object.freeze({
 });
 
 /**
- * @typedef {'untyped'|'slashing'|'piercing'|'bludgeoning'|'fire'|'cold'|'electric'|'acid'|'light'|'dark'|'mental'|'poison'} AH_DamageType
+ * @typedef {'untyped'|'slashing'|'piercing'|'bludgeoning'|'fire'|'cold'|'electric'|'acid'|'light'|'dark'|'mental'} AH_DamageType
  */
 
 /**
@@ -454,13 +454,13 @@ AH.damageTypes = Object.freeze({
   fire: { label: "AH.DAMAGE.Fire.long", short: "AH.DAMAGE.Fire.short", group: "elemental" },
   cold: { label: "AH.DAMAGE.Cold.long", short: "AH.DAMAGE.Cold.short", group: "elemental" },
   electric: { label: "AH.DAMAGE.Electric.long", short: "AH.DAMAGE.Electric.short", group: "elemental" },
-  acid: { label: "AH.DAMAGE.Acid.long", short: "AH.DAMAGE.Acid.short", group: "elemental" },
 
   light: { label: "AH.DAMAGE.Light.long", short: "AH.DAMAGE.Light.short", group: "spiritual" },
   dark: { label: "AH.DAMAGE.Dark.long", short: "AH.DAMAGE.Dark.short", group: "spiritual" },
 
+  acid: { label: "AH.DAMAGE.Acid.long", short: "AH.DAMAGE.Acid.short", group: null },
   mental: { label: "AH.DAMAGE.Mental.long", short: "AH.DAMAGE.Mental.short", group: null },
-  poison: { label: "AH.DAMAGE.Poison.long", short: "AH.DAMAGE.Poison.short", group: null },
+
 });
 
 /**
@@ -806,10 +806,6 @@ AH.booleanOption = {
  * @typedef {'sword'|'axe'|'spear'|'bow'|'dagger'|'tome'|'staff'} AH_Tactica_Weapon
  */
 
-/**
- * @typedef {'physical'|'magical'} AH_Tactica_DamageType
- */
-
 AH.tactica = Object.freeze({
   unit: {
     tier: {
@@ -862,6 +858,13 @@ AH.tactica = Object.freeze({
     },
   },
 });
+
+// Added to the big trait pool
+const tacticaTraits = [
+  AH.tactica.unit.traits,
+  AH.tactica.weapon.category,
+  AH.tactica.weapon.traits,
+];
 
 /**
  * @typedef {"source" | "target"} AH_EventRelationKey
@@ -1427,6 +1430,7 @@ AH.traits.all = Object.freeze({
   ...AH.domains,
   ...AH.damageTypes,
   ...AH.speed,
+  ...tacticaTraits,
 });
 Object.freeze(AH.traits);
 

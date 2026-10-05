@@ -21,8 +21,10 @@ function exportAPI() {
     hooks: AH.hooks,
     index: data.Compendium.CompendiumIndex.instance,
     registries: AH.dataModelRegistries,
+    traits: AH.traits.all,
   };
   globalThis.azureHorizon = api;
+  globalThis.AH = api;
   game.system.api = api;
 }
 

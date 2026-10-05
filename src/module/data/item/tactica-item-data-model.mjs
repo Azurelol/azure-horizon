@@ -1,12 +1,20 @@
 import FeatureDataModel from "./feature-data-model.mjs";
 import AH from "../../config.mjs";
 import { TacticaEmptyData } from "./tactica/_module.mjs";
+import ItemDataModel from "./item-data-model.mjs";
+import Checks from "../../pipelines/checks.mjs";
+import { ActionConfig } from "../../helpers/action-configuration.mjs";
+
+/**
+ * @typedef {'tacticaWeapon'|'tacticaSkill'|'tacticaClass'|'tacticaConsumable'} AH_TacticaItemType
+ */
 
 /**
  * Used by units in the tactica sub-system.
  * @property {TacticaTypeDataModel} data The instantiated tactica data.
+ * @property {AH_TacticaItemType} data.type
  */
-export default class TacticaItemDataModel extends FeatureDataModel {
+export default class TacticaItemDataModel extends ItemDataModel {
   /** @inheritdoc */
   static defineSchema() {
     const { SchemaField, TypedSchemaField, EmbeddedDataField, StringField, HTMLField, NumberField } = foundry.data.fields;
@@ -16,6 +24,28 @@ export default class TacticaItemDataModel extends FeatureDataModel {
         _part: "default",
       }),
     });
+  }
+
+  // TODO: Remove later
+  static migrateData(source) {
+    switch (source.data.type) {
+      case "tacticaClassData":
+        source.data.type = "tacticaClass";
+        break;
+      case "tacticaWeaponData":
+        source.data.type = "tacticaWeapon";
+        break;
+      case "tacticaEmptyData":
+        source.data.type = "tacticaEmpty";
+        break;
+      case "tacticaSkillData":
+        source.data.type = "tacticaSkill";
+        break;
+      case "tacticaConsumableData":
+        source.data.type = "tacticaConsumable";
+        break;
+    }
+    return super.migrateData(source);
   }
 
   /**
@@ -40,10 +70,24 @@ export default class TacticaItemDataModel extends FeatureDataModel {
   }
 
   /**
-   * @param {ActionConfig} config
-   * @returns {Promise<void>}
-   * @private
+   * @param {KeyboardModifiers} modifiers
+   * @returns {Promise<boolean>}
    */
-  async _initializeAction(config) {
-    await super._initializeAction(config);
-  }}
+  async perform(modifiers) {
+    switch (this.data.type) {
+      case "tacticaWeapon":
+        await Checks.actionCheck(this.parent.actor, this.parent, async (check, actor, item) => {
+          const config = new ActionConfig(check);
+          config.setKeyboardModifiers(modifiers);
+          config.addDescription(this.description);
+          this.data.configureAction(config);
+        });
+        return true;
+
+      case "tacticaSkill":
+      case "tacticaClass":
+      case "tacticaConsumable":
+        return false;
+    }
+  }
+}

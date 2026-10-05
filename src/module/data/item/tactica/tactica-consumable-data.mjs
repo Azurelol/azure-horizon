@@ -10,7 +10,7 @@ import AH from "../../../config.mjs";
  */
 export default class TacticaConsumableData extends TacticaTypeDataModel {
   static {
-    Object.defineProperty(this, "TYPE", { value: "tacticaConsumableData" });
+    Object.defineProperty(this, "TYPE", { value: "tacticaConsumable" });
   }
 
   /** @inheritdoc */

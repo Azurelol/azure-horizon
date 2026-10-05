@@ -2,6 +2,10 @@ import { VersionedDataModel } from "../../api/versioned-data-model.mjs";
 import { isActorType } from "../../../constants.mjs";
 
 /**
+ * @typedef CharacterEquipmentData
+ */
+
+/**
  * Provides an interface for managing a character's equipment.
  */
 export default class CharacterEquipmentDataModel extends VersionedDataModel {
@@ -19,10 +23,29 @@ export default class CharacterEquipmentDataModel extends VersionedDataModel {
   }
 
   /**
+   * @param {String} slot
+   * @returns {AHItem}
+   */
+  get(slot) {
+    const id = this[slot];
+    if (id) {
+      return this.actor.items.get(id);
+    }
+    return undefined;
+  }
+
+  /**
    * @returns {AHActor}
    */
   get actor() {
     return this.parent.parent;
+  }
+
+  /**
+   * @returns {CharacterEquipmentData}
+   */
+  get equipped() {
+    throw Error("Equipped property not implemented.");
   }
 
   /**

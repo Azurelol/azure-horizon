@@ -9,11 +9,13 @@ import { EffectsDataModel } from "../fields/effects-data-model.mjs";
  * @property {Number} range.min
  * @property {Number} range.max
  * @property {Number} weight
- * @property {AH_Tactica_DamageType} damage.type
+ * @property {AH_DamageType} damage.type
+ * @property {AH_Grade} damage.grade
+ * @property {AH_Power} damage.power
  */
 export default class TacticaWeaponData extends TacticaTypeDataModel {
   static {
-    Object.defineProperty(this, "TYPE", { value: "tacticaWeaponData" });
+    Object.defineProperty(this, "TYPE", { value: "tacticaWeapon" });
   }
 
   /** @inheritdoc */
@@ -55,6 +57,8 @@ export default class TacticaWeaponData extends TacticaTypeDataModel {
           label: "AH.FIELD.DamageType.long",
           _part: "properties",
         }),
+        grade: new StringField({ initial: "C", choices: () => AH.grades,
+          nullable: false }),
         power: new StringField({
           initial: "low",
           label: "AH.FIELD.Power",
@@ -83,7 +87,47 @@ export default class TacticaWeaponData extends TacticaTypeDataModel {
    * @return {Promise}
    */
   configureAction(config) {
+    let targetDefense;
+    let primary, secondary;
+    switch (this.damage.type) {
+      case "untyped":
+      case "slashing":
+      case "piercing":
+      case "bludgeoning":
+        targetDefense = "def";
+        primary = "mig";
+        secondary = "dex";
+        break;
+      case "fire":
+      case "cold":
+      case "electric":
+      case "acid":
+      case "light":
+      case "dark":
+      case "mental":
+        targetDefense = "mdef";
+        primary = "ins";
+        secondary = "wlp";
+        break;
+    }
+    config.setAttributes(primary, secondary);
+    config.setDamage({
+      amount: 0,
+      type: this.damage.type,
+      source: {
+        label: config.check.itemName,
+        icon: "primaryDamage",
+      },
+    });
+    config.setGrade(this.damage.grade);
+    config.setPower(this.damage.power);
+    config.addTraits(this.category);
+    config.addTraits(...this.traits);
+    config.addTraits(this.damage.type);
+    config.setTargetedDefense(targetDefense);
+    config.setDefaultTargets();
 
+    // TODO: Depending on the targets weapons/init, do extra stuff
   }
 
   /**

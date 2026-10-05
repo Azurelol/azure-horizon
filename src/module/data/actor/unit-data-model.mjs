@@ -1,8 +1,12 @@
-import CharacterDataModel, { CharacterAttributesDataModel, CharacterResourcesDataModel } from "./character-data-model.mjs";
+import CharacterDataModel, {
+  CharacterAttributesDataModel,
+  CharacterResourcesDataModel,
+} from "./character-data-model.mjs";
 
 import { CharacterParametersDataModel } from "./system/character-parameters-data-model.mjs";
 import { ActorResourceDataModel } from "./system/_module.mjs";
 import CharacterEquipmentDataModel from "./system/character-equipment-data-model.mjs";
+import { isActorType } from "../../constants.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -31,6 +35,11 @@ class UnitParametersDataModel extends CharacterParametersDataModel {
 }
 
 /**
+ * @typedef {CharacterEquipmentData} UnitEquipment
+ * @property {AHItem} weapon
+ */
+
+/**
  * @property {String} weapon
  */
 class UnitEquipmentDataModel extends CharacterEquipmentDataModel {
@@ -39,6 +48,19 @@ class UnitEquipmentDataModel extends CharacterEquipmentDataModel {
     return Object.assign(super.defineSchema(), {
       weapon: new StringField({ nullable: true }),
     });
+  }
+
+  /**
+   * @returns {UnitEquipment}
+   */
+  get equipped() {
+    const actor = this.actor;
+    if (isActorType(actor)) {
+      return {
+        weapon: actor.items.get(this.weapon),
+      };
+    }
+    return undefined;
   }
 }
 

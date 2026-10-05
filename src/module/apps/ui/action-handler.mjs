@@ -311,7 +311,6 @@ export default class ActionHandler {
    */
   setupEquipment(element) {
     if (this.actor.type === "hero") {
-      // EQUIPMENT
       const weapons = this.actor.getItemsByType("weapon");
       FoundryUtils.itemContextMenu(element, "[data-slot=\"mainHand\"]", weapons, async item => {
         this.actor.system.equipItem(item, "mainHand");
@@ -329,6 +328,12 @@ export default class ActionHandler {
       });
       FoundryUtils.itemContextMenu(element, "[data-slot=\"accessory2\"]", accessories, async item => {
         this.actor.system.equipItem(item, "accessory2");
+      });
+    }
+    else if (this.actor.type === "unit") {
+      const weapons = this.actor.getItemsByType("tactica").filter(a => a.system.data.type === "tacticaWeaponData");
+      FoundryUtils.itemContextMenu(element, "[data-slot=\"weapon\"]", weapons, async item => {
+        this.actor.system.equipItem(item, "weapon");
       });
     }
   }

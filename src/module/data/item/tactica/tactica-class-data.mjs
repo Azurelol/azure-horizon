@@ -11,7 +11,7 @@ import { TraitsField } from "../fields/_module.mjs";
  */
 export default class TacticaClassData extends TacticaTypeDataModel {
   static {
-    Object.defineProperty(this, "TYPE", { value: "tacticaClassData" });
+    Object.defineProperty(this, "TYPE", { value: "tacticaClass" });
   }
 
   /** @inheritdoc */

@@ -32,7 +32,7 @@ collections:
     permalink: /manual/:name/
 
 navbar-links:
-  Manual:
+  Game Manual:
     - Introduction: "manual/1-introduction/"
     - Campaign: "manual/2-campaign/"
     - Heroes: "manual/3-heroes/"

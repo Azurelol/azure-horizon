@@ -26,7 +26,7 @@ export default class HeroEquipmentDataModel extends CharacterEquipmentDataModel 
   }
 
   /**
-   * @typedef HeroEquipmentData
+   * @typedef {CharacterEquipmentData} HeroEquipmentData
    * @property {AHItem} mainHand
    * @property {AHItem} offHand
    * @property {AHItem} armor

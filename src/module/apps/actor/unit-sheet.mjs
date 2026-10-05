@@ -52,11 +52,12 @@ export class UnitSheet extends CharacterSheet {
     await super._preparePartContext(partId, context);
     switch (partId) {
       case "status": {
+        context.equipment = this.actor.system.equipment.equipped;
         context.tables = [
           await this.#consumableTableRenderer.render(this.actor.getItemsByType("consumable")),
-          await this.#classesTableRenderer.render(this.actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaClassData")),
-          await this.#weaponsTableRenderer.render(this.actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaWeaponData")),
-          await this.#skillsTableRenderer.render(this.actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaSkillData")),
+          await this.#classesTableRenderer.render(this.actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaClass")),
+          await this.#weaponsTableRenderer.render(this.actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaWeapon")),
+          await this.#skillsTableRenderer.render(this.actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaSkill")),
         ];
         break;
       }
@@ -69,8 +70,11 @@ export class UnitSheet extends CharacterSheet {
     switch (partId) {
       case "status":
       {
-        this.actionHandler.setupEquipment(html);
         this.#tableRenderers.invokeAll("attachListeners", this, html);
+        break;
+      }
+
+      case "sidebar": {
         break;
       }
     }
