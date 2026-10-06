@@ -78,7 +78,7 @@ export class CharacterSheet extends AHActorSheet {
       case "header": {
         context.blk = Formulas.calculateBlock(this.actor.system).hp;
         context.rec = Formulas.calculateRecovery(this.actor.system).hp;
-        context.mov = Formulas.calculateMovement(this.actor.system);
+        context.mov = Formulas.calculateMovement(this.actor);
         break;
       }
       case "sidebar": {

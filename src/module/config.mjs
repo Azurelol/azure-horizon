@@ -859,13 +859,6 @@ AH.tactica = Object.freeze({
   },
 });
 
-// Added to the big trait pool
-const tacticaTraits = [
-  AH.tactica.unit.traits,
-  AH.tactica.weapon.category,
-  AH.tactica.weapon.traits,
-];
-
 /**
  * @typedef {"source" | "target"} AH_EventRelationKey
  */
@@ -1430,7 +1423,9 @@ AH.traits.all = Object.freeze({
   ...AH.domains,
   ...AH.damageTypes,
   ...AH.speed,
-  ...tacticaTraits,
+  ...AH.tactica.unit.traits,
+  ...AH.tactica.weapon.category,
+  ...AH.tactica.weapon.traits,
 });
 Object.freeze(AH.traits);
 

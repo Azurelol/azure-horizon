@@ -6,7 +6,9 @@ import { TraitsField } from "../fields/_module.mjs";
 
 /**
  * @property {Set<AH_Tactica_UnitTrait>} traits
- * @property {Number} movement
+ * @property {Number} modifiers.movement
+ * @property {Number} modifiers.def
+ * @property {Number} modifiers.mdef
  * @property {Number} tier
  */
 export default class TacticaClassData extends TacticaTypeDataModel {
@@ -25,12 +27,11 @@ export default class TacticaClassData extends TacticaTypeDataModel {
         label: "AH.TACTICA.Tier",
         _part: "header",
       }),
-      movement: new NumberField({
-        initial: AH.tactica.unit.movement.default,
-        min: AH.tactica.unit.movement.min,
-        max: AH.tactica.unit.movement.max,
-        label: "AH.CHARACTER.Movement.long",
-        _part: "header",
+      modifiers: new SchemaField({
+        movement: new NumberField({ initial: 0 }),
+        def: new NumberField({ initial: 0 }),
+        mdef: new NumberField({ initial: 0 }),
+        init: new NumberField({ initial: 0 }),
       }),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",

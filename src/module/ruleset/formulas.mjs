@@ -54,6 +54,9 @@ const STATUS_MIASMA_RATIO = 0.1;
 const PP_BASE = 8;
 const PRESSURE_RESISTANCE_FACTOR = 6;
 
+// UNIT
+const UNIT_BASE_MOVEMENT = 4;
+
 /**
  * @typedef Modifier
  * @property {Number} additive Should default to 0.
@@ -541,22 +544,34 @@ export default class Formulas {
   }
 
   /**
-   * @param {HeroDataModel|AdversaryDataModel} system
+   * @param {AHActor} actor
    * @returns {Number}
    */
-  static calculateMovement(system) {
+  static calculateMovement(actor) {
     let result = 1;
-    forEquipment(system, equipped => {
-      if (equipped.armor) {
-        if (equipped.armor?.system.weight === "light") {
-          result += 1;
-        }
-      }
-      else {
-        result += 1;
-      }
+    switch (actor.system.parent.type) {
+      case "hero":
+        forEquipment(actor.system, equipped => {
+          if (equipped.armor) {
+            if (equipped.armor?.system.weight === "light") {
+              result += 1;
+            }
+          }
+          else {
+            result += 1;
+          }
+        });
+        break;
 
-    });
+      case "unit":
+        result = UNIT_BASE_MOVEMENT;
+        for (const item of actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaClass")) {
+          /** @type TacticaClassData **/
+          const data = item.system.data;
+          result += data.modifiers.movement;
+        }
+        break;
+    }
     return Math.max(MOVEMENT_MIN, result);
   }
 

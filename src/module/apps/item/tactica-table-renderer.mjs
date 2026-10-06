@@ -26,6 +26,12 @@ export class TacticaWeaponTableRenderer extends TacticaTableRenderer {
           return `${range.min}-${range.max}`;
         },
       }),
+      // TableColumns.textColumn({
+      //   header: "AH.FIELD.DamageType.long",
+      //   getText: (entry) => {
+      //     return localize(AH.damageTypes[entry.system.data.damage.type].label);
+      //   },
+      // }),
       TableColumns.textColumn({
         header: "AH.FIELD.Power",
         getText: (entry) => {
