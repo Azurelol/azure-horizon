@@ -331,7 +331,7 @@ export default class ActionHandler {
       });
     }
     else if (this.actor.type === "unit") {
-      const weapons = this.actor.getItemsByType("tactica").filter(a => a.system.data.type === "tacticaWeaponData");
+      const weapons = this.actor.getItemsByType("tactica").filter(a => a.system.data.type === "tacticaWeapon");
       FoundryUtils.itemContextMenu(element, "[data-slot=\"weapon\"]", weapons, async item => {
         this.actor.system.equipItem(item, "weapon");
       });

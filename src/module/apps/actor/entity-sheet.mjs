@@ -41,7 +41,6 @@ export class EntitySheet extends AHActorSheet {
   /** @inheritdoc */
   static PARTS = {
     ...super.PARTS,
-
     header: {
       template: systemTemplatePath("sheets/actor/entity/entity-header"),
     },

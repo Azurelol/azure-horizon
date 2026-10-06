@@ -57,7 +57,10 @@ export default class TacticaWeaponData extends TacticaTypeDataModel {
           label: "AH.FIELD.DamageType.long",
           _part: "properties",
         }),
-        grade: new StringField({ initial: "C", choices: () => AH.grades,
+        grade: new StringField({
+          initial: "C",
+          label: "AH.FIELD.Grade",
+          choices: () => AH.grades,
           nullable: false }),
         power: new StringField({
           initial: "low",

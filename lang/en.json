@@ -817,6 +817,7 @@
       "Kind": "Kind",
       "Weight": "Weight",
       "Action": "Action",
+      "Tier": "Tier",
       "Damage": "Damage",
       "Effects": "Effects",
       "Bonus": "Bonus",

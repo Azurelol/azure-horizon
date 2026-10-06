@@ -4,18 +4,17 @@
     {{localize 'AH.COMMON.Actions'}}
   </legend>
 
-  <div class="ah-actor__actions">
-  {{!-- Shared actions --}}
-  {{#each actions}}
-    {{#unless (and this.type (ahNotEquals this.type @root.actor.type))}}
-      <button id="{{this.id}}Action"
-              {{#unless this.ctx}}data-action="performAction"{{/unless}}
-              data-type="{{this.id}}" {{#if this.ctx}}data-context-menu="{{this.ctx}}"{{/if}}
-              data-tooltip="{{localize this.tooltip}}">
-        <i class="ah-icon --xs {{ahIconClass id}}"></i>
-        <span>{{localize this.label}}</span>
-      </button>
-    {{/unless}}
-  {{/each}}
-</div>
+  <div class="ah-actor__actions {{menuClasses}}">
+    {{#each actions}}
+      {{#unless (and this.type (ahNotEquals this.type @root.actor.type))}}
+        <button id="{{this.id}}Action"
+                {{#unless this.ctx}}data-action="performAction"{{/unless}}
+                data-type="{{this.id}}" {{#if this.ctx}}data-context-menu="{{this.ctx}}"{{/if}}
+                data-tooltip="{{localize this.tooltip}}">
+          <i class="ah-icon --xs {{ahIconClass id}}"></i>
+          <span>{{localize this.label}}</span>
+        </button>
+      {{/unless}}
+    {{/each}}
+  </div>
 </fieldset>

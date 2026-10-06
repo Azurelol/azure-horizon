@@ -1,0 +1,9 @@
+.ah-unit__parameters {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  box-shadow: var(--ah-box-shadow-bevel);
+  padding: 0.5rem;
+}
