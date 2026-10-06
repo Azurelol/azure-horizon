@@ -89,27 +89,24 @@ export default class TacticaWeaponData extends TacticaTypeDataModel {
   configureAction(config) {
     let targetDefense;
     let primary, secondary;
-    switch (this.damage.type) {
-      case "untyped":
-      case "slashing":
-      case "piercing":
-      case "bludgeoning":
+    switch (this.category) {
+      case "sword":
+      case "axe":
+      case "spear":
+      case "bow":
+      case "dagger":
         targetDefense = "def";
         primary = "mig";
         secondary = "dex";
         break;
-      case "fire":
-      case "cold":
-      case "electric":
-      case "acid":
-      case "light":
-      case "dark":
-      case "mental":
+      case "tome":
         targetDefense = "mdef";
         primary = "ins";
         secondary = "wlp";
         break;
+
     }
+
     config.setAttributes(primary, secondary);
     config.setDamage({
       amount: 0,

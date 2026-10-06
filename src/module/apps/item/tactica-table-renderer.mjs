@@ -11,6 +11,17 @@ export class TacticaTableRenderer extends ItemTableRenderer {
   }
 }
 
+export class TacticaClassTableRenderer extends ItemTableRenderer {
+  _getItemColumns() {
+    return [
+      TableColumns.textColumn({
+        header: "AH.FIELD.Tier",
+        getText: (entry) => entry.system.data.tier,
+      }),
+    ];
+  }
+}
+
 export class TacticaWeaponTableRenderer extends TacticaTableRenderer {
 
   _getItemColumns() {

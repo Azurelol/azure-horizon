@@ -7,6 +7,7 @@ import {
 } from "../item/_module.mjs";
 import { CharacterSheet } from "./character-sheet.mjs";
 import { TableRendererRegistry } from "../api/table-renderer.mjs";
+import { TacticaClassTableRenderer } from "../item/tactica-table-renderer.mjs";
 
 /**
  * @property {AHActor} actor
@@ -42,7 +43,7 @@ export class UnitSheet extends CharacterSheet {
 
   #tableRenderers = new TableRendererRegistry();
   #consumableTableRenderer = this.#tableRenderers.register("consumable", new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") }));
-  #classesTableRenderer = this.#tableRenderers.register("tactica", new TacticaTableRenderer({ title: "AH.ITEM.Class.long", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
+  #classesTableRenderer = this.#tableRenderers.register("tactica", new TacticaClassTableRenderer({ title: "AH.ITEM.Class.long", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
   #weaponsTableRenderer = this.#tableRenderers.register("tactica", new TacticaWeaponTableRenderer({ title: "AH.ITEM.Weapon", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
   #skillsTableRenderer = this.#tableRenderers.register("tactica", new TacticaTableRenderer({ title: "AH.ITEM.Skill", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
 

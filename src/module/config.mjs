@@ -803,7 +803,7 @@ AH.booleanOption = {
  */
 
 /**
- * @typedef {'sword'|'axe'|'spear'|'bow'|'dagger'|'tome'|'staff'} AH_Tactica_Weapon
+ * @typedef {'sword'|'axe'|'spear'|'bow'|'dagger'|'tome'} AH_Tactica_Weapon
  */
 
 AH.tactica = Object.freeze({

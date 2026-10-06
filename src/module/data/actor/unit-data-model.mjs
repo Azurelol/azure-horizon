@@ -88,4 +88,8 @@ export default class UnitDataModel extends CharacterDataModel {
     return UnitDataModel.ITEM_TYPES.has(type);
   }
 
+  _prepareParameters() {
+    super._prepareParameters();
+  }
+
 }

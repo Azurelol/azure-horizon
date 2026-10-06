@@ -94,6 +94,18 @@ function forEquipment(system, onEquipment) {
 }
 
 /**
+ * @param {AHActor} actor
+ * @param {AH_TacticaItemType} type
+ * @param onData
+ */
+function forTacticaItem(actor, type, onData) {
+  for (const item of actor.getItemsByType("tactica").filter(it => it.system.data.type === type)) {
+    const data = item.system.data;
+    onData(data);
+  }
+}
+
+/**
  * @param {HeroDataModel} system
  * @param {(AH_EquipmentWeight) => void} onEquipment
  */
@@ -403,7 +415,19 @@ export default class Formulas {
   static calculateDefense(system) {
     const attributes = system.attributes;
     const bonus = Formulas.calculateProficiencyBonus(system.level);
-    return this.round((attributes.dex.current + attributes.mig.current) / 2) + bonus;
+    let def = this.round((attributes.dex.current + attributes.mig.current) / 2) + bonus;
+
+    const actor = system.parent;
+    switch (actor.type) {
+      case "hero":
+        break;
+      case "unit":
+        forTacticaItem(actor, "tacticaClass", data => {
+          def += data.benefits.def;
+        });
+        break;
+    }
+    return def;
   }
 
   /**
@@ -413,7 +437,18 @@ export default class Formulas {
   static calculateMagicDefense(system) {
     const attributes = system.attributes;
     const bonus = Formulas.calculateProficiencyBonus(system.level);
-    return this.round((attributes.wlp.current + attributes.ins.current) / 2) + bonus;
+    let mdef = this.round((attributes.wlp.current + attributes.ins.current) / 2) + bonus;
+    const actor = system.parent;
+    switch (actor.type) {
+      case "hero":
+        break;
+      case "unit":
+        forTacticaItem(actor, "tacticaClass", data => {
+          mdef += data.benefits.mdef;
+        });
+        break;
+    }
+    return mdef;
   }
 
   /**
@@ -565,11 +600,9 @@ export default class Formulas {
 
       case "unit":
         result = UNIT_BASE_MOVEMENT;
-        for (const item of actor.getItemsByType("tactica").filter(it => it.system.data.type === "tacticaClass")) {
-          /** @type TacticaClassData **/
-          const data = item.system.data;
-          result += data.modifiers.movement;
-        }
+        forTacticaItem(actor, "tacticaClass", data => {
+          result += data.benefits.mov;
+        });
         break;
     }
     return Math.max(MOVEMENT_MIN, result);

@@ -8,10 +8,11 @@ import { Formulas } from "../../../ruleset/_module.mjs";
  * @property {ParameterDataModel} def
  * @property {ParameterDataModel} mdef
  * @property {ParameterDataModel} init
+ * @property {ParameterDataModel} mov How many spaces a character can move during its turn.
  * @property {ParameterDataModel} block Bonus BLK generation. (As a percentage)
- * @property {ExchangeModifiersDataModel} resource.hp
- * @property {ExchangeModifiersDataModel} resource.mp
- * @property {ParameterDataModel} movement How many spaces a character can shift.
+ * @property {ExchangeModifiersDataModel} resource.gain
+ * @property {ExchangeModifiersDataModel} resource.loss.hp
+ * @property {ExchangeModifiersDataModel} resource.loss.mp
  * @property {DamageModifiersDataModel} damage
  * @property {CheckModifiersDataModel} checks
  */
@@ -22,6 +23,7 @@ export class CharacterParametersDataModel extends VersionedDataModel {
       def: new EmbeddedDataField(ParameterDataModel, {}),
       mdef: new EmbeddedDataField(ParameterDataModel, {}),
       init: new EmbeddedDataField(ParameterDataModel, {}),
+      mov: new EmbeddedDataField(ParameterDataModel, {}),
 
       block: new EmbeddedDataField(ParameterDataModel, {}),
       resource: new SchemaField({
@@ -33,7 +35,7 @@ export class CharacterParametersDataModel extends VersionedDataModel {
           mp: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
         }),
       }),
-      movement: new EmbeddedDataField(ParameterDataModel, {}),
+
       damage: new EmbeddedDataField(DamageModifiersDataModel, {}),
       checks: new EmbeddedDataField(CheckModifiersDataModel, {}),
     });

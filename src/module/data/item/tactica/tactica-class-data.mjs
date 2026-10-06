@@ -5,11 +5,17 @@ import TacticaWeaponData from "./tactica-weapon-data.mjs";
 import { TraitsField } from "../fields/_module.mjs";
 
 /**
- * @property {Set<AH_Tactica_UnitTrait>} traits
- * @property {Number} modifiers.movement
- * @property {Number} modifiers.def
- * @property {Number} modifiers.mdef
+ * @typedef TacticaClassBenefits
+ * @property def
+ * @property mdef
+ * @property mov
+ * @property init
+ */
+
+/**
  * @property {Number} tier
+ * @property {Set<AH_Tactica_UnitTrait>} traits
+ * @property {TacticaClassBenefits} benefits
  */
 export default class TacticaClassData extends TacticaTypeDataModel {
   static {
@@ -27,11 +33,11 @@ export default class TacticaClassData extends TacticaTypeDataModel {
         label: "AH.TACTICA.Tier",
         _part: "header",
       }),
-      modifiers: new SchemaField({
-        movement: new NumberField({ initial: 0 }),
-        def: new NumberField({ initial: 0 }),
-        mdef: new NumberField({ initial: 0 }),
-        init: new NumberField({ initial: 0 }),
+      benefits: new SchemaField({
+        mov: new NumberField({ initial: 0, label: "AH.CHARACTER.Movement.long" }),
+        def: new NumberField({ initial: 0, label: "AH.CHARACTER.Defense.long" }),
+        mdef: new NumberField({ initial: 0, label: "AH.CHARACTER.MagicDefense.long" }),
+        init: new NumberField({ initial: 0, label: "AH.CHARACTER.Initiative.long" }),
       }),
       traits: new TraitsField({
         label: "AH.FIELD.Traits",
