@@ -162,6 +162,10 @@ body {
   padding: 2rem;
   background: var(--ah-surface-gradient);
   border: 4px solid #aabfdc;
+
+  img {
+
+  }
 }
 
 .index-img {
