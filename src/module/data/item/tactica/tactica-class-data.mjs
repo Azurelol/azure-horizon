@@ -30,6 +30,7 @@ export default class TacticaClassData extends TacticaTypeDataModel {
         initial: AH.tactica.unit.tier.default,
         min: AH.tactica.unit.tier.min,
         max: AH.tactica.unit.tier.max,
+        step: 1,
         label: "AH.TACTICA.Tier",
         _part: "header",
       }),

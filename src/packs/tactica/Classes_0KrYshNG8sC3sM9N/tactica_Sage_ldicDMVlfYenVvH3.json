@@ -1,0 +1,40 @@
+{
+  "folder": "0KrYshNG8sC3sM9N",
+  "name": "Sage",
+  "type": "tactica",
+  "_id": "ldicDMVlfYenVvH3",
+  "img": "systems/azure-horizon/assets/icons/tactica/mage.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-sage",
+    "description": "",
+    "data": {
+      "type": "tacticaClassData",
+      "_id": "jadlbzV5A3lVv8zN",
+      "tier": 2,
+      "movement": 4,
+      "traits": [
+        "mystical"
+      ]
+    }
+  },
+  "effects": [],
+  "sort": 700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791045205563,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!ldicDMVlfYenVvH3"
+}

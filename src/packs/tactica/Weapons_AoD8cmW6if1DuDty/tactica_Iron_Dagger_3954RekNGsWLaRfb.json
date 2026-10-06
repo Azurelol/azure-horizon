@@ -1,0 +1,48 @@
+{
+  "folder": "AoD8cmW6if1DuDty",
+  "name": "Iron Dagger",
+  "type": "tactica",
+  "_id": "3954RekNGsWLaRfb",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/dagger.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-iron-dagger",
+    "description": "",
+    "data": {
+      "type": "tacticaWeaponData",
+      "_id": "T7rvNekCjMbZdar9",
+      "category": "dagger",
+      "range": {
+        "min": 1,
+        "max": 1
+      },
+      "speed": "fast",
+      "damageType": "slashing",
+      "traits": [],
+      "weight": "light",
+      "damage": {
+        "type": "slashing",
+        "power": "low"
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791098999033,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!3954RekNGsWLaRfb"
+}

@@ -1,0 +1,43 @@
+{
+  "folder": "Ae4TvIoe0Syitax4",
+  "name": "Potion",
+  "type": "tactica",
+  "_id": "2Ss79VRgbHQiTq0J",
+  "img": "systems/azure-horizon/assets/icons/equipment/consumables/potion.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-potion",
+    "description": "",
+    "data": {
+      "type": "tacticaConsumable",
+      "_id": "1627ncvnKqjdaizq",
+      "range": {
+        "minimum": 0,
+        "maximum": 0
+      },
+      "resource": {
+        "type": "hp",
+        "amount": "20"
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791301306360,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!2Ss79VRgbHQiTq0J"
+}

@@ -1,0 +1,40 @@
+{
+  "folder": "0KrYshNG8sC3sM9N",
+  "name": "Knight",
+  "type": "tactica",
+  "_id": "EgnY3HS6D7gMChz7",
+  "img": "systems/azure-horizon/assets/icons/tactica/knight.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-knight",
+    "description": "",
+    "data": {
+      "type": "tacticaClassData",
+      "_id": "JZT9UIZZEMtTc5F5",
+      "tier": 1,
+      "movement": 4,
+      "traits": [
+        "armored"
+      ]
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791045036736,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!EgnY3HS6D7gMChz7"
+}

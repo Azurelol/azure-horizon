@@ -1,16 +1,17 @@
 {
   "folder": "noX8U4rDGOGl3U1F",
-  "name": "Dark Spell",
+  "name": "Vital Barrier",
   "type": "skill",
-  "_id": "kRHNThbskMgSJzhQ",
-  "img": "systems/azure-horizon/assets/icons/classes/skill_magic.png",
+  "_id": "K08AsPNs8iPIY7un",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_attack.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ritualist-dark-spell",
-    "description": "<p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Dark </em>domain.</p>",
+    "slug": "ritualist-lifeweave",
+    "description": "<p>You spend 20% of your HP in order to gain twice its amount as <em>Block</em>.</p>",
     "attributes": {
       "schemaVersion": 1,
+      "enabled": false,
       "primary": "dex",
       "secondary": "mig",
       "grade": "C"
@@ -18,9 +19,8 @@
     "check": {
       "schemaVersion": 1,
       "enabled": false,
-      "primary": "dex",
-      "secondary": "mig",
-      "defense": "def"
+      "defense": "def",
+      "variant": ""
     },
     "damage": {
       "schemaVersion": 1,
@@ -36,18 +36,33 @@
       "traits": [],
       "inplace": false
     },
-    "resource": {
+    "action": {
       "schemaVersion": 1,
       "enabled": false,
-      "type": "hp",
-      "amount": ""
+      "type": "",
+      "points": 1,
+      "speed": "",
+      "traits": []
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "type": "thp",
+      "amount": "&hp(0.4)"
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": false,
-      "resource": "mp",
-      "amount": "",
+      "enabled": true,
+      "resource": "hp",
+      "amount": "&hp(0.2)",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "range": "",
+      "rule": "",
+      "traits": []
     },
     "effects": {
       "schemaVersion": 1,
@@ -62,17 +77,11 @@
     "power": "",
     "level": {
       "current": 1,
-      "max": 5
-    },
-    "action": {
-      "schemaVersion": 1,
-      "range": "",
-      "type": "",
-      "points": 1,
-      "traits": []
+      "max": 1
     },
     "usage": {
       "schemaVersion": 1,
+      "enabled": false,
       "attributes": false,
       "check": false,
       "damage": false
@@ -80,7 +89,7 @@
     "class": "ritualist"
   },
   "effects": [],
-  "sort": 800000,
+  "sort": 200000,
   "ownership": {
     "default": 0
   },
@@ -89,12 +98,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1787411984509,
+    "createdTime": 1790932386242,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!kRHNThbskMgSJzhQ"
+  "_key": "!items!K08AsPNs8iPIY7un"
 }

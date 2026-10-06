@@ -11,6 +11,27 @@ export class TacticaTableRenderer extends ItemTableRenderer {
   }
 }
 
+export class TacticaConsumableTableRenderer extends ItemTableRenderer {
+  _getItemColumns() {
+    return [
+      TableColumns.textColumn({
+        header: "AH.FIELD.Resource",
+        getText: (entry) => {
+          const resource = entry.system.data.resource;
+          return resource.amount ? `${resource.amount} ${resource.type?.toUpperCase()}` : "";
+        },
+      }),
+      TableColumns.textColumn({
+        header: "AH.FIELD.Cost",
+        getText: (entry) => {
+          const cost = entry.system.data.cost;
+          return cost.amount ? `${cost.amount} ${cost.resource?.toUpperCase()}` : "";
+        },
+      }),
+    ];
+  }
+}
+
 export class TacticaClassTableRenderer extends ItemTableRenderer {
   _getItemColumns() {
     return [

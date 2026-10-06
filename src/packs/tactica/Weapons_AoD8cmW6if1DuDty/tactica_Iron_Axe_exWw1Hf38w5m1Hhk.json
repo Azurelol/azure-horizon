@@ -1,0 +1,40 @@
+{
+  "folder": "AoD8cmW6if1DuDty",
+  "name": "Iron Axe",
+  "type": "tactica",
+  "_id": "exWw1Hf38w5m1Hhk",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/axe.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-iron-axe",
+    "description": "",
+    "data": {
+      "_id": "VNWde9nY5qHTtQjX",
+      "type": "tacticaWeaponData",
+      "category": "axe",
+      "speed": "",
+      "traits": [],
+      "range": 1,
+      "damageType": "slashing"
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791045787580,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!exWw1Hf38w5m1Hhk"
+}

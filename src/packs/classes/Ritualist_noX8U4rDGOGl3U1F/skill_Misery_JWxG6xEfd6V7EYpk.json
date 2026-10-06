@@ -81,7 +81,7 @@
     "class": "ritualist"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 600000,
   "ownership": {
     "default": 0
   },

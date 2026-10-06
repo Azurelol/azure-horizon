@@ -1,0 +1,40 @@
+{
+  "folder": "0KrYshNG8sC3sM9N",
+  "name": "Fighter",
+  "type": "tactica",
+  "_id": "q8kZug6iEPvQfMvR",
+  "img": "systems/azure-horizon/assets/icons/tactica/fighter.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-fighter",
+    "description": "",
+    "data": {
+      "type": "tacticaClassData",
+      "_id": "YDl2CrKLPbVYxSNG",
+      "tier": 1,
+      "movement": 4,
+      "traits": [
+        "backup"
+      ]
+    }
+  },
+  "effects": [],
+  "sort": -25000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791044966116,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!q8kZug6iEPvQfMvR"
+}

@@ -1,0 +1,45 @@
+{
+  "folder": "0KrYshNG8sC3sM9N",
+  "name": "Bishop",
+  "type": "tactica",
+  "_id": "N8jvd1iYdV2LcnI3",
+  "img": "systems/azure-horizon/assets/icons/tactica/priest.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-bishop",
+    "description": "",
+    "data": {
+      "type": "tacticaClass",
+      "_id": "lJBxaBmeZMR4ulWg",
+      "tier": 1,
+      "benefits": {
+        "mov": 1,
+        "def": 0,
+        "mdef": 1,
+        "init": 0
+      },
+      "traits": [
+        "mystical"
+      ]
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791299337146,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!N8jvd1iYdV2LcnI3"
+}

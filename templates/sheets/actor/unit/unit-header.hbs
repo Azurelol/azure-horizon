@@ -13,7 +13,10 @@
 
       {{formInput actorFields.name value=actor.name classes="ah-sheet__name"}}
       {{> "systems/azure-horizon/templates/sheets/actor/character/character-partial-actions.hbs"}}
-      {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+      <div class="ah-unit__resources">
+        {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+        {{ahResourceBar 'system.resources.ip.value' system.resources.ip.value system.resources.ip.max label='AH.CHARACTER.InventoryPoint.short' icon=(ahIconClass 'ip') colorClass="--ah-color-ip" }}
+      </div>
       {{ahInput 'system.level' system.level size ='xl' type='number' icon=(ahIconClass 'level') tooltip='AH.CHARACTER.Level.long' classes="--badge ah-character__level" iconClasses="--glow" }}
     </div>
   </div>

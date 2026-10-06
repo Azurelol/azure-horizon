@@ -355,16 +355,26 @@ export default class Formulas {
    */
   static calculateInventoryPoints(system) {
     let ip = IP_BASE;
-    forClassBenefits(system.parent, (benefits) => {
-      if (benefits.ip) {
-        ip += CLASS_BENEFIT_IP;
-      }
-    });
-    forEquipment(system, equipped => {
-      if (equipped.armor?.system.weight === "light") {
-        ip += EQUIPMENT_IP_BONUS;
-      }
-    });
+    switch (system.parent.type) {
+      case "hero":
+        forClassBenefits(system.parent, (benefits) => {
+          if (benefits.ip) {
+            ip += CLASS_BENEFIT_IP;
+          }
+        });
+        forEquipment(system, equipped => {
+          if (equipped.armor?.system.weight === "light") {
+            ip += EQUIPMENT_IP_BONUS;
+          }
+        });
+        break;
+
+      case "unit":
+        forTacticaItem(system.parent, "tacticaClass", data => {
+
+        });
+        break;
+    }
     return ip;
   }
 

@@ -1,0 +1,50 @@
+{
+  "folder": "AoD8cmW6if1DuDty",
+  "name": "Iron Bow",
+  "type": "tactica",
+  "_id": "6XiQn1zeSYOgHjLe",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/bow.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-iron-bow",
+    "description": "",
+    "data": {
+      "type": "tacticaWeaponData",
+      "_id": "omjVM3ZpxLUVOBIP",
+      "category": "bow",
+      "range": {
+        "minimum": 1,
+        "maximum": 2,
+        "min": 2,
+        "max": 2
+      },
+      "speed": "fast",
+      "damageType": "piercing",
+      "traits": [],
+      "weight": "light",
+      "damage": {
+        "type": "piercing",
+        "power": "low"
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791099032648,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!6XiQn1zeSYOgHjLe"
+}

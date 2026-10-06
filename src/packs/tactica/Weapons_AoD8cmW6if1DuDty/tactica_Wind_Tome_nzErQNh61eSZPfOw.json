@@ -1,0 +1,52 @@
+{
+  "folder": "AoD8cmW6if1DuDty",
+  "name": "Wind Tome",
+  "type": "tactica",
+  "_id": "nzErQNh61eSZPfOw",
+  "img": "systems/azure-horizon/assets/icons/treasure/book_3.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-wind-tome",
+    "description": "",
+    "data": {
+      "type": "tacticaWeapon",
+      "_id": "0RaNi8HTbiLh10xK",
+      "category": "tome",
+      "range": {
+        "minimum": 1,
+        "maximum": 2,
+        "min": 1,
+        "max": 2
+      },
+      "speed": "slow",
+      "damage": {
+        "type": "slashing",
+        "grade": "C",
+        "power": "low"
+      },
+      "traits": [
+        "wingBane"
+      ],
+      "weight": "light"
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791099722615,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!nzErQNh61eSZPfOw"
+}

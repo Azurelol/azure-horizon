@@ -1,0 +1,35 @@
+{
+  "folder": "0qYj2VQfRLpkyyrA",
+  "name": "Canto",
+  "type": "tactica",
+  "_id": "qYp6KZwhmQHd0Equ",
+  "img": "systems/azure-horizon/assets/icons/classes/skill_action.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-canto",
+    "description": "<p>You can spend your remaining movement points <em>after</em> performing an action.</p>",
+    "data": {
+      "type": "tacticaSkillData",
+      "_id": "Sq2vvz8e4AMIbJcp"
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791044878100,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!qYp6KZwhmQHd0Equ"
+}

@@ -1,0 +1,40 @@
+{
+  "folder": "AoD8cmW6if1DuDty",
+  "name": "Iron Sword",
+  "type": "tactica",
+  "_id": "tNITcy6S2vKMm9bC",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/longsword.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "iron-sword",
+    "description": "",
+    "data": {
+      "_id": "T6qsTuzCXZSxeC2V",
+      "type": "tacticaWeaponData",
+      "category": "sword",
+      "range": 1,
+      "speed": "",
+      "traits": [],
+      "damageType": "slashing"
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791043201268,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!tNITcy6S2vKMm9bC"
+}

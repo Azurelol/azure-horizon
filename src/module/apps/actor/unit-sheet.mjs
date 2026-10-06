@@ -7,7 +7,7 @@ import {
 } from "../item/_module.mjs";
 import { CharacterSheet } from "./character-sheet.mjs";
 import { TableRendererRegistry } from "../api/table-renderer.mjs";
-import { TacticaClassTableRenderer } from "../item/tactica-table-renderer.mjs";
+import { TacticaClassTableRenderer, TacticaConsumableTableRenderer } from "../item/tactica-table-renderer.mjs";
 import { ActionHandler } from "../ui/_module.mjs";
 import { EntitySheet } from "./entity-sheet.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
@@ -60,7 +60,7 @@ export class UnitSheet extends EntitySheet {
   /* -------------------------------------------------- */
 
   #tableRenderers = new TableRendererRegistry();
-  #consumableTableRenderer = this.#tableRenderers.register("consumable", new ActionTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") }));
+  #consumableTableRenderer = this.#tableRenderers.register("consumable", new TacticaConsumableTableRenderer({ title: "AH.ITEM.Consumable", actions: CharacterSheet.getCompendiumTableActions("equipment", "consumable") }));
   #classesTableRenderer = this.#tableRenderers.register("tactica", new TacticaClassTableRenderer({ title: "AH.ITEM.Class.long", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
   #weaponsTableRenderer = this.#tableRenderers.register("tactica", new TacticaWeaponTableRenderer({ title: "AH.ITEM.Weapon", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));
   #skillsTableRenderer = this.#tableRenderers.register("tactica", new TacticaTableRenderer({ title: "AH.ITEM.Skill", actions: CharacterSheet.getCompendiumTableActions("tactica", "tactica") }));

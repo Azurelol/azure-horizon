@@ -7,6 +7,7 @@ import { CharacterParametersDataModel } from "./system/character-parameters-data
 import { ActorResourceDataModel } from "./system/_module.mjs";
 import CharacterEquipmentDataModel from "./system/character-equipment-data-model.mjs";
 import { isActorType } from "../../constants.mjs";
+import { Formulas } from "../../ruleset/_module.mjs";
 
 const { SchemaField, NumberField, StringField, ArrayField, EmbeddedDataField } = foundry.data.fields;
 
@@ -90,6 +91,11 @@ export default class UnitDataModel extends CharacterDataModel {
 
   _prepareParameters() {
     super._prepareParameters();
+  }
+
+  _prepareResources() {
+    super._prepareResources();
+    this.resources.ip.defineMaximumProperty(() => Formulas.calculateInventoryPoints(this));
   }
 
 }

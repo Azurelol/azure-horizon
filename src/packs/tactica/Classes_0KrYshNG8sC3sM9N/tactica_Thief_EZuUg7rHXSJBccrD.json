@@ -1,0 +1,38 @@
+{
+  "folder": "0KrYshNG8sC3sM9N",
+  "name": "Thief",
+  "type": "tactica",
+  "_id": "EZuUg7rHXSJBccrD",
+  "img": "systems/azure-horizon/assets/icons/tactica/thief.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-thief",
+    "description": "",
+    "data": {
+      "type": "tacticaClassData",
+      "_id": "DbhoxlP8dBAphEdp",
+      "tier": 1,
+      "movement": 6,
+      "traits": []
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791118487800,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!EZuUg7rHXSJBccrD"
+}

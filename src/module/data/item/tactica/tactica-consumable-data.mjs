@@ -7,6 +7,8 @@ import AH from "../../../config.mjs";
  * @property {Number} range.min
  * @property {Number} range.max
  * @property {ResourceDataModel} resource
+ * @property {AH_Resource} cost.resource
+ * @property {Number} cost.amount
  */
 export default class TacticaConsumableData extends TacticaTypeDataModel {
   static {
@@ -31,6 +33,21 @@ export default class TacticaConsumableData extends TacticaTypeDataModel {
           label: "AH.TACTICA.RANGE.Maximum",
         }),
       }),
+      cost: new SchemaField({
+        resource: new StringField({
+          initial: "ip",
+          label: "AH.FIELD.Resource",
+          blank: true,
+          choices: () => AH.resourceTypes,
+          required: true }),
+        amount: new NumberField({
+          initial: 0,
+          label: "AH.FIELD.Amount",
+          nullable: true }),
+      }, {
+        label: "AH.FIELD.Cost",
+        _part: "properties",
+      }),
       resource: new SchemaField({
         type: new StringField({
           initial: "hp",
@@ -38,14 +55,16 @@ export default class TacticaConsumableData extends TacticaTypeDataModel {
           blank: true,
           label: "AH.FIELD.Resource",
           nullable: false,
-          _part: "properties",
         }),
         amount: new StringField({
           initial: "",
           nullable: false,
           label: "AH.FIELD.Amount",
-          _part: "properties",
         }),
+      },
+      {
+        label: "AH.FIELD.Resource",
+        _part: "properties",
       }),
     });
   }
@@ -62,5 +81,23 @@ export default class TacticaConsumableData extends TacticaTypeDataModel {
    */
   static get template() {
     return systemTemplatePath("components/empty");
+  }
+
+  /**
+   * @param {ActionConfig} config
+   * @return {Promise}
+   */
+  configureAction(config) {
+    if (this.cost.resource && this.cost.amount) {
+      config.addExpense({
+        resource: this.cost.resource,
+        amount: this.cost.amount,
+        perTarget: false,
+        evaluated: false,
+      });
+    }
+    if (this.resource.type && this.resource.amount) {
+      config.setResource(this.resource.type, this.resource.amount);
+    }
   }
 }

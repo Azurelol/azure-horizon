@@ -1,0 +1,51 @@
+{
+  "folder": "AoD8cmW6if1DuDty",
+  "name": "Fire Tome",
+  "type": "tactica",
+  "_id": "twXAuxiwxf3wDr0D",
+  "img": "systems/azure-horizon/assets/icons/treasure/book.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-fire-tome",
+    "description": "",
+    "data": {
+      "type": "tacticaWeapon",
+      "_id": "5TWhI21xhMwmfnaW",
+      "category": "tome",
+      "range": {
+        "minimum": 1,
+        "maximum": 2,
+        "min": 1,
+        "max": 2
+      },
+      "speed": "",
+      "damageType": "fire",
+      "traits": [],
+      "damage": {
+        "type": "fire",
+        "grade": "C",
+        "power": "moderate"
+      },
+      "weight": "light"
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791099065977,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!twXAuxiwxf3wDr0D"
+}

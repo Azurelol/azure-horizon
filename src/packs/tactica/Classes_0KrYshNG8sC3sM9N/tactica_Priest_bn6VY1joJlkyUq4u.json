@@ -1,0 +1,45 @@
+{
+  "folder": "0KrYshNG8sC3sM9N",
+  "name": "Priest",
+  "type": "tactica",
+  "_id": "bn6VY1joJlkyUq4u",
+  "img": "systems/azure-horizon/assets/icons/tactica/priest.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-priest",
+    "description": "",
+    "data": {
+      "type": "tacticaClass",
+      "_id": "Q1pXEWL9a9aK6Dk9",
+      "tier": 1,
+      "benefits": {
+        "mov": 0,
+        "def": 0,
+        "mdef": 1,
+        "init": 0
+      },
+      "traits": [
+        "mystical"
+      ]
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791299280723,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!bn6VY1joJlkyUq4u"
+}

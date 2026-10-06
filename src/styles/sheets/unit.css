@@ -7,3 +7,11 @@
   box-shadow: var(--ah-box-shadow-bevel);
   padding: 0.5rem;
 }
+
+.ah-unit__resources {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}

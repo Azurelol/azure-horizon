@@ -1,0 +1,40 @@
+{
+  "folder": "0KrYshNG8sC3sM9N",
+  "name": "Paladin",
+  "type": "tactica",
+  "_id": "JYYl1AyecHF1uA76",
+  "img": "systems/azure-horizon/assets/icons/tactica/cavalier.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-paladin",
+    "description": "",
+    "data": {
+      "type": "tacticaClassData",
+      "_id": "7C6tPZwXVSufHXE3",
+      "movement": 3,
+      "traits": [
+        "cavalry"
+      ],
+      "tier": 2
+    }
+  },
+  "effects": [],
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791043477009,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!JYYl1AyecHF1uA76"
+}

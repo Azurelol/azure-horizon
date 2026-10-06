@@ -1,0 +1,37 @@
+{
+  "folder": "0KrYshNG8sC3sM9N",
+  "name": "Mage",
+  "type": "tactica",
+  "_id": "2Zd8ZVi5IRKhSZrj",
+  "img": "systems/azure-horizon/assets/icons/tactica/mage.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-mage",
+    "description": "",
+    "data": {
+      "type": "tacticaClassData",
+      "_id": "3wq6o60GEhZGoIBK",
+      "movement": 5,
+      "traits": []
+    }
+  },
+  "effects": [],
+  "sort": -12500,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791044837635,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!2Zd8ZVi5IRKhSZrj"
+}

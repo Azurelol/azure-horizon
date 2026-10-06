@@ -1,0 +1,46 @@
+{
+  "folder": "0KrYshNG8sC3sM9N",
+  "name": "Halberdier",
+  "type": "tactica",
+  "_id": "iOUA3CKZUPSKbVnY",
+  "img": "systems/azure-horizon/assets/icons/tactica/soldier.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-halberdier",
+    "description": "",
+    "data": {
+      "type": "tacticaClass",
+      "_id": "Gca1Ac5WYyf67MIp",
+      "tier": 2,
+      "movement": 5,
+      "traits": [
+        "backup"
+      ],
+      "benefits": {
+        "mov": 1,
+        "def": 0,
+        "mdef": 0,
+        "init": 0
+      }
+    }
+  },
+  "effects": [],
+  "sort": 850000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791045312475,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!iOUA3CKZUPSKbVnY"
+}

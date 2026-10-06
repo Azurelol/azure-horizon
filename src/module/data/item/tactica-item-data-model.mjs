@@ -1,9 +1,9 @@
-import FeatureDataModel from "./feature-data-model.mjs";
 import AH from "../../config.mjs";
 import { TacticaEmptyData } from "./tactica/_module.mjs";
 import ItemDataModel from "./item-data-model.mjs";
 import Checks from "../../pipelines/checks.mjs";
 import { ActionConfig } from "../../helpers/action-configuration.mjs";
+import { Actions } from "../../pipelines/_module.mjs";
 
 /**
  * @typedef {'tacticaWeapon'|'tacticaSkill'|'tacticaClass'|'tacticaConsumable'} AH_TacticaItemType
@@ -86,8 +86,15 @@ export default class TacticaItemDataModel extends ItemDataModel {
 
       case "tacticaSkill":
       case "tacticaClass":
-      case "tacticaConsumable":
         return false;
+
+      case "tacticaConsumable":
+        await Actions.perform(this.parent.actor, this.parent, async (config, actor, item) => {
+          config.setKeyboardModifiers(modifiers);
+          config.addDescription(this.description);
+          this.data.configureAction(config);
+        });
+        return true;
     }
   }
 }

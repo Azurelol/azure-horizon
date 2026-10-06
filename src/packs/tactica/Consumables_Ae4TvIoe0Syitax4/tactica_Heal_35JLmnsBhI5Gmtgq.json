@@ -1,0 +1,45 @@
+{
+  "folder": "Ae4TvIoe0Syitax4",
+  "name": "Heal",
+  "type": "tactica",
+  "_id": "35JLmnsBhI5Gmtgq",
+  "img": "systems/azure-horizon/assets/icons/equipment/weapons/staff1.png",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "tactica-heal",
+    "description": "",
+    "data": {
+      "type": "tacticaConsumable",
+      "_id": "BBpQGXmn7Z8NM7DG",
+      "range": {
+        "minimum": 1,
+        "maximum": 1
+      },
+      "resource": {
+        "schemaVersion": 1,
+        "enabled": false,
+        "type": "hp",
+        "amount": "20+&hp(0.2)"
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791117707498,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!35JLmnsBhI5Gmtgq"
+}
