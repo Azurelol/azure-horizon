@@ -42,8 +42,9 @@ navbar-links:
     - Glossary: "manual/7-glossary/"
     - Player Guide: "manual/8-player-guide/"
     - Director Guide: "manual/9-director-guide/"
-  Classes: "classes"
-  Spells: "spells"
+  Database:
+    - Classes: "classes"
+    - Spells: "spells"
   Gallery: "gallery"
   Roadmap: "roadmap"
   About: "about"

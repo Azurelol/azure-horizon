@@ -126,16 +126,22 @@ async function getDirectories(path) {
  */
 
 /**
- * @param {FileSystemEntry} entry
+ * @param {FileSystemEntry} dir
  * @param {DocumentType} type The document type
+ * @param {Object} [options]
+ * @param {Boolean} [options.recurse=false] Also search nested subdirectories
  * @returns {Promise<FileSystemEntry[]>}
  */
-async function getDocuments(entry, type) {
+async function getDocuments(dir, type, { recurse = false } = {}) {
   let documents = [];
-  const entries = await fs.readdir(entry.path, {
-    withFileTypes: true, withFileExtensions: true, withExtensions: true,
+  const entries = await fs.readdir(dir.path, {
+    withFileTypes: true,
+    withFileExtensions: true,
+    withExtensions: true,
+    recursive: recurse,
   });
   for (const entry of entries) {
+    if (entry.isDirectory()) continue;
     if (entry.name.startsWith(`${type}_`)) {
       documents.push({
         ...entry,
@@ -362,6 +368,89 @@ for (const [domain, spells] of spellsByDomain) {
   const content = md.build();
   await fs.writeFile(fileName, content);
   console.log(`Writing spell file to ${fileName}`);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// EQUIPMENT
+///////////////////////////////////////////////////////////////////////////////
+const SRC_EQUIPMENT_DIR = PATH.join(PACKS_DIR_PATH, "equipment");
+const SRC_EQUIPMENT_DIRECTORIES = await getDirectories(SRC_EQUIPMENT_DIR);
+
+/**
+ * @typedef {DocumentEntry} EquipmentEntry
+ * @property {String} type
+ * @property {String} system.description
+ */
+
+/**
+ * Equipment document types to generate pages for.
+ * @type {String[]}
+ */
+const EQUIPMENT_TYPES = ["weapon", "armor", "accessory", "consumable", "engram"];
+
+/** @type {Map<String, EquipmentEntry[]>} **/
+let equipmentByType = new Map();
+
+for (const dir of SRC_EQUIPMENT_DIRECTORIES) {
+  for (const type of EQUIPMENT_TYPES) {
+    const equipmentEntries = await getDocuments(dir, type, {
+      recurse: true,
+    });
+    for (const entry of equipmentEntries) {
+      /** @type EquipmentEntry **/
+      const item = await deserializeDocument(entry);
+      const key = item.type;
+      if (!equipmentByType.has(key)) {
+        equipmentByType.set(key, []);
+      }
+      equipmentByType.get(key).push(item);
+    }
+  }
+}
+
+// Now write the equipment type files
+const DST_EQUIPMENT_DIR = PATH.join(ROOT_DIRECTORY, "docs", "_equipment");
+await cleanDirectory(DST_EQUIPMENT_DIR);
+for (const [type, items] of equipmentByType) {
+  const fileName = PATH.join(DST_EQUIPMENT_DIR, `${capitalize(type)}.${FILE_EXTENSION}`);
+  let md = new DocBuilder();
+  md.frontMatter({ title: capitalize(type), img: `${ASSETS_DIRECTORY}/icons/equipment/${type}.png` });
+  for (const item of items) {
+    let traits = [];
+    // TODO: push type-specific traits here (e.g. item.system.price, item.system.weight)
+    switch (type) {
+      case "weapon":
+        traits.push(item.system.rarity);
+        traits.push(item.system.damage.primary.type);
+        traits.push(item.system.range);
+        traits.push(item.system.handedness);
+        // TODO: Attributes...
+        break;
+
+      case "armor":
+        traits.push(item.system.rarity);
+        traits.push(item.system.category);
+        // TODO: Advantages...
+        break;
+
+      case "accessory":
+        traits.push(item.system.rarity);
+        break;
+
+      case "consumable":
+        break;
+
+      case "engram":
+        break;
+    }
+    md.documentHeader(item.name, item.img, {
+      traits: traits,
+    });
+    md.p(item.system.description);
+  }
+  const content = md.build();
+  await fs.writeFile(fileName, content);
+  console.log(`Writing equipment file to ${fileName}`);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

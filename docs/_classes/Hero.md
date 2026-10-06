@@ -35,6 +35,15 @@ tokenImg: /assets/characters/heroes/hero_token.png
 
 
 <div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Galactic Idol</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+
+
+<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Rise Once More</span></div>
 <div class='document-header__properties'>
 <i class="fa-solid fa-star"></i> 1

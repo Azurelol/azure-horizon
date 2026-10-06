@@ -48,7 +48,7 @@ tokenImg: /assets/characters/heroes/archer_token.png
 <p>When your bow is fully drawn, you perform a powerful attack at a single target within line of sight. If the check result is even you hit a vital area.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS35.png"><span>Barrage</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS35.png"><span>Ballista</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
@@ -58,7 +58,7 @@ tokenImg: /assets/characters/heroes/archer_token.png
 </div>
 </div>
 
-<p>You deal damage to a column.</p>
+<p>When your bow is <em>fully drawn,</em> you deal damage to a target column.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS91.png"><span>Feign Death</span></div>
@@ -72,7 +72,7 @@ tokenImg: /assets/characters/heroes/archer_token.png
 </div>
 </div>
 
-<p>You gain <em>Stealth</em> until your next action. Your party's TP is increased by 1.</p><ul><li><p><strong>Party</strong>: @GAIN[1 tp]</p></li></ul>
+<p>You gain <em>Stealth</em> until your next action. Your party's tension is increased by one.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS87.png"><span>Flame Arrow</span></div>
@@ -82,6 +82,18 @@ tokenImg: /assets/characters/heroes/archer_token.png
 </div>
 
 
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS92.png"><span>Full Draw</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 1</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You take time to fully draw your bow, gaining the <em>Full Draw</em> status. and allowing you to fire off more powerful skills.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS63.png"><span>Mark</span></div>
@@ -98,23 +110,15 @@ tokenImg: /assets/characters/heroes/archer_token.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS59.png"><span>Rapid Fire</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Action 3</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
 <p>You enter into a stance where you can can perform free attacks for every action performed until the start of your next turn.</p>
-
-<div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/RFAS92.png"><span>Take Aim</span></div>
-<div class='document-header__properties'>
-<div class="document-traits --nested">
-<span class="document-trait">Action 1</span>
-</div>
-<i class="fa-solid fa-star"></i> 1
-</div>
-</div>
-
-<p>You take time to fully draw your bow, gaining the Draw status. and allowing you to fire off more powerful skills.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/archer/headshot.png"><span>Track</span></div>
@@ -123,7 +127,7 @@ tokenImg: /assets/characters/heroes/archer_token.png
 </div>
 </div>
 
-<p>You can make a @CHECK[dex ins normal]{Track} check to reveal an adversary that has the <em>Stealth</em> effect.</p>
+<p>You can make a check to reveal an adversary that has the <em>Stealth</em> effect.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Trap</span></div>

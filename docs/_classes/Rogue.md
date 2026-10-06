@@ -30,6 +30,18 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Borrow Time</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>Once per battle during your turn, you can <em>borrow</em> 1 AP from a willing party member, which you can use for a maneuver.</p><p>On the next round you then return the AP back.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Cripple</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
@@ -53,7 +65,7 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 </div>
 </div>
 
-<p>You perform a powerful attack to an incapacitated enemy.</p>
+<p>You perform a powerful attack to an enemy that is currently <em>unable to take action.</em></p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/rogue/surprise-attack.png"><span>Misdirect</span></div>
@@ -66,6 +78,15 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 </div>
 
 <p>When you would be attacked, an adjacent party member is attacked instead.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Mug</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>When you deal damage to a <em>ranked</em> enemy for the first time, if the result of the check was even you gain 1 IP.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Premeditation</span></div>
@@ -103,7 +124,7 @@ tokenImg: /assets/characters/heroes/rogue_token.png
 </div>
 </div>
 
-<p>You perform an attack against a target that has been <em>previously</em> attacked this round.</p>
+<p>You perform an attack against a target that cannot detect you or that has been <em>previously</em> attacked this round.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/rogue/throw.png"><span>Surprise Attack</span></div>

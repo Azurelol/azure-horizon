@@ -56,7 +56,7 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 <p>After you cast a spell if you cast the same spell as your next action you gain a damage bonus.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Enchant</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/elementalist/enchant.png"><span>Enchant</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Reaction</span>
@@ -65,7 +65,7 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 </div>
 </div>
 
-<p>When a party member performs a physical attack you can enchant it before it resolves to deal additional elemental damage of your choice.</p>
+<p>When a party member performs an attack you can enchant their weapon to deal elemental damage for their next two turns before their action resolves.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/elementalist/ice_block.png"><span>Ice Block</span></div>
@@ -103,7 +103,7 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 <p>Your next spell cast costs no mind points.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Meltdown</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/elementalist/meltdown.png"><span>Meltdown</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Tension</span>
@@ -123,3 +123,16 @@ tokenImg: /assets/characters/heroes/elementalist_token.png
 </div>
 
 <p>After you a cast a spell of one element, if the spell you previously cast was of a different element you gain the Prism effect until the end of your next turn.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/elementalist/supercharge.png"><span>Supercharge</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Exhaust</span>
+<span class="document-trait">Action 2</span>
+</div>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You immediately end your turn and gain 2 extra action points on your next turn.</p>

@@ -37,6 +37,15 @@ tokenImg: /assets/characters/heroes/berserker_token.png
 <h1 id="skills" class="class__skills">Skills</h1>
 
 <div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Anger Management</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 2
+</div>
+</div>
+
+<p>You gain an SL skill bonus to damage dealt and received when your tension is over half your maximum.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Enrage</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">

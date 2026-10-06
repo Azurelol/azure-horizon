@@ -78,6 +78,7 @@ tokenImg: /assets/characters/heroes/defender_token.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Intervene</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
+<span class="document-trait">Cooldown</span>
 <span class="document-trait">Reaction</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
@@ -109,19 +110,20 @@ tokenImg: /assets/characters/heroes/defender_token.png
 </div>
 </div>
 
-<p>When you are attacked while equipped with a <em>shield</em> you can immediately gain <em>Block</em> before the attack resolves.</p>
+<p>When you are attacked while equipped with a <em>shield</em> you can immediately <em>Defend</em> before the attack resolves.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Slam</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
+<span class="document-trait">Shift</span>
 <span class="document-trait">Action 2</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
-<p>You deal damage to the target with your <em>equipped</em> <em>shield</em> and push it back.</p>
+<p>You deal damage to the target with your s<em>hield</em> and push it back.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Steadfast</span></div>

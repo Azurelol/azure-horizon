@@ -23,7 +23,7 @@ img: /assets/icons/spells/elemental.png
 </div>
 </div>
 
-<p>You deal cold damage to a target those adjacent to it on the front row.</p>
+<p>You deal cold damage to a target and those adjacent to it on the front row.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/spells/elemental/elemental_shroud.png"><span>Elemental Shroud</span></div>
@@ -34,7 +34,7 @@ img: /assets/icons/spells/elemental.png
 </div>
 </div>
 
-<p>You grant your party resistance against one of the elemental types you control.</p>
+<p>You grant your party resistance against elemental damage until your next turn.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/spells/elemental/gale_blast.png"><span>Gale Blast</span></div>
@@ -56,7 +56,7 @@ img: /assets/icons/spells/elemental.png
 </div>
 </div>
 
-<p>You deal cold damage to a target. The damage is doubled if the target is <em>frozen</em>.</p>
+<p>You deal cold damage to a target and apply chill on an even check result. The damage is doubled if the target is <em>frozen</em>.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/spells/elemental/ignition.png"><span>Ignition</span></div>
@@ -68,14 +68,3 @@ img: /assets/icons/spells/elemental.png
 </div>
 
 <p>You deal fire damage to a target in close range.</p>
-
-<div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/spells/elemental/supercharge.png"><span>Supercharge</span></div>
-<div class='document-header__properties'>
-<div class="document-traits --nested">
-<span class="document-trait">Fast</span>
-</div>
-</div>
-</div>
-
-<p>You immediately end your turn and gain 2 extra action points on your next turn.</p>

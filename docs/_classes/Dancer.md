@@ -59,7 +59,7 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 </div>
 </div>
 
-<p>You gain the use of a <em>Dance </em>for each point invested into this skill.</p><ul><li><p>You can perform dances while wearing light armor and a light weapon.</p></li></ul>
+<p>You gain the use of a <em>Dance </em>for each point invested into this skill. You can only perform dances while wearing light equipment.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Dance Partner</span></div>
@@ -80,7 +80,7 @@ tokenImg: /assets/characters/heroes/dancer_token.png
 </div>
 </div>
 
-<p>While dancing, you can perform <em>Shift</em> as a free action once per turn.</p>
+<p>While dancing, you can <em>shift</em> one space as a free action once per turn.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Ole</span></div>

@@ -81,7 +81,7 @@ tokenImg: /assets/characters/heroes/fencer_token.png
 </div>
 </div>
 
-<p>When you are attacked in melee and the result of the check was an even number you can immediately perform a counter.</p><ul><li><p><strong>Offensive Stance</strong>: You shift the attacker 1 space..</p></li><li><p><strong>Defensive Stance</strong>: You shift yourself 1 space.</p></li></ul>
+<p>When you are attacked in melee and the result of the check was an even number you can immediately perform a free attack against the target with an additional effect:</p><ul><li><p><strong>Offensive Stance</strong>: You shift the attacker 1 space..</p></li><li><p><strong>Defensive Stance</strong>: You shift yourself 1 space.</p></li></ul>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Technique</span></div>

@@ -39,14 +39,14 @@ tokenImg: /assets/characters/heroes/armiger_token.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/all-or-nothing.png"><span>All or Nothing</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Exhaust</span>
+<span class="document-trait">Cooldown</span>
 <span class="document-trait">Action 1</span>
 </div>
 <i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
-<p>After you have performed the check for your next action and before the damage is resolved, if the result of the check was even you gain <em>Empower</em>, otherwise <em>Vulnerable.</em></p><p>At SL2 you gain both effects.</p>
+<p>After you have performed the check for your next action and before the damage is resolved, if the result of the check was even you gain <em>Strength</em>, otherwise <em>Vulnerable.</em></p><p>At SL2 you gain both effects.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/arsenal.png"><span>Arsenal</span></div>
@@ -76,7 +76,7 @@ tokenImg: /assets/characters/heroes/armiger_token.png
 <div class="document-traits --nested">
 <span class="document-trait">Activity</span>
 </div>
-<i class="fa-solid fa-star"></i> 1
+<i class="fa-solid fa-star"></i> 2
 </div>
 </div>
 
@@ -96,13 +96,22 @@ tokenImg: /assets/characters/heroes/armiger_token.png
 <p>When a party member attacks a target you may follow up with a free attack of your own.</p>
 
 <div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Payday</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>When you perform a basic attack you gain the <em>Payday</em> effect, which lowers the cost of your next skill.</p>
+
+<div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/armiger/power-strike.png"><span>Power Strike</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Cooldown</span>
 <span class="document-trait">Action 2</span>
 </div>
-<i class="fa-solid fa-star"></i> 2
+<i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 

@@ -105,7 +105,7 @@ tokenImg: /assets/characters/heroes/lancer_token.png
 </div>
 </div>
 
-<p>When you are targeted by a melee attack you may perform a free attack before your attacker resolves their action.</p>
+<p>When you are targeted by a melee attack and the check result was even you may perform a free attack before your attacker resolves their action.</p>
 
 ---
 

@@ -40,6 +40,9 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Addle</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 1</span>
+</div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
@@ -73,16 +76,7 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 <p>During a rest scene you make a devil's bargain with a spirit and ask for their assistance. They help you as requested but it comes with a consequence decided by the director.</p>
 
 <div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Dark Spell</span></div>
-<div class='document-header__properties'>
-<i class="fa-solid fa-star"></i> 5
-</div>
-</div>
-
-<p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Dark </em>domain.</p>
-
-<div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Kindle</span></div>
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Coven</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Reaction</span>
@@ -92,6 +86,24 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 </div>
 
 <p>You advance the current casting of a party member one step.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_magic.png"><span>Dark Spell</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 5
+</div>
+</div>
+
+<p>For each skill point invested in this skill, you gain the use of 2 spells of the <em>Dark </em>domain.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Hex</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Misery</span></div>
@@ -114,3 +126,12 @@ tokenImg: /assets/characters/heroes/ritualist_token.png
 </div>
 
 <p>You restore another party member's hit points at the cost of your own.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Vital Barrier</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 1
+</div>
+</div>
+
+<p>You spend 20% of your HP in order to gain twice its amount as <em>Block</em>.</p>

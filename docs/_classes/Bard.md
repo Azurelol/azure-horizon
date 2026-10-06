@@ -6,8 +6,8 @@ tokenImg: /assets/characters/heroes/bard_token.png
 
 <div class="document-traits --center">
 <span class="document-trait">Support</span>
-<span class="document-trait">Music</span>
 <span class="document-trait">Tension</span>
+<span class="document-trait">Music</span>
 </div>
 
 ![](/assets/characters/heroes/bard_token.png){: .profile }

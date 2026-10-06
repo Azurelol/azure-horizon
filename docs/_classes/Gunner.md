@@ -47,15 +47,24 @@ tokenImg: /assets/characters/heroes/gunner_token.png
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Cover Fire</span></div>
 <div class='document-header__properties'>
 <div class="document-traits --nested">
-<span class="document-trait">Interrupt</span>
 <span class="document-trait">Cooldown</span>
-<span class="document-trait">Action 1</span>
+<span class="document-trait">Interrupt</span>
+<span class="document-trait">Action 2</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
 <p>You perform an attack that disables the next enemy reaction.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Desperado</span></div>
+<div class='document-header__properties'>
+<i class="fa-solid fa-star"></i> 2
+</div>
+</div>
+
+<p>Once per battle when you enter peril you can perform a free attack. At SL2 you can also, in addition, do this when you enter crisis.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Focused Shot</span></div>
@@ -68,7 +77,7 @@ tokenImg: /assets/characters/heroes/gunner_token.png
 </div>
 </div>
 
-<p>You perform a strong attack that pressures the enemy.</p>
+<p>You perform a strong attack that significantly pressures the enemy.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Point Blank</span></div>

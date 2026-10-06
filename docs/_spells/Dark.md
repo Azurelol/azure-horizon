@@ -34,7 +34,7 @@ img: /assets/icons/spells/dark.png
 </div>
 </div>
 
-<p>You apply Erosion to the target, which deals dark damage to them for the next 3 turns.</p>
+<p>You apply <em>Erosion</em> to the target, which deals dark damage to them for the next 3 turns.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/spells/dark/phantom.png"><span>Phantom</span></div>

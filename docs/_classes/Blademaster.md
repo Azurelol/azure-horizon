@@ -18,7 +18,7 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 
 ### Experience Triggers
 
-- You have an encounter with a fated rival blademaster.
+- You have an encounter with a fated rival.
 - You perform a great feat then leave the scene without looking back.
 - You enlist the services of a bladesmith.
 - You stop the plot of a nefarious warmonger.
@@ -45,7 +45,7 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 </div>
 </div>
 
-<p>You gain the use of a <em>blademaster art</em> for each point invested into this skill.</p>
+<p>You gain the Blade Form feature. Each point invested in this skill grants a Blademaster weapon skill.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_buff.png"><span>Call Out</span></div>
@@ -74,25 +74,13 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 <div class='document-header__properties'>
 <div class="document-traits --nested">
 <span class="document-trait">Exhaust</span>
+<span class="document-trait">Reaction</span>
 </div>
 <i class="fa-solid fa-star"></i> 1
 </div>
 </div>
 
 <p>When you successfully parry an attack you may exert yourself at the cost of 4 TP in order to negate it completely and perform a <em>Blademaster</em> weapon skill instead.</p>
-
-<div class="document-header">
-<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Posture</span></div>
-<div class='document-header__properties'>
-<div class="document-traits --nested">
-<span class="document-trait">Closer</span>
-<span class="document-trait">Action 1</span>
-</div>
-<i class="fa-solid fa-star"></i> 1
-</div>
-</div>
-
-<p>You adopt your stance, gaining the <em>Sheathed Blade</em> effect. When you perform your  next <em>Blademaster</em> skill under this effect it gains additional effects.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_support.png"><span>Sword Practice</span></div>
@@ -113,30 +101,42 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Crescent Moon</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
 </div>
 </div>
 
-<p>You deal damage to the closest row. Can only be executed during an even turn.</p>
+<p>You perform a <em>cleave</em> attack on the target. Can only be executed during an even turn.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Full Moon</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 3</span>
+</div>
 </div>
 </div>
 
-<p>You deal powerful damage to a target. Can only be executed on the 5th turn and every 5 turns after that.</p>
+<p>You deal powerful damage with a cold component to a target. Can only be executed on the 5th turn and every 5 turns after that.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>New Moon</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
 </div>
 </div>
 
-<p>You deal damage to a target. Can only be executed during an odd turn.</p>
+<p>You deal additional light damage to a target. Can only be executed during an odd turn.</p>
 
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Quarter Moon</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
 </div>
 </div>
 
@@ -145,7 +145,65 @@ tokenImg: /assets/characters/heroes/blademaster_token.png
 <div class="document-header">
 <div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Waxing Moon</span></div>
 <div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
 </div>
 </div>
 
-<p>You deal damage to two different targets in the same row. Can only be executed during an even turn.</p>
+<p>You deal damage to a target and apply <em>Chill</em>. Can only be executed during an even turn.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Day Break</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 3</span>
+</div>
+</div>
+</div>
+
+<p>You deal powerful damage with a fire component to a target. Can only be executed on the 5th turn and every 5 turns after that.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Falling Twilight</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
+</div>
+</div>
+
+<p>You deal additional dark damage to a target. Can only be executed during an odd turn.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>High Noon</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
+</div>
+</div>
+
+<p>You deal damage to a column. Can only be executed during an odd turn.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Morning Star</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
+</div>
+</div>
+
+<p>You deal damage to a target and apply <em>Burn</em>. Can only be executed during an even turn.</p>
+
+<div class="document-header">
+<div class="document-header__name"><img src="{{ site.baseurl }}/assets/icons/classes/skill_attack.png"><span>Rising Dawn</span></div>
+<div class='document-header__properties'>
+<div class="document-traits --nested">
+<span class="document-trait">Action 2</span>
+</div>
+</div>
+</div>
+
+<p>You perform a pierce attack on the target. Can only be executed during an even turn.</p>

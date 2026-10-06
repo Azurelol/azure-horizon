@@ -324,8 +324,15 @@ export default class Formulas {
       }
         break;
 
-      case "unit":
+      case "unit": {
         hp = factors.level;
+        const attributes = system.attributes;
+        hp += attributes.mig.base * HP_MIGHT_FACTOR;
+        forTacticaItem(actor, "tacticaClass", data => {
+
+        });
+      }
+
         break;
     }
     hp = scaleValue(hp);
