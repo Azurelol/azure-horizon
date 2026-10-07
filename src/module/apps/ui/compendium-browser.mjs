@@ -9,11 +9,13 @@ import {
   ActionTableRenderer,
   ArmorTableRenderer,
   AttackTableRenderer, ClassFeatureTableRenderer, ClassTableRenderer,
-  EquipmentTableRenderer, SkillTableRenderer,
+  EquipmentTableRenderer, SkillTableRenderer, TacticaTableRenderer, TacticaWeaponTableRenderer,
   WeaponTableRenderer,
 } from "../item/_module.mjs";
 import { AdversaryTableRenderer, FollowerTableRenderer } from "../actor/_module.mjs";
 import { EffectTableRenderer } from "../effect/_module.mjs";
+import { TacticaClassTableRenderer, TacticaConsumableTableRenderer } from "../item/tactica-table-renderer.mjs";
+import { TableRendererRegistry } from "../api/table-renderer.mjs";
 
 /**
  * @typedef {"classes"|"skills"|"equipment"|"spells"|"adversaries"|"assembly"|"followers"|"effects"} CompendiumBrowserTab
@@ -180,6 +182,7 @@ export default class CompendiumBrowser extends AHApplication {
         { id: "assembly", label: "AH.COMPENDIUM.assembly", icon: "ra ra-bird-claw" },
         { id: "adversaries", label: "AH.COMPENDIUM.adversaries", icon: "ra ra-monster-skull" },
         { id: "followers", label: "AH.COMPENDIUM.followers", icon: "ra ra-double-team" },
+        { id: "tactica", label: "AH.COMPENDIUM.tactica", icon: "ra ra-pawn" },
         { id: "effects", label: "AH.COMPENDIUM.effects", icon: "ra ra-droplet-splash" },
       ],
       initial: "classes",
@@ -247,6 +250,9 @@ export default class CompendiumBrowser extends AHApplication {
       template: systemTemplatePath("apps/compendium-browser/compendium-browser-tab"),
     },
     followers: {
+      template: systemTemplatePath("apps/compendium-browser/compendium-browser-tab"),
+    },
+    tactica: {
       template: systemTemplatePath("apps/compendium-browser/compendium-browser-tab"),
     },
     effects: {
@@ -330,13 +336,7 @@ export default class CompendiumBrowser extends AHApplication {
         }
         break;
 
-      case "classes":
-      case "adversaries":
-      case "equipment":
-      case "spells":
-      case "assembly":
-      case "followers":
-      case "effects":
+      default:
         {
           context.tables = tabData.tables.map((t) => t.html);
         }
@@ -546,6 +546,8 @@ export default class CompendiumBrowser extends AHApplication {
     }),
   };
 
+  //-- MANAGER
+  #tableRenderers = new TableRendererRegistry();
   // Heroes
   #classTableRenderer = new ClassTableRenderer({ title: "AH.ITEM.Class.long", preview: true });
   #classFeatureTableRenderer = new ClassFeatureTableRenderer({ title: "AH.ITEM.ClassFeature", preview: true });
@@ -563,6 +565,12 @@ export default class CompendiumBrowser extends AHApplication {
   // Followers
   #moveTableRenderer = new AttackTableRenderer({ title: "AH.FOLLOWER.Move.plural", preview: true });
   #followerTableRenderer = new FollowerTableRenderer({ title: "AH.COMPENDIUM.followers", preview: true });
+  // Tactica
+  #tacticaConsumablesTableRenderer = this.#tableRenderers.register("consumable", new TacticaConsumableTableRenderer({ title: "AH.ITEM.Consumable", preview: true }));
+  #tacticaClassesTableRenderer = this.#tableRenderers.register("tactica", new TacticaClassTableRenderer({ title: "AH.ITEM.Class.long", preview: true }));
+  #tacticaWeaponsTableRenderer = this.#tableRenderers.register("tactica", new TacticaWeaponTableRenderer({ title: "AH.ITEM.Weapon", preview: true }));
+  #tacticaSkillsTableRenderer = this.#tableRenderers.register("tactica", new TacticaTableRenderer({ title: "AH.ITEM.Skill", preview: true }));
+
   // Effects
   #effectTableRenderer = new EffectTableRenderer({ title: "AH.COMPENDIUM.effects", preview: true });
 
@@ -809,6 +817,57 @@ export default class CompendiumBrowser extends AHApplication {
                 label: "AH.FIELD.Domain",
                 propertyPath: CompendiumIndex.itemFields.spellDomain,
                 options: domainOptions,
+              },
+              compendium: this.#compendiumFilter,
+            },
+          );
+        }
+        break;
+
+      case "tactica":
+        {
+          const tactica = await this.index.getTacticaEntries();
+          await this.onRenderTables(
+            [
+              {
+                entries: tactica.classes,
+                renderer: this.#tacticaClassesTableRenderer,
+              },
+              {
+                entries: tactica.skills,
+                renderer: this.#tacticaSkillsTableRenderer,
+              },
+              {
+                entries: tactica.weapons,
+                renderer: this.#tacticaWeaponsTableRenderer,
+              },
+              {
+                entries: tactica.consumables,
+                renderer: this.#tacticaConsumablesTableRenderer,
+              },
+            ],
+            {
+              type: {
+                label: "AH.FIELD.Type",
+                propertyPath: "system.data.type",
+                options: [
+                  {
+                    value: "tacticaClass",
+                    label: "AH.TACTICA.Class",
+                  },
+                  {
+                    value: "tacticaSkill",
+                    label: "AH.TACTICA.Skill",
+                  },
+                  {
+                    value: "tacticaWeapon",
+                    label: "AH.TACTICA.Weapon",
+                  },
+                  {
+                    value: "tacticaConsumable",
+                    label: "AH.TACTICA.Consumable",
+                  },
+                ],
               },
               compendium: this.#compendiumFilter,
             },

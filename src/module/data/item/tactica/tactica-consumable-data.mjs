@@ -22,12 +22,14 @@ export default class TacticaConsumableData extends TacticaTypeDataModel {
       range: new SchemaField({
         minimum: new NumberField({
           initial: 1,
+          nullable: false,
           _part: "properties",
           _classes: "ah-flex-shrink",
           label: "AH.TACTICA.RANGE.Minimum",
         }),
         maximum: new NumberField({
           initial: 1,
+          nullable: false,
           _part: "properties",
           _classes: "ah-flex-shrink",
           label: "AH.TACTICA.RANGE.Maximum",
@@ -39,11 +41,13 @@ export default class TacticaConsumableData extends TacticaTypeDataModel {
           label: "AH.FIELD.Resource",
           blank: true,
           choices: () => AH.resourceTypes,
+          nullable: false,
           required: true }),
         amount: new NumberField({
           initial: 0,
           label: "AH.FIELD.Amount",
-          nullable: true }),
+          nullable: false,
+        }),
       }, {
         label: "AH.FIELD.Cost",
         _part: "properties",

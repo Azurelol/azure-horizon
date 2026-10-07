@@ -118,6 +118,26 @@ export default class CompendiumIndex {
     ...CompendiumIndex.npcFields,
   });
 
+  // TODO: Refactor each getEntries function to have the fields for each item type
+
+  /**
+   * Item specific data model fields to be indexed.
+   * @returns {Record<string, string>}
+   */
+  static tacticaItemFields = Object.freeze({
+    tacticaDataType: "system.data.type",
+    tacticaClassTier: "system.data.tier",
+    tacticaConsumableResourceAmount: "system.data.resource.amount",
+    tacticaConsumableResourceType: "system.data.resource.type",
+    tacticaConsumableCostAmount: "system.data.cost.amount",
+    tacticaConsumableCostResource: "system.data.cost.resource",
+    tacticaWeaponCategory: "system.data.category",
+    tacticaWeaponRangeMin: "system.data.range.min",
+    tacticaWeaponRangeMax: "system.data.range.max",
+    tacticaWeaponPower: "system.data.damage.power",
+    tacticaWeaponWeight: "system.data.weight",
+  });
+
   /**
 	 * Item specific data model fields to be indexed.
 	 * @returns {Record<string, string>}
@@ -145,6 +165,7 @@ export default class CompendiumIndex {
     intent: "system.intent",
     weight: "system.weight",
     handedness: "system.handedness",
+    ...CompendiumIndex.tacticaItemFields,
   });
 
   /**
@@ -157,12 +178,28 @@ export default class CompendiumIndex {
   });
 
   /**
+   *
+   * @param {String} type The item type.
+   * @param {Boolean} force
+   * @param {String[]} fields
+   * @returns {Promise<CompendiumIndexEntry[]>}
+   */
+  async getItemsOfType(type, force = false, fields = undefined) {
+    const entries = await this.getItems(force, fields);
+    if (entries[type]) {
+      return entries[type];
+    }
+    return [];
+  }
+
+  /**
 	 * @param {Boolean} force
+   * @param {String[]} fields
 	 * @returns {Promise<Record<string, CompendiumIndexEntry[]>>}
 	 */
-  async getItems(force = false) {
+  async getItems(force = false, fields = undefined) {
     if (!this.#itemsByType || force) {
-      this.#itemsByType = await this.getEntries("Item", null, Object.values(CompendiumIndex.itemFields));
+      this.#itemsByType = await this.getEntries("Item", null, fields ?? Object.values(CompendiumIndex.itemFields));
     }
     return this.#itemsByType;
   }
@@ -194,20 +231,6 @@ export default class CompendiumIndex {
     }
 
     return this.#itemsBySlug[slug] ?? null;
-  }
-
-  /**
-	 *
-	 * @param {String} type The item type.
-	 * @param {Boolean} force
-	 * @returns {Promise<CompendiumIndexEntry[]>}
-	 */
-  async getItemsOfType(type, force = false) {
-    const entries = await this.getItems(force);
-    if (entries[type]) {
-      return entries[type];
-    }
-    return [];
   }
 
   /**
@@ -524,6 +547,27 @@ export default class CompendiumIndex {
       ability: await this.getItemsOfType("ability"),
     };
     return entries;
+  }
+
+  /**
+   * @typedef AH_TacticaEntries
+   * @property {CompendiumIndexEntry[]} classes
+   * @property {CompendiumIndexEntry[]} skills
+   * @property {CompendiumIndexEntry[]} weapons
+   * @property {CompendiumIndexEntry[]} consumables
+   */
+
+  /**
+   * @returns {Promise<AH_TacticaEntries>}
+   */
+  async getTacticaEntries() {
+    const entries = await this.getItemsOfType("tactica");
+    return {
+      classes: entries.filter(e => e.system.data.type === "tacticaClass"),
+      skills: entries.filter(e => e.system.data.type === "tacticaSkill"),
+      weapons: entries.filter(e => e.system.data.type === "tacticaWeapon"),
+      consumables: entries.filter(e => e.system.data.type === "tacticaConsumable"),
+    };
   }
 
   /**
