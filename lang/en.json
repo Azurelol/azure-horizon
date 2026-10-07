@@ -6,15 +6,14 @@
       "spells": "Spells",
       "journals": "Journals",
       "tables": "Roll Tables",
-      "heroes": "Heroes",
-      "adversaries": "Adversaries",
       "features": "Features",
       "effects": "Effects",
       "assembly": "Assembly",
       "followers": "Followers",
       "entities": "Entities",
       "playlists": "Playlists",
-      "tactica": "Tactica"
+      "tactica": "Tactica",
+      "actors": "Actors"
     },
     "APPLICATION": {
       "CompendiumBrowser": "Compendium Browser",

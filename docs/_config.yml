@@ -45,6 +45,7 @@ navbar-links:
   Database:
     - Classes: "classes"
     - Spells: "spells"
+    - Equipment: "equipment"
   Gallery: "gallery"
   Roadmap: "roadmap"
   About: "about"

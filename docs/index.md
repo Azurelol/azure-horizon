@@ -32,11 +32,15 @@ the epic tier from levels 31 to 60 until finally becoming legends of your own ri
 
 ## Heroes Rise Up
 
+<div class="media-row" markdown="1">
+
 <img src="/assets/img/index/hero_1.webp">
 
 The system's player characters are known as Heroes, and bringing them to life comes through writing their profile and selecting their classes, skills.
 Heroes start are able to select 3 classes out of 24, covering most roles in the genre. The classes are being designed to provide players
 with interesting mechanics and level up choices. Few to no skills provide outright numeric bonuses. No two characters should be the same.
+
+</div>
 
 ## Adversaries
 

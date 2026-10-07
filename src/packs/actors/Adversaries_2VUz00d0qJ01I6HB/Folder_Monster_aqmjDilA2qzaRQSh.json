@@ -1,0 +1,23 @@
+{
+  "type": "Actor",
+  "folder": "2VUz00d0qJ01I6HB",
+  "name": "Monster",
+  "color": null,
+  "sorting": "a",
+  "_id": "aqmjDilA2qzaRQSh",
+  "description": "",
+  "sort": 600000,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791313146710,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!aqmjDilA2qzaRQSh"
+}

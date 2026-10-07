@@ -1,0 +1,958 @@
+{
+  "folder": "wATG2JP0nO7e3x18",
+  "name": "Skeleton Soldier",
+  "type": "adversary",
+  "_id": "KU8HlJBspfOTocJU",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "attributes": {
+      "mig": {
+        "base": 6,
+        "bonus": 0
+      },
+      "dex": {
+        "base": 8,
+        "bonus": 0
+      },
+      "ins": {
+        "base": 4,
+        "bonus": 0
+      },
+      "wlp": {
+        "base": 4,
+        "bonus": 0
+      }
+    },
+    "affinities": {
+      "schemaVersion": 1,
+      "physical": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "slashing": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "piercing": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "bludgeoning": {
+        "preset": "",
+        "type": "additive",
+        "amount": 5
+      },
+      "elemental": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "fire": {
+        "preset": "",
+        "type": "additive",
+        "amount": 5
+      },
+      "cold": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "electric": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "spiritual": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "light": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      },
+      "dark": {
+        "preset": "",
+        "type": "additive",
+        "amount": null
+      }
+    },
+    "level": 10,
+    "parameters": {
+      "schemaVersion": 1,
+      "def": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "mdef": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "init": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "damage": {
+        "schemaVersion": 1,
+        "universal": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "physical": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "slashing": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "piercing": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "bludgeoning": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "elemental": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "fire": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "cold": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "electric": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "spiritual": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "light": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        },
+        "dark": {
+          "incoming": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          },
+          "outgoing": {
+            "schemaVersion": 1,
+            "status": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "equipment": {
+              "additive": [],
+              "multiplicative": []
+            },
+            "skill": {
+              "additive": [],
+              "multiplicative": []
+            }
+          }
+        }
+      },
+      "mov": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "block": {
+        "schemaVersion": 1,
+        "bonus": 0
+      },
+      "resource": {
+        "gain": {},
+        "loss": {
+          "hp": {
+            "incoming": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            },
+            "outgoing": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            }
+          },
+          "mp": {
+            "incoming": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            },
+            "outgoing": {
+              "schemaVersion": 1,
+              "status": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "equipment": {
+                "additive": [],
+                "multiplicative": []
+              },
+              "skill": {
+                "additive": [],
+                "multiplicative": []
+              }
+            }
+          }
+        }
+      },
+      "checks": {
+        "schemaVersion": 1,
+        "universal": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "action": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "attribute": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "defense": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        },
+        "ritual": {
+          "schemaVersion": 1,
+          "status": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "equipment": {
+            "additive": [],
+            "multiplicative": []
+          },
+          "skill": {
+            "additive": [],
+            "multiplicative": []
+          }
+        }
+      }
+    },
+    "resources": {
+      "schemaVersion": 1,
+      "hp": {
+        "schemaVersion": 1,
+        "value": 140,
+        "bonus": 0,
+        "temporary": 0
+      },
+      "pp": {
+        "schemaVersion": 1,
+        "value": 0,
+        "bonus": 0,
+        "temporary": 0
+      }
+    },
+    "profile": {
+      "schemaVersion": 1,
+      "traits": [
+        "undead"
+      ],
+      "family": "standard",
+      "role": "harrier",
+      "villain": false,
+      "rank": "standard",
+      "turns": 1,
+      "slug": "adversary-skeleton-soldier",
+      "summary": "",
+      "minion": null,
+      "pressure": [],
+      "revision": 1,
+      "modifiers": {
+        "schemaVersion": 1
+      }
+    },
+    "assembly": {}
+  },
+  "prototypeToken": {
+    "name": "Skeleton Soldier",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "depth": 1,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "cover",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 30,
+    "bar1": {
+      "attribute": "resources.hp"
+    },
+    "bar2": {
+      "attribute": "resources.pp"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Spear",
+      "type": "attack",
+      "_id": "vEwad0pqoqOdnDJy",
+      "img": "icons/weapons/polearms/glaive-simple.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "attack-spear",
+        "description": "",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "defense": "def",
+          "bonus": "",
+          "variant": ""
+        },
+        "range": "melee",
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "",
+            "type": "piercing"
+          },
+          "secondary": {
+            "amount": "",
+            "type": "piercing"
+          },
+          "traits": []
+        },
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C",
+          "enabled": true
+        },
+        "actionCost": 2
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1791313145755,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.vEwad0pqoqOdnDJy",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KU8HlJBspfOTocJU.vEwad0pqoqOdnDJy"
+    },
+    {
+      "name": "Heavy Blow",
+      "type": "ability",
+      "_id": "PjB3UyI3B4cUnuf6",
+      "img": "icons/skills/melee/strike-flail-destructive-yellow.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "ability-heavy-blow",
+        "description": "<p>You deal high damage to the target.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "B",
+          "enabled": false
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "defense": "def",
+          "bonus": "",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "high",
+        "intent": "damage",
+        "action": {
+          "schemaVersion": 1,
+          "type": "action",
+          "points": 2,
+          "traits": [],
+          "enabled": true,
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "attributes": true,
+          "check": true,
+          "damage": true,
+          "enabled": true
+        },
+        "weight": "normal",
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1791313145755,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.PjB3UyI3B4cUnuf6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!KU8HlJBspfOTocJU.PjB3UyI3B4cUnuf6"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791313145755,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!actors!KU8HlJBspfOTocJU"
+}

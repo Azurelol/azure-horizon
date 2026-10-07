@@ -56,6 +56,11 @@
       "type": "Item"
     },
     {
+      "name": "actors",
+      "label": "AH.COMPENDIUM.actors",
+      "type": "Actor"
+    },
+    {
       "name": "effects",
       "label": "AH.COMPENDIUM.effects",
       "type": "ActiveEffect"
@@ -76,16 +81,6 @@
       "type": "Item"
     },
     {
-      "name": "heroes",
-      "label": "AH.COMPENDIUM.heroes",
-      "type": "Actor"
-    },
-    {
-      "name": "adversaries",
-      "label": "AH.COMPENDIUM.adversaries",
-      "type": "Actor"
-    },
-    {
       "name": "playlists",
       "label": "AH.COMPENDIUM.playlists",
       "type": "Playlist"
@@ -100,7 +95,7 @@
     {
       "name": "Azure Horizon System",
       "color": "#3d598b",
-      "packs": ["classes", "equipment", "spells", "effects", "journals", "tables", "assembly", "adversaries", "heroes", "playlists", "tactica" ]
+      "packs": ["classes", "equipment", "spells", "effects", "journals", "tables", "assembly", "playlists", "tactica", "actors" ]
     }
   ],
   "manifest": "https://github.com/Azurelol/azure-horizon/releases/latest/download/system.json",

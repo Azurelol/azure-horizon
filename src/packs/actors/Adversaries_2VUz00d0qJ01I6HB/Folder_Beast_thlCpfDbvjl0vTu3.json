@@ -1,0 +1,23 @@
+{
+  "type": "Actor",
+  "folder": "2VUz00d0qJ01I6HB",
+  "name": "Beast",
+  "color": null,
+  "sorting": "a",
+  "_id": "thlCpfDbvjl0vTu3",
+  "description": "",
+  "sort": 100000,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791313140232,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!thlCpfDbvjl0vTu3"
+}
