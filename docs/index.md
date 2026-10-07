@@ -7,7 +7,14 @@ title: Home
 
 ## Getting Started
 
-<p>If this is your first time learning about the system you will want to start with the manual, which is structured very much like a book.</p>
+<p>
+If this is your first time learning about the system you will want to start with the manual, which is structured very much like a book.
+The system is currently still being developed for Foundry VTT, with the intent of it being published a premium system on the [Foundry Marketplace](https://www.foundryvtt.store/).
+</p>
+
+<a class="btn-discord" href="https://discord.com/invite/123">
+  <i class="fab fa-discord" aria-hidden="true"></i> Join the Discord
+</a>
 
 # Your Adventure
 
@@ -36,7 +43,7 @@ The system is being designed to support multiple tiers over the course of a camp
 gain mastery of the game system and their heroes. You can begin play in the heroic tier from levels 10 to 30, continue your exploits in
 the epic tier from levels 31 to 60 until finally becoming legends of your own right (by possibly going to outer space to fight a god of a metaphorical concept) from levels 61 to 99.
 
-## Heroes Rise Up
+## Rising Heroes
 
 <div class="media-row">
 
@@ -50,13 +57,18 @@ with interesting mechanics and level up choices. Few to no skills provide outrig
 
 </div>
 
-## Adversaries
+## Challenging Adversaries
 
 <div class="media-row">
 
-<p>The assembly of adversaries, the NPCs who your heroes face against is simple and intuitive for game masters to grasp. Assemble your
-adversaries through a selection of their rank, role and abilities, all of which are integrated in the system, which also ships with a compendium
-of ready-made ones for your use.</p>
+<p>
+The world your characters live in is full of dangerous beings. Whether that be territorial beasts the party stumbles into or
+belligerent soldiers of the <i>Empire</i>, these are the adversaries of your campaign and are bound to clash with the heroes.
+They share attributes and certain resources with the heroes but have been designed to be simple to prepare and to run at the table.
+Their tactics during battle are driven by their intents (such as attacking a character or enhancing themselves) and are very much routines
+which the players can learn, play around and eventually best them.
+
+</p>
 
 <img src="/assets/img/index/adversary_features.webp">
 
@@ -67,9 +79,8 @@ of ready-made ones for your use.</p>
 <img src="/assets/img/index/adversary_assembly.webp">
 
 <p>
-The assembly of adversaries, the NPCs who your heroes face against is simple and intuitive for game masters to grasp. Assemble your
-adversaries through a selection of their rank, role and abilities, all of which are integrated in the system, which also ships with a compendium
-of ready-made ones for your use
+The assembly of adversaries is designed to be simple and intuitive for game masters to grasp. Assemble your adversaries through a selection of their rank,
+role and abilities, all of which are integrated in the system, which also ships with a compendium of ready-made ones for your use. It is meant to be as simple as drag-n-dropping their features from the included compendiums onto their sheets.
 .</p>
 
 </div>
@@ -83,7 +94,7 @@ When engaging higher ranked adversaries they wil be pressuring them until they a
 
 <img src="/assets/img/background_scene.webp">
 
-## Guides
+## Helpful Guides
 
 The system comes with guides for both game master and players to familiarize themselves with the system and learn to play it as it was intended.
 From setting expectations in session zero, to guiding game masters on how to run their campaign, to advising players on how best to support their table,
@@ -94,7 +105,3 @@ all manner of hard-earned advice shall be provided to help you run the best game
 The system is being designed with regular updates in mind to account for unforeseen balance concerns or problematic patterns that would not be caught
 during the play-testing window. Rather than wait for erratas and reprints, the system's data entries (such as classes, skills, equipment, etc...) will be updated
 when needed and mechanisms will be in place to make it easier for game masters to migrate.. if they want to!
-
-## How To Play
-
-The system is currently still being developed for Foundry VTT, with the intent of it being published a premium system on the [Foundry Marketplace](https://www.foundryvtt.store/).

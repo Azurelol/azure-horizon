@@ -164,6 +164,26 @@ body {
   background: var(--ah-index-content-background);
   border: var(--ah-index-content-border);
 
+  .btn-discord {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: #5865f2;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+
+  .btn-discord:hover,
+  .btn-discord:focus {
+    background: #4752c4;
+    color: #fff;
+    text-decoration: none;
+  }
+
   .media-row {
     display: flex;
     align-items: flex-start;
