@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-<p>Welcome to the reference documentation page for Azure Horizon, a virtual tabletop role-playing game system (VTTRPG) that is being developed as a digital-first game experience.</p>
+<p>Welcome to the official website for Azure Horizon, a virtual tabletop role-playing game system (VTTRPG) that is being developed as a digital-first game experience.</p>
 
 ## Getting Started
 
@@ -16,13 +16,15 @@ The system implementation is currently being developed for Foundry VTT, with the
 Want to keep up with the latest news or the progress of the project?
 </p>
 
+<div class="ah-flex-row">
 <a class="ah-button" href="https://discord.com/invite/26AAT8UbjK">
   <i class="fab fa-discord" aria-hidden="true"></i> Join the Discord!
 </a>
 
 <a class="ah-button" href="https://github.com/Azurelol/azure-horizon">
-  <i class="fab fa-github" aria-hidden="true"></i> Browser the Repository!
+  <i class="fab fa-github" aria-hidden="true"></i> Browse the Repository!
 </a>
+</div>
 
 # Your Adventure
 

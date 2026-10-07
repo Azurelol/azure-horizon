@@ -420,16 +420,31 @@ for (const [type, items] of equipmentByType) {
     // TODO: push type-specific traits here (e.g. item.system.price, item.system.weight)
     switch (type) {
       case "weapon":
-        traits.push(item.system.rarity);
+        if (item.system.rarity) {
+          traits.push(item.system.rarity);
+        }
         traits.push(item.system.damage.primary.type);
-        traits.push(item.system.range);
-        traits.push(item.system.handedness);
+        if (item.system.range) {
+          traits.push(item.system.range);
+        }
+        switch (item.system.handedness) {
+          case "two":
+            traits.push("Two-Handed");
+            break;
+
+          case "one":
+            traits.push("One-Handed");
+            break;
+        }
+
         // TODO: Attributes...
         break;
 
       case "armor":
         traits.push(item.system.rarity);
-        traits.push(item.system.category);
+        if (item.system.category) {
+          traits.push(item.system.category);
+        }
         // TODO: Advantages...
         break;
 

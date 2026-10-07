@@ -396,6 +396,11 @@ body {
   transform: scale(1.03);
 }
 
+.ah-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 .ah-button {
   display: inline-flex;
   align-items: center;
