@@ -27,6 +27,9 @@ collections:
   spells:
     output: true
     permalink: /spells/:name/
+  equipment:
+    output: true
+    permalink: /equipment/:name/
   manual:
     output: true
     permalink: /manual/:name/
