@@ -31,15 +31,15 @@
   --ah-content-color: white;
   --ah-content-color-alt: #354564;
   --ah-content-header: #eaca6b;
-  --ah-content-action-color: #e8681a;
-  --ah-content-action-hover-color: #d69575;
+
+  --ah-action-background: #e8681a;
+  --ah-action-background-hover: #d69575;
 
   --ah-border: 0.065rem solid #3d5f8f;
-  --ah-index-content-background: linear-gradient( to bottom, #4f698b 0%, #8790ac 100% );
-  --ah-index-content-border: 4px solid #566881;
-  --ah-trait-background: #e8681a;
   --ah-icon-color: #db911e;
+  --ah-button-background: #354564;
 
+  --ah-trait-background: #e8681a;
   --ah-trait-border: black;
   --ah-trait-color: #f4f0f0;
 
@@ -51,6 +51,8 @@
   --ah-title-margin: 100px;
   --ah-divider-scene-margin: 425px;
 
+  --ah-index-content-background: linear-gradient( to bottom, #4f698b 0%, #8790ac 100% );
+  --ah-index-content-border: 4px solid #566881;
 
   --ah-font-primary: GeistPixel, 'Open Sans', serif;
   --ah-font-page: GeistPixel, 'Open Sans', serif;
@@ -163,26 +165,6 @@ body {
   padding: 2rem;
   background: var(--ah-index-content-background);
   border: var(--ah-index-content-border);
-
-  .btn-discord {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.2rem;
-    background: #5865f2;
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background 0.2s;
-  }
-
-  .btn-discord:hover,
-  .btn-discord:focus {
-    background: #4752c4;
-    color: #fff;
-    text-decoration: none;
-  }
 
   .media-row {
     display: flex;
@@ -412,4 +394,27 @@ body {
 
 .gallery img:hover {
   transform: scale(1.03);
+}
+
+.ah-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--ah-action-background);
+  color: var(--ah-content-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--ah-content-color);
+  border-radius: 5px 5px 5px 5px;
+}
+
+.ah-button:hover,
+.ah-button:focus {
+  background: var(--ah-action-background-hover);
+  text-decoration: none;
 }

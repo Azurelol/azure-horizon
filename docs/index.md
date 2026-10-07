@@ -8,12 +8,16 @@ title: Home
 ## Getting Started
 
 <p>
-If this is your first time learning about the system you will want to start with the manual, which is structured very much like a book.
-The system is currently still being developed for Foundry VTT, with the intent of it being published a premium system on the [Foundry Marketplace](https://www.foundryvtt.store/).
+If this is your first time learning about the system you will want to start by reading the (in development) manual, which is structured very much like a book.
+The system implementation is currently being developed for Foundry VTT, with the current intent of it being published a premium system on the Foundry Marketplace.
 </p>
 
-<a class="btn-discord" href="https://discord.com/invite/123">
-  <i class="fab fa-discord" aria-hidden="true"></i> Join the Discord
+<p>
+Want to keep up with the latest news or the progress of the project?
+</p>
+
+<a class="ah-button" href="https://discord.com/invite/26AAT8UbjK">
+  <i class="fab fa-discord" aria-hidden="true"></i> Join the Discord!
 </a>
 
 # Your Adventure
