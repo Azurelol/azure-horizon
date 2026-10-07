@@ -3,8 +3,6 @@ layout: default
 title: Home
 ---
 
-<h6 class="index-subtitle">A new world lies over the horizon.</h6>
-<hr>
 <p>Welcome to the reference documentation page for Azure Horizon, a virtual tabletop role-playing game system (VTTRPG) that is being developed as a digital-first game experience.</p>
 
 ## Getting Started
@@ -15,8 +13,16 @@ title: Home
 
 ## Collaborative Setting Creation
 
+<div class="media-row">
+
+<img src="/assets/img/index/world_creation_1.png">
+
+<p>
 Before your campaign begins both players and the game master work together to create the campaign's setting together in an engaging procedure.
 Throughout the campaign the game master is encouraged to ask players for their input into the state of the setting and regularly add to it.
+</p>
+
+</div>
 
 ## Intuitive Ruleset
 
@@ -46,11 +52,27 @@ with interesting mechanics and level up choices. Few to no skills provide outrig
 
 ## Adversaries
 
-<img src="/assets/img/index/adversary_1.webp">
+<div class="media-row">
 
 <p>The assembly of adversaries, the NPCs who your heroes face against is simple and intuitive for game masters to grasp. Assemble your
 adversaries through a selection of their rank, role and abilities, all of which are integrated in the system, which also ships with a compendium
 of ready-made ones for your use.</p>
+
+<img src="/assets/img/index/adversary_features.webp">
+
+</div>
+
+<div class="media-row">
+
+<img src="/assets/img/index/adversary_assembly.webp">
+
+<p>
+The assembly of adversaries, the NPCs who your heroes face against is simple and intuitive for game masters to grasp. Assemble your
+adversaries through a selection of their rank, role and abilities, all of which are integrated in the system, which also ships with a compendium
+of ready-made ones for your use
+.</p>
+
+</div>
 
 ## Exciting Battles
 

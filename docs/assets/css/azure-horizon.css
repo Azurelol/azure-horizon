@@ -26,7 +26,6 @@
     var( --ah-document-header-background) 0%,
     var( --ah-surface-entry) 100%
   );
-  --ah-surface-gradient: linear-gradient( to right, #99acc6 0%, var( --ah-surface-entry) 100% );
   --ah-surface-grid-entry: #456896;
 
   --ah-content-color: white;
@@ -36,6 +35,8 @@
   --ah-content-action-hover-color: #d69575;
 
   --ah-border: 0.065rem solid #3d5f8f;
+  --ah-index-content-background: linear-gradient( to bottom, #4f698b 0%, #8790ac 100% );
+  --ah-index-content-border: 4px solid #566881;
   --ah-trait-background: #e8681a;
   --ah-icon-color: #db911e;
 
@@ -160,8 +161,8 @@ body {
 .index-content {
   margin-top: 2rem;
   padding: 2rem;
-  background: var(--ah-surface-gradient);
-  border: 4px solid #aabfdc;
+  background: var(--ah-index-content-background);
+  border: var(--ah-index-content-border);
 
   .media-row {
     display: flex;
