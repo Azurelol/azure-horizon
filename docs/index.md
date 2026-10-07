@@ -20,6 +20,10 @@ Want to keep up with the latest news or the progress of the project?
   <i class="fab fa-discord" aria-hidden="true"></i> Join the Discord!
 </a>
 
+<a class="ah-button" href="https://github.com/Azurelol/azure-horizon">
+  <i class="fab fa-github" aria-hidden="true"></i> Browser the Repository!
+</a>
+
 # Your Adventure
 
 ## Collaborative Setting Creation

@@ -411,10 +411,15 @@ body {
   border-width: 1px;
   border-color: var(--ah-content-color);
   border-radius: 5px 5px 5px 5px;
+
+  i {
+    color: var(--ah-content-color);
+  }
 }
 
 .ah-button:hover,
 .ah-button:focus {
   background: var(--ah-action-background-hover);
+  color: var(--ah-content-color);
   text-decoration: none;
 }
