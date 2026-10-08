@@ -1091,9 +1091,9 @@
       "AREA": {
         "Splash": "Splash",
         "Cleave": "Cleave",
-        "Pierce": "Pierce",
         "Chain": "Chain",
-        "Row": "Row"
+        "Row": "Row",
+        "Column": "Column"
       }
     },
     "STATUS": {

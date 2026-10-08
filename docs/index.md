@@ -3,9 +3,9 @@ layout: index
 title: Home
 ---
 
-<div class="index-section" markdown="1">
+<div class="index-blurb" markdown="1">
 
-## Getting Started
+# Getting Started
 
 <p>
 Welcome to the official website for Azure Horizon, a virtual tabletop role-playing game system (VTTRPG) that is being developed as a digital-first game experience.
@@ -32,7 +32,7 @@ Want to keep up with the latest news or the progress of the project?
 
 </div>
 
-<div class="index-section --evening" markdown="1">
+<div class="index-section" markdown="1">
 
 ## Collaborative Setting Creation
 
@@ -61,7 +61,7 @@ the epic tier from levels 31 to 60 until finally becoming legends of your own ri
 
 </div>
 
-<div class="index-section" markdown="1">
+<div class="index-section --evening" markdown="1">
 
 ## Rising Heroes
 
@@ -90,18 +90,12 @@ which the players can learn, play around and eventually best them.
 
 </p>
 
-<img src="/assets/img/index/adversary_features.webp">
-
-</div>
-
-<div class="media-row">
-
-<img src="/assets/img/index/adversary_assembly.webp">
-
 <p>
 The assembly of adversaries is designed to be simple and intuitive for game masters to grasp. Assemble your adversaries through a selection of their rank,
 role and abilities, all of which are integrated in the system, which also ships with a compendium of ready-made ones for your use. It is meant to be as simple as drag-n-dropping their features from the included compendiums onto their sheets.
 .</p>
+
+<img src="/assets/img/index/adversary_features.webp">
 
 </div>
 
@@ -116,7 +110,7 @@ When engaging higher ranked adversaries they wil be pressuring them until they a
 
 </div>
 
-<div class="index-section" markdown="1">
+<div class="index-section --night" markdown="1">
 
 ## Helpful Guides
 
