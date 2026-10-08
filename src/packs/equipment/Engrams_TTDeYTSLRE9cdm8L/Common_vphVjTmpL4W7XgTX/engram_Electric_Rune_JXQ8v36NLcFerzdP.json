@@ -153,7 +153,7 @@
         "rule": "single",
         "range": "",
         "traits": [
-          "pierce"
+          "column"
         ],
         "schemaVersion": 1
       }

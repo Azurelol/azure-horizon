@@ -1196,7 +1196,7 @@
           "range": "",
           "rule": "single",
           "traits": [
-            "pierce"
+            "column"
           ]
         },
         "effects": {

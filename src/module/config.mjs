@@ -1364,10 +1364,10 @@ AH.traits = {
   // Targeting trait
   target: {
     cleave: { label: "AH.TARGETING.AREA.Cleave", tooltip: "AH.TRAIT.CleaveHint" },
-    pierce: { label: "AH.TARGETING.AREA.Pierce", tooltip: "AH.TRAIT.PierceHint" },
     splash: { label: "AH.TARGETING.AREA.Splash", tooltip: "AH.TRAIT.SplashHint" },
     chain: { label: "AH.TARGETING.AREA.Chain", tooltip: "AH.TRAIT.ChainHint" },
     row: { label: "AH.TARGETING.AREA.Row", tooltip: "AH.TRAIT.RowHint" },
+    column: { label: "AH.TARGETING.AREA.Column", tooltip: "AH.TRAIT.ColumnHint" },
   },
 
   // Equipment
