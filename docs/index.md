@@ -32,7 +32,7 @@ Want to keep up with the latest news or the progress of the project?
 
 </div>
 
-<div class="index-section" markdown="1">
+<div class="index-section --evening" markdown="1">
 
 ## Collaborative Setting Creation
 
