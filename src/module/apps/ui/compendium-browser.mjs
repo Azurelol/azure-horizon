@@ -790,6 +790,20 @@ export default class CompendiumBrowser extends AHApplication {
               },
             ],
             {
+              type: {
+                label: "AH.FIELD.Type",
+                propertyPath: "type",
+                options: [
+                  {
+                    value: "move",
+                    label: "AH.FOLLOWER.Move.long",
+                  },
+                  {
+                    value: "follower",
+                    label: "AH.FOLLOWER.Follower.long",
+                  },
+                ],
+              },
               kind: {
                 label: "AH.FOLLOWER.Kind",
                 propertyPath: "system.profile.kind",

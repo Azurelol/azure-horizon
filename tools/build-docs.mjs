@@ -467,7 +467,7 @@ for (const [type, items] of equipmentByType) {
           rows.push([item.system.second.name, item.system.second.description]);
         }
         if (rows.length > 0) {
-          md.table(["spell", "description"], rows);
+          md.table(["Spell", "Description"], rows);
         }
       }
         break;

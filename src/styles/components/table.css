@@ -32,6 +32,12 @@
   background: var(--ah-table-background);
   font-family: var(--ah-table-font-family), serif;
 
+  &.--auto-hide {
+    &:not(:has(tbody tr)) {
+      display: none;
+    }
+  }
+
   caption {
     span {
       font-size: var(--ah-table-caption-font-size);
@@ -84,6 +90,7 @@
     padding: var(--ah-table-row-padding);
   }
 }
+
 
 .ah-table__cell {
   display: flex;

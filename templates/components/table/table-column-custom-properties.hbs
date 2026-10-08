@@ -1,0 +1,11 @@
+<td class="ah-table__column__item__properties">
+  <div class="ah-table__cell --center">
+    {{#each properties as |prop|}}
+      {{#if prop.value}}
+        <span data-tooltip="{{prop.label}}">
+        <i class="ah-icon --s {{ahIconClass prop.icon}}"></i> {{prop.value}}
+    </span>
+      {{/if}}
+    {{/each}}
+  </div>
+</td>

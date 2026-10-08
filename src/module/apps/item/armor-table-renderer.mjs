@@ -7,26 +7,26 @@ export default class ArmorTableRenderer extends ItemTableRenderer {
 
   _getItemColumns() {
     return [
-      TableColumns.itemProperties(),
-    ];
-  }
-
-  _getItemActions() {
-    return [
-      {
-        action: "equipItem",
-        tooltip: "AH.COMMON.Equip",
-        icon: (entry) => {
-          if (isActorType(entry.parent)) {
-            const hero = entry.parent;
-            if (hero.system.equipment.has(entry)) {
-              return AH.icons.unequip;
-            }
-          }
-          return AH.icons.equip;
-        },
-        keys: ["id", "type"],
-      },
+      TableColumns.customProperties({
+        preview: true,
+        getProperties: entry => [
+          {
+            label: "AH.CHARACTER.Defense.short",
+            icon: "def",
+            value: entry.system.def,
+          },
+          {
+            label: "AH.CHARACTER.MagicDefense.short",
+            icon: "mdef",
+            value: entry.system.mdef,
+          },
+          {
+            label: "AH.CHARACTER.Initiative.short",
+            icon: "init",
+            value: entry.system.init,
+          },
+        ],
+      }),
     ];
   }
 }

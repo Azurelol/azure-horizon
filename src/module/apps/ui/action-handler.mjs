@@ -60,6 +60,7 @@ export default class ActionHandler {
    * @property label
    * @property tooltip
    * @property ctx The context menu
+   * @property {Number} ap How many action points for the action.
    * @property type The type of character.
    */
 
@@ -106,6 +107,7 @@ export default class ActionHandler {
         id: "maneuver",
         label: "AH.ACTION.Maneuver",
         tooltip: "AH.ACTION.ManeuverHint",
+        ap: 1,
         ctx: "maneuver",
       });
       actions.push({
@@ -238,6 +240,7 @@ export default class ActionHandler {
 
     Actions.perform(this.actor, null, (config, actor, item) => {
       config.setLabel("AH.ACTION.Recover");
+      config.addActionCost(1);
       config.setResource("hp", recovery.hp);
       if (recovery.mp) {
         config.addExpense({
@@ -257,6 +260,7 @@ export default class ActionHandler {
 
     Actions.perform(this.actor, null, (config, actor, item) => {
       config.setLabel("AH.ACTION.Defend");
+      config.addActionCost(1);
       config.setResource("hp", block.hp, true);
       if (block.tp) {
         config.addTraits("stress");

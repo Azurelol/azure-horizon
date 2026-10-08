@@ -139,6 +139,17 @@ export default class CompendiumIndex {
   });
 
   /**
+   * Item specific data model fields to be indexed.
+   * @returns {Record<string, string>}
+   */
+  static armorItemFields = Object.freeze({
+    armorWeight: "system.weight",
+    armorDefense: "system.def",
+    armorMagicDefense: "system.mdef",
+    armorInitiative: "system.init",
+  });
+
+  /**
 	 * Item specific data model fields to be indexed.
 	 * @returns {Record<string, string>}
 	 */
@@ -165,6 +176,7 @@ export default class CompendiumIndex {
     intent: "system.intent",
     weight: "system.weight",
     handedness: "system.handedness",
+    ...CompendiumIndex.armorItemFields,
     ...CompendiumIndex.tacticaItemFields,
   });
 

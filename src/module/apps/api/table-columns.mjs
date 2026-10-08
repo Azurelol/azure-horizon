@@ -37,6 +37,7 @@ const TEMPLATES = Object.freeze({
   damage: systemTemplatePath("components/table/table-column-damage"),
   resource: systemTemplatePath("components/table/table-column-resource"),
   itemProperties: systemTemplatePath("components/table/table-column-item-properties"),
+  customProperties: systemTemplatePath("components/table/table-column-custom-properties"),
   itemTraits: systemTemplatePath("components/table/table-column-item-traits"),
   itemCost: systemTemplatePath("components/table/table-column-item-cost"),
   engrams: systemTemplatePath("components/table/table-column-engrams"),
@@ -499,6 +500,48 @@ function engrams(options = {}) {
   };
 }
 
+/**
+ * @typedef AH_TablePropertyBadge
+ * @property {String} icon
+ * @property {String} label
+ * @property {Object} value
+ */
+
+/**
+ * @typedef AH_CustomPropertiesColumnOptions
+ * @template {Object} T
+ * @property {string} header
+ * @property {string} [cssClass]
+ * @property {"start", "center", "end"} [alignment="center"]
+ * @property {"low", "normal", "high"} [importance="normal"]
+ * @property {string|((T) => string|number|Promise<string|number>)} [tooltip]
+ * @property {(T) => AH_TablePropertyBadge[]} getProperties
+ */
+/**
+ * @template {Object} T
+ * @param {AH_CustomPropertiesColumnOptions} options
+ * @returns {AH_TableColumnConfig<T>}
+ */
+function customProperties(options = {}) {
+  return {
+    hideHeader: !options.header,
+    renderHeader: () => "",
+    headerIcon: AH.icons.properties,
+    headerTooltip: StringUtils.localize("AH.FIELD.Properties"),
+    cssClass: options.cssClass,
+    preview: options.preview,
+    isGM: options.isGM,
+    renderCell: async (entry) => {
+      const properties = options.getProperties(entry);
+      return renderTemplate(TEMPLATES.customProperties, {
+        entry,
+        system: entry.system,
+        properties,
+      }, false);
+    },
+  };
+}
+
 const TableColumns = Object.freeze({
   documentName,
   name,
@@ -509,6 +552,7 @@ const TableColumns = Object.freeze({
   trackerField,
 
   itemProperties,
+  customProperties,
   itemCost,
   itemTraits,
   damage,

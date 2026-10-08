@@ -565,6 +565,16 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
+   * @param {Number} ap
+   */
+  addActionCost(ap) {
+    this.addTags({
+      tag: AH.actionTypes.action.label,
+      value: ap,
+    });
+  }
+
+  /**
    * @description A modifier to the check (accuracy)
    * @param {String} label
    * @param {Number} value
