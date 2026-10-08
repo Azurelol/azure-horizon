@@ -3,7 +3,7 @@ layout: index
 title: Home
 ---
 
-<div class="index-section">
+<div class="index-section" markdown="1">
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ Want to keep up with the latest news or the progress of the project?
 
 </div>
 
-<div class="index-section">
+<div class="index-section" markdown="1">
 
 ## Collaborative Setting Creation
 
@@ -61,7 +61,7 @@ the epic tier from levels 31 to 60 until finally becoming legends of your own ri
 
 </div>
 
-<div class="index-section">
+<div class="index-section" markdown="1">
 
 ## Rising Heroes
 
@@ -116,7 +116,7 @@ When engaging higher ranked adversaries they wil be pressuring them until they a
 
 </div>
 
-<div class="index-section">
+<div class="index-section" markdown="1">
 
 ## Helpful Guides
 
