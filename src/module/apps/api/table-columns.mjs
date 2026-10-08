@@ -1,5 +1,5 @@
 import { enrichHTML, localize, renderTemplate, systemTemplatePath } from "../../constants.mjs";
-import { StringUtils } from "../../utils/_module.mjs";
+import { ObjectUtils, StringUtils } from "../../utils/_module.mjs";
 import AH from "../../config.mjs";
 
 /**
@@ -10,12 +10,17 @@ import AH from "../../config.mjs";
  */
 
 /**
+ * @typedef AH_TableCellRenderContext
+ * @property {Boolean} preview Whether the table is rendering in preview mode.
+ */
+
+/**
  * @typedef AH_TableColumnConfig
  * @template {Object} T
  * @property {AH_Render<T>} renderHeader
  * @property {String} headerTooltip A tooltip to use for the header.
  * @property {String} headerIcon An icon to use for the header.
- * @property {AH_Render<T>} renderCell
+ * @property {AH_Render<T, AH_TableCellRenderContext>} renderCell
  * @property {Boolean} isGM Whether to render only for GMs.
  * @property {Boolean} preview Whether this column can be rendered in preview mode.
  * @property {String} cssClass
@@ -35,6 +40,7 @@ const TEMPLATES = Object.freeze({
   itemTraits: systemTemplatePath("components/table/table-column-item-traits"),
   itemCost: systemTemplatePath("components/table/table-column-item-cost"),
   engrams: systemTemplatePath("components/table/table-column-engrams"),
+  trackerField: systemTemplatePath("components/table/table-column-tracker-field"),
 });
 
 /**
@@ -435,6 +441,44 @@ function property(options = {}) {
 }
 
 /**
+ * @typedef AH_TrackerFieldColumnOptions
+ * @template {Object} T
+ * @property {string} header
+ * @property {string} [cssClass]
+ * @property {"start", "center", "end"} [alignment="center"]
+ * @property {"low", "normal", "high"} [importance="normal"]
+ * @property {(T) => DataModel} getModel
+ * @property {String} fieldPath
+ * @property {string|((T) => string|number|Promise<string|number>)} [tooltip]
+ */
+
+/**
+ * @template {Object} T
+ * @param {AH_TrackerFieldColumnOptions} [options]
+ * @return {AH_TableColumnConfig<T>}
+ */
+function trackerField(options = {}) {
+  return {
+    hideHeader: !options.header,
+    renderHeader: () => localize(options.header ?? "AH.COMMON.Tracker"),
+    headerAlignment: options.alignment,
+    preview: true,
+
+    renderCell: async (entry, context) => {
+      const tracker = ObjectUtils.getProperty(entry, options.fieldPath);
+
+      return renderTemplate(TEMPLATES.trackerField, {
+        tracker,
+        context,
+        entry,
+        path: options.fieldPath,
+        cssClass: options.cssClass,
+      }, false);
+    },
+  };
+}
+
+/**
  * @template {Object} T
  * @param {AH_ActionColumnOptions} options
  * @returns {AH_TableColumnConfig<T>}
@@ -462,6 +506,7 @@ const TableColumns = Object.freeze({
   actions,
   contextMenu,
   property,
+  trackerField,
 
   itemProperties,
   itemCost,

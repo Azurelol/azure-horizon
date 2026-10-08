@@ -191,6 +191,11 @@ export default class AH_TableRenderer {
      */
     const rows = [];
 
+    /** @type AH_TableCellRenderContext **/
+    let renderContext = {
+      preview: config.preview,
+    };
+
     // For every entry, make a row
     for (const entry of entries) {
       const key = this.getKey(entry);
@@ -200,7 +205,7 @@ export default class AH_TableRenderer {
 
       // For every configured column, render that column
       for (const column of columns) {
-        const row = await column.renderCell(entry);
+        const row = await column.renderCell(entry, renderContext);
         cells.push({
           template: row,
         });

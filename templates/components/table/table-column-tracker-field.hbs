@@ -1,0 +1,15 @@
+<td class="ah-table__column__item__properties">
+  {{#if tracker}}
+    {{#if (eq tracker.max 1)}}
+        {{tracker.max}}
+    {{else}}
+      {{tracker.current}}/{{tracker.max}}
+      {{#unless context.preview}}
+        <a data-action="updateNumberField" data-alternate="true"
+           data-tooltip="{{localize 'AH.DIALOG.UpdateNumberHint'}}"
+           data-id="{{entry.id}}" data-path="{{path}}"
+           data-delta="1"><i class="fa fa-plus-minus"></i></a>
+      {{/unless}}
+    {{/if}}
+  {{/if}}
+</td>

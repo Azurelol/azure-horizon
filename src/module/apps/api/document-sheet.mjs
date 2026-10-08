@@ -1,6 +1,7 @@
 import Tracks from "../../pipelines/tracks.mjs";
 import { ObjectUtils, StringUtils } from "../../utils/_module.mjs";
 import { Dialogs } from "../../helpers/_module.mjs";
+import { isActorType } from "../../constants.mjs";
 
 /**
  * @category Mixins
@@ -16,6 +17,8 @@ export function DocumentSheetMixin(ContainerClass) {
         displayTrack: this.#displayTrack,
         addArrayElement: this.#addArrayElement,
         removeArrayElement: this.#removeArrayElement,
+
+        updateNumberField: { handler: this.#updateTrackerField, buttons: [0, 2] },
       },
     };
 
@@ -98,6 +101,33 @@ export function DocumentSheetMixin(ContainerClass) {
       if (lookup) {
         const tracker = foundry.utils.getProperty(lookup.document, path);
         return Tracks.sendToChat(lookup.document, tracker);
+      }
+    }
+
+    /**
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #updateTrackerField(event, target) {
+      const { delta, id, path, alternate } = target.dataset;
+      let increment = parseInt(delta);
+      if (alternate && (event.button === 2)) {
+        increment = -increment;
+      }
+
+      if (isActorType(this.document)) {
+        const item = this.document.items.get(id);
+        if (item) {
+          /** @type TrackerField **/
+          const field = ObjectUtils.getProperty(item, path);
+          const min = 1;
+          if (field) {
+            await item.update({
+              [`${path}.current`]: Math.clamp(field.current + increment, min, field.max),
+            });
+          }
+        }
       }
     }
   };

@@ -772,6 +772,7 @@
       "TrackerMaximum": "{name} is already at maximum stacks.",
       "TrackerIncrease": "{name} has increased to {value} stacks.",
       "EffectDurationIncrement": "The duration of {name} has been increased to {current}.",
+      "UpdateNumberHint": "[Left-Click]: Increase<br>[Right-Click]: Decrease",
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",

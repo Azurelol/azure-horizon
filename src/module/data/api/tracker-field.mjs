@@ -6,6 +6,10 @@ const { SchemaField, NumberField, StringField, EmbeddedDataField, ArrayField } =
  * @property {Number} max
  */
 
+/**
+ * @property {Number} current
+ * @property {Number} max
+ */
 export class TrackerField extends SchemaField {
   /**
    * @param {TrackerFieldOptions} options

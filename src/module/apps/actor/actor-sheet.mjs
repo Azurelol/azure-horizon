@@ -63,7 +63,7 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
       browseCompendium: this.#browseCompendium,
       migrateItems: this.#migrateItems,
 
-      performAction: this.#performAction,
+      performAction: { handler: this.#performAction, buttons: [0, 2] },
       sendItem: this._sendItem,
       editDocument: this._editDocument,
       deleteDocument: this._deleteDocument,
@@ -489,6 +489,7 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
    */
   static async #performAction(event, target) {
     event.preventDefault();
+    const isRightClick = event.button === 2;
     /** @type AH_SheetActionData **/
     const { type, id } = target.dataset;
     const modifiers = HTMLUtils.getKeyboardModifiers(event);
@@ -518,7 +519,12 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
 
       case "item": {
         const item = await this.actor.items.get(id);
-        await item.perform(modifiers);
+        if (isRightClick) {
+          await item.sheet.render({ force: true });
+        }
+        else {
+          await item.perform(modifiers);
+        }
       }
         break;
 
