@@ -16,7 +16,7 @@ The system implementation is currently being developed for Foundry VTT, with the
 Want to keep up with the latest news or the progress of the project?
 </p>
 
-<div class="ah-flex-row">
+<div class="button-group">
 <a class="ah-button" href="https://discord.com/invite/26AAT8UbjK">
   <i class="fab fa-discord" aria-hidden="true"></i> Join the Discord!
 </a>
@@ -73,7 +73,7 @@ with interesting mechanics and level up choices. Few to no skills provide outrig
 
 <p>
 The world your characters live in is full of dangerous beings. Whether that be territorial beasts the party stumbles into or
-belligerent soldiers of the <i>Empire</i>, these are the adversaries of your campaign and are bound to clash with the heroes.
+belligerent soldiers of the **Empire**, these are the adversaries of your campaign and are bound to clash with the heroes.
 They share attributes and certain resources with the heroes but have been designed to be simple to prepare and to run at the table.
 Their tactics during battle are driven by their intents (such as attacking a character or enhancing themselves) and are very much routines
 which the players can learn, play around and eventually best them.

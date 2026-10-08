@@ -3,7 +3,7 @@
   "name": "Blue Cape",
   "type": "accessory",
   "_id": "LHr5c8JZ3nRcEIVa",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/equipment/accessories/blue_cape.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

@@ -19,6 +19,10 @@
       "resource": {
         "type": "hp",
         "amount": "20"
+      },
+      "cost": {
+        "resource": "ip",
+        "amount": 2
       }
     }
   },

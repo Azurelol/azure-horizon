@@ -21,6 +21,10 @@
         "enabled": false,
         "type": "hp",
         "amount": "20+&hp(0.2)"
+      },
+      "cost": {
+        "resource": "ip",
+        "amount": 2
       }
     }
   },

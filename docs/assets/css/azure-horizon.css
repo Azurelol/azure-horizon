@@ -396,9 +396,10 @@ body {
   transform: scale(1.03);
 }
 
-.ah-flex-row {
+.button-group {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
 }
 
 .ah-button {

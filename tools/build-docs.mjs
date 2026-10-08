@@ -436,8 +436,6 @@ for (const [type, items] of equipmentByType) {
             traits.push("One-Handed");
             break;
         }
-
-        // TODO: Attributes...
         break;
 
       case "armor":
@@ -454,14 +452,26 @@ for (const [type, items] of equipmentByType) {
 
       case "consumable":
         break;
-
-      case "engram":
-        break;
     }
     md.documentHeader(item.name, item.img, {
       traits: traits,
     });
     md.p(item.system.description);
+    switch (type) {
+      case "engram": {
+        let rows = [];
+        if (item.system.first.name && item.system.first.description) {
+          rows.push([item.system.first.name, item.system.first.description]);
+        }
+        if (item.system.second.name && item.system.second.description) {
+          rows.push([item.system.second.name, item.system.second.description]);
+        }
+        if (rows.length > 0) {
+          md.table(["spell", "description"], rows);
+        }
+      }
+        break;
+    }
   }
   const content = md.build();
   await fs.writeFile(fileName, content);

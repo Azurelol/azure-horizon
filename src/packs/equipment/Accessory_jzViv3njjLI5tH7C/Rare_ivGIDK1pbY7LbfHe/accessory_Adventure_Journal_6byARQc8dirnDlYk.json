@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "equipment-adventure-journal",
-    "description": "<p><em>What tales have you recorded in these well-worn pages?</em></p><ol dir=\"ltr\"><li><p>The benefits of Resourceful also trigger when you <strong>rest without a travel roll</strong>.</p></li><li><p>When you make a discovery due to Treasure Hunter, you may perform an Insight check (Very Hard) with a bonus equal to your skill level in order to find an <strong>additional item</strong>.</p></li><li><p>The benefits of Tavern Talk also trigger when you <strong>rest in the wilderness</strong>, though you must use Refreshments (which you gain the usage of).</p></li><li><p>When you make a travel roll involving ships, you must perform an Insight/Willpower check (target 3). On a failure, your party will become <em>shipwrecked</em>.</p></li></ol>",
+    "description": "<p><em>What tales have you recorded in these well-worn pages?</em></p>",
     "rarity": "rare",
     "slots": {
       "entries": [
