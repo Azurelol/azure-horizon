@@ -1,11 +1,15 @@
 ---
-layout: default
+layout: index
 title: Home
 ---
 
-<p>Welcome to the official website for Azure Horizon, a virtual tabletop role-playing game system (VTTRPG) that is being developed as a digital-first game experience.</p>
+<div class="index-section">
 
 ## Getting Started
+
+<p>
+Welcome to the official website for Azure Horizon, a virtual tabletop role-playing game system (VTTRPG) that is being developed as a digital-first game experience.
+</p>
 
 <p>
 If this is your first time learning about the system you will want to start by reading the (in development) manual, which is structured very much like a book.
@@ -26,7 +30,9 @@ Want to keep up with the latest news or the progress of the project?
 </a>
 </div>
 
-# Your Adventure
+</div>
+
+<div class="index-section">
 
 ## Collaborative Setting Creation
 
@@ -52,6 +58,10 @@ instead taking another approach with providing players with itemization.
 The system is being designed to support multiple tiers over the course of a campaign, with the stakes and complexity growing as the players
 gain mastery of the game system and their heroes. You can begin play in the heroic tier from levels 10 to 30, continue your exploits in
 the epic tier from levels 31 to 60 until finally becoming legends of your own right (by possibly going to outer space to fight a god of a metaphorical concept) from levels 61 to 99.
+
+</div>
+
+<div class="index-section">
 
 ## Rising Heroes
 
@@ -104,6 +114,10 @@ When engaging higher ranked adversaries they wil be pressuring them until they a
 
 <img src="/assets/img/background_scene.webp">
 
+</div>
+
+<div class="index-section">
+
 ## Helpful Guides
 
 The system comes with guides for both game master and players to familiarize themselves with the system and learn to play it as it was intended.
@@ -115,3 +129,5 @@ all manner of hard-earned advice shall be provided to help you run the best game
 The system is being designed with regular updates in mind to account for unforeseen balance concerns or problematic patterns that would not be caught
 during the play-testing window. Rather than wait for erratas and reprints, the system's data entries (such as classes, skills, equipment, etc...) will be updated
 when needed and mechanisms will be in place to make it easier for game masters to migrate.. if they want to!
+
+</div>

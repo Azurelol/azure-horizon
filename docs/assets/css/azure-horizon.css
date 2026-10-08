@@ -148,6 +148,42 @@ body {
 /******************/
 /* INDEX/HOME PAGE*/
 /******************/
+.ah-index {
+  &:is(body) {
+    background-image:  var(--ah-background-day);
+    background-color: var(--ah-background-color-day);
+  }
+
+  main {
+    color: var(--ah-content-color);
+    padding: 0;
+    margin: 0;
+    max-width: none;
+
+  }
+  footer {
+    margin-top: 0;
+  }
+}
+
+.index-section {
+  --border-block-end-width: 5px;
+  --border-block-start-width: 5px;
+  --border-color: white;
+  --border-inline-start-width: 0px;
+  --border-inline-end-width: 0px;
+  --border-radius: 0;
+  --border-style: solid;
+
+  border-block-end-width: var(--border-block-end-width);
+  border-block-start-width: var(--border-block-start-width);
+  border-color: var(--border-color);
+  border-inline-end-width: var(--border-inline-end-width);
+  border-inline-start-width: var(--border-inline-start-width);
+  border-radius: var(--border-radius);
+  border-style: var(--border-style);
+}
+
 .index-title {
   font-size: 6em;
   color: var(--ah-content-header);
@@ -214,20 +250,6 @@ body {
 /******************/
 /* LAYOUTS        */
 /******************/
-.ah-default {
-  &:is(body) {
-    background-image:  var(--ah-background-day);
-    background-color: var(--ah-background-color-day);
-  }
-
-  main {
-    color: var(--ah-content-color);
-  }
-  footer {
-    margin-top: 0;
-  }
-}
-
 .ah-page {
   &:is(body) {
     background-color: var(--ah-background-color-evening);
