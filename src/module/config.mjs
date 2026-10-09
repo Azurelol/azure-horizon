@@ -608,6 +608,22 @@ AH.equipmentWeight = {
 };
 
 /**
+ * @typedef {'weapon'|'armor'|'accessory'|'engram'} AH_EquipmentType
+ */
+
+/**
+ * @type {Readonly<{equipment: {}}>}
+ */
+AH.character = Object.freeze({
+  equipment: {
+    weapon: { label: "AH.EQUIPMENT.Weapon" },
+    armor: { label: "AH.EQUIPMENT.Armor" },
+    accessory: { label: "AH.EQUIPMENT.Accessory" },
+    engram: { label: "AH.EQUIPMENT.Engram" },
+  },
+});
+
+/**
  * @typedef {'deflection'} AH_ArmorDefense
  */
 
@@ -1495,6 +1511,7 @@ AH.icons = {
 
   exploration: "ra ra-wolf-head",
   battle: "ra ra-crossed-axes",
+  treasure: "ra ra-gold-bar",
 
   placeholderArmor: "ra ra-vest",
   placeholderWeapon: "ra ra-sword",
@@ -1534,6 +1551,7 @@ AH.icons = {
   close: "fas fa-close",
   menu: "fa-solid fa-bars",
   data: "fa fa-tags",
+  rarity: "fa fa-star",
 
   roll: "ah-icon-check-roll",
   hr: "ah-icon-check-hr",

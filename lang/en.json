@@ -778,6 +778,7 @@
       "TrackerIncrease": "{name} has increased to {value} stacks.",
       "EffectDurationIncrement": "The duration of {name} has been increased to {current}.",
       "UpdateNumberHint": "[Left-Click]: Increase<br>[Right-Click]: Decrease",
+      "AwardEquipment": "Award Equipment",
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",
@@ -816,6 +817,7 @@
       "Entries": "Entries",
       "Tracker": "Tracker",
       "Style": "Style",
+      "Rarity": "Rarity",
       "Rule": "Rule",
       "Operator": "Operator",
       "Active": "Active",
@@ -988,6 +990,7 @@
       "Item": "Item",
       "Amount": "Amount",
       "Entry": "Entry",
+      "Choice": "Choice",
       "Name": "Name",
       "Add": "Add",
       "Increase": "Increase",
@@ -1061,6 +1064,10 @@
     },
     "EQUIPMENT": {
       "Rarity": "Rarity",
+      "Weapon": "Weapon",
+      "Armor": "Armor",
+      "Consumable": "Consumable",
+      "Accessory": "Accessory",
       "Engram": "Engram",
       "Weight": "Weight",
       "Range": "Range",
@@ -1275,6 +1282,7 @@
     "EPISODE": {
       "Exploration": "Exploration",
       "Battle": "Battle",
+      "Treasure": "Treasure",
       "PromptTravelCheck": "The director has prompted the players for a <strong>{level} danger</strong> travel check.",
       "SelectDifficulty": "Select Difficulty",
       "PerformTravelCheck": "Perform Travel Check"

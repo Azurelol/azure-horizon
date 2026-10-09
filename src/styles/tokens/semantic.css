@@ -64,6 +64,7 @@
   --ah-surface-border: var(--ah-primitive-color-navy-600);
   --ah-border-panel: var(--ah-primitive-color-navy-600);
   --ah-surface-accent: var(--ah-primitive-color-brown-500);
+  --ah-surface-card: var(--ah-primitive-color-grey-mid);
 
 
 
@@ -87,6 +88,7 @@
   --ah-content-accent: #EAD470;
   --ah-content-accent-alt: #a7c6d1;
   --ah-content-caption: #C7DEE5;
+  --ah-content-card:  #e4e3e3;
 
   --ah-content-tab: var(--ah-content-muted);
   --ah-content-tab-active: var(--ah-content-primary);

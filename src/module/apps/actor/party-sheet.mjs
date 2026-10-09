@@ -12,7 +12,7 @@ import { CharacterSheet } from "./character-sheet.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
 import { Analysis, Campaign } from "../../pipelines/_module.mjs";
-import { ExperienceTableRenderer } from "../campaign/_module.mjs";
+import { Award, ExperienceTableRenderer } from "../campaign/_module.mjs";
 import { ChatAction, ChatMessageBuilder, ChatMessageSections, Dialogs } from "../../helpers/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import { AHCombat } from "../../documents/combat.mjs";
@@ -42,6 +42,7 @@ export class PartySheet extends AHActorSheet {
       attributeCheck: this.#attributeCheck,
       triggerExperience: this.#triggerExperience,
       levelUp: this.#levelUp,
+      awardTreasure: this.#awardTreasure,
 
       addCodexEntry: this.#addCodexEntry,
       onCodexEntry: this.#onCodexEntry,
@@ -603,6 +604,18 @@ export class PartySheet extends AHActorSheet {
       ["system.resources.xp"]: current + Number(amount),
     });
     return builder.create();
+  }
+
+  /**
+   * @this PartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #awardTreasure(event, target) {
+    await Award.promptTreasure({
+      partyData: this.system,
+    });
   }
 
   /**

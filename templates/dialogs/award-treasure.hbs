@@ -1,0 +1,22 @@
+<div class="ah-flex-row ah-gap-1">
+  {{#each pools as |pool|}}
+    <div class="ah-card">
+      <div class="ah-card__header">
+        {{ahRomanNumeral (ahMath @index '+' 1)}}
+      </div>
+      <div class="ah-card__body">
+        {{ahSelector size='sm' icon=(ahIconClass 'type')
+                     label='AH.FIELD.Type'
+                     values=@root.equipmentOptions value=pool.type
+                     iconClasses='--glow'
+                     path=(ahConcat 'pool.' @index '.type') }}
+
+        {{ahSelector size='sm' icon=(ahIconClass 'rarity')
+                     label='AH.FIELD.Rarity'
+                     values=@root.rarityOptions value=pool.rarity
+                     iconClasses='--glow'
+                     path=(ahConcat 'pool.' @index '.rarity') }}
+      </div>
+    </div>
+  {{/each}}
+</div>

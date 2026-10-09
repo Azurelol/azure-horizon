@@ -24,7 +24,6 @@ function exportAPI() {
     traits: AH.traits.all,
   };
   globalThis.azureHorizon = api;
-  globalThis.AH = api;
   game.system.api = api;
 }
 

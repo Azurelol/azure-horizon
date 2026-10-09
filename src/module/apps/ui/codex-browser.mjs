@@ -368,7 +368,9 @@ export default class CodexBrowser {
       layoutClass,
     });
 
-    await Dialogs.popout(entry.name, content, {
+    await Dialogs.popout({
+      title: entry.name,
+      content,
       position: {},
       classes: ["ah-codex__entry__frame"],
     });

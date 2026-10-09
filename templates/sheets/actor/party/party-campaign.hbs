@@ -5,7 +5,6 @@
   <section class="tab {{campaignTabs.opening.cssClass}}" data-tab="opening" data-group="campaign">
   </section>
 
-
   {{#if user.isGM}}
     <section class="tab {{campaignTabs.episode.cssClass}}" data-tab="episode" data-group="campaign">
       <div class="ah-grid-2 ah-gap-m">
@@ -28,6 +27,18 @@
           <div class="ah-button-group">
           </div>
         </fieldset>
+
+        <fieldset>
+          <legend>
+            <i class="ah-icon --xs {{ahIconClass 'treasure'}}"></i>
+            <label>{{localize 'AH.EPISODE.Treasure'}}</label>
+          </legend>
+          <div class="ah-button-group">
+            {{ahButton action='awardTreasure' classes='--button' icon=(ahIconClass 'treasure') label='AH.DIALOG.AwardEquipment' }}
+          </div>
+        </fieldset>
+
+
       </div>
     </section>
   {{/if}}

@@ -65,16 +65,25 @@ const { api, fields, handlebars } = foundry.applications;
  */
 
 /**
- * @typedef AHDialogOptions
- * @property title
- * @property message
+ * @typedef AH_DialogOptions
+ * @property {String} title
+ * @property {String} content
  */
 
 const DIALOG_CLASSES = ["ah-application", "ah-dialog"];
 
+/**
+ * Provides an interface for common dialogs in the system.
+ */
 export default class Dialogs {
+
   /**
-   * @param {AHDialogOptions} options
+   * @typedef {AH_DialogOptions} AH_ConfirmOptions
+   * @property {String} message
+   */
+
+  /**
+   * @param {AH_ConfirmOptions} options
    * @returns {Promise<*|boolean|boolean>}
    */
   static async confirm(options) {
@@ -98,7 +107,7 @@ export default class Dialogs {
   }
 
   /**
-   * @param {Object} options
+   * @param {AH_DialogOptions} options
    * @returns {Promise<*>}
    */
   static async input(options = {}) {
@@ -171,17 +180,15 @@ export default class Dialogs {
   }
 
   /**
-   * @param {String} title
-   * @param {String} content
-   * @param {Object} options
+   * @param {AH_DialogOptions} options
    * @returns {Promise}
    */
-  static async popout(title, content, options = {}) {
+  static async popout(options = {}) {
     const defaultOptions = {
-      window: { title, icon: "fas fa-eye", resizable: true },
+      window: { title: options.title, icon: "fas fa-eye", resizable: true },
       classes: DIALOG_CLASSES,
       rejectClose: false,
-      content,
+      content: options.content,
       buttons: [{ label: "Close", action: "close" }],
     };
     ObjectUtils.mergeRecursive(defaultOptions, options);
@@ -574,6 +581,50 @@ export default class Dialogs {
       return [];
     }
 
+  }
+
+  /**
+   * @typedef {'string'|'number'} InspectorPropertyType
+   */
+
+  /**
+   * @typedef InspectedPropertyOptions
+   * @property {String} style
+   */
+
+  /**
+   * @typedef InspectorProperty
+   * @property {String} label The display name of the property.
+   * @property {String} path
+   * @property {InspectorPropertyType} type
+   * @property {InspectedPropertyOptions} options
+   */
+
+  /**
+   * @param {String} title
+   * @param {Object} object
+   * @param {InspectorProperty[]} properties
+   * @returns {Promise<boolean>}
+   */
+  static async inspect(title, object, properties) {
+    const content = await renderTemplate(systemTemplatePath("dialogs/inspector"), {
+      object: object,
+      properties: properties,
+    });
+    const options = {
+      position: {
+        width: 480,
+      },
+    };
+    const result = await Dialogs.input({
+      title, content, options,
+    });
+    if (result !== null) {
+      const expanded = foundry.utils.expandObject(result);
+      foundry.utils.mergeObject(object, expanded.object);
+      return true;
+    }
+    return false;
   }
 
 }

@@ -20,6 +20,7 @@
 @import "components/arcana.css";
 @import "components/tracker.css";
 @import "components/equipment.css";
+@import "components/card.css";
 
 @import "global/foundry.css";
 @import "applications/application.css";
