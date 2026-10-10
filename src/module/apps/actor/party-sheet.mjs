@@ -11,8 +11,8 @@ import { ActionTableRenderer, EquipmentTableRenderer } from "../item/_module.mjs
 import { CharacterSheet } from "./character-sheet.mjs";
 import { FoundryUtils, StringUtils } from "../../utils/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
-import { Analysis, Campaign } from "../../pipelines/_module.mjs";
-import { Award, ExperienceTableRenderer } from "../campaign/_module.mjs";
+import { Analysis, Award, Campaign } from "../../pipelines/_module.mjs";
+import { ExperienceTableRenderer } from "../campaign/_module.mjs";
 import { ChatAction, ChatMessageBuilder, ChatMessageSections, Dialogs } from "../../helpers/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import { AHCombat } from "../../documents/combat.mjs";

@@ -29,6 +29,7 @@ export function EquipmentDataMixin(Base) {
           blank: false,
           label: "AH.EQUIPMENT.Rarity",
           _part: "header",
+          nullable: false,
           choices: () => AH.rarity,
         }),
       });

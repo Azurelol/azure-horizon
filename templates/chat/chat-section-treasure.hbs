@@ -1,0 +1,18 @@
+<section class="ah-chat-section">
+
+  <div class="ah-flex-row --center ah-gap-m">
+    {{#each treasure as |treasure|}}
+      <a class="ah-chat-section__treasure" data-tooltip="{{localize 'AH.CHAT.RollTreasure'}}"
+         data-type="{{treasure.type}}"
+         data-rarity="{{treasure.rarity}}"
+         data-action="rollTreasure" data-index="{{@index}}">
+        {{#if treasure.item}}
+          <img src="{{treasure.item.img}}" alt="{{treasure.item.name}}">
+        {{else}}
+          <i class="ah-icon --sm {{ahIconClass (ahConcat treasure.type 'Placeholder')}}"></i>
+        {{/if}}
+      </a>
+    {{/each}}
+  </div>
+
+</section>

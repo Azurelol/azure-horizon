@@ -136,6 +136,7 @@ function initializeSystems() {
   pipelines.Intent.initialize();
   pipelines.Pressure.initialize();
   pipelines.Campaign.initialize();
+  pipelines.Award.initialize();
   apps.UI.CompendiumBrowser.initialize();
   apps.UI.Manual.initialize();
   helpers.Themes.initialize();

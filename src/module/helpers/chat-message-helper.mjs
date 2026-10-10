@@ -2,6 +2,12 @@ import { systemID } from "../constants.mjs";
 import Flags from "../data/common/flags.mjs";
 
 /**
+ * @typedef ChatMessage
+ * @property String {id}
+ * @property flags
+ */
+
+/**
  * @param {String} messageId
  * @returns {undefined|ChatMessage}
  */

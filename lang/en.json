@@ -779,6 +779,7 @@
       "EffectDurationIncrement": "The duration of {name} has been increased to {current}.",
       "UpdateNumberHint": "[Left-Click]: Increase<br>[Right-Click]: Decrease",
       "AwardEquipment": "Award Equipment",
+      "AwardEquipmentMessage": "The party has discovered a treasure! What is it?",
       "WARNING": {
         "ItemNotSupported": "The given item type is not supported on this actor type.",
         "EffectsNotSupported": "Active effects are only supported for character types.",
@@ -1271,7 +1272,8 @@
       "GainStress": "Gain Stress",
       "ClearTension": "Clear Tension",
       "StatusEffectTick": "<strong>{name}</strong> is suffering from <strong>{effect}</strong>.",
-      "GainStressMessage": "<strong>{name}</strong> has reached their tension limit and snapped."
+      "GainStressMessage": "<strong>{name}</strong> has reached their tension limit and snapped.",
+      "RollTreasure": "Click to roll a random treasure."
     },
     "PIPELINE": {
       "CriticalBonus": "Critical Bonus",
@@ -1282,6 +1284,7 @@
     "EPISODE": {
       "Exploration": "Exploration",
       "Battle": "Battle",
+      "Event": "Event",
       "Treasure": "Treasure",
       "PromptTravelCheck": "The director has prompted the players for a <strong>{level} danger</strong> travel check.",
       "SelectDifficulty": "Select Difficulty",

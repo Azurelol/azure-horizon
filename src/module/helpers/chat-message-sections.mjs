@@ -61,6 +61,7 @@ export const ChatMessageSectionTemplate = Object.freeze({
   text: systemTemplatePath("chat/chat-section-text"),
   actions: systemTemplatePath("chat/chat-section-actions"),
   potencies: systemTemplatePath("chat/chat-section-potencies"),
+  treasure: systemTemplatePath("chat/chat-section-treasure"),
   potentials: systemTemplatePath("chat/chat-section-potentials"),
 });
 
@@ -227,4 +228,5 @@ export const ChatMessageSections = Object.freeze({
       order,
     }));
   },
+
 });

@@ -175,6 +175,7 @@ export default class CompendiumIndex {
     skillLevel: "system.level",
     intent: "system.intent",
     weight: "system.weight",
+    rarity: "system.rarity",
     handedness: "system.handedness",
     ...CompendiumIndex.armorItemFields,
     ...CompendiumIndex.tacticaItemFields,

@@ -27,6 +27,7 @@ export default class FlagBuilder {
    */
   toggle(key) {
     this.set(key, true);
+    return this;
   }
 
   /**

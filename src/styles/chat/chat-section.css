@@ -450,3 +450,36 @@
   line-height: 1.2;
   text-align: center;
 }
+
+.ah-chat-section__treasure-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.ah-chat-section__treasure {
+  border: 1px solid var(--ah-control-border);
+  background: color-mix(in srgb, var(--ah-surface-item) 40%, transparent);
+  --slot-size: 64px;
+  width: var(--slot-size);
+  height: var(--slot-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    background: color-mix(in srgb, var(--ah-surface-action-active) 75%, transparent);
+  }
+
+  img {
+    object-fit: fill;
+    width: 100%;
+    height: auto;
+  }
+
+  i {
+    opacity: 0.25;
+  }
+}

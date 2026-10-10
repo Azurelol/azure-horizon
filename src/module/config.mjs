@@ -1059,6 +1059,7 @@ AH.flags = Object.freeze({
     RevertedAction: "RevertedAction",
     Targeting: "Targeting",
     Campaign: "Campaign",
+    Award: "Award",
   }),
 });
 
@@ -1512,6 +1513,11 @@ AH.icons = {
   exploration: "ra ra-wolf-head",
   battle: "ra ra-crossed-axes",
   treasure: "ra ra-gold-bar",
+
+  armorPlaceholder: "ra ra-vest",
+  weaponPlaceholder: "ra ra-sword",
+  accessoryPlaceholder: "ra ra-slash-ring",
+  engramPlaceholder: "ra ra-rune-stone",
 
   placeholderArmor: "ra ra-vest",
   placeholderWeapon: "ra ra-sword",

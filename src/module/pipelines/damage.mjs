@@ -313,7 +313,7 @@ function getChatAction(damageData, sourceInfo, traits, options = { potency: unde
  * @param {HTMLElement} html
  */
 function onRenderChatMessage(message, html) {
-  if (!message.getFlag(systemID, Flags.ChatMessage.Damage)) {
+  if (!message.getFlag(systemID, AH.flags.ChatMessage.Damage)) {
     return;
   }
 

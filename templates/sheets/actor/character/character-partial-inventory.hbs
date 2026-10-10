@@ -5,7 +5,7 @@
       {{#if equipment.mainHand}}
         <img src="{{equipment.mainHand.img}}" alt="{{equipment.mainHand.name}}">
       {{else}}
-        <i class="ah-icon --sm {{ahIconClass 'placeholderWeapon'}}"></i>
+        <i class="ah-icon --sm {{ahIconClass 'weaponPlaceholder'}}"></i>
       {{/if}}
     </a>
 
@@ -13,7 +13,7 @@
       {{#if equipment.armor}}
         <img src="{{equipment.armor.img}}" alt="{{equipment.armor.name}}">
       {{else}}
-          <i class="ah-icon --m {{ahIconClass 'placeholderArmor'}}"></i>
+          <i class="ah-icon --m {{ahIconClass 'armorPlaceholder'}}"></i>
       {{/if}}
     </a>
 
@@ -21,7 +21,7 @@
       {{#if equipment.offHand}}
         <img src="{{equipment.offHand.img}}" alt="{{equipment.offHand.name}}">
       {{else}}
-        <i class="ah-icon --sm {{ahIconClass 'placeholderWeapon'}}"></i>
+        <i class="ah-icon --sm {{ahIconClass 'weaponPlaceholder'}}"></i>
       {{/if}}
     </a>
 
@@ -51,7 +51,7 @@
         {{#if equipment.accessory1}}
           <img src="{{equipment.accessory1.img}}" alt="{{equipment.accessory1.name}}">
         {{else}}
-          <i class="ah-icon --s {{ahIconClass 'placeholderAccessory'}}"></i>
+          <i class="ah-icon --s {{ahIconClass 'accessoryPlaceholder'}}"></i>
         {{/if}}
       </a>
 
@@ -70,7 +70,7 @@
                   <a class="ah-character__engrams__slot ah-character__engrams__slot--empty"
                      data-tooltip="{{localize 'AH.ACTION.Engram'}}"
                      data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
-                    <i class="ah-icon --s {{ahIconClass 'placeholderEngram'}}"></i>
+                    <i class="ah-icon --s {{ahIconClass 'engramPlaceholder'}}"></i>
                   </a>
                 {{/with}}
               </li>
@@ -87,7 +87,7 @@
         {{#if equipment.accessory2}}
           <img src="{{equipment.accessory2.img}}" alt="{{equipment.accessory2.name}}">
         {{else}}
-          <i class="ah-icon --s {{ahIconClass 'placeholderAccessory'}}"></i>
+          <i class="ah-icon --s {{ahIconClass 'accessoryPlaceholder'}}"></i>
         {{/if}}
       </a>
       <ul class="ah-character__engrams__container__entries">
@@ -105,7 +105,7 @@
                   <a class="ah-character__engrams__slot ah-character__engrams__slot--empty"
                      data-tooltip="{{localize 'AH.ACTION.Engram'}}"
                      data-item-id="{{../id}}" data-slot="engram" data-index="{{@index}}">
-                      <i class="ah-icon --s {{ahIconClass 'placeholderEngram'}}"></i>
+                      <i class="ah-icon --s {{ahIconClass 'engramPlaceholder'}}"></i>
                   </a>
                 {{/with}}
               </li>
