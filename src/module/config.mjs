@@ -1060,6 +1060,7 @@ AH.flags = Object.freeze({
     Targeting: "Targeting",
     Campaign: "Campaign",
     Award: "Award",
+    Treasure: "Treasure",
   }),
 });
 

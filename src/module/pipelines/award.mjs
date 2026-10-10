@@ -1,9 +1,17 @@
 /**
- * @typedef TreasureChoice
+ * @typedef AH_TreasureChoice
  * @property {AH_EquipmentType} type
  * @property {AH_Rarity} rarity
  * @property {Number} index
+ * @property {String} key
  * @property {AH_ItemReference} item
+ */
+
+/**
+ * @typedef AH_TreasureChoiceGroup
+ * @property {AH_TreasureChoice} first
+ * @property {AH_TreasureChoice} second
+ * @property {AH_TreasureChoice} third
  */
 
 /**
@@ -21,7 +29,7 @@ import {
 import { localize, notifyInfo, notifyWarn, renderTemplate, systemAssetPath, systemID } from "../constants.mjs";
 import AH from "../config.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
-import { SourceInfo } from "../data/common/_module.mjs";
+import { ItemInfo, SourceInfo } from "../data/common/_module.mjs";
 import DamageData from "./damage-data.mjs";
 import { DamageRequest } from "./_module.mjs";
 import { CompendiumIndex } from "../data/compendium/_module.mjs";
@@ -29,6 +37,7 @@ import { Overlay } from "../fx/_module.mjs";
 
 const CHOICE_COUNT = 3;
 const AWARD_ACTION = "rollTreasure";
+const CHAT_TEMPLATE = "chat/chat-section-treasure";
 
 /**
  * Opens a prompt to reward the party with treasure.
@@ -37,14 +46,20 @@ const AWARD_ACTION = "rollTreasure";
  */
 async function promptTreasure(options) {
 
-  /** @type {TreasureChoice[]} **/
-  let pools = [];
-  for (let p = 0; p < CHOICE_COUNT; p++) {
-    pools.push({
-      type: "weapon",
-      rarity: "common",
-    });
-  }
+  /** @type {AH_TreasureChoice[]} **/
+  let choices = [];
+  choices.push({
+    type: "weapon",
+    rarity: "common",
+  });
+  choices.push({
+    type: "armor",
+    rarity: "common",
+  });
+  choices.push({
+    type: "accessory",
+    rarity: "common",
+  });
 
   const rarityOptions = AH.rarity;
   const equipmentOptions = AH.character.equipment;
@@ -52,7 +67,7 @@ async function promptTreasure(options) {
   const input = await Dialogs.input({
     title: localize("AH.DIALOG.AwardEquipment"),
     content: await renderTemplate("dialogs/award-equipment", {
-      pools,
+      choices,
       equipmentOptions,
       rarityOptions,
     }, true),
@@ -64,21 +79,44 @@ async function promptTreasure(options) {
     console.debug(`Preparing to post ${expanded} to chat`);
 
     let builder = new ChatMessageBuilder();
-    builder.text(localize("AH.DIALOG.AwardEquipmentMessage"));
-    const flags = new FlagBuilder().toggle(AH.flags.ChatMessage.Award).toObject();
-    builder.withFlags(flags);
-    builder.template("chat/chat-section-treasure", {
-      treasure: expanded.equipment,
+    const flags = new FlagBuilder().toggle(AH.flags.ChatMessage.Award);
+    /** @type AH_TreasureChoiceGroup  **/
+    const data = {
+      first: expanded.equipment[0],
+      second: expanded.equipment[1],
+      third: expanded.equipment[2],
+    };
+    flags.set(AH.flags.ChatMessage.Treasure, data);
+    builder.withFlags(flags.toObject());
+    builder.template(CHAT_TEMPLATE, {
+      data,
     });
+
     await builder.create();
   }
 }
 
 /**
  * @param {ChatMessage} message
- * @param {TreasureChoice} choice
+ * @param {HTMLAnchorElement} element
+ * @param {AH_TreasureChoice} choice
  */
-async function rollTreasure(message, choice) {
+async function rollTreasure(message, element, choice) {
+
+  // Check whether there's a current item already rolled.
+  /** @type AH_TreasureChoiceGroup **/
+  let data = message.getFlag(systemID, AH.flags.ChatMessage.Treasure);
+  if (!data) {
+    return;
+  }
+
+  /** @type AH_TreasureChoice **/
+  let current = data[choice.key];
+  if (current.item) {
+    notifyWarn("That item choice has already been rolled.");
+    return;
+  }
+
   const entries = await CompendiumIndex.instance.getEquipmenEntries();
   const items = entries[choice.type];
   if (!items) {
@@ -93,15 +131,27 @@ async function rollTreasure(message, choice) {
 
   const roll = await new Roll(`1d${pool.length}`).evaluate();
   const index = roll.total;
-  const item = pool[index];
-  notifyInfo(`Rolled ${item.name} (${index}/${pool.length}) in chat message ${message.id} of ${JSON.stringify(choice)}`);
+  const item = pool[index - 1];
+  //notifyInfo(`Rolled ${item.name} (${index}/${pool.length}) in chat message ${message.id} of ${JSON.stringify(choice)}`);
 
+  // TODO: Play SFX
   await Overlay.video({
     src: systemAssetPath("ui/video/chest_open.webm"),
   });
 
-  // TODO: Play SFX
+  // Set the current item and update the chat message
+  current.item = ItemInfo.toItemReference(item);
+  message.setFlag(systemID, AH.flags.ChatMessage.Treasure, data);
+  const content = await renderTemplate(CHAT_TEMPLATE, { data,
+  });
 
+  // TODO: Update the chat message. Maybe re-render that section?
+  //const flags = new FlagBuilder(message.flags);
+
+  await message.update({
+    content,
+    [`flags.${systemID}.${AH.flags.ChatMessage.Treasure}`]: data,
+  });
 }
 
 /**
@@ -118,16 +168,15 @@ function onRenderChatMessage(message, html) {
   html.querySelectorAll(`a[data-action="${AWARD_ACTION}"]`).forEach((element) => {
     element.addEventListener("click", async (event) => {
       event.preventDefault();
-      const { index, type, rarity } = element.dataset;
+      const { index, type, key, rarity } = element.dataset;
       const _message = ChatMessageHelper.fromId(messageId);
-      rollTreasure(_message, {
+      // TODO: Handle as GM
+      return rollTreasure(_message, element, {
         index: Number(index),
+        key,
         type,
         rarity,
       });
-
-      // TODO: Roll the item from teh tables then update the chat message
-
     });
   });
 }

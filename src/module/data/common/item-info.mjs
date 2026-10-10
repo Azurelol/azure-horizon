@@ -5,6 +5,7 @@
  * @property {String} slug
  * @property {String} uuid
  * @property {String} img
+ * @property {String} pack
  */
 
 export default class ItemInfo {
@@ -21,7 +22,9 @@ export default class ItemInfo {
       name: item.name,
       slug: item.system.slug,
       uuid: item.uuid,
+      id: item.id,
       img: item.img,
+      pack: item.pack,
     };
   }
 
