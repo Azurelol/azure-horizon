@@ -1,7 +1,7 @@
 import { ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { CompendiumIndex } from "../data/compendium/_module.mjs";
 import Dialogs from "./dialogs.mjs";
-import { isCompendiumEntry, isItemType, systemAssetPath } from "../constants.mjs";
+import { isCompendiumEntry, isItemType, notifyInfo, notifyWarn, systemAssetPath } from "../constants.mjs";
 import AH from "../config.mjs";
 import { AHItem } from "../documents/item.mjs";
 
@@ -586,6 +586,17 @@ async function selectItems(world = true, compendium = false, type = undefined, f
 /**
  * @returns {Promise<void>}
  */
+async function reserializeItems() {
+  const packs = CompendiumIndex.instance.getPacks("Item");
+  if (!packs.length) return notifyWarn("No matching Item compendiums found.");
+  for (const pack of packs) {
+    await pack.migrate();
+  }
+}
+
+/**
+ * @returns {Promise<void>}
+ */
 async function updateTokens() {
   let actors = await selectActors(true, true);
   if (actors.length === 0) {
@@ -750,6 +761,15 @@ async function openMenu() {
           return true;
         },
       },
+      {
+        action: "reserializeItems",
+        label: "AH.DIALOG.ReserializeItems",
+        callback: async (event, button, dialog) => {
+          await reserializeItems();
+          await dialog.close({ animate: false });
+          return true;
+        },
+      },
     ],
   });
 }
@@ -771,6 +791,7 @@ const Migrations = Object.freeze({
 
   migrateItems,
   migrateActor,
+  reserializeItems,
 
   findItemsBySlug,
   pushItemUpdate,

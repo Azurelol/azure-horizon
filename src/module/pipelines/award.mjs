@@ -85,14 +85,16 @@ async function rollTreasure(message, choice) {
     notifyWarn(`Failed to resolve items of type ${choice.type}`);
     return;
   }
-  const pool = items.filter(it => it.system.rarity === "rarity");
+  const pool = items.filter(it => it.system.rarity === choice.rarity);
   if (!pool || !pool.length) {
     notifyWarn(`Failed to resolve '${choice.type}' items of rarity ${choice.rarity}`);
     return;
   }
 
   const roll = await new Roll(`1d${pool.length}`).evaluate();
-  notifyInfo(`Rolled treasure ${roll.total} in chat message ${message.id} of ${JSON.stringify(choice)}`);
+  const index = roll.total;
+  const item = pool[index];
+  notifyInfo(`Rolled ${item.name} (${index}/${pool.length}) in chat message ${message.id} of ${JSON.stringify(choice)}`);
 
   await Overlay.video({
     src: systemAssetPath("ui/video/chest_open.webm"),
