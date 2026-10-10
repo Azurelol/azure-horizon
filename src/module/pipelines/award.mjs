@@ -26,7 +26,15 @@ import {
   ChatMessageSectionTemplate,
   Dialogs, FlagBuilder,
 } from "../helpers/_module.mjs";
-import { localize, notifyInfo, notifyWarn, renderTemplate, systemAssetPath, systemID } from "../constants.mjs";
+import {
+  localize,
+  notifyInfo,
+  notifyWarn,
+  receiveSocketEvent,
+  renderTemplate, sendSocketEvent,
+  systemAssetPath,
+  systemID,
+} from "../constants.mjs";
 import AH from "../config.mjs";
 import { FoundryUtils, ObjectUtils, StringUtils } from "../utils/_module.mjs";
 import { ItemInfo, SourceInfo } from "../data/common/_module.mjs";
@@ -98,10 +106,9 @@ async function promptTreasure(options) {
 
 /**
  * @param {ChatMessage} message
- * @param {HTMLAnchorElement} element
- * @param {AH_TreasureChoice} choice
+ * @param {String} key
  */
-async function rollTreasure(message, element, choice) {
+async function rollTreasure(message, key) {
 
   // Check whether there's a current item already rolled.
   /** @type AH_TreasureChoiceGroup **/
@@ -111,21 +118,21 @@ async function rollTreasure(message, element, choice) {
   }
 
   /** @type AH_TreasureChoice **/
-  let current = data[choice.key];
+  let current = data[key];
   if (current.item) {
     notifyWarn("That item choice has already been rolled.");
     return;
   }
 
   const entries = await CompendiumIndex.instance.getEquipmenEntries();
-  const items = entries[choice.type];
+  const items = entries[current.type];
   if (!items) {
-    notifyWarn(`Failed to resolve items of type ${choice.type}`);
+    notifyWarn(`Failed to resolve items of type ${current.type}`);
     return;
   }
-  const pool = items.filter(it => it.system.rarity === choice.rarity);
+  const pool = items.filter(it => it.system.rarity === current.rarity);
   if (!pool || !pool.length) {
-    notifyWarn(`Failed to resolve '${choice.type}' items of rarity ${choice.rarity}`);
+    notifyWarn(`Failed to resolve '${current.type}' items of rarity ${current.rarity}`);
     return;
   }
 
@@ -135,24 +142,26 @@ async function rollTreasure(message, element, choice) {
   //notifyInfo(`Rolled ${item.name} (${index}/${pool.length}) in chat message ${message.id} of ${JSON.stringify(choice)}`);
 
   // TODO: Play SFX
-  await Overlay.video({
+  await Overlay.broadcastVideo({
     src: systemAssetPath("ui/video/chest_open.webm"),
   });
 
   // Set the current item and update the chat message
   current.item = ItemInfo.toItemReference(item);
-  message.setFlag(systemID, AH.flags.ChatMessage.Treasure, data);
   const content = await renderTemplate(CHAT_TEMPLATE, { data,
   });
-
-  // TODO: Update the chat message. Maybe re-render that section?
-  //const flags = new FlagBuilder(message.flags);
 
   await message.update({
     content,
     [`flags.${systemID}.${AH.flags.ChatMessage.Treasure}`]: data,
   });
 }
+
+/**
+ * @typedef AH_RollTreasureData
+ * @property {String} messageId
+ * @property {String} key
+ */
 
 /**
  * @param {ChatMessage} message
@@ -168,17 +177,27 @@ function onRenderChatMessage(message, html) {
   html.querySelectorAll(`a[data-action="${AWARD_ACTION}"]`).forEach((element) => {
     element.addEventListener("click", async (event) => {
       event.preventDefault();
-      const { index, type, key, rarity } = element.dataset;
-      const _message = ChatMessageHelper.fromId(messageId);
-      // TODO: Handle as GM
-      return rollTreasure(_message, element, {
-        index: Number(index),
+      const { type, key, rarity } = element.dataset;
+      const data = {
+        messageId,
         key,
-        type,
-        rarity,
-      });
+      };
+      if (game.user.isGM) {
+        onRollTreasure(data);
+      }
+      else {
+        sendSocketEvent(AH.sockets.ROLL_TREASURE, data);
+      }
     });
   });
+}
+
+/**
+ * @param {AH_RollTreasureData} data
+ */
+function onRollTreasure(data) {
+  const _message = ChatMessageHelper.fromId(data.messageId);
+  rollTreasure(_message, data.key);
 }
 
 /**
@@ -186,6 +205,7 @@ function onRenderChatMessage(message, html) {
  */
 function initialize() {
   Hooks.on("renderChatMessageHTML", onRenderChatMessage);
+  receiveSocketEvent(AH.sockets.ROLL_TREASURE, onRollTreasure);
 }
 
 const Award = Object.freeze({

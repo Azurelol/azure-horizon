@@ -144,6 +144,7 @@ function initializeSystems() {
   canvas.Canvas.initialize();
 
   fx.FX.initialize();
+  fx.Overlay.initialize();
 
   // We initialize hotkeys && controls last as they will call a registration hook
   initializeApps();

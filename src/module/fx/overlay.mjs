@@ -1,3 +1,6 @@
+import { receiveSocketEvent, sendSocketEvent } from "../constants.mjs";
+import AH from "../config.mjs";
+
 const ANIMATION_PRESETS = {
   // Centered, moderate size
   center: { width: "40vmin", height: "40vmin", top: "50%", left: "50%", transform: "translate(-50%, -50%)" },
@@ -23,7 +26,7 @@ const ANIMATION_PRESETS = {
  * @param {VideoOverlayOptions} options
  * @returns {Promise<unknown>}
  */
-function video(options) {
+function playVideo(options) {
   return new Promise((resolve) => {
     const video = document.createElement("video");
     Object.assign(video.style, {
@@ -43,6 +46,24 @@ function video(options) {
   });
 }
 
+/**
+ * @param {VideoOverlayOptions} options
+ * @returns {Promise<unknown>}
+ */
+async function broadcastVideo(options) {
+  await playVideo(options);
+  sendSocketEvent(AH.sockets.OVERLAY_PLAY_VIDEO, options);
+}
+
+/**
+ * Initializes the callback handlers for this pipeline.
+ */
+function initialize() {
+  receiveSocketEvent(AH.sockets.OVERLAY_PLAY_VIDEO, playVideo);
+}
+
 export const Overlay = Object.freeze({
-  video,
+  playVideo,
+  broadcastVideo,
+  initialize,
 });

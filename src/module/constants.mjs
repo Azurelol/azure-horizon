@@ -180,12 +180,10 @@ export function notifyWarn(message) {
  * @param {AH_SocketEventData} data
  */
 export function sendSocketEvent(event, data) {
-  if (game.user.isGM) {
-    game.socket.emit(systemSCK, {
-      type: event,
-      data: data,
-    });
-  }
+  game.socket.emit(systemSCK, {
+    type: event,
+    data: data,
+  });
 }
 
 /**

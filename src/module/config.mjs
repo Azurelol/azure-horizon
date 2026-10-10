@@ -1246,6 +1246,8 @@ AH.hooks = Object.freeze({
  */
 AH.sockets = Object.freeze({
   SCROLLING_TEXT: "canvas.scrollingText",
+  ROLL_TREASURE: "chat.rollTreasure",
+  OVERLAY_PLAY_VIDEO: "overlay.video",
 });
 
 /**
