@@ -1088,7 +1088,9 @@
       },
       "RARITY": {
         "Common": "Common",
-        "Rare": "Rare"
+        "Uncommon": "Uncommon",
+        "Rare": "Rare",
+        "Epic": "Epic"
       }
     },
     "TARGETING": {

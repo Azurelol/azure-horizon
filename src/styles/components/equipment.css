@@ -1,3 +1,39 @@
+.ah-rarity-color {
+  --color: var(--ah-rarity-common-color);
+  color: var(--color);
+
+  &.--common {
+    --color: var(--ah-rarity-common-color);
+  }
+  &.--uncommon {
+    --color: var(--ah-rarity-uncommon-color);
+  }
+  &.--rare {
+    --color: var(--ah-rarity-rare-color);
+  }
+  &.--epic {
+    --color: var(--ah-rarity-epic-color);
+  }
+}
+
+.ah-rarity-background {
+  --background: var(--ah-rarity-common-gradient);
+  background: var(--color);
+
+  &.--common {
+    --background: var(--ah-rarity-common-gradient);
+  }
+  &.--uncommon {
+    --background: var(--ah-rarity-uncommon-gradient);
+  }
+  &.--rare {
+    --background: var(--ah-rarity-rare-gradient);
+  }
+  &.--epic {
+    --background: var(--ah-rarity-epic-gradient);
+  }
+}
+
 .ah-character__inventory {
   display: flex;
   flex-direction: row;
@@ -25,12 +61,15 @@
   }
 }
 
-.ah-character__equipment__slot {
+.ah-equipment__slot {
+  --size: 40px;
+  --color: var(--ah-rarity-common-color);
+  --background: color-mix(in srgb, var(--ah-surface-item) 40%, transparent);
+
   border: 1px solid var(--ah-control-border);
-  background: color-mix(in srgb, var(--ah-surface-item) 40%, transparent);
-  --slot-size: 40px;
-  width: var(--slot-size);
-  height: var(--slot-size);
+  background: var(--background);
+  width: var(--size);
+  height: var(--size);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,6 +80,19 @@
 
   &.--adversary {
     background: #352c31;
+  }
+
+  &.--common {
+    --color: var(--ah-rarity-common-color);
+  }
+  &.--uncommon {
+    --color: var(--ah-rarity-uncommon-color);
+  }
+  &.--rare {
+    --color: var(--ah-rarity-rare-color);
+  }
+  &.--epic {
+    --color: var(--ah-rarity-epic-color);
   }
 
   :hover {
@@ -56,6 +108,7 @@
     object-fit: fill;
     width: 100%;
     height: auto;
+    filter: drop-shadow(0 0 4px var(--color));
   }
 
   i {
@@ -63,20 +116,17 @@
   }
 
   &.--armor {
-    --armor-size: 80px;
     grid-area: armor;
-    width: var(--armor-size);
-    height: var(--armor-size);
+    --size: 80px;
   }
 
   &.--mainHand {
     grid-area: mainHand;
-    --slot-size: 50px;
+    --size: 50px;
   }
 
   &.--offHand {
     grid-area: offHand;
-    --slot-size: 50px;
+    --size: 50px;
   }
-
 }

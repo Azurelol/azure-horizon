@@ -178,8 +178,10 @@ AH.area = {
  */
 
 AH.rarity = Object.freeze({
-  common: { label: "AH.EQUIPMENT.RARITY.Common" },
-  rare: { label: "AH.EQUIPMENT.RARITY.Rare" },
+  common: { label: "AH.EQUIPMENT.RARITY.Common", qualities: 0, color: "--ah-rarity-common-color" },
+  uncommon: { label: "AH.EQUIPMENT.RARITY.Uncommon", qualities: 1, color: "--ah-rarity-uncommon-color" },
+  rare: { label: "AH.EQUIPMENT.RARITY.Rare", qualities: 2, color: "--ah-rarity-rare-color" },
+  epic: { label: "AH.EQUIPMENT.RARITY.Epic", qualities: 4, color: "--ah-rarity-epic-color" },
 });
 
 /**

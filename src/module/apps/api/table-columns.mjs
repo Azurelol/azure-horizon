@@ -51,7 +51,7 @@ const TEMPLATES = Object.freeze({
  * @property {T, (() => T)} getEntry
  * @property {number} [headerSpan]
  * @property {(T) => string|Promise<string>} [renderCaption]
- * @property {string, ((T) => string)} cssClass
+ * @property {string, ((T) => string)} cssClass Class used for the name.
  * @property {Boolean} perform Whether the document can perform an action
  * @property {String} type The document type
  */
@@ -72,6 +72,10 @@ function documentName(options) {
       if (options.getEntry) {
         entry = options.getEntry(entry);
       }
+      const cssClass = options.cssClass instanceof Function
+        ? options.cssClass(entry)
+        : options.cssClass;
+
       return renderTemplate(TEMPLATES.documentName, {
         name: entry.name,
         img: entry.img,
@@ -79,6 +83,7 @@ function documentName(options) {
         pack: entry.pack,
         uuid: entry.uuid,
         type: options.type ?? entry.type,
+        cssClass: cssClass,
         perform: options.perform,
       }, false);
     },

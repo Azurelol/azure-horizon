@@ -113,7 +113,7 @@
 
   .ah-table-column__primary__name {
     font-size: var(--ah-label-font-size);
-    color: var(--ah-color-primary);
+    color: var(--ah-content-color);
     overflow: hidden;
     text-overflow: ellipsis;
     flex-shrink: 1;

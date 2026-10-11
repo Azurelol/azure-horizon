@@ -93,6 +93,12 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
         header: "AH.COMMON.Name",
         perform: !this.config.preview,
         type: "item",
+        cssClass: entry => {
+          if (entry.system.rarity) {
+            return `ah-rarity-color --${entry.system.rarity}`;
+          }
+          return "";
+        },
       }));
     columns.push(...this._getItemColumns());
     columns.push(TableColumns.itemTraits());

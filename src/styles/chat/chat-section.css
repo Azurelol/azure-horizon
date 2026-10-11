@@ -460,11 +460,12 @@
 }
 
 .ah-chat-section__treasure {
+  --size: 64px;
+
   border: 1px solid var(--ah-control-border);
   background: color-mix(in srgb, var(--ah-surface-item) 40%, transparent);
-  --slot-size: 64px;
-  width: var(--slot-size);
-  height: var(--slot-size);
+  width: var(--size);
+  height: var(--size);
   display: flex;
   justify-content: center;
   align-items: center;

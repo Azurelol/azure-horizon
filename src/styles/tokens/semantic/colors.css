@@ -95,4 +95,13 @@
   --ah-guest-background-gradient: linear-gradient(to right, var(--ah-color-slate-500), var(--ah-color-navy-700));
   --ah-guest-border: 2px solid var(--ah-color-slate-500);
 
+  /* Rarity */
+  --ah-rarity-common-color: #fdfdff;
+  --ah-rarity-uncommon-color: #3fa34d;
+  --ah-rarity-rare-color: #3b82f6;
+  --ah-rarity-epic-color: #a855f7;
+  --ah-rarity-common-gradient: linear-gradient(135deg, #b8b8b8 0%, #9e9e9e 50%, #7a7a7a 100%);
+  --ah-rarity-uncommon-gradient: linear-gradient(135deg, #5cc46b 0%, #3fa34d 50%, #2b7a37 100%);
+  --ah-rarity-rare-gradient: linear-gradient(135deg, #639cf8 0%, #3b82f6 50%, #2563c9 100%);
+  --ah-rarity-epic-gradient: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #8a3fd1 100%);
 }

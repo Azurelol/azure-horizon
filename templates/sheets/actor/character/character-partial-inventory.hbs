@@ -1,7 +1,7 @@
 
 <div class="ah-character__inventory">
   <div class="ah-character__equipment">
-    <a class="ah-character__equipment__slot --mainHand" data-tooltip="{{equipment.mainHand.name}}" data-action="swapEquipment" data-slot="mainHand">
+    <a class="ah-equipment__slot --mainHand --{{equipment.mainHand.system.rarity}} " data-tooltip="{{equipment.mainHand.name}}" data-action="swapEquipment" data-slot="mainHand">
       {{#if equipment.mainHand}}
         <img src="{{equipment.mainHand.img}}" alt="{{equipment.mainHand.name}}">
       {{else}}
@@ -9,7 +9,7 @@
       {{/if}}
     </a>
 
-    <a class="ah-character__equipment__slot --armor" data-tooltip="{{equipment.armor.name}}" data-action="swapEquipment" data-slot="armor">
+    <a class="ah-equipment__slot --armor --{{equipment.armor.system.rarity}}" data-tooltip="{{equipment.armor.name}}" data-action="swapEquipment" data-slot="armor">
       {{#if equipment.armor}}
         <img src="{{equipment.armor.img}}" alt="{{equipment.armor.name}}">
       {{else}}
@@ -17,37 +17,19 @@
       {{/if}}
     </a>
 
-    <a class="ah-character__equipment__slot --offHand" data-tooltip="{{equipment.offHand.name}}" data-action="swapEquipment" data-slot="offHand">
+    <a class="ah-equipment__slot --offHand --{{equipment.offHand.system.rarity}}" data-tooltip="{{equipment.offHand.name}}" data-action="swapEquipment" data-slot="offHand">
       {{#if equipment.offHand}}
         <img src="{{equipment.offHand.img}}" alt="{{equipment.offHand.name}}">
       {{else}}
         <i class="ah-icon --sm {{ahIconClass 'weaponPlaceholder'}}"></i>
       {{/if}}
     </a>
-
-    <div class="ah-character__equipment__accessories">
-      {{#if equipment.unlocked3}}
-        <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory3.name}}" data-action="swapEquipment" data-slot="accessory3">
-          {{#if equipment.accessory3}}
-            <img src="{{equipment.accessory3.img}}" alt="{{equipment.accessory3.name}}">
-          {{/if}}
-        </a>
-      {{/if}}
-
-      {{#if equipment.unlocked4}}
-        <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory4.name}}" data-action="swapEquipment" data-slot="accessory4">
-          {{#if equipment.accessory4}}
-            <img src="{{equipment.accessory4.img}}" alt="{{equipment.accessory4.name}}">
-          {{/if}}
-        </a>
-      {{/if}}
-    </div>
   </div>
 
   <div class="ah-character__engrams">
 
     <div class="ah-character__engrams__container">
-      <a class="ah-character__equipment__slot" data-tooltip="{{equipment.accessory1.name}}" data-action="swapEquipment" data-slot="accessory1">
+      <a class="ah-equipment__slot --{{equipment.accessory1.system.rarity}}" data-tooltip="{{equipment.accessory1.name}}" data-action="swapEquipment" data-slot="accessory1">
         {{#if equipment.accessory1}}
           <img src="{{equipment.accessory1.img}}" alt="{{equipment.accessory1.name}}">
         {{else}}
@@ -81,7 +63,7 @@
     </div>
 
     <div class="ah-character__engrams__container">
-      <a class="ah-character__equipment__slot"
+      <a class="ah-equipment__slot --{{equipment.accessory2.system.rarity}}"
          data-tooltip="{{equipment.accessory2.name}}"
          data-action="swapEquipment" data-slot="accessory2">
         {{#if equipment.accessory2}}
