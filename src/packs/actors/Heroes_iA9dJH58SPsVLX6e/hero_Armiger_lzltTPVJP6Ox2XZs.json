@@ -955,7 +955,7 @@
           "traits": [
             "free"
           ],
-          "enabled": false,
+          "enabled": true,
           "speed": ""
         },
         "damage": {
@@ -979,9 +979,9 @@
         },
         "cost": {
           "schemaVersion": 1,
-          "enabled": false,
-          "resource": "mp",
-          "amount": "",
+          "enabled": true,
+          "resource": "tp",
+          "amount": "1",
           "perTarget": false
         },
         "effects": {
@@ -1000,10 +1000,10 @@
         },
         "usage": {
           "schemaVersion": 1,
-          "check": false,
+          "check": true,
           "damage": true,
-          "enabled": false,
-          "attributes": false
+          "enabled": true,
+          "attributes": true
         },
         "class": "armiger",
         "attributes": {
@@ -1240,9 +1240,9 @@
         },
         "targeting": {
           "schemaVersion": 1,
-          "enabled": false,
+          "enabled": true,
           "range": "",
-          "rule": "",
+          "rule": "self",
           "traits": []
         },
         "power": ""
@@ -1470,11 +1470,17 @@
           "schemaVersion": 1,
           "entries": []
         },
-        "def": 0,
+        "def": 1,
         "mdef": 0,
         "init": 0,
-        "advantage": [],
-        "disadvantage": []
+        "advantage": [
+          "slashing",
+          "piercing"
+        ],
+        "disadvantage": [
+          "bludgeoning",
+          "electric"
+        ]
       },
       "effects": [],
       "flags": {},

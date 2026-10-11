@@ -3,10 +3,10 @@
   "folder": null,
   "name": "Armor",
   "color": null,
-  "sorting": "a",
+  "sorting": "m",
   "_id": "iH9OyoAoizAPCpjW",
   "description": "",
-  "sort": 200000,
+  "sort": 400000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

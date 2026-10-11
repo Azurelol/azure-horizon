@@ -760,7 +760,279 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Master",
+      "type": "class",
+      "_id": "Q9ApcMaSQYXHpwUz",
+      "img": "systems/azure-horizon/assets/icons/classes/master/master.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "master",
+        "description": "<p>A person who travels with their trusty companion, a being they trust above all others with their life. They have long experience or the training to maximize the talents of their companion and together they are a force to be reckoned with.</p><blockquote><p>The Master is the class for those who wish to fulfill the fantasy of fighting alongside a companion of their choice. As the companion can be built flexibly through skill investment, it can fulfill a variety of roles.</p></blockquote>",
+        "traits": [
+          "support",
+          "companion"
+        ],
+        "benefits": {
+          "schemaVersion": 1,
+          "hp": false,
+          "mp": true,
+          "ip": false,
+          "tp": false,
+          "mov": false
+        },
+        "triggers": [
+          "Your companion comforts someone in need.",
+          "You challenge another master to a duel."
+        ],
+        "complications": [
+          "Something is wrong with your companion.",
+          "Your companion is kidnapped.",
+          "A nefarious organization targets your companion."
+        ]
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1791451898743,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.Q9ApcMaSQYXHpwUz",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oTt9pjtEkwyGvd7W.Q9ApcMaSQYXHpwUz"
+    },
+    {
+      "name": "Companion",
+      "type": "skill",
+      "_id": "uXx5O5EbktdJd3ny",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "master-companion",
+        "description": "<p>You gain a companion that follows you around.</p><ul><li><p>It starts play with the <em>Attack</em> move, an attack of an affinity of your choice. It can gain a <em>maximum</em> of two Attack moves of different types.</p></li><li><p>You gain the <em>Command</em> action, which allows you to command it to perform one of its moves.</p></li></ul>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "defense": "def",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 1,
+          "max": 1
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "",
+          "points": 1,
+          "traits": [],
+          "enabled": false,
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "master",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1791451916012,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.uXx5O5EbktdJd3ny",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oTt9pjtEkwyGvd7W.uXx5O5EbktdJd3ny"
+    },
+    {
+      "name": "Evolution",
+      "type": "skill",
+      "_id": "OXW9RDtGxK78SUQS",
+      "img": "systems/azure-horizon/assets/icons/classes/skill_buff.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "master-evolution",
+        "description": "<p>Your companion gains a move for each point invested into this skill. It also increases its potential by 1 (up to 5 maximum) each time you do so.</p>",
+        "check": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "defense": "def",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": {
+            "amount": "",
+            "type": "untyped"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "level": {
+          "current": 2,
+          "max": 5
+        },
+        "action": {
+          "schemaVersion": 1,
+          "type": "",
+          "points": 1,
+          "traits": [],
+          "enabled": false,
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "check": false,
+          "damage": false,
+          "enabled": false,
+          "attributes": false
+        },
+        "class": "master",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "primary": "dex",
+          "secondary": "mig",
+          "grade": "C"
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "range": "",
+          "rule": "",
+          "traits": []
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1791451932237,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.classes.Item.OXW9RDtGxK78SUQS",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oTt9pjtEkwyGvd7W.OXW9RDtGxK78SUQS"
+    }
+  ],
   "effects": [],
   "sort": 0,
   "ownership": {

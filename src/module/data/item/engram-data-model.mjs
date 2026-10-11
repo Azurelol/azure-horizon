@@ -7,7 +7,7 @@ import { EffectsDataModel } from "./fields/effects-data-model.mjs";
 import ResourceDataModel from "./fields/resource-data-model.mjs";
 import { CheckDataModel, DamageDataModel } from "./fields/_module.mjs";
 import { isActorType, systemTemplatePath } from "../../constants.mjs";
-import { FoundryUtils } from "../../utils/_module.mjs";
+import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
 import { Actions } from "../../pipelines/_module.mjs";
 import { ActionAttributesDataModel } from "./fields/action-attributes-data-model.mjs";
 import Checks from "../../pipelines/checks.mjs";
@@ -108,7 +108,7 @@ export default class EngramDataModel extends EquipmentDataModel {
     return Object.assign(super.defineSchema(), {
       level: new TrackerField({
         min: 1,
-        max: 3,
+        max: 4,
         label: "AH.FIELD.Level",
         _part: "header",
       }),
@@ -123,6 +123,35 @@ export default class EngramDataModel extends EquipmentDataModel {
         config: false,
       }),
     });
+  }
+
+  /** @inheritdoc */
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
+    /** @type AH_Rarity **/
+    const newRarity = ObjectUtils.getProperty(changes, "system.rarity");
+    if (newRarity !== this.rarity) {
+      let maxLevel;
+      switch (newRarity) {
+        case "common":
+          maxLevel = 1;
+          break;
+        case "uncommon":
+          maxLevel = 2;
+          break;
+        case "rare":
+          maxLevel = 3;
+          break;
+        case "epic":
+          maxLevel = 3;
+          break;
+      }
+      ObjectUtils.setProperty(changes, "system.level.max", maxLevel);
+    }
+
+    return true;
   }
 
   async preparePartContext(sheet, partId, context) {

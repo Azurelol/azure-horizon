@@ -1,5 +1,5 @@
 {
-  "folder": "6nIgT8K6AN54EXKa",
+  "folder": "p34NvCVUkuzxmfGU",
   "name": "Rifle",
   "type": "weapon",
   "_id": "qHXzdm2yWmoUWesm",
@@ -45,7 +45,7 @@
     }
   },
   "effects": [],
-  "sort": 0,
+  "sort": -175000,
   "ownership": {
     "default": 0
   },

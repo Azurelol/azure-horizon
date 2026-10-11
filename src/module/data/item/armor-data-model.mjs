@@ -1,7 +1,7 @@
 import ItemDataModel from "./item-data-model.mjs";
 import { CheckDataModel, TraitsField } from "./fields/_module.mjs";
 import AH, { getFormSelectOptions } from "../../config.mjs";
-import { FoundryUtils } from "../../utils/_module.mjs";
+import { FoundryUtils, ObjectUtils } from "../../utils/_module.mjs";
 import EquipmentDataModel from "./equipment-data-model.mjs";
 import { PotentialsDataModel } from "./fields/potentials-data-model.mjs";
 import { ChatMessageSections } from "../../helpers/chat-message-sections.mjs";
@@ -11,7 +11,6 @@ import { ChatMessageSections } from "../../helpers/chat-message-sections.mjs";
  * @property {AH_Rarity} rarity
  * @property {AH_EquipmentWeight} weight
  * @property {PotentialsDataModel} potentials
- * @property {Set<String>} traits
  * @property {Number} def
  * @property {Number} mdef
  * @property {Number} init
@@ -29,13 +28,9 @@ export default class ArmorDataModel extends EquipmentDataModel {
         blank: false,
         _part: "header",
         label: "AH.FIELD.Weight",
-        choices: () => AH.equipmentWeight,
+        choices: () => AH.equipment.weight,
       }),
-      traits: new TraitsField({
-        label: "AH.FIELD.Traits",
-        _part: "header",
-        formOptions: getFormSelectOptions(AH.traits.armor),
-      }),
+
       def: new NumberField({ initial: 0, _part: "header",
         _classes: "ah-flex-shrink",
         label: "AH.CHARACTER.Defense.short" }),
@@ -45,6 +40,7 @@ export default class ArmorDataModel extends EquipmentDataModel {
       init: new NumberField({ initial: 0, _part: "header",
         _classes: "ah-flex-shrink",
         label: "AH.CHARACTER.Initiative.short" }),
+
       advantage: new TraitsField({
         _part: "header",
         label: "AH.CHARACTER.Advantage.short",
@@ -59,12 +55,33 @@ export default class ArmorDataModel extends EquipmentDataModel {
     });
   }
 
+  /** @inheritdoc */
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
+    /** @type AH_Rarity **/
+    const newRarity = ObjectUtils.getProperty(changes, "system.rarity");
+    if (newRarity !== this.rarity) {
+      switch (newRarity) {
+        case "common":
+          break;
+        case "uncommon":
+          break;
+        case "rare":
+          break;
+        case "epic":
+          break;
+
+      }
+    }
+
+    return true;
+  }
+
   *allApplicableTraits() {
     yield* super.allApplicableTraits();
     yield this.weight;
-    for (const trait of this.traits) {
-      yield trait;
-    }
   }
 
   /**

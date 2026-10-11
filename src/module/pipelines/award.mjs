@@ -69,8 +69,8 @@ async function promptTreasure(options) {
     rarity: "common",
   });
 
-  const rarityOptions = AH.rarity;
-  const equipmentOptions = AH.character.equipment;
+  const rarityOptions = AH.equipment.rarity;
+  const equipmentOptions = AH.equipment.type;
 
   const input = await Dialogs.input({
     title: localize("AH.DIALOG.AwardEquipment"),

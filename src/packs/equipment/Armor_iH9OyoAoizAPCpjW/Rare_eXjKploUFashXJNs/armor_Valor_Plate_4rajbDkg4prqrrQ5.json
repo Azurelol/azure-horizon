@@ -3,7 +3,7 @@
   "name": "Valor Plate",
   "type": "armor",
   "_id": "4rajbDkg4prqrrQ5",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/equipment/armor/valor_plate.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

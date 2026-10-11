@@ -10,7 +10,7 @@
     "slug": "tactica-iron-bow",
     "description": "",
     "data": {
-      "type": "tacticaWeaponData",
+      "type": "tacticaWeapon",
       "_id": "omjVM3ZpxLUVOBIP",
       "category": "bow",
       "range": {
@@ -25,7 +25,8 @@
       "weight": "light",
       "damage": {
         "type": "piercing",
-        "power": "low"
+        "power": "low",
+        "grade": "C"
       }
     }
   },

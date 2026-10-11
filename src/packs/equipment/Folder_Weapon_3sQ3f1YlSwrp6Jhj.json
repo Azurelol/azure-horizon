@@ -3,10 +3,10 @@
   "folder": null,
   "name": "Weapon",
   "color": null,
-  "sorting": "a",
+  "sorting": "m",
   "_id": "3sQ3f1YlSwrp6Jhj",
   "description": "",
-  "sort": 300000,
+  "sort": 200000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

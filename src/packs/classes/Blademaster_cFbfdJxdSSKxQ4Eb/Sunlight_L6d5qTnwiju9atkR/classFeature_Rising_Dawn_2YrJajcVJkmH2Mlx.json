@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-rising-dawn",
-    "description": "<p>You perform a pierce attack on the target. Can only be executed during an even turn.</p>",
+    "description": "<p>You deal damage with a fire component to column. Can only be executed during an even turn.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,
@@ -25,10 +25,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
         "amount": "",
-        "type": "untyped"
+        "type": "fire"
       },
       "secondary": {
         "amount": "",
@@ -47,15 +47,17 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "10",
+      "amount": "5",
       "perTarget": false
     },
     "targeting": {
       "schemaVersion": 1,
-      "enabled": false,
-      "range": "",
-      "rule": "",
-      "traits": []
+      "enabled": true,
+      "range": "melee",
+      "rule": "single",
+      "traits": [
+        "column"
+      ]
     },
     "effects": {
       "schemaVersion": 1,
@@ -67,7 +69,7 @@
         "tracking": ""
       }
     },
-    "power": "low",
+    "power": "moderate",
     "feature": {
       "_id": "roufppp2GdIu7OJV",
       "type": "emptyClassFeature"

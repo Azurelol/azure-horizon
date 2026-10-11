@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-quarter-moon",
-    "description": "<p>You deal damage to a column. Can only be executed during an odd turn.</p>",
+    "description": "<p>You deal damage with a cold component to a column. Can only be executed during an odd turn.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,
@@ -18,10 +18,10 @@
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": false,
+      "enabled": true,
       "primary": {
         "amount": "",
-        "type": "untyped"
+        "type": "cold"
       },
       "secondary": {
         "amount": "",
@@ -40,7 +40,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "10",
+      "amount": "5",
       "perTarget": false
     },
     "effects": {
@@ -72,6 +72,14 @@
       "type": "action",
       "traits": [],
       "points": 2
+    },
+    "targeting": {
+      "enabled": true,
+      "rule": "",
+      "range": "melee",
+      "traits": [
+        "column"
+      ]
     }
   },
   "effects": [],

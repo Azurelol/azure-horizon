@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": "iH9OyoAoizAPCpjW",
   "name": "Epic",
-  "color": "#8000ff",
+  "color": "#a855f7",
   "sorting": "a",
   "_id": "vA4Zg5rMexZhdBDO",
   "description": "",
-  "sort": 0,
+  "sort": 300000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

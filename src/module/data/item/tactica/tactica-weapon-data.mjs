@@ -46,7 +46,7 @@ export default class TacticaWeaponData extends TacticaTypeDataModel {
         initial: "light",
         _part: "header",
         label: "AH.FIELD.Weight",
-        choices: () => AH.equipmentWeight,
+        choices: () => AH.equipment.weight,
       }),
       damage: new SchemaField({
         type: new StringField({

@@ -1,14 +1,14 @@
 {
-  "folder": "vphVjTmpL4W7XgTX",
-  "name": "Cold Rune",
+  "folder": "EVKaON6hHCQa15Zz",
+  "name": "Electric Rune",
   "type": "engram",
-  "img": "systems/azure-horizon/assets/icons/equipment/engrams/rune_2.png",
+  "img": "systems/azure-horizon/assets/icons/equipment/engrams/rune_1.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-cold-rune",
+    "slug": "equipment-electric-rune",
     "description": "",
-    "rarity": "common",
+    "rarity": "uncommon",
     "kind": "magic",
     "level": {
       "current": 1,
@@ -16,7 +16,7 @@
     },
     "first": {
       "schemaVersion": 1,
-      "description": "<p>You deal cold damage to the target.</p>",
+      "description": "<p>You deal electric damage to the target.</p>",
       "attributes": {
         "schemaVersion": 1,
         "enabled": true,
@@ -62,7 +62,7 @@
         "enabled": true,
         "primary": {
           "amount": "",
-          "type": "fire"
+          "type": "electric"
         },
         "secondary": {
           "amount": "",
@@ -76,7 +76,7 @@
         "type": "hp",
         "amount": ""
       },
-      "name": "Glacies",
+      "name": "Fulmen",
       "targeting": {
         "enabled": false,
         "schemaVersion": 1,
@@ -87,7 +87,7 @@
     },
     "second": {
       "schemaVersion": 1,
-      "description": "<p>You deal cold damage to the target and those adjacent to it.</p>",
+      "description": "<p>You deal electric damage to the target and those behind it.</p>",
       "attributes": {
         "schemaVersion": 1,
         "enabled": true,
@@ -101,7 +101,8 @@
         "primary": "dex",
         "secondary": "mig",
         "defense": "mdef",
-        "bonus": ""
+        "bonus": "",
+        "variant": ""
       },
       "action": {
         "schemaVersion": 1,
@@ -133,7 +134,7 @@
         "enabled": true,
         "primary": {
           "amount": "",
-          "type": "cold"
+          "type": "electric"
         },
         "secondary": {
           "amount": "",
@@ -147,14 +148,12 @@
         "type": "hp",
         "amount": ""
       },
-      "name": "Glacifera",
+      "name": "Fulminera",
       "targeting": {
         "enabled": true,
         "rule": "single",
         "range": "",
-        "traits": [
-          "splash"
-        ],
+        "traits": [],
         "schemaVersion": 1
       }
     },
@@ -234,7 +233,7 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1789669742735,
+    "createdTime": 1789669792714,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
@@ -244,7 +243,7 @@
   "ownership": {
     "default": 0
   },
-  "_id": "lpC8ipBAtDToJ9Xz",
-  "sort": 100000,
-  "_key": "!items!lpC8ipBAtDToJ9Xz"
+  "_id": "JXQ8v36NLcFerzdP",
+  "sort": 300000,
+  "_key": "!items!JXQ8v36NLcFerzdP"
 }

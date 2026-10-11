@@ -99,7 +99,8 @@
       }
     },
     "equipment": {
-      "mainHand": "8izjNnJu3IO3cVpR"
+      "mainHand": "8izjNnJu3IO3cVpR",
+      "armor": "lrnxKcU5Y9qhIHTx"
     },
     "parameters": {
       "schemaVersion": 1,
@@ -1441,6 +1442,54 @@
       "folder": null,
       "sort": 0,
       "_key": "!actors.items!oANA5fet2pxni9MA.8izjNnJu3IO3cVpR"
+    },
+    {
+      "name": "Leather Armor",
+      "type": "armor",
+      "_id": "lrnxKcU5Y9qhIHTx",
+      "img": "systems/azure-horizon/assets/icons/equipment/armor/leather_vest.png",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "equipment-leather-armor",
+        "description": "",
+        "rarity": "common",
+        "potentials": {
+          "schemaVersion": 1,
+          "entries": []
+        },
+        "weight": "light",
+        "traits": [],
+        "init": 0,
+        "def": 1,
+        "advantage": [
+          "slashing"
+        ],
+        "disadvantage": [
+          "bludgeoning"
+        ],
+        "mdef": 0
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1791452057337,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.equipment.Item.lrnxKcU5Y9qhIHTx",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!oANA5fet2pxni9MA.lrnxKcU5Y9qhIHTx"
     }
   ],
   "effects": [],

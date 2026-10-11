@@ -174,17 +174,6 @@ AH.area = {
 };
 
 /**
- * @typedef {'common'|'rare'|'epic'} AH_Rarity
- */
-
-AH.rarity = Object.freeze({
-  common: { label: "AH.EQUIPMENT.RARITY.Common", qualities: 0, color: "--ah-rarity-common-color" },
-  uncommon: { label: "AH.EQUIPMENT.RARITY.Uncommon", qualities: 1, color: "--ah-rarity-uncommon-color" },
-  rare: { label: "AH.EQUIPMENT.RARITY.Rare", qualities: 2, color: "--ah-rarity-rare-color" },
-  epic: { label: "AH.EQUIPMENT.RARITY.Epic", qualities: 4, color: "--ah-rarity-epic-color" },
-});
-
-/**
  * @typedef {'partial'|'success'|'critical'} AH_Outcome
  */
 
@@ -602,28 +591,49 @@ AH.attackTypes = Object.freeze({
  */
 
 /**
- * @type {Record<AH_Handedness, string>}
- */
-AH.equipmentWeight = {
-  light: "AH.FIELD.Light",
-  heavy: "AH.FIELD.Heavy",
-};
-
-/**
  * @typedef {'weapon'|'armor'|'accessory'|'engram'} AH_EquipmentType
  */
 
 /**
- * @type {Readonly<{equipment: {}}>}
+ * @typedef {'common'|'uncommon'|'rare'|'epic'} AH_Rarity
  */
-AH.character = Object.freeze({
-  equipment: {
+
+/**
+ * Definitions for equipment.
+ * @property {Record<AH_EquipmentType, AH_Constant>} type
+ * @property {Record<AH_EquipmentWeight, AH_Constant>} weight
+ * @property {Record<AH_Rarity, AH_Constant>} rarity
+ */
+AH.equipment = {
+  type: {
     weapon: { label: "AH.EQUIPMENT.Weapon" },
     armor: { label: "AH.EQUIPMENT.Armor" },
     accessory: { label: "AH.EQUIPMENT.Accessory" },
     engram: { label: "AH.EQUIPMENT.Engram" },
   },
-});
+  weight: {
+    light: "AH.FIELD.Light",
+    heavy: "AH.FIELD.Heavy",
+  },
+  rarity: {
+    common: { label: "AH.EQUIPMENT.RARITY.Common", qualities: 0, color: "--ah-rarity-common-color" },
+    uncommon: { label: "AH.EQUIPMENT.RARITY.Uncommon", qualities: 1, color: "--ah-rarity-uncommon-color" },
+    rare: { label: "AH.EQUIPMENT.RARITY.Rare", qualities: 2, color: "--ah-rarity-rare-color" },
+    epic: { label: "AH.EQUIPMENT.RARITY.Epic", qualities: 4, color: "--ah-rarity-epic-color" },
+  },
+  qualities: {
+    weapon: {
+      keen: { label: "AH.TRAIT.Keen", tooltip: "AH.TRAIT.KeenHint" },
+
+    },
+    armor: {
+
+    },
+    accessory: {
+
+    },
+  },
+};
 
 /**
  * @typedef {'deflection'} AH_ArmorDefense
@@ -1401,7 +1411,6 @@ AH.traits = {
     thrown: { label: "AH.TRAIT.Thrown", tooltip: "AH.TRAIT.ThrownHint" },
     shield: { label: "AH.TRAIT.Shield", tooltip: "AH.TRAIT.ShieldHint" },
     brawl: { label: "AH.TRAIT.Brawl", tooltip: "AH.TRAIT.BrawlHint" },
-    keen: { label: "AH.TRAIT.Keen", tooltip: "AH.TRAIT.KeenHint" },
   },
   armor: {
     stable: { label: "AH.TRAIT.Stable", tooltip: "AH.TRAIT.StableHint" }, // Shifting resistance

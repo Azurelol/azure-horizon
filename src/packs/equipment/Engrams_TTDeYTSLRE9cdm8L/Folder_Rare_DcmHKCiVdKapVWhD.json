@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "TTDeYTSLRE9cdm8L",
+  "name": "Rare",
+  "color": "#3b82f6",
+  "sorting": "a",
+  "_id": "DcmHKCiVdKapVWhD",
+  "description": "",
+  "sort": 250000,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791664571314,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!DcmHKCiVdKapVWhD"
+}

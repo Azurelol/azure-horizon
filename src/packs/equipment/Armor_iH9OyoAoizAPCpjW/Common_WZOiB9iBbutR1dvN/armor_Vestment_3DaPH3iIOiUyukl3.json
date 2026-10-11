@@ -3,7 +3,7 @@
   "name": "Vestment",
   "type": "armor",
   "_id": "3DaPH3iIOiUyukl3",
-  "img": "icons/svg/item-bag.svg",
+  "img": "systems/azure-horizon/assets/icons/equipment/armor/robe_white.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,

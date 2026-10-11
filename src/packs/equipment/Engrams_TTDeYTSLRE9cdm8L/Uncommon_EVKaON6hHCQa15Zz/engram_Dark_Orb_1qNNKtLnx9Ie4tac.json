@@ -1,24 +1,23 @@
 {
-  "folder": "vphVjTmpL4W7XgTX",
-  "name": "Fire Rune",
+  "folder": "EVKaON6hHCQa15Zz",
+  "name": "Dark Orb",
   "type": "engram",
-  "_id": "gR2qCEs3C3HqllYs",
-  "img": "systems/azure-horizon/assets/icons/equipment/engrams/rune_3.png",
+  "_id": "1qNNKtLnx9Ie4tac",
+  "img": "systems/azure-horizon/assets/icons/equipment/engrams/orb_2.png",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "equipment-fire-rune",
+    "slug": "equipment-dark-orb",
     "description": "",
-    "potential": 0,
-    "rarity": "common",
-    "kind": "magic",
+    "rarity": "uncommon",
     "level": {
       "current": 1,
       "max": 2
     },
+    "kind": "magic",
     "first": {
       "schemaVersion": 1,
-      "description": "<p>You deal fire damage to the target.</p>",
+      "description": "<p>You deal dark damage to the target.</p>",
       "attributes": {
         "schemaVersion": 1,
         "enabled": true,
@@ -46,7 +45,7 @@
         "schemaVersion": 1,
         "enabled": true,
         "resource": "mp",
-        "amount": "5",
+        "amount": "10",
         "perTarget": false
       },
       "effects": {
@@ -64,7 +63,7 @@
         "enabled": true,
         "primary": {
           "amount": "",
-          "type": "fire"
+          "type": "dark"
         },
         "secondary": {
           "amount": "",
@@ -78,49 +77,54 @@
         "type": "hp",
         "amount": ""
       },
-      "name": "Ignis",
       "targeting": {
-        "enabled": false
-      }
+        "schemaVersion": 1,
+        "enabled": false,
+        "range": "",
+        "rule": "",
+        "traits": []
+      },
+      "name": "Umbra"
     },
     "second": {
       "schemaVersion": 1,
-      "description": "<p>You deal fire damage to the target and those adjacent to it in the same row.</p>",
+      "description": "<p>You apply <em>Weak</em> to the target.</p>",
       "attributes": {
         "schemaVersion": 1,
-        "enabled": true,
-        "primary": "ins",
-        "secondary": "wlp",
+        "enabled": false,
+        "primary": "dex",
+        "secondary": "mig",
         "grade": "C"
       },
       "check": {
         "schemaVersion": 1,
-        "enabled": true,
+        "enabled": false,
         "primary": "dex",
         "secondary": "mig",
-        "defense": "mdef",
-        "bonus": ""
+        "defense": "def"
       },
       "action": {
         "schemaVersion": 1,
         "enabled": true,
         "type": "action",
-        "points": 2,
-        "speed": "slow",
+        "points": 1,
+        "speed": "instant",
         "traits": []
       },
       "cost": {
         "schemaVersion": 1,
         "enabled": true,
         "resource": "mp",
-        "amount": "15",
+        "amount": "10",
         "perTarget": false
       },
       "effects": {
         "schemaVersion": 1,
-        "enabled": false,
-        "selector": "",
-        "entries": [],
+        "enabled": true,
+        "selector": "deuff",
+        "entries": [
+          "weak"
+        ],
         "duration": {
           "event": "",
           "tracking": ""
@@ -128,10 +132,10 @@
       },
       "damage": {
         "schemaVersion": 1,
-        "enabled": true,
+        "enabled": false,
         "primary": {
           "amount": "",
-          "type": "fire"
+          "type": "untyped"
         },
         "secondary": {
           "amount": "",
@@ -145,15 +149,14 @@
         "type": "hp",
         "amount": ""
       },
-      "name": "Ignifera",
       "targeting": {
-        "enabled": true,
-        "rule": "single",
+        "schemaVersion": 1,
+        "enabled": false,
         "range": "",
-        "traits": [
-          "cleave"
-        ]
-      }
+        "rule": "",
+        "traits": []
+      },
+      "name": "Weaken"
     },
     "third": {
       "schemaVersion": 1,
@@ -215,11 +218,19 @@
         "enabled": false,
         "type": "hp",
         "amount": ""
-      }
+      },
+      "targeting": {
+        "schemaVersion": 1,
+        "enabled": false,
+        "range": "",
+        "rule": "",
+        "traits": []
+      },
+      "name": ""
     }
   },
   "effects": [],
-  "sort": 125000,
+  "sort": 400000,
   "ownership": {
     "default": 0
   },
@@ -228,12 +239,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1789663962175,
+    "createdTime": 1789733609204,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!gR2qCEs3C3HqllYs"
+  "_key": "!items!1qNNKtLnx9Ie4tac"
 }

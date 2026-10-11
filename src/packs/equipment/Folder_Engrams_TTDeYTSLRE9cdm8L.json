@@ -3,10 +3,10 @@
   "folder": null,
   "name": "Engrams",
   "color": null,
-  "sorting": "a",
+  "sorting": "m",
   "_id": "TTDeYTSLRE9cdm8L",
   "description": "",
-  "sort": 0,
+  "sort": 100000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

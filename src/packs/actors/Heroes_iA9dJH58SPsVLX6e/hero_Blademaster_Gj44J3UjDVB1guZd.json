@@ -875,7 +875,7 @@
           }
         },
         "level": {
-          "current": 1,
+          "current": 2,
           "max": 5
         },
         "action": {
@@ -1192,9 +1192,9 @@
         },
         "cost": {
           "schemaVersion": 1,
-          "enabled": true,
-          "resource": "mp",
-          "amount": "10",
+          "enabled": false,
+          "resource": "tp",
+          "amount": "0",
           "perTarget": false
         },
         "effects": {
@@ -1305,7 +1305,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "resource": "mp",
-          "amount": "15",
+          "amount": "5",
           "perTarget": false
         },
         "effects": {
@@ -1426,7 +1426,7 @@
           "enabled": true,
           "selector": "buff",
           "entries": [
-            "blade-form"
+            "blademaster-blade-form"
           ],
           "duration": {
             "event": "",
@@ -1511,9 +1511,13 @@
         "weight": "light",
         "def": 0,
         "mdef": 0,
-        "init": 0,
-        "advantage": [],
-        "disadvantage": []
+        "init": 2,
+        "advantage": [
+          "fire"
+        ],
+        "disadvantage": [
+          "slashing"
+        ]
       },
       "effects": [],
       "flags": {},

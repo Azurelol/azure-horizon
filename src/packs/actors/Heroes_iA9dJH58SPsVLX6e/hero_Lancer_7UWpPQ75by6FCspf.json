@@ -973,9 +973,11 @@
         },
         "effects": {
           "schemaVersion": 1,
-          "enabled": false,
-          "selector": "",
-          "entries": [],
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "lancer-jump"
+          ],
           "duration": {
             "event": "",
             "tracking": ""
@@ -1187,7 +1189,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "resource": "mp",
-          "amount": "10",
+          "amount": "5",
           "perTarget": false
         },
         "targeting": {
@@ -1196,7 +1198,7 @@
           "range": "",
           "rule": "single",
           "traits": [
-            "column"
+            "pierce"
           ]
         },
         "effects": {
@@ -1302,7 +1304,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "resource": "mp",
-          "amount": "10",
+          "amount": "5",
           "perTarget": false
         },
         "targeting": {
@@ -1415,7 +1417,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "resource": "mp",
-          "amount": "20",
+          "amount": "10",
           "perTarget": false
         },
         "targeting": {
@@ -1491,7 +1493,7 @@
         "schemaVersion": 1,
         "revision": 1,
         "slug": "lancer-preempt",
-        "description": "<p>When you are targeted by a melee attack you may perform a free attack before your attacker resolves their action.</p>",
+        "description": "<p>When you are targeted by a melee attack and the check result was even you may perform a free attack before your attacker resolves their action.</p>",
         "check": {
           "schemaVersion": 1,
           "enabled": false,
@@ -1519,9 +1521,9 @@
         },
         "cost": {
           "schemaVersion": 1,
-          "enabled": false,
-          "resource": "mp",
-          "amount": "",
+          "enabled": true,
+          "resource": "tp",
+          "amount": "1",
           "perTarget": false
         },
         "effects": {
@@ -1632,7 +1634,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "resource": "mp",
-          "amount": "10",
+          "amount": "5",
           "perTarget": false
         },
         "effects": {

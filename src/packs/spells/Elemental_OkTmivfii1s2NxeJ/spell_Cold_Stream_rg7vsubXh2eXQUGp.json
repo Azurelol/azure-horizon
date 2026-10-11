@@ -48,7 +48,7 @@
       "schemaVersion": 1,
       "enabled": true,
       "resource": "mp",
-      "amount": "15",
+      "amount": "10",
       "perTarget": false
     },
     "effects": {
@@ -67,7 +67,9 @@
       "range": "ranged",
       "type": "action",
       "points": 2,
-      "traits": []
+      "traits": [],
+      "enabled": true,
+      "speed": "fast"
     },
     "domain": "elemental",
     "speed": "fast",

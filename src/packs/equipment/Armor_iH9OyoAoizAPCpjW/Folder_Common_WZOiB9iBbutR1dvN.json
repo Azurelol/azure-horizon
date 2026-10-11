@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": "iH9OyoAoizAPCpjW",
   "name": "Common",
-  "color": "#008000",
+  "color": "#9e9e9e",
   "sorting": "a",
   "_id": "WZOiB9iBbutR1dvN",
   "description": "",
-  "sort": 200000,
+  "sort": 0,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

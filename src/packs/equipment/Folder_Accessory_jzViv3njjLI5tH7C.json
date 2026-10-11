@@ -3,10 +3,10 @@
   "folder": null,
   "name": "Accessory",
   "color": null,
-  "sorting": "a",
+  "sorting": "m",
   "_id": "jzViv3njjLI5tH7C",
   "description": "",
-  "sort": 400000,
+  "sort": 300000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

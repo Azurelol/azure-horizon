@@ -3,6 +3,7 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
 import { WeaponOptionsDataModel } from "./fields/weapon-options-data-model.mjs";
 import { EquipmentDataMixin } from "./equipment-data-model.mjs";
 import { TraitsField } from "./fields/_module.mjs";
+import { ObjectUtils } from "../../utils/_module.mjs";
 
 /**
  * Represents a hero's weapon, used for performing basic attacks and with some skills.
@@ -23,7 +24,7 @@ export default class WeaponDataModel extends EquipmentDataMixin(AttackDataModel)
         initial: "light",
         _part: "header",
         label: "AH.FIELD.Weight",
-        choices: () => AH.equipmentWeight,
+        choices: () => AH.equipment.weight,
       }),
       handedness: new StringField({
         initial: "one",
@@ -39,6 +40,30 @@ export default class WeaponDataModel extends EquipmentDataMixin(AttackDataModel)
       }),
       options: new EmbeddedDataField(WeaponOptionsDataModel, {}),
     });
+  }
+
+  /** @inheritdoc */
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
+    /** @type AH_Rarity **/
+    const newRarity = ObjectUtils.getProperty(changes, "system.rarity");
+    if (newRarity) {
+      switch (newRarity) {
+        case "common":
+          break;
+        case "uncommon":
+          break;
+        case "rare":
+          break;
+        case "epic":
+          break;
+
+      }
+    }
+
+    return true;
   }
 
   *allApplicableTraits() {

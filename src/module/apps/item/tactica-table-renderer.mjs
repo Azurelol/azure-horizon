@@ -73,7 +73,7 @@ export class TacticaWeaponTableRenderer extends TacticaTableRenderer {
       }),
       TableColumns.textColumn({
         header: "AH.FIELD.Weight",
-        getText: (entry) => localize(AH.equipmentWeight[entry.system.data.weight].label),
+        getText: (entry) => localize(AH.equipment.weight[entry.system.data.weight].label),
       }),
     ];
   }

@@ -1,5 +1,5 @@
 {
-  "folder": "vphVjTmpL4W7XgTX",
+  "folder": "EVKaON6hHCQa15Zz",
   "name": "Light Orb",
   "type": "engram",
   "_id": "4JXP7BXGDR9yMFuX",
@@ -9,7 +9,7 @@
     "revision": 1,
     "slug": "equipment-light-orb",
     "description": "",
-    "rarity": "common",
+    "rarity": "uncommon",
     "level": {
       "current": 1,
       "max": 2
@@ -227,7 +227,7 @@
     }
   },
   "effects": [],
-  "sort": 112500,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },

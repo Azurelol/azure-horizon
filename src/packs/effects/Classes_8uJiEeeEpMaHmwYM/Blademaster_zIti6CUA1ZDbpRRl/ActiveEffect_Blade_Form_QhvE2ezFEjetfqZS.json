@@ -25,7 +25,7 @@
     "expiry": null,
     "expired": false
   },
-  "description": "<p>Your next <em>blademaster</em> skill gains an additional effect.</p>",
+  "description": "<p>You can perform a <em>Blademaster</em> weapon skill.</p>",
   "origin": null,
   "tint": "#ffffff",
   "transfer": false,

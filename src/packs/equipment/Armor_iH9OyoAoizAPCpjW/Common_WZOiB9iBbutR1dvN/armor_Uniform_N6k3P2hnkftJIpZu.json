@@ -13,7 +13,8 @@
     "category": "light",
     "traits": [
       "comfort"
-    ]
+    ],
+    "init": 1
   },
   "effects": [],
   "sort": 112500,

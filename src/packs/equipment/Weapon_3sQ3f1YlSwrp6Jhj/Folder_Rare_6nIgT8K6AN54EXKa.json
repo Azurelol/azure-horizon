@@ -2,11 +2,11 @@
   "type": "Item",
   "folder": "3sQ3f1YlSwrp6Jhj",
   "name": "Rare",
-  "color": "#0080ff",
+  "color": "#3b82f6",
   "sorting": "a",
   "_id": "6nIgT8K6AN54EXKa",
   "description": "",
-  "sort": 0,
+  "sort": -50000,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",

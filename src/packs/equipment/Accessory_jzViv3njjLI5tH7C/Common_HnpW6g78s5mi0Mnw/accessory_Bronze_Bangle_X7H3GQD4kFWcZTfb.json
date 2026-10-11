@@ -8,10 +8,19 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "equipment-bronze-bangle",
-    "description": ""
+    "description": "",
+    "rarity": "common",
+    "slots": {
+      "entries": [
+        {
+          "item": null
+        }
+      ],
+      "max": 1
+    }
   },
   "effects": [],
-  "sort": 100000,
+  "sort": -100000,
   "ownership": {
     "default": 0
   },

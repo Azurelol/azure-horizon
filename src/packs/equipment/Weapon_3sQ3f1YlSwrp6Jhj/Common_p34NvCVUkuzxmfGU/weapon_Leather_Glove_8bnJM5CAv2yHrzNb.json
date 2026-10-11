@@ -45,7 +45,8 @@
       "schemaVersion": 1,
       "enabled": false,
       "traits": []
-    }
+    },
+    "rarity": "common"
   },
   "effects": [],
   "sort": -150000,

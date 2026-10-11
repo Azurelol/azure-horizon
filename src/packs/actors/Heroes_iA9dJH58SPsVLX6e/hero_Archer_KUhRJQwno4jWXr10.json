@@ -976,7 +976,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "resource": "mp",
-          "amount": "10",
+          "amount": "5",
           "perTarget": false
         },
         "effects": {
@@ -1398,7 +1398,7 @@
           "schemaVersion": 1,
           "enabled": true,
           "primary": {
-            "amount": "7",
+            "amount": "8",
             "type": "piercing"
           },
           "secondary": {
@@ -1454,20 +1454,28 @@
         "revision": 1,
         "slug": "equipment-elven-leather",
         "description": "",
-        "rarity": "common",
-        "traits": [
-          "fleet"
-        ],
+        "rarity": "rare",
+        "traits": [],
         "potentials": {
           "schemaVersion": 1,
-          "entries": []
+          "entries": [
+            {
+              "text": "<p>At the start of a battle you may spend 5 MP and gain <em>Stealth</em>.</p>"
+            }
+          ]
         },
         "weight": "light",
         "def": 0,
-        "mdef": 0,
+        "mdef": 1,
         "init": 0,
-        "advantage": [],
-        "disadvantage": []
+        "advantage": [
+          "slashing",
+          "electric"
+        ],
+        "disadvantage": [
+          "piercing",
+          "fire"
+        ]
       },
       "effects": [],
       "flags": {},

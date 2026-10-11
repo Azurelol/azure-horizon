@@ -33,7 +33,9 @@ export default class AccessoryDataModel extends EquipmentDataModel {
     return Object.assign(super.defineSchema(), {
       slots: new SchemaField({
         entries: new ArrayField(new EngramDataField(), {}),
-        max: new NumberField({ initial: 1, min: 1, integer: true, nullable: false, label: "AH.ITEM.Engram.plural", _part: "header", _classes: "ah-flex-shrink" }),
+        max: new NumberField({ initial: 1, min: 1, integer: true,
+          nullable: false, label: "AH.ITEM.Engram.plural",
+          _part: "header", _classes: "ah-flex-shrink" }),
       }),
     });
   }
@@ -52,11 +54,26 @@ export default class AccessoryDataModel extends EquipmentDataModel {
     const allowed = await super._preUpdate(changes, options, user);
     if (allowed === false) return false;
 
+    /** @type AH_Rarity **/
+    const newRarity = ObjectUtils.getProperty(changes, "system.rarity");
+    if (newRarity) {
+      switch (newRarity) {
+        case "common":
+          break;
+        case "uncommon":
+          break;
+        case "rare":
+          break;
+        case "epic":
+          break;
+
+      }
+    }
+
     const newMax = ObjectUtils.getProperty(changes, "system.slots.max");
     if (newMax !== undefined) {
       const incomingEntries = ObjectUtils.getProperty(changes, "system.slots.entries");
       const baseEntries = incomingEntries ?? this.slots.entries;
-
       const entries = ObjectUtils.safeClone(
         baseEntries.map(e => (e.toObject ? e.toObject() : e)),
       );
@@ -69,19 +86,9 @@ export default class AccessoryDataModel extends EquipmentDataModel {
         entries.length = newMax;
       }
 
-      foundry.utils.setProperty(changes, "system.slots.entries", entries);
+      ObjectUtils.setProperty(changes, "system.slots.entries", entries);
     }
 
     return true;
   }
-
-  static get templates() {
-    return {
-      properties: [
-        systemTemplatePath("sheets/item/model/equipment-data-model"),
-        systemTemplatePath("sheets/item/model/engram-level-partial"),
-      ],
-    };
-  }
-
 }

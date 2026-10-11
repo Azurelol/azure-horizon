@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": "jzViv3njjLI5tH7C",
+  "name": "Uncommon",
+  "color": "#3fa34d",
+  "sorting": "a",
+  "_id": "R5sGiR0mvZ5NVHMO",
+  "description": "",
+  "sort": 150000,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791711538260,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!R5sGiR0mvZ5NVHMO"
+}
