@@ -29,13 +29,6 @@ export class PotentialField extends SchemaField {
     container.append(textInput);
     return container;
   }
-
-  // /** @override */
-  // toFormGroup(groupConfig = {}, inputConfig = {}) {
-  //   const group = super.toFormGroup(groupConfig, inputConfig);
-  //   group.classList.add("ah-potential-form-group");
-  //   return group;
-  // }
 }
 
 /**

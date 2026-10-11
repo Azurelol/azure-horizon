@@ -17,6 +17,19 @@ export class EngramDataField extends SchemaField {
       item: new DocumentIdField(Item, { nullable: true, readonly: false }),
     }, options);
   }
+
+  /** @override */
+  _toInput(config) {
+    const container = document.createElement("div");
+    const textField = this.fields.item;
+    const textInput = textField.toInput({
+      ...config,
+      name: `${config.name}.text`,
+      value: config.value?.text ?? "",
+    });
+    container.append(textInput);
+    return container;
+  }
 }
 
 /**
@@ -32,7 +45,9 @@ export default class AccessoryDataModel extends EquipmentDataModel {
     const { SchemaField, StringField, EmbeddedDataField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       slots: new SchemaField({
-        entries: new ArrayField(new EngramDataField(), {}),
+        entries: new ArrayField(new EngramDataField(), {
+          config: false,
+        }),
         max: new NumberField({ initial: 1, min: 1, integer: true,
           nullable: false, label: "AH.ITEM.Engram.plural",
           _part: "header", _classes: "ah-flex-shrink" }),
@@ -57,17 +72,23 @@ export default class AccessoryDataModel extends EquipmentDataModel {
     /** @type AH_Rarity **/
     const newRarity = ObjectUtils.getProperty(changes, "system.rarity");
     if (newRarity) {
+      let maxSlots;
       switch (newRarity) {
         case "common":
+          maxSlots = 1;
           break;
         case "uncommon":
+          maxSlots = 2;
           break;
         case "rare":
+          maxSlots = 3;
           break;
         case "epic":
+          maxSlots = 4;
           break;
-
       }
+      ObjectUtils.setProperty(changes, "system.slots.max", maxSlots);
+
     }
 
     const newMax = ObjectUtils.getProperty(changes, "system.slots.max");

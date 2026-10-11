@@ -624,7 +624,6 @@ AH.equipment = {
   qualities: {
     weapon: {
       keen: { label: "AH.TRAIT.Keen", tooltip: "AH.TRAIT.KeenHint" },
-
     },
     armor: {
 
@@ -1478,7 +1477,10 @@ AH.icons = {
   block: "ah-icon-thp",
   pp: "ah-icon-pp",
   xp: "ah-icon-xp",
-  ap: "ah-icon-ap",
+
+  action: "ah-icon-action",
+  reaction: "ah-icon-reaction",
+  activity: "ah-icon-activity",
 
   def: "ah-icon-def",
   mdef: "ah-icon-mdef",
@@ -1569,7 +1571,7 @@ AH.icons = {
   dice: "ra ra-perspective-dice-six",
   open: "fas fa-open",
   close: "fas fa-close",
-  menu: "fa-solid fa-bars",
+  menu: "fa-solid fa-ellipsis-h",
   data: "fa fa-tags",
   rarity: "fa fa-star",
 
@@ -1586,7 +1588,7 @@ AH.icons = {
   power: "ah-icon-power",
 
   // Field Types
-  action: "fas fa-hand-fist",
+  actionField: "fas fa-hand-fist",
   attributes: "fas fa-sliders",
   weapon: "fas fa-gun",
   usage: "fas fa-gun",

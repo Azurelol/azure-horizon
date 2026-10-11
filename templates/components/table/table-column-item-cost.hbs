@@ -8,8 +8,11 @@
 
     {{#if model.action.enabled}}
       <span>
-      <i class="ah-icon --xs {{ahIconClass 'ap'}}"></i> {{model.action.points}}
-    </span>
+         <i class="ah-icon --xs {{ahIconClass model.action.type}}"></i>
+        {{#if (eq model.action.type 'action') }}
+          {{model.action.points}}
+        {{/if}}
+      </span>
     {{/if}}
 
     {{#if (eq model.type 'consumable')}}
