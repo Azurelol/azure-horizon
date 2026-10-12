@@ -643,24 +643,6 @@ AH.armorDefense = Object.freeze({
 });
 
 /**
- * @typedef {'buff'|'debuff'} AH_EffectSelector
- */
-
-AH.effectSelector = Object.freeze({
-  buff: "AH.FIELD.Buff",
-  deuff: "AH.FIELD.Debuff",
-});
-
-/**
- * @description How the active effect's duration is tracked
- * @type {{self: string, source: string}}
- */
-AH.effectTracking = {
-  self: "AH.COMMON.Self",
-  source: "AH.COMMON.Source",
-};
-
-/**
  * @typedef {'bar'|'clock'} AH_TrackerStyle
  */
 
@@ -807,10 +789,50 @@ AH.comparisonOperator = {
 /**
  * @typedef {"self", "single", "multiple"} AH_TargetingRule
  */
-AH.targetingRule = {
-  self: { label: "AH.TARGETING.RULE.Self" },
-  single: { label: "AH.TARGETING.RULE.Single" },
-  multiple: { label: "AH.TARGETING.RULE.Multiple" },
+
+/**
+ * @property area
+ * @property rule
+ */
+AH.targeting = {
+  area: {
+    cleave: { label: "AH.TARGETING.AREA.Cleave", tooltip: "AH.TRAIT.CleaveHint" },
+    cross: { label: "AH.TARGETING.AREA.Cross", tooltip: "AH.TRAIT.CrossHint" },
+    burst: { label: "AH.TARGETING.AREA.Burst", tooltip: "AH.TRAIT.BurstHint" },
+    chain: { label: "AH.TARGETING.AREA.Chain", tooltip: "AH.TRAIT.ChainHint" },
+    row: { label: "AH.TARGETING.AREA.Row", tooltip: "AH.TRAIT.RowHint" },
+    column: { label: "AH.TARGETING.AREA.Column", tooltip: "AH.TRAIT.ColumnHint" },
+  },
+  rule: {
+    self: { label: "AH.TARGETING.RULE.Self" },
+    single: { label: "AH.TARGETING.RULE.Single" },
+    multiple: { label: "AH.TARGETING.RULE.Multiple" },
+  },
+};
+
+/**
+ * @typedef {'buff'|'debuff'} AH_EffectSelector
+ */
+
+/**
+ * @desc Constants for active effects in the system.
+ * @property tracking  How the active effect's duration is tracked
+ * @property selector
+ * @property area
+ */
+AH.effect = {
+  area: {
+    ...AH.targeting.area,
+    single: { label: "AH.TARGETING.AREA.Single", tooltip: "AH.TRAIT.SingleHint" },
+  },
+  selector: {
+    buff: "AH.FIELD.Buff",
+    deuff: "AH.FIELD.Debuff",
+  },
+  tracking: {
+    self: "AH.COMMON.Self",
+    source: "AH.COMMON.Source",
+  },
 };
 
 /**
@@ -1392,15 +1414,6 @@ AH.traits = {
     chain: { label: "AH.TRAIT.Chain", tooltip: "AH.TRAIT.ChainHint" },
   },
 
-  // Targeting trait
-  target: {
-    cleave: { label: "AH.TARGETING.AREA.Cleave", tooltip: "AH.TRAIT.CleaveHint" },
-    splash: { label: "AH.TARGETING.AREA.Splash", tooltip: "AH.TRAIT.SplashHint" },
-    chain: { label: "AH.TARGETING.AREA.Chain", tooltip: "AH.TRAIT.ChainHint" },
-    row: { label: "AH.TARGETING.AREA.Row", tooltip: "AH.TRAIT.RowHint" },
-    column: { label: "AH.TARGETING.AREA.Column", tooltip: "AH.TRAIT.ColumnHint" },
-  },
-
   // Equipment
   weapon: {
     reach: { label: "AH.TRAIT.Reach", tooltip: "AH.TRAIT.ReachHint" },
@@ -1419,6 +1432,8 @@ AH.traits = {
   consumable: {
     potion: { label: "AH.TRAIT.Potion", tooltip: "AH.TRAIT.PotionHint" },
   },
+
+  // Adversary
   family: {
     beast: { label: "AH.ADVERSARY.FAMILY.Beast" }, // Natural
     monster: { label: "AH.ADVERSARY.FAMILY.Monster" }, // Unnatural
@@ -1426,6 +1441,11 @@ AH.traits = {
     construct: { label: "AH.ADVERSARY.FAMILY.Construct" }, // Engineered
     elemental: { label: "AH.ADVERSARY.FAMILY.Elemental" },
     plant: { label: "AH.ADVERSARY.FAMILY.Plant" },
+  },
+
+  // Active Effects
+  effect: {
+
   },
 };
 
@@ -1456,6 +1476,7 @@ AH.traits.all = Object.freeze({
   ...AH.tactica.unit.traits,
   ...AH.tactica.weapon.category,
   ...AH.tactica.weapon.traits,
+  ...AH.targeting.area,
 });
 Object.freeze(AH.traits);
 

@@ -39,36 +39,144 @@ function sizeBar(bg, fill, bh, tokenWidth, pct) {
   return { width: bg.width, height: bg.height };
 }
 
+function toRegionShapes(shapes, center, gridSize) {
+  return shapes.map((shape) => {
+    const hole = shape.hole ?? false;
+    if (shape.type === "circle") {
+      return { type: "circle", x: center.x, y: center.y, radius: shape.radius * gridSize, hole };
+    }
+    const width = shape.width * gridSize;
+    const height = shape.height * gridSize;
+    return {
+      type: "rectangle",
+      x: center.x - width / 2,
+      y: center.y - height / 2,
+      width,
+      height,
+      rotation: shape.rotation ?? 0,
+      hole,
+    };
+  });
+}
+
+/**
+ * Dimensions are in grid cells, centered on the marker's origin.
+ *
+ * @typedef CircleShapeData
+ * @property {'circle'} type
+ * @property {Number} radius
+ * @property {Boolean} [hole=false]
+ *
+ * @typedef RectangleShapeData
+ * @property {'rectangle'} type
+ * @property {Number} width
+ * @property {Number} height
+ * @property {Number} [rotation=0]  Degrees
+ * @property {Boolean} [hole=false]
+ *
+ * @typedef {CircleShapeData|RectangleShapeData} ShapeData
+ */
+
 /**
  * @typedef TargetMarkerData
- * @property {String} key
+ * @property {String} texture The texture key to use.
  * @property {'center'|'above'|'below'} position
- * @property {'circle'|'rectangle'} shape.type
- * @property {Number} shape.radius
+ * @property {ShapeData[]} shapes
  * @property {Size} size
- * @property {Number} radius
  */
+
+const USE_REGIONS = true;
 
 /**
  * @type {Record<String, TargetMarkerData>}
  */
-const TARGET_MARKERS = Object.freeze({
-  mark: {
-    key: "markImage",
-    position: "above",
-    shape: {
-      type: "circle",
-      radius: 0.5,
+const TEMPLATE_AREAS = Object.freeze({
+  single: {
+    texture: {
+      key: "markImage",
+      position: "above",
+      size: {
+        width: 64,
+        height: 64,
+      },
     },
-    size: {
-      width: 64,
-      height: 64,
-    },
+    shapes: [
+      {
+        type: "circle",
+        radius: 0.5,
+      },
+    ],
   },
-
+  burst: {
+    texture: {
+      key: "markBurst",
+      position: "below",
+      size: {
+        width: 64,
+        height: 64,
+      },
+    },
+    shapes: [
+      {
+        type: "circle",
+        radius: 1.5,
+      },
+    ],
+  },
+  cross: {
+    texture: {
+      key: "markCross",
+      position: "below",
+      size: {
+        width: 64,
+        height: 64,
+      },
+    },
+    shapes: [
+      { type: "rectangle", width: 3, height: 1 },
+      { type: "rectangle", width: 1, height: 3 },
+    ],
+  },
+  cleave: {
+    texture: {
+      key: "markCleave",
+      position: "below",
+      size: {
+        width: 64,
+        height: 64,
+      },
+    },
+    shapes: [
+      { type: "rectangle", width: 1, height: 3 },
+    ],
+  },
+  row: {
+    texture: {
+      key: "markRow",
+      position: "below",
+      size: {
+        width: 64,
+        height: 64,
+      },
+    },
+    shapes: [
+      { type: "rectangle", width: 1, height: 5 },
+    ],
+  },
+  column: {
+    texture: {
+      key: "markColumn",
+      position: "below",
+      size: {
+        width: 64,
+        height: 64,
+      },
+    },
+    shapes: [
+      { type: "rectangle", width: 3, height: 1 },
+    ],
+  },
 });
-
-const USE_REGIONS = true;
 
 /**
  * A Placeable Object subclass adding system-specific behavior and registered in CONFIG.Token.objectClass.
@@ -103,12 +211,11 @@ export class AHToken extends foundry.canvas.placeables.Token {
     const drawnEffects = new Set();
     // For every effect
     for (const effect of this.actor?.effects ?? []) {
-      // If it has a status
-      if (effect.statuses.size > 0) {
-        const status = Array.from(effect.statuses)[0];
-        if (status in TARGET_MARKERS) {
+      if (effect.system.template.area) {
+        const area = effect.system.template.area;
+        if (area in TEMPLATE_AREAS) {
           drawnEffects.add(effect.id);
-          const data = TARGET_MARKERS[status];
+          const data = TEMPLATE_AREAS[area];
           if (USE_REGIONS) {
             this._drawEffectRegion(effect, data);
           }
@@ -245,21 +352,21 @@ export class AHToken extends foundry.canvas.placeables.Token {
    */
   _drawEffectMarker(effect, data) {
     if (this.#effectMarkers?.[effect.id]) return; // already drawn
-    const texture = AHTextures.get(data.key);
+    const texture = AHTextures.get(data.texture.key);
     const sprite = new Sprite(texture);
     sprite.anchor.set(0.5);
-    sprite.width = data.size.width;
-    sprite.height = data.size.height;
+    sprite.width = data.texture.size.width;
+    sprite.height = data.texture.size.height;
     sprite.zIndex = 1000;
-    switch (data.position) {
+    switch (data.texture.position) {
       case "center":
         sprite.position.set(this.w / 2, this.h / 2);
         break;
       case "above":
-        this.translateImage(sprite, data.size, "top", -10);
+        this.translateImage(sprite, data.texture.size, "top", -10);
         break;
       case "below":
-        this.translateImage(sprite, data.size, "bottom", 0);
+        this.translateImage(sprite, data.texture.size, "bottom", 0);
         break;
     }
 
@@ -274,21 +381,14 @@ export class AHToken extends foundry.canvas.placeables.Token {
    */
   async _drawEffectRegion(effect, data) {
     this.#tokenRegions ??= this._getAttachedTokenRegions();
-    if (this.#tokenRegions?.[effect.id]) return; // already created
+    if (this.#tokenRegions?.[effect.id]) return;
 
-    const pixelsPerUnit = canvas.grid.size / canvas.grid.distance; // e.g. 100px / 5ft = 20 px-per-foot
-    const center = this.center; // Token#center — {x, y} in scene coordinates
     const regionDoc = await RegionDocument.create({
-      shapes: [{
-        type: data.shape.type,
-        x: center.x,
-        y: center.y,
-        radius: data.shape.radius * pixelsPerUnit,
-      }],
+      shapes: this._buildRegionShapes(data.shapes),
       attachment: { token: this.document.id },
-      color: data.color ?? "#ff0000",
+      color: data.color ?? "#dc3535",
       visibility: CONST.REGION_VISIBILITY.ALWAYS,
-      name: `${effect.name} Telegraph`,
+      name: `${effect.name} Template`,
       flags: {
         [systemID]: { effectId: effect.id },
       },
@@ -297,10 +397,41 @@ export class AHToken extends foundry.canvas.placeables.Token {
     (this.#tokenRegions ??= {})[effect.id] = regionDoc.id;
   }
 
+  /**
+   * Convert template shape definitions into Region shape data centered on this token.
+   * @param {ShapeData[]} shapes
+   * @returns {object[]}
+   * @private
+   */
+  _buildRegionShapes(shapes) {
+    const pixelsPerUnit = canvas.grid.size / canvas.grid.distance;
+    const { x, y } = this.center; // Token#center, in scene coordinates
+
+    return shapes.map((shape) => {
+      const hole = shape.hole ?? false;
+
+      if (shape.type === "circle") {
+        return { type: "circle", x, y, radius: shape.radius * pixelsPerUnit, hole };
+      }
+
+      const width = shape.width * pixelsPerUnit;
+      const height = shape.height * pixelsPerUnit;
+      return {
+        type: "rectangle",
+        x: x - width / 2,
+        y: y - height / 2,
+        width,
+        height,
+        rotation: shape.rotation ?? 0,
+        hole,
+      };
+    });
+  }
+
   _getAttachedTokenRegions() {
     const map = {};
     for (const region of canvas.scene.regions) {
-      if (region.attachment?.token._id !== this.document.id) continue;
+      if (region.attachment?.token?._id !== this.document.id) continue;
       const effectId = region.getFlag(systemID, "effectId");
       if (effectId) map[effectId] = region.id;
     }

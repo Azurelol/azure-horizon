@@ -14,7 +14,9 @@ async function preload() {
   _TEXTURES.pressureFill = await loadTexture(systemAssetPath("ui/bars/bar-pressure-fill.png"));
   _TEXTURES.pressureFrame = await loadTexture(systemAssetPath("ui/bars/bar-pressure-frame.png"));
 
-  _TEXTURES.markImage = await loadTexture(systemAssetPath("tiles/mark.png"));
+  _TEXTURES.markSingle = await loadTexture(systemAssetPath("tiles/mark.png"));
+  _TEXTURES.markBurst = await loadTexture(systemAssetPath("tiles/mark.png"));
+  _TEXTURES.markCross = await loadTexture(systemAssetPath("tiles/mark.png"));
 }
 
 function get(key) {

@@ -88,6 +88,13 @@ class StatusDataBuilder {
     return this;
   }
 
+  template(area) {
+    this.#data.system.template = {
+      area: area,
+    };
+    return this;
+  }
+
   stack(track, duration) {
     this.#data.system.stacking = {
       track: track,
@@ -356,7 +363,7 @@ const STATUS_EFFECTS = Object.freeze({
       },
     ])
     .build(),
-  staggerResistance: new StatusDataBuilder("stagger-resistance", "AH.STATUS.StaggerResistance")
+  ["stagger-resistance"]: new StatusDataBuilder("stagger-resistance", "AH.STATUS.StaggerResistance")
     .endOfCombat()
     .track("stack", 1, 3)
     .stack(true, true)
@@ -365,6 +372,27 @@ const STATUS_EFFECTS = Object.freeze({
 
   // TARGETING
   mark: new StatusDataBuilder("mark", "AH.STATUS.Mark")
+    .template("single")
+    .hideIcon()
+    .build(),
+  ["mark-burst"]: new StatusDataBuilder("mark-burst", "AH.TARGETING.AREA.Burst")
+    .template("burst")
+    .hideIcon()
+    .build(),
+  ["mark-cross"]: new StatusDataBuilder("mark-cross", "AH.TARGETING.AREA.Cross")
+    .template("cross")
+    .hideIcon()
+    .build(),
+  ["mark-cleave"]: new StatusDataBuilder("mark-cleave", "AH.TARGETING.AREA.Cleave")
+    .template("cleave")
+    .hideIcon()
+    .build(),
+  ["mark-row"]: new StatusDataBuilder("mark-row", "AH.TARGETING.AREA.Row")
+    .template("row")
+    .hideIcon()
+    .build(),
+  ["mark-column"]: new StatusDataBuilder("mark-column", "AH.TARGETING.AREA.Column")
+    .template("column")
     .hideIcon()
     .build(),
   cast: new StatusDataBuilder("cast", "AH.STATUS.Cast")

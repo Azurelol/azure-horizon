@@ -1,6 +1,7 @@
 import { SubDocumentCollectionField, TrackerDataModel, VersionedDataModel } from "../api/_module.mjs";
 import { RuleElementDataModel } from "./_module.mjs";
 import { EffectPredicateDataModel } from "./effect-predicate-data-model.mjs";
+import AH from "../../config.mjs";
 
 /**
  * @typedef AH_ActiveEffectDuration
@@ -53,6 +54,13 @@ export default class ActiveEffectDataModel extends foundry.data.ActiveEffectType
         track: new BooleanField(),
         duration: new BooleanField(),
         increment: new NumberField({ initial: 1, nullable: false }),
+      }),
+      template: new SchemaField({
+        area: new StringField({
+          initial: "",
+          blank: true,
+          choices: () => AH.effect.area,
+        }),
       }),
       predicates: new SubDocumentCollectionField(EffectPredicateDataModel, {}),
       rules: new SubDocumentCollectionField(RuleElementDataModel),

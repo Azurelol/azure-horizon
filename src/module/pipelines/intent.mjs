@@ -89,8 +89,8 @@ const ROLE_ROUTINES = Object.freeze({
     },
     elite: {
       default: [
-        ["attack", "damage"],
-        ["empower", "damage"],
+        ["attack", "control"],
+        ["prepare", "burst"],
       ],
     },
     champion: {
@@ -195,14 +195,14 @@ const ROLE_ROUTINES = Object.freeze({
   supporter: {
     standard: {
       default: [
-        ["attack"],
         ["empower"],
+        ["recovery"],
       ],
     },
     elite: {
       default: [
-        ["attack", "empower", "damage"],
-        ["empower", "fortify", "damage"],
+        ["empower", "attack", "recovery"],
+        ["empower", "fortify", "recovery"],
       ],
     },
     champion: {

@@ -30,19 +30,6 @@ export class SkillTableRenderer extends ItemTableRenderer {
       });
     }
 
-    // columns.push(TableColumns.textColumn({
-    //   header: "AH.CHARACTER.SkillLevel.short",
-    //   tooltip: "AH.CHARACTER.SkillLevel.long",
-    //   getText: (entry) => {
-    //     if (this.#renderClass || (entry.system.level.max === 1)) {
-    //       return entry.system.level.max;
-    //     }
-    //     else {
-    //       return `${entry.system.level.current}/${entry.system.level.max}`;
-    //     }
-    //   },
-    // }));
-
     columns.push(TableColumns.trackerField({
       header: "AH.CHARACTER.SkillLevel.short",
       tooltip: "AH.CHARACTER.SkillLevel.long",

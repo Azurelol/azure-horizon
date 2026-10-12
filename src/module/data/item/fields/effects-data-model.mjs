@@ -20,12 +20,12 @@ export class EffectsDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
     const { StringField, SchemaField, ArrayField, BooleanField, NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
-      selector: new StringField({ initial: "", blank: true, choices: Object.keys(AH.effectSelector), formOptions: getFormSelectOptions(AH.effectSelector) }),
+      selector: new StringField({ initial: "", blank: true, choices: Object.keys(AH.effect.selector), formOptions: getFormSelectOptions(AH.effect.selector) }),
       entries: new ArrayField(new StringField({ nullable: true })),
       duration: new SchemaField({
         event: new StringField({ initial: "", blank: true, choices: Object.keys(AH.intervals) }),
         interval: new NumberField({ min: 0, blank: true, integer: true }),
-        tracking: new StringField({ initial: "", blank: true, choices: Object.keys(AH.effectTracking) }),
+        tracking: new StringField({ initial: "", blank: true, choices: Object.keys(AH.effect.tracking) }),
       }),
     });
   }

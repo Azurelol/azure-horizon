@@ -820,6 +820,8 @@
       "Tracker": "Tracker",
       "Style": "Style",
       "Rarity": "Rarity",
+      "Template": "Template",
+      "Track": "Track",
       "Rule": "Rule",
       "Operator": "Operator",
       "Active": "Active",
@@ -1100,9 +1102,10 @@
         "Multiple": "Multiple"
       },
       "AREA": {
-        "Splash": "Splash",
+        "Burst": "Burst",
         "Cleave": "Cleave",
         "Chain": "Chain",
+        "Cross": "Cross",
         "Row": "Row",
         "Column": "Column"
       }
@@ -1130,6 +1133,7 @@
       "Grab": "Grab",
       "Berserk": "Berserk",
       "Mark": "Mark",
+      "Marker": "Marker",
       "Freeze": "Freeze",
       "Delay": "Delay",
       "Daze": "Daze",

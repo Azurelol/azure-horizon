@@ -22,10 +22,10 @@ export class TargetingDataModel extends OptionalFieldsetDataModel {
         initial: "",
         blank: true,
         label: "AH.FIELD.Targeting",
-        choices: () => AH.targetingRule,
+        choices: () => AH.targeting.rule,
       }),
       traits: new TraitsField({
-        options: getFormSelectOptions(AH.traits.target),
+        options: getFormSelectOptions(AH.targeting.area),
       }),
     });
   }

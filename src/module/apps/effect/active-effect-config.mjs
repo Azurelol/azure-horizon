@@ -116,7 +116,7 @@ export default class AHActiveEffectConfig extends foundry.applications.sheets.Ac
     switch (partId) {
       case "duration":
         {
-          context.effectTracking = AH.effectTracking;
+          context.effectTracking = AH.effect.tracking;
         }
         break;
 

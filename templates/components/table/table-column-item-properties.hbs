@@ -1,16 +1,16 @@
 <td class="ah-table__column__item__properties">
   {{#if model.damage.enabled}}
     <span>
-        <i class="ah-icon --s {{ahIconClass model.damage.primary.type}}"></i> {{ahScaleValue model.damage.primary.amount}}
+        <i data-tooltip="{{localize (ahLocaleKey 'damageTypes' model.damage.primary.type)}}" class="ah-icon --s {{ahIconClass model.damage.primary.type}}"></i> {{ahScaleValue model.damage.primary.amount}}
       {{#if damage.secondary.type}}
-        <i class="ah-icon --s {{ahIconClass model.damage.secondary.type}}"></i> {{ahScaleValue model.damage.secondary.amount}}
+        <i data-tooltip="{{localize (ahLocaleKey 'damageTypes' model.damage.secondary.type)}}" class="ah-icon --s {{ahIconClass model.damage.secondary.type}}"></i> {{ahScaleValue model.damage.secondary.amount}}
       {{/if}}
     </span>
   {{/if}}
 
   {{#if model.resource.enabled}}
     <span>
-    <i class="ah-icon --s {{ahIconClass model.resource.type}}"></i> {{ahScaleValue model.resource.amount}}
+    <i data-tooltip="{{localize (ahLocaleKey 'resourceTypes' model.resource.type)}}" class="ah-icon --s {{ahIconClass model.resource.type}}"></i> {{ahScaleValue model.resource.amount}}
     </span>
   {{/if}}
 
