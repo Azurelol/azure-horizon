@@ -51,6 +51,7 @@ const TEMPLATES = Object.freeze({
  * @property {T, (() => T)} getEntry
  * @property {number} [headerSpan]
  * @property {(T) => string|Promise<string>} [renderCaption]
+ * @property {string, ((T) => string)} tooltip
  * @property {string, ((T) => string)} cssClass Class used for the name.
  * @property {Boolean} perform Whether the document can perform an action
  * @property {String} type The document type
@@ -75,6 +76,9 @@ function documentName(options) {
       const cssClass = options.cssClass instanceof Function
         ? options.cssClass(entry)
         : options.cssClass;
+      const tooltip = options.tooltip instanceof Function
+        ? options.tooltip(entry)
+        : options.tooltip;
 
       return renderTemplate(TEMPLATES.documentName, {
         name: entry.name,
@@ -84,6 +88,7 @@ function documentName(options) {
         uuid: entry.uuid,
         type: options.type ?? entry.type,
         cssClass: cssClass,
+        tooltip: tooltip,
         perform: options.perform,
       }, false);
     },

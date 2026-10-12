@@ -25,12 +25,12 @@
   </thead>
 
   <tbody>
-  {{#each rows as |row|}}
-    <tr data-key="{{row.key}}">
-      {{#each row.cells as |cell|}}
-        {{{cell.template}}}
-      {{/each}}
-    </tr>
-  {{/each}}
+    {{#each rows as |row|}}
+      <tr data-key="{{row.key}}">
+        {{#each row.cells as |cell|}}
+          {{{cell.template}}}
+        {{/each}}
+      </tr>
+    {{/each}}
   </tbody>
 </table>

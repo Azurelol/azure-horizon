@@ -93,6 +93,9 @@ export default class ItemTableRenderer extends DocumentTableRenderer {
         header: "AH.COMMON.Name",
         perform: !this.config.preview,
         type: "item",
+        tooltip: entry => {
+          return entry.system.description ?? "";
+        },
         cssClass: entry => {
           if (entry.system.rarity) {
             return `ah-rarity-color --${entry.system.rarity}`;

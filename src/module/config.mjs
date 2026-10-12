@@ -1545,7 +1545,7 @@ AH.icons = {
   effect: "ah-icon-effect",
 
   // Pipeline
-  applyDamage: "ah-icon-damage",
+  applyDamage: "ra ra-glass-heart",
 
   popout: "fa fa-external-link",
   pin: "fa fa-thumb-tack",
