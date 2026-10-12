@@ -1096,6 +1096,7 @@
       }
     },
     "TARGETING": {
+      "Telegraph": "Telegraph",
       "RULE": {
         "Self": "Self",
         "Single": "Single",

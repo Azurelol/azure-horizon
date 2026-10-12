@@ -6,7 +6,8 @@ import OptionalFieldsetDataModel from "../../api/optional-fieldset-data-model.mj
 /**
  * @property {AH_TargetingRule} rule
  * @property {AH_ActionRange} range
- * @property {TraitsField} traits
+ * @property {AH_TargetingArea} area
+ * @property {Boolean} telegraph
  */
 export class TargetingDataModel extends OptionalFieldsetDataModel {
   static defineSchema() {
@@ -24,10 +25,28 @@ export class TargetingDataModel extends OptionalFieldsetDataModel {
         label: "AH.FIELD.Targeting",
         choices: () => AH.targeting.rule,
       }),
-      traits: new TraitsField({
-        options: getFormSelectOptions(AH.targeting.area),
+      area: new StringField({
+        initial: "",
+        blank: true,
+        label: "AH.FIELD.Area",
+        choices: () => AH.targeting.area,
+      }),
+      telegraph: new BooleanField({
+        initial: false,
       }),
     });
+  }
+
+  /**
+   * @yields {string}
+   */
+  *applicableTraits() {
+    if (this.range) {
+      yield this.range;
+    }
+    if (this.area) {
+      yield this.area;
+    }
   }
 
   /**
@@ -38,10 +57,9 @@ export class TargetingDataModel extends OptionalFieldsetDataModel {
     if (this.rule) {
       config.setTargeting(this.rule);
     }
-    if (this.range) {
-      config.addTraits(this.range);
+    for (const trait of this.applicableTraits()) {
+      config.addTraits(trait);
     }
-    config.addTraits(Array.from(this.traits));
   }
 
   static get template() {

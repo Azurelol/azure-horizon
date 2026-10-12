@@ -791,6 +791,10 @@ AH.comparisonOperator = {
  */
 
 /**
+ * @typedef {"cleave"|"burst"|"row"|"column"|'chain'|'cross'} AH_TargetingArea
+ */
+
+/**
  * @property area
  * @property rule
  */

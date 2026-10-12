@@ -6,11 +6,11 @@ import { DocumentTableRenderer } from "./_module.mjs";
 export default class ItemTableRenderer extends DocumentTableRenderer {
 
   /**
-   * @returns {AH_TableAction[]}
-   * @private
+   * @yields {AH_TableAction}
+   * @returns {Generator<AH_TableAction, void, void>}
    */
-  _getItemActions() {
-    return [];
+  *_getItemActions() {
+    yield* [];
   }
 
   /**

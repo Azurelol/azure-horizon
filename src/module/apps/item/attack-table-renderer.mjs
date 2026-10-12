@@ -28,4 +28,17 @@ export class AbilityTableRenderer extends ItemTableRenderer {
       }),
     ];
   }
+
+  * _getItemActions() {
+    yield* super._getItemActions();
+    // yield {
+    //   action: "telegraph",
+    //   name: "AH.TARGETING.Telegraph",
+    //   icon: AH.icons.target,
+    //   keys: ["id", "type"],
+    //   callback: (target, event) => {
+    //
+    //   },
+    // };
+  }
 }

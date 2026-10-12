@@ -3,10 +3,6 @@ import TableColumns from "../api/table-columns.mjs";
 
 export class AccessoryTableRenderer extends ItemTableRenderer {
 
-  _getItemActions() {
-    return [ ];
-  }
-
   _getItemColumns() {
     let columns = super._getItemColumns();
     columns.push(TableColumns.engrams({
@@ -22,13 +18,8 @@ export class AccessoryTableRenderer extends ItemTableRenderer {
 
 export class EngramTableRenderer extends ItemTableRenderer {
 
-  _getItemActions() {
-    return [ ];
-  }
-
   _getItemColumns() {
     let columns = super._getItemColumns();
-
     return columns;
   }
 

@@ -59,7 +59,7 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     for (const trait of this.action.traits) {
       yield trait;
     }
-    for (const trait of this.targeting.traits) {
+    for (const trait of this.targeting.applicableTraits()) {
       yield trait;
     }
     for (const trait of this.damage.traits) {
