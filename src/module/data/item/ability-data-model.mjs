@@ -4,6 +4,7 @@ import AH, { getFormSelectOptions } from "../../config.mjs";
 import WeaponUsageDataModel from "./fields/weapon-usage-data-model.mjs";
 import { assertCondition, isActorType } from "../../constants.mjs";
 import { ActionDataModel } from "./fields/action-data-model.mjs";
+import { LocalDocumentField } from "../api/_module.mjs";
 
 /**
  * Abilities belong to adversaries and are their equivalent of PC skills.
@@ -16,6 +17,7 @@ import { ActionDataModel } from "./fields/action-data-model.mjs";
  * @property {WeaponUsageDataModel} usage
  * @property {AH_Intent} intent The intent behind this ability.
  * @property {AH_Weight} weight The weight for this item when selected against other items of its intent.
+ * @property {String} references.item
  */
 export default class AbilityDataModel extends ActiveFeatureDataModel {
   /** @inheritdoc */
@@ -40,6 +42,16 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
         _part: "header",
       }),
       usage: new EmbeddedDataField(WeaponUsageDataModel, {}),
+      references: new SchemaField({
+        item: new StringField({
+          label: "AH.FIELD.ReferenceItem",
+          _condition: (model) => {
+            return model.intent === "prepare";
+          },
+          _part: "header",
+          _classes: "ah-flex-shrink",
+        }),
+      }),
     });
   }
 
@@ -62,6 +74,27 @@ export default class AbilityDataModel extends ActiveFeatureDataModel {
         const attack = await this.resolveAttack();
         if (assertCondition(attack !== undefined, "An attack must be assigned for this ability.")) {
           this.usage.setOverride(config, attack, this.isCheck);
+        }
+      }
+    }
+
+    // Provide the action to apply the telegraph now if this action is preparing...
+    if (this.intent === "prepare") {
+      if (this.references.item) {
+        const referencedItem = actor.resolveItem(this.references.item);
+        if (referencedItem) {
+          /** @type TargetingDataModel **/
+          const targetingData = referencedItem.system.targeting;
+          if (targetingData && targetingData.telegraph) {
+            let effect;
+            if (targetingData.area) {
+              effect = AH.targeting.area[targetingData.area].effect;
+            }
+            else {
+              effect = "mark";
+            }
+            config.addEffects(effect);
+          }
         }
       }
     }

@@ -24,6 +24,8 @@ class AdversaryResourcesDataModel extends CharacterResourcesDataModel {
   }
 }
 
+// TODO: Use equipment
+
 /**
  * @property {ParameterDataModel} def
  * @property {ParameterDataModel} mdef
@@ -57,6 +59,7 @@ export default class AdversaryDataModel extends CharacterDataModel {
       profile: new EmbeddedDataField(AdversaryProfileDataModel, {}),
       assembly: new SchemaField({
         attack: new StringField({ nullable: true }),
+        prepared: new StringField({ nullable: true }),
       }),
     });
   }

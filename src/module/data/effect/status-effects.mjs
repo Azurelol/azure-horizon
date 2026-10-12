@@ -374,26 +374,32 @@ const STATUS_EFFECTS = Object.freeze({
   mark: new StatusDataBuilder("mark", "AH.STATUS.Mark")
     .template("single")
     .hideIcon()
+    .endOfCombat()
     .build(),
   ["mark-burst"]: new StatusDataBuilder("mark-burst", "AH.TARGETING.AREA.Burst")
     .template("burst")
     .hideIcon()
+    .endOfCombat()
     .build(),
   ["mark-cross"]: new StatusDataBuilder("mark-cross", "AH.TARGETING.AREA.Cross")
     .template("cross")
     .hideIcon()
+    .endOfCombat()
     .build(),
   ["mark-cleave"]: new StatusDataBuilder("mark-cleave", "AH.TARGETING.AREA.Cleave")
     .template("cleave")
     .hideIcon()
+    .endOfCombat()
     .build(),
   ["mark-row"]: new StatusDataBuilder("mark-row", "AH.TARGETING.AREA.Row")
     .template("row")
     .hideIcon()
+    .endOfCombat()
     .build(),
   ["mark-column"]: new StatusDataBuilder("mark-column", "AH.TARGETING.AREA.Column")
     .template("column")
     .hideIcon()
+    .endOfCombat()
     .build(),
   cast: new StatusDataBuilder("cast", "AH.STATUS.Cast")
     .changes([

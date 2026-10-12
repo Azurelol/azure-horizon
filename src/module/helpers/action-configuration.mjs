@@ -487,13 +487,13 @@ export class ActionConfig extends ActionInspector {
    * @return {ActionConfig}
    */
   addEffects(...effects) {
-    if (this.getEffects() === null) {
-      this.check.data[EFFECTS] = {
+    if (!this.effects) {
+      this.data[EFFECTS] = {
         entries: [],
       };
     }
 
-    const entries = this.check.data[EFFECTS].entries;
+    const entries = this.data[EFFECTS].entries;
 
     for (const effect of effects) {
       if (Array.isArray(effect)) {

@@ -800,12 +800,12 @@ AH.comparisonOperator = {
  */
 AH.targeting = {
   area: {
-    cleave: { label: "AH.TARGETING.AREA.Cleave", tooltip: "AH.TRAIT.CleaveHint" },
-    cross: { label: "AH.TARGETING.AREA.Cross", tooltip: "AH.TRAIT.CrossHint" },
-    burst: { label: "AH.TARGETING.AREA.Burst", tooltip: "AH.TRAIT.BurstHint" },
-    chain: { label: "AH.TARGETING.AREA.Chain", tooltip: "AH.TRAIT.ChainHint" },
-    row: { label: "AH.TARGETING.AREA.Row", tooltip: "AH.TRAIT.RowHint" },
-    column: { label: "AH.TARGETING.AREA.Column", tooltip: "AH.TRAIT.ColumnHint" },
+    cleave: { label: "AH.TARGETING.AREA.Cleave", effect: "mark-cleave", tooltip: "AH.TRAIT.CleaveHint" },
+    cross: { label: "AH.TARGETING.AREA.Cross", effect: "mark-cross", tooltip: "AH.TRAIT.CrossHint" },
+    burst: { label: "AH.TARGETING.AREA.Burst", effect: "mark-burst", tooltip: "AH.TRAIT.BurstHint" },
+    chain: { label: "AH.TARGETING.AREA.Chain", effect: "mark-chain", tooltip: "AH.TRAIT.ChainHint" },
+    row: { label: "AH.TARGETING.AREA.Row", effect: "mark-row", tooltip: "AH.TRAIT.RowHint" },
+    column: { label: "AH.TARGETING.AREA.Column", effect: "mark-column", tooltip: "AH.TRAIT.ColumnHint" },
   },
   rule: {
     self: { label: "AH.TARGETING.RULE.Self" },

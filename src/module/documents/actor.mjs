@@ -174,7 +174,7 @@ export class AHActor extends DocumentMixin(foundry.documents.Actor) {
    * @returns {AHItem}
    */
   resolveItem(id) {
-    return this.items.filter((i) => i.id === id)[0];
+    return this.items.filter((i) => i.id === id || i.system.slug === id)[0];
   }
 
   /**
