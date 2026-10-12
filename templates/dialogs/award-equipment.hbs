@@ -1,22 +1,28 @@
-<div class="ah-flex-row ah-gap-1">
-  {{#each choices as |choice|}}
-    <div class="ah-card">
-      <div class="ah-card__header">
-        {{ahRomanNumeral (ahMath @index '+' 1)}}
-      </div>
-      <div class="ah-card__body">
-        {{ahSelector size='sm' icon=(ahIconClass 'type')
-                     label='AH.FIELD.Type'
-                     values=@root.equipmentOptions value=choice.type
-                     iconClasses='--glow'
-                     path=(ahConcat 'equipment.' @index '.type') }}
+<div class="ah-flex-col ah-gap-1">
 
-        {{ahSelector size='sm' icon=(ahIconClass 'rarity')
-                     label='AH.FIELD.Rarity'
-                     values=@root.rarityOptions value=choice.rarity
-                     iconClasses='--glow'
-                     path=(ahConcat 'equipment.' @index '.rarity') }}
+  <div>
+    {{ahSelector size='sm' icon=(ahIconClass 'rarity')
+                 label='AH.FIELD.Rarity'
+                 values=@root.rarityOptions value=rarity
+                 iconClasses='--glow'
+                 path='.rarity' }}
+  </div>
+
+  <div class="ah-flex-row">
+    {{#each choices as |choice|}}
+      <div class="ah-card">
+        <div class="ah-card__header">
+          {{ahRomanNumeral (ahMath @index '+' 1)}}
+        </div>
+        <div class="ah-card__body">
+          {{ahSelector size='sm' icon=(ahIconClass 'type')
+                       label='AH.FIELD.Type'
+                       values=@root.equipmentOptions value=choice.type
+                       iconClasses='--glow'
+                       path=(ahConcat 'equipment.' @index '.type') }}
+        </div>
       </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
+
 </div>

@@ -5,20 +5,20 @@
   </span>
 
   <div class="ah-flex-row --center ah-gap-m">
-    {{#each data as |treasure|}}
+    {{#each data.choices as |choice|}}
     <div class="ah-flex-col --center">
-      {{#if treasure.item}}
-          {{ahDocumentAnchor treasure.item classes='ah-chat-section__treasure'}}
+      {{#if choice.item}}
+          {{ahDocumentAnchor choice.item classes='ah-chat-section__treasure'}}
           <span>
-            {{treasure.item.name}}
+            {{choice.item.name}}
           </span>
       {{else}}
         <a class="ah-chat-section__treasure" data-tooltip="{{localize 'AH.CHAT.RollTreasure'}}"
-           data-type="{{treasure.type}}"
+           data-type="{{choice.type}}"
            data-key="{{@key}}"
-           data-rarity="{{treasure.rarity}}"
+           data-rarity="{{choice.rarity}}"
            data-action="rollTreasure" data-index="{{@index}}">
-          <i class="ah-icon --sm {{ahIconClass (ahConcat treasure.type 'Placeholder')}}"></i>
+          <i class="ah-icon --sm {{ahIconClass (ahConcat choice.type 'Placeholder')}}"></i>
         </a>
         <span>
           ?

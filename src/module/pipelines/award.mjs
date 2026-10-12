@@ -1,7 +1,6 @@
 /**
  * @typedef AH_TreasureChoice
  * @property {AH_EquipmentType} type
- * @property {AH_Rarity} rarity
  * @property {Number} index
  * @property {String} key
  * @property {AH_ItemReference} item
@@ -9,9 +8,10 @@
 
 /**
  * @typedef AH_TreasureChoiceGroup
- * @property {AH_TreasureChoice} first
- * @property {AH_TreasureChoice} second
- * @property {AH_TreasureChoice} third
+ * @property {AH_Rarity} rarity
+ * @property {AH_TreasureChoice} choices.first
+ * @property {AH_TreasureChoice} choices.second
+ * @property {AH_TreasureChoice} choices.third
  */
 
 /**
@@ -58,15 +58,12 @@ async function promptTreasure(options) {
   let choices = [];
   choices.push({
     type: "weapon",
-    rarity: "common",
   });
   choices.push({
     type: "armor",
-    rarity: "common",
   });
   choices.push({
     type: "accessory",
-    rarity: "common",
   });
 
   const rarityOptions = AH.equipment.rarity;
@@ -90,9 +87,12 @@ async function promptTreasure(options) {
     const flags = new FlagBuilder().toggle(AH.flags.ChatMessage.Award);
     /** @type AH_TreasureChoiceGroup  **/
     const data = {
-      first: expanded.equipment[0],
-      second: expanded.equipment[1],
-      third: expanded.equipment[2],
+      choices: {
+        first: expanded.equipment[0],
+        second: expanded.equipment[1],
+        third: expanded.equipment[2],
+      },
+      rarity: "common",
     };
     flags.set(AH.flags.ChatMessage.Treasure, data);
     builder.withFlags(flags.toObject());
@@ -118,7 +118,7 @@ async function rollTreasure(message, key) {
   }
 
   /** @type AH_TreasureChoice **/
-  let current = data[key];
+  let current = data.choices[key];
   if (current.item) {
     notifyWarn("That item choice has already been rolled.");
     return;

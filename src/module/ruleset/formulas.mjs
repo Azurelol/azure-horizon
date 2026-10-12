@@ -8,6 +8,7 @@ const BASE_DAMAGE = 5;
 const HP_MIGHT_FACTOR = 5;
 const MP_WILLPOWER_FACTOR = 5;
 const HP_POTENTIAL_FACTOR = 10;
+const HP_ADVERSARY_BONUS = 10;
 
 const IP_BASE = 6;
 const TP_BASE = 2;
@@ -303,9 +304,8 @@ export default class Formulas {
           case "minion":
             hp = Math.round(factors.level / 5);
             break;
-
           default:
-            hp = (factors.level + (attributes.mig.base * HP_MIGHT_FACTOR)) * turns;
+            hp = (factors.level + HP_ADVERSARY_BONUS + (attributes.mig.base * HP_MIGHT_FACTOR)) * turns;
             break;
         }
 
