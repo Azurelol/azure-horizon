@@ -26,7 +26,6 @@ export function EquipmentDataMixin(Base) {
       return Object.assign(super.defineSchema(), {
         rarity: new StringField({
           initial: "common",
-          blank: false,
           label: "AH.EQUIPMENT.Rarity",
           _part: "header",
           nullable: false,

@@ -297,6 +297,13 @@ export default class FoundryUtils {
   }
 
   /**
+   * @typedef AH_DataFieldOptions
+   * @property _part
+   * @property _classes
+   * @property enabled
+   */
+
+  /**
    * @typedef AH_DataFieldInfo
    * @property {String} path The path to the field.
    * @property {foundry.data.fields.DataField} field The foundry data field.
@@ -334,6 +341,9 @@ export default class FoundryUtils {
     };
     if (field.model?.template) {
       data.template = field.model.template;
+    }
+    if (data.className === "ArrayField") {
+      data.isArray = true;
     }
     return data;
   }
@@ -469,7 +479,6 @@ export default class FoundryUtils {
       else if (fieldClass === "ArrayField") {
         if (field.element instanceof StringField) {
           const fieldInfo = this.getDataFieldInfo(source, fieldPath, field);
-          fieldInfo.isArray = true;
           layout.properties.push(fieldInfo);
         }
       }

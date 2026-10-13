@@ -59,7 +59,6 @@ export default class AdversaryDataModel extends CharacterDataModel {
       profile: new EmbeddedDataField(AdversaryProfileDataModel, {}),
       assembly: new SchemaField({
         attack: new StringField({ nullable: true }),
-        prepared: new StringField({ nullable: true }),
       }),
     });
   }

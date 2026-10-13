@@ -6,7 +6,7 @@
         {{#unless field.required}}
           {{ahBooleanField path=(ahConcat field.path '.enabled') icon=(ahIconClass field.name) style='compact' label=field.label value=field.value.enabled }}
         {{/unless}}
-      {{/if}}
+      {{/if}}`
     {{/each}}
     {{#if templates.settings}}
       {{> (lookup templates 'settings') }}
@@ -27,8 +27,9 @@
     {{/each}}
 
     {{#each fieldMap.properties as |entry|}}
+      {{log 'entry' entry.label 'options' entry.options}}
       {{#if entry.isArray}}
-        {{ahArrayField path=entry.path label=entry.label array=entry.value type='string'}}
+        {{ahArrayField path=entry.path label=entry.label array=entry.value field=entry.field.element fixed=entry.options._fixed}}
       {{else}}
         {{formGroup
           entry.field

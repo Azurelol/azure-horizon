@@ -340,6 +340,9 @@ export default Object.freeze({
     Handlebars.registerHelper("ahValue", function (value, reference) {
       return (value instanceof Function ? value(reference) : value);
     });
+    Handlebars.registerHelper("ahValidString", function (value, options) {
+      return value instanceof String;
+    });
     Handlebars.registerHelper("ahFilterFields", function (fields) {
       return Object.fromEntries(
         Object.entries(this.system.affinities).filter(([key]) => key !== "schemaVersion"),
@@ -595,6 +598,7 @@ function documentAnchor(document, options) {
  * @property {String} path
  * @property {'string'} type
  * @property {DataField} field
+ * @property {Boolean} fixed If true, won't change the size of the array.
  * @property {String[]|undefined} options
  */
 
@@ -612,6 +616,7 @@ function arrayField(options) {
         label: options.label,
         path: options.path,
         type: options.type,
+        fixed: options.fixed,
         options: options.options,
         field: options.field,
       })

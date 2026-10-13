@@ -3,6 +3,7 @@ import { isActorType, systemTemplatePath } from "../../constants.mjs";
 import { ObjectUtils } from "../../utils/_module.mjs";
 import { PotentialsDataModel } from "./fields/potentials-data-model.mjs";
 import { ChatMessageSections } from "../../helpers/_module.mjs";
+import AH from "../../config.mjs";
 
 const { SchemaField, NumberField, StringField, EmbeddedDataField, DocumentIdField, ArrayField, ForeignDocumentField } = foundry.data.fields;
 
@@ -15,19 +16,30 @@ export class EngramDataField extends SchemaField {
     super({
       // eslint-disable-next-line no-undef
       item: new DocumentIdField(Item, { nullable: true, readonly: false }),
+      kind: new StringField({ initial: "magic", blank: true, choices: () => AH.engrams, label: "AH.FIELD.Kind" }),
     }, options);
   }
 
   /** @override */
   _toInput(config) {
     const container = document.createElement("div");
-    const textField = this.fields.item;
-    const textInput = textField.toInput({
+    container.classList.add("ah-flex-row");
+    container.classList.add("ah-gap-s");
+    // const itemField = this.fields.item;
+    // const itemInput = itemField.toInput({
+    //   ...config,
+    //   name: `${config.name}.item`,
+    //   value: config.value?.text ?? "",
+    // });
+    // container.append(itemInput);
+    const kindField = this.fields.kind;
+    const kindInput = kindField.toInput({
       ...config,
-      name: `${config.name}.text`,
-      value: config.value?.text ?? "",
+      name: `${config.name}.kind`,
+      label: "AH.FIELD.Kind",
+      value: config.value?.kind ?? "",
     });
-    container.append(textInput);
+    container.append(kindInput);
     return container;
   }
 }
@@ -46,7 +58,7 @@ export default class AccessoryDataModel extends EquipmentDataModel {
     return Object.assign(super.defineSchema(), {
       slots: new SchemaField({
         entries: new ArrayField(new EngramDataField(), {
-          config: false,
+          _fixed: true,
         }),
         max: new NumberField({ initial: 1, min: 1, integer: true,
           nullable: false, label: "AH.ITEM.Engram.plural",
