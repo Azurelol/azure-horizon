@@ -27,7 +27,6 @@
     {{/each}}
 
     {{#each fieldMap.properties as |entry|}}
-      {{log 'entry' entry.label 'options' entry.options}}
       {{#if entry.isArray}}
         {{ahArrayField path=entry.path label=entry.label array=entry.value field=entry.field.element fixed=entry.options._fixed}}
       {{else}}

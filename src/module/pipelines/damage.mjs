@@ -265,10 +265,10 @@ async function process(request) {
  * @param {DamageData} damageData
  * @param {SourceInfo} sourceInfo
  * @param {String[]} traits
- * @param {PotencyActionOptions} options
+ * @param {ActionOutcomeOptions} options
  * @returns {ChatAction}
  */
-function getChatAction(damageData, sourceInfo, traits, options = { potency: undefined }) {
+function getChatAction(damageData, sourceInfo, traits, options = { outcome: undefined }) {
   const icon = AH.icons.applyDamage;
   const resolved = damageData.resolved;
   const tooltip = StringUtils.localize("AH.CHAT.ACTION.ApplyDamageTooltip", {
@@ -283,13 +283,13 @@ function getChatAction(damageData, sourceInfo, traits, options = { potency: unde
     .setFlag(Flags.ChatMessage.Damage, resolved.total)
     .withTraits(traits)
     .withDataset({
-      potency: options.potency,
+      outcome: options.outcome,
     })
     .requiresOwner();
 
-  if (options.potency) {
+  if (options.outcome) {
     action.withDataset({
-      potency: options.potency,
+      outcome: options.outcome,
     });
 
     if (options.selected) {
@@ -445,36 +445,36 @@ const onProcessAction = async (config, actor, item) => {
 
     // 5.) Set Potency
     if (config.isCheck) {
-      config.setPotency((tiers) => {
-        // Standard
+      config.setOutcome((tiers) => {
+        // SUCCESS
         const standardDamage = new DamageData(damage);
         const standard = getChatAction(standardDamage, sourceInfo, traits, {
-          potency: "standard",
+          outcome: "success",
         });
-        tiers.standard.components.push({
+        tiers.success.components.push({
           text: standardDamage.toString(),
           actions: [standard],
         });
 
-        // Reduced
+        // PARTIAL
         const reducedDamage = standardDamage.duplicate(d => {
           d.modify("universal", {
             multiplicative: 0.5,
             source: {
               label: "AH.DAMAGE.ACTION.Reduced",
-              icon: "reduced",
+              icon: "partial",
             },
           });
         });
         const reducedAction = getChatAction(reducedDamage, sourceInfo, traits, {
-          potency: "reduced",
+          outcome: "partial",
         });
-        tiers.reduced.components.push({
+        tiers.partial.components.push({
           text: reducedDamage.toString(),
           actions: [reducedAction],
         });
 
-        // Powerful
+        // CRITICAL
         const powerfulDamage = standardDamage.duplicate(d => {
           d.add({
             type: damage.type,
@@ -486,18 +486,18 @@ const onProcessAction = async (config, actor, item) => {
           });
         });
         const powerful = getChatAction(powerfulDamage, sourceInfo, traits, {
-          potency: "powerful",
+          outcome: "critical",
         });
-        tiers.powerful.components.push({
+        tiers.critical.components.push({
           text: powerfulDamage.toString(),
           actions: [powerful],
         });
       });
     }
     else {
-      config.updateTargetResults("standard");
+      config.updateTargetResults("success");
       config.addAction(getChatAction(damage, sourceInfo, traits, {
-        potency: "standard",
+        outcome: "success",
         selected: true,
         label: true,
       }));

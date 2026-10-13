@@ -153,10 +153,10 @@ async function disableStatusEffect(actor, statusEffectId) {
  * @param {String} id An uuid or slug.
  * @param {SourceInfo} sourceInfo
  * @param {AH_ActiveEffectDuration} duration
- * @param {PotencyActionOptions} options
+ * @param {ActionOutcomeOptions} options
  * @returns {Promise<ChatAction>}
  */
-async function getChatAction(id, sourceInfo, duration = undefined, options = { potency: undefined }) {
+async function getChatAction(id, sourceInfo, duration = undefined, options = { outcome: undefined }) {
   const effectData = await getEffectData(id);
   let name;
   let icon;
@@ -189,9 +189,9 @@ async function getChatAction(id, sourceInfo, duration = undefined, options = { p
       ["effect-id"]: id,
     });
 
-  if (options.potency) {
+  if (options.outcome) {
     action.withDataset({
-      potency: options.potency,
+      outcome: options.outcome,
     });
   }
   else {
@@ -282,27 +282,27 @@ function onRenderChatMessage(message, html) {
 }
 
 /**
- * @param {AH_ActionPotency} potency
+ * @param {AH_Outcome} outcome
  * @param {ApplyEffectData} effectData
  * @param {SourceInfo} sourceInfo
  * @returns {Promise<void>}
  */
-async function getPotencyActions(potency, effectData, sourceInfo) {
+async function getPotencyActions(outcome, effectData, sourceInfo) {
   let actions;
-  switch (potency) {
-    case "reduced":
+  switch (outcome) {
+    case "partial":
       actions = [];
       break;
-    case "standard":
+    case "success":
       actions = await Promise.all(effectData.entries.map(async e => await getChatAction(e, sourceInfo, effectData.duration, {
         label: false,
-        potency: "standard",
+        outcome: "success",
       })));
       break;
-    case "powerful":
+    case "critical":
       actions = await Promise.all(effectData.entries.map(async e => await getChatAction(e, sourceInfo, effectData.duration, {
         label: false,
-        potency: "powerful",
+        outcome: "critical",
       })));
       break;
   }
@@ -313,13 +313,13 @@ async function _onProcessAction(config, actor, item) {
   if (config.hasEffects) {
     const effectData = config.effects;
     if (config.isCheck && (effectData.selector !== "buff")) {
-      const standard = await getPotencyActions("standard", effectData, config.sourceInfo);
-      const powerful = await getPotencyActions("powerful", effectData, config.sourceInfo);
-      config.setPotency(potency => {
-        potency.standard.components.push({
+      const standard = await getPotencyActions("success", effectData, config.sourceInfo);
+      const powerful = await getPotencyActions("critical", effectData, config.sourceInfo);
+      config.setPotency(outcome => {
+        outcome.success.components.push({
           actions: standard,
         });
-        potency.powerful.components.push({
+        outcome.critical.components.push({
           actions: powerful,
         });
       });

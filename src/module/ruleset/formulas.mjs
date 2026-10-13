@@ -655,10 +655,10 @@ export default class Formulas {
 
   /** @type {Record<string, {attacker: AH_ActionPotency, defense: AH_ActionPotency}>} */
   static #POTENCY_BY_OUTCOME = {
-    critical: { attacker: "powerful", defense: "reduced" },
-    fumble: { attacker: "reduced", defense: "powerful" },
-    success: { attacker: "standard", defense: "reduced" },
-    partial: { attacker: "reduced", defense: "standard" },
+    critical: { attacker: "critical", defense: "partial" },
+    fumble: { attacker: "partial", defense: "critical" },
+    success: { attacker: "success", defense: "partial" },
+    partial: { attacker: "partial", defense: "success" },
   };
 
   /**
@@ -703,7 +703,7 @@ export default class Formulas {
   static calculatePotency(check, difficulty, defense = false) {
     const outcome = this.calculateOutcome(check, difficulty);
     if (outcome === "default") {
-      return "standard";
+      return "success";
     }
     return this.#POTENCY_BY_OUTCOME[outcome][defense ? "defense" : "attacker"];
   }

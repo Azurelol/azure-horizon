@@ -15,7 +15,7 @@
  * @property {string} link An html link to the actor
  * @property {DefenseData} defenses
  * @property {number} difficulty
- * @property {AH_ActionPotency} potency Updated during evaluation
+ * @property {AH_Outcome} outcome
  * @property {Boolean} isOwner
  */
 
@@ -31,7 +31,7 @@ function constructData(actor) {
     link: actor.link,
     img: actor.img,
     type: actor.type,
-    potency: "",
+    outcome: "",
     isOwner: actor.isOwner,
   };
   if (actor.isCharacterType) {
@@ -45,7 +45,7 @@ function constructData(actor) {
     };
   }
   else if (actor.isEntityType) {
-    data.potency = "standard";
+    data.outcome = "success";
   }
   return data;
 }

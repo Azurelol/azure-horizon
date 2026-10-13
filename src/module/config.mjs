@@ -157,11 +157,6 @@ AH.potency = Object.freeze({
   utmost: { label: "AH.ACTION.POTENCY.Utmost", difficulty: AH.difficultyLevel.impossible.value, cost: 50 },
 });
 
-//TODO: Rename?
-/**
- * @typedef {'reduced'|'standard'|'powerful'} AH_ActionPotency
- */
-
 /**
  * @typedef {'entity'|'small'|'large'|'huge'} AH_Area
  */
@@ -1570,7 +1565,7 @@ AH.icons = {
   effect: "ah-icon-effect",
 
   // Pipeline
-  applyDamage: "ra ra-glass-heart",
+  applyDamage: "ah-icon-damage",
 
   popout: "fa fa-external-link",
   pin: "fa fa-thumb-tack",
@@ -1634,9 +1629,10 @@ AH.icons = {
   ritualCheck: "ah-icon-check-ritual",
   travelCheck: "ah-icon-check-travel",
 
-  reduced: "ra ra-level-two",
-  standard: "ra ra-level-three",
-  powerful: "ra ra-level-four",
+  fumble: "ah-outcome-fumble",
+  partial: "ra ra-level-two",
+  success: "ra ra-level-three",
+  critical: "ra ra-level-four",
 
   parameter: "fa-solid fa-sliders",
   additive: "fa-solid fa-plus",

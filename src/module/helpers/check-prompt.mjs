@@ -384,11 +384,11 @@ async function defenseCheck(actor, options = {}) {
       const attackItem = attacker.items.get(options.initialConfig.item);
       let winner;
       switch (potency) {
-        case "reduced":
+        case "partial":
           winner = defender.name;
           break;
-        case "standard":
-        case "powerful":
+        case "success":
+        case "critical":
           winner = attacker.name;
           break;
       }

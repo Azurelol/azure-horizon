@@ -470,7 +470,7 @@ function generateIntents(adversary, adversaries, heroes, history) {
     // They don't really get actions
     case "minion":
       break;
-    case "standard":
+    case "success":
       break;
     case "elite":
       break;

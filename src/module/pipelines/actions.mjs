@@ -149,11 +149,10 @@ async function addSections(builderData, config, actor, item) {
         break;
 
       default: {
-        // Add potency actions (will match targets by result)
-        if (config.potencies) {
-          builderData.actions.push(...config.potencies.reduced.components.flatMap(c => c.actions));
-          builderData.actions.push(...config.potencies.standard.components.flatMap(c => c.actions));
-          builderData.actions.push(...config.potencies.powerful.components.flatMap(c => c.actions));
+        if (config.outcomes) {
+          builderData.actions.push(...config.outcomes.partial.components.flatMap(c => c.actions));
+          builderData.actions.push(...config.outcomes.success.components.flatMap(c => c.actions));
+          builderData.actions.push(...config.outcomes.critical.components.flatMap(c => c.actions));
         }
         ChatMessageSections.targets(builderData.sections, config.getTargetedDefense(), targets, builderData.actions);
       }
@@ -199,21 +198,19 @@ async function addSections(builderData, config, actor, item) {
   let fb = new FlagBuilder(builderData.flags);
   fb.set(Flags.ChatMessage.Source, config.sourceInfo);
 
-  // POTENCY section
-  const potencies = config.potencies;
-  if (potencies) {
-    for (const potency of [potencies.reduced, potencies.standard, potencies.powerful]) {
-      for (const component of potency.components) {
+  // OUTCOME section
+  const outcomes = config.outcomes;
+  if (outcomes) {
+    for (const outcome of [outcomes.partial, outcomes.success, outcomes.critical]) {
+      for (const component of outcome.components) {
         for (const action of component.actions) {
           if (action) {
             fb.set(action.flag.key, action.flag.value).toObject();
           }
-          else {
-          }
         }
       }
     }
-    ChatMessageSections.potencies(builderData.sections, potencies);
+    ChatMessageSections.outcomes(builderData.sections, outcomes);
   }
 
   builderData.flags = fb.toObject();

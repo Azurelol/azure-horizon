@@ -1,4 +1,4 @@
-<a class="ah-chat-action --transparent {{classes}}{{name}}"
+<a class="ah-chat-action {{classes}} {{name}}"
    data-action="{{name}}"
    data-uuid="{{target.uuid}}"
    data-fields="{{fields}}"
@@ -11,7 +11,7 @@
          style="{{style}} {{#if color}}color: {{color}};{{/if}}"
          src="{{img}}" />
   {{else}}
-    <i class="ah-icon {{icon}} {{classes}}"
+    <i class="ah-icon {{icon}} --outline {{classes}}"
        style="{{style}} {{#if color}}color: {{color}};{{/if}}"></i>
   {{/if}}
 </a>

@@ -1,7 +1,8 @@
 {{#if targets}}
   <section class="ah-chat-section__targets">
     {{#each targets as |target|}}
-      <div class="ah-chat-section__target {{target.potency}}">
+      <div class="ah-chat-section__target {{target.outcome}}">
+
         <!-- Info -->
         <div class="ah-chat-section__target__info">
           {{ahDocumentAnchor target}}
@@ -9,25 +10,30 @@
             {{ahAcronym target.name 14}}
           </span>
         </div>
+
+        <!-- Actions -->
+        <div class="ah-chat-section__target__actions">
+          {{#each ../actions as |action|}}
+            {{#if targeted}}
+              {{#unless (and (ahNotEmpty action.dataset.outcome) (ahNotEquals action.dataset.outcome target.outcome)) }}
+                {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs' classes='--transparent' target=target }}
+              {{/unless}}
+            {{/if}}
+          {{/each}}
+        </div>
+
+
+
         <!-- Defense -->
         <span class="ah-chat-section__defense">
           <i class="ah-icon --xs {{ahIconClass 'targetDefense'}}"></i>
           {{target.difficulty}}
         </span>
-        <!-- Potency -->
-        <span class="ah-chat-section__potency">
-          {{localize (ahLocaleKey 'potencies' target.potency)}}
+
+        <!-- Outcome -->
+        <span class="ah-chat-section__outcome">
+          {{localize (ahLocaleKey 'outcome' target.outcome)}}
         </span>
-        <!-- Actions -->
-        <div class="ah-chat-section__target__actions">
-          {{#each ../actions as |action|}}
-            {{#if targeted}}
-              {{#unless (and (ahNotEmpty action.dataset.potency) (ahNotEquals action.dataset.potency target.potency)) }}
-                {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs' target=target }}
-              {{/unless}}
-            {{/if}}
-          {{/each}}
-        </div>
       </div>
     {{/each}}
   </section>

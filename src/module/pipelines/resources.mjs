@@ -228,7 +228,7 @@ function onRenderChatMessage(message, html) {
 
 /**
  * @param {ResourceRequest} request
- * @param {PotencyActionOptions} options
+ * @param {ActionOutcomeOptions} options
  * @returns {ChatAction}
  */
 function getChatAction(request, options = {}) {
@@ -262,9 +262,9 @@ function getChatAction(request, options = {}) {
     .withColor(request.gain ? "var(--color-hp)" : "var(--color-hp-crisis)")
     .withTraits(Array.from(request.traits));
 
-  if (options.potency) {
+  if (options.outcome) {
     action.withDataset({
-      potency: options.potency,
+      potency: options.outcome,
     });
 
     if (options.selected) {
@@ -353,15 +353,15 @@ const onProcessAction = async (config, actor, item, registerCallback) => {
     }
     else if (actor.type === "adversary") {
       if (config.isCheck) {
-        config.setPotency(potency => {
-          potency.standard.components.push({
+        config.setOutcome(potency => {
+          potency.success.components.push({
             actions: [getChatAction(request, {
-              potency: "standard",
+              outcome: "success",
             })],
           });
-          potency.powerful.components.push({
+          potency.critical.components.push({
             actions: [getChatAction(request, {
-              potency: "powerful",
+              outcome: "critical",
             })],
           });
         });

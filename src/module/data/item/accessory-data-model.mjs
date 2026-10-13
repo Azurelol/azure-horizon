@@ -58,6 +58,7 @@ export default class AccessoryDataModel extends EquipmentDataModel {
     return Object.assign(super.defineSchema(), {
       slots: new SchemaField({
         entries: new ArrayField(new EngramDataField(), {
+          label: "AH.EQUIPMENT.ENGRAM.Slot.plural",
           _fixed: true,
         }),
         max: new NumberField({ initial: 1, min: 1, integer: true,

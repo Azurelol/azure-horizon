@@ -182,7 +182,7 @@ async function assemble(actor, fields) {
       case "minion":
         turns = 0;
         break;
-      case "standard":
+      case "success":
         turns = 1;
         break;
       case "elite":

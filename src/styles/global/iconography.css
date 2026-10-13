@@ -62,7 +62,7 @@
   }
 
   &.--outline {
-    filter: drop-shadow(0 0 0.5px var(--ah-color-text-shadow)) drop-shadow(0 0 0.5px var(--acc-color-shadow));
+    filter: var(--ah-icon-shadow-outline-thin);
   }
 
   &.--spin {

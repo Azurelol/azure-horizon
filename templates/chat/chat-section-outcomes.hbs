@@ -1,0 +1,49 @@
+<table class="ah-outcome-table">
+  <tbody>
+
+  <tr class="ah-outcome-table__row --partial">
+    <td class="ah-outcome-table__tier">
+      <div class="ah-flex-center">
+        <i class="ah-icon --xs {{ahIconClass 'partial'}}" data-tooltip="{{localize "AH.ACTION.OUTCOME.Partial"}}"></i>
+      </div>
+    </td>
+    <td class="ah-outcome-table__components">
+      {{#each outcomes.partial.components as |component|}}
+        {{#each component.actions}}
+          {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact" text=component.text}}
+        {{/each}}
+      {{/each}}
+    </td>
+  </tr>
+
+  <tr class="ah-outcome-table__row --success">
+    <td class="ah-outcome-table__tier">
+      <div class="ah-flex-center">
+        <i class="ah-icon --xs {{ahIconClass 'success'}}" data-tooltip="{{localize "AH.ACTION.OUTCOME.Success"}}"></i>
+      </div>
+    </td>
+    <td class="ah-outcome-table__components">
+      {{#each outcomes.success.components as |component|}}
+        {{#each component.actions}}
+          {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact" text=component.text}}
+        {{/each}}
+      {{/each}}
+    </td>
+  </tr>
+
+  <tr class="ah-outcome-table__row --critical">
+    <td class="ah-outcome-table__tier">
+      <div class="ah-flex-center">
+        <i class="ah-icon --xs {{ahIconClass 'critical'}}" data-tooltip="{{localize "AH.ACTION.OUTCOME.Critical"}}"></i>
+      </div>
+    </td>
+    <td class="ah-outcome-table__components">
+      {{#each outcomes.critical.components as |component|}}
+        {{#each component.actions}}
+          {{> 'systems/azure-horizon/templates/components/partials/chat-action.hbs' classes="--compact" text=component.text}}
+        {{/each}}
+      {{/each}}
+    </td>
+  </tr>
+  </tbody>
+</table>

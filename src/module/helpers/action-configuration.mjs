@@ -28,7 +28,7 @@ const ITEM_REFERENCE = "itemReference";
 const INITIAL_CHECK = "initialCheck";
 const ACTIONS = "actions";
 const KEYBOARD_MODIFIERS = "keyboardModifiers";
-const ACTION_POTENCIES = "actionPotencies";
+const ACTION_OUTCOME = "outcomes";
 const TAGS = "tags";
 const DESCRIPTION = "description";
 const POWER = "power"; // Preset universal scaling
@@ -161,10 +161,10 @@ export class ActionInspector {
   }
 
   /**
-   * @returns {ActionPotencyTable}
+   * @returns {ActionOutcomeTable}
    */
-  get potencies() {
-    return this.data[ACTION_POTENCIES];
+  get outcomes() {
+    return this.data[ACTION_OUTCOME];
   }
 
   /**
@@ -405,24 +405,24 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
-   * @param {(potencies: ActionPotencyTable) => void} callback
+   * @param {(potencies: ActionOutcomeTable) => void} callback
    * @return {ActionConfig}
    */
-  setPotency(callback) {
-    const tiers = this.potencies ?? {
-      reduced: {
+  setOutcome(callback) {
+    const tiers = this.outcomes ?? {
+      partial: {
         components: [],
       },
-      standard: {
+      success: {
         components: [],
       },
-      powerful: {
+      critical: {
         components: [],
       },
     };
     if (tiers) {
       callback(tiers);
-      this.setData(ACTION_POTENCIES, tiers);
+      this.setData(ACTION_OUTCOME, tiers);
     }
     return this;
   }
@@ -617,10 +617,10 @@ export class ActionConfig extends ActionInspector {
   }
 
   /**
-   * @param {AH_ActionPotency} potency If set, it will override the calculation.
+   * @param {AH_Outcome} outcome If set, it will override the calculation.
    * @remarks Invoked whenever targets or targeted defense change
    */
-  updateTargetResults(potency) {
+  updateTargetResults(outcome) {
     // A PC-facing defense check is handled differently
     if (this.isDefenseCheck) {
       return;
@@ -628,10 +628,10 @@ export class ActionConfig extends ActionInspector {
 
     const targets = this.getTargets();
     if (targets?.length) {
-      // If overriding potency
-      if (potency) {
+      // If overriding outcome
+      if (outcome) {
         for (let t = 0; t < targets.length; t++) {
-          this.check.data[TARGETS][t].potency = potency;
+          this.check.data[TARGETS][t].outcome = outcome;
         }
         return;
       }
@@ -647,11 +647,11 @@ export class ActionConfig extends ActionInspector {
         if (target.defenses) {
           const difficulty = target.defenses[targetedDefense];
           this.check.data[TARGETS][t].difficulty = difficulty;
-          this.check.data[TARGETS][t].potency = Formulas.calculatePotency(this.check, difficulty);
+          this.check.data[TARGETS][t].outcome = Formulas.calculateOutcome(this.check, difficulty);
         }
         // Entity types (always hit)
         else {
-          this.check.data[TARGETS][t].potency = "standard";
+          this.check.data[TARGETS][t].outcome = "success";
         }
       }
     }
@@ -664,7 +664,7 @@ export class ActionConfig extends ActionInspector {
     const targets = this.getTargets();
     if (targets?.length) {
       for (let t = 0; t < targets.length; t++) {
-        this.check.data[TARGETS][t].potency = "";
+        this.check.data[TARGETS][t].outcome = "";
       }
     }
   }

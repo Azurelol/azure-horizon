@@ -1087,7 +1087,11 @@
       },
       "ENGRAM": {
         "Magic": "Magic",
-        "Support": "Support"
+        "Support": "Support",
+        "Slot": {
+          "long": "Slot",
+          "plural": "Slots"
+        }
       },
       "RARITY": {
         "Common": "Common",
@@ -1197,11 +1201,14 @@
         "Huge": "Huge"
       },
       "Potency": "Potency",
-      "POTENCY": {
-        "Tier": "Tier",
+      "OUTCOME": {
+        "Fumble": "Fumble",
         "Partial": "Partial",
         "Success": "Success",
-        "Critical": "Critical",
+        "Critical": "Critical"
+      },
+      "POTENCY": {
+        "Tier": "Tier",
         "Standard": "Standard",
         "Reduced": "Reduced",
         "Powerful": "Powerful",

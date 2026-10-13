@@ -86,7 +86,7 @@ export class AHTokenDocument extends foundry.documents.TokenDocument {
           case "minion":
             turns = 0;
             break;
-          case "standard":
+          case "success":
             turns = 1;
             break;
           case "elite":
