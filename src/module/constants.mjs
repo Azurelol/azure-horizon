@@ -210,5 +210,5 @@ export function getUserFlag(flag) {
  * @returns {Promise}
  */
 export async function setUserFlag(flag, value) {
-  return game.user.getFlag(systemID, flag);
+  return game.user.setFlag(systemID, flag, value);
 }

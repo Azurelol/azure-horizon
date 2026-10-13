@@ -10,10 +10,12 @@
   --ah-hud-gap: 4px;
   --ah-hud-icon: 28px;
 
-  position: fixed;
-  z-index: 60; /* above the canvas UI, below Foundry dialogs and menus */
-  pointer-events: none; /* only the HUD's own controls take clicks */
-  color: var(--ah-hud-text);
+  &.--popout {
+    position: fixed;
+    z-index: 60; /* above the canvas UI, below Foundry dialogs and menus */
+    pointer-events: none; /* only the HUD's own controls take clicks */
+    color: var(--ah-hud-text);
+  }
 }
 
 .ah-hud {
@@ -32,7 +34,7 @@
   background: var(--ah-hud-bg);
   border: 1px solid var(--ah-hud-border);
   border-radius: var(--ah-hud-radius);
-  font-size: var(--ah-font-size-m, 12px);
+  font-size: var(--ah-font-size-lg, 12px);
 
   img {
     width: 48px;
@@ -126,7 +128,7 @@
   border: 1px solid transparent;
   border-radius: var(--ah-hud-radius);
   color: var(--ah-hud-text);
-  font-size: var(--font-size-13, 13px);
+  font-size: var(--ah-font-size-m);
   text-align: left;
   cursor: pointer;
 }

@@ -25,6 +25,7 @@ const LAYOUT_TEMPLATES = {
  * Action HUD for selected tokens.
  * @remarks When to refresh is handled by hooks.
  * @property {Boolean} rendered
+ * @property {HTMLElement} element
  */
 export default class AHTokenActionHUD extends HandlebarsApplicationMixin(ApplicationV2) {
   /**
@@ -58,13 +59,13 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     return this.#instance;
   }
 
+  /** @type ApplicationWindowConfiguration **/
   static DEFAULT_OPTIONS = {
     id: "ah-action-hud",
     classes: ["ah-hud-app"],
     tag: "div",
     window: {
       frame: false,
-      positioned: true,
     },
     position: {
       width: "auto",
@@ -102,8 +103,9 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     super._onRender(context, options);
     switch (this.#layout) {
       case "popout":
-        this.#applyPosition();
+        //this.#applyPosition();
         this.#bindDrag();
+        this.element.classList.add("--popout");
         break;
       case "docked":
         break;
@@ -151,17 +153,6 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     if (this.rendered) await this.close({ animate: false });
   }
 
-  /**
-   * AppV2 positions frameless apps on its own, so re-apply the saved spot
-   * after each render.
-   */
-  #applyPosition() {
-    const saved = getUserFlag(AH.flags.HUD.Position);
-    const top = Math.clamp(saved?.top ?? 120, 0, window.innerHeight - 40);
-    const left = Math.clamp(saved?.left ?? 120, 0, window.innerWidth - 40);
-    Object.assign(this.element.style, { top: `${top}px`, left: `${left}px`, bottom: "auto", right: "auto" });
-  }
-
   /** Make the grip handle drag the HUD. Saves position on release. */
   #bindDrag() {
     const handle = this.element.querySelector("[data-part='dragHandle']");
@@ -176,8 +167,12 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
       const startLeft = this.element.offsetLeft;
 
       const move = ev => {
-        this.element.style.top = `${startTop + ev.clientY - startY}px`;
-        this.element.style.left = `${startLeft + ev.clientX - startX}px`;
+        const top = startTop + ev.clientY - startY;
+        const left = startLeft + ev.clientX - startX;
+        this.setPosition({
+          top: top,
+          left: left,
+        });
       };
       const up = async ev => {
         handle.releasePointerCapture(ev.pointerId);
