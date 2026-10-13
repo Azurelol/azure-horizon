@@ -1,0 +1,27 @@
+<div class="ah-hud" data-part="hud">
+  <header class="ah-hud__header">
+    <button type="button" class="ah-hud__drag" data-part="dragHandle" data-tooltip="Drag to move" aria-label="Drag to move">
+      <i class="fa-solid fa-grip-vertical"></i>
+    </button>
+    <span class="ah-hud__name">{{name}}</span>
+  </header>
+
+  <nav class="ah-hud__groups">
+    {{#each groups}}
+      <section class="ah-hud__group {{#if open}}ah-hud__group--open{{/if}}" data-group-id="{{id}}">
+        <button type="button" class="ah-hud__group-button" data-action="toggleGroup" data-group-id="{{id}}">
+          {{localize label}}
+        </button>
+
+        <div class="ah-hud__actions">
+          {{#each actions}}
+            <button type="button" class="ah-hud__action" data-action="useAction" data-action-id="{{id}}" data-tooltip="{{tooltip}}">
+              {{#if img}}<img class="ah-hud__action-img" src="{{img}}" alt="" loading="lazy">{{/if}}
+              <span class="ah-hud__action-name">{{name}}</span>
+            </button>
+          {{/each}}
+        </div>
+      </section>
+    {{/each}}
+  </nav>
+</div>

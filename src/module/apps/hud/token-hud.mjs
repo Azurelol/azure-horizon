@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import { AHTokenDocument } from "../../documents/_module.mjs";
 
 /**
- * A custom Token HUD that implements Draw Steel effect handling.
+ * A custom Token action hud.
  */
 export default class AHTokenHUD extends foundry.applications.hud.TokenHUD {
 

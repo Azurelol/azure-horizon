@@ -53,14 +53,14 @@
  * @property {string[]} [contentClasses]        Additional CSS classes to apply to the .window-content element.
  */
 
-const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
+const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 const { DragDrop } = foundry.applications.ux;
 
 /**
  * A stock form application meant for async behavior using templates.
  * @abstract
  */
-export default class AHApplication extends HandlebarsApplicationMixin(Application) {
+export default class AHApplication extends HandlebarsApplicationMixin(ApplicationV2) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["ah-application"],

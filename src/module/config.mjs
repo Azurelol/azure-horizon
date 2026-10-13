@@ -1,6 +1,5 @@
-// NOTE: This file should have no other dependencies
-import { getSystemSetting, systemAssetPath, systemID, systemNS, systemSCK } from "./constants.mjs";
-import StringUtils from "./utils/string-utils.mjs";
+// NOTE: This file should have no other dependencies besides constants.
+import { getSystemSetting, localize, systemAssetPath, systemID, systemNS } from "./constants.mjs";
 
 const AH = {};
 
@@ -49,7 +48,7 @@ function resolveConfigRecordLabel(value, format) {
  */
 export function getFormSelectOptions(record, format = "long") {
   return Object.entries(record).map(([key, value]) => ({
-    label: StringUtils.localize(resolveConfigRecordLabel(value, format)),
+    label: localize(resolveConfigRecordLabel(value, format)),
     value: key,
   }));
 }
@@ -1067,6 +1066,10 @@ AH.flags = Object.freeze({
     Temporary: "Temporary",
     Identifier: "Identifier",
   }),
+  // HUD
+  HUD: Object.freeze({
+    Position: "Position",
+  }),
   // Combat
   Combat: Object.freeze({
     FirstTurn: "First Turn",
@@ -1263,6 +1266,10 @@ AH.hooks = Object.freeze({
    * @remarks Uses {@link DefeatEvent}. This can happen after a {@link DAMAGE_EVENT}.
    */
   DEFEAT_EVENT: `${systemNS}.events.defeat`,
+  /**
+   * @description Refreshes the token action HUD.
+   */
+  HUD_REFRESH: `${systemNS}.hud.refresh`,
 });
 
 /**

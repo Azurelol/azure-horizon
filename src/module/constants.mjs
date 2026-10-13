@@ -195,3 +195,20 @@ export function receiveSocketEvent(event, callback) {
     if (message?.type === event) callback(message.data);
   });
 }
+
+/**
+ * @param {String} flag
+ * @returns {*}
+ */
+export function getUserFlag(flag) {
+  return game.user.getFlag(systemID, flag);
+}
+
+/**
+ * @param {String} flag
+ * @param {*} value
+ * @returns {*}
+ */
+export async function setUserFlag(flag, value) {
+  return game.user.getFlag(systemID, flag);
+}

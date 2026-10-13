@@ -139,6 +139,7 @@ function initializeSystems() {
   pipelines.Award.initialize();
   apps.UI.CompendiumBrowser.initialize();
   apps.UI.Manual.initialize();
+  apps.HUD.AHTokenActionHUD.initialize();
   helpers.Themes.initialize();
   canvas.AHTextures.preload();
   canvas.Canvas.initialize();

@@ -1,0 +1,137 @@
+.ah-hud-app {
+  /* Component tokens */
+  --ah-hud-bg: var(--ah-color-surface, #14202e);
+  --ah-hud-bg-hover: var(--ah-color-surface-raised, #1d2f44);
+  --ah-hud-border: var(--ah-color-border, #3a5575);
+  --ah-hud-text: var(--ah-color-text, #e6edf5);
+  --ah-hud-text-muted: var(--ah-color-text-muted, #8fa5bd);
+  --ah-hud-accent: var(--ah-color-action, #e8873a);
+  --ah-hud-radius: 6px;
+  --ah-hud-gap: 4px;
+  --ah-hud-icon: 28px;
+
+  position: fixed;
+  z-index: 60; /* above the canvas UI, below Foundry dialogs and menus */
+  pointer-events: none; /* only the HUD's own controls take clicks */
+  color: var(--ah-hud-text);
+}
+
+.ah-hud {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ah-hud-gap);
+  pointer-events: auto;
+}
+
+/* Header */
+.ah-hud__header {
+  display: flex;
+  align-items: center;
+  gap: var(--ah-hud-gap);
+  padding: 2px 6px;
+  background: var(--ah-hud-bg);
+  border: 1px solid var(--ah-hud-border);
+  border-radius: var(--ah-hud-radius);
+  font-size: var(--ah-font-size-m, 12px);
+}
+
+.ah-hud__name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 18ch;
+}
+
+.ah-hud__drag {
+  all: unset;
+  cursor: grab;
+  padding: 2px 4px;
+  color: var(--ah-hud-text-muted);
+  touch-action: none;
+}
+.ah-hud__drag:hover { color: var(--ah-hud-text); }
+.ah-hud__drag:active { cursor: grabbing; }
+
+/* Group row: horizontal buttons; the open group's actions expand below */
+.ah-hud__groups {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--ah-hud-gap);
+}
+
+.ah-hud__group {
+  position: relative;
+}
+
+.ah-hud__group-button {
+  padding: 4px 10px;
+  background: var(--ah-hud-bg);
+  border: 1px solid var(--ah-hud-border);
+  border-radius: var(--ah-hud-radius);
+  color: var(--ah-hud-text);
+  font-size: var(--font-size-13, 13px);
+  line-height: 1.2;
+  cursor: pointer;
+}
+.ah-hud__group-button:hover { background: var(--ah-hud-bg-hover); }
+.ah-hud__group--open > .ah-hud__group-button {
+  border-color: var(--ah-hud-accent);
+  background: var(--ah-hud-bg-hover);
+}
+
+/* Actions panel */
+.ah-hud__actions {
+  display: none;
+  position: absolute;
+  top: calc(100% + var(--ah-hud-gap));
+  left: 0;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 180px;
+  max-height: 50vh;
+  overflow-y: auto;
+  padding: var(--ah-hud-gap);
+  background: var(--ah-hud-bg);
+  border: 1px solid var(--ah-hud-border);
+  border-radius: var(--ah-hud-radius);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.45);
+}
+.ah-hud__group--open > .ah-hud__actions { display: flex; }
+
+.ah-hud__action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--ah-hud-radius);
+  color: var(--ah-hud-text);
+  font-size: var(--font-size-13, 13px);
+  text-align: left;
+  cursor: pointer;
+}
+.ah-hud__action:hover,
+.ah-hud__action:focus-visible {
+  background: var(--ah-hud-bg-hover);
+  border-color: var(--ah-hud-border);
+  outline: none;
+}
+
+.ah-hud__action-img {
+  width: var(--ah-hud-icon);
+  height: var(--ah-hud-icon);
+  object-fit: cover;
+  border: none;
+  border-radius: 3px;
+  flex: none;
+}
+
+.ah-hud__action-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

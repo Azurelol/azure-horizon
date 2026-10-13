@@ -40,6 +40,7 @@
 @import "applications/combat-tracker.css";
 @import "applications/journal.css";
 @import "applications/system-controls.css";
+@import "applications/hud.css";
 
 @import "sheets/sheet.css";
 @import "sheets/actor.css";
