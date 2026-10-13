@@ -32,6 +32,10 @@
     #0f1a3d 100%
   );
   --ah-surface-fill-gradient: linear-gradient(135deg, var(--ah-primitive-color-navy-900), var(--ah-primitive-color-burgundy-dark));
+  --ah-surface-ring-gradient: linear-gradient(135deg,
+      var(--ah-primitive-color-silver-light, #dfe5ec) 0%,
+      var(--ah-primitive-color-slate-dark, #6b7787) 50%,
+      var(--ah-primitive-color-silver-light, #dfe5ec) 100%);
 
   --ah-surface-entry: #CACACA;
   --ah-surface-entry-gradient: linear-gradient(

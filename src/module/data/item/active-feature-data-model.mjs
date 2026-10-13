@@ -47,6 +47,13 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     });
   }
 
+  /**
+   * @returns {Boolean}
+   */
+  get isAction() {
+    return this.action.enabled;
+  }
+
   isFreeAction(modifiers) {
     if (this.action.traits.has("free")) {
       return true;

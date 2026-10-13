@@ -41,6 +41,7 @@
 @import "applications/journal.css";
 @import "applications/system-controls.css";
 @import "applications/hud.css";
+@import "applications/hotbar.css";
 
 @import "sheets/sheet.css";
 @import "sheets/actor.css";

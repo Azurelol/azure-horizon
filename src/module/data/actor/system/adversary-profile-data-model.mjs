@@ -33,10 +33,9 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
         label: "AH.FIELD.Traits",
         options: getFormSelectOptions(AH.traits.weapon),
       }),
-      family: new StringField({ initial: "success", choices: Object.keys(AH.rank) }),
       role: new StringField({ initial: "custom", choices: Object.keys(AH.role) }),
       villain: new BooleanField(),
-      rank: new StringField({ initial: "success", choices: Object.keys(AH.rank) }),
+      rank: new StringField({ initial: "standard", choices: Object.keys(AH.rank) }),
       // eslint-disable-next-line no-undef
       minion: new ForeignDocumentField(Actor, {
         nullable: true,
@@ -186,7 +185,7 @@ export default class AdversaryProfileDataModel extends VersionedDataModel {
 
     let availableAffinities = 0;
     switch (this.rank) {
-      case "success":
+      case "standard":
         availableAffinities = 1;
         break;
       case "elite":

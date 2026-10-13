@@ -1,0 +1,11 @@
+.hotbar-controls {
+  menu {
+    li {
+    }
+  }
+}
+
+#hotbar {
+  --slot-color: var(--ah-surface-panel);
+}
+

@@ -74,6 +74,7 @@
         "Third": "Third"
       },
       "MESSAGE": {
+        "OpenSheet": "Open Sheet",
         "TemporaryEffectHint": "[Right-click to remove]",
         "NoDataAvailable": "No data is available.",
         "NoModifiersSet": "No modifiers are currently affecting this character."
@@ -998,6 +999,7 @@
       "Choice": "Choice",
       "Name": "Name",
       "Add": "Add",
+      "Utility": "Utility",
       "Increase": "Increase",
       "Decrease": "Decrease",
       "Variant": "Variant",

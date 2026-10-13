@@ -1535,6 +1535,7 @@ AH.icons = {
   attack: "ah-icon-attack",
   ability: "ah-icon-ability",
   feature: "fa fa-puzzle-piece",
+  utility: "ah-icon-objective",
 
   skill: "ah-icon-skill",
   spell: "ah-icon-spell",

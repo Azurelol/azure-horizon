@@ -169,20 +169,33 @@ a, button {
 
 
 .ah-ring {
-  --ah-ring-size: 3rem;
-  --ah-ring-width: 3px;
+  --ah-ring-width: 4px;
   --ah-ring-gap: 1px;
-  --ah-ring-fill: var(--ah-surface-fill-gradient);
+  --ah-ring-fill: var(--ah-surface-ring-gradient);
   --ah-ring-background: rgb(0 0 0 / 0.35);
 
   position: relative;
-  display: inline-grid;
-  place-items: center;
-  width: var(--ah-ring-size);
-  height: var(--ah-ring-size);
+  display: block;
   flex: none;
+
+  /* Size: fill the parent's height unless --ah-ring-size is set. */
+  height: var(--ah-ring-size, 100%);
+  max-height: 100%;          /* never taller than the parent */
+  width: auto;               /* width follows height, so it stays a circle */
+  aspect-ratio: 1;
+  min-width: 0;
+  min-height: 0;
+
+  /* Let the icon size itself from the ring, not from --ah-ring-size. */
+  container-type: size;
   border-radius: 50%;
   isolation: isolate;
+  filter: drop-shadow(0 0 1px rgb(0 0 0 / 0.55));
+
+  /* Optional fixed sizes. Rename to match your {{size}} values. */
+  .ah-ring.--sm { --ah-ring-size: 24px; }
+  .ah-ring.--md { --ah-ring-size: 48px; }
+  .ah-ring.--lg { --ah-ring-size: 72px; }
 }
 
 .ah-ring::before {
@@ -191,13 +204,17 @@ a, button {
   inset: 0;
   border-radius: 50%;
   background: var(--ah-ring-fill);
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--ah-ring-width) - 0.5px), #000 calc(100% - var(--ah-ring-width)));
+  mask: radial-gradient(farthest-side, transparent calc(100% - var(--ah-ring-width) - 0.5px), #000 calc(100% - var(--ah-ring-width)));
   pointer-events: none;
   z-index: 1;
 }
 
+/* Content is out of flow, so no image can enlarge the ring. */
 .ah-ring__img,
 .ah-ring__icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
   width: calc(100% - 2 * (var(--ah-ring-width) + var(--ah-ring-gap)));
   height: calc(100% - 2 * (var(--ah-ring-width) + var(--ah-ring-gap)));
   border-radius: 50%;
@@ -212,6 +229,7 @@ a, button {
 .ah-ring__icon {
   display: grid;
   place-items: center;
-  font-size: calc(var(--ah-ring-size) * 0.45);
+  font-size: 45cqmin;        /* 45% of the ring's smaller side */
   line-height: 1;
 }
+

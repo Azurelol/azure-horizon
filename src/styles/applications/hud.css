@@ -1,7 +1,9 @@
 .ah-hud-app {
   /* Component tokens */
-  --ah-hud-bg: var(--ah-surface-panel);
-  --ah-hud-bg-hover: var(--ah-surface-panel-nested);
+  --ah-hud-background: var(--ah-surface-panel);
+  --ah-hud-background-hover: var(--ah-surface-panel-nested);
+  --ah-hud-group-button-background: var(--ah-surface-panel-nested);
+  --ah-hud-group-button-background-hover: var(--ah-surface-action-hover);
   --ah-hud-border: var(--ah-surface-border);
   --ah-hud-text: var(--ah-content-color);
   --ah-hud-text-muted: var(--ah-content-muted);
@@ -9,6 +11,8 @@
   --ah-hud-radius: 6px;
   --ah-hud-gap: 4px;
   --ah-hud-icon: 28px;
+
+  font-family: var(--ah-font-family-application);
 
   &.--popout {
     position: fixed;
@@ -25,13 +29,14 @@
   pointer-events: auto;
 }
 
-/* Header */
-.ah-hud__header {
+/* POPOUT */
+
+.ah-hud__popout__header {
   display: flex;
   align-items: center;
   gap: var(--ah-hud-gap);
   padding: 2px 6px;
-  background: var(--ah-hud-bg);
+  background: var(--ah-hud-background);
   border: 1px solid var(--ah-hud-border);
   border-radius: var(--ah-hud-radius);
   font-size: var(--ah-font-size-lg, 12px);
@@ -61,7 +66,7 @@
 .ah-hud__drag:active { cursor: grabbing; }
 
 /* Group row: horizontal buttons; the open group's actions expand below */
-.ah-hud__groups {
+.ah-hud__popout__groups {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -75,7 +80,7 @@
 
 .ah-hud__group-button {
   padding: 4px 10px;
-  background: var(--ah-hud-bg);
+  background: var(--ah-hud-group-button-background);
   border: 1px solid var(--ah-hud-border);
   border-radius: var(--ah-hud-radius);
   text-align: left;
@@ -85,10 +90,13 @@
   line-height: 1.2;
   cursor: pointer;
 }
-.ah-hud__group-button:hover { background: var(--ah-hud-bg-hover); }
+.ah-hud__group-button:hover
+{
+  background: var(--ah-hud-group-button-background-hover);
+}
 .ah-hud__group--open > .ah-hud__group-button {
   border-color: var(--ah-hud-accent);
-  background: var(--ah-hud-bg-hover);
+  background: var(--ah-hud-group-button-background-hover);
 }
 
 /* Actions panel */
@@ -101,7 +109,7 @@
   max-height: 50vh;
   overflow-y: auto;
   padding: var(--ah-hud-gap);
-  background: var(--ah-hud-bg);
+  background: var(--ah-hud-background);
   border: 1px solid var(--ah-hud-border);
   border-radius: var(--ah-hud-radius);
   box-shadow: 0 4px 14px rgb(0 0 0 / 0.45);
@@ -114,6 +122,13 @@
   &.--vertical {
     top: 0;
     left: calc(100% + var(--ah-hud-gap));
+  }
+
+  &.--above {
+    top: auto;
+    bottom: calc(100% + var(--ah-hud-gap));
+    left: 0;
+    flex-direction: column-reverse;
   }
 }
 
@@ -134,7 +149,7 @@
 }
 .ah-hud__action:hover,
 .ah-hud__action:focus-visible {
-  background: var(--ah-hud-bg-hover);
+  background: var(--ah-hud-background-hover);
   border-color: var(--ah-hud-border);
   outline: none;
 }
@@ -154,3 +169,48 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* DOCKED */
+
+.ah-hud__docked__frame {
+  display: grid;
+  grid-template-areas:
+		'header actions';
+
+  .ah-hud__group-button {
+    height: 48px;
+    padding: 0;
+  }
+}
+
+.ah-hud__docked__header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--ah-hud-gap);
+  padding: 2px 6px;
+  --size: 96px;
+  width: var(--size);
+  height: var(--size);
+
+  img {
+    object-position: center;
+    object-fit: contain;
+  }
+
+  span {
+    color: var(--ah-content-accent);
+  }
+}
+
+.ah-hud__docked__groups {
+  grid-area: actions;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--ah-hud-gap);
+  min-width: 120px;
+}
+

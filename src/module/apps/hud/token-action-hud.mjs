@@ -41,7 +41,7 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
   /**
    * @type {TokenActionHUDLayout}
    */
-  #layout = "popout";
+  #layout = "docked";
 
   /**
    * Singular HUD instance.
@@ -59,7 +59,7 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     return this.#instance;
   }
 
-  /** @type ApplicationWindowConfiguration **/
+  /** @type ApplicationConfiguration **/
   static DEFAULT_OPTIONS = {
     id: "ah-action-hud",
     classes: ["ah-hud-app"],
@@ -70,6 +70,8 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     position: {
       width: "auto",
       height: "auto",
+      top: 140,
+      left: 140,
     },
     actions: {
       toggleGroup: AHTokenActionHUD.#onToggleGroup,
@@ -93,6 +95,25 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
       groups: data?.groups ?? [],
     };
 
+    let backgroundClass;
+    switch (this.actor.type) {
+      case "hero":
+        backgroundClass = "--ah-hero-background-gradient";
+        break;
+      case "follower":
+        break;
+      case "adversary":
+        backgroundClass = "--ah-adversary-background-gradient";
+        break;
+      case "entity":
+        break;
+      case "unit":
+        break;
+
+    }
+
+    context.backgroundClass = backgroundClass;
+
     context.template = await renderTemplate(LAYOUT_TEMPLATES[this.#layout], context, false);
 
     return context;
@@ -103,11 +124,12 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     super._onRender(context, options);
     switch (this.#layout) {
       case "popout":
-        //this.#applyPosition();
         this.#bindDrag();
         this.element.classList.add("--popout");
         break;
       case "docked":
+        this.#attach();
+        this.element.classList.add("--docked");
         break;
     }
   }
@@ -186,6 +208,15 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
       handle.addEventListener("pointermove", move);
       handle.addEventListener("pointerup", up);
     });
+  }
+
+  /**
+   * Attach the hud to the hotbar
+   */
+  #attach() {
+    const footer = document.querySelector("footer");
+    footer.insertBefore(this.element, footer.firstChild);
+
   }
 
   /* -------------------------------------------- */

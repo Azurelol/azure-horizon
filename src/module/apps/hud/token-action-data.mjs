@@ -9,6 +9,7 @@
 /**
  * @typedef TokenActionGroup
  * @property id
+ * @property icon
  * @property label
  * @property {Boolean} open
  * @property {TokenActionReference[]} actions Doesn't include the onClick/onContext
@@ -39,10 +40,10 @@ import { localize } from "../../constants.mjs";
  * `filter`: optional (item) => boolean for finer control.
  */
 const ITEM_GROUPS = [
-  { id: "attacks", label: "AH.ACTION.Attack", types: ["weapon", "attack"] },
-  { id: "features", label: "AH.ACTION.Feature", types: ["skill", "classFeature", "ability"] },
-  { id: "spells", label: "AH.ACTION.Spell", types: ["spell"] },
-  { id: "consumables", label: "AH.ACTION.Consumable", types: ["consumable"] },
+  { id: "attack", label: "AH.ACTION.Attack", types: ["weapon", "attack"] },
+  { id: "skill", label: "AH.ACTION.Skill", types: ["skill", "classFeature", "ability"] },
+  { id: "spell", label: "AH.ACTION.Spell", types: ["spell"] },
+  { id: "equipment", label: "AH.ACTION.Consumable", types: ["consumable"] },
 ];
 
 /** Item types that should never show up on the HUD. */
@@ -127,22 +128,22 @@ export function buildTokenActionMap(actor, { openGroups = new Set() } = {}) {
   // Utility group: things that are about the token, not an item.
   const token = actor.token ?? actor.getActiveTokens()[0]?.document;
   const utility = [{
-    id: "util.sheet",
-    name: "Sheet",
+    id: "utility.sheet",
+    name: "Open Sheet",
     img: null,
-    tooltip: "Open character sheet",
+    tooltip: "Open Character Sheet",
     onClick: () => actor.sheet.render({ force: true }),
   }];
   if (token && game.combat) {
     utility.push({
-      id: "util.combat",
+      id: "utility.combat",
       name: token.inCombat ? "Leave Combat" : "Join Combat",
       img: null,
       tooltip: token.inCombat ? "Remove from combat" : "Add to combat",
       onClick: () => token.toggleCombatant(),
     });
   }
-  pushGroup("util", "Utility", utility);
+  pushGroup("utility", "AH.COMMON.Utility", utility);
   return {
     actorId: actor.id,
     name: actor.name,

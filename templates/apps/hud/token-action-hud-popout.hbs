@@ -1,4 +1,4 @@
-<header class="ah-hud__header">
+<header class="ah-hud__popout__header">
   <button type="button" class="ah-hud__drag" data-part="dragHandle" data-tooltip="Drag to move" aria-label="Drag to move">
     <i class="fa-solid fa-grip-vertical"></i>
   </button>
@@ -6,7 +6,7 @@
   <span class="ah-hud__name">{{name}}</span>
 </header>
 
-<nav class="ah-hud__groups">
+<nav class="ah-hud__popout__groups">
   {{#each groups}}
     <section class="ah-hud__group {{#if open}}ah-hud__group--open{{/if}}" data-group-id="{{id}}">
       <button type="button" class="ah-hud__group-button" data-action="toggleGroup" data-group-id="{{id}}">

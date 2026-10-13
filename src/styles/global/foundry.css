@@ -18,6 +18,7 @@ button, h1, h2, h3, h4, h5, h6, p {
   .window-header {
     background: var(--ah-application-header-background);
   }
+
 }
 
 .application.sheet.ah {
