@@ -3,6 +3,7 @@
     <button type="button" class="ah-hud__drag" data-part="dragHandle" data-tooltip="Drag to move" aria-label="Drag to move">
       <i class="fa-solid fa-grip-vertical"></i>
     </button>
+    <img src="{{ actor.img }}" alt="{{ actor.name }}" loading="lazy">
     <span class="ah-hud__name">{{name}}</span>
   </header>
 
@@ -13,7 +14,7 @@
           {{localize label}}
         </button>
 
-        <div class="ah-hud__actions">
+        <div class="ah-hud__actions --vertical">
           {{#each actions}}
             <button type="button" class="ah-hud__action" data-action="useAction" data-action-id="{{id}}" data-tooltip="{{tooltip}}">
               {{#if img}}<img class="ah-hud__action-img" src="{{img}}" alt="" loading="lazy">{{/if}}

@@ -1,11 +1,11 @@
 .ah-hud-app {
   /* Component tokens */
-  --ah-hud-bg: var(--ah-color-surface, #14202e);
-  --ah-hud-bg-hover: var(--ah-color-surface-raised, #1d2f44);
-  --ah-hud-border: var(--ah-color-border, #3a5575);
-  --ah-hud-text: var(--ah-color-text, #e6edf5);
-  --ah-hud-text-muted: var(--ah-color-text-muted, #8fa5bd);
-  --ah-hud-accent: var(--ah-color-action, #e8873a);
+  --ah-hud-bg: var(--ah-surface-panel);
+  --ah-hud-bg-hover: var(--ah-surface-panel-nested);
+  --ah-hud-border: var(--ah-surface-border);
+  --ah-hud-text: var(--ah-content-color);
+  --ah-hud-text-muted: var(--ah-content-muted);
+  --ah-hud-accent: var(--ah-surface-accent);
   --ah-hud-radius: 6px;
   --ah-hud-gap: 4px;
   --ah-hud-icon: 28px;
@@ -33,6 +33,11 @@
   border: 1px solid var(--ah-hud-border);
   border-radius: var(--ah-hud-radius);
   font-size: var(--ah-font-size-m, 12px);
+
+  img {
+    width: 48px;
+    height: auto;
+  }
 }
 
 .ah-hud__name {
@@ -56,9 +61,10 @@
 /* Group row: horizontal buttons; the open group's actions expand below */
 .ah-hud__groups {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: stretch;
   gap: var(--ah-hud-gap);
+  min-width: 120px;
 }
 
 .ah-hud__group {
@@ -70,8 +76,10 @@
   background: var(--ah-hud-bg);
   border: 1px solid var(--ah-hud-border);
   border-radius: var(--ah-hud-radius);
+  text-align: left;
+  width: 100%;
   color: var(--ah-hud-text);
-  font-size: var(--font-size-13, 13px);
+  font-size: var(--ah-font-size-m, 13px);
   line-height: 1.2;
   cursor: pointer;
 }
@@ -85,8 +93,6 @@
 .ah-hud__actions {
   display: none;
   position: absolute;
-  top: calc(100% + var(--ah-hud-gap));
-  left: 0;
   flex-direction: column;
   gap: 2px;
   min-width: 180px;
@@ -97,7 +103,18 @@
   border: 1px solid var(--ah-hud-border);
   border-radius: var(--ah-hud-radius);
   box-shadow: 0 4px 14px rgb(0 0 0 / 0.45);
+
+  &.--horizontal {
+    top: calc(100% + var(--ah-hud-gap));
+    left: 0;
+  }
+
+  &.--vertical {
+    top: 0;
+    left: calc(100% + var(--ah-hud-gap));
+  }
 }
+
 .ah-hud__group--open > .ah-hud__actions { display: flex; }
 
 .ah-hud__action {
