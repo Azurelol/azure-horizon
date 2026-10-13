@@ -1,7 +1,7 @@
 
 import {
   getUserFlag,
-  localize,
+  localize, renderTemplate,
   setUserFlag,
   systemID,
   systemTemplatePath,
@@ -15,6 +15,11 @@ const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 /**
  * @typedef {'popout'|'docked'} TokenActionHUDLayout
  */
+
+const LAYOUT_TEMPLATES = {
+  popout: systemTemplatePath("apps/hud/token-action-hud-popout"),
+  docked: systemTemplatePath("apps/hud/token-action-hud-docked"),
+};
 
 /**
  * Action HUD for selected tokens.
@@ -35,7 +40,7 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
   /**
    * @type {TokenActionHUDLayout}
    */
-  #layout = "vertical";
+  #layout = "popout";
 
   /**
    * Singular HUD instance.
@@ -72,8 +77,38 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
   };
 
   static PARTS = {
-    hud: { template: systemTemplatePath("apps/token-action-hud") },
+    hud: {
+      template: systemTemplatePath("apps/token-action-hud"),
+      templates: Object.values(LAYOUT_TEMPLATES),
+    },
   };
+
+  /** @override */
+  async _prepareContext(options) {
+    const data = this.#data;
+    let context = {
+      actor: this.actor,
+      name: data?.name ?? "",
+      groups: data?.groups ?? [],
+    };
+
+    context.template = await renderTemplate(LAYOUT_TEMPLATES[this.#layout], context, false);
+
+    return context;
+  }
+
+  /** @override */
+  _onRender(context, options) {
+    super._onRender(context, options);
+    switch (this.#layout) {
+      case "popout":
+        this.#applyPosition();
+        this.#bindDrag();
+        break;
+      case "docked":
+        break;
+    }
+  }
 
   /* -------------------------------------------- */
   /*  Properties                                  */
@@ -114,23 +149,6 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     this.#data = null;
     this.#openGroups.clear();
     if (this.rendered) await this.close({ animate: false });
-  }
-
-  /** @override */
-  async _prepareContext(options) {
-    const data = this.#data;
-    return {
-      actor: this.actor,
-      name: data?.name ?? "",
-      groups: data?.groups ?? [],
-    };
-  }
-
-  /** @override */
-  _onRender(context, options) {
-    super._onRender(context, options);
-    this.#applyPosition();
-    this.#bindDrag();
   }
 
   /**
