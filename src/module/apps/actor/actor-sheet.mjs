@@ -413,7 +413,6 @@ export class AHActorSheet extends DocumentSheetMixin(api.HandlebarsApplicationMi
 
   /**
    * Determines effect parent to pass to helper.
-   *
    * @this AHActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].

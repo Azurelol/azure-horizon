@@ -264,7 +264,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--ah-surface-action-muted);
+  background: var(--ah-surface-card);
   border: var(--ah-border-muted);
 
   a {

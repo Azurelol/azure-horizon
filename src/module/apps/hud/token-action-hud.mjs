@@ -1,7 +1,7 @@
 
 import {
   getUserFlag,
-  localize, renderTemplate,
+  localize, notifyWarn, renderTemplate,
   setUserFlag,
   systemID,
   systemTemplatePath,
@@ -9,6 +9,7 @@ import {
 import AH from "../../config.mjs";
 
 import { buildTokenActionMap } from "./token-action-data.mjs";
+import Handlebars from "../../helpers/handlebars.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
@@ -75,6 +76,7 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     },
     actions: {
       toggleGroup: AHTokenActionHUD.#onToggleGroup,
+      handleTempEffect: { handler: this.#handleTempEffect, buttons: [0, 2] },
       useAction: { handler: AHTokenActionHUD.#onUseAction, buttons: [0, 2] },
     },
   };
@@ -132,6 +134,24 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
         this.#attach();
         this.element.classList.add("--docked");
         break;
+    }
+  }
+
+  /**
+   * Attach event listeners to rendered template parts.
+   * @param {string} partId The id of the part being rendered.
+   * @param {HTMLElement} html The rendered HTML element for the part.
+   * @param {ApplicationRenderOptions} options Rendering options passed to the render method.
+   * @protected
+   */
+  _attachPartListeners(partId, html, options) {
+    super._attachPartListeners(partId, html, options);
+    switch (partId) {
+      case "hud":
+      {
+        Handlebars.setupComponent.resourceBar(html);
+        break;
+      }
     }
   }
 
@@ -261,6 +281,35 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
       ui.notifications.error(`Could not run "${action.name}".`);
     }
     target.blur();
+  }
+
+  /**
+   * Determines effect parent to pass to helper.
+   * @this AHTokenActionHUD
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #handleTempEffect(event, target) {
+    const { effectId } = target.dataset;
+    if (effectId) {
+      const effect = this.actor.effects.get(effectId);
+      if (effect) {
+        const rightClick = event.button === 2;
+        if (rightClick) {
+          if (effect.removable) {
+            effect.delete();
+          }
+          else {
+            notifyWarn("This special status is managed by the system.");
+          }
+
+        }
+        else {
+          effect.sheet.render({ force: true });
+        }
+      }
+    }
   }
 
   /* -------------------------------------------- */
