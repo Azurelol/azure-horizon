@@ -169,79 +169,86 @@ a, button {
 
 
 .ah-frame {
-  --ah-frame-width: 4px;
-  --ah-frame-gap: 1px;
-  --ah-frame-fill: var(--ah-surface-ring-gradient);
+  --ah-ring-width: 4px;
+  --ah-ring-gap: 1px;
+  --ah-ring-fill: var(--ah-surface-ring-gradient);
   --ah-frame-background: rgb(0 0 0 / 0.35);
+
+  /* Shape knobs. The diamond variant overrides these. */
+  --ah-frame-k: 1;               /* inset factor: 1 for a circle, √2 for a diamond */
+  --ah-frame-radius: 50%;
+  --ah-frame-icon-scale: 1;
 
   position: relative;
   display: block;
   flex: none;
-
-  /* Size: fill the parent's height unless --ah-ring-size is set. */
   height: var(--ah-ring-size, 100%);
-  max-height: 100%;          /* never taller than the parent */
-  width: auto;               /* width follows height, so it stays a circle */
+  max-height: 100%;
+  width: auto;
   aspect-ratio: 1;
   min-width: 0;
   min-height: 0;
-
-  /* Let the icon size itself from the ring, not from --ah-ring-size. */
   container-type: size;
-  border-radius: 50%;
+  border-radius: var(--ah-frame-radius);
   isolation: isolate;
   filter: drop-shadow(0 0 1px rgb(0 0 0 / 0.55));
 
-  /* Optional fixed sizes. Rename to match your {{size}} values. */
-  .ah-frame.--sm { --ah-ring-size: 24px; }
-  .ah-frame.--md { --ah-ring-size: 48px; }
-  .ah-frame.--lg { --ah-ring-size: 72px; }
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--ah-frame-fill);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  &.--ring {
-    &::before {
-      border-radius: 50%;
-      mask: radial-gradient(farthest-side, transparent calc(100% - var(--ah-frame-width) - 0.5px), #000 calc(100% - var(--ah-frame-width)));
-    }
-  }
+  &.--sm { --ah-ring-size: 24px; }
+  &.--md { --ah-ring-size: 48px; }
+  &.--lg { --ah-ring-size: 72px; }
 
   &.--diamond {
-    &::before {
-      border-radius: 50%;
-    }
+    --ah-frame-k: 1.41421356;    /* √2 */
+    --ah-frame-radius: 0;
+    --ah-frame-shape: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    --ah-frame-icon-scale: 0.75; /* a diamond's usable area is smaller */
   }
-
 }
 
-/* Content is out of flow, so no image can enlarge the ring. */
+.ah-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ah-frame-radius);
+  background: var(--ah-ring-fill);
+  mask: radial-gradient(farthest-side, transparent calc(100% - var(--ah-ring-width) - 0.5px), #000 calc(100% - var(--ah-ring-width)));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Diamond rim: one polygon traces the outer diamond, then the inner one in
+ * the opposite direction, which cuts the hole. */
+.ah-frame.--diamond::before {
+  --ah-frame-inset: calc(var(--ah-ring-width) * var(--ah-frame-k));
+  mask: none;
+  clip-path: polygon(
+    50% 0, 100% 50%, 50% 100%, 0 50%, 50% 0,
+    50% var(--ah-frame-inset),
+    var(--ah-frame-inset) 50%,
+    50% calc(100% - var(--ah-frame-inset)),
+    calc(100% - var(--ah-frame-inset)) 50%,
+    50% var(--ah-frame-inset)
+  );
+}
+
 .ah-frame__img,
 .ah-frame__icon {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: calc(100% - 2 * (var(--ah-frame-width) + var(--ah-frame-gap)));
-  height: calc(100% - 2 * (var(--ah-frame-width) + var(--ah-frame-gap)));
-  border-radius: 50%;
+  width: calc(100% - 2 * (var(--ah-ring-width) + var(--ah-ring-gap)) * var(--ah-frame-k));
+  height: calc(100% - 2 * (var(--ah-ring-width) + var(--ah-ring-gap)) * var(--ah-frame-k));
+  border-radius: var(--ah-frame-radius);
+  clip-path: var(--ah-frame-shape, none);
   background: var(--ah-frame-background);
 }
 
-.ah-frame__img {
-  object-fit: cover;
-  border: none; /* Foundry's default img border */
-}
+.ah-frame__img { object-fit: cover; border: none; }
 
 .ah-frame__icon {
   display: grid;
   place-items: center;
-  font-size: 45cqmin; /* 45% of the ring's smaller side */
+  font-size: calc(45cqmin * var(--ah-frame-icon-scale));
   line-height: 1;
 }
 
