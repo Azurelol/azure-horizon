@@ -36,6 +36,7 @@ export class CharacterSheet extends AHActorSheet {
       templates: [
         systemTemplatePath("sheets/actor/character/character-partial-actions"),
         systemTemplatePath("sheets/actor/character/character-partial-effects"),
+        systemTemplatePath("sheets/actor/character/character-partial-resources"),
       ],
     },
     tabs: {

@@ -176,6 +176,7 @@
   display: grid;
   grid-template-areas:
 		'header actions';
+  gap: 1rem;
 
   .ah-hud__group-button {
     height: 48px;
@@ -186,14 +187,17 @@
 .ah-hud__docked__header {
   grid-area: header;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   gap: var(--ah-hud-gap);
   padding: 2px 6px;
-  --size: 96px;
-  width: var(--size);
-  height: var(--size);
+  width: 320px;
+  height: 120px;
+
+  background: var(--ah-hud-background);
+  border: 1px solid var(--ah-hud-border);
+  border-radius: var(--ah-hud-radius);
 
   img {
     object-position: center;

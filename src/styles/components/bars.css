@@ -17,8 +17,12 @@
   font-weight: var(--ah-input-font-weight);
   text-transform: uppercase;
   white-space: nowrap;
-  min-width: 60px;
+  min-width: 40px;
   gap: 4px;
+
+  &.--compact {
+    min-width: unset;
+  }
 }
 
 .ah-resource-bar__label i {
@@ -30,7 +34,7 @@
 .ah-resource-bar__control {
   position: relative;
   flex: 1 1 auto;
-  min-width: 40px;
+  min-width: 100px;
   height: var(--ah-resource-bar-height);
   background: rgba(0, 0, 0, 0.15);
   border: 1px solid var(--color-border-light-tertiary, #999);

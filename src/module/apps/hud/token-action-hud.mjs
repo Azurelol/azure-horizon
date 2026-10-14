@@ -91,6 +91,7 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     const data = this.#data;
     let context = {
       actor: this.actor,
+      system: this.actor.system,
       name: data?.name ?? "",
       groups: data?.groups ?? [],
     };
@@ -216,7 +217,6 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
   #attach() {
     const footer = document.querySelector("footer");
     footer.insertBefore(this.element, footer.firstChild);
-
   }
 
   /* -------------------------------------------- */
