@@ -183,14 +183,14 @@
   min-width: 120px;
 }
 
-
-
 /* DOCKED */
 
 .ah-hud__docked__frame {
   display: grid;
+  gap: 0.5rem;
   grid-template-areas:
     'header actions'
+    'header effects'
 		'header resources';
 
   .ah-hud__group-button {
@@ -224,12 +224,6 @@
   justify-content: center;
   gap: var(--ah-hud-gap);
   padding: 2px 6px;
-  width: 128px;
-  height: 128px;
-
-  /*background: var(--ah-hud-background);*/
-  /*border: 1px solid var(--ah-hud-border);*/
-  /*border-radius: var(--ah-hud-radius);*/
 
   img {
     object-position: center;
@@ -243,11 +237,17 @@
 
 .ah-hud__docked__resources {
   grid-area: resources;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-rows: repeat(2, auto);   /* two rows max */
+  grid-auto-flow: column;                /* fill down first, then add a column */
+  grid-auto-columns: fit-content(100px);
   gap: 0.5rem;
   justify-content: center;
+  align-content: center;
   align-items: center;
+
+  /* A lone resource shouldn't be offset by the empty second row's gap. */
+  &:has(> :only-child) { grid-template-rows: auto; }
 }
 
 .ah-hud__docked__effects {
@@ -259,13 +259,31 @@
   align-items: center;
 }
 
+.ah-hud__docked__effect {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--ah-surface-action-muted);
+  border: var(--ah-border-muted);
+
+  a {
+    flex: 0 1 max-content;
+  }
+  .effect-name {
+    max-width: 8ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 .ah-hud__docked__actions {
   grid-area: actions;
+  gap: var(--ah-hud-gap);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: var(--ah-hud-gap);
-  min-width: 120px;
 }
 

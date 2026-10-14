@@ -1,5 +1,5 @@
 <label class="ah-badge {{classes}}">
-  <div>
+  <div class="ah-badge__label">
     <i class="ah-icon --{{size}} {{iconClasses}} {{icon}}"></i>
     <span>{{ localize label }}</span>
   </div>
@@ -7,7 +7,6 @@
     {{#if (eq type 'number')}}
       <input type="number" name="{{path}}" value="{{ value }}" min="{{min}}" max="{{max}}">
     {{/if}}
-
   {{else}}
     <input disabled value="{{ value }}">
   {{/if}}

@@ -129,11 +129,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: var(--ah-input-gap);
   --badge-size: 40px;
 
-  div {
+  .ah-badge__label {
     display: flex;
+    gap: var(--ah-input-gap);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -172,5 +173,27 @@
 
   &.--row {
     flex-direction: row;
+    .ah-badge__label {
+      flex-direction: row;
+    }
+  }
+
+  &.--bar {
+    flex-direction: row;
+    width: 100%;
+    flex: 1 1 auto;
+    .ah-badge__label {
+      flex-direction: row;
+    }
+
+    input {
+      width: 100%;
+      min-width: 100px;
+      border: 1px solid #999;
+      border-radius: 3px;
+      background: var(--ah-surface-panel-gradient);
+      height: var(--ah-resource-bar-height);
+      font-size: calc(var(--ah-resource-bar-height) * 0.75);
+    }
   }
 }

@@ -281,7 +281,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--ah-gradient-action);
   gap: 4px;
 
   a {
