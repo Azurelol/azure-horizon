@@ -13,6 +13,7 @@
   --ah-hud-icon: 28px;
 
   font-family: var(--ah-font-family-application);
+  margin: 0.5rem;
 
   &.--popout {
     position: fixed;
@@ -175,12 +176,14 @@
 .ah-hud__docked__frame {
   display: grid;
   grid-template-areas:
-		'header actions';
+    'header actions'
+		'header resources';
   gap: 1rem;
 
   .ah-hud__group-button {
     height: 48px;
     padding: 0;
+    border: 2px solid var(--ah-primitive-color-white-90);
   }
 }
 
@@ -192,12 +195,12 @@
   justify-content: center;
   gap: var(--ah-hud-gap);
   padding: 2px 6px;
-  width: 320px;
-  height: 120px;
+  width: 128px;
+  height: 128px;
 
-  background: var(--ah-hud-background);
-  border: 1px solid var(--ah-hud-border);
-  border-radius: var(--ah-hud-radius);
+  /*background: var(--ah-hud-background);*/
+  /*border: 1px solid var(--ah-hud-border);*/
+  /*border-radius: var(--ah-hud-radius);*/
 
   img {
     object-position: center;
@@ -209,11 +212,30 @@
   }
 }
 
-.ah-hud__docked__groups {
+.ah-hud__docked__resources {
+  grid-area: resources;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.ah-hud__docked__effects {
+  grid-area: effects;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.ah-hud__docked__actions {
   grid-area: actions;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: var(--ah-hud-gap);
   min-width: 120px;
 }

@@ -11,18 +11,18 @@
           </span>
         </div>
 
-        <!-- Actions -->
-        <div class="ah-chat-section__target__actions">
-          {{#each ../actions as |action|}}
-            {{#if targeted}}
-              {{#unless (and (ahNotEmpty action.dataset.outcome) (ahNotEquals action.dataset.outcome target.outcome)) }}
-                {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs' classes='--transparent' target=target }}
-              {{/unless}}
-            {{/if}}
-          {{/each}}
-        </div>
-
-
+        {{#if ../actions}}
+          <!-- Actions -->
+          <div class="ah-chat-section__target__actions">
+            {{#each ../actions as |action|}}
+              {{#if targeted}}
+                {{#unless (and (ahNotEmpty action.dataset.outcome) (ahNotEquals action.dataset.outcome target.outcome)) }}
+                  {{> 'systems/azure-horizon/templates/components/partials/chat-action-targeted.hbs' classes='--transparent' target=target }}
+                {{/unless}}
+              {{/if}}
+            {{/each}}
+          </div>
+        {{/if}}
 
         <!-- Defense -->
         <span class="ah-chat-section__defense">

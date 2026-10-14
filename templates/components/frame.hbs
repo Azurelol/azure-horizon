@@ -1,0 +1,9 @@
+<div class="ah-frame {{size}} --{{style}} {{classes}}"
+     style="{{#if background}}--ah-frame-background: var({{background}});{{/if}}"
+     {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+  {{#if img}}
+    <img class="ah-frame__img" src="{{img}}" alt="{{name}}" loading="lazy">
+  {{else if icon}}
+    <i class="ah-frame__icon {{icon}}"></i>
+  {{/if}}
+</div>

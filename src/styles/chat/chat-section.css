@@ -269,7 +269,6 @@
 .ah-chat-section__target__actions {
   display: flex;
   flex-direction: row;
-  flex: 1;
   align-items: center;
   justify-content: center;
   background: var(--ah-gradient-action);
@@ -296,6 +295,7 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
+  padding: 2px;
   border: var(--ah-border);
   background: var(--ah-gradient-action);
   color: var(--ah-content-action);

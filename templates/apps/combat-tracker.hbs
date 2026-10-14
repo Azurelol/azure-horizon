@@ -71,7 +71,7 @@
             </div>
             {{/if}}
           {{#if intent.target}}
-            {{ahRing img=intent.target.img tooltip=intent.target.name name=intent.target.name size='md'}}
+            {{ahFrame style='ring' img=intent.target.img tooltip=intent.target.name name=intent.target.name size='md'}}
           {{/if}}
         {{!-- Roll Initiative --}}
         {{else if isOwner}}
