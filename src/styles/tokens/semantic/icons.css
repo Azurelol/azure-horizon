@@ -195,6 +195,7 @@
   }
 
   /*Checks*/
+  --ah-icon-checks: url("../../../../assets/icons/actions/checks.svg");
   --ah-icon-check-defense: url("../../../../assets/icons/checks/check-defense.png");
   --ah-icon-check-attribute: url("../../../../assets/icons/checks/attribute_check.png");
   --ah-icon-check-ritual: url("../../../../assets/icons/checks/ritual_check.png");
@@ -206,6 +207,10 @@
   --ah-icon-check-result: url("../../../../assets/icons/checks/check-result.png");
   --ah-icon-check-hr: url("../../../../assets/icons/checks/hr.png");
   --ah-icon-check-grade: url("../../../../assets/icons/checks/grade.png");
+
+  .ah-icon-checks {
+    background-image: var(--ah-icon-checks);
+  }
 
   .ah-icon-check-roll {
     background-image: var(--ah-icon-check-roll);
@@ -272,9 +277,14 @@
   --ah-icon-maneuver: url("../../../../assets/icons/actions/maneuver.svg");
   --ah-icon-recover: url("../../../../assets/icons/actions/recover.svg");
   --ah-icon-movement: url("../../../../assets/icons/actions/movement.png");
+  --ah-icon-token: url("../../../../assets/icons/actions/token.svg");
 
   .ah-icon-recover {
     background-image: var(--ah-icon-recover);
+  }
+
+  .ah-icon-token {
+    background-image: var(--ah-icon-token);
   }
 
   .ah-icon-movement {

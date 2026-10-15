@@ -46,9 +46,10 @@
 
         <div class="ah-hud__actions --above">
           {{#each actions}}
-            <button type="button" class="ah-hud__action" data-action="useAction" data-action-id="{{id}}" data-tooltip="{{tooltip}}">
+            <button type="button" class="ah-hud__action" data-action="useAction"
+                    data-action-id="{{id}}" data-tooltip="{{tooltip}}">
               {{#if img}}<img class="ah-hud__action-img" src="{{img}}" alt="" loading="lazy">{{/if}}
-              <span class="ah-hud__action-name">{{name}}</span>
+              <span class="ah-hud__action-name">{{localize name}}</span>
             </button>
           {{/each}}
         </div>

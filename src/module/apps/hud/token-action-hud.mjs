@@ -10,6 +10,8 @@ import AH from "../../config.mjs";
 
 import { buildTokenActionMap } from "./token-action-data.mjs";
 import Handlebars from "../../helpers/handlebars.mjs";
+import { ObjectUtils } from "../../utils/_module.mjs";
+import { ActionHandler } from "../ui/_module.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
@@ -116,9 +118,7 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     }
 
     context.backgroundClass = backgroundClass;
-
     context.template = await renderTemplate(LAYOUT_TEMPLATES[this.#layout], context, false);
-
     return context;
   }
 
@@ -135,6 +135,7 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
         this.element.classList.add("--docked");
         break;
     }
+    this.#bindResourceInputs();
   }
 
   /**
@@ -156,9 +157,38 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
   }
 
   /* -------------------------------------------- */
-  /*  Properties                                  */
+  /*  Inputs                                  */
   /* -------------------------------------------- */
 
+  #bindResourceInputs() {
+    // Inputs are re-created on every render, so these listeners can't stack up.
+    for (const input of this.element.querySelectorAll("input[name^='system.']")) {
+      input.addEventListener("change", ev => this.#onResourceInput(ev));
+      input.addEventListener("keydown", ev => { if (ev.key === "Enter") ev.currentTarget.blur(); });
+    }
+  }
+
+  async #onResourceInput(event) {
+    const input = event.currentTarget;
+    const actor = this.actor;
+    if (!actor?.isOwner) return;
+
+    const path = input.name;
+    const current = Number(ObjectUtils.getProperty(actor, path)) || 0;
+
+    let next = Number(input.value.trim());
+
+    try {
+      await actor.update({ [path]: next });
+    } catch (err) {
+      console.error("azure-horizon | resource update failed", err);
+      input.value = current;
+    }
+  }
+
+  /* -------------------------------------------- */
+  /*  Properties                                  */
+  /* -------------------------------------------- */
   /**
    * The actor the HUD should show, or null to hide it.
    * One controlled token wins. With no selection, fall back to the user's
@@ -184,7 +214,8 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
   async refresh() {
     const actor = this.actor;
     if (!actor?.isOwner) return this.#hide();
-    this.#data = buildTokenActionMap(actor, { openGroups: this.#openGroups });
+    const handler = new ActionHandler(this.actor);
+    this.#data = handler.getTokenActions({ openGroups: this.#openGroups });
     if (!this.#data?.groups.length) return this.#hide();
 
     return this.render({ force: true });

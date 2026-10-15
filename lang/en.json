@@ -1250,10 +1250,12 @@
       "Swap": "Swap",
       "Item": "Item",
       "Rest": "Rest",
+      "Utility": "Utility",
       "Maneuver": "Maneuver",
       "Inventory": "Inventory",
       "Check": "Check",
       "Equip": "Equip",
+      "Setup": "Setup",
       "Unequip": "Unequip",
       "Engram": "Engram",
       "EngramHint": ""

@@ -1545,6 +1545,8 @@ AH.icons = {
   objective: "ah-icon-objective",
   analysis: "fa fa-magnifying-glass",
   rest: "ah-icon-rest-long",
+  checks: "ah-icon-checks",
+  token: "ah-icon-token",
 
   maneuver: "ah-icon-maneuver",
   recover: "ah-icon-recover",

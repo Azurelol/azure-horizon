@@ -8,8 +8,8 @@
     {{#each actions}}
       {{#unless (and this.type (ahNotEquals this.type @root.actor.type))}}
         <button id="{{this.id}}Action"
-                {{#unless this.ctx}}data-action="performAction"{{/unless}}
-                data-type="{{this.id}}" {{#if this.ctx}}data-context-menu="{{this.ctx}}"{{/if}}
+                {{#unless this.id}}data-action="performAction"{{/unless}}
+                data-type="{{this.id}}" data-context-menu="{{this.id}}"
                 data-tooltip="{{localize this.tooltip}}">
           <i class="ah-icon --xs {{ahIconClass id}}"></i>
           <span>{{localize this.label}}</span>

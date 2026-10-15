@@ -1,35 +1,3 @@
-/**
- * @typedef TokenActionReference
- * @property id
- * @property name
- * @property img
- * @property tooltip
- */
-
-/**
- * @typedef TokenActionGroup
- * @property id
- * @property icon
- * @property label
- * @property {Boolean} open
- * @property {TokenActionReference[]} actions Doesn't include the onClick/onContext
- */
-
-/**
- * @typedef {TokenActionReference} TokenActionData
- * @property id
- * @property name
- * @property img
- * @property tooltip
- */
-
-/**
- * @typedef TokenActionMap
- * @property {String} actorId
- * @property {String} name
- * @property {String, TokenActionData[]} groups
- * @property {TokenActionData[]} actions
- */
 
 import { HTMLUtils } from "../../utils/_module.mjs";
 import { localize } from "../../constants.mjs";
@@ -75,7 +43,7 @@ export function buildTokenActionMap(actor, { openGroups = new Set() } = {}) {
 
   /** @type {Map<string, TokenActionData>} action id -> action, for click lookup */
   const actions = new Map();
-  /** @type {TokenActionGroup[]} **/
+  /** @type {ActorActionGroup[]} **/
   const groups = [];
 
   const pushGroup = (id, label, list) => {

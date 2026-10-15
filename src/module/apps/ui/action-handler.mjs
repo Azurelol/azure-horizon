@@ -1,12 +1,236 @@
-import { FoundryUtils } from "../../utils/_module.mjs";
+import { FoundryUtils, HTMLUtils } from "../../utils/_module.mjs";
 import { WeaponResolver } from "../../helpers/weapon-resolver.mjs";
-import { ActionConfig, ChatMessageBuilder } from "../../helpers/_module.mjs";
 import { Formulas } from "../../ruleset/_module.mjs";
 import Actions from "../../pipelines/actions.mjs";
-import Checks from "../../pipelines/checks.mjs";
 import { CheckPrompt } from "../../helpers/check-prompt.mjs";
 import AH from "../../config.mjs";
-import { notifyInfo } from "../../constants.mjs";
+
+/**
+ * @typedef AH_CharacterAction
+ * @property id
+ * @property img
+ * @property label
+ * @property tooltip
+ * @property type The type of character.
+ * @property {(AHActor) => Boolean} condition
+ * @property {(KeyboardModifiers) => Promise<Boolean>} perform An item action.
+ */
+
+/**
+ * @typedef ActorActionGroup
+ * @property id
+ * @property icon
+ * @property label
+ * @property {Boolean} open
+ * @property {AH_CharacterAction[]} actions Doesn't include the onClick/onContext
+ */
+
+/**
+ * @typedef TokenActionData
+ * @property id
+ * @property name
+ * @property img
+ * @property tooltip
+ * @property onClick
+ * @property onContext
+ */
+
+/**
+ * @typedef TokenActionMap
+ * @property {String} actorId
+ * @property {String} name
+ * @property {String, ActorActionGroup[]} groups
+ * @property {TokenActionData[]} actions
+ */
+
+/**
+ * @typedef AH_ActorActionMenu
+ * @property {String} id
+ * @property {String} label
+ * @property {String} tooltip
+ * @property {String} icon
+ * @property {AH_ItemType[]} items The item types that automatically map to this menu.
+ * @property {(AHActor) => AHItem[]} getItems An optional function to get items from non-standard sources.
+ * @property {(AHItem) => Boolean} filter Used to filter entries.
+ * @property {AH_ActorType[]} actors
+ * @property {(AHActor) => AH_CharacterAction[]} getActions Generated actions for this menu.
+ */
+
+/**
+ * @type {AH_ActorActionMenu[]}
+ */
+const ACTION_MENUS = [
+  {
+    id: "attack",
+    label: "AH.ACTION.Attack",
+    tooltip: "AH.ACTION.AttackHint",
+    actors: ["hero", "adversary"],
+    items: ["attack", "weapon"],
+  },
+  {
+    id: "skill",
+    label: "AH.ACTION.Skill",
+    tooltip: "AH.ACTION.SkillHint",
+    actors: ["hero", "adversary"],
+    items: ["skill", "classFeature", "ability"],
+    filter: (item) => {
+      return item.system.action?.enabled;
+    },
+  },
+  {
+    id: "spell",
+    label: "AH.ACTION.Spell",
+    tooltip: "AH.ACTION.SpellHint",
+    actors: ["hero"],
+    items: ["spell"],
+    getItems: (actor) => {
+      return actor.system.equipment.getEngramsOfKind();
+    },
+  },
+  {
+    id: "item",
+    label: "AH.ACTION.Item",
+    tooltip: "AH.ACTION.ItemHint",
+    actors: ["hero"],
+    items: ["consumable"],
+  },
+
+  {
+    id: "maneuver",
+    label: "AH.ACTION.Maneuver",
+    tooltip: "AH.ACTION.ManeuverHint",
+    actors: ["hero", "adversary"],
+    getActions: (actor) => [
+      {
+        name: "AH.ACTION.Defend",
+        icon: "ah-icon-defend",
+        perform: async () => {
+          const block = Formulas.calculateBlock(actor.system);
+          return Actions.perform(actor, null, (config) => {
+            config.setLabel("AH.ACTION.Defend");
+            config.addActionCost(1);
+            config.setResource("hp", block.hp, true);
+            if (block.tp) {
+              config.addTraits("stress");
+            }
+          });
+        },
+      },
+      {
+        name: "AH.ACTION.Recover",
+        icon: "ah-icon-recover",
+        condition: (actor) => {
+          return actor.type === "hero";
+        },
+        perform: async (actor) => {
+          const recovery = Formulas.calculateRecovery(actor.system);
+          Actions.perform(actor, null, (config) => {
+            config.setLabel("AH.ACTION.Recover");
+            config.addActionCost(1);
+            config.setResource("hp", recovery.hp);
+            if (recovery.mp) {
+              config.addExpense({
+                source: "skill",
+                resource: "mp",
+                amount: recovery.mp,
+              });
+            }
+            if (actor.type === "hero") {
+              config.addTraits("stress");
+            }
+          });
+        },
+      },
+    ],
+  },
+
+  {
+    id: "checks",
+    label: "AH.ACTION.Check",
+    tooltip: "AH.ACTION.CheckHint",
+    actors: ["hero"],
+    getActions: (actor) => [
+      {
+        name: "AH.CHECK.Attribute",
+        icon: "ah-icon-check-attribute",
+        perform: async () => {
+          await CheckPrompt.attributeCheck(actor);
+        },
+      },
+      {
+        name: "AH.CHECK.Ritual",
+        icon: "ah-icon-check-ritual",
+        perform: async () => {
+          await CheckPrompt.ritualCheck(actor, undefined, {
+            initialConfig: {
+              primary: "ins",
+              secondary: "wlp",
+            },
+          });
+        },
+      },
+    ],
+  },
+
+  {
+    id: "rest",
+    label: "AH.ACTION.Rest",
+    actors: ["hero"],
+    tooltip: "AH.ACTION.RestHint",
+    getActions: (actor) => [
+      {
+        name: "AH.INTERVAL.LongRest.long",
+        icon: AH.icons.longRest,
+        perform: async () => {
+          return actor.rest("long");
+        },
+      },
+      {
+        name: "AH.INTERVAL.ShortRest.long",
+        icon: AH.icons.shortRest,
+        perform: async () => {
+          return actor.rest("short");
+        },
+      },
+      {
+        name: "AH.INTERVAL.Resupply.long",
+        icon: AH.icons.resupply,
+        perform: async () => {
+          return actor.rest("resupply");
+        },
+      },
+    ],
+  },
+
+  {
+    id: "setup",
+    icon: "rest",
+    label: "AH.ACTION.Setup",
+    actors: ["adversary"],
+    tooltip: "AH.ACTION.SetupHint",
+    getActions: (actor) => [
+      {
+        name: "AH.COMMON.Reset",
+        icon: AH.icons.longRest,
+        perform: async () => {
+          return actor.rest("long");
+        },
+      },
+    ],
+  },
+];
+
+/**
+ * @param {AHItem} item
+ * @param {Event} event
+ */
+async function useItem(item, event) {
+  if (item.perform) {
+    const modifiers = HTMLUtils.getKeyboardModifiers(event);
+    return item.perform(modifiers);
+  }
+  return item.sheet.render({ force: true });
+}
 
 /**
  * @desc Encapsulates basic character actions.
@@ -28,6 +252,7 @@ export default class ActionHandler {
     return this;
   }
 
+  // TODO: Will be used with an @ACTION text enricher
   /**
    * @param {AH_Action} actionType
    * @param isShift
@@ -55,260 +280,179 @@ export default class ActionHandler {
   }
 
   /**
-   * @typedef AH_CharacterAction
-   * @property id
-   * @property label
-   * @property tooltip
-   * @property ctx The context menu
-   * @property {Number} ap How many action points for the action.
-   * @property type The type of character.
-   */
-
-  /**
-   *
-   * @returns {AH_CharacterAction[]}
+   * @returns {AH_ActorActionMenu[]}
    */
   getMenuActions() {
-    /** @type AH_CharacterAction[] **/
-    let actions = [];
-    actions.push({
-      id: "attack",
-      label: "AH.ACTION.Attack",
-      tooltip: "AH.ACTION.AttackHint",
-      ctx: "attack",
+    return ACTION_MENUS.filter(m => {
+      return !(m.actors && m.actors.find(at => at === this.actor.type) === undefined);
     });
-    if (this.actor.type === "hero") {
-      actions.push({
-        id: "skill",
-        label: "AH.ACTION.Skill",
-        tooltip: "AH.ACTION.SkillHint",
-        type: "hero",
-        ctx: "skill",
-      });
-      actions.push({
-        id: "spell",
-        label: "AH.ACTION.Spell",
-        tooltip: "AH.ACTION.SpellHint",
-        type: "hero",
-        ctx: "spell",
-      });
-    }
-    else if (this.actor.type === "adversary") {
-      actions.push({
-        id: "ability",
-        label: "AH.ACTION.Ability",
-        tooltip: "AH.ACTION.AbilityHint",
-        type: "adversary",
-        ctx: "ability",
-      });
-    }
-    if (this.actor.isCharacterType) {
-      actions.push({
-        id: "maneuver",
-        label: "AH.ACTION.Maneuver",
-        tooltip: "AH.ACTION.ManeuverHint",
-        ap: 1,
-        ctx: "maneuver",
-      });
-      actions.push({
-        id: "check",
-        label: "AH.ACTION.Check",
-        tooltip: "AH.ACTION.CheckHint",
-        ctx: "check",
-      });
-    }
-    if (this.actor.type === "hero") {
-      actions.push({
-        id: "item",
-        label: "AH.ACTION.Item",
-        tooltip: "AH.ACTION.ItemHint",
-        ctx: "item",
-      });
-    }
-    actions.push({
-      id: "rest",
-      label: "AH.ACTION.Rest",
-      tooltip: "AH.ACTION.RestHint",
-      ctx: "rest",
-    });
-    return actions;
   }
 
   /**
-   * @return {AH_ContextMenuItem[]}
+   * @param {Object} options
+   * @param options.openGroups
+   * @return {TokenActionMap}
    */
-  getManeuvers() {
-    /** @type AH_ContextMenuItem[] **/
-    let items = [];
-    items.push({
-      name: "AH.ACTION.Defend",
-      icon: "ah-icon-defend",
-      perform: async () => {
-        await this.performDefense();
+  getTokenActions({ openGroups = new Set() } = {}) {
+    if (!this.actor) return null;
+
+    /** @type {Map<string, TokenActionData>} action id -> action, for click lookup */
+    const actions = new Map();
+    /** @type {ActorActionGroup[]} **/
+    const groups = [];
+
+    const pushGroup = (id, label, list) => {
+      if (!list.length) return;
+      for (const action of list) {
+        actions.set(action.id, action);
+      }
+      groups.push({
+        id,
+        label,
+        open: openGroups.has(id),
+        actions: list.map(({ id, name, img, tooltip }) => ({ id, name, img, tooltip })),
+      });
+    };
+
+    /** @returns {TokenActionData} **/
+    const itemAction = item => ({
+      id: `item.${item.id}`,
+      name: item.name,
+      img: item.img,
+      icon: item.icon,
+      tooltip: item.name,
+      onClick: (event) => {
+        if (item.perform) {
+          const modifiers = HTMLUtils.getKeyboardModifiers(event);
+          return item.perform(modifiers);
+        }
+        return item.sheet?.render({ force: true });
       },
+      onContext: () => item.sheet.render({ force: true }),
     });
-    if (this.actor.type === "hero") {
-      items.push({
-        name: "AH.ACTION.Recover",
-        icon: "ah-icon-recover",
-        perform: async () => {
-          await this.performRecovery();
-        },
-      });
-    }
-    else if (this.actor.type === "adversary") {
 
-    }
-    return items;
-  }
-
-  /**
-   * @return {AH_ContextMenuItem[]}
-   */
-  getRestActions() {
-    /** @type AH_ContextMenuItem[] **/
-    let items = [];
-
-    if (this.actor.type === "hero") {
-      items.push({
-        name: "AH.INTERVAL.LongRest.long",
-        icon: AH.icons.longRest,
-        perform: async () => {
-          return this.actor.rest("long");
-        },
-      });
-      items.push({
-        name: "AH.INTERVAL.ShortRest.long",
-        icon: AH.icons.shortRest,
-        perform: async () => {
-          return this.actor.rest("short");
-        },
-      });
-      items.push({
-        name: "AH.INTERVAL.Resupply.long",
-        icon: AH.icons.resupply,
-        perform: async () => {
-          return this.actor.rest("resupply");
-        },
-      });
-    }
-    else if (this.actor.type === "adversary" || this.actor.type === "unit") {
-      items.push({
-        name: "AH.COMMON.Reset",
-        icon: AH.icons.longRest,
-        perform: async () => {
-          return this.actor.rest("long");
-        },
-      });
-
-    }
-    return items;
-  }
-
-  /**
-   * @return {AH_ContextMenuItem[]}
-   */
-  getChecks() {
-    /** @type AH_ContextMenuItem[] **/
-    let items = [];
-    items.push({
-      name: "AH.CHECK.Attribute",
-      icon: "ah-icon-check-attribute",
-      perform: async () => {
-        await CheckPrompt.attributeCheck(this.actor);
-      },
-    });
-    if (this.actor.type === "hero") {
-      items.push({
-        name: "AH.CHECK.Ritual",
-        icon: "ah-icon-check-ritual",
-        perform: async () => {
-          await CheckPrompt.ritualCheck(this.actor, undefined, {
-            initialConfig: {
-              primary: "ins",
-              secondary: "wlp",
-            },
-          });
-        },
-      });
-    }
-    return items;
-  }
-
-  async performRecovery() {
-    const recovery = Formulas.calculateRecovery(this.actor.system);
-
-    Actions.perform(this.actor, null, (config, actor, item) => {
-      config.setLabel("AH.ACTION.Recover");
-      config.addActionCost(1);
-      config.setResource("hp", recovery.hp);
-      if (recovery.mp) {
-        config.addExpense({
-          source: "skill",
-          resource: "mp",
-          amount: recovery.mp,
-        });
+    // Items claimed by an explicit group definition.
+    const claimed = new Set();
+    for (const menu of ACTION_MENUS) {
+      if (menu.actors && menu.actors.find(a => a === this.actor.type) === undefined) {
+        continue;
       }
-      if (this.actor.type === "hero") {
-        config.addTraits("stress"); // setResource("tp", recovery.tp);
+      const items = this.#getMenuActions(menu);
+      if (items && items.length) {
+        const tokenActions = items.map(i => itemAction(i));
+        tokenActions.forEach(i => { claimed.add(i.id);});
+        pushGroup(menu.id, menu.label, tokenActions);
       }
-    });
-  }
+    }
 
-  async performDefense() {
-    const block = Formulas.calculateBlock(this.actor.system);
-
-    Actions.perform(this.actor, null, (config, actor, item) => {
-      config.setLabel("AH.ACTION.Defend");
-      config.addActionCost(1);
-      config.setResource("hp", block.hp, true);
-      if (block.tp) {
-        config.addTraits("stress");
-        //config.setResource("tp", block.tp);
-      }
-    });
+    // TODO: How to...
+    // Utility group: things that are about the token, not an item.
+    const token = this.actor.token ?? this.actor.getActiveTokens()[0]?.document;
+    const utility = [{
+      id: "token",
+      name: "Open Sheet",
+      img: null,
+      tooltip: "Open Character Sheet",
+      onClick: () => this.actor.sheet.render({ force: true }),
+    }];
+    if (token && game.combat) {
+      utility.push({
+        id: "token.combat",
+        name: token.inCombat ? "Leave Combat" : "Join Combat",
+        img: null,
+        tooltip: token.inCombat ? "Remove from combat" : "Add to combat",
+        onClick: () => token.toggleCombatant(),
+      });
+    }
+    pushGroup("token", "AH.COMMON.Token", utility);
+    return {
+      actorId: this.actor.id,
+      name: this.actor.name,
+      groups,
+      actions,
+    };
   }
 
   /**
    * @param {HTMLElement} element
    */
   setupMenu(element) {
-    // ATTACKS
-    const attacks = WeaponResolver.getEquippedWeapons(this.actor);
-    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"attack\"]", attacks, undefined, true);
-    // SPELLS
-    const spells = ["spell"].map((t) => this.actor.getItemsByType(t)).flat();
-    if (this.actor.type === "hero") {
-      const magicEngrams = this.actor.system.equipment.getEngramsOfKind();
-      spells.push(...magicEngrams);
+    for (const menu of ACTION_MENUS) {
+      if (menu.actors && menu.actors.find(a => a === this.actor.type) === undefined) {
+        continue;
+      }
+      let items = this.#getMenuActions(menu);
+      if (items.length > 0) {
+        FoundryUtils.itemContextMenu(element, `[data-context-menu='${menu.id}']`, items, undefined, true);
+      }
     }
-    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"spell\"]", spells);
-    // INVENTORY
-    const consumables = this.actor.getItemsByType("consumable");
-    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"item\"]", consumables);
-    if (this.actor.type === "hero") {
-      // SKILLS
-      /** @type {AHItem[]} **/
-      let skills = ["skill"]
-        .map((t) => this.actor.getItemsByType(t))
-        .flat()
-        .filter((s) => {
-          return s.system.action.type === "action";
-        });
-      FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
-    }
-    else if (this.actor.type === "adversary") {
-      // ABILITIES
-      let abilities = this.actor.getItemsByType("ability").filter(a => a.system.action.type === "action");
-      FoundryUtils.itemContextMenu(element, "[data-context-menu=\"ability\"]", abilities);
-    }
-    // MANEUVER
-    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
-    // CHECKS
-    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"check\"]", this.getChecks(), undefined);
-    // REST
-    FoundryUtils.itemContextMenu(element, "[data-context-menu=\"rest\"]", this.getRestActions(), undefined);
   }
+
+  /**
+   * @param {AH_ActorActionMenu}  menu
+   * @returns {AH_CharacterAction[]}
+   */
+  #getMenuActions(menu) {
+    let items = [];
+    if (menu.items) {
+      let matchingItems = this.actor.getItemsByType(...menu.items);
+      if (menu.filter) {
+        matchingItems = matchingItems.filter(menu.filter);
+      }
+      items.push(...matchingItems);
+    }
+    if (menu.getItems) {
+      const extraItems = menu.getItems(this.actor);
+      if (extraItems) {
+        items.push(...extraItems);
+      }
+    }
+    if (menu.getActions) {
+      items.push(...menu.getActions(this.actor));
+    }
+    return items;
+  }
+
+  // /**
+  //  * @param {HTMLElement} element
+  //  */
+  // setupMenuV1(element) {
+  //   // ATTACKS
+  //   const attacks = WeaponResolver.getEquippedWeapons(this.actor);
+  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"attack\"]", attacks, undefined, true);
+  //   // SPELLS
+  //   const spells = ["spell"].map((t) => this.actor.getItemsByType(t)).flat();
+  //   if (this.actor.type === "hero") {
+  //     const magicEngrams = this.actor.system.equipment.getEngramsOfKind();
+  //     spells.push(...magicEngrams);
+  //   }
+  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"spell\"]", spells);
+  //   // INVENTORY
+  //   const consumables = this.actor.getItemsByType("consumable");
+  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"item\"]", consumables);
+  //   if (this.actor.type === "hero") {
+  //     // SKILLS
+  //     /** @type {AHItem[]} **/
+  //     let skills = ["skill"]
+  //       .map((t) => this.actor.getItemsByType(t))
+  //       .flat()
+  //       .filter((s) => {
+  //         return s.system.action.type === "action";
+  //       });
+  //     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
+  //   }
+  //   else if (this.actor.type === "adversary") {
+  //     // ABILITIES
+  //     let abilities = this.actor.getItemsByType("ability").filter(a => a.system.action.type === "action");
+  //     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"ability\"]", abilities);
+  //   }
+  //   // MANEUVER
+  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
+  //   // CHECKS
+  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"check\"]", this.getChecks(), undefined);
+  //   // REST
+  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"rest\"]", this.getRestActions(), undefined);
+  // }
 
   /**
    * @param {HTMLElement} element
