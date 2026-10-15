@@ -33,6 +33,7 @@ import AH from "../../config.mjs";
  * @property tooltip
  * @property onClick
  * @property onContext
+ * @property {Number} ap
  */
 
 /**
@@ -102,7 +103,9 @@ const ACTION_MENUS = [
     actors: ["hero", "adversary"],
     getActions: (actor) => [
       {
+        id: "defend",
         name: "AH.ACTION.Defend",
+        ap: 1,
         icon: "ah-icon-defend",
         perform: async () => {
           const block = Formulas.calculateBlock(actor.system);
@@ -117,12 +120,14 @@ const ACTION_MENUS = [
         },
       },
       {
+        id: "recover",
         name: "AH.ACTION.Recover",
+        ap: 1,
         icon: "ah-icon-recover",
         condition: (actor) => {
           return actor.type === "hero";
         },
-        perform: async (actor) => {
+        perform: async () => {
           const recovery = Formulas.calculateRecovery(actor.system);
           Actions.perform(actor, null, (config) => {
             config.setLabel("AH.ACTION.Recover");
@@ -151,6 +156,7 @@ const ACTION_MENUS = [
     actors: ["hero"],
     getActions: (actor) => [
       {
+        id: "attributeCheck",
         name: "AH.CHECK.Attribute",
         icon: "ah-icon-check-attribute",
         perform: async () => {
@@ -158,6 +164,7 @@ const ACTION_MENUS = [
         },
       },
       {
+        id: "ritualCheck",
         name: "AH.CHECK.Ritual",
         icon: "ah-icon-check-ritual",
         perform: async () => {
@@ -179,6 +186,7 @@ const ACTION_MENUS = [
     tooltip: "AH.ACTION.RestHint",
     getActions: (actor) => [
       {
+        id: "longRest",
         name: "AH.INTERVAL.LongRest.long",
         icon: AH.icons.longRest,
         perform: async () => {
@@ -186,6 +194,7 @@ const ACTION_MENUS = [
         },
       },
       {
+        id: "shortRest",
         name: "AH.INTERVAL.ShortRest.long",
         icon: AH.icons.shortRest,
         perform: async () => {
@@ -193,6 +202,7 @@ const ACTION_MENUS = [
         },
       },
       {
+        id: "resupply",
         name: "AH.INTERVAL.Resupply.long",
         icon: AH.icons.resupply,
         perform: async () => {
@@ -210,6 +220,7 @@ const ACTION_MENUS = [
     tooltip: "AH.ACTION.SetupHint",
     getActions: (actor) => [
       {
+        id: "reset",
         name: "AH.COMMON.Reset",
         icon: AH.icons.longRest,
         perform: async () => {
@@ -310,26 +321,31 @@ export default class ActionHandler {
         id,
         label,
         open: openGroups.has(id),
-        actions: list.map(({ id, name, img, tooltip }) => ({ id, name, img, tooltip })),
+        // Filter only display data here, rest is on the top-level actions array
+        actions: list.map(({ id, name, img, icon, tooltip, ap }) => ({ id, name, img, tooltip, icon, ap })),
       });
     };
 
     /** @returns {TokenActionData} **/
-    const itemAction = item => ({
-      id: `item.${item.id}`,
-      name: item.name,
-      img: item.img,
-      icon: item.icon,
-      tooltip: item.name,
-      onClick: (event) => {
-        if (item.perform) {
-          const modifiers = HTMLUtils.getKeyboardModifiers(event);
-          return item.perform(modifiers);
-        }
-        return item.sheet?.render({ force: true });
-      },
-      onContext: () => item.sheet.render({ force: true }),
-    });
+    const itemAction = item => {
+      const ap = item.ap ?? item.system?.ap;
+      return ({
+        id: `item.${item.id}`,
+        name: item.name,
+        img: item.img,
+        icon: item.icon,
+        tooltip: item.name,
+        ap: ap,
+        onClick: (event) => {
+          if (item.perform) {
+            const modifiers = HTMLUtils.getKeyboardModifiers(event);
+            return item.perform(modifiers);
+          }
+          return item.sheet?.render({ force: true });
+        },
+        onContext: () => item.sheet.render({ force: true }),
+      });
+    };
 
     // Items claimed by an explicit group definition.
     const claimed = new Set();

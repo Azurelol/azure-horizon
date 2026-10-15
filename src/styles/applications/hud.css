@@ -282,6 +282,7 @@
   grid-area: actions;
   gap: var(--ah-hud-gap);
   display: flex;
+  width: 600px;
   flex-direction: row;
   align-items: center;
   justify-content: center;

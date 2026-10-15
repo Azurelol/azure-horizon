@@ -273,6 +273,7 @@
   --ah-icon-equipment: url("../../../../assets/icons/actions/equipment.svg");
   --ah-icon-objective: url("../../../../assets/icons/actions/objective.svg");
   --ah-icon-ability: url("../../../../assets/icons/actions/skill.svg");
+  --ah-icon-setup: url("../../../../assets/icons/actions/setup.svg");
 
   --ah-icon-maneuver: url("../../../../assets/icons/actions/maneuver.svg");
   --ah-icon-recover: url("../../../../assets/icons/actions/recover.svg");
@@ -285,6 +286,10 @@
 
   .ah-icon-token {
     background-image: var(--ah-icon-token);
+  }
+
+  .ah-icon-setup {
+    background-image: var(--ah-icon-setup);
   }
 
   .ah-icon-movement {

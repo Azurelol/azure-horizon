@@ -1547,6 +1547,7 @@ AH.icons = {
   rest: "ah-icon-rest-long",
   checks: "ah-icon-checks",
   token: "ah-icon-token",
+  setup: "ah-icon-setup",
 
   maneuver: "ah-icon-maneuver",
   recover: "ah-icon-recover",

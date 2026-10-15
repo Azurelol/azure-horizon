@@ -49,7 +49,11 @@
             <button type="button" class="ah-hud__action" data-action="useAction"
                     data-action-id="{{id}}" data-tooltip="{{tooltip}}">
               {{#if img}}<img class="ah-hud__action-img" src="{{img}}" alt="" loading="lazy">{{/if}}
+              {{#if icon}}<i class="ah-icon --s {{icon}}"></i>{{/if}}
               <span class="ah-hud__action-name">{{localize name}}</span>
+              {{#if ap}}
+                <span class="ah-hud__action-ap">{{ap}}</span>
+              {{/if}}
             </button>
           {{/each}}
         </div>
