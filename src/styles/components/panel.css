@@ -1,0 +1,5 @@
+.ah-panel {
+  background: var(--ah-surface-panel-gradient);
+  border: var(--ah-border-thick);
+  padding: 0.5rem;
+}

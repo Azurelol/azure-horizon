@@ -21,6 +21,7 @@
 @import "components/tracker.css";
 @import "components/equipment.css";
 @import "components/card.css";
+@import "components/panel.css";
 
 @import "global/foundry.css";
 @import "applications/application.css";

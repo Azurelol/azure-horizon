@@ -64,7 +64,7 @@
   position: absolute;
   flex-direction: column;
   gap: 2px;
-  min-width: 180px;
+  min-width: 240px;
   max-height: 50vh;
   overflow-y: auto;
   padding: var(--ah-hud-gap);
@@ -186,12 +186,17 @@
 /* DOCKED */
 
 .ah-hud__docked__frame {
-  display: grid;
   gap: 0.5rem;
-  grid-template-areas:
-    'header actions'
-    'header effects'
-		'header resources';
+
+  /*display: grid;  */
+  /*grid-template-areas:*/
+  /*  'header resources actions'*/
+  /*  'header resources effects';*/
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
   .ah-hud__group-button {
     height: 72px;
@@ -213,7 +218,14 @@
       background-color: var(--ah-hud-group-button-background-hover);
     }
   }
+}
 
+.ah-hud__docked__frame__right {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-areas:
+    'actions'
+    'effects';
 }
 
 .ah-hud__docked__header {
@@ -224,6 +236,7 @@
   justify-content: center;
   gap: var(--ah-hud-gap);
   padding: 2px 6px;
+  height: 160px;
 
   img {
     object-position: center;
@@ -265,7 +278,7 @@
   justify-content: space-between;
   align-items: center;
   background: var(--ah-surface-card);
-  border: var(--ah-border-muted);
+  border: var(--ah-border-thick);
 
   a {
     flex: 0 1 max-content;
@@ -282,7 +295,6 @@
   grid-area: actions;
   gap: var(--ah-hud-gap);
   display: flex;
-  width: 600px;
   flex-direction: row;
   align-items: center;
   justify-content: center;

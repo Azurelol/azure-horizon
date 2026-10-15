@@ -37,6 +37,7 @@
 
   --ah-border: 0.065rem solid #3d5f8f;
   --ah-border-thick: 4px solid #3d5f8f;;
+  --ah-border-xl: 8px solid var(--ah-primitive-color-grey-mid);
   --ah-icon-color: #db911e;
   --ah-button-background: #354564;
 

@@ -105,7 +105,10 @@ const ACTION_MENUS = [
       {
         id: "defend",
         name: "AH.ACTION.Defend",
-        ap: 1,
+        action: {
+          type: "action",
+          points: 1,
+        },
         icon: "ah-icon-defend",
         perform: async () => {
           const block = Formulas.calculateBlock(actor.system);
@@ -122,7 +125,10 @@ const ACTION_MENUS = [
       {
         id: "recover",
         name: "AH.ACTION.Recover",
-        ap: 1,
+        action: {
+          type: "action",
+          points: 1,
+        },
         icon: "ah-icon-recover",
         condition: (actor) => {
           return actor.type === "hero";
@@ -322,20 +328,35 @@ export default class ActionHandler {
         label,
         open: openGroups.has(id),
         // Filter only display data here, rest is on the top-level actions array
-        actions: list.map(({ id, name, img, icon, tooltip, ap }) => ({ id, name, img, tooltip, icon, ap })),
+        actions: list.map(({ id, name, img, icon, tooltip, action }) => ({ id, name, img, tooltip, icon, action })),
       });
     };
 
     /** @returns {TokenActionData} **/
     const itemAction = item => {
-      const ap = item.ap ?? item.system?.ap;
+      let action;
+      if (item.system?.action?.enabled) {
+        action = {
+          type: item.system.action.type,
+          points: item.system.action.points,
+        };
+      }
+      else if (item.system?.actionCost) {
+        action = {
+          type: "action",
+          points: item.system.actionCost,
+        };
+      }
+      else if (item.action) {
+        action = item.action;
+      }
       return ({
         id: `item.${item.id}`,
         name: item.name,
         img: item.img,
         icon: item.icon,
         tooltip: item.name,
-        ap: ap,
+        action: action,
         onClick: (event) => {
           if (item.perform) {
             const modifiers = HTMLUtils.getKeyboardModifiers(event);

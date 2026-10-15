@@ -54,13 +54,6 @@ export default class ActiveFeatureDataModel extends FeatureDataModel {
     return this.action.enabled;
   }
 
-  /**
-   * @returns {Number}
-   */
-  get ap() {
-    return this.action.enabled && this.action.type === "action" ? this.action.points : undefined;
-  }
-
   isFreeAction(modifiers) {
     if (this.action.traits.has("free")) {
       return true;

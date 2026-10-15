@@ -49,13 +49,6 @@ export default class AttackDataModel extends FeatureDataModel {
     });
   }
 
-  /**
-   * @returns {Number}
-   */
-  get ap() {
-    return this.actionCost;
-  }
-
   /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);

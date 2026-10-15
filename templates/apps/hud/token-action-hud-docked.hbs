@@ -1,67 +1,75 @@
 <div class="ah-hud__docked__frame">
 
   <section class="ah-hud__docked__header">
-    {{ahFrame style='diamond' img=actor.img tooltip=actor.name name=actor.name size='m' background=backgroundClass}}
+    {{ahFrame style='diamond' img=actor.img tooltip=actor.name name=actor.name size='m' background=backgroundClass border='ah-surface-'}}
 
+    <section class="ah-hud__docked__resources ah-panel">
+      <div>
+        {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' compact=true icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
+        {{ahBadge path='system.resources.hp.temporary' value=system.resources.hp.temporary type='number' min=0 tooltip='AH.CHARACTER.Block.long' icon=(ahIconClass 'block') classes='--bar' size='s' }}
+
+        {{#if (eq actor.type 'hero')}}
+          {{ahResourceBar 'system.resources.mp.value' system.resources.mp.value system.resources.mp.max label='AH.CHARACTER.MindPoint.short' compact=true icon=(ahIconClass 'mp') colorClass="--ah-color-mp" }}
+          {{ahResourceBar 'system.resources.ip.value' system.resources.ip.value system.resources.ip.max label='AH.CHARACTER.InventoryPoint.short' compact=true icon=(ahIconClass 'ip') colorClass="--ah-color-ip" }}
+          {{ahResourceBar 'system.resources.tp.value' system.resources.tp.value system.resources.tp.max label='AH.CHARACTER.TensionPoint.short' compact=true icon=(ahIconClass 'tp') colorClass="--ah-color-tp" }}
+
+        {{/if}}
+        {{#if (eq actor.type 'adversary')}}
+          {{#if system.ranked}}
+            {{ahResourceBar 'system.resources.pp.value' system.resources.pp.value system.resources.pp.max label="AH.CHARACTER.PressurePoint.short" compact=true tooltip='AH.CHARACTER.PressurePoint.long' icon=(ahIconClass 'pp') colorClass="--ah-color-pp" }}
+          {{/if}}
+        {{/if}}
+      </div>
+    </section>
   </section>
 
-  <section class="ah-hud__docked__effects">
-    {{#each actor.temporaryEffects as |effect|}}
-      <a class="ah-hud__docked__effect"
-         data-tooltip="{{effect.name}} {{localize 'AH.SHEET.MESSAGE.TemporaryEffectHint'}}"
-         data-action="handleTempEffect"
-         data-effect-id="{{effect.id}}">
-        <img src="{{effect.img}}" class="item-img ah-icon --sm" alt="{{effect.name}}">
-      </a>
-    {{/each}}
-  </section>
-
-  <section class="ah-hud__docked__resources">
-
-    {{ahResourceBar 'system.resources.hp.value' system.resources.hp.value system.resources.hp.max label='AH.CHARACTER.HitPoint.short' compact=true icon=(ahIconClass 'hp') colorClass="--ah-color-hp" }}
-    {{ahBadge path='system.resources.hp.temporary' value=system.resources.hp.temporary type='number' min=0 tooltip='AH.CHARACTER.Block.long' icon=(ahIconClass 'block') classes='--bar' size='s' }}
-
-    {{#if (eq actor.type 'hero')}}
-        {{ahResourceBar 'system.resources.mp.value' system.resources.mp.value system.resources.mp.max label='AH.CHARACTER.MindPoint.short' compact=true icon=(ahIconClass 'mp') colorClass="--ah-color-mp" }}
-        {{ahResourceBar 'system.resources.ip.value' system.resources.ip.value system.resources.ip.max label='AH.CHARACTER.InventoryPoint.short' compact=true icon=(ahIconClass 'ip') colorClass="--ah-color-ip" }}
-        {{ahResourceBar 'system.resources.tp.value' system.resources.tp.value system.resources.tp.max label='AH.CHARACTER.TensionPoint.short' compact=true icon=(ahIconClass 'tp') colorClass="--ah-color-tp" }}
-
-    {{/if}}
-    {{#if (eq actor.type 'adversary')}}
-      {{#if system.ranked}}
-        {{ahResourceBar 'system.resources.pp.value' system.resources.pp.value system.resources.pp.max label="AH.CHARACTER.PressurePoint.short" compact=true tooltip='AH.CHARACTER.PressurePoint.long' icon=(ahIconClass 'pp') colorClass="--ah-color-pp" }}
-      {{/if}}
-    {{/if}}
-  </section>
+  <section class="ah-hud__docked__frame__right">
 
 
-  <section class="ah-hud__docked__actions">
-    {{#each groups}}
-      <section class="ah-hud__group {{#if open}}ah-hud__group--open{{/if}}" data-group-id="{{id}}">
-        <button type="button" class="ah-hud__group-button"
-                data-tooltip="{{localize label}}"
-                data-action="toggleGroup" data-group-id="{{id}}">
-          {{ahFrame style='diamond' icon=(ahIconClass (ahDefault icon id)) }}
-        </button>
+    <section class="ah-hud__docked__effects">
+      {{#each actor.temporaryEffects as |effect|}}
+        <a class="ah-hud__docked__effect"
+           data-tooltip="{{effect.name}} {{localize 'AH.SHEET.MESSAGE.TemporaryEffectHint'}}"
+           data-action="handleTempEffect"
+           data-effect-id="{{effect.id}}">
+          <img src="{{effect.img}}" class="item-img ah-icon --sm" alt="{{effect.name}}">
+        </a>
+      {{/each}}
+    </section>
 
-        <div class="ah-hud__actions --above">
-          {{#each actions}}
-            <button type="button" class="ah-hud__action" data-action="useAction"
-                    data-action-id="{{id}}" data-tooltip="{{tooltip}}">
-              {{#if img}}<img class="ah-hud__action-img" src="{{img}}" alt="" loading="lazy">{{/if}}
-              {{#if icon}}<i class="ah-icon --s {{icon}}"></i>{{/if}}
-              <span class="ah-hud__action-name">{{localize name}}</span>
-              {{#if ap}}
-                <span class="ah-hud__action-ap">{{ap}}</span>
-              {{/if}}
+    <section class="ah-hud__docked__actions">
+      <div class="ah-flex-row --center">
+        {{#each groups}}
+          <section class="ah-hud__group {{#if open}}ah-hud__group--open{{/if}}" data-group-id="{{id}}">
+            <button type="button" class="ah-hud__group-button"
+                    data-tooltip="{{localize label}}"
+                    data-action="toggleGroup" data-group-id="{{id}}">
+              {{ahFrame style='diamond' icon=(ahIconClass (ahDefault icon id)) }}
             </button>
-          {{/each}}
-        </div>
-      </section>
-    {{/each}}
+
+            <div class="ah-hud__actions --above">
+              {{#each actions}}
+                <button type="button" class="ah-hud__action" data-action="useAction"
+                        data-action-id="{{id}}" data-tooltip="{{tooltip}}">
+                  {{#if img}}<img class="ah-hud__action-img" src="{{img}}" alt="" loading="lazy">{{/if}}
+                  {{#if icon}}<i class="ah-icon --s {{icon}}"></i>{{/if}}
+                  <span class="ah-hud__action-name">{{localize name}}</span>
+                  {{#if action}}
+                    <span class="ah-hud__action-ap">
+                  <i class="ah-icon --xs {{ahIconClass action.type}}"></i>
+                      {{#if (eq action.type 'action')}}
+                        {{action.points}}
+                      {{/if}}
+                </span>
+                  {{/if}}
+                </button>
+              {{/each}}
+            </div>
+          </section>
+        {{/each}}
+      </div>
+    </section>
   </section>
-
-
 
 </div>
 
