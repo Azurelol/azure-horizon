@@ -334,6 +334,7 @@ export default class ActionHandler {
 
     /** @returns {TokenActionData} **/
     const itemAction = item => {
+      // Action data
       let action;
       if (item.system?.action?.enabled) {
         action = {
@@ -350,12 +351,21 @@ export default class ActionHandler {
       else if (item.action) {
         action = item.action;
       }
+      // Tooltip
+      let tooltip;
+      if (item.system?.description) {
+        tooltip = item.system.description;
+      }
+      else {
+        tooltip = item.name;
+      }
+
       return ({
         id: `item.${item.id}`,
         name: item.name,
         img: item.img,
         icon: item.icon,
-        tooltip: item.name,
+        tooltip: tooltip,
         action: action,
         onClick: (event) => {
           if (item.perform) {
@@ -449,47 +459,6 @@ export default class ActionHandler {
     }
     return items;
   }
-
-  // /**
-  //  * @param {HTMLElement} element
-  //  */
-  // setupMenuV1(element) {
-  //   // ATTACKS
-  //   const attacks = WeaponResolver.getEquippedWeapons(this.actor);
-  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"attack\"]", attacks, undefined, true);
-  //   // SPELLS
-  //   const spells = ["spell"].map((t) => this.actor.getItemsByType(t)).flat();
-  //   if (this.actor.type === "hero") {
-  //     const magicEngrams = this.actor.system.equipment.getEngramsOfKind();
-  //     spells.push(...magicEngrams);
-  //   }
-  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"spell\"]", spells);
-  //   // INVENTORY
-  //   const consumables = this.actor.getItemsByType("consumable");
-  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"item\"]", consumables);
-  //   if (this.actor.type === "hero") {
-  //     // SKILLS
-  //     /** @type {AHItem[]} **/
-  //     let skills = ["skill"]
-  //       .map((t) => this.actor.getItemsByType(t))
-  //       .flat()
-  //       .filter((s) => {
-  //         return s.system.action.type === "action";
-  //       });
-  //     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"skill\"]", skills);
-  //   }
-  //   else if (this.actor.type === "adversary") {
-  //     // ABILITIES
-  //     let abilities = this.actor.getItemsByType("ability").filter(a => a.system.action.type === "action");
-  //     FoundryUtils.itemContextMenu(element, "[data-context-menu=\"ability\"]", abilities);
-  //   }
-  //   // MANEUVER
-  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"maneuver\"]", this.getManeuvers(), undefined);
-  //   // CHECKS
-  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"check\"]", this.getChecks(), undefined);
-  //   // REST
-  //   FoundryUtils.itemContextMenu(element, "[data-context-menu=\"rest\"]", this.getRestActions(), undefined);
-  // }
 
   /**
    * @param {HTMLElement} element

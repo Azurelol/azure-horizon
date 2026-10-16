@@ -1331,16 +1331,20 @@
       }
     },
     "COMBAT": {
+      "Turn": "Turn",
       "Round": "Round",
-      "NotStarted": "Not Started",
+      "Start": "Start Battle",
+      "End": "End Battle",
+      "PreviousTurn": "Previous Turn",
       "NextTurn": "Next Turn",
+      "NotStarted": "Not Started",
       "FirstTurn": "First Turn",
-      "Start": "Battle Start",
+      "CombatStart": "Battle Start",
       "RoundStart": "Round Start",
       "TurnStart": "Turn Start",
       "TurnEnd": "Turn End",
       "RoundEnd": "Round End",
-      "End": "Battle End",
+      "CombatEnd": "Battle End",
       "InitiativeHint": "Initiative will be rolled for all characters at the start of the round.",
       "InitiativeRoll": "ROUND {round}"
     },

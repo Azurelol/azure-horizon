@@ -102,7 +102,7 @@
   border: 1px solid transparent;
   border-radius: var(--ah-hud-radius);
   color: var(--ah-hud-text);
-  font-size: var(--ah-font-size-m);
+  font-size: var(--ah-font-size-md);
   text-align: left;
   cursor: pointer;
 }

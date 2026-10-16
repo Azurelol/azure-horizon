@@ -949,12 +949,12 @@ AH.combat = Object.freeze({
    * @remarks Uses {@linkcode CombatEvent}
    */
   event: {
-    startOfCombat: "AH.COMBAT.Start",
+    startOfCombat: "AH.COMBAT.CombatStart",
     startOfTurn: "AH.COMBAT.TurnStart",
     endOfTurn: "H.COMBAT.TurnEnd",
     startOfRound: "H.COMBAT.RoundStart",
     endOfRound: "AH.COMBAT.RoundEnd",
-    endOfCombat: "H.COMBAT.End",
+    endOfCombat: "AH.COMBAT.CombatEnd",
   },
 });
 

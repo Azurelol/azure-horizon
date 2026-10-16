@@ -18,6 +18,8 @@ export class AHCombatCarousel extends HandlebarsApplicationMixin(ApplicationV2) 
     },
     actions: {
       selectCombatant: AHCombatCarousel.#onSelectCombatant,
+      startCombat: AHCombatCarousel.#onStartCombat,
+      endCombat: AHCombatCarousel.#onEndCombat,
       previousTurn: AHCombatCarousel.#onPreviousTurn,
       nextTurn: AHCombatCarousel.#onNextTurn,
     },
@@ -135,6 +137,14 @@ export class AHCombatCarousel extends HandlebarsApplicationMixin(ApplicationV2) 
 
   static #onNextTurn() {
     return game.combat?.nextTurn();
+  }
+
+  static #onEndCombat() {
+    return game.combat?.endCombat();
+  }
+
+  static #onStartCombat() {
+    return game.combat?.startCombat();
   }
 
   /* -------------------------------------------- */

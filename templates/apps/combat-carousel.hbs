@@ -3,13 +3,17 @@
   <div class="ah-combat-carousel__header">
 
     {{#if isGM}}
-      <button type="button" class="ah-combat-carousel__nav" data-action="previousTurn"
-              aria-label="{{localize 'AH.combat.previousTurn'}}">
-        <i class="{{ahIconClass 'previous'}}"></i>
-      </button>
+      {{#if started}}
+        <button type="button" class="ah-combat-carousel__nav"
+                data-tooltip="{{localize 'AH.COMBAT.PreviousTurn'}}"
+                data-action="previousTurn"
+                aria-label="{{localize 'AH.COMBAT.PreviousTurn'}}">
+          <i class="{{ahIconClass 'previous'}}"></i>
+        </button>
+      {{/if}}
     {{/if}}
 
-    <div class="ah-combat-carousel__round" title="{{localize 'AH.COMBAT.Round'}}">
+    <div class="ah-combat-carousel__round" data-tooltip="{{localize 'AH.COMBAT.Round'}}">
       {{#if started}}
         <span class="ah-combat-carousel__round-label">{{localize "AH.COMBAT.Round"}}</span>
         <span class="ah-combat-carousel__round-value">{{round}}</span>
@@ -19,10 +23,21 @@
     </div>
 
     {{#if isGM}}
-      <button type="button" class="ah-combat-carousel__nav" data-action="nextTurn"
-              aria-label="{{localize 'AH.COMBAT.NextTurn'}}">
-        <i class="{{ahIconClass 'next'}}"></i>
-      </button>
+      {{#if started}}
+        <button type="button" data-tooltip="{{localize 'AH.COMBAT.NextTurn'}}" class="ah-combat-carousel__nav" data-action="nextTurn"
+                aria-label="{{localize 'AH.COMBAT.NextTurn'}}">
+          <i class="{{ahIconClass 'next'}}"></i>
+        </button>
+        <button type="button" data-tooltip="{{localize 'AH.COMBAT.End'}}" class="ah-combat-carousel__nav" data-action="endCombat"
+                aria-label="{{localize 'AH.COMBAT.End'}}">
+          <i class="{{ahIconClass 'end'}}"></i>
+        </button>
+      {{else}}
+        <button type="button" data-tooltip="{{localize 'AH.COMBAT.Start'}}" class="ah-combat-carousel__nav" data-action="startCombat"
+                aria-label="{{localize 'AH.COMBAT.Start'}}">
+          <i class="{{ahIconClass 'start'}}"></i>
+        </button>
+      {{/if}}
     {{/if}}
 
   </div>
@@ -38,9 +53,9 @@
           {{#if hidden}}is-hidden{{/if}}"
             data-combatant-id="{{id}}" data-action="selectCombatant">
 
-          <div class="ah-combat-carousel__tile">
+          <div class="ah-combat-carousel__tile" data-tooltip="{{name}}">
             <img class="ah-combat-carousel__portrait" src="{{img}}" alt="{{name}}" draggable="false">
-            <span class="ah-combat-carousel__name">{{name}}</span>
+<!--            <span class="ah-combat-carousel__name">{{name}}</span>-->
 <!--            {{#if initiative}}<span class="ah-combat-carousel__init">{{initiative}}</span>{{/if}}-->
           </div>
           {{#if intent}}
