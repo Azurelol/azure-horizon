@@ -1,23 +1,23 @@
 {
-  "type": "Item",
+  "type": "ActiveEffect",
   "folder": null,
-  "name": "Ability: Shift",
-  "color": "#4d4dff",
+  "name": "Telegraphs",
+  "color": null,
   "sorting": "a",
-  "_id": "WmAnZ22X7yYF0thM",
+  "_id": "PF23m9svDL5Hc2Oi",
   "description": "",
-  "sort": 800000,
+  "sort": 0,
   "flags": {},
   "_stats": {
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1786633829651,
+    "createdTime": 1791814269553,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!folders!WmAnZ22X7yYF0thM"
+  "_key": "!folders!PF23m9svDL5Hc2Oi"
 }

@@ -10,7 +10,7 @@ export class ExperienceTableRenderer extends AH_TableRenderer {
   getColumns() {
     return [
       TableColumns.textColumn({
-        header: "AH.EXPERIENCE.Trigger",
+        header: "AH.EXPERIENCE.Trigger.long",
         getText: (entry) => entry.text,
       }),
       TableColumns.textColumn({

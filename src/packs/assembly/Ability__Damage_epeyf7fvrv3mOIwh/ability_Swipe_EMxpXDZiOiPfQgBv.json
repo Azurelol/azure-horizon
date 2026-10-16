@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "ability-swipe",
-    "description": "<p>You attack the target and two adjacent allies in the same row.</p>",
+    "description": "<p>You deal damage the target and two adjacent allies in the same row. If the result of the check was even you push the target back and those adjacent to the sides.</p>",
     "attributes": {
       "schemaVersion": 1,
       "primary": "dex",
@@ -44,7 +44,7 @@
     },
     "cost": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "resource": "mp",
       "amount": "10",
       "perTarget": false

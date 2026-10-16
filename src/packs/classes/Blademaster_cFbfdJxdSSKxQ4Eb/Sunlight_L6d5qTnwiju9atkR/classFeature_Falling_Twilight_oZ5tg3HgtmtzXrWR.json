@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-twilight",
-    "description": "<p>You deal additional dark damage to a target. Can only be executed during an odd turn.</p>",
+    "description": "<p>You deal additional dark damage to a target. Can only be executed during an odd round.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,

@@ -1,5 +1,5 @@
 {
-  "folder": "epeyf7fvrv3mOIwh",
+  "folder": "VxfouSCvmBieccNO",
   "name": "Reload",
   "type": "ability",
   "_id": "gfjhwgLzRGf0muLG",
@@ -64,7 +64,7 @@
     "intent": "prepare"
   },
   "effects": [],
-  "sort": 1000000,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },

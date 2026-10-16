@@ -14,7 +14,10 @@
     "traits": [],
     "def": 1,
     "advantage": "slashing",
-    "disadvantage": "electric"
+    "disadvantage": "electric",
+    "potentials": {
+      "entries": []
+    }
   },
   "effects": [],
   "sort": 200000,

@@ -1,0 +1,106 @@
+{
+  "folder": "bLvApIKJThb3aUw4",
+  "name": "Eviscerate",
+  "type": "ability",
+  "_id": "Q4K2qFYhOmUDGWwl",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "ability-eviscerate",
+    "description": "<p>You deal heavy damage to a <em>marked</em> target and apply <em>Bleed</em>.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "defense": "def",
+      "variant": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "primary": {
+        "amount": "",
+        "type": "untyped"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "",
+      "points": 1,
+      "speed": "",
+      "traits": []
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "",
+      "rule": "",
+      "traits": []
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "extreme",
+    "intent": "burst",
+    "weight": "normal",
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "attributes": true,
+      "check": true,
+      "damage": true
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791806270246,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Q4K2qFYhOmUDGWwl"
+}

@@ -1,0 +1,60 @@
+{
+  "folder": "1oMYnwqUn6bIOlye",
+  "name": "Long Spear",
+  "type": "attack",
+  "_id": "PQBDCGyDP73VnHVb",
+  "img": "icons/weapons/polearms/pike-flared-red.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "attack-long-spear",
+    "description": "",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "defense": "def",
+      "variant": "",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "10",
+        "type": "piercing"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": []
+    },
+    "range": "melee",
+    "actionCost": 2
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791795838590,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!PQBDCGyDP73VnHVb"
+}

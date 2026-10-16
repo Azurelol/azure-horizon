@@ -1,0 +1,106 @@
+{
+  "folder": "SMkvBfZbUFJku1OT",
+  "name": "Hook",
+  "type": "ability",
+  "_id": "BGOdsFBSmgeYW9Tn",
+  "img": "icons/skills/melee/strike-blade-blood-red.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "ability-hook",
+    "description": "<p>You deal damage to the target and pull it to the front row.</p>",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "defense": "def",
+      "variant": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "5",
+        "type": "piercing"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": [],
+      "inplace": false
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "",
+      "points": 1,
+      "speed": "",
+      "traits": []
+    },
+    "resource": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "hp",
+      "amount": ""
+    },
+    "cost": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "resource": "mp",
+      "amount": "",
+      "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "ranged",
+      "rule": "single",
+      "traits": []
+    },
+    "effects": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "selector": "",
+      "entries": [],
+      "duration": {
+        "event": "",
+        "tracking": ""
+      }
+    },
+    "power": "low",
+    "intent": "control",
+    "weight": "normal",
+    "usage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "attributes": false,
+      "check": false,
+      "damage": false
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791806451207,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!BGOdsFBSmgeYW9Tn"
+}

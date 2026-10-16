@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-morning-star",
-    "description": "<p>You deal damage to a target and apply <em>Burn</em>. Can only be executed during an even turn.</p>",
+    "description": "<p>You deal damage to a target and apply <em>Burn</em>. Can only be executed during an even round.</p>",
     "attributes": {
       "schemaVersion": 1,
       "enabled": false,

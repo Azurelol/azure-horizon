@@ -28,7 +28,8 @@
       "style": "clock",
       "current": 1,
       "max": 5
-    }
+    },
+    "predicates": {}
   },
   "disabled": false,
   "start": null,

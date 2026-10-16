@@ -8,7 +8,7 @@
     "revision": 1,
     "slug": "equipment-cold-rune",
     "description": "",
-    "rarity": "uncommon",
+    "rarity": "common",
     "kind": "magic",
     "level": {
       "current": 1,
@@ -225,7 +225,8 @@
         "range": "",
         "rule": "",
         "traits": []
-      }
+      },
+      "name": ""
     }
   },
   "effects": [],

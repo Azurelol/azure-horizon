@@ -810,7 +810,9 @@
           "type": "action",
           "points": 1,
           "speed": "",
-          "traits": []
+          "traits": [
+            "closer"
+          ]
         },
         "resource": {
           "schemaVersion": 1,
@@ -830,13 +832,17 @@
           "enabled": false,
           "range": "",
           "rule": "",
-          "traits": []
+          "traits": [],
+          "area": "",
+          "telegraph": false
         },
         "effects": {
           "schemaVersion": 1,
-          "enabled": false,
-          "selector": "",
-          "entries": [],
+          "enabled": true,
+          "selector": "buff",
+          "entries": [
+            "cast"
+          ],
           "duration": {
             "event": "",
             "tracking": ""
@@ -851,6 +857,9 @@
           "attributes": false,
           "check": false,
           "damage": false
+        },
+        "references": {
+          "item": "ability-explosion"
         }
       },
       "effects": [],
@@ -873,115 +882,6 @@
       "folder": null,
       "sort": 0,
       "_key": "!actors.items!BIFuwJwnaWebhavL.dW1OZErLVFwLsvFg"
-    },
-    {
-      "name": "Fireball",
-      "type": "ability",
-      "_id": "LgX6rXWVHeAhPH5a",
-      "img": "icons/magic/fire/explosion-fireball-large-orange.webp",
-      "system": {
-        "schemaVersion": 1,
-        "revision": 1,
-        "slug": "ability-fireball",
-        "description": "<p>You deal fire damage to the target and those around it.</p>",
-        "attributes": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": "ins",
-          "secondary": "wlp",
-          "grade": "C"
-        },
-        "check": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "defense": "mdef",
-          "bonus": "",
-          "variant": ""
-        },
-        "damage": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "primary": {
-            "amount": "10",
-            "type": "fire"
-          },
-          "secondary": {
-            "amount": "",
-            "type": ""
-          },
-          "traits": []
-        },
-        "resource": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "type": "hp",
-          "amount": ""
-        },
-        "cost": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "resource": "mp",
-          "amount": "15",
-          "perTarget": false
-        },
-        "effects": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "selector": "",
-          "entries": [],
-          "duration": {
-            "event": "",
-            "tracking": ""
-          }
-        },
-        "power": "",
-        "intent": "burst",
-        "weight": "normal",
-        "action": {
-          "schemaVersion": 1,
-          "enabled": true,
-          "type": "action",
-          "points": 3,
-          "traits": [
-            "cast"
-          ],
-          "speed": ""
-        },
-        "usage": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "attributes": false,
-          "check": false,
-          "damage": false
-        },
-        "targeting": {
-          "schemaVersion": 1,
-          "enabled": false,
-          "range": "",
-          "rule": "",
-          "traits": []
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.365",
-        "systemId": "azure-horizon",
-        "systemVersion": "AUTOMATIC",
-        "createdTime": 1791313144817,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.azure-horizon.assembly.Item.LgX6rXWVHeAhPH5a",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "B84lnG927FT7kWX1": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!BIFuwJwnaWebhavL.LgX6rXWVHeAhPH5a"
     },
     {
       "name": "Fire Bolt",
@@ -1043,6 +943,116 @@
       "folder": null,
       "sort": 0,
       "_key": "!actors.items!BIFuwJwnaWebhavL.P9e4VHiZ49MTgN1n"
+    },
+    {
+      "name": "Explosion",
+      "type": "ability",
+      "_id": "LgX6rXWVHeAhPH5a",
+      "img": "icons/magic/fire/explosion-fireball-large-orange.webp",
+      "system": {
+        "schemaVersion": 1,
+        "revision": 1,
+        "slug": "ability-explosion",
+        "description": "<p>You deal fire damage to the target and those around it.</p>",
+        "attributes": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": "ins",
+          "secondary": "wlp",
+          "grade": "C"
+        },
+        "check": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "defense": "mdef",
+          "bonus": "",
+          "variant": ""
+        },
+        "damage": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "primary": {
+            "amount": "10",
+            "type": "fire"
+          },
+          "secondary": {
+            "amount": "",
+            "type": ""
+          },
+          "traits": []
+        },
+        "resource": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "type": "hp",
+          "amount": ""
+        },
+        "cost": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "resource": "mp",
+          "amount": "15",
+          "perTarget": false
+        },
+        "effects": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "selector": "",
+          "entries": [],
+          "duration": {
+            "event": "",
+            "tracking": ""
+          }
+        },
+        "power": "",
+        "intent": "burst",
+        "weight": "normal",
+        "action": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "type": "action",
+          "points": 3,
+          "traits": [
+            "cast"
+          ],
+          "speed": ""
+        },
+        "usage": {
+          "schemaVersion": 1,
+          "enabled": false,
+          "attributes": false,
+          "check": false,
+          "damage": false
+        },
+        "targeting": {
+          "schemaVersion": 1,
+          "enabled": true,
+          "range": "ranged",
+          "rule": "multiple",
+          "area": "burst",
+          "telegraph": true
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "azure-horizon",
+        "systemVersion": "AUTOMATIC",
+        "createdTime": 1791819006391,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.azure-horizon.assembly.Item.LgX6rXWVHeAhPH5a",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "B84lnG927FT7kWX1": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!BIFuwJwnaWebhavL.LgX6rXWVHeAhPH5a"
     }
   ],
   "effects": [],

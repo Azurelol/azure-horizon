@@ -1,0 +1,60 @@
+{
+  "folder": "1oMYnwqUn6bIOlye",
+  "name": "Greataxe",
+  "type": "attack",
+  "_id": "AZDDNnWpFOCJYAjW",
+  "img": "icons/weapons/axes/axe-double-jagged-black.webp",
+  "system": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "slug": "equipment-greataxe",
+    "description": "",
+    "attributes": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": "dex",
+      "secondary": "mig",
+      "grade": "C"
+    },
+    "check": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "defense": "def",
+      "variant": "",
+      "bonus": ""
+    },
+    "damage": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "primary": {
+        "amount": "10",
+        "type": "slashing"
+      },
+      "secondary": {
+        "amount": "",
+        "type": ""
+      },
+      "traits": []
+    },
+    "range": "melee",
+    "actionCost": 2
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "azure-horizon",
+    "systemVersion": "AUTOMATIC",
+    "createdTime": 1791795904156,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!AZDDNnWpFOCJYAjW"
+}

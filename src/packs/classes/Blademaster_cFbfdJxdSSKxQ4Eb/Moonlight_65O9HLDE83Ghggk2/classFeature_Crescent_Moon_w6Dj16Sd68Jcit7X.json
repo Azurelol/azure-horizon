@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-crescent-moon",
-    "description": "<p>You perform a <em>cleave</em> attack on the target. Can only be executed during an even turn.</p>",
+    "description": "<p>You perform a <em>cleave</em> attack on the target. Can only be executed during an even round.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

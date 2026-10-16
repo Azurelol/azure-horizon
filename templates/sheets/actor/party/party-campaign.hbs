@@ -15,7 +15,7 @@
           </legend>
           <div class="ah-button-group --column">
             {{ahButton action='travelCheck' classes='--button' icon=(ahIconClass 'travelCheck') label='AH.CHECK.Travel' }}
-            {{ahButton action='attributeCheck' classes='--button' icon=(ahIconClass 'attributeCheck') label='AH.CHECK.Attribute' }}
+            {{ahButton action='attributeCheck' classes='--button' icon=(ahIconClass 'checks') label='AH.EPISODE.PromptCheck' }}
           </div>
         </fieldset>
 
@@ -35,6 +35,7 @@
           </legend>
           <div class="ah-button-group">
             {{ahButton action='awardTreasure' classes='--button' icon=(ahIconClass 'treasure') label='AH.DIALOG.AwardEquipment' }}
+            {{ahButton action='levelUp' classes='--button' icon=(ahIconClass 'level') label='AH.EXPERIENCE.LevelUp' }}
           </div>
         </fieldset>
 
@@ -43,7 +44,7 @@
     </section>
   {{/if}}
 
-  <section class="tab {{campaignTabs.ending.cssClass}}" data-tab="ending" data-group="campaign">
+  <section class="tab {{campaignTabs.ending.cssClass}}" data-tab="experience" data-group="campaign">
     <div class="ah-table__collection">
       {{#each experienceTables as |table|}}
         {{{table}}}

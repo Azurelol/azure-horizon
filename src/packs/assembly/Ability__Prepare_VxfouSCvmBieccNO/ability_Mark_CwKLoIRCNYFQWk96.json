@@ -56,7 +56,7 @@
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "selector": "deuff",
       "entries": [
         "mark"
@@ -66,7 +66,14 @@
         "tracking": ""
       }
     },
-    "intent": "prepare"
+    "intent": "prepare",
+    "targeting": {
+      "enabled": true,
+      "rule": "single",
+      "range": "",
+      "area": "",
+      "telegraph": true
+    }
   },
   "effects": [],
   "sort": 0,

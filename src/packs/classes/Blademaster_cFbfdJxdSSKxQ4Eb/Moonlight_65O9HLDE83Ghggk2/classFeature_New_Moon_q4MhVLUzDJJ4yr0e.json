@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "revision": 1,
     "slug": "blademaster-new-moon",
-    "description": "<p>You deal additional light damage to a target. Can only be executed during an odd turn.</p>",
+    "description": "<p>You deal additional light damage to a target. Can only be executed during an odd round.</p>",
     "check": {
       "schemaVersion": 1,
       "enabled": false,

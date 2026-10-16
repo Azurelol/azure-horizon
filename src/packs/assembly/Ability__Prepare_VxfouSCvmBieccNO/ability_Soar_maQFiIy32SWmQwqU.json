@@ -1,35 +1,33 @@
 {
-  "folder": "bLvApIKJThb3aUw4",
-  "name": "Fireball",
+  "folder": "VxfouSCvmBieccNO",
+  "name": "Soar",
   "type": "ability",
-  "_id": "LgX6rXWVHeAhPH5a",
-  "img": "icons/magic/fire/explosion-fireball-large-orange.webp",
+  "_id": "maQFiIy32SWmQwqU",
+  "img": "icons/skills/movement/arrow-upward-yellow.webp",
   "system": {
     "schemaVersion": 1,
     "revision": 1,
-    "slug": "ability-fireball",
-    "description": "<p>You deal fire damage to the target and those around it.</p>",
+    "slug": "ability-soar",
+    "description": "<p>You become <em>airborne</em> and mark a target for a powerful attack on your next turn.</p>",
     "attributes": {
       "schemaVersion": 1,
-      "enabled": true,
-      "primary": "ins",
-      "secondary": "wlp",
+      "enabled": false,
+      "primary": "dex",
+      "secondary": "mig",
       "grade": "C"
     },
     "check": {
       "schemaVersion": 1,
-      "enabled": true,
-      "primary": "dex",
-      "secondary": "mig",
-      "defense": "mdef",
-      "bonus": ""
+      "enabled": false,
+      "defense": "def",
+      "variant": ""
     },
     "damage": {
       "schemaVersion": 1,
-      "enabled": true,
+      "enabled": false,
       "primary": {
-        "amount": "10",
-        "type": "fire"
+        "amount": "",
+        "type": "untyped"
       },
       "secondary": {
         "amount": "",
@@ -37,6 +35,14 @@
       },
       "traits": [],
       "inplace": false
+    },
+    "action": {
+      "schemaVersion": 1,
+      "enabled": false,
+      "type": "",
+      "points": 1,
+      "speed": "",
+      "traits": []
     },
     "resource": {
       "schemaVersion": 1,
@@ -48,33 +54,33 @@
       "schemaVersion": 1,
       "enabled": false,
       "resource": "mp",
-      "amount": "15",
+      "amount": "",
       "perTarget": false
+    },
+    "targeting": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "range": "melee",
+      "rule": "single",
+      "traits": [],
+      "area": "",
+      "telegraph": true
     },
     "effects": {
       "schemaVersion": 1,
-      "enabled": false,
-      "selector": "",
-      "entries": [],
+      "enabled": true,
+      "selector": "buff",
+      "entries": [
+        "airborne"
+      ],
       "duration": {
         "event": "",
         "tracking": ""
       }
     },
     "power": "",
-    "intent": "burst",
+    "intent": "prepare",
     "weight": "normal",
-    "action": {
-      "schemaVersion": 1,
-      "enabled": true,
-      "range": "ranged",
-      "targeting": "multiple",
-      "type": "action",
-      "points": 3,
-      "traits": [
-        "cast"
-      ]
-    },
     "usage": {
       "schemaVersion": 1,
       "enabled": false,
@@ -84,7 +90,7 @@
     }
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -93,12 +99,12 @@
     "coreVersion": "14.365",
     "systemId": "azure-horizon",
     "systemVersion": "AUTOMATIC",
-    "createdTime": 1788505214532,
+    "createdTime": 1791796500703,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!LgX6rXWVHeAhPH5a"
+  "_key": "!items!maQFiIy32SWmQwqU"
 }

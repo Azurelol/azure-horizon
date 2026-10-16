@@ -112,7 +112,7 @@ export class PartySheet extends AHActorSheet {
     campaign: {
       tabs: [
         { id: "episode", label: "AH.SHEET.Tabs.Episode", icon: "ra ra-speech-bubbles" },
-        { id: "ending", label: "AH.SHEET.Tabs.Ending", icon: "ra ra-light-bulb" },
+        { id: "experience", label: "AH.EXPERIENCE.Trigger.plural", icon: "ra ra-light-bulb" },
       ],
       initial: "episode",
     },
@@ -629,6 +629,14 @@ export class PartySheet extends AHActorSheet {
     const lc = Formulas.calculateLevelsGained(total);
     if (lc.levelsGained === 0) {
       ui.notifications.warn("The party does not have enough experience to level up!");
+      return;
+    }
+
+    const confirm = await Dialogs.confirm({
+      title: "AH.EXPERIENCE.LevelUp",
+      message: "AH.EXPERIENCE.LevelUpHint",
+    });
+    if (!confirm) {
       return;
     }
 

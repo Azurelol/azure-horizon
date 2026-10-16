@@ -324,8 +324,12 @@
       }
     },
     "EXPERIENCE": {
-      "Trigger": "Experience Trigger",
+      "Trigger": {
+        "long": "Experience Trigger",
+        "plural": "Experience Triggers"
+      },
       "LevelUp": "Level Up",
+      "LevelUpHint": "Are you sure you would like to level up all heroes in the party?",
       "TriggerMessage": "The party has met an experience trigger and earned {amount} XP.",
       "GainMessage": "The party earns {amount} XP.",
       "GROUP": {
@@ -1306,6 +1310,7 @@
       "Battle": "Battle",
       "Event": "Event",
       "Treasure": "Treasure",
+      "PromptCheck": "Prompt Check",
       "PromptTravelCheck": "The director has prompted the players for a <strong>{level} danger</strong> travel check.",
       "SelectDifficulty": "Select Difficulty",
       "PerformTravelCheck": "Perform Travel Check"
