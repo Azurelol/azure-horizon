@@ -94,8 +94,18 @@
   overflow: hidden;
   transition: border-color 150ms ease, box-shadow 150ms ease;
 }
-.ah-combat-carousel__item--hero .ah-combat-carousel__tile { border-color: var(--ah-combat-carousel-hero); }
-.ah-combat-carousel__item--adversary .ah-combat-carousel__tile { border-color: var(--ah-combat-carousel-adversary); }
+.ah-combat-carousel__item--hero {
+  .ah-combat-carousel__tile {
+    border-color: var(--ah-combat-carousel-hero);
+    background: var(--ah-hero-background-gradient);
+  }
+}
+.ah-combat-carousel__item--adversary {
+  .ah-combat-carousel__tile {
+    border-color: var(--ah-combat-carousel-adversary);
+    background: var(--ah-adversary-background-gradient);
+  }
+}
 
 .ah-combat-carousel__item:hover { transform: translateY(-2px); }
 
