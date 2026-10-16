@@ -1,0 +1,168 @@
+.ah-combat-carousel {
+  --ah-combat-carousel-border: var(--ah-primitive-color-slate-600, #4a5568);
+  --ah-combat-carousel-text: var(--ah-primitive-color-silver-100, #e8ecf1);
+  --ah-combat-carousel-hero: var(--ah-hero-color);
+  --ah-combat-carousel-adversary: var(--ah-adversary-color);
+  --ah-combat-carousel-active: var(--ah-primitive-color-gold-400, #e0b84a);
+  --ah-combat-carousel-size: 56px;
+  --ah-combat-carousel-icon-size: 24px;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: min(90vw, 1100px);
+  margin: 0.25rem auto 0;
+  padding: 0.35rem 0.6rem;
+
+
+  color: var(--ah-combat-carousel-text);
+  pointer-events: auto;
+  font-family: var(--ah-font-family-application);
+}
+
+.ah-combat-carousel[hidden] { display: none; }
+
+.ah-combat-carousel__frame {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ah-combat-carousel__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.ah-combat-carousel__body {
+  display: flex;
+  flex-direction: row;
+}
+
+.ah-combat-carousel__round {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.5rem;
+  line-height: 1.1;
+
+  background: var(--ah-surface-panel-gradient);
+  border: 1px solid var(--ah-combat-carousel-border);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+.ah-combat-carousel__round-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.7; }
+.ah-combat-carousel__round-value { font-size: 1.4rem; font-weight: 700; }
+
+.ah-combat-carousel__nav {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  line-height: 1;
+}
+
+.ah-combat-carousel__track {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.3rem 0.2rem;
+  list-style: none;
+  scrollbar-width: none;
+}
+.ah-combat-carousel__track::-webkit-scrollbar { display: none; }
+
+.ah-combat-carousel__item {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: var(--ah-combat-carousel-size);
+  cursor: pointer;
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.ah-combat-carousel__tile {
+  position: relative;
+  width: var(--ah-combat-carousel-size);
+  height: var(--ah-combat-carousel-size);
+  border: 2px solid var(--ah-combat-carousel-border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.ah-combat-carousel__item--hero .ah-combat-carousel__tile { border-color: var(--ah-combat-carousel-hero); }
+.ah-combat-carousel__item--adversary .ah-combat-carousel__tile { border-color: var(--ah-combat-carousel-adversary); }
+
+.ah-combat-carousel__item:hover { transform: translateY(-2px); }
+
+.ah-combat-carousel__item.is-active { transform: scale(1.15); z-index: 1; }
+.ah-combat-carousel__item.is-active .ah-combat-carousel__tile {
+  border-color: var(--ah-combat-carousel-active);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--ah-combat-carousel-active) 70%, transparent);
+}
+.ah-combat-carousel__item.is-acted { opacity: 0.55; }
+.ah-combat-carousel__item.is-defeated { filter: grayscale(1); opacity: 0.4; }
+.ah-combat-carousel__item.is-hidden .ah-combat-carousel__tile { border-style: dashed; }
+
+/* Intent row: ability-intent icon followed by target portraits */
+.ah-combat-carousel__intent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  max-width: 100%;
+  font-size: 0.7rem;
+  color: var(--ah-combat-carousel-adversary);
+}
+.ah-combat-carousel__intent-icon {
+  --intent-icon-size: 24px;
+  flex: none;
+  width: var(--ah-combat-carousel-icon-size);
+  font-size: var(--ah-combat-carousel-icon-size);
+}
+.ah-combat-carousel__target {
+  flex: none;
+  width: var(--ah-combat-carousel-icon-size);
+  height: auto;
+  object-fit: cover;
+  border: 1px solid var(--ah-combat-carousel-hero);
+  border-radius: 50%;
+}
+
+.ah-combat-carousel__portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  pointer-events: none;
+}
+
+.ah-combat-carousel__name {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0 2px;
+  font-size: 0.6rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: linear-gradient(transparent, rgb(0 0 0 / 0.8));
+}
+
+.ah-combat-carousel__init {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 1.1rem;
+  padding: 0 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  background: rgb(0 0 0 / 0.75);
+  border-bottom-left-radius: 4px;
+}
+

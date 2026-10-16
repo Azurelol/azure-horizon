@@ -39,6 +39,7 @@
 
 @import "applications/browser.css";
 @import "applications/combat-tracker.css";
+@import "applications/combat-carousel.css";
 @import "applications/journal.css";
 @import "applications/system-controls.css";
 @import "applications/hud.css";

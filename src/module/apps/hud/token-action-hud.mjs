@@ -31,6 +31,35 @@ const LAYOUT_TEMPLATES = {
  * @property {HTMLElement} element
  */
 export default class AHTokenActionHUD extends HandlebarsApplicationMixin(ApplicationV2) {
+
+  /** @type ApplicationConfiguration **/
+  static DEFAULT_OPTIONS = {
+    id: "ah-action-hud",
+    classes: ["ah-hud-app"],
+    tag: "div",
+    window: {
+      frame: false,
+    },
+    position: {
+      width: "auto",
+      height: "auto",
+      top: 140,
+      left: 140,
+    },
+    actions: {
+      toggleGroup: AHTokenActionHUD.#onToggleGroup,
+      handleTempEffect: { handler: this.#handleTempEffect, buttons: [0, 2] },
+      useAction: { handler: AHTokenActionHUD.#onUseAction, buttons: [0, 2] },
+    },
+  };
+
+  static PARTS = {
+    hud: {
+      template: systemTemplatePath("apps/token-action-hud"),
+      templates: Object.values(LAYOUT_TEMPLATES),
+    },
+  };
+
   /**
    * Currently expanded group ids.
    * @type {Set<any>}
@@ -61,34 +90,6 @@ export default class AHTokenActionHUD extends HandlebarsApplicationMixin(Applica
     }
     return this.#instance;
   }
-
-  /** @type ApplicationConfiguration **/
-  static DEFAULT_OPTIONS = {
-    id: "ah-action-hud",
-    classes: ["ah-hud-app"],
-    tag: "div",
-    window: {
-      frame: false,
-    },
-    position: {
-      width: "auto",
-      height: "auto",
-      top: 140,
-      left: 140,
-    },
-    actions: {
-      toggleGroup: AHTokenActionHUD.#onToggleGroup,
-      handleTempEffect: { handler: this.#handleTempEffect, buttons: [0, 2] },
-      useAction: { handler: AHTokenActionHUD.#onUseAction, buttons: [0, 2] },
-    },
-  };
-
-  static PARTS = {
-    hud: {
-      template: systemTemplatePath("apps/token-action-hud"),
-      templates: Object.values(LAYOUT_TEMPLATES),
-    },
-  };
 
   /** @override */
   async _prepareContext(options) {

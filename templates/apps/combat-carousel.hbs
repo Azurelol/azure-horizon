@@ -1,0 +1,65 @@
+<section class="ah-combat-carousel__frame">
+
+  <div class="ah-combat-carousel__header">
+
+    {{#if isGM}}
+      <button type="button" class="ah-combat-carousel__nav" data-action="previousTurn"
+              aria-label="{{localize 'AH.combat.previousTurn'}}">
+        <i class="{{ahIconClass 'previous'}}"></i>
+      </button>
+    {{/if}}
+
+    <div class="ah-combat-carousel__round" title="{{localize 'AH.COMBAT.Round'}}">
+      {{#if started}}
+        <span class="ah-combat-carousel__round-label">{{localize "AH.COMBAT.Round"}}</span>
+        <span class="ah-combat-carousel__round-value">{{round}}</span>
+      {{else}}
+        <span class="ah-combat-carousel__round-label">{{localize "AH.COMBAT.NotStarted"}}</span>
+      {{/if}}
+    </div>
+
+    {{#if isGM}}
+      <button type="button" class="ah-combat-carousel__nav" data-action="nextTurn"
+              aria-label="{{localize 'AH.COMBAT.NextTurn'}}">
+        <i class="{{ahIconClass 'next'}}"></i>
+      </button>
+    {{/if}}
+
+  </div>
+
+  <div class="ah-combat-carousel__body">
+    <ol class="ah-combat-carousel__track">
+      {{#each combatants}}
+        <li class="ah-combat-carousel__item
+               ah-combat-carousel__item--{{faction}}
+          {{#if active}}is-active{{/if}}
+          {{#if acted}}is-acted{{/if}}
+          {{#if defeated}}is-defeated{{/if}}
+          {{#if hidden}}is-hidden{{/if}}"
+            data-combatant-id="{{id}}" data-action="selectCombatant">
+
+          <div class="ah-combat-carousel__tile">
+            <img class="ah-combat-carousel__portrait" src="{{img}}" alt="{{name}}" draggable="false">
+            <span class="ah-combat-carousel__name">{{name}}</span>
+<!--            {{#if initiative}}<span class="ah-combat-carousel__init">{{initiative}}</span>{{/if}}-->
+          </div>
+          {{#if intent}}
+            <div class="ah-combat-carousel__intent" data-tooltip="{{ahCapitalize intent.primary.type}}" title="{{intent.label}}">
+              {{#if (and intent (and isOwner intent.primary.item))}}
+                <img class="ah-combat-carousel__intent-icon" src="{{ intent.primary.item.img }}" alt="{{ intent.primary.item.name }}" loading="lazy">
+              {{else}}
+                <i class="ah-combat-carousel__intent-icon {{ahIconClass intent.primary.type record="intents"}}"></i>
+              {{/if}}
+              {{#if intent.target}}
+                <img class="ah-combat-carousel__target" src="{{intent.target.img}}" alt="{{intent.target.name}}" title="{{intent.target.name}}" draggable="false">
+              {{/if}}
+            </div>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ol>
+
+
+  </div>
+
+</section>

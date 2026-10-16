@@ -137,6 +137,7 @@ function initializeSystems() {
   pipelines.Pressure.initialize();
   pipelines.Campaign.initialize();
   pipelines.Award.initialize();
+  apps.Combat.AHCombatCarousel.initialize();
   apps.UI.CompendiumBrowser.initialize();
   apps.UI.Manual.initialize();
   apps.HUD.AHTokenActionHUD.initialize();

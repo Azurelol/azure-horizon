@@ -1605,6 +1605,8 @@ AH.icons = {
   menu: "fa-solid fa-ellipsis-h",
   data: "fa fa-tags",
   rarity: "fa fa-star",
+  previous: "fa-solid fa-arrow-left",
+  next: "fa-solid fa-arrow-right",
 
   roll: "ah-icon-check-roll",
   hr: "ah-icon-check-hr",

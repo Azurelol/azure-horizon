@@ -1331,6 +1331,9 @@
       }
     },
     "COMBAT": {
+      "Round": "Round",
+      "NotStarted": "Not Started",
+      "NextTurn": "Next Turn",
       "FirstTurn": "First Turn",
       "Start": "Battle Start",
       "RoundStart": "Round Start",

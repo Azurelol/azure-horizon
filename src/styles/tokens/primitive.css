@@ -34,6 +34,7 @@
   --ah-primitive-color-sepia: #704214;
   --ah-primitive-color-sepia-light: #8B5E3C;
   --ah-primitive-color-burgundy: #9f4f4f;
+  --ah-primitive-color-burgundy-500: #a8324a;
   --ah-primitive-color-burgundy-dark: #6B1E1E;
   --ah-primitive-color-ink-blue: #2C3E6B;
   --ah-primitive-color-grey-850: #00000050;
@@ -74,6 +75,7 @@
   --ah-primitive-color-crimson-900b: #3a1818;
   --ah-primitive-color-crimson-800: #5c2020;
   --ah-primitive-color-amber-900: #2d1a08;
+
 
 
   /* font size */
