@@ -11,7 +11,7 @@ export default class ActorResourceDataModel extends VersionedDataModel {
     const { NumberField } = foundry.data.fields;
     return Object.assign(super.defineSchema(), {
       value: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
-      bonus: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
+      bonus: new NumberField({ initial: 0, integer: true, nullable: false }),
       temporary: new NumberField({ initial: 0, min: 0, integer: true, nullable: false }),
       max: new NumberField(),
     });

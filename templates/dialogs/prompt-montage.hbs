@@ -1,0 +1,91 @@
+{{!-- One adversity row. Used for the initial rows and for the <template> that JS clones. --}}
+{{#*inline "adversityRow"}}
+  <li class="ah-adversity" data-index="{{index}}">
+    <fieldset>
+      <legend>
+        {{localize "AH.EPISODE.MONTAGE.Adversity.long"}} <span data-ah-number></span>
+        <button type="button" class="icon fa-solid fa-trash" data-ah="remove"
+                aria-label="{{localize 'AH.Montage.RemoveAdversity'}}"></button>
+      </legend>
+
+      {{!-- Free-text label with autocomplete suggestions from the system list --}}
+      <div class="form-group">
+        <label for="{{@root.partId}}-adv-{{index}}-label">
+          {{localize "AH.COMMON.Label"}}
+        </label>
+        <div class="form-fields">
+          <input type="text"
+                 id="{{@root.partId}}-adv-{{index}}-label"
+                 name="adversities.{{index}}.label"
+                 data-ah-field="label"
+                 list="{{@root.partId}}-adversity-suggestions"
+                 autocomplete="off"
+                 value="{{adv.label}}">
+        </div>
+      </div>
+
+      {{!-- Complication from the system list --}}
+      <div class="form-group">
+        <label for="{{@root.partId}}-adv-{{index}}-comp-label">
+          {{localize "AH.EPISODE.MONTAGE.Complication"}}
+        </label>
+        <div class="form-fields">
+          <select id="{{@root.partId}}-adv-{{index}}-comp-label"
+                  name="adversities.{{index}}.complication.label"
+                  data-ah-field="complication">
+            {{selectOptions @root.complicationChoices selected=adv.complication.label valueAttr="label" labelAttr="label" blank=""}}
+          </select>
+        </div>
+      </div>
+      <div class="form-group stacked">
+        <label for="{{@root.partId}}-adv-{{index}}-comp-desc">
+          {{localize "AH.COMMON.Description"}}
+        </label>
+        <div class="form-fields">
+          <textarea id="{{@root.partId}}-adv-{{index}}-comp-desc"
+                    name="adversities.{{index}}.complication.description"
+                    data-ah-field="description"
+                    data-default="{{adv.complication.description}}"
+                    rows="3">
+            {{adv.complication.description}}
+          </textarea>
+        </div>
+      </div>
+    </fieldset>
+  </li>
+{{/inline}}
+
+{{!-- Difficulty --}}
+<div class="form-group">
+  <label for="{{@root.partId}}-difficulty">{{localize "AH.CHECK.Difficulty"}}</label>
+  <div class="form-fields">
+    <select id="{{@root.partId}}-difficulty" name="difficultyLevel">
+      {{selectOptions difficultyLevels selected=difficultyLevel valueAttr="value" labelAttr="label" localize=true}}
+    </select>
+    <button type="button" data-ah="add">
+      <i class="fa-solid fa-plus"></i>
+      <span>
+        {{localize "AH.COMMON.Add"}} {{localize 'AH.EPISODE.MONTAGE.Adversity.long'}}
+      </span>
+    </button>
+  </div>
+</div>
+
+<datalist id="{{@root.partId}}-adversity-suggestions">
+  {{#each adversityChoices}}
+    <option value="{{label}}"></option>
+  {{/each}}
+</datalist>
+
+{{!-- Adversities. The initial count comes from difficulty + hero count; the user can add/remove. --}}
+<ol class="ah-list --scroll" data-ah-list style="list-style: none; margin: 0; padding: 0;">
+  {{#each adversities as |adv i|}}
+    {{> adversityRow adv=adv index=i}}
+  {{/each}}
+</ol>
+
+{{!-- Blueprint row for "add". Inert: its inputs are not part of the submitted form. --}}
+<template data-ah-row>
+  {{> adversityRow index="__INDEX__"}}
+</template>
+

@@ -18,7 +18,7 @@ const PARAM_DEBUFF_DURATION = 1;
 const STACK_DEBUFF_DURATION = 3;
 const DAMAGE_BUFF_DURATION = 1;
 
-const ADD_CHANGE_TYPE = CONST.ACTIVE_EFFECT_CHANGE_TYPES.add;
+const ADD_CHANGE_TYPE = "add"; // CONST.ACTIVE_EFFECT_CHANGE_TYPES.add;
 
 class StatusDataBuilder {
 
@@ -132,13 +132,25 @@ const STATUS_EFFECTS = Object.freeze({
     .build(),
 
   // TENSION
-  stress: new StatusDataBuilder("stress", "AH.STATUS.Stress").track("stack", 1, 4).changes([
-    {
-      key: "system.parameters.check.all.status",
-      mode: ADD_CHANGE_TYPE,
-      value: "-$tv",
-    },
-  ])
+  stress: new StatusDataBuilder("stress", "AH.STATUS.Stress")
+    .track("stack", 1, 4)
+    .changes([
+      {
+        key: "system.parameters.check.all.status",
+        mode: ADD_CHANGE_TYPE,
+        value: "-$tv",
+      },
+    ])
+    .build(),
+  injury: new StatusDataBuilder("injury", "AH.STATUS.Injury")
+    .track("stack", 1, 4)
+    .changes([
+      {
+        key: "system.resources.hp.bonus",
+        mode: "subtract",
+        value: "-$tv*&hp(0.1)",
+      },
+    ])
     .build(),
 
   // CONTROL

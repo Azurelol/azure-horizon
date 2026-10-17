@@ -161,7 +161,9 @@ function evaluateMacros(expression, context) {
       // Resource
       case "hp": {
         const percent = parseNumber(splitArgs[0]);
-        const max = context.resolveActorOrHighestLevelTarget().system.resources.hp.max;
+        const actor = context.resolveActorOrHighestLevelTarget();
+        //const max = actor.system.resources.hp.max;
+        const max = Formulas.calculateHitPoints(actor.system);
         return Formulas.round(percent * max);
       }
       case "mp": {

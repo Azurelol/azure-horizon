@@ -47,10 +47,14 @@ function resolveConfigRecordLabel(value, format) {
  * @remarks To be used with specific records.
  */
 export function getFormSelectOptions(record, format = "long") {
-  return Object.entries(record).map(([key, value]) => ({
-    label: localize(resolveConfigRecordLabel(value, format)),
-    value: key,
-  }));
+  return Object.entries(record).map(([key, value]) => {
+    const label = localize(resolveConfigRecordLabel(value, format));
+    return ({
+      id: label,
+      label: label,
+      value: key,
+    });
+  });
 }
 
 /**
@@ -177,6 +181,25 @@ AH.outcome = Object.freeze({
   partial: { label: "AH.ACTION.OUTCOME.Partial" },
   fumble: { label: "AH.ACTION.OUTCOME.Fumble" },
 });
+
+AH.montage = {
+  approaches: {
+    endure: { label: "AH.EPISODE.MONTAGE.APPROACH.Endure" },
+    influence: { label: "AH.EPISODE.MONTAGE.APPROACH.Influence" },
+    sneak: { label: "AH.EPISODE.MONTAGE.APPROACH.Sneak" },
+    scout: { label: "AH.EPISODE.MONTAGE.APPROACH.Scout" },
+    breakthrough: { label: "AH.EPISODE.MONTAGE.APPROACH.Breakthrough" },
+    prepare: { label: "AH.EPISODE.MONTAGE.APPROACH.Prepare" },
+  },
+  adversities: {
+    ambush: { label: "AH.EPISODE.MONTAGE.ADVERSITY.Ambush" },
+    trap: { label: "AH.EPISODE.MONTAGE.ADVERSITY.Trap" },
+  },
+  complications: {
+    broken: { label: "AH.EPISODE.MONTAGE.COMPLICATION.Broken", description: "Foo" },
+    drained: { label: "AH.EPISODE.MONTAGE.COMPLICATION.Drained", description: "Bar" },
+  },
+};
 
 /**
  * System themes.

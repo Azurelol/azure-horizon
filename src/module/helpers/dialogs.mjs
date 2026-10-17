@@ -33,6 +33,12 @@ const { api, fields, handlebars } = foundry.applications;
  */
 
 /**
+ * @callback DialogV2RenderCallback
+ * @param {Event} event                           The render event.
+ * @param {DialogV2} dialog                       The DialogV2 instance.
+ */
+
+/**
  * @typedef DialogV2Button
  * @property {string} action                      The button action identifier.
  * @property {string} label                       The button label. Will be localized.
@@ -68,6 +74,7 @@ const { api, fields, handlebars } = foundry.applications;
  * @typedef AH_DialogOptions
  * @property {String} title
  * @property {String} content
+ * @property {DialogV2RenderCallback} render
  */
 
 const DIALOG_CLASSES = ["ah-application", "ah-dialog"];
@@ -580,11 +587,10 @@ export default class Dialogs {
       }
       return [];
     }
-
   }
 
   /**
-   * @typedef {'string'|'number'} InspectorPropertyType
+   * @typedef {'auto'|'string'|'number'} InspectorPropertyType
    */
 
   /**
@@ -601,27 +607,24 @@ export default class Dialogs {
    */
 
   /**
-   * @param {String} title
-   * @param {Object} object
-   * @param {InspectorProperty[]} properties
+   * @typedef {AH_DialogOptions} AH_InspectDialogOptions
+   * @property {Object} object The object being inspected.
+   * @property {InspectorProperty[]} properties
+   */
+
+  /**
+   * @param {AH_InspectDialogOptions} options
    * @returns {Promise<boolean>}
    */
-  static async inspect(title, object, properties) {
-    const content = await renderTemplate(systemTemplatePath("dialogs/inspector"), {
-      object: object,
-      properties: properties,
+  static async inspect(options) {
+    options.content = await renderTemplate(systemTemplatePath("dialogs/inspector"), {
+      object: options.object,
+      properties: options.properties,
     });
-    const options = {
-      position: {
-        width: 480,
-      },
-    };
-    const result = await Dialogs.input({
-      title, content, options,
-    });
+    const result = await Dialogs.input(options);
     if (result !== null) {
       const expanded = foundry.utils.expandObject(result);
-      foundry.utils.mergeObject(object, expanded.object);
+      foundry.utils.mergeObject(options.object, expanded.object);
       return true;
     }
     return false;

@@ -1158,6 +1158,7 @@
       "Miasma": "Miasma",
       "Venom": "Venom",
       "Sunder": "Sunder",
+      "Injury": "Injury",
       "Breach": "Breach",
       "Seal": "Seal",
       "Mute": "Mute",
@@ -1309,11 +1310,34 @@
       "Exploration": "Exploration",
       "Battle": "Battle",
       "Event": "Event",
+      "Montage": "Montage",
       "Treasure": "Treasure",
       "PromptCheck": "Prompt Check",
+      "PromptMontage": "Prompt Montage",
       "PromptTravelCheck": "The director has prompted the players for a <strong>{level} danger</strong> travel check.",
       "SelectDifficulty": "Select Difficulty",
-      "PerformTravelCheck": "Perform Travel Check"
+      "PerformTravelCheck": "Perform Travel Check",
+      "MONTAGE": {
+        "Adversity": {
+          "long": "Adversity",
+          "plural": "Adversities"
+        },
+        "Complication": "Complication",
+        "APPROACH": {
+          "Endure": "Endure",
+          "Sneak": "Sneak",
+          "Influence": "Influence",
+          "Prepare": "Prepare",
+          "Scout": "Scout",
+          "Breakthrough": "Breakthrough"
+        },
+        "COMPLICATION": {
+          "Broken": "Broken"
+        },
+        "ADVERSITY": {
+          "Ambush": "Ambush"
+        }
+      }
     },
     "EXPLORATION": {
       "SelectCheck": "Select Check",

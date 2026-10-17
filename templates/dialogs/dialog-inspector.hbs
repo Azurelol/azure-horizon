@@ -7,7 +7,6 @@
           {{#if (eq prop.options.style 'textarea')}}
             <textarea name="{{accConcat 'object.' path}}">{{~lookup @root.object prop.path}}</textarea>
           {{/if}}
-
           {{#if (eq prop.options.style 'html')}}
           {{/if}}
         {{else}}

@@ -42,6 +42,7 @@ export class PartySheet extends AHActorSheet {
       attributeCheck: this.#attributeCheck,
       triggerExperience: this.#triggerExperience,
       levelUp: this.#levelUp,
+      promptMontage: this.#promptMontage,
       awardTreasure: this.#awardTreasure,
 
       addCodexEntry: this.#addCodexEntry,
@@ -616,6 +617,16 @@ export class PartySheet extends AHActorSheet {
     await Award.promptTreasure({
       partyData: this.system,
     });
+  }
+
+  /**
+   * @this PartySheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @returns {Promise<void>}
+   */
+  static async #promptMontage(event, target) {
+    await Campaign.promptMontage(this.system);
   }
 
   /**

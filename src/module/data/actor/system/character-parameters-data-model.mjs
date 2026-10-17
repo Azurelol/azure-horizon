@@ -28,7 +28,6 @@ export class CharacterParametersDataModel extends VersionedDataModel {
       block: new EmbeddedDataField(ParameterDataModel, {}),
       resource: new SchemaField({
         gain: new SchemaField({
-
         }),
         loss: new SchemaField({
           hp: new EmbeddedDataField(ExchangeModifiersDataModel, {}),
